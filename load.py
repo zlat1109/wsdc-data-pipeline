@@ -1,0 +1,80 @@
+#!/usr/bin/env python3
+"""Weekly load: CSV -> staging -> history diff -> core refresh.
+
+Usage:
+    python load.py --data-dir "/path/to/WSDC Points"
+"""
+
+from __future__ import annotations
+
+import argparse
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).parent
+DEFAULT_DATA_DIR = Path(
+    "/Users/ania/.cursor/projects/tableau/My-Tableau-Projects/WSDC/WSDC Points"
+)
+
+sys.path.insert(0, str(PROJECT_ROOT / "db"))
+
+from connection import connect  # noqa: E402
+from staging_loader import load_staging_from_dir  # noqa: E402
+
+
+def read_sql(name: str) -> str:
+    return (PROJECT_ROOT / "db" / "sql" / name).read_text(encoding="utf-8")
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--data-dir", type=Path, default=DEFAULT_DATA_DIR)
+    parser.add_argument(
+        "--source",
+        default="local",
+        choices=["local", "github-actions"],
+    )
+    args = parser.parse_args()
+
+    with connect() as conn:
+        staging_counts = load_staging_from_dir(conn, args.data_dir)
+
+        with conn.cursor() as cur:
+            cur.execute(
+                """
+                INSERT INTO history.parse_runs (source, status)
+                VALUES (%s, 'running')
+                RETURNING run_id
+                """,
+                (args.source,),
+            )
+            run_id = cur.fetchone()[0]
+
+            cur.execute(
+                read_sql("record_weekly_points_history.sql"),
+                {"run_id": run_id},
+            )
+            cur.execute(read_sql("promote_core.sql"))
+
+            cur.execute(
+                """
+                UPDATE history.parse_runs
+                SET finished_at = %s, status = 'success',
+                    rows_results = %s, rows_points = %s
+                WHERE run_id = %s
+                """,
+                (
+                    datetime.now(timezone.utc),
+                    staging_counts.get("dancers_results_info.csv"),
+                    staging_counts.get("dancers_points_info.csv"),
+                    run_id,
+                ),
+            )
+            conn.commit()
+
+    print(f"Load complete (run_id={run_id}).")
+
+
+if __name__ == "__main__":
+    main()

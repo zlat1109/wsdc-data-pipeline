@@ -40,9 +40,11 @@ def main() -> None:
         print(f"  user:   {kw['user']}")
         print(f"  password: {'*' * len(str(kw.get('password', '')))} ({len(str(kw.get('password', '')))} chars)")
         print(f"  sslmode:  {kw.get('sslmode', 'require')}")
-        if kw["user"] == "postgres":
+        if kw["user"] == "postgres" and "pooler" in kw["host"]:
             print("\nWARNING: user is 'postgres' — Supabase pooler expects postgres.<project-ref>")
             print("  Example: postgres.tougqwxmahkwnaculiju")
+        elif kw["user"] == "postgres" and kw["host"].startswith("db."):
+            print("\nOK: Direct connection (user postgres is correct for db.*.supabase.co)")
         return
 
     migrations = sorted(MIGRATIONS_DIR.glob("[0-9]*.sql"))
