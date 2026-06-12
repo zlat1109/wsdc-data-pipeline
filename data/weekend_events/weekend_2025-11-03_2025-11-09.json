@@ -1,0 +1,62 @@
+{
+  "generated_at": "2025-11-10T22:17:22Z",
+  "weekend_start": "2025-11-03",
+  "weekend_end": "2025-11-09",
+  "events": [
+    {
+      "name": "Tampa Bay Classic",
+      "location": "Tampa Bay, FL, USA",
+      "dates": "Nov 06 - Nov 09, 2025",
+      "url": "http://www.tbcwcs.com",
+      "start_date": "2025-11-06",
+      "end_date": "2025-11-09",
+      "livestream": null,
+      "continent": "America",
+      "flag": "🇺🇸"
+    },
+    {
+      "name": "Moscow Westie Fest Gala Edition",
+      "location": "Moscow,  Russia",
+      "dates": "Nov 07 - Nov 09, 2025",
+      "url": "http://westiefest.org/",
+      "start_date": "2025-11-07",
+      "end_date": "2025-11-09",
+      "livestream": null,
+      "continent": "Europe",
+      "flag": "🇷🇺"
+    },
+    {
+      "name": "Autumn Swing Challenge",
+      "location": "Budapest, Hungary",
+      "dates": "Nov 07 - Nov 09, 2025",
+      "url": "http://asc-budapest.com",
+      "start_date": "2025-11-07",
+      "end_date": "2025-11-09",
+      "livestream": "https://youtube.com/@autumnswingchallenge?si=guQfdu8pMpfBPgUN",
+      "continent": "Europe",
+      "flag": "🇭🇺"
+    },
+    {
+      "name": "Westie's Angels",
+      "location": "LYON, France",
+      "dates": "Nov 07 - Nov 09, 2025",
+      "url": "http://www.frenchywesty.com",
+      "start_date": "2025-11-07",
+      "end_date": "2025-11-09",
+      "livestream": null,
+      "continent": "Europe",
+      "flag": "🇫🇷"
+    },
+    {
+      "name": "Simply Adelaide West Coast Swing",
+      "location": "Adelaide, South Australia, Australia",
+      "dates": "Nov 06 - Nov 09, 2025",
+      "url": "http://www.simplyadelaidewcs.com.au",
+      "start_date": "2025-11-06",
+      "end_date": "2025-11-09",
+      "livestream": null,
+      "continent": "Australia",
+      "flag": "🇦🇺"
+    }
+  ]
+}

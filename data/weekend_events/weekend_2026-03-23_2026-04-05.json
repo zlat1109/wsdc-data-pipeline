@@ -1,0 +1,51 @@
+{
+  "generated_at": "2026-04-03T07:41:08Z",
+  "weekend_start": "2026-03-23",
+  "weekend_end": "2026-04-05",
+  "events": [
+    {
+      "name": "UK West Coast Swing Championships",
+      "location": "Sipson, West Drayton, London, UK",
+      "url": "https://ukwcschamps.com",
+      "dates": "Mar 26 - 30, 2026",
+      "start_date": "2026-03-26",
+      "end_date": "2026-03-30",
+      "livestream": "https://www.triplestep.tv/live/uk-wcs-champs-2026",
+      "continent": "Europe",
+      "flag": "🇬🇧"
+    },
+    {
+      "name": "5280 Westival",
+      "location": "Denver, CO",
+      "url": "https://5280westival.com/",
+      "dates": "Mar 26 - 30, 2026",
+      "start_date": "2026-03-26",
+      "end_date": "2026-03-30",
+      "livestream": null,
+      "continent": "America",
+      "flag": "🇺🇸"
+    },
+    {
+      "name": "H-Town Throw Down",
+      "location": "Houston, Texas, United States",
+      "url": "https://www.htownthrowdown.com/",
+      "dates": "Mar 26 - 29, 2026",
+      "start_date": "2026-03-26",
+      "end_date": "2026-03-29",
+      "livestream": "https://www.twitch.tv/subeyvideography",
+      "continent": "America",
+      "flag": "🇺🇸"
+    },
+    {
+      "name": "The Boston Tea Party",
+      "location": "Boston, MA, US",
+      "url": "http://teapartyswings.com",
+      "dates": "Mar 26 - 30, 2026",
+      "start_date": "2026-03-26",
+      "end_date": "2026-03-30",
+      "livestream": null,
+      "continent": "America",
+      "flag": "🇺🇸"
+    }
+  ]
+}

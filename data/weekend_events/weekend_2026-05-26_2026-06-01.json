@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-06-02T20:18:24Z",
+  "weekend_start": "2026-05-26",
+  "weekend_end": "2026-06-01",
+  "events": [
+    {
+      "name": "Festival City Swing",
+      "location": "Edinburgh, Scotland, Scotland",
+      "url": "http://www.fcswing.co.uk/",
+      "dates": "May 29 - Jun 1, 2026",
+      "start_date": "2026-05-29",
+      "end_date": "2026-06-01",
+      "livestream": "https://www.twitch.tv/5678wcs",
+      "continent": "Europe",
+      "flag": "🇬🇧"
+    },
+    {
+      "name": "Michigan Classic",
+      "location": "Detroit, Michigan, USA",
+      "url": "http://michiganclassicswing.com/",
+      "dates": "May 28 - 31, 2026",
+      "start_date": "2026-05-28",
+      "end_date": "2026-05-31",
+      "livestream": null,
+      "continent": "America",
+      "flag": "🇺🇸"
+    },
+    {
+      "name": "Nanaimo Dance Fusion",
+      "location": "Nanaimo (Vancouver is the major in the province), British Columbia, Canada",
+      "url": "http://www.nanaimodancefusion.ca/",
+      "dates": "May 29 - 31, 2026",
+      "start_date": "2026-05-29",
+      "end_date": "2026-05-31",
+      "livestream": null,
+      "continent": "America",
+      "flag": "🇨🇦"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "generated_at": "2026-04-07T19:50:59Z",
+  "weekend_start": "2026-03-30",
+  "weekend_end": "2026-04-12",
+  "events": [
+    {
+      "name": "Easter Swing 2026",
+      "location": "Seattle, WA, United States",
+      "url": "https://www.easterswing.org/",
+      "dates": "Apr 2 - 5, 2026",
+      "start_date": "2026-04-02",
+      "end_date": "2026-04-05",
+      "livestream": "https://evt.live/easter-swing-2026-live-stream",
+      "continent": "America",
+      "flag": "🇺🇸"
+    },
+    {
+      "name": "Tulsa Spring Swing",
+      "location": "Tulsa, Ok, USA",
+      "url": "http://www.tulsaspringswing.com/",
+      "dates": "Apr 2 - 5, 2026",
+      "start_date": "2026-04-02",
+      "end_date": "2026-04-05",
+      "livestream": null,
+      "continent": "America",
+      "flag": "🇺🇸"
+    }
+  ]
+}

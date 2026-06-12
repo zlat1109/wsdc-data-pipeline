@@ -1,0 +1,46 @@
+{
+  "generated_at": "2026-01-21T08:16:39Z",
+  "weekend_start": "2026-01-12",
+  "weekend_end": "2026-01-18",
+  "events": [
+    {
+      "name": "Austin Swing Dance Championships",
+      "location": "Austin, TX, USA",
+      "url": "https://austinswingdance.com",
+      "start_date": "2026-01-15",
+      "end_date": "2026-01-19",
+      "dates": "Jan 15 - 19, 2026",
+      "results_month": 1,
+      "results_year": 2026,
+      "livestream": null,
+      "continent": "America",
+      "flag": "🇺🇸"
+    },
+    {
+      "name": "Monterey Swing Fest",
+      "location": "Monterey, CA, USA",
+      "url": "http://www.montereyswing.com",
+      "start_date": "2026-01-15",
+      "end_date": "2026-01-19",
+      "dates": "Jan 15 - 19, 2026",
+      "results_month": 1,
+      "results_year": 2026,
+      "livestream": null,
+      "continent": "America",
+      "flag": "🇺🇸"
+    },
+    {
+      "name": "Avignon City Swing",
+      "location": "Nimes, Gard, France",
+      "url": "https://www.avignoncityswing.com",
+      "start_date": "2026-01-16",
+      "end_date": "2026-01-18",
+      "dates": "Jan 16 - 18, 2026",
+      "results_month": 1,
+      "results_year": 2026,
+      "livestream": null,
+      "continent": "Europe",
+      "flag": "🇫🇷"
+    }
+  ]
+}

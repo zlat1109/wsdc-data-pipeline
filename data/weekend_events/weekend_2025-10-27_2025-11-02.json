@@ -1,0 +1,47 @@
+{
+  "generated_at": "2025-11-02T18:00:00Z",
+  "weekend_start": "2025-10-27",
+  "weekend_end": "2025-11-02",
+  "events": [
+    {
+      "name": "Warsaw Halloween Swing",
+      "location": "Warsaw, Poland",
+      "dates": "Oct 30 - Nov 3, 2025",
+      "start_date": "2025-10-30",
+      "end_date": "2025-11-03",
+      "url": "http://www.warsawhalloweenswing.com"
+    },
+    {
+      "name": "Mountain Magic",
+      "location": "South Lake Tahoe, NV, United States",
+      "dates": "Oct 30 - Nov 2, 2025",
+      "start_date": "2025-10-30",
+      "end_date": "2025-11-02",
+      "url": "https://mountainmagic.dance/"
+    },
+    {
+      "name": "Scandinavian Open",
+      "location": "Stockholm, Sweden",
+      "dates": "Oct 30 - Nov 2, 2025",
+      "start_date": "2025-10-30",
+      "end_date": "2025-11-02",
+      "url": "http://www.snowcs.se"
+    },
+    {
+      "name": "Rocket City Swing",
+      "location": "Huntsville, AL, United States",
+      "dates": "Oct 31 - Nov 2, 2025",
+      "start_date": "2025-10-31",
+      "end_date": "2025-11-02",
+      "url": "https://rocketcityswing.com/"
+    },
+    {
+      "name": "Spooky Westie Weekend",
+      "location": "Singapore",
+      "dates": "Oct 31 - Nov 2, 2025",
+      "start_date": "2025-10-31",
+      "end_date": "2025-11-02",
+      "url": "https://spookywestieweekend.com/"
+    }
+  ]
+}

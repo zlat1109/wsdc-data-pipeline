@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-03-23T20:24:17Z",
+  "weekend_start": "2026-03-16",
+  "weekend_end": "2026-03-23",
+  "events": [
+    {
+      "name": "King Swing",
+      "location": "Kraków, malopolska, Polska",
+      "url": "http://kingswing.pl/",
+      "start_date": "2026-03-19",
+      "end_date": "2026-03-23",
+      "dates": "Mar 19 - 23, 2026",
+      "results_month": 3,
+      "results_year": 2026,
+      "livestream": "https://www.triplestep.tv/live/king-swing-2026",
+      "continent": "Europe",
+      "flag": "🇵🇱"
+    },
+    {
+      "name": "The Chicago Classic",
+      "location": "Chicago, IL, United States",
+      "url": "http://www.thechicagoclassic.com",
+      "start_date": "2026-03-19",
+      "end_date": "2026-03-22",
+      "dates": "Mar 19 - 22, 2026",
+      "results_month": 3,
+      "results_year": 2026,
+      "livestream": null,
+      "continent": "America",
+      "flag": "🇺🇸"
+    }
+  ]
+}

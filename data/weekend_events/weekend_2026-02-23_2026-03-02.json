@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-03-06T14:10:05Z",
+  "weekend_start": "2026-02-23",
+  "weekend_end": "2026-03-02",
+  "events": [
+    {
+      "name": "Rose City Swing",
+      "location": "Portland, OR, USA",
+      "url": "https://rosecityswing.com",
+      "start_date": "2026-02-26",
+      "end_date": "2026-03-01",
+      "dates": "Feb 26 - Mar 1, 2026",
+      "results_month": 3,
+      "results_year": 2026,
+      "livestream": null,
+      "continent": "America",
+      "flag": "🇺🇸"
+    },
+    {
+      "name": "New York Flow Festival",
+      "location": "New York City, NY, United States",
+      "url": "https://www.flowfest.nyc",
+      "start_date": "2026-02-27",
+      "end_date": "2026-03-01",
+      "dates": "Feb 27 - Mar 1, 2026",
+      "results_month": 3,
+      "results_year": 2026,
+      "livestream": null,
+      "continent": "America",
+      "flag": "🇺🇸"
+    }
+  ]
+}

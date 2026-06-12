@@ -1,0 +1,72 @@
+{
+  "generated_at": "2026-03-17T20:30:10Z",
+  "weekend_start": "2026-03-02",
+  "weekend_end": "2026-03-16",
+  "events": [
+    {
+      "name": "West In Lyon",
+      "location": "Lyon, Rhône, France",
+      "url": "https://westinlyon.com",
+      "start_date": "2026-03-12",
+      "end_date": "2026-03-15",
+      "dates": "Mar 12 - 15, 2026",
+      "results_month": 3,
+      "results_year": 2026,
+      "livestream": null,
+      "continent": "Europe",
+      "flag": "🇫🇷"
+    },
+    {
+      "name": "Dutch Open West Coast Swing",
+      "location": "Venray, Limburg, The Netherlands",
+      "url": "https://dutchopenwcs.com",
+      "start_date": "2026-03-12",
+      "end_date": "2026-03-15",
+      "dates": "Mar 12 - 15, 2026",
+      "results_month": 3,
+      "results_year": 2026,
+      "livestream": null,
+      "continent": "Europe",
+      "flag": "🇳🇱"
+    },
+    {
+      "name": "Westie Spring Thing",
+      "location": "Budapest, Budapest, Hungary",
+      "url": null,
+      "start_date": "2026-03-12",
+      "end_date": "2026-03-15",
+      "dates": "Mar 12 - 15, 2026",
+      "results_month": 3,
+      "results_year": 2026,
+      "livestream": null,
+      "continent": "Europe",
+      "flag": "🇭🇺"
+    },
+    {
+      "name": "All Star SwingJam",
+      "location": "San Francisco, CA, USA",
+      "url": null,
+      "start_date": "2026-03-12",
+      "end_date": "2026-03-15",
+      "dates": "Mar 12 - 15, 2026",
+      "results_month": 3,
+      "results_year": 2026,
+      "livestream": null,
+      "continent": "America",
+      "flag": "🇺🇸"
+    },
+    {
+      "name": "High Desert Dance Classic",
+      "location": "Lancaster, CA, CA, United States",
+      "url": null,
+      "start_date": "2026-03-06",
+      "end_date": "2026-03-08",
+      "dates": "Mar 6 - 8, 2026",
+      "results_month": 3,
+      "results_year": 2026,
+      "livestream": null,
+      "continent": "America",
+      "flag": "🇺🇸"
+    }
+  ]
+}

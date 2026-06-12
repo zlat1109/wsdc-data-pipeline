@@ -1,0 +1,77 @@
+{
+  "generated_at": "2026-05-22T13:04:23Z",
+  "weekend_start": "2026-05-11",
+  "weekend_end": "2026-05-18",
+  "summary_notes": "Point Summary за эту неделю: 5 ивентов в events (данные в dancers_results_info). Canadian Swing Championships — отложен на следующую неделю: результатов May 2026 в базе пока нет.",
+  "deferred_events": [
+    {
+      "name": "Canadian Swing Championships",
+      "location": "Sherbrooke, Quebec, CANADA",
+      "url": "https://www.canadianswingchampionships.com/",
+      "dates": "May 15 - 18, 2026",
+      "start_date": "2026-05-15",
+      "end_date": "2026-05-18",
+      "continent": "America",
+      "flag": "🇨🇦",
+      "reason": "results_not_in_db_yet",
+      "planned_summary": "next_week"
+    }
+  ],
+  "events": [
+    {
+      "name": "French Open WCS",
+      "location": "PARIS, France",
+      "url": "http://www.fowcs.com/",
+      "dates": "May 13 - 18, 2026",
+      "start_date": "2026-05-13",
+      "end_date": "2026-05-18",
+      "livestream": null,
+      "continent": "Europe",
+      "flag": "🇫🇷"
+    },
+    {
+      "name": "SOswing",
+      "location": "Ashland, OR, USA",
+      "url": "https://www.soswingdance.com/",
+      "dates": "May 14 - 17, 2026",
+      "start_date": "2026-05-14",
+      "end_date": "2026-05-17",
+      "livestream": null,
+      "continent": "America",
+      "flag": "🇺🇸"
+    },
+    {
+      "name": "Gateway Swing Classic",
+      "location": "St. Louis, MO, USA",
+      "url": "http://gatewayswing.com/",
+      "dates": "May 14 - 17, 2026",
+      "start_date": "2026-05-14",
+      "end_date": "2026-05-17",
+      "livestream": null,
+      "continent": "America",
+      "flag": "🇺🇸"
+    },
+    {
+      "name": "Texas Classic",
+      "location": "Austin, TX, United States",
+      "url": "http://www.thetexasclassic.com/",
+      "dates": "May 15 - 16, 2026",
+      "start_date": "2026-05-15",
+      "end_date": "2026-05-16",
+      "livestream": null,
+      "continent": "America",
+      "flag": "🇺🇸"
+    },
+    {
+      "name": "Swingsation",
+      "location": "Gold Coast, Queensland, Australia",
+      "url": "https://rawconnection.com.au/swingsation/",
+      "dates": "May 15 - 18, 2026",
+      "start_date": "2026-05-15",
+      "end_date": "2026-05-18",
+      "livestream": null,
+      "continent": "Australia",
+      "flag": "🇦🇺"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "generated_at": "2026-05-05T11:02:45Z",
+  "weekend_start": "2026-04-27",
+  "weekend_end": "2026-05-10",
+  "events": [
+    {
+      "name": "Spring Time Swing",
+      "location": "Freiburg, Baden Württemberg, Germany",
+      "url": "https://springtimeswing.com/",
+      "dates": "Apr 30 - May 4, 2026",
+      "start_date": "2026-04-30",
+      "end_date": "2026-05-04",
+      "livestream": "https://springtimeswing.com/live",
+      "continent": "Europe",
+      "flag": "🇩🇪"
+    },
+    {
+      "name": "Nordic WCS Championships",
+      "location": "Stockholm, Sweden",
+      "url": "http://www.nordicwcschamps.com/",
+      "dates": "Apr 30 - May 4, 2026",
+      "start_date": "2026-04-30",
+      "end_date": "2026-05-04",
+      "livestream": "https://www.twitch.tv/5678wcs",
+      "continent": "Europe",
+      "flag": "🇸🇪"
+    },
+    {
+      "name": "BeeMAD",
+      "location": "Madrid, Spain",
+      "url": "https://beemadwcs.com/",
+      "dates": "May 1 - 3, 2026",
+      "start_date": "2026-05-01",
+      "end_date": "2026-05-03",
+      "livestream": null,
+      "continent": "Europe",
+      "flag": "🇪🇸"
+    },
+    {
+      "name": "Swingin' Into Spring",
+      "location": "Hartfoed, Connecticut, United States",
+      "url": "",
+      "dates": "Apr 30 - May 3, 2026",
+      "start_date": "2026-04-30",
+      "end_date": "2026-05-03",
+      "livestream": null,
+      "continent": "America",
+      "flag": "🇺🇸"
+    }
+  ]
+}

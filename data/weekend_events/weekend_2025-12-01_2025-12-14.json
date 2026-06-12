@@ -1,0 +1,41 @@
+{
+  "generated_at": "2025-12-11T00:00:00Z",
+  "weekend_start": "2025-12-01",
+  "weekend_end": "2025-12-14",
+  "events": [
+    {
+      "name": "The After Party",
+      "location": "Irvine, CA, USA",
+      "url": "http://www.tapwcs.com",
+      "start_date": "2025-12-04",
+      "end_date": "2025-12-08",
+      "dates": "Dec 4 - Dec 8, 2025",
+      "continent": "America",
+      "flag": "🇺🇸",
+      "livestream": null
+    },
+    {
+      "name": "Winter White",
+      "location": "Asker, Norway",
+      "url": "http://www.winterwhite.no",
+      "start_date": "2025-12-04",
+      "end_date": "2025-12-07",
+      "dates": "Dec 4 - Dec 7, 2025",
+      "continent": "Europe",
+      "flag": "🇳🇴",
+      "livestream": null
+    },
+    {
+      "name": "Shooba Dooba Swing",
+      "location": "Moscow, Russia",
+      "url": "https://t.me/ShoobaDoobaSwing",
+      "start_date": "2025-12-05",
+      "end_date": "2025-12-07",
+      "dates": "Dec 5 - Dec 7, 2025",
+      "continent": "Europe",
+      "flag": "🇷🇺",
+      "livestream": null
+    }
+  ]
+}
+

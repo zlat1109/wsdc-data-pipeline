@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-05-14T09:03:56Z",
+  "weekend_start": "2026-05-04",
+  "weekend_end": "2026-05-18",
+  "events": [
+    {
+      "name": "SOM-Swing of Music",
+      "location": "Wels, OÖ, Austria",
+      "url": "http://www.swingofmusic.com/",
+      "dates": "May 7 - 11, 2026",
+      "start_date": "2026-05-07",
+      "end_date": "2026-05-11",
+      "livestream": null,
+      "continent": "Europe",
+      "flag": "🇦🇹"
+    },
+    {
+      "name": "Med in Swing",
+      "location": "Toulon, Var, France",
+      "url": "http://www.medinswing.rocks/",
+      "dates": "May 7 - 11, 2026",
+      "start_date": "2026-05-07",
+      "end_date": "2026-05-11",
+      "livestream": null,
+      "continent": "Europe",
+      "flag": "🇫🇷"
+    },
+    {
+      "name": "Westie Weekend",
+      "location": "Washington DC, USA",
+      "url": "https://dancejamproductions.com/westieweekend/",
+      "dates": "May 8 - 10, 2026",
+      "start_date": "2026-05-08",
+      "end_date": "2026-05-10",
+      "livestream": null,
+      "continent": "America",
+      "flag": "🇺🇸"
+    }
+  ]
+}

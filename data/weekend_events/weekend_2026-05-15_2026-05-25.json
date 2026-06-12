@@ -1,0 +1,43 @@
+{
+  "generated_at": "2026-05-27T07:37:44Z",
+  "weekend_start": "2026-05-15",
+  "weekend_end": "2026-05-25",
+  "summary_notes": "Point Summary: Canadian Swing Championships добавлен ретро (данные доехали поздно, на прошлой неделе публиковали без него; даты 15–18 мая). Плюс Hungarian Open и USA Grand National Dance Championships за прошлые выходные.",
+  "events": [
+    {
+      "name": "Canadian Swing Championships",
+      "location": "Sherbrooke, Quebec, CANADA",
+      "url": "https://www.canadianswingchampionships.com/",
+      "dates": "May 15 - 18, 2026",
+      "start_date": "2026-05-15",
+      "end_date": "2026-05-18",
+      "livestream": null,
+      "continent": "America",
+      "flag": "🇨🇦",
+      "retroactive": true,
+      "note": "Included retroactively; results were missing in prior May 11-18 snapshot"
+    },
+    {
+      "name": "USA Grand National Dance Championships",
+      "location": "Atlanta, GA, USA",
+      "url": "http://www.usagrandnationals.com/",
+      "dates": "May 21 - 25, 2026",
+      "start_date": "2026-05-21",
+      "end_date": "2026-05-25",
+      "livestream": null,
+      "continent": "America",
+      "flag": "🇺🇸"
+    },
+    {
+      "name": "Hungarian Open",
+      "location": "Budapest, Pest, Hungary",
+      "url": "http://wcs-ho.com/",
+      "dates": "May 22 - 24, 2026",
+      "start_date": "2026-05-22",
+      "end_date": "2026-05-24",
+      "livestream": null,
+      "continent": "Europe",
+      "flag": "🇭🇺"
+    }
+  ]
+}
