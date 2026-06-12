@@ -1,29 +1,35 @@
-# Data quality reports
+# Data quality reports (combined log)
 
-After each pipeline run (`load` → `export`), `scripts/data_quality_audit.py` writes:
+Written by `scripts/preprocess_data.py` before each load.
 
-| File | Purpose |
-|------|---------|
-| `latest.json` | Most recent audit (compare baseline for **new** findings) |
-| `quality_YYYYMMDDTHHMMSSZ.json` | Timestamped history |
+## Report structure (`latest.json`)
 
-## What is logged (not auto-fixed)
+| Section | Meaning |
+|---------|---------|
+| **`before_processing`** | Everything found in **raw** CSV before normalization |
+| **`applied_normalizations`** | Known rules that ran: notebook maps, auto year-strip on event names, location fixes |
+| **`manual_review_required`** | Still open after processing — **needs your decision** |
 
-- **Event naming**: year suffix in name (`Event 2024`), multiple spellings of same event, names similar to known canonical but unmapped, brand-new event names since last run
-- **Locations**: incomplete format, city=country, same `location_id` with different strings
-- **Levels**: non-canonical division names
-- **Relationships**: orphaned `location_id` / missing catalog entries (from existing validators)
+Each `applied_normalizations.rules[]` entry:
 
-Each finding includes `suggested_fix` pointing to `transform/data_preprocessing.py` maps (same as notebook hardcodes).
+- `rule_id` — e.g. `EVENT_NAME_NORMALIZATION`, `AUTO_STRIP_EVENT_YEAR`
+- `from_value` / `to_value` / `rows_affected`
+- `source` — `known_map`, `auto_pattern`, `location_id_fix`, …
 
-## Review workflow
+`manual_review_required.findings[]` with `"is_new": true` — new since last run.
 
-1. Open `latest.json` → filter `"is_new": true`
-2. Add rules to `EVENT_NAME_NORMALIZATION`, `EVENT_LOCATION_*`, `LOCATION_INFO_*` in `transform/data_preprocessing.py`
-3. Re-run pipeline; new findings should drop on next audit
+## Workflow
+
+1. Pipeline: parse → **preprocess_data** (normalize + log) → load → export
+2. Open `latest.json` → review `manual_review_required` (ignore what `applied_normalizations` already fixed)
+3. Add new rules to `transform/data_preprocessing.py` when you decide the fix
+4. Next run: before count may stay high, manual_review should shrink
 
 ## Manual run
 
 ```bash
-python scripts/data_quality_audit.py --data-dir data
+python scripts/preprocess_data.py --data-dir data
+python scripts/preprocess_data.py --data-dir data --dry-run  # log only, no CSV overwrite
 ```
+
+Legacy: `scripts/data_quality_audit.py` (audit-only, no normalize) — prefer `preprocess_data.py`.

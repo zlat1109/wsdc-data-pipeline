@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run the post-parse pipeline: migrations -> load -> export.
+"""Run the post-parse pipeline: migrations -> preprocess -> load -> export.
 
 Usage:
     python scripts/run_pipeline.py --data-dir "/path/to/csv"
@@ -53,10 +53,17 @@ def main() -> None:
     if not args.export_only:
         if not args.data_dir:
             sys.exit("--data-dir is required unless --export-only is set")
+        run([
+            py,
+            "scripts/preprocess_data.py",
+            "--data-dir",
+            str(args.data_dir),
+            "--source",
+            args.source,
+        ])
         run([py, "load.py", "--data-dir", str(args.data_dir), "--source", args.source])
 
     run([py, "export.py"])
-    run([py, "scripts/data_quality_audit.py", "--data-dir", str(args.data_dir or PROJECT_ROOT / "data"), "--source", args.source])
     print("\nPipeline complete.")
 
 

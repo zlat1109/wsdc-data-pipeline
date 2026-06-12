@@ -402,13 +402,19 @@ def build_report(
 
 
 def load_previous_report(path: Path) -> tuple[set[str], set[str]]:
-    """Return (previous_fingerprints, previous_event_names)."""
+    """Return (previous_fingerprints, previous_event_names).
+
+    Supports combined report (manual_review_required) and legacy flat findings.
+    """
     if not path.exists():
         return set(), set()
     import json
 
     data = json.loads(path.read_text(encoding="utf-8"))
-    fps = {f.get("fingerprint", "") for f in data.get("findings", []) if f.get("fingerprint")}
+    manual = (data.get("manual_review_required") or {}).get("findings") or []
+    legacy = data.get("findings") or []
+    source_findings = manual if manual else legacy
+    fps = {f.get("fingerprint", "") for f in source_findings if f.get("fingerprint")}
     names = set(data.get("event_names_snapshot") or [])
     return fps, names
 

@@ -199,21 +199,42 @@ def format_pipeline_message(stats: dict) -> str:
         try:
             q = json.loads(quality_path.read_text(encoding="utf-8"))
             qs = q.get("summary") or {}
-            new_n = qs.get("new_findings", 0)
-            total_n = qs.get("total_findings", 0)
+            applied_n = qs.get("applied_rules_count", 0)
+            manual_new = qs.get("manual_review_new_count", qs.get("new_findings", 0))
+            manual_total = qs.get("manual_review_count", qs.get("total_findings", 0))
+            before_n = qs.get("before_findings_count", 0)
+
             lines.extend([
                 "",
-                f"📋 <b>Data quality</b>: <code>{_esc(new_n)}</code> new / <code>{_esc(total_n)}</code> total findings",
+                "<b>Data quality log</b>",
+                f"Before: <code>{_esc(before_n)}</code> findings",
+                f"Applied rules: <code>{_esc(applied_n)}</code>",
+                f"Manual review: <code>{_esc(manual_new)}</code> new / "
+                f"<code>{_esc(manual_total)}</code> total",
                 f"Log: <code>data/quality_reports/latest.json</code>",
             ])
-            new_items = [f for f in q.get("findings", []) if f.get("is_new")][:5]
+
+            applied_rules = (q.get("applied_normalizations") or {}).get("rules") or []
+            if applied_rules:
+                lines.append("")
+                lines.append("<b>Applied (sample)</b>:")
+                for rule in applied_rules[:4]:
+                    lines.append(
+                        f"• {_esc(rule.get('rule_id'))}: "
+                        f"{_esc(str(rule.get('from_value', ''))[:40])} → "
+                        f"{_esc(str(rule.get('to_value', ''))[:40])} "
+                        f"(<code>{_esc(rule.get('rows_affected'))}</code>)"
+                    )
+
+            manual_items = (q.get("manual_review_required") or {}).get("findings") or []
+            new_items = [f for f in manual_items if f.get("is_new")][:4]
             if new_items:
                 lines.append("")
-                lines.append("<b>New defects (sample)</b>:")
+                lines.append("<b>Manual review (new)</b>:")
                 for item in new_items:
                     lines.append(
                         f"• [{_esc(item.get('severity'))}] {_esc(item.get('code'))}: "
-                        f"{_esc(item.get('message', '')[:80])}"
+                        f"{_esc(str(item.get('message', ''))[:70])}"
                     )
         except (json.JSONDecodeError, OSError):
             pass

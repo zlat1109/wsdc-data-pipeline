@@ -98,7 +98,7 @@ jobs:
             exit 1
           fi
 
-      - name: Run pipeline (migrations -> load -> export -> quality audit)
+      - name: Run pipeline (migrations -> preprocess -> load -> export)
         env:
           DB_HOST: ${{ secrets.DB_HOST }}
           DB_PORT: ${{ secrets.DB_PORT }}
