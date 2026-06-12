@@ -66,14 +66,14 @@ Manual or auto-triggered pipeline:
 Options:
 
 - `export_only=true` — refresh Tableau CSV from current Supabase state
-- `export_only=false` — requires CSV in `parser_output/` (commit or CI artifact)
+- `export_only=false` — loads from `data/` (committed CSVs) by default
 
 ## Until cloud parser is enabled
 
 When `check-updates` detects a change:
 
 1. Run parser on your laptop (notebook or script)
-2. Copy CSVs to `parser_output/` in the repo
+2. Copy fresh parser CSVs to `data/` in the repo (or run parser locally first)
 3. Commit and push, or re-run **full-parse** workflow
 
 Cloud notebook parsing (2–3 h, Selenium, IP limits) will be added after a test run.

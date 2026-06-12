@@ -57,10 +57,10 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "::warning::WSDC source data changed on points.worldsdc.com."
-          echo "If parser_output/*.csv is committed, full-parse will load and export."
-          echo "Otherwise run parser locally, copy CSVs to parser_output/, commit, re-run."
+          echo "If data/*.csv is committed, full-parse will load and export."
+          echo "Otherwise run parser locally, copy CSVs to data/, commit, re-run."
           gh workflow run full-parse.yml \
             --repo "${{ github.repository }}" \
             --field source=github-actions \
             --field export_only=false \
-            --field data_dir=parser_output
+            --field data_dir=data

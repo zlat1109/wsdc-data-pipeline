@@ -19,7 +19,7 @@ on:
       data_dir:
         description: "Path to parser CSV directory (required if export_only=false)"
         required: false
-        default: parser_output
+        default: data
         type: string
 
 permissions:

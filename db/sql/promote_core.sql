@@ -52,13 +52,16 @@ FROM staging.events_wsdc
 WHERE id ~ '^\d+$'
 ORDER BY id::int, event_instance_id::int;
 
--- Event instances
+-- Event instances (parser CSV has event_instance_id; export CSV uses synthetic ids)
 INSERT INTO core.event_instances (
     event_instance_id, event_id, location_id, location_raw,
     date_raw, event_date, event_year, event_month
 )
 SELECT
-    event_instance_id::int,
+    COALESCE(
+        NULLIF(TRIM(event_instance_id), '')::int,
+        ROW_NUMBER() OVER (ORDER BY id::int, NULLIF(TRIM(date), ''))::int
+    ),
     id::int,
     NULL,
     NULLIF(TRIM(location), ''),
@@ -67,7 +70,7 @@ SELECT
     NULLIF(TRIM(event_year), '')::int,
     NULLIF(TRIM(event_month), '')::int
 FROM staging.events_wsdc
-WHERE event_instance_id ~ '^\d+$';
+WHERE id ~ '^\d+$';
 
 -- Events referenced in results but absent from events_wsdc catalog
 INSERT INTO core.events (event_id, name, url)
@@ -137,7 +140,14 @@ INSERT INTO core.results (
 )
 SELECT
     s.dancer_id::int,
-    NULLIF(TRIM(s.event_name_id), '')::int,
+    COALESCE(
+        NULLIF(TRIM(s.event_name_id), '')::int,
+        (
+            SELECT MIN(e.event_id)
+            FROM core.events e
+            WHERE e.name = NULLIF(TRIM(s.event_name), '')
+        )
+    ),
     NULLIF(TRIM(s.location_id), '')::int,
     NULLIF(TRIM(s.event_dance), ''),
     NULLIF(TRIM(s.event_competition), ''),

@@ -33,12 +33,59 @@ def truncate_staging(conn: psycopg.Connection) -> None:
         )
 
 
-def copy_csv(conn: psycopg.Connection, csv_path: Path, table: str) -> int:
+def _table_columns(conn: psycopg.Connection, table: str) -> list[str]:
+    schema, name = table.split(".", 1)
     with conn.cursor() as cur:
+        cur.execute(
+            """
+            SELECT column_name
+            FROM information_schema.columns
+            WHERE table_schema = %s AND table_name = %s
+            ORDER BY ordinal_position
+            """,
+            (schema, name),
+        )
+        return [row[0] for row in cur.fetchall()]
+
+
+def _quote_ident(name: str) -> str:
+    return '"' + name.replace('"', '""') + '"'
+
+
+def copy_csv(conn: psycopg.Connection, csv_path: Path, table: str) -> int:
+    """Load CSV into staging, mapping columns by header name (not file order).
+
+    Supports parser CSVs (full staging columns) and export CSVs in data/
+    (Tableau contract — subset of columns).
+    """
+    import csv
+    import uuid
+
+    with csv_path.open(newline="", encoding="utf-8", errors="replace") as handle:
+        header = next(csv.reader(handle))
+    if not header:
+        raise ValueError(f"Empty CSV header: {csv_path}")
+
+    table_cols = _table_columns(conn, table)
+    shared = [col for col in table_cols if col in header]
+    if not shared:
+        raise ValueError(
+            f"No overlapping columns between {csv_path.name} and {table}: "
+            f"csv={header}, table={table_cols}"
+        )
+
+    tmp = f"tmp_load_{uuid.uuid4().hex[:12]}"
+    tmp_cols_sql = ", ".join(f"{_quote_ident(col)} text" for col in header)
+    target_cols_sql = ", ".join(_quote_ident(col) for col in shared)
+    select_cols_sql = ", ".join(_quote_ident(col) for col in shared)
+
+    with conn.cursor() as cur:
+        cur.execute(f"CREATE TEMP TABLE {tmp} ({tmp_cols_sql}) ON COMMIT DROP")
         with cur.copy(
-            f"COPY {table} FROM STDIN WITH (FORMAT csv, HEADER true)"
+            f"COPY {tmp} FROM STDIN WITH (FORMAT csv, HEADER true)"
         ) as copy:
             copy.write(csv_path.read_bytes())
+        cur.execute(f"INSERT INTO {table} ({target_cols_sql}) SELECT {select_cols_sql} FROM {tmp}")
         cur.execute(f"SELECT count(*) FROM {table}")
         return cur.fetchone()[0]
 
