@@ -14,7 +14,7 @@ from pathlib import Path
 
 import psycopg
 
-from connection import load_database_url
+from connection import connect
 
 MIGRATIONS_DIR = Path(__file__).parent / "migrations"
 
@@ -22,13 +22,33 @@ MIGRATIONS_DIR = Path(__file__).parent / "migrations"
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument(
+        "--check",
+        action="store_true",
+        help="Print parsed connection settings (no password) and exit",
+    )
     args = parser.parse_args()
+
+    if args.check:
+        from connection import get_connection_kwargs
+
+        kw = get_connection_kwargs()
+        print("Connection settings from .env:")
+        print(f"  host:   {kw['host']}")
+        print(f"  port:   {kw['port']}")
+        print(f"  dbname: {kw['dbname']}")
+        print(f"  user:   {kw['user']}")
+        print(f"  password: {'*' * len(str(kw.get('password', '')))} ({len(str(kw.get('password', '')))} chars)")
+        if kw["user"] == "postgres":
+            print("\nWARNING: user is 'postgres' — Supabase pooler expects postgres.<project-ref>")
+            print("  Example: postgres.tougqwxmahkwnaculiju")
+        return
 
     migrations = sorted(MIGRATIONS_DIR.glob("[0-9]*.sql"))
     if not migrations:
         sys.exit(f"No migrations found in {MIGRATIONS_DIR}")
 
-    with psycopg.connect(load_database_url()) as conn:
+    with connect() as conn:
         with conn.cursor() as cur:
             cur.execute(
                 """
