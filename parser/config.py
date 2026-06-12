@@ -9,7 +9,7 @@ class Config:
     # URLs
     CHECK_CONTESTERS_URL = os.getenv('CHECK_CONTESTERS_URL', 'https://points.worldsdc.com/lookup/autocomplete?q=')
     TOKEN_URL = os.getenv('TOKEN_URL', 'https://points.worldsdc.com/lookup2020')
-    LOOKUP_URL = os.getenv('LOOKUP_URL', 'https://points.worldsdc.com/lookup2020')
+    LOOKUP_URL = os.getenv('LOOKUP_URL', 'https://points.worldsdc.com/lookup2020/find')
     
     # Настройки безопасности
     VERIFY_SSL = os.getenv('VERIFY_SSL', 'true').lower() == 'true'

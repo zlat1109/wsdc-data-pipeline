@@ -22,7 +22,8 @@ import requests
 
 AUTocomplete_URL = "https://points.worldsdc.com/lookup/autocomplete?q="
 TOKEN_URL = "https://points.worldsdc.com/lookup2020"
-LOOKUP_URL = TOKEN_URL
+# Working endpoint from the proven notebook parser (POST to bare /lookup2020 returns 405)
+LOOKUP_URL = "https://points.worldsdc.com/lookup2020/find"
 
 BROWSER_HEADERS = {
     "User-Agent": (
