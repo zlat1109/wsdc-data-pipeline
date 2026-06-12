@@ -36,8 +36,9 @@ BROWSER_HEADERS = {
 
 POST_HEADERS = {
     **BROWSER_HEADERS,
+    "Referer": "https://points.worldsdc.com/lookup",
     "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-    "Origin": "https://points.worldsdc.com",
+    "Origin": "https://points.worldsdc.com/lookup2020",
 }
 
 

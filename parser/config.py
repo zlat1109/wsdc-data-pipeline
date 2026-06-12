@@ -44,7 +44,7 @@ class Config:
     
     CONTESTER_HEADERS = {
         **HEADERS,
-        'Referers': 'https://points.worldsdc.com/lookup',
+        'Referer': 'https://points.worldsdc.com/lookup',
         'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
         'Origin': 'https://points.worldsdc.com/lookup2020',
         'X-Requested-With': 'XMLHttpRequest',

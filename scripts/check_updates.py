@@ -91,7 +91,7 @@ def record_probe(conn, result: ScanResult) -> None:
             (
                 "running" if result.changed else "skipped",
                 probe_hash,
-                result.watermark,
+                result.live_max_id,
                 json.dumps({"live_max_id": result.live_max_id, "sample": result.new_ids}),
                 json.dumps(probe_details),
                 datetime.now(timezone.utc),

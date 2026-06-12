@@ -21,6 +21,11 @@ on:
         required: false
         default: data
         type: string
+      parse_new_only:
+        description: "Run HTTP cloud parser for new IDs above DB watermark before load"
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: write
@@ -40,15 +45,15 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run notebook parser (optional / manual)
-        if: ${{ !inputs.export_only }}
-        env:
-          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+      - name: Run HTTP cloud parser (incremental)
+        if: ${{ !inputs.export_only && inputs.parse_new_only }}
+        run: python scripts/cloud_parse.py --new-only --base-dir data
+
+      - name: Verify CSV inputs exist
+        if: ${{ !inputs.export_only && !inputs.parse_new_only }}
         run: |
-          echo "Parser step: place CSV files in ${{ inputs.data_dir }}/ before load."
-          echo "Full cloud notebook parse will be enabled after IP/cost validation."
           if [ ! -f "${{ inputs.data_dir }}/dancers_points_info.csv" ]; then
-            echo "Missing parser CSVs in ${{ inputs.data_dir }}/ — aborting load step."
+            echo "Missing CSVs in ${{ inputs.data_dir }}/ — run with parse_new_only=true or commit data/*.csv"
             exit 1
           fi
 
