@@ -39,6 +39,7 @@ def main() -> None:
         print(f"  dbname: {kw['dbname']}")
         print(f"  user:   {kw['user']}")
         print(f"  password: {'*' * len(str(kw.get('password', '')))} ({len(str(kw.get('password', '')))} chars)")
+        print(f"  sslmode:  {kw.get('sslmode', 'require')}")
         if kw["user"] == "postgres":
             print("\nWARNING: user is 'postgres' — Supabase pooler expects postgres.<project-ref>")
             print("  Example: postgres.tougqwxmahkwnaculiju")

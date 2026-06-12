@@ -60,6 +60,7 @@ def _parse_database_url(dsn: str) -> dict[str, Any]:
         "dbname": dbname,
         "user": user,
         "password": password,
+        "sslmode": os.getenv("DB_SSLMODE", "require"),
     }
 
 
@@ -70,11 +71,12 @@ def get_connection_kwargs() -> dict[str, Any]:
     # Optional split vars — safest when password has special characters.
     if os.getenv("DB_PASSWORD"):
         return {
-            "host": os.getenv("DB_HOST", "localhost"),
+            "host": os.getenv("DB_HOST", "localhost").strip(),
             "port": int(os.getenv("DB_PORT", "5432")),
-            "dbname": os.getenv("DB_NAME", "postgres"),
-            "user": os.getenv("DB_USER", "postgres"),
-            "password": os.getenv("DB_PASSWORD", ""),
+            "dbname": os.getenv("DB_NAME", "postgres").strip(),
+            "user": os.getenv("DB_USER", "postgres").strip(),
+            "password": os.getenv("DB_PASSWORD", "").strip().strip('"').strip("'"),
+            "sslmode": os.getenv("DB_SSLMODE", "require"),
         }
 
     dsn = os.getenv("DATABASE_URL", "").strip().strip('"').strip("'")
