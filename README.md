@@ -76,6 +76,6 @@ python export.py                  # core views -> data/*.csv
 - [ ] Слияние с эталонной версией со старого ноутбука (отдельный PR)
 - [x] Фаза 1: схемы Supabase (`db/migrations/`)
 - [x] Фаза 2: `load.py` + `backfill.py`
-- [ ] Фаза 3: `export.py` + views
+- [x] Фаза 3: `export.py` + views
 - [ ] Фаза 4: GitHub Actions
 - [ ] Фаза 5: переключение потребителей
