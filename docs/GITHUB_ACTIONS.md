@@ -47,10 +47,14 @@ Password is the same as in Supabase → Project Settings → Database. No quotes
 
 1. WSDC assigns new dancer IDs when people first earn points (Newcomer/Novice, etc.)
 2. After weekend events, new IDs appear Mon–Fri the following week
-3. Script scans IDs `watermark+1, watermark+2, ...` until 5 consecutive misses
-4. Any new ID → database updated → trigger parser pipeline
+3. Script scans live max ID above DB watermark
+4. **Event coverage gate**: scans weekend snapshots (newest first), skips events already in Supabase for that edition (`results_year` / `results_month`)
+5. Waits until live data from new dancer IDs covers **all pending** upcoming events (e.g. Baltic Swing — not last week's J&J / Orange Blossom once loaded)
+6. **`changed` only when** new IDs exist **and** all pending events are present in live data → then triggers full-parse
 
 Watermark sources: `MAX(dancer_id)` from `core.dancers` (primary) → last probe record → `PROBE_ANCHOR_ID` env.
+
+**Weekend snapshots (automated):** `wsdc-telegram-bot` weekly bot pushes `data/weekend_events/` here after each Thursday post. See `wsdc-telegram-bot/docs/PIPELINE_SNAPSHOT_SYNC.md`. One-time secret: `WSDC_PIPELINE_SYNC_TOKEN` in the **telegram-bot** repo (not here).
 
 ### `full-parse.yml`
 

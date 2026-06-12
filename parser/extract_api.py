@@ -110,6 +110,16 @@ def extract_results_rows(dancer_data: dict[str, Any]) -> list[dict[str, Any]]:
     return rows
 
 
+def extract_event_names(dancer_data: dict[str, Any]) -> list[str]:
+    """Unique WSDC event names from a lookup2020/find payload."""
+    names: set[str] = set()
+    for row in extract_results_rows(dancer_data):
+        name = (row.get("event_name") or "").strip()
+        if name:
+            names.add(name)
+    return sorted(names)
+
+
 def build_frames(records: list[dict[str, Any]]) -> dict[str, pd.DataFrame]:
     role_rows = [extract_role_row(r) for r in records]
     points_rows: list[list[Any]] = []

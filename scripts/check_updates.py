@@ -1,21 +1,18 @@
 #!/usr/bin/env python3
-"""Detect WSDC database updates by scanning for new dancer IDs above a watermark.
+"""Detect when WSDC is ready for a full parse after the current upcoming weekend.
 
-After weekend events, WSDC assigns new registry numbers (Newcomer/Novice first
-points). This script linear-scans IDs above the last known max until
-PROBE_MAX_MISSES consecutive gaps — the same logic used manually before
-starting the parser.
+Gate logic (matches manual workflow):
+  1. New dancer IDs appeared above DB watermark (Mon–Fri after weekend)
+  2. Pick the newest weekend snapshot that still has events NOT in Supabase yet
+     (e.g. Baltic Swing — skip J&J O'Rama / Orange Blossom once their edition is loaded)
+  3. Live WSDC data from new dancers covers ALL pending upcoming events
 
-Watermark sources (first match wins):
-  1. --anchor CLI override (testing only)
-  2. MAX(dancer_id) from core.dancers — текущая база после последнего парса
-  3. history.parse_runs.max_dancer_id_watermark (если база ещё пустая)
-  4. PROBE_ANCHOR_ID env var (default 26410)
+Only when both (1) and (3) are true → print ``changed`` (triggers full-parse in CI).
 
 Usage:
     python scripts/check_updates.py
     python scripts/check_updates.py --write-probe
-    python scripts/check_updates.py --anchor 27135
+    python scripts/check_updates.py --skip-event-gate   # ID probe only (testing)
 """
 
 from __future__ import annotations
@@ -30,10 +27,14 @@ from pathlib import Path
 import requests
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(PROJECT_ROOT))
 sys.path.insert(0, str(PROJECT_ROOT / "db"))
 sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 
 from connection import connect  # noqa: E402
+from event_coverage import EventCoverageResult, check_event_coverage  # noqa: E402
+from parser.http_client import WSDCHttpClient  # noqa: E402
+from weekend_events import resolve_pending_snapshot  # noqa: E402
 from wsdc_id_probe import ScanResult, scan_ids_above_watermark  # noqa: E402
 
 
@@ -42,13 +43,11 @@ def get_watermark(conn, anchor_override: int | None) -> int:
         return anchor_override
 
     with conn.cursor() as cur:
-        # Primary: max ID already loaded in our database
         cur.execute("SELECT MAX(dancer_id) FROM core.dancers")
         row = cur.fetchone()
         if row and row[0]:
             return int(row[0])
 
-        # Fallback before first backfill
         cur.execute(
             """
             SELECT max_dancer_id_watermark
@@ -65,16 +64,39 @@ def get_watermark(conn, anchor_override: int | None) -> int:
     return int(os.getenv("PROBE_ANCHOR_ID", "26410"))
 
 
-def record_probe(conn, result: ScanResult) -> None:
+def record_probe(
+    conn,
+    scan: ScanResult,
+    coverage: EventCoverageResult | None,
+    *,
+    ready: bool,
+) -> None:
     probe_details = {
-        "strategy": "new_dancer_id_scan",
-        "watermark": result.watermark,
-        "live_max_id": result.live_max_id,
-        "approx_new_ids": max(result.live_max_id - result.watermark, 0),
-        "new_dancers_sample": result.new_dancers[:10],
+        "strategy": "new_dancer_id_scan+event_coverage",
+        "watermark": scan.watermark,
+        "live_max_id": scan.live_max_id,
+        "approx_new_ids": max(scan.live_max_id - scan.watermark, 0),
+        "new_dancers_sample": scan.new_dancers[:10],
+        "parse_ready": ready,
     }
+    if coverage:
+        probe_details.update({
+            "pending_events": coverage.expected,
+            "matched_events": coverage.matched,
+            "missing_events": coverage.missing,
+            "dancers_scanned_for_coverage": coverage.dancers_scanned,
+            "live_event_names_sample": sorted(coverage.found_live_names)[:20],
+        })
+    if coverage and getattr(coverage, "already_in_db", None):
+        probe_details["already_in_db_events"] = coverage.already_in_db
+
     probe_hash = json.dumps(
-        {"watermark": result.watermark, "live_max_id": result.live_max_id},
+        {
+            "watermark": scan.watermark,
+            "live_max_id": scan.live_max_id,
+            "parse_ready": ready,
+            "missing_events": coverage.missing if coverage else [],
+        },
         sort_keys=True,
     )
 
@@ -89,10 +111,10 @@ def record_probe(conn, result: ScanResult) -> None:
             VALUES ('github-actions', %s, %s, %s, %s::jsonb, %s::jsonb, %s)
             """,
             (
-                "running" if result.changed else "skipped",
+                "running" if ready else "skipped",
                 probe_hash,
-                result.live_max_id,
-                json.dumps({"live_max_id": result.live_max_id, "sample": result.new_ids}),
+                scan.live_max_id,
+                json.dumps({"live_max_id": scan.live_max_id, "sample": scan.new_ids}),
                 json.dumps(probe_details),
                 datetime.now(timezone.utc),
             ),
@@ -100,34 +122,49 @@ def record_probe(conn, result: ScanResult) -> None:
     conn.commit()
 
 
-def print_report(result: ScanResult) -> None:
-    print(f"watermark={result.watermark}", flush=True)
-    print(f"live_max_id={result.live_max_id}", flush=True)
-    approx_new = max(result.live_max_id - result.watermark, 0)
+def print_report(
+    scan: ScanResult,
+    coverage: EventCoverageResult | None,
+    *,
+    ready: bool,
+    already_in_db: list[str] | None = None,
+    no_pending: bool = False,
+) -> None:
+    print(f"watermark={scan.watermark}", flush=True)
+    print(f"live_max_id={scan.live_max_id}", flush=True)
+    approx_new = max(scan.live_max_id - scan.watermark, 0)
     print(f"approx_new_ids={approx_new}", flush=True)
-    print(f"new_ids_sample_count={len(result.new_ids)}", flush=True)
-    if result.new_ids:
-        print(f"new_ids={result.new_ids}")
+    print(f"new_ids_sample_count={len(scan.new_ids)}", flush=True)
+
+    if already_in_db:
+        print(f"already_in_db_events={already_in_db}", flush=True)
+    if no_pending:
+        print("no_pending_events — sync current upcoming snapshot from telegram-news-bot", flush=True)
+
+    if coverage:
+        print(f"pending_events={coverage.expected}", flush=True)
+        for expected, matched in coverage.matched.items():
+            print(f"  matched: {expected!r} -> {matched!r}", flush=True)
+        if coverage.missing:
+            print(f"missing_events={coverage.missing}", flush=True)
+        print(f"coverage_dancers_scanned={coverage.dancers_scanned}", flush=True)
+
+    if scan.new_ids:
         print("new_dancers_sample:")
-        for dancer in result.new_dancers[:10]:
+        for dancer in scan.new_dancers[:10]:
             print(f"  - {dancer.get('name', dancer.get('wscid'))}")
-        if len(result.new_dancers) > 10:
-            print(f"  ... and {len(result.new_dancers) - 10} more")
-    print("changed" if result.changed else "unchanged", flush=True)
+
+    print("changed" if ready else "unchanged", flush=True)
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--write-probe", action="store_true")
+    parser.add_argument("--anchor", type=int, default=None)
     parser.add_argument(
-        "--write-probe",
+        "--skip-event-gate",
         action="store_true",
-        help="Persist probe result to history.parse_runs",
-    )
-    parser.add_argument(
-        "--anchor",
-        type=int,
-        default=None,
-        help="Override watermark dancer ID for this run",
+        help="Trigger on new IDs only (skip upcoming-events check)",
     )
     args = parser.parse_args()
 
@@ -135,11 +172,49 @@ def main() -> None:
 
     with connect() as conn:
         watermark = get_watermark(conn, args.anchor)
-        result = scan_ids_above_watermark(session, watermark)
-        print_report(result)
+        scan = scan_ids_above_watermark(session, watermark)
 
-        if args.write_probe or result.changed:
-            record_probe(conn, result)
+        ids_changed = scan.live_max_id > scan.watermark
+        coverage: EventCoverageResult | None = None
+        ready = False
+        already_in_db: list[str] = []
+        no_pending = False
+
+        if not ids_changed:
+            ready = False
+        elif args.skip_event_gate:
+            ready = True
+        else:
+            snapshot, pending, already_in_db = resolve_pending_snapshot(conn)
+            if snapshot is None or not pending:
+                no_pending = True
+                ready = False
+            else:
+                print(
+                    f"weekend_snapshot={snapshot.source_path.name} "
+                    f"({snapshot.weekend_start}..{snapshot.weekend_end})",
+                    flush=True,
+                )
+                http = WSDCHttpClient()
+                coverage = check_event_coverage(
+                    http,
+                    scan.watermark + 1,
+                    scan.live_max_id,
+                    pending,
+                )
+                coverage.already_in_db = already_in_db
+                ready = coverage.ready
+
+        print_report(
+            scan,
+            coverage,
+            ready=ready,
+            already_in_db=already_in_db,
+            no_pending=no_pending,
+        )
+
+        if args.write_probe or ready:
+            record_probe(conn, scan, coverage, ready=ready)
 
 
 if __name__ == "__main__":
