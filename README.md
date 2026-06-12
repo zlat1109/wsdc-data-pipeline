@@ -68,7 +68,7 @@ python export.py                  # core views -> data/*.csv
 ## Секреты
 
 - Локально — `.env` (в `.gitignore`).
-- В CI — GitHub Secrets: `DATABASE_URL`, `GOOGLE_MAPS_API_KEY`.
+- В CI — GitHub Secrets: см. [docs/GITHUB_ACTIONS.md](docs/GITHUB_ACTIONS.md).
 
 ## Статус миграции
 
@@ -77,5 +77,5 @@ python export.py                  # core views -> data/*.csv
 - [x] Фаза 1: схемы Supabase (`db/migrations/`)
 - [x] Фаза 2: `load.py` + `backfill.py`
 - [x] Фаза 3: `export.py` + views
-- [ ] Фаза 4: GitHub Actions
+- [x] Фаза 4: GitHub Actions (`check-updates.yml`, `full-parse.yml`)
 - [ ] Фаза 5: переключение потребителей

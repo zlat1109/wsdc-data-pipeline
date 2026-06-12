@@ -1,0 +1,83 @@
+name: Full WSDC parse pipeline
+
+on:
+  workflow_dispatch:
+    inputs:
+      source:
+        description: "Run source label for parse_runs"
+        required: false
+        default: github-actions
+        type: choice
+        options:
+          - github-actions
+          - local
+      export_only:
+        description: "Skip load step; re-export CSV from Supabase only"
+        required: false
+        default: false
+        type: boolean
+      data_dir:
+        description: "Path to parser CSV directory (required if export_only=false)"
+        required: false
+        default: parser_output
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run notebook parser (optional / manual)
+        if: ${{ !inputs.export_only }}
+        env:
+          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+        run: |
+          echo "Parser step: place CSV files in ${{ inputs.data_dir }}/ before load."
+          echo "Full cloud notebook parse will be enabled after IP/cost validation."
+          if [ ! -f "${{ inputs.data_dir }}/dancers_points_info.csv" ]; then
+            echo "Missing parser CSVs in ${{ inputs.data_dir }}/ — aborting load step."
+            exit 1
+          fi
+
+      - name: Run pipeline (migrations -> load -> export)
+        env:
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_SSLMODE: require
+        run: |
+          set -e
+          args=(python scripts/run_pipeline.py --source "${{ inputs.source }}")
+          if [ "${{ inputs.export_only }}" = "true" ]; then
+            args+=(--export-only)
+          else
+            args+=(--data-dir "${{ inputs.data_dir }}")
+          fi
+          "${args[@]}"
+
+      - name: Commit exported CSV files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/*.csv
+          if git diff --staged --quiet; then
+            echo "No CSV changes to commit."
+          else
+            git commit -m "chore(data): update WSDC CSV export [skip ci]"
+            git push
+          fi

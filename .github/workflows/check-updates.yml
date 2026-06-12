@@ -1,0 +1,63 @@
+name: Check WSDC updates
+
+on:
+  schedule:
+    # Every 6 hours (UTC)
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.detect.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Probe WSDC API
+        id: detect
+        env:
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_SSLMODE: require
+        run: |
+          set -e
+          output=$(python scripts/check_updates.py --write-hash)
+          echo "$output"
+          if echo "$output" | grep -q "^changed$"; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  trigger-full-parse:
+    needs: probe
+    if: needs.probe.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Warn and trigger pipeline
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "::warning::WSDC source data changed on points.worldsdc.com."
+          echo "If parser_output/*.csv is committed, full-parse will load and export."
+          echo "Otherwise run parser locally, copy CSVs to parser_output/, commit, re-run."
+          gh workflow run full-parse.yml \
+            --repo "${{ github.repository }}" \
+            --field source=github-actions \
+            --field export_only=false \
+            --field data_dir=parser_output
