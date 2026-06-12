@@ -67,4 +67,4 @@ jobs:
             --field source=github-actions \
             --field export_only=false \
             --field data_dir=data \
-            --field parse_new_only=true
+            --field parse_full=true

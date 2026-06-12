@@ -70,10 +70,17 @@ Watermark sources: `MAX(dancer_id)` from `core.dancers` (primary) → last probe
 
 Manual or auto-triggered pipeline:
 
-1. `db/apply.py` — pending migrations
-2. `load.py` — CSV → Supabase (skipped with `export_only=true`)
-3. `export.py` — Supabase → `data/*.csv`
-4. Git commit + push `data/*.csv`
+1. **`cloud_parse.py --full`** (when `parse_full=true`) — HTTP fetch **every dancer ID 1..live_max**, replace `dancer_role_info`, `dancers_points_info`, `dancers_results_info` in `data/`. Needed because existing dancers get new results too, not only new registry IDs.
+2. `db/apply.py` — pending migrations
+3. `load.py` — CSV → Supabase (skipped with `export_only=true`)
+4. `export.py` — Supabase → `data/*.csv` (also refreshes `events_wsdc`, `location_info`)
+5. Git commit + push `data/*.csv`
+
+**Timing:** ~28k IDs × 0.3s delay ≈ 2–3 h. Workflow timeout is 360 min.
+
+**check-updates** auto-trigger uses `parse_full=true` (not new-ID-only).
+
+Legacy `parse_new_only=true` remains for manual debugging only.
 
 **Manual run:** Actions → Full WSDC parse pipeline → Run workflow
 

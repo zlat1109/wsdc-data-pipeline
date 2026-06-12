@@ -21,8 +21,13 @@ on:
         required: false
         default: data
         type: string
+      parse_full:
+        description: "Run HTTP cloud parser for ALL dancer IDs 1..live_max (replace CSVs)"
+        required: false
+        default: false
+        type: boolean
       parse_new_only:
-        description: "Run HTTP cloud parser for new IDs above DB watermark before load"
+        description: "Legacy: parse only new IDs above watermark (merge CSVs)"
         required: false
         default: false
         type: boolean
@@ -45,8 +50,19 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run HTTP cloud parser (incremental)
-        if: ${{ !inputs.export_only && inputs.parse_new_only }}
+      - name: Run HTTP cloud parser (full database)
+        if: ${{ !inputs.export_only && inputs.parse_full }}
+        env:
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_SSLMODE: require
+        run: python scripts/cloud_parse.py --full --base-dir data
+
+      - name: Run HTTP cloud parser (new IDs only, legacy)
+        if: ${{ !inputs.export_only && inputs.parse_new_only && !inputs.parse_full }}
         env:
           DB_HOST: ${{ secrets.DB_HOST }}
           DB_PORT: ${{ secrets.DB_PORT }}
@@ -57,10 +73,10 @@ jobs:
         run: python scripts/cloud_parse.py --new-only --base-dir data
 
       - name: Verify CSV inputs exist
-        if: ${{ !inputs.export_only && !inputs.parse_new_only }}
+        if: ${{ !inputs.export_only && !inputs.parse_full && !inputs.parse_new_only }}
         run: |
           if [ ! -f "${{ inputs.data_dir }}/dancers_points_info.csv" ]; then
-            echo "Missing CSVs in ${{ inputs.data_dir }}/ — run with parse_new_only=true or commit data/*.csv"
+            echo "Missing CSVs in ${{ inputs.data_dir }}/ — run with parse_full=true or commit data/*.csv"
             exit 1
           fi
 
