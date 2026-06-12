@@ -11,13 +11,15 @@ Supabase **Direct** host (`db.<ref>.supabase.co`) is **IPv6-only**. GitHub runne
 
 | Secret | Local `.env` (Direct) | GitHub Secrets (pooler, Session mode) |
 |---|---|---|
-| `DB_HOST` | `db.tougqwxmahkwnaculiju.supabase.co` | `aws-0-eu-west-2.pooler.supabase.com` |
-| `DB_PORT` | `5432` | `5432` |
+| `DB_HOST` | `db.tougqwxmahkwnaculiju.supabase.co` | `aws-1-eu-west-2.pooler.supabase.com` |
+| `DB_PORT` | `5432` | **`6543`** (Transaction pooler; Session `:5432` may fail) |
 | `DB_NAME` | `postgres` | `postgres` |
 | `DB_USER` | `postgres` | `postgres.tougqwxmahkwnaculiju` |
 | `DB_PASSWORD` | same password | same password |
 
-Region in pooler host must match your Supabase project (Dashboard → Connect → Session pooler).
+Copy host/port/user from Supabase Dashboard → **Connect** → **Transaction pooler** (not Direct, not Session if auth fails).
+
+Region prefix is often `aws-1-` (not `aws-0-`) for newer projects.
 
 Optional (not required for probe today):
 
