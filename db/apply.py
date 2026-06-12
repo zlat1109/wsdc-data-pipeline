@@ -9,22 +9,14 @@ Usage:
 """
 
 import argparse
-import os
 import sys
 from pathlib import Path
 
 import psycopg
-from dotenv import load_dotenv
+
+from connection import load_database_url
 
 MIGRATIONS_DIR = Path(__file__).parent / "migrations"
-
-
-def get_connection_string() -> str:
-    load_dotenv(Path(__file__).parent.parent / ".env")
-    dsn = os.getenv("DATABASE_URL")
-    if not dsn:
-        sys.exit("DATABASE_URL is not set (expected in .env or environment)")
-    return dsn
 
 
 def main() -> None:
@@ -36,7 +28,7 @@ def main() -> None:
     if not migrations:
         sys.exit(f"No migrations found in {MIGRATIONS_DIR}")
 
-    with psycopg.connect(get_connection_string()) as conn:
+    with psycopg.connect(load_database_url()) as conn:
         with conn.cursor() as cur:
             cur.execute(
                 """
