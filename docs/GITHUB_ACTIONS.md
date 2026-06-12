@@ -19,10 +19,24 @@ Use the **same values** as in your local `.env`.
 
 ### `check-updates.yml`
 
-- Schedule: every 6 hours (UTC)
-- Probes WSDC API for guardian dancer fingerprints
-- Stores `probe_hash` in `history.parse_runs`
+- **Schedule** (Mon–Fri only, ~1×/day, aligned with WSDC publish windows):
+  - Mon / Wed / Fri **22:00** Europe/Madrid (CEST → 20:00 UTC)
+  - Tue / Thu **09:00** Europe/Madrid (CEST → 07:00 UTC)
+  - In CET (winter): same crons = **23:00** and **10:00** Spain time
+  - Covers typical California morning/evening drops (~9 h behind Valencia)
+- **New-ID scan**: linear probe from last known max dancer ID (watermark)
+- New WSDC registry numbers after weekend events → `changed`
+- Stores probe result in `history.parse_runs` (`max_dancer_id_watermark`, `new_dancer_ids`)
 - If changed → triggers `full-parse.yml`
+
+#### How detection works (matches manual workflow)
+
+1. WSDC assigns new dancer IDs when people first earn points (Newcomer/Novice, etc.)
+2. After weekend events, new IDs appear Mon–Fri the following week
+3. Script scans IDs `watermark+1, watermark+2, ...` until 5 consecutive misses
+4. Any new ID → database updated → trigger parser pipeline
+
+Watermark sources: `MAX(dancer_id)` from `core.dancers` (primary) → last probe record → `PROBE_ANCHOR_ID` env.
 
 ### `full-parse.yml`
 
@@ -54,5 +68,5 @@ Cloud notebook parsing (2–3 h, Selenium, IP limits) will be added after a test
 
 ```bash
 source .venv/bin/activate
-python scripts/check_updates.py --write-hash
+python scripts/check_updates.py --write-probe
 ```

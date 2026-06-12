@@ -1,21 +1,28 @@
 #!/usr/bin/env python3
-"""Probe WSDC API for data changes (guardian dancer fingerprints).
+"""Detect WSDC database updates by scanning for new dancer IDs above a watermark.
 
-Compares a combined hash of sample dancer responses against the latest
-probe_hash stored in history.parse_runs. Exits 0 and prints 'changed' when
-an update is detected, 'unchanged' otherwise.
+After weekend events, WSDC assigns new registry numbers (Newcomer/Novice first
+points). This script linear-scans IDs above the last known max until
+PROBE_MAX_MISSES consecutive gaps — the same logic used manually before
+starting the parser.
+
+Watermark sources (first match wins):
+  1. --anchor CLI override (testing only)
+  2. MAX(dancer_id) from core.dancers — текущая база после последнего парса
+  3. history.parse_runs.max_dancer_id_watermark (если база ещё пустая)
+  4. PROBE_ANCHOR_ID env var (default 26410)
 
 Usage:
     python scripts/check_updates.py
-    python scripts/check_updates.py --write-hash   # store hash without triggering
+    python scripts/check_updates.py --write-probe
+    python scripts/check_updates.py --anchor 27135
 """
 
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
-import re
+import os
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -24,118 +31,115 @@ import requests
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "db"))
+sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 
 from connection import connect  # noqa: E402
-
-# Representative dancer IDs across the registry range.
-GUARDIAN_IDS = [1, 42, 311, 619, 5000, 10000, 26410, 27000]
-
-TOKEN_URL = "https://points.worldsdc.com/lookup2020"
-LOOKUP_URL = "https://points.worldsdc.com/lookup2020"
-AUTocomplete_URL = "https://points.worldsdc.com/lookup/autocomplete?q="
-
-HEADERS = {
-    "User-Agent": (
-        "Mozilla/5.0 (compatible; WSDCDataPipeline/1.0; +https://github.com/zlat1109/wsdc-data-pipeline)"
-    ),
-    "Accept": "application/json, text/html, */*",
-}
+from wsdc_id_probe import ScanResult, scan_ids_above_watermark  # noqa: E402
 
 
-def get_csrf_token(session: requests.Session) -> str:
-    response = session.get(TOKEN_URL, headers=HEADERS, timeout=30)
-    response.raise_for_status()
-    match = re.search(r'name="_token" value="(.*?)"', response.text)
-    if not match:
-        raise RuntimeError("CSRF token not found on WSDC lookup page")
-    return match.group(1)
+def get_watermark(conn, anchor_override: int | None) -> int:
+    if anchor_override is not None:
+        return anchor_override
 
-
-def fetch_dancer_payload(session: requests.Session, token: str, dancer_id: int) -> dict | list:
-    response = session.post(
-        LOOKUP_URL,
-        data={"num": dancer_id, "_token": token},
-        headers={
-            **HEADERS,
-            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-            "X-Requested-With": "XMLHttpRequest",
-        },
-        timeout=30,
-    )
-    response.raise_for_status()
-    return response.json()
-
-
-def compute_probe_hash(session: requests.Session) -> str:
-    token = get_csrf_token(session)
-    parts: list[str] = []
-    for dancer_id in GUARDIAN_IDS:
-        try:
-            payload = fetch_dancer_payload(session, token, dancer_id)
-            parts.append(json.dumps(payload, sort_keys=True, ensure_ascii=False))
-        except Exception as exc:  # noqa: BLE001 — probe should continue
-            parts.append(f"error:{dancer_id}:{exc}")
-    digest = hashlib.sha256("\n".join(parts).encode("utf-8")).hexdigest()
-    return digest
-
-
-def get_last_probe_hash(conn) -> str | None:
     with conn.cursor() as cur:
+        # Primary: max ID already loaded in our database
+        cur.execute("SELECT MAX(dancer_id) FROM core.dancers")
+        row = cur.fetchone()
+        if row and row[0]:
+            return int(row[0])
+
+        # Fallback before first backfill
         cur.execute(
             """
-            SELECT probe_hash
+            SELECT max_dancer_id_watermark
             FROM history.parse_runs
-            WHERE probe_hash IS NOT NULL
+            WHERE max_dancer_id_watermark IS NOT NULL
             ORDER BY run_id DESC
             LIMIT 1
             """
         )
         row = cur.fetchone()
-        return row[0] if row else None
+        if row and row[0]:
+            return int(row[0])
+
+    return int(os.getenv("PROBE_ANCHOR_ID", "26410"))
 
 
-def record_probe(conn, probe_hash: str, changed: bool) -> None:
+def record_probe(conn, result: ScanResult) -> None:
+    probe_details = {
+        "strategy": "new_dancer_id_scan",
+        "watermark": result.watermark,
+        "live_max_id": result.live_max_id,
+        "approx_new_ids": max(result.live_max_id - result.watermark, 0),
+        "new_dancers_sample": result.new_dancers[:10],
+    }
+    probe_hash = json.dumps(
+        {"watermark": result.watermark, "live_max_id": result.live_max_id},
+        sort_keys=True,
+    )
+
     with conn.cursor() as cur:
         cur.execute(
             """
-            INSERT INTO history.parse_runs (source, status, probe_hash, finished_at)
-            VALUES ('github-actions', %s, %s, %s)
+            INSERT INTO history.parse_runs (
+                source, status, probe_hash,
+                max_dancer_id_watermark, new_dancer_ids, probe_details,
+                finished_at
+            )
+            VALUES ('github-actions', %s, %s, %s, %s::jsonb, %s::jsonb, %s)
             """,
             (
-                "skipped" if not changed else "running",
+                "running" if result.changed else "skipped",
                 probe_hash,
+                result.watermark,
+                json.dumps({"live_max_id": result.live_max_id, "sample": result.new_ids}),
+                json.dumps(probe_details),
                 datetime.now(timezone.utc),
             ),
         )
     conn.commit()
 
 
+def print_report(result: ScanResult) -> None:
+    print(f"watermark={result.watermark}", flush=True)
+    print(f"live_max_id={result.live_max_id}", flush=True)
+    approx_new = max(result.live_max_id - result.watermark, 0)
+    print(f"approx_new_ids={approx_new}", flush=True)
+    print(f"new_ids_sample_count={len(result.new_ids)}", flush=True)
+    if result.new_ids:
+        print(f"new_ids={result.new_ids}")
+        print("new_dancers_sample:")
+        for dancer in result.new_dancers[:10]:
+            print(f"  - {dancer.get('name', dancer.get('wscid'))}")
+        if len(result.new_dancers) > 10:
+            print(f"  ... and {len(result.new_dancers) - 10} more")
+    print("changed" if result.changed else "unchanged", flush=True)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
-        "--write-hash",
+        "--write-probe",
         action="store_true",
-        help="Always persist probe hash to parse_runs",
+        help="Persist probe result to history.parse_runs",
+    )
+    parser.add_argument(
+        "--anchor",
+        type=int,
+        default=None,
+        help="Override watermark dancer ID for this run",
     )
     args = parser.parse_args()
 
     session = requests.Session()
-    probe_hash = compute_probe_hash(session)
-    print(f"probe_hash={probe_hash}")
 
     with connect() as conn:
-        last_hash = get_last_probe_hash(conn)
-        changed = last_hash is None or last_hash != probe_hash
-        print(f"last_hash={last_hash or '(none)'}")
-        print("changed" if changed else "unchanged")
+        watermark = get_watermark(conn, args.anchor)
+        result = scan_ids_above_watermark(session, watermark)
+        print_report(result)
 
-        if args.write_hash or changed:
-            record_probe(conn, probe_hash, changed)
-
-    # Exit code 0 always; GitHub Actions reads stdout keyword.
-    if changed:
-        sys.exit(0)
-    sys.exit(0)
+        if args.write_probe or result.changed:
+            record_probe(conn, result)
 
 
 if __name__ == "__main__":

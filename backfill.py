@@ -23,6 +23,7 @@ sys.path.insert(0, str(PROJECT_ROOT / "db"))
 
 from connection import connect  # noqa: E402
 from staging_loader import load_staging_from_dir  # noqa: E402
+from watermark import refresh_watermark  # noqa: E402
 
 
 def read_sql(name: str) -> str:
@@ -41,7 +42,7 @@ def start_run(cur, source: str) -> int:
     return cur.fetchone()[0]
 
 
-def finish_run(cur, run_id: int, counts: dict[str, int]) -> None:
+def finish_run(cur, run_id: int, counts: dict[str, int], conn) -> None:
     cur.execute(
         """
         UPDATE history.parse_runs
@@ -58,6 +59,9 @@ def finish_run(cur, run_id: int, counts: dict[str, int]) -> None:
             run_id,
         ),
     )
+    conn.commit()
+    wm = refresh_watermark(conn, run_id)
+    print(f"Watermark updated to {wm}")
 
 
 def print_core_counts(cur) -> None:
@@ -122,8 +126,7 @@ def main() -> None:
                 else:
                     print("No changed_* points CSV found — skipping points history")
 
-            finish_run(cur, run_id, staging_counts)
-            conn.commit()
+            finish_run(cur, run_id, staging_counts, conn)
 
             print_core_counts(cur)
 

@@ -21,6 +21,7 @@ sys.path.insert(0, str(PROJECT_ROOT / "db"))
 
 from connection import connect  # noqa: E402
 from staging_loader import load_staging_from_dir  # noqa: E402
+from watermark import refresh_watermark  # noqa: E402
 
 
 def read_sql(name: str) -> str:
@@ -72,6 +73,8 @@ def main() -> None:
                 ),
             )
             conn.commit()
+            wm = refresh_watermark(conn, run_id)
+            print(f"Watermark updated to {wm}")
 
     print(f"Load complete (run_id={run_id}).")
 

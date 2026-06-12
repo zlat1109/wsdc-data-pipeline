@@ -2,8 +2,11 @@ name: Check WSDC updates
 
 on:
   schedule:
-    # Every 6 hours (UTC)
-    - cron: "0 */6 * * *"
+    # Europe/Madrid (CEST, UTC+2): Mon–Fri, alternating 22:00 / 09:00 local
+    #   Mon 22:00, Tue 09:00, Wed 22:00, Thu 09:00, Fri 22:00
+    # In CET (winter, UTC+1) these run at 23:00 / 10:00 Spain time.
+    - cron: "0 20 * * 1,3,5"   # Mon/Wed/Fri 22:00 CEST
+    - cron: "0 7 * * 2,4"      # Tue/Thu 09:00 CEST
   workflow_dispatch:
 
 permissions:
@@ -36,7 +39,7 @@ jobs:
           DB_SSLMODE: require
         run: |
           set -e
-          output=$(python scripts/check_updates.py --write-hash)
+          output=$(python scripts/check_updates.py --write-probe)
           echo "$output"
           if echo "$output" | grep -q "^changed$"; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
