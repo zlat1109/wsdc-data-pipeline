@@ -37,11 +37,14 @@ jobs:
           DB_USER: ${{ secrets.DB_USER }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           DB_SSLMODE: require
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
           set -e
-          output=$(python scripts/check_updates.py --write-probe)
-          echo "$output"
-          if echo "$output" | grep -q "^changed$"; then
+          python scripts/check_updates.py --write-probe --json-report probe_report.json | tee probe.log
+          cat probe.log
+          python scripts/telegram_notify.py probe probe_report.json
+          if grep -q "^changed$" probe.log; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
           else
             echo "changed=false" >> "$GITHUB_OUTPUT"

@@ -34,6 +34,7 @@ sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 from connection import connect  # noqa: E402
 from event_coverage import EventCoverageResult, check_event_coverage  # noqa: E402
 from parser.http_client import WSDCHttpClient  # noqa: E402
+from probe_report import build_probe_report  # noqa: E402
 from weekend_events import resolve_pending_snapshot  # noqa: E402
 from wsdc_id_probe import ScanResult, scan_ids_above_watermark  # noqa: E402
 
@@ -166,6 +167,12 @@ def main() -> None:
         action="store_true",
         help="Trigger on new IDs only (skip upcoming-events check)",
     )
+    parser.add_argument(
+        "--json-report",
+        type=Path,
+        default=None,
+        help="Write structured probe report JSON (for Telegram notify)",
+    )
     args = parser.parse_args()
 
     session = requests.Session()
@@ -179,6 +186,8 @@ def main() -> None:
         ready = False
         already_in_db: list[str] = []
         no_pending = False
+        snapshot_name: str | None = None
+        weekend_start = weekend_end = None
 
         if not ids_changed:
             ready = False
@@ -190,9 +199,12 @@ def main() -> None:
                 no_pending = True
                 ready = False
             else:
+                snapshot_name = snapshot.source_path.name
+                weekend_start = snapshot.weekend_start
+                weekend_end = snapshot.weekend_end
                 print(
-                    f"weekend_snapshot={snapshot.source_path.name} "
-                    f"({snapshot.weekend_start}..{snapshot.weekend_end})",
+                    f"weekend_snapshot={snapshot_name} "
+                    f"({weekend_start}..{weekend_end})",
                     flush=True,
                 )
                 http = WSDCHttpClient()
@@ -204,6 +216,23 @@ def main() -> None:
                 )
                 coverage.already_in_db = already_in_db
                 ready = coverage.ready
+
+        report = build_probe_report(
+            scan,
+            coverage,
+            ready=ready,
+            already_in_db=already_in_db,
+            no_pending=no_pending,
+            snapshot_name=snapshot_name,
+            weekend_start=weekend_start,
+            weekend_end=weekend_end,
+        )
+
+        if args.json_report:
+            args.json_report.write_text(
+                json.dumps(report.to_dict(), ensure_ascii=False, indent=2),
+                encoding="utf-8",
+            )
 
         print_report(
             scan,

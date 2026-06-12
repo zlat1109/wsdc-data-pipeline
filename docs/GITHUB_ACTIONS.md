@@ -26,8 +26,18 @@ Optional (not required for probe today):
 | Secret | Value |
 |---|---|
 | `GOOGLE_MAPS_API_KEY` | For future cloud parser (geocoding) |
+| `TELEGRAM_BOT_TOKEN` | Same bot token as `wsdc-telegram-bot` — probe + pipeline notifications |
+| `TELEGRAM_CHAT_ID` | Test channel ID (e.g. `-4228074878`) or production channel |
 
 Password is the same as in Supabase → Project Settings → Database. No quotes in the secret value.
+
+### Telegram notifications
+
+After every **check-updates** run → message `#WSDC_Pipeline_Check` (ready or not, pending/matched/missing events).
+
+After successful **full-parse** (load + export) → message `#WSDC_Pipeline_Complete` (run_id, watermark, CSV commit status).
+
+Requires `TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID` in this repo's Actions secrets.
 
 ## Workflows
 
