@@ -2,18 +2,30 @@
 
 ## Required repository secrets
 
-Settings → Secrets and variables → Actions → New repository secret
+Settings → **Secrets and variables** → **Actions** → **New repository secret**  
+Direct link: https://github.com/zlat1109/wsdc-data-pipeline/settings/secrets/actions
+
+### GitHub Actions must use the Supabase **pooler** (IPv4)
+
+Supabase **Direct** host (`db.<ref>.supabase.co`) is **IPv6-only**. GitHub runners have no IPv6 route → `Network is unreachable`.
+
+| Secret | Local `.env` (Direct) | GitHub Secrets (pooler, Session mode) |
+|---|---|---|
+| `DB_HOST` | `db.tougqwxmahkwnaculiju.supabase.co` | `aws-0-eu-west-2.pooler.supabase.com` |
+| `DB_PORT` | `5432` | `5432` |
+| `DB_NAME` | `postgres` | `postgres` |
+| `DB_USER` | `postgres` | `postgres.tougqwxmahkwnaculiju` |
+| `DB_PASSWORD` | same password | same password |
+
+Region in pooler host must match your Supabase project (Dashboard → Connect → Session pooler).
+
+Optional (not required for probe today):
 
 | Secret | Value |
 |---|---|
-| `DB_HOST` | `db.<project-ref>.supabase.co` (Direct) or pooler host |
-| `DB_PORT` | `5432` |
-| `DB_NAME` | `postgres` |
-| `DB_USER` | `postgres` (Direct) or `postgres.<project-ref>` (pooler) |
-| `DB_PASSWORD` | Database password from Supabase |
 | `GOOGLE_MAPS_API_KEY` | For future cloud parser (geocoding) |
 
-Use the **same values** as in your local `.env`.
+Password is the same as in Supabase → Project Settings → Database. No quotes in the secret value.
 
 ## Workflows
 
