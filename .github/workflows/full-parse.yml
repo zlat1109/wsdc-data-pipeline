@@ -31,6 +31,11 @@ on:
         required: false
         default: false
         type: boolean
+      notify_parse_start:
+        description: "Send #WSDC_Pipeline_Parse_Start Telegram (probe job sends it when auto-triggered)"
+        required: false
+        default: true
+        type: boolean
 
 permissions:
   contents: write
@@ -49,6 +54,19 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt
+
+      - name: Notify Telegram (parse starting)
+        if: ${{ !inputs.export_only && inputs.parse_full && inputs.notify_parse_start }}
+        env:
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_SSLMODE: require
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python scripts/telegram_notify.py parse-start-live
 
       - name: Run HTTP cloud parser (full database)
         if: ${{ !inputs.export_only && inputs.parse_full }}

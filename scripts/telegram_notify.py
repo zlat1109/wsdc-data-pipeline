@@ -99,11 +99,66 @@ def format_probe_message(report: dict) -> str:
             lines.append(f"• {_esc(label)} (<code>{_esc(dancer_id)}</code>)")
 
     if ready:
-        lines.extend(["", "▶️ Запускается <b>full-parse</b> pipeline"])
+        lines.append("")
+        lines.append("Условия gate выполнены — старт parse в отдельном сообщении.")
     else:
         lines.append("")
         lines.append("Следующая проверка по расписанию check-updates.")
 
+    return "\n".join(lines)
+
+
+def format_parse_start_message(report: dict) -> str:
+    watermark = int(report.get("watermark") or 0)
+    live_max = int(report.get("live_max_id") or 0)
+    approx_new = int(report.get("approx_new_ids") or max(live_max - watermark, 0))
+    parse_total = live_max
+
+    lines = [
+        report.get("checked_at", ""),
+        "#WSDC_Pipeline_Parse_Start",
+        "",
+        "🚀 <b>Все условия соблюдены — начинаю полный парсинг</b>",
+        "",
+        f"Watermark в Supabase: <code>{_esc(watermark)}</code>",
+        f"Live max ID на WSDC: <code>{_esc(live_max)}</code>",
+        f"Новых registry ID: <code>+{_esc(approx_new)}</code> "
+        f"(<code>{_esc(watermark + 1)}</code> … <code>{_esc(live_max)}</code>)",
+        "",
+        f"Диапазон HTTP parse: <code>1</code> … <code>{_esc(live_max)}</code>",
+        f"Танцоров к запросу: <code>~{_esc(parse_total)}</code>",
+        "Режим: полная замена role / points / results CSV",
+    ]
+
+    if report.get("weekend_snapshot"):
+        lines.append(
+            f"Snapshot: <code>{_esc(report['weekend_snapshot'])}</code>"
+        )
+
+    matched = report.get("matched_events") or {}
+    pending = report.get("pending_events") or []
+    if matched or pending:
+        lines.extend(["", "<b>Ивенты (gate пройден)</b>:"])
+        for expected, live in matched.items():
+            lines.append(f"✅ {_esc(expected)} → {_esc(live)}")
+        for name in pending:
+            if name not in matched:
+                lines.append(f"• {_esc(name)}")
+
+    sample = report.get("new_dancers_sample") or []
+    if sample:
+        lines.extend(["", "<b>Новые танцоры (sample)</b>:"])
+        for dancer in sample[:8]:
+            label = dancer.get("name") or dancer.get("wscid")
+            dancer_id = dancer.get("wscid", "?")
+            lines.append(f"• {_esc(label)} (<code>{_esc(dancer_id)}</code>)")
+
+    eta_h = max(parse_total * 0.3 / 3600, 0.5)
+    lines.extend([
+        "",
+        f"⏳ Оценка времени: ~{_esc(f'{eta_h:.1f}')} ч (GitHub Actions)",
+        "📬 После load + export придёт <b>#WSDC_Pipeline_Complete</b>",
+    ])
     return "\n".join(lines)
 
 
@@ -147,6 +202,39 @@ def format_pipeline_message(stats: dict) -> str:
 def cmd_probe(report_path: Path) -> None:
     report = json.loads(report_path.read_text(encoding="utf-8"))
     send_telegram(format_probe_message(report))
+
+
+def cmd_parse_start(report_path: Path) -> None:
+    report = json.loads(report_path.read_text(encoding="utf-8"))
+    send_telegram(format_parse_start_message(report))
+
+
+def cmd_parse_start_live() -> None:
+    """Parse-start stats when full-parse is run manually (no probe_report.json)."""
+    import requests
+    from datetime import date
+
+    sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
+    from wsdc_id_probe import scan_ids_above_watermark  # noqa: WPS433
+    from connection import connect  # noqa: WPS433
+
+    anchor = int(os.getenv("PROBE_ANCHOR_ID", "26410"))
+    with connect() as conn, conn.cursor() as cur:
+        cur.execute("SELECT COALESCE(MAX(dancer_id), 0) FROM core.dancers")
+        watermark = int(cur.fetchone()[0])
+
+    live_max = scan_ids_above_watermark(requests.Session(), anchor).live_max_id
+    report = {
+        "checked_at": date.today().isoformat(),
+        "ready": True,
+        "watermark": watermark,
+        "live_max_id": live_max,
+        "approx_new_ids": max(live_max - watermark, 0),
+        "pending_events": [],
+        "matched_events": {},
+        "new_dancers_sample": [],
+    }
+    send_telegram(format_parse_start_message(report))
 
 
 def cmd_pipeline_complete() -> None:
@@ -212,11 +300,19 @@ def main() -> None:
     probe = sub.add_parser("probe", help="Notify after check-updates")
     probe.add_argument("report", type=Path, help="JSON from check_updates --json-report")
 
+    parse_start = sub.add_parser("parse-start", help="Notify when full parse is triggered")
+    parse_start.add_argument("report", type=Path, help="JSON from check_updates --json-report")
+
+    sub.add_parser("parse-start-live", help="Notify parse start using live DB + WSDC scan")
     sub.add_parser("pipeline-complete", help="Notify after full-parse load+export")
 
     args = parser.parse_args()
     if args.command == "probe":
         cmd_probe(args.report)
+    elif args.command == "parse-start":
+        cmd_parse_start(args.report)
+    elif args.command == "parse-start-live":
+        cmd_parse_start_live()
     elif args.command == "pipeline-complete":
         cmd_pipeline_complete()
 

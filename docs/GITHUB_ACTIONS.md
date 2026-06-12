@@ -35,6 +35,8 @@ Password is the same as in Supabase → Project Settings → Database. No quotes
 
 After every **check-updates** run → message `#WSDC_Pipeline_Check` (ready or not, pending/matched/missing events).
 
+When gate opens (`changed`) → message `#WSDC_Pipeline_Parse_Start` (watermark, parse range 1..live_max, events, ETA).
+
 After successful **full-parse** (load + export) → message `#WSDC_Pipeline_Complete` (run_id, watermark, CSV commit status).
 
 Requires `TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID` in this repo's Actions secrets.

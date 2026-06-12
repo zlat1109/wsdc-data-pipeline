@@ -45,6 +45,7 @@ jobs:
           cat probe.log
           python scripts/telegram_notify.py probe probe_report.json
           if grep -q "^changed$" probe.log; then
+            python scripts/telegram_notify.py parse-start probe_report.json
             echo "changed=true" >> "$GITHUB_OUTPUT"
           else
             echo "changed=false" >> "$GITHUB_OUTPUT"
@@ -67,4 +68,5 @@ jobs:
             --field source=github-actions \
             --field export_only=false \
             --field data_dir=data \
-            --field parse_full=true
+            --field parse_full=true \
+            --field notify_parse_start=false

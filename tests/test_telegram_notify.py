@@ -6,7 +6,11 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
-from telegram_notify import format_probe_message, format_pipeline_message
+from telegram_notify import (
+    format_parse_start_message,
+    format_pipeline_message,
+    format_probe_message,
+)
 
 
 def test_format_probe_unchanged():
@@ -41,7 +45,26 @@ def test_format_probe_ready():
     }
     text = format_probe_message(report)
     assert "Готов к обновлению" in text
-    assert "full-parse" in text
+    assert "отдельном сообщении" in text
+
+
+def test_format_parse_start():
+    text = format_parse_start_message(
+        {
+            "checked_at": "2026-06-15",
+            "watermark": 28367,
+            "live_max_id": 28420,
+            "approx_new_ids": 53,
+            "weekend_snapshot": "weekend_2026-06-08_2026-06-21.json",
+            "matched_events": {"Baltic Swing": "Baltic Swing"},
+            "pending_events": ["Baltic Swing"],
+            "new_dancers_sample": [{"name": "Test User", "wscid": 28420}],
+        }
+    )
+    assert "WSDC_Pipeline_Parse_Start" in text
+    assert "28420" in text
+    assert "Baltic Swing" in text
+    assert "28367" in text
 
 
 def test_format_pipeline_complete():
