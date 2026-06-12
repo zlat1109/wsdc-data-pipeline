@@ -157,7 +157,11 @@ SELECT
     END,
     NULLIF(TRIM(s.event_year), '')::int,
     NULLIF(TRIM(s.event_month), '')::int,
-    NULLIF(TRIM(s.event_year_and_month), '')::date,
+    CASE
+        WHEN NULLIF(TRIM(s.event_year_and_month), '') ~ '^\d{4}-\d{2}-\d{2}$'
+            THEN NULLIF(TRIM(s.event_year_and_month), '')::date
+        ELSE NULL
+    END,
     NULLIF(TRIM(s.event_result), ''),
     NULLIF(TRIM(s.event_result_standardized), ''),
     COALESCE(NULLIF(TRIM(s.event_points), '')::int, 0)
