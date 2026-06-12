@@ -1,0 +1,37 @@
+name: Test WSDC access from GitHub
+
+on:
+  workflow_dispatch:
+    inputs:
+      dancer_id:
+        description: "Dancer ID to probe"
+        required: false
+        default: "27136"
+        type: string
+      burst:
+        description: "Autocomplete burst count (rate-limit check)"
+        required: false
+        default: "20"
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  probe-endpoints:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install requests
+        run: pip install requests
+
+      - name: Test WSDC endpoints from GitHub runner
+        run: |
+          python scripts/test_wsdc_access.py \
+            --dancer-id "${{ inputs.dancer_id }}" \
+            --burst "${{ inputs.burst }}"
