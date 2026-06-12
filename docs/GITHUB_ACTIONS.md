@@ -37,7 +37,11 @@ After every **check-updates** run → message `#WSDC_Pipeline_Check` (ready or n
 
 When gate opens (`changed`) → message `#WSDC_Pipeline_Parse_Start` (watermark, parse range 1..live_max, events, ETA).
 
-After successful **full-parse** (load + export) → message `#WSDC_Pipeline_Complete` (run_id, watermark, CSV commit status).
+After successful **full-parse** (load + export) → message `#WSDC_Pipeline_Complete` (run_id, watermark, CSV commit status, **new data quality findings** count).
+
+### Data quality log
+
+After export, `scripts/data_quality_audit.py` writes `data/quality_reports/latest.json` — naming/location defects to review manually (same class of fixes as notebook `EVENT_NAME_NORMALIZATION`, etc.). Findings with `"is_new": true` are new since last run.
 
 Requires `TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID` in this repo's Actions secrets.
 

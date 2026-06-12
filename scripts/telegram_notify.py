@@ -193,6 +193,31 @@ def format_pipeline_message(stats: dict) -> str:
 
     if stats.get("csv_committed"):
         lines.extend(["", "📁 CSV экспорт закоммичен в <code>data/*.csv</code>"])
+
+    quality_path = PROJECT_ROOT / "data" / "quality_reports" / "latest.json"
+    if quality_path.exists():
+        try:
+            q = json.loads(quality_path.read_text(encoding="utf-8"))
+            qs = q.get("summary") or {}
+            new_n = qs.get("new_findings", 0)
+            total_n = qs.get("total_findings", 0)
+            lines.extend([
+                "",
+                f"📋 <b>Data quality</b>: <code>{_esc(new_n)}</code> new / <code>{_esc(total_n)}</code> total findings",
+                f"Log: <code>data/quality_reports/latest.json</code>",
+            ])
+            new_items = [f for f in q.get("findings", []) if f.get("is_new")][:5]
+            if new_items:
+                lines.append("")
+                lines.append("<b>New defects (sample)</b>:")
+                for item in new_items:
+                    lines.append(
+                        f"• [{_esc(item.get('severity'))}] {_esc(item.get('code'))}: "
+                        f"{_esc(item.get('message', '')[:80])}"
+                    )
+        except (json.JSONDecodeError, OSError):
+            pass
+
     if stats.get("repo"):
         lines.append(f"Repo: {_esc(stats['repo'])}")
 

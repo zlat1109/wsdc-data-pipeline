@@ -713,7 +713,11 @@ def validate_relationships(data: Dict[str, pd.DataFrame]) -> List[Dict]:
             })
     
     # Проверка event_name_id
-    if 'dancers_results_info' in data and 'events_wsdc' in data:
+    if (
+        'dancers_results_info' in data
+        and 'events_wsdc' in data
+        and 'event_name_id' in data['dancers_results_info'].columns
+    ):
         results_event_ids = set(data['dancers_results_info']['event_name_id'].unique())
         events_wsdc_ids = set(data['events_wsdc']['id'].unique())
         

@@ -56,6 +56,7 @@ def main() -> None:
         run([py, "load.py", "--data-dir", str(args.data_dir), "--source", args.source])
 
     run([py, "export.py"])
+    run([py, "scripts/data_quality_audit.py", "--data-dir", str(args.data_dir or PROJECT_ROOT / "data"), "--source", args.source])
     print("\nPipeline complete.")
 
 
