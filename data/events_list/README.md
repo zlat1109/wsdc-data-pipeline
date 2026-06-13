@@ -36,3 +36,20 @@ python scripts/telegram_notify.py events-list         # resend last changelog
 GitHub Action `.github/workflows/sync-events-list.yml` — **every Tuesday 08:00 UTC**.
 
 Telegram tag: `#WSDC_Events_List`
+
+## Mapping analysis (Events List ↔ points catalog)
+
+Compare schedule to historical `core.events` / `core.event_instances`:
+
+```bash
+python scripts/analyze_events_list_mapping.py
+```
+
+Report: `data/events_list/mapping/latest.json`
+
+| Section | Meaning |
+|---------|---------|
+| `confirmed` | URL or strong name match + location OK |
+| `manual_review_required` | Fuzzy match or location drift |
+| `new_events` | Not in points catalog yet (new brand / trial) |
+| `location_drifts` | Same event, different location string on site |
