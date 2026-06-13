@@ -16,14 +16,40 @@ def test_parse_date_range_cross_year():
     assert end.isoformat() == "2024-01-01"
 
 
-def test_clean_event_name():
-    name, status, confirmed, hiatus = clean_event_name(
-        "Baltic Swing Registry Event (Unconfirmed)"
+def test_clean_event_name_from_type_div():
+    name, status, confirmed, hiatus = clean_event_name("Baltic Swing", "Registry Event")
+    assert name == "Baltic Swing"
+    assert status == "Registry Event"
+    assert confirmed is True
+
+
+def test_clean_event_name_trial():
+    name, status, _, _ = clean_event_name("Milan Swing Vibes", "Trial Event")
+    assert name == "Milan Swing Vibes"
+    assert status == "Trial Event"
+
+
+def test_clean_event_name_legacy_suffix():
+    name, status, confirmed, _ = clean_event_name("Baltic Swing Registry Event (Unconfirmed)")
+    assert name == "Baltic Swing"
+    assert status == "Registry Event"
+    assert confirmed is False
+
+
+def test_clean_event_name_unconfirmed_from_type_div():
+    name, status, confirmed, _ = clean_event_name(
+        "Baltic Swing (Unconfirmed)", "Registry Event"
     )
     assert name == "Baltic Swing"
     assert status == "Registry Event"
     assert confirmed is False
-    assert hiatus is False
+
+
+def test_normalize_list_location():
+    from transform.events_list_maps import normalize_list_location
+
+    assert normalize_list_location("", "Milan,, Italy") == "Milan, Italy"
+    assert "Fort Lauderdale" in normalize_list_location("", "Ft. Lauderdale, FL, United States")
 
 
 def test_fingerprint_stable():

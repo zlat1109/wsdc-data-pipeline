@@ -6,7 +6,6 @@ import re
 from dataclasses import asdict, dataclass, field
 from difflib import SequenceMatcher
 from typing import Any
-from urllib.parse import urlparse
 
 from parser.event_name_matcher import EVENT_NAME_MAPPINGS, find_best_match, fuzzy_match_score
 from transform.events_list_normalize import normalize_url
@@ -111,7 +110,7 @@ def map_scheduled_event(
         if name_score >= 0.5:
             matched = candidate
             method = "url"
-            confidence = max(1.0, name_score)
+            confidence = name_score if name_score >= 0.85 else 0.99
         else:
             base.notes.append(
                 f"URL matches {candidate.name!r} but name similarity only {name_score:.2f} — skipped auto-link"

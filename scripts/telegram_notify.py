@@ -408,6 +408,21 @@ def format_events_list_message(report: dict) -> str:
     if s.get("added", 0) == 0 and s.get("removed", 0) == 0:
         lines.extend(["", "Изменений с прошлого запуска нет."])
 
+    mapping_path = PROJECT_ROOT / "data" / "events_list" / "mapping" / "latest.json"
+    if mapping_path.exists():
+        try:
+            m = json.loads(mapping_path.read_text(encoding="utf-8"))
+            ms = m.get("summary") or {}
+            lines.extend([
+                "",
+                "<b>Мэппинг с каталогом поинтов</b>",
+                f"Confirmed: <code>{_esc(ms.get('confirmed', 0))}</code> · "
+                f"Review: <code>{_esc(ms.get('review', 0))}</code> · "
+                f"New: <code>{_esc(ms.get('new_unmapped', 0))}</code>",
+            ])
+        except (json.JSONDecodeError, OSError):
+            pass
+
     lines.extend(["", "Лог: <code>data/events_list/changelog/latest.json</code>"])
     return "\n".join(lines)
 

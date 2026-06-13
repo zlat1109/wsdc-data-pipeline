@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import asyncio
 import logging
+from dataclasses import dataclass, field
 from typing import Any
 
 from parser.events_list_dates import parse_date_range
@@ -29,8 +30,10 @@ _EXTRACT_JS = """
 
         const date = cells[0].textContent.trim();
         const nameCell = cells[1];
-        const nameLink = nameCell.querySelector('a');
+        const nameLink = nameCell.querySelector('.event_name a') || nameCell.querySelector('a');
         let name = nameLink ? nameLink.textContent.trim() : nameCell.textContent.trim();
+        const typeEl = nameCell.querySelector('.event_type');
+        const eventType = typeEl ? typeEl.textContent.trim() : '';
         const url = nameLink ? nameLink.href : '';
         let location = cells[2] ? cells[2].textContent.trim() : '';
         if (!location && cells.length > 3) {
@@ -54,6 +57,7 @@ _EXTRACT_JS = """
         events.push({
             date,
             name,
+            event_type: eventType,
             url,
             location,
             country_flag: countryFlag,
@@ -66,7 +70,13 @@ _EXTRACT_JS = """
 """
 
 
-async def _scrape_async() -> list[dict[str, Any]]:
+@dataclass
+class ScrapeResult:
+    events: list[dict[str, Any]] = field(default_factory=list)
+    parse_errors: list[dict[str, str]] = field(default_factory=list)
+
+
+async def _scrape_async() -> ScrapeResult:
     from playwright.async_api import async_playwright
 
     logger.info("Scraping %s", EVENTS_URL)
@@ -96,6 +106,7 @@ async def _scrape_async() -> list[dict[str, Any]]:
             {
                 "original_date": date_str,
                 "event_name": name,
+                "event_type_raw": row.get("event_type") or "",
                 "url": row.get("url") or "",
                 "location_raw": row.get("location") or "",
                 "country_flag": row.get("country_flag") or "",
@@ -107,9 +118,9 @@ async def _scrape_async() -> list[dict[str, Any]]:
         )
 
     logger.info("Scraped %s events (%s parse errors)", len(events), len(parse_errors))
-    return events
+    return ScrapeResult(events=events, parse_errors=parse_errors)
 
 
-def scrape_events_list() -> list[dict[str, Any]]:
+def scrape_events_list() -> ScrapeResult:
     """Synchronous entry point for scripts and CI."""
     return asyncio.run(_scrape_async())

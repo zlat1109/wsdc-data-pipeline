@@ -22,9 +22,11 @@ sys.path.insert(0, str(PROJECT_ROOT))
 sys.path.insert(0, str(PROJECT_ROOT / "db"))
 
 from parser.events_list_scraper import scrape_events_list  # noqa: E402
+from transform.events_list_mapping import analyze_mapping  # noqa: E402
 from transform.events_list_normalize import normalize_events  # noqa: E402
 
 DATA_DIR = PROJECT_ROOT / "data" / "events_list"
+MAPPING_DIR = DATA_DIR / "mapping"
 CURRENT_PATH = DATA_DIR / "current.json"
 CSV_PATH = DATA_DIR / "events_list.csv"
 CHANGELOG_DIR = DATA_DIR / "changelog"
@@ -59,6 +61,8 @@ def save_artifacts(
     removed: list[dict],
     unchanged: int,
     source: str,
+    *,
+    parse_errors: int = 0,
 ) -> dict[str, Any]:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     CHANGELOG_DIR.mkdir(parents=True, exist_ok=True)
@@ -74,6 +78,7 @@ def save_artifacts(
             "added": len(added),
             "removed": len(removed),
             "unchanged": unchanged,
+            "parse_errors": parse_errors,
         },
         "added": added,
         "removed": removed,
@@ -241,6 +246,32 @@ def load_to_supabase(
     return run_id
 
 
+def run_mapping_analysis(events: list[dict[str, Any]]) -> dict[str, Any]:
+    """Compare schedule to points catalog; save mapping/latest.json."""
+    from transform.events_list_catalog import load_catalog
+
+    catalog = load_catalog()
+    report = analyze_mapping(events, catalog)
+    report["generated_at"] = datetime.now(timezone.utc).isoformat()
+    report["catalog_events"] = len(catalog)
+
+    MAPPING_DIR.mkdir(parents=True, exist_ok=True)
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    path = MAPPING_DIR / f"mapping_{stamp}.json"
+    path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+    (MAPPING_DIR / "latest.json").write_text(
+        json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    return report
+
+
+def print_mapping_summary(report: dict[str, Any]) -> None:
+    s = report.get("summary") or {}
+    print("\n=== Catalog mapping ===")
+    print(f"Confirmed: {s.get('confirmed', 0)}  Review: {s.get('review', 0)}  New: {s.get('new_unmapped', 0)}")
+    print(f"Location drifts: {s.get('location_drifts', 0)}")
+
+
 def print_summary(report: dict[str, Any]) -> None:
     s = report["summary"]
     print("\n=== WSDC Events List sync ===")
@@ -265,15 +296,27 @@ def main() -> None:
     args = parser.parse_args()
 
     print("Scraping worldsdc.com/events/ ...")
-    raw = scrape_events_list()
-    events = normalize_events(raw)
+    scrape_result = scrape_events_list()
+    parse_error_count = len(scrape_result.parse_errors)
+    if parse_error_count:
+        print(f"Parse errors: {parse_error_count}", file=sys.stderr)
+    events = normalize_events(scrape_result.events)
     current_map = {e["source_fingerprint"]: e for e in events}
 
     previous = load_previous_current()
     added, removed, unchanged = compute_diff(previous, current_map)
 
-    report = save_artifacts(events, added, removed, unchanged, args.source)
+    report = save_artifacts(
+        events, added, removed, unchanged, args.source, parse_errors=parse_error_count
+    )
     print_summary(report)
+
+    try:
+        mapping_report = run_mapping_analysis(events)
+        print_mapping_summary(mapping_report)
+        report["mapping_summary"] = mapping_report.get("summary")
+    except Exception as exc:
+        print(f"\nMapping analysis skipped: {exc}", file=sys.stderr)
 
     if not args.dry_run and not args.skip_db:
         try:

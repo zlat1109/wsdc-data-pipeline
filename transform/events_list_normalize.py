@@ -9,6 +9,7 @@ from typing import Any
 from urllib.parse import urlparse
 
 from parser.events_list_dates import edition_month_candidates
+from transform.events_list_maps import normalize_list_location
 
 _COUNTRY_ALPHA3: dict[str, str] = {
     "USA": "United States",
@@ -68,19 +69,20 @@ def source_fingerprint(event_name: str, start_date: str, url: str) -> str:
     return hashlib.sha256(raw.encode()).hexdigest()[:24]
 
 
-def clean_event_name(raw_name: str) -> tuple[str, str, bool, bool]:
+def clean_event_name(raw_name: str, event_type_raw: str = "") -> tuple[str, str, bool, bool]:
     """Return (name, status_event, confirmed, on_hiatus)."""
     name = raw_name.strip()
     on_hiatus = bool(_HIATUS_NAME_RE.search(name))
     name = _HIATUS_NAME_RE.sub("", name).strip()
 
-    status_event = ""
-    if "Registry Event" in name:
-        status_event = "Registry Event"
-        name = name.replace("Registry Event", "").strip()
-    elif "Trial Event" in name or "(Trial Event)" in name:
-        status_event = "Trial Event"
-        name = name.replace("(Trial Event)", "").replace("Trial Event", "").strip()
+    status_event = (event_type_raw or "").strip()
+    if not status_event:
+        if "Registry Event" in name:
+            status_event = "Registry Event"
+            name = name.replace("Registry Event", "").strip()
+        elif "Trial Event" in name or "(Trial Event)" in name:
+            status_event = "Trial Event"
+            name = name.replace("(Trial Event)", "").replace("Trial Event", "").strip()
 
     confirmed = True
     if _UNCONFIRMED_RE.search(name):
@@ -97,11 +99,16 @@ def flag_to_country(flag: str) -> str:
 
 
 def normalize_event(raw: dict[str, Any]) -> dict[str, Any]:
-    name, status_event, confirmed, hiatus_from_name = clean_event_name(raw.get("event_name") or "")
+    name, status_event, confirmed, hiatus_from_name = clean_event_name(
+        raw.get("event_name") or "",
+        raw.get("event_type_raw") or "",
+    )
     start = date.fromisoformat(raw["start_date"])
     end = date.fromisoformat(raw["end_date"])
     edition = edition_month_candidates(start, end)
     results_year, results_month = edition[0] if edition else (end.year, end.month)
+
+    location_raw = normalize_list_location(name, raw.get("location_raw") or "")
 
     fp = source_fingerprint(name, raw["start_date"], raw.get("url") or "")
 
@@ -113,7 +120,8 @@ def normalize_event(raw: dict[str, Any]) -> dict[str, Any]:
         "end_date": raw["end_date"],
         "results_year": results_year,
         "results_month": results_month,
-        "location_raw": raw.get("location_raw") or "",
+        "location_raw": location_raw,
+        "location_raw_original": raw.get("location_raw") or "",
         "country": flag_to_country(raw.get("country_flag") or ""),
         "country_flag": raw.get("country_flag") or "",
         "url": raw.get("url") or "",
