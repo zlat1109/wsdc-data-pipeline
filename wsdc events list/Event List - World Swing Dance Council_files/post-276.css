@@ -1,0 +1,14 @@
+/* Start custom CSS for shortcode, class: .elementor-element-1db4419 */.elementor-276 .elementor-element.elementor-element-1db4419 table { width: 100%; border: 1px dotted #77b2d4; font-family: Arial, Sans-Serif;font-size: 14px;
+    border-spacing: 1px;
+}
+.elementor-276 .elementor-element.elementor-element-1db4419 thead { background: #3696cd; color: #fff;}
+.elementor-276 .elementor-element.elementor-element-1db4419 thead th { height: 2rem;}
+.elementor-276 .elementor-element.elementor-element-1db4419 tbody td { text-align: center;}
+.elementor-276 .elementor-element.elementor-element-1db4419 tbody tr.event-canceled { opacity: 0.5;}
+.elementor-276 .elementor-element.elementor-element-1db4419 tbody tr:nth-child(2n-1) {background: #a4c8ed;}
+.elementor-276 .elementor-element.elementor-element-1db4419 tbody tr:nth-child(2n) {background: #b7cfe8;}
+.elementor-276 .elementor-element.elementor-element-1db4419 tbody tr.event-trial { background: #B39DDB;}
+.elementor-276 .elementor-element.elementor-element-1db4419 tbody tr.event-canceled td { text-decoration:line-through;}
+.elementor-276 .elementor-element.elementor-element-1db4419 td div.event_name { font-weight: bold;}
+.elementor-276 .elementor-element.elementor-element-1db4419 td div.event_type { font-size:12px; }
+.elementor-276 .elementor-element.elementor-element-1db4419 td a { color: #00f;}/* End custom CSS */
