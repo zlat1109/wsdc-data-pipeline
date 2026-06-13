@@ -51,6 +51,24 @@ Add fixes to `transform/data_preprocessing.py` based on `manual_review_required`
 
 Requires `TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID` in this repo's Actions secrets.
 
+**Events list sync** → message `#WSDC_Events_List` (added/removed counts, sample names). Weekly Tuesday run.
+
+### `sync-events-list.yml`
+
+- **Schedule**: every **Tuesday 08:00 UTC** (~10:00 Europe/Madrid)
+- Scrapes https://www.worldsdc.com/events/ (Playwright)
+- Writes `data/events_list/current.json`, `events_list.csv`, `changelog/run_*.json`
+- Loads `core.scheduled_events` + `history.events_list_changes` in Supabase
+- Commits `data/events_list/` to repo
+- Manual: Actions → **Sync WSDC Events List** → Run workflow
+
+Local:
+
+```bash
+python db/apply.py
+python scripts/sync_events_list.py
+```
+
 ## Workflows
 
 ### `check-updates.yml`

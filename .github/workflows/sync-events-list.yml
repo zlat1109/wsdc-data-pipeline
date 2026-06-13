@@ -1,0 +1,62 @@
+name: Sync WSDC Events List
+
+on:
+  schedule:
+    # Every Tuesday 08:00 UTC (~10:00 Europe/Madrid)
+    - cron: "0 8 * * 2"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync-events-list:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Install Playwright Chromium
+        run: python -m playwright install --with-deps chromium
+
+      - name: Apply DB migrations
+        env:
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_SSLMODE: require
+        run: python db/apply.py
+
+      - name: Sync events list (scrape + diff + Supabase)
+        env:
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_SSLMODE: require
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python scripts/sync_events_list.py --source github-actions
+
+      - name: Commit events list data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/events_list/
+          if git diff --staged --quiet; then
+            echo "No events list changes to commit"
+          else
+            git commit -m "Update WSDC events list snapshot and changelog."
+            git push
+          fi

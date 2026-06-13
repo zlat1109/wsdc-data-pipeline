@@ -352,6 +352,9 @@ def main() -> None:
     sub.add_parser("parse-start-live", help="Notify parse start using live DB + WSDC scan")
     sub.add_parser("pipeline-complete", help="Notify after full-parse load+export")
 
+    events_list = sub.add_parser("events-list", help="Notify after weekly events list sync")
+    events_list.add_argument("report", type=Path, nargs="?", default=None)
+
     args = parser.parse_args()
     if args.command == "probe":
         cmd_probe(args.report)
@@ -361,6 +364,65 @@ def main() -> None:
         cmd_parse_start_live()
     elif args.command == "pipeline-complete":
         cmd_pipeline_complete()
+    elif args.command == "events-list":
+        cmd_events_list(args.report)
+
+
+def format_events_list_message(report: dict) -> str:
+    s = report.get("summary") or {}
+    lines = [
+        report.get("scraped_at", "")[:10],
+        "#WSDC_Events_List",
+        "",
+        "📅 <b>WSDC Events List updated</b>",
+        "",
+        f"На сайте: <code>{_esc(s.get('total', 0))}</code> ивентов",
+        f"Добавлено: <code>{_esc(s.get('added', 0))}</code>",
+        f"Убрали из списка: <code>{_esc(s.get('removed', 0))}</code>",
+        f"Без изменений: <code>{_esc(s.get('unchanged', 0))}</code>",
+    ]
+
+    added = report.get("added") or []
+    if added:
+        lines.extend(["", "<b>Новые в расписании</b>:"])
+        for ev in added[:10]:
+            loc = (ev.get("location_raw") or "")[:45]
+            lines.append(
+                f"• {_esc(ev.get('event_name'))} "
+                f"(<code>{_esc(ev.get('start_date'))}</code>)"
+                + (f" — {_esc(loc)}" if loc else "")
+            )
+        if len(added) > 10:
+            lines.append(f"… +{len(added) - 10} ещё")
+
+    removed = report.get("removed") or []
+    if removed:
+        lines.extend(["", "<b>Пропали из расписания</b>:"])
+        for ev in removed[:10]:
+            lines.append(
+                f"• {_esc(ev.get('event_name'))} (<code>{_esc(ev.get('start_date'))}</code>)"
+            )
+        if len(removed) > 10:
+            lines.append(f"… +{len(removed) - 10} ещё")
+
+    if s.get("added", 0) == 0 and s.get("removed", 0) == 0:
+        lines.extend(["", "Изменений с прошлого запуска нет."])
+
+    lines.extend(["", "Лог: <code>data/events_list/changelog/latest.json</code>"])
+    return "\n".join(lines)
+
+
+def send_events_list_message(report: dict) -> bool:
+    return send_telegram(format_events_list_message(report))
+
+
+def cmd_events_list(report_path: Path | None) -> None:
+    path = report_path or (PROJECT_ROOT / "data" / "events_list" / "changelog" / "latest.json")
+    if not path.exists():
+        print(f"No report at {path}", flush=True)
+        return
+    report = json.loads(path.read_text(encoding="utf-8"))
+    send_events_list_message(report)
 
 
 if __name__ == "__main__":
