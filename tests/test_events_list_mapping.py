@@ -9,13 +9,13 @@ def test_url_match_rejected_when_name_differs():
             event_id=1,
             name="Swedish Swing Summer Camp",
             url="http://www.uptownswing.se",
-            url_norm="www.uptownswing.se",
+            url_norm="uptownswing.se",
             typical_location="Stockholm, Sweden",
         )
     ]
     row = {
         "source_fingerprint": "x",
-        "event_name": "UpTown Swing",
+        "event_name": "Totally Different Brand",
         "start_date": "2026-08-14",
         "location_raw": "Stockholm, Sweden",
         "url": "http://www.uptownswing.se/",
@@ -84,7 +84,61 @@ def test_westie_weekend_maps_to_dance_jam_catalog():
     assert result.canonical_event_id == 372
 
 
-def test_exact_name_fuzzy_allows_venue_move():
+def test_rolling_swing_exact_name_wins_over_wrong_url():
+    catalog = [
+        CatalogEvent(
+            event_id=313,
+            name="Rolling Swing",
+            url="http://www.rollingswing.com",
+            url_norm="rollingswing.com",
+            typical_location="LYON, Rhone, France",
+        ),
+        CatalogEvent(
+            event_id=270,
+            name="Westie's Angels",
+            url="http://www.frenchywesty.com",
+            url_norm="frenchywesty.com",
+            typical_location="LYON, Rhone, France",
+        ),
+    ]
+    row = {
+        "source_fingerprint": "x",
+        "event_name": "Rolling Swing",
+        "start_date": "2026-08-27",
+        "location_raw": "LYON, Rhone, France",
+        "url": "http://www.frenchywesty.com/",
+        "status_event": "Registry Event",
+        "is_active": True,
+    }
+    result = map_scheduled_event(row, catalog, build_url_index(catalog), [c.name for c in catalog])
+    assert result.match_status == "confirmed"
+    assert result.match_method == "exact_name"
+    assert result.canonical_event_id == 313
+
+
+def test_baroqueswing_maps_to_barock_ludwigsburg():
+    catalog = [
+        CatalogEvent(
+            event_id=374,
+            name="Barock Swing Ludwigsburg",
+            url="https://lb-barockswing.com/index.php",
+            url_norm="lb-barockswing.com/index.php",
+            typical_location="Ludwigsburg, Baden-Württemberg, Deutschland",
+        )
+    ]
+    row = {
+        "source_fingerprint": "x",
+        "event_name": "BaroqueSwing",
+        "start_date": "2026-06-25",
+        "location_raw": "Ludwigsburg, Baden-Württemberg, Deutschland",
+        "url": "https://baroqueswing.com/",
+        "status_event": "Registry Event",
+        "is_active": True,
+    }
+    result = map_scheduled_event(row, catalog, build_url_index(catalog), [c.name for c in catalog])
+    assert result.match_status == "confirmed"
+    assert result.match_method == "explicit"
+    assert result.canonical_name == "Barock Swing Ludwigsburg"
     catalog = [
         CatalogEvent(
             event_id=338,

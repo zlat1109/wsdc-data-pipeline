@@ -74,7 +74,7 @@ class MappingResult:
     list_url: str
     status_event: str
     match_status: str  # confirmed | suggested | new | review
-    match_method: str  # url | explicit | fuzzy | none
+    match_method: str  # url | explicit | exact_name | fuzzy | none
     confidence: float
     canonical_event_id: int | None = None
     canonical_name: str | None = None
@@ -94,6 +94,26 @@ def build_url_index(catalog: list[CatalogEvent]) -> dict[str, CatalogEvent]:
         if ev.url_norm and ev.url_norm not in index:
             index[ev.url_norm] = ev
     return index
+
+
+def _resolve_by_catalog_name(list_name: str, catalog: list[CatalogEvent]) -> tuple[CatalogEvent | None, str]:
+    """Match by explicit alias or exact catalog title before URL/fuzzy."""
+    targets: list[str] = []
+    if list_name in EVENT_NAME_MAPPINGS:
+        targets.append(EVENT_NAME_MAPPINGS[list_name])
+    targets.append(list_name)
+
+    seen: set[str] = set()
+    for target in targets:
+        if target in seen:
+            continue
+        seen.add(target)
+        for ev in catalog:
+            if ev.name == target:
+                if list_name in EVENT_NAME_MAPPINGS and EVENT_NAME_MAPPINGS[list_name] == ev.name:
+                    return ev, "explicit"
+                return ev, "exact_name"
+    return None, "none"
 
 
 def map_scheduled_event(
@@ -125,7 +145,16 @@ def map_scheduled_event(
     method = "none"
     confidence = 0.0
 
-    if list_url_norm and list_url_norm in url_index:
+    name_match, name_method = _resolve_by_catalog_name(list_name, catalog)
+    if name_match:
+        matched = name_match
+        method = name_method
+        confidence = 1.0
+        if list_url_norm and name_match.url_norm and list_url_norm != name_match.url_norm:
+            base.notes.append(
+                f"List URL {list_url!r} differs from catalog URL {name_match.url!r} — using event name"
+            )
+    elif list_url_norm and list_url_norm in url_index:
         candidate = url_index[list_url_norm]
         name_score = fuzzy_match_score(list_name, candidate.name)
         if name_score >= 0.5:
@@ -136,15 +165,13 @@ def map_scheduled_event(
             base.notes.append(
                 f"URL matches {candidate.name!r} but name similarity only {name_score:.2f} — skipped auto-link"
             )
-    elif list_name in EVENT_NAME_MAPPINGS:
-        target = EVENT_NAME_MAPPINGS[list_name]
-        for ev in catalog:
-            if ev.name == target:
-                matched = ev
-                method = "explicit"
-                confidence = 1.0
-                break
-    else:
+
+    if not matched and list_name in EVENT_NAME_MAPPINGS:
+        base.notes.append(
+            f"Alias {list_name!r} → {EVENT_NAME_MAPPINGS[list_name]!r} but target not in catalog yet"
+        )
+
+    if not matched:
         best_name, score = find_best_match(list_name, name_list, threshold=REVIEW_SCORE)
         if best_name:
             for ev in catalog:
@@ -179,7 +206,7 @@ def map_scheduled_event(
     base.match_method = method
     base.confidence = confidence
 
-    if confidence >= AUTO_CONFIRM_SCORE or method in ("url", "explicit"):
+    if confidence >= AUTO_CONFIRM_SCORE or method in ("url", "explicit", "exact_name"):
         base.match_status = "confirmed"
     else:
         base.match_status = "suggested"
@@ -193,7 +220,7 @@ def map_scheduled_event(
         base.location_score = loc_score
         if loc_score >= LOCATION_DRIFT_THRESHOLD:
             base.location_flag = "ok"
-        elif method in ("url", "explicit") or _names_equivalent(list_name, matched.name):
+        elif method in ("url", "explicit", "exact_name") or _names_equivalent(list_name, matched.name):
             # Site schedule wins for future editions; catalog typical is historical.
             base.location_flag = "site_differs_from_history"
             base.notes.append(
