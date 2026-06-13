@@ -14,14 +14,28 @@ AUTO_CONFIRM_SCORE = 0.95
 REVIEW_SCORE = 0.75
 LOCATION_DRIFT_THRESHOLD = 0.72
 
+_REGION_ALIASES = {
+    "polska": "poland",
+    "deutschland": "germany",
+    "nederland": "netherlands",
+    "uk": "united kingdom",
+}
+
 
 def _norm_location(loc: str) -> str:
     if not loc:
         return ""
     s = loc.lower().strip()
+    s = re.sub(r"[''`]", "", s)
     s = re.sub(r",+", ",", s)
     s = re.sub(r"\s+", " ", s)
+    for old, new in _REGION_ALIASES.items():
+        s = re.sub(rf"\b{old}\b", new, s)
     return s
+
+
+def _primary_city(loc: str) -> str:
+    return _norm_location(loc).split(",")[0].strip()
 
 
 def location_similarity(a: str, b: str) -> float:
@@ -32,7 +46,14 @@ def location_similarity(a: str, b: str) -> float:
         return 1.0
     if na in nb or nb in na:
         return 0.92
+    city_a, city_b = _primary_city(a), _primary_city(b)
+    if city_a and city_b and city_a == city_b:
+        return max(0.92, SequenceMatcher(None, na, nb).ratio())
     return SequenceMatcher(None, na, nb).ratio()
+
+
+def _names_equivalent(list_name: str, catalog_name: str) -> bool:
+    return fuzzy_match_score(list_name, catalog_name) >= 0.95
 
 
 @dataclass
@@ -135,7 +156,7 @@ def map_scheduled_event(
             # Reject fuzzy match when locations clearly disagree (different city/event)
             if matched and matched.typical_location and location_raw:
                 loc_score = location_similarity(location_raw, matched.typical_location)
-                if loc_score < 0.55 and confidence < 0.92:
+                if loc_score < 0.55:
                     base.notes.append(
                         f"Rejected fuzzy {confidence:.2f} → {matched.name!r}: location score {loc_score:.2f}"
                     )
@@ -172,8 +193,8 @@ def map_scheduled_event(
         base.location_score = loc_score
         if loc_score >= LOCATION_DRIFT_THRESHOLD:
             base.location_flag = "ok"
-        elif method in ("url", "explicit"):
-            # Scheduled list location is authoritative; catalog typical is historical.
+        elif method in ("url", "explicit") or _names_equivalent(list_name, matched.name):
+            # Site schedule wins for future editions; catalog typical is historical.
             base.location_flag = "site_differs_from_history"
             base.notes.append(
                 f"Site location {location_raw!r} differs from catalog typical "

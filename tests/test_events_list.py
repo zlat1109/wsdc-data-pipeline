@@ -73,6 +73,40 @@ def test_site_location_not_overridden_by_event_name():
     assert ev["location_raw_original"] == "Washington, DC., VA, USA"
 
 
+def test_dedupe_same_event_prefers_valid_url():
+    from transform.events_list_normalize import normalize_events
+
+    raw = [
+        {
+            "event_name": "Sea Dance Fest",
+            "event_type_raw": "Registry Event",
+            "start_date": "2026-09-11",
+            "end_date": "2026-09-13",
+            "original_date": "Sep 11 - 13, 2026",
+            "location_raw": "Istra, Moscow oblast, Russia",
+            "url": "https://",
+            "country_flag": "",
+            "canceled": False,
+            "on_hiatus": False,
+        },
+        {
+            "event_name": "Sea Dance Fest",
+            "event_type_raw": "Registry Event",
+            "start_date": "2026-09-11",
+            "end_date": "2026-09-13",
+            "original_date": "Sep 11 - 13, 2026",
+            "location_raw": "Moscow, Moscow region, Russia",
+            "url": "https://vk.com/seadancefest",
+            "country_flag": "",
+            "canceled": False,
+            "on_hiatus": False,
+        },
+    ]
+    out = normalize_events(raw)
+    assert len(out) == 1
+    assert "vk.com" in out[0]["url"]
+
+
 def test_fingerprint_stable():
     fp1 = source_fingerprint("Test Event", "2026-06-01", "https://example.com/event/")
     fp2 = source_fingerprint("Test Event", "2026-06-01", "https://example.com/event")

@@ -56,8 +56,13 @@ def normalize_url(url: str) -> str:
     if not url:
         return ""
     parsed = urlparse(url.strip().lower())
+    netloc = parsed.netloc
+    if netloc.startswith("www."):
+        netloc = netloc[4:]
     path = parsed.path.rstrip("/")
-    return f"{parsed.netloc}{path}"
+    if not netloc:
+        return ""
+    return f"{netloc}{path}"
 
 
 def source_fingerprint(event_name: str, start_date: str, url: str) -> str:
@@ -135,4 +140,21 @@ def normalize_event(raw: dict[str, Any]) -> dict[str, Any]:
 
 
 def normalize_events(raw_events: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    return [normalize_event(e) for e in raw_events]
+    normalized = [normalize_event(e) for e in raw_events]
+    return _dedupe_scheduled_rows(normalized)
+
+
+def _url_rank(url: str) -> int:
+    norm = normalize_url(url)
+    return len(norm)
+
+
+def _dedupe_scheduled_rows(events: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Drop duplicate name+date rows; prefer row with a real event URL."""
+    best: dict[tuple[str, str], dict[str, Any]] = {}
+    for ev in events:
+        key = (ev["event_name"].strip().lower(), ev["start_date"])
+        prev = best.get(key)
+        if prev is None or _url_rank(ev.get("url") or "") > _url_rank(prev.get("url") or ""):
+            best[key] = ev
+    return list(best.values())

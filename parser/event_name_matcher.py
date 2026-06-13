@@ -7,6 +7,7 @@ from difflib import SequenceMatcher
 EVENT_NAME_MAPPINGS: dict[str, str] = {
     "Paris Swing Classic": "Paris Westie Fest",
     "Charlotte WestieFest": "Charlotte Westie Fest",
+    "New Years Swing Fling": "New Year's Swing Fling",
     "USA Grand National Dance Championships": "USA Grand Nationals",
     "USA Grand Nationals Dance Championships": "USA Grand Nationals",
     "USA Grand Nationals Dance Championship": "USA Grand Nationals",
@@ -25,7 +26,10 @@ def fuzzy_match_score(name1: str, name2: str) -> float:
     if norm1 == norm2:
         return 1.0
     if norm1 in norm2 or norm2 in norm1:
-        return 0.95
+        shorter, longer = (norm1, norm2) if len(norm1) <= len(norm2) else (norm2, norm1)
+        # Avoid matching "Westie Weekend" → "Spooky Westie Weekend" as near-certain.
+        if len(shorter) / len(longer) >= 0.88:
+            return 0.95
     return SequenceMatcher(None, norm1, norm2).ratio()
 
 
