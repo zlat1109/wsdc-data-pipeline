@@ -46,10 +46,31 @@ def test_clean_event_name_unconfirmed_from_type_div():
 
 
 def test_normalize_list_location():
-    from transform.events_list_maps import normalize_list_location
+    from transform.events_list_maps import clean_list_location
 
-    assert normalize_list_location("", "Milan,, Italy") == "Milan, Italy"
-    assert "Fort Lauderdale" in normalize_list_location("", "Ft. Lauderdale, FL, United States")
+    assert clean_list_location("Milan,, Italy") == "Milan, Italy"
+    assert "Fort Lauderdale" in clean_list_location("Ft. Lauderdale, FL, United States")
+
+
+def test_site_location_not_overridden_by_event_name():
+    from transform.events_list_normalize import normalize_event
+
+    row = {
+        "event_name": "Swing Fling",
+        "event_type_raw": "Registry Event",
+        "start_date": "2026-08-06",
+        "end_date": "2026-08-09",
+        "original_date": "Aug 6 - 9, 2026",
+        "location_raw": "Washington, DC., VA, USA",
+        "url": "http://www.swingfling.com/",
+        "country_flag": "USA",
+        "canceled": False,
+        "on_hiatus": False,
+    }
+    ev = normalize_event(row)
+    assert "Washington" in ev["location_raw"]
+    assert "Herndon" not in ev["location_raw"]
+    assert ev["location_raw_original"] == "Washington, DC., VA, USA"
 
 
 def test_fingerprint_stable():

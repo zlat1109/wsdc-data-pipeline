@@ -172,6 +172,13 @@ def map_scheduled_event(
         base.location_score = loc_score
         if loc_score >= LOCATION_DRIFT_THRESHOLD:
             base.location_flag = "ok"
+        elif method in ("url", "explicit"):
+            # Scheduled list location is authoritative; catalog typical is historical.
+            base.location_flag = "site_differs_from_history"
+            base.notes.append(
+                f"Site location {location_raw!r} differs from catalog typical "
+                f"{matched.typical_location!r} (venue may have moved)"
+            )
         else:
             base.location_flag = "drift"
             base.notes.append(
@@ -210,7 +217,7 @@ def analyze_mapping(
     for r in results:
         d = r.to_dict()
         by_status[r.match_status].append(d)
-        if r.location_flag == "drift":
+        if r.location_flag in ("drift", "site_differs_from_history"):
             location_drifts.append(d)
         if r.canonical_name and r.list_name != r.canonical_name:
             name_variants.append(d)

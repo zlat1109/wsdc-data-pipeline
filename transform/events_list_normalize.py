@@ -9,7 +9,7 @@ from typing import Any
 from urllib.parse import urlparse
 
 from parser.events_list_dates import edition_month_candidates
-from transform.events_list_maps import normalize_list_location
+from transform.events_list_maps import clean_list_location
 
 _COUNTRY_ALPHA3: dict[str, str] = {
     "USA": "United States",
@@ -108,7 +108,8 @@ def normalize_event(raw: dict[str, Any]) -> dict[str, Any]:
     edition = edition_month_candidates(start, end)
     results_year, results_month = edition[0] if edition else (end.year, end.month)
 
-    location_raw = normalize_list_location(name, raw.get("location_raw") or "")
+    scraped_location = raw.get("location_raw") or ""
+    location_raw = clean_list_location(scraped_location)
 
     fp = source_fingerprint(name, raw["start_date"], raw.get("url") or "")
 
@@ -121,7 +122,7 @@ def normalize_event(raw: dict[str, Any]) -> dict[str, Any]:
         "results_year": results_year,
         "results_month": results_month,
         "location_raw": location_raw,
-        "location_raw_original": raw.get("location_raw") or "",
+        "location_raw_original": scraped_location,
         "country": flag_to_country(raw.get("country_flag") or ""),
         "country_flag": raw.get("country_flag") or "",
         "url": raw.get("url") or "",

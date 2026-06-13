@@ -1,20 +1,10 @@
-"""Location and name maps for WSDC Events List (from legacy dashboard parser)."""
+"""Cosmetic cleanup for location strings scraped from worldsdc.com/events/."""
 
 from __future__ import annotations
 
 import re
 
-# By canonical event name (after name cleaning)
-EVENTS_LIST_LOCATION_BY_EVENT: dict[str, str] = {
-    "Avignon City Swing": "Gard, France",
-    "Asia West Coast Swing Open": "Singapore",
-    "Sea Dance Fest": "Anapa, Russia",
-    "Swing Fling": "Herndon, VA",
-    "Swingtzerland": "Zürich, Switzerland",
-    "Easter Swing": "Seattle, WA",
-}
-
-# Exact location string fixes
+# Exact scrape typos / formatting fixes (not venue overrides)
 EVENTS_LIST_LOCATION_EXACT: dict[str, str] = {
     "Zurich,  Swintzerland": "Zürich, Switzerland",
     "Kraków, malopolska, Polska": "Kraków, Poland",
@@ -56,14 +46,11 @@ def _collapse_commas(loc: str) -> str:
     return loc.strip(" ,")
 
 
-def normalize_list_location(event_name: str, location_raw: str) -> str:
-    """Apply known location fixes for events list strings."""
+def clean_list_location(location_raw: str) -> str:
+    """Clean scrape text only — no per-event venue overrides."""
     loc = (location_raw or "").strip()
     if not loc:
         return loc
-
-    if event_name in EVENTS_LIST_LOCATION_BY_EVENT:
-        loc = EVENTS_LIST_LOCATION_BY_EVENT[event_name]
 
     if loc in EVENTS_LIST_LOCATION_EXACT:
         loc = EVENTS_LIST_LOCATION_EXACT[loc]
@@ -86,3 +73,8 @@ def normalize_list_location(event_name: str, location_raw: str) -> str:
             break
 
     return _collapse_commas(loc)
+
+
+def normalize_list_location(_event_name: str, location_raw: str) -> str:
+    """Backward-compatible wrapper; event_name is ignored (site text wins)."""
+    return clean_list_location(location_raw)
