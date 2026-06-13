@@ -8,6 +8,7 @@ EVENT_NAME_MAPPINGS: dict[str, str] = {
     "Paris Swing Classic": "Paris Westie Fest",
     "Charlotte WestieFest": "Charlotte Westie Fest",
     "New Years Swing Fling": "New Year's Swing Fling",
+    "Westie Weekend": "Dance Jam Jack & Jill Weekend",
     "USA Grand National Dance Championships": "USA Grand Nationals",
     "USA Grand Nationals Dance Championships": "USA Grand Nationals",
     "USA Grand Nationals Dance Championship": "USA Grand Nationals",

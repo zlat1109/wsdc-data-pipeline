@@ -51,15 +51,22 @@ def test_url_match_stays_confirmed_when_site_location_differs_from_catalog():
     assert result.location_flag in ("ok", "site_differs_from_history")
 
 
-def test_fuzzy_rejects_different_event_same_substring_name():
+def test_westie_weekend_maps_to_dance_jam_catalog():
     catalog = [
+        CatalogEvent(
+            event_id=372,
+            name="Dance Jam Jack & Jill Weekend",
+            url="http://www.dancejamproductions.com",
+            url_norm="dancejamproductions.com",
+            typical_location="Washington DC, MD, USA",
+        ),
         CatalogEvent(
             event_id=340,
             name="Spooky Westie Weekend",
             url="https://spookywestieweekend.com/",
             url_norm="spookywestieweekend.com",
             typical_location="Singapore, Singapore, Singapore",
-        )
+        ),
     ]
     row = {
         "source_fingerprint": "x",
@@ -71,8 +78,10 @@ def test_fuzzy_rejects_different_event_same_substring_name():
         "is_active": True,
     }
     result = map_scheduled_event(row, catalog, build_url_index(catalog), [c.name for c in catalog])
-    assert result.match_status == "new"
-    assert result.canonical_event_id is None
+    assert result.match_status == "confirmed"
+    assert result.match_method == "explicit"
+    assert result.canonical_name == "Dance Jam Jack & Jill Weekend"
+    assert result.canonical_event_id == 372
 
 
 def test_exact_name_fuzzy_allows_venue_move():
