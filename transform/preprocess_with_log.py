@@ -18,6 +18,7 @@ from transform.data_preprocessing import (
     normalize_level,
     standardize_result,
 )
+from transform.event_knowledge import apply_event_location_patches, event_location_patches
 from transform.preprocess_tracker import PreprocessTracker
 from transform.quality_audit import (
     QualityFinding,
@@ -243,6 +244,27 @@ def preprocess_with_log(data: dict[str, pd.DataFrame]) -> tuple[dict[str, pd.Dat
         if "event_result" in df.columns:
             df["event_result_standardized"] = df["event_result"].apply(standardize_result)
         result["dancers_results_info"] = _apply_event_corrections_tracked(df, tracker)
+
+    if "location_info" in result and "dancers_results_info" in result:
+        before = result["location_info"]
+        patched = apply_event_location_patches(before, result["dancers_results_info"])
+        for event_id, fixes in event_location_patches().items():
+            for col, val in fixes.items():
+                if col not in patched.columns or col not in before.columns:
+                    continue
+                changed = before[col].astype(str) != patched[col].astype(str)
+                count = int(changed.sum())
+                if count:
+                    tracker.record(
+                        "EVENT_LOCATION_BY_EVENT_ID",
+                        "location_info",
+                        col,
+                        f"event_id={event_id}",
+                        str(val),
+                        count,
+                        "event_id_fix",
+                    )
+        result["location_info"] = patched
 
     if "dancer_role_info" in data:
         df = data["dancer_role_info"].copy()

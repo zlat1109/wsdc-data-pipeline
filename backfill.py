@@ -22,6 +22,7 @@ DEFAULT_DATA_DIR = Path(
 sys.path.insert(0, str(PROJECT_ROOT / "db"))
 
 from connection import connect  # noqa: E402
+from enrich_known_events import enrich_core_known_events  # noqa: E402
 from staging_loader import load_staging_from_dir  # noqa: E402
 from watermark import refresh_watermark  # noqa: E402
 
@@ -111,6 +112,7 @@ def main() -> None:
 
             print("Promoting staging -> core ...")
             cur.execute(read_sql("promote_core.sql"))
+            enrich_core_known_events(conn)
 
             if not args.skip_points_history:
                 changed_path = args.data_dir / "changed_dancers_points_info.csv"

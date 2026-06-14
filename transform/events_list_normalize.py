@@ -9,7 +9,7 @@ from typing import Any
 from urllib.parse import urlparse
 
 from parser.events_list_dates import edition_month_candidates
-from transform.events_list_maps import clean_list_location
+from transform.events_list_maps import clean_list_location, country_from_location
 
 _COUNTRY_ALPHA3: dict[str, str] = {
     "USA": "United States",
@@ -43,6 +43,10 @@ _COUNTRY_ALPHA3: dict[str, str] = {
     "PRT": "Portugal",
     "SVK": "Slovakia",
     "SVN": "Slovenia",
+    "BGR": "Bulgaria",
+    "ROU": "Romania",
+    "LVA": "Latvia",
+    "MYS": "Malaysia",
 }
 
 _UNCONFIRMED_RE = re.compile(
@@ -50,6 +54,10 @@ _UNCONFIRMED_RE = re.compile(
     re.I,
 )
 _HIATUS_NAME_RE = re.compile(r"\(on hiatus\)|\(hiatus\)", re.I)
+
+REGISTRY_STATUS = "Registry Event"
+TRIAL_STATUS = "Trial Event"
+VALID_STATUS_EVENTS = frozenset({REGISTRY_STATUS, TRIAL_STATUS})
 
 
 def normalize_url(url: str) -> str:
@@ -74,6 +82,19 @@ def source_fingerprint(event_name: str, start_date: str, url: str) -> str:
     return hashlib.sha256(raw.encode()).hexdigest()[:24]
 
 
+def canonical_status_event(*sources: str) -> str:
+    """Map scrape/name text to WSDC schedule status (always Registry or Trial)."""
+    for source in sources:
+        if not source:
+            continue
+        low = source.lower()
+        if "trial event" in low or low.strip() == "trial":
+            return TRIAL_STATUS
+        if "registry event" in low or low.strip() == "registry":
+            return REGISTRY_STATUS
+    return REGISTRY_STATUS
+
+
 def clean_event_name(raw_name: str, event_type_raw: str = "") -> tuple[str, str, bool, bool]:
     """Return (name, status_event, confirmed, on_hiatus)."""
     name = raw_name.strip()
@@ -83,11 +104,13 @@ def clean_event_name(raw_name: str, event_type_raw: str = "") -> tuple[str, str,
     status_event = (event_type_raw or "").strip()
     if not status_event:
         if "Registry Event" in name:
-            status_event = "Registry Event"
+            status_event = REGISTRY_STATUS
             name = name.replace("Registry Event", "").strip()
         elif "Trial Event" in name or "(Trial Event)" in name:
-            status_event = "Trial Event"
+            status_event = TRIAL_STATUS
             name = name.replace("(Trial Event)", "").replace("Trial Event", "").strip()
+
+    status_event = canonical_status_event(status_event, raw_name)
 
     confirmed = True
     if _UNCONFIRMED_RE.search(name):
@@ -103,6 +126,40 @@ def flag_to_country(flag: str) -> str:
     return _COUNTRY_ALPHA3.get(flag.upper(), "")
 
 
+def country_to_flag(country: str) -> str:
+    if not country:
+        return ""
+    for code, name in _COUNTRY_ALPHA3.items():
+        if name == country:
+            return code
+    return ""
+
+
+_PLACEHOLDER_FLAGS = frozenset({"TRANSPARENT"})
+
+
+def _clean_scraped_flag(country_flag: str) -> str:
+    flag = (country_flag or "").strip().upper()
+    if flag in _PLACEHOLDER_FLAGS:
+        return ""
+    return flag
+
+
+def resolve_country_fields(country_flag: str, location_raw: str) -> tuple[str, str]:
+    """Return (country, country_flag); derive missing side from flag or location text."""
+    flag = _clean_scraped_flag(country_flag)
+    country = flag_to_country(flag) if flag else ""
+
+    if not country:
+        country = country_from_location(location_raw)
+    if country and not flag:
+        flag = country_to_flag(country)
+    if flag and not country:
+        country = flag_to_country(flag)
+
+    return country, flag
+
+
 def normalize_event(raw: dict[str, Any]) -> dict[str, Any]:
     name, status_event, confirmed, hiatus_from_name = clean_event_name(
         raw.get("event_name") or "",
@@ -116,6 +173,8 @@ def normalize_event(raw: dict[str, Any]) -> dict[str, Any]:
     scraped_location = raw.get("location_raw") or ""
     location_raw = clean_list_location(scraped_location)
 
+    country, country_flag = resolve_country_fields(raw.get("country_flag") or "", location_raw)
+
     fp = source_fingerprint(name, raw["start_date"], raw.get("url") or "")
 
     return {
@@ -128,8 +187,8 @@ def normalize_event(raw: dict[str, Any]) -> dict[str, Any]:
         "results_month": results_month,
         "location_raw": location_raw,
         "location_raw_original": scraped_location,
-        "country": flag_to_country(raw.get("country_flag") or ""),
-        "country_flag": raw.get("country_flag") or "",
+        "country": country,
+        "country_flag": country_flag,
         "url": raw.get("url") or "",
         "status_event": status_event,
         "confirmed": confirmed,

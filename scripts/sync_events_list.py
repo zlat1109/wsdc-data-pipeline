@@ -22,7 +22,9 @@ sys.path.insert(0, str(PROJECT_ROOT))
 sys.path.insert(0, str(PROJECT_ROOT / "db"))
 
 from parser.events_list_scraper import scrape_events_list  # noqa: E402
-from transform.events_list_mapping import analyze_mapping  # noqa: E402
+from refresh_events_list_current import refresh_events_list_current  # noqa: E402
+from transform.events_list_catalog import load_catalog  # noqa: E402
+from transform.events_list_mapping import CatalogEvent, analyze_mapping  # noqa: E402
 from transform.events_list_normalize import normalize_events  # noqa: E402
 
 DATA_DIR = PROJECT_ROOT / "data" / "events_list"
@@ -107,6 +109,7 @@ def save_artifacts(
         "results_month",
         "location_raw",
         "country",
+        "country_flag",
         "url",
         "status_event",
         "confirmed",
@@ -134,7 +137,8 @@ def load_to_supabase(
     removed: list[dict],
     unchanged: int,
     source: str,
-) -> int:
+    catalog: list[CatalogEvent],
+) -> tuple[int, int]:
     from connection import connect
 
     now = datetime.now(timezone.utc)
@@ -242,15 +246,25 @@ def load_to_supabase(
                     ),
                 )
 
+            current_count = refresh_events_list_current(
+                conn, events, run_id, catalog=catalog
+            )
+
+            from build_event_catalog import rebuild_event_catalog
+
+            rebuild_event_catalog(conn)
+
         conn.commit()
-    return run_id
+    return run_id, current_count
 
 
-def run_mapping_analysis(events: list[dict[str, Any]]) -> dict[str, Any]:
+def run_mapping_analysis(
+    events: list[dict[str, Any]],
+    catalog: list[CatalogEvent] | None = None,
+) -> dict[str, Any]:
     """Compare schedule to points catalog; save mapping/latest.json."""
-    from transform.events_list_catalog import load_catalog
-
-    catalog = load_catalog()
+    if catalog is None:
+        catalog = load_catalog()
     report = analyze_mapping(events, catalog)
     report["generated_at"] = datetime.now(timezone.utc).isoformat()
     report["catalog_events"] = len(catalog)
@@ -311,8 +325,10 @@ def main() -> None:
     )
     print_summary(report)
 
+    catalog: list[CatalogEvent] | None = None
     try:
-        mapping_report = run_mapping_analysis(events)
+        catalog = load_catalog()
+        mapping_report = run_mapping_analysis(events, catalog=catalog)
         print_mapping_summary(mapping_report)
         report["mapping_summary"] = mapping_report.get("summary")
     except Exception as exc:
@@ -320,9 +336,14 @@ def main() -> None:
 
     if not args.dry_run and not args.skip_db:
         try:
-            run_id = load_to_supabase(events, added, removed, unchanged, args.source)
-            print(f"\nSupabase run_id={run_id}")
+            if catalog is None:
+                catalog = load_catalog()
+            run_id, current_count = load_to_supabase(
+                events, added, removed, unchanged, args.source, catalog
+            )
+            print(f"\nSupabase run_id={run_id}  current_events={current_count}")
             report["run_id"] = run_id
+            report["current_events"] = current_count
         except Exception as exc:
             print(f"\nDB load failed: {exc}", file=sys.stderr)
             if args.source == "github-actions":

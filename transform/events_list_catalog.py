@@ -2,8 +2,23 @@
 
 from __future__ import annotations
 
+from transform.event_knowledge import KNOWN_EVENT_METADATA
 from transform.events_list_mapping import CatalogEvent
 from transform.events_list_normalize import normalize_url
+
+
+def _supplement_catalog(events: list[tuple[int, str, str]]) -> list[tuple[int, str, str]]:
+    """Add or enrich events from KNOWN_EVENT_METADATA (results-only catalog gaps)."""
+    by_id = {eid: (eid, name, url) for eid, name, url in events}
+    for eid, meta in KNOWN_EVENT_METADATA.items():
+        name = meta.get("name", "")
+        url = meta.get("url", "")
+        if eid in by_id:
+            cur_name, cur_url = by_id[eid][1], by_id[eid][2]
+            by_id[eid] = (eid, cur_name or name, url or cur_url)
+        else:
+            by_id[eid] = (eid, name, url)
+    return sorted(by_id.values(), key=lambda row: row[1].lower())
 
 
 def load_catalog() -> list[CatalogEvent]:
@@ -11,7 +26,7 @@ def load_catalog() -> list[CatalogEvent]:
 
     with connect() as conn, conn.cursor() as cur:
         cur.execute("SELECT event_id, name, COALESCE(url, '') FROM core.events ORDER BY name")
-        events = [(int(r[0]), r[1], r[2] or "") for r in cur.fetchall()]
+        events = _supplement_catalog([(int(r[0]), r[1], r[2] or "") for r in cur.fetchall()])
 
         cur.execute(
             """
@@ -31,6 +46,10 @@ def load_catalog() -> list[CatalogEvent]:
         by_event.setdefault(eid, []).append((loc, int(cnt)))
     for eid, pairs in by_event.items():
         typical[eid] = pairs[0][0]
+
+    for eid, meta in KNOWN_EVENT_METADATA.items():
+        if eid not in typical and meta.get("typical_location"):
+            typical[eid] = meta["typical_location"]
 
     return [
         CatalogEvent(

@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-06-12T21:01:48.471463+00:00",
+  "generated_at": "2026-06-14T17:46:32.365707+00:00",
   "source": "local",
   "run_id": null,
   "summary": {
     "before_findings_count": 9,
-    "applied_rules_count": 46,
-    "applied_rows_touched": 4239,
-    "manual_review_count": 8,
-    "manual_review_new_count": 1
+    "applied_rules_count": 49,
+    "applied_rows_touched": 4246,
+    "manual_review_count": 7,
+    "manual_review_new_count": 0
   },
   "before_processing": {
     "description": "Issues detected in raw CSV before any normalization",
@@ -198,43 +198,7 @@
         "rule_id": "LOCATION_INFO_ID_CORRECTION",
         "table": "location_info",
         "column": "event_city",
-        "from_value": "location_id=222 was St. Petersburg",
-        "to_value": "Stockholm",
-        "rows_affected": 1,
-        "source": "location_id_fix"
-      },
-      {
-        "rule_id": "LOCATION_INFO_ID_CORRECTION",
-        "table": "location_info",
-        "column": "event_state",
-        "from_value": "location_id=222 was nan",
-        "to_value": "",
-        "rows_affected": 1,
-        "source": "location_id_fix"
-      },
-      {
-        "rule_id": "LOCATION_INFO_ID_CORRECTION",
-        "table": "location_info",
-        "column": "event_country",
-        "from_value": "location_id=222 was Russia",
-        "to_value": "Sweden",
-        "rows_affected": 1,
-        "source": "location_id_fix"
-      },
-      {
-        "rule_id": "LOCATION_INFO_ID_CORRECTION",
-        "table": "location_info",
-        "column": "event_location",
-        "from_value": "location_id=222 was St. Petersburg,  Russia",
-        "to_value": "Stockholm, Sweden",
-        "rows_affected": 1,
-        "source": "location_id_fix"
-      },
-      {
-        "rule_id": "LOCATION_INFO_ID_CORRECTION",
-        "table": "location_info",
-        "column": "event_city",
-        "from_value": "location_id=158 was La Grande Motte",
+        "from_value": "location_id=161 was Albany",
         "to_value": "Albany",
         "rows_affected": 1,
         "source": "location_id_fix"
@@ -243,7 +207,7 @@
         "rule_id": "LOCATION_INFO_ID_CORRECTION",
         "table": "location_info",
         "column": "event_state",
-        "from_value": "location_id=158 was nan",
+        "from_value": "location_id=161 was nan",
         "to_value": "New York",
         "rows_affected": 1,
         "source": "location_id_fix"
@@ -252,7 +216,7 @@
         "rule_id": "LOCATION_INFO_ID_CORRECTION",
         "table": "location_info",
         "column": "event_country",
-        "from_value": "location_id=158 was France",
+        "from_value": "location_id=161 was United States",
         "to_value": "United States",
         "rows_affected": 1,
         "source": "location_id_fix"
@@ -261,7 +225,7 @@
         "rule_id": "LOCATION_INFO_ID_CORRECTION",
         "table": "location_info",
         "column": "event_location",
-        "from_value": "location_id=158 was La Grande Motte, Herault, France",
+        "from_value": "location_id=161 was Albany, NY, Albany",
         "to_value": "Albany, NY",
         "rows_affected": 1,
         "source": "location_id_fix"
@@ -336,6 +300,42 @@
         "from_value": "city=san antonio",
         "to_value": "San Antonio, TX",
         "rows_affected": 1,
+        "source": "city_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_CITY_CORRECTION",
+        "table": "location_info",
+        "column": "event_city",
+        "from_value": "city=albany",
+        "to_value": "Albany",
+        "rows_affected": 2,
+        "source": "city_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_CITY_CORRECTION",
+        "table": "location_info",
+        "column": "event_state",
+        "from_value": "city=albany",
+        "to_value": "New York",
+        "rows_affected": 2,
+        "source": "city_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_CITY_CORRECTION",
+        "table": "location_info",
+        "column": "event_country",
+        "from_value": "city=albany",
+        "to_value": "United States",
+        "rows_affected": 2,
+        "source": "city_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_CITY_CORRECTION",
+        "table": "location_info",
+        "column": "event_location",
+        "from_value": "city=albany",
+        "to_value": "Albany, NY",
+        "rows_affected": 2,
         "source": "city_fix"
       },
       {
@@ -607,6 +607,33 @@
         "to_value": "West in Lyon",
         "rows_affected": 1510,
         "source": "known_map"
+      },
+      {
+        "rule_id": "EVENT_LOCATION_BY_EVENT_ID",
+        "table": "location_info",
+        "column": "event_city",
+        "from_value": "event_id=229",
+        "to_value": "Stockholm",
+        "rows_affected": 1,
+        "source": "event_id_fix"
+      },
+      {
+        "rule_id": "EVENT_LOCATION_BY_EVENT_ID",
+        "table": "location_info",
+        "column": "event_country",
+        "from_value": "event_id=229",
+        "to_value": "Sweden",
+        "rows_affected": 1,
+        "source": "event_id_fix"
+      },
+      {
+        "rule_id": "EVENT_LOCATION_BY_EVENT_ID",
+        "table": "location_info",
+        "column": "event_location",
+        "from_value": "event_id=229",
+        "to_value": "Stockholm, Sweden",
+        "rows_affected": 1,
+        "source": "event_id_fix"
       }
     ]
   },
@@ -632,40 +659,6 @@
         "suggested_fix": "Add to LEVEL_NORMALIZATION in transform/data_preprocessing.py or transform/normalize.py",
         "fingerprint": "f6dffcec5792606f",
         "is_new": false,
-        "requires_manual_review": true
-      },
-      {
-        "category": "event_naming",
-        "code": "EVENT_NAME_NEW_SINCE_LAST_RUN",
-        "severity": "info",
-        "message": "New event names appeared since last quality report (review naming)",
-        "count": 7,
-        "examples": [
-          {
-            "event_name": "Dutch Open West Coast Swing"
-          },
-          {
-            "event_name": "Go West SwingFest"
-          },
-          {
-            "event_name": "London SwingVitational"
-          },
-          {
-            "event_name": "Mooseland Swing"
-          },
-          {
-            "event_name": "Rock the Barn"
-          },
-          {
-            "event_name": "SwingVester"
-          },
-          {
-            "event_name": "West in Lyon"
-          }
-        ],
-        "suggested_fix": "Check if variant of existing event; add normalization rule if needed",
-        "fingerprint": "33bde0bb349d20ae",
-        "is_new": true,
         "requires_manual_review": true
       },
       {

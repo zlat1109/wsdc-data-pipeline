@@ -24,6 +24,37 @@ _EXTRACT_JS = """
         return t.includes('hiatus') || t.includes('пропуск');
     }
 
+    function normalizeType(text) {
+        const t = (text || '').trim().toLowerCase();
+        if (!t) return '';
+        if (t.includes('trial')) return 'Trial Event';
+        if (t.includes('registry')) return 'Registry Event';
+        return '';
+    }
+
+    function rowTypeText(row) {
+        if (!row) return '';
+        for (const el of row.querySelectorAll('.event_type')) {
+            const t = normalizeType(el.textContent);
+            if (t) return t;
+        }
+        for (const cell of row.querySelectorAll('td')) {
+            const t = normalizeType(cell.textContent);
+            if (t) return t;
+        }
+        return '';
+    }
+
+    function findEventType(row, nameCell) {
+        let t = normalizeType(nameCell.querySelector('.event_type')?.textContent);
+        if (t) return t;
+        t = rowTypeText(row);
+        if (t) return t;
+        return rowTypeText(row.previousElementSibling);
+    }
+
+    let pendingType = '';
+
     rows.forEach(row => {
         const cells = row.querySelectorAll('td');
         if (cells.length < 3) return;
@@ -32,8 +63,16 @@ _EXTRACT_JS = """
         const nameCell = cells[1];
         const nameLink = nameCell.querySelector('.event_name a') || nameCell.querySelector('a');
         let name = nameLink ? nameLink.textContent.trim() : nameCell.textContent.trim();
-        const typeEl = nameCell.querySelector('.event_type');
-        const eventType = typeEl ? typeEl.textContent.trim() : '';
+        const typeFromDom = findEventType(row, nameCell);
+        const eventType = typeFromDom || pendingType;
+
+        if (!name) {
+            if (typeFromDom) pendingType = typeFromDom;
+            return;
+        }
+
+        pendingType = '';
+
         const url = nameLink ? nameLink.href : '';
         let location = cells[2] ? cells[2].textContent.trim() : '';
         if (!location && cells.length > 3) {
@@ -51,8 +90,6 @@ _EXTRACT_JS = """
 
         const canceled = (row.className || '').includes('event-canceled');
         const onHiatus = containsHiatus(name) || containsHiatus(row.textContent || '');
-
-        if (!name) return;
 
         events.push({
             date,

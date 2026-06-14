@@ -20,6 +20,8 @@ DEFAULT_DATA_DIR = Path(
 sys.path.insert(0, str(PROJECT_ROOT / "db"))
 
 from connection import connect  # noqa: E402
+from build_event_catalog import rebuild_event_catalog  # noqa: E402
+from enrich_known_events import enrich_core_known_events  # noqa: E402
 from staging_loader import load_staging_from_dir  # noqa: E402
 from watermark import refresh_watermark  # noqa: E402
 
@@ -57,6 +59,8 @@ def main() -> None:
                 {"run_id": run_id},
             )
             cur.execute(read_sql("promote_core.sql"))
+            enrich_core_known_events(conn)
+            catalog_count, edition_count = rebuild_event_catalog(conn)
 
             cur.execute(
                 """
@@ -77,6 +81,7 @@ def main() -> None:
             print(f"Watermark updated to {wm}")
 
     print(f"Load complete (run_id={run_id}).")
+    print(f"Event catalog: {catalog_count} events, {edition_count} editions.")
 
 
 if __name__ == "__main__":

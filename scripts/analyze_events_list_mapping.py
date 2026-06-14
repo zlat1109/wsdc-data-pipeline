@@ -25,22 +25,28 @@ REPORT_DIR = PROJECT_ROOT / "data" / "events_list" / "mapping"
 CURRENT_PATH = PROJECT_ROOT / "data" / "events_list" / "current.json"
 
 
-def load_scheduled(from_db: bool) -> list[dict]:
+def load_scheduled(from_db: bool, *, editions: bool = False) -> list[dict]:
     if from_db:
         from connection import connect
 
+        table = "core.scheduled_events" if editions else "core.events_list_current"
+        extra = ", is_active" if editions else ""
         with connect() as conn, conn.cursor() as cur:
             cur.execute(
-                """
+                f"""
                 SELECT source_fingerprint, event_name, start_date, end_date,
-                       location_raw, url, status_event, is_active
-                FROM core.scheduled_events
-                WHERE is_active = true
+                       location_raw, url, status_event{extra}
+                FROM {table}
+                {"WHERE is_active = true" if editions else ""}
                 ORDER BY start_date, event_name
                 """
             )
             cols = [d[0] for d in cur.description]
-            return [dict(zip(cols, row)) for row in cur.fetchall()]
+            rows = [dict(zip(cols, row)) for row in cur.fetchall()]
+            if not editions:
+                for row in rows:
+                    row.setdefault("is_active", True)
+            return rows
 
     data = json.loads(CURRENT_PATH.read_text(encoding="utf-8"))
     return data.get("events") or []
@@ -79,9 +85,14 @@ def print_summary(report: dict) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--from-db", action="store_true", help="Read scheduled from Supabase")
+    parser.add_argument(
+        "--editions",
+        action="store_true",
+        help="With --from-db: read edition archive instead of one-row-per-event current",
+    )
     args = parser.parse_args()
 
-    scheduled = load_scheduled(args.from_db)
+    scheduled = load_scheduled(args.from_db, editions=args.editions)
     catalog = load_catalog()
     report = analyze_mapping(scheduled, catalog)
     report["generated_at"] = datetime.now(timezone.utc).isoformat()

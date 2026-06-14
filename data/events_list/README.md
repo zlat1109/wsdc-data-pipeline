@@ -13,10 +13,27 @@ Weekly sync of the official upcoming events schedule.
 
 ## Supabase
 
-- `core.scheduled_events` — current catalog (`is_active = true`)
-- `history.events_list_runs` — run metadata
-- `history.events_list_changes` — added/removed log per run
-- `export.scheduled_events` — Tableau view
+| Table / view | Role |
+|--------------|------|
+| `core.events_list_current` | **Latest snapshot** — one row per logical event (nearest upcoming edition) |
+| `core.scheduled_events` | **Edition archive** — all `source_fingerprint` observations (`is_active` = on site now) |
+| `history.events_list_runs` | Run metadata |
+| `history.events_list_changes` | Added/removed log per run |
+| `export.scheduled_events` | Tableau view → `events_list_current` (one row per event) |
+| `export.scheduled_event_editions` | All active editions (multi-year listings on site) |
+| `export.scheduled_events_legacy` | **Deprecated** — old edition-level shape for existing dashboards |
+
+## Tableau migration (2026-06)
+
+`export.scheduled_events` now reads from `core.events_list_current` (165 brands, not 176 editions).
+
+| Need | View |
+|------|------|
+| One row per event (nearest date) | `export.scheduled_events` |
+| Every future date on the site | `export.scheduled_event_editions` |
+| Old workbook without changes | `export.scheduled_events_legacy` |
+
+New columns on `export.scheduled_events`: `schedule_event_key`, `canonical_event_id`, `canonical_name`, `match_status`, `upcoming_editions`. Removed: `is_active`, `first_seen_at`, `last_seen_at`.
 
 ## Commands
 

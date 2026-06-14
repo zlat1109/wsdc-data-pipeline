@@ -58,7 +58,7 @@ Requires `TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID` in this repo's Actions secret
 - **Schedule**: every **Tuesday 08:00 UTC** (~10:00 Europe/Madrid)
 - Scrapes https://www.worldsdc.com/events/ (Playwright)
 - Writes `data/events_list/current.json`, `events_list.csv`, `changelog/run_*.json`
-- Loads `core.scheduled_events` + `history.events_list_changes` in Supabase
+- Loads `core.scheduled_events` (edition archive), `core.events_list_current` (one row per event), and `history.events_list_changes` in Supabase
 - Commits `data/events_list/` to repo
 - Manual: Actions → **Sync WSDC Events List** → Run workflow
 
@@ -103,8 +103,11 @@ Manual or auto-triggered pipeline:
 1. **`cloud_parse.py --full`** (when `parse_full=true`) — HTTP fetch **every dancer ID 1..live_max**, replace `dancer_role_info`, `dancers_points_info`, `dancers_results_info` in `data/`. Needed because existing dancers get new results too, not only new registry IDs.
 2. `db/apply.py` — pending migrations
 3. `load.py` — CSV → Supabase (skipped with `export_only=true`)
-4. `export.py` — Supabase → `data/*.csv` (also refreshes `events_wsdc`, `location_info`)
+4. `export.py` — Supabase → `data/*.csv` (legacy 5 + `event_catalog`, `event_editions`, `scheduled_events`)
 5. Git commit + push `data/*.csv`
+
+Optional export flag (manual/local only): `--include-results-by-event` adds ~47 MB `results_by_event.csv`.
+Default CI export uses joins in Tableau instead (catalog + editions + `dancers_results_info`).
 
 **Timing:** ~28k IDs × 0.3s delay ≈ 2–3 h. Workflow timeout is 360 min.
 

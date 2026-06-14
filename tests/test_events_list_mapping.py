@@ -166,3 +166,59 @@ def test_santa_swing_url_match_with_www():
     from transform.events_list_normalize import normalize_url
 
     assert normalize_url("https://www.santaswing.pl/") == normalize_url("http://santaswing.pl")
+
+
+def test_scandinavian_open_maps_by_url_when_catalog_supplemented():
+    from transform.events_list_catalog import _supplement_catalog
+    from transform.events_list_normalize import normalize_url
+
+    events = _supplement_catalog([])
+    catalog = [
+        CatalogEvent(
+            event_id=eid,
+            name=name,
+            url=url,
+            url_norm=normalize_url(url),
+            typical_location="Stockholm, Sweden",
+        )
+        for eid, name, url in events
+    ]
+    row = {
+        "source_fingerprint": "snow",
+        "event_name": 'Scandinavian Open WCS "SNOW"',
+        "start_date": "2026-10-28",
+        "location_raw": "Stockholm, Sweden, Sweden",
+        "url": "http://www.snowcs.se/",
+        "status_event": "Registry Event",
+        "is_active": True,
+    }
+    result = map_scheduled_event(row, catalog, build_url_index(catalog), [c.name for c in catalog])
+    assert result.match_status == "confirmed"
+    assert result.canonical_event_id == 229
+    assert result.canonical_name == "Scandinavian Open"
+
+
+def test_calgary_town_open_maps_to_bto_open():
+    catalog = [
+        CatalogEvent(
+            event_id=324,
+            name="BTO Open",
+            url="https://ctodance.ca/",
+            url_norm="ctodance.ca",
+            typical_location="Calgary, Alberta, Canada",
+        ),
+    ]
+    row = {
+        "source_fingerprint": "cto",
+        "event_name": "Calgary Town Open",
+        "start_date": "2026-09-24",
+        "location_raw": "Calgary, Alberta, Canada",
+        "url": "https://ctodance.ca/",
+        "status_event": "Registry Event",
+        "is_active": True,
+    }
+    result = map_scheduled_event(row, catalog, build_url_index(catalog), [c.name for c in catalog])
+    assert result.match_status == "confirmed"
+    assert result.canonical_event_id == 324
+    assert result.canonical_name == "BTO Open"
+

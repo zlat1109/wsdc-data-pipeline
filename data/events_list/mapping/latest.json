@@ -1,12 +1,12 @@
 {
   "summary": {
     "scheduled_active": 175,
-    "confirmed": 152,
+    "confirmed": 162,
     "suggested": 1,
     "review": 0,
-    "new_unmapped": 22,
+    "new_unmapped": 12,
     "location_drifts": 4,
-    "name_variants": 57
+    "name_variants": 66
   },
   "confirmed": [
     {
@@ -17,7 +17,7 @@
       "list_url": "http://www.balticswing.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 222,
       "canonical_name": "Baltic Swing",
@@ -35,7 +35,7 @@
       "list_url": "http://www.d-townswing.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 220,
       "canonical_name": "D-Townswing",
@@ -73,7 +73,7 @@
       "list_url": "http://www.libertyswing.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "fuzzy",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 96,
       "canonical_name": "Liberty Swing Dance Championships",
@@ -84,6 +84,27 @@
       "notes": []
     },
     {
+      "source_fingerprint": "fbd321abcaa6e158438fcb62",
+      "list_name": "BaroqueSwing",
+      "start_date": "2026-06-25",
+      "location_raw": "Ludwigsburg, Baden-Württemberg, Deutschland",
+      "list_url": "https://baroqueswing.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 374,
+      "canonical_name": "Barock Swing Ludwigsburg",
+      "catalog_url": "https://lb-barockswing.com/index.php",
+      "typical_location": "Ludwigsburg, Baden-Württemberg, Deutschland",
+      "location_score": 1.0,
+      "location_flag": "ok",
+      "notes": [
+        "List URL 'https://baroqueswing.com/' differs from catalog URL 'https://lb-barockswing.com/index.php' — using event name",
+        "Name differs: list='BaroqueSwing' catalog='Barock Swing Ludwigsburg'"
+      ]
+    },
+    {
       "source_fingerprint": "a196f56d82a8bb43a12d6aa4",
       "list_name": "Colorado Country Classic",
       "start_date": "2026-06-25",
@@ -91,7 +112,7 @@
       "list_url": "https://coloradocountryclassic.net/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 109,
       "canonical_name": "Colorado Country Classic",
@@ -129,7 +150,7 @@
       "list_url": "https://www.swingfiction.cz/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 331,
       "canonical_name": "Swing Fiction",
@@ -147,7 +168,7 @@
       "list_url": "https://www.wildwildwestie.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 225,
       "canonical_name": "Wild Wild Westie",
@@ -185,7 +206,7 @@
       "list_url": "https://ekarolas.com/saunaswing/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 360,
       "canonical_name": "SaunaSwing",
@@ -203,7 +224,7 @@
       "list_url": "https://t.me/americamodancecamp%20https://vk.com/americano2025",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "fuzzy",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 278,
       "canonical_name": "Americano Dance Camp",
@@ -211,7 +232,9 @@
       "typical_location": "Samara, Samara state, Russia",
       "location_score": 1.0,
       "location_flag": "ok",
-      "notes": []
+      "notes": [
+        "List URL 'https://t.me/americamodancecamp%20https://vk.com/americano2025' differs from catalog URL 'https://t.me/americamodancecamp https://vk.com/americano2025' — using event name"
+      ]
     },
     {
       "source_fingerprint": "5aba6e3970517e1f980d242f",
@@ -261,7 +284,7 @@
       "list_url": "https://carolinasummerswing.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 373,
       "canonical_name": "Carolina Summer Swing",
@@ -279,7 +302,7 @@
       "list_url": "https://mediterraneanopenwcs.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 375,
       "canonical_name": "Mediterranean Open WCS",
@@ -317,7 +340,7 @@
       "list_url": "https://revitalisewcs.melbourne/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "fuzzy",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 385,
       "canonical_name": "Revitalise WCS",
@@ -325,7 +348,9 @@
       "typical_location": "Melbourne, Victoria, Australia",
       "location_score": 1.0,
       "location_flag": "ok",
-      "notes": []
+      "notes": [
+        "List URL 'https://revitalisewcs.melbourne/' differs from catalog URL 'https://withjoy.com/revitalisewcs-melbourne2025/welcome' — using event name"
+      ]
     },
     {
       "source_fingerprint": "8c2cc8f73c9484e4bb102f1b",
@@ -335,7 +360,7 @@
       "list_url": "https://rockthebarn.se/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 256,
       "canonical_name": "Rock The Barn",
@@ -373,7 +398,7 @@
       "list_url": "https://floridadancemagic.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 149,
       "canonical_name": "Florida Dance Magic",
@@ -391,7 +416,7 @@
       "list_url": "http://www.seasunswing.fr/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 164,
       "canonical_name": "Sea Sun and Swing",
@@ -409,7 +434,7 @@
       "list_url": "https://www.summernightswestival.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 383,
       "canonical_name": "Warsaw Summer Nights Westival",
@@ -427,7 +452,7 @@
       "list_url": "https://lisbonwestiefest.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 382,
       "canonical_name": "Lisbon Westie Fest",
@@ -465,7 +490,7 @@
       "list_url": "http://www.swingfling.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 59,
       "canonical_name": "Swing Fling",
@@ -505,7 +530,7 @@
       "list_url": "http://www.nedancefestival.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 157,
       "canonical_name": "New England Dance Festival",
@@ -523,7 +548,7 @@
       "list_url": "https://wcs-gps.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 384,
       "canonical_name": "Grand Party Sofia (GPS)",
@@ -534,6 +559,26 @@
       "notes": []
     },
     {
+      "source_fingerprint": "5bc8004ec3ef52e3227c452b",
+      "list_name": "UpTown Swing",
+      "start_date": "2026-08-14",
+      "location_raw": "Stockholm, Stockholm, Sweden",
+      "list_url": "http://www.uptownswing.se/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 264,
+      "canonical_name": "Swedish Swing Summer Camp",
+      "catalog_url": "http://www.uptownswing.se",
+      "typical_location": "Stockholm, Stockholm, Sweden",
+      "location_score": 1.0,
+      "location_flag": "ok",
+      "notes": [
+        "Name differs: list='UpTown Swing' catalog='Swedish Swing Summer Camp'"
+      ]
+    },
+    {
       "source_fingerprint": "f3bb0061917b5b97537a937a",
       "list_name": "The Bend Connection",
       "start_date": "2026-08-20",
@@ -541,7 +586,7 @@
       "list_url": "http://thebendconnection.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 356,
       "canonical_name": "The Bend Connection",
@@ -559,7 +604,7 @@
       "list_url": "http://summerhummerboston.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 53,
       "canonical_name": "Summer Hummer",
@@ -577,7 +622,7 @@
       "list_url": "http://www.code03swing.com/shakedown",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 298,
       "canonical_name": "Shakedown Swing",
@@ -608,6 +653,26 @@
       ]
     },
     {
+      "source_fingerprint": "0c9f27d896a78942522a77dc",
+      "list_name": "Rolling Swing",
+      "start_date": "2026-08-27",
+      "location_raw": "LYON, Rhone, France",
+      "list_url": "http://www.frenchywesty.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 313,
+      "canonical_name": "Rolling Swing",
+      "catalog_url": "http://www.rollingswing.com",
+      "typical_location": "LYON, Rhone, France",
+      "location_score": 1.0,
+      "location_flag": "ok",
+      "notes": [
+        "List URL 'http://www.frenchywesty.com/' differs from catalog URL 'http://www.rollingswing.com' — using event name"
+      ]
+    },
+    {
       "source_fingerprint": "3c0023dca48b84525b39af78",
       "list_name": "Desert City Swing",
       "start_date": "2026-08-27",
@@ -615,7 +680,7 @@
       "list_url": "http://www.desertcityswing.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 135,
       "canonical_name": "Desert City Swing",
@@ -633,7 +698,7 @@
       "list_url": "https://www.bristolcityswing.com/bsf",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 339,
       "canonical_name": "Bristol Swing Fiesta",
@@ -671,7 +736,7 @@
       "list_url": "http://koreawestival.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 268,
       "canonical_name": "Korea Westival",
@@ -680,6 +745,26 @@
       "location_score": 1.0,
       "location_flag": "ok",
       "notes": []
+    },
+    {
+      "source_fingerprint": "83d85055ab0a9ddcf83a4e0a",
+      "list_name": "Jax Westie Fest",
+      "start_date": "2026-09-04",
+      "location_raw": "Jacksonville, FL, United States",
+      "list_url": "http://www.jaxwestiefest.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 177,
+      "canonical_name": "River City Swing",
+      "catalog_url": "http://www.jaxwestiefest.com",
+      "typical_location": "Jacksonville, FL, USA",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": [
+        "Name differs: list='Jax Westie Fest' catalog='River City Swing'"
+      ]
     },
     {
       "source_fingerprint": "ab0c1d2ca2096352d46ad7c5",
@@ -699,6 +784,26 @@
       "location_flag": "ok",
       "notes": [
         "Name differs: list='Trilogy Swing' catalog='Swing Trilogy'"
+      ]
+    },
+    {
+      "source_fingerprint": "59e55b8dbf3b1581e88fd4b7",
+      "list_name": "Bavarian Open West Coast Swing Championships",
+      "start_date": "2026-09-10",
+      "location_raw": "Munich, Bavaria, Germany",
+      "list_url": "https://bavarianopen.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 233,
+      "canonical_name": "Bavarian Open",
+      "catalog_url": "https://bavarianopen.com",
+      "typical_location": "Munich, Bavaria, Germany",
+      "location_score": 1.0,
+      "location_flag": "ok",
+      "notes": [
+        "Name differs: list='Bavarian Open West Coast Swing Championships' catalog='Bavarian Open'"
       ]
     },
     {
@@ -729,7 +834,7 @@
       "list_url": "https://vk.com/seadancefest",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 338,
       "canonical_name": "Sea Dance Fest",
@@ -767,7 +872,7 @@
       "list_url": "https://www.retaliationswing.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 359,
       "canonical_name": "Retaliation Swing",
@@ -785,7 +890,7 @@
       "list_url": "https://atxrox.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 300,
       "canonical_name": "Austin Rocks",
@@ -803,7 +908,7 @@
       "list_url": "http://www.finnfest.fi/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 254,
       "canonical_name": "Finnfest",
@@ -842,7 +947,7 @@
       "list_url": "http://www.alohaopenwcs.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 355,
       "canonical_name": "The Aloha Open",
@@ -851,6 +956,26 @@
       "location_score": 0.92,
       "location_flag": "ok",
       "notes": []
+    },
+    {
+      "source_fingerprint": "add005889e519f9bc6ddf94a",
+      "list_name": "Calgary Town Open",
+      "start_date": "2026-09-24",
+      "location_raw": "Calgary, Alberta, Canada",
+      "list_url": "https://ctodance.ca/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 324,
+      "canonical_name": "BTO Open",
+      "catalog_url": "https://ctodance.ca/",
+      "typical_location": "Calgary, Alberta, Canada",
+      "location_score": 1.0,
+      "location_flag": "ok",
+      "notes": [
+        "Name differs: list='Calgary Town Open' catalog='BTO Open'"
+      ]
     },
     {
       "source_fingerprint": "33c49f10e0fa752d3de8b00b",
@@ -880,7 +1005,7 @@
       "list_url": "http://www.mmisl.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 131,
       "canonical_name": "Meet Me In St Louis",
@@ -898,7 +1023,7 @@
       "list_url": "http://www.midlandswingopen.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 165,
       "canonical_name": "Midland Swing Open",
@@ -936,7 +1061,7 @@
       "list_url": "https://phillyswing.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 234,
       "canonical_name": "Philly Swing Classic",
@@ -954,7 +1079,7 @@
       "list_url": "https://www.atlantaswingclassic.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 211,
       "canonical_name": "Atlanta Swing Classic",
@@ -972,7 +1097,7 @@
       "list_url": "https://norwegianopen.no/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 388,
       "canonical_name": "Norwegian Open WCS",
@@ -990,7 +1115,7 @@
       "list_url": "https://boogiebythebay.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 8,
       "canonical_name": "Boogie By The Bay",
@@ -1028,7 +1153,7 @@
       "list_url": "http://www.wcsfestival.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 286,
       "canonical_name": "WCS Festival",
@@ -1068,7 +1193,7 @@
       "list_url": "https://www.westcoastswingmilan.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 322,
       "canonical_name": "Milan Modern Swing",
@@ -1106,7 +1231,7 @@
       "list_url": "http://www.wcsfestival.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 286,
       "canonical_name": "WCS Festival",
@@ -1124,7 +1249,7 @@
       "list_url": "http://www.swustlicious.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 267,
       "canonical_name": "Swustlicious",
@@ -1142,7 +1267,7 @@
       "list_url": "https://swingcitychicago.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 125,
       "canonical_name": "Swing City Chicago",
@@ -1160,7 +1285,7 @@
       "list_url": "http://hstswing.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 65,
       "canonical_name": "Halloween SwingThing",
@@ -1178,7 +1303,7 @@
       "list_url": "https://www.augsburgwestiestation.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "fuzzy",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 350,
       "canonical_name": "Augsburg Westie Station",
@@ -1186,7 +1311,9 @@
       "typical_location": "Augsburg, Bavaria, Germany",
       "location_score": 1.0,
       "location_flag": "ok",
-      "notes": []
+      "notes": [
+        "List URL 'https://www.augsburgwestiestation.com/' differs from catalog URL 'https://www.augsburgwestiestation.com/home' — using event name"
+      ]
     },
     {
       "source_fingerprint": "0a34dbf37538b2155c2a5fc2",
@@ -1196,7 +1323,7 @@
       "list_url": "http://www.swingside-invitational.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 346,
       "canonical_name": "Swingside Invitational",
@@ -1234,7 +1361,7 @@
       "list_url": "https://www.swingside-invitational.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 346,
       "canonical_name": "Swingside Invitational",
@@ -1245,6 +1372,26 @@
       "notes": []
     },
     {
+      "source_fingerprint": "b3f14e09dd2097b15eeb2515",
+      "list_name": "Scandinavian Open WCS \"SNOW\"",
+      "start_date": "2026-10-28",
+      "location_raw": "Stockholm, Sweden, Sweden",
+      "list_url": "http://www.snowcs.se/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 229,
+      "canonical_name": "Scandinavian Open",
+      "catalog_url": "http://www.snowcs.se/",
+      "typical_location": "Stockholm, Sweden",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": [
+        "Name differs: list='Scandinavian Open WCS \"SNOW\"' catalog='Scandinavian Open'"
+      ]
+    },
+    {
       "source_fingerprint": "359c690048b2bb2978c21856",
       "list_name": "Warsaw Halloween Swing",
       "start_date": "2026-10-29",
@@ -1252,7 +1399,7 @@
       "list_url": "http://www.warsawhalloweenswing.com/",
       "status_event": "",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 236,
       "canonical_name": "Warsaw Halloween Swing",
@@ -1270,7 +1417,7 @@
       "list_url": "https://spookywestieweekend.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 340,
       "canonical_name": "Spooky Westie Weekend",
@@ -1288,7 +1435,7 @@
       "list_url": "http://www.simplyadelaidewcs.com.au/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 325,
       "canonical_name": "Simply Adelaide West Coast Swing",
@@ -1306,7 +1453,7 @@
       "list_url": "http://www.tbcwcs.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 137,
       "canonical_name": "Tampa Bay Classic",
@@ -1384,7 +1531,7 @@
       "list_url": "http://www.westiepinkcity.fr/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "fuzzy",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 312,
       "canonical_name": "Westie Pink City",
@@ -1392,7 +1539,9 @@
       "typical_location": "TOULOUSE, Occitanie, France",
       "location_score": 1.0,
       "location_flag": "ok",
-      "notes": []
+      "notes": [
+        "List URL 'http://www.westiepinkcity.fr/' differs from catalog URL 'http://www.westiepinkcity.com/' — using event name"
+      ]
     },
     {
       "source_fingerprint": "6c7a6245c6d0bdba6e3ca39d",
@@ -1422,7 +1571,7 @@
       "list_url": "http://www.frenchywesty.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 270,
       "canonical_name": "Westie's Angels",
@@ -1440,7 +1589,7 @@
       "list_url": "http://www.northeastswingclassic.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 376,
       "canonical_name": "Northeast Swing Classic",
@@ -1458,7 +1607,7 @@
       "list_url": "http://www.asc-budapest.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 269,
       "canonical_name": "Autumn Swing Challenge",
@@ -1476,7 +1625,7 @@
       "list_url": "http://www.flowstatefest.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "fuzzy",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 365,
       "canonical_name": "Flowstate | West Coast Swing & Zouk Festival",
@@ -1484,7 +1633,9 @@
       "typical_location": "London, London, United Kingdom",
       "location_score": 0.92,
       "location_flag": "ok",
-      "notes": []
+      "notes": [
+        "List URL 'http://www.flowstatefest.com/' differs from catalog URL 'https://eastonswing.com/west-coast-swing-events/world-swing-dance-council/flowstate-west-coast-swing-zouk-festival-eastonswing/' — using event name"
+      ]
     },
     {
       "source_fingerprint": "d77c34c437ac161c6918fbf4",
@@ -1554,7 +1705,7 @@
       "list_url": "http://www.winterwhite.no/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 238,
       "canonical_name": "Winter White",
@@ -1592,7 +1743,7 @@
       "list_url": "https://berlinswingrevolution.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 271,
       "canonical_name": "Berlin Swing Revolution",
@@ -1610,7 +1761,7 @@
       "list_url": "https://www.santaswing.pl/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 377,
       "canonical_name": "Santa Swing",
@@ -1619,6 +1770,26 @@
       "location_score": 0.92,
       "location_flag": "ok",
       "notes": []
+    },
+    {
+      "source_fingerprint": "9a31883cf60e263f75d348e9",
+      "list_name": "UCWDC Country Dance World Championships",
+      "start_date": "2026-12-28",
+      "location_raw": "Dallas, TX, United States",
+      "list_url": "http://www.ucwdcworlds.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 75,
+      "canonical_name": "Worlds UCWDC",
+      "catalog_url": "http://www.ucwdcworlds.com",
+      "typical_location": "Dallas, TX, USA",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": [
+        "Name differs: list='UCWDC Country Dance World Championships' catalog='Worlds UCWDC'"
+      ]
     },
     {
       "source_fingerprint": "3d1a373a646fd7a9259aa177",
@@ -1708,7 +1879,7 @@
       "list_url": "http://countdownswingboston.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 334,
       "canonical_name": "Countdown Swing Boston",
@@ -1746,7 +1917,7 @@
       "list_url": "http://wcs-budafest.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 184,
       "canonical_name": "BudaFest Open WCS Championships",
@@ -1784,7 +1955,7 @@
       "list_url": "https://austinswingdance.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 200,
       "canonical_name": "Austin Swing Dance Championships",
@@ -1802,7 +1973,7 @@
       "list_url": "https://www.avignoncityswing.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 309,
       "canonical_name": "Avignon City Swing",
@@ -1860,7 +2031,7 @@
       "list_url": "https://derbycityswing.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 242,
       "canonical_name": "Derby City Swing",
@@ -1878,7 +2049,7 @@
       "list_url": "https://freedomswingdance.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "fuzzy",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 183,
       "canonical_name": "Freedom Swing Dance Challenge",
@@ -1896,8 +2067,8 @@
       "list_url": "https://charlottewestiefest.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
-      "confidence": 0.975609756097561,
+      "match_method": "explicit",
+      "confidence": 1.0,
       "canonical_event_id": 273,
       "canonical_name": "Charlotte Westie Fest",
       "catalog_url": "https://charlottewestiefest.com/",
@@ -1916,7 +2087,7 @@
       "list_url": "http://swingandsnow.ru/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 215,
       "canonical_name": "Swing & Snow",
@@ -1934,7 +2105,7 @@
       "list_url": "https://swingtzerland.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 258,
       "canonical_name": "Swingtzerland",
@@ -1952,7 +2123,7 @@
       "list_url": "http://www.waterlooopenwcs.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 387,
       "canonical_name": "Waterloo Ontario Open West Coast Swing Championships",
@@ -1970,7 +2141,7 @@
       "list_url": "http://www.trinityswing.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 363,
       "canonical_name": "Trinity Swing",
@@ -1988,7 +2159,7 @@
       "list_url": "https://www.euro-dance-festival.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 348,
       "canonical_name": "Euro Dance Festival",
@@ -2026,7 +2197,7 @@
       "list_url": "https://swingcrush.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 343,
       "canonical_name": "Swing Crush",
@@ -2044,7 +2215,7 @@
       "list_url": "https://www.arousawestiefest.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 344,
       "canonical_name": "Arousa Westie Fest",
@@ -2062,7 +2233,7 @@
       "list_url": "https://praguealchemyswing.cz/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 386,
       "canonical_name": "Prague Alchemy Swing",
@@ -2080,7 +2251,7 @@
       "list_url": "https://rosecityswing.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 244,
       "canonical_name": "Rose City Swing",
@@ -2107,6 +2278,7 @@
       "location_score": 1.0,
       "location_flag": "ok",
       "notes": [
+        "List URL 'http://https//parisswingclassic.com' differs from catalog URL 'http://pariswestiefest.com' — using event name",
         "Name differs: list='Paris Swing Classic' catalog='Paris Westie Fest'"
       ]
     },
@@ -2118,7 +2290,7 @@
       "list_url": "http://www.southernlightsswing.com.au/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 394,
       "canonical_name": "Southern Lights Swing",
@@ -2136,7 +2308,7 @@
       "list_url": "https://www.wintercoastswing.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "fuzzy",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 297,
       "canonical_name": "Winter Coast Swing",
@@ -2144,7 +2316,9 @@
       "typical_location": "Kuopio, Leppävirta, Finland",
       "location_score": 1.0,
       "location_flag": "ok",
-      "notes": []
+      "notes": [
+        "List URL 'https://www.wintercoastswing.com/' differs from catalog URL 'https://www.wcskuopio.fi/winter-coast-swing-2019/' — using event name"
+      ]
     },
     {
       "source_fingerprint": "46bf56ad183180f8570e88f4",
@@ -2154,7 +2328,7 @@
       "list_url": "https://www.flowfest.nyc/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 378,
       "canonical_name": "New York Flow Festival",
@@ -2192,7 +2366,7 @@
       "list_url": "https://swingvasion.nz/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "fuzzy",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 333,
       "canonical_name": "Swingvasion",
@@ -2200,7 +2374,9 @@
       "typical_location": "Wellington,  New Zealand",
       "location_score": 1.0,
       "location_flag": "ok",
-      "notes": []
+      "notes": [
+        "List URL 'https://swingvasion.nz/' differs from catalog URL 'https://swingcentral.nz/swingvasion' — using event name"
+      ]
     },
     {
       "source_fingerprint": "025937ca39e86c62d3fb8333",
@@ -2210,7 +2386,7 @@
       "list_url": "https://www.norwaywestiefest.com/",
       "status_event": "Trial Event",
       "match_status": "confirmed",
-      "match_method": "fuzzy",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 232,
       "canonical_name": "Norway Westie Fest",
@@ -2221,6 +2397,26 @@
       "notes": []
     },
     {
+      "source_fingerprint": "5cb418e1cefe86f59aa9c02c",
+      "list_name": "H-Town Throw Down 2027",
+      "start_date": "2027-03-11",
+      "location_raw": "Houston, Texas, United States",
+      "list_url": "http://www.htownthrowdownwcs.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 153,
+      "canonical_name": "Novice Invitational",
+      "catalog_url": "http://www.htownthrowdownwcs.com",
+      "typical_location": "Houston, Texas, United States",
+      "location_score": 1.0,
+      "location_flag": "ok",
+      "notes": [
+        "Name differs: list='H-Town Throw Down 2027' catalog='Novice Invitational'"
+      ]
+    },
+    {
       "source_fingerprint": "cbc982b65580c7c59ae375fc",
       "list_name": "Westie Spring Thing",
       "start_date": "2027-03-11",
@@ -2228,7 +2424,7 @@
       "list_url": "https://westiespringthing.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 314,
       "canonical_name": "Westie Spring Thing",
@@ -2237,6 +2433,26 @@
       "location_score": 1.0,
       "location_flag": "ok",
       "notes": []
+    },
+    {
+      "source_fingerprint": "d2605cdb9c5528d401dfc5f0",
+      "list_name": "5280 Westival",
+      "start_date": "2027-03-11",
+      "location_raw": "Denver, CO, United States",
+      "list_url": "http://www.5280westival.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 197,
+      "canonical_name": "5280 Swing Dance Championships",
+      "catalog_url": "http://www.5280westival.com",
+      "typical_location": "Denver, CO, USA",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": [
+        "Name differs: list='5280 Westival' catalog='5280 Swing Dance Championships'"
+      ]
     },
     {
       "source_fingerprint": "ac9861f3c21a0de7441dda4e",
@@ -2266,7 +2482,7 @@
       "list_url": "http://www.highdesertdanceclassic.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 143,
       "canonical_name": "High Desert Dance Classic",
@@ -2284,7 +2500,7 @@
       "list_url": "https://thechicagoclassic.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 142,
       "canonical_name": "The Chicago Classic",
@@ -2302,7 +2518,7 @@
       "list_url": "https://kingswing.pl/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 292,
       "canonical_name": "King Swing",
@@ -2320,7 +2536,7 @@
       "list_url": "http://www.west-in-lyon.fr/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 186,
       "canonical_name": "West In Lyon",
@@ -2498,7 +2714,7 @@
       "list_url": "https://t.me/honeyfest",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "fuzzy",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 345,
       "canonical_name": "HONEY FEST",
@@ -2506,7 +2722,9 @@
       "typical_location": "Ufa, Russia",
       "location_score": 1.0,
       "location_flag": "ok",
-      "notes": []
+      "notes": [
+        "List URL 'https://t.me/honeyfest' differs from catalog URL 'https://honeyfest-ufa.ru/' — using event name"
+      ]
     },
     {
       "source_fingerprint": "177ab9b6fc92e510ecae6a30",
@@ -2516,7 +2734,7 @@
       "list_url": "http://www.detonationdance.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 203,
       "canonical_name": "Detonation Dance",
@@ -2534,7 +2752,7 @@
       "list_url": "http://www.swinginbloom.ca/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 393,
       "canonical_name": "Swing in Bloom",
@@ -2552,7 +2770,7 @@
       "list_url": "http://www.calgarydancestampede.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 116,
       "canonical_name": "Calgary Dance Stampede",
@@ -2590,7 +2808,7 @@
       "list_url": "http://www.sis.djkenm.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 144,
       "canonical_name": "Swingin' Into Spring",
@@ -2608,7 +2826,7 @@
       "list_url": "https://beemadwcs.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 347,
       "canonical_name": "BeeMAD",
@@ -2635,6 +2853,7 @@
       "location_score": 0.92,
       "location_flag": "ok",
       "notes": [
+        "List URL 'https://dancejamproductions.com/westieweekend/' differs from catalog URL 'http://www.dancejamproductions.com' — using event name",
         "Name differs: list='Westie Weekend' catalog='Dance Jam Jack & Jill Weekend'"
       ]
     },
@@ -2646,7 +2865,7 @@
       "list_url": "http://wwww.soswingdance.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 205,
       "canonical_name": "SOswing",
@@ -2664,7 +2883,7 @@
       "list_url": "https://rawconnection.com.au/swingsation/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 174,
       "canonical_name": "Swingsation",
@@ -2682,8 +2901,8 @@
       "list_url": "http://www.usagrandnationals.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
-      "confidence": 0.99,
+      "match_method": "explicit",
+      "confidence": 1.0,
       "canonical_event_id": 22,
       "canonical_name": "USA Grand Nationals",
       "catalog_url": "http://www.usagrandnationals.com",
@@ -2722,7 +2941,7 @@
       "list_url": "https://www.fcswing.co.uk/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "fuzzy",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 371,
       "canonical_name": "Festival City Swing",
@@ -2730,7 +2949,9 @@
       "typical_location": "Newcastle,  United Kingdom",
       "location_score": 1.0,
       "location_flag": "ok",
-      "notes": []
+      "notes": [
+        "List URL 'https://www.fcswing.co.uk/' differs from catalog URL 'https://festivalcityswing.co.uk/' — using event name"
+      ]
     },
     {
       "source_fingerprint": "f3e67b27f73d8a0298f1ae4c",
@@ -2780,7 +3001,7 @@
       "list_url": "https://www.atlantaswingclassic.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 211,
       "canonical_name": "Atlanta Swing Classic",
@@ -2798,7 +3019,7 @@
       "list_url": "https://www.euro-dance-festival.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 348,
       "canonical_name": "Euro Dance Festival",
@@ -2816,7 +3037,7 @@
       "list_url": "https://www.atlantaswingclassic.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 211,
       "canonical_name": "Atlanta Swing Classic",
@@ -2834,7 +3055,7 @@
       "list_url": "https://www.euro-dance-festival.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 348,
       "canonical_name": "Euro Dance Festival",
@@ -2852,7 +3073,7 @@
       "list_url": "https://www.euro-dance-festival.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 348,
       "canonical_name": "Euro Dance Festival",
@@ -2934,26 +3155,6 @@
       ]
     },
     {
-      "source_fingerprint": "fbd321abcaa6e158438fcb62",
-      "list_name": "BaroqueSwing",
-      "start_date": "2026-06-25",
-      "location_raw": "Ludwigsburg, Baden-Württemberg, Deutschland",
-      "list_url": "https://baroqueswing.com/",
-      "status_event": "Registry Event",
-      "match_status": "new",
-      "match_method": "none",
-      "confidence": 0.0,
-      "canonical_event_id": null,
-      "canonical_name": null,
-      "catalog_url": null,
-      "typical_location": null,
-      "location_score": 0.0,
-      "location_flag": "",
-      "notes": [
-        "No catalog match — likely new or renamed brand"
-      ]
-    },
-    {
       "source_fingerprint": "997c2f681132abeb3b63670b",
       "list_name": "SwingLab Berlin",
       "start_date": "2026-07-10",
@@ -2993,27 +3194,6 @@
       "notes": [
         "No catalog match — likely new or renamed brand",
         "Trial event on schedule"
-      ]
-    },
-    {
-      "source_fingerprint": "5bc8004ec3ef52e3227c452b",
-      "list_name": "UpTown Swing",
-      "start_date": "2026-08-14",
-      "location_raw": "Stockholm, Stockholm, Sweden",
-      "list_url": "http://www.uptownswing.se/",
-      "status_event": "Registry Event",
-      "match_status": "new",
-      "match_method": "none",
-      "confidence": 0.0,
-      "canonical_event_id": null,
-      "canonical_name": null,
-      "catalog_url": null,
-      "typical_location": null,
-      "location_score": 0.0,
-      "location_flag": "",
-      "notes": [
-        "URL matches 'Swedish Swing Summer Camp' but name similarity only 0.38 — skipped auto-link",
-        "No catalog match — likely new or renamed brand"
       ]
     },
     {
@@ -3080,89 +3260,6 @@
       ]
     },
     {
-      "source_fingerprint": "0c9f27d896a78942522a77dc",
-      "list_name": "Rolling Swing",
-      "start_date": "2026-08-27",
-      "location_raw": "LYON, Rhone, France",
-      "list_url": "http://www.frenchywesty.com/",
-      "status_event": "Registry Event",
-      "match_status": "new",
-      "match_method": "none",
-      "confidence": 0.0,
-      "canonical_event_id": null,
-      "canonical_name": null,
-      "catalog_url": null,
-      "typical_location": null,
-      "location_score": 0.0,
-      "location_flag": "",
-      "notes": [
-        "URL matches \"Westie's Angels\" but name similarity only 0.29 — skipped auto-link",
-        "No catalog match — likely new or renamed brand"
-      ]
-    },
-    {
-      "source_fingerprint": "83d85055ab0a9ddcf83a4e0a",
-      "list_name": "Jax Westie Fest",
-      "start_date": "2026-09-04",
-      "location_raw": "Jacksonville, FL, United States",
-      "list_url": "http://www.jaxwestiefest.com/",
-      "status_event": "Registry Event",
-      "match_status": "new",
-      "match_method": "none",
-      "confidence": 0.0,
-      "canonical_event_id": null,
-      "canonical_name": null,
-      "catalog_url": null,
-      "typical_location": null,
-      "location_score": 0.0,
-      "location_flag": "",
-      "notes": [
-        "URL matches 'River City Swing' but name similarity only 0.19 — skipped auto-link",
-        "No catalog match — likely new or renamed brand"
-      ]
-    },
-    {
-      "source_fingerprint": "59e55b8dbf3b1581e88fd4b7",
-      "list_name": "Bavarian Open West Coast Swing Championships",
-      "start_date": "2026-09-10",
-      "location_raw": "Munich, Bavaria, Germany",
-      "list_url": "https://bavarianopen.com/",
-      "status_event": "Registry Event",
-      "match_status": "new",
-      "match_method": "none",
-      "confidence": 0.0,
-      "canonical_event_id": null,
-      "canonical_name": null,
-      "catalog_url": null,
-      "typical_location": null,
-      "location_score": 0.0,
-      "location_flag": "",
-      "notes": [
-        "URL matches 'Bavarian Open' but name similarity only 0.46 — skipped auto-link",
-        "No catalog match — likely new or renamed brand"
-      ]
-    },
-    {
-      "source_fingerprint": "add005889e519f9bc6ddf94a",
-      "list_name": "Calgary Town Open",
-      "start_date": "2026-09-24",
-      "location_raw": "Calgary, Alberta, Canada",
-      "list_url": "https://ctodance.ca/",
-      "status_event": "Registry Event",
-      "match_status": "new",
-      "match_method": "none",
-      "confidence": 0.0,
-      "canonical_event_id": null,
-      "canonical_name": null,
-      "catalog_url": null,
-      "typical_location": null,
-      "location_score": 0.0,
-      "location_flag": "",
-      "notes": [
-        "No catalog match — likely new or renamed brand"
-      ]
-    },
-    {
       "source_fingerprint": "da88db1ce065fee87033e912",
       "list_name": "RiverSwingNights",
       "start_date": "2026-10-01",
@@ -3226,47 +3323,6 @@
       ]
     },
     {
-      "source_fingerprint": "b3f14e09dd2097b15eeb2515",
-      "list_name": "Scandinavian Open WCS \"SNOW\"",
-      "start_date": "2026-10-28",
-      "location_raw": "Stockholm, Sweden, Sweden",
-      "list_url": "http://www.snowcs.se/",
-      "status_event": "Registry Event",
-      "match_status": "new",
-      "match_method": "none",
-      "confidence": 0.0,
-      "canonical_event_id": null,
-      "canonical_name": null,
-      "catalog_url": null,
-      "typical_location": null,
-      "location_score": 0.0,
-      "location_flag": "",
-      "notes": [
-        "No catalog match — likely new or renamed brand"
-      ]
-    },
-    {
-      "source_fingerprint": "9a31883cf60e263f75d348e9",
-      "list_name": "UCWDC Country Dance World Championships",
-      "start_date": "2026-12-28",
-      "location_raw": "Dallas, TX, United States",
-      "list_url": "http://www.ucwdcworlds.com/",
-      "status_event": "Registry Event",
-      "match_status": "new",
-      "match_method": "none",
-      "confidence": 0.0,
-      "canonical_event_id": null,
-      "canonical_name": null,
-      "catalog_url": null,
-      "typical_location": null,
-      "location_score": 0.0,
-      "location_flag": "",
-      "notes": [
-        "URL matches 'Worlds UCWDC' but name similarity only 0.20 — skipped auto-link",
-        "No catalog match — likely new or renamed brand"
-      ]
-    },
-    {
       "source_fingerprint": "adf527827352752eb5e8d2d7",
       "list_name": "Cologne Calling WCS",
       "start_date": "2027-01-14",
@@ -3309,48 +3365,6 @@
       ]
     },
     {
-      "source_fingerprint": "5cb418e1cefe86f59aa9c02c",
-      "list_name": "H-Town Throw Down 2027",
-      "start_date": "2027-03-11",
-      "location_raw": "Houston, Texas, United States",
-      "list_url": "http://www.htownthrowdownwcs.com/",
-      "status_event": "Registry Event",
-      "match_status": "new",
-      "match_method": "none",
-      "confidence": 0.0,
-      "canonical_event_id": null,
-      "canonical_name": null,
-      "catalog_url": null,
-      "typical_location": null,
-      "location_score": 0.0,
-      "location_flag": "",
-      "notes": [
-        "URL matches 'Novice Invitational' but name similarity only 0.15 — skipped auto-link",
-        "No catalog match — likely new or renamed brand"
-      ]
-    },
-    {
-      "source_fingerprint": "d2605cdb9c5528d401dfc5f0",
-      "list_name": "5280 Westival",
-      "start_date": "2027-03-11",
-      "location_raw": "Denver, CO, United States",
-      "list_url": "http://www.5280westival.com/",
-      "status_event": "Registry Event",
-      "match_status": "new",
-      "match_method": "none",
-      "confidence": 0.0,
-      "canonical_event_id": null,
-      "canonical_name": null,
-      "catalog_url": null,
-      "typical_location": null,
-      "location_score": 0.0,
-      "location_flag": "",
-      "notes": [
-        "URL matches '5280 Swing Dance Championships' but name similarity only 0.42 — skipped auto-link",
-        "No catalog match — likely new or renamed brand"
-      ]
-    },
-    {
       "source_fingerprint": "f0946489d01ea007f2e64d27",
       "list_name": "Franconian Swing Project",
       "start_date": "2027-04-08",
@@ -3381,7 +3395,7 @@
       "list_url": "http://www.swingfling.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 59,
       "canonical_name": "Swing Fling",
@@ -3422,7 +3436,7 @@
       "list_url": "http://www.wcsfestival.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
+      "match_method": "exact_name",
       "confidence": 1.0,
       "canonical_event_id": 286,
       "canonical_name": "WCS Festival",
@@ -3476,6 +3490,27 @@
       "location_flag": "ok",
       "notes": [
         "Name differs: list='SWINGAPALOOZA' catalog='Swingapalooza'"
+      ]
+    },
+    {
+      "source_fingerprint": "fbd321abcaa6e158438fcb62",
+      "list_name": "BaroqueSwing",
+      "start_date": "2026-06-25",
+      "location_raw": "Ludwigsburg, Baden-Württemberg, Deutschland",
+      "list_url": "https://baroqueswing.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 374,
+      "canonical_name": "Barock Swing Ludwigsburg",
+      "catalog_url": "https://lb-barockswing.com/index.php",
+      "typical_location": "Ludwigsburg, Baden-Württemberg, Deutschland",
+      "location_score": 1.0,
+      "location_flag": "ok",
+      "notes": [
+        "List URL 'https://baroqueswing.com/' differs from catalog URL 'https://lb-barockswing.com/index.php' — using event name",
+        "Name differs: list='BaroqueSwing' catalog='Barock Swing Ludwigsburg'"
       ]
     },
     {
@@ -3639,6 +3674,26 @@
       ]
     },
     {
+      "source_fingerprint": "5bc8004ec3ef52e3227c452b",
+      "list_name": "UpTown Swing",
+      "start_date": "2026-08-14",
+      "location_raw": "Stockholm, Stockholm, Sweden",
+      "list_url": "http://www.uptownswing.se/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 264,
+      "canonical_name": "Swedish Swing Summer Camp",
+      "catalog_url": "http://www.uptownswing.se",
+      "typical_location": "Stockholm, Stockholm, Sweden",
+      "location_score": 1.0,
+      "location_flag": "ok",
+      "notes": [
+        "Name differs: list='UpTown Swing' catalog='Swedish Swing Summer Camp'"
+      ]
+    },
+    {
       "source_fingerprint": "60ba1b6056cb977623ec8064",
       "list_name": "Chicagoland Country and Swing Dance Festival",
       "start_date": "2026-08-21",
@@ -3679,6 +3734,26 @@
       ]
     },
     {
+      "source_fingerprint": "83d85055ab0a9ddcf83a4e0a",
+      "list_name": "Jax Westie Fest",
+      "start_date": "2026-09-04",
+      "location_raw": "Jacksonville, FL, United States",
+      "list_url": "http://www.jaxwestiefest.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 177,
+      "canonical_name": "River City Swing",
+      "catalog_url": "http://www.jaxwestiefest.com",
+      "typical_location": "Jacksonville, FL, USA",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": [
+        "Name differs: list='Jax Westie Fest' catalog='River City Swing'"
+      ]
+    },
+    {
       "source_fingerprint": "ab0c1d2ca2096352d46ad7c5",
       "list_name": "Trilogy Swing",
       "start_date": "2026-09-10",
@@ -3696,6 +3771,26 @@
       "location_flag": "ok",
       "notes": [
         "Name differs: list='Trilogy Swing' catalog='Swing Trilogy'"
+      ]
+    },
+    {
+      "source_fingerprint": "59e55b8dbf3b1581e88fd4b7",
+      "list_name": "Bavarian Open West Coast Swing Championships",
+      "start_date": "2026-09-10",
+      "location_raw": "Munich, Bavaria, Germany",
+      "list_url": "https://bavarianopen.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 233,
+      "canonical_name": "Bavarian Open",
+      "catalog_url": "https://bavarianopen.com",
+      "typical_location": "Munich, Bavaria, Germany",
+      "location_score": 1.0,
+      "location_flag": "ok",
+      "notes": [
+        "Name differs: list='Bavarian Open West Coast Swing Championships' catalog='Bavarian Open'"
       ]
     },
     {
@@ -3757,6 +3852,26 @@
       "notes": [
         "Name differs: list='Global Grand Prix -- West Coast Swing Championships' catalog='Global Grand Prix - West Coast Swing Reunion'",
         "Site location 'Paris, N/A, France' differs from catalog typical 'Toulouse-Blagnac, Occitanie, France' (venue may have moved)"
+      ]
+    },
+    {
+      "source_fingerprint": "add005889e519f9bc6ddf94a",
+      "list_name": "Calgary Town Open",
+      "start_date": "2026-09-24",
+      "location_raw": "Calgary, Alberta, Canada",
+      "list_url": "https://ctodance.ca/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 324,
+      "canonical_name": "BTO Open",
+      "catalog_url": "https://ctodance.ca/",
+      "typical_location": "Calgary, Alberta, Canada",
+      "location_score": 1.0,
+      "location_flag": "ok",
+      "notes": [
+        "Name differs: list='Calgary Town Open' catalog='BTO Open'"
       ]
     },
     {
@@ -3877,6 +3992,26 @@
       "location_flag": "ok",
       "notes": [
         "Name differs: list='SASS- Spooky Albany Swing Spectacular' catalog='SASS Spooky Albany Swing Spectacular'"
+      ]
+    },
+    {
+      "source_fingerprint": "b3f14e09dd2097b15eeb2515",
+      "list_name": "Scandinavian Open WCS \"SNOW\"",
+      "start_date": "2026-10-28",
+      "location_raw": "Stockholm, Sweden, Sweden",
+      "list_url": "http://www.snowcs.se/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 229,
+      "canonical_name": "Scandinavian Open",
+      "catalog_url": "http://www.snowcs.se/",
+      "typical_location": "Stockholm, Sweden",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": [
+        "Name differs: list='Scandinavian Open WCS \"SNOW\"' catalog='Scandinavian Open'"
       ]
     },
     {
@@ -4062,6 +4197,26 @@
       ]
     },
     {
+      "source_fingerprint": "9a31883cf60e263f75d348e9",
+      "list_name": "UCWDC Country Dance World Championships",
+      "start_date": "2026-12-28",
+      "location_raw": "Dallas, TX, United States",
+      "list_url": "http://www.ucwdcworlds.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 75,
+      "canonical_name": "Worlds UCWDC",
+      "catalog_url": "http://www.ucwdcworlds.com",
+      "typical_location": "Dallas, TX, USA",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": [
+        "Name differs: list='UCWDC Country Dance World Championships' catalog='Worlds UCWDC'"
+      ]
+    },
+    {
       "source_fingerprint": "3d1a373a646fd7a9259aa177",
       "list_name": "Floorplay Swing Vacation",
       "start_date": "2026-12-30",
@@ -4229,8 +4384,8 @@
       "list_url": "https://charlottewestiefest.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
-      "confidence": 0.975609756097561,
+      "match_method": "explicit",
+      "confidence": 1.0,
       "canonical_event_id": 273,
       "canonical_name": "Charlotte Westie Fest",
       "catalog_url": "https://charlottewestiefest.com/",
@@ -4278,6 +4433,7 @@
       "location_score": 1.0,
       "location_flag": "ok",
       "notes": [
+        "List URL 'http://https//parisswingclassic.com' differs from catalog URL 'http://pariswestiefest.com' — using event name",
         "Name differs: list='Paris Swing Classic' catalog='Paris Westie Fest'"
       ]
     },
@@ -4299,6 +4455,46 @@
       "location_flag": "ok",
       "notes": [
         "Name differs: list='MADjam (Mid Atlantic Dance Jam)' catalog='Mid-Atlantic Dance Jam'"
+      ]
+    },
+    {
+      "source_fingerprint": "5cb418e1cefe86f59aa9c02c",
+      "list_name": "H-Town Throw Down 2027",
+      "start_date": "2027-03-11",
+      "location_raw": "Houston, Texas, United States",
+      "list_url": "http://www.htownthrowdownwcs.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 153,
+      "canonical_name": "Novice Invitational",
+      "catalog_url": "http://www.htownthrowdownwcs.com",
+      "typical_location": "Houston, Texas, United States",
+      "location_score": 1.0,
+      "location_flag": "ok",
+      "notes": [
+        "Name differs: list='H-Town Throw Down 2027' catalog='Novice Invitational'"
+      ]
+    },
+    {
+      "source_fingerprint": "d2605cdb9c5528d401dfc5f0",
+      "list_name": "5280 Westival",
+      "start_date": "2027-03-11",
+      "location_raw": "Denver, CO, United States",
+      "list_url": "http://www.5280westival.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 197,
+      "canonical_name": "5280 Swing Dance Championships",
+      "catalog_url": "http://www.5280westival.com",
+      "typical_location": "Denver, CO, USA",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": [
+        "Name differs: list='5280 Westival' catalog='5280 Swing Dance Championships'"
       ]
     },
     {
@@ -4518,6 +4714,7 @@
       "location_score": 0.92,
       "location_flag": "ok",
       "notes": [
+        "List URL 'https://dancejamproductions.com/westieweekend/' differs from catalog URL 'http://www.dancejamproductions.com' — using event name",
         "Name differs: list='Westie Weekend' catalog='Dance Jam Jack & Jill Weekend'"
       ]
     },
@@ -4529,8 +4726,8 @@
       "list_url": "http://www.usagrandnationals.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
-      "match_method": "url",
-      "confidence": 0.99,
+      "match_method": "explicit",
+      "confidence": 1.0,
       "canonical_event_id": 22,
       "canonical_name": "USA Grand Nationals",
       "catalog_url": "http://www.usagrandnationals.com",
@@ -4602,6 +4799,6 @@
       ]
     }
   ],
-  "generated_at": "2026-06-13T16:10:24.921953+00:00",
-  "catalog_events": 356
+  "generated_at": "2026-06-13T16:41:51.236935+00:00",
+  "catalog_events": 357
 }

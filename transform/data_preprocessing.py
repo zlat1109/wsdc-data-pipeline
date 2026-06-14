@@ -16,6 +16,8 @@ from dateutil import parser
 import re
 from typing import Dict, List, Tuple, Optional
 
+from transform.event_knowledge import LOCATION_ID_CORRECTIONS as LOCATION_INFO_ID_CORRECTIONS
+
 # ═══════════════════════════════════════════════════════════════════
 # КОНСТАНТЫ И MAPPINGS
 # ═══════════════════════════════════════════════════════════════════
@@ -169,12 +171,12 @@ EVENT_NAME_NORMALIZATION = {
     'WESTY NANTES': 'Westy Nantes',
     'BALTIC SWING': 'Baltic Swing',
     'Halloween Swingthing': 'Halloween SwingThing',
+    'By-Town Open (BTO)': 'BTO Open',
 }
 
 # Переопределение локаций по названию события
 EVENT_NAME_LOCATION_OVERRIDES = {
     'Go West Swing Fest': 'Fremantle, Australia',
-    'Scandinavian Open': 'Stockholm, Sweden',
     'BeeMAD': 'Madrid, Spain',
 }
 
@@ -227,28 +229,6 @@ EVENT_LOCATION_SUBSTRING_CORRECTIONS = [
     ('Minn / St. Paul', 'St. Paul'),
 ]
 
-# Коррекции для конкретных location_id в location_info
-# (когда исходные данные полностью пустые, но по бизнес-знанию
-#  мы знаем город и страну)
-LOCATION_INFO_ID_CORRECTIONS = {
-    # Scandinavian Open — проходит в Stockholm, Sweden
-    222: {
-        'event_city': 'Stockholm',
-        'event_state': '',
-        'event_country': 'Sweden',
-        'event_location': 'Stockholm, Sweden',
-        'event_location_standardized': 'Stockholm, Sweden',
-    },
-    # Albany, NY, USA — явно США, но в country было Albany и отсутствует штат
-    158: {
-        'event_city': 'Albany',
-        'event_state': 'New York',
-        'event_country': 'United States',
-        'event_location': 'Albany, NY',
-        'event_location_standardized': 'Albany, NY',
-    },
-}
-
 # Коррекции по городу в location_info (ключ — event_city в нижнем регистре;
 # применяются когда по городу неправильно определились штат/страна)
 # event_state храним полным названием штата (как в остальных записях)
@@ -266,6 +246,13 @@ LOCATION_INFO_CITY_CORRECTIONS = {
         'event_country': 'United States',
         'event_location': 'San Antonio, TX',
         'event_location_standardized': 'San Antonio, TX',
+    },
+    'albany': {
+        'event_city': 'Albany',
+        'event_state': 'New York',
+        'event_country': 'United States',
+        'event_location': 'Albany, NY',
+        'event_location_standardized': 'Albany, NY',
     },
 }
 
