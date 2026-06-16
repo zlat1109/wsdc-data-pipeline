@@ -73,11 +73,11 @@ python scripts/sync_events_list.py
 
 ### `check-updates.yml`
 
-- **Schedule** (Mon–Fri only, ~1×/day, aligned with WSDC publish windows):
-  - Mon / Wed / Fri **22:00** Europe/Madrid (CEST → 20:00 UTC)
-  - Tue / Thu **09:00** Europe/Madrid (CEST → 07:00 UTC)
-  - In CET (winter): same crons = **23:00** and **10:00** Spain time
-  - Covers typical California morning/evening drops (~9 h behind Valencia)
+- **Schedule** (Mon–Fri, Europe/Madrid; GitHub may delay scheduled runs):
+  - **Mon**: **20:00** only
+  - **Tue–Fri**: **07:00** and **20:00**
+  - CEST (summer): crons `05:00` / `18:00` UTC (Tue–Fri AM / Mon–Fri PM)
+  - CET (winter): same crons → **08:00** / **21:00** local on Tue–Fri, Mon **21:00**
 - **New-ID scan**: linear probe from last known max dancer ID (watermark)
 - New WSDC registry numbers after weekend events → `changed`
 - Stores probe result in `history.parse_runs` (`max_dancer_id_watermark`, `new_dancer_ids`)
