@@ -1,26 +1,7 @@
 {
-  "scraped_at": "2026-06-13T16:10:24.120443+00:00",
-  "source": "local",
+  "scraped_at": "2026-06-16T12:46:30.838234+00:00",
+  "source": "github-actions",
   "events": [
-    {
-      "source_fingerprint": "3baad3d89bcbadb7a1d39ad3",
-      "event_name": "Baltic Swing",
-      "original_date": "Jun 11 - 15, 2026",
-      "start_date": "2026-06-11",
-      "end_date": "2026-06-15",
-      "results_year": 2026,
-      "results_month": 6,
-      "location_raw": "Gdańsk, Pomorskie, Poland",
-      "location_raw_original": "Gdańsk, Pomorskie, Poland",
-      "country": "Poland",
-      "country_flag": "POL",
-      "url": "http://www.balticswing.com/",
-      "status_event": "Registry Event",
-      "confirmed": true,
-      "canceled": false,
-      "on_hiatus": false,
-      "is_active": true
-    },
     {
       "source_fingerprint": "c3091488ca1f76633db61d2f",
       "event_name": "Milan Swing Vibes",
