@@ -222,3 +222,54 @@ def test_calgary_town_open_maps_to_bto_open():
     assert result.canonical_event_id == 324
     assert result.canonical_name == "BTO Open"
 
+
+def test_rocket_city_maps_to_westies_on_the_water_rebrand():
+    catalog = [
+        CatalogEvent(
+            event_id=323,
+            name="Westies on the Water",
+            url="http://westiesonthewater.com/",
+            url_norm="westiesonthewater.com",
+            typical_location="Huntsville, AL",
+        ),
+    ]
+    row = {
+        "source_fingerprint": "rocket",
+        "event_name": "Rocket City Swing",
+        "start_date": "2026-11-19",
+        "location_raw": "Huntsville, Alabama, United States",
+        "url": "http://rocketcityswing.com/",
+        "status_event": "Registry Event",
+        "is_active": True,
+    }
+    result = map_scheduled_event(row, catalog, build_url_index(catalog), [c.name for c in catalog])
+    assert result.match_status == "confirmed"
+    assert result.match_method == "explicit"
+    assert result.canonical_event_id == 323
+    assert result.canonical_name == "Westies on the Water"
+
+
+def test_rocket_city_not_fuzzy_matched_to_rose_city():
+    """Different US events — similar names must not link when cities differ."""
+    catalog = [
+        CatalogEvent(
+            event_id=244,
+            name="Rose City Swing",
+            url="https://rosecityswing.com",
+            url_norm="rosecityswing.com",
+            typical_location="Portland, OR, United States",
+        ),
+    ]
+    row = {
+        "source_fingerprint": "rocket",
+        "event_name": "Rocket City Swing",
+        "start_date": "2026-11-19",
+        "location_raw": "Huntsville, Alabama, United States",
+        "url": "http://rocketcityswing.com/",
+        "status_event": "Registry Event",
+        "is_active": True,
+    }
+    result = map_scheduled_event(row, catalog, build_url_index(catalog), [c.name for c in catalog])
+    assert result.match_status == "new"
+    assert result.canonical_event_id is None
+

@@ -370,17 +370,41 @@ def main() -> None:
 
 def format_events_list_message(report: dict) -> str:
     s = report.get("summary") or {}
+    inactive = int(s.get("inactive", 0))
+    active = int(s.get("active", s.get("total", 0) - inactive))
     lines = [
         report.get("scraped_at", "")[:10],
         "#WSDC_Events_List",
         "",
         "📅 <b>WSDC Events List updated</b>",
         "",
-        f"На сайте: <code>{_esc(s.get('total', 0))}</code> ивентов",
+        f"На сайте: <code>{_esc(s.get('total', 0))}</code> "
+        f"(active <code>{_esc(active)}</code> · inactive <code>{_esc(inactive)}</code>)",
         f"Добавлено: <code>{_esc(s.get('added', 0))}</code>",
         f"Убрали из списка: <code>{_esc(s.get('removed', 0))}</code>",
         f"Без изменений: <code>{_esc(s.get('unchanged', 0))}</code>",
     ]
+
+    if inactive:
+        lines.extend(["", "<b>Inactive</b> (canceled/hiatus — в мэппинг не идут):"])
+        current_path = PROJECT_ROOT / "data" / "events_list" / "current.json"
+        try:
+            doc = json.loads(current_path.read_text(encoding="utf-8"))
+            for ev in doc.get("events") or []:
+                if ev.get("is_active", True):
+                    continue
+                tag = []
+                if ev.get("canceled"):
+                    tag.append("canceled")
+                if ev.get("on_hiatus"):
+                    tag.append("hiatus")
+                suffix = f" ({', '.join(tag)})" if tag else ""
+                lines.append(
+                    f"• {_esc(ev.get('event_name'))} "
+                    f"(<code>{_esc(ev.get('start_date'))}</code>){suffix}"
+                )
+        except (json.JSONDecodeError, OSError):
+            lines.append(f"• <code>{_esc(inactive)}</code> строк — см. current.json")
 
     added = report.get("added") or []
     if added:
@@ -408,20 +432,61 @@ def format_events_list_message(report: dict) -> str:
     if s.get("added", 0) == 0 and s.get("removed", 0) == 0:
         lines.extend(["", "Изменений с прошлого запуска нет."])
 
+    ms = report.get("mapping_summary") or {}
     mapping_path = PROJECT_ROOT / "data" / "events_list" / "mapping" / "latest.json"
+    if not ms and mapping_path.exists():
+        try:
+            ms = json.loads(mapping_path.read_text(encoding="utf-8")).get("summary") or {}
+        except (json.JSONDecodeError, OSError):
+            ms = {}
+
+    suggested_items: list[dict] = []
     if mapping_path.exists():
         try:
-            m = json.loads(mapping_path.read_text(encoding="utf-8"))
-            ms = m.get("summary") or {}
-            lines.extend([
-                "",
-                "<b>Мэппинг с каталогом поинтов</b>",
-                f"Confirmed: <code>{_esc(ms.get('confirmed', 0))}</code> · "
-                f"Review: <code>{_esc(ms.get('review', 0))}</code> · "
-                f"New: <code>{_esc(ms.get('new_unmapped', 0))}</code>",
-            ])
+            mdoc = json.loads(mapping_path.read_text(encoding="utf-8"))
+            if not ms:
+                ms = mdoc.get("summary") or {}
+            suggested_items = mdoc.get("suggested") or []
         except (json.JSONDecodeError, OSError):
             pass
+
+    if ms:
+        lines.extend([
+            "",
+            "<b>Мэппинг с каталогом поинтов</b> (active rows)",
+            f"Confirmed: <code>{_esc(ms.get('confirmed', 0))}</code> · "
+            f"Suggested: <code>{_esc(ms.get('suggested', 0))}</code> · "
+            f"Review: <code>{_esc(ms.get('review', 0))}</code> · "
+            f"New: <code>{_esc(ms.get('new_unmapped', 0))}</code>",
+        ])
+
+    review_n = int(ms.get("review", 0))
+    suggested_n = int(ms.get("suggested", 0))
+    new_n = int(ms.get("new_unmapped", 0))
+
+    if suggested_items:
+        lines.extend(["", "<b>Suggested</b> (fuzzy — проверь вручную):"])
+        for item in suggested_items[:5]:
+            lines.append(
+                f"• {_esc(item.get('list_name'))} → {_esc(item.get('canonical_name'))} "
+                f"(<code>{_esc(item.get('confidence', ''))}</code>)"
+            )
+
+    if review_n or suggested_n:
+        lines.extend([
+            "",
+            "⚠️ <b>Есть Suggested/Review</b> — открой mapping/latest.json или поправь алиасы.",
+        ])
+    elif new_n and s.get("added", 0) == 0 and s.get("removed", 0) == 0:
+        lines.extend([
+            "",
+            "✅ <b>Лезть не обязательно</b> — New в основном trial без записи в points.",
+        ])
+    elif inactive and not (s.get("added") or s.get("removed")):
+        lines.extend([
+            "",
+            "✅ <b>Лезть не обязательно</b> — inactive это canceled/hiatus на сайте.",
+        ])
 
     lines.extend(["", "Лог: <code>data/events_list/changelog/latest.json</code>"])
     return "\n".join(lines)

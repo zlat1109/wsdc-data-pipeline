@@ -7,6 +7,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
 from telegram_notify import (
+    format_events_list_message,
     format_parse_start_message,
     format_pipeline_message,
     format_probe_message,
@@ -82,3 +83,51 @@ def test_format_pipeline_complete():
     assert "Данные WSDC обновлены" in text
     assert "28400" in text
     assert "WSDC_Pipeline_Complete" in text
+
+
+def test_format_events_list_inactive_and_mapping(tmp_path, monkeypatch):
+    import telegram_notify as tn
+
+    events_dir = tmp_path / "data" / "events_list"
+    mapping_dir = events_dir / "mapping"
+    mapping_dir.mkdir(parents=True)
+    (events_dir / "current.json").write_text(
+        json.dumps(
+            {
+                "events": [
+                    {
+                        "event_name": "Dance N Play",
+                        "start_date": "2026-06-18",
+                        "is_active": False,
+                        "canceled": True,
+                        "on_hiatus": True,
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+    (mapping_dir / "latest.json").write_text(
+        json.dumps({"summary": {"confirmed": 1, "suggested": 0, "review": 0, "new_unmapped": 2}, "suggested": []}),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(tn, "PROJECT_ROOT", tmp_path)
+
+    text = format_events_list_message(
+        {
+            "scraped_at": "2026-06-16T12:00:00+00:00",
+            "summary": {
+                "total": 3,
+                "active": 2,
+                "inactive": 1,
+                "added": 0,
+                "removed": 0,
+                "unchanged": 3,
+            },
+            "mapping_summary": {"confirmed": 1, "suggested": 0, "review": 0, "new_unmapped": 2},
+        }
+    )
+    assert "inactive" in text
+    assert "Dance N Play" in text
+    assert "Suggested:" in text
+    assert "Лезть не обязательно" in text

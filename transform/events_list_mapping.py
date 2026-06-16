@@ -183,7 +183,7 @@ def map_scheduled_event(
             # Reject fuzzy match when locations clearly disagree (different city/event)
             if matched and matched.typical_location and location_raw:
                 loc_score = location_similarity(location_raw, matched.typical_location)
-                if loc_score < 0.55:
+                if loc_score < LOCATION_DRIFT_THRESHOLD:
                     base.notes.append(
                         f"Rejected fuzzy {confidence:.2f} → {matched.name!r}: location score {loc_score:.2f}"
                     )

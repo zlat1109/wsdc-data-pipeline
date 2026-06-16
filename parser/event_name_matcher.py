@@ -4,7 +4,11 @@ from __future__ import annotations
 
 from difflib import SequenceMatcher
 
+# Schedule name (worldsdc.com/events/) → canonical name in points (core.events).
+# Use when an event rebrands but WSDC results still use the historical catalog title.
+# See data/events_list/README.md § Event renames.
 EVENT_NAME_MAPPINGS: dict[str, str] = {
+    "Rocket City Swing": "Westies on the Water",
     "Paris Swing Classic": "Paris Westie Fest",
     "Charlotte WestieFest": "Charlotte Westie Fest",
     "New Years Swing Fling": "New Year's Swing Fling",

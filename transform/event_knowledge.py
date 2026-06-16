@@ -34,6 +34,11 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
         "url": "http://www.spookyalbanyswing.com/",
         "typical_location": "Albany, NY, United States",
     },
+    # Rebrand on schedule: Rocket City Swing; points catalog still "Westies on the Water".
+    323: {
+        "url": "http://rocketcityswing.com/",
+        "typical_location": "Huntsville, Alabama, United States",
+    },
 }
 
 # location_id -> location_info row fixes when WSDC export leaves rows empty

@@ -70,3 +70,20 @@ Report: `data/events_list/mapping/latest.json`
 | `manual_review_required` | Fuzzy match or location drift |
 | `new_events` | Not in points catalog yet (new brand / trial) |
 | `location_drifts` | Same event, different location string on site |
+
+## Event renames (schedule vs points catalog)
+
+WSDC **results** keep the historical event title in `core.events` long after the **events list** shows a new brand name. Without an alias, mapping falls back to fuzzy match or `new`.
+
+**When you see `Suggested` / wrong `New` for a known registry event:**
+
+1. Confirm rebrand (event site, Facebook, same city/organizer).
+2. Add schedule → catalog alias in `parser/event_name_matcher.py` → `EVENT_NAME_MAPPINGS`:
+   ```python
+   "Rocket City Swing": "Westies on the Water",
+   ```
+3. If URL changed, patch `transform/event_knowledge.py` → `KNOWN_EVENT_METADATA[event_id]` (`url`, `typical_location`). Do **not** rename `core.events.name` until WSDC points export uses the new title (keeps result history joinable).
+4. Add a test in `tests/test_events_list_mapping.py` (explicit alias + location).
+5. Re-run `python scripts/sync_events_list.py` or wait for Tuesday sync; check `mapping/latest.json` → `confirmed`.
+
+**Do not** fuzzy-link similar names in different cities (e.g. Rocket City AL ≠ Rose City OR).

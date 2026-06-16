@@ -77,6 +77,8 @@ def save_artifacts(
         "source": source,
         "summary": {
             "total": len(events),
+            "active": sum(1 for e in events if e.get("is_active", True)),
+            "inactive": sum(1 for e in events if not e.get("is_active", True)),
             "added": len(added),
             "removed": len(removed),
             "unchanged": unchanged,
@@ -282,7 +284,10 @@ def run_mapping_analysis(
 def print_mapping_summary(report: dict[str, Any]) -> None:
     s = report.get("summary") or {}
     print("\n=== Catalog mapping ===")
-    print(f"Confirmed: {s.get('confirmed', 0)}  Review: {s.get('review', 0)}  New: {s.get('new_unmapped', 0)}")
+    print(
+        f"Confirmed: {s.get('confirmed', 0)}  Suggested: {s.get('suggested', 0)}  "
+        f"Review: {s.get('review', 0)}  New: {s.get('new_unmapped', 0)}"
+    )
     print(f"Location drifts: {s.get('location_drifts', 0)}")
 
 
@@ -331,6 +336,9 @@ def main() -> None:
         mapping_report = run_mapping_analysis(events, catalog=catalog)
         print_mapping_summary(mapping_report)
         report["mapping_summary"] = mapping_report.get("summary")
+        (CHANGELOG_DIR / "latest.json").write_text(
+            json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8"
+        )
     except Exception as exc:
         print(f"\nMapping analysis skipped: {exc}", file=sys.stderr)
 

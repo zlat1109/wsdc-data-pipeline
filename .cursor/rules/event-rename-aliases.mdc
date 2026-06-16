@@ -1,0 +1,39 @@
+---
+description: WSDC event renames — map schedule brand to points catalog name
+globs: projects/python/wsdc-data-pipeline/**/{event_name_matcher,events_list_mapping,event_knowledge,sync_events_list}*
+alwaysApply: false
+---
+
+# Event renames (schedule ↔ points)
+
+## Problem
+
+- **Events list** (worldsdc.com/events/) shows marketing / rebrand names.
+- **Points export** (`core.events`, dancer results) keeps the **historical catalog title** until WSDC renames it in the source API.
+
+Missing link → `new_unmapped` or bad fuzzy `suggested` (e.g. Rocket City ≠ Rose City).
+
+## Fix (in order)
+
+1. **`parser/event_name_matcher.py`** — `EVENT_NAME_MAPPINGS["Schedule Name"] = "Catalog Name"`  
+   Schedule name is the key; value must match `core.events.name` exactly.
+
+2. **`transform/event_knowledge.py`** — `KNOWN_EVENT_METADATA[event_id]` for new `url` / `typical_location` after rebrand.
+
+3. **Do not rename** `core.events.name` locally for rebrand-only changes — breaks join to existing results rows.
+
+4. **`tests/test_events_list_mapping.py`** — one test: schedule row → `confirmed` + correct `canonical_event_id`.
+
+5. Verify: `python scripts/analyze_events_list_mapping.py` or `mapping/latest.json` → `confirmed`.
+
+## Signals of a rebrand (not a new event)
+
+- Same city/state, same month season, organizer site says "formerly known as …"
+- Old name disappears from events list but points still have results under old title
+- URL change (`westiesonthewater.com` → `rocketcityswing.com`)
+
+## Anti-patterns
+
+- Fuzzy match across different US states / cities
+- URL-only match when names differ strongly (existing guard in `map_scheduled_event`)
+- Creating a second `event_id` for the same brand
