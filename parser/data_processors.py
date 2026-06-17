@@ -149,7 +149,16 @@ class LocationExtractor:
         try:
             if not self.cleaner.validate_location(location):
                 return None
-            
+
+            from transform.data_preprocessing import (  # noqa: WPS433
+                STATE_NAME_TO_CODE,
+                parse_us_state_from_location_text,
+            )
+
+            full_name = parse_us_state_from_location_text(location)
+            if full_name:
+                return STATE_NAME_TO_CODE.get(full_name)
+
             parts = location.split(', ')
             if len(parts) == 2 and len(parts[1]) == 2:
                 return parts[1].upper()

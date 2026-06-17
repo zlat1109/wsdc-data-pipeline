@@ -102,6 +102,8 @@ STATE_NAME_TO_CODE = {
     'Wisconsin': 'WI', 'Wyoming': 'WY', 'District of Columbia': 'DC',
 }
 
+STATE_CODE_TO_NAME = {code: name for name, code in STATE_NAME_TO_CODE.items()}
+
 # Провинции Канады
 CANADA_PROVINCES = {
     'Toronto': 'Ontario',
@@ -254,6 +256,13 @@ LOCATION_INFO_CITY_CORRECTIONS = {
         'event_location': 'Albany, NY',
         'event_location_standardized': 'Albany, NY',
     },
+    'burbank': {
+        'event_city': 'Burbank',
+        'event_state': 'California',
+        'event_country': 'United States',
+        'event_location': 'Burbank, CA, United States',
+        'event_location_standardized': 'Burbank, CA',
+    },
 }
 
 # Нормализация уровней дивизионов
@@ -324,6 +333,41 @@ def standardize_location(row: pd.Series) -> str:
         return f"{city}, {country}"
     else:
         return city
+
+
+def parse_us_state_from_location_text(location: str) -> str:
+    """Parse a US state full name from a WSDC location string."""
+    if not location or not str(location).strip():
+        return ''
+
+    parts = [part.strip() for part in str(location).split(',') if part.strip()]
+    if len(parts) < 2:
+        return ''
+
+    second = parts[1]
+    if len(second) == 2 and second.isalpha():
+        return STATE_CODE_TO_NAME.get(second.upper(), '')
+
+    for part in parts[1:]:
+        if part in STATE_NAME_TO_CODE:
+            return part
+        if part.upper() in {'USA', 'US', 'UNITED STATES'}:
+            continue
+
+    return ''
+
+
+def fill_us_state_from_location(row: pd.Series) -> str:
+    """Fill full US state name from event_location when event_state is missing."""
+    if pd.notna(row.get('event_state')) and str(row.get('event_state')).strip():
+        return str(row.get('event_state')).strip()
+
+    country = str(row.get('event_country', '')).strip() if pd.notna(row.get('event_country')) else ''
+    if country not in {'United States', 'USA', 'US'}:
+        return ''
+
+    location = str(row.get('event_location', '')).strip() if pd.notna(row.get('event_location')) else ''
+    return parse_us_state_from_location_text(location)
 
 
 def fill_international_state(row: pd.Series) -> str:
@@ -431,8 +475,13 @@ def normalize_geography(df: pd.DataFrame) -> pd.DataFrame:
     if 'event_country' in df.columns:
         df['event_country'] = df['event_country'].apply(standardize_country)
     
-    # 2. Заполнение event_state для международных локаций
+    # 2. US state from event_location, then international provinces/regions
     if 'event_state' in df.columns:
+        missing_state = df['event_state'].fillna('').astype(str).str.strip() == ''
+        if missing_state.any():
+            df.loc[missing_state, 'event_state'] = df.loc[missing_state].apply(
+                fill_us_state_from_location
+            )
         df['event_state'] = df.apply(fill_international_state, axis=1)
     
     # 3. Стандартизация локаций
