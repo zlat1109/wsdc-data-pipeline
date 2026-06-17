@@ -18,6 +18,9 @@ from pathlib import Path
 import pandas as pd
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(PROJECT_ROOT))
+
+from transform.data_preprocessing import results_date_parse_rate  # noqa: E402
 
 REQUIRED_CSV = (
     "dancer_role_info.csv",
@@ -134,6 +137,20 @@ def validate_pipeline_inputs(data_dir: Path) -> ValidationReport:
         }
         if bad:
             report.error(f"dancers_results_info: invalid event_role values: {sorted(bad)[:8]}")
+
+    date_cols = {"event_year", "event_month", "event_year_and_month"} & set(results.columns)
+    if date_cols:
+        coverage = results_date_parse_rate(results)
+        if coverage < 0.99:
+            report.error(
+                f"dancers_results_info: only {coverage:.1%} rows have parseable event dates "
+                "(need >=99% before load; cloud parse should use Month Year or ISO)"
+            )
+        elif coverage < 1.0:
+            report.warn(
+                f"dancers_results_info: {coverage:.1%} rows have parseable event dates "
+                f"({len(results) - int(coverage * len(results))} unparseable)"
+            )
 
     role_only = role_ids - points_ids - results_ids
     if len(role_only) > 50:

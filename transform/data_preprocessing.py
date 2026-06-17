@@ -462,23 +462,30 @@ def parse_event_date(date_str: str) -> Optional[pd.Timestamp]:
     """
     if pd.isna(date_str) or date_str == '':
         return None
-    
+
+    text = str(date_str).strip()
+    if not text or text.lower() in {"nan", "none"}:
+        return None
+
+    # WSDC cloud parse: "Month Year" — always first day of month
+    match = re.match(r'(\w+)\s+(\d{4})', text)
+    if match:
+        month_str, year = match.groups()
+        month_map = {
+            'January': 1, 'February': 2, 'March': 3, 'April': 4,
+            'May': 5, 'June': 6, 'July': 7, 'August': 8,
+            'September': 9, 'October': 10, 'November': 11, 'December': 12,
+        }
+        month = month_map.get(month_str, 1)
+        return pd.Timestamp(year=int(year), month=month, day=1)
+
+    if re.match(r'^\d{4}-\d{2}-\d{2}$', text):
+        return pd.Timestamp(text)
+
     try:
-        # Попытка прямого парсинга
-        return parser.parse(str(date_str))
-    except:
-        # Обработка формата "Month Year"
-        match = re.match(r'(\w+)\s+(\d{4})', str(date_str))
-        if match:
-            month_str, year = match.groups()
-            # Преобразуем месяц в число
-            month_map = {
-                'January': 1, 'February': 2, 'March': 3, 'April': 4,
-                'May': 5, 'June': 6, 'July': 7, 'August': 8,
-                'September': 9, 'October': 10, 'November': 11, 'December': 12
-            }
-            month = month_map.get(month_str, 1)
-            return pd.Timestamp(year=int(year), month=month, day=1)
+        parsed = parser.parse(text)
+        return pd.Timestamp(year=parsed.year, month=parsed.month, day=1)
+    except (ValueError, TypeError, parser.ParserError):
         return None
 
 
@@ -504,6 +511,77 @@ def normalize_dates(df: pd.DataFrame) -> pd.DataFrame:
         df['event_year_month'] = df['parsed_date'].dt.to_period('M')
     
     return df
+
+
+def _parse_yam_series(series: pd.Series) -> pd.Series:
+    """Parse event_year_and_month values to first-of-month timestamps."""
+
+    def _one(value: object) -> pd.Timestamp:
+        if pd.isna(value):
+            return pd.NaT
+        text = str(value).strip()
+        if not text or text.lower() in {"nan", "none"}:
+            return pd.NaT
+        parsed = parse_event_date(text)
+        return parsed if parsed is not None else pd.NaT
+
+    return series.map(_one).astype("datetime64[ns]")
+
+
+def normalize_results_dates(df: pd.DataFrame) -> pd.DataFrame:
+    """Normalize dancers_results_info date columns for promote_core.sql.
+
+    Cloud parse writes event_year_and_month as \"January 1997\" with empty
+    event_year/event_month. Load expects numeric year/month and ISO date in
+    event_year_and_month (YYYY-MM-DD).
+    """
+    df = df.copy()
+    for col in ("event_year", "event_month", "event_year_and_month"):
+        if col not in df.columns:
+            df[col] = ""
+
+    year_num = pd.to_numeric(
+        df["event_year"].astype(str).str.strip().replace({"": pd.NA, "nan": pd.NA, "None": pd.NA}),
+        errors="coerce",
+    )
+    month_num = pd.to_numeric(
+        df["event_month"].astype(str).str.strip().replace({"": pd.NA, "nan": pd.NA, "None": pd.NA}),
+        errors="coerce",
+    )
+    has_ym = year_num.notna() & month_num.notna() & (month_num >= 1) & (month_num <= 12)
+
+    parsed = pd.Series(pd.NaT, index=df.index, dtype="datetime64[ns]")
+    if has_ym.any():
+        parsed.loc[has_ym] = pd.to_datetime(
+            {
+                "year": year_num[has_ym].astype(int),
+                "month": month_num[has_ym].astype(int),
+                "day": 1,
+            },
+            errors="coerce",
+        )
+
+    missing = parsed.isna()
+    if missing.any():
+        parsed.loc[missing] = _parse_yam_series(df.loc[missing, "event_year_and_month"])
+
+    df["event_year"] = ""
+    df["event_month"] = ""
+    df["event_year_and_month"] = ""
+    ok = parsed.notna()
+    df.loc[ok, "event_year"] = parsed.loc[ok].dt.year.astype(int).astype(str)
+    df.loc[ok, "event_month"] = parsed.loc[ok].dt.month.astype(int).astype(str)
+    df.loc[ok, "event_year_and_month"] = parsed.loc[ok].dt.strftime("%Y-%m-%d")
+    return df
+
+
+def results_date_parse_rate(df: pd.DataFrame) -> float:
+    """Share of rows with parseable event year/month (0.0–1.0)."""
+    if df.empty:
+        return 1.0
+    normalized = normalize_results_dates(df)
+    ok = normalized["event_year"].fillna("").astype(str).str.strip() != ""
+    return float(ok.mean())
 
 
 # ═══════════════════════════════════════════════════════════════════
@@ -621,6 +699,7 @@ def standardize_formats(data: Dict[str, pd.DataFrame]) -> Dict[str, pd.DataFrame
             df['event_result_standardized'] = df['event_result'].apply(standardize_result)
         # Применяем ручные коррекции по событиям и локациям
         df = apply_event_corrections(df)
+        df = normalize_results_dates(df)
         result['dancers_results_info'] = df
     
     # Добавляем остальные таблицы без изменений

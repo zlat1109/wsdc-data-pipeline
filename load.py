@@ -41,6 +41,9 @@ def main() -> None:
     args = parser.parse_args()
 
     with connect() as conn:
+        with conn.cursor() as cur:
+            cur.execute("SET statement_timeout = '600s'")
+
         staging_counts = load_staging_from_dir(conn, args.data_dir)
 
         with conn.cursor() as cur:

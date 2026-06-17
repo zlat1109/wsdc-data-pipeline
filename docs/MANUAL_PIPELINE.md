@@ -38,11 +38,18 @@ Recommended manual full-parse inputs:
 | Load | invalid `event_role` / `role` | Fix in `transform/data_preprocessing.py` or source CSV |
 | CI commit | `git push rejected (fetch first)` | Fixed: `git pull --rebase` before push in `full-parse.yml` |
 | Auto re-run | Multiple 4h parses / minutes burn | Schedule paused + weekly cooldown when re-enabled |
+| Load | `event_editions` = 0 after load | Cloud parse dates; run preprocess with `normalize_results_dates` |
+| Sync | Supabase fresh, git CSV stale | See [DATA_SYNC.md](DATA_SYNC.md); run `export.py` and commit |
+| Multi-machine | Different row counts / dancer IDs | `scripts/compare_csv_snapshots.py` + `build_merged_load_dataset.py` |
+
+## Multi-machine / migration
+
+See **[DATA_SYNC.md](DATA_SYNC.md)** — golden rules when moving between laptops or merging `old-laptop-version` into `main`.
 
 ## Tests before a manual run
 
 ```bash
-pytest tests/test_pipeline_validation.py tests/test_preprocess_with_log.py -q
+pytest tests/test_pipeline_validation.py tests/test_preprocess_with_log.py tests/test_normalize_results_dates.py -q
 python scripts/validate_pipeline_inputs.py --data-dir ./data
 ```
 

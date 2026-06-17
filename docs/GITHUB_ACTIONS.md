@@ -49,6 +49,10 @@ Before load, `scripts/preprocess_data.py` writes `data/quality_reports/latest.js
 
 Add fixes to `transform/data_preprocessing.py` based on `manual_review_required`, not on items already in `applied_normalizations`.
 
+### Multi-machine sync
+
+If load succeeded in CI but CSV commit failed, or you parse on another laptop, see **[DATA_SYNC.md](DATA_SYNC.md)** before the next load.
+
 Requires `TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID` in this repo's Actions secrets.
 
 **Events list sync** → message `#WSDC_Events_List` (added/removed counts, sample names). Weekly Tuesday run.

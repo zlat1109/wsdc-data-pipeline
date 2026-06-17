@@ -16,6 +16,7 @@ from transform.data_preprocessing import (
     normalize_dates,
     normalize_geography,
     normalize_level,
+    normalize_results_dates,
     standardize_result,
 )
 from transform.event_knowledge import apply_event_location_patches, event_location_patches
@@ -145,7 +146,7 @@ def _apply_event_corrections_tracked(df: pd.DataFrame, tracker: PreprocessTracke
                 )
                 df.loc[mask, "event_location"] = col[mask].str.replace(old, new, regex=False)
 
-    return df
+    return normalize_results_dates(df)
 
 
 def _apply_geography_tracked(df: pd.DataFrame, tracker: PreprocessTracker) -> pd.DataFrame:
