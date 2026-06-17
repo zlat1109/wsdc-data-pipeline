@@ -160,11 +160,7 @@ SELECT
     s.dancer_id::int,
     COALESCE(
         NULLIF(TRIM(s.event_name_id), '')::int,
-        (
-            SELECT MIN(e.event_id)
-            FROM core.events e
-            WHERE e.name = NULLIF(TRIM(s.event_name), '')
-        )
+        ev.event_id
     ),
     NULLIF(TRIM(s.location_id), '')::int,
     NULLIF(TRIM(s.event_dance), ''),
@@ -184,5 +180,10 @@ SELECT
     NULLIF(TRIM(s.event_result_standardized), ''),
     COALESCE(NULLIF(TRIM(s.event_points), '')::int, 0)
 FROM staging.dancers_results_info s
+LEFT JOIN (
+    SELECT name, MIN(event_id) AS event_id
+    FROM core.events
+    GROUP BY name
+) ev ON ev.name = NULLIF(TRIM(s.event_name), '')
 WHERE s.dancer_id ~ '^\d+$'
   AND CASE LOWER(TRIM(s.event_role)) WHEN 'leader' THEN 'Leader' WHEN 'follower' THEN 'Follower' END IS NOT NULL;
