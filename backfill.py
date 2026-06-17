@@ -15,9 +15,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).parent
-DEFAULT_DATA_DIR = Path(
-    "/Users/ania/.cursor/projects/tableau/My-Tableau-Projects/WSDC/WSDC Points"
-)
+DEFAULT_DATA_DIR = PROJECT_ROOT / "data"
 
 sys.path.insert(0, str(PROJECT_ROOT / "db"))
 

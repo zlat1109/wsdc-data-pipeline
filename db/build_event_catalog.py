@@ -86,6 +86,12 @@ WITH edition_stats AS (
     FROM core.event_editions
     GROUP BY event_id
 ),
+dancer_counts AS (
+    SELECT event_id, COUNT(DISTINCT dancer_id)::int AS unique_dancers
+    FROM core.results
+    WHERE event_id IS NOT NULL
+    GROUP BY event_id
+),
 recent_edition AS (
     SELECT DISTINCT ON (event_id)
         event_id,
@@ -109,17 +115,11 @@ SELECT
     es.last_edition_year,
     COALESCE(es.edition_count, 0),
     COALESCE(es.total_result_rows, 0),
-    COALESCE(
-        (
-            SELECT COUNT(DISTINCT r.dancer_id)::int
-            FROM core.results r
-            WHERE r.event_id = e.event_id
-        ),
-        0
-    ),
+    COALESCE(dc.unique_dancers, 0),
     now()
 FROM core.events e
 LEFT JOIN edition_stats es ON es.event_id = e.event_id
+LEFT JOIN dancer_counts dc ON dc.event_id = e.event_id
 LEFT JOIN recent_edition re ON re.event_id = e.event_id
 """
 
@@ -150,7 +150,7 @@ WHERE c.event_id = %s
 
 def rebuild_event_catalog(conn: Any) -> tuple[int, int]:
     """Truncate and rebuild catalog + editions. Returns (catalog_count, edition_count)."""
-    from transform.event_knowledge import KNOWN_EVENT_METADATA
+    from transform.knowledge import KNOWN_EVENT_METADATA
 
     now = datetime.now(timezone.utc)
 

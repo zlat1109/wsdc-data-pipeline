@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from transform.event_knowledge import KNOWN_EVENT_METADATA
+from transform.knowledge import KNOWN_EVENT_METADATA
 from transform.events_list_mapping import CatalogEvent
 from transform.events_list_normalize import normalize_url
 

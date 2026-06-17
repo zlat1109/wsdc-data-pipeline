@@ -7,19 +7,20 @@ from typing import Any
 import pandas as pd
 
 from transform.data_preprocessing import (
+    normalize_dates,
+    normalize_results_dates,
+    standardize_result,
+)
+from transform.geography import normalize_geography
+from transform.knowledge import (
     EVENT_LOCATION_EXACT_CORRECTIONS,
     EVENT_LOCATION_SUBSTRING_CORRECTIONS,
     EVENT_NAME_LOCATION_OVERRIDES,
     EVENT_NAME_NORMALIZATION,
-    LOCATION_INFO_CITY_CORRECTIONS,
-    LOCATION_INFO_ID_CORRECTIONS,
-    normalize_dates,
-    normalize_geography,
-    normalize_level,
-    normalize_results_dates,
-    standardize_result,
+    apply_event_location_patches,
+    event_location_patches,
 )
-from transform.event_knowledge import apply_event_location_patches, event_location_patches
+from transform.normalize import normalize_level
 from transform.preprocess_tracker import PreprocessTracker
 from transform.quality_audit import (
     QualityFinding,
@@ -150,56 +151,7 @@ def _apply_event_corrections_tracked(df: pd.DataFrame, tracker: PreprocessTracke
 
 
 def _apply_geography_tracked(df: pd.DataFrame, tracker: PreprocessTracker) -> pd.DataFrame:
-    table = "location_info"
-    df = df.copy()
-
-    if "location_id" in df.columns:
-        for loc_id, fixes in LOCATION_INFO_ID_CORRECTIONS.items():
-            mask = df["location_id"].astype(str) == str(loc_id)
-            if not mask.any():
-                continue
-            empty_mask = mask.copy()
-            for key_col in ["event_city", "event_country", "event_location"]:
-                if key_col in df.columns and key_col in fixes:
-                    col_vals = df.loc[mask, key_col].astype(str).str.strip()
-                    empty_mask &= col_vals.isna() | (col_vals == "") | (col_vals == "nan")
-            target_mask = empty_mask if empty_mask.any() else mask
-            for col, val in fixes.items():
-                if col in df.columns and target_mask.any():
-                    before = df.loc[target_mask, col].astype(str).iloc[0] if target_mask.any() else ""
-                    count = int(target_mask.sum())
-                    tracker.record(
-                        "LOCATION_INFO_ID_CORRECTION",
-                        table,
-                        col,
-                        f"location_id={loc_id} was {before}",
-                        str(val),
-                        count,
-                        "location_id_fix",
-                    )
-                    df.loc[target_mask, col] = val
-
-    if "event_city" in df.columns:
-        city_col = df["event_city"].fillna("").astype(str).str.strip()
-        for city_key, fixes in LOCATION_INFO_CITY_CORRECTIONS.items():
-            mask = city_col.str.lower() == city_key
-            if not mask.any():
-                continue
-            for col, val in fixes.items():
-                if col in df.columns:
-                    count = int(mask.sum())
-                    tracker.record(
-                        "LOCATION_INFO_CITY_CORRECTION",
-                        table,
-                        col,
-                        f"city={city_key}",
-                        str(val),
-                        count,
-                        "city_fix",
-                    )
-                    df.loc[mask, col] = val
-
-    return normalize_geography(df)
+    return normalize_geography(df.copy(), tracker=tracker)
 
 
 def _apply_events_wsdc_tracked(df: pd.DataFrame, tracker: PreprocessTracker) -> pd.DataFrame:

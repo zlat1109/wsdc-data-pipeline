@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
-"""Patch core.locations coordinates (and optional fields) from location_info.csv.
+"""Patch core.locations coordinates from location_info.csv.
 
-Lightweight alternative to a full load.py run when only geography changed.
+EMERGENCY ONLY — bypasses the audited preprocess → load pipeline.
+Canonical path after geography changes:
+
+    python scripts/preprocess_data.py --data-dir data
+    python load.py --data-dir data
+
+Use this script only when you cannot run a full load and need coord-only DB patches.
 
 Usage:
-    python scripts/preprocess_data.py --data-dir data
     python scripts/sync_locations_from_csv.py --data-dir data
 """
 
@@ -21,7 +26,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 sys.path.insert(0, str(PROJECT_ROOT / "db"))
 
 from connection import connect  # noqa: E402
-from transform.data_preprocessing import normalize_geography  # noqa: E402
+from transform.geography import normalize_geography  # noqa: E402
 
 
 def load_normalized_locations(data_dir: Path) -> pd.DataFrame:

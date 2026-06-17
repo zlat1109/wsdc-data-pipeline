@@ -23,7 +23,7 @@ def test_auto_strip_event_year_tracked():
 def test_known_map_tracked():
     df = pd.DataFrame({"event_name": ["BALTIC SWING", "BALTIC SWING", "Other"]})
     tracker = PreprocessTracker()
-    from transform.data_preprocessing import EVENT_NAME_NORMALIZATION
+    from transform.knowledge import EVENT_NAME_NORMALIZATION
 
     out = _apply_mapping(
         df,
@@ -60,3 +60,33 @@ def test_combined_report_sections():
     assert "applied_normalizations" in report
     assert "manual_review_required" in report
     assert report["summary"]["applied_rules_count"] >= 1
+
+
+def test_preprocess_canonicalizes_london_suburb_coords():
+    raw = {
+        "location_info": pd.DataFrame([
+            {
+                "location_id": "107",
+                "event_city": "London",
+                "event_state": "England",
+                "event_country": "United Kingdom",
+                "latitude": "51.5072178",
+                "longitude": "-0.1275862",
+                "event_location": "London, United Kingdom",
+            },
+            {
+                "location_id": "130",
+                "event_city": "London",
+                "event_state": "England",
+                "event_country": "United Kingdom",
+                "latitude": "51.5077194",
+                "longitude": "-0.4726768",
+                "event_location": "London, West Drayton, United Kingdom",
+            },
+        ]),
+    }
+    processed, tracker = preprocess_with_log(raw)
+    assert processed["location_info"].loc[1, "latitude"] == "51.5072178"
+    assert processed["location_info"].loc[1, "longitude"] == "-0.1275862"
+    canon_rules = [r for r in tracker.rules if r.rule_id == "CITY_CANONICAL_COORDINATES"]
+    assert canon_rules and canon_rules[0].rows_affected >= 1

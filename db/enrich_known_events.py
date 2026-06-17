@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import psycopg
 
-from transform.event_knowledge import (
+from transform.knowledge import (
     KNOWN_EVENT_METADATA,
     LOCATION_ID_CORRECTIONS,
     event_location_patches,

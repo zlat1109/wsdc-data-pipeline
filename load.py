@@ -13,9 +13,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).parent
-DEFAULT_DATA_DIR = Path(
-    "/Users/ania/.cursor/projects/tableau/My-Tableau-Projects/WSDC/WSDC Points"
-)
+DEFAULT_DATA_DIR = PROJECT_ROOT / "data"
 
 sys.path.insert(0, str(PROJECT_ROOT / "db"))
 
@@ -64,6 +62,7 @@ def main() -> None:
             cur.execute(read_sql("promote_core.sql"))
             enrich_core_known_events(conn)
             catalog_count, edition_count = rebuild_event_catalog(conn)
+            cur.execute("ANALYZE core.results, core.event_editions, core.event_catalog")
 
             cur.execute(
                 """

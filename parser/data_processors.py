@@ -150,10 +150,10 @@ class LocationExtractor:
             if not self.cleaner.validate_location(location):
                 return None
 
-            from transform.data_preprocessing import (  # noqa: WPS433
-                STATE_NAME_TO_CODE,
+            from transform.geography import (  # noqa: WPS433
                 parse_us_state_from_location_text,
             )
+            from transform.geography.constants import STATE_NAME_TO_CODE  # noqa: WPS433
 
             full_name = parse_us_state_from_location_text(location)
             if full_name:

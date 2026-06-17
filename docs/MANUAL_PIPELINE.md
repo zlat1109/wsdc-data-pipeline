@@ -40,7 +40,7 @@ Recommended manual full-parse inputs:
 | Auto re-run | Multiple 4h parses / minutes burn | Schedule paused + weekly cooldown when re-enabled |
 | Load | `event_editions` = 0 after load | Cloud parse dates; run preprocess with `normalize_results_dates` |
 | Sync | Supabase fresh, git CSV stale | See [DATA_SYNC.md](DATA_SYNC.md); run `export.py` and commit |
-| Multi-machine | Different row counts / dancer IDs | `scripts/compare_csv_snapshots.py` + `build_merged_load_dataset.py` |
+| Geography | Map markers split by suburb | Fixed in preprocess (`transform/geography`); use `preprocess_data.py` before load, not `sync_locations_from_csv` alone |
 
 ## Multi-machine / migration
 

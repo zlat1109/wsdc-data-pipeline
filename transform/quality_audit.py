@@ -16,8 +16,10 @@ from typing import Any
 
 import pandas as pd
 
-from transform.data_preprocessing import (
+from transform.knowledge import (
     EVENT_NAME_NORMALIZATION,
+)
+from transform.data_preprocessing import (
     validate_data_quality,
     validate_relationships,
 )
@@ -277,7 +279,7 @@ def check_non_canonical_levels(results: pd.DataFrame) -> QualityFinding | None:
         message="Division/level values outside canonical set (Tableau expects full words)",
         count=len(bad),
         examples=bad[:20],
-        suggested_fix="Add to LEVEL_NORMALIZATION in transform/data_preprocessing.py or transform/normalize.py",
+        suggested_fix="Add alias to LEVEL_ALIASES in transform/normalize.py",
         fingerprint=_fingerprint("levels", "NON_CANONICAL_DIVISION", "|".join(x["raw_level"] for x in bad[:10])),
     )
 

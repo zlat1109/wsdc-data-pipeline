@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-06-17T20:12:00.280459+00:00",
+  "generated_at": "2026-06-17T20:37:02.634078+00:00",
   "source": "local",
   "run_id": null,
   "summary": {
     "before_findings_count": 5,
-    "applied_rules_count": 20,
-    "applied_rows_touched": 28,
+    "applied_rules_count": 24,
+    "applied_rows_touched": 2149,
     "manual_review_count": 5,
     "manual_review_new_count": 0
   },
@@ -45,7 +45,7 @@
             "normalized_attempt": "All-Stars"
           }
         ],
-        "suggested_fix": "Add to LEVEL_NORMALIZATION in transform/data_preprocessing.py or transform/normalize.py",
+        "suggested_fix": "Add alias to LEVEL_ALIASES in transform/normalize.py",
         "fingerprint": "f6dffcec5792606f",
         "is_new": true
       },
@@ -290,6 +290,42 @@
         "to_value": "Burbank, CA, United States",
         "rows_affected": 1,
         "source": "city_fix"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_required",
+        "from_value": "All Star",
+        "to_value": "All-Star",
+        "rows_affected": 1090,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_allowed",
+        "from_value": "All Star",
+        "to_value": "All-Star",
+        "rows_affected": 1011,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "non_dominate_required",
+        "from_value": "All Star",
+        "to_value": "All-Star",
+        "rows_affected": 10,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "non_dominate_allowed",
+        "from_value": "All Star",
+        "to_value": "All-Star",
+        "rows_affected": 10,
+        "source": "known_map"
       }
     ]
   },
@@ -330,7 +366,7 @@
             "normalized_attempt": "All-Stars"
           }
         ],
-        "suggested_fix": "Add to LEVEL_NORMALIZATION in transform/data_preprocessing.py or transform/normalize.py",
+        "suggested_fix": "Add alias to LEVEL_ALIASES in transform/normalize.py",
         "fingerprint": "f6dffcec5792606f",
         "is_new": false,
         "requires_manual_review": true

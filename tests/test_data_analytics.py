@@ -3,6 +3,13 @@ Tests for Data Analytics Module
 Тесты для модуля аналитики данных WSDC
 """
 
+import pytest
+
+pytest.importorskip("matplotlib")
+pytest.importorskip("seaborn")
+pytest.importorskip("plotly")
+pytest.importorskip("folium")
+
 import unittest
 import pandas as pd
 import numpy as np
