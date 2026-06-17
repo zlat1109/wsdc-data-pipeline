@@ -27,6 +27,10 @@ class ProbeReport:
     already_in_db_events: list[str] = field(default_factory=list)
     coverage_dancers_scanned: int = 0
     no_pending: bool = False
+    cooldown_active: bool = False
+    cooldown_until: str | None = None
+    last_success_run_id: int | None = None
+    last_success_finished_at: str | None = None
     checked_at: str = field(default_factory=lambda: date.today().isoformat())
 
     @property
@@ -47,6 +51,10 @@ def build_probe_report(
     snapshot_name: str | None = None,
     weekend_start: date | None = None,
     weekend_end: date | None = None,
+    cooldown_active: bool = False,
+    cooldown_until: str | None = None,
+    last_success_run_id: int | None = None,
+    last_success_finished_at: str | None = None,
 ) -> ProbeReport:
     return ProbeReport(
         ready=ready,
@@ -64,4 +72,8 @@ def build_probe_report(
         already_in_db_events=list(already_in_db or []),
         coverage_dancers_scanned=coverage.dancers_scanned if coverage else 0,
         no_pending=no_pending,
+        cooldown_active=cooldown_active,
+        cooldown_until=cooldown_until,
+        last_success_run_id=last_success_run_id,
+        last_success_finished_at=last_success_finished_at,
     )

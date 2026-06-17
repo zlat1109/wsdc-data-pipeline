@@ -49,6 +49,23 @@ def test_format_probe_ready():
     assert "отдельном сообщении" in text
 
 
+def test_format_probe_cooldown():
+    report = {
+        "checked_at": "2026-06-17",
+        "ready": False,
+        "cooldown_active": True,
+        "cooldown_until": "2026-06-22T00:00:00+02:00",
+        "last_success_run_id": 123,
+        "watermark": 28420,
+        "live_max_id": 28435,
+        "approx_new_ids": 15,
+    }
+    text = format_probe_message(report)
+    assert "Cooldown" in text
+    assert "2026-06-22" in text
+    assert "run_id" in text
+
+
 def test_format_parse_start():
     text = format_parse_start_message(
         {

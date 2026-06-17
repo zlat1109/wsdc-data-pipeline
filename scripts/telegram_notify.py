@@ -45,7 +45,11 @@ def send_telegram(text: str) -> bool:
 
 def format_probe_message(report: dict) -> str:
     ready = bool(report.get("ready"))
-    status = "✅ <b>Готов к обновлению</b>" if ready else "⏸ <b>Обновления пока нет</b>"
+    cooldown_active = bool(report.get("cooldown_active"))
+    if cooldown_active:
+        status = "🧊 <b>Cooldown: parse уже был на этой неделе</b>"
+    else:
+        status = "✅ <b>Готов к обновлению</b>" if ready else "⏸ <b>Обновления пока нет</b>"
     lines = [
         f"{report.get('checked_at', '')}",
         "#WSDC_Pipeline_Check",
@@ -71,6 +75,14 @@ def format_probe_message(report: dict) -> str:
 
     if report.get("no_pending"):
         lines.extend(["", "⚠️ Нет pending upcoming events — проверь sync snapshot из weekly bot"])
+    if cooldown_active:
+        lines.extend(
+            [
+                "",
+                f"До: <code>{_esc(report.get('cooldown_until', 'next Monday'))}</code>",
+                f"Last success run_id: <code>{_esc(report.get('last_success_run_id', '?'))}</code>",
+            ]
+        )
 
     pending = report.get("pending_events") or []
     if pending:
@@ -98,7 +110,10 @@ def format_probe_message(report: dict) -> str:
             dancer_id = dancer.get("wscid", "?")
             lines.append(f"• {_esc(label)} (<code>{_esc(dancer_id)}</code>)")
 
-    if ready:
+    if cooldown_active:
+        lines.append("")
+        lines.append("Авто-parse на этой неделе отключён (проверка остаётся только как мониторинг).")
+    elif ready:
         lines.append("")
         lines.append("Условия gate выполнены — старт parse в отдельном сообщении.")
     else:

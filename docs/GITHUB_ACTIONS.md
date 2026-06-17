@@ -80,6 +80,7 @@ python scripts/sync_events_list.py
   - CET (winter): same crons → **08:00** / **21:00** local on Tue–Fri, Mon **21:00**
 - **New-ID scan**: linear probe from last known max dancer ID (watermark)
 - New WSDC registry numbers after weekend events → `changed`
+- **Weekly cooldown**: after one successful full parse in the current Madrid week, probe stays monitoring-only and does not auto-trigger another full-parse until next Monday
 - Stores probe result in `history.parse_runs` (`max_dancer_id_watermark`, `new_dancer_ids`)
 - If changed → triggers `full-parse.yml`
 

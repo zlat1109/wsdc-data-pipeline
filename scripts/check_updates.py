@@ -21,8 +21,9 @@ import argparse
 import json
 import os
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import requests
 
@@ -37,6 +38,8 @@ from parser.http_client import WSDCHttpClient  # noqa: E402
 from probe_report import build_probe_report  # noqa: E402
 from weekend_events import resolve_pending_snapshot  # noqa: E402
 from wsdc_id_probe import ScanResult, scan_ids_above_watermark  # noqa: E402
+
+MADRID_TZ = ZoneInfo("Europe/Madrid")
 
 
 def get_watermark(conn, anchor_override: int | None) -> int:
@@ -123,6 +126,37 @@ def record_probe(
     conn.commit()
 
 
+def get_weekly_cooldown_status(conn) -> tuple[bool, int | None, datetime | None, datetime]:
+    """Return cooldown state based on successful parse runs in current Madrid week."""
+    now_local = datetime.now(MADRID_TZ)
+    week_start_local = (
+        now_local - timedelta(days=now_local.weekday())
+    ).replace(hour=0, minute=0, second=0, microsecond=0)
+    next_week_start_local = week_start_local + timedelta(days=7)
+
+    week_start_utc = week_start_local.astimezone(timezone.utc)
+    next_week_start_utc = next_week_start_local.astimezone(timezone.utc)
+
+    with conn.cursor() as cur:
+        cur.execute(
+            """
+            SELECT run_id, finished_at
+            FROM history.parse_runs
+            WHERE status = 'success'
+              AND rows_results IS NOT NULL
+              AND finished_at >= %s
+            ORDER BY finished_at DESC
+            LIMIT 1
+            """,
+            (week_start_utc,),
+        )
+        row = cur.fetchone()
+
+    if not row:
+        return False, None, None, next_week_start_local
+    return True, int(row[0]), row[1], next_week_start_local
+
+
 def print_report(
     scan: ScanResult,
     coverage: EventCoverageResult | None,
@@ -130,6 +164,9 @@ def print_report(
     ready: bool,
     already_in_db: list[str] | None = None,
     no_pending: bool = False,
+    cooldown_active: bool = False,
+    cooldown_until: str | None = None,
+    last_success_run_id: int | None = None,
 ) -> None:
     print(f"watermark={scan.watermark}", flush=True)
     print(f"live_max_id={scan.live_max_id}", flush=True)
@@ -141,6 +178,12 @@ def print_report(
         print(f"already_in_db_events={already_in_db}", flush=True)
     if no_pending:
         print("no_pending_events — sync current upcoming snapshot from telegram-news-bot", flush=True)
+    if cooldown_active:
+        print(
+            f"cooldown_active_until={cooldown_until} "
+            f"(last_success_run_id={last_success_run_id})",
+            flush=True,
+        )
 
     if coverage:
         print(f"pending_events={coverage.expected}", flush=True)
@@ -173,6 +216,11 @@ def main() -> None:
         default=None,
         help="Write structured probe report JSON (for Telegram notify)",
     )
+    parser.add_argument(
+        "--ignore-weekly-cooldown",
+        action="store_true",
+        help="Ignore weekly post-success cooldown (for manual override/debug)",
+    )
     args = parser.parse_args()
 
     session = requests.Session()
@@ -188,8 +236,20 @@ def main() -> None:
         no_pending = False
         snapshot_name: str | None = None
         weekend_start = weekend_end = None
+        cooldown_active = False
+        cooldown_until: str | None = None
+        last_success_run_id: int | None = None
+        last_success_finished_at: str | None = None
 
-        if not ids_changed:
+        if not args.ignore_weekly_cooldown:
+            cooldown_active, last_success_run_id, last_success_finished_at, cooldown_until_local = (
+                get_weekly_cooldown_status(conn)
+            )
+            cooldown_until = cooldown_until_local.isoformat()
+
+        if cooldown_active:
+            ready = False
+        elif not ids_changed:
             ready = False
         elif args.skip_event_gate:
             ready = True
@@ -226,6 +286,12 @@ def main() -> None:
             snapshot_name=snapshot_name,
             weekend_start=weekend_start,
             weekend_end=weekend_end,
+            cooldown_active=cooldown_active,
+            cooldown_until=cooldown_until,
+            last_success_run_id=last_success_run_id,
+            last_success_finished_at=last_success_finished_at.isoformat()
+            if last_success_finished_at
+            else None,
         )
 
         if args.json_report:
@@ -240,6 +306,9 @@ def main() -> None:
             ready=ready,
             already_in_db=already_in_db,
             no_pending=no_pending,
+            cooldown_active=cooldown_active,
+            cooldown_until=cooldown_until,
+            last_success_run_id=last_success_run_id,
         )
 
         if args.write_probe or ready:
