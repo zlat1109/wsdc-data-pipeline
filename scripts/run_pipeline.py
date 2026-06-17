@@ -55,6 +55,12 @@ def main() -> None:
             sys.exit("--data-dir is required unless --export-only is set")
         run([
             py,
+            "scripts/validate_pipeline_inputs.py",
+            "--data-dir",
+            str(args.data_dir),
+        ])
+        run([
+            py,
             "scripts/preprocess_data.py",
             "--data-dir",
             str(args.data_dir),

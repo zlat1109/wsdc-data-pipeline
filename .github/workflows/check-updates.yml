@@ -1,13 +1,11 @@
 name: Check WSDC updates
 
 on:
-  schedule:
-    # Europe/Madrid (CEST, UTC+2). GitHub cron is UTC — may slip 15–60+ min.
-    #   Mon:        20:00 only (once)
-    #   Tue–Fri:    07:00 and 20:00
-    # Winter CET (UTC+1): same crons → 08:00 / 21:00 local on Tue–Fri, Mon 21:00.
-    - cron: "0 18 * * 1-5"   # Mon–Fri 20:00 CEST
-    - cron: "0 5 * * 2-5"    # Tue–Fri 07:00 CEST
+  # AUTO-SCHEDULE PAUSED (manual mode until pipeline is stable — see docs/MANUAL_PIPELINE.md)
+  # schedule:
+  #   # Europe/Madrid (CEST, UTC+2). GitHub cron is UTC — may slip 15–60+ min.
+  #   - cron: "0 18 * * 1-5"   # Mon–Fri 20:00 CEST
+  #   - cron: "0 5 * * 2-5"    # Tue–Fri 07:00 CEST
   workflow_dispatch:
 
 permissions:

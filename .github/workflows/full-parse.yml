@@ -98,6 +98,10 @@ jobs:
             exit 1
           fi
 
+      - name: Validate CSV inputs before load
+        if: ${{ !inputs.export_only }}
+        run: python scripts/validate_pipeline_inputs.py --data-dir "${{ inputs.data_dir }}"
+
       - name: Run pipeline (migrations -> preprocess -> load -> export)
         env:
           DB_HOST: ${{ secrets.DB_HOST }}
@@ -127,6 +131,7 @@ jobs:
             echo "committed=false" >> "$GITHUB_OUTPUT"
           else
             git commit -m "chore(data): update WSDC CSV export [skip ci]"
+            git pull --rebase origin main
             git push
             echo "committed=true" >> "$GITHUB_OUTPUT"
           fi
