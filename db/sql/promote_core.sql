@@ -13,14 +13,32 @@ TRUNCATE
     core.dancers
 RESTART IDENTITY CASCADE;
 
--- Dancers
+-- Dancers: every ID referenced in role/points/results (name may be NULL — WSDC allows blank names)
 INSERT INTO core.dancers (dancer_id, dancer_name)
-SELECT DISTINCT
-    dancer_id::int,
-    NULLIF(TRIM(dancer_name), '')
-FROM staging.dancer_role_info
-WHERE dancer_id ~ '^\d+$'
-  AND NULLIF(TRIM(dancer_name), '') IS NOT NULL;
+SELECT
+    ids.dancer_id,
+    names.dancer_name
+FROM (
+    SELECT dancer_id::int AS dancer_id
+    FROM staging.dancer_role_info
+    WHERE dancer_id ~ '^\d+$'
+    UNION
+    SELECT dancer_id::int
+    FROM staging.dancers_points_info
+    WHERE dancer_id ~ '^\d+$'
+    UNION
+    SELECT dancer_id::int
+    FROM staging.dancers_results_info
+    WHERE dancer_id ~ '^\d+$'
+) ids
+LEFT JOIN (
+    SELECT DISTINCT ON (dancer_id::int)
+        dancer_id::int AS dancer_id,
+        NULLIF(TRIM(dancer_name), '') AS dancer_name
+    FROM staging.dancer_role_info
+    WHERE dancer_id ~ '^\d+$'
+    ORDER BY dancer_id::int, NULLIF(TRIM(dancer_name), '') NULLS LAST
+) names ON names.dancer_id = ids.dancer_id;
 
 -- Locations
 INSERT INTO core.locations (
