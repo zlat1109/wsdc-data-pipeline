@@ -77,10 +77,6 @@ python scripts/sync_events_list.py
 
 ### `check-updates.yml`
 
-**Status:** auto-schedule **paused** (manual `workflow_dispatch` only). See [MANUAL_PIPELINE.md](MANUAL_PIPELINE.md).
-
-When re-enabled:
-
 - **Schedule** (Mon–Fri, Europe/Madrid; GitHub may delay scheduled runs):
   - **Mon**: **20:00** only
   - **Tue–Fri**: **07:00** and **20:00**
