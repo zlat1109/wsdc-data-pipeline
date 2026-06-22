@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-22T11:15:15Z",
+  "generated_at": "2026-06-22T11:35:12Z",
   "weekend_start": "2026-06-22",
   "weekend_end": "2026-07-05",
   "events": [
@@ -10,7 +10,7 @@
       "url": "http://www.libertyswing.com/",
       "start_date": "2026-06-25",
       "end_date": "2026-06-28",
-      "livestream": null,
+      "livestream": "https://libertyswing.com/livestream/",
       "continent": "America",
       "flag": "🇺🇸"
     },
@@ -22,8 +22,8 @@
       "start_date": "2026-06-25",
       "end_date": "2026-06-28",
       "livestream": null,
-      "continent": "America",
-      "flag": "🌍"
+      "continent": "Europe",
+      "flag": "🇩🇪"
     },
     {
       "name": "Colorado Country Classic",
@@ -54,9 +54,9 @@
       "url": "https://www.swingfiction.cz/",
       "start_date": "2026-06-26",
       "end_date": "2026-06-28",
-      "livestream": null,
-      "continent": "America",
-      "flag": "🌍"
+      "livestream": "https://www.twitch.tv/swingfiction",
+      "continent": "Europe",
+      "flag": "🇨🇿"
     }
   ]
 }
