@@ -88,19 +88,5 @@
       "on_hiatus": false,
       "is_active": true
     }
-  ],
-  "paths": {
-    "current": "/home/runner/work/wsdc-data-pipeline/wsdc-data-pipeline/data/events_list/current.json",
-    "csv": "/home/runner/work/wsdc-data-pipeline/wsdc-data-pipeline/data/events_list/events_list.csv",
-    "changelog": "/home/runner/work/wsdc-data-pipeline/wsdc-data-pipeline/data/events_list/changelog/run_20260623T105512Z.json"
-  },
-  "mapping_summary": {
-    "scheduled_active": 171,
-    "confirmed": 159,
-    "suggested": 0,
-    "review": 0,
-    "new_unmapped": 12,
-    "location_drifts": 4,
-    "name_variants": 52
-  }
+  ]
 }
