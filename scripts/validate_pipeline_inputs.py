@@ -138,6 +138,16 @@ def validate_pipeline_inputs(data_dir: Path) -> ValidationReport:
         if bad:
             report.error(f"dancers_results_info: invalid event_role values: {sorted(bad)[:8]}")
 
+    if "event_name" in results.columns:
+        empty_names = results["event_name"].fillna("").astype(str).str.strip() == ""
+        null_rate = empty_names.mean()
+        if null_rate > 0.01:
+            report.error(
+                f"dancers_results_info: {null_rate:.1%} rows missing event_name "
+                f"({int(empty_names.sum())} rows). "
+                "Do not load from export.dancers_results_info — use parser/cloud_parse output."
+            )
+
     date_cols = {"event_year", "event_month", "event_year_and_month"} & set(results.columns)
     if date_cols:
         coverage = results_date_parse_rate(results)

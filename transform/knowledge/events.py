@@ -4,27 +4,13 @@ from __future__ import annotations
 
 from typing import Any
 
-EVENT_NAME_NORMALIZATION = {
-    'Scandinavian Open WCS': 'Scandinavian Open',
-    'Scandinavian Open WCS 2022': 'Scandinavian Open',
-    'Scandinavian Open WCS "SNOW"': 'Scandinavian Open',
-    'Americano Dance camp': 'Americano Dance Camp',
-    'Rock The Barn': 'Rock the Barn',
-    'Go West Swingfest': 'Go West SwingFest',
-    'D-TOWNSWING': 'D-Townswing',
-    'KING SWING': 'King Swing',
-    'SWINGAPALOOZA': 'Swingapalooza',
-    'London SWINGvitational': 'London SwingVitational',
-    'Westies on The Water': 'Westies on the Water',
-    'Boogie by the Bay': 'Boogie By The Bay',
-    'Swingvester': 'SwingVester',
-    'West In Lyon': 'West in Lyon',
-    'Paradise dance festival': 'Paradise Dance Festival',
-    'WESTY NANTES': 'Westy Nantes',
-    'BALTIC SWING': 'Baltic Swing',
-    'Halloween Swingthing': 'Halloween SwingThing',
-    'By-Town Open (BTO)': 'BTO Open',
-}
+from transform.knowledge.event_aliases import (
+    EVENT_NAME_VARIANT_TO_CATALOG,
+    RESULT_TO_CATALOG_EVENT_NAME,
+    build_event_name_normalization,
+)
+
+EVENT_NAME_NORMALIZATION = build_event_name_normalization()
 
 EVENT_NAME_LOCATION_OVERRIDES = {
     'Go West Swing Fest': 'Fremantle, Australia',

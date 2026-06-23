@@ -40,7 +40,7 @@ SELECT
     LOWER(r.role)      AS event_role,
     r.result_raw       AS event_result,
     r.points           AS event_points,
-    e.name             AS event_name,
+    COALESCE(e.name, r.event_name_raw) AS event_name,
     r.location_id,
     r.event_year,
     r.event_month,

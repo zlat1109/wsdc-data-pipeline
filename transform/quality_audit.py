@@ -158,6 +158,39 @@ def check_event_name_unmapped(results: pd.DataFrame) -> QualityFinding | None:
     )
 
 
+def check_event_names_unresolved_to_catalog(
+    results: pd.DataFrame,
+    events: pd.DataFrame | None,
+) -> QualityFinding | None:
+    """Result names that still won't join core.events after EVENT_NAME_NORMALIZATION."""
+    if results is None or "event_name" not in results.columns:
+        return None
+    if events is None or "name" not in events.columns:
+        return None
+
+    normalized = results.copy()
+    normalized["event_name"] = normalized["event_name"].replace(EVENT_NAME_NORMALIZATION)
+    result_names = set(normalized["event_name"].dropna().astype(str).str.strip().unique())
+    catalog = set(events["name"].dropna().astype(str).str.strip().unique())
+    unresolved = sorted(result_names - catalog)
+    if not unresolved:
+        return None
+    return QualityFinding(
+        category="event_naming",
+        code="EVENT_NAME_UNRESOLVED_TO_CATALOG",
+        severity="high",
+        message="Result event names still absent from events_wsdc after normalization (will orphan in load)",
+        count=len(unresolved),
+        examples=[{"event_name": n} for n in unresolved[:25]],
+        suggested_fix="Add to RESULT_TO_CATALOG_EVENT_NAME in transform/knowledge/event_aliases.py",
+        fingerprint=_fingerprint(
+            "event_naming",
+            "EVENT_NAME_UNRESOLVED_TO_CATALOG",
+            "|".join(unresolved[:10]),
+        ),
+    )
+
+
 def check_event_name_not_in_catalog(
     results: pd.DataFrame,
     events: pd.DataFrame | None,
@@ -348,6 +381,9 @@ def run_audit(
             item = fn(results)
             if item:
                 findings.append(item)
+        item = check_event_names_unresolved_to_catalog(results, events)
+        if item:
+            findings.append(item)
         item = check_event_name_not_in_catalog(results, events)
         if item:
             findings.append(item)

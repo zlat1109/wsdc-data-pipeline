@@ -151,39 +151,4 @@ LEFT JOIN core.levels l5 ON UPPER(TRIM(s.non_dominate_recommended)) = l5.level_a
 LEFT JOIN core.levels l6 ON UPPER(TRIM(s.non_dominate_role_highest_level)) = l6.level_abbr OR TRIM(s.non_dominate_role_highest_level) = l6.level
 WHERE s.dancer_id ~ '^\d+$';
 
--- Results (fact table)
-INSERT INTO core.results (
-    dancer_id, event_id, location_id, dance, division, role,
-    event_year, event_month, event_date, result_raw, result_standardized, points
-)
-SELECT
-    s.dancer_id::int,
-    COALESCE(
-        NULLIF(TRIM(s.event_name_id), '')::int,
-        ev.event_id
-    ),
-    NULLIF(TRIM(s.location_id), '')::int,
-    NULLIF(TRIM(s.event_dance), ''),
-    NULLIF(TRIM(s.event_competition), ''),
-    CASE LOWER(TRIM(s.event_role))
-        WHEN 'leader' THEN 'Leader'
-        WHEN 'follower' THEN 'Follower'
-    END,
-    NULLIF(TRIM(s.event_year), '')::int,
-    NULLIF(TRIM(s.event_month), '')::int,
-    CASE
-        WHEN NULLIF(TRIM(s.event_year_and_month), '') ~ '^\d{4}-\d{2}-\d{2}$'
-            THEN NULLIF(TRIM(s.event_year_and_month), '')::date
-        ELSE NULL
-    END,
-    NULLIF(TRIM(s.event_result), ''),
-    NULLIF(TRIM(s.event_result_standardized), ''),
-    COALESCE(NULLIF(TRIM(s.event_points), '')::int, 0)
-FROM staging.dancers_results_info s
-LEFT JOIN (
-    SELECT name, MIN(event_id) AS event_id
-    FROM core.events
-    GROUP BY name
-) ev ON ev.name = NULLIF(TRIM(s.event_name), '')
-WHERE s.dancer_id ~ '^\d+$'
-  AND CASE LOWER(TRIM(s.event_role)) WHEN 'leader' THEN 'Leader' WHEN 'follower' THEN 'Follower' END IS NOT NULL;
+-- Results promoted in promote_core_results.sql after event alias seeding.

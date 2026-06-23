@@ -37,6 +37,23 @@ def test_known_map_tracked():
     assert tracker.rules[0].rows_affected == 2
 
 
+def test_phoenix_july_maps_to_convention():
+    df = pd.DataFrame({"event_name": ["Phoenix 4th of July", "4TH of July Convention"]})
+    tracker = PreprocessTracker()
+    from transform.knowledge import EVENT_NAME_NORMALIZATION
+
+    out = _apply_mapping(
+        df,
+        "event_name",
+        EVENT_NAME_NORMALIZATION,
+        table="t",
+        rule_id="EVENT_NAME_NORMALIZATION",
+        tracker=tracker,
+    )
+    assert out["event_name"].tolist() == ["4TH of July Convention", "4TH of July Convention"]
+    assert tracker.rules[0].rows_affected == 1
+
+
 def test_combined_report_sections():
     raw = {
         "dancers_results_info": pd.DataFrame(
