@@ -255,18 +255,20 @@ def main() -> None:
             ready = True
         else:
             snapshot, pending, already_in_db = resolve_pending_snapshot(conn)
-            if snapshot is None or not pending:
+            if not pending:
+                # Nothing left to wait for: past weekends loaded or only future events ahead.
                 no_pending = True
-                ready = False
+                ready = True
             else:
-                snapshot_name = snapshot.source_path.name
-                weekend_start = snapshot.weekend_start
-                weekend_end = snapshot.weekend_end
-                print(
-                    f"weekend_snapshot={snapshot_name} "
-                    f"({weekend_start}..{weekend_end})",
-                    flush=True,
-                )
+                snapshot_name = snapshot.source_path.name if snapshot else None
+                if snapshot:
+                    weekend_start = snapshot.weekend_start
+                    weekend_end = snapshot.weekend_end
+                    print(
+                        f"weekend_snapshot={snapshot_name} "
+                        f"({weekend_start}..{weekend_end})",
+                        flush=True,
+                    )
                 http = WSDCHttpClient()
                 coverage = check_event_coverage(
                     http,

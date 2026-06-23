@@ -144,17 +144,24 @@ def load_weekend_events(week_start: date, week_end: date) -> WeekendSnapshot | N
     return None
 
 
-def resolve_pending_snapshot(conn) -> tuple[WeekendSnapshot | None, list[str], list[str]]:
-    """Pick snapshot with events not yet in DB; prefer newest generated_at."""
+def resolve_pending_snapshot(
+    conn,
+    *,
+    today: date | None = None,
+) -> tuple[WeekendSnapshot | None, list[str], list[str]]:
+    """Pick snapshot with concluded events not yet in DB; prefer newest generated_at."""
     from event_db import split_pending_events
 
+    today = today or date.today()
     threshold = float(os.getenv("EVENT_COVERAGE_THRESHOLD", "0.75"))
     best: WeekendSnapshot | None = None
     best_pending: list[str] = []
     best_already: list[str] = []
 
     for snap in list_snapshots():
-        pending, already = split_pending_events(conn, snap.events, threshold=threshold)
+        pending, already = split_pending_events(
+            conn, snap.events, threshold=threshold, today=today
+        )
         if not pending:
             continue
         if best is None or (

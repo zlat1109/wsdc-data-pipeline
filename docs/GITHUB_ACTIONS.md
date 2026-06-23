@@ -93,7 +93,7 @@ python scripts/sync_events_list.py
 1. WSDC assigns new dancer IDs when people first earn points (Newcomer/Novice, etc.)
 2. After weekend events, new IDs appear Mon–Fri the following week
 3. Script scans live max ID above DB watermark
-4. **Event coverage gate**: scans weekend snapshots (newest first), skips events already in Supabase for that edition (`results_year` / `results_month`)
+4. **Event coverage gate**: scans weekend snapshots (newest first), skips events already in Supabase for that edition (`results_year` / `results_month` or `start_date` month). **Future weekends are excluded** — probe only waits for events whose `end_date` is before today.
 5. Waits until live data from new dancer IDs covers **all pending** upcoming events (e.g. Baltic Swing — not last week's J&J / Orange Blossom once loaded)
 6. **`changed` only when** new IDs exist **and** all pending events are present in live data → then triggers full-parse
 
