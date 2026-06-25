@@ -32,17 +32,23 @@ EVENT_CATALOG_EXPORTS: dict[str, str] = {
     "export.scheduled_events": "scheduled_events.csv",
 }
 
+# SCD2 history as drop-in changed_*.csv (same contract as old-laptop workflow)
+HISTORY_EXPORTS: dict[str, str] = {
+    "export.changed_dancer_points_info": "changed_dancer_points_info.csv",
+    "export.changed_dancer_role_info": "changed_dancer_role_info.csv",
+}
+
 # Denormalized results + event context (~47 MB); optional — join in Tableau instead
 OPTIONAL_EXPORTS: dict[str, str] = {
     "export.results_by_event": "results_by_event.csv",
 }
 
 # Backward-compatible alias for tests and imports
-EXPORTS: dict[str, str] = {**LEGACY_EXPORTS, **EVENT_CATALOG_EXPORTS}
+EXPORTS: dict[str, str] = {**LEGACY_EXPORTS, **EVENT_CATALOG_EXPORTS, **HISTORY_EXPORTS}
 
 
 def build_export_map(*, include_results_by_event: bool = False) -> dict[str, str]:
-    exports = {**LEGACY_EXPORTS, **EVENT_CATALOG_EXPORTS}
+    exports = {**LEGACY_EXPORTS, **EVENT_CATALOG_EXPORTS, **HISTORY_EXPORTS}
     if include_results_by_event:
         exports.update(OPTIONAL_EXPORTS)
     return exports

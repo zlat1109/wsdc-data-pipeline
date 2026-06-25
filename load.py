@@ -60,6 +60,10 @@ def main() -> None:
                 read_sql("record_weekly_points_history.sql"),
                 {"run_id": run_id},
             )
+            cur.execute(
+                read_sql("record_weekly_roles_history.sql"),
+                {"run_id": run_id},
+            )
             cur.execute(read_sql("promote_core.sql"))
             alias_count, orphan_event_count = prepare_event_resolution(conn)
             cur.execute(read_sql("promote_core_results.sql"))

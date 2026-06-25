@@ -126,6 +126,19 @@ def main() -> None:
                 else:
                     print("No changed_* points CSV found — skipping points history")
 
+                roles_changed = args.data_dir / "changed_dancer_role_info.csv"
+                if roles_changed.exists():
+                    print(f"Building role history from {roles_changed.name} ...")
+                    cur.execute("TRUNCATE history.dancer_roles_history")
+                    cur.execute(
+                        read_sql("backfill_roles_history.sql"),
+                        {"run_id": run_id},
+                    )
+                    cur.execute("SELECT count(*) FROM history.dancer_roles_history")
+                    print(f"  role history rows: {cur.fetchone()[0]}")
+                else:
+                    print("No changed_dancer_role_info.csv found — skipping role history")
+
             finish_run(cur, run_id, staging_counts, conn)
 
             print_core_counts(cur)
