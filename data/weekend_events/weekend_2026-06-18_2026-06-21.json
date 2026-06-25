@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-06-23T13:23:45Z",
+  "weekend_start": "2026-06-18",
+  "weekend_end": "2026-06-21",
+  "events": [
+    {
+      "name": "Milan Swing Vibes",
+      "location": "Milan,, Italy",
+      "dates": "Jun 18 - 21, 2026",
+      "url": "https://www.westcoastswingmilan.com/milanswingvibes/",
+      "start_date": "2026-06-18",
+      "end_date": "2026-06-21",
+      "livestream": null,
+      "continent": "Europe",
+      "flag": "🇮🇹"
+    },
+    {
+      "name": "D-Townswing",
+      "location": "Boston Club, NRW, Germany",
+      "dates": "Jun 19 - 21, 2026",
+      "url": "http://www.d-townswing.com/",
+      "start_date": "2026-06-19",
+      "end_date": "2026-06-21",
+      "livestream": null,
+      "continent": "Europe",
+      "flag": "🇩🇪"
+    },
+    {
+      "name": "SWINGAPALOOZA",
+      "location": "Baton Rouge, LA",
+      "dates": "Jun 19 - 21, 2026",
+      "url": "http://www.swingapaloozaevent.com/",
+      "start_date": "2026-06-19",
+      "end_date": "2026-06-21",
+      "livestream": null,
+      "continent": "America",
+      "flag": "🇺🇸"
+    }
+  ]
+}
