@@ -10,6 +10,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import subprocess
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -73,6 +74,7 @@ def print_core_counts(cur) -> None:
         "core.dancer_roles",
         "core.results",
         "history.dancer_points_history",
+        "history.dancer_roles_history",
     ]
     print("\nRow counts in Supabase:")
     for table in tables:
@@ -93,11 +95,49 @@ def main() -> None:
         action="store_true",
         help="Skip loading history from changed_* points CSV",
     )
+    parser.add_argument(
+        "--roles-only",
+        action="store_true",
+        help="Only build role history from changed_dancer_role_info.csv (skip staging/core)",
+    )
     args = parser.parse_args()
+
+    if args.roles_only:
+        roles_changed = args.data_dir / "changed_dancer_role_info.csv"
+        if not roles_changed.exists():
+            sys.exit(f"Missing {roles_changed}")
+        with connect() as conn:
+            with conn.cursor() as cur:
+                cur.execute("SET statement_timeout = '0'")
+                cur.execute("SELECT COALESCE(MAX(run_id), 0) FROM history.parse_runs")
+                run_id = int(cur.fetchone()[0])
+            conn.commit()
+            if run_id <= 0:
+                sys.exit("No parse_runs row — run full backfill first")
+            print(f"Role-history only (run_id={run_id}) ...")
+            subprocess.run(
+                [
+                    sys.executable,
+                    str(PROJECT_ROOT / "scripts" / "backfill_roles_history.py"),
+                    "--csv",
+                    str(roles_changed),
+                    "--run-id",
+                    str(run_id),
+                ],
+                cwd=PROJECT_ROOT,
+                check=True,
+            )
+        print("\nRole history backfill complete.")
+        return
 
     print(f"Data directory: {args.data_dir}")
 
     with connect() as conn:
+        with conn.cursor() as cur:
+            # Legacy changed_dancer_role_info can be 3M+ rows; disable statement cap.
+            cur.execute("SET statement_timeout = '0'")
+        conn.commit()
+
         print("Loading CSVs into staging ...")
         staging_counts = load_staging_from_dir(conn, args.data_dir)
         for name, count in staging_counts.items():
@@ -128,11 +168,22 @@ def main() -> None:
 
                 roles_changed = args.data_dir / "changed_dancer_role_info.csv"
                 if roles_changed.exists():
-                    print(f"Building role history from {roles_changed.name} ...")
-                    cur.execute("TRUNCATE history.dancer_roles_history")
-                    cur.execute(
-                        read_sql("backfill_roles_history.sql"),
-                        {"run_id": run_id},
+                    print(
+                        f"Building role history from {roles_changed.name} "
+                        "(pandas — SQL times out on 3M+ rows) ..."
+                    )
+                    conn.commit()
+                    subprocess.run(
+                        [
+                            sys.executable,
+                            str(PROJECT_ROOT / "scripts" / "backfill_roles_history.py"),
+                            "--csv",
+                            str(roles_changed),
+                            "--run-id",
+                            str(run_id),
+                        ],
+                        cwd=PROJECT_ROOT,
+                        check=True,
                     )
                     cur.execute("SELECT count(*) FROM history.dancer_roles_history")
                     print(f"  role history rows: {cur.fetchone()[0]}")
