@@ -29,7 +29,7 @@ sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 
 from connection import connect  # noqa: E402
 from parser.extract_api import build_frames  # noqa: E402
-from parser.http_client import WSDCHttpClient  # noqa: E402
+from parser.http_client import RateLimitError, WSDCHttpClient  # noqa: E402
 from wsdc_id_probe import scan_ids_above_watermark  # noqa: E402
 
 OUTPUT_FILES = (
@@ -125,17 +125,27 @@ def main() -> None:
         flush=True,
     )
 
-    client = WSDCHttpClient()
-    client.get_token()  # warm shared token once before fanning out
+    _thread_client = threading.local()
+
+    def _client() -> WSDCHttpClient:
+        client = getattr(_thread_client, "client", None)
+        if client is None:
+            client = WSDCHttpClient()
+            _thread_client.client = client
+        return client
+
     records: list[dict] = []
     failed: list[int] = []
+    rate_limited: list[int] = []
     log_every = int(os.getenv("PARSE_LOG_EVERY", "500"))
     done = 0
     lock = threading.Lock()
 
     def fetch_one(dancer_id: int) -> tuple[int, dict | None, Exception | None]:
         try:
-            return dancer_id, client.fetch_dancer(dancer_id), None
+            return dancer_id, _client().fetch_dancer(dancer_id), None
+        except RateLimitError as exc:
+            return dancer_id, None, exc
         except Exception as exc:  # noqa: BLE001
             return dancer_id, None, exc
 
@@ -150,6 +160,8 @@ def main() -> None:
                 done += 1
                 if exc is not None:
                     failed.append(dancer_id)
+                    if isinstance(exc, RateLimitError):
+                        rate_limited.append(dancer_id)
                     print(f"  FAIL {dancer_id}: {exc}", flush=True)
                 elif data:
                     records.append(data)
@@ -164,6 +176,25 @@ def main() -> None:
 
     if not records:
         print("No dancers fetched — nothing to write.")
+        sys.exit(1)
+
+    if replace and rate_limited:
+        print(
+            f"ERROR: rate-limited on {len(rate_limited)} IDs; "
+            "refusing --full replace to avoid wiping CSVs.",
+            flush=True,
+        )
+        sys.exit(1)
+
+    max_fail_rate = float(os.getenv("PARSE_MAX_FAIL_RATE", "0.05"))
+    fail_rate = len(failed) / total
+    if replace and fail_rate > max_fail_rate:
+        print(
+            f"ERROR: failed/missing {len(failed)}/{total} "
+            f"({fail_rate:.1%} > {max_fail_rate:.0%}); "
+            "refusing --full replace to avoid wiping CSVs.",
+            flush=True,
+        )
         sys.exit(1)
 
     frames = build_frames(records)
