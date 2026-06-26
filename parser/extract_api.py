@@ -99,9 +99,16 @@ def extract_results_rows(dancer_data: dict[str, Any]) -> list[dict[str, Any]]:
                         "event_dance": dance,
                         "event_competition": event_competition,
                         "event_role": event_role,
+                        # event.id is the stable WSDC event id (event_name_id);
+                        # event.location is the raw place string used to resolve
+                        # location_id against location_info. The API does NOT
+                        # return a numeric location_id, so both are captured here
+                        # and location_id is filled later in preprocess.
+                        "event_name_id": event.get("id", ""),
+                        "event_name": event.get("name", ""),
+                        "event_location": event.get("location", ""),
                         "event_result": competition.get("result", ""),
                         "event_points": competition.get("points", ""),
-                        "event_name": event.get("name", ""),
                         "location_id": event.get("location_id", ""),
                         "event_year": event.get("year", ""),
                         "event_month": event.get("month", ""),

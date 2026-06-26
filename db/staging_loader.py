@@ -90,7 +90,12 @@ def copy_csv(conn: psycopg.Connection, csv_path: Path, table: str) -> int:
         return cur.fetchone()[0]
 
 
-def load_staging_from_dir(conn: psycopg.Connection, data_dir: Path) -> dict[str, int]:
+def load_staging_from_dir(
+    conn: psycopg.Connection,
+    data_dir: Path,
+    *,
+    skip_changed_roles: bool = False,
+) -> dict[str, int]:
     """Truncate staging and load main CSV set. Returns row counts per file."""
     if not data_dir.is_dir():
         raise FileNotFoundError(f"Data directory not found: {data_dir}")
@@ -105,6 +110,8 @@ def load_staging_from_dir(conn: psycopg.Connection, data_dir: Path) -> dict[str,
         counts[filename] = copy_csv(conn, path, table)
 
     for candidates, table in OPTIONAL_CHANGED:
+        if skip_changed_roles and table == "staging.changed_dancer_role_info":
+            continue
         for filename in candidates:
             path = data_dir / filename
             if path.exists():

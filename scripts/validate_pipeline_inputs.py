@@ -148,6 +148,24 @@ def validate_pipeline_inputs(data_dir: Path) -> ValidationReport:
                 "Do not load from export.dancers_results_info — use parser/cloud_parse output."
             )
 
+    has_loc = "location_id" in results.columns
+    has_loc_text = "event_location" in results.columns
+    if has_loc:
+        empty_loc = results["location_id"].fillna("").astype(str).str.strip() == ""
+        loc_missing_rate = empty_loc.mean()
+        # Resolvable only if event_location text is present for preprocess to join.
+        if loc_missing_rate > 0.01 and not has_loc_text:
+            report.error(
+                f"dancers_results_info: {loc_missing_rate:.1%} rows missing location_id "
+                "and no event_location column to resolve from. "
+                "Parser must emit event_location (parser/extract_api.py)."
+            )
+        elif loc_missing_rate > 0.5 and has_loc_text:
+            report.warn(
+                f"dancers_results_info: {loc_missing_rate:.1%} rows missing location_id "
+                "(will be resolved from event_location in preprocess)."
+            )
+
     date_cols = {"event_year", "event_month", "event_year_and_month"} & set(results.columns)
     if date_cols:
         coverage = results_date_parse_rate(results)

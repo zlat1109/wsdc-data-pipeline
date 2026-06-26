@@ -12,6 +12,7 @@ from transform.data_preprocessing import (
     standardize_result,
 )
 from transform.geography import normalize_geography
+from transform.geography.resolve import resolve_result_location_ids
 from transform.knowledge import (
     EVENT_LOCATION_EXACT_CORRECTIONS,
     EVENT_LOCATION_SUBSTRING_CORRECTIONS,
@@ -218,6 +219,34 @@ def preprocess_with_log(data: dict[str, pd.DataFrame]) -> tuple[dict[str, pd.Dat
                         "event_id_fix",
                     )
         result["location_info"] = patched
+
+        before_missing = (
+            result["dancers_results_info"]["location_id"].map(
+                lambda v: str(v).strip() == ""
+            ).sum()
+            if "location_id" in result["dancers_results_info"].columns
+            else 0
+        )
+        resolved_results, resolved_locations = resolve_result_location_ids(
+            result["dancers_results_info"], result["location_info"]
+        )
+        after_missing = (
+            resolved_results["location_id"].map(lambda v: str(v).strip() == "").sum()
+        )
+        filled = int(before_missing) - int(after_missing)
+        new_locations = len(resolved_locations) - len(result["location_info"])
+        if filled:
+            tracker.record(
+                "RESOLVE_LOCATION_ID",
+                "dancers_results_info",
+                "location_id",
+                "(empty)",
+                f"from event_location ({new_locations} new locations)",
+                filled,
+                "location_id_fix",
+            )
+        result["dancers_results_info"] = resolved_results
+        result["location_info"] = resolved_locations
 
     if "dancer_role_info" in data:
         df = data["dancer_role_info"].copy()

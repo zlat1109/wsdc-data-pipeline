@@ -15,6 +15,8 @@ from __future__ import annotations
 import argparse
 import os
 import sys
+import threading
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 import pandas as pd
@@ -27,7 +29,7 @@ sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 
 from connection import connect  # noqa: E402
 from parser.extract_api import build_frames  # noqa: E402
-from parser.http_client import WSDCHttpClient  # noqa: E402
+from parser.http_client import RateLimitError, WSDCHttpClient  # noqa: E402
 from wsdc_id_probe import scan_ids_above_watermark  # noqa: E402
 
 OUTPUT_FILES = (
@@ -102,6 +104,13 @@ def main() -> None:
         help="Legacy: merge only new IDs above DB watermark",
     )
     parser.add_argument("--base-dir", type=Path, default=PROJECT_ROOT / "data")
+    parser.add_argument(
+        "--workers",
+        type=int,
+        default=int(os.getenv("PARSE_WORKERS", "8")),
+        help="Concurrent fetch workers (env PARSE_WORKERS, default 8). "
+        "Benchmark showed no 403/429 up to 8; lower if the API starts throttling.",
+    )
     args = parser.parse_args()
 
     if args.full and args.new_only:
@@ -109,36 +118,83 @@ def main() -> None:
 
     start_id, end_id, replace = resolve_id_range(args)
     total = end_id - start_id + 1
+    workers = max(1, args.workers)
     print(
         f"Parsing dancer IDs {start_id}..{end_id} ({total} ids) "
-        f"into {args.base_dir} replace={replace}",
+        f"into {args.base_dir} replace={replace} workers={workers}",
         flush=True,
     )
 
-    client = WSDCHttpClient()
+    _thread_client = threading.local()
+
+    def _client() -> WSDCHttpClient:
+        client = getattr(_thread_client, "client", None)
+        if client is None:
+            client = WSDCHttpClient()
+            _thread_client.client = client
+        return client
+
     records: list[dict] = []
     failed: list[int] = []
+    rate_limited: list[int] = []
     log_every = int(os.getenv("PARSE_LOG_EVERY", "500"))
+    done = 0
+    lock = threading.Lock()
 
-    for index, dancer_id in enumerate(range(start_id, end_id + 1), start=1):
+    def fetch_one(dancer_id: int) -> tuple[int, dict | None, Exception | None]:
         try:
-            data = client.fetch_dancer(dancer_id)
-            if data:
-                records.append(data)
-            else:
-                failed.append(dancer_id)
+            return dancer_id, _client().fetch_dancer(dancer_id), None
+        except RateLimitError as exc:
+            return dancer_id, None, exc
         except Exception as exc:  # noqa: BLE001
-            failed.append(dancer_id)
-            print(f"  FAIL {dancer_id}: {exc}", flush=True)
+            return dancer_id, None, exc
 
-        if index % log_every == 0 or dancer_id == end_id:
-            print(
-                f"  progress {index}/{total} fetched={len(records)} failed={len(failed)}",
-                flush=True,
-            )
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        futures = {
+            pool.submit(fetch_one, did): did
+            for did in range(start_id, end_id + 1)
+        }
+        for future in as_completed(futures):
+            dancer_id, data, exc = future.result()
+            with lock:
+                done += 1
+                if exc is not None:
+                    failed.append(dancer_id)
+                    if isinstance(exc, RateLimitError):
+                        rate_limited.append(dancer_id)
+                    print(f"  FAIL {dancer_id}: {exc}", flush=True)
+                elif data:
+                    records.append(data)
+                else:
+                    failed.append(dancer_id)
+                if done % log_every == 0 or done == total:
+                    print(
+                        f"  progress {done}/{total} "
+                        f"fetched={len(records)} failed={len(failed)}",
+                        flush=True,
+                    )
 
     if not records:
         print("No dancers fetched — nothing to write.")
+        sys.exit(1)
+
+    if replace and rate_limited:
+        print(
+            f"ERROR: rate-limited on {len(rate_limited)} IDs; "
+            "refusing --full replace to avoid wiping CSVs.",
+            flush=True,
+        )
+        sys.exit(1)
+
+    max_fail_rate = float(os.getenv("PARSE_MAX_FAIL_RATE", "0.05"))
+    fail_rate = len(failed) / total
+    if replace and fail_rate > max_fail_rate:
+        print(
+            f"ERROR: failed/missing {len(failed)}/{total} "
+            f"({fail_rate:.1%} > {max_fail_rate:.0%}); "
+            "refusing --full replace to avoid wiping CSVs.",
+            flush=True,
+        )
         sys.exit(1)
 
     frames = build_frames(records)
