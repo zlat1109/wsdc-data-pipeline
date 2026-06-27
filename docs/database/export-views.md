@@ -19,6 +19,7 @@ From `export.py`:
 | `export.changed_dancer_points_info` | `changed_dancer_points_info.csv` | Yes |
 | `export.changed_dancer_role_info` | `changed_dancer_role_info.csv` | Yes |
 | `export.results_by_event` | `results_by_event.csv` | No (`--include-results-by-event`) |
+| `derived.*` (post-export) | `divisional_structure.csv`, `divisional_structure_only_dominate_role.csv`, `dancer_transitions.csv` | Yes (after DB export) |
 | `export.geo_events` | — | Not wired in export.py |
 | `export.results_by_geo_event` | — | Not wired in export.py |
 | `export.scheduled_event_editions` | — | Not in default export |
@@ -154,6 +155,18 @@ Column order matches legacy `changed_dancer_role_info.csv`.
 **Source:** Denormalized join of results + catalog + editions (~47 MB).
 
 Optional; enable with `python export.py --include-results-by-event`.
+
+## Derived analytics CSVs (post-export)
+
+Not Supabase views. Built by `transform/divisional_exports.py` after view export from `changed_dancer_role_info.csv` (fallback: `dancer_role_info.csv`).
+
+| CSV | Builder | Merge policy |
+|-----|---------|--------------|
+| `divisional_structure.csv` | melt + aggregate all roles | append dates newer than baseline max |
+| `divisional_structure_only_dominate_role.csv` | dominate role only | same |
+| `dancer_transitions.csv` | current vs previous **full** parse snapshot | append new `Update Date` only |
+
+Skip with `python export.py --skip-derived-exports`. Column contract: [../tableau/csv-contract.md](../tableau/csv-contract.md).
 
 ## export.geo_events (migration 019)
 

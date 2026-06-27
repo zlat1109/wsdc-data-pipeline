@@ -79,6 +79,11 @@ def parse_export_map() -> list[tuple[str, str]]:
             m = re.search(r'"(export\.\w+)"\s*:\s*"([^"]+)"', line)
             if m:
                 pairs.append((m.group(1), m.group(2)))
+
+    derived_m = re.search(r"DERIVED_EXPORTS:\s*tuple\[str,\s*\.\.\.\]\s*=\s*\((.*?)\)", text, re.DOTALL)
+    if derived_m:
+        for m in re.finditer(r'"([^"]+\.csv)"', derived_m.group(1)):
+            pairs.append((f"derived.{m.group(1).replace('.csv', '')}", m.group(1)))
     return pairs
 
 
@@ -131,6 +136,7 @@ def write_views_md(views: dict[str, list[str]], comments: dict[str, str]) -> Non
 
 def write_export_map_md(pairs: list[tuple[str, str]]) -> None:
     optional = {"export.results_by_event"}
+    derived_prefix = "derived."
     lines = [
         "# Generated export map",
         "",
@@ -140,7 +146,12 @@ def write_export_map_md(pairs: list[tuple[str, str]]) -> None:
         "|------|-----|----------------|",
     ]
     for view, csv in pairs:
-        default = "No" if view in optional else "Yes"
+        if view.startswith(derived_prefix):
+            default = "Yes (post-export)"
+        elif view in optional:
+            default = "No"
+        else:
+            default = "Yes"
         lines.append(f"| `{view}` | `{csv}` | {default} |")
     lines.append("")
     (OUTPUT_DIR / "export_map.md").write_text("\n".join(lines), encoding="utf-8")

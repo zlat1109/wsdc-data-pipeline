@@ -193,6 +193,20 @@ Same 12 columns as `dancer_role_info.csv` (column order matches legacy). `update
 
 Denormalized results with catalog + edition fields. ~47 MB. See [../database/export-views.md](../database/export-views.md).
 
+## Derived analytics CSVs (post-export)
+
+Built from `changed_dancer_role_info.csv` (fallback: `dancer_role_info.csv`) after Supabase views export. Same logic as legacy notebook aggregation cells.
+
+| File | Grain | Key columns |
+|------|-------|-------------|
+| `divisional_structure.csv` | snapshot × division × role × type | `update_date`, `division`, `role`, **`type_options`**, `count_dancer` |
+| `divisional_structure_only_dominate_role.csv` | same, dominate role only | `update_date`, `division`, `role`, **`type`**, `count_dancer` |
+| `dancer_transitions.csv` | one division change | `Update Date`, `Previous Division`, `Currently Division`, `Transition Type`, `Dancer Role`, `Dancer ID`, `Dancer Name` |
+
+Committed baselines in `data/` are kept as-is. Export only appends **newer** snapshot dates (divisional) or dates not yet in the file (transitions).
+
+Skip with `python export.py --skip-derived-exports`.
+
 ## Row counts (order of magnitude, mid-2026)
 
 | File | ~rows |

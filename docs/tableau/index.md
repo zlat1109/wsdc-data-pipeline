@@ -37,7 +37,7 @@ python export.py --output-dir ./data
 
 Use when Supabase is ahead of git (CI load succeeded but CSV commit failed). See [../operations/data-sync.md](../operations/data-sync.md).
 
-## Default CSV set (10 files)
+## Default CSV set (13 files)
 
 | File | Purpose |
 |------|---------|
@@ -51,6 +51,9 @@ Use when Supabase is ahead of git (CI load succeeded but CSV commit failed). See
 | `scheduled_events.csv` | Upcoming WSDC schedule |
 | `changed_dancer_points_info.csv` | Points change history |
 | `changed_dancer_role_info.csv` | Role change history |
+| `divisional_structure.csv` | Division snapshots (all roles) |
+| `divisional_structure_only_dominate_role.csv` | Division snapshots (dominate role) |
+| `dancer_transitions.csv` | Division transitions over time |
 
 ## Optional large files
 

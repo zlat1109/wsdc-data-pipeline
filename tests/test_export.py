@@ -23,6 +23,8 @@ def test_optional_results_by_event_flag() -> None:
 
 
 def test_export_filenames_are_unique() -> None:
+    from export import DERIVED_EXPORTS
+
     all_exports = {
         **LEGACY_EXPORTS,
         **EVENT_CATALOG_EXPORTS,
@@ -30,3 +32,4 @@ def test_export_filenames_are_unique() -> None:
     }
     filenames = list(all_exports.values())
     assert len(filenames) == len(set(filenames))
+    assert not set(filenames) & set(DERIVED_EXPORTS)

@@ -43,6 +43,13 @@ OPTIONAL_EXPORTS: dict[str, str] = {
     "export.results_by_event": "results_by_event.csv",
 }
 
+# Derived from role history after DB export (not Supabase views)
+DERIVED_EXPORTS: tuple[str, ...] = (
+    "divisional_structure.csv",
+    "divisional_structure_only_dominate_role.csv",
+    "dancer_transitions.csv",
+)
+
 # Backward-compatible alias for tests and imports
 EXPORTS: dict[str, str] = {**LEGACY_EXPORTS, **EVENT_CATALOG_EXPORTS, **HISTORY_EXPORTS}
 
@@ -85,6 +92,11 @@ def main() -> None:
         action="store_true",
         help="Also export results_by_event.csv (~47 MB denormalized join)",
     )
+    parser.add_argument(
+        "--skip-derived-exports",
+        action="store_true",
+        help="Skip divisional_structure / dancer_transitions CSV generation",
+    )
     args = parser.parse_args()
 
     exports = build_export_map(include_results_by_event=args.include_results_by_event)
@@ -95,6 +107,14 @@ def main() -> None:
         for view, filename in exports.items():
             out_path = args.output_dir / filename
             rows = export_view(conn, view, out_path)
+            print(f"  {filename}: {rows} rows -> {out_path}")
+
+    if not args.skip_derived_exports:
+        from transform.divisional_exports import build_derived_analytics_exports
+
+        print("\nDerived analytics exports:")
+        for filename, rows in build_derived_analytics_exports(args.output_dir).items():
+            out_path = args.output_dir / filename
             print(f"  {filename}: {rows} rows -> {out_path}")
 
     print("\nExport complete.")
