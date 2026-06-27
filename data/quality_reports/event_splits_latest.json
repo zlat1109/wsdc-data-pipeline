@@ -1,0 +1,138 @@
+{
+  "generated_at": "2026-06-27T09:26:27.677624+00:00",
+  "split_name_count": 3,
+  "merge_candidate": 0,
+  "keep_separate": 3,
+  "manual_review": 0,
+  "splits": [
+    {
+      "event_name_raw": "Spring Swing",
+      "event_count": 2,
+      "total_result_rows": 133,
+      "overall_action": "keep_separate",
+      "events": [
+        {
+          "event_name_raw": "Spring Swing",
+          "event_id": 204,
+          "canonical_name": "Spring Swing",
+          "city": "Stockholm",
+          "state": null,
+          "country": "Sweden",
+          "result_rows": 99,
+          "first_year": 2013,
+          "last_year": 2014,
+          "geo_key": "stockholm|sweden",
+          "metro_label": null
+        },
+        {
+          "event_name_raw": "Spring Swing",
+          "event_id": 83,
+          "canonical_name": "Spring Swing",
+          "city": "Detroit",
+          "state": "Michigan",
+          "country": "United States",
+          "result_rows": 34,
+          "first_year": 2003,
+          "last_year": 2003,
+          "geo_key": "detroit|michigan|united_states",
+          "metro_label": null
+        }
+      ],
+      "pairs": [
+        {
+          "event_id_a": 204,
+          "event_id_b": 83,
+          "geo_key_a": "stockholm|sweden",
+          "geo_key_b": "detroit|michigan|united_states",
+          "action": "keep_separate"
+        }
+      ]
+    },
+    {
+      "event_name_raw": "Sunny Side Dance Camp",
+      "event_count": 2,
+      "total_result_rows": 200,
+      "overall_action": "keep_separate",
+      "events": [
+        {
+          "event_name_raw": "Sunny Side Dance Camp",
+          "event_id": 230,
+          "canonical_name": "Sunny Side Dance Camp",
+          "city": "Torrevieja",
+          "state": null,
+          "country": "Spain",
+          "result_rows": 116,
+          "first_year": 2014,
+          "last_year": 2016,
+          "geo_key": "torrevieja|spain",
+          "metro_label": null
+        },
+        {
+          "event_name_raw": "Sunny Side Dance Camp",
+          "event_id": 191,
+          "canonical_name": "Sunny Side Dance Camp",
+          "city": "Crimea",
+          "state": null,
+          "country": "Ukraine",
+          "result_rows": 84,
+          "first_year": 2012,
+          "last_year": 2013,
+          "geo_key": "crimea|ukraine",
+          "metro_label": null
+        }
+      ],
+      "pairs": [
+        {
+          "event_id_a": 230,
+          "event_id_b": 191,
+          "geo_key_a": "torrevieja|spain",
+          "geo_key_b": "crimea|ukraine",
+          "action": "keep_separate"
+        }
+      ]
+    },
+    {
+      "event_name_raw": "Worlds UCWDC",
+      "event_count": 2,
+      "total_result_rows": 997,
+      "overall_action": "keep_separate",
+      "events": [
+        {
+          "event_name_raw": "Worlds UCWDC",
+          "event_id": 75,
+          "canonical_name": "UCWDC Country Dance World Championship",
+          "city": "Dallas",
+          "state": "Texas",
+          "country": "United States",
+          "result_rows": 880,
+          "first_year": 1995,
+          "last_year": 2026,
+          "geo_key": "dallas|texas|united_states",
+          "metro_label": null
+        },
+        {
+          "event_name_raw": "Worlds UCWDC",
+          "event_id": 152,
+          "canonical_name": "Worlds UCWDC",
+          "city": "Orlando",
+          "state": "Florida",
+          "country": "United States",
+          "result_rows": 117,
+          "first_year": 2009,
+          "last_year": 2015,
+          "geo_key": "orlando|florida|united_states",
+          "metro_label": null
+        }
+      ],
+      "pairs": [
+        {
+          "event_id_a": 75,
+          "event_id_b": 152,
+          "geo_key_a": "dallas|texas|united_states",
+          "geo_key_b": "orlando|florida|united_states",
+          "action": "keep_separate"
+        }
+      ]
+    }
+  ]
+}

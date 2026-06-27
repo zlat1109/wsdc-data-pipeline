@@ -16,6 +16,12 @@ from typing import Any
 
 import pandas as pd
 
+from transform.geography.geo_event import (
+    build_location_lookup,
+    classify_event_id_pair,
+    geo_key,
+    resolve_result_geo,
+)
 from transform.knowledge import (
     EVENT_NAME_NORMALIZATION,
 )
@@ -91,6 +97,83 @@ def check_event_name_year_suffix(results: pd.DataFrame) -> QualityFinding | None
         suggested_fix="Add mapping to EVENT_NAME_NORMALIZATION in transform/data_preprocessing.py",
         fingerprint=_fingerprint("event_naming", "EVENT_NAME_YEAR_SUFFIX", "|".join(bad[:5])),
     )
+
+
+def check_event_name_variants_by_geo(
+    results: pd.DataFrame,
+    location_info: pd.DataFrame | None,
+) -> list[QualityFinding]:
+    """Split EVENT_NAME_VARIANTS by geography — merge candidates vs legit multi-geo names."""
+    if "event_name" not in results.columns:
+        return []
+
+    lookup = build_location_lookup(location_info)
+    enriched = results.copy()
+    geo_keys: list[str] = []
+    for _, row in enriched.iterrows():
+        city, state, country = resolve_result_geo(row.to_dict(), lookup)
+        geo_keys.append(geo_key(city, state, country))
+    enriched["_geo_key"] = geo_keys
+
+    same_geo_groups: dict[str, set[str]] = {}
+    diff_geo_names: list[str] = []
+
+    name_groups: dict[str, list[str]] = {}
+    for name in enriched["event_name"].dropna().astype(str).str.strip().unique():
+        base = strip_event_year(name).lower()
+        name_groups.setdefault(base, set()).add(name)
+
+    for base, variants in name_groups.items():
+        if len(variants) <= 1:
+            continue
+        subset = enriched[enriched["event_name"].astype(str).str.strip().isin(variants)]
+        distinct_geo = set(subset["_geo_key"].dropna().astype(str).unique()) - {""}
+        if len(distinct_geo) > 1:
+            diff_geo_names.append(base)
+        else:
+            same_geo_groups[base] = variants
+
+    findings: list[QualityFinding] = []
+    if same_geo_groups:
+        examples = []
+        for k, v in list(same_geo_groups.items())[:12]:
+            subset = enriched[enriched["event_name"].astype(str).str.strip().isin(v)]
+            gks = sorted(set(subset["_geo_key"].dropna().astype(str).unique()) - {""})
+            examples.append({"base_key": k, "variants": sorted(v)[:8], "geo_keys": gks[:3]})
+        findings.append(
+            QualityFinding(
+                category="event_naming",
+                code="EVENT_NAME_VARIANTS_SAME_GEO",
+                severity="high",
+                message="Same event name variants share one geography (merge candidate)",
+                count=len(same_geo_groups),
+                examples=examples,
+                suggested_fix="Unify via MERGE_EVENT_ID_MAP / EVENT_NAME_NORMALIZATION",
+                fingerprint=_fingerprint(
+                    "event_naming",
+                    "EVENT_NAME_VARIANTS_SAME_GEO",
+                    "|".join(sorted(same_geo_groups.keys())[:8]),
+                ),
+            )
+        )
+    if diff_geo_names:
+        findings.append(
+            QualityFinding(
+                category="event_naming",
+                code="EVENT_NAME_VARIANTS_DIFF_GEO",
+                severity="info",
+                message="Same base event name appears in multiple geographies (not a duplicate)",
+                count=len(diff_geo_names),
+                examples=[{"base_key": k} for k in diff_geo_names[:12]],
+                suggested_fix="Keep separate geo-events; do not merge event_id across cities",
+                fingerprint=_fingerprint(
+                    "event_naming",
+                    "EVENT_NAME_VARIANTS_DIFF_GEO",
+                    "|".join(sorted(diff_geo_names)[:8]),
+                ),
+            )
+        )
+    return findings
 
 
 def check_event_name_variants(results: pd.DataFrame) -> QualityFinding | None:
@@ -375,12 +458,15 @@ def run_audit(
     if results is not None:
         for fn in (
             check_event_name_year_suffix,
-            check_event_name_variants,
             check_event_name_unmapped,
         ):
             item = fn(results)
             if item:
                 findings.append(item)
+        findings.extend(check_event_name_variants_by_geo(results, location_info))
+        legacy = check_event_name_variants(results)
+        if legacy:
+            findings.append(legacy)
         item = check_event_names_unresolved_to_catalog(results, events)
         if item:
             findings.append(item)

@@ -60,7 +60,13 @@ def _apply_location_patch(
             event_state = %s,
             event_country = %s,
             event_location = %s,
-            event_location_standardized = %s
+            event_location_standardized = %s,
+            latitude = COALESCE(%s::numeric, latitude),
+            longitude = COALESCE(%s::numeric, longitude),
+            coordinates_valid = CASE
+                WHEN %s::numeric IS NOT NULL AND %s::numeric IS NOT NULL THEN true
+                ELSE coordinates_valid
+            END
         WHERE location_id = %s
         """,
         (
@@ -69,6 +75,10 @@ def _apply_location_patch(
             fixes.get("event_country"),
             fixes.get("event_location"),
             fixes.get("event_location_standardized"),
+            fixes.get("latitude"),
+            fixes.get("longitude"),
+            fixes.get("latitude"),
+            fixes.get("longitude"),
             location_id,
         ),
     )

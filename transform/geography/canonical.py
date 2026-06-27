@@ -14,6 +14,7 @@ CITY_CANONICAL_COORDINATES: Dict[Tuple[str, str, str], Tuple[float, float]] = {
     ('Budapest', 'Hungary', ''): (47.497912, 19.040235),
     ('Düsseldorf', 'Germany', ''): (51.2230411, 6.7824545),
     ('Washington', 'United States', 'District of Columbia'): (38.9072873, -77.0369274),
+    ('Stockholm', 'Sweden', ''): (59.3251172, 18.0710935),
 }
 
 

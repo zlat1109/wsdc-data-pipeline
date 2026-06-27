@@ -29,7 +29,12 @@ LEVEL_ALIASES: dict[str, str] = {
     "All Star": "All-Star",
     "ALLSTAR": "All-Star",
     "Allstar": "All-Star",
+    "All-Stars": "All-Star",
+    "ALL-STARS": "All-Star",
+    "Allstars": "All-Star",
     "Champions": "Champion",
+    "Masters": "Master",
+    "MASTERS": "Master",
 }
 
 CANONICAL_LEVELS = {

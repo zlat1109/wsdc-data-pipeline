@@ -21,7 +21,7 @@ from transform.knowledge import (
     apply_event_location_patches,
     event_location_patches,
 )
-from transform.normalize import normalize_level
+from transform.normalize import normalize_division, normalize_level
 from transform.preprocess_tracker import PreprocessTracker
 from transform.quality_audit import (
     QualityFinding,
@@ -106,6 +106,26 @@ def _apply_event_corrections_tracked(df: pd.DataFrame, tracker: PreprocessTracke
         rule_id="EVENT_NAME_NORMALIZATION",
         tracker=tracker,
     )
+
+    if "event_competition" in df.columns:
+        original = df["event_competition"].astype(str)
+        df["event_competition"] = df["event_competition"].apply(normalize_division)
+        changed = original != df["event_competition"].astype(str)
+        for from_val in original[changed].astype(str).unique():
+            to_rows = df.loc[changed & (original.astype(str) == from_val), "event_competition"]
+            if to_rows.empty:
+                continue
+            to_val = str(to_rows.iloc[0])
+            count = int((changed & (original.astype(str) == from_val)).sum())
+            tracker.record(
+                "DIVISION_NORMALIZATION",
+                table,
+                "event_competition",
+                from_val,
+                to_val,
+                count,
+                "known_map",
+            )
 
     if "event_name" in df.columns and "event_location" in df.columns:
         for name, location in EVENT_NAME_LOCATION_OVERRIDES.items():

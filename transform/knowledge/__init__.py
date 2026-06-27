@@ -14,6 +14,7 @@ from transform.knowledge.events import (
 )
 from transform.knowledge.event_aliases import (
     EVENT_NAME_VARIANT_TO_CATALOG,
+    MERGE_EVENT_ID_MAP,
     RESULT_TO_CATALOG_EVENT_NAME,
     build_event_name_normalization,
 )
@@ -32,6 +33,7 @@ __all__ = [
     'KNOWN_EVENT_METADATA',
     'LOCATION_ID_CORRECTIONS',
     'LOCATION_INFO_CITY_CORRECTIONS',
+    'MERGE_EVENT_ID_MAP',
     'LocationPatch',
     'RESULT_TO_CATALOG_EVENT_NAME',
     'apply_event_corrections',

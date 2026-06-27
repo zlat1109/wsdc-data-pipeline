@@ -1,226 +1,28 @@
 {
-  "generated_at": "2026-06-23T12:49:30.482674+00:00",
-  "source": "github-actions",
+  "generated_at": "2026-06-27T09:26:26.093453+00:00",
+  "source": "local",
   "run_id": null,
   "summary": {
-    "before_findings_count": 9,
-    "applied_rules_count": 113,
-    "applied_rows_touched": 117655,
-    "manual_review_count": 9,
-    "manual_review_new_count": 5
+    "before_findings_count": 4,
+    "applied_rules_count": 43,
+    "applied_rows_touched": 1267,
+    "manual_review_count": 4,
+    "manual_review_new_count": 3
   },
   "before_processing": {
     "description": "Issues detected in raw CSV before any normalization",
     "findings": [
       {
         "category": "event_naming",
-        "code": "EVENT_NAME_YEAR_SUFFIX",
-        "severity": "medium",
-        "message": "Event names with trailing year (should be normalized to base name + event_year column)",
-        "count": 22,
-        "examples": [
-          {
-            "event_name": "Austin Rocks 2024"
-          },
-          {
-            "event_name": "Dutch Open West Coast Swing 2024"
-          },
-          {
-            "event_name": "Easter Swing 2026"
-          },
-          {
-            "event_name": "Korea Westival 2025"
-          },
-          {
-            "event_name": "Midwest Westie Fest 2025"
-          },
-          {
-            "event_name": "Milan Modern Swing 2025"
-          },
-          {
-            "event_name": "Monterey Swing Fest 2024"
-          },
-          {
-            "event_name": "Mooseland Swing 2025"
-          },
-          {
-            "event_name": "SOswing 2022"
-          },
-          {
-            "event_name": "Scandinavian Open WCS 2022"
-          },
-          {
-            "event_name": "Simply Adelaide West Coast Swing 2022"
-          },
-          {
-            "event_name": "Simply Adelaide West Coast Swing 2023"
-          },
-          {
-            "event_name": "Simply Adelaide West Coast Swing 2024"
-          },
-          {
-            "event_name": "Swing Fiction 2024"
-          },
-          {
-            "event_name": "Swing Fling 2024"
-          }
-        ],
-        "suggested_fix": "Add mapping to EVENT_NAME_NORMALIZATION in transform/data_preprocessing.py",
-        "fingerprint": "eb3427bd68f5cf8e",
-        "is_new": true
-      },
-      {
-        "category": "event_naming",
-        "code": "EVENT_NAME_VARIANTS",
-        "severity": "high",
-        "message": "Same event appears under multiple name spellings (possible duplicate event identity)",
-        "count": 35,
-        "examples": [
-          {
-            "base_key": "monterey swingfest",
-            "variants": [
-              "Monterey SwingFest",
-              "Monterey Swingfest"
-            ]
-          },
-          {
-            "base_key": "boogie by the bay",
-            "variants": [
-              "Boogie By The Bay",
-              "Boogie by the Bay"
-            ]
-          },
-          {
-            "base_key": "swing fling",
-            "variants": [
-              "Swing Fling",
-              "Swing Fling 2024"
-            ]
-          },
-          {
-            "base_key": "paradise dance festival",
-            "variants": [
-              "Paradise Dance Festival",
-              "Paradise dance festival"
-            ]
-          },
-          {
-            "base_key": "halloween swingthing",
-            "variants": [
-              "Halloween SwingThing",
-              "Halloween Swingthing"
-            ]
-          },
-          {
-            "base_key": "swingapalooza",
-            "variants": [
-              "SWINGAPALOOZA",
-              "Swingapalooza"
-            ]
-          },
-          {
-            "base_key": "midwest westie fest",
-            "variants": [
-              "Midwest Westie Fest",
-              "Midwest Westie Fest 2025"
-            ]
-          },
-          {
-            "base_key": "austin rocks",
-            "variants": [
-              "Austin Rocks",
-              "Austin Rocks 2024"
-            ]
-          },
-          {
-            "base_key": "dc swing experience (dcsx)",
-            "variants": [
-              "DC Swing Experience (DCSX)",
-              "DC Swing eXperience (DCSX)"
-            ]
-          },
-          {
-            "base_key": "floorplay new years swing vacation",
-            "variants": [
-              "FloorPlay New Years Swing Vacation",
-              "Floorplay New Years Swing Vacation"
-            ]
-          },
-          {
-            "base_key": "soswing",
-            "variants": [
-              "SOswing",
-              "SOswing 2022"
-            ]
-          },
-          {
-            "base_key": "easter swing",
-            "variants": [
-              "Easter Swing",
-              "Easter Swing 2026"
-            ]
-          }
-        ],
-        "suggested_fix": "Unify via EVENT_NAME_NORMALIZATION or core.event_aliases",
-        "fingerprint": "3bb6185f53fcdf9e",
-        "is_new": true
-      },
-      {
-        "category": "event_naming",
         "code": "EVENT_NAME_SIMILAR_UNMAPPED",
         "severity": "medium",
         "message": "Event names similar to known canonical names but not in EVENT_NAME_NORMALIZATION",
-        "count": 19,
+        "count": 3,
         "examples": [
-          {
-            "event_name": "Chicagoland Country & Swing Dance Festival",
-            "similar_to": "Chicagoland Country and Swing Dance Festival",
-            "score": 0.953
-          },
-          {
-            "event_name": "DC Swing Experience (DCSX)",
-            "similar_to": "DC Swing eXperience (DCSX)",
-            "score": 1.0
-          },
-          {
-            "event_name": "DC Swing eXperience  (DCSX)",
-            "similar_to": "DC Swing eXperience (DCSX)",
-            "score": 0.981
-          },
-          {
-            "event_name": "Dutch open West Coast swing",
-            "similar_to": "Dutch Open West Coast Swing",
-            "score": 1.0
-          },
-          {
-            "event_name": "German Open WCS Championships",
-            "similar_to": "Korean Open WCS Championships",
-            "score": 0.897
-          },
-          {
-            "event_name": "Global Grand Prix - West Coast Swing",
-            "similar_to": "Global Grand Prix - West Coast Swing Reunion",
-            "score": 0.9
-          },
           {
             "event_name": "Go West Swing Fest",
             "similar_to": "Go West SwingFest",
             "score": 0.971
-          },
-          {
-            "event_name": "Korean Open WCS Championsips",
-            "similar_to": "Korean Open WCS Championships",
-            "score": 0.982
-          },
-          {
-            "event_name": "Monterey Swing Fest 2024",
-            "similar_to": "Monterey SwingFest",
-            "score": 0.973
-          },
-          {
-            "event_name": "Monterey Swingfest",
-            "similar_to": "Monterey SwingFest",
-            "score": 1.0
           },
           {
             "event_name": "New England Swing Dance Championships",
@@ -228,48 +30,13 @@
             "score": 0.886
           },
           {
-            "event_name": "Palm Springs Summer Dance Camp Classic",
-            "similar_to": "Palm Springs Summer Dance Classic",
-            "score": 0.93
-          },
-          {
-            "event_name": "Russian Open WCS Championship",
-            "similar_to": "Russian Open WCS Championships",
-            "score": 0.983
-          },
-          {
-            "event_name": "St. Petersburg WCS Nights",
-            "similar_to": "Saint Petersburg WCS Nights",
-            "score": 0.923
-          },
-          {
             "event_name": "SwingCouver",
             "similar_to": "Swingover",
             "score": 0.9
-          },
-          {
-            "event_name": "The After Party \"TAP\"",
-            "similar_to": "The After Party (TAP)",
-            "score": 0.905
-          },
-          {
-            "event_name": "The After Party - TAP",
-            "similar_to": "The After Party (TAP)",
-            "score": 0.905
-          },
-          {
-            "event_name": "The After Party “TAP”",
-            "similar_to": "The After Party (TAP)",
-            "score": 0.905
-          },
-          {
-            "event_name": "Toronto Open Swing and Hustle Championships",
-            "similar_to": "Toronto Open Swing & Hustle Championships",
-            "score": 0.952
           }
         ],
         "suggested_fix": "Add explicit mapping to EVENT_NAME_NORMALIZATION",
-        "fingerprint": "3b3069c0670b7b7d",
+        "fingerprint": "884f0b28a784dde6",
         "is_new": true
       },
       {
@@ -277,86 +44,14 @@
         "code": "EVENT_NAME_UNRESOLVED_TO_CATALOG",
         "severity": "high",
         "message": "Result event names still absent from events_wsdc after normalization (will orphan in load)",
-        "count": 118,
+        "count": 1,
         "examples": [
           {
-            "event_name": "5280 Swing Dance Championships"
-          },
-          {
-            "event_name": "Arizona Dance Classic (Cancelled due to Covid-19)"
-          },
-          {
-            "event_name": "Asia WCS Open - 10th Anniversary"
-          },
-          {
-            "event_name": "Asia WCS Open XI"
-          },
-          {
-            "event_name": "Asia WCS Open XIII"
-          },
-          {
-            "event_name": "Austin Rocks 2024"
-          },
-          {
-            "event_name": "Austin Swing Dance Championships (ASDC)"
-          },
-          {
-            "event_name": "Bavarian Open WCS"
-          },
-          {
-            "event_name": "Bavarian Open West Coast Swing Championships"
-          },
-          {
-            "event_name": "Big Apple Dance Festival/World Hustle Championships"
-          },
-          {
-            "event_name": "C.A.S.H. Bash"
-          },
-          {
             "event_name": "Canadian Swing Championships (CSC)"
-          },
-          {
-            "event_name": "Capital Swing Convention"
-          },
-          {
-            "event_name": "Capital Swing Dancers' President's Day"
-          },
-          {
-            "event_name": "Capital Swing Presidents' Day Convention"
-          },
-          {
-            "event_name": "Charlotte WestieFest"
-          },
-          {
-            "event_name": "Chicagoland"
-          },
-          {
-            "event_name": "Citadel Swing (Cancelled due to Covid-19)"
-          },
-          {
-            "event_name": "City of Angels Swing Event"
-          },
-          {
-            "event_name": "Country Dance World Championships"
-          },
-          {
-            "event_name": "DC Swing Experience (DCSX)"
-          },
-          {
-            "event_name": "DC Swing eXperience  (DCSX)"
-          },
-          {
-            "event_name": "DOWCS"
-          },
-          {
-            "event_name": "Desert City Swing Dance Championships"
-          },
-          {
-            "event_name": "Dutch Open West Coast Swing 2024"
           }
         ],
         "suggested_fix": "Add to RESULT_TO_CATALOG_EVENT_NAME in transform/knowledge/event_aliases.py",
-        "fingerprint": "2ba7dbe88d2b1e41",
+        "fingerprint": "3ff88c77894468fe",
         "is_new": true
       },
       {
@@ -364,107 +59,14 @@
         "code": "EVENT_NAME_NOT_IN_CATALOG",
         "severity": "low",
         "message": "Result event_name values absent from events_wsdc.csv (may be OK if resolved by name in load)",
-        "count": 168,
-        "examples": [
-          {
-            "event_name": "5280 Swing Dance Championships"
-          },
-          {
-            "event_name": "Americano Dance camp"
-          },
-          {
-            "event_name": "Arizona Dance Classic (Cancelled due to Covid-19)"
-          },
-          {
-            "event_name": "Asia WCS Open - 10th Anniversary"
-          },
-          {
-            "event_name": "Asia WCS Open XI"
-          },
-          {
-            "event_name": "Asia WCS Open XIII"
-          },
-          {
-            "event_name": "Austin Rocks 2024"
-          },
-          {
-            "event_name": "Austin Swing Dance Championships (ASDC)"
-          },
-          {
-            "event_name": "BALTIC SWING"
-          },
-          {
-            "event_name": "Bavarian Open WCS"
-          },
-          {
-            "event_name": "Bavarian Open West Coast Swing Championships"
-          },
-          {
-            "event_name": "Best of the Best"
-          },
-          {
-            "event_name": "Big Apple Dance Festival/World Hustle Championships"
-          },
-          {
-            "event_name": "Boogie by the Bay"
-          },
-          {
-            "event_name": "BridgeTown Swing"
-          },
-          {
-            "event_name": "By-Town Open (BTO)"
-          },
-          {
-            "event_name": "C.A.S.H. Bash"
-          },
-          {
-            "event_name": "C.A.S.H. Bash Weekend"
-          },
-          {
-            "event_name": "Canadian Swing Championships (CSC)"
-          },
-          {
-            "event_name": "Capital Swing Convention"
-          }
-        ],
-        "suggested_fix": "Verify events_wsdc export or add event instance after parse",
-        "fingerprint": "3afc311123f8de00",
-        "is_new": true
-      },
-      {
-        "category": "levels",
-        "code": "NON_CANONICAL_DIVISION",
-        "severity": "low",
-        "message": "Division/level values outside canonical set (Tableau expects full words)",
-        "count": 2,
-        "examples": [
-          {
-            "raw_level": "Masters",
-            "normalized_attempt": "Masters"
-          },
-          {
-            "raw_level": "All-Stars",
-            "normalized_attempt": "All-Stars"
-          }
-        ],
-        "suggested_fix": "Add alias to LEVEL_ALIASES in transform/normalize.py",
-        "fingerprint": "f6dffcec5792606f",
-        "is_new": true
-      },
-      {
-        "category": "location",
-        "code": "LOCATION_INCOMPLETE_FORMAT",
-        "severity": "medium",
-        "message": "Locations without comma (City, State/Country format expected)",
         "count": 1,
         "examples": [
           {
-            "location_id": "243",
-            "event_location": "Singapore"
+            "event_name": "Canadian Swing Championships (CSC)"
           }
         ],
-        "suggested_fix": "Add to EVENT_LOCATION_EXACT_CORRECTIONS or LOCATION_INFO_*_CORRECTIONS",
-        "fingerprint": "98805b5d7c9d4d53",
+        "suggested_fix": "Verify events_wsdc export or add event instance after parse",
+        "fingerprint": "32f5867294897722",
         "is_new": true
       },
       {
@@ -478,34 +80,17 @@
             "location_id": "159",
             "event_city": "Singapore",
             "event_country": "Singapore",
-            "event_location": "Singapore, Singapore, Singapore"
+            "event_location": "Singapore, Singapore"
           },
           {
-            "location_id": "243",
+            "location_id": "244",
             "event_city": "Singapore",
             "event_country": "Singapore",
-            "event_location": "Singapore"
+            "event_location": "Singapore, Singapore"
           }
         ],
         "suggested_fix": "Fix in LOCATION_INFO_ID_CORRECTIONS or re-geocode",
         "fingerprint": "2f330998192682da",
-        "is_new": true
-      },
-      {
-        "category": "relationships",
-        "code": "LEGACY_LOCATION_ID",
-        "severity": "high",
-        "message": "1 location_id в results без записи в location_info",
-        "count": 1,
-        "examples": [
-          {
-            "detail": [
-              NaN
-            ]
-          }
-        ],
-        "suggested_fix": "See transform/data_preprocessing.py validate_* functions",
-        "fingerprint": "44d349b57457ec5a",
         "is_new": true
       }
     ]
@@ -513,6 +98,168 @@
   "applied_normalizations": {
     "description": "Known rules and auto-patterns applied (notebook maps + year strip)",
     "rules": [
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "event_city",
+        "from_value": "location_id=25 was Atlanta",
+        "to_value": "Atlanta",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "event_state",
+        "from_value": "location_id=25 was Georgia",
+        "to_value": "Georgia",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "event_country",
+        "from_value": "location_id=25 was United States",
+        "to_value": "United States",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "event_location",
+        "from_value": "location_id=25 was Atlanta, GA, United States",
+        "to_value": "Atlanta, GA, United States",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "event_city",
+        "from_value": "location_id=159 was Singapore",
+        "to_value": "Singapore",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "event_state",
+        "from_value": "location_id=159 was nan",
+        "to_value": "",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "event_country",
+        "from_value": "location_id=159 was Singapore",
+        "to_value": "Singapore",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "event_location",
+        "from_value": "location_id=159 was Singapore, Singapore",
+        "to_value": "Singapore, Singapore",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "event_city",
+        "from_value": "location_id=244 was Singapore",
+        "to_value": "Singapore",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "event_state",
+        "from_value": "location_id=244 was nan",
+        "to_value": "",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "event_country",
+        "from_value": "location_id=244 was Singapore",
+        "to_value": "Singapore",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "event_location",
+        "from_value": "location_id=244 was Singapore, Singapore",
+        "to_value": "Singapore, Singapore",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "event_city",
+        "from_value": "location_id=231 was Stockholm",
+        "to_value": "Stockholm",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "event_state",
+        "from_value": "location_id=231 was nan",
+        "to_value": "",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "event_country",
+        "from_value": "location_id=231 was Sweden",
+        "to_value": "Sweden",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "event_location",
+        "from_value": "location_id=231 was Stockholm, Sweden",
+        "to_value": "Stockholm, Sweden",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "latitude",
+        "from_value": "location_id=231 was 59.3251172",
+        "to_value": "59.3251172",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "longitude",
+        "from_value": "location_id=231 was 18.0710935",
+        "to_value": "18.0710935",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
       {
         "rule_id": "LOCATION_INFO_ID_CORRECTION",
         "table": "location_info",
@@ -555,7 +302,7 @@
         "column": "event_city",
         "from_value": "city=new york",
         "to_value": "New York",
-        "rows_affected": 2,
+        "rows_affected": 1,
         "source": "city_fix"
       },
       {
@@ -564,7 +311,7 @@
         "column": "event_state",
         "from_value": "city=new york",
         "to_value": "New York",
-        "rows_affected": 2,
+        "rows_affected": 1,
         "source": "city_fix"
       },
       {
@@ -573,7 +320,7 @@
         "column": "event_country",
         "from_value": "city=new york",
         "to_value": "United States",
-        "rows_affected": 2,
+        "rows_affected": 1,
         "source": "city_fix"
       },
       {
@@ -582,7 +329,7 @@
         "column": "event_location",
         "from_value": "city=new york",
         "to_value": "New York, NY",
-        "rows_affected": 2,
+        "rows_affected": 1,
         "source": "city_fix"
       },
       {
@@ -694,840 +441,48 @@
         "source": "city_fix"
       },
       {
-        "rule_id": "AUTO_STRIP_EVENT_YEAR",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Swing Fling 2024",
-        "to_value": "Swing Fling",
-        "rows_affected": 170,
-        "source": "auto_pattern"
-      },
-      {
-        "rule_id": "AUTO_STRIP_EVENT_YEAR",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Austin Rocks 2024",
-        "to_value": "Austin Rocks",
-        "rows_affected": 113,
-        "source": "auto_pattern"
-      },
-      {
-        "rule_id": "AUTO_STRIP_EVENT_YEAR",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Midwest Westie Fest 2025",
-        "to_value": "Midwest Westie Fest",
-        "rows_affected": 123,
-        "source": "auto_pattern"
-      },
-      {
-        "rule_id": "AUTO_STRIP_EVENT_YEAR",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Easter Swing 2026",
-        "to_value": "Easter Swing",
-        "rows_affected": 143,
-        "source": "auto_pattern"
-      },
-      {
-        "rule_id": "AUTO_STRIP_EVENT_YEAR",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Swingtacular: The Galactic Open 2023",
-        "to_value": "Swingtacular: The Galactic Open",
-        "rows_affected": 130,
-        "source": "auto_pattern"
-      },
-      {
-        "rule_id": "AUTO_STRIP_EVENT_YEAR",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Swingtacular: The Galactic Open 2022",
-        "to_value": "Swingtacular: The Galactic Open",
-        "rows_affected": 134,
-        "source": "auto_pattern"
-      },
-      {
-        "rule_id": "AUTO_STRIP_EVENT_YEAR",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Milan Modern Swing 2025",
-        "to_value": "Milan Modern Swing",
-        "rows_affected": 164,
-        "source": "auto_pattern"
-      },
-      {
-        "rule_id": "AUTO_STRIP_EVENT_YEAR",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Monterey Swing Fest 2024",
-        "to_value": "Monterey Swing Fest",
-        "rows_affected": 114,
-        "source": "auto_pattern"
-      },
-      {
-        "rule_id": "AUTO_STRIP_EVENT_YEAR",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Swingin' Into Spring 2025",
-        "to_value": "Swingin' Into Spring",
-        "rows_affected": 44,
-        "source": "auto_pattern"
-      },
-      {
-        "rule_id": "AUTO_STRIP_EVENT_YEAR",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Swingsation 2024",
-        "to_value": "Swingsation",
-        "rows_affected": 66,
-        "source": "auto_pattern"
-      },
-      {
-        "rule_id": "AUTO_STRIP_EVENT_YEAR",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "SOswing 2022",
-        "to_value": "SOswing",
-        "rows_affected": 86,
-        "source": "auto_pattern"
-      },
-      {
-        "rule_id": "AUTO_STRIP_EVENT_YEAR",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Simply Adelaide West Coast Swing 2023",
-        "to_value": "Simply Adelaide West Coast Swing",
-        "rows_affected": 59,
-        "source": "auto_pattern"
-      },
-      {
-        "rule_id": "AUTO_STRIP_EVENT_YEAR",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Swingsation 2026",
-        "to_value": "Swingsation",
-        "rows_affected": 60,
-        "source": "auto_pattern"
-      },
-      {
-        "rule_id": "AUTO_STRIP_EVENT_YEAR",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Simply Adelaide West Coast Swing 2024",
-        "to_value": "Simply Adelaide West Coast Swing",
-        "rows_affected": 57,
-        "source": "auto_pattern"
-      },
-      {
-        "rule_id": "AUTO_STRIP_EVENT_YEAR",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "SwingVester 2025",
-        "to_value": "SwingVester",
-        "rows_affected": 164,
-        "source": "auto_pattern"
-      },
-      {
-        "rule_id": "AUTO_STRIP_EVENT_YEAR",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Dutch Open West Coast Swing 2024",
-        "to_value": "Dutch Open West Coast Swing",
-        "rows_affected": 66,
-        "source": "auto_pattern"
-      },
-      {
-        "rule_id": "AUTO_STRIP_EVENT_YEAR",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Swingtimate 2020",
-        "to_value": "Swingtimate",
-        "rows_affected": 20,
-        "source": "auto_pattern"
-      },
-      {
-        "rule_id": "AUTO_STRIP_EVENT_YEAR",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Simply Adelaide West Coast Swing 2022",
-        "to_value": "Simply Adelaide West Coast Swing",
-        "rows_affected": 54,
-        "source": "auto_pattern"
-      },
-      {
-        "rule_id": "AUTO_STRIP_EVENT_YEAR",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Swing Fiction 2024",
-        "to_value": "Swing Fiction",
-        "rows_affected": 98,
-        "source": "auto_pattern"
-      },
-      {
-        "rule_id": "AUTO_STRIP_EVENT_YEAR",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Mooseland Swing 2025",
-        "to_value": "Mooseland Swing",
-        "rows_affected": 71,
-        "source": "auto_pattern"
-      },
-      {
-        "rule_id": "AUTO_STRIP_EVENT_YEAR",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Korea Westival 2025",
-        "to_value": "Korea Westival",
-        "rows_affected": 90,
-        "source": "auto_pattern"
+        "rule_id": "CITY_CANONICAL_COORDINATES",
+        "table": "location_info",
+        "column": "latitude/longitude",
+        "from_value": "suburb/venue coords",
+        "to_value": "city center",
+        "rows_affected": 12,
+        "source": "canonical_coords"
       },
       {
         "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Scandinavian Open WCS",
-        "to_value": "Scandinavian Open",
-        "rows_affected": 86,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Scandinavian Open WCS 2022",
-        "to_value": "Scandinavian Open",
-        "rows_affected": 118,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Scandinavian Open WCS \"SNOW\"",
-        "to_value": "Scandinavian Open",
-        "rows_affected": 424,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Americano Dance camp",
-        "to_value": "Americano Dance Camp",
-        "rows_affected": 88,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Rock The Barn",
-        "to_value": "Rock the Barn",
-        "rows_affected": 383,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Go West Swingfest",
-        "to_value": "Go West SwingFest",
-        "rows_affected": 25,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "D-TOWNSWING",
-        "to_value": "D-Town Swing",
-        "rows_affected": 272,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "KING SWING",
-        "to_value": "King Swing",
-        "rows_affected": 121,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "SWINGAPALOOZA",
-        "to_value": "Swingapalooza",
-        "rows_affected": 313,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "London SWINGvitational",
-        "to_value": "London SwingVitational",
-        "rows_affected": 345,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Westies on The Water",
-        "to_value": "Westies on the Water",
-        "rows_affected": 43,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Boogie by the Bay",
-        "to_value": "Boogie By The Bay",
-        "rows_affected": 481,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Swingvester",
-        "to_value": "SwingVester",
-        "rows_affected": 363,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "West In Lyon",
-        "to_value": "West in Lyon",
-        "rows_affected": 1335,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Paradise dance festival",
-        "to_value": "Paradise Dance Festival",
-        "rows_affected": 82,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "WESTY NANTES",
-        "to_value": "Westy Nantes",
-        "rows_affected": 369,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "BALTIC SWING",
-        "to_value": "Baltic Swing",
-        "rows_affected": 128,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Halloween Swingthing",
-        "to_value": "Halloween SwingThing",
-        "rows_affected": 455,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "By-Town Open (BTO)",
-        "to_value": "BTO Open",
-        "rows_affected": 93,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Phoenix 4th of July",
-        "to_value": "4TH of July Convention",
-        "rows_affected": 504,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Easter Swing",
-        "to_value": "Seattle's Easter Swing",
-        "rows_affected": 871,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Monterey Swing Fest",
-        "to_value": "Monterey SwingFest",
-        "rows_affected": 473,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "SwingTime",
-        "to_value": "Swingtime in the Rockies",
-        "rows_affected": 220,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Swingin' New England",
-        "to_value": "Swingin' New England Dance Festival",
-        "rows_affected": 86,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Palm Springs New Year",
-        "to_value": "Palm Springs New Years Swing Dance Classic",
-        "rows_affected": 60,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Palm Springs Swing Dance Classic",
-        "to_value": "Palm Springs Summer Dance Classic",
-        "rows_affected": 76,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "French Open WCS",
-        "to_value": "French Open West Coast Swing",
-        "rows_affected": 512,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "DC Swing eXperience",
-        "to_value": "DC Swing eXperience (DCSX)",
-        "rows_affected": 772,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "BridgeTown Swing",
-        "to_value": "Bridgetown Swing Boogie",
-        "rows_affected": 395,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "City of Angels",
-        "to_value": "City of Angels WCS",
-        "rows_affected": 1119,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Spotlight Dance Challenge",
-        "to_value": "Spotlight New Year's Celebration",
-        "rows_affected": 945,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Michigan Classic",
-        "to_value": "Michigan Dance Classic",
-        "rows_affected": 313,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "The After Party",
-        "to_value": "The After Party (TAP)",
-        "rows_affected": 738,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "C.A.S.H. Bash Weekend",
-        "to_value": "CASH Bash",
-        "rows_affected": 991,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Swingtacular",
-        "to_value": "Swingtacular: The Galactic Open",
-        "rows_affected": 567,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Chicagoland Dance Festival",
-        "to_value": "Chicagoland Country and Swing Dance Festival",
-        "rows_affected": 580,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "D-Townswing",
-        "to_value": "D-Town Swing",
-        "rows_affected": 791,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Swing Over",
-        "to_value": "Swingover",
-        "rows_affected": 92,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Toronto Open",
-        "to_value": "Toronto Open Swing & Hustle Championships",
-        "rows_affected": 94,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Westie Gala",
-        "to_value": "Sweden Westie Gala",
-        "rows_affected": 487,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Best of the Best",
-        "to_value": "Best of the Best WCS",
-        "rows_affected": 487,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "St.Petersburg WCS Nights",
-        "to_value": "Saint Petersburg WCS Nights",
-        "rows_affected": 248,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "UpTown Swing",
-        "to_value": "Swedish Swing Summer Camp",
-        "rows_affected": 503,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "New Zealand Open",
-        "to_value": "New Zealand Open Swing Dance Championships",
-        "rows_affected": 127,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "The Open World Swing Dance Championships",
-        "to_value": "World Swing Dance Championships",
-        "rows_affected": 307,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "UK West Coast Swing Championships",
+        "table": "events_wsdc",
+        "column": "name",
+        "from_value": "UK WCS Championships",
         "to_value": "UK WCS Championships",
-        "rows_affected": 167,
+        "rows_affected": 6,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "EVENT_NAME_NORMALIZATION",
+        "table": "events_wsdc",
+        "column": "name",
+        "from_value": "U.K. & European WCS Championships",
+        "to_value": "UK WCS Championships",
+        "rows_affected": 7,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "EVENT_LOCATION_EXACT",
+        "table": "events_wsdc",
+        "column": "location",
+        "from_value": "Atlanta, GA USA",
+        "to_value": "Atlanta, GA, United States",
+        "rows_affected": 28,
         "source": "known_map"
       },
       {
         "rule_id": "EVENT_NAME_NORMALIZATION",
         "table": "dancers_results_info",
         "column": "event_name",
-        "from_value": "Jax Westie Fest",
-        "to_value": "River City Swing",
-        "rows_affected": 151,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Rocket City Swing",
-        "to_value": "Westies on the Water",
-        "rows_affected": 138,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "H-Town Throw Down",
-        "to_value": "Novice Invitational",
-        "rows_affected": 103,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "SOM-Swing of Music",
-        "to_value": "SOM - Swing of Music",
-        "rows_affected": 96,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_name",
-        "from_value": "Westie Weekend",
-        "to_value": "Dance Jam Jack & Jill Weekend",
-        "rows_affected": 82,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_required",
-        "from_value": "INT",
-        "to_value": "Intermediate",
-        "rows_affected": 4442,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_required",
-        "from_value": "NEW",
-        "to_value": "Newcomer",
-        "rows_affected": 1438,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_required",
-        "from_value": "ADV",
-        "to_value": "Advanced",
-        "rows_affected": 2704,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_required",
-        "from_value": "CHMP",
-        "to_value": "Champion",
-        "rows_affected": 187,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_required",
-        "from_value": "NOV",
-        "to_value": "Novice",
-        "rows_affected": 17334,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_required",
-        "from_value": "ALS",
-        "to_value": "All-Star",
-        "rows_affected": 1091,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_allowed",
-        "from_value": "INT",
-        "to_value": "Intermediate",
-        "rows_affected": 5866,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_allowed",
-        "from_value": "NOV",
-        "to_value": "Novice",
-        "rows_affected": 16819,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_allowed",
-        "from_value": "ADV",
-        "to_value": "Advanced",
-        "rows_affected": 3113,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_allowed",
-        "from_value": "CHMP",
-        "to_value": "Champion",
-        "rows_affected": 387,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_allowed",
-        "from_value": "ALS",
-        "to_value": "All-Star",
-        "rows_affected": 1011,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "non_dominate_required",
-        "from_value": "NOV",
-        "to_value": "Novice",
-        "rows_affected": 4393,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "non_dominate_required",
-        "from_value": "NEW",
-        "to_value": "Newcomer",
-        "rows_affected": 14711,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "non_dominate_required",
-        "from_value": "INT",
-        "to_value": "Intermediate",
-        "rows_affected": 206,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "non_dominate_required",
-        "from_value": "ADV",
-        "to_value": "Advanced",
-        "rows_affected": 220,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "non_dominate_required",
-        "from_value": "ALS",
-        "to_value": "All-Star",
-        "rows_affected": 10,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "non_dominate_allowed",
-        "from_value": "NOV",
-        "to_value": "Novice",
-        "rows_affected": 6874,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "non_dominate_allowed",
-        "from_value": "ADV",
-        "to_value": "Advanced",
-        "rows_affected": 397,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "non_dominate_allowed",
-        "from_value": "NEW",
-        "to_value": "Newcomer",
-        "rows_affected": 14711,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "non_dominate_allowed",
-        "from_value": "INT",
-        "to_value": "Intermediate",
-        "rows_affected": 1058,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "non_dominate_allowed",
-        "from_value": "ALS",
-        "to_value": "All-Star",
-        "rows_affected": 10,
+        "from_value": "UK WCS Championships",
+        "to_value": "UK WCS Championships",
+        "rows_affected": 1172,
         "source": "known_map"
       }
     ]
@@ -1537,103 +492,15 @@
     "findings": [
       {
         "category": "event_naming",
-        "code": "EVENT_NAME_VARIANTS",
-        "severity": "high",
-        "message": "Same event appears under multiple name spellings (possible duplicate event identity)",
-        "count": 5,
-        "examples": [
-          {
-            "base_key": "monterey swingfest",
-            "variants": [
-              "Monterey SwingFest",
-              "Monterey Swingfest"
-            ]
-          },
-          {
-            "base_key": "dc swing experience (dcsx)",
-            "variants": [
-              "DC Swing Experience (DCSX)",
-              "DC Swing eXperience (DCSX)"
-            ]
-          },
-          {
-            "base_key": "floorplay new years swing vacation",
-            "variants": [
-              "FloorPlay New Years Swing Vacation",
-              "Floorplay New Years Swing Vacation"
-            ]
-          },
-          {
-            "base_key": "lonestar invitational",
-            "variants": [
-              "LoneStar Invitational",
-              "Lonestar Invitational"
-            ]
-          },
-          {
-            "base_key": "dutch open west coast swing",
-            "variants": [
-              "Dutch Open West Coast Swing",
-              "Dutch open West Coast swing"
-            ]
-          }
-        ],
-        "suggested_fix": "Unify via EVENT_NAME_NORMALIZATION or core.event_aliases",
-        "fingerprint": "d3036c0955ba246a",
-        "is_new": true,
-        "requires_manual_review": true
-      },
-      {
-        "category": "event_naming",
         "code": "EVENT_NAME_SIMILAR_UNMAPPED",
         "severity": "medium",
         "message": "Event names similar to known canonical names but not in EVENT_NAME_NORMALIZATION",
-        "count": 18,
+        "count": 3,
         "examples": [
-          {
-            "event_name": "Chicagoland Country & Swing Dance Festival",
-            "similar_to": "Chicagoland Country and Swing Dance Festival",
-            "score": 0.953
-          },
-          {
-            "event_name": "DC Swing Experience (DCSX)",
-            "similar_to": "DC Swing eXperience (DCSX)",
-            "score": 1.0
-          },
-          {
-            "event_name": "DC Swing eXperience  (DCSX)",
-            "similar_to": "DC Swing eXperience (DCSX)",
-            "score": 0.981
-          },
-          {
-            "event_name": "Dutch open West Coast swing",
-            "similar_to": "Dutch Open West Coast Swing",
-            "score": 1.0
-          },
-          {
-            "event_name": "German Open WCS Championships",
-            "similar_to": "Korean Open WCS Championships",
-            "score": 0.897
-          },
-          {
-            "event_name": "Global Grand Prix - West Coast Swing",
-            "similar_to": "Global Grand Prix - West Coast Swing Reunion",
-            "score": 0.9
-          },
           {
             "event_name": "Go West Swing Fest",
             "similar_to": "Go West SwingFest",
             "score": 0.971
-          },
-          {
-            "event_name": "Korean Open WCS Championsips",
-            "similar_to": "Korean Open WCS Championships",
-            "score": 0.982
-          },
-          {
-            "event_name": "Monterey Swingfest",
-            "similar_to": "Monterey SwingFest",
-            "score": 1.0
           },
           {
             "event_name": "New England Swing Dance Championships",
@@ -1641,48 +508,13 @@
             "score": 0.886
           },
           {
-            "event_name": "Palm Springs Summer Dance Camp Classic",
-            "similar_to": "Palm Springs Summer Dance Classic",
-            "score": 0.93
-          },
-          {
-            "event_name": "Russian Open WCS Championship",
-            "similar_to": "Russian Open WCS Championships",
-            "score": 0.983
-          },
-          {
-            "event_name": "St. Petersburg WCS Nights",
-            "similar_to": "Saint Petersburg WCS Nights",
-            "score": 0.923
-          },
-          {
             "event_name": "SwingCouver",
             "similar_to": "Swingover",
             "score": 0.9
-          },
-          {
-            "event_name": "The After Party \"TAP\"",
-            "similar_to": "The After Party (TAP)",
-            "score": 0.905
-          },
-          {
-            "event_name": "The After Party - TAP",
-            "similar_to": "The After Party (TAP)",
-            "score": 0.905
-          },
-          {
-            "event_name": "The After Party “TAP”",
-            "similar_to": "The After Party (TAP)",
-            "score": 0.905
-          },
-          {
-            "event_name": "Toronto Open Swing and Hustle Championships",
-            "similar_to": "Toronto Open Swing & Hustle Championships",
-            "score": 0.952
           }
         ],
         "suggested_fix": "Add explicit mapping to EVENT_NAME_NORMALIZATION",
-        "fingerprint": "4f7084a520375bd8",
+        "fingerprint": "884f0b28a784dde6",
         "is_new": true,
         "requires_manual_review": true
       },
@@ -1691,86 +523,14 @@
         "code": "EVENT_NAME_UNRESOLVED_TO_CATALOG",
         "severity": "high",
         "message": "Result event names still absent from events_wsdc after normalization (will orphan in load)",
-        "count": 96,
+        "count": 1,
         "examples": [
           {
-            "event_name": "5280 Swing Dance Championships"
-          },
-          {
-            "event_name": "Arizona Dance Classic (Cancelled due to Covid-19)"
-          },
-          {
-            "event_name": "Asia WCS Open - 10th Anniversary"
-          },
-          {
-            "event_name": "Asia WCS Open XI"
-          },
-          {
-            "event_name": "Asia WCS Open XIII"
-          },
-          {
-            "event_name": "Austin Swing Dance Championships (ASDC)"
-          },
-          {
-            "event_name": "Bavarian Open WCS"
-          },
-          {
-            "event_name": "Bavarian Open West Coast Swing Championships"
-          },
-          {
-            "event_name": "Big Apple Dance Festival/World Hustle Championships"
-          },
-          {
-            "event_name": "C.A.S.H. Bash"
-          },
-          {
             "event_name": "Canadian Swing Championships (CSC)"
-          },
-          {
-            "event_name": "Capital Swing Convention"
-          },
-          {
-            "event_name": "Capital Swing Dancers' President's Day"
-          },
-          {
-            "event_name": "Capital Swing Presidents' Day Convention"
-          },
-          {
-            "event_name": "Charlotte WestieFest"
-          },
-          {
-            "event_name": "Chicagoland"
-          },
-          {
-            "event_name": "Citadel Swing (Cancelled due to Covid-19)"
-          },
-          {
-            "event_name": "City of Angels Swing Event"
-          },
-          {
-            "event_name": "Country Dance World Championships"
-          },
-          {
-            "event_name": "DC Swing Experience (DCSX)"
-          },
-          {
-            "event_name": "DC Swing eXperience  (DCSX)"
-          },
-          {
-            "event_name": "DOWCS"
-          },
-          {
-            "event_name": "Desert City Swing Dance Championships"
-          },
-          {
-            "event_name": "Dutch open West Coast swing"
-          },
-          {
-            "event_name": "Floor Play Swing Vacation"
           }
         ],
         "suggested_fix": "Add to RESULT_TO_CATALOG_EVENT_NAME in transform/knowledge/event_aliases.py",
-        "fingerprint": "04918a735d30fef9",
+        "fingerprint": "3ff88c77894468fe",
         "is_new": true,
         "requires_manual_review": true
       },
@@ -1779,198 +539,15 @@
         "code": "EVENT_NAME_NOT_IN_CATALOG",
         "severity": "low",
         "message": "Result event_name values absent from events_wsdc.csv (may be OK if resolved by name in load)",
-        "count": 96,
-        "examples": [
-          {
-            "event_name": "5280 Swing Dance Championships"
-          },
-          {
-            "event_name": "Arizona Dance Classic (Cancelled due to Covid-19)"
-          },
-          {
-            "event_name": "Asia WCS Open - 10th Anniversary"
-          },
-          {
-            "event_name": "Asia WCS Open XI"
-          },
-          {
-            "event_name": "Asia WCS Open XIII"
-          },
-          {
-            "event_name": "Austin Swing Dance Championships (ASDC)"
-          },
-          {
-            "event_name": "Bavarian Open WCS"
-          },
-          {
-            "event_name": "Bavarian Open West Coast Swing Championships"
-          },
-          {
-            "event_name": "Big Apple Dance Festival/World Hustle Championships"
-          },
-          {
-            "event_name": "C.A.S.H. Bash"
-          },
-          {
-            "event_name": "Canadian Swing Championships (CSC)"
-          },
-          {
-            "event_name": "Capital Swing Convention"
-          },
-          {
-            "event_name": "Capital Swing Dancers' President's Day"
-          },
-          {
-            "event_name": "Capital Swing Presidents' Day Convention"
-          },
-          {
-            "event_name": "Charlotte WestieFest"
-          },
-          {
-            "event_name": "Chicagoland"
-          },
-          {
-            "event_name": "Citadel Swing (Cancelled due to Covid-19)"
-          },
-          {
-            "event_name": "City of Angels Swing Event"
-          },
-          {
-            "event_name": "Country Dance World Championships"
-          },
-          {
-            "event_name": "DC Swing Experience (DCSX)"
-          }
-        ],
-        "suggested_fix": "Verify events_wsdc export or add event instance after parse",
-        "fingerprint": "b692a639262e9f41",
-        "is_new": true,
-        "requires_manual_review": true
-      },
-      {
-        "category": "levels",
-        "code": "NON_CANONICAL_DIVISION",
-        "severity": "low",
-        "message": "Division/level values outside canonical set (Tableau expects full words)",
-        "count": 2,
-        "examples": [
-          {
-            "raw_level": "Masters",
-            "normalized_attempt": "Masters"
-          },
-          {
-            "raw_level": "All-Stars",
-            "normalized_attempt": "All-Stars"
-          }
-        ],
-        "suggested_fix": "Add alias to LEVEL_ALIASES in transform/normalize.py",
-        "fingerprint": "f6dffcec5792606f",
-        "is_new": false,
-        "requires_manual_review": true
-      },
-      {
-        "category": "event_naming",
-        "code": "EVENT_NAME_NEW_SINCE_LAST_RUN",
-        "severity": "info",
-        "message": "New event names appeared since last quality report (review naming)",
-        "count": 132,
-        "examples": [
-          {
-            "event_name": "4TH of July Convention"
-          },
-          {
-            "event_name": "5280 Swing Dance Championships"
-          },
-          {
-            "event_name": "Arizona Dance Classic (Cancelled due to Covid-19)"
-          },
-          {
-            "event_name": "Asia WCS Open - 10th Anniversary"
-          },
-          {
-            "event_name": "Asia WCS Open XI"
-          },
-          {
-            "event_name": "Asia WCS Open XIII"
-          },
-          {
-            "event_name": "Asia West Coast Swing Open"
-          },
-          {
-            "event_name": "Asian WCS Open Swingvitation"
-          },
-          {
-            "event_name": "Austin Swing Dance Championships (ASDC)"
-          },
-          {
-            "event_name": "Bavarian Open WCS"
-          },
-          {
-            "event_name": "Bavarian Open West Coast Swing Championships"
-          },
-          {
-            "event_name": "Best of the Best WCS"
-          },
-          {
-            "event_name": "Big Apple Dance Festival/World Hustle Championships"
-          },
-          {
-            "event_name": "Bridgetown Swing Boogie"
-          },
-          {
-            "event_name": "C.A.S.H. Bash"
-          },
-          {
-            "event_name": "CASH Bash"
-          },
-          {
-            "event_name": "Canadian Swing Championships (CSC)"
-          },
-          {
-            "event_name": "Capital Swing Convention"
-          },
-          {
-            "event_name": "Capital Swing Dancers' President's Day"
-          },
-          {
-            "event_name": "Capital Swing Presidents' Day Convention"
-          },
-          {
-            "event_name": "Charlotte WestieFest"
-          },
-          {
-            "event_name": "Chicagoland"
-          },
-          {
-            "event_name": "Chicagoland Country & Swing Dance Festival"
-          },
-          {
-            "event_name": "Chicagoland Country and Swing Dance Festival"
-          },
-          {
-            "event_name": "Citadel Swing (Cancelled due to Covid-19)"
-          }
-        ],
-        "suggested_fix": "Check if variant of existing event; add normalization rule if needed",
-        "fingerprint": "8049768844db39ee",
-        "is_new": true,
-        "requires_manual_review": true
-      },
-      {
-        "category": "location",
-        "code": "LOCATION_INCOMPLETE_FORMAT",
-        "severity": "medium",
-        "message": "Locations without comma (City, State/Country format expected)",
         "count": 1,
         "examples": [
           {
-            "location_id": "243",
-            "event_location": "Singapore"
+            "event_name": "Canadian Swing Championships (CSC)"
           }
         ],
-        "suggested_fix": "Add to EVENT_LOCATION_EXACT_CORRECTIONS or LOCATION_INFO_*_CORRECTIONS",
-        "fingerprint": "98805b5d7c9d4d53",
-        "is_new": false,
+        "suggested_fix": "Verify events_wsdc export or add event instance after parse",
+        "fingerprint": "32f5867294897722",
+        "is_new": true,
         "requires_manual_review": true
       },
       {
@@ -1984,35 +561,17 @@
             "location_id": "159",
             "event_city": "Singapore",
             "event_country": "Singapore",
-            "event_location": "Singapore, Singapore, Singapore"
+            "event_location": "Singapore, Singapore"
           },
           {
-            "location_id": "243",
+            "location_id": "244",
             "event_city": "Singapore",
             "event_country": "Singapore",
-            "event_location": "Singapore"
+            "event_location": "Singapore, Singapore"
           }
         ],
         "suggested_fix": "Fix in LOCATION_INFO_ID_CORRECTIONS or re-geocode",
         "fingerprint": "2f330998192682da",
-        "is_new": false,
-        "requires_manual_review": true
-      },
-      {
-        "category": "relationships",
-        "code": "LEGACY_LOCATION_ID",
-        "severity": "high",
-        "message": "1 location_id в results без записи в location_info",
-        "count": 1,
-        "examples": [
-          {
-            "detail": [
-              NaN
-            ]
-          }
-        ],
-        "suggested_fix": "See transform/data_preprocessing.py validate_* functions",
-        "fingerprint": "44d349b57457ec5a",
         "is_new": false,
         "requires_manual_review": true
       }
@@ -2021,7 +580,6 @@
   "event_names_snapshot": [
     "4TH of July Convention",
     "4TH of July Swing Bash",
-    "5280 Swing Dance Championships",
     "5280 Westival",
     "All Star SwingJam",
     "American Lindy Hop Championships",
@@ -2032,18 +590,12 @@
     "Anchor Festival",
     "Anti Valentines",
     "Arizona Dance Classic",
-    "Arizona Dance Classic (Cancelled due to Covid-19)",
     "Arousa Westie Fest",
-    "Asia WCS Open - 10th Anniversary",
-    "Asia WCS Open XI",
-    "Asia WCS Open XIII",
     "Asia West Coast Swing Open",
-    "Asian WCS Open Swingvitation",
     "Atlanta Swing Classic",
     "Augsburg Westie Station",
     "Austin Rocks",
     "Austin Swing Dance Championships",
-    "Austin Swing Dance Championships (ASDC)",
     "Australasian WCS & Zouk Champs",
     "Australian Open Swing Dance Championships",
     "Austrian Open",
@@ -2055,14 +607,11 @@
     "Baltic Swing",
     "Barock Swing Ludwigsburg",
     "Bavarian Open",
-    "Bavarian Open WCS",
-    "Bavarian Open West Coast Swing Championships",
     "Bay Swingers",
     "BeeMAD",
     "Berlin Swing Revolution",
     "Best of the Best WCS",
     "Big Apple Dance Festival",
-    "Big Apple Dance Festival/World Hustle Championships",
     "Boogie & Blues",
     "Boogie By The Bay",
     "Boston Dance Challenge",
@@ -2073,43 +622,30 @@
     "Bristol Swing Fiesta",
     "British Columbia Dance Challenge",
     "BudaFest Open WCS Championships",
-    "C.A.S.H. Bash",
     "CASH Bash",
     "Calgary Dance Stampede",
     "California State Championships",
     "Canadian Swing Championships",
     "Canadian Swing Championships (CSC)",
-    "Capital Swing Convention",
     "Capital Swing Dance Convention",
-    "Capital Swing Dancers' President's Day",
-    "Capital Swing Presidents' Day Convention",
     "Carolina Groove",
     "Carolina Summer Swing",
     "Champion's Weekend (MD)",
     "Champions Weekend (MA)",
     "Charlotte Westie Fest",
-    "Charlotte WestieFest",
     "Chicago Classic",
     "Chicago Dance Challenge",
-    "Chicagoland",
-    "Chicagoland Country & Swing Dance Festival",
     "Chicagoland Country and Swing Dance Festival",
     "Chico Dance Sensation",
     "Citadel Swing",
-    "Citadel Swing (Cancelled due to Covid-19)",
-    "City of Angels Swing Event",
     "City of Angels WCS",
     "Colorado Country Classic",
     "Come Rain Come Shine",
     "Countdown Swing Boston",
     "Country Boogie",
-    "Country Dance World Championships",
     "D-Town Swing",
-    "DC Swing Experience (DCSX)",
-    "DC Swing eXperience  (DCSX)",
     "DC Swing eXperience (DCSX)",
     "DFW Pro Am Jam",
-    "DOWCS",
     "Da Dance Camp",
     "Dallas D.A.N.C.E.",
     "Dallas Dance Festival",
@@ -2121,11 +657,9 @@
     "Dancers Fund/Moover & Groover/SwingExpo",
     "Derby City Swing",
     "Desert City Swing",
-    "Desert City Swing Dance Championships",
     "Desert Swing Dance Club",
     "Detonation Dance",
     "Dutch Open West Coast Swing",
-    "Dutch open West Coast swing",
     "Eastern/Washington Dance Challenge",
     "Euro Dance Festival",
     "European Swing Challenge",
@@ -2133,12 +667,8 @@
     "Fall Fall in Swing",
     "Festival City Swing",
     "Finnfest",
-    "Floor Play Swing Vacation",
-    "FloorPlay New Years Swing Vacation",
-    "Floorplay New Years Swing Vacation",
     "Floorplay Swing Vacation",
     "Florida Dance Magic",
-    "Florida Dance Magic (Unconfirmed)",
     "Florida Westie Fest",
     "Flowstate | West Coast Swing & Zouk Festival",
     "FreZno Dance Classic",
@@ -2147,11 +677,6 @@
     "Ft. Lauderdale Swing & Shag Beach Bash",
     "Gateway Swing Classic",
     "German Open",
-    "German Open Championships",
-    "German Open WCS Championships",
-    "German Open West Coast Swing",
-    "Global Grand Prix - West Coast Swing",
-    "Global Grand Prix - West Coast Swing Championships",
     "Global Grand Prix - West Coast Swing Reunion",
     "Go West Swing Fest",
     "Go West SwingFest",
@@ -2173,62 +698,44 @@
     "Italian Open",
     "J&J National Championships",
     "J&J O'Rama",
-    "Jack & Jill O'Rama",
     "Jitterbug Jam",
     "KC Swing Challenge and Heartland Dance Festival",
     "KIWI Fest",
     "Kazan EL Fest",
     "King Swing",
     "Korea Westival",
-    "Korean Open Swing Dance Championships",
     "Korean Open WCS Championships",
-    "Korean Open WCS Championsips",
     "Labor Day Swing Dance Festival",
     "Las Vegas Swing Expo",
     "Liberty Swing Dance Championships",
     "Lisbon Westie Fest",
     "London SwingVitational",
     "Lone Star Invitational",
-    "LoneStar Invitational",
-    "Lonestar Invitational",
     "Los Angeles Premiere Dance Classic",
-    "MADjam (Mid Atlantic Dance Jam)",
     "MY Swing",
     "MadMAC",
     "Med in Swing",
     "Mediterranean Open WCS",
     "Meet Me In St Louis",
-    "Meet Me in St Louis Swing Dance Championships",
-    "Meet Me in St. Louis Swing Dance Championships",
     "Michigan Dance Classic",
     "Michigan Swing Dance Champs",
-    "Mid Atlantic Dance Jam (MADjam)",
     "Mid USA Jack & Jill",
     "Mid-American Dance Championships",
     "Mid-Atlantic Dance Jam",
     "MidAtlantic Dance Classic",
     "Midland Swing Open",
     "Midnight Madness",
-    "Midnight Madness Swing",
-    "Midnight Madness WCS",
     "Midwest Westie Fest",
     "Milan Modern Swing",
-    "Milan Swing Vibes",
     "Monster Mash",
     "Monterey SwingFest",
-    "Monterey Swingfest",
-    "Monterey Swingfest (Cancelled due to Covid-19)",
-    "Montreal WCS Fest",
     "Montreal Westie Fest",
     "Mooseland Swing",
-    "Moscow Westie Dance Fest",
     "Moscow Westie Fest",
-    "Moscow Westie Fest Gala Edition",
     "Moscow Xmas Dance Camp",
     "Motor City Jam",
     "Motown Dance Championships",
     "Mountain Magic",
-    "Mountain Magic Dance Convention",
     "Municorn Swing",
     "Music City Swing Dance Championships",
     "NSW West Coast Swing Dance Championships",
@@ -2237,15 +744,11 @@
     "National Jitterbug Championships",
     "National New Year",
     "Neverland Swing",
-    "NeverlandSwing",
     "New England Dance Festival",
     "New England Swing Dance Championships",
     "New England Swing Jam 1",
     "New Mexico Dance Fiesta",
-    "New Orleans Dance Mardi Gras",
-    "New Year's Dance Camp",
     "New Year's Dance Championships",
-    "New Year's Dance Extravaganza",
     "New Year's Dancin' Eve",
     "New Year's Swing Fling",
     "New Years Dance Camp",
@@ -2265,16 +768,10 @@
     "Orange Blossom Dance Festival",
     "Pacific Rim Dance Classic",
     "Palm Springs New Years Swing Dance Classic",
-    "Palm Springs Summer Dance Camp Classic",
     "Palm Springs Summer Dance Classic",
-    "Paradise Country & Swing Dance Festival",
-    "Paradise Country Dance Festival",
-    "Paradise Country and Swing Dance Festival",
     "Paradise Dance Festival",
-    "Paris Swing Classic",
     "Paris Westie Fest",
     "Philly Swing Classic",
-    "Philly Swing Dance Classic",
     "Phoenix Dance Festival",
     "Portland Dance Festival",
     "Prague Alchemy Swing",
@@ -2289,10 +786,8 @@
     "River City Swing",
     "Rock the Barn",
     "Rocky Mountain 5 Dance",
-    "Rocky Mountain Five Dance (RM5)",
     "Rolling Swing",
     "Rose City Swing",
-    "Russian Open WCS Championship",
     "Russian Open WCS Championships",
     "SASS Spooky Albany Swing Spectacular",
     "SOM - Swing of Music",
@@ -2308,22 +803,15 @@
     "Scotland Swing Classic",
     "Scottish WCS Dance Championships",
     "Sea Dance Fest",
-    "Sea Sun & Swing Camp",
     "Sea Sun and Swing",
-    "Sea To Sky - Seattle",
     "Sea to Sky",
-    "Sea to Sky Seattle",
-    "Sea to Sky Seattle WCS",
     "Seattle's Easter Swing",
     "Shakedown Swing",
     "Shooba Dooba Swing",
-    "Show Me Showdown",
-    "Show-Me Showdown",
     "Simply Adelaide West Coast Swing",
     "SinCity Swing",
     "Slingshot Swing",
     "Slovenian Open",
-    "South Bay CW Dance Festival",
     "South Bay Dance Fling",
     "Southern Lights Swing",
     "Spooky Westie Weekend",
@@ -2332,7 +820,6 @@
     "Spring Swing",
     "Spring Time Swing",
     "St. Patrick's Day Swing",
-    "St. Petersburg WCS Nights",
     "Summer Dance Festival",
     "Summer Hummer",
     "Summer Swing Classic",
@@ -2349,7 +836,6 @@
     "Swing City Chicago",
     "Swing Crush",
     "Swing Dance America",
-    "Swing Dance America (SDA)",
     "Swing Dance Mania",
     "Swing Escape",
     "Swing Expo",
@@ -2360,18 +846,11 @@
     "Swing It Like It's Hot",
     "Swing Jam",
     "Swing Niagara Dance Championships",
-    "Swing Open Kazan",
-    "Swing Over Orlando",
     "Swing Resolution",
-    "Swing Trilogy",
     "Swing in Bloom",
-    "Swing&Snow",
     "SwingCouver",
-    "SwingCouver 2020 - The 10th Episode",
     "SwingDiego",
-    "SwingDiego (The Superbowl of Swing)",
     "SwingIN Festival",
-    "SwingTime Denver",
     "SwingVester",
     "Swingapalooza",
     "Swingin in the Valley",
@@ -2389,46 +868,27 @@
     "Swustlicious",
     "TLV SwingFest",
     "Tampa Bay Classic",
-    "Texas Classic",
-    "The After Party \"TAP\"",
     "The After Party (TAP)",
-    "The After Party - \"TAP\"",
-    "The After Party - TAP",
-    "The After Party “TAP”",
     "The Aloha Open",
     "The Australian Classic West Coast Swing Dance Championships (Trial Event)",
     "The Bend Connection",
-    "The Boston Tea Party",
     "The Brazilian Open",
-    "The Brazilian Open Championships",
-    "The Brazilian Open Championships (Cancelled due to Coronavirus)",
     "The Challenge",
     "The Chicago Classic",
     "The City of Light",
-    "The German Open WCS Championships",
-    "The New Zealand Open",
-    "The New Zealand West Coast Swing Open",
     "The Texas Classic",
     "Toronto International Swing Dance",
     "Toronto Open Swing & Hustle Championships",
-    "Toronto Open Swing and Hustle Championships",
     "Trilogy Swing",
     "Trinity Swing",
     "Tulsa Fall Fling",
     "Tulsa Spring Swing",
     "Twin City Swing Challenge",
-    "U.K. & European WCS Championships",
     "UCWDC Country Dance World Championship",
-    "UCWDC Country Dance World Championships",
-    "UK & European WCS Championships",
     "UK WCS Championships",
-    "UK WCS Dance Championships",
     "US National Dance Championships",
     "US Open Swing Dance Championships",
-    "USA Grand National Dance Championships",
     "USA Grand Nationals",
-    "USA Grand Nationals Dance Championship",
-    "USA Grand Nationals Dance Championships",
     "USA Jack & Jill Championships",
     "Ukrainian Open",
     "Upstate Dance Challenge",
@@ -2444,7 +904,6 @@
     "Waltz Across Texas",
     "Warsaw Halloween Swing",
     "Warsaw Summer Nights Westival",
-    "Warsaw Swing",
     "Waterloo Ontario Open West Coast Swing Championships",
     "West Coast Dance Challenge",
     "West in Lyon",
@@ -2459,8 +918,6 @@
     "Windy City",
     "Winter Coast Swing",
     "Winter White",
-    "Winter White WCS",
-    "Winter White West Coast Swing",
     "Wisconsin Dance Challenge/Midwest Area Swing Dance Challenge",
     "World Hustle Dance Championships",
     "World Swing Dance Championships",

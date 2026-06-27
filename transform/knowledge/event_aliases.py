@@ -71,6 +71,41 @@ EVENT_NAME_VARIANT_TO_CATALOG: dict[str, str] = {
     'BALTIC SWING': 'Baltic Swing',
     'Halloween Swingthing': 'Halloween SwingThing',
     'By-Town Open (BTO)': 'BTO Open',
+    'Monterey Swingfest': 'Monterey SwingFest',
+    'Monterey Swing Fest 2024': 'Monterey SwingFest',
+    'Swing Fling 2024': 'Swing Fling',
+    'Easter Swing 2026': "Seattle's Easter Swing",
+    'Austin Rocks 2024': 'Austin Rocks',
+    'Midwest Westie Fest 2025': 'Midwest Westie Fest',
+    'Milan Modern Swing 2025': 'Milan Modern Swing',
+    'Mooseland Swing 2025': 'Mooseland Swing',
+    'SOswing 2022': 'SOswing',
+    'Korea Westival 2025': 'Korea Westival',
+    'Dutch Open West Coast Swing 2024': 'Dutch Open West Coast Swing',
+    'Simply Adelaide West Coast Swing 2022': 'Simply Adelaide West Coast Swing',
+    'Simply Adelaide West Coast Swing 2023': 'Simply Adelaide West Coast Swing',
+    'Simply Adelaide West Coast Swing 2024': 'Simply Adelaide West Coast Swing',
+    'Swing Fiction 2024': 'Swing Fiction',
+    'Floorplay New Years Swing Vacation': 'FloorPlay New Years Swing Vacation',
+    'DC Swing Experience (DCSX)': 'DC Swing eXperience (DCSX)',
+    'UK WCS Championships': 'UK WCS Championships',
+    'U.K. & European WCS Championships': 'UK WCS Championships',
+}
+
+# Duplicate WSDC registry ids → canonical id (same geo; see event-geo-dedup rule).
+# Source id rows are remapped in core.results; sources are not deleted.
+MERGE_EVENT_ID_MAP: dict[int, int] = {
+    66: 47,    # SwingTime — Denver
+    37: 195,   # Palm Springs New Year — Palm Springs
+    193: 236,  # Warsaw Halloween Swing — Warsaw
+    99: 119,   # Chicagoland Dance Festival — Chicago
+    198: 154,  # UK WCS — London
+    202: 218,  # Asia WCS Open — Singapore
+    39: 334,   # Countdown Swing Boston — Boston/Framingham metro
+    307: 272,  # Paris Westie Fest — Paris
+    325: 330,  # Simply Adelaide — Adelaide
+    321: 331,  # Swing Fiction — Brno
+    279: 283,  # Kazan EL Fest — Kazan
 }
 
 

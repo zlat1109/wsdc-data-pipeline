@@ -1,0 +1,36 @@
+---
+description: Geo-aware event dedup — merge only same geography
+globs: projects/python/wsdc-data-pipeline/**/{geo_event,event_aliases,merge_event_ids,audit_event_splits,quality_audit}*
+alwaysApply: false
+---
+
+# Event geo dedup
+
+## Rule
+
+Merge registry `event_id` values only when **normalized name + geo_key** match.
+
+- Same name, **different city/country** → two geo-events (do not merge).
+- Same name, **same geo** → merge candidate (duplicate WSDC ids).
+- **Metro clusters** (e.g. Boston + Framingham, MA) count as one geo for merge.
+
+## Keep separate (hardcoded)
+
+| event_ids | Reason |
+|-----------|--------|
+| 75, 152 | Worlds UCWDC — Dallas vs Orlando |
+| 191, 230 | Sunny Side Dance Camp — Crimea vs Spain |
+| 83, 204 | Spring Swing — Detroit vs Stockholm |
+
+## Implementation
+
+- `transform/geography/geo_event.py` — `geo_key`, `METRO_CLUSTERS`, `classify_event_id_pair`
+- `transform/knowledge/event_aliases.py` — `MERGE_EVENT_ID_MAP` (source → canonical)
+- `scripts/merge_event_ids.py` — always `--dry-run` first; verify geo gate
+- `scripts/audit_event_splits.py` — classify split pairs before merge
+
+## Do not
+
+- Merge across different `geo_key` without explicit user approval
+- Rename `core.events.name` for rebrand-only changes (breaks history join)
+- Delete merged `event_id` rows — remap `core.results.event_id` only

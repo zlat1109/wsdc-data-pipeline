@@ -34,5 +34,15 @@ def test_orphan_result_names_normalize_to_catalog():
         ("Phoenix 4th of July", "4TH of July Convention"),
         ("MADjam", "Mid-Atlantic Dance Jam"),
         ("D-Townswing", "D-Town Swing"),
+        ("Monterey Swingfest", "Monterey SwingFest"),
+        ("Swing Fling 2024", "Swing Fling"),
     ]:
         assert EVENT_NAME_NORMALIZATION[alias] == canonical
+
+
+def test_merge_map_excludes_geo_split_pairs():
+    from transform.knowledge.event_aliases import MERGE_EVENT_ID_MAP
+
+    blocked = {75, 152, 191, 230, 83, 204}
+    assert not blocked.intersection(MERGE_EVENT_ID_MAP.keys())
+    assert not blocked.intersection(MERGE_EVENT_ID_MAP.values())
