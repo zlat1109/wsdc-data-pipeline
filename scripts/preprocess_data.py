@@ -26,6 +26,7 @@ from transform.preprocess_with_log import (  # noqa: E402
     build_combined_report,
     preprocess_with_log,
 )
+from transform.geography.city import sync_export_city_columns  # noqa: E402
 from transform.quality_audit import load_csv_bundle, load_previous_report  # noqa: E402
 
 DEFAULT_REPORT_DIR = PROJECT_ROOT / "data" / "quality_reports"
@@ -116,7 +117,13 @@ def main() -> None:
 
     if not args.dry_run:
         save_csv_bundle(args.data_dir, processed)
+        sync_updates = sync_export_city_columns(
+            args.data_dir,
+            replacements=tracker.location_string_replacements,
+        )
         print(f"\nProcessed CSVs written to {args.data_dir}")
+        if sync_updates:
+            print("Synced export city columns:", sync_updates)
 
     print_summary(report)
     print(f"\nReport: {stamped_path}")

@@ -7,6 +7,7 @@ from typing import TYPE_CHECKING, Optional
 import pandas as pd
 
 from transform.geography.canonical import canonicalize_city_coordinates
+from transform.geography.city import apply_city_normalization_with_replacements, format_event_location
 from transform.geography.constants import (
     CANADA_PROVINCES,
     COUNTRY_STANDARDIZATION,
@@ -207,6 +208,9 @@ def normalize_geography(
     """Apply all location_info geography normalizations."""
     df = df.copy()
     df = _apply_id_corrections(df, tracker)
+    df, city_replacements = apply_city_normalization_with_replacements(df, tracker)
+    if tracker is not None and city_replacements:
+        tracker.location_string_replacements.update(city_replacements)
     df = _apply_city_corrections(df, tracker)
 
     if 'event_country' in df.columns:
@@ -224,6 +228,11 @@ def normalize_geography(
 
     if 'event_location' in df.columns:
         df['event_location_standardized'] = df.apply(standardize_location, axis=1)
+        for idx, row in df.iterrows():
+            formatted = format_event_location(row)
+            current = str(row.get('event_location', '')).strip() if pd.notna(row.get('event_location')) else ''
+            if formatted and current != formatted and current.upper() == formatted.upper():
+                df.at[idx, 'event_location'] = formatted
 
     if 'latitude' in df.columns and 'longitude' in df.columns:
         df['coordinates_valid'] = df.apply(validate_coordinates, axis=1)

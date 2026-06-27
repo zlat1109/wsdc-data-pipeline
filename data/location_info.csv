@@ -1,281 +1,281 @@
 location_id,event_city,event_state,event_country,latitude,longitude,event_location,event_location_standardized,coordinates_valid
-14,San Bernardino,California,United States,34.1045589,-117.291869,"San Bernardino, CA","San Bernardino, CA",t
-15,Buena Park,California,United States,33.8674044,-117.9981387,"Buena Park, CA","Buena Park, CA",t
-16,San Jose,California,United States,37.33874,-121.8852525,"San Jose, California, USA","San Jose, CA",t
-17,Phoenix,Arizona,United States,33.4482948,-112.0725488,"Phoenix, AZ","Phoenix, AZ",t
-18,Lancaster,California,United States,34.703947,-118.1481016,"Lancaster,  CA, United States","Lancaster, CA",t
-19,Irvine,California,United States,33.6845673,-117.8265049,"Irvine, CA, USA","Irvine, CA",t
-20,Palm Springs,California,United States,33.8232286,-116.5106191,"Palm Springs, CA","Palm Springs, CA",t
-21,Dallas,Texas,United States,32.7831,-96.8067,"Dallas, TX, USA","Dallas, TX",t
-22,Los Angeles,California,United States,34.0549076,-118.242643,"Los Angeles, CA","Los Angeles, CA",t
-23,Anaheim,California,United States,33.7742692,-117.9379952,"Anaheim/Garden Grove, CA, United States","Anaheim, CA",t
-24,Costa Mesa,California,United States,33.6638439,-117.9047429,"Costa Mesa, Ca, USA","Costa Mesa, CA",t
-26,Dallas,Texas,United States,32.7831,-96.8067,"Dallas, TX","Dallas, TX",t
-27,Las Vegas,Nevada,United States,36.171563,-115.1391009,"Las Vegas, NV","Las Vegas, NV",t
-28,South Lake Tahoe (near Reno),Nevada,United States,39.5056072,-119.7788687,"South Lake Tahoe (near Reno), NV, USA","South Lake Tahoe (near Reno), NV",t
-29,Denver,Colorado,United States,39.7392358,-104.990251,"Denver, CO","Denver, CO",t
-30,Seattle,Washington,United States,47.6061389,-122.3328481,"Seattle, WA, United States","Seattle, WA",t
-31,Long Beach,California,United States,33.7700504,-118.1937395,"Long Beach, CA","Long Beach, CA",t
-32,Sacramento,California,United States,38.5781342,-121.4944209,"Sacramento, CA","Sacramento, CA",t
-33,Alhambra,California,United States,34.0927549,-118.1268211,"Alhambra, CA","Alhambra, CA",t
-34,Chicago,Illinois,United States,41.88325,-87.6323879,"Chicago, IL","Chicago, IL",t
-35,Los Angeles,California,United States,34.0549076,-118.242643,"Los Angeles, CA, United States","Los Angeles, CA",t
-36,Denver,Colorado,United States,39.7392358,-104.990251,"Denver, CO, United States","Denver, CO",t
-37,San Francisco,California,United States,37.7749295,-122.4194155,"San Francisco, CA","San Francisco, CA",t
-38,Herndon,Virginia,United States,38.9695545,-77.3860976,"Herndon, VA","Herndon, VA",t
-39,Austin,Texas,United States,30.267153,-97.7430608,"Austin, TX","Austin, TX",t
-40,Baton Rouge,Louisiana,United States,30.4514677,-91.18714659999999,"Baton Rouge, LA","Baton Rouge, LA",t
-41,New Brunswick,New Jersey,United States,40.4966567,-74.4442802,"New Brunswick, New Jersey, USA","New Brunswick, NJ",t
-42,Bakersfield,California,United States,35.3735112,-119.0204707,"Bakersfield, CA","Bakersfield, CA",t
-43,Nashville,Tennessee,United States,36.1626638,-86.7816016,"Nashville, TN","Nashville, TN",t
-44,Houston,Texas,United States,29.7600771,-95.37011079999999,"Houston, TX","Houston, TX",t
-45,Dallas,Texas,United States,32.7831,-96.8067,"Dallas Ft. Worth, Texas, United States","Dallas, TX",t
-46,Dallas,Texas,United States,32.7831,-96.8067,"Dallas, TX, United States","Dallas, TX",t
-47,Chicago,Illinois,United States,41.88325,-87.6323879,"Chicago, IL, United States","Chicago, IL",t
-48,Overland Park,Kansas,United States,38.9822282,-94.6707917,"Overland Park, KS, United States","Overland Park, KS",t
-49,St. Louis,Missouri,United States,38.62742799999999,-90.1982439,"St. Louis, Mo, USA","St. Louis, MO",t
-50,Nashville,Tennessee,United States,36.1626638,-86.7816016,"Nashville, TN, USA","Nashville, TN",t
-51,Detroit,Michigan,United States,42.32971819999999,-83.0424533,"Detroit, Michigan, USA","Detroit, MI",t
-52,Phoenix,Arizona,United States,33.4482948,-112.0725488,"Phoenix, AZ, USA","Phoenix, AZ",t
-53,Tampa,Florida,United States,27.9516896,-82.45875269999999,"Tampa Bay, FL, USA","Tampa, FL",t
-54,Burbank,California,United States,34.1820605,-118.3074827,"Burbank, California, California, USA","Burbank, CA",t
-55,Fort Lauderdale,Florida,United States,26.1224386,-80.13731740000001,"Ft. Lauderdale, FL","Fort Lauderdale, FL",t
-56,Atlanta,Georgia,United States,33.7501275,-84.3885209,"Atlanta, GA, USA","Atlanta, GA",t
-57,New Orleans,Louisiana,United States,29.9508941,-90.07583559999999,"New Orleans, LA","New Orleans, LA",t
-58,Tulsa,Oklahoma,United States,36.1551375,-95.98950099999999,"Tulsa, OK, Ok, United States","Tulsa, OK",t
-59,Austin,Texas,United States,30.267153,-97.7430608,"Austin, Texas, TX, USA","Austin, TX",t
-60,Tampa,Florida,United States,27.9516896,-82.45875269999999,"Tampa, FL","Tampa, FL",t
-61,Green Bay,Wisconsin,United States,44.5133188,-88.0132958,"Green Bay, WI","Green Bay, WI",t
-62,Charlotte,North Carolina,United States,35.2270768,-80.84089329999999,"Charlotte, NC, USA, North Carolina, USA","Charlotte, NC",t
-63,Raleigh,North Carolina,United States,35.7795897,-78.6381787,"Raleigh, NC, North Carolina, USA","Raleigh, NC",t
-64,Indianapolis,Indiana,United States,39.76909,-86.158018,"Indianapolis, IN","Indianapolis, IN",t
-65,Cape Cod,Massachusetts,United States,41.8111143,-70.1455805,"Cape Cod, MA","Cape Cod, MA",t
-66,Wilmington,Delaware,United States,39.744655,-75.5483909,"WILMINGTON, DEL, Delaware, United States","Wilmington, DE",t
-67,Washington,District of Columbia,United States,38.9072873,-77.0369274,"Washington, DC, VA, USA","Washington, DC",t
-68,Washington,District of Columbia,United States,38.7134301,-78.1590813,"Washington, DC., VA, USA","Washington, DC",t
-69,Austin,Texas,United States,30.267153,-97.7430608,"Austin, Texas, USA","Austin, TX",t
-70,Newton,Massachusetts,United States,42.3370413,-71.20922139999999,"Newton, MA","Newton, MA",t
-71,Framingham,Massachusetts,United States,42.279286,-71.4161565,"Framingham, MA","Framingham, MA",t
-72,Santa Clara,California,United States,37.3541079,-121.9552356,"Santa Clara, CA","Santa Clara, CA",t
-73,Orange County,California,United States,33.7174708,-117.8311428,"Orange County, CA, USA","Orange County, CA",t
-74,Vancouver,Washington,United States,45.6280277,-122.673865,"Vancouver, WA","Vancouver, WA",t
-75,Minneapolis,Minnesota,United States,44.977753,-93.2650108,"Minneapolis, MN","Minneapolis, MN",t
-76,Denver,Colorado,United States,39.7392358,-104.990251,"Denver, Colorado, Colorado, USA","Denver, CO",t
-77,Reno,Nevada,United States,39.529919,-119.8142691,"Reno, NV","Reno, NV",t
-78,Boston,Massachusetts,United States,42.3555076,-71.0565364,"Boston, MA, United States","Boston, MA",t
-79,Burlington,Massachusetts,United States,42.5047161,-71.1956205,"Burlington, MA","Burlington, MA",t
-80,Buffalo,New York,United States,42.88690039999999,-78.8788896,"Buffalo, NY","Buffalo, NY",t
-81,Spokane,Washington,United States,47.6579711,-117.4235319,"Spokane, WA","Spokane, WA",t
-82,Orlando,Florida,United States,28.5383832,-81.3789269,"Orlando, Florida, United States","Orlando, FL",t
-83,St. Paul,Minnesota,United States,44.9537029,-93.0899578,"St. Paul, MN","St. Paul, MN",t
-84,Fort Lauderdale,Florida,United States,26.1224386,-80.13731740000001,"Fort Lauderdale, Florida, USA","Fort Lauderdale, FL",t
-85,Orlando,Florida,United States,28.5383832,-81.3789269,"Orlando, FL","Orlando, FL",t
-86,Montreal,Quebec,Canada,45.5018869,-73.56739189999999,"Montreal, Quebec, Canada","Montreal, Canada",t
-87,Detroit,Michigan,United States,42.32971819999999,-83.0424533,"Detroit, MI","Detroit, MI",t
-88,Ashland,Oregon,United States,42.1967113,-122.7139216,"Ashland, OR, United States","Ashland, OR",t
-89,Lake Geneva,Illinois,United States,42.5916836,-88.4334301,"Lake Geneva, IL","Lake Geneva, IL",t
-90,Seattle,Washington,United States,47.6061389,-122.3328481,"Seattle, WA, USA","Seattle, WA",t
-91,Portland,Oregon,United States,45.515232,-122.6783853,"Portland, OR, United States","Portland, OR",t
-92,Portland,Oregon,United States,45.515232,-122.6783853,"Portland, OR, USA","Portland, OR",t
-93,Denver,Colorado,United States,39.7392358,-104.990251,"Denver, CO, USA","Denver, CO",t
-94,Albuquerque,New Mexico,United States,35.0843859,-106.650422,"Albuquerque, NM","Albuquerque, NM",t
-95,Modesto,California,United States,37.6392595,-120.9970014,"Modesto, CA","Modesto, CA",t
-96,Cleveland,Ohio,United States,41.49932,-81.6943605,"Cleveland, OH, United States","Cleveland, OH",t
-97,Redmond,Washington,United States,47.6739881,-122.121512,"Redmond, WA","Redmond, WA",t
-98,Jacksonville,Florida,United States,30.3297566,-81.6591529,"Jacksonville, FL, USA","Jacksonville, FL",t
-99,Washington,District of Columbia,United States,38.9071923,-77.0368707,"Washington, DC","Washington, DC",t
-100,Woodland Hills,California,United States,34.1685035,-118.6058267,"Woodland Hills, CA","Woodland Hills, CA",t
-101,Chico,California,United States,39.7282839,-121.8379978,"Chico, CA","Chico, CA",t
-102,St. Louis,Missouri,United States,38.62742799999999,-90.1982439,"St. Louis, MO, USA","St. Louis, MO",t
-103,Houston,Texas,United States,29.7600771,-95.37011079999999,"Houston, Texas, United States","Houston, TX",t
-104,CHICAGO,Illinois,United States,41.88325,-87.6323879,"CHICAGO, IL, United States","CHICAGO, IL",t
-105,Toronto,Ontario,Canada,43.653226,-79.3831843,"Toronto, Ontario, Canada","Toronto, Canada",t
-106,Seattle,Washington,United States,47.6061389,-122.3328481,"Seattle, WA","Seattle, WA",t
-107,London,England,United Kingdom,51.5072178,-0.1275862,"London, London, United Kingdom","London, United Kingdom",t
-108,WILMINGTON DEL,Delaware,United States,39.744655,-75.5483909,"WILMINGTON DEL, Delaware, United States","WILMINGTON DEL, DE",t
-109,Paris,,France,48.8575475,2.3513765,"Paris, France/Paris, France","Paris, France",t
-110,Budapest,,Hungary,47.497912,19.040235,"Budapest, Budapest, Hungary","Budapest, Hungary",t
-111,North Myrtle Beach,South Carolina,United States,33.8160058,-78.680016,"N. Myrtle Beach, SC","North Myrtle Beach, SC",t
-112,Chicago,Illinois,United States,41.88325,-87.6323879,"Chicago, Illinois, USA","Chicago, IL",t
-113,Moscow,,Russia,55.7568721,37.6150527,"Moscow,  Russia","Moscow, Russia",t
-114,Elmhurst,Illinois,United States,41.903451,-87.9397972,"Elmhurst, IL","Elmhurst, IL",t
-115,Madison,Wisconsin,United States,43.0721661,-89.4007501,"Madison, WI","Madison, WI",t
-116,Louisville,Kentucky,United States,38.2468618,-85.7663724,"Louisville, Kentucky, United States","Louisville, KY",t
-117,Sydney,,Australia,-33.8727409,151.2057136,"Sydney, NSW, Australia","Sydney, Australia",t
-118,Austin,Texas,United States,30.267153,-97.7430608,"Austin, TX, United States","Austin, TX",t
-119,Orlando,Florida,United States,28.5383832,-81.3789269,"Orlando, Florida, Florida, United States","Orlando, FL",t
-120,Orlando,Florida,United States,28.5383832,-81.3789269,"Orlando, Florida, USA","Orlando, FL",t
-121,Montreal,Quebec,Canada,45.5018869,-73.56739189999999,"Montreal, Canada","Montreal, Canada",t
-122,Boston,Massachusetts,United States,42.3555076,-71.0565364,"Boston, Massachusetts, USA","Boston, MA",t
-123,Secaucus,New Jersey,United States,40.7879996,-74.0545497,"Secaucus, NJ","Secaucus, NJ",t
-124,Wailea,Hawaii,United States,20.6871826,-156.4391668,"Wailea, Hawaii/Maui, USA","Wailea, HI",t
-125,Kiev,,Ukraine,50.4503596,30.5245025,"Kiev, Ukraine","Kiev, Ukraine",t
-126,Atlanta,Georgia,United States,33.7501275,-84.3885209,"Atlanta, GA","Atlanta, GA",t
-127,Düsseldorf,,Germany,51.2051585,6.8560805,"Boston Club, NRW, Germany","Düsseldorf, Germany",t
-128,Richmond,British Columbia,Canada,49.1665898,-123.133569,"Richmond, Canada","Richmond, Canada",t
-129,Munich,,Germany,48.1351253,11.5819806,"Munich, Bavaria, Germany","Munich, Germany",t
-130,London,England,United Kingdom,51.5077194,-0.4726768,"London, West Drayton, United Kingdom","London, United Kingdom",t
-131,Hartford,Connecticut,United States,41.7658043,-72.6733723,"Hartford, CT","Hartford, CT",t
-132,Milan,,Italy,45.468503,9.182402699999999,"Milan, Milan, Italy","Milan, Italy",t
-133,Bend,Oregon,United States,44.0581728,-121.3153096,"Bend, Oregon, United States","Bend, OR",t
-134,Boston,Massachusetts,United States,42.3555076,-71.0565364,"Boston, Massachusetts, United States","Boston, MA",t
-135,Oakland,California,United States,37.8043514,-122.2711639,"Oakland, CA","Oakland, CA",t
-136,Tuscaloosa,Alabama,United States,33.21031,-87.5658722,"Tuscaloosa, AL","Tuscaloosa, AL",t
-137,Huntsville,Alabama,United States,34.7295497,-86.5853155,"Huntsville, Alabama, USA","Huntsville, AL",t
-138,Fort Wayne,Indiana,United States,41.0794759,-85.1362929,"Fort Wayne, IN, USA","Fort Wayne, IN",t
-139,Albany,New York,United States,42.6518095,-73.75447070000001,"Albany, NY","Albany, NY",t
-140,Morristown,New Jersey,United States,40.7922983,-74.4763123,"Morristown, NJ, US","Morristown, NJ",t
-141,Tulsa,Oklahoma,United States,36.1551375,-95.98950099999999,"Tulsa, OK","Tulsa, OK",t
-142,Stamford,Connecticut,United States,41.0527986,-73.5394821,"Stamford, CT","Stamford, CT",t
-143,Freiburg,,Germany,47.9990077,7.842104299999999,"Freiburg, Baden Württemberg, Germany","Freiburg, Germany",t
-144,Burlington,Vermont,United States,44.4758825,-73.21207199999999,"Burlington, VT","Burlington, VT",t
-145,Natick,Massachusetts,United States,42.2775281,-71.3468091,"Natick, MA","Natick, MA",t
-146,Providence,Rhode Island,United States,41.8245558,-71.414199,"Providence, RI","Providence, RI",t
-147,Tel Aviv,,Israel,32.0852999,34.78176759999999,"Tel Aviv, Israel","Tel Aviv, Israel",t
-148,Calgary,Alberta,Canada,51.04473309999999,-114.0718831,"Calgary, AB, Canada","Calgary, Canada",t
-149,Philadelphia,Pennsylvania,United States,39.9525839,-75.1652215,"Philadelphia, PA, United States","Philadelphia, PA",t
-150,Providence RI,Rhode Island,United States,41.8244836,-71.4127462,"Providence RI, RI, USA","Providence RI, RI",t
-151,St. Petersburg,Florida,United States,27.7671271,-82.6384451,"St. Petersburg, FL","St. Petersburg, FL",t
-152,College Park,Maryland,United States,38.9896967,-76.93776,"College Park, MD","College Park, MD",t
-153,Thousand Oaks,California,United States,34.1761133,-118.8487793,"Thousand Oaks, CA","Thousand Oaks, CA",t
-154,Vancouver,British Columbia,Canada,49.2827291,-123.1207375,"Vancouver, Canada","Vancouver, Canada",t
-155,Warsaw,,Poland,52.2296756,21.0122287,"Warsaw, Poland","Warsaw, Poland",t
-156,Lyon,,France,45.764043,4.835659,"LYON, Rhône-Alpes, France","Lyon, France",t
-157,Paris,,France,48.8575475,2.3513765,"PARIS, France","Paris, France",t
-158,La Grande Motte,,France,43.560704,4.086072000000001,"La Grande Motte, Herault, France","La Grande Motte, France",t
-160,Carlisle,Pennsylvania,United States,40.2010241,-77.20027449999999,"Carlisle, PA","Carlisle, PA",t
-162,Barcelona,,Spain,41.3873974,2.168568,"Barcelona, Spain","Barcelona, Spain",t
-163,Rockville,Maryland,United States,39.0839973,-77.1527578,"Rockville, MD","Rockville, MD",t
-164,London,England,United Kingdom,51.5072178,-0.1275862,"London, United Kingdom","London, United Kingdom",t
-165,Washington,District of Columbia,United States,39.1289725,-77.3783789,"Washington DC, MD, USA","Washington, DC",t
-166,Manchester,England,United Kingdom,53.4807593,-2.2426305,"Manchester, Manchester, United Kingdom","Manchester, United Kingdom",t
-167,San Antonio,Texas,United States,29.4251905,-98.4945922,"San Antonio, TX","San Antonio, TX",t
-168,Auckland,,New Zealand,-36.85088270000001,174.7644881,"Auckland, Auckland, New Zealand","Auckland, New Zealand",t
-169,Gold Coast,,Australia,-27.9769248,153.380936,"Gold Coast, Queensland, Australia","Gold Coast, Australia",t
-170,Madrid,,Spain,40.41672790000001,-3.7032905,"Madrid, Spain","Madrid, Spain",t
-171,Rome,,Italy,41.8967068,12.4822025,"Rome, Rome, Italy","Rome, Italy",t
-172,Incheon,,Republic of Korea,37.4751578,126.6312666,"Incheon, South Korea","Incheon, Republic of Korea",t
-173,Zürich,,Switzerland,47.3768866,8.541694,"Zürich, Zurich, Switzerland","Zürich, Switzerland",t
-174,Melbourne,,Australia,-37.8136276,144.9630576,"Melbourne, Victoria, Australia","Melbourne, Australia",t
-175,Eilat,,Israel,29.557669,34.951925,"Eilat, Israel","Eilat, Israel",t
-176,Honolulu,Hawaii,United States,21.3098845,-157.8581401,"Honolulu, HI","Honolulu, HI",t
-177,Edinburgh,Scotland,United Kingdom,55.953252,-3.188267,"Edinburgh, United Kingdom, United Kingdom, United Kingdom","Edinburgh, United Kingdom",t
-178,Toronto,Ontario,Canada,43.653226,-79.3831843,"Toronto, Canada","Toronto, Canada",t
-179,Ottawa,Ontario,Canada,45.4200572,-75.7003397,"Ottawa, Ontario, Canada","Ottawa, Canada",t
-180,Waterloo,,Canada,43.4819752,-80.5261203,"Waterloo, Ontario, Canada","Waterloo, Canada",t
-181,Trondheim,,Norway,63.4305149,10.3950528,"Trondheim, Norway","Trondheim, Norway",t
-182,Greenville,South Carolina,United States,34.8484984,-82.40001579999999,"Greenville, South Carolina, SC, USA","Greenville, SC",t
-183,Cincinnati,Ohio,United States,39.1031182,-84.5120196,"Cincinnati, Ohio, USA","Cincinnati, OH",t
-184,Sofia,,Bulgaria,42.6977082,23.3218675,"Sofia, Sofia, Bulgaria","Sofia, Bulgaria",t
-185,Melbourne,,Australia,-37.8136276,144.9630576,"Melbourne, Australia","Melbourne, Australia",t
-186,Gdańsk,,Poland,54.35202520000001,18.6466384,"Gdańsk, Pomorskie, Poland","Gdańsk, Poland",t
-187,Toulouse-Blagnac,,France,43.6313458,1.36449,"Toulouse-Blagnac, Occitanie, France","Toulouse-Blagnac, France",t
-188,Annecy,,France,45.899247,6.129384,"Annecy, Haute Savoie, France","Annecy, France",t
-189,Bonn,,Germany,50.73743,7.0982068,"Bonn, NRW, Germany","Bonn, Germany",t
-190,Nantes,,France,47.218371,-1.553621,"Nantes, Loire-Atlantique, France","Nantes, France",t
-191,Amsterdam,,Nederland,52.3675734,4.9041389,"Amsterdam, Noord Holland, Nederland","Amsterdam, Nederland",t
-192,Nimes,,France,43.8338727,4.359999699999999,"Nimes, Occitanie, France","Nimes, France",t
-193,Paris,,France,48.8575475,2.3513765,"Paris, France","Paris, France",t
-194,Berlin,,Germany,52.52000659999999,13.404954,"Berlin, Berlin, Germany","Berlin, Germany",t
-195,Augsburg,,Germany,48.3705449,10.89779,"Augsburg, Bavaria, Germany","Augsburg, Germany",t
-196,Freiburg,,Germany,47.9990077,7.842104299999999,"Freiburg, Baden-Württemberg, Germany","Freiburg, Germany",t
-197,Wels,,Austria,48.1664268,14.0388714,"Wels, Austria, Austria","Wels, Austria",t
-198,Duesseldorf,,Germany,51.2230411,6.7824545,"Duesseldorf, NRW, Germany","Duesseldorf, Germany",t
-199,Stockholm,,Sweden,59.3327036,18.0656255,"Stockholm,  Sweden","Stockholm, Sweden",t
-200,Budapest,,Hungary,47.497912,19.040235,"Budapest, Hungary","Budapest, Hungary",t
-201,Bend,Oregon,United States,44.0581728,-121.3153096,"Bend, OR","Bend, OR",t
-202,Stockholm,,Sweden,59.3327036,18.0656255,"Stockholm, Stockholm, Sweden","Stockholm, Sweden",t
-203,Riga,,Latvia,56.9676941,24.1056221,"Riga, Latvia","Riga, Latvia",t
-204,Helsinki,,Finland,60.16985569999999,24.938379,"Helsinki, Finland","Helsinki, Finland",t
-205,Edmonton,Alberta,Canada,53.5461663,-113.4937355,"Edmonton, Canada","Edmonton, Canada",t
-206,Bathgate,,United Kingdom,55.9024,-3.643118,"Bathgate, United Kingdom","Bathgate, United Kingdom",t
-207,Blackpool,,United Kingdom,53.81674229999999,-3.0370485,"Blackpool, United Kingdom","Blackpool, United Kingdom",t
-208,TOULOUSE,,France,43.6048462,1.442848,"TOULOUSE, Occitanie, France","TOULOUSE, France",t
-209,Hunter Valley,,Australia,-32.1932173,151.700565,"Hunter Valley, Australia","Hunter Valley, Australia",t
-210,Sydney,,Australia,-33.8727409,151.2057136,"Sydney, Australia","Sydney, Australia",t
-211,Gold Coast,,Australia,-27.9769248,153.380936,"Gold Coast, Australia","Gold Coast, Australia",t
-159,Singapore,,Singapore,1.352083,103.819836,"Singapore, Singapore","Singapore, Singapore",t
-212,Windsor,,United Kingdom,51.48034209999999,-0.6157136999999999,"Windsor, United Kingdom","Windsor, United Kingdom",t
-213,Jeju,,Republic of Korea,33.5042779,126.519838,"Jeju, Jeju, South Korea","Jeju, Republic of Korea",t
-214,Calgary,Alberta,Canada,51.04473309999999,-114.0718831,"Calgary, Alberta, Canada","Calgary, Canada",t
-215,Umeå,,Sweden,63.5391027,19.4528047,"Umeå, Nordmalings kommun, Sweden","Umeå, Sweden",t
-216,Fortaleza,,Brazil,-3.7327203,-38.5270134,"Fortaleza, Brazil","Fortaleza, Brazil",t
-217,Nanaimo,,Canada,49.1658836,-123.9400647,"Nanaimo (Vancouver is the major in the province), British Columbia, Canada","Nanaimo, Canada",t
-218,Toulon,,France,43.1256814,5.9284944,"Toulon, Var, France","Toulon, France",t
-219,Budapest,,Hungary,47.5002356,19.1000054,"Budapest, Pest, Hungary","Budapest, Hungary",t
-220,Seoul,,Republic of Korea,37.550263,126.9970831,"Seoul, Republic of Korea","Seoul, Republic of Korea",t
-221,Hamburg,,Germany,53.5488282,9.987170299999999,"Hamburg, Germany","Hamburg, Germany",t
-222,St. Petersburg,,Russia,59.9310584,30.3609097,"St. Petersburg,  Russia","St. Petersburg, Russia",t
-223,Oslo,,Norway,59.9121746,10.7312704,"Oslo, Norway","Oslo, Norway",t
-224,New York City,New York,United States,40.7127753,-74.0059728,"New York City, NY, US","New York City, NY",t
-225,Lyon,,France,45.764043,4.835659,"LYON, rhones, France","Lyon, France",t
-226,Glasgow,Scotland,United Kingdom,55.86167039999999,-4.2583345,"Glasgow, United Kingdom","Glasgow, United Kingdom",t
-227,Venray,,Nederland,51.5256257,5.9736992,"Venray, Limburg, Nederland","Venray, Nederland",t
-228,Lyon,,France,45.764043,4.835659,"Lyon, France","Lyon, France",t
-229,Newcastle,England,United Kingdom,54.978252,-1.61778,"Newcastle,  United Kingdom","Newcastle, United Kingdom",t
-230,Dundalk,,Ireland,54.0024774,-6.388300099999999,"Dundalk, County Louth, Ireland","Dundalk, Ireland",t
-232,Rust,,Germany,48.2672137,7.725619099999999,"Rust, Baden-Württemberg, Deutschland","Rust, Germany",t
-233,Moscow,,Russia,55.7568721,37.6150527,"Moscow, Russia","Moscow, Russia",t
-234,Bristol,England,United Kingdom,51.454513,-2.58791,"Bristol, Bristol, City of, United Kingdom","Bristol, United Kingdom",t
-235,Milan,,Italy,45.468503,9.182402699999999,"Milan, Italy","Milan, Italy",t
-236,Adelaide,,Australia,-34.9284989,138.6007456,"Adelaide, SA, Australia","Adelaide, Australia",t
-237,Lyon,,France,45.764043,4.835659,"LYON, Rhone, France","Lyon, France",t
-238,Tallinn,,Estonia,59.43696079999999,24.7535746,"Tallinn, Estonia","Tallinn, Estonia",t
-239,Stockholm,,Sweden,59.3327036,18.0656255,"Stockholm, Sweden","Stockholm, Sweden",t
-240,Fremantle,,Australia,-32.0517901,115.755096,"Fremantle, Australia","Fremantle, Australia",t
-241,Helsinki,,Finland,60.16985569999999,24.938379,"Helsinki, Uusimaa, Finalnd","Helsinki, Finland",t
-242,Wellington,,New Zealand,-41.2923814,174.7787463,"Wellington,  New Zealand","Wellington, New Zealand",t
-243,Sao Paulo,,Brazil,-23.5557714,-46.6395571,"Sao Paulo, Brazil","Sao Paulo, Brazil",t
-245,Stockholm,,Sweden,59.3327036,18.0656255,"Stockholm, Stockholms län, Sweden","Stockholm, Sweden",t
-246,Munich,,Germany,48.1351253,11.5819806,"Munich, Germany","Munich, Germany",t
-247,St. Petersburg,,Russia,59.9310584,30.3609097,"St.Petersburg, Russia","St. Petersburg, Russia",t
-248,Torrevieja,,Spain,37.9848806,-0.6804336999999999,"Torrevieja, Spain","Torrevieja, Spain",t
-249,Crimea,,Ukraine,44.952117,34.102417,"Crimea, Ukraine","Crimea, Ukraine",t
-250,Vienna,,Austria,48.20806959999999,16.3713095,"Vienna, Austria","Vienna, Austria",t
-251,Lisbon,,Portugal,38.7222524,-9.1393366,"Lisbon,  Portugal","Lisbon, Portugal",t
-252,Samara,,Russia,53.2226496,50.1728035,"Samara, Samara state, Russia","Samara, Russia",t
-253,Perth,,Australia,-31.9513993,115.8616783,"Perth,  Australia","Perth, Australia",t
-25,Atlanta,Georgia,United States,33.7501275,-84.3885209,"Atlanta, GA, United States","Atlanta, GA, United States",t
-244,Singapore,,Singapore,1.352083,103.819836,"Singapore, Singapore","Singapore, Singapore",t
-161,Albany,New York,United States,42.6518095,-73.75447070000001,"Albany, NY","Albany, NY",t
-1,Monterey,California,United States,36.5972925,-121.8977688,"Monterey, Ca, Usa","Monterey, CA",t
-2,San Francisco,California,United States,37.7749295,-122.4194155,"San Francisco, CA, USA","San Francisco, CA",t
-3,Phoenix,Arizona,United States,33.4482948,-112.0725488,"Phoenix, AZ, United States","Phoenix, AZ",t
-4,Portland,Oregon,United States,45.515232,-122.6783853,"Portland, OR","Portland, OR",t
-5,Fresno,California,United States,36.7377981,-119.7871247,"Fresno, CA","Fresno, CA",t
-6,Sacramento,California,United States,38.5781342,-121.4944209,"Sacramento, CA, USA","Sacramento, CA",t
-7,New York,New York,United States,40.7127753,-74.0059728,"New York, NY","New York, NY",t
-8,Boston,Massachusetts,United States,42.3555076,-71.0565364,"Boston, MA, US","Boston, MA",t
-9,Kansas City,Missouri,United States,39.0997265,-94.5785667,"Kansas City, MO","Kansas City, MO",t
-10,San Diego,California,United States,32.715738,-117.1610838,"San Diego, CA","San Diego, CA",t
-11,Boston,Massachusetts,United States,42.3555076,-71.0565364,"Boston, MA","Boston, MA",t
-12,Michigan,Michigan,United States,44.3148443,-85.60236429999999,"Michigan, MI","Michigan, MI",t
-13,Washington,District of Columbia,United States,38.9071923,-77.0368707,"Washington DC, USA","Washington, DC",t
-231,Stockholm,,Sweden,59.3251172,18.0710935,"Stockholm, Sweden","Stockholm, Sweden",t
-254,Moscow,,Russia,55.340396,38.2917651,"Moscow, Moscow region, Russia","Moscow, Russia",t
-255,Ufa,,Russia,54.73479099999999,55.9578555,"Ufa, Russia","Ufa, Russia",t
-256,Ljubljana,,Slovenia,46.0569465,14.5057515,"Ljubljana,  Slovenia","Ljubljana, Slovenia",t
-257,Timisoara,,Romania,45.7557559,21.2322208,"Timisoara, Romania","Timisoara, Romania",t
-258,Sanxenxo,,Spain,42.416489,-8.8252502,"Sanxenxo, Galicia/Pontevedra, Spain","Sanxenxo, Spain",t
-259,Hobart,,Australia,-42.8826055,147.3257196,"Hobart, Tasmania, Australia","Hobart, Australia",t
-260,Christchurch,,New Zealand,-43.5320301,172.636648,"Christchurch, Canterbury, New Zealand","Christchurch, New Zealand",t
-261,Queensland,,Australia,-22.575197,144.0847926,"Queensland, Australia","Queensland, Australia",t
-262,Adelaide,,Australia,-34.9284989,138.6007456,"Adelaide, Australia","Adelaide, Australia",t
-263,Kazan,,Russia,55.7878944,49.12332929999999,"Kazan, Russia","Kazan, Russia",t
-264,Wels,,Austria,48.1664268,14.0388714,"Wels,  Austria","Wels, Austria",t
-265,Vienna,,Austria,48.20806959999999,16.3713095,"Vienna, Vienna, Austria","Vienna, Austria",t
-266,Brno,,Czech Republic,49.1950602,16.6068371,"Brno, Czechia","Brno, Czech Republic",t
-267,Kraków,,Poland,50.06465009999999,19.9449799,"Kraków, malopolska, Polska","Kraków, Poland",t
-268,Ikaalinen,,Finland,61.7682832,23.0746568,"Ikaalinen, Pirkanmaa, Finland","Ikaalinen, Finland",t
-269,Kuopio,,Finland,62.4917035,27.7880116,"Kuopio, Leppävirta, Finland","Kuopio, Finland",t
-270,Östersund,,Sweden,63.1766832,14.6360681,"Östersund, Jämtland, Sweden","Östersund, Sweden",t
-271,Kuala Lumpur,,Malaysia,3.1319197,101.6840589,"Kuala Lumpur,  Malaysia","Kuala Lumpur, Malaysia",t
-272,Liège,,Belgium,50.6402286,5.5689372,"Liège, Liège, Belgique","Liège, Belgium",t
-273,"Milan,",,Italy,45.468503,9.182402699999999,"Milan,, Italy","Milan,, Italy",t
-274,Hamar,,Norway,60.7945331,11.0679977,"Hamar,  Norway","Hamar, Norway",t
-275,Warsaw,,Poland,52.2296756,21.0122287,"Warsaw, mazowieckie, Poland","Warsaw, Poland",t
-276,Prague,,Czech Republic,50.0755381,14.4378005,"Prague, Czech Republic","Prague, Czech Republic",t
-277,Brno,,Czech Republic,49.1950602,16.6068371,"Brno, Czech Republic","Brno, Czech Republic",t
-278,Perth,,Australia,-31.9513993,115.8616783,"Perth, Western Australia","Perth, Australia",t
-279,Ludwigsburg,,Germany,48.8891149,9.1942834,"Ludwigsburg, Baden-Württemberg, Deutschland","Ludwigsburg, Germany",t
-280,Gothenburg,,Sweden,57.70887,11.97456,"Gothenburg, Västra götlaland, Sweden","Gothenburg, Sweden",t
+14,San Bernardino,California,United States,34.1045589,-117.291869,"San Bernardino, CA","San Bernardino, CA",True
+15,Buena Park,California,United States,33.8674044,-117.9981387,"Buena Park, CA","Buena Park, CA",True
+16,San Jose,California,United States,37.33874,-121.8852525,"San Jose, California, USA","San Jose, CA",True
+17,Phoenix,Arizona,United States,33.4482948,-112.0725488,"Phoenix, AZ","Phoenix, AZ",True
+18,Lancaster,California,United States,34.703947,-118.1481016,"Lancaster,  CA, United States","Lancaster, CA",True
+19,Irvine,California,United States,33.6845673,-117.8265049,"Irvine, CA, USA","Irvine, CA",True
+20,Palm Springs,California,United States,33.8232286,-116.5106191,"Palm Springs, CA","Palm Springs, CA",True
+21,Dallas,Texas,United States,32.7831,-96.8067,"Dallas, TX, USA","Dallas, TX",True
+22,Los Angeles,California,United States,34.0549076,-118.242643,"Los Angeles, CA","Los Angeles, CA",True
+23,Anaheim,California,United States,33.7742692,-117.9379952,"Anaheim/Garden Grove, CA, United States","Anaheim, CA",True
+24,Costa Mesa,California,United States,33.6638439,-117.9047429,"Costa Mesa, Ca, USA","Costa Mesa, CA",True
+26,Dallas,Texas,United States,32.7831,-96.8067,"Dallas, TX","Dallas, TX",True
+27,Las Vegas,Nevada,United States,36.171563,-115.1391009,"Las Vegas, NV","Las Vegas, NV",True
+28,South Lake Tahoe (near Reno),Nevada,United States,39.5056072,-119.7788687,"South Lake Tahoe (near Reno), NV, USA","South Lake Tahoe (near Reno), NV",True
+29,Denver,Colorado,United States,39.7392358,-104.990251,"Denver, CO","Denver, CO",True
+30,Seattle,Washington,United States,47.6061389,-122.3328481,"Seattle, WA, United States","Seattle, WA",True
+31,Long Beach,California,United States,33.7700504,-118.1937395,"Long Beach, CA","Long Beach, CA",True
+32,Sacramento,California,United States,38.5781342,-121.4944209,"Sacramento, CA","Sacramento, CA",True
+33,Alhambra,California,United States,34.0927549,-118.1268211,"Alhambra, CA","Alhambra, CA",True
+34,Chicago,Illinois,United States,41.88325,-87.6323879,"Chicago, IL","Chicago, IL",True
+35,Los Angeles,California,United States,34.0549076,-118.242643,"Los Angeles, CA, United States","Los Angeles, CA",True
+36,Denver,Colorado,United States,39.7392358,-104.990251,"Denver, CO, United States","Denver, CO",True
+37,San Francisco,California,United States,37.7749295,-122.4194155,"San Francisco, CA","San Francisco, CA",True
+38,Herndon,Virginia,United States,38.9695545,-77.3860976,"Herndon, VA","Herndon, VA",True
+39,Austin,Texas,United States,30.267153,-97.7430608,"Austin, TX","Austin, TX",True
+40,Baton Rouge,Louisiana,United States,30.4514677,-91.18714659999999,"Baton Rouge, LA","Baton Rouge, LA",True
+41,New Brunswick,New Jersey,United States,40.4966567,-74.4442802,"New Brunswick, New Jersey, USA","New Brunswick, NJ",True
+42,Bakersfield,California,United States,35.3735112,-119.0204707,"Bakersfield, CA","Bakersfield, CA",True
+43,Nashville,Tennessee,United States,36.1626638,-86.7816016,"Nashville, TN","Nashville, TN",True
+44,Houston,Texas,United States,29.7600771,-95.37011079999999,"Houston, TX","Houston, TX",True
+45,Dallas,Texas,United States,32.7831,-96.8067,"Dallas Ft. Worth, Texas, United States","Dallas, TX",True
+46,Dallas,Texas,United States,32.7831,-96.8067,"Dallas, TX, United States","Dallas, TX",True
+47,Chicago,Illinois,United States,41.88325,-87.6323879,"Chicago, IL, United States","Chicago, IL",True
+48,Overland Park,Kansas,United States,38.9822282,-94.6707917,"Overland Park, KS, United States","Overland Park, KS",True
+49,St. Louis,Missouri,United States,38.62742799999999,-90.1982439,"St. Louis, Mo, USA","St. Louis, MO",True
+50,Nashville,Tennessee,United States,36.1626638,-86.7816016,"Nashville, TN, USA","Nashville, TN",True
+51,Detroit,Michigan,United States,42.32971819999999,-83.0424533,"Detroit, Michigan, USA","Detroit, MI",True
+52,Phoenix,Arizona,United States,33.4482948,-112.0725488,"Phoenix, AZ, USA","Phoenix, AZ",True
+53,Tampa,Florida,United States,27.9516896,-82.45875269999999,"Tampa Bay, FL, USA","Tampa, FL",True
+54,Burbank,California,United States,34.1820605,-118.3074827,"Burbank, CA, United States","Burbank, CA",True
+55,Fort Lauderdale,Florida,United States,26.1224386,-80.13731740000001,"Ft. Lauderdale, FL","Fort Lauderdale, FL",True
+56,Atlanta,Georgia,United States,33.7501275,-84.3885209,"Atlanta, GA, USA","Atlanta, GA",True
+57,New Orleans,Louisiana,United States,29.9508941,-90.07583559999999,"New Orleans, LA","New Orleans, LA",True
+58,Tulsa,Oklahoma,United States,36.1551375,-95.98950099999999,"Tulsa, OK, Ok, United States","Tulsa, OK",True
+59,Austin,Texas,United States,30.267153,-97.7430608,"Austin, Texas, TX, USA","Austin, TX",True
+60,Tampa,Florida,United States,27.9516896,-82.45875269999999,"Tampa, FL","Tampa, FL",True
+61,Green Bay,Wisconsin,United States,44.5133188,-88.0132958,"Green Bay, WI","Green Bay, WI",True
+62,Charlotte,North Carolina,United States,35.2270768,-80.84089329999999,"Charlotte, NC, USA, North Carolina, USA","Charlotte, NC",True
+63,Raleigh,North Carolina,United States,35.7795897,-78.6381787,"Raleigh, NC, North Carolina, USA","Raleigh, NC",True
+64,Indianapolis,Indiana,United States,39.76909,-86.158018,"Indianapolis, IN","Indianapolis, IN",True
+65,Cape Cod,Massachusetts,United States,41.8111143,-70.1455805,"Cape Cod, MA","Cape Cod, MA",True
+66,Wilmington,Delaware,United States,39.744655,-75.5483909,"WILMINGTON, DEL, Delaware, United States","Wilmington, DE",True
+67,Washington,District of Columbia,United States,38.9072873,-77.0369274,"Washington, DC, VA, USA","Washington, DC",True
+68,Washington,District of Columbia,United States,38.9072873,-77.0369274,"Washington, DC., VA, USA","Washington, DC",True
+69,Austin,Texas,United States,30.267153,-97.7430608,"Austin, Texas, USA","Austin, TX",True
+70,Newton,Massachusetts,United States,42.3370413,-71.20922139999999,"Newton, MA","Newton, MA",True
+71,Framingham,Massachusetts,United States,42.279286,-71.4161565,"Framingham, MA","Framingham, MA",True
+72,Santa Clara,California,United States,37.3541079,-121.9552356,"Santa Clara, CA","Santa Clara, CA",True
+73,Orange County,California,United States,33.7174708,-117.8311428,"Orange County, CA, USA","Orange County, CA",True
+74,Vancouver,Washington,United States,45.6280277,-122.673865,"Vancouver, WA","Vancouver, WA",True
+75,Minneapolis,Minnesota,United States,44.977753,-93.2650108,"Minneapolis, MN","Minneapolis, MN",True
+76,Denver,Colorado,United States,39.7392358,-104.990251,"Denver, Colorado, Colorado, USA","Denver, CO",True
+77,Reno,Nevada,United States,39.529919,-119.8142691,"Reno, NV","Reno, NV",True
+78,Boston,Massachusetts,United States,42.3555076,-71.0565364,"Boston, MA, United States","Boston, MA",True
+79,Burlington,Massachusetts,United States,42.5047161,-71.1956205,"Burlington, MA","Burlington, MA",True
+80,Buffalo,New York,United States,42.88690039999999,-78.8788896,"Buffalo, NY","Buffalo, NY",True
+81,Spokane,Washington,United States,47.6579711,-117.4235319,"Spokane, WA","Spokane, WA",True
+82,Orlando,Florida,United States,28.5383832,-81.3789269,"Orlando, Florida, United States","Orlando, FL",True
+83,St. Paul,Minnesota,United States,44.9537029,-93.0899578,"St. Paul, MN","St. Paul, MN",True
+84,Fort Lauderdale,Florida,United States,26.1224386,-80.13731740000001,"Fort Lauderdale, Florida, USA","Fort Lauderdale, FL",True
+85,Orlando,Florida,United States,28.5383832,-81.3789269,"Orlando, FL","Orlando, FL",True
+86,Montreal,Quebec,Canada,45.5018869,-73.56739189999999,"Montreal, Quebec, Canada","Montreal, Canada",True
+87,Detroit,Michigan,United States,42.32971819999999,-83.0424533,"Detroit, MI","Detroit, MI",True
+88,Ashland,Oregon,United States,42.1967113,-122.7139216,"Ashland, OR, United States","Ashland, OR",True
+89,Lake Geneva,Illinois,United States,42.5916836,-88.4334301,"Lake Geneva, IL","Lake Geneva, IL",True
+90,Seattle,Washington,United States,47.6061389,-122.3328481,"Seattle, WA, USA","Seattle, WA",True
+91,Portland,Oregon,United States,45.515232,-122.6783853,"Portland, OR, United States","Portland, OR",True
+92,Portland,Oregon,United States,45.515232,-122.6783853,"Portland, OR, USA","Portland, OR",True
+93,Denver,Colorado,United States,39.7392358,-104.990251,"Denver, CO, USA","Denver, CO",True
+94,Albuquerque,New Mexico,United States,35.0843859,-106.650422,"Albuquerque, NM","Albuquerque, NM",True
+95,Modesto,California,United States,37.6392595,-120.9970014,"Modesto, CA","Modesto, CA",True
+96,Cleveland,Ohio,United States,41.49932,-81.6943605,"Cleveland, OH, United States","Cleveland, OH",True
+97,Redmond,Washington,United States,47.6739881,-122.121512,"Redmond, WA","Redmond, WA",True
+98,Jacksonville,Florida,United States,30.3297566,-81.6591529,"Jacksonville, FL, USA","Jacksonville, FL",True
+99,Washington,District of Columbia,United States,38.9072873,-77.0369274,"Washington, DC","Washington, DC",True
+100,Woodland Hills,California,United States,34.1685035,-118.6058267,"Woodland Hills, CA","Woodland Hills, CA",True
+101,Chico,California,United States,39.7282839,-121.8379978,"Chico, CA","Chico, CA",True
+102,St. Louis,Missouri,United States,38.62742799999999,-90.1982439,"St. Louis, MO, USA","St. Louis, MO",True
+103,Houston,Texas,United States,29.7600771,-95.37011079999999,"Houston, Texas, United States","Houston, TX",True
+104,Chicago,Illinois,United States,41.88325,-87.6323879,"Chicago, IL, United States","Chicago, IL",True
+105,Toronto,Ontario,Canada,43.653226,-79.3831843,"Toronto, Ontario, Canada","Toronto, Canada",True
+106,Seattle,Washington,United States,47.6061389,-122.3328481,"Seattle, WA","Seattle, WA",True
+107,London,England,United Kingdom,51.5072178,-0.1275862,"London, London, United Kingdom","London, United Kingdom",True
+108,Wilmington,Delaware,United States,39.744655,-75.5483909,"Wilmington, DE, United States","Wilmington, DE",True
+109,Paris,,France,48.8575475,2.3513765,"Paris, France/Paris, France","Paris, France",True
+110,Budapest,,Hungary,47.497912,19.040235,"Budapest, Budapest, Hungary","Budapest, Hungary",True
+111,North Myrtle Beach,South Carolina,United States,33.8160058,-78.680016,"N. Myrtle Beach, SC","North Myrtle Beach, SC",True
+112,Chicago,Illinois,United States,41.88325,-87.6323879,"Chicago, Illinois, USA","Chicago, IL",True
+113,Moscow,,Russia,55.7568721,37.6150527,"Moscow,  Russia","Moscow, Russia",True
+114,Elmhurst,Illinois,United States,41.903451,-87.9397972,"Elmhurst, IL","Elmhurst, IL",True
+115,Madison,Wisconsin,United States,43.0721661,-89.4007501,"Madison, WI","Madison, WI",True
+116,Louisville,Kentucky,United States,38.2468618,-85.7663724,"Louisville, Kentucky, United States","Louisville, KY",True
+117,Sydney,,Australia,-33.8727409,151.2057136,"Sydney, NSW, Australia","Sydney, Australia",True
+118,Austin,Texas,United States,30.267153,-97.7430608,"Austin, TX, United States","Austin, TX",True
+119,Orlando,Florida,United States,28.5383832,-81.3789269,"Orlando, Florida, Florida, United States","Orlando, FL",True
+120,Orlando,Florida,United States,28.5383832,-81.3789269,"Orlando, Florida, USA","Orlando, FL",True
+121,Montreal,Quebec,Canada,45.5018869,-73.56739189999999,"Montreal, Canada","Montreal, Canada",True
+122,Boston,Massachusetts,United States,42.3555076,-71.0565364,"Boston, Massachusetts, USA","Boston, MA",True
+123,Secaucus,New Jersey,United States,40.7879996,-74.0545497,"Secaucus, NJ","Secaucus, NJ",True
+124,Wailea,Hawaii,United States,20.6871826,-156.4391668,"Wailea, Hawaii/Maui, USA","Wailea, HI",True
+125,Kiev,,Ukraine,50.4503596,30.5245025,"Kiev, Ukraine","Kiev, Ukraine",True
+126,Atlanta,Georgia,United States,33.7501275,-84.3885209,"Atlanta, GA","Atlanta, GA",True
+127,Düsseldorf,,Germany,51.2230411,6.7824545,"Boston Club, NRW, Germany","Düsseldorf, Germany",True
+128,Richmond,British Columbia,Canada,49.1665898,-123.133569,"Richmond, Canada","Richmond, Canada",True
+129,Munich,,Germany,48.1351253,11.5819806,"Munich, Bavaria, Germany","Munich, Germany",True
+130,London,England,United Kingdom,51.5072178,-0.1275862,"London, West Drayton, United Kingdom","London, United Kingdom",True
+131,Hartford,Connecticut,United States,41.7658043,-72.6733723,"Hartford, CT","Hartford, CT",True
+132,Milan,,Italy,45.468503,9.182402699999999,"Milan, Milan, Italy","Milan, Italy",True
+133,Bend,Oregon,United States,44.0581728,-121.3153096,"Bend, Oregon, United States","Bend, OR",True
+134,Boston,Massachusetts,United States,42.3555076,-71.0565364,"Boston, Massachusetts, United States","Boston, MA",True
+135,Oakland,California,United States,37.8043514,-122.2711639,"Oakland, CA","Oakland, CA",True
+136,Tuscaloosa,Alabama,United States,33.21031,-87.5658722,"Tuscaloosa, AL","Tuscaloosa, AL",True
+137,Huntsville,Alabama,United States,34.7295497,-86.5853155,"Huntsville, Alabama, USA","Huntsville, AL",True
+138,Fort Wayne,Indiana,United States,41.0794759,-85.1362929,"Fort Wayne, IN, USA","Fort Wayne, IN",True
+139,Albany,New York,United States,42.6518095,-73.75447070000001,"Albany, NY","Albany, NY",True
+140,Morristown,New Jersey,United States,40.7922983,-74.4763123,"Morristown, NJ, US","Morristown, NJ",True
+141,Tulsa,Oklahoma,United States,36.1551375,-95.98950099999999,"Tulsa, OK","Tulsa, OK",True
+142,Stamford,Connecticut,United States,41.0527986,-73.5394821,"Stamford, CT","Stamford, CT",True
+143,Freiburg,,Germany,47.9990077,7.842104299999999,"Freiburg, Baden Württemberg, Germany","Freiburg, Germany",True
+144,Burlington,Vermont,United States,44.4758825,-73.21207199999999,"Burlington, VT","Burlington, VT",True
+145,Natick,Massachusetts,United States,42.2775281,-71.3468091,"Natick, MA","Natick, MA",True
+146,Providence,Rhode Island,United States,41.8245558,-71.414199,"Providence, RI","Providence, RI",True
+147,Tel Aviv,,Israel,32.0852999,34.78176759999999,"Tel Aviv, Israel","Tel Aviv, Israel",True
+148,Calgary,Alberta,Canada,51.04473309999999,-114.0718831,"Calgary, AB, Canada","Calgary, Canada",True
+149,Philadelphia,Pennsylvania,United States,39.9525839,-75.1652215,"Philadelphia, PA, United States","Philadelphia, PA",True
+150,Providence,Rhode Island,United States,41.8244836,-71.4127462,"Providence, RI, United States","Providence, RI",True
+151,St. Petersburg,Florida,United States,27.7671271,-82.6384451,"St. Petersburg, FL","St. Petersburg, FL",True
+152,College Park,Maryland,United States,38.9896967,-76.93776,"College Park, MD","College Park, MD",True
+153,Thousand Oaks,California,United States,34.1761133,-118.8487793,"Thousand Oaks, CA","Thousand Oaks, CA",True
+154,Vancouver,British Columbia,Canada,49.2827291,-123.1207375,"Vancouver, Canada","Vancouver, Canada",True
+155,Warsaw,,Poland,52.2296756,21.0122287,"Warsaw, Poland","Warsaw, Poland",True
+156,Lyon,,France,45.764043,4.835659,"LYON, Rhône-Alpes, France","Lyon, France",True
+157,Paris,,France,48.8575475,2.3513765,"Paris, France","Paris, France",True
+158,La Grande Motte,,France,43.560704,4.086072000000001,"La Grande Motte, Herault, France","La Grande Motte, France",True
+160,Carlisle,Pennsylvania,United States,40.2010241,-77.20027449999999,"Carlisle, PA","Carlisle, PA",True
+162,Barcelona,,Spain,41.3873974,2.168568,"Barcelona, Spain","Barcelona, Spain",True
+163,Rockville,Maryland,United States,39.0839973,-77.1527578,"Rockville, MD","Rockville, MD",True
+164,London,England,United Kingdom,51.5072178,-0.1275862,"London, United Kingdom","London, United Kingdom",True
+165,Washington,District of Columbia,United States,38.9072873,-77.0369274,"Washington DC, MD, USA","Washington, DC",True
+166,Manchester,England,United Kingdom,53.4807593,-2.2426305,"Manchester, Manchester, United Kingdom","Manchester, United Kingdom",True
+167,San Antonio,Texas,United States,29.4251905,-98.4945922,"San Antonio, TX","San Antonio, TX",True
+168,Auckland,,New Zealand,-36.85088270000001,174.7644881,"Auckland, Auckland, New Zealand","Auckland, New Zealand",True
+169,Gold Coast,,Australia,-27.9769248,153.380936,"Gold Coast, Queensland, Australia","Gold Coast, Australia",True
+170,Madrid,,Spain,40.41672790000001,-3.7032905,"Madrid, Spain","Madrid, Spain",True
+171,Rome,,Italy,41.8967068,12.4822025,"Rome, Rome, Italy","Rome, Italy",True
+172,Incheon,,Republic of Korea,37.4751578,126.6312666,"Incheon, South Korea","Incheon, Republic of Korea",True
+173,Zürich,,Switzerland,47.3768866,8.541694,"Zürich, Zurich, Switzerland","Zürich, Switzerland",True
+174,Melbourne,,Australia,-37.8136276,144.9630576,"Melbourne, Victoria, Australia","Melbourne, Australia",True
+175,Eilat,,Israel,29.557669,34.951925,"Eilat, Israel","Eilat, Israel",True
+176,Honolulu,Hawaii,United States,21.3098845,-157.8581401,"Honolulu, HI","Honolulu, HI",True
+177,Edinburgh,Scotland,United Kingdom,55.953252,-3.188267,"Edinburgh, United Kingdom, United Kingdom, United Kingdom","Edinburgh, United Kingdom",True
+178,Toronto,Ontario,Canada,43.653226,-79.3831843,"Toronto, Canada","Toronto, Canada",True
+179,Ottawa,Ontario,Canada,45.4200572,-75.7003397,"Ottawa, Ontario, Canada","Ottawa, Canada",True
+180,Waterloo,,Canada,43.4819752,-80.5261203,"Waterloo, Ontario, Canada","Waterloo, Canada",True
+181,Trondheim,,Norway,63.4305149,10.3950528,"Trondheim, Norway","Trondheim, Norway",True
+182,Greenville,South Carolina,United States,34.8484984,-82.40001579999999,"Greenville, South Carolina, SC, USA","Greenville, SC",True
+183,Cincinnati,Ohio,United States,39.1031182,-84.5120196,"Cincinnati, Ohio, USA","Cincinnati, OH",True
+184,Sofia,,Bulgaria,42.6977082,23.3218675,"Sofia, Sofia, Bulgaria","Sofia, Bulgaria",True
+185,Melbourne,,Australia,-37.8136276,144.9630576,"Melbourne, Australia","Melbourne, Australia",True
+186,Gdańsk,,Poland,54.35202520000001,18.6466384,"Gdańsk, Pomorskie, Poland","Gdańsk, Poland",True
+187,Toulouse-Blagnac,,France,43.6313458,1.36449,"Toulouse-Blagnac, Occitanie, France","Toulouse-Blagnac, France",True
+188,Annecy,,France,45.899247,6.129384,"Annecy, Haute Savoie, France","Annecy, France",True
+189,Bonn,,Germany,50.73743,7.0982068,"Bonn, NRW, Germany","Bonn, Germany",True
+190,Nantes,,France,47.218371,-1.553621,"Nantes, Loire-Atlantique, France","Nantes, France",True
+191,Amsterdam,,Nederland,52.3675734,4.9041389,"Amsterdam, Noord Holland, Nederland","Amsterdam, Nederland",True
+192,Nimes,,France,43.8338727,4.359999699999999,"Nimes, Occitanie, France","Nimes, France",True
+193,Paris,,France,48.8575475,2.3513765,"Paris, France","Paris, France",True
+194,Berlin,,Germany,52.52000659999999,13.404954,"Berlin, Berlin, Germany","Berlin, Germany",True
+195,Augsburg,,Germany,48.3705449,10.89779,"Augsburg, Bavaria, Germany","Augsburg, Germany",True
+196,Freiburg,,Germany,47.9990077,7.842104299999999,"Freiburg, Baden-Württemberg, Germany","Freiburg, Germany",True
+197,Wels,,Austria,48.1664268,14.0388714,"Wels, Austria, Austria","Wels, Austria",True
+198,Duesseldorf,,Germany,51.2230411,6.7824545,"Duesseldorf, NRW, Germany","Duesseldorf, Germany",True
+199,Stockholm,,Sweden,59.3251172,18.0710935,"Stockholm,  Sweden","Stockholm, Sweden",True
+200,Budapest,,Hungary,47.497912,19.040235,"Budapest, Hungary","Budapest, Hungary",True
+201,Bend,Oregon,United States,44.0581728,-121.3153096,"Bend, OR","Bend, OR",True
+202,Stockholm,,Sweden,59.3251172,18.0710935,"Stockholm, Stockholm, Sweden","Stockholm, Sweden",True
+203,Riga,,Latvia,56.9676941,24.1056221,"Riga, Latvia","Riga, Latvia",True
+204,Helsinki,,Finland,60.16985569999999,24.938379,"Helsinki, Finland","Helsinki, Finland",True
+205,Edmonton,Alberta,Canada,53.5461663,-113.4937355,"Edmonton, Canada","Edmonton, Canada",True
+206,Bathgate,,United Kingdom,55.9024,-3.643118,"Bathgate, United Kingdom","Bathgate, United Kingdom",True
+207,Blackpool,,United Kingdom,53.81674229999999,-3.0370485,"Blackpool, United Kingdom","Blackpool, United Kingdom",True
+208,Toulouse,,France,43.6048462,1.442848,"Toulouse, France","Toulouse, France",True
+209,Hunter Valley,,Australia,-32.1932173,151.700565,"Hunter Valley, Australia","Hunter Valley, Australia",True
+210,Sydney,,Australia,-33.8727409,151.2057136,"Sydney, Australia","Sydney, Australia",True
+211,Gold Coast,,Australia,-27.9769248,153.380936,"Gold Coast, Australia","Gold Coast, Australia",True
+159,Singapore,,Singapore,1.352083,103.819836,"Singapore, Singapore","Singapore, Singapore",True
+212,Windsor,,United Kingdom,51.48034209999999,-0.6157136999999999,"Windsor, United Kingdom","Windsor, United Kingdom",True
+213,Jeju,,Republic of Korea,33.5042779,126.519838,"Jeju, Jeju, South Korea","Jeju, Republic of Korea",True
+214,Calgary,Alberta,Canada,51.04473309999999,-114.0718831,"Calgary, Alberta, Canada","Calgary, Canada",True
+215,Umeå,,Sweden,63.5391027,19.4528047,"Umeå, Nordmalings kommun, Sweden","Umeå, Sweden",True
+216,Fortaleza,,Brazil,-3.7327203,-38.5270134,"Fortaleza, Brazil","Fortaleza, Brazil",True
+217,Nanaimo,,Canada,49.1658836,-123.9400647,"Nanaimo (Vancouver is the major in the province), British Columbia, Canada","Nanaimo, Canada",True
+218,Toulon,,France,43.1256814,5.9284944,"Toulon, Var, France","Toulon, France",True
+219,Budapest,,Hungary,47.497912,19.040235,"Budapest, Pest, Hungary","Budapest, Hungary",True
+220,Seoul,,Republic of Korea,37.550263,126.9970831,"Seoul, Republic of Korea","Seoul, Republic of Korea",True
+221,Hamburg,,Germany,53.5488282,9.987170299999999,"Hamburg, Germany","Hamburg, Germany",True
+222,St. Petersburg,,Russia,59.9310584,30.3609097,"St. Petersburg,  Russia","St. Petersburg, Russia",True
+223,Oslo,,Norway,59.9121746,10.7312704,"Oslo, Norway","Oslo, Norway",True
+224,New York City,New York,United States,40.7127753,-74.0059728,"New York City, NY, US","New York City, NY",True
+225,Lyon,,France,45.764043,4.835659,"LYON, rhones, France","Lyon, France",True
+226,Glasgow,Scotland,United Kingdom,55.86167039999999,-4.2583345,"Glasgow, United Kingdom","Glasgow, United Kingdom",True
+227,Venray,,Nederland,51.5256257,5.9736992,"Venray, Limburg, Nederland","Venray, Nederland",True
+228,Lyon,,France,45.764043,4.835659,"Lyon, France","Lyon, France",True
+229,Newcastle,England,United Kingdom,54.978252,-1.61778,"Newcastle,  United Kingdom","Newcastle, United Kingdom",True
+230,Dundalk,,Ireland,54.0024774,-6.388300099999999,"Dundalk, County Louth, Ireland","Dundalk, Ireland",True
+232,Rust,,Germany,48.2672137,7.725619099999999,"Rust, Baden-Württemberg, Deutschland","Rust, Germany",True
+233,Moscow,,Russia,55.7568721,37.6150527,"Moscow, Russia","Moscow, Russia",True
+234,Bristol,England,United Kingdom,51.454513,-2.58791,"Bristol, Bristol, City of, United Kingdom","Bristol, United Kingdom",True
+235,Milan,,Italy,45.468503,9.182402699999999,"Milan, Italy","Milan, Italy",True
+236,Adelaide,,Australia,-34.9284989,138.6007456,"Adelaide, SA, Australia","Adelaide, Australia",True
+237,Lyon,,France,45.764043,4.835659,"LYON, Rhone, France","Lyon, France",True
+238,Tallinn,,Estonia,59.43696079999999,24.7535746,"Tallinn, Estonia","Tallinn, Estonia",True
+239,Stockholm,,Sweden,59.3251172,18.0710935,"Stockholm, Sweden","Stockholm, Sweden",True
+240,Fremantle,,Australia,-32.0517901,115.755096,"Fremantle, Australia","Fremantle, Australia",True
+241,Helsinki,,Finland,60.16985569999999,24.938379,"Helsinki, Uusimaa, Finalnd","Helsinki, Finland",True
+242,Wellington,,New Zealand,-41.2923814,174.7787463,"Wellington,  New Zealand","Wellington, New Zealand",True
+243,Sao Paulo,,Brazil,-23.5557714,-46.6395571,"Sao Paulo, Brazil","Sao Paulo, Brazil",True
+245,Stockholm,,Sweden,59.3251172,18.0710935,"Stockholm, Stockholms län, Sweden","Stockholm, Sweden",True
+246,Munich,,Germany,48.1351253,11.5819806,"Munich, Germany","Munich, Germany",True
+247,St. Petersburg,,Russia,59.9310584,30.3609097,"St.Petersburg, Russia","St. Petersburg, Russia",True
+248,Torrevieja,,Spain,37.9848806,-0.6804336999999999,"Torrevieja, Spain","Torrevieja, Spain",True
+249,Crimea,,Ukraine,44.952117,34.102417,"Crimea, Ukraine","Crimea, Ukraine",True
+250,Vienna,,Austria,48.20806959999999,16.3713095,"Vienna, Austria","Vienna, Austria",True
+251,Lisbon,,Portugal,38.7222524,-9.1393366,"Lisbon,  Portugal","Lisbon, Portugal",True
+252,Samara,,Russia,53.2226496,50.1728035,"Samara, Samara state, Russia","Samara, Russia",True
+253,Perth,,Australia,-31.9513993,115.8616783,"Perth,  Australia","Perth, Australia",True
+25,Atlanta,Georgia,United States,33.7501275,-84.3885209,"Atlanta, GA, United States","Atlanta, GA",True
+244,Singapore,,Singapore,1.352083,103.819836,"Singapore, Singapore","Singapore, Singapore",True
+161,Albany,New York,United States,42.6518095,-73.75447070000001,"Albany, NY","Albany, NY",True
+1,Monterey,California,United States,36.5972925,-121.8977688,"Monterey, Ca, Usa","Monterey, CA",True
+2,San Francisco,California,United States,37.7749295,-122.4194155,"San Francisco, CA, USA","San Francisco, CA",True
+3,Phoenix,Arizona,United States,33.4482948,-112.0725488,"Phoenix, AZ, United States","Phoenix, AZ",True
+4,Portland,Oregon,United States,45.515232,-122.6783853,"Portland, OR","Portland, OR",True
+5,Fresno,California,United States,36.7377981,-119.7871247,"Fresno, CA","Fresno, CA",True
+6,Sacramento,California,United States,38.5781342,-121.4944209,"Sacramento, CA, USA","Sacramento, CA",True
+7,New York,New York,United States,40.7127753,-74.0059728,"New York, NY","New York, NY",True
+8,Boston,Massachusetts,United States,42.3555076,-71.0565364,"Boston, MA, US","Boston, MA",True
+9,Kansas City,Missouri,United States,39.0997265,-94.5785667,"Kansas City, MO","Kansas City, MO",True
+10,San Diego,California,United States,32.715738,-117.1610838,"San Diego, CA","San Diego, CA",True
+11,Boston,Massachusetts,United States,42.3555076,-71.0565364,"Boston, MA","Boston, MA",True
+12,Michigan,Michigan,United States,44.3148443,-85.60236429999999,"Michigan, MI","Michigan, MI",True
+13,Washington,District of Columbia,United States,38.9072873,-77.0369274,"Washington DC, USA","Washington, DC",True
+231,Stockholm,,Sweden,59.3251172,18.0710935,"Stockholm, Sweden","Stockholm, Sweden",True
+254,Moscow,,Russia,55.7568721,37.6150527,"Moscow, Moscow region, Russia","Moscow, Russia",True
+255,Ufa,,Russia,54.73479099999999,55.9578555,"Ufa, Russia","Ufa, Russia",True
+256,Ljubljana,,Slovenia,46.0569465,14.5057515,"Ljubljana,  Slovenia","Ljubljana, Slovenia",True
+257,Timisoara,,Romania,45.7557559,21.2322208,"Timisoara, Romania","Timisoara, Romania",True
+258,Sanxenxo,,Spain,42.416489,-8.8252502,"Sanxenxo, Galicia/Pontevedra, Spain","Sanxenxo, Spain",True
+259,Hobart,,Australia,-42.8826055,147.3257196,"Hobart, Tasmania, Australia","Hobart, Australia",True
+260,Christchurch,,New Zealand,-43.5320301,172.636648,"Christchurch, Canterbury, New Zealand","Christchurch, New Zealand",True
+261,Queensland,,Australia,-22.575197,144.0847926,"Queensland, Australia","Queensland, Australia",True
+262,Adelaide,,Australia,-34.9284989,138.6007456,"Adelaide, Australia","Adelaide, Australia",True
+263,Kazan,,Russia,55.7878944,49.12332929999999,"Kazan, Russia","Kazan, Russia",True
+264,Wels,,Austria,48.1664268,14.0388714,"Wels,  Austria","Wels, Austria",True
+265,Vienna,,Austria,48.20806959999999,16.3713095,"Vienna, Vienna, Austria","Vienna, Austria",True
+266,Brno,,Czech Republic,49.1950602,16.6068371,"Brno, Czechia","Brno, Czech Republic",True
+267,Kraków,,Poland,50.06465009999999,19.9449799,"Kraków, malopolska, Polska","Kraków, Poland",True
+268,Ikaalinen,,Finland,61.7682832,23.0746568,"Ikaalinen, Pirkanmaa, Finland","Ikaalinen, Finland",True
+269,Kuopio,,Finland,62.4917035,27.7880116,"Kuopio, Leppävirta, Finland","Kuopio, Finland",True
+270,Östersund,,Sweden,63.1766832,14.6360681,"Östersund, Jämtland, Sweden","Östersund, Sweden",True
+271,Kuala Lumpur,,Malaysia,3.1319197,101.6840589,"Kuala Lumpur,  Malaysia","Kuala Lumpur, Malaysia",True
+272,Liège,,Belgium,50.6402286,5.5689372,"Liège, Liège, Belgique","Liège, Belgium",True
+273,Milan,,Italy,45.468503,9.182402699999999,"Milan, Italy","Milan, Italy",True
+274,Hamar,,Norway,60.7945331,11.0679977,"Hamar,  Norway","Hamar, Norway",True
+275,Warsaw,,Poland,52.2296756,21.0122287,"Warsaw, mazowieckie, Poland","Warsaw, Poland",True
+276,Prague,,Czech Republic,50.0755381,14.4378005,"Prague, Czech Republic","Prague, Czech Republic",True
+277,Brno,,Czech Republic,49.1950602,16.6068371,"Brno, Czech Republic","Brno, Czech Republic",True
+278,Perth,,Australia,-31.9513993,115.8616783,"Perth, Western Australia","Perth, Australia",True
+279,Ludwigsburg,,Germany,48.8891149,9.1942834,"Ludwigsburg, Baden-Württemberg, Deutschland","Ludwigsburg, Germany",True
+280,Gothenburg,,Sweden,57.70887,11.97456,"Gothenburg, Västra götlaland, Sweden","Gothenburg, Sweden",True

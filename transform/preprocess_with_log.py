@@ -172,7 +172,17 @@ def _apply_event_corrections_tracked(df: pd.DataFrame, tracker: PreprocessTracke
 
 
 def _apply_geography_tracked(df: pd.DataFrame, tracker: PreprocessTracker) -> pd.DataFrame:
-    return normalize_geography(df.copy(), tracker=tracker)
+    before = df.copy()
+    out = normalize_geography(df.copy(), tracker=tracker)
+    for idx in before.index:
+        for col in ("event_location", "event_location_standardized"):
+            if col not in before.columns or col not in out.columns:
+                continue
+            old = str(before.at[idx, col]).strip() if pd.notna(before.at[idx, col]) else ""
+            new = str(out.at[idx, col]).strip() if pd.notna(out.at[idx, col]) else ""
+            if old and new and old != new:
+                tracker.location_string_replacements[old.upper()] = new
+    return out
 
 
 def _apply_events_wsdc_tracked(df: pd.DataFrame, tracker: PreprocessTracker) -> pd.DataFrame:

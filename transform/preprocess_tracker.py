@@ -23,6 +23,7 @@ class AppliedRule:
 @dataclass
 class PreprocessTracker:
     rules: list[AppliedRule] = field(default_factory=list)
+    location_string_replacements: dict[str, str] = field(default_factory=dict)
 
     def record(
         self,

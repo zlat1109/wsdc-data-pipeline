@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-06-27T09:26:26.093453+00:00",
+  "generated_at": "2026-06-27T18:27:32.346572+00:00",
   "source": "local",
   "run_id": null,
   "summary": {
     "before_findings_count": 4,
-    "applied_rules_count": 43,
-    "applied_rows_touched": 1267,
+    "applied_rules_count": 50,
+    "applied_rows_touched": 1238,
     "manual_review_count": 4,
-    "manual_review_new_count": 3
+    "manual_review_new_count": 0
   },
   "before_processing": {
     "description": "Issues detected in raw CSV before any normalization",
@@ -137,6 +137,15 @@
       {
         "rule_id": "LOCATION_INFO_ID_CORRECTION",
         "table": "location_info",
+        "column": "event_location_standardized",
+        "from_value": "location_id=25 was Atlanta, GA",
+        "to_value": "Atlanta, GA, United States",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
         "column": "event_city",
         "from_value": "location_id=159 was Singapore",
         "to_value": "Singapore",
@@ -165,6 +174,15 @@
         "rule_id": "LOCATION_INFO_ID_CORRECTION",
         "table": "location_info",
         "column": "event_location",
+        "from_value": "location_id=159 was Singapore, Singapore",
+        "to_value": "Singapore, Singapore",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "event_location_standardized",
         "from_value": "location_id=159 was Singapore, Singapore",
         "to_value": "Singapore, Singapore",
         "rows_affected": 1,
@@ -209,6 +227,15 @@
       {
         "rule_id": "LOCATION_INFO_ID_CORRECTION",
         "table": "location_info",
+        "column": "event_location_standardized",
+        "from_value": "location_id=244 was Singapore, Singapore",
+        "to_value": "Singapore, Singapore",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
         "column": "event_city",
         "from_value": "location_id=231 was Stockholm",
         "to_value": "Stockholm",
@@ -237,6 +264,15 @@
         "rule_id": "LOCATION_INFO_ID_CORRECTION",
         "table": "location_info",
         "column": "event_location",
+        "from_value": "location_id=231 was Stockholm, Sweden",
+        "to_value": "Stockholm, Sweden",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "event_location_standardized",
         "from_value": "location_id=231 was Stockholm, Sweden",
         "to_value": "Stockholm, Sweden",
         "rows_affected": 1,
@@ -297,6 +333,24 @@
         "source": "location_id_fix"
       },
       {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "event_location_standardized",
+        "from_value": "location_id=161 was Albany, NY",
+        "to_value": "Albany, NY",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "CITY_DISPLAY_NORMALIZATION",
+        "table": "location_info",
+        "column": "event_city",
+        "from_value": "ALL CAPS / embedded state / trailing punctuation",
+        "to_value": "Title Case city",
+        "rows_affected": 1,
+        "source": "city_normalize"
+      },
+      {
         "rule_id": "LOCATION_INFO_CITY_CORRECTION",
         "table": "location_info",
         "column": "event_city",
@@ -327,6 +381,15 @@
         "rule_id": "LOCATION_INFO_CITY_CORRECTION",
         "table": "location_info",
         "column": "event_location",
+        "from_value": "city=new york",
+        "to_value": "New York, NY",
+        "rows_affected": 1,
+        "source": "city_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_CITY_CORRECTION",
+        "table": "location_info",
+        "column": "event_location_standardized",
         "from_value": "city=new york",
         "to_value": "New York, NY",
         "rows_affected": 1,
@@ -371,6 +434,15 @@
       {
         "rule_id": "LOCATION_INFO_CITY_CORRECTION",
         "table": "location_info",
+        "column": "event_location_standardized",
+        "from_value": "city=san antonio",
+        "to_value": "San Antonio, TX",
+        "rows_affected": 1,
+        "source": "city_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_CITY_CORRECTION",
+        "table": "location_info",
         "column": "event_city",
         "from_value": "city=albany",
         "to_value": "Albany",
@@ -399,6 +471,15 @@
         "rule_id": "LOCATION_INFO_CITY_CORRECTION",
         "table": "location_info",
         "column": "event_location",
+        "from_value": "city=albany",
+        "to_value": "Albany, NY",
+        "rows_affected": 2,
+        "source": "city_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_CITY_CORRECTION",
+        "table": "location_info",
+        "column": "event_location_standardized",
         "from_value": "city=albany",
         "to_value": "Albany, NY",
         "rows_affected": 2,
@@ -441,13 +522,13 @@
         "source": "city_fix"
       },
       {
-        "rule_id": "CITY_CANONICAL_COORDINATES",
+        "rule_id": "LOCATION_INFO_CITY_CORRECTION",
         "table": "location_info",
-        "column": "latitude/longitude",
-        "from_value": "suburb/venue coords",
-        "to_value": "city center",
-        "rows_affected": 12,
-        "source": "canonical_coords"
+        "column": "event_location_standardized",
+        "from_value": "city=burbank",
+        "to_value": "Burbank, CA",
+        "rows_affected": 1,
+        "source": "city_fix"
       },
       {
         "rule_id": "EVENT_NAME_NORMALIZATION",
@@ -455,25 +536,7 @@
         "column": "name",
         "from_value": "UK WCS Championships",
         "to_value": "UK WCS Championships",
-        "rows_affected": 6,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_NORMALIZATION",
-        "table": "events_wsdc",
-        "column": "name",
-        "from_value": "U.K. & European WCS Championships",
-        "to_value": "UK WCS Championships",
-        "rows_affected": 7,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_LOCATION_EXACT",
-        "table": "events_wsdc",
-        "column": "location",
-        "from_value": "Atlanta, GA USA",
-        "to_value": "Atlanta, GA, United States",
-        "rows_affected": 28,
+        "rows_affected": 13,
         "source": "known_map"
       },
       {
@@ -515,7 +578,7 @@
         ],
         "suggested_fix": "Add explicit mapping to EVENT_NAME_NORMALIZATION",
         "fingerprint": "884f0b28a784dde6",
-        "is_new": true,
+        "is_new": false,
         "requires_manual_review": true
       },
       {
@@ -531,7 +594,7 @@
         ],
         "suggested_fix": "Add to RESULT_TO_CATALOG_EVENT_NAME in transform/knowledge/event_aliases.py",
         "fingerprint": "3ff88c77894468fe",
-        "is_new": true,
+        "is_new": false,
         "requires_manual_review": true
       },
       {
@@ -547,7 +610,7 @@
         ],
         "suggested_fix": "Verify events_wsdc export or add event instance after parse",
         "fingerprint": "32f5867294897722",
-        "is_new": true,
+        "is_new": false,
         "requires_manual_review": true
       },
       {

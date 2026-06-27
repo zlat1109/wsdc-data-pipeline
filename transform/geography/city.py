@@ -1,0 +1,374 @@
+"""City display normalization for location_info and derived exports."""
+
+from __future__ import annotations
+
+import re
+from pathlib import Path
+from typing import TYPE_CHECKING, Optional
+
+import pandas as pd
+
+from transform.geography.constants import STATE_CODE_TO_NAME, STATE_NAME_TO_CODE
+
+if TYPE_CHECKING:
+    from transform.preprocess_tracker import PreprocessTracker
+
+_LOWercase_PARTICLES = frozenset({"de", "la", "le", "van", "von", "den", "am", "sur", "saint"})
+
+
+def _strip_city_punctuation(city: str) -> str:
+    return str(city).strip().strip(",").strip()
+
+
+EMBEDDED_STATE_TOKENS: dict[str, str] = {
+    **STATE_CODE_TO_NAME,
+    "DEL": "Delaware",
+}
+
+
+def split_embedded_us_state_from_city(city: str) -> tuple[str, Optional[str]]:
+    """Split trailing US state code from city (e.g. WILMINGTON DEL -> Wilmington)."""
+    city = _strip_city_punctuation(city)
+    if not city:
+        return "", None
+
+    parts = city.split()
+    if len(parts) >= 2:
+        last = parts[-1].upper()
+        if last in EMBEDDED_STATE_TOKENS:
+            name = " ".join(parts[:-1]).strip()
+            if name:
+                return name, EMBEDDED_STATE_TOKENS[last]
+    return city, None
+
+
+def _title_token(token: str) -> str:
+    if not token:
+        return token
+    if token.isupper() and len(token) <= 3 and token.isalpha():
+        return token
+
+    lower = token.lower()
+    if lower.startswith("st.") and len(token) > 3:
+        return "St." + token[3:].title()
+    if lower == "st":
+        return "St."
+    if lower.startswith("st-"):
+        return "St-" + token[3:].title()
+    if lower.startswith("mc") and len(token) > 2:
+        return "Mc" + token[2:].title()
+    if lower.startswith("mac") and len(token) > 3:
+        return "Mac" + token[3:].title()
+    if lower.startswith("o'") and len(token) > 2:
+        return "O'" + token[2:].title()
+    return token.title()
+
+
+def normalize_city_display(city: str, *, index: int = 0) -> str:
+    """Title-case city names; preserve intentional mixed case."""
+    city = _strip_city_punctuation(city)
+    if not city:
+        return ""
+
+    if city != city.upper() and city != city.lower():
+        return city
+
+    parts = re.split(r"(\s+|-)", city)
+    out: list[str] = []
+    word_index = 0
+    for part in parts:
+        if not part or part.isspace() or part == "-":
+            out.append(part)
+            continue
+        if part.lower() in _LOWercase_PARTICLES and word_index > 0:
+            out.append(part.lower())
+        else:
+            out.append(_title_token(part))
+        word_index += 1
+    return "".join(out)
+
+
+def normalize_city_field(city: str) -> tuple[str, Optional[str]]:
+    """Normalize city and optionally extract embedded US state."""
+    city = _strip_city_punctuation(city)
+    if not city:
+        return "", None
+
+    name, extracted_state = split_embedded_us_state_from_city(city)
+    return normalize_city_display(name), extracted_state
+
+
+def format_event_location(row: pd.Series) -> str:
+    city = _strip_city_punctuation(str(row.get("event_city", "")).strip())
+    state = str(row.get("event_state", "")).strip() if pd.notna(row.get("event_state")) else ""
+    country = str(row.get("event_country", "")).strip() if pd.notna(row.get("event_country")) else ""
+
+    if not city:
+        return str(row.get("event_location", "")).strip()
+
+    if country in {"United States", "USA", "US"}:
+        if state:
+            code = STATE_NAME_TO_CODE.get(state, state)
+            if len(code) == 2:
+                return f"{city}, {code}, United States"
+            return f"{city}, {state}, United States"
+        return f"{city}, United States"
+
+    if country:
+        if state:
+            return f"{city}, {state}, {country}"
+        return f"{city}, {country}"
+    return city
+
+
+def replace_city_in_location_string(location: str, old_city: str, new_city: str) -> str:
+    if not location or not old_city or old_city == new_city:
+        return location
+    pattern = re.compile(re.escape(old_city.strip()), re.IGNORECASE)
+    return pattern.sub(new_city, location, count=1)
+
+
+def apply_city_normalization_to_frame(
+    df: pd.DataFrame,
+    tracker: PreprocessTracker | None = None,
+) -> pd.DataFrame:
+    out, _ = apply_city_normalization_with_replacements(df, tracker)
+    return out
+
+
+def apply_city_normalization_with_replacements(
+    df: pd.DataFrame,
+    tracker: PreprocessTracker | None = None,
+) -> tuple[pd.DataFrame, dict[str, str]]:
+    if "event_city" not in df.columns:
+        return df, {}
+
+    out = df.copy()
+    changed = 0
+    replacements: dict[str, str] = {}
+
+    for idx, row in out.iterrows():
+        raw_city = row.get("event_city")
+        if pd.isna(raw_city) or not str(raw_city).strip():
+            continue
+
+        old_city = str(raw_city).strip()
+        clean_old = _strip_city_punctuation(old_city)
+        new_city, extracted_state = normalize_city_field(old_city)
+        if not new_city:
+            continue
+
+        row_changed = clean_old != old_city or new_city != clean_old
+        if extracted_state:
+            current_state = str(row.get("event_state", "")).strip() if pd.notna(row.get("event_state")) else ""
+            if not current_state:
+                out.at[idx, "event_state"] = extracted_state
+                row_changed = True
+
+        if row_changed:
+            out.at[idx, "event_city"] = new_city
+            if "event_location" in out.columns:
+                old_location = str(row.get("event_location", "")).strip()
+                new_location = format_event_location(out.loc[idx])
+                out.at[idx, "event_location"] = new_location
+                if old_location and old_location != new_location:
+                    replacements[old_location.upper()] = new_location
+            if "event_location_standardized" in out.columns:
+                old_std = str(row.get("event_location_standardized", "")).strip()
+                new_std = format_event_location(out.loc[idx])
+                if "event_state" in out.columns and out.at[idx, "event_state"]:
+                    code = STATE_NAME_TO_CODE.get(str(out.at[idx, "event_state"]).strip())
+                    if code and len(code) == 2:
+                        new_std = f"{new_city}, {code}"
+                out.at[idx, "event_location_standardized"] = new_std
+                if old_std and old_std != new_std:
+                    replacements[old_std.upper()] = new_std
+            changed += 1
+
+    if tracker is not None and changed:
+        tracker.record(
+            "CITY_DISPLAY_NORMALIZATION",
+            "location_info",
+            "event_city",
+            "ALL CAPS / embedded state / trailing punctuation",
+            "Title Case city",
+            changed,
+            "city_normalize",
+        )
+
+    return out, replacements
+
+
+def location_lookup(location_df: pd.DataFrame) -> dict[int, dict[str, str]]:
+    lookup: dict[int, dict[str, str]] = {}
+    for _, row in location_df.iterrows():
+        location_id = row.get("location_id")
+        if pd.isna(location_id):
+            continue
+        lookup[int(location_id)] = {
+            "event_city": _strip_city_punctuation(str(row.get("event_city", "")).strip()),
+            "event_state": str(row.get("event_state", "")).strip() if pd.notna(row.get("event_state")) else "",
+            "event_country": str(row.get("event_country", "")).strip() if pd.notna(row.get("event_country")) else "",
+            "event_location": str(row.get("event_location", "")).strip() if pd.notna(row.get("event_location")) else "",
+            "event_location_standardized": str(row.get("event_location_standardized", "")).strip()
+            if pd.notna(row.get("event_location_standardized"))
+            else "",
+        }
+    return lookup
+
+
+def sync_export_city_columns(
+    data_dir: Path,
+    *,
+    replacements: dict[str, str] | None = None,
+) -> dict[str, int]:
+    """Refresh city columns in export CSVs from location_info."""
+    location_path = data_dir / "location_info.csv"
+    if not location_path.exists():
+        return {}
+
+    locations = pd.read_csv(location_path, low_memory=False)
+    lookup = location_lookup(locations)
+    string_replacements = {k.upper(): v for k, v in (replacements or {}).items()}
+    updates: dict[str, int] = {}
+
+    editions_path = data_dir / "event_editions.csv"
+    if editions_path.exists():
+        editions = pd.read_csv(editions_path, low_memory=False)
+        changed = 0
+        for idx, row in editions.iterrows():
+            location_id = row.get("location_id")
+            if pd.isna(location_id):
+                continue
+            loc = lookup.get(int(location_id))
+            if not loc:
+                continue
+
+            for src, dst in (
+                ("event_city", "place_city"),
+                ("event_state", "place_state"),
+                ("event_country", "place_country"),
+                ("event_location", "location_raw"),
+                ("event_location", "typical_location"),
+            ):
+                if dst in editions.columns and loc.get(src):
+                    if editions.at[idx, dst] != loc[src]:
+                        editions.at[idx, dst] = loc[src]
+                        changed += 1
+
+        if changed:
+            editions.to_csv(editions_path, index=False)
+        updates["event_editions.csv"] = changed
+
+    catalog_path = data_dir / "event_catalog.csv"
+    if catalog_path.exists() and editions_path.exists():
+        catalog = pd.read_csv(catalog_path, low_memory=False)
+        editions = pd.read_csv(editions_path, low_memory=False)
+        if {"event_id", "event_year", "event_month"}.issubset(editions.columns):
+            latest = (
+                editions.sort_values(["event_id", "event_year", "event_month"], ascending=[True, False, False])
+                .drop_duplicates(subset=["event_id"], keep="first")
+            )
+            latest = latest.set_index("event_id")
+            changed = 0
+            for idx, row in catalog.iterrows():
+                event_id = row.get("event_id")
+                if pd.isna(event_id) or int(event_id) not in latest.index:
+                    continue
+                src = latest.loc[int(event_id)]
+                for dst, src_col in (
+                    ("typical_city", "place_city"),
+                    ("typical_state", "place_state"),
+                    ("typical_country", "place_country"),
+                    ("typical_location", "location_raw"),
+                ):
+                    if dst in catalog.columns and pd.notna(src.get(src_col)):
+                        value = str(src[src_col]).strip()
+                        if catalog.at[idx, dst] != value:
+                            catalog.at[idx, dst] = value
+                            changed += 1
+            if changed:
+                catalog.to_csv(catalog_path, index=False)
+            updates["event_catalog.csv"] = changed
+
+    catalog_path = data_dir / "event_catalog.csv"
+    if catalog_path.exists():
+        catalog = pd.read_csv(catalog_path, low_memory=False)
+        changed = 0
+        if {"typical_location", "upcoming_location"}.issubset(catalog.columns):
+            for idx, row in catalog.iterrows():
+                typical = str(row.get("typical_location", "")).strip()
+                upcoming = str(row.get("upcoming_location", "")).strip()
+                if typical and upcoming:
+                    if upcoming != typical and upcoming.upper() == typical.upper():
+                        catalog.at[idx, "upcoming_location"] = typical
+                        changed += 1
+                    elif upcoming.upper() != typical.upper():
+                        replacement = string_replacements.get(upcoming.upper(), typical)
+                        if replacement != upcoming:
+                            catalog.at[idx, "upcoming_location"] = replacement
+                            changed += 1
+        if changed:
+            catalog.to_csv(catalog_path, index=False)
+            updates["event_catalog.csv"] = updates.get("event_catalog.csv", 0) + changed
+
+    scheduled_path = data_dir / "scheduled_events.csv"
+    catalog_path = data_dir / "event_catalog.csv"
+    if scheduled_path.exists() and catalog_path.exists():
+        scheduled = pd.read_csv(scheduled_path, low_memory=False)
+        catalog = pd.read_csv(catalog_path, low_memory=False)
+        if {"event_id", "typical_location"}.issubset(catalog.columns):
+            catalog = catalog.set_index("event_id")
+            changed = 0
+            id_col = "canonical_event_id" if "canonical_event_id" in scheduled.columns else "event_id"
+            for idx, row in scheduled.iterrows():
+                event_id = row.get(id_col)
+                if pd.isna(event_id) or int(event_id) not in catalog.index:
+                    continue
+                typical = str(catalog.loc[int(event_id), "typical_location"]).strip()
+                current = str(row.get("location_raw", "")).strip()
+                if typical and current and current != typical:
+                    scheduled.at[idx, "location_raw"] = typical
+                    changed += 1
+            if changed:
+                scheduled.to_csv(scheduled_path, index=False)
+            updates["scheduled_events.csv"] = updates.get("scheduled_events.csv", 0) + changed
+
+    for filename, location_col in (
+        ("events_wsdc.csv", "location"),
+        ("scheduled_events.csv", "location_raw"),
+    ):
+        path = data_dir / filename
+        if not path.exists() or location_col not in pd.read_csv(path, nrows=0).columns:
+            continue
+        frame = pd.read_csv(path, low_memory=False)
+        changed = 0
+        editions = pd.read_csv(data_dir / "event_editions.csv", low_memory=False) if (data_dir / "event_editions.csv").exists() else None
+        for idx, value in frame[location_col].items():
+            if pd.isna(value):
+                continue
+            text = str(value).strip()
+            new_text = string_replacements.get(text.upper(), text)
+
+            if new_text == text and editions is not None and filename == "events_wsdc.csv":
+                event_id = frame.at[idx, "id"] if "id" in frame.columns else frame.at[idx, "event_id"]
+                event_year = frame.at[idx, "event_year"]
+                event_month = frame.at[idx, "event_month"]
+                match = editions[
+                    (editions["event_id"] == event_id)
+                    & (editions["event_year"] == event_year)
+                    & (editions["event_month"] == event_month)
+                ]
+                if not match.empty and pd.notna(match.iloc[0].get("location_raw")):
+                    candidate = str(match.iloc[0]["location_raw"]).strip()
+                    if candidate and candidate != text:
+                        new_text = candidate
+
+            if new_text != text:
+                frame.at[idx, location_col] = new_text
+                changed += 1
+        if changed:
+            frame.to_csv(path, index=False)
+        updates[filename] = changed
+
+    return updates
