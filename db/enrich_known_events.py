@@ -11,7 +11,13 @@ from transform.knowledge import (
 )
 
 
-def _apply_location_patch(cur: psycopg.Cursor, location_id: int, fixes: dict[str, str]) -> None:
+def _apply_location_patch(
+    cur: psycopg.Cursor,
+    location_id: int,
+    fixes: dict[str, str],
+    *,
+    force: bool = False,
+) -> None:
     cur.execute(
         """
         SELECT event_city, event_country, event_location
@@ -44,7 +50,7 @@ def _apply_location_patch(cur: psycopg.Cursor, location_id: int, fixes: dict[str
         v and str(v).strip() and str(v).strip().lower() != "nan"
         for v in (city, country, location)
     )
-    if not is_empty:
+    if not is_empty and not force:
         return
 
     cur.execute(
@@ -106,4 +112,4 @@ def enrich_core_known_events(conn: psycopg.Connection) -> None:
                 _apply_location_patch(cur, int(location_id), fixes)
 
         for location_id, fixes in LOCATION_ID_CORRECTIONS.items():
-            _apply_location_patch(cur, int(location_id), fixes)
+            _apply_location_patch(cur, int(location_id), fixes, force=True)

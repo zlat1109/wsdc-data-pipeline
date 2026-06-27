@@ -37,6 +37,7 @@ EVENT_LOCATION_EXACT_CORRECTIONS = {
     'Concord CA': 'Concord, CA',
     'St. Burlatskaya, Russia': 'Samara, Russia',
     'CHICAGO, IL, United States': 'Chicago, IL, United States',
+    'Atlanta, GA USA': 'Atlanta, GA, United States',
     'St. Louis, Mo, USA': 'St. Louis, MO, USA',
     'PARIS, France': 'Paris, France',
     'Moscow,  Russia': 'Moscow, Russia',

@@ -18,6 +18,24 @@ def test_parse_us_state_from_city_code():
     assert parse_us_state_from_location_text("Phoenix, AZ, United States") == "Arizona"
 
 
+def test_normalize_geography_fixes_atlanta_ga_usa_country():
+    df = pd.DataFrame(
+        [{
+            "location_id": "25",
+            "event_city": "Atlanta",
+            "event_state": "Georgia",
+            "event_country": "GA USA",
+            "latitude": "33.7501275",
+            "longitude": "-84.3885209",
+            "event_location": "Atlanta, GA USA",
+        }]
+    )
+    out = normalize_geography(df)
+    assert out.loc[0, "event_country"] == "United States"
+    assert out.loc[0, "event_state"] == "Georgia"
+    assert out.loc[0, "event_location"] == "Atlanta, GA, United States"
+
+
 def test_normalize_geography_fills_burbank_state():
     df = pd.DataFrame(
         [{

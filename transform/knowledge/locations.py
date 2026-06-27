@@ -5,6 +5,13 @@ from __future__ import annotations
 LocationPatch = dict[str, str]
 
 LOCATION_ID_CORRECTIONS: dict[int, LocationPatch] = {
+    25: {
+        'event_city': 'Atlanta',
+        'event_state': 'Georgia',
+        'event_country': 'United States',
+        'event_location': 'Atlanta, GA, United States',
+        'event_location_standardized': 'Atlanta, GA, United States',
+    },
     161: {
         'event_city': 'Albany',
         'event_state': 'New York',

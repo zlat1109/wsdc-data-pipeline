@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import pandas as pd
 
+from transform.geography.constants import STATE_CODE_TO_NAME
 from transform.geography.normalize import (
     parse_us_state_from_location_text,
     standardize_country,
@@ -42,6 +43,15 @@ def _parse_location_parts(raw: str) -> tuple[str, str, str]:
     if not parts:
         return "", "", ""
     city = parts[0]
+    if len(parts) == 2:
+        # WSDC often emits "Atlanta, GA USA" (state + country without comma).
+        tokens = parts[1].split()
+        if len(tokens) >= 2 and tokens[-1].upper() in {"USA", "US", "U.S.", "U.S.A."}:
+            state_code = tokens[0].upper()
+            state = STATE_CODE_TO_NAME.get(state_code, "") if len(state_code) == 2 else ""
+            if not state:
+                state = parse_us_state_from_location_text(raw)
+            return city, state, "United States"
     country = standardize_country(parts[-1]) or "" if len(parts) > 1 else ""
     state = parse_us_state_from_location_text(raw)
     return city, state, country
