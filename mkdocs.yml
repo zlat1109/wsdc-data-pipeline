@@ -1,0 +1,107 @@
+site_name: WSDC Data Pipeline
+site_description: Documentation for the WSDC points pipeline — Supabase, CSV export, Tableau Public
+site_url: https://zlat1109.github.io/wsdc-data-pipeline/
+repo_url: https://github.com/zlat1109/wsdc-data-pipeline
+repo_name: zlat1109/wsdc-data-pipeline
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  language: en
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.action.edit
+    - toc.follow
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/zlat1109/wsdc-data-pipeline
+
+exclude_docs: |
+  README.md
+  DATA_SYNC.md
+  GITHUB_ACTIONS.md
+  MANUAL_PIPELINE.md
+
+nav:
+  - Home: index.md
+  - Tableau:
+    - tableau/index.md
+    - CSV contract: tableau/csv-contract.md
+    - Joins: tableau/joins.md
+    - Schedule migration: tableau/dashboards-migration.md
+  - Architecture:
+    - Pipeline overview: architecture/overview.md
+    - Event identity: architecture/identity-model.md
+    - SCD2 history: architecture/scd2-history.md
+  - Database:
+    - database/index.md
+    - Staging: database/staging.md
+    - Core: database/core.md
+    - History: database/history.md
+    - Export views: database/export-views.md
+    - Migrations: database/migrations.md
+    - Generated schema:
+      - database/_generated/tables.md
+      - database/_generated/views.md
+      - database/_generated/export_map.md
+  - Transform:
+    - transform/index.md
+    - Divisions & levels: transform/divisions-levels.md
+    - Geography: transform/geography.md
+    - Event names: transform/event-names.md
+    - Events list: transform/events-list.md
+  - Operations:
+    - operations/index.md
+    - Pipeline runbook: operations/pipeline-runbook.md
+    - Data sync: operations/data-sync.md
+    - GitHub Actions: operations/github-actions.md
+    - Repair scripts: operations/repair-scripts.md
+    - Quality monitoring: operations/quality-monitoring.md
+  - Policies:
+    - Geo dedup: policies/event-geo-dedup.md
+    - Event renames: policies/event-rename-aliases.md

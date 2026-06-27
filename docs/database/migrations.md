@@ -58,11 +58,22 @@ Output: `docs/database/_generated/tables.md`, `views.md`, `export_map.md`
 
 Hand-written narrative in `docs/database/*.md` remains authoritative for semantics; generated files help detect DDL drift.
 
+## Documentation site
+
+Preview locally:
+
+```bash
+pip install -r requirements-docs.txt
+mkdocs serve
+```
+
+Pushes to `main` that touch `docs/` deploy to [GitHub Pages](https://zlat1109.github.io/wsdc-data-pipeline/) via `.github/workflows/docs.yml`.
+
 ## Rollback policy
 
 No automated down migrations. Roll forward with a corrective migration. For destructive data changes, use Supabase branch snapshot before `--apply` repair scripts.
 
 ## Related
 
-- [README.md](README.md) — schema overview
+- [index.md](index.md) — schema overview
 - [../operations/github-actions.md](../operations/github-actions.md) — pooler connection for CI

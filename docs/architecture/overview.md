@@ -115,5 +115,5 @@ Flags: `--skip-migrations` to skip `db/apply.py`.
 
 - [identity-model.md](identity-model.md) — How events are identified across layers
 - [scd2-history.md](scd2-history.md) — Change history semantics
-- [../database/README.md](../database/README.md) — Schema reference
+- [../database/index.md](../database/index.md) — Schema reference
 - [../operations/pipeline-runbook.md](../operations/pipeline-runbook.md) — Manual runs

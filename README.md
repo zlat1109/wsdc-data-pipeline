@@ -115,13 +115,15 @@ python export.py --output-dir ./data
 
 ## Documentation
 
-Full English reference: **[docs/README.md](docs/README.md)**
+**Web site:** [zlat1109.github.io/wsdc-data-pipeline](https://zlat1109.github.io/wsdc-data-pipeline/) (MkDocs Material, auto-deploy on push)
 
 | Audience | Start here |
 |----------|------------|
-| Tableau analyst | [docs/tableau/README.md](docs/tableau/README.md) |
+| Tableau analyst | [docs/tableau/index.md](docs/tableau/index.md) |
 | Developer / maintainer | [docs/architecture/overview.md](docs/architecture/overview.md) |
-| Operations | [docs/operations/README.md](docs/operations/README.md) |
+| Operations | [docs/operations/index.md](docs/operations/index.md) |
+
+Full index: [docs/index.md](docs/index.md). Local preview: `pip install -r requirements-docs.txt && mkdocs serve`
 
 ## Секреты
 

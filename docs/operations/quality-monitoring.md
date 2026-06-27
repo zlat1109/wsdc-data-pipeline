@@ -14,7 +14,7 @@ Two layers: preprocess quality reports (CSV) and post-load SQL checks (database)
 
 Add fixes to knowledge maps / preprocess based on `manual_review_required`, not items already in `applied_normalizations`.
 
-See [../transform/README.md](../transform/README.md).
+See [../transform/index.md](../transform/index.md).
 
 ### Manual run
 

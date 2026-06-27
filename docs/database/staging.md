@@ -122,4 +122,4 @@ Loader reads filenames from `data/` (or `--data-dir`) and bulk-copies into match
 ## Related
 
 - [core.md](core.md) — promote targets
-- [../transform/README.md](../transform/README.md) — preprocess before load
+- [../transform/index.md](../transform/index.md) — preprocess before load

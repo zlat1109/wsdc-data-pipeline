@@ -74,5 +74,5 @@ python scripts/validate_pipeline_inputs.py --data-dir ./data
 
 ## Related
 
-- [../tableau/README.md](../tableau/README.md) — Tableau refresh
+- [../tableau/index.md](../tableau/index.md) — Tableau refresh
 - [pipeline-runbook.md](pipeline-runbook.md)

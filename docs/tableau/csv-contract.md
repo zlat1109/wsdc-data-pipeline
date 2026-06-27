@@ -199,4 +199,4 @@ Denormalized results with catalog + edition fields. ~47 MB. See [../database/exp
 ## Related
 
 - [joins.md](joins.md)
-- [README.md](README.md)
+- [index.md](index.md)
