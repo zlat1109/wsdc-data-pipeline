@@ -113,10 +113,20 @@ python export.py --output-dir ./data
 
 Расписание WSDC (scrape worldsdc.com/events/) обновляется отдельно по вторникам — `sync-events-list.yml` коммитит `data/events_list/`; `scheduled_events.csv` попадает в общий экспорт после sync.
 
+## Documentation
+
+Full English reference: **[docs/README.md](docs/README.md)**
+
+| Audience | Start here |
+|----------|------------|
+| Tableau analyst | [docs/tableau/README.md](docs/tableau/README.md) |
+| Developer / maintainer | [docs/architecture/overview.md](docs/architecture/overview.md) |
+| Operations | [docs/operations/README.md](docs/operations/README.md) |
+
 ## Секреты
 
 - Локально — `.env` (в `.gitignore`).
-- В CI — GitHub Secrets: см. [docs/GITHUB_ACTIONS.md](docs/GITHUB_ACTIONS.md).
+- В CI — GitHub Secrets: см. [docs/operations/github-actions.md](docs/operations/github-actions.md).
 
 ## Статус миграции
 
