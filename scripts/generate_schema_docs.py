@@ -130,9 +130,18 @@ def write_views_md(views: dict[str, list[str]], comments: dict[str, str]) -> Non
 
 
 def write_export_map_md(pairs: list[tuple[str, str]]) -> None:
-    lines = ["# Generated export map", "", "[auto]", "", "| View | CSV |", "|------|-----|"]
+    optional = {"export.results_by_event"}
+    lines = [
+        "# Generated export map",
+        "",
+        "[auto] Regenerate with `python scripts/generate_schema_docs.py`",
+        "",
+        "| View | CSV | Default export |",
+        "|------|-----|----------------|",
+    ]
     for view, csv in pairs:
-        lines.append(f"| `{view}` | `{csv}` |")
+        default = "No" if view in optional else "Yes"
+        lines.append(f"| `{view}` | `{csv}` | {default} |")
     lines.append("")
     (OUTPUT_DIR / "export_map.md").write_text("\n".join(lines), encoding="utf-8")
 

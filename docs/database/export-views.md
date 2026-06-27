@@ -75,8 +75,9 @@ Legacy column names preserved for old workbooks.
 | event_year | int | Year |
 | event_month | int | Month |
 | event_year_and_month | date | Edition date |
+| event_result_standardized | text | `result_standardized` (migration 020) |
 
-Note: no `event_id` in export — join via name + year/month or use `results_by_event`.
+Note: no `event_id` in export — join via `event_name` + year/month or use `results_by_event.csv`.
 
 ## export.location_info
 
@@ -91,6 +92,8 @@ Note: no `event_id` in export — join via name + year/month or use `results_by_
 | latitude | numeric | Lat |
 | longitude | numeric | Lon |
 | event_location | text | Label |
+| event_location_standardized | text | Normalized label |
+| coordinates_valid | boolean | Coords verified |
 
 ## export.events_wsdc
 
@@ -103,6 +106,10 @@ Note: no `event_id` in export — join via name + year/month or use `results_by_
 | location | text | Raw location |
 | url | text | URL |
 | date | text | Raw date label |
+| parsed_date | date | Parsed edition date |
+| event_year | int | Year |
+| event_month | int | Month |
+| event_year_month | text | `YYYY-MM` when derivable |
 
 ## export.event_catalog
 

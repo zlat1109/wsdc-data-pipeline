@@ -35,12 +35,14 @@ flowchart LR
 
 - Built in `core.event_editions` after each load (`db/build_event_catalog.py`)
 - Unique constraint: `(event_id, event_year, event_month)`
-- Join results:
+- Join results to editions (legacy CSV has **no `event_id`**):
 
 ```text
-dancers_results_info.event_id + event_year + event_month
-  = event_editions.event_id + event_year + event_month
+dancers_results_info.event_name = event_editions.event_name
+  AND event_year / event_month match on both sides
 ```
+
+Better: use `event_editions.event_id` from catalog after matching `event_name` to `event_catalog.canonical_name`, or export `results_by_event.csv` which includes `event_id` and `edition_id`.
 
 Requires preprocess to populate ISO `event_year` / `event_month` (cloud parse writes `"January 1997"` strings without preprocess).
 

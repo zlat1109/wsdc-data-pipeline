@@ -37,6 +37,7 @@ CI and `scripts/run_pipeline.py` call `db/apply.py` before load.
 | `017_export_event_name_raw.sql` | Export view uses raw name fallback |
 | `018_history_export_views.sql` | `export.changed_*` from history tables |
 | `019_geo_event_views.sql` | `export.geo_events`, `export.results_by_geo_event` |
+| `020_export_csv_column_alignment.sql` | Extra columns on legacy export views (results, locations, events_wsdc) |
 
 ## Adding a migration
 

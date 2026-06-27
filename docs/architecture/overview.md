@@ -28,8 +28,9 @@ flowchart TB
   end
   API --> Parser --> CSV
   CSV --> Validate --> Preprocess --> Staging
+  Staging --> History
   Staging --> Core
-  Core --> History
+  History --> ExportViews
   Core --> ExportViews
   ExportViews --> ExportPy --> GitData --> Tableau
 ```
@@ -63,18 +64,19 @@ Always run preprocess before load when CSVs come from cloud parse (API dates are
 ```
 load_staging_from_dir
   → INSERT history.parse_runs (status=running)
-  → record_weekly_points_history.sql
+  → record_weekly_points_history.sql   # SCD2 diff: staging vs current core
   → record_weekly_roles_history.sql
-  → promote_core.sql
-  → prepare_event_resolution (event_aliases seed)
+  → promote_core.sql                   # truncate + refresh core snapshots
+  → prepare_event_resolution           # event_aliases + result-only events
   → promote_core_results.sql
   → enrich_core_known_events
   → rebuild_event_catalog
-  → ANALYZE
-  → UPDATE parse_runs (success)
+  → ANALYZE core.results, core.event_editions, core.event_catalog
+  → UPDATE parse_runs (success) + COMMIT
+  → refresh_watermark                  # probe max dancer_id for check-updates
 ```
 
-Staging tables are truncated and reloaded each run. Core points/roles are full snapshots; results are merged via promote SQL.
+Staging tables are truncated and reloaded each run. History is recorded **before** core refresh (compares incoming staging to current core). Core points/roles are full snapshots; results are merged via promote SQL.
 
 ### 4. Export
 

@@ -53,11 +53,12 @@ python export.py
 
 | File | ~rows |
 |------|-------|
-| `dancer_role_info` | 27,150–27,200 |
-| `dancers_points_info` | 50,500 |
-| `dancers_results_info` | 194,000+ |
-| `event_editions` | 2,600+ (0 = date bug) |
-| `event_catalog` | ~495 |
+| `dancer_role_info` | 27,200 |
+| `dancers_points_info` | 50,600 |
+| `dancers_results_info` | 194,000 |
+| `event_editions` | 2,620 |
+| `event_catalog` | 495 |
+| `events_wsdc` | 2,620 |
 | max `dancer_id` | 28,387+ |
 
 ## Branch model

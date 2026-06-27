@@ -54,8 +54,9 @@ Column reference for committed `data/*.csv` files. Source views in [../database/
 | event_year | integer | YES | Edition year |
 | event_month | integer | YES | Edition month |
 | event_year_and_month | date | YES | Edition date |
+| event_result_standardized | string | YES | Normalized placement (migration 020) |
 
-Note: legacy export has no `event_id` column — join via edition keys or use optional `results_by_event.csv`.
+Note: legacy export has no `event_id` column — join via `event_name` + year/month or use optional `results_by_event.csv`.
 
 ## location_info.csv
 
@@ -71,6 +72,8 @@ Note: legacy export has no `event_id` column — join via edition keys or use op
 | latitude | decimal | YES | Latitude |
 | longitude | decimal | YES | Longitude |
 | event_location | string | YES | Display label |
+| event_location_standardized | string | YES | Normalized label (migration 020) |
+| coordinates_valid | boolean | YES | Coords verified (migration 020) |
 
 ## events_wsdc.csv
 
@@ -84,6 +87,10 @@ Note: legacy export has no `event_id` column — join via edition keys or use op
 | location | string | YES | Raw location |
 | url | string | YES | URL |
 | date | string | YES | Raw date label |
+| parsed_date | date | YES | Parsed edition date (migration 020) |
+| event_year | integer | YES | Year (migration 020) |
+| event_month | integer | YES | Month (migration 020) |
+| event_year_month | string | YES | `YYYY-MM` when year/month known (migration 020) |
 
 ## event_catalog.csv
 
@@ -190,11 +197,12 @@ Denormalized results with catalog + edition fields. ~47 MB. See [../database/exp
 
 | File | ~rows |
 |------|-------|
-| dancer_role_info | 27,000 |
-| dancers_points_info | 50,500 |
+| dancer_role_info | 27,200 |
+| dancers_points_info | 50,600 |
 | dancers_results_info | 194,000 |
-| event_editions | 2,600 |
+| event_editions | 2,620 |
 | event_catalog | 495 |
+| events_wsdc | 2,620 |
 
 ## Related
 

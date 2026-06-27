@@ -5,6 +5,8 @@ One-off database maintenance scripts. **Always run `--dry-run` first.** Prefer S
 ## Recommended order (audit remediation)
 
 ```bash
+python scripts/audit_event_splits.py --output-dir data/quality_reports
+
 python scripts/merge_event_ids.py --dry-run
 python scripts/merge_event_ids.py --apply
 
@@ -12,6 +14,9 @@ python scripts/repair_divisions.py --dry-run
 python scripts/repair_divisions.py --apply
 
 python scripts/repair_locations.py
+
+python scripts/repair_results_location.py --dry-run   # if location_id gaps remain
+python scripts/repair_results_location.py --apply
 
 python scripts/cleanup_event_catalog.py --dry-run
 python scripts/cleanup_event_catalog.py --apply
@@ -24,6 +29,8 @@ python scripts/close_parse_runs.py --apply
 python scripts/monitor_data_quality.py
 python export.py --output-dir data
 ```
+
+Note: `repair_locations.py` has no `--dry-run`; it always applies corrections.
 
 ## Script reference
 

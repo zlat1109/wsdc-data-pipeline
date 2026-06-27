@@ -9,12 +9,12 @@ Direct link: https://github.com/zlat1109/wsdc-data-pipeline/settings/secrets/act
 
 Supabase **Direct** host (`db.<ref>.supabase.co`) is **IPv6-only**. GitHub runners have no IPv6 route → `Network is unreachable`.
 
-| Secret | Local `.env` (Direct) | GitHub Secrets (pooler, Session mode) |
+| Secret | Local `.env` (Direct) | GitHub Secrets (pooler, Transaction mode) |
 |---|---|---|
-| `DB_HOST` | `db.tougqwxmahkwnaculiju.supabase.co` | `aws-1-eu-west-2.pooler.supabase.com` |
+| `DB_HOST` | `db.<your-project-ref>.supabase.co` | `aws-1-eu-west-2.pooler.supabase.com` |
 | `DB_PORT` | `5432` | **`6543`** (Transaction pooler; Session `:5432` may fail) |
 | `DB_NAME` | `postgres` | `postgres` |
-| `DB_USER` | `postgres` | `postgres.tougqwxmahkwnaculiju` |
+| `DB_USER` | `postgres` | `postgres.<your-project-ref>` |
 | `DB_PASSWORD` | same password | same password |
 
 Copy host/port/user from Supabase Dashboard → **Connect** → **Transaction pooler** (not Direct, not Session if auth fails).

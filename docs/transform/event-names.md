@@ -30,14 +30,21 @@ Merges both dicts for preprocess. Load seeds `core.event_aliases` via `prepare_e
 
 ## Registry id merges (same geo only)
 
-`MERGE_EVENT_ID_MAP` in `event_aliases.py` — source_id → canonical_id:
+`MERGE_EVENT_ID_MAP` in `event_aliases.py` — source_id → canonical_id (all 11 pairs):
 
-| Source | Canonical | Geo |
-|--------|-----------|-----|
-| 66 | 47 | Denver (SwingTime) |
-| 39 | 334 | Boston metro |
-| 37 | 195 | Palm Springs |
-| … | … | … |
+| Source | Canonical | Geo / note |
+|--------|-----------|------------|
+| 66 | 47 | Denver — SwingTime |
+| 37 | 195 | Palm Springs New Year |
+| 193 | 236 | Warsaw Halloween Swing |
+| 99 | 119 | Chicago — Chicagoland |
+| 198 | 154 | London — UK WCS |
+| 202 | 218 | Singapore — Asia WCS Open |
+| 39 | 334 | Boston metro — Countdown Swing |
+| 307 | 272 | Paris Westie Fest |
+| 325 | 330 | Adelaide — Simply Adelaide |
+| 321 | 331 | Brno — Swing Fiction |
+| 279 | 283 | Kazan EL Fest |
 
 Applied by `scripts/merge_event_ids.py` (DB mutation, not preprocess).
 

@@ -86,10 +86,12 @@ python export.py --include-results-by-event   # + results_by_event.csv (~47 MB)
 **Рекомендуемые join в Tableau Public** (без тяжёлого `results_by_event.csv`):
 
 ```
-dancers_results_info  ←→  event_editions   ON event_id, event_year, event_month
+dancers_results_info  ←→  event_editions   ON event_name, event_year, event_month
 event_editions        ←→  event_catalog    ON event_id
-scheduled_events      ←→  event_catalog    ON event_id (или schedule_event_key)
+scheduled_events      ←→  event_catalog    ON canonical_event_id (= event_id)
 ```
+
+См. [docs/tableau/joins.md](docs/tableau/joins.md). В `dancers_results_info.csv` **нет колонки `event_id`** — только `event_name` + год/месяц.
 
 Rebuild каталога в Supabase после points load (`load.py`) или вручную:
 
