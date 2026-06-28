@@ -135,7 +135,7 @@ def write_views_md(views: dict[str, list[str]], comments: dict[str, str]) -> Non
 
 
 def write_export_map_md(pairs: list[tuple[str, str]]) -> None:
-    optional = {"export.results_by_event"}
+    optional = {"export.results_by_event", "export.dancers_results_with_name"}
     derived_prefix = "derived."
     lines = [
         "# Generated export map",

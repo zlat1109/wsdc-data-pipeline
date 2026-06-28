@@ -123,31 +123,36 @@ def backfill_points_history(cur, data_dir: Path, run_id: int) -> None:
     cur.execute(read_sql("backfill_points_history.sql"), {"run_id": run_id})
 
 
-def backfill_roles_history_subprocess(data_dir: Path, run_id: int, conn) -> None:
+def backfill_legacy_history_subprocess(data_dir: Path, run_id: int, conn) -> None:
     roles_changed = data_dir / "changed_dancer_role_info.csv"
     if not roles_changed.exists():
-        print("No changed_dancer_role_info.csv found — skipping role history")
+        print("No changed_dancer_role_info.csv found — skipping role/name history")
         return
     print(
-        f"Building role history from {roles_changed.name} "
+        f"Building role + name history from {roles_changed.name} "
         "(pandas — SQL times out on 3M+ rows) ..."
     )
     conn.commit()
     subprocess.run(
         [
             sys.executable,
-            str(PROJECT_ROOT / "scripts" / "backfill_roles_history.py"),
+            str(PROJECT_ROOT / "scripts" / "split_legacy_role_history.py"),
             "--csv",
             str(roles_changed),
             "--run-id",
             str(run_id),
+            "--apply",
         ],
         cwd=PROJECT_ROOT,
         check=True,
     )
     with conn.cursor() as cur:
         cur.execute("SELECT count(*) FROM history.dancer_roles_history")
-        print(f"  role history rows: {cur.fetchone()[0]}")
+        role_count = cur.fetchone()[0]
+        cur.execute("SELECT count(*) FROM history.dancer_names_history")
+        name_count = cur.fetchone()[0]
+        print(f"  role history rows: {role_count}")
+        print(f"  name history rows: {name_count}")
 
 
 def print_core_counts(cur) -> None:
@@ -161,6 +166,7 @@ def print_core_counts(cur) -> None:
         "core.results",
         "history.dancer_points_history",
         "history.dancer_roles_history",
+        "history.dancer_names_history",
     ]
     print("\nRow counts in Supabase:")
     for table in tables:
@@ -184,12 +190,12 @@ def main() -> None:
     parser.add_argument(
         "--skip-roles-history",
         action="store_true",
-        help="Skip loading history from changed_dancer_role_info.csv",
+        help="Skip loading role + name history from changed_dancer_role_info.csv",
     )
     parser.add_argument(
         "--roles-only",
         action="store_true",
-        help="Only build role history from changed_dancer_role_info.csv (skip staging/core)",
+        help="Only rebuild role + name history from changed_dancer_role_info.csv (skip staging/core)",
     )
     parser.add_argument(
         "--run-id",
@@ -208,11 +214,11 @@ def main() -> None:
                 cur.execute("SET statement_timeout = '0'")
                 run_id = resolve_backfill_run_id(cur, args.run_id)
             conn.commit()
-            print(f"Role-history only (run_id={run_id}) ...")
-            backfill_roles_history_subprocess(args.data_dir, run_id, conn)
+            print(f"Legacy history only (run_id={run_id}) ...")
+            backfill_legacy_history_subprocess(args.data_dir, run_id, conn)
             with conn.cursor() as cur:
                 mark_run_success(cur, run_id, conn)
-        print("\nRole history backfill complete.")
+        print("\nLegacy role + name history backfill complete.")
         return
 
     print(f"Data directory: {args.data_dir}")
@@ -250,7 +256,7 @@ def main() -> None:
                 backfill_points_history(cur, args.data_dir, run_id)
 
             if not args.skip_roles_history:
-                backfill_roles_history_subprocess(args.data_dir, run_id, conn)
+                backfill_legacy_history_subprocess(args.data_dir, run_id, conn)
 
             finish_run(cur, run_id, staging_counts, conn)
             print_core_counts(cur)

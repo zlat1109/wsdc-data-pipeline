@@ -85,3 +85,11 @@ def normalize_level(value: str | None) -> str | None:
 def normalize_division(value: str | None) -> str | None:
     """Normalize division/level fields in dancer_roles (same rules as levels)."""
     return normalize_level(value)
+
+
+def normalize_dancer_name(value: str | None) -> str | None:
+    """Collapse whitespace; empty -> None (WSDC display name)."""
+    if value is None:
+        return None
+    cleaned = " ".join(str(value).replace("\t", " ").split()).strip()
+    return cleaned or None

@@ -70,8 +70,17 @@ Trend charts from `changed_*` files:
 
 ```text
 changed_dancer_points_info.dancer_id = dancers_points_info.dancer_id
-(same role, dance, level for point-in-time comparison)
+changed_dancer_role_info.dancer_id = dancer_role_info.dancer_id   -- division changes only
+changed_dancer_name_info.dancer_id = dancer_role_info.dancer_id   -- name history
+(same role, dance, level for point-in-time points comparison)
 ```
+
+For display name on a **past result**:
+
+1. **Easiest:** `dancers_results_with_name.csv` (`python export.py --include-results-with-name`)
+2. **Manual join:** `changed_dancer_name_info` on `dancer_id` where `update_date <= COALESCE(event_year_and_month, make_date(event_year, event_month, 1))` — pick the latest matching row per result
+
+Do not infer renames from `changed_dancer_role_info` — that file tracks **division** changes only since migration 021.
 
 Remember: `changed_*` rows are **versions** (one row per change), not weekly full snapshots.
 

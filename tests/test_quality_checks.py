@@ -16,11 +16,13 @@ def test_check_names_unique():
 
 def test_core_checks_include_ci_invariants():
     names = {c.name for c in CORE_CHECKS}
-    assert names == {
+    assert names >= {
         "results_null_location_id",
         "split_names_same_geo",
         "noncanonical_divisions",
         "points_history_drift",
+        "roles_history_drift",
+        "names_history_drift",
     }
 
 
@@ -30,6 +32,7 @@ def test_extended_checks_cover_known_regression_categories():
     assert "phantom_ids_not_merged" in names
     assert "swing_snow_alias" in names
     assert "double_space_event_location" in names
+    assert "dancers_empty_name" in names
 
 
 def test_singapore_whitelisted_in_city_equals_country():

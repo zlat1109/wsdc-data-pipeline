@@ -93,10 +93,77 @@ CORE_CHECKS: tuple[QualityCheck, ...] = (
         description="SCD2 open row must match core.dancer_points snapshot.",
         fix_hint="scripts/reconcile_points_history.py",
     ),
+    QualityCheck(
+        name="roles_history_drift",
+        sql="""
+        SELECT count(*) FROM history.dancer_roles_history h
+        LEFT JOIN core.dancer_roles c ON c.dancer_id = h.dancer_id
+        WHERE h.valid_to IS NULL
+          AND (
+              c.dancer_id IS NULL
+              OR core.dancer_roles_division_sig(
+                  h.dominate_role,
+                  h.dominate_required,
+                  h.dominate_allowed,
+                  h.non_dominate_role,
+                  h.non_dominate_required,
+                  h.non_dominate_allowed,
+                  h.non_dominate_recommended,
+                  h.non_dominate_role_highest_level_points,
+                  h.non_dominate_role_highest_level
+              ) IS DISTINCT FROM core.dancer_roles_division_sig(
+                  c.dominate_role,
+                  c.dominate_required,
+                  c.dominate_allowed,
+                  c.non_dominate_role,
+                  c.non_dominate_required,
+                  c.non_dominate_allowed,
+                  c.non_dominate_recommended,
+                  c.non_dominate_role_highest_level_points,
+                  c.non_dominate_role_highest_level
+              )
+          )
+        """,
+        max_value=0,
+        severity="error",
+        category="history",
+        description="SCD2 open role row must match core.dancer_roles divisions.",
+        fix_hint="scripts/reconcile_roles_history.py",
+    ),
+    QualityCheck(
+        name="names_history_drift",
+        sql="""
+        SELECT count(*) FROM history.dancer_names_history h
+        LEFT JOIN core.dancers d ON d.dancer_id = h.dancer_id
+        WHERE h.valid_to IS NULL
+          AND (d.dancer_id IS NULL OR d.dancer_name IS DISTINCT FROM h.dancer_name)
+        """,
+        max_value=0,
+        severity="error",
+        category="history",
+        description="SCD2 open name row must match core.dancers.dancer_name.",
+        fix_hint="scripts/reconcile_names_history.py",
+    ),
 )
 
 # Extended checks — regressions from knowledge/repair layer.
 EXTENDED_CHECKS: tuple[QualityCheck, ...] = (
+    QualityCheck(
+        name="dancers_empty_name",
+        sql="""
+        SELECT count(*) FROM core.dancers d
+        WHERE coalesce(trim(d.dancer_name), '') = ''
+          AND (
+              EXISTS (SELECT 1 FROM core.results r WHERE r.dancer_id = d.dancer_id)
+              OR EXISTS (SELECT 1 FROM core.dancer_points p WHERE p.dancer_id = d.dancer_id)
+          )
+        """,
+        max_value=0,
+        severity="warn",
+        category="event_naming",
+        description="Active dancers with results/points should have a display name.",
+        fix_hint="parser/extract_api.py + promote_core name coalesce",
+    ),
     QualityCheck(
         name="orphan_location_id",
         sql="""

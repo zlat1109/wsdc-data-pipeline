@@ -65,8 +65,9 @@ Always run preprocess before load when CSVs come from cloud parse (API dates are
 load_staging_from_dir
   → INSERT history.parse_runs (status=running)
   → record_weekly_points_history.sql   # SCD2 diff: staging vs current core
-  → record_weekly_roles_history.sql
-  → promote_core.sql                   # truncate + refresh core snapshots
+  → record_weekly_roles_history.sql    # divisions only (shared sig function)
+  → record_weekly_names_history.sql    # display name changes
+  → promote_core.sql                   # truncate + refresh core snapshots (name coalesce)
   → prepare_event_resolution           # event_aliases + result-only events
   → promote_core_results.sql
   → enrich_core_known_events
@@ -80,7 +81,7 @@ Staging tables are truncated and reloaded each run. History is recorded **before
 
 ### 4. Export
 
-`export.py` copies `export.*` views to `data/*.csv` via Postgres `COPY`. Default export includes legacy 5 + event catalog 3 + history 2 (10 files).
+`export.py` copies `export.*` views to `data/*.csv` via Postgres `COPY`. Default export: **11** DB views (legacy 5 + catalog 3 + history 3) plus **3** derived analytics CSVs → **14** files total.
 
 ### 5. CI automation
 

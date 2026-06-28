@@ -184,7 +184,27 @@ Same columns as `dancers_points_info.csv`. `update_date` = change effective date
 **Grain:** one role-summary change version  
 **View:** `export.changed_dancer_role_info`
 
-Same 12 columns as `dancer_role_info.csv` (column order matches legacy). `update_date` = `valid_from`.
+Same 12 columns as `dancer_role_info.csv` (column order matches legacy). `update_date` = `valid_from`. Division changes only; `dancer_name` is display-only on each version row.
+
+## changed_dancer_name_info.csv
+
+**Grain:** one display-name change version  
+**View:** `export.changed_dancer_name_info`
+
+| Column | Type | Description |
+|--------|------|-------------|
+| dancer_id | integer | WSDC id |
+| dancer_name | string | Name during `[valid_from, valid_to]` |
+| update_date | date | `valid_from` |
+
+## Optional: dancers_results_with_name.csv
+
+**Flag:** `python export.py --include-results-with-name`  
+**View:** `export.dancers_results_with_name`
+
+Same as `dancers_results_info.csv` plus `dancer_name` from `core.dancer_name_at(dancer_id, as_of)`.
+
+`as_of` = `event_date`, or first day of `event_year`/`event_month` when date is missing; current name when both are null.
 
 ## Optional: results_by_event.csv
 
@@ -211,6 +231,8 @@ Skip with `python export.py --skip-derived-exports`.
 
 | File | ~rows |
 |------|-------|
+| changed_dancer_role_info | 127,000 | Division versions (legacy split) |
+| changed_dancer_name_info | 27,600 | Name versions (legacy split) |
 | dancer_role_info | 27,200 |
 | dancers_points_info | 50,600 |
 | dancers_results_info | 194,000 |

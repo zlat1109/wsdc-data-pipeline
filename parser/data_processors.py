@@ -10,6 +10,7 @@ from datetime import datetime
 import re
 from .logger import logger
 from .exceptions import ValidationError
+from transform.normalize import normalize_dancer_name
 
 
 class DataCleaner:
@@ -112,7 +113,9 @@ class RoleInfoExtractor:
                 'dancer_id': int(dancer_id),
                 'dancer_first': dancer_data['dancer_first'],
                 'dancer_last': dancer_data['dancer_last'],
-                'dancer_name': f"{dancer_data['dancer_first']} {dancer_data['dancer_last']}".strip(),
+                'dancer_name': normalize_dancer_name(
+                    f"{dancer_data['dancer_first']} {dancer_data['dancer_last']}"
+                ) or "",
                 'update_date': datetime.now().strftime('%Y-%m-%d'),
                 'dominate_role': dancer_data.get('dominate_role', ''),
                 'non_dominate_role': dancer_data.get('non_dominate_role', ''),

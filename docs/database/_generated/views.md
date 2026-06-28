@@ -2,6 +2,8 @@
 
 [auto] Regenerate with `python scripts/generate_schema_docs.py`
 
+## export.changed_dancer_name_info
+
 ## export.changed_dancer_points_info
 
 ## export.changed_dancer_role_info
@@ -11,6 +13,8 @@
 ## export.dancers_points_info
 
 ## export.dancers_results_info
+
+## export.dancers_results_with_name
 
 ## export.event_catalog
 

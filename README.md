@@ -18,7 +18,7 @@ points.worldsdc.com
    core             нормализованные сущности: dancers, events,
         │           event_instances, locations, results, dancer_points
         ▼
-   history          SCD2-история изменений очков/уровней + журнал прогонов
+   history          SCD2: очки, дивизионы, имена + журнал прогонов
         ▼
    export/          SQL-views → CSV (структура 1:1 со старыми файлами)
         ▼
@@ -51,8 +51,9 @@ cp .env.example .env   # заполнить DATABASE_URL и GOOGLE_MAPS_API_KEY
 python -m parser.wsdc_parser      # полный парс (локально)
 python backfill.py                # первичная загрузка существующих CSV в базу
 python load.py                    # staging -> core -> history
-python export.py                  # legacy + event catalog -> data/*.csv
+python export.py                  # legacy + catalog + history -> data/*.csv
 python export.py --include-results-by-event   # + results_by_event.csv (~47 MB)
+python export.py --include-results-with-name  # + dancers_results_with_name.csv
 ```
 
 ## Выходные CSV (контракт для Tableau)
@@ -66,6 +67,18 @@ python export.py --include-results-by-event   # + results_by_event.csv (~47 MB)
 - `events_wsdc.csv`
 
 Имена и структура колонок сохраняются 1:1 с прежним процессом.
+
+### История изменений (SCD2 → CSV)
+
+Экспортируются автоматически вместе с legacy CSV:
+
+| CSV | Содержимое |
+|-----|------------|
+| `changed_dancer_points_info.csv` | Изменения очков |
+| `changed_dancer_role_info.csv` | Изменения дивизионов (без триггера по имени) |
+| `changed_dancer_name_info.csv` | Изменения display name (`history.dancer_names_history`) |
+
+Для имени на **прошлом** result: `python export.py --include-results-with-name` или join `changed_dancer_name_info` в Tableau. См. [docs/tableau/joins.md](docs/tableau/joins.md).
 
 ### Каталог ивентов (event-centric dashboards)
 

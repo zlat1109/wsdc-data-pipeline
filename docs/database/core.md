@@ -27,6 +27,28 @@ Seeded in migration 003. Referenced by `core.dancer_points.level`.
 | dancer_id | int | NO | WSDC registry id |
 | dancer_name | text | YES | Current display name |
 
+## core.dancer_aliases
+
+**Grain:** one alternate display string → registry id.
+
+**Primary key:** `alias`
+
+| Column | Type | Nullable | Description |
+|--------|------|----------|-------------|
+| alias | text | NO | Alternate spelling or maiden name |
+| dancer_id | int | NO | FK → `core.dancers` |
+| source | text | YES | Provenance (e.g. knowledge map) |
+| notes | text | YES | Audit note |
+
+Seeded via `scripts/seed_dancer_aliases.py` from `transform/knowledge/dancer_aliases.py`.
+
+## SQL helpers (migration 021–023)
+
+| Function | Purpose |
+|----------|---------|
+| `core.dancer_name_at(dancer_id, as_of date)` | Display name valid on `as_of`; NULL `as_of` → current `core.dancers` |
+| `core.dancer_roles_division_sig(...)` | md5 signature for competitive role/division SCD2 (excludes name) |
+
 ## core.locations
 
 **Grain:** one WSDC location registry entry.

@@ -34,7 +34,9 @@ Legacy audit-only: `scripts/data_quality_audit.py` (prefer preprocess).
 | `results_null_location_id` | 0 | All results have location |
 | `split_names_same_geo` | 0 | No same-geo duplicate event_ids per raw name |
 | `noncanonical_divisions` | 0 | No All-Stars / Champions / Masters |
-| `points_history_drift` | 0 | Open history matches core points |
+| `points_history_drift` | 0 | Open points history matches `core.dancer_points` |
+| `roles_history_drift` | 0 | Open division history matches `core.dancer_roles` (sig function) |
+| `names_history_drift` | 0 | Open name history matches `core.dancers.dancer_name` |
 
 Exit code 1 if any check fails.
 
@@ -56,6 +58,7 @@ Check definitions live in `db/quality_checks.py` (single source of truth for mon
 
 | Extended check | Historical problem |
 |----------------|-------------------|
+| `dancers_empty_name` | API returned blank name for dancer with results/points |
 | `orphan_location_id` | resolve.py backfill / repair_results_location |
 | `all_caps_cities` | CHICAGO, TOULOUSE, WILMINGTON DEL |
 | `double_space_event_location` | `Moscow,  Russia` |

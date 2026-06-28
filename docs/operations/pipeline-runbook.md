@@ -48,7 +48,8 @@ Recommended manual full-parse inputs:
 | Auto re-run | Multiple long parses | Weekly cooldown in `check_updates.py` |
 | Load | `event_editions` = 0 | Cloud parse dates; run preprocess with date normalization |
 | Sync | Supabase fresh, git CSV stale | [data-sync.md](data-sync.md); run `export.py` and commit |
-| Geography | Map markers split by suburb | Use `preprocess_data.py` before load |
+| Load | `names_history_drift` > 0 | `scripts/reconcile_names_history.py --apply` |
+| Load | blank dancer names after parse | Check coalesce in `promote_core.sql`; extended check `dancers_empty_name` |
 
 ## Multi-machine
 
