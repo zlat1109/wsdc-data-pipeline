@@ -61,7 +61,7 @@ event_id,canonical_name,url,registry_status,typical_city,typical_state,typical_c
 116,Calgary Dance Stampede,http://www.calgarydancestampede.com/,Registry Event,Calgary,Alberta,Canada,"Calgary, AB, Canada",2006.0,2026.0,8,258,177,2027-04-29,"Calgary, AB, Canada",2026-06-27 09:25:01.285384+00
 11,California State Championships,,,Buena Park,California,United States,"Buena Park, CA",1997.0,1999.0,3,134,107,,"Buena Park, CA",2026-06-27 09:25:01.285384+00
 105,Canadian Swing Championships,http://www.canadianswingchampionships.com,,Montreal,Quebec,Canada,"Montreal, Canada",2005.0,2026.0,18,638,399,,"Montreal, Canada",2026-06-27 09:25:01.285384+00
-405,Canadian Swing Championships (CSC),,,Milan,,Italy,"Milan, Italy",2026.0,2026.0,1,92,80,,"Milan, Italy",2026-06-27 09:25:01.285384+00
+405,Canadian Swing Championships (CSC),,,Milan,,Italy,"Milan,, Italy",2026.0,2026.0,1,92,80,,"Milan,, Italy",2026-06-27 09:25:01.285384+00
 406,Capital Swing Convention,,,,,,,,,0,0,0,,,2026-06-27 09:25:01.285384+00
 12,Capital Swing Dance Convention,http://www.capitalswingconvention.com/,Registry Event,Sacramento,California,United States,"Sacramento, CA, USA",1993.0,2026.0,32,3784,1858,2027-02-11,"Sacramento, CA, USA",2026-06-27 09:25:01.285384+00
 407,Capital Swing Dancers' President's Day,,,,,,,,,0,0,0,,,2026-06-27 09:25:01.285384+00
@@ -84,7 +84,7 @@ event_id,canonical_name,url,registry_status,typical_city,typical_state,typical_c
 411,Citadel Swing (Cancelled due to Covid-19),,,,,,,,,0,0,0,,,2026-06-27 09:25:01.285384+00
 496,City of Angels,,,,,,,,,0,0,0,,,2026-06-27 09:25:01.285384+00
 412,City of Angels Swing Event,,,,,,,,,0,0,0,,,2026-06-27 09:25:01.285384+00
-187,City of Angels WCS,https://cityofangelswcs.com/,Registry Event,Burbank,California,United States,"Burbank, CA, United States",2012.0,2026.0,13,1628,940,2027-04-29,"Burbank, CA, United States",2026-06-27 09:25:01.285384+00
+187,City of Angels WCS,https://cityofangelswcs.com/,Registry Event,Burbank,California,United States,"Burbank, California, California, USA",2012.0,2026.0,13,1628,940,2027-04-29,"Burbank, California, California, USA",2026-06-27 09:25:01.285384+00
 109,Colorado Country Classic,https://coloradocountryclassic.net/,Registry Event,Denver,Colorado,United States,"Denver, Colorado, Colorado, USA",2005.0,2025.0,17,782,425,2026-06-25,"Denver, Colorado, Colorado, USA",2026-06-27 09:25:01.285384+00
 145,Come Rain Come Shine,,,Portland,Oregon,United States,"Portland, OR",2008.0,2010.0,3,134,112,,"Portland, OR",2026-06-27 09:25:01.285384+00
 334,Countdown Swing Boston,http://countdownswingboston.com/,Registry Event,Boston,Massachusetts,United States,"Boston, Massachusetts, United States",1995.0,2026.0,23,1848,1059,2026-12-31,"Boston, Massachusetts, United States",2026-06-27 09:25:01.285384+00
@@ -131,10 +131,10 @@ event_id,canonical_name,url,registry_status,typical_city,typical_state,typical_c
 422,Florida Dance Magic (Unconfirmed),,,,,,,,,0,0,0,,,2026-06-27 09:25:01.285384+00
 287,Florida Westie Fest,,,Tampa,Florida,United States,"Tampa, FL",2017.0,2018.0,2,114,89,,"Tampa, FL",2026-06-27 09:25:01.285384+00
 365,Flowstate | West Coast Swing & Zouk Festival,http://www.flowstatefest.com/,Registry Event,London,England,United Kingdom,"London, London, United Kingdom",2025.0,2025.0,1,58,55,2026-11-13,"London, London, United Kingdom",2026-06-27 09:25:01.285384+00
-183,Freedom Swing Dance Challenge,https://freedomswingdance.com/,Registry Event,Wilmington,Delaware,United States,"Wilmington, DE, United States",2012.0,2026.0,14,1263,709,2027-01-22,"Wilmington, DE, United States",2026-06-27 09:25:01.285384+00
+183,Freedom Swing Dance Challenge,https://freedomswingdance.com/,Registry Event,Wilmington,Delaware,United States,"Wilmington, DE, United States",2012.0,2026.0,14,1263,709,2027-01-22,"Wilmington, DE, United States",2026-06-27 18:39:39.892523+00
 369,FRENCH CONNECTION WCS,https://www.frenchconnectionwcs.com/,Registry Event,Annecy,,France,"Annecy, Haute Savoie, France",2025.0,2025.0,1,118,108,2026-07-03,"Annecy, Haute Savoie, France",2026-06-27 09:25:01.285384+00
 502,French Open WCS,,,,,,,,,0,0,0,,,2026-06-27 09:25:01.285384+00
-175,French Open West Coast Swing,http://www.fowcs.com,,Paris,,France,"Paris, France",2011.0,2026.0,14,1697,903,,"Paris, France",2026-06-27 09:25:01.285384+00
+175,French Open West Coast Swing,http://www.fowcs.com,,Paris,,France,"PARIS, France",2011.0,2026.0,14,1697,903,,"PARIS, France",2026-06-27 09:25:01.285384+00
 20,FreZno Dance Classic,,,Fresno,California,United States,"Fresno, CA",1994.0,2019.0,26,2074,959,,"Fresno, CA",2026-06-27 09:25:01.285384+00
 226,Ft. Lauderdale Swing & Shag Beach Bash,,,Fort Lauderdale,Florida,United States,"Ft. Lauderdale, FL",2014.0,2018.0,5,213,129,,"Ft. Lauderdale, FL",2026-06-27 09:25:01.285384+00
 221,Gateway Swing Classic,http://gatewayswing.com,,St. Louis,Missouri,United States,"St. Louis, MO, USA",2014.0,2026.0,9,495,338,,"St. Louis, MO, USA",2026-06-27 09:25:01.285384+00
@@ -253,7 +253,7 @@ event_id,canonical_name,url,registry_status,typical_city,typical_state,typical_c
 368,Next Level Swing,http://www.next-level.dance,,Gothenburg,,Sweden,"Gothenburg, Västra götlaland, Sweden",2025.0,2025.0,1,74,66,,"Gothenburg, Västra götlaland, Sweden",2026-06-27 09:25:01.285384+00
 253,Nordic WCS Championships,http://www.nordicwcschamps.com,,Stockholm,,Sweden,"Stockholm,  Sweden",2015.0,2026.0,10,1066,703,,"Stockholm,  Sweden",2026-06-27 09:25:01.285384+00
 40,North Atlantic Swing Dance Championships,,,Cape Cod,Massachusetts,United States,"Cape Cod, MA",1998.0,2004.0,7,404,287,,"Cape Cod, MA",2026-06-27 09:25:01.285384+00
-376,Northeast Swing Classic,http://www.northeastswingclassic.com/,Registry Event,Providence,Rhode Island,United States,"Providence, RI, United States",2025.0,2025.0,1,110,93,2026-11-12,"Providence, RI, United States",2026-06-27 09:25:01.285384+00
+376,Northeast Swing Classic,http://www.northeastswingclassic.com/,Registry Event,Providence RI,Rhode Island,United States,"Providence RI, RI, USA",2025.0,2025.0,1,110,93,2026-11-12,"Providence RI, RI, USA",2026-06-27 09:25:01.285384+00
 41,Northwest Regional,,,Spokane,Washington,United States,"Spokane, WA",2000.0,2002.0,2,91,80,,"Spokane, WA",2026-06-27 09:25:01.285384+00
 232,Norway Westie Fest,https://www.norwaywestiefest.com/,Trial Event,Trondheim,,Norway,"Trondheim, Norway",2014.0,2019.0,6,296,203,2027-03-05,"Trondheim, Norway",2026-06-27 09:25:01.285384+00
 388,Norwegian Open WCS,https://norwegianopen.no/,Registry Event,Hamar,,Norway,"Hamar,  Norway",2025.0,2025.0,1,81,75,2026-10-01,"Hamar,  Norway",2026-06-27 09:25:01.285384+00
@@ -321,8 +321,8 @@ event_id,canonical_name,url,registry_status,typical_city,typical_state,typical_c
 290,Shooba Dooba Swing,https://danceconvention.net/eventdirector/ru/eventpage/6023470-shooba-dooba-swing-2020/info,,Moscow,,Russia,"Moscow, Russia",2018.0,2025.0,9,578,296,,"Moscow, Russia",2026-06-27 09:25:01.285384+00
 459,Show Me Showdown,,,,,,,,,0,0,0,,,2026-06-27 09:25:01.285384+00
 460,Show-Me Showdown,,,,,,,,,0,0,0,,,2026-06-27 09:25:01.285384+00
-325,Simply Adelaide West Coast Swing,http://www.simplyadelaidewcs.com.au/,Registry Event,,,Australia,"Adelaide, SA, Australia",,,0,0,0,2026-11-05,"Adelaide, SA, Australia",2026-06-27 09:25:01.285384+00
 330,Simply Adelaide West Coast Swing,http://www.simplyadelaidewcs.com.au,,Adelaide,,Australia,"Adelaide, SA, Australia",2020.0,2025.0,6,294,172,,"Adelaide, SA, Australia",2026-06-27 09:25:01.285384+00
+325,Simply Adelaide West Coast Swing,http://www.simplyadelaidewcs.com.au/,Registry Event,,,Australia,"Adelaide, SA, Australia",,,0,0,0,2026-11-05,"Adelaide, SA, Australia",2026-06-27 09:25:01.285384+00
 209,SinCity Swing,,,Las Vegas,Nevada,United States,"Las Vegas, NV",2013.0,2015.0,3,255,205,,"Las Vegas, NV",2026-06-27 09:25:01.285384+00
 223,Slingshot Swing,,,Oslo,,Norway,"Oslo, Norway",2014.0,2016.0,2,94,86,,"Oslo, Norway",2026-06-27 09:25:01.285384+00
 352,Slovenian Open,https://www.slovenianopen.dance,,Ljubljana,,Slovenia,"Ljubljana,  Slovenia",2025.0,2026.0,2,232,181,,"Ljubljana,  Slovenia",2026-06-27 09:25:01.285384+00
@@ -347,8 +347,8 @@ event_id,canonical_name,url,registry_status,typical_city,typical_state,typical_c
 228,Summer Swing Classic,,,St. Petersburg,Florida,United States,"St. Petersburg, FL",2014.0,2015.0,2,132,108,,"St. Petersburg, FL",2026-06-27 09:25:01.285384+00
 54,Summer Swing Jam,,,Atlanta,Georgia,United States,"Atlanta, GA",2001.0,2002.0,2,54,43,,"Atlanta, GA",2026-06-27 09:25:01.285384+00
 55,Sundance Labor Day Swing Dance Festival,,,Long Beach,California,United States,"Long Beach, CA",1998.0,1998.0,1,62,62,,"Long Beach, CA",2026-06-27 09:25:01.285384+00
-230,Sunny Side Dance Camp,,,Torrevieja,,Spain,"Torrevieja, Spain",2014.0,2016.0,3,116,101,,"Torrevieja, Spain",2026-06-27 09:25:01.285384+00
 191,Sunny Side Dance Camp,,,Crimea,,Ukraine,"Crimea, Ukraine",2012.0,2013.0,2,84,69,,"Crimea, Ukraine",2026-06-27 09:25:01.285384+00
+230,Sunny Side Dance Camp,,,Torrevieja,,Spain,"Torrevieja, Spain",2014.0,2016.0,3,116,101,,"Torrevieja, Spain",2026-06-27 09:25:01.285384+00
 151,Sunshine State Dance Challenge,,,Fort Lauderdale,Florida,United States,"Ft. Lauderdale, FL",2008.0,2011.0,4,87,73,,"Ft. Lauderdale, FL",2026-06-27 09:25:01.285384+00
 240,Sweden Westie Gala,http://www.westiegala.com/,Registry Event,Stockholm,,Sweden,"Stockholm, Stockholm, Sweden",2015.0,2026.0,9,723,472,2026-12-31,"Stockholm, Stockholm, Sweden",2026-06-27 09:25:01.285384+00
 264,Swedish Swing Summer Camp,http://www.uptownswing.se/,Registry Event,Stockholm,,Sweden,"Stockholm, Stockholm, Sweden",2016.0,2025.0,8,706,453,2026-08-14,"Stockholm, Stockholm, Sweden",2026-06-27 09:25:01.285384+00
@@ -356,7 +356,7 @@ event_id,canonical_name,url,registry_status,typical_city,typical_state,typical_c
 215,Swing & Snow,http://swingandsnow.ru/,Registry Event,St. Petersburg,,Russia,"St. Petersburg,  Russia",2014.0,2026.0,13,1127,585,2027-02-04,"St. Petersburg,  Russia",2026-06-27 09:25:01.285384+00
 56,Swing Break,,,Santa Clara,California,United States,"Santa Clara, CA",1999.0,2000.0,2,148,123,,"Santa Clara, CA",2026-06-27 09:25:01.285384+00
 57,Swing Challenge,,,Kansas City,Missouri,United States,"Kansas City, MO",1996.0,1998.0,3,46,40,,"Kansas City, MO",2026-06-27 09:25:01.285384+00
-125,Swing City Chicago,https://swingcitychicago.com/,Registry Event,Chicago,Illinois,United States,"Chicago, IL, United States",2006.0,2025.0,18,1787,1033,2026-10-22,"Chicago, IL, United States",2026-06-27 09:25:01.285384+00
+125,Swing City Chicago,https://swingcitychicago.com/,Registry Event,Chicago,Illinois,United States,"Chicago, IL, United States",2006.0,2025.0,18,1787,1033,2026-10-22,"Chicago, IL, United States",2026-06-27 18:39:39.892523+00
 343,Swing Crush,https://swingcrush.com/,Registry Event,San Antonio,Texas,United States,"San Antonio, TX",2025.0,2026.0,2,191,160,2027-02-18,"San Antonio, TX",2026-06-27 09:25:01.285384+00
 134,Swing Dance America,,,Lake Geneva,Illinois,United States,"Lake Geneva, IL",2007.0,2024.0,16,1218,710,,"Lake Geneva, IL",2026-06-27 09:25:01.285384+00
 463,Swing Dance America (SDA),,,,,,,,,0,0,0,,,2026-06-27 09:25:01.285384+00
@@ -378,7 +378,7 @@ event_id,canonical_name,url,registry_status,typical_city,typical_state,typical_c
 465,Swing Over Orlando,,,,,,,,,0,0,0,,,2026-06-27 09:25:01.285384+00
 301,Swing Resolution,http://www.swingresolution.com/,Registry Event,Edinburgh,Scotland,United Kingdom,"Edinburgh, United Kingdom, United Kingdom, United Kingdom",2019.0,2026.0,6,484,318,2027-01-21,"Edinburgh, United Kingdom, United Kingdom, United Kingdom",2026-06-27 09:25:01.285384+00
 466,Swing Trilogy,,,,,,,,,0,0,0,,,2026-06-27 09:25:01.285384+00
-467,Swing&Snow,,,,,,,,,0,0,0,,,2026-06-27 09:25:01.285384+00
+467,Swing&Snow,,merged,,,,,,,0,0,0,,,2026-06-28 12:47:08.276608+00
 162,Swingapalooza,http://www.swingapaloozaevent.com,,Baton Rouge,Louisiana,United States,"Baton Rouge, LA",2010.0,2026.0,15,1247,675,,"Baton Rouge, LA",2026-06-27 09:25:01.285384+00
 196,SwingCouver,https://swingco.dance/,Registry Event,Portland,Oregon,United States,"Portland, OR, USA",2013.0,2026.0,12,1273,750,2027-01-07,"Portland, OR, USA",2026-06-27 09:25:01.285384+00
 468,SwingCouver 2020 - The 10th Episode,,,,,,,,,0,0,0,,,2026-06-27 09:25:01.285384+00
@@ -476,7 +476,7 @@ event_id,canonical_name,url,registry_status,typical_city,typical_state,typical_c
 71,Westcoast Swing Dance Championships,,,Sacramento,California,United States,"Sacramento, CA",1997.0,2000.0,4,233,175,,"Sacramento, CA",2026-06-27 09:25:01.285384+00
 302,WesterOz Swing,http://magneticdance.com.au/westeroz,,Perth,,Australia,"Perth,  Australia",2019.0,2025.0,4,146,103,,"Perth,  Australia",2026-06-27 09:25:01.285384+00
 530,Westie Gala,,,,,,,,,0,0,0,,,2026-06-27 09:25:01.285384+00
-312,Westie Pink City,http://www.westiepinkcity.fr/,Registry Event,Toulouse,,France,"Toulouse, France",2018.0,2025.0,7,607,370,2026-11-06,"Toulouse, France",2026-06-27 09:25:01.285384+00
+312,Westie Pink City,http://www.westiepinkcity.fr/,Registry Event,Toulouse,,France,"Toulouse, France",2018.0,2025.0,7,607,370,2026-11-06,"Toulouse, France",2026-06-27 18:39:39.892523+00
 314,Westie Spring Thing,https://westiespringthing.com/,Registry Event,Budapest,,Hungary,"Budapest, Budapest, Hungary",2019.0,2026.0,6,646,402,2027-03-11,"Budapest, Budapest, Hungary",2026-06-27 09:25:01.285384+00
 531,Westie Weekend,,,,,,,,,0,0,0,,,2026-06-27 09:25:01.285384+00
 270,Westie's Angels,http://www.frenchywesty.com/,Registry Event,Lyon,,France,"LYON, rhones, France",2016.0,2025.0,9,859,492,2026-11-12,"LYON, rhones, France",2026-06-27 09:25:01.285384+00

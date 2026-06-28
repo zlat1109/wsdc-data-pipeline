@@ -36,6 +36,7 @@ def test_orphan_result_names_normalize_to_catalog():
         ("D-Townswing", "D-Town Swing"),
         ("Monterey Swingfest", "Monterey SwingFest"),
         ("Swing Fling 2024", "Swing Fling"),
+        ("Swing&Snow", "Swing & Snow"),
     ]:
         assert EVENT_NAME_NORMALIZATION[alias] == canonical
 

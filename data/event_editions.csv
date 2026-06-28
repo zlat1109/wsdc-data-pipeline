@@ -1,6 +1,6 @@
 edition_id,event_id,event_name,event_year,event_month,edition_date,location_id,place_city,place_state,place_country,location_raw,result_rows,unique_dancers,url,typical_location,registry_status
 17745,222,Baltic Swing,2026,6,2026-06-01,186,Gdańsk,,Poland,"Gdańsk, Pomorskie, Poland",126,115,http://www.balticswing.com,"Gdańsk, Pomorskie, Poland",
-18340,405,Canadian Swing Championships (CSC),2026,6,2026-06-01,273,Milan,,Italy,"Milan, Italy",92,80,,"Milan, Italy",
+18340,405,Canadian Swing Championships (CSC),2026,6,2026-06-01,273,Milan,,Italy,"Milan,, Italy",92,80,,"Milan,, Italy",
 17725,220,D-Town Swing,2026,6,2026-06-01,127,Düsseldorf,,Germany,"Boston Club, NRW, Germany",127,108,http://www.d-townswing.com/,"Boston Club, NRW, Germany",Registry Event
 18317,371,Festival City Swing,2026,6,2026-06-01,229,Newcastle,England,United Kingdom,"Newcastle,  United Kingdom",62,48,https://www.fcswing.co.uk/,"Newcastle,  United Kingdom",Registry Event
 16057,25,J&J O'Rama,2026,6,2026-06-01,23,Anaheim,California,United States,"Anaheim/Garden Grove, CA, United States",135,131,https://jackandjillorama.com/,"Anaheim/Garden Grove, CA, United States",
@@ -9,7 +9,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,location_id,p
 18289,347,BeeMAD,2026,5,2026-05-01,170,Madrid,,Spain,"Madrid, Spain",81,72,https://beemadwcs.com/,"Madrid, Spain",Registry Event
 16801,105,Canadian Swing Championships,2026,5,2026-05-01,121,Montreal,Quebec,Canada,"Montreal, Canada",54,53,http://www.canadianswingchampionships.com,"Montreal, Canada",
 18319,372,Dance Jam Jack & Jill Weekend,2026,5,2026-05-01,165,Washington,District of Columbia,United States,"Washington DC, MD, USA",82,81,https://dancejamproductions.com/westieweekend/,"Washington DC, MD, USA",Registry Event
-17373,175,French Open West Coast Swing,2026,5,2026-05-01,157,Paris,,France,"Paris, France",157,140,http://www.fowcs.com,"Paris, France",
+17373,175,French Open West Coast Swing,2026,5,2026-05-01,157,Paris,,France,"PARIS, France",157,140,http://www.fowcs.com,"PARIS, France",
 17734,221,Gateway Swing Classic,2026,5,2026-05-01,102,St. Louis,Missouri,United States,"St. Louis, MO, USA",87,78,http://gatewayswing.com,"St. Louis, MO, USA",
 17615,206,Hungarian Open,2026,5,2026-05-01,219,Budapest,,Hungary,"Budapest, Pest, Hungary",100,89,http://wcs-ho.com/,"Budapest, Pest, Hungary",
 18327,379,Med in Swing,2026,5,2026-05-01,218,Toulon,,France,"Toulon, Var, France",143,128,http://www.medinswing.rocks,"Toulon, Var, France",
@@ -25,7 +25,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,location_id,p
 16026,22,USA Grand Nationals,2026,5,2026-05-01,25,Atlanta,Georgia,United States,"Atlanta, GA, United States",127,120,http://www.usagrandnationals.com/,"Atlanta, GA, United States",Registry Event
 17708,218,Asia West Coast Swing Open,2026,4,2026-04-01,159,Singapore,,Singapore,"Singapore, Singapore",118,115,https://asiawcsopen.com/,"Singapore, Singapore",Registry Event
 16848,116,Calgary Dance Stampede,2026,4,2026-04-01,148,Calgary,Alberta,Canada,"Calgary, AB, Canada",72,67,http://www.calgarydancestampede.com/,"Calgary, AB, Canada",Registry Event
-17489,187,City of Angels WCS,2026,4,2026-04-01,54,Burbank,California,United States,"Burbank, CA, United States",122,115,https://cityofangelswcs.com/,"Burbank, CA, United States",Registry Event
+17489,187,City of Angels WCS,2026,4,2026-04-01,54,Burbank,California,United States,"Burbank, California, California, USA",122,115,https://cityofangelswcs.com/,"Burbank, California, California, USA",Registry Event
 17591,203,Detonation Dance,2026,4,2026-04-01,166,Manchester,England,United Kingdom,"Manchester, Manchester, United Kingdom",109,91,http://www.detonationdance.com/,"Manchester, Manchester, United Kingdom",Registry Event
 18285,345,HONEY FEST,2026,4,2026-04-01,255,Ufa,,Russia,"Ufa, Russia",83,77,https://t.me/honeyfest,"Ufa, Russia",Registry Event
 17633,210,Korean Open WCS Championships,2026,4,2026-04-01,172,Incheon,,Republic of Korea,"Incheon, South Korea",124,115,https://www.kopenwcs.com/,"Incheon, South Korea",
@@ -93,7 +93,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,location_id,p
 18113,288,Midnight Madness,2025,11,2025-11-01,45,Dallas,Texas,United States,"Dallas Ft. Worth, Texas, United States",146,137,http://www.midnightmadnesswcs.com/,"Dallas Ft. Worth, Texas, United States",Registry Event
 17519,194,Moscow Westie Fest,2025,11,2025-11-01,113,Moscow,,Russia,"Moscow,  Russia",99,85,https://westiefest.org/en/,"Moscow,  Russia",
 16110,31,Mountain Magic,2025,11,2025-11-01,28,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV, USA",57,51,http://mountainmagic.dance/,"South Lake Tahoe (near Reno), NV, USA",Registry Event
-18323,376,Northeast Swing Classic,2025,11,2025-11-01,150,Providence,Rhode Island,United States,"Providence, RI, United States",110,93,http://www.northeastswingclassic.com/,"Providence, RI, United States",Registry Event
+18323,376,Northeast Swing Classic,2025,11,2025-11-01,150,Providence RI,Rhode Island,United States,"Providence RI, RI, USA",110,93,http://www.northeastswingclassic.com/,"Providence RI, RI, USA",Registry Event
 17793,229,Scandinavian Open,2025,11,2025-11-01,231,Stockholm,,Sweden,"Stockholm, Sweden",144,140,http://www.snowcs.se/,"Stockholm, Sweden",Registry Event
 18238,330,Simply Adelaide West Coast Swing,2025,11,2025-11-01,236,Adelaide,,Australia,"Adelaide, SA, Australia",76,69,http://www.simplyadelaidewcs.com.au,"Adelaide, SA, Australia",
 18275,340,Spooky Westie Weekend,2025,11,2025-11-01,159,Singapore,,Singapore,"Singapore, Singapore",54,52,https://spookywestieweekend.com/,"Singapore, Singapore",Registry Event
@@ -175,7 +175,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,location_id,p
 17624,207,Dance N Play,2025,6,2025-06-01,133,Bend,Oregon,United States,"Bend, Oregon, United States",56,51,https://dancenplay.com/,"Bend, Oregon, United States",
 18316,371,Festival City Swing,2025,6,2025-06-01,229,Newcastle,England,United Kingdom,"Newcastle,  United Kingdom",65,41,https://www.fcswing.co.uk/,"Newcastle,  United Kingdom",Registry Event
 18313,369,FRENCH CONNECTION WCS,2025,6,2025-06-01,188,Annecy,,France,"Annecy, Haute Savoie, France",118,108,https://www.frenchconnectionwcs.com/,"Annecy, Haute Savoie, France",Registry Event
-17372,175,French Open West Coast Swing,2025,6,2025-06-01,157,Paris,,France,"Paris, France",155,140,http://www.fowcs.com,"Paris, France",
+17372,175,French Open West Coast Swing,2025,6,2025-06-01,157,Paris,,France,"PARIS, France",155,140,http://www.fowcs.com,"PARIS, France",
 17614,206,Hungarian Open,2025,6,2025-06-01,219,Budapest,,Hungary,"Budapest, Pest, Hungary",102,93,http://wcs-ho.com/,"Budapest, Pest, Hungary",
 17931,255,Indy Dance Explosion,2025,6,2025-06-01,138,Fort Wayne,Indiana,United States,"Fort Wayne, IN, USA",21,17,http://www.indydancex.com,"Fort Wayne, IN, USA",
 16056,25,J&J O'Rama,2025,6,2025-06-01,23,Anaheim,California,United States,"Anaheim/Garden Grove, CA, United States",137,131,https://jackandjillorama.com/,"Anaheim/Garden Grove, CA, United States",
@@ -202,7 +202,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,location_id,p
 16025,22,USA Grand Nationals,2025,5,2025-05-01,25,Atlanta,Georgia,United States,"Atlanta, GA, United States",137,132,http://www.usagrandnationals.com/,"Atlanta, GA, United States",Registry Event
 17707,218,Asia West Coast Swing Open,2025,4,2025-04-01,159,Singapore,,Singapore,"Singapore, Singapore",116,114,https://asiawcsopen.com/,"Singapore, Singapore",Registry Event
 16847,116,Calgary Dance Stampede,2025,4,2025-04-01,148,Calgary,Alberta,Canada,"Calgary, AB, Canada",66,58,http://www.calgarydancestampede.com/,"Calgary, AB, Canada",Registry Event
-17488,187,City of Angels WCS,2025,4,2025-04-01,54,Burbank,California,United States,"Burbank, CA, United States",143,131,https://cityofangelswcs.com/,"Burbank, CA, United States",Registry Event
+17488,187,City of Angels WCS,2025,4,2025-04-01,54,Burbank,California,United States,"Burbank, California, California, USA",143,131,https://cityofangelswcs.com/,"Burbank, California, California, USA",Registry Event
 17590,203,Detonation Dance,2025,4,2025-04-01,166,Manchester,England,United Kingdom,"Manchester, Manchester, United Kingdom",99,82,http://www.detonationdance.com/,"Manchester, Manchester, United Kingdom",Registry Event
 18284,345,HONEY FEST,2025,4,2025-04-01,255,Ufa,,Russia,"Ufa, Russia",86,75,https://t.me/honeyfest,"Ufa, Russia",Registry Event
 17632,210,Korean Open WCS Championships,2025,4,2025-04-01,172,Incheon,,Republic of Korea,"Incheon, South Korea",120,112,https://www.kopenwcs.com/,"Incheon, South Korea",
@@ -336,7 +336,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,location_id,p
 18240,331,Swing Fiction,2024,6,2024-06-01,266,Brno,,Czech Republic,"Brno, Czechia",98,97,https://swingfiction.cz/,"Brno, Czechia",
 17263,162,Swingapalooza,2024,6,2024-06-01,40,Baton Rouge,Louisiana,United States,"Baton Rouge, LA",103,93,http://www.swingapaloozaevent.com,"Baton Rouge, LA",
 16799,105,Canadian Swing Championships,2024,5,2024-05-01,121,Montreal,Quebec,Canada,"Montreal, Canada",48,47,http://www.canadianswingchampionships.com,"Montreal, Canada",
-17371,175,French Open West Coast Swing,2024,5,2024-05-01,157,Paris,,France,"Paris, France",200,182,http://www.fowcs.com,"Paris, France",
+17371,175,French Open West Coast Swing,2024,5,2024-05-01,157,Paris,,France,"PARIS, France",200,182,http://www.fowcs.com,"PARIS, France",
 17732,221,Gateway Swing Classic,2024,5,2024-05-01,102,St. Louis,Missouri,United States,"St. Louis, MO, USA",62,54,http://gatewayswing.com,"St. Louis, MO, USA",
 17602,205,SOswing,2024,5,2024-05-01,88,Ashland,Oregon,United States,"Ashland, OR, United States",107,102,http://wwww.soswingdance.com/,"Ashland, OR, United States",Registry Event
 17017,134,Swing Dance America,2024,5,2024-05-01,89,Lake Geneva,Illinois,United States,"Lake Geneva, IL",63,58,,"Lake Geneva, IL",
@@ -346,7 +346,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,location_id,p
 16024,22,USA Grand Nationals,2024,5,2024-05-01,25,Atlanta,Georgia,United States,"Atlanta, GA, United States",150,140,http://www.usagrandnationals.com/,"Atlanta, GA, United States",Registry Event
 17706,218,Asia West Coast Swing Open,2024,4,2024-04-01,159,Singapore,,Singapore,"Singapore, Singapore",125,122,https://asiawcsopen.com/,"Singapore, Singapore",Registry Event
 16846,116,Calgary Dance Stampede,2024,4,2024-04-01,148,Calgary,Alberta,Canada,"Calgary, AB, Canada",50,44,http://www.calgarydancestampede.com/,"Calgary, AB, Canada",Registry Event
-17487,187,City of Angels WCS,2024,4,2024-04-01,54,Burbank,California,United States,"Burbank, CA, United States",132,130,https://cityofangelswcs.com/,"Burbank, CA, United States",Registry Event
+17487,187,City of Angels WCS,2024,4,2024-04-01,54,Burbank,California,United States,"Burbank, California, California, USA",132,130,https://cityofangelswcs.com/,"Burbank, California, California, USA",Registry Event
 17589,203,Detonation Dance,2024,4,2024-04-01,166,Manchester,England,United Kingdom,"Manchester, Manchester, United Kingdom",110,91,http://www.detonationdance.com/,"Manchester, Manchester, United Kingdom",Registry Event
 18054,275,Dutch Open West Coast Swing,2024,4,2024-04-01,227,Venray,,Nederland,"Venray, Limburg, Nederland",66,59,http://www.dutchopenwcs.com/,"Venray, Limburg, Nederland",Registry Event
 18283,345,HONEY FEST,2024,4,2024-04-01,255,Ufa,,Russia,"Ufa, Russia",86,78,https://t.me/honeyfest,"Ufa, Russia",Registry Event
@@ -466,7 +466,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,location_id,p
 16865,117,Orange Blossom Dance Festival,2023,6,2023-06-01,119,Orlando,Florida,United States,"Orlando, Florida, Florida, United States",58,55,http://www.orangeblossomdance.net,"Orlando, Florida, Florida, United States",
 17262,162,Swingapalooza,2023,6,2023-06-01,40,Baton Rouge,Louisiana,United States,"Baton Rouge, LA",91,86,http://www.swingapaloozaevent.com,"Baton Rouge, LA",
 16798,105,Canadian Swing Championships,2023,5,2023-05-01,121,Montreal,Quebec,Canada,"Montreal, Canada",57,54,http://www.canadianswingchampionships.com,"Montreal, Canada",
-17370,175,French Open West Coast Swing,2023,5,2023-05-01,157,Paris,,France,"Paris, France",169,156,http://www.fowcs.com,"Paris, France",
+17370,175,French Open West Coast Swing,2023,5,2023-05-01,157,Paris,,France,"PARIS, France",169,156,http://www.fowcs.com,"PARIS, France",
 17911,253,Nordic WCS Championships,2023,5,2023-05-01,199,Stockholm,,Sweden,"Stockholm,  Sweden",100,97,http://www.nordicwcschamps.com,"Stockholm,  Sweden",
 17601,205,SOswing,2023,5,2023-05-01,88,Ashland,Oregon,United States,"Ashland, OR, United States",105,98,http://wwww.soswingdance.com/,"Ashland, OR, United States",Registry Event
 17016,134,Swing Dance America,2023,5,2023-05-01,89,Lake Geneva,Illinois,United States,"Lake Geneva, IL",58,55,,"Lake Geneva, IL",
@@ -476,7 +476,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,location_id,p
 16023,22,USA Grand Nationals,2023,5,2023-05-01,25,Atlanta,Georgia,United States,"Atlanta, GA, United States",157,141,http://www.usagrandnationals.com/,"Atlanta, GA, United States",Registry Event
 17705,218,Asia West Coast Swing Open,2023,4,2023-04-01,159,Singapore,,Singapore,"Singapore, Singapore",93,91,https://asiawcsopen.com/,"Singapore, Singapore",Registry Event
 18230,324,BTO Open,2023,4,2023-04-01,214,Calgary,Alberta,Canada,"Calgary, Alberta, Canada",62,56,https://ctodance.ca/,"Calgary, Alberta, Canada",Registry Event
-17486,187,City of Angels WCS,2023,4,2023-04-01,54,Burbank,California,United States,"Burbank, CA, United States",135,131,https://cityofangelswcs.com/,"Burbank, CA, United States",Registry Event
+17486,187,City of Angels WCS,2023,4,2023-04-01,54,Burbank,California,United States,"Burbank, California, California, USA",135,131,https://cityofangelswcs.com/,"Burbank, California, California, USA",Registry Event
 17588,203,Detonation Dance,2023,4,2023-04-01,166,Manchester,England,United Kingdom,"Manchester, Manchester, United Kingdom",87,70,http://www.detonationdance.com/,"Manchester, Manchester, United Kingdom",Registry Event
 17630,210,Korean Open WCS Championships,2023,4,2023-04-01,172,Incheon,,Republic of Korea,"Incheon, South Korea",72,72,https://www.kopenwcs.com/,"Incheon, South Korea",
 15956,18,Seattle's Easter Swing,2023,4,2023-04-01,30,Seattle,Washington,United States,"Seattle, WA, United States",160,154,https://easterswing.org/,"Seattle, WA, United States",Registry Event
@@ -575,13 +575,13 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,location_id,p
 16753,96,Liberty Swing Dance Championships,2022,6,2022-06-01,41,New Brunswick,New Jersey,United States,"New Brunswick, New Jersey, USA",140,133,http://www.libertyswing.com/,"New Brunswick, New Jersey, USA",Registry Event
 16864,117,Orange Blossom Dance Festival,2022,6,2022-06-01,119,Orlando,Florida,United States,"Orlando, Florida, Florida, United States",44,39,http://www.orangeblossomdance.net,"Orlando, Florida, Florida, United States",
 17261,162,Swingapalooza,2022,6,2022-06-01,40,Baton Rouge,Louisiana,United States,"Baton Rouge, LA",107,100,http://www.swingapaloozaevent.com,"Baton Rouge, LA",
-17369,175,French Open West Coast Swing,2022,5,2022-05-01,157,Paris,,France,"Paris, France",135,129,http://www.fowcs.com,"Paris, France",
+17369,175,French Open West Coast Swing,2022,5,2022-05-01,157,Paris,,France,"PARIS, France",135,129,http://www.fowcs.com,"PARIS, France",
 17910,253,Nordic WCS Championships,2022,5,2022-05-01,199,Stockholm,,Sweden,"Stockholm,  Sweden",97,92,http://www.nordicwcschamps.com,"Stockholm,  Sweden",
 17600,205,SOswing,2022,5,2022-05-01,88,Ashland,Oregon,United States,"Ashland, OR, United States",86,72,http://wwww.soswingdance.com/,"Ashland, OR, United States",Registry Event
 17015,134,Swing Dance America,2022,5,2022-05-01,89,Lake Geneva,Illinois,United States,"Lake Geneva, IL",56,51,,"Lake Geneva, IL",
 17116,144,Swingin' Into Spring,2022,5,2022-05-01,131,Hartford,Connecticut,United States,"Hartford, CT",34,34,http://www.sis.djkenm.com/,"Hartford, CT",Registry Event
 16922,121,The Texas Classic,2022,5,2022-05-01,118,Austin,Texas,United States,"Austin, TX, United States",65,62,http://Www.thetexasclassic.com,"Austin, TX, United States",
-17485,187,City of Angels WCS,2022,4,2022-04-01,54,Burbank,California,United States,"Burbank, CA, United States",120,115,https://cityofangelswcs.com/,"Burbank, CA, United States",Registry Event
+17485,187,City of Angels WCS,2022,4,2022-04-01,54,Burbank,California,United States,"Burbank, California, California, USA",120,115,https://cityofangelswcs.com/,"Burbank, California, California, USA",Registry Event
 17587,203,Detonation Dance,2022,4,2022-04-01,166,Manchester,England,United Kingdom,"Manchester, Manchester, United Kingdom",52,50,http://www.detonationdance.com/,"Manchester, Manchester, United Kingdom",Registry Event
 15955,18,Seattle's Easter Swing,2022,4,2022-04-01,30,Seattle,Washington,United States,"Seattle, WA, United States",141,134,https://easterswing.org/,"Seattle, WA, United States",Registry Event
 17956,259,Swingover,2022,4,2022-04-01,120,Orlando,Florida,United States,"Orlando, Florida, USA",80,71,http://swingoverevent.com/,"Orlando, Florida, USA",Registry Event
@@ -739,7 +739,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,location_id,p
 17720,220,D-Town Swing,2019,6,2019-06-01,127,Düsseldorf,,Germany,"Boston Club, NRW, Germany",106,105,http://www.d-townswing.com/,"Boston Club, NRW, Germany",Registry Event
 17622,207,Dance N Play,2019,6,2019-06-01,133,Bend,Oregon,United States,"Bend, Oregon, United States",44,43,https://dancenplay.com/,"Bend, Oregon, United States",
 17919,254,Finnfest,2019,6,2019-06-01,241,Helsinki,,Finland,"Helsinki, Uusimaa, Finalnd",65,65,http://www.finnfest.fi/,"Helsinki, Uusimaa, Finalnd",Registry Event
-17368,175,French Open West Coast Swing,2019,6,2019-06-01,157,Paris,,France,"Paris, France",120,117,http://www.fowcs.com,"Paris, France",
+17368,175,French Open West Coast Swing,2019,6,2019-06-01,157,Paris,,France,"PARIS, France",120,117,http://www.fowcs.com,"PARIS, France",
 17928,255,Indy Dance Explosion,2019,6,2019-06-01,138,Fort Wayne,Indiana,United States,"Fort Wayne, IN, USA",36,34,http://www.indydancex.com,"Fort Wayne, IN, USA",
 16053,25,J&J O'Rama,2019,6,2019-06-01,23,Anaheim,California,United States,"Anaheim/Garden Grove, CA, United States",149,149,https://jackandjillorama.com/,"Anaheim/Garden Grove, CA, United States",
 18003,268,Korea Westival,2019,6,2019-06-01,213,Jeju,,Republic of Korea,"Jeju, Jeju, South Korea",47,47,http://koreawestival.com/,"Jeju, Jeju, South Korea",Registry Event
@@ -762,7 +762,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,location_id,p
 18195,311,TLV SwingFest,2019,5,2019-05-01,147,Tel Aviv,,Israel,"Tel Aviv, Israel",65,65,http://www.tlv-swingfest.com/,"Tel Aviv, Israel",
 16022,22,USA Grand Nationals,2019,5,2019-05-01,25,Atlanta,Georgia,United States,"Atlanta, GA, United States",135,132,http://www.usagrandnationals.com/,"Atlanta, GA, United States",Registry Event
 17704,218,Asia West Coast Swing Open,2019,4,2019-04-01,159,Singapore,,Singapore,"Singapore, Singapore",72,72,https://asiawcsopen.com/,"Singapore, Singapore",Registry Event
-17484,187,City of Angels WCS,2019,4,2019-04-01,54,Burbank,California,United States,"Burbank, CA, United States",135,135,https://cityofangelswcs.com/,"Burbank, CA, United States",Registry Event
+17484,187,City of Angels WCS,2019,4,2019-04-01,54,Burbank,California,United States,"Burbank, California, California, USA",135,135,https://cityofangelswcs.com/,"Burbank, California, California, USA",Registry Event
 17586,203,Detonation Dance,2019,4,2019-04-01,166,Manchester,England,United Kingdom,"Manchester, Manchester, United Kingdom",53,51,http://www.detonationdance.com/,"Manchester, Manchester, United Kingdom",Registry Event
 18183,306,Go West Swing Fest,2019,4,2019-04-01,240,Fremantle,,Australia,"Fremantle, Australia",32,31,http://www.gowestswingfest.com,"Fremantle, Australia",
 17909,253,Nordic WCS Championships,2019,4,2019-04-01,199,Stockholm,,Sweden,"Stockholm,  Sweden",81,81,http://www.nordicwcschamps.com,"Stockholm,  Sweden",
@@ -904,7 +904,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,location_id,p
 16861,117,Orange Blossom Dance Festival,2018,6,2018-06-01,119,Orlando,Florida,United States,"Orlando, Florida, Florida, United States",39,38,http://www.orangeblossomdance.net,"Orlando, Florida, Florida, United States",
 17259,162,Swingapalooza,2018,6,2018-06-01,40,Baton Rouge,Louisiana,United States,"Baton Rouge, LA",90,87,http://www.swingapaloozaevent.com,"Baton Rouge, LA",
 16796,105,Canadian Swing Championships,2018,5,2018-05-01,121,Montreal,Quebec,Canada,"Montreal, Canada",38,38,http://www.canadianswingchampionships.com,"Montreal, Canada",
-17367,175,French Open West Coast Swing,2018,5,2018-05-01,157,Paris,,France,"Paris, France",110,105,http://www.fowcs.com,"Paris, France",
+17367,175,French Open West Coast Swing,2018,5,2018-05-01,157,Paris,,France,"PARIS, France",110,105,http://www.fowcs.com,"PARIS, France",
 15994,20,FreZno Dance Classic,2018,5,2018-05-01,5,Fresno,California,United States,"Fresno, CA",76,74,,"Fresno, CA",
 17730,221,Gateway Swing Classic,2018,5,2018-05-01,102,St. Louis,Missouri,United States,"St. Louis, MO, USA",64,62,http://gatewayswing.com,"St. Louis, MO, USA",
 17610,206,Hungarian Open,2018,5,2018-05-01,219,Budapest,,Hungary,"Budapest, Pest, Hungary",74,74,http://wcs-ho.com/,"Budapest, Pest, Hungary",
@@ -917,7 +917,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,location_id,p
 16021,22,USA Grand Nationals,2018,5,2018-05-01,25,Atlanta,Georgia,United States,"Atlanta, GA, United States",132,129,http://www.usagrandnationals.com/,"Atlanta, GA, United States",Registry Event
 18058,276,Anchor Festival,2018,4,2018-04-01,221,Hamburg,,Germany,"Hamburg, Germany",76,76,,"Hamburg, Germany",
 17703,218,Asia West Coast Swing Open,2018,4,2018-04-01,159,Singapore,,Singapore,"Singapore, Singapore",68,68,https://asiawcsopen.com/,"Singapore, Singapore",Registry Event
-17483,187,City of Angels WCS,2018,4,2018-04-01,54,Burbank,California,United States,"Burbank, CA, United States",122,120,https://cityofangelswcs.com/,"Burbank, CA, United States",Registry Event
+17483,187,City of Angels WCS,2018,4,2018-04-01,54,Burbank,California,United States,"Burbank, California, California, USA",122,120,https://cityofangelswcs.com/,"Burbank, California, California, USA",Registry Event
 17585,203,Detonation Dance,2018,4,2018-04-01,166,Manchester,England,United Kingdom,"Manchester, Manchester, United Kingdom",37,36,http://www.detonationdance.com/,"Manchester, Manchester, United Kingdom",Registry Event
 17908,253,Nordic WCS Championships,2018,4,2018-04-01,199,Stockholm,,Sweden,"Stockholm,  Sweden",98,98,http://www.nordicwcschamps.com,"Stockholm,  Sweden",
 17695,217,San Diego Dance Festival,2018,4,2018-04-01,10,San Diego,California,United States,"San Diego, CA",42,42,,"San Diego, CA",
@@ -1051,7 +1051,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,location_id,p
 16860,117,Orange Blossom Dance Festival,2017,6,2017-06-01,119,Orlando,Florida,United States,"Orlando, Florida, Florida, United States",45,40,http://www.orangeblossomdance.net,"Orlando, Florida, Florida, United States",
 17258,162,Swingapalooza,2017,6,2017-06-01,40,Baton Rouge,Louisiana,United States,"Baton Rouge, LA",111,106,http://www.swingapaloozaevent.com,"Baton Rouge, LA",
 16795,105,Canadian Swing Championships,2017,5,2017-05-01,121,Montreal,Quebec,Canada,"Montreal, Canada",43,43,http://www.canadianswingchampionships.com,"Montreal, Canada",
-17366,175,French Open West Coast Swing,2017,5,2017-05-01,157,Paris,,France,"Paris, France",103,102,http://www.fowcs.com,"Paris, France",
+17366,175,French Open West Coast Swing,2017,5,2017-05-01,157,Paris,,France,"PARIS, France",103,102,http://www.fowcs.com,"PARIS, France",
 15993,20,FreZno Dance Classic,2017,5,2017-05-01,5,Fresno,California,United States,"Fresno, CA",90,82,,"Fresno, CA",
 17729,221,Gateway Swing Classic,2017,5,2017-05-01,102,St. Louis,Missouri,United States,"St. Louis, MO, USA",30,30,http://gatewayswing.com,"St. Louis, MO, USA",
 17609,206,Hungarian Open,2017,5,2017-05-01,219,Budapest,,Hungary,"Budapest, Pest, Hungary",75,75,http://wcs-ho.com/,"Budapest, Pest, Hungary",
@@ -1065,7 +1065,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,location_id,p
 16020,22,USA Grand Nationals,2017,5,2017-05-01,25,Atlanta,Georgia,United States,"Atlanta, GA, United States",116,116,http://www.usagrandnationals.com/,"Atlanta, GA, United States",Registry Event
 18057,276,Anchor Festival,2017,4,2017-04-01,221,Hamburg,,Germany,"Hamburg, Germany",69,69,,"Hamburg, Germany",
 17702,218,Asia West Coast Swing Open,2017,4,2017-04-01,159,Singapore,,Singapore,"Singapore, Singapore",64,64,https://asiawcsopen.com/,"Singapore, Singapore",Registry Event
-17482,187,City of Angels WCS,2017,4,2017-04-01,54,Burbank,California,United States,"Burbank, CA, United States",126,125,https://cityofangelswcs.com/,"Burbank, CA, United States",Registry Event
+17482,187,City of Angels WCS,2017,4,2017-04-01,54,Burbank,California,United States,"Burbank, California, California, USA",126,125,https://cityofangelswcs.com/,"Burbank, California, California, USA",Registry Event
 17584,203,Detonation Dance,2017,4,2017-04-01,166,Manchester,England,United Kingdom,"Manchester, Manchester, United Kingdom",53,53,http://www.detonationdance.com/,"Manchester, Manchester, United Kingdom",Registry Event
 17907,253,Nordic WCS Championships,2017,4,2017-04-01,199,Stockholm,,Sweden,"Stockholm,  Sweden",98,98,http://www.nordicwcschamps.com,"Stockholm,  Sweden",
 17336,170,Russian Open WCS Championships,2017,4,2017-04-01,233,Moscow,,Russia,"Moscow, Russia",55,55,,"Moscow, Russia",
@@ -1188,7 +1188,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,location_id,p
 17747,223,Slingshot Swing,2016,6,2016-06-01,223,Oslo,,Norway,"Oslo, Norway",54,54,,"Oslo, Norway",
 17257,162,Swingapalooza,2016,6,2016-06-01,40,Baton Rouge,Louisiana,United States,"Baton Rouge, LA",87,81,http://www.swingapaloozaevent.com,"Baton Rouge, LA",
 16794,105,Canadian Swing Championships,2016,5,2016-05-01,121,Montreal,Quebec,Canada,"Montreal, Canada",49,49,http://www.canadianswingchampionships.com,"Montreal, Canada",
-17365,175,French Open West Coast Swing,2016,5,2016-05-01,157,Paris,,France,"Paris, France",79,79,http://www.fowcs.com,"Paris, France",
+17365,175,French Open West Coast Swing,2016,5,2016-05-01,157,Paris,,France,"PARIS, France",79,79,http://www.fowcs.com,"PARIS, France",
 15992,20,FreZno Dance Classic,2016,5,2016-05-01,5,Fresno,California,United States,"Fresno, CA",80,72,,"Fresno, CA",
 17728,221,Gateway Swing Classic,2016,5,2016-05-01,102,St. Louis,Missouri,United States,"St. Louis, MO, USA",46,41,http://gatewayswing.com,"St. Louis, MO, USA",
 17608,206,Hungarian Open,2016,5,2016-05-01,219,Budapest,,Hungary,"Budapest, Pest, Hungary",68,68,http://wcs-ho.com/,"Budapest, Pest, Hungary",
@@ -1204,7 +1204,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,location_id,p
 16019,22,USA Grand Nationals,2016,5,2016-05-01,25,Atlanta,Georgia,United States,"Atlanta, GA, United States",113,109,http://www.usagrandnationals.com/,"Atlanta, GA, United States",Registry Event
 17701,218,Asia West Coast Swing Open,2016,4,2016-04-01,159,Singapore,,Singapore,"Singapore, Singapore",60,60,https://asiawcsopen.com/,"Singapore, Singapore",Registry Event
 17903,247,Austrian WCS Spectacle,2016,4,2016-04-01,250,Vienna,,Austria,"Vienna, Austria",50,50,,"Vienna, Austria",
-17481,187,City of Angels WCS,2016,4,2016-04-01,54,Burbank,California,United States,"Burbank, CA, United States",117,116,https://cityofangelswcs.com/,"Burbank, CA, United States",Registry Event
+17481,187,City of Angels WCS,2016,4,2016-04-01,54,Burbank,California,United States,"Burbank, California, California, USA",117,116,https://cityofangelswcs.com/,"Burbank, California, California, USA",Registry Event
 17583,203,Detonation Dance,2016,4,2016-04-01,166,Manchester,England,United Kingdom,"Manchester, Manchester, United Kingdom",52,52,http://www.detonationdance.com/,"Manchester, Manchester, United Kingdom",Registry Event
 17898,246,Swing Escape,2016,4,2016-04-01,209,Hunter Valley,,Australia,"Hunter Valley, Australia",40,40,,"Hunter Valley, Australia",
 16996,132,Tulsa Spring Swing,2016,4,2016-04-01,58,Tulsa,Oklahoma,United States,"Tulsa, OK, Ok, United States",63,58,http://www.tulsaspringswing.com/,"Tulsa, OK, Ok, United States",Registry Event
@@ -1311,7 +1311,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,location_id,p
 16858,117,Orange Blossom Dance Festival,2015,6,2015-06-01,119,Orlando,Florida,United States,"Orlando, Florida, Florida, United States",54,49,http://www.orangeblossomdance.net,"Orlando, Florida, Florida, United States",
 17256,162,Swingapalooza,2015,6,2015-06-01,40,Baton Rouge,Louisiana,United States,"Baton Rouge, LA",87,84,http://www.swingapaloozaevent.com,"Baton Rouge, LA",
 16793,105,Canadian Swing Championships,2015,5,2015-05-01,121,Montreal,Quebec,Canada,"Montreal, Canada",42,41,http://www.canadianswingchampionships.com,"Montreal, Canada",
-17364,175,French Open West Coast Swing,2015,5,2015-05-01,157,Paris,,France,"Paris, France",114,112,http://www.fowcs.com,"Paris, France",
+17364,175,French Open West Coast Swing,2015,5,2015-05-01,157,Paris,,France,"PARIS, France",114,112,http://www.fowcs.com,"PARIS, France",
 15991,20,FreZno Dance Classic,2015,5,2015-05-01,5,Fresno,California,United States,"Fresno, CA",80,76,,"Fresno, CA",
 17727,221,Gateway Swing Classic,2015,5,2015-05-01,102,St. Louis,Missouri,United States,"St. Louis, MO, USA",43,43,http://gatewayswing.com,"St. Louis, MO, USA",
 17607,206,Hungarian Open,2015,5,2015-05-01,219,Budapest,,Hungary,"Budapest, Pest, Hungary",73,73,http://wcs-ho.com/,"Budapest, Pest, Hungary",
@@ -1326,7 +1326,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,location_id,p
 16018,22,USA Grand Nationals,2015,5,2015-05-01,25,Atlanta,Georgia,United States,"Atlanta, GA, United States",106,106,http://www.usagrandnationals.com/,"Atlanta, GA, United States",Registry Event
 17700,218,Asia West Coast Swing Open,2015,4,2015-04-01,159,Singapore,,Singapore,"Singapore, Singapore",62,62,https://asiawcsopen.com/,"Singapore, Singapore",Registry Event
 17902,247,Austrian WCS Spectacle,2015,4,2015-04-01,250,Vienna,,Austria,"Vienna, Austria",39,39,,"Vienna, Austria",
-17480,187,City of Angels WCS,2015,4,2015-04-01,54,Burbank,California,United States,"Burbank, CA, United States",135,135,https://cityofangelswcs.com/,"Burbank, CA, United States",Registry Event
+17480,187,City of Angels WCS,2015,4,2015-04-01,54,Burbank,California,United States,"Burbank, California, California, USA",135,135,https://cityofangelswcs.com/,"Burbank, California, California, USA",Registry Event
 17582,203,Detonation Dance,2015,4,2015-04-01,166,Manchester,England,United Kingdom,"Manchester, Manchester, United Kingdom",50,50,http://www.detonationdance.com/,"Manchester, Manchester, United Kingdom",Registry Event
 17692,217,San Diego Dance Festival,2015,4,2015-04-01,10,San Diego,California,United States,"San Diego, CA",56,51,,"San Diego, CA",
 15950,18,Seattle's Easter Swing,2015,4,2015-04-01,30,Seattle,Washington,United States,"Seattle, WA, United States",120,119,https://easterswing.org/,"Seattle, WA, United States",Registry Event
@@ -1424,7 +1424,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,location_id,p
 17735,222,Baltic Swing,2014,6,2014-06-01,186,Gdańsk,,Poland,"Gdańsk, Pomorskie, Poland",73,73,http://www.balticswing.com,"Gdańsk, Pomorskie, Poland",
 16818,109,Colorado Country Classic,2014,6,2014-06-01,76,Denver,Colorado,United States,"Denver, Colorado, Colorado, USA",52,50,https://coloradocountryclassic.net/,"Denver, Colorado, Colorado, USA",Registry Event
 17617,207,Dance N Play,2014,6,2014-06-01,133,Bend,Oregon,United States,"Bend, Oregon, United States",64,64,https://dancenplay.com/,"Bend, Oregon, United States",
-17363,175,French Open West Coast Swing,2014,6,2014-06-01,157,Paris,,France,"Paris, France",103,101,http://www.fowcs.com,"Paris, France",
+17363,175,French Open West Coast Swing,2014,6,2014-06-01,157,Paris,,France,"PARIS, France",103,101,http://www.fowcs.com,"PARIS, France",
 16048,25,J&J O'Rama,2014,6,2014-06-01,23,Anaheim,California,United States,"Anaheim/Garden Grove, CA, United States",100,98,https://jackandjillorama.com/,"Anaheim/Garden Grove, CA, United States",
 16747,96,Liberty Swing Dance Championships,2014,6,2014-06-01,41,New Brunswick,New Jersey,United States,"New Brunswick, New Jersey, USA",139,139,http://www.libertyswing.com/,"New Brunswick, New Jersey, USA",Registry Event
 16584,76,Michigan Dance Classic,2014,6,2014-06-01,51,Detroit,Michigan,United States,"Detroit, Michigan, USA",118,117,http://michiganclassicswing.com/,"Detroit, Michigan, USA",Registry Event
@@ -1450,7 +1450,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,location_id,p
 16017,22,USA Grand Nationals,2014,5,2014-05-01,25,Atlanta,Georgia,United States,"Atlanta, GA, United States",84,84,http://www.usagrandnationals.com/,"Atlanta, GA, United States",Registry Event
 17699,218,Asia West Coast Swing Open,2014,4,2014-04-01,159,Singapore,,Singapore,"Singapore, Singapore",63,63,https://asiawcsopen.com/,"Singapore, Singapore",Registry Event
 17566,200,Austin Swing Dance Championships,2014,4,2014-04-01,69,Austin,Texas,United States,"Austin, Texas, USA",97,95,https://austinswingdance.com/,"Austin, Texas, USA",Registry Event
-17479,187,City of Angels WCS,2014,4,2014-04-01,54,Burbank,California,United States,"Burbank, CA, United States",114,112,https://cityofangelswcs.com/,"Burbank, CA, United States",Registry Event
+17479,187,City of Angels WCS,2014,4,2014-04-01,54,Burbank,California,United States,"Burbank, California, California, USA",114,112,https://cityofangelswcs.com/,"Burbank, California, California, USA",Registry Event
 17581,203,Detonation Dance,2014,4,2014-04-01,166,Manchester,England,United Kingdom,"Manchester, Manchester, United Kingdom",50,50,http://www.detonationdance.com/,"Manchester, Manchester, United Kingdom",Registry Event
 17709,219,KIWI Fest,2014,4,2014-04-01,125,Kiev,,Ukraine,"Kiev, Ukraine",40,40,,"Kiev, Ukraine",
 17691,217,San Diego Dance Festival,2014,4,2014-04-01,10,San Diego,California,United States,"San Diego, CA",55,49,,"San Diego, CA",
@@ -1543,7 +1543,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,location_id,p
 16856,117,Orange Blossom Dance Festival,2013,6,2013-06-01,119,Orlando,Florida,United States,"Orlando, Florida, Florida, United States",57,55,http://www.orangeblossomdance.net,"Orlando, Florida, Florida, United States",
 16791,105,Canadian Swing Championships,2013,5,2013-05-01,121,Montreal,Quebec,Canada,"Montreal, Canada",24,24,http://www.canadianswingchampionships.com,"Montreal, Canada",
 17269,163,DFW Pro Am Jam,2013,5,2013-05-01,26,Dallas,Texas,United States,"Dallas, TX",65,65,,"Dallas, TX",
-17362,175,French Open West Coast Swing,2013,5,2013-05-01,157,Paris,,France,"Paris, France",101,101,http://www.fowcs.com,"Paris, France",
+17362,175,French Open West Coast Swing,2013,5,2013-05-01,157,Paris,,France,"PARIS, France",101,101,http://www.fowcs.com,"PARIS, France",
 15989,20,FreZno Dance Classic,2013,5,2013-05-01,5,Fresno,California,United States,"Fresno, CA",99,98,,"Fresno, CA",
 17594,205,SOswing,2013,5,2013-05-01,88,Ashland,Oregon,United States,"Ashland, OR, United States",74,71,http://wwww.soswingdance.com/,"Ashland, OR, United States",Registry Event
 17592,204,Spring Swing,2013,5,2013-05-01,239,Stockholm,,Sweden,"Stockholm, Sweden",39,39,,"Stockholm, Sweden",
@@ -1556,7 +1556,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,location_id,p
 16016,22,USA Grand Nationals,2013,5,2013-05-01,25,Atlanta,Georgia,United States,"Atlanta, GA, United States",67,67,http://www.usagrandnationals.com/,"Atlanta, GA, United States",Registry Event
 17698,218,Asia West Coast Swing Open,2013,4,2013-04-01,244,Singapore,,Singapore,"Singapore, Singapore",40,40,https://asiawcsopen.com/,"Singapore, Singapore",Registry Event
 17565,200,Austin Swing Dance Championships,2013,4,2013-04-01,69,Austin,Texas,United States,"Austin, Texas, USA",78,74,https://austinswingdance.com/,"Austin, Texas, USA",Registry Event
-17478,187,City of Angels WCS,2013,4,2013-04-01,54,Burbank,California,United States,"Burbank, CA, United States",106,104,https://cityofangelswcs.com/,"Burbank, CA, United States",Registry Event
+17478,187,City of Angels WCS,2013,4,2013-04-01,54,Burbank,California,United States,"Burbank, California, California, USA",106,104,https://cityofangelswcs.com/,"Burbank, California, California, USA",Registry Event
 17580,203,Detonation Dance,2013,4,2013-04-01,166,Manchester,England,United Kingdom,"Manchester, Manchester, United Kingdom",50,50,http://www.detonationdance.com/,"Manchester, Manchester, United Kingdom",Registry Event
 17343,172,International Hustle & Salsa Congress,2013,4,2013-04-01,85,Orlando,Florida,United States,"Orlando, FL",43,38,,"Orlando, FL",
 17576,201,MidAtlantic Dance Classic,2013,4,2013-04-01,38,Herndon,Virginia,United States,"Herndon, VA",35,35,,"Herndon, VA",
@@ -1643,7 +1643,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,location_id,p
 16855,117,Orange Blossom Dance Festival,2012,6,2012-06-01,119,Orlando,Florida,United States,"Orlando, Florida, Florida, United States",47,42,http://www.orangeblossomdance.net,"Orlando, Florida, Florida, United States",
 16790,105,Canadian Swing Championships,2012,5,2012-05-01,121,Montreal,Quebec,Canada,"Montreal, Canada",33,33,http://www.canadianswingchampionships.com,"Montreal, Canada",
 17268,163,DFW Pro Am Jam,2012,5,2012-05-01,26,Dallas,Texas,United States,"Dallas, TX",59,59,,"Dallas, TX",
-17361,175,French Open West Coast Swing,2012,5,2012-05-01,157,Paris,,France,"Paris, France",74,74,http://www.fowcs.com,"Paris, France",
+17361,175,French Open West Coast Swing,2012,5,2012-05-01,157,Paris,,France,"PARIS, France",74,74,http://www.fowcs.com,"PARIS, France",
 15988,20,FreZno Dance Classic,2012,5,2012-05-01,5,Fresno,California,United States,"Fresno, CA",95,93,,"Fresno, CA",
 17253,162,Swingapalooza,2012,5,2012-05-01,40,Baton Rouge,Louisiana,United States,"Baton Rouge, LA",50,50,http://www.swingapaloozaevent.com,"Baton Rouge, LA",
 16385,61,SwingDiego,2012,5,2012-05-01,10,San Diego,California,United States,"San Diego, CA",106,106,,"San Diego, CA",
@@ -1651,7 +1651,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,location_id,p
 17347,174,Swingsation,2012,5,2012-05-01,169,Gold Coast,,Australia,"Gold Coast, Queensland, Australia",40,40,https://rawconnection.com.au/swingsation/,"Gold Coast, Queensland, Australia",Registry Event
 16914,121,The Texas Classic,2012,5,2012-05-01,118,Austin,Texas,United States,"Austin, TX, United States",29,29,http://Www.thetexasclassic.com,"Austin, TX, United States",
 16015,22,USA Grand Nationals,2012,5,2012-05-01,25,Atlanta,Georgia,United States,"Atlanta, GA, United States",76,76,http://www.usagrandnationals.com/,"Atlanta, GA, United States",Registry Event
-17477,187,City of Angels WCS,2012,4,2012-04-01,54,Burbank,California,United States,"Burbank, CA, United States",121,101,https://cityofangelswcs.com/,"Burbank, CA, United States",Registry Event
+17477,187,City of Angels WCS,2012,4,2012-04-01,54,Burbank,California,United States,"Burbank, California, California, USA",121,101,https://cityofangelswcs.com/,"Burbank, California, California, USA",Registry Event
 17342,172,International Hustle & Salsa Congress,2012,4,2012-04-01,85,Orlando,Florida,United States,"Orlando, FL",39,35,,"Orlando, FL",
 15947,18,Seattle's Easter Swing,2012,4,2012-04-01,30,Seattle,Washington,United States,"Seattle, WA, United States",115,115,https://easterswing.org/,"Seattle, WA, United States",Registry Event
 17007,134,Swing Dance America,2012,4,2012-04-01,89,Lake Geneva,Illinois,United States,"Lake Geneva, IL",79,78,,"Lake Geneva, IL",
@@ -1725,7 +1725,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,location_id,p
 16656,84,Wisconsin Dance Challenge/Midwest Area Swing Dance Challenge,2011,7,2011-07-01,61,Green Bay,Wisconsin,United States,"Green Bay, WI",69,69,,"Green Bay, WI",
 16556,73,World Swing Dance Championships,2011,7,2011-07-01,14,San Bernardino,California,United States,"San Bernardino, CA",29,23,,"San Bernardino, CA",
 16815,109,Colorado Country Classic,2011,6,2011-06-01,76,Denver,Colorado,United States,"Denver, Colorado, Colorado, USA",56,55,https://coloradocountryclassic.net/,"Denver, Colorado, Colorado, USA",Registry Event
-17360,175,French Open West Coast Swing,2011,6,2011-06-01,157,Paris,,France,"Paris, France",77,77,http://www.fowcs.com,"Paris, France",
+17360,175,French Open West Coast Swing,2011,6,2011-06-01,157,Paris,,France,"PARIS, France",77,77,http://www.fowcs.com,"PARIS, France",
 16045,25,J&J O'Rama,2011,6,2011-06-01,23,Anaheim,California,United States,"Anaheim/Garden Grove, CA, United States",103,95,https://jackandjillorama.com/,"Anaheim/Garden Grove, CA, United States",
 16744,96,Liberty Swing Dance Championships,2011,6,2011-06-01,41,New Brunswick,New Jersey,United States,"New Brunswick, New Jersey, USA",134,132,http://www.libertyswing.com/,"New Brunswick, New Jersey, USA",Registry Event
 16581,76,Michigan Dance Classic,2011,6,2011-06-01,51,Detroit,Michigan,United States,"Detroit, Michigan, USA",67,65,http://michiganclassicswing.com/,"Detroit, Michigan, USA",Registry Event

@@ -90,6 +90,7 @@ EVENT_NAME_VARIANT_TO_CATALOG: dict[str, str] = {
     'DC Swing Experience (DCSX)': 'DC Swing eXperience (DCSX)',
     'UK WCS Championships': 'UK WCS Championships',
     'U.K. & European WCS Championships': 'UK WCS Championships',
+    'Swing&Snow': 'Swing & Snow',
 }
 
 # Duplicate WSDC registry ids → canonical id (same geo; see event-geo-dedup rule).
