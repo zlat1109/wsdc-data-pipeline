@@ -6,8 +6,10 @@ from transform.geography.city import (
     apply_city_normalization_to_frame,
     normalize_city_display,
     normalize_city_field,
+    normalize_location_whitespace,
     split_embedded_us_state_from_city,
     sync_export_city_columns,
+    sync_upcoming_location_string,
 )
 from transform.data_preprocessing import normalize_geography
 
@@ -101,3 +103,62 @@ def test_sync_export_city_columns_updates_editions(tmp_path):
     assert synced.loc[0, "place_city"] == "Chicago"
     assert synced.loc[0, "location_raw"] == "Chicago, IL, United States"
     assert updates["event_editions.csv"] > 0
+
+
+def test_sync_upcoming_location_preserves_different_venue():
+    result = sync_upcoming_location_string(
+        "Madrid, Spain",
+        "Madrid, Madrid, Spain",
+        string_replacements={},
+    )
+    assert result == "Madrid, Spain"
+
+
+def test_sync_upcoming_location_fixes_case_only_mismatch():
+    result = sync_upcoming_location_string(
+        "st. petersburg, russia",
+        "St. Petersburg, Russia",
+        string_replacements={},
+    )
+    assert result == "St. Petersburg, Russia"
+
+
+def test_sync_upcoming_location_applies_known_replacement():
+    result = sync_upcoming_location_string(
+        "MOSCOW,  RUSSIA",
+        "St. Petersburg, Russia",
+        string_replacements={"MOSCOW, RUSSIA": "Moscow, Russia"},
+    )
+    assert result == "Moscow, Russia"
+
+
+def test_sync_export_preserves_scheduled_location_raw(tmp_path):
+    catalog = pd.DataFrame(
+        [
+            {
+                "event_id": 347,
+                "typical_location": "Madrid, Madrid, Spain",
+                "upcoming_location": "Madrid, Spain",
+            }
+        ]
+    )
+    catalog.to_csv(tmp_path / "event_catalog.csv", index=False)
+    scheduled = pd.DataFrame(
+        [
+            {
+                "canonical_event_id": 347,
+                "location_raw": "Madrid, Spain",
+            }
+        ]
+    )
+    scheduled.to_csv(tmp_path / "scheduled_events.csv", index=False)
+    (tmp_path / "location_info.csv").write_text("location_id,event_city\n", encoding="utf-8")
+
+    sync_export_city_columns(tmp_path)
+
+    out = pd.read_csv(tmp_path / "scheduled_events.csv")
+    assert out.loc[0, "location_raw"] == "Madrid, Spain"
+
+
+def test_normalize_location_whitespace():
+    assert normalize_location_whitespace("Moscow,  Russia") == "Moscow, Russia"

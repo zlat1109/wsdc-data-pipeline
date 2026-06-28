@@ -130,8 +130,6 @@ SET
     url = COALESCE(NULLIF(TRIM(s.url), ''), c.url),
     upcoming_start_date = s.start_date,
     upcoming_location = s.location_raw,
-    typical_location = COALESCE(NULLIF(TRIM(s.location_raw), ''), c.typical_location),
-    typical_country = COALESCE(NULLIF(TRIM(s.country), ''), c.typical_country),
     updated_at = now()
 FROM core.events_list_current s
 WHERE s.canonical_event_id = c.event_id

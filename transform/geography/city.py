@@ -98,27 +98,38 @@ def normalize_city_field(city: str) -> tuple[str, Optional[str]]:
     return normalize_city_display(name), extracted_state
 
 
+def normalize_location_whitespace(text: str) -> str:
+    """Collapse duplicate spaces in display location strings."""
+    if not text:
+        return ""
+    return re.sub(r"\s{2,}", " ", str(text).strip())
+
+
+def _finalize_location_string(value: str) -> str:
+    return normalize_location_whitespace(value)
+
+
 def format_event_location(row: pd.Series) -> str:
     city = _strip_city_punctuation(str(row.get("event_city", "")).strip())
     state = str(row.get("event_state", "")).strip() if pd.notna(row.get("event_state")) else ""
     country = str(row.get("event_country", "")).strip() if pd.notna(row.get("event_country")) else ""
 
     if not city:
-        return str(row.get("event_location", "")).strip()
+        return _finalize_location_string(str(row.get("event_location", "")).strip())
 
     if country in {"United States", "USA", "US"}:
         if state:
             code = STATE_NAME_TO_CODE.get(state, state)
             if len(code) == 2:
-                return f"{city}, {code}, United States"
-            return f"{city}, {state}, United States"
-        return f"{city}, United States"
+                return _finalize_location_string(f"{city}, {code}, United States")
+            return _finalize_location_string(f"{city}, {state}, United States")
+        return _finalize_location_string(f"{city}, United States")
 
     if country:
         if state:
-            return f"{city}, {state}, {country}"
-        return f"{city}, {country}"
-    return city
+            return _finalize_location_string(f"{city}, {state}, {country}")
+        return _finalize_location_string(f"{city}, {country}")
+    return _finalize_location_string(city)
 
 
 def replace_city_in_location_string(location: str, old_city: str, new_city: str) -> str:
@@ -217,6 +228,36 @@ def location_lookup(location_df: pd.DataFrame) -> dict[int, dict[str, str]]:
     return lookup
 
 
+def apply_string_replacement(text: str, string_replacements: dict[str, str]) -> str:
+    """Apply known location string fixes (city normalization); never invent a new venue."""
+    stripped = _strip_city_punctuation(str(text).strip())
+    if not stripped:
+        return stripped
+    return string_replacements.get(stripped.upper(), stripped)
+
+
+def sync_upcoming_location_string(
+    upcoming: str,
+    typical: str,
+    *,
+    string_replacements: dict[str, str],
+) -> str:
+    """Normalize upcoming location without overwriting a genuinely different venue."""
+    upcoming = normalize_location_whitespace(str(upcoming or "").strip())
+    typical = normalize_location_whitespace(str(typical or "").strip())
+    if not upcoming:
+        return upcoming
+
+    replaced = apply_string_replacement(upcoming, string_replacements)
+    if replaced != upcoming:
+        return normalize_location_whitespace(replaced)
+
+    if typical and upcoming != typical and upcoming.upper() == typical.upper():
+        return typical
+
+    return upcoming
+
+
 def sync_export_city_columns(
     data_dir: Path,
     *,
@@ -299,40 +340,17 @@ def sync_export_city_columns(
             for idx, row in catalog.iterrows():
                 typical = str(row.get("typical_location", "")).strip()
                 upcoming = str(row.get("upcoming_location", "")).strip()
-                if typical and upcoming:
-                    if upcoming != typical and upcoming.upper() == typical.upper():
-                        catalog.at[idx, "upcoming_location"] = typical
-                        changed += 1
-                    elif upcoming.upper() != typical.upper():
-                        replacement = string_replacements.get(upcoming.upper(), typical)
-                        if replacement != upcoming:
-                            catalog.at[idx, "upcoming_location"] = replacement
-                            changed += 1
+                new_upcoming = sync_upcoming_location_string(
+                    upcoming,
+                    typical,
+                    string_replacements=string_replacements,
+                )
+                if new_upcoming != upcoming:
+                    catalog.at[idx, "upcoming_location"] = new_upcoming
+                    changed += 1
         if changed:
             catalog.to_csv(catalog_path, index=False)
             updates["event_catalog.csv"] = updates.get("event_catalog.csv", 0) + changed
-
-    scheduled_path = data_dir / "scheduled_events.csv"
-    catalog_path = data_dir / "event_catalog.csv"
-    if scheduled_path.exists() and catalog_path.exists():
-        scheduled = pd.read_csv(scheduled_path, low_memory=False)
-        catalog = pd.read_csv(catalog_path, low_memory=False)
-        if {"event_id", "typical_location"}.issubset(catalog.columns):
-            catalog = catalog.set_index("event_id")
-            changed = 0
-            id_col = "canonical_event_id" if "canonical_event_id" in scheduled.columns else "event_id"
-            for idx, row in scheduled.iterrows():
-                event_id = row.get(id_col)
-                if pd.isna(event_id) or int(event_id) not in catalog.index:
-                    continue
-                typical = str(catalog.loc[int(event_id), "typical_location"]).strip()
-                current = str(row.get("location_raw", "")).strip()
-                if typical and current and current != typical:
-                    scheduled.at[idx, "location_raw"] = typical
-                    changed += 1
-            if changed:
-                scheduled.to_csv(scheduled_path, index=False)
-            updates["scheduled_events.csv"] = updates.get("scheduled_events.csv", 0) + changed
 
     for filename, location_col in (
         ("events_wsdc.csv", "location"),
@@ -348,7 +366,8 @@ def sync_export_city_columns(
             if pd.isna(value):
                 continue
             text = str(value).strip()
-            new_text = string_replacements.get(text.upper(), text)
+            new_text = apply_string_replacement(text, string_replacements)
+            new_text = normalize_location_whitespace(new_text)
 
             if new_text == text and editions is not None and filename == "events_wsdc.csv":
                 event_id = frame.at[idx, "id"] if "id" in frame.columns else frame.at[idx, "event_id"]

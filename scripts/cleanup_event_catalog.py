@@ -50,6 +50,24 @@ def _apply_phantom_aliases(cur, phantom_map: dict[int, int]) -> None:
         )
 
 
+def apply_catalog_registry_cleanup(conn) -> None:
+    """Re-apply phantom merges and inactive flags after catalog rebuild."""
+    with conn.cursor() as cur:
+        _apply_phantom_aliases(cur, PHANTOM_ALIAS_TO_CANONICAL)
+        phantom_ids = list(PHANTOM_ALIAS_TO_CANONICAL.keys())
+        cur.execute(
+            """
+            UPDATE core.event_catalog
+            SET registry_status = 'inactive', updated_at = now()
+            WHERE total_result_rows = 0
+              AND coalesce(registry_status, '') NOT IN ('inactive', 'merged')
+              AND NOT (event_id = ANY(%s))
+            """,
+            (phantom_ids,),
+        )
+        cur.execute("ANALYZE core.event_catalog, core.event_editions")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     group = parser.add_mutually_exclusive_group(required=True)
@@ -76,20 +94,7 @@ def main() -> None:
 
             rebuild_event_catalog(conn)
 
-            _apply_phantom_aliases(cur, PHANTOM_ALIAS_TO_CANONICAL)
-
-            phantom_ids = list(PHANTOM_ALIAS_TO_CANONICAL.keys())
-            cur.execute(
-                """
-                UPDATE core.event_catalog
-                SET registry_status = 'inactive', updated_at = now()
-                WHERE total_result_rows = 0
-                  AND coalesce(registry_status, '') NOT IN ('inactive', 'merged')
-                  AND NOT (event_id = ANY(%s))
-                """,
-                (phantom_ids,),
-            )
-            cur.execute("ANALYZE core.event_catalog, core.event_editions")
+            apply_catalog_registry_cleanup(conn)
         conn.commit()
 
     print("\nCatalog cleanup complete.")

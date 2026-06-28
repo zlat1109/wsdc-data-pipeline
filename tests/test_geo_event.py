@@ -38,3 +38,8 @@ def test_classify_worlds_ucwdc_keep_separate():
 def test_classify_swingtime_merge_candidate():
     denver = geo_key("Denver", "Colorado", "United States")
     assert classify_event_id_pair(47, 66, denver, denver) == "merge_candidate"
+
+
+def test_metro_cluster_case_insensitive():
+    assert metro_cluster_for("boston", "Massachusetts", "United States") == "greater_boston_ma"
+    assert metro_cluster_for("FRAMINGHAM", "massachusetts", "United States") == "greater_boston_ma"

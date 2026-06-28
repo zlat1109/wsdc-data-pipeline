@@ -16,6 +16,7 @@ sys.path.insert(0, str(PROJECT_ROOT / "db"))
 
 from db.normalize_core_locations import normalize_core_location_cities  # noqa: E402
 from build_event_catalog import rebuild_event_catalog  # noqa: E402
+from cleanup_event_catalog import apply_catalog_registry_cleanup  # noqa: E402
 from connection import connect  # noqa: E402
 from enrich_known_events import enrich_core_known_events  # noqa: E402
 
@@ -25,6 +26,7 @@ def main() -> None:
         updated = normalize_core_location_cities(conn)
         enrich_core_known_events(conn)
         catalog, editions = rebuild_event_catalog(conn)
+        apply_catalog_registry_cleanup(conn)
         with conn.cursor() as cur:
             cur.execute("ANALYZE core.locations, core.event_editions, core.event_catalog")
         conn.commit()

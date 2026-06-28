@@ -18,6 +18,7 @@ from transform.knowledge import (
     EVENT_LOCATION_SUBSTRING_CORRECTIONS,
     EVENT_NAME_LOCATION_OVERRIDES,
     EVENT_NAME_NORMALIZATION,
+    MERGE_EVENT_ID_MAP,
     apply_event_location_patches,
     event_location_patches,
 )
@@ -93,6 +94,32 @@ def _apply_auto_strip_event_year(
     return df
 
 
+def _apply_merge_event_id_map(df: pd.DataFrame, tracker: PreprocessTracker) -> pd.DataFrame:
+    """Remap duplicate WSDC registry ids to canonical event_id before load."""
+    if "event_name_id" not in df.columns or not MERGE_EVENT_ID_MAP:
+        return df
+    table = "dancers_results_info"
+    out = df.copy()
+    ids = pd.to_numeric(out["event_name_id"], errors="coerce")
+    for source_id, canonical_id in MERGE_EVENT_ID_MAP.items():
+        mask = ids == source_id
+        count = int(mask.sum())
+        if not count:
+            continue
+        tracker.record(
+            "MERGE_EVENT_ID_MAP",
+            table,
+            "event_name_id",
+            str(source_id),
+            str(canonical_id),
+            count,
+            "known_map",
+        )
+        out.loc[mask, "event_name_id"] = canonical_id
+        ids = pd.to_numeric(out["event_name_id"], errors="coerce")
+    return out
+
+
 def _apply_event_corrections_tracked(df: pd.DataFrame, tracker: PreprocessTracker) -> pd.DataFrame:
     table = "dancers_results_info"
     df = df.copy()
@@ -106,6 +133,7 @@ def _apply_event_corrections_tracked(df: pd.DataFrame, tracker: PreprocessTracke
         rule_id="EVENT_NAME_NORMALIZATION",
         tracker=tracker,
     )
+    df = _apply_merge_event_id_map(df, tracker)
 
     if "event_competition" in df.columns:
         original = df["event_competition"].astype(str)
