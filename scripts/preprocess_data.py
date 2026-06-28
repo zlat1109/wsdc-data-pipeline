@@ -26,7 +26,7 @@ from transform.preprocess_with_log import (  # noqa: E402
     build_combined_report,
     preprocess_with_log,
 )
-from transform.geography.city import sync_export_city_columns  # noqa: E402
+from transform.geography.sync_export import sync_export_city_columns  # noqa: E402
 from transform.quality_audit import load_csv_bundle, load_previous_report  # noqa: E402
 
 DEFAULT_REPORT_DIR = PROJECT_ROOT / "data" / "quality_reports"

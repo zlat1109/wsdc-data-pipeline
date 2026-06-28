@@ -117,7 +117,7 @@ def main() -> None:
             out_path = args.output_dir / filename
             print(f"  {filename}: {rows} rows -> {out_path}")
 
-    from transform.geography.city import sync_export_city_columns
+    from transform.geography.sync_export import sync_export_city_columns
 
     sync_updates = sync_export_city_columns(args.output_dir)
     if sync_updates:

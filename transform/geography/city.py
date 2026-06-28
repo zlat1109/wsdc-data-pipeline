@@ -253,4 +253,28 @@ def sync_upcoming_location_string(
     return upcoming
 
 
-from transform.geography.sync_export import sync_export_city_columns  # noqa: E402
+def sync_typical_location_from_edition(
+    current_typical: str,
+    edition_location_raw: str,
+    *,
+    string_replacements: dict[str, str],
+) -> str:
+    """Update catalog typical from edition mode location without clobbering venue metadata."""
+    edition_raw = normalize_location_whitespace(str(edition_location_raw or "").strip())
+    current = normalize_location_whitespace(str(current_typical or "").strip())
+    if not edition_raw:
+        return current
+    if not current:
+        return edition_raw
+
+    replaced = apply_string_replacement(edition_raw, string_replacements)
+    if replaced != edition_raw:
+        edition_raw = normalize_location_whitespace(replaced)
+
+    if current.upper() == edition_raw.upper():
+        return current
+
+    if current != edition_raw:
+        return current
+
+    return edition_raw

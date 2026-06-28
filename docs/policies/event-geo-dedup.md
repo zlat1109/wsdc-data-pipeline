@@ -22,7 +22,8 @@ Merge WSDC registry `event_id` values only when **normalized name and geography*
 |-----------|------|
 | `transform/geography/geo_event.py` | `geo_key`, `METRO_CLUSTERS`, `classify_event_id_pair` |
 | `transform/knowledge/event_aliases.py` | `MERGE_EVENT_ID_MAP` |
-| `scripts/merge_event_ids.py` | DB remap with geo gate |
+| `transform/knowledge/merge_map.py` | Preprocess remap of `event_name_id` on fresh CSV (no runtime geo gate) |
+| `scripts/merge_event_ids.py` | DB remap of `core.results.event_id` with geo gate |
 | `scripts/audit_event_splits.py` | Classify split pairs before merge |
 | `export.geo_events` | Tableau geo dimension |
 
@@ -30,10 +31,11 @@ Merge WSDC registry `event_id` values only when **normalized name and geography*
 
 1. Run `audit_event_splits.py` — confirm `merge_candidate`
 2. Add pair to `MERGE_EVENT_ID_MAP` if not already present
-3. `merge_event_ids.py --dry-run` — verify row counts and geo
-4. Snapshot Supabase branch before production apply
-5. `merge_event_ids.py --apply`
-6. `export.py` + verify `monitor_data_quality.py`
+3. **Fresh ingest:** preprocess applies `apply_merge_event_id_map` automatically
+4. **Existing DB rows:** `merge_event_ids.py --dry-run` — verify row counts and geo
+5. Snapshot Supabase branch before production apply
+6. `merge_event_ids.py --apply` (when remapping rows already in Supabase)
+7. `export.py` + verify `monitor_data_quality.py`
 
 ## Do not
 

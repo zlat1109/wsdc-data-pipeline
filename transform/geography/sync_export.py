@@ -10,6 +10,7 @@ from transform.geography.city import (
     apply_string_replacement,
     location_lookup,
     normalize_location_whitespace,
+    sync_typical_location_from_edition,
     sync_upcoming_location_string,
 )
 
@@ -20,11 +21,10 @@ _EDITION_LOCATION_FIELDS = (
     ("event_location", "location_raw"),
 )
 
-_CATALOG_TYPICAL_FIELDS = (
+_CATALOG_TYPICAL_SCALAR_FIELDS = (
     ("typical_city", "place_city"),
     ("typical_state", "place_state"),
     ("typical_country", "place_country"),
-    ("typical_location", "location_raw"),
 )
 
 
@@ -53,6 +53,8 @@ def sync_editions_from_location_info(
 def sync_catalog_typical_from_editions(
     catalog: pd.DataFrame,
     editions: pd.DataFrame,
+    *,
+    string_replacements: dict[str, str],
 ) -> tuple[pd.DataFrame, int]:
     """Set catalog typical_* from the latest edition per event."""
     if not {"event_id", "event_year", "event_month"}.issubset(editions.columns):
@@ -70,12 +72,23 @@ def sync_catalog_typical_from_editions(
         if pd.isna(event_id) or int(event_id) not in latest.index:
             continue
         src = latest.loc[int(event_id)]
-        for dst, src_col in _CATALOG_TYPICAL_FIELDS:
+        for dst, src_col in _CATALOG_TYPICAL_SCALAR_FIELDS:
             if dst in out.columns and pd.notna(src.get(src_col)):
                 value = str(src[src_col]).strip()
                 if out.at[idx, dst] != value:
                     out.at[idx, dst] = value
                     changed += 1
+        if "typical_location" in out.columns and pd.notna(src.get("location_raw")):
+            edition_raw = str(src["location_raw"]).strip()
+            current = str(row.get("typical_location", "") or "").strip()
+            value = sync_typical_location_from_edition(
+                current,
+                edition_raw,
+                string_replacements=string_replacements,
+            )
+            if out.at[idx, "typical_location"] != value:
+                out.at[idx, "typical_location"] = value
+                changed += 1
     return out, changed
 
 
@@ -103,6 +116,39 @@ def sync_catalog_upcoming_locations(
     return out, changed
 
 
+def backfill_wsdc_locations_from_editions(
+    frame: pd.DataFrame,
+    location_col: str,
+    editions: pd.DataFrame,
+) -> tuple[pd.DataFrame, int]:
+    """Fill events_wsdc location from matching edition when replacement pass left text unchanged."""
+    out = frame.copy()
+    changed = 0
+    id_col = "id" if "id" in out.columns else "event_id"
+    if id_col not in out.columns or "event_year" not in out.columns or "event_month" not in out.columns:
+        return out, 0
+
+    for idx, value in out[location_col].items():
+        if pd.isna(value):
+            continue
+        text = str(value).strip()
+        event_id = out.at[idx, id_col]
+        event_year = out.at[idx, "event_year"]
+        event_month = out.at[idx, "event_month"]
+        match = editions[
+            (editions["event_id"] == event_id)
+            & (editions["event_year"] == event_year)
+            & (editions["event_month"] == event_month)
+        ]
+        if match.empty or pd.isna(match.iloc[0].get("location_raw")):
+            continue
+        candidate = str(match.iloc[0]["location_raw"]).strip()
+        if candidate and candidate != text:
+            out.at[idx, location_col] = candidate
+            changed += 1
+    return out, changed
+
+
 def normalize_export_location_columns(
     data_dir: Path,
     *,
@@ -120,6 +166,7 @@ def normalize_export_location_columns(
             continue
         frame = pd.read_csv(path, low_memory=False)
         changed = 0
+        unchanged_rows: list[int] = []
         for idx, value in frame[location_col].items():
             if pd.isna(value):
                 continue
@@ -127,24 +174,23 @@ def normalize_export_location_columns(
             new_text = normalize_location_whitespace(
                 apply_string_replacement(text, string_replacements),
             )
-
-            if new_text == text and editions is not None and filename == "events_wsdc.csv":
-                event_id = frame.at[idx, "id"] if "id" in frame.columns else frame.at[idx, "event_id"]
-                event_year = frame.at[idx, "event_year"]
-                event_month = frame.at[idx, "event_month"]
-                match = editions[
-                    (editions["event_id"] == event_id)
-                    & (editions["event_year"] == event_year)
-                    & (editions["event_month"] == event_month)
-                ]
-                if not match.empty and pd.notna(match.iloc[0].get("location_raw")):
-                    candidate = str(match.iloc[0]["location_raw"]).strip()
-                    if candidate and candidate != text:
-                        new_text = candidate
-
             if new_text != text:
                 frame.at[idx, location_col] = new_text
                 changed += 1
+            elif filename == "events_wsdc.csv":
+                unchanged_rows.append(idx)
+
+        if unchanged_rows and editions is not None and filename == "events_wsdc.csv":
+            subset = frame.loc[unchanged_rows].copy()
+            subset, backfill_changed = backfill_wsdc_locations_from_editions(
+                subset,
+                location_col,
+                editions,
+            )
+            if backfill_changed:
+                frame.loc[unchanged_rows, location_col] = subset[location_col]
+                changed += backfill_changed
+
         if changed:
             frame.to_csv(path, index=False)
         updates[filename] = changed
@@ -181,7 +227,11 @@ def sync_export_city_columns(
         catalog_changed = 0
 
         if editions is not None:
-            catalog, typical_changed = sync_catalog_typical_from_editions(catalog, editions)
+            catalog, typical_changed = sync_catalog_typical_from_editions(
+                catalog,
+                editions,
+                string_replacements=string_replacements,
+            )
             catalog_changed += typical_changed
 
         catalog, upcoming_changed = sync_catalog_upcoming_locations(catalog, string_replacements)

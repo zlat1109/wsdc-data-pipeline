@@ -5,6 +5,8 @@ from __future__ import annotations
 from datetime import datetime, timezone
 from typing import Any
 
+from catalog_registry import apply_catalog_registry_cleanup
+
 _REBUILD_EDITIONS_SQL = """
 INSERT INTO core.event_editions (
     event_id, event_year, event_month, edition_date,
@@ -197,8 +199,6 @@ def rebuild_event_catalog(conn: Any) -> tuple[int, int]:
         catalog_count = cur.fetchone()[0]
         cur.execute("SELECT COUNT(*) FROM core.event_editions")
         edition_count = cur.fetchone()[0]
-
-    from catalog_registry import apply_catalog_registry_cleanup
 
     apply_catalog_registry_cleanup(conn)
 
