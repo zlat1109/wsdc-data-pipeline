@@ -46,7 +46,16 @@ Merges both dicts for preprocess. Load seeds `core.event_aliases` via `prepare_e
 | 321 | 331 | Brno — Swing Fiction |
 | 279 | 283 | Kazan EL Fest |
 
-Applied by `scripts/merge_event_ids.py` (DB mutation, not preprocess).
+Applied in two places (same map, different gates):
+
+| Path | When | Geo gate |
+|------|------|----------|
+| **Preprocess** | `transform/knowledge/merge_map.py` remaps `event_name_id` on fresh CSV before load | No — pairs are pre-vetted in `MERGE_EVENT_ID_MAP` |
+| **DB repair** | `scripts/merge_event_ids.py` updates `core.results.event_id` on existing rows | Yes — `classify_event_id_pair` + geo keys |
+
+```python
+from transform.knowledge.merge_map import apply_merge_event_id_map
+```
 
 **Keep separate** (never merge):
 
@@ -84,7 +93,7 @@ Quality audit codes:
 
 1. Confirm same geo via `audit_event_splits.py`
 2. Add to `MERGE_EVENT_ID_MAP` if not keep-separate
-3. `merge_event_ids.py --dry-run` then `--apply`
+3. Preprocess applies map on ingest; for existing DB rows: `merge_event_ids.py --dry-run` then `--apply`
 4. Rebuild catalog + export
 
 See [../policies/event-geo-dedup.md](../policies/event-geo-dedup.md).

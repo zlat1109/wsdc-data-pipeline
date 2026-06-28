@@ -61,22 +61,27 @@ def geo_key(city: object, state: object, country: object) -> str:
     )
 
 
+def _geo_field_match(actual: str, expected: str) -> bool:
+    if not expected:
+        return True
+    if not actual:
+        return False
+    return _norm_text(actual).lower() == _norm_text(expected).lower()
+
+
 def metro_cluster_for(city: str, state: str, country: str) -> str | None:
     if not city:
         return None
     city_fold = city.strip().title()
-    state_fold = state.strip().title() if state else ""
-    country_fold = country.strip() if country else ""
     for cluster_id, meta in METRO_CLUSTERS.items():
         cities = meta.get("cities") or set()
         if city not in cities and city_fold not in cities:
             continue
         expected_state = _norm_text(meta.get("state"))
         expected_country = _norm_text(meta.get("country"))
-        state_cmp = state_fold or state
-        if expected_state and state_cmp and state_cmp.lower() != expected_state.lower():
+        if not _geo_field_match(state, expected_state):
             continue
-        if expected_country and country_fold and country_fold.lower() != expected_country.lower():
+        if not _geo_field_match(country, expected_country):
             continue
         return cluster_id
     return None

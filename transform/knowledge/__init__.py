@@ -18,6 +18,7 @@ from transform.knowledge.event_aliases import (
     RESULT_TO_CATALOG_EVENT_NAME,
     build_event_name_normalization,
 )
+from transform.knowledge.merge_map import apply_merge_event_id_map
 from transform.knowledge.locations import (
     LOCATION_ID_CORRECTIONS,
     LOCATION_INFO_CITY_CORRECTIONS,
@@ -38,6 +39,7 @@ __all__ = [
     'RESULT_TO_CATALOG_EVENT_NAME',
     'apply_event_corrections',
     'apply_event_location_patches',
+    'apply_merge_event_id_map',
     'build_event_name_normalization',
     'event_location_patches',
 ]

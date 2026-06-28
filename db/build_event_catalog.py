@@ -198,4 +198,8 @@ def rebuild_event_catalog(conn: Any) -> tuple[int, int]:
         cur.execute("SELECT COUNT(*) FROM core.event_editions")
         edition_count = cur.fetchone()[0]
 
+    from catalog_registry import apply_catalog_registry_cleanup
+
+    apply_catalog_registry_cleanup(conn)
+
     return catalog_count, edition_count

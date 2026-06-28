@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import re
-from pathlib import Path
 from typing import TYPE_CHECKING, Optional
 
 import pandas as pd
@@ -105,31 +104,27 @@ def normalize_location_whitespace(text: str) -> str:
     return re.sub(r"\s{2,}", " ", str(text).strip())
 
 
-def _finalize_location_string(value: str) -> str:
-    return normalize_location_whitespace(value)
-
-
 def format_event_location(row: pd.Series) -> str:
     city = _strip_city_punctuation(str(row.get("event_city", "")).strip())
     state = str(row.get("event_state", "")).strip() if pd.notna(row.get("event_state")) else ""
     country = str(row.get("event_country", "")).strip() if pd.notna(row.get("event_country")) else ""
 
     if not city:
-        return _finalize_location_string(str(row.get("event_location", "")).strip())
+        return normalize_location_whitespace(str(row.get("event_location", "")).strip())
 
     if country in {"United States", "USA", "US"}:
         if state:
             code = STATE_NAME_TO_CODE.get(state, state)
             if len(code) == 2:
-                return _finalize_location_string(f"{city}, {code}, United States")
-            return _finalize_location_string(f"{city}, {state}, United States")
-        return _finalize_location_string(f"{city}, United States")
+                return normalize_location_whitespace(f"{city}, {code}, United States")
+            return normalize_location_whitespace(f"{city}, {state}, United States")
+        return normalize_location_whitespace(f"{city}, United States")
 
     if country:
         if state:
-            return _finalize_location_string(f"{city}, {state}, {country}")
-        return _finalize_location_string(f"{city}, {country}")
-    return _finalize_location_string(city)
+            return normalize_location_whitespace(f"{city}, {state}, {country}")
+        return normalize_location_whitespace(f"{city}, {country}")
+    return normalize_location_whitespace(city)
 
 
 def replace_city_in_location_string(location: str, old_city: str, new_city: str) -> str:
@@ -258,136 +253,4 @@ def sync_upcoming_location_string(
     return upcoming
 
 
-def sync_export_city_columns(
-    data_dir: Path,
-    *,
-    replacements: dict[str, str] | None = None,
-) -> dict[str, int]:
-    """Refresh city columns in export CSVs from location_info."""
-    location_path = data_dir / "location_info.csv"
-    if not location_path.exists():
-        return {}
-
-    locations = pd.read_csv(location_path, low_memory=False)
-    lookup = location_lookup(locations)
-    string_replacements = {k.upper(): v for k, v in (replacements or {}).items()}
-    updates: dict[str, int] = {}
-
-    editions_path = data_dir / "event_editions.csv"
-    if editions_path.exists():
-        editions = pd.read_csv(editions_path, low_memory=False)
-        changed = 0
-        for idx, row in editions.iterrows():
-            location_id = row.get("location_id")
-            if pd.isna(location_id):
-                continue
-            loc = lookup.get(int(location_id))
-            if not loc:
-                continue
-
-            for src, dst in (
-                ("event_city", "place_city"),
-                ("event_state", "place_state"),
-                ("event_country", "place_country"),
-                ("event_location", "location_raw"),
-                ("event_location", "typical_location"),
-            ):
-                if dst in editions.columns and loc.get(src):
-                    if editions.at[idx, dst] != loc[src]:
-                        editions.at[idx, dst] = loc[src]
-                        changed += 1
-
-        if changed:
-            editions.to_csv(editions_path, index=False)
-        updates["event_editions.csv"] = changed
-
-    catalog_path = data_dir / "event_catalog.csv"
-    if catalog_path.exists() and editions_path.exists():
-        catalog = pd.read_csv(catalog_path, low_memory=False)
-        editions = pd.read_csv(editions_path, low_memory=False)
-        if {"event_id", "event_year", "event_month"}.issubset(editions.columns):
-            latest = (
-                editions.sort_values(["event_id", "event_year", "event_month"], ascending=[True, False, False])
-                .drop_duplicates(subset=["event_id"], keep="first")
-            )
-            latest = latest.set_index("event_id")
-            changed = 0
-            for idx, row in catalog.iterrows():
-                event_id = row.get("event_id")
-                if pd.isna(event_id) or int(event_id) not in latest.index:
-                    continue
-                src = latest.loc[int(event_id)]
-                for dst, src_col in (
-                    ("typical_city", "place_city"),
-                    ("typical_state", "place_state"),
-                    ("typical_country", "place_country"),
-                    ("typical_location", "location_raw"),
-                ):
-                    if dst in catalog.columns and pd.notna(src.get(src_col)):
-                        value = str(src[src_col]).strip()
-                        if catalog.at[idx, dst] != value:
-                            catalog.at[idx, dst] = value
-                            changed += 1
-            if changed:
-                catalog.to_csv(catalog_path, index=False)
-            updates["event_catalog.csv"] = changed
-
-    catalog_path = data_dir / "event_catalog.csv"
-    if catalog_path.exists():
-        catalog = pd.read_csv(catalog_path, low_memory=False)
-        changed = 0
-        if {"typical_location", "upcoming_location"}.issubset(catalog.columns):
-            for idx, row in catalog.iterrows():
-                typical = str(row.get("typical_location", "")).strip()
-                upcoming = str(row.get("upcoming_location", "")).strip()
-                new_upcoming = sync_upcoming_location_string(
-                    upcoming,
-                    typical,
-                    string_replacements=string_replacements,
-                )
-                if new_upcoming != upcoming:
-                    catalog.at[idx, "upcoming_location"] = new_upcoming
-                    changed += 1
-        if changed:
-            catalog.to_csv(catalog_path, index=False)
-            updates["event_catalog.csv"] = updates.get("event_catalog.csv", 0) + changed
-
-    for filename, location_col in (
-        ("events_wsdc.csv", "location"),
-        ("scheduled_events.csv", "location_raw"),
-    ):
-        path = data_dir / filename
-        if not path.exists() or location_col not in pd.read_csv(path, nrows=0).columns:
-            continue
-        frame = pd.read_csv(path, low_memory=False)
-        changed = 0
-        editions = pd.read_csv(data_dir / "event_editions.csv", low_memory=False) if (data_dir / "event_editions.csv").exists() else None
-        for idx, value in frame[location_col].items():
-            if pd.isna(value):
-                continue
-            text = str(value).strip()
-            new_text = apply_string_replacement(text, string_replacements)
-            new_text = normalize_location_whitespace(new_text)
-
-            if new_text == text and editions is not None and filename == "events_wsdc.csv":
-                event_id = frame.at[idx, "id"] if "id" in frame.columns else frame.at[idx, "event_id"]
-                event_year = frame.at[idx, "event_year"]
-                event_month = frame.at[idx, "event_month"]
-                match = editions[
-                    (editions["event_id"] == event_id)
-                    & (editions["event_year"] == event_year)
-                    & (editions["event_month"] == event_month)
-                ]
-                if not match.empty and pd.notna(match.iloc[0].get("location_raw")):
-                    candidate = str(match.iloc[0]["location_raw"]).strip()
-                    if candidate and candidate != text:
-                        new_text = candidate
-
-            if new_text != text:
-                frame.at[idx, location_col] = new_text
-                changed += 1
-        if changed:
-            frame.to_csv(path, index=False)
-        updates[filename] = changed
-
-    return updates
+from transform.geography.sync_export import sync_export_city_columns  # noqa: E402

@@ -6,9 +6,9 @@ from transform.preprocess_tracker import PreprocessTracker
 from transform.preprocess_with_log import (
     _apply_auto_strip_event_year,
     _apply_mapping,
-    _apply_merge_event_id_map,
     preprocess_with_log,
 )
+from transform.knowledge.merge_map import apply_merge_event_id_map
 from transform.preprocess_with_log import build_combined_report  # noqa: F401
 
 
@@ -106,11 +106,13 @@ def test_preprocess_canonicalizes_london_suburb_coords():
     processed, tracker = preprocess_with_log(raw)
     assert processed["location_info"].loc[1, "latitude"] == "51.5072178"
     assert processed["location_info"].loc[1, "longitude"] == "-0.1275862"
+    canon_rules = [r for r in tracker.rules if r.rule_id == "CITY_CANONICAL_COORDINATES"]
+    assert canon_rules and canon_rules[0].rows_affected >= 1
 
 
 def test_apply_merge_event_id_map_remaps_source_rows():
     df = pd.DataFrame({"event_name_id": [47, 66, 100], "event_name": ["SwingTime", "SwingTime", "Other"]})
     tracker = PreprocessTracker()
-    out = _apply_merge_event_id_map(df, tracker)
+    out = apply_merge_event_id_map(df, tracker=tracker)
     assert out["event_name_id"].tolist() == [47, 47, 100]
     assert any(r.rule_id == "MERGE_EVENT_ID_MAP" for r in tracker.rules)

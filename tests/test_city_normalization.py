@@ -162,3 +162,39 @@ def test_sync_export_preserves_scheduled_location_raw(tmp_path):
 
 def test_normalize_location_whitespace():
     assert normalize_location_whitespace("Moscow,  Russia") == "Moscow, Russia"
+
+
+def test_sync_editions_preserves_typical_location(tmp_path):
+    """Edition-level typical_location is export metadata; not overwritten from location_info."""
+    location_info = pd.DataFrame(
+        [
+            {
+                "location_id": 170,
+                "event_city": "Madrid",
+                "event_state": "",
+                "event_country": "Spain",
+                "event_location": "Madrid, Madrid, Spain",
+            }
+        ]
+    )
+    location_info.to_csv(tmp_path / "location_info.csv", index=False)
+    editions = pd.DataFrame(
+        [
+            {
+                "event_id": 347,
+                "event_year": 2025,
+                "event_month": 3,
+                "location_id": 170,
+                "place_city": "Madrid",
+                "location_raw": "Madrid, Spain",
+                "typical_location": "Madrid, Spain",
+            }
+        ]
+    )
+    editions.to_csv(tmp_path / "event_editions.csv", index=False)
+
+    sync_export_city_columns(tmp_path)
+
+    out = pd.read_csv(tmp_path / "event_editions.csv")
+    assert out.loc[0, "location_raw"] == "Madrid, Madrid, Spain"
+    assert out.loc[0, "typical_location"] == "Madrid, Spain"

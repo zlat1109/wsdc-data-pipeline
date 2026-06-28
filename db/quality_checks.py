@@ -210,7 +210,7 @@ EXTENDED_CHECKS: tuple[QualityCheck, ...] = (
         severity="error",
         category="event_naming",
         description="Phantom registry ids must be merged/inactive (Swing&Snow, Grand Nationals).",
-        fix_hint="scripts/cleanup_event_catalog.py PHANTOM_ALIAS_TO_CANONICAL",
+        fix_hint="db/catalog_registry.py PHANTOM_ALIAS_TO_CANONICAL",
     ),
     QualityCheck(
         name="swing_snow_alias",
