@@ -203,7 +203,7 @@ EXTENDED_CHECKS: tuple[QualityCheck, ...] = (
         name="phantom_ids_not_merged",
         sql="""
         SELECT count(*) FROM core.event_catalog
-        WHERE event_id IN (467, 486, 487, 488)
+        WHERE event_id IN (443, 444, 467, 486, 487, 488)
           AND coalesce(registry_status, '') NOT IN ('merged', 'inactive')
         """,
         max_value=0,

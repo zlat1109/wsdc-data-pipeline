@@ -9,6 +9,8 @@ PHANTOM_ALIAS_TO_CANONICAL: dict[int, int] = {
     487: 22,
     488: 22,
     467: 215,  # Swing&Snow — registry spelling variant of Swing & Snow
+    443: 194,  # Moscow Westie Dance Fest — phantom registry row
+    444: 194,  # Moscow Westie Fest Gala Edition — schedule branding variant
 }
 
 

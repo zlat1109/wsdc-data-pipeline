@@ -27,6 +27,7 @@ EVENT_NAME_MAPPINGS: dict[str, str] = {
     "USA Grand Nationals Dance Championship": "USA Grand Nationals",
     "USA Grand National Dance Championship": "USA Grand Nationals",
     "Jack & Jill O'Rama": "J&J O'Rama",
+    "Moscow Westie Fest Gala Edition": "Moscow Westie Fest",
 }
 
 

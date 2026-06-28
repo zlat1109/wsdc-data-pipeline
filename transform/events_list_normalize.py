@@ -59,6 +59,12 @@ REGISTRY_STATUS = "Registry Event"
 TRIAL_STATUS = "Trial Event"
 VALID_STATUS_EVENTS = frozenset({REGISTRY_STATUS, TRIAL_STATUS})
 
+# Single-segment locale paths (westiefest.org/en vs westiefest.org).
+_LOCALE_PATH_SEGMENTS = frozenset({
+    "en", "ru", "de", "fr", "es", "it", "pt", "pl", "nl", "sv", "no", "da", "fi",
+    "cs", "sk", "hu", "ro", "bg", "uk", "ja", "ko", "zh", "cn",
+})
+
 
 def normalize_url(url: str) -> str:
     if not url:
@@ -68,6 +74,10 @@ def normalize_url(url: str) -> str:
     if netloc.startswith("www."):
         netloc = netloc[4:]
     path = parsed.path.rstrip("/")
+    if path.startswith("/"):
+        segment = path[1:].split("/", 1)[0]
+        if segment in _LOCALE_PATH_SEGMENTS and "/" not in path[1:]:
+            path = ""
     if not netloc:
         return ""
     return f"{netloc}{path}"

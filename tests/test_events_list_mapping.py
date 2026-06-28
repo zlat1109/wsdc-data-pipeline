@@ -249,6 +249,79 @@ def test_rocket_city_maps_to_westies_on_the_water_rebrand():
     assert result.canonical_name == "Westies on the Water"
 
 
+def test_normalize_url_strips_locale_path():
+    from transform.events_list_normalize import normalize_url
+
+    assert normalize_url("https://westiefest.org/en/") == "westiefest.org"
+    assert normalize_url("http://westiefest.org/") == "westiefest.org"
+    assert normalize_url("https://westiefest.org/en/") == normalize_url("http://westiefest.org/")
+
+
+def test_moscow_westie_fest_gala_edition_maps_to_catalog():
+    from transform.events_list_normalize import normalize_url
+
+    catalog = [
+        CatalogEvent(
+            event_id=194,
+            name="Moscow Westie Fest",
+            url="https://westiefest.org/en/",
+            url_norm=normalize_url("https://westiefest.org/en/"),
+            typical_location="Moscow,  Russia",
+        ),
+    ]
+    row = {
+        "source_fingerprint": "x",
+        "event_name": "Moscow Westie Fest Gala Edition",
+        "start_date": "2026-11-06",
+        "location_raw": "Moscow, Russia",
+        "url": "http://westiefest.org/",
+        "status_event": "Registry Event",
+        "is_active": True,
+    }
+    result = map_scheduled_event(row, catalog, build_url_index(catalog), [c.name for c in catalog])
+    assert result.match_status == "confirmed"
+    assert result.match_method == "explicit"
+    assert result.canonical_event_id == 194
+    assert result.canonical_name == "Moscow Westie Fest"
+
+
+def test_moscow_westie_fest_gala_url_match_without_explicit_alias():
+    from transform.events_list_normalize import normalize_url
+
+    catalog = [
+        CatalogEvent(
+            event_id=194,
+            name="Moscow Westie Fest",
+            url="https://westiefest.org/en/",
+            url_norm=normalize_url("https://westiefest.org/en/"),
+            typical_location="Moscow,  Russia",
+        ),
+    ]
+    row = {
+        "source_fingerprint": "y",
+        "event_name": "Moscow Westie Fest Gala Edition",
+        "start_date": "2026-11-06",
+        "location_raw": "Moscow, Russia",
+        "url": "http://westiefest.org/",
+        "status_event": "Registry Event",
+        "is_active": True,
+    }
+    # Simulate catalog-only URL path (no EVENT_NAME_MAPPINGS): still links via normalized host.
+    import parser.event_name_matcher as matcher
+
+    saved = matcher.EVENT_NAME_MAPPINGS.pop("Moscow Westie Fest Gala Edition", None)
+    try:
+        result = map_scheduled_event(
+            row, catalog, build_url_index(catalog), [c.name for c in catalog]
+        )
+        assert result.match_status == "confirmed"
+        assert result.match_method == "url"
+        assert result.canonical_event_id == 194
+    finally:
+        if saved is not None:
+            matcher.EVENT_NAME_MAPPINGS["Moscow Westie Fest Gala Edition"] = saved
+
+
 def test_rocket_city_not_fuzzy_matched_to_rose_city():
     """Different US events — similar names must not link when cities differ."""
     catalog = [
