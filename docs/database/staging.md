@@ -109,11 +109,18 @@ Same columns as `staging.dancers_points_info`. Used during initial history backf
 
 ## staging.changed_dancer_role_info
 
-**Grain:** one historical role-summary change row.
+**Grain:** one historical role-summary snapshot row (legacy accumulated log).
 
 **Source CSV:** `changed_dancer_role_info.csv`
 
-Same columns as `staging.dancer_role_info`.
+Same columns as `staging.dancer_role_info`. Used for **initial** history backfill only (`backfill.py` / `split_legacy_role_history.py`), not weekly load.
+
+On backfill, pandas splits this file into:
+
+- `history.dancer_roles_history` — division changes (`core.dancer_roles_division_sig`)
+- `history.dancer_names_history` — display name changes
+
+Weekly load records both tracks from current `staging.dancer_role_info` via `record_weekly_roles_history.sql` and `record_weekly_names_history.sql`.
 
 ## CSV → staging mapping
 

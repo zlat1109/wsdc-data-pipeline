@@ -20,7 +20,7 @@ English reference for the World Swing Dance Championships data pipeline: parser 
 
 - [Pipeline overview](architecture/overview.md) — End-to-end stages and entry points
 - [Event identity](architecture/identity-model.md) — `event_id`, editions, `geo_event_key`
-- [SCD2 history](architecture/scd2-history.md) — Points and roles change tracking
+- [SCD2 history](architecture/scd2-history.md) — Points, divisions, and dancer name change tracking
 
 ### Database (Supabase / Postgres)
 

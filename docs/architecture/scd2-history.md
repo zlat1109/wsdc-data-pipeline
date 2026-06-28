@@ -1,6 +1,6 @@
 # SCD2 change history
 
-Points and role summaries are tracked with **Slowly Changing Dimension Type 2** intervals instead of appending full snapshots to ever-growing CSV files.
+Points, role divisions, and dancer display names are tracked with **Slowly Changing Dimension Type 2** intervals instead of appending full snapshots to ever-growing CSV files.
 
 ## Design
 
@@ -62,9 +62,11 @@ WHERE h.valid_to IS NULL AND NOT EXISTS (
 
 **Tracked attributes:** dominate/non-dominate division fields only (`dancer_name` is **not** part of the change signature)
 
+**Change signature:** `core.dancer_roles_division_sig(...)` — md5 of nine division columns (migration 023). Used in weekly SQL, backfill SQL, quality checks, and reconcile scripts.
+
 **Primary key:** `(dancer_id, valid_from)`
 
-Weekly: `record_weekly_roles_history.sql`. Backfill: `backfill.py` (via `scripts/split_legacy_role_history.py`) or roles-only script `scripts/backfill_roles_history.py`.
+Weekly: `record_weekly_roles_history.sql`. Backfill: `backfill.py` → `scripts/split_legacy_role_history.py` (both role + name tables). Divisions-only rebuild: `scripts/backfill_roles_history.py`.
 
 Reconcile: `scripts/reconcile_roles_history.py`. Quality check: `roles_history_drift`.
 
@@ -72,15 +74,25 @@ Reconcile: `scripts/reconcile_roles_history.py`. Quality check: `roles_history_d
 
 **Identity:** `dancer_id`
 
-**Tracked attribute:** `dancer_name`
+**Tracked attribute:** `dancer_name` (case-insensitive comparison — casing-only API flips do not open a new interval)
 
 **Primary key:** `(dancer_id, valid_from)`
 
-Weekly: `record_weekly_names_history.sql`. Legacy split backfill: `scripts/split_legacy_role_history.py`.
+Weekly: `record_weekly_names_history.sql` (coalesces empty staging names from `core.dancers` before diff). Legacy split backfill: `scripts/split_legacy_role_history.py`.
 
 Reconcile: `scripts/reconcile_names_history.py`. Quality check: `names_history_drift`.
 
-Point-in-time lookup: `core.dancer_name_at(dancer_id, as_of_date)`.
+Point-in-time lookup: `core.dancer_name_at(dancer_id, as_of_date)` — returns current `core.dancers.dancer_name` when `as_of_date IS NULL`.
+
+### Name preservation on load
+
+Empty `dancer_name` in API/staging must not wipe a known name:
+
+- Weekly name/role SQL: `COALESCE(NULLIF(TRIM(staging.dancer_name), ''), core.dancers.dancer_name)`
+- `promote_core.sql`: temp `_preserved_dancer_names` before truncate, then coalesce on insert
+- Parser: `normalize_dancer_name()` in `transform/normalize.py` (whitespace collapse)
+
+Quality warning (extended): `dancers_empty_name` — active dancers with results/points but blank display name.
 
 ## Export contract
 

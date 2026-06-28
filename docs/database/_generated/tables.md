@@ -2,6 +2,14 @@
 
 [auto] Regenerate with `python scripts/generate_schema_docs.py`
 
+## core.dancer_aliases
+| Column | Migration parse | Live type |
+|--------|-----------------|-----------|
+| alias | text/PK/FK | text |
+| dancer_id | text/PK/FK | integer |
+| source | text/PK/FK | text |
+| notes | text/PK/FK | text |
+
 ## core.dancer_points
 | Column | Migration parse | Live type |
 |--------|-----------------|-----------|
@@ -191,6 +199,15 @@ Edition-level schedule archive keyed by source_fingerprint (all scrape observati
 | first_seen_at | text/PK/FK | timestamp with time zone |
 | last_seen_at | text/PK/FK | timestamp with time zone |
 | last_run_id | text/PK/FK | integer |
+
+## history.dancer_names_history
+| Column | Migration parse | Live type |
+|--------|-----------------|-----------|
+| dancer_id | text/PK/FK | integer |
+| dancer_name | text/PK/FK | text |
+| valid_from | text/PK/FK | date |
+| valid_to | text/PK/FK | date |
+| run_id | text/PK/FK | bigint |
 
 ## history.dancer_points_history
 | Column | Migration parse | Live type |

@@ -77,11 +77,26 @@ Two naming systems:
 
 Link via `canonical_event_id` on `core.events_list_current` after mapping (`parser/event_name_matcher.py`). See [policies/event-rename-aliases.md](../policies/event-rename-aliases.md).
 
+## Dancer identity
+
+| Layer | Key | Grain | Use when |
+|-------|-----|-------|----------|
+| **Registry** | `dancer_id` | One WSDC dancer | All joins — stable across renames |
+| **Current name** | `core.dancers.dancer_name` | Latest display name | Current dashboards, `dancer_role_info.csv` |
+| **Name history** | `history.dancer_names_history` | `[valid_from, valid_to]` per name version | Rename audit, point-in-time labels |
+| **Alias** | `core.dancer_aliases.alias` | Alternate string → id | Maiden names, typos (knowledge map) |
+
+**Do not** treat `changed_dancer_role_info.csv` as name history — it records **division** changes only (migration 021). Use `changed_dancer_name_info.csv` or `core.dancer_name_at()`.
+
+Competitive role/division history remains in `history.dancer_roles_history` with signature `core.dancer_roles_division_sig(...)`.
+
 ## Tableau guidance
 
 | Question | Primary dimension |
 |----------|-------------------|
 | Historical results by official registry | `event_id` + `event_catalog` |
+| Dancer name on past result row | `changed_dancer_name_info` or `dancers_results_with_name.csv` |
+| Current dancer display name | `dancer_role_info.dancer_name` |
 | Results by city / country | `location_info` or `event_editions.place_*` |
 | Same name, different cities | `geo_event_key` or join `export.geo_events` |
 | Upcoming events on WSDC site | `scheduled_events.csv` |

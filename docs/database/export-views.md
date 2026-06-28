@@ -18,7 +18,9 @@ From `export.py`:
 | `export.scheduled_events` | `scheduled_events.csv` | Yes |
 | `export.changed_dancer_points_info` | `changed_dancer_points_info.csv` | Yes |
 | `export.changed_dancer_role_info` | `changed_dancer_role_info.csv` | Yes |
+| `export.changed_dancer_name_info` | `changed_dancer_name_info.csv` | Yes |
 | `export.results_by_event` | `results_by_event.csv` | No (`--include-results-by-event`) |
+| `export.dancers_results_with_name` | `dancers_results_with_name.csv` | No (`--include-results-with-name`) |
 | `derived.*` (post-export) | `divisional_structure.csv`, `divisional_structure_only_dominate_role.csv`, `dancer_transitions.csv` | Yes (after DB export) |
 | `export.geo_events` | — | Not wired in export.py |
 | `export.results_by_geo_event` | — | Not wired in export.py |
@@ -158,9 +160,11 @@ Columns: `dancer_id`, `dancer_name`, `update_date` (`valid_from`).
 
 ## export.dancers_results_with_name
 
-**Source:** `core.results` + `core.dancer_name_at(dancer_id, event_date)`
+**Source:** `core.results` + `core.dancer_name_at(dancer_id, as_of_date)`
 
 Optional; enable with `python export.py --include-results-with-name`.
+
+`as_of_date` = `event_date`, or `make_date(event_year, event_month, 1)` when `event_date` is null. When both are null, `dancer_name_at` returns the current name from `core.dancers`.
 
 ## export.results_by_event
 

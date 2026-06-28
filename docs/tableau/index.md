@@ -37,12 +37,12 @@ python export.py --output-dir ./data
 
 Use when Supabase is ahead of git (CI load succeeded but CSV commit failed). See [../operations/data-sync.md](../operations/data-sync.md).
 
-## Default CSV set (13 files)
+## Default CSV set (14 files)
 
 | File | Purpose |
 |------|---------|
 | `dancers_points_info.csv` | Current points |
-| `dancer_role_info.csv` | Role summaries |
+| `dancer_role_info.csv` | Role summaries (current name from `core.dancers`) |
 | `dancers_results_info.csv` | Competition results |
 | `location_info.csv` | Locations |
 | `events_wsdc.csv` | Registry listing |
@@ -50,15 +50,17 @@ Use when Supabase is ahead of git (CI load succeeded but CSV commit failed). See
 | `event_editions.csv` | Editions by year/month |
 | `scheduled_events.csv` | Upcoming WSDC schedule |
 | `changed_dancer_points_info.csv` | Points change history |
-| `changed_dancer_role_info.csv` | Role change history |
+| `changed_dancer_role_info.csv` | Division change history |
+| `changed_dancer_name_info.csv` | Display name change history |
 | `divisional_structure.csv` | Division snapshots (all roles) |
 | `divisional_structure_only_dominate_role.csv` | Division snapshots (dominate role) |
 | `dancer_transitions.csv` | Division transitions over time |
 
-## Optional large files
+## Optional exports
 
 ```bash
 python export.py --include-results-by-event   # ~47 MB denormalized results
+python export.py --include-results-with-name  # results + point-in-time dancer_name
 ```
 
 Geo views (`export.geo_events`) are not in default export — query Supabase or extend `export.py`.

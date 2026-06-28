@@ -42,6 +42,13 @@ Seeded in migration 003. Referenced by `core.dancer_points.level`.
 
 Seeded via `scripts/seed_dancer_aliases.py` from `transform/knowledge/dancer_aliases.py`.
 
+## SQL helpers (migration 021–023)
+
+| Function | Purpose |
+|----------|---------|
+| `core.dancer_name_at(dancer_id, as_of date)` | Display name valid on `as_of`; NULL `as_of` → current `core.dancers` |
+| `core.dancer_roles_division_sig(...)` | md5 signature for competitive role/division SCD2 (excludes name) |
+
 ## core.locations
 
 **Grain:** one WSDC location registry entry.

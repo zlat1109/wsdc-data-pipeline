@@ -202,7 +202,9 @@ Same 12 columns as `dancer_role_info.csv` (column order matches legacy). `update
 **Flag:** `python export.py --include-results-with-name`  
 **View:** `export.dancers_results_with_name`
 
-Same as `dancers_results_info.csv` plus `dancer_name` = `core.dancer_name_at(dancer_id, event_date)`.
+Same as `dancers_results_info.csv` plus `dancer_name` from `core.dancer_name_at(dancer_id, as_of)`.
+
+`as_of` = `event_date`, or first day of `event_year`/`event_month` when date is missing; current name when both are null.
 
 ## Optional: results_by_event.csv
 
@@ -229,6 +231,8 @@ Skip with `python export.py --skip-derived-exports`.
 
 | File | ~rows |
 |------|-------|
+| changed_dancer_role_info | 127,000 | Division versions (legacy split) |
+| changed_dancer_name_info | 27,600 | Name versions (legacy split) |
 | dancer_role_info | 27,200 |
 | dancers_points_info | 50,600 |
 | dancers_results_info | 194,000 |

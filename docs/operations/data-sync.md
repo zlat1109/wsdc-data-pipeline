@@ -21,7 +21,7 @@ CI can **succeed through load + export** and still leave **GitHub CSV stale** if
 
 2. **Parser CSV ≠ export CSV.**
    - Parser: `dancer_role_info`, `dancers_points_info`, `dancers_results_info`, `location_info`, `events_wsdc`
-   - Export (from DB): `event_catalog`, `event_editions`, `scheduled_events`
+   - Export (from DB): `event_catalog`, `event_editions`, `scheduled_events`, `changed_dancer_*` (points, role divisions, names)
 
 3. **Cloud parse always needs preprocess before load.** Without date normalization, `event_editions` stays 0.
 

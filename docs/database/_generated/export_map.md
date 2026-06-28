@@ -14,7 +14,9 @@
 | `export.scheduled_events` | `scheduled_events.csv` | Yes |
 | `export.changed_dancer_points_info` | `changed_dancer_points_info.csv` | Yes |
 | `export.changed_dancer_role_info` | `changed_dancer_role_info.csv` | Yes |
+| `export.changed_dancer_name_info` | `changed_dancer_name_info.csv` | Yes |
+| `export.results_by_event` | `results_by_event.csv` | No |
+| `export.dancers_results_with_name` | `dancers_results_with_name.csv` | No |
 | `derived.divisional_structure` | `divisional_structure.csv` | Yes (post-export) |
 | `derived.divisional_structure_only_dominate_role` | `divisional_structure_only_dominate_role.csv` | Yes (post-export) |
 | `derived.dancer_transitions` | `dancer_transitions.csv` | Yes (post-export) |
-| `export.results_by_event` | `results_by_event.csv` | No |

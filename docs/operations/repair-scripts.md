@@ -56,6 +56,7 @@ Note: `repair_locations.py` has no `--dry-run`; it always applies corrections.
 | `reconcile_names_history.py` | Fix name history drift vs core.dancers | Yes |
 | `split_legacy_role_history.py` | Rebuild role + name history from legacy CSV | Yes |
 | `seed_dancer_aliases.py` | Seed core.dancer_aliases from knowledge map | Yes |
+| `backfill.py` | Initial CSV → staging → core + full history backfill | Yes |
 | `close_parse_runs.py` | Close stuck `running` parse_runs | Yes |
 | `monitor_data_quality.py` | SQL invariant checks | No |
 

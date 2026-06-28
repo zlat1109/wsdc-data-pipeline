@@ -37,7 +37,9 @@ Always run before load when CSVs come from cloud parse.
 | `preprocess_with_log.py` | Orchestration, tracked changes |
 | `preprocess_tracker.py` | Rule application logging |
 | `quality_audit.py` | Defect detection codes |
-| `normalize.py` | Roles, levels/divisions |
+| `normalize.py` | Roles, levels/divisions, dancer display names |
+| `history/legacy_role_split.py` | Legacy CSV → division + name SCD2 intervals (backfill) |
+| `knowledge/dancer_aliases.py` | Alternate spellings → `dancer_id` |
 | `data_preprocessing.py` | Legacy maps (deprecated entry; prefer preprocess script) |
 | `geography/` | Location resolve, geo_key, metro clusters |
 | `knowledge/` | Event aliases, location corrections |
@@ -61,6 +63,7 @@ See [../operations/quality-monitoring.md](../operations/quality-monitoring.md).
 | Change type | Where to edit |
 |-------------|---------------|
 | Event name alias | `transform/knowledge/event_aliases.py` |
+| Dancer name alias | `transform/knowledge/dancer_aliases.py` → `scripts/seed_dancer_aliases.py` |
 | Location id fix | `transform/knowledge/locations.py` |
 | Schedule → catalog name | `parser/event_name_matcher.py` |
 | Division spelling | `transform/normalize.py` LEVEL_ALIASES |

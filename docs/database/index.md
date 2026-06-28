@@ -28,6 +28,9 @@ erDiagram
   events ||--o{ event_instances : registry_rows
   parse_runs ||--o{ dancer_points_history : records
   parse_runs ||--o{ dancer_roles_history : records
+  parse_runs ||--o{ dancer_names_history : records
+  dancers ||--o{ dancer_names_history : identity_versions
+  dancers ||--o{ dancer_aliases : known_as
 ```
 
 ## Schedule domain (independent from points load)

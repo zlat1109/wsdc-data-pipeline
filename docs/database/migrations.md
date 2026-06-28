@@ -38,10 +38,15 @@ CI and `scripts/run_pipeline.py` call `db/apply.py` before load.
 | `018_history_export_views.sql` | `export.changed_*` from history tables |
 | `019_geo_event_views.sql` | `export.geo_events`, `export.results_by_geo_event` |
 | `020_export_csv_column_alignment.sql` | Extra columns on legacy export views (results, locations, events_wsdc) |
+| `021_dancer_names_history.sql` | `history.dancer_names_history`, `core.dancer_aliases` |
+| `022_dancer_name_exports.sql` | `core.dancer_name_at()`, `export.changed_dancer_name_info`, optional `export.dancers_results_with_name` |
+| `023_dancer_roles_division_sig.sql` | `core.dancer_roles_division_sig()`; refine `dancer_name_at` + results-with-name view |
+
+**Applied on Supabase (2026-06):** 021–023.
 
 ## Adding a migration
 
-1. Create `db/migrations/020_description.sql` (next sequential number)
+1. Create `db/migrations/024_description.sql` (next sequential number)
 2. Use `CREATE OR REPLACE VIEW` for export changes when possible
 3. Run `python db/apply.py` locally against dev/staging Supabase branch
 4. Run `python export.py` and verify Tableau CSV columns

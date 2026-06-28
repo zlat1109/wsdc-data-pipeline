@@ -65,6 +65,8 @@ Extended in migration 006 for watermark probe fields (`max_dancer_id_watermark`,
 | valid_to | date | YES | Interval end; NULL = open |
 | run_id | bigint | YES | FK → `parse_runs` |
 
+**Change detection:** `core.dancer_roles_division_sig(...)` on division columns only (not `dancer_name`).
+
 ## history.dancer_names_history
 
 **Grain:** one display-name version valid during `[valid_from, valid_to]`.
