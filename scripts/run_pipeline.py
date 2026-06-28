@@ -70,6 +70,15 @@ def main() -> None:
         run([py, "load.py", "--data-dir", str(args.data_dir), "--source", args.source])
 
     run([py, "export.py"])
+
+    if not args.export_only:
+        run([
+            py,
+            "scripts/validate_supabase_quality.py",
+            "-o",
+            "data/quality_reports/supabase_latest.json",
+        ])
+
     print("\nPipeline complete.")
 
 

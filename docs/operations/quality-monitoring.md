@@ -42,6 +42,28 @@ Exit code 1 if any check fails.
 python scripts/monitor_data_quality.py
 ```
 
+### Extended validation (regression battery)
+
+`scripts/validate_supabase_quality.py` runs core checks plus extended checks mapped to historical fixes (city normalization, phantom ids, location orphans, catalog drift). **Warnings** do not fail the exit code; **errors** do.
+
+```bash
+python scripts/validate_supabase_quality.py
+python scripts/validate_supabase_quality.py --json
+python scripts/validate_supabase_quality.py --core-only   # same as monitor
+```
+
+Check definitions live in `db/quality_checks.py` (single source of truth for monitor + validate).
+
+| Extended check | Historical problem |
+|----------------|-------------------|
+| `orphan_location_id` | resolve.py backfill / repair_results_location |
+| `all_caps_cities` | CHICAGO, TOULOUSE, WILMINGTON DEL |
+| `double_space_event_location` | `Moscow,  Russia` |
+| `city_equals_country` | geocode defects (Singapore whitelisted) |
+| `phantom_ids_not_merged` | 467 Swing&Snow, 486–488 Grand Nationals |
+| `swing_snow_alias` | registry spelling duplicate |
+| `catalog_duplicate_city_token` | BeeMAD `Madrid, Madrid, Spain` |
+
 ## Event split audit
 
 ```bash
@@ -54,7 +76,9 @@ Classifications: `merge_candidate`, `keep_separate`, `manual_review`
 
 ## CI integration
 
-`full-parse.yml` runs `monitor_data_quality.py` after pipeline when not `export_only`.
+`full-parse.yml` runs `validate_supabase_quality.py` after load (writes `data/quality_reports/supabase_latest.json`). Exit code 1 on **error**-severity failures.
+
+Telegram `#WSDC_Pipeline_Complete`: if Supabase checks or preprocess manual review need attention, message includes a **⚠️ Требует внимания** block with failed checks and open review items. Clean runs omit that block.
 
 Telegram pipeline-complete message includes quality log summary when secrets configured.
 

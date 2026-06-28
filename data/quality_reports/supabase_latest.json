@@ -1,0 +1,162 @@
+{
+  "checks": [
+    {
+      "name": "results_null_location_id",
+      "category": "location",
+      "severity": "error",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "Cloud parse drops location_id; resolve.py backfills from event_location.",
+      "fix_hint": "Run preprocess + load, or scripts/repair_results_location.py"
+    },
+    {
+      "name": "split_names_same_geo",
+      "category": "event_naming",
+      "severity": "error",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "Same raw event name + same geo must not map to multiple event_id.",
+      "fix_hint": "scripts/merge_event_ids.py + MERGE_EVENT_ID_MAP"
+    },
+    {
+      "name": "noncanonical_divisions",
+      "category": "levels",
+      "severity": "error",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "Legacy plural division labels from old parser/registry.",
+      "fix_hint": "scripts/repair_divisions.py"
+    },
+    {
+      "name": "points_history_drift",
+      "category": "history",
+      "severity": "error",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "SCD2 open row must match core.dancer_points snapshot.",
+      "fix_hint": "scripts/reconcile_points_history.py"
+    },
+    {
+      "name": "orphan_location_id",
+      "category": "location",
+      "severity": "error",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "results.location_id must exist in core.locations.",
+      "fix_hint": "transform/geography/resolve.py + repair_results_location.py"
+    },
+    {
+      "name": "orphan_event_id",
+      "category": "event_naming",
+      "severity": "error",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "Every result event_id must exist in core.events.",
+      "fix_hint": "db/seed_event_aliases.py seed_result_only_events"
+    },
+    {
+      "name": "editions_null_location_id",
+      "category": "location",
+      "severity": "error",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "Event editions derive location from results mode location_id.",
+      "fix_hint": "scripts/repair_locations.py + rebuild_event_catalog"
+    },
+    {
+      "name": "all_caps_cities",
+      "category": "location",
+      "severity": "error",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "ALL CAPS city names (CHICAGO, TOULOUSE, WILMINGTON DEL).",
+      "fix_hint": "transform/geography/city.py + scripts/repair_locations.py"
+    },
+    {
+      "name": "location_id_multiple_strings",
+      "category": "location",
+      "severity": "error",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "One location_id must not have conflicting event_location strings.",
+      "fix_hint": "Consolidate in location_info + core.locations"
+    },
+    {
+      "name": "city_equals_country",
+      "category": "location",
+      "severity": "warn",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "city=country usually geocode bug; Singapore ids 159/244 whitelisted.",
+      "fix_hint": "LOCATION_ID_CORRECTIONS or city-state allowlist in quality_audit"
+    },
+    {
+      "name": "double_space_event_location",
+      "category": "location",
+      "severity": "warn",
+      "value": 12,
+      "max_value": 0,
+      "ok": false,
+      "description": "Double spaces in location strings (Moscow,  Russia).",
+      "fix_hint": "normalize whitespace in city.py / repair_locations"
+    },
+    {
+      "name": "catalog_duplicate_city_token",
+      "category": "location",
+      "severity": "warn",
+      "value": 6,
+      "max_value": 0,
+      "ok": false,
+      "description": "Duplicated city in typical_location (Madrid, Madrid, Spain).",
+      "fix_hint": "Fix schedule enrich or sync from event_editions"
+    },
+    {
+      "name": "phantom_ids_not_merged",
+      "category": "event_naming",
+      "severity": "error",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "Phantom registry ids must be merged/inactive (Swing&Snow, Grand Nationals).",
+      "fix_hint": "scripts/cleanup_event_catalog.py PHANTOM_ALIAS_TO_CANONICAL"
+    },
+    {
+      "name": "swing_snow_alias",
+      "category": "event_naming",
+      "severity": "error",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "Swing&Snow spelling variant must alias to canonical event_id 215.",
+      "fix_hint": "core.event_aliases + EVENT_NAME_VARIANT_TO_CATALOG"
+    },
+    {
+      "name": "catalog_with_editions_missing_typical_location",
+      "category": "location",
+      "severity": "error",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "Events with results must have typical_location in catalog.",
+      "fix_hint": "rebuild_event_catalog + enrich_known_events"
+    }
+  ],
+  "summary": {
+    "total": 15,
+    "passed": 13,
+    "errors": 0,
+    "warnings": 2
+  },
+  "generated_at": "2026-06-28T13:01:45.142173+00:00",
+  "scope": "full"
+}

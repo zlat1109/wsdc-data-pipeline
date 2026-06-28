@@ -209,55 +209,96 @@ def format_pipeline_message(stats: dict) -> str:
     if stats.get("csv_committed"):
         lines.extend(["", "📁 CSV экспорт закоммичен в <code>data/*.csv</code>"])
 
-    quality_path = PROJECT_ROOT / "data" / "quality_reports" / "latest.json"
-    if quality_path.exists():
-        try:
-            q = json.loads(quality_path.read_text(encoding="utf-8"))
-            qs = q.get("summary") or {}
-            applied_n = qs.get("applied_rules_count", 0)
-            manual_new = qs.get("manual_review_new_count", qs.get("new_findings", 0))
-            manual_total = qs.get("manual_review_count", qs.get("total_findings", 0))
-            before_n = qs.get("before_findings_count", 0)
-
-            lines.extend([
-                "",
-                "<b>Data quality log</b>",
-                f"Before: <code>{_esc(before_n)}</code> findings",
-                f"Applied rules: <code>{_esc(applied_n)}</code>",
-                f"Manual review: <code>{_esc(manual_new)}</code> new / "
-                f"<code>{_esc(manual_total)}</code> total",
-                f"Log: <code>data/quality_reports/latest.json</code>",
-            ])
-
-            applied_rules = (q.get("applied_normalizations") or {}).get("rules") or []
-            if applied_rules:
-                lines.append("")
-                lines.append("<b>Applied (sample)</b>:")
-                for rule in applied_rules[:4]:
-                    lines.append(
-                        f"• {_esc(rule.get('rule_id'))}: "
-                        f"{_esc(str(rule.get('from_value', ''))[:40])} → "
-                        f"{_esc(str(rule.get('to_value', ''))[:40])} "
-                        f"(<code>{_esc(rule.get('rows_affected'))}</code>)"
-                    )
-
-            manual_items = (q.get("manual_review_required") or {}).get("findings") or []
-            new_items = [f for f in manual_items if f.get("is_new")][:4]
-            if new_items:
-                lines.append("")
-                lines.append("<b>Manual review (new)</b>:")
-                for item in new_items:
-                    lines.append(
-                        f"• [{_esc(item.get('severity'))}] {_esc(item.get('code'))}: "
-                        f"{_esc(str(item.get('message', ''))[:70])}"
-                    )
-        except (json.JSONDecodeError, OSError):
-            pass
+    attention = _format_attention_sections()
+    if attention:
+        lines.extend(["", "⚠️ <b>Требует внимания</b>", ""] + attention)
 
     if stats.get("repo"):
         lines.append(f"Repo: {_esc(stats['repo'])}")
 
     return "\n".join(lines)
+
+
+def _load_json(path: Path) -> dict | None:
+    if not path.exists():
+        return None
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return None
+
+
+def _format_supabase_quality_attention(report: dict) -> list[str]:
+    summary = report.get("summary") or {}
+    errors = int(summary.get("errors", 0))
+    warnings = int(summary.get("warnings", 0))
+    if errors == 0 and warnings == 0:
+        return []
+
+    lines = [
+        "<b>Supabase quality checks</b>",
+        f"Passed: <code>{_esc(summary.get('passed', 0))}</code> / "
+        f"<code>{_esc(summary.get('total', 0))}</code> · "
+        f"errors <code>{_esc(errors)}</code> · warnings <code>{_esc(warnings)}</code>",
+    ]
+    failed = [c for c in report.get("checks") or [] if not c.get("ok")]
+    for check in failed[:8]:
+        sev = str(check.get("severity", "error")).upper()
+        lines.append(
+            f"• [{_esc(sev)}] <code>{_esc(check.get('name'))}</code>: "
+            f"<code>{_esc(check.get('value'))}</code> "
+            f"(≤ <code>{_esc(check.get('max_value'))}</code>)"
+        )
+        hint = check.get("fix_hint")
+        if hint:
+            lines.append(f"  ↳ {_esc(hint)}")
+    if len(failed) > 8:
+        lines.append(f"… +{len(failed) - 8} ещё")
+    lines.append("Log: <code>data/quality_reports/supabase_latest.json</code>")
+    return lines
+
+
+def _format_preprocess_quality_attention(q: dict) -> list[str]:
+    qs = q.get("summary") or {}
+    manual_new = int(qs.get("manual_review_new_count", qs.get("new_findings", 0)) or 0)
+    manual_total = int(qs.get("manual_review_count", qs.get("total_findings", 0)) or 0)
+    manual_items = (q.get("manual_review_required") or {}).get("findings") or []
+    if manual_total == 0 and not manual_items:
+        return []
+
+    lines = [
+        "<b>Preprocess manual review</b>",
+        f"New: <code>{_esc(manual_new)}</code> · total open: <code>{_esc(manual_total)}</code>",
+    ]
+    show_items = [f for f in manual_items if f.get("is_new")] if manual_new else manual_items
+    for item in show_items[:6]:
+        examples = item.get("examples") or []
+        example = ""
+        if examples and isinstance(examples[0], dict):
+            example = str(examples[0].get("event_name") or examples[0].get("location_id") or "")[:50]
+        lines.append(
+            f"• [{_esc(item.get('severity'))}] <code>{_esc(item.get('code'))}</code>"
+            + (f": {_esc(example)}" if example else "")
+        )
+    lines.append("Log: <code>data/quality_reports/latest.json</code>")
+    return lines
+
+
+def _format_attention_sections() -> list[str]:
+    supabase = _load_json(PROJECT_ROOT / "data" / "quality_reports" / "supabase_latest.json")
+    preprocess = _load_json(PROJECT_ROOT / "data" / "quality_reports" / "latest.json")
+    supabase_lines = _format_supabase_quality_attention(supabase) if supabase else []
+    preprocess_lines = _format_preprocess_quality_attention(preprocess) if preprocess else []
+    if not supabase_lines and not preprocess_lines:
+        return []
+    sections_flat: list[str] = []
+    if supabase_lines:
+        sections_flat.extend(supabase_lines)
+    if preprocess_lines:
+        if sections_flat:
+            sections_flat.append("")
+        sections_flat.extend(preprocess_lines)
+    return sections_flat
 
 
 def cmd_probe(report_path: Path) -> None:

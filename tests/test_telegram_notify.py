@@ -85,7 +85,13 @@ def test_format_parse_start():
     assert "28367" in text
 
 
-def test_format_pipeline_complete():
+def test_format_pipeline_complete(tmp_path, monkeypatch):
+    import telegram_notify as tn
+
+    reports = tmp_path / "data" / "quality_reports"
+    reports.mkdir(parents=True)
+    monkeypatch.setattr(tn, "PROJECT_ROOT", tmp_path)
+
     text = format_pipeline_message(
         {
             "run_id": 17,
@@ -100,6 +106,77 @@ def test_format_pipeline_complete():
     assert "Данные WSDC обновлены" in text
     assert "28400" in text
     assert "WSDC_Pipeline_Complete" in text
+    assert "Требует внимания" not in text
+
+
+def test_format_pipeline_attention_supabase(tmp_path, monkeypatch):
+    import telegram_notify as tn
+
+    reports = tmp_path / "data" / "quality_reports"
+    reports.mkdir(parents=True)
+    (reports / "supabase_latest.json").write_text(
+        json.dumps(
+            {
+                "summary": {"total": 15, "passed": 12, "errors": 1, "warnings": 2},
+                "checks": [
+                    {
+                        "name": "phantom_ids_not_merged",
+                        "severity": "error",
+                        "value": 3,
+                        "max_value": 0,
+                        "ok": False,
+                        "fix_hint": "cleanup_event_catalog.py",
+                    },
+                    {
+                        "name": "double_space_event_location",
+                        "severity": "warn",
+                        "value": 12,
+                        "max_value": 0,
+                        "ok": False,
+                        "fix_hint": "city.py",
+                    },
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(tn, "PROJECT_ROOT", tmp_path)
+
+    text = tn.format_pipeline_message({"run_id": 1, "max_dancer_id": 100, "finished_at": "2026-06-15"})
+    assert "Требует внимания" in text
+    assert "Supabase quality checks" in text
+    assert "phantom_ids_not_merged" in text
+    assert "double_space_event_location" in text
+
+
+def test_format_pipeline_attention_preprocess(tmp_path, monkeypatch):
+    import telegram_notify as tn
+
+    reports = tmp_path / "data" / "quality_reports"
+    reports.mkdir(parents=True)
+    (reports / "latest.json").write_text(
+        json.dumps(
+            {
+                "summary": {"manual_review_count": 2, "manual_review_new_count": 0},
+                "manual_review_required": {
+                    "findings": [
+                        {
+                            "severity": "high",
+                            "code": "EVENT_NAME_UNRESOLVED_TO_CATALOG",
+                            "examples": [{"event_name": "Canadian Swing Championships (CSC)"}],
+                        }
+                    ]
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(tn, "PROJECT_ROOT", tmp_path)
+
+    text = tn.format_pipeline_message({"run_id": 1, "max_dancer_id": 100, "finished_at": "2026-06-15"})
+    assert "Требует внимания" in text
+    assert "Preprocess manual review" in text
+    assert "Canadian Swing" in text
 
 
 def test_format_events_list_inactive_and_mapping(tmp_path, monkeypatch):

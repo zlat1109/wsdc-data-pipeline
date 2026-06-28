@@ -120,7 +120,7 @@ jobs:
           fi
           "${args[@]}"
 
-      - name: Monitor data quality
+      - name: Validate Supabase quality
         if: ${{ !inputs.export_only }}
         env:
           DB_HOST: ${{ secrets.DB_HOST }}
@@ -129,7 +129,9 @@ jobs:
           DB_USER: ${{ secrets.DB_USER }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           DB_SSLMODE: require
-        run: python scripts/monitor_data_quality.py
+        run: |
+          python scripts/validate_supabase_quality.py \
+            -o data/quality_reports/supabase_latest.json
 
       - name: Commit exported CSV files
         id: commit_csv
