@@ -1,13 +1,9 @@
 #!/usr/bin/env python3
-"""Build history.dancer_roles_history from changed_dancer_role_info.csv (divisions only).
-
-The SQL backfill (backfill_roles_history.sql) times out on Supabase for the
-~3.4M-row legacy file. This script does the same SCD2 logic in pandas and bulk
-loads via COPY.
+"""Split legacy changed_dancer_role_info.csv into division + name SCD2 tables.
 
 Usage:
-    python scripts/backfill_roles_history.py --csv path/to/changed_dancer_role_info.csv
-    python scripts/backfill_roles_history.py --csv ... --run-id 40
+    python scripts/split_legacy_role_history.py --csv data/changed_dancer_role_info.csv --dry-run
+    python scripts/split_legacy_role_history.py --csv ... --apply [--run-id N]
 """
 
 from __future__ import annotations
@@ -15,7 +11,6 @@ from __future__ import annotations
 import argparse
 import io
 import sys
-import time
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -24,13 +19,14 @@ sys.path.insert(0, str(PROJECT_ROOT / "db"))
 
 from connection import connect  # noqa: E402
 from transform.history.legacy_role_split import (  # noqa: E402
+    NAME_INSERT_COLS,
     ROLE_INSERT_COLS,
-    build_division_intervals,
+    build_legacy_intervals,
 )
 
 
-def copy_to_history(conn, changes, run_id: int) -> int:
-    payload = changes.assign(run_id=run_id)[list(ROLE_INSERT_COLS)].copy()
+def _copy_df(conn, table: str, columns: tuple[str, ...], df, run_id: int) -> int:
+    payload = df.assign(run_id=run_id)[list(columns)].copy()
     for col in payload.columns:
         if col == "run_id":
             payload[col] = payload[col].astype(int)
@@ -41,15 +37,13 @@ def copy_to_history(conn, changes, run_id: int) -> int:
     payload.to_csv(buf, index=False, header=False)
     buf.seek(0)
 
-    cols_sql = ", ".join(ROLE_INSERT_COLS)
+    cols_sql = ", ".join(columns)
     with conn.cursor() as cur:
-        cur.execute("TRUNCATE history.dancer_roles_history")
+        cur.execute(f"TRUNCATE {table}")
         with cur.copy(
-            f"COPY history.dancer_roles_history ({cols_sql}) "
-            "FROM STDIN WITH (FORMAT csv, NULL '')"
+            f"COPY {table} ({cols_sql}) FROM STDIN WITH (FORMAT csv, NULL '')"
         ) as copy:
             copy.write(buf.getvalue().encode("utf-8"))
-    conn.commit()
     return len(payload)
 
 
@@ -57,12 +51,21 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--csv", type=Path, required=True)
     parser.add_argument("--run-id", type=int, default=None)
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument("--dry-run", action="store_true")
+    group.add_argument("--apply", action="store_true")
     args = parser.parse_args()
 
     if not args.csv.is_file():
         sys.exit(f"CSV not found: {args.csv}")
 
-    changes = build_division_intervals(args.csv)
+    division, names = build_legacy_intervals(args.csv)
+    print(f"\nDivision intervals: {len(division):,}")
+    print(f"Name intervals: {len(names):,}")
+
+    if args.dry_run:
+        print("\nDry run — no DB changes.")
+        return
 
     with connect() as conn:
         with conn.cursor() as cur:
@@ -75,12 +78,25 @@ def main() -> None:
                 cur.execute("SELECT COALESCE(MAX(run_id), 0) FROM history.parse_runs")
                 run_id = int(cur.fetchone()[0])
         if run_id <= 0:
-            sys.exit("No parse_runs row found — pass --run-id from backfill.py")
+            sys.exit("No parse_runs row found — pass --run-id")
 
-        print(f"Loading {len(changes):,} intervals into history (run_id={run_id}) ...", flush=True)
-        t0 = time.time()
-        count = copy_to_history(conn, changes, run_id)
-        print(f"Done: {count:,} rows in {time.time() - t0:.1f}s", flush=True)
+        role_count = _copy_df(
+            conn,
+            "history.dancer_roles_history",
+            ROLE_INSERT_COLS,
+            division,
+            run_id,
+        )
+        name_count = _copy_df(
+            conn,
+            "history.dancer_names_history",
+            NAME_INSERT_COLS,
+            names,
+            run_id,
+        )
+        conn.commit()
+
+    print(f"\nLoaded {role_count:,} role intervals and {name_count:,} name intervals (run_id={run_id}).")
 
 
 if __name__ == "__main__":

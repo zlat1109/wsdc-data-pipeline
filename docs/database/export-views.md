@@ -146,9 +146,21 @@ All active edition rows on WSDC site (multi-year listings).
 
 ## export.changed_dancer_role_info
 
-**Source:** `history.dancer_roles_history`
+**Source:** `history.dancer_roles_history` (division changes only; `dancer_name` is display-only)
 
 Column order matches legacy `changed_dancer_role_info.csv`.
+
+## export.changed_dancer_name_info
+
+**Source:** `history.dancer_names_history`
+
+Columns: `dancer_id`, `dancer_name`, `update_date` (`valid_from`).
+
+## export.dancers_results_with_name
+
+**Source:** `core.results` + `core.dancer_name_at(dancer_id, event_date)`
+
+Optional; enable with `python export.py --include-results-with-name`.
 
 ## export.results_by_event
 

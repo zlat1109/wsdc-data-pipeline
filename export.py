@@ -36,11 +36,13 @@ EVENT_CATALOG_EXPORTS: dict[str, str] = {
 HISTORY_EXPORTS: dict[str, str] = {
     "export.changed_dancer_points_info": "changed_dancer_points_info.csv",
     "export.changed_dancer_role_info": "changed_dancer_role_info.csv",
+    "export.changed_dancer_name_info": "changed_dancer_name_info.csv",
 }
 
 # Denormalized results + event context (~47 MB); optional — join in Tableau instead
 OPTIONAL_EXPORTS: dict[str, str] = {
     "export.results_by_event": "results_by_event.csv",
+    "export.dancers_results_with_name": "dancers_results_with_name.csv",
 }
 
 # Derived from role history after DB export (not Supabase views)
@@ -54,10 +56,18 @@ DERIVED_EXPORTS: tuple[str, ...] = (
 EXPORTS: dict[str, str] = {**LEGACY_EXPORTS, **EVENT_CATALOG_EXPORTS, **HISTORY_EXPORTS}
 
 
-def build_export_map(*, include_results_by_event: bool = False) -> dict[str, str]:
+def build_export_map(
+    *,
+    include_results_by_event: bool = False,
+    include_results_with_name: bool = False,
+) -> dict[str, str]:
     exports = {**LEGACY_EXPORTS, **EVENT_CATALOG_EXPORTS, **HISTORY_EXPORTS}
     if include_results_by_event:
-        exports.update(OPTIONAL_EXPORTS)
+        exports["export.results_by_event"] = OPTIONAL_EXPORTS["export.results_by_event"]
+    if include_results_with_name:
+        exports["export.dancers_results_with_name"] = OPTIONAL_EXPORTS[
+            "export.dancers_results_with_name"
+        ]
     return exports
 
 
@@ -93,13 +103,21 @@ def main() -> None:
         help="Also export results_by_event.csv (~47 MB denormalized join)",
     )
     parser.add_argument(
+        "--include-results-with-name",
+        action="store_true",
+        help="Also export dancers_results_with_name.csv (point-in-time display name)",
+    )
+    parser.add_argument(
         "--skip-derived-exports",
         action="store_true",
         help="Skip divisional_structure / dancer_transitions CSV generation",
     )
     args = parser.parse_args()
 
-    exports = build_export_map(include_results_by_event=args.include_results_by_event)
+    exports = build_export_map(
+        include_results_by_event=args.include_results_by_event,
+        include_results_with_name=args.include_results_with_name,
+    )
 
     print(f"Export directory: {args.output_dir}")
 

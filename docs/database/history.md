@@ -51,7 +51,7 @@ Extended in migration 006 for watermark probe fields (`max_dancer_id_watermark`,
 | Column | Type | Nullable | Description |
 |--------|------|----------|-------------|
 | dancer_id | int | NO | Dancer |
-| dancer_name | text | YES | Name at time of change |
+| dancer_name | text | YES | Denormalized snapshot (not a change trigger) |
 | dominate_role | text | YES | Primary role |
 | dominate_required | text | YES | Required level |
 | dominate_allowed | text | YES | Allowed |
@@ -61,6 +61,20 @@ Extended in migration 006 for watermark probe fields (`max_dancer_id_watermark`,
 | non_dominate_recommended | text | YES | Recommended |
 | non_dominate_role_highest_level_points | text | YES | Points |
 | non_dominate_role_highest_level | text | YES | Level |
+| valid_from | date | NO | Interval start |
+| valid_to | date | YES | Interval end; NULL = open |
+| run_id | bigint | YES | FK → `parse_runs` |
+
+## history.dancer_names_history
+
+**Grain:** one display-name version valid during `[valid_from, valid_to]`.
+
+**Primary key:** `(dancer_id, valid_from)`
+
+| Column | Type | Nullable | Description |
+|--------|------|----------|-------------|
+| dancer_id | int | NO | Dancer |
+| dancer_name | text | NO | Display name during interval |
 | valid_from | date | NO | Interval start |
 | valid_to | date | YES | Interval end; NULL = open |
 | run_id | bigint | YES | FK → `parse_runs` |
@@ -105,7 +119,8 @@ Extended in migration 006 for watermark probe fields (`max_dancer_id_watermark`,
 | File | Purpose |
 |------|---------|
 | `db/sql/record_weekly_points_history.sql` | Close/insert points intervals |
-| `db/sql/record_weekly_roles_history.sql` | Close/insert role intervals |
+| `db/sql/record_weekly_roles_history.sql` | Close/insert division intervals |
+| `db/sql/record_weekly_names_history.sql` | Close/insert name intervals |
 
 Run from `load.py` before `promote_core.sql`.
 

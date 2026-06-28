@@ -1,11 +1,14 @@
 -- Record role-summary changes (staging vs current core) before full core refresh.
 -- Closes open history intervals and inserts new versions. Identity: dancer_id.
--- Tracked attributes: the full dancer_roles row (compared via md5 signature).
+-- Tracked attributes: dominate/non-dominate divisions only (name -> dancer_names_history).
 
 WITH staging_norm AS (
     SELECT
         s.dancer_id::int AS dancer_id,
-        NULLIF(TRIM(s.dancer_name), '') AS dancer_name,
+        COALESCE(
+            NULLIF(TRIM(s.dancer_name), ''),
+            d.dancer_name
+        ) AS dancer_name,
         NULLIF(TRIM(s.dominate_role), '') AS dominate_role,
         COALESCE(l1.level, TRIM(s.dominate_required)) AS dominate_required,
         COALESCE(l2.level, TRIM(s.dominate_allowed)) AS dominate_allowed,
@@ -19,6 +22,7 @@ WITH staging_norm AS (
             AS non_dominate_role_highest_level,
         COALESCE(NULLIF(TRIM(s.update_date), '')::date, CURRENT_DATE) AS change_date
     FROM staging.dancer_role_info s
+    LEFT JOIN core.dancers d ON d.dancer_id = s.dancer_id::int
     LEFT JOIN core.levels l1
         ON UPPER(TRIM(s.dominate_required)) = l1.level_abbr OR TRIM(s.dominate_required) = l1.level
     LEFT JOIN core.levels l2
@@ -36,42 +40,34 @@ WITH staging_norm AS (
 staging_sig AS (
     SELECT
         *,
-        md5(
-            concat_ws('|',
-                COALESCE(dancer_name, ''),
-                COALESCE(dominate_role, ''),
-                COALESCE(dominate_required, ''),
-                COALESCE(dominate_allowed, ''),
-                COALESCE(non_dominate_role, ''),
-                COALESCE(non_dominate_required, ''),
-                COALESCE(non_dominate_allowed, ''),
-                COALESCE(non_dominate_recommended, ''),
-                COALESCE(non_dominate_role_highest_level_points, ''),
-                COALESCE(non_dominate_role_highest_level, '')
-            )
+        core.dancer_roles_division_sig(
+            dominate_role,
+            dominate_required,
+            dominate_allowed,
+            non_dominate_role,
+            non_dominate_required,
+            non_dominate_allowed,
+            non_dominate_recommended,
+            non_dominate_role_highest_level_points,
+            non_dominate_role_highest_level
         ) AS sig
     FROM staging_norm
 ),
 current_full AS (
-    -- dancer_name lives on core.dancers; fold it in for comparison
     SELECT
         c.dancer_id,
-        md5(
-            concat_ws('|',
-                COALESCE(d.dancer_name, ''),
-                COALESCE(c.dominate_role, ''),
-                COALESCE(c.dominate_required, ''),
-                COALESCE(c.dominate_allowed, ''),
-                COALESCE(c.non_dominate_role, ''),
-                COALESCE(c.non_dominate_required, ''),
-                COALESCE(c.non_dominate_allowed, ''),
-                COALESCE(c.non_dominate_recommended, ''),
-                COALESCE(c.non_dominate_role_highest_level_points, ''),
-                COALESCE(c.non_dominate_role_highest_level, '')
-            )
+        core.dancer_roles_division_sig(
+            c.dominate_role,
+            c.dominate_required,
+            c.dominate_allowed,
+            c.non_dominate_role,
+            c.non_dominate_required,
+            c.non_dominate_allowed,
+            c.non_dominate_recommended,
+            c.non_dominate_role_highest_level_points,
+            c.non_dominate_role_highest_level
         ) AS sig
     FROM core.dancer_roles c
-    JOIN core.dancers d ON d.dancer_id = c.dancer_id
 ),
 changed AS (
     SELECT sn.*

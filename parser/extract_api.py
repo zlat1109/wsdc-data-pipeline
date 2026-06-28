@@ -7,6 +7,8 @@ from typing import Any
 
 import pandas as pd
 
+from transform.normalize import normalize_dancer_name
+
 UPDATE_DATE = date.today().isoformat()
 
 
@@ -24,7 +26,7 @@ def extract_role_row(dancer_data: dict[str, Any]) -> dict[str, Any]:
 
     return {
         "dancer_id": dancer_data.get("dancer_wsdcid", ""),
-        "dancer_name": f"{dancer_first} {dancer_last}".strip(),
+        "dancer_name": normalize_dancer_name(f"{dancer_first} {dancer_last}") or "",
         "dominate_role": dancer_data.get("short_dominate_role", ""),
         "dominate_required": dancer_data.get("dominate_required", ""),
         "dominate_allowed": dancer_data.get("dominate_allowed", ""),

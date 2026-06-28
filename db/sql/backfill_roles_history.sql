@@ -47,19 +47,16 @@ deduped AS (
 signed AS (
     SELECT
         *,
-        md5(
-            concat_ws('|',
-                COALESCE(dancer_name, ''),
-                COALESCE(dominate_role, ''),
-                COALESCE(dominate_required, ''),
-                COALESCE(dominate_allowed, ''),
-                COALESCE(non_dominate_role, ''),
-                COALESCE(non_dominate_required, ''),
-                COALESCE(non_dominate_allowed, ''),
-                COALESCE(non_dominate_recommended, ''),
-                COALESCE(non_dominate_role_highest_level_points, ''),
-                COALESCE(non_dominate_role_highest_level, '')
-            )
+        core.dancer_roles_division_sig(
+            dominate_role,
+            dominate_required,
+            dominate_allowed,
+            non_dominate_role,
+            non_dominate_required,
+            non_dominate_allowed,
+            non_dominate_recommended,
+            non_dominate_role_highest_level_points,
+            non_dominate_role_highest_level
         ) AS sig
     FROM deduped
 ),

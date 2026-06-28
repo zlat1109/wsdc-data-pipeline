@@ -1,6 +1,10 @@
 -- Promote staging -> core (run after CSV load into staging).
 -- Expects canonical normalization via JOIN on core.levels + role title-case.
 
+-- Preserve names before truncate so empty API responses do not wipe known names.
+CREATE TEMP TABLE _preserved_dancer_names AS
+SELECT dancer_id, dancer_name FROM core.dancers;
+
 -- Clear core data (keep levels dictionary).
 TRUNCATE
     core.results,
@@ -17,7 +21,7 @@ RESTART IDENTITY CASCADE;
 INSERT INTO core.dancers (dancer_id, dancer_name)
 SELECT
     ids.dancer_id,
-    names.dancer_name
+    COALESCE(names.dancer_name, prev.dancer_name) AS dancer_name
 FROM (
     SELECT dancer_id::int AS dancer_id
     FROM staging.dancer_role_info
@@ -38,7 +42,8 @@ LEFT JOIN (
     FROM staging.dancer_role_info
     WHERE dancer_id ~ '^\d+$'
     ORDER BY dancer_id::int, NULLIF(TRIM(dancer_name), '') NULLS LAST
-) names ON names.dancer_id = ids.dancer_id;
+) names ON names.dancer_id = ids.dancer_id
+LEFT JOIN _preserved_dancer_names prev ON prev.dancer_id = ids.dancer_id;
 
 -- Locations
 INSERT INTO core.locations (

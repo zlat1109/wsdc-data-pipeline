@@ -70,8 +70,12 @@ Trend charts from `changed_*` files:
 
 ```text
 changed_dancer_points_info.dancer_id = dancers_points_info.dancer_id
-(same role, dance, level for point-in-time comparison)
+changed_dancer_role_info.dancer_id = dancer_role_info.dancer_id   -- division changes only
+changed_dancer_name_info.dancer_id = dancer_role_info.dancer_id   -- name history
+(same role, dance, level for point-in-time points comparison)
 ```
+
+For display name on a **past result**, use `dancers_results_with_name.csv` (`--include-results-with-name`) or join `changed_dancer_name_info` on `dancer_id` with `update_date <= event_date`.
 
 Remember: `changed_*` rows are **versions** (one row per change), not weekly full snapshots.
 
