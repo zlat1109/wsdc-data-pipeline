@@ -1,5 +1,20 @@
 # GitHub Actions setup
 
+## Documentation automation
+
+| Workflow | Trigger | Purpose |
+|----------|---------|---------|
+| `docs-check.yml` | Pull request (migrations, export, quality checks, docs) | Run `sync_docs.py --check` + `mkdocs build --strict` |
+| `docs.yml` | Push to `main` (same paths + `docs/**`) | `sync_docs.py` → commit auto sections → deploy GitHub Pages |
+
+Local before PR:
+
+```bash
+python scripts/sync_docs.py
+```
+
+Mechanical sections (migration index, export map, quality check tables, `_generated/`) sync from code. Narrative docs in `docs/architecture/`, `docs/tableau/`, etc. still need manual edits when behavior changes.
+
 ## Required repository secrets
 
 Settings → **Secrets and variables** → **Actions** → **New repository secret**  

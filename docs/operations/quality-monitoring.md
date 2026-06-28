@@ -29,14 +29,16 @@ Legacy audit-only: `scripts/data_quality_audit.py` (prefer preprocess).
 
 `scripts/monitor_data_quality.py` — run after load (also in CI `full-parse.yml`):
 
+<!-- docs-sync:core-quality-checks -->
 | Check | Target | Meaning |
 |-------|--------|---------|
-| `results_null_location_id` | 0 | All results have location |
-| `split_names_same_geo` | 0 | No same-geo duplicate event_ids per raw name |
-| `noncanonical_divisions` | 0 | No All-Stars / Champions / Masters |
-| `points_history_drift` | 0 | Open points history matches `core.dancer_points` |
-| `roles_history_drift` | 0 | Open division history matches `core.dancer_roles` (sig function) |
-| `names_history_drift` | 0 | Open name history matches `core.dancers.dancer_name` |
+| `results_null_location_id` | 0 | Cloud parse drops location_id; resolve.py backfills from event_location. |
+| `split_names_same_geo` | 0 | Same raw event name + same geo must not map to multiple event_id. |
+| `noncanonical_divisions` | 0 | Legacy plural division labels from old parser/registry. |
+| `points_history_drift` | 0 | SCD2 open row must match core.dancer_points snapshot. |
+| `roles_history_drift` | 0 | SCD2 open role row must match core.dancer_roles divisions. |
+| `names_history_drift` | 0 | SCD2 open name row must match core.dancers.dancer_name. |
+<!-- /docs-sync:core-quality-checks -->
 
 Exit code 1 if any check fails.
 
@@ -56,16 +58,22 @@ python scripts/validate_supabase_quality.py --core-only   # same as monitor
 
 Check definitions live in `db/quality_checks.py` (single source of truth for monitor + validate).
 
+<!-- docs-sync:extended-quality-checks -->
 | Extended check | Historical problem |
 |----------------|-------------------|
-| `dancers_empty_name` | API returned blank name for dancer with results/points |
-| `orphan_location_id` | resolve.py backfill / repair_results_location |
-| `all_caps_cities` | CHICAGO, TOULOUSE, WILMINGTON DEL |
-| `double_space_event_location` | `Moscow,  Russia` |
-| `city_equals_country` | geocode defects (Singapore whitelisted) |
-| `phantom_ids_not_merged` | 467 Swing&Snow, 486–488 Grand Nationals |
-| `swing_snow_alias` | registry spelling duplicate |
-| `catalog_duplicate_city_token` | BeeMAD `Madrid, Madrid, Spain` |
+| `dancers_empty_name` | Active dancers with results/points should have a display name. |
+| `orphan_location_id` | results.location_id must exist in core.locations. |
+| `orphan_event_id` | Every result event_id must exist in core.events. |
+| `editions_null_location_id` | Event editions derive location from results mode location_id. |
+| `all_caps_cities` | ALL CAPS city names (CHICAGO, TOULOUSE, WILMINGTON DEL). |
+| `location_id_multiple_strings` | One location_id must not have conflicting event_location strings. |
+| `city_equals_country` | city=country usually geocode bug; Singapore ids 159/244 whitelisted. |
+| `double_space_event_location` | Double spaces in location strings (Moscow,  Russia). |
+| `catalog_duplicate_city_token` | Duplicated city in typical_location (Madrid, Madrid, Spain). |
+| `phantom_ids_not_merged` | Phantom registry ids must be merged/inactive (Swing&Snow, Grand Nationals). |
+| `swing_snow_alias` | Swing&Snow spelling variant must alias to canonical event_id 215. |
+| `catalog_with_editions_missing_typical_location` | Events with results must have typical_location in catalog. |
+<!-- /docs-sync:extended-quality-checks -->
 
 ## Event split audit
 
