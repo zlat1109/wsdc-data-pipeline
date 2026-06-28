@@ -4,8 +4,9 @@ Read-only `export.*` views define the Tableau CSV contract. `export.py` copies e
 
 ## Default export map
 
-From `export.py`:
+From `export.py` (auto-synced by `scripts/sync_docs.py`):
 
+<!-- docs-sync:export-map -->
 | View | CSV file | In default export |
 |------|----------|-------------------|
 | `export.dancers_points_info` | `dancers_points_info.csv` | Yes |
@@ -21,9 +22,17 @@ From `export.py`:
 | `export.changed_dancer_name_info` | `changed_dancer_name_info.csv` | Yes |
 | `export.results_by_event` | `results_by_event.csv` | No (`--include-results-by-event`) |
 | `export.dancers_results_with_name` | `dancers_results_with_name.csv` | No (`--include-results-with-name`) |
-| `derived.*` (post-export) | `divisional_structure.csv`, `divisional_structure_only_dominate_role.csv`, `dancer_transitions.csv` | Yes (after DB export) |
-| `export.geo_events` | — | Not wired in export.py |
-| `export.results_by_geo_event` | — | Not wired in export.py |
+| `derived.divisional_structure` | `divisional_structure.csv` | Yes (post-export) |
+| `derived.divisional_structure_only_dominate_role` | `divisional_structure_only_dominate_role.csv` | Yes (post-export) |
+| `derived.dancer_transitions` | `dancer_transitions.csv` | Yes (post-export) |
+<!-- /docs-sync:export-map -->
+
+Not wired in `export.py` (document manually when added):
+
+| View | CSV file | Notes |
+|------|----------|-------|
+| `export.geo_events` | — | Query in Supabase or extend `export.py` |
+| `export.results_by_geo_event` | — | Optional large export |
 | `export.scheduled_event_editions` | — | Not in default export |
 | `export.scheduled_events_legacy` | — | Deprecated; query manually if needed |
 

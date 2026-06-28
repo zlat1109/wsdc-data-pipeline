@@ -1,0 +1,31 @@
+name: Docs sync check
+
+on:
+  pull_request:
+    paths:
+      - "db/migrations/**"
+      - "db/quality_checks.py"
+      - "export.py"
+      - "docs/**"
+      - "scripts/generate_schema_docs.py"
+      - "scripts/sync_docs.py"
+      - ".github/workflows/docs-check.yml"
+
+jobs:
+  sync-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verify auto-generated docs are up to date
+        run: python scripts/sync_docs.py --check
+
+      - name: Install MkDocs Material
+        run: pip install -r requirements-docs.txt
+
+      - name: Build docs (strict)
+        run: mkdocs build --strict

@@ -70,11 +70,12 @@ English reference for the World Swing Dance Championships data pipeline: parser 
 | Load sequence | `load.py`, `db/sql/promote_core.sql` |
 | Committed Tableau files | `data/*.csv` on `main` |
 
-Regenerate schema fragments after migration changes:
+Regenerate auto-maintained fragments:
 
 ```bash
-python scripts/generate_schema_docs.py
-python scripts/generate_schema_docs.py --live
+python scripts/sync_docs.py              # migration index, export map, quality tables, _generated/
+python scripts/sync_docs.py --check        # CI: fail if stale
+python scripts/generate_schema_docs.py --live   # optional: merge live column types from Supabase
 ```
 
 See [Migrations](database/migrations.md).
@@ -82,5 +83,6 @@ See [Migrations](database/migrations.md).
 ## Maintaining the docs
 
 1. Edit Markdown under `docs/` in the same PR as code changes.
-2. Preview locally: `mkdocs serve` → http://127.0.0.1:8000
-3. Push to `main` — GitHub Actions publishes to GitHub Pages automatically.
+2. Run `python scripts/sync_docs.py` when you change migrations, `export.py`, or `db/quality_checks.py`.
+3. Preview locally: `mkdocs serve` → http://127.0.0.1:8000
+4. Push to `main` — GitHub Actions syncs auto sections, builds MkDocs, and publishes to GitHub Pages.
