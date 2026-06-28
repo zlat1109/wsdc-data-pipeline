@@ -17,6 +17,15 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 MIGRATIONS_DIR = PROJECT_ROOT / "db" / "migrations"
 OUTPUT_DIR = PROJECT_ROOT / "docs" / "database" / "_generated"
 
+OPTIONAL_EXPORT_VIEWS = frozenset(
+    {"export.results_by_event", "export.dancers_results_with_name"}
+)
+
+OPTIONAL_EXPORT_LABELS: dict[str, str] = {
+    "export.results_by_event": "No (`--include-results-by-event`)",
+    "export.dancers_results_with_name": "No (`--include-results-with-name`)",
+}
+
 CREATE_TABLE_RE = re.compile(
     r"CREATE TABLE IF NOT EXISTS\s+(\w+\.\w+)\s*\((.*?)\);",
     re.DOTALL | re.IGNORECASE,
@@ -29,6 +38,12 @@ COMMENT_RE = re.compile(
     r"COMMENT ON (?:TABLE|VIEW)\s+(\w+\.\w+)\s+IS\s+'([^']*)'",
     re.IGNORECASE,
 )
+
+
+def export_default_label(view: str) -> str:
+    if view.startswith("derived."):
+        return "Yes (post-export)"
+    return OPTIONAL_EXPORT_LABELS.get(view, "Yes")
 
 
 def parse_migrations() -> tuple[dict[str, list[str]], dict[str, str], dict[str, str]]:
@@ -48,7 +63,9 @@ def parse_migrations() -> tuple[dict[str, list[str]], dict[str, str], dict[str, 
             cols: list[str] = []
             for line in body.splitlines():
                 line = line.strip().rstrip(",")
-                if not line or line.upper().startswith(("PRIMARY", "UNIQUE", "CONSTRAINT", "CHECK", "FOREIGN", "CREATE INDEX")):
+                if not line or line.upper().startswith(
+                    ("PRIMARY", "UNIQUE", "CONSTRAINT", "CHECK", "FOREIGN", "CREATE INDEX")
+                ):
                     continue
                 if line.upper().startswith("INSERT INTO"):
                     break
@@ -66,10 +83,6 @@ def parse_export_map() -> list[tuple[str, str]]:
     export_py = PROJECT_ROOT / "export.py"
     text = export_py.read_text(encoding="utf-8")
     pairs: list[tuple[str, str]] = []
-    for m in re.finditer(r'"export\.\w+"\s*:\s*"([^"]+\.csv)"', text):
-        view = re.search(r'"(export\.\w+)"', text[max(0, m.start() - 80) : m.start() + 5])
-        # simpler: scan dict blocks
-    # Parse explicitly from known dict names
     for dict_name in ("LEGACY_EXPORTS", "EVENT_CATALOG_EXPORTS", "HISTORY_EXPORTS", "OPTIONAL_EXPORTS"):
         block_m = re.search(rf"{dict_name}:\s*dict\[str,\s*str\]\s*=\s*\{{(.*?)\}}", text, re.DOTALL)
         if not block_m:
@@ -108,7 +121,11 @@ def fetch_live_columns() -> dict[str, list[tuple[str, str]]]:
     return live
 
 
-def write_tables_md(tables: dict[str, list[str]], comments: dict[str, str], live: dict | None) -> None:
+def render_tables_md(
+    tables: dict[str, list[str]],
+    comments: dict[str, str],
+    live: dict | None,
+) -> str:
     lines = ["# Generated tables", "", "[auto] Regenerate with `python scripts/generate_schema_docs.py`", ""]
     for fq in sorted(tables):
         lines.append(f"## {fq}")
@@ -121,22 +138,20 @@ def write_tables_md(tables: dict[str, list[str]], comments: dict[str, str], live
             dtype = live_cols.get(col, "—")
             lines.append(f"| {col} | text/PK/FK | {dtype} |")
         lines.append("")
-    (OUTPUT_DIR / "tables.md").write_text("\n".join(lines), encoding="utf-8")
+    return "\n".join(lines)
 
 
-def write_views_md(views: dict[str, list[str]], comments: dict[str, str]) -> None:
+def render_views_md(views: dict[str, list[str]], comments: dict[str, str]) -> str:
     lines = ["# Generated views", "", "[auto] Regenerate with `python scripts/generate_schema_docs.py`", ""]
     for fq in sorted(views):
         lines.append(f"## {fq}")
         if fq in comments:
             lines.append(f"\n{comments[fq]}\n")
         lines.append("")
-    (OUTPUT_DIR / "views.md").write_text("\n".join(lines), encoding="utf-8")
+    return "\n".join(lines)
 
 
-def write_export_map_md(pairs: list[tuple[str, str]]) -> None:
-    optional = {"export.results_by_event", "export.dancers_results_with_name"}
-    derived_prefix = "derived."
+def render_export_map_md(pairs: list[tuple[str, str]]) -> str:
     lines = [
         "# Generated export map",
         "",
@@ -146,15 +161,25 @@ def write_export_map_md(pairs: list[tuple[str, str]]) -> None:
         "|------|-----|----------------|",
     ]
     for view, csv in pairs:
-        if view.startswith(derived_prefix):
-            default = "Yes (post-export)"
-        elif view in optional:
-            default = "No"
-        else:
-            default = "Yes"
-        lines.append(f"| `{view}` | `{csv}` | {default} |")
+        lines.append(f"| `{view}` | `{csv}` | {export_default_label(view)} |")
     lines.append("")
-    (OUTPUT_DIR / "export_map.md").write_text("\n".join(lines), encoding="utf-8")
+    return "\n".join(lines)
+
+
+def generate_fragments(*, live: bool = False) -> dict[str, str]:
+    """Return {filename: markdown} for docs/database/_generated/."""
+    tables, views, comments = parse_migrations()
+    pairs = parse_export_map()
+    live_cols = fetch_live_columns() if live else None
+    return {
+        "tables.md": render_tables_md(tables, comments, live_cols),
+        "views.md": render_views_md(views, comments),
+        "export_map.md": render_export_map_md(pairs),
+    }
+
+
+def write_export_map_md(pairs: list[tuple[str, str]]) -> None:
+    (OUTPUT_DIR / "export_map.md").write_text(render_export_map_md(pairs), encoding="utf-8")
 
 
 def main() -> None:
@@ -163,13 +188,9 @@ def main() -> None:
     args = parser.parse_args()
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    tables, views, comments = parse_migrations()
-    pairs = parse_export_map()
-    live = fetch_live_columns() if args.live else None
-
-    write_tables_md(tables, comments, live)
-    write_views_md(views, comments)
-    write_export_map_md(pairs)
+    fragments = generate_fragments(live=args.live)
+    for name, content in fragments.items():
+        (OUTPUT_DIR / name).write_text(content, encoding="utf-8")
     print(f"Wrote {OUTPUT_DIR}/tables.md, views.md, export_map.md")
 
 

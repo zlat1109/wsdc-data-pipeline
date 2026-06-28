@@ -59,8 +59,8 @@ python scripts/validate_supabase_quality.py --core-only   # same as monitor
 Check definitions live in `db/quality_checks.py` (single source of truth for monitor + validate).
 
 <!-- docs-sync:extended-quality-checks -->
-| Extended check | Historical problem |
-|----------------|-------------------|
+| Extended check | Description |
+|----------------|-------------|
 | `dancers_empty_name` | Active dancers with results/points should have a display name. |
 | `orphan_location_id` | results.location_id must exist in core.locations. |
 | `orphan_event_id` | Every result event_id must exist in core.events. |
