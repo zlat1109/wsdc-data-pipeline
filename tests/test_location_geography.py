@@ -8,6 +8,7 @@ from transform.data_preprocessing import (
     normalize_geography,
     parse_us_state_from_location_text,
 )
+from transform.geography.normalize import parse_region_from_location_text, standardize_location
 
 
 def test_parse_us_state_from_full_name_duplicate():
@@ -112,6 +113,40 @@ def test_canonicalize_keeps_burlington_ma_and_vt_separate():
     out = canonicalize_city_coordinates(df)
     assert out.loc[0, "latitude"] == 42.5047161
     assert out.loc[1, "latitude"] == 44.4758825
+
+
+def test_parse_region_from_dutch_location():
+    assert parse_region_from_location_text("Venray, Limburg, Nederland") == "Limburg"
+    assert parse_region_from_location_text("Venray, Limburg, Netherlands") == "Limburg"
+    assert parse_region_from_location_text("Venray, Nederland") == ""
+
+
+def test_standardize_location_includes_eu_region():
+    row = pd.Series({
+        "event_city": "Venray",
+        "event_state": "Limburg",
+        "event_country": "Netherlands",
+    })
+    assert standardize_location(row) == "Venray, Limburg, Netherlands"
+
+
+def test_normalize_geography_fixes_dutch_open_venray():
+    df = pd.DataFrame(
+        [{
+            "location_id": "227",
+            "event_city": "Venray",
+            "event_state": "",
+            "event_country": "Nederland",
+            "latitude": "51.5256257",
+            "longitude": "5.9736992",
+            "event_location": "Venray, Limburg, Nederland",
+        }]
+    )
+    out = normalize_geography(df)
+    assert out.loc[0, "event_country"] == "Netherlands"
+    assert out.loc[0, "event_state"] == "Limburg"
+    assert out.loc[0, "event_location_standardized"] == "Venray, Limburg, Netherlands"
+    assert out.loc[0, "event_location"] == "Venray, Limburg, Netherlands"
 
 
 def test_canonicalize_washington_md_suburb_to_dc_center():

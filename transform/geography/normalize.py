@@ -34,14 +34,33 @@ def standardize_country(country: str) -> Optional[str]:
 def standardize_location(row: pd.Series) -> str:
     city = str(row.get('event_city', '')).strip()
     state = str(row.get('event_state', '')).strip() if pd.notna(row.get('event_state')) else ''
-    country = str(row.get('event_country', '')).strip() if pd.notna(row.get('event_country')) else ''
+    country = standardize_country(
+        str(row.get('event_country', '')).strip() if pd.notna(row.get('event_country')) else ''
+    ) or ''
 
     if country == 'United States' and state:
         state_code = STATE_NAME_TO_CODE.get(state, state)
         return f"{city}, {state_code}"
     if country:
+        if state:
+            return f"{city}, {state}, {country}"
         return f"{city}, {country}"
     return city
+
+
+def parse_region_from_location_text(location: str) -> str:
+    """Extract middle segment from City, Region, Country location strings."""
+    if not location or not str(location).strip():
+        return ''
+
+    parts = [part.strip() for part in str(location).split(',') if part.strip()]
+    if len(parts) != 3:
+        return ''
+
+    city, region, country = parts
+    if region.lower() in {city.lower(), country.lower()}:
+        return ''
+    return region
 
 
 def parse_us_state_from_location_text(location: str) -> str:
@@ -84,11 +103,16 @@ def fill_international_state(row: pd.Series) -> str:
     country = str(row.get('event_country', '')).strip() if pd.notna(row.get('event_country')) else ''
     city = str(row.get('event_city', '')).strip() if pd.notna(row.get('event_city')) else ''
 
+    if country in {'United States', 'USA', 'US'}:
+        return ''
+
     if country == 'Canada':
         return CANADA_PROVINCES.get(city, '')
     if country == 'United Kingdom':
         return UK_REGIONS.get(city, '')
-    return ''
+
+    location = str(row.get('event_location', '')).strip() if pd.notna(row.get('event_location')) else ''
+    return parse_region_from_location_text(location)
 
 
 def validate_coordinates(row: pd.Series) -> bool:

@@ -42,6 +42,20 @@ LOCATION_ID_CORRECTIONS: dict[int, LocationPatch] = {
         'event_location': 'Albany, NY',
         'event_location_standardized': 'Albany, NY',
     },
+    191: {
+        'event_city': 'Amsterdam',
+        'event_state': 'North Holland',
+        'event_country': 'Netherlands',
+        'event_location': 'Amsterdam, North Holland, Netherlands',
+        'event_location_standardized': 'Amsterdam, North Holland, Netherlands',
+    },
+    227: {
+        'event_city': 'Venray',
+        'event_state': 'Limburg',
+        'event_country': 'Netherlands',
+        'event_location': 'Venray, Limburg, Netherlands',
+        'event_location_standardized': 'Venray, Limburg, Netherlands',
+    },
 }
 
 LOCATION_INFO_CITY_CORRECTIONS = {
