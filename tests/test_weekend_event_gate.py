@@ -72,7 +72,7 @@ def test_split_pending_skips_events_already_in_db_with_start_date():
 
 
 def test_future_only_snapshot_yields_no_pending():
-    from weekend_events import WeekendSnapshot, resolve_pending_snapshot
+    from weekend_events import WeekendSnapshot, resolve_event_gate, resolve_pending_snapshot
 
     conn = MagicMock()
     conn.cursor.return_value.__enter__.return_value.fetchall.return_value = []
@@ -102,9 +102,50 @@ def test_future_only_snapshot_yields_no_pending():
     we.list_snapshots = lambda: [snap]
     try:
         best, pending, already = resolve_pending_snapshot(conn, today=date(2026, 6, 19))
+        _gate_snap, _gate_pending, _gate_already, status = resolve_event_gate(
+            conn, today=date(2026, 6, 19)
+        )
     finally:
         we.list_snapshots = original
 
     assert best is None
     assert pending == []
     assert already == []
+    assert status == "no_concluded_events"
+
+
+def test_resolve_event_gate_all_loaded():
+    from weekend_events import WeekendSnapshot, resolve_event_gate
+
+    conn = MagicMock()
+    conn.cursor.return_value.__enter__.return_value.fetchall.return_value = [
+        ("Neverland Swing",),
+    ]
+
+    snap = WeekendSnapshot(
+        weekend_start=date(2026, 6, 22),
+        weekend_end=date(2026, 6, 29),
+        events=[
+            {
+                "name": "Neverland Swing",
+                "start_date": "2026-06-25",
+                "end_date": "2026-06-29",
+            },
+        ],
+        source_path=Path("weekend_2026-06-22_2026-06-29.json"),
+        generated_at=None,
+    )
+
+    import weekend_events as we
+
+    original = we.list_snapshots
+    we.list_snapshots = lambda: [snap]
+    try:
+        gate_snap, pending, already, status = resolve_event_gate(conn, today=date(2026, 6, 30))
+    finally:
+        we.list_snapshots = original
+
+    assert status == "all_loaded"
+    assert pending == []
+    assert already == ["Neverland Swing"]
+    assert gate_snap is snap
