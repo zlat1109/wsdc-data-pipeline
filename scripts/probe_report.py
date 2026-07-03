@@ -26,6 +26,9 @@ class ProbeReport:
     missing_events: list[str] = field(default_factory=list)
     already_in_db_events: list[str] = field(default_factory=list)
     coverage_dancers_scanned: int = 0
+    gate_status: str | None = None
+    friday_final_bypass: bool = False
+    ready_reason: str | None = None
     no_pending: bool = False
     cooldown_active: bool = False
     cooldown_until: str | None = None
@@ -47,6 +50,9 @@ def build_probe_report(
     *,
     ready: bool,
     already_in_db: list[str] | None = None,
+    gate_status: str | None = None,
+    friday_final_bypass: bool = False,
+    ready_reason: str | None = None,
     no_pending: bool = False,
     snapshot_name: str | None = None,
     weekend_start: date | None = None,
@@ -71,7 +77,10 @@ def build_probe_report(
         missing_events=list(coverage.missing) if coverage else [],
         already_in_db_events=list(already_in_db or []),
         coverage_dancers_scanned=coverage.dancers_scanned if coverage else 0,
-        no_pending=no_pending,
+        gate_status=gate_status,
+        friday_final_bypass=friday_final_bypass,
+        ready_reason=ready_reason,
+        no_pending=no_pending or gate_status == "no_concluded_events",
         cooldown_active=cooldown_active,
         cooldown_until=cooldown_until,
         last_success_run_id=last_success_run_id,

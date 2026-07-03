@@ -73,8 +73,13 @@ def format_probe_message(report: dict) -> str:
         for name in report["already_in_db_events"]:
             lines.append(f"• {_esc(name)}")
 
-    if report.get("no_pending"):
-        lines.extend(["", "⚠️ Нет pending upcoming events — проверь sync snapshot из weekly bot"])
+    if report.get("no_pending") or report.get("gate_status") == "no_concluded_events":
+        lines.extend(
+            [
+                "",
+                "ℹ️ Нет завершённых ивентов в snapshot (тихие выходные / только будущие) — parse не запускаем.",
+            ]
+        )
     if cooldown_active:
         lines.extend(
             [
@@ -98,7 +103,10 @@ def format_probe_message(report: dict) -> str:
 
     missing = report.get("missing_events") or []
     if missing:
-        lines.extend(["", "<b>Ещё не найдено в live</b>:"])
+        header = "<b>Ещё не найдено в live</b>:"
+        if report.get("friday_final_bypass"):
+            header = "<b>Не дождались (пятничный bypass)</b>:"
+        lines.extend(["", header])
         for name in missing:
             lines.append(f"• {_esc(name)}")
 
@@ -115,7 +123,12 @@ def format_probe_message(report: dict) -> str:
         lines.append("Авто-parse на этой неделе отключён (проверка остаётся только как мониторинг).")
     elif ready:
         lines.append("")
-        lines.append("Условия gate выполнены — старт parse в отдельном сообщении.")
+        if report.get("friday_final_bypass"):
+            lines.append(
+                "Пятничный fallback: часть ивентов уже в live — стартуем parse без оставшихся."
+            )
+        else:
+            lines.append("Условия gate выполнены — старт parse в отдельном сообщении.")
     else:
         lines.append("")
         lines.append("Следующая проверка по расписанию check-updates.")

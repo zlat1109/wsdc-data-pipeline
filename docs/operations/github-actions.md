@@ -110,9 +110,17 @@ python scripts/sync_events_list.py
 3. Script scans live max ID above DB watermark
 4. **Event coverage gate**: scans weekend snapshots (newest first), skips events already in Supabase for that edition (`results_year` / `results_month` or `start_date` month). **Future weekends are excluded** — probe only waits for events whose `end_date` is before today.
 5. Waits until live data from new dancer IDs covers **all pending** upcoming events (e.g. Baltic Swing — not last week's J&J / Orange Blossom once loaded)
-6. **`changed` only when** new IDs exist **and** all pending events are present in live data → then triggers full-parse
+6. **`changed` when** new IDs exist **and** all pending events are present in live data → triggers full-parse
+
+**Friday evening fallback** (last probe ~20:00 Europe/Madrid): if at least one pending event is already visible in live data but others are still missing, trigger full-parse without the stragglers (e.g. delayed Neverland). **Do not** parse on Friday when:
+- snapshot has **no concluded events** (quiet weekend / only future events), or
+- **zero** pending events matched in live yet (single-event weekend not loaded).
+
+**Quiet weekend:** if snapshots contain no concluded events, check-updates stays `unchanged` even when new dancer IDs exist.
 
 Watermark sources: `MAX(dancer_id)` from `core.dancers` (primary) → last probe record → `PROBE_ANCHOR_ID` env.
+
+`check-updates.yml` sets `PROBE_SLOT=evening` for the 20:00 Madrid cron and `morning` for 07:00 — Friday fallback applies only in the evening slot.
 
 **Weekend snapshots (automated):** `wsdc-telegram-bot` weekly bot pushes `data/weekend_events/` here after each Thursday post. See `wsdc-telegram-bot/docs/PIPELINE_SNAPSHOT_SYNC.md`. One-time secret: `WSDC_PIPELINE_SYNC_TOKEN` in the **telegram-bot** repo (not here).
 

@@ -150,6 +150,24 @@ def resolve_pending_snapshot(
     today: date | None = None,
 ) -> tuple[WeekendSnapshot | None, list[str], list[str]]:
     """Pick snapshot with concluded events not yet in DB; prefer newest generated_at."""
+    snap, pending, already, status = resolve_event_gate(conn, today=today)
+    if status != "pending":
+        return None, [], []
+    return snap, pending, already
+
+
+def resolve_event_gate(
+    conn,
+    *,
+    today: date | None = None,
+) -> tuple[WeekendSnapshot | None, list[str], list[str], str]:
+    """Resolve weekend event gate for check-updates.
+
+    Returns (snapshot, pending, already_in_db, status):
+    - ``no_concluded_events`` — quiet / future-only weekend in snapshots
+    - ``all_loaded`` — concluded events are already in Supabase
+    - ``pending`` — at least one concluded event is still missing from Supabase
+    """
     from event_db import split_pending_events
 
     today = today or date.today()
@@ -157,22 +175,26 @@ def resolve_pending_snapshot(
     best: WeekendSnapshot | None = None
     best_pending: list[str] = []
     best_already: list[str] = []
+    best_key: tuple[datetime, date] | None = None
 
     for snap in list_snapshots():
         pending, already = split_pending_events(
             conn, snap.events, threshold=threshold, today=today
         )
-        if not pending:
+        if len(pending) + len(already) == 0:
             continue
-        if best is None or (
-            (snap.generated_at or datetime.min, snap.weekend_start)
-            > (best.generated_at or datetime.min, best.weekend_start)
-        ):
+        key = (snap.generated_at or datetime.min, snap.weekend_start)
+        if best_key is None or key > best_key:
+            best_key = key
             best = snap
             best_pending = pending
             best_already = already
 
-    return best, best_pending, best_already
+    if best is None:
+        return None, [], [], "no_concluded_events"
+    if not best_pending:
+        return best, [], best_already, "all_loaded"
+    return best, best_pending, best_already, "pending"
 
 
 def expected_event_names(snapshot: WeekendSnapshot) -> list[str]:

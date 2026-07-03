@@ -3,11 +3,15 @@
 
 Gate logic (matches manual workflow):
   1. New dancer IDs appeared above DB watermark (Mon–Fri after weekend)
-  2. Pick the newest weekend snapshot that still has events NOT in Supabase yet
-     (e.g. Baltic Swing — skip J&J O'Rama / Orange Blossom once their edition is loaded)
+  2. Pick the newest weekend snapshot with concluded events
   3. Live WSDC data from new dancers covers ALL pending upcoming events
 
-Only when both (1) and (3) are true → print ``changed`` (triggers full-parse in CI).
+Only when (1) and (3) are true → print ``changed`` (triggers full-parse in CI).
+
+Friday evening (last probe of the week): if at least one pending event is already
+visible in live data but others are still missing (e.g. delayed Neverland), trigger
+full-parse anyway. Do **not** parse on Friday when zero events matched (single-event
+weekend not loaded yet) or when the snapshot has no concluded events (quiet weekend).
 
 Usage:
     python scripts/check_updates.py
@@ -32,11 +36,12 @@ sys.path.insert(0, str(PROJECT_ROOT))
 sys.path.insert(0, str(PROJECT_ROOT / "db"))
 sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 
+from check_updates_gate import evaluate_parse_ready  # noqa: E402
 from connection import connect  # noqa: E402
 from event_coverage import EventCoverageResult, check_event_coverage  # noqa: E402
 from parser.http_client import WSDCHttpClient  # noqa: E402
 from probe_report import build_probe_report  # noqa: E402
-from weekend_events import resolve_pending_snapshot  # noqa: E402
+from weekend_events import resolve_event_gate  # noqa: E402
 from wsdc_id_probe import ScanResult, scan_ids_above_watermark  # noqa: E402
 
 MADRID_TZ = ZoneInfo("Europe/Madrid")
@@ -74,6 +79,9 @@ def record_probe(
     coverage: EventCoverageResult | None,
     *,
     ready: bool,
+    gate_status: str | None = None,
+    friday_final_bypass: bool = False,
+    ready_reason: str | None = None,
 ) -> None:
     probe_details = {
         "strategy": "new_dancer_id_scan+event_coverage",
@@ -82,6 +90,9 @@ def record_probe(
         "approx_new_ids": max(scan.live_max_id - scan.watermark, 0),
         "new_dancers_sample": scan.new_dancers[:10],
         "parse_ready": ready,
+        "gate_status": gate_status,
+        "friday_final_bypass": friday_final_bypass,
+        "ready_reason": ready_reason,
     }
     if coverage:
         probe_details.update({
@@ -100,6 +111,8 @@ def record_probe(
             "live_max_id": scan.live_max_id,
             "parse_ready": ready,
             "missing_events": coverage.missing if coverage else [],
+            "friday_final_bypass": friday_final_bypass,
+            "ready_reason": ready_reason,
         },
         sort_keys=True,
     )
@@ -163,7 +176,9 @@ def print_report(
     *,
     ready: bool,
     already_in_db: list[str] | None = None,
-    no_pending: bool = False,
+    gate_status: str | None = None,
+    friday_final_bypass: bool = False,
+    ready_reason: str | None = None,
     cooldown_active: bool = False,
     cooldown_until: str | None = None,
     last_success_run_id: int | None = None,
@@ -176,8 +191,17 @@ def print_report(
 
     if already_in_db:
         print(f"already_in_db_events={already_in_db}", flush=True)
-    if no_pending:
-        print("no_pending_events — sync current upcoming snapshot from telegram-news-bot", flush=True)
+    if gate_status:
+        print(f"gate_status={gate_status}", flush=True)
+    if gate_status == "no_concluded_events":
+        print(
+            "no_concluded_events — quiet weekend or only future events in snapshots",
+            flush=True,
+        )
+    if friday_final_bypass:
+        print("friday_final_bypass=true", flush=True)
+    if ready_reason:
+        print(f"ready_reason={ready_reason}", flush=True)
     if cooldown_active:
         print(
             f"cooldown_active_until={cooldown_until} "
@@ -232,14 +256,17 @@ def main() -> None:
         ids_changed = scan.live_max_id > scan.watermark
         coverage: EventCoverageResult | None = None
         ready = False
+        friday_final_bypass = False
+        ready_reason = "no_new_ids"
+        gate_status = "no_concluded_events"
         already_in_db: list[str] = []
-        no_pending = False
         snapshot_name: str | None = None
         weekend_start = weekend_end = None
         cooldown_active = False
         cooldown_until: str | None = None
         last_success_run_id: int | None = None
         last_success_finished_at: str | None = None
+        now_madrid = datetime.now(MADRID_TZ)
 
         if not args.ignore_weekly_cooldown:
             cooldown_active, last_success_run_id, last_success_finished_at, cooldown_until_local = (
@@ -247,28 +274,28 @@ def main() -> None:
             )
             cooldown_until = cooldown_until_local.isoformat()
 
-        if cooldown_active:
-            ready = False
-        elif not ids_changed:
-            ready = False
-        elif args.skip_event_gate:
-            ready = True
-        else:
-            snapshot, pending, already_in_db = resolve_pending_snapshot(conn)
-            if not pending:
-                # Nothing left to wait for: past weekends loaded or only future events ahead.
-                no_pending = True
-                ready = True
-            else:
-                snapshot_name = snapshot.source_path.name if snapshot else None
-                if snapshot:
-                    weekend_start = snapshot.weekend_start
-                    weekend_end = snapshot.weekend_end
-                    print(
-                        f"weekend_snapshot={snapshot_name} "
-                        f"({weekend_start}..{weekend_end})",
-                        flush=True,
-                    )
+        if args.skip_event_gate:
+            ready, friday_final_bypass, ready_reason = evaluate_parse_ready(
+                ids_changed=ids_changed,
+                skip_event_gate=True,
+                cooldown_active=cooldown_active,
+                ignore_cooldown=args.ignore_weekly_cooldown,
+                gate_status="pending",
+                coverage=None,
+                now=now_madrid,
+            )
+        elif ids_changed:
+            snapshot, pending, already_in_db, gate_status = resolve_event_gate(conn)
+            if snapshot:
+                snapshot_name = snapshot.source_path.name
+                weekend_start = snapshot.weekend_start
+                weekend_end = snapshot.weekend_end
+                print(
+                    f"weekend_snapshot={snapshot_name} "
+                    f"({weekend_start}..{weekend_end})",
+                    flush=True,
+                )
+            if gate_status == "pending":
                 http = WSDCHttpClient()
                 coverage = check_event_coverage(
                     http,
@@ -277,14 +304,26 @@ def main() -> None:
                     pending,
                 )
                 coverage.already_in_db = already_in_db
-                ready = coverage.ready
+            ready, friday_final_bypass, ready_reason = evaluate_parse_ready(
+                ids_changed=ids_changed,
+                skip_event_gate=False,
+                cooldown_active=cooldown_active,
+                ignore_cooldown=args.ignore_weekly_cooldown,
+                gate_status=gate_status,
+                coverage=coverage,
+                now=now_madrid,
+            )
+            if friday_final_bypass:
+                cooldown_active = False
 
         report = build_probe_report(
             scan,
             coverage,
             ready=ready,
             already_in_db=already_in_db,
-            no_pending=no_pending,
+            gate_status=gate_status,
+            friday_final_bypass=friday_final_bypass,
+            ready_reason=ready_reason,
             snapshot_name=snapshot_name,
             weekend_start=weekend_start,
             weekend_end=weekend_end,
@@ -307,14 +346,24 @@ def main() -> None:
             coverage,
             ready=ready,
             already_in_db=already_in_db,
-            no_pending=no_pending,
+            gate_status=gate_status,
+            friday_final_bypass=friday_final_bypass,
+            ready_reason=ready_reason,
             cooldown_active=cooldown_active,
             cooldown_until=cooldown_until,
             last_success_run_id=last_success_run_id,
         )
 
         if args.write_probe or ready:
-            record_probe(conn, scan, coverage, ready=ready)
+            record_probe(
+                conn,
+                scan,
+                coverage,
+                ready=ready,
+                gate_status=gate_status,
+                friday_final_bypass=friday_final_bypass,
+                ready_reason=ready_reason,
+            )
 
 
 if __name__ == "__main__":
