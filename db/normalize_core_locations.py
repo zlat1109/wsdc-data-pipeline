@@ -6,7 +6,7 @@ import pandas as pd
 import psycopg
 
 from transform.geography.city import format_event_location, normalize_city_field
-from transform.geography.normalize import standardize_location
+from transform.geography.normalize import standardize_country, standardize_location
 
 
 def normalize_core_location_cities(conn: psycopg.Connection) -> int:
@@ -38,11 +38,14 @@ def normalize_core_location_cities(conn: psycopg.Connection) -> int:
             if not state and extracted_state:
                 state = extracted_state
 
+            country = standardize_country(str(event_country or "").strip()) or str(
+                event_country or ""
+            ).strip()
             row = pd.Series(
                 {
                     "event_city": new_city,
                     "event_state": state or None,
-                    "event_country": event_country,
+                    "event_country": country or None,
                 }
             )
             new_location = format_event_location(row)
@@ -64,6 +67,7 @@ def normalize_core_location_cities(conn: psycopg.Connection) -> int:
                 UPDATE core.locations
                 SET event_city = %s,
                     event_state = %s,
+                    event_country = %s,
                     event_location = %s,
                     event_location_standardized = %s
                 WHERE location_id = %s
@@ -71,6 +75,7 @@ def normalize_core_location_cities(conn: psycopg.Connection) -> int:
                 (
                     new_city,
                     state or None,
+                    country or None,
                     new_location or old_location,
                     new_standardized or old_standardized,
                     location_id,
