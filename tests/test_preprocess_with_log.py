@@ -116,3 +116,28 @@ def test_apply_merge_event_id_map_remaps_source_rows():
     out = apply_merge_event_id_map(df, tracker=tracker)
     assert out["event_name_id"].tolist() == [47, 47, 100]
     assert any(r.rule_id == "MERGE_EVENT_ID_MAP" for r in tracker.rules)
+
+
+def test_preprocess_merge_event_id_with_string_dtype_column():
+    """Regression: cloud_parse + load_csv_bundle(dtype=str) must not raise on MERGE_EVENT_ID_MAP."""
+    raw = {
+        "dancers_results_info": pd.DataFrame(
+            {
+                "event_name_id": pd.Series(["66"], dtype="string"),
+                "event_name": ["SwingTime"],
+                "event_competition": ["Advanced"],
+                "event_role": ["leader"],
+                "event_location": ["Denver, CO, United States"],
+                "event_result": ["1"],
+                "event_points": ["10"],
+                "dancer_id": ["1"],
+                "event_dance": ["West Coast Swing"],
+                "event_year": [""],
+                "event_month": [""],
+                "event_year_and_month": ["March 2017"],
+            }
+        ),
+    }
+    processed, tracker = preprocess_with_log(raw)
+    assert processed["dancers_results_info"].loc[0, "event_name_id"] == "47"
+    assert any(r.rule_id == "MERGE_EVENT_ID_MAP" for r in tracker.rules)

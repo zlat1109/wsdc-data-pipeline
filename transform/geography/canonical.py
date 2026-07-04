@@ -6,6 +6,8 @@ from typing import Dict, Tuple
 
 import pandas as pd
 
+from transform.pandas_utils import assign_column_values
+
 # Пригороды/площадки → центр города. Ключ: (event_city, event_country, event_state или '').
 # Для США одинаковые названия в разных штатах (Burlington MA vs VT) различаются по state.
 CITY_CANONICAL_COORDINATES: Dict[Tuple[str, str, str], Tuple[float, float]] = {
@@ -42,10 +44,6 @@ def canonicalize_city_coordinates(df: pd.DataFrame) -> pd.DataFrame:
         if state:
             mask &= df['event_state'].fillna('').astype(str).str.strip() == state
         if mask.any():
-            if pd.api.types.is_string_dtype(df['latitude']):
-                df.loc[mask, 'latitude'] = str(lat)
-                df.loc[mask, 'longitude'] = str(lon)
-            else:
-                df.loc[mask, 'latitude'] = lat
-                df.loc[mask, 'longitude'] = lon
+            assign_column_values(df, "latitude", mask, lat)
+            assign_column_values(df, "longitude", mask, lon)
     return df
