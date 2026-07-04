@@ -4,6 +4,25 @@ from __future__ import annotations
 
 LocationPatch = dict[str, str]
 
+# WSDC city-states where event_city = event_country is valid (not a geocode bug).
+CITY_STATE_COUNTRIES: frozenset[str] = frozenset({"Singapore"})
+
+# Canonical Singapore row in location_info (has coordinates).
+SINGAPORE_CANONICAL_LOCATION_ID = 159
+
+# Duplicate location_id rows that share the same place label → canonical id.
+LOCATION_ID_MERGE_MAP: dict[str, str] = {
+    "244": str(SINGAPORE_CANONICAL_LOCATION_ID),
+    "350": str(SINGAPORE_CANONICAL_LOCATION_ID),
+}
+
+# Extra lookup keys → canonical location_id (lowercase event_location text).
+LOCATION_STRING_ALIASES: dict[str, str] = {
+    "singapore": str(SINGAPORE_CANONICAL_LOCATION_ID),
+    "singapore, singapore": str(SINGAPORE_CANONICAL_LOCATION_ID),
+    "singapore, singapore, singapore": str(SINGAPORE_CANONICAL_LOCATION_ID),
+}
+
 LOCATION_ID_CORRECTIONS: dict[int, LocationPatch] = {
     25: {
         'event_city': 'Atlanta',

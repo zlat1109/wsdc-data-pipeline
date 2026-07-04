@@ -43,6 +43,7 @@ EVENT_LOCATION_EXACT_CORRECTIONS = {
     'Moscow,  Russia': 'Moscow, Russia',
     'Stockholm,  Sweden': 'Stockholm, Sweden',
     'Singapore': 'Singapore, Singapore',
+    'Singapore, Singapore, Singapore': 'Singapore, Singapore',
     'New York': 'New York, NY',
 }
 

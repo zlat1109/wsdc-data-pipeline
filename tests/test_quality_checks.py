@@ -35,6 +35,7 @@ def test_extended_checks_cover_known_regression_categories():
     assert "dancers_empty_name" in names
 
 
-def test_singapore_whitelisted_in_city_equals_country():
+def test_singapore_city_state_allowed_in_city_equals_country():
     check = next(c for c in EXTENDED_CHECKS if c.name == "city_equals_country")
-    assert "159" in check.sql and "244" in check.sql
+    assert "Singapore" in check.sql
+    assert "trim(event_country) NOT IN" in check.sql
