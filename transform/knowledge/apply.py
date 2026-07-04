@@ -39,6 +39,68 @@ def _location_row_empty(df: pd.DataFrame, mask: pd.Series) -> pd.Series:
     return empty
 
 
+def _norm_text(value: object) -> str:
+    if value is None or (isinstance(value, float) and pd.isna(value)):
+        return ""
+    return str(value).strip()
+
+
+def backfill_empty_result_event_locations(results_df: pd.DataFrame) -> pd.DataFrame:
+    """Fill empty results.event_location from catalog metadata.
+
+    WSDC lookup often omits event.location (e.g. Scandinavian Open / event_id 229).
+    resolve_result_location_ids needs event_location text; this backfill runs first.
+    """
+    if results_df is None or results_df.empty:
+        return results_df
+
+    df = results_df.copy()
+    if "event_location" not in df.columns:
+        df["event_location"] = ""
+
+    empty = df["event_location"].map(_norm_text) == ""
+
+    if "event_name_id" in df.columns:
+        for event_id, meta in KNOWN_EVENT_METADATA.items():
+            loc = meta.get("location")
+            if isinstance(loc, dict) and loc.get("event_location"):
+                event_loc = _norm_text(loc["event_location"])
+            else:
+                event_loc = _norm_text(meta.get("typical_location"))
+            if not event_loc:
+                continue
+            mask = empty & (df["event_name_id"].astype(str).str.strip() == str(event_id))
+            if mask.any():
+                df.loc[mask, "event_location"] = event_loc
+                empty = df["event_location"].map(_norm_text) == ""
+
+    if "event_name" in df.columns:
+        for event_id, meta in KNOWN_EVENT_METADATA.items():
+            name = _norm_text(meta.get("name"))
+            if not name:
+                continue
+            loc = meta.get("location")
+            if isinstance(loc, dict) and loc.get("event_location"):
+                event_loc = _norm_text(loc["event_location"])
+            else:
+                event_loc = _norm_text(meta.get("typical_location"))
+            if not event_loc:
+                continue
+            mask = empty & (df["event_name"].astype(str).str.strip() == name)
+            if mask.any():
+                df.loc[mask, "event_location"] = event_loc
+                empty = df["event_location"].map(_norm_text) == ""
+
+    if "event_name" in df.columns:
+        for name, location in EVENT_NAME_LOCATION_OVERRIDES.items():
+            mask = empty & (df["event_name"].astype(str).str.strip() == name)
+            if mask.any():
+                df.loc[mask, "event_location"] = location
+                empty = df["event_location"].map(_norm_text) == ""
+
+    return df
+
+
 def apply_event_location_patches(
     location_df: pd.DataFrame,
     results_df: pd.DataFrame | None,
