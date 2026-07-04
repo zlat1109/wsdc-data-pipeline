@@ -3,6 +3,7 @@
 from transform.knowledge.apply import (
     apply_event_corrections,
     apply_event_location_patches,
+    backfill_empty_result_event_locations,
     event_location_patches,
 )
 from transform.knowledge.events import (
@@ -40,6 +41,7 @@ __all__ = [
     'apply_event_corrections',
     'apply_event_location_patches',
     'apply_merge_event_id_map',
+    'backfill_empty_result_event_locations',
     'build_event_name_normalization',
     'event_location_patches',
 ]

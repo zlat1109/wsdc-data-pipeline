@@ -1,5 +1,7 @@
 """Tests for preprocess with logging."""
 
+from pathlib import Path
+
 import pandas as pd
 
 from transform.preprocess_tracker import PreprocessTracker
@@ -116,6 +118,37 @@ def test_apply_merge_event_id_map_remaps_source_rows():
     out = apply_merge_event_id_map(df, tracker=tracker)
     assert out["event_name_id"].tolist() == [47, 47, 100]
     assert any(r.rule_id == "MERGE_EVENT_ID_MAP" for r in tracker.rules)
+
+
+def test_scandinavian_empty_event_location_gets_location_id():
+    """Regression: WSDC API omits event.location for Scandinavian Open (event_id 229)."""
+    data_dir = Path(__file__).resolve().parents[1] / "data"
+    raw = {
+        "location_info": pd.read_csv(data_dir / "location_info.csv", dtype=str),
+        "dancers_results_info": pd.DataFrame(
+            {
+                "event_name_id": ["229", "229"],
+                "event_name": ["Scandinavian Open", "Scandinavian Open"],
+                "event_location": ["", ""],
+                "location_id": ["", ""],
+                "event_competition": ["Novice", "Novice"],
+                "event_role": ["leader", "follower"],
+                "event_result": ["1", "2"],
+                "event_points": ["10", "5"],
+                "dancer_id": ["1", "2"],
+                "event_dance": ["West Coast Swing", "West Coast Swing"],
+                "event_year": ["2024", "2024"],
+                "event_month": ["11", "11"],
+                "event_year_and_month": ["2024-11-01", "2024-11-01"],
+            }
+        ),
+    }
+    processed, tracker = preprocess_with_log(raw)
+    loc_ids = processed["dancers_results_info"]["location_id"].astype(str).str.strip()
+    assert (loc_ids != "").all()
+    assert loc_ids.nunique() == 1
+    assert any(r.rule_id == "BACKFILL_EVENT_LOCATION" for r in tracker.rules)
+    assert any(r.rule_id == "RESOLVE_LOCATION_ID" for r in tracker.rules)
 
 
 def test_preprocess_merge_event_id_with_string_dtype_column():

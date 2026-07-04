@@ -19,6 +19,7 @@ from transform.knowledge import (
     EVENT_NAME_LOCATION_OVERRIDES,
     EVENT_NAME_NORMALIZATION,
     apply_event_location_patches,
+    backfill_empty_result_event_locations,
     event_location_patches,
 )
 from transform.knowledge.merge_map import apply_merge_event_id_map
@@ -251,6 +252,31 @@ def preprocess_with_log(data: dict[str, pd.DataFrame]) -> tuple[dict[str, pd.Dat
                         "event_id_fix",
                     )
         result["location_info"] = patched
+
+        results_for_resolve = result["dancers_results_info"]
+        before_loc_text_empty = (
+            results_for_resolve["event_location"].map(lambda v: str(v).strip() == "").sum()
+            if "event_location" in results_for_resolve.columns
+            else len(results_for_resolve)
+        )
+        results_for_resolve = backfill_empty_result_event_locations(results_for_resolve)
+        after_loc_text_empty = (
+            results_for_resolve["event_location"].map(lambda v: str(v).strip() == "").sum()
+            if "event_location" in results_for_resolve.columns
+            else 0
+        )
+        loc_text_filled = int(before_loc_text_empty) - int(after_loc_text_empty)
+        if loc_text_filled:
+            tracker.record(
+                "BACKFILL_EVENT_LOCATION",
+                "dancers_results_info",
+                "event_location",
+                "(empty)",
+                "from KNOWN_EVENT_METADATA",
+                loc_text_filled,
+                "event_id_fix",
+            )
+        result["dancers_results_info"] = results_for_resolve
 
         before_missing = (
             result["dancers_results_info"]["location_id"].map(
