@@ -177,6 +177,10 @@ def main() -> None:
             print("\nDry run — no changes applied.")
             return
 
+        if dup_results == 0 and not id_remap and not drop_ids:
+            print("\nNo duplicate results or locations — skipped apply.")
+            return
+
         deleted = _delete_duplicate_results(conn)
         _apply_location_remap(conn, id_remap)
         removed = _delete_location_ids(conn, drop_ids)

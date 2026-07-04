@@ -1,9 +1,24 @@
 """Geography constants: countries, US states, international regions."""
 
+US_COUNTRY_VALUES: frozenset[str] = frozenset(
+    {"United States", "USA", "US", "U.S.", "U.S.A."}
+)
+
+
+def us_country_sql_in_clause() -> str:
+    """SQL IN-list for United States country spellings (quality checks, repair scripts)."""
+    return ", ".join(
+        "'" + country.replace("'", "''") + "'"
+        for country in sorted(US_COUNTRY_VALUES)
+    )
+
 COUNTRY_STANDARDIZATION = {
     'US': 'United States',
     'USA': 'United States',
     'Usa': 'United States',
+    'usa': 'United States',
+    'U.S.': 'United States',
+    'U.S.A.': 'United States',
     'United States': 'United States',
     'UK': 'United Kingdom',
     'United Kingdom': 'United Kingdom',
@@ -52,6 +67,12 @@ COUNTRY_STANDARDIZATION = {
     'Ukraine': 'Ukraine',
     'CZE': 'Czech Republic',
     'Czech Republic': 'Czech Republic',
+    'Czechia': 'Czech Republic',
+    'South Korea': 'South Korea',
+    'Korea, South': 'South Korea',
+    'Western Australia': 'Australia',
+    'Nederland': 'Netherlands',
+    'England': 'United Kingdom',
     'PRT': 'Portugal',
     'Portugal': 'Portugal',
     'GRC': 'Greece',

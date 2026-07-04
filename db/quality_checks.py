@@ -21,6 +21,15 @@ _CITY_STATE_COUNTRY_SQL = ", ".join(
     for country in sorted(_CITY_STATE_COUNTRIES)
 )
 
+# Keep in sync with transform.geography.constants.US_COUNTRY_VALUES
+_US_COUNTRY_VALUES: frozenset[str] = frozenset(
+    {"United States", "USA", "US", "U.S.", "U.S.A."}
+)
+_US_COUNTRY_SQL = ", ".join(
+    f"'{country.replace(chr(39), chr(39) * 2)}'"
+    for country in sorted(_US_COUNTRY_VALUES)
+)
+
 
 @dataclass(frozen=True)
 class QualityCheck:
@@ -313,6 +322,20 @@ EXTENDED_CHECKS: tuple[QualityCheck, ...] = (
         category="location",
         description="Events with results must have typical_location in catalog.",
         fix_hint="rebuild_event_catalog + enrich_known_events",
+    ),
+    QualityCheck(
+        name="non_us_event_state",
+        sql=f"""
+        SELECT count(*) FROM core.locations
+        WHERE event_state IS NOT NULL
+          AND trim(event_state::text) <> ''
+          AND coalesce(trim(event_country::text), '') NOT IN ({_US_COUNTRY_SQL})
+        """,
+        max_value=0,
+        severity="error",
+        category="location",
+        description="event_state is only valid for United States locations.",
+        fix_hint="transform/geography/normalize.py + scripts/merge_location_ids.py",
     ),
 )
 

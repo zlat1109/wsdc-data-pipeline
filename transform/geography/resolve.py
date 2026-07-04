@@ -136,16 +136,12 @@ def build_location_lookup(location_df: pd.DataFrame) -> dict[str, str]:
     ids stay stable across runs.
     """
     lookup: dict[str, str] = {}
-    if location_df is None or location_df.empty:
-        return lookup
-    if "location_id" not in location_df.columns:
-        return lookup
-
-    for _, row in location_df.iterrows():
-        loc_id = _norm(row.get("location_id"))
-        if not loc_id:
-            continue
-        _register_lookup_keys(lookup, row, loc_id)
+    if location_df is not None and not location_df.empty and "location_id" in location_df.columns:
+        for _, row in location_df.iterrows():
+            loc_id = _norm(row.get("location_id"))
+            if not loc_id:
+                continue
+            _register_lookup_keys(lookup, row, loc_id)
     for key, loc_id in LOCATION_STRING_ALIASES.items():
         lookup.setdefault(key, loc_id)
     return lookup

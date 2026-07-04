@@ -73,6 +73,8 @@ def main() -> None:
         run([py, "scripts/reconcile_names_history.py", "--apply"])
         run([py, "scripts/repair_divisions.py", "--apply"])
         run([py, "scripts/repair_locations.py"])
+        run([py, "scripts/merge_location_ids.py", "--apply"])
+        run([py, "scripts/dedupe_core_data.py", "--apply"])
 
     run([py, "export.py"])
 

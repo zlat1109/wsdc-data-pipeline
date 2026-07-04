@@ -9,11 +9,10 @@ import pandas as pd
 from transform.geography.canonical import canonicalize_city_coordinates
 from transform.geography.city import apply_city_normalization_with_replacements, format_event_location
 from transform.geography.constants import (
-    CANADA_PROVINCES,
     COUNTRY_STANDARDIZATION,
     STATE_CODE_TO_NAME,
     STATE_NAME_TO_CODE,
-    UK_REGIONS,
+    US_COUNTRY_VALUES,
 )
 from transform.knowledge.locations import (
     LOCATION_ID_CORRECTIONS as LOCATION_INFO_ID_CORRECTIONS,
@@ -89,7 +88,8 @@ def fill_us_state_from_location(row: pd.Series) -> str:
         return str(row.get('event_state')).strip()
 
     country = str(row.get('event_country', '')).strip() if pd.notna(row.get('event_country')) else ''
-    if country not in {'United States', 'USA', 'US'}:
+    std_country = standardize_country(country) or country
+    if std_country not in US_COUNTRY_VALUES:
         return ''
 
     location = str(row.get('event_location', '')).strip() if pd.notna(row.get('event_location')) else ''
@@ -97,22 +97,18 @@ def fill_us_state_from_location(row: pd.Series) -> str:
 
 
 def fill_international_state(row: pd.Series) -> str:
+    """Keep event_state only for United States; clear for international rows."""
+    country_raw = (
+        str(row.get('event_country', '')).strip()
+        if pd.notna(row.get('event_country'))
+        else ''
+    )
+    country = standardize_country(country_raw) or country_raw
+    if country not in US_COUNTRY_VALUES:
+        return ''
     if pd.notna(row.get('event_state')) and str(row.get('event_state')).strip():
         return str(row.get('event_state')).strip()
-
-    country = str(row.get('event_country', '')).strip() if pd.notna(row.get('event_country')) else ''
-    city = str(row.get('event_city', '')).strip() if pd.notna(row.get('event_city')) else ''
-
-    if country in {'United States', 'USA', 'US'}:
-        return ''
-
-    if country == 'Canada':
-        return CANADA_PROVINCES.get(city, '')
-    if country == 'United Kingdom':
-        return UK_REGIONS.get(city, '')
-
-    location = str(row.get('event_location', '')).strip() if pd.notna(row.get('event_location')) else ''
-    return parse_region_from_location_text(location)
+    return ''
 
 
 def validate_coordinates(row: pd.Series) -> bool:
@@ -143,27 +139,21 @@ def _apply_id_corrections(
         if not mask.any():
             continue
 
-        empty_mask = mask.copy()
-        for key_col in ['event_city', 'event_country', 'event_location']:
-            if key_col in df.columns and key_col in fixes:
-                col_vals = df.loc[mask, key_col].astype(str).str.strip()
-                empty_mask &= col_vals.isna() | (col_vals == '') | (col_vals == 'nan')
-
-        target_mask = empty_mask if empty_mask.any() else mask
         for col, val in fixes.items():
-            if col in df.columns and target_mask.any():
+            if col in df.columns and mask.any():
                 if tracker is not None:
-                    before = df.loc[target_mask, col].astype(str).iloc[0]
-                    tracker.record(
-                        'LOCATION_INFO_ID_CORRECTION',
-                        table,
-                        col,
-                        f'location_id={loc_id} was {before}',
-                        str(val),
-                        int(target_mask.sum()),
-                        'location_id_fix',
-                    )
-                df.loc[target_mask, col] = val
+                    before = df.loc[mask, col].astype(str).iloc[0]
+                    if str(before) != str(val):
+                        tracker.record(
+                            'LOCATION_INFO_ID_CORRECTION',
+                            table,
+                            col,
+                            f'location_id={loc_id} was {before}',
+                            str(val),
+                            int(mask.sum()),
+                            'location_id_fix',
+                        )
+                df.loc[mask, col] = val if val != '' else ''
     return df
 
 
@@ -254,9 +244,18 @@ def normalize_geography(
         df['event_location_standardized'] = df.apply(standardize_location, axis=1)
         for idx, row in df.iterrows():
             formatted = format_event_location(row)
-            current = str(row.get('event_location', '')).strip() if pd.notna(row.get('event_location')) else ''
-            if formatted and current != formatted and current.upper() == formatted.upper():
+            if not formatted:
+                continue
+            current = (
+                str(row.get('event_location', '')).strip()
+                if pd.notna(row.get('event_location'))
+                else ''
+            )
+            if current != formatted:
                 df.at[idx, 'event_location'] = formatted
+                df.at[idx, 'event_location_standardized'] = standardize_location(
+                    df.loc[idx]
+                )
 
     if 'latitude' in df.columns and 'longitude' in df.columns:
         df['coordinates_valid'] = df.apply(validate_coordinates, axis=1)

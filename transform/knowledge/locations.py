@@ -10,17 +10,85 @@ CITY_STATE_COUNTRIES: frozenset[str] = frozenset({"Singapore"})
 # Canonical Singapore row in location_info (has coordinates).
 SINGAPORE_CANONICAL_LOCATION_ID = 159
 
-# Duplicate location_id rows that share the same place label → canonical id.
+# Duplicate location_id rows → canonical location_id (remap FKs, delete source row).
 LOCATION_ID_MERGE_MAP: dict[str, str] = {
     "244": str(SINGAPORE_CANONICAL_LOCATION_ID),
     "350": str(SINGAPORE_CANONICAL_LOCATION_ID),
+    # Amsterdam — keep 191 (coordinates)
+    "373": "191",
+    # Anaheim / Garden Grove metro → Anaheim
+    "291": "23",
+    # Boston Club venue label → Düsseldorf
+    "334": "127",
+    # Brno country alias
+    "412": "266",
+    # Calgary duplicate
+    "345": "148",
+    # Dallas Ft. Worth → Dallas
+    "295": "21",
+    # Duesseldorf spelling → Düsseldorf
+    "198": "127",
+    # Edmonton duplicate
+    "380": "205",
+    # Incheon / Jeju country alias
+    "359": "172",
+    "382": "213",
+    # Montreal duplicate
+    "331": "86",
+    # New York City → New York
+    "224": "7",
+    # Perth state-as-country typo
+    "423": "253",
+    # Phoenix country typo
+    "287": "3",
+    # Richmond duplicate
+    "335": "128",
+    # San Antonio casing / country typo
+    "355": "167",
+    # St.Petersburg spelling
+    "401": "222",
+    # Tampa Bay → Tampa
+    "300": "53",
+    # Toronto duplicate
+    "363": "105",
+    # Toulouse-Blagnac airport label → Toulouse
+    "187": "208",
+    # Vancouver duplicate
+    "347": "154",
+    # Venray duplicate (keep row with coordinates)
+    "391": "227",
+    # Wailea duplicate
+    "333": "124",
+    # Ambiguous "Washington" (MD suburb / non-DC events in audit) → Washington DC id 13
+    "310": "13",
 }
 
 # Extra lookup keys → canonical location_id (lowercase event_location text).
+# Add entries when reconciliation finds a new WSDC string that maps to a known id.
 LOCATION_STRING_ALIASES: dict[str, str] = {
     "singapore": str(SINGAPORE_CANONICAL_LOCATION_ID),
     "singapore, singapore": str(SINGAPORE_CANONICAL_LOCATION_ID),
     "singapore, singapore, singapore": str(SINGAPORE_CANONICAL_LOCATION_ID),
+    "amsterdam, netherlands": "191",
+    "anaheim, ca, united states": "23",
+    "garden grove, ca, united states": "23",
+    "boston club, germany": "127",
+    "dusseldorf, germany": "127",
+    "duesseldorf, germany": "127",
+    "brno, czech republic": "266",
+    "brno, czechia": "266",
+    "toulouse-blagnac, france": "208",
+    "new york city, ny, united states": "7",
+    "tampa bay, fl, united states": "53",
+    "dallas ft. worth, tx, united states": "21",
+    "dallas ft worth, tx, united states": "21",
+    "st.petersburg, russia": "222",
+    "st petersburg, russia": "222",
+    "incheon, south korea": "172",
+    "jeju, south korea": "213",
+    "perth, western australia, australia": "253",
+    "phoenix, usa": "3",
+    "london, england, united kingdom": "107",
 }
 
 LOCATION_ID_CORRECTIONS: dict[int, LocationPatch] = {
@@ -32,13 +100,6 @@ LOCATION_ID_CORRECTIONS: dict[int, LocationPatch] = {
         'event_location_standardized': 'Atlanta, GA, United States',
     },
     159: {
-        'event_city': 'Singapore',
-        'event_state': '',
-        'event_country': 'Singapore',
-        'event_location': 'Singapore, Singapore',
-        'event_location_standardized': 'Singapore, Singapore',
-    },
-    244: {
         'event_city': 'Singapore',
         'event_state': '',
         'event_country': 'Singapore',
@@ -61,19 +122,111 @@ LOCATION_ID_CORRECTIONS: dict[int, LocationPatch] = {
         'event_location': 'Albany, NY',
         'event_location_standardized': 'Albany, NY',
     },
+    # Non-US: event_state only for United States
     191: {
         'event_city': 'Amsterdam',
-        'event_state': 'North Holland',
+        'event_state': '',
         'event_country': 'Netherlands',
-        'event_location': 'Amsterdam, North Holland, Netherlands',
-        'event_location_standardized': 'Amsterdam, North Holland, Netherlands',
+        'event_location': 'Amsterdam, Netherlands',
+        'event_location_standardized': 'Amsterdam, Netherlands',
     },
     227: {
         'event_city': 'Venray',
-        'event_state': 'Limburg',
+        'event_state': '',
         'event_country': 'Netherlands',
-        'event_location': 'Venray, Limburg, Netherlands',
-        'event_location_standardized': 'Venray, Limburg, Netherlands',
+        'event_location': 'Venray, Netherlands',
+        'event_location_standardized': 'Venray, Netherlands',
+    },
+    107: {
+        'event_city': 'London',
+        'event_state': '',
+        'event_country': 'United Kingdom',
+        'event_location': 'London, United Kingdom',
+        'event_location_standardized': 'London, United Kingdom',
+    },
+    234: {
+        'event_city': 'Bristol',
+        'event_state': '',
+        'event_country': 'United Kingdom',
+        'event_location': 'Bristol, United Kingdom',
+        'event_location_standardized': 'Bristol, United Kingdom',
+    },
+    226: {
+        'event_city': 'Glasgow',
+        'event_state': '',
+        'event_country': 'United Kingdom',
+        'event_location': 'Glasgow, United Kingdom',
+        'event_location_standardized': 'Glasgow, United Kingdom',
+    },
+    86: {
+        'event_city': 'Montreal',
+        'event_state': '',
+        'event_country': 'Canada',
+        'event_location': 'Montreal, Canada',
+        'event_location_standardized': 'Montreal, Canada',
+    },
+    105: {
+        'event_city': 'Toronto',
+        'event_state': '',
+        'event_country': 'Canada',
+        'event_location': 'Toronto, Canada',
+        'event_location_standardized': 'Toronto, Canada',
+    },
+    128: {
+        'event_city': 'Richmond',
+        'event_state': '',
+        'event_country': 'Canada',
+        'event_location': 'Richmond, Canada',
+        'event_location_standardized': 'Richmond, Canada',
+    },
+    148: {
+        'event_city': 'Calgary',
+        'event_state': '',
+        'event_country': 'Canada',
+        'event_location': 'Calgary, Canada',
+        'event_location_standardized': 'Calgary, Canada',
+    },
+    154: {
+        'event_city': 'Vancouver',
+        'event_state': '',
+        'event_country': 'Canada',
+        'event_location': 'Vancouver, Canada',
+        'event_location_standardized': 'Vancouver, Canada',
+    },
+    179: {
+        'event_city': 'Ottawa',
+        'event_state': '',
+        'event_country': 'Canada',
+        'event_location': 'Ottawa, Canada',
+        'event_location_standardized': 'Ottawa, Canada',
+    },
+    205: {
+        'event_city': 'Edmonton',
+        'event_state': '',
+        'event_country': 'Canada',
+        'event_location': 'Edmonton, Canada',
+        'event_location_standardized': 'Edmonton, Canada',
+    },
+    127: {
+        'event_city': 'Düsseldorf',
+        'event_state': '',
+        'event_country': 'Germany',
+        'event_location': 'Düsseldorf, Germany',
+        'event_location_standardized': 'Düsseldorf, Germany',
+    },
+    325: {
+        'event_city': 'N. Myrtle Beach',
+        'event_state': 'South Carolina',
+        'event_country': 'United States',
+        'event_location': 'N. Myrtle Beach, SC, United States',
+        'event_location_standardized': 'N. Myrtle Beach, SC',
+    },
+    353: {
+        'event_city': 'Washington',
+        'event_state': 'Maryland',
+        'event_country': 'United States',
+        'event_location': 'Washington, MD, United States',
+        'event_location_standardized': 'Washington, MD',
     },
 }
 
