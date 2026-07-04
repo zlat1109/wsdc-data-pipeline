@@ -32,7 +32,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 2023,2023-07-01,2023,7,2023-07
 1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 2024,2024-07-01,2024,7,2024-07
 1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 2025,2025-07-01,2025,7,2025-07
-2,4TH of July Swing Bash,"Fort Lauderdale, FL, United States",,July 1997,1997-07-01,1997,7,1997-07
+2,4TH of July Swing Bash,"Ft. Lauderdale, Florida, FL",,July 1997,1997-07-01,1997,7,1997-07
 3,American Lindy Hop Championships,"Stamford, CT, United States",,October 2000,2000-10-01,2000,10,2000-10
 3,American Lindy Hop Championships,"Stamford, CT, United States",,October 2001,2001-10-01,2001,10,2001-10
 3,American Lindy Hop Championships,"Stamford, CT, United States",,October 2003,2003-10-01,2003,10,2003-10
@@ -307,35 +307,35 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 22,USA Grand Nationals,"Atlanta, GA, United States",http://www.usagrandnationals.com,May 2026,2026-05-01,2026,5,2026-05
 23,HustleMania,"Fresno, CA, United States",,August 1999,1999-08-01,1999,8,1999-08
 24,J&J National Championships,"Las Vegas, NV, United States",,August 1996,1996-08-01,1996,8,1996-08
-25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 1995,1995-06-01,1995,6,1995-06
-25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 1996,1996-06-01,1996,6,1996-06
-25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 1997,1997-06-01,1997,6,1997-06
-25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 1998,1998-06-01,1998,6,1998-06
-25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 1999,1999-06-01,1999,6,1999-06
-25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2000,2000-06-01,2000,6,2000-06
-25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2001,2001-06-01,2001,6,2001-06
-25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2002,2002-06-01,2002,6,2002-06
-25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2003,2003-06-01,2003,6,2003-06
-25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2004,2004-06-01,2004,6,2004-06
-25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2005,2005-06-01,2005,6,2005-06
-25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2006,2006-06-01,2006,6,2006-06
-25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2007,2007-06-01,2007,6,2007-06
-25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2008,2008-06-01,2008,6,2008-06
-25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2009,2009-06-01,2009,6,2009-06
-25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2010,2010-06-01,2010,6,2010-06
-25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2011,2011-06-01,2011,6,2011-06
-25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2012,2012-06-01,2012,6,2012-06
-25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2013,2013-06-01,2013,6,2013-06
-25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2014,2014-06-01,2014,6,2014-06
-25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2015,2015-06-01,2015,6,2015-06
-25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2016,2016-06-01,2016,6,2016-06
-25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2017,2017-06-01,2017,6,2017-06
-25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2018,2018-06-01,2018,6,2018-06
-25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2019,2019-06-01,2019,6,2019-06
-25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2023,2023-06-01,2023,6,2023-06
-25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2024,2024-06-01,2024,6,2024-06
-25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2025,2025-06-01,2025,6,2025-06
-25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2026,2026-06-01,2026,6,2026-06
+25,J&J O'Rama,"Anaheim/Garden Grove, CA, United States",https://jackandjillorama.com/,June 1995,1995-06-01,1995,6,1995-06
+25,J&J O'Rama,"Anaheim/Garden Grove, CA, United States",https://jackandjillorama.com/,June 1996,1996-06-01,1996,6,1996-06
+25,J&J O'Rama,"Anaheim/Garden Grove, CA, United States",https://jackandjillorama.com/,June 1997,1997-06-01,1997,6,1997-06
+25,J&J O'Rama,"Anaheim/Garden Grove, CA, United States",https://jackandjillorama.com/,June 1998,1998-06-01,1998,6,1998-06
+25,J&J O'Rama,"Anaheim/Garden Grove, CA, United States",https://jackandjillorama.com/,June 1999,1999-06-01,1999,6,1999-06
+25,J&J O'Rama,"Anaheim/Garden Grove, CA, United States",https://jackandjillorama.com/,June 2000,2000-06-01,2000,6,2000-06
+25,J&J O'Rama,"Anaheim/Garden Grove, CA, United States",https://jackandjillorama.com/,June 2001,2001-06-01,2001,6,2001-06
+25,J&J O'Rama,"Anaheim/Garden Grove, CA, United States",https://jackandjillorama.com/,June 2002,2002-06-01,2002,6,2002-06
+25,J&J O'Rama,"Anaheim/Garden Grove, CA, United States",https://jackandjillorama.com/,June 2003,2003-06-01,2003,6,2003-06
+25,J&J O'Rama,"Anaheim/Garden Grove, CA, United States",https://jackandjillorama.com/,June 2004,2004-06-01,2004,6,2004-06
+25,J&J O'Rama,"Anaheim/Garden Grove, CA, United States",https://jackandjillorama.com/,June 2005,2005-06-01,2005,6,2005-06
+25,J&J O'Rama,"Anaheim/Garden Grove, CA, United States",https://jackandjillorama.com/,June 2006,2006-06-01,2006,6,2006-06
+25,J&J O'Rama,"Anaheim/Garden Grove, CA, United States",https://jackandjillorama.com/,June 2007,2007-06-01,2007,6,2007-06
+25,J&J O'Rama,"Anaheim/Garden Grove, CA, United States",https://jackandjillorama.com/,June 2008,2008-06-01,2008,6,2008-06
+25,J&J O'Rama,"Anaheim/Garden Grove, CA, United States",https://jackandjillorama.com/,June 2009,2009-06-01,2009,6,2009-06
+25,J&J O'Rama,"Anaheim/Garden Grove, CA, United States",https://jackandjillorama.com/,June 2010,2010-06-01,2010,6,2010-06
+25,J&J O'Rama,"Anaheim/Garden Grove, CA, United States",https://jackandjillorama.com/,June 2011,2011-06-01,2011,6,2011-06
+25,J&J O'Rama,"Anaheim/Garden Grove, CA, United States",https://jackandjillorama.com/,June 2012,2012-06-01,2012,6,2012-06
+25,J&J O'Rama,"Anaheim/Garden Grove, CA, United States",https://jackandjillorama.com/,June 2013,2013-06-01,2013,6,2013-06
+25,J&J O'Rama,"Anaheim/Garden Grove, CA, United States",https://jackandjillorama.com/,June 2014,2014-06-01,2014,6,2014-06
+25,J&J O'Rama,"Anaheim/Garden Grove, CA, United States",https://jackandjillorama.com/,June 2015,2015-06-01,2015,6,2015-06
+25,J&J O'Rama,"Anaheim/Garden Grove, CA, United States",https://jackandjillorama.com/,June 2016,2016-06-01,2016,6,2016-06
+25,J&J O'Rama,"Anaheim/Garden Grove, CA, United States",https://jackandjillorama.com/,June 2017,2017-06-01,2017,6,2017-06
+25,J&J O'Rama,"Anaheim/Garden Grove, CA, United States",https://jackandjillorama.com/,June 2018,2018-06-01,2018,6,2018-06
+25,J&J O'Rama,"Anaheim/Garden Grove, CA, United States",https://jackandjillorama.com/,June 2019,2019-06-01,2019,6,2019-06
+25,J&J O'Rama,"Anaheim/Garden Grove, CA, United States",https://jackandjillorama.com/,June 2023,2023-06-01,2023,6,2023-06
+25,J&J O'Rama,"Anaheim/Garden Grove, CA, United States",https://jackandjillorama.com/,June 2024,2024-06-01,2024,6,2024-06
+25,J&J O'Rama,"Anaheim/Garden Grove, CA, United States",https://jackandjillorama.com/,June 2025,2025-06-01,2025,6,2025-06
+25,J&J O'Rama,"Anaheim/Garden Grove, CA, United States",https://jackandjillorama.com/,June 2026,2026-06-01,2026,6,2026-06
 26,Jitterbug Jam,"Thousand Oaks, CA, United States",,February 1999,1999-02-01,1999,2,1999-02
 27,Labor Day Swing Dance Festival,"Buena Park, CA, United States",,September 1994,1994-09-01,1994,9,1994-09
 27,Labor Day Swing Dance Festival,"Buena Park, CA, United States",,September 1995,1995-09-01,1995,9,1995-09
@@ -900,25 +900,25 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 76,Michigan Dance Classic,"Detroit, MI, United States",http://www.michiganclassicswing.com/,June 2025,2025-06-01,2025,6,2025-06
 76,Michigan Dance Classic,"Detroit, MI, United States",http://www.michiganclassicswing.com/,May 2015,2015-05-01,2015,5,2015-05
 76,Michigan Dance Classic,"Detroit, MI, United States",http://www.michiganclassicswing.com/,May 2026,2026-05-01,2026,5,2026-05
-77,Arizona Dance Classic,"Phoenix, AZ, United States",,August 2002,2002-08-01,2002,8,2002-08
-77,Arizona Dance Classic,"Phoenix, AZ, United States",,August 2004,2004-08-01,2004,8,2004-08
-77,Arizona Dance Classic,"Phoenix, AZ, United States",,August 2005,2005-08-01,2005,8,2005-08
-77,Arizona Dance Classic,"Phoenix, AZ, United States",,August 2008,2008-08-01,2008,8,2008-08
-77,Arizona Dance Classic,"Phoenix, AZ, United States",,August 2010,2010-08-01,2010,8,2010-08
-77,Arizona Dance Classic,"Phoenix, AZ, United States",,August 2011,2011-08-01,2011,8,2011-08
-77,Arizona Dance Classic,"Phoenix, AZ, United States",,August 2012,2012-08-01,2012,8,2012-08
-77,Arizona Dance Classic,"Phoenix, AZ, United States",,August 2013,2013-08-01,2013,8,2013-08
-77,Arizona Dance Classic,"Phoenix, AZ, United States",,August 2014,2014-08-01,2014,8,2014-08
-77,Arizona Dance Classic,"Phoenix, AZ, United States",,August 2015,2015-08-01,2015,8,2015-08
-77,Arizona Dance Classic,"Phoenix, AZ, United States",,August 2018,2018-08-01,2018,8,2018-08
-77,Arizona Dance Classic,"Phoenix, AZ, United States",,August 2019,2019-08-01,2019,8,2019-08
-77,Arizona Dance Classic,"Phoenix, AZ, United States",,August 2021,2021-08-01,2021,8,2021-08
-77,Arizona Dance Classic,"Phoenix, AZ, United States",,August 2022,2022-08-01,2022,8,2022-08
-77,Arizona Dance Classic,"Phoenix, AZ, United States",,August 2023,2023-08-01,2023,8,2023-08
-77,Arizona Dance Classic,"Phoenix, AZ, United States",,August 2024,2024-08-01,2024,8,2024-08
-77,Arizona Dance Classic,"Phoenix, AZ, United States",,August 2025,2025-08-01,2025,8,2025-08
-77,Arizona Dance Classic,"Phoenix, AZ, United States",,July 2016,2016-07-01,2016,7,2016-07
-77,Arizona Dance Classic,"Phoenix, AZ, United States",,July 2017,2017-07-01,2017,7,2017-07
+77,Arizona Dance Classic,"Phoenix, usa",,August 2002,2002-08-01,2002,8,2002-08
+77,Arizona Dance Classic,"Phoenix, usa",,August 2004,2004-08-01,2004,8,2004-08
+77,Arizona Dance Classic,"Phoenix, usa",,August 2005,2005-08-01,2005,8,2005-08
+77,Arizona Dance Classic,"Phoenix, usa",,August 2008,2008-08-01,2008,8,2008-08
+77,Arizona Dance Classic,"Phoenix, usa",,August 2010,2010-08-01,2010,8,2010-08
+77,Arizona Dance Classic,"Phoenix, usa",,August 2011,2011-08-01,2011,8,2011-08
+77,Arizona Dance Classic,"Phoenix, usa",,August 2012,2012-08-01,2012,8,2012-08
+77,Arizona Dance Classic,"Phoenix, usa",,August 2013,2013-08-01,2013,8,2013-08
+77,Arizona Dance Classic,"Phoenix, usa",,August 2014,2014-08-01,2014,8,2014-08
+77,Arizona Dance Classic,"Phoenix, usa",,August 2015,2015-08-01,2015,8,2015-08
+77,Arizona Dance Classic,"Phoenix, usa",,August 2018,2018-08-01,2018,8,2018-08
+77,Arizona Dance Classic,"Phoenix, usa",,August 2019,2019-08-01,2019,8,2019-08
+77,Arizona Dance Classic,"Phoenix, usa",,August 2021,2021-08-01,2021,8,2021-08
+77,Arizona Dance Classic,"Phoenix, usa",,August 2022,2022-08-01,2022,8,2022-08
+77,Arizona Dance Classic,"Phoenix, usa",,August 2023,2023-08-01,2023,8,2023-08
+77,Arizona Dance Classic,"Phoenix, usa",,August 2024,2024-08-01,2024,8,2024-08
+77,Arizona Dance Classic,"Phoenix, usa",,August 2025,2025-08-01,2025,8,2025-08
+77,Arizona Dance Classic,"Phoenix, usa",,July 2016,2016-07-01,2016,7,2016-07
+77,Arizona Dance Classic,"Phoenix, usa",,July 2017,2017-07-01,2017,7,2017-07
 78,Mid-American Dance Championships,"Chicago, IL, United States",,September 2002,2002-09-01,2002,9,2002-09
 78,Mid-American Dance Championships,"Chicago, IL, United States",,September 2003,2003-09-01,2003,9,2003-09
 78,Mid-American Dance Championships,"Chicago, IL, United States",,September 2004,2004-09-01,2004,9,2004-09
@@ -1097,31 +1097,31 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 104,Los Angeles Premiere Dance Classic,"Los Angeles, CA, United States",,April 2009,2009-04-01,2009,4,2009-04
 104,Los Angeles Premiere Dance Classic,"Los Angeles, CA, United States",,April 2010,2010-04-01,2010,4,2010-04
 104,Los Angeles Premiere Dance Classic,"Los Angeles, CA, United States",,April 2011,2011-04-01,2011,4,2011-04
-105,Canadian Swing Championships,"Montreal, Quebec, Canada",http://www.canadianswingchampionships.com,May 2005,2005-05-01,2005,5,2005-05
-105,Canadian Swing Championships,"Montreal, Quebec, Canada",http://www.canadianswingchampionships.com,May 2006,2006-05-01,2006,5,2006-05
-105,Canadian Swing Championships,"Montreal, Quebec, Canada",http://www.canadianswingchampionships.com,May 2007,2007-05-01,2007,5,2007-05
-105,Canadian Swing Championships,"Montreal, Quebec, Canada",http://www.canadianswingchampionships.com,May 2009,2009-05-01,2009,5,2009-05
-105,Canadian Swing Championships,"Montreal, Quebec, Canada",http://www.canadianswingchampionships.com,May 2010,2010-05-01,2010,5,2010-05
-105,Canadian Swing Championships,"Montreal, Quebec, Canada",http://www.canadianswingchampionships.com,May 2011,2011-05-01,2011,5,2011-05
-105,Canadian Swing Championships,"Montreal, Quebec, Canada",http://www.canadianswingchampionships.com,May 2012,2012-05-01,2012,5,2012-05
-105,Canadian Swing Championships,"Montreal, Quebec, Canada",http://www.canadianswingchampionships.com,May 2013,2013-05-01,2013,5,2013-05
-105,Canadian Swing Championships,"Montreal, Quebec, Canada",http://www.canadianswingchampionships.com,May 2014,2014-05-01,2014,5,2014-05
-105,Canadian Swing Championships,"Montreal, Quebec, Canada",http://www.canadianswingchampionships.com,May 2015,2015-05-01,2015,5,2015-05
-105,Canadian Swing Championships,"Montreal, Quebec, Canada",http://www.canadianswingchampionships.com,May 2016,2016-05-01,2016,5,2016-05
-105,Canadian Swing Championships,"Montreal, Quebec, Canada",http://www.canadianswingchampionships.com,May 2017,2017-05-01,2017,5,2017-05
-105,Canadian Swing Championships,"Montreal, Quebec, Canada",http://www.canadianswingchampionships.com,May 2018,2018-05-01,2018,5,2018-05
-105,Canadian Swing Championships,"Montreal, Quebec, Canada",http://www.canadianswingchampionships.com,May 2019,2019-05-01,2019,5,2019-05
-105,Canadian Swing Championships,"Montreal, Quebec, Canada",http://www.canadianswingchampionships.com,May 2023,2023-05-01,2023,5,2023-05
-105,Canadian Swing Championships,"Montreal, Quebec, Canada",http://www.canadianswingchampionships.com,May 2024,2024-05-01,2024,5,2024-05
-105,Canadian Swing Championships,"Montreal, Quebec, Canada",http://www.canadianswingchampionships.com,May 2025,2025-05-01,2025,5,2025-05
-105,Canadian Swing Championships,"Montreal, Quebec, Canada",http://www.canadianswingchampionships.com,May 2026,2026-05-01,2026,5,2026-05
+105,Canadian Swing Championships,"Montreal, Canada",http://www.canadianswingchampionships.com,May 2005,2005-05-01,2005,5,2005-05
+105,Canadian Swing Championships,"Montreal, Canada",http://www.canadianswingchampionships.com,May 2006,2006-05-01,2006,5,2006-05
+105,Canadian Swing Championships,"Montreal, Canada",http://www.canadianswingchampionships.com,May 2007,2007-05-01,2007,5,2007-05
+105,Canadian Swing Championships,"Montreal, Canada",http://www.canadianswingchampionships.com,May 2009,2009-05-01,2009,5,2009-05
+105,Canadian Swing Championships,"Montreal, Canada",http://www.canadianswingchampionships.com,May 2010,2010-05-01,2010,5,2010-05
+105,Canadian Swing Championships,"Montreal, Canada",http://www.canadianswingchampionships.com,May 2011,2011-05-01,2011,5,2011-05
+105,Canadian Swing Championships,"Montreal, Canada",http://www.canadianswingchampionships.com,May 2012,2012-05-01,2012,5,2012-05
+105,Canadian Swing Championships,"Montreal, Canada",http://www.canadianswingchampionships.com,May 2013,2013-05-01,2013,5,2013-05
+105,Canadian Swing Championships,"Montreal, Canada",http://www.canadianswingchampionships.com,May 2014,2014-05-01,2014,5,2014-05
+105,Canadian Swing Championships,"Montreal, Canada",http://www.canadianswingchampionships.com,May 2015,2015-05-01,2015,5,2015-05
+105,Canadian Swing Championships,"Montreal, Canada",http://www.canadianswingchampionships.com,May 2016,2016-05-01,2016,5,2016-05
+105,Canadian Swing Championships,"Montreal, Canada",http://www.canadianswingchampionships.com,May 2017,2017-05-01,2017,5,2017-05
+105,Canadian Swing Championships,"Montreal, Canada",http://www.canadianswingchampionships.com,May 2018,2018-05-01,2018,5,2018-05
+105,Canadian Swing Championships,"Montreal, Canada",http://www.canadianswingchampionships.com,May 2019,2019-05-01,2019,5,2019-05
+105,Canadian Swing Championships,"Montreal, Canada",http://www.canadianswingchampionships.com,May 2023,2023-05-01,2023,5,2023-05
+105,Canadian Swing Championships,"Montreal, Canada",http://www.canadianswingchampionships.com,May 2024,2024-05-01,2024,5,2024-05
+105,Canadian Swing Championships,"Montreal, Canada",http://www.canadianswingchampionships.com,May 2025,2025-05-01,2025,5,2025-05
+105,Canadian Swing Championships,"Montreal, Canada",http://www.canadianswingchampionships.com,May 2026,2026-05-01,2026,5,2026-05
 106,Phoenix Dance Festival,"Phoenix, AZ, United States",,April 2005,2005-04-01,2005,4,2005-04
 106,Phoenix Dance Festival,"Phoenix, AZ, United States",,April 2006,2006-04-01,2006,4,2006-04
 107,Motown Dance Championships,"Detroit, MI, United States",,April 2005,2005-04-01,2005,4,2005-04
 107,Motown Dance Championships,"Detroit, MI, United States",,April 2006,2006-04-01,2006,4,2006-04
 107,Motown Dance Championships,"Detroit, MI, United States",,April 2007,2007-04-01,2007,4,2007-04
-108,Vancouver Vibrations,"Vancouver, British Columbia, Canada",,May 2005,2005-05-01,2005,5,2005-05
-108,Vancouver Vibrations,"Vancouver, British Columbia, Canada",,May 2006,2006-05-01,2006,5,2006-05
+108,Vancouver Vibrations,"Vancouver, Canada",,May 2005,2005-05-01,2005,5,2005-05
+108,Vancouver Vibrations,"Vancouver, Canada",,May 2006,2006-05-01,2006,5,2006-05
 109,Colorado Country Classic,"Denver, CO, United States",https://coloradocountryclassic.net/,July 2019,2019-07-01,2019,7,2019-07
 109,Colorado Country Classic,"Denver, CO, United States",https://coloradocountryclassic.net/,June 2005,2005-06-01,2005,6,2005-06
 109,Colorado Country Classic,"Denver, CO, United States",https://coloradocountryclassic.net/,June 2006,2006-06-01,2006,6,2006-06
@@ -1148,20 +1148,20 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 112,US National Dance Championships,"Washington, DC, United States",,October 2006,2006-10-01,2006,10,2006-10
 113,Dallas Dance Festival,"Dallas, TX, United States",,November 2005,2005-11-01,2005,11,2005-11
 113,Dallas Dance Festival,"Dallas, TX, United States",,November 2006,2006-11-01,2006,11,2006-11
-114,British Columbia Dance Challenge,"Richmond, British Columbia, Canada",,March 2006,2006-03-01,2006,3,2006-03
-114,British Columbia Dance Challenge,"Richmond, British Columbia, Canada",,March 2007,2007-03-01,2007,3,2007-03
+114,British Columbia Dance Challenge,"Richmond, Canada",,March 2006,2006-03-01,2006,3,2006-03
+114,British Columbia Dance Challenge,"Richmond, Canada",,March 2007,2007-03-01,2007,3,2007-03
 115,Da Dance Camp,"Chicago, IL, United States",,February 2006,2006-02-01,2006,2,2006-02
 115,Da Dance Camp,"Chicago, IL, United States",,February 2007,2007-02-01,2007,2,2007-02
 115,Da Dance Camp,"Chicago, IL, United States",,February 2008,2008-02-01,2008,2,2008-02
 115,Da Dance Camp,"Chicago, IL, United States",,February 2010,2010-02-01,2010,2,2010-02
-116,Calgary Dance Stampede,"Calgary, Alberta, Canada",http://www.calgarydancestampede.com,April 2006,2006-04-01,2006,4,2006-04
-116,Calgary Dance Stampede,"Calgary, Alberta, Canada",http://www.calgarydancestampede.com,April 2007,2007-04-01,2007,4,2007-04
-116,Calgary Dance Stampede,"Calgary, Alberta, Canada",http://www.calgarydancestampede.com,April 2008,2008-04-01,2008,4,2008-04
-116,Calgary Dance Stampede,"Calgary, Alberta, Canada",http://www.calgarydancestampede.com,April 2009,2009-04-01,2009,4,2009-04
-116,Calgary Dance Stampede,"Calgary, Alberta, Canada",http://www.calgarydancestampede.com,April 2010,2010-04-01,2010,4,2010-04
-116,Calgary Dance Stampede,"Calgary, Alberta, Canada",http://www.calgarydancestampede.com,April 2024,2024-04-01,2024,4,2024-04
-116,Calgary Dance Stampede,"Calgary, Alberta, Canada",http://www.calgarydancestampede.com,April 2025,2025-04-01,2025,4,2025-04
-116,Calgary Dance Stampede,"Calgary, Alberta, Canada",http://www.calgarydancestampede.com,April 2026,2026-04-01,2026,4,2026-04
+116,Calgary Dance Stampede,"Calgary, Canada",http://www.calgarydancestampede.com,April 2006,2006-04-01,2006,4,2006-04
+116,Calgary Dance Stampede,"Calgary, Canada",http://www.calgarydancestampede.com,April 2007,2007-04-01,2007,4,2007-04
+116,Calgary Dance Stampede,"Calgary, Canada",http://www.calgarydancestampede.com,April 2008,2008-04-01,2008,4,2008-04
+116,Calgary Dance Stampede,"Calgary, Canada",http://www.calgarydancestampede.com,April 2009,2009-04-01,2009,4,2009-04
+116,Calgary Dance Stampede,"Calgary, Canada",http://www.calgarydancestampede.com,April 2010,2010-04-01,2010,4,2010-04
+116,Calgary Dance Stampede,"Calgary, Canada",http://www.calgarydancestampede.com,April 2024,2024-04-01,2024,4,2024-04
+116,Calgary Dance Stampede,"Calgary, Canada",http://www.calgarydancestampede.com,April 2025,2025-04-01,2025,4,2025-04
+116,Calgary Dance Stampede,"Calgary, Canada",http://www.calgarydancestampede.com,April 2026,2026-04-01,2026,4,2026-04
 117,Orange Blossom Dance Festival,"Orlando, FL, United States",http://www.orangeblossomdance.net,June 2006,2006-06-01,2006,6,2006-06
 117,Orange Blossom Dance Festival,"Orlando, FL, United States",http://www.orangeblossomdance.net,June 2007,2007-06-01,2007,6,2007-06
 117,Orange Blossom Dance Festival,"Orlando, FL, United States",http://www.orangeblossomdance.net,June 2008,2008-06-01,2008,6,2008-06
@@ -1272,11 +1272,11 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 129,West Coast Dance Challenge,"Redmond, WA, United States",,November 2006,2006-11-01,2006,11,2006-11
 129,West Coast Dance Challenge,"Redmond, WA, United States",,November 2008,2008-11-01,2008,11,2008-11
 129,West Coast Dance Challenge,"Redmond, WA, United States",,November 2009,2009-11-01,2009,11,2009-11
-130,River City Dance Festival,"Edmonton, Alberta, Canada",,September 2006,2006-09-01,2006,9,2006-09
-130,River City Dance Festival,"Edmonton, Alberta, Canada",,September 2007,2007-09-01,2007,9,2007-09
-130,River City Dance Festival,"Edmonton, Alberta, Canada",,September 2008,2008-09-01,2008,9,2008-09
-130,River City Dance Festival,"Edmonton, Alberta, Canada",,September 2009,2009-09-01,2009,9,2009-09
-130,River City Dance Festival,"Edmonton, Alberta, Canada",,September 2010,2010-09-01,2010,9,2010-09
+130,River City Dance Festival,"Edmonton, Canada",,September 2006,2006-09-01,2006,9,2006-09
+130,River City Dance Festival,"Edmonton, Canada",,September 2007,2007-09-01,2007,9,2007-09
+130,River City Dance Festival,"Edmonton, Canada",,September 2008,2008-09-01,2008,9,2008-09
+130,River City Dance Festival,"Edmonton, Canada",,September 2009,2009-09-01,2009,9,2009-09
+130,River City Dance Festival,"Edmonton, Canada",,September 2010,2010-09-01,2010,9,2010-09
 131,Meet Me In St Louis,"St. Louis, MO, United States",http://Www.mmisl.com,September 2007,2007-09-01,2007,9,2007-09
 131,Meet Me In St Louis,"St. Louis, MO, United States",http://Www.mmisl.com,September 2008,2008-09-01,2008,9,2008-09
 131,Meet Me In St Louis,"St. Louis, MO, United States",http://Www.mmisl.com,September 2009,2009-09-01,2009,9,2009-09
@@ -1345,21 +1345,21 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 135,Desert City Swing,"Phoenix, AZ, United States",http://www.desertcityswing.com,September 2025,2025-09-01,2025,9,2025-09
 136,Halloween In Harrisburg & Swingzing,"Carlisle, PA, United States",,October 2007,2007-10-01,2007,10,2007-10
 136,Halloween In Harrisburg & Swingzing,"Carlisle, PA, United States",,October 2009,2009-10-01,2009,10,2009-10
-137,Tampa Bay Classic,"Tampa, FL, United States",http//http://www.tampabayclassic.com,August 2016,2016-08-01,2016,8,2016-08
-137,Tampa Bay Classic,"Tampa, FL, United States",http//http://www.tampabayclassic.com,August 2017,2017-08-01,2017,8,2017-08
-137,Tampa Bay Classic,"Tampa, FL, United States",http//http://www.tampabayclassic.com,August 2018,2018-08-01,2018,8,2018-08
-137,Tampa Bay Classic,"Tampa, FL, United States",http//http://www.tampabayclassic.com,November 2007,2007-11-01,2007,11,2007-11
-137,Tampa Bay Classic,"Tampa, FL, United States",http//http://www.tampabayclassic.com,November 2008,2008-11-01,2008,11,2008-11
-137,Tampa Bay Classic,"Tampa, FL, United States",http//http://www.tampabayclassic.com,November 2009,2009-11-01,2009,11,2009-11
-137,Tampa Bay Classic,"Tampa, FL, United States",http//http://www.tampabayclassic.com,November 2010,2010-11-01,2010,11,2010-11
-137,Tampa Bay Classic,"Tampa, FL, United States",http//http://www.tampabayclassic.com,November 2011,2011-11-01,2011,11,2011-11
-137,Tampa Bay Classic,"Tampa, FL, United States",http//http://www.tampabayclassic.com,November 2012,2012-11-01,2012,11,2012-11
-137,Tampa Bay Classic,"Tampa, FL, United States",http//http://www.tampabayclassic.com,November 2013,2013-11-01,2013,11,2013-11
-137,Tampa Bay Classic,"Tampa, FL, United States",http//http://www.tampabayclassic.com,November 2014,2014-11-01,2014,11,2014-11
-137,Tampa Bay Classic,"Tampa, FL, United States",http//http://www.tampabayclassic.com,November 2019,2019-11-01,2019,11,2019-11
-137,Tampa Bay Classic,"Tampa, FL, United States",http//http://www.tampabayclassic.com,November 2023,2023-11-01,2023,11,2023-11
-137,Tampa Bay Classic,"Tampa, FL, United States",http//http://www.tampabayclassic.com,November 2025,2025-11-01,2025,11,2025-11
-137,Tampa Bay Classic,"Tampa, FL, United States",http//http://www.tampabayclassic.com,September 2015,2015-09-01,2015,9,2015-09
+137,Tampa Bay Classic,"Tampa Bay, FL, United States",http//http://www.tampabayclassic.com,August 2016,2016-08-01,2016,8,2016-08
+137,Tampa Bay Classic,"Tampa Bay, FL, United States",http//http://www.tampabayclassic.com,August 2017,2017-08-01,2017,8,2017-08
+137,Tampa Bay Classic,"Tampa Bay, FL, United States",http//http://www.tampabayclassic.com,August 2018,2018-08-01,2018,8,2018-08
+137,Tampa Bay Classic,"Tampa Bay, FL, United States",http//http://www.tampabayclassic.com,November 2007,2007-11-01,2007,11,2007-11
+137,Tampa Bay Classic,"Tampa Bay, FL, United States",http//http://www.tampabayclassic.com,November 2008,2008-11-01,2008,11,2008-11
+137,Tampa Bay Classic,"Tampa Bay, FL, United States",http//http://www.tampabayclassic.com,November 2009,2009-11-01,2009,11,2009-11
+137,Tampa Bay Classic,"Tampa Bay, FL, United States",http//http://www.tampabayclassic.com,November 2010,2010-11-01,2010,11,2010-11
+137,Tampa Bay Classic,"Tampa Bay, FL, United States",http//http://www.tampabayclassic.com,November 2011,2011-11-01,2011,11,2011-11
+137,Tampa Bay Classic,"Tampa Bay, FL, United States",http//http://www.tampabayclassic.com,November 2012,2012-11-01,2012,11,2012-11
+137,Tampa Bay Classic,"Tampa Bay, FL, United States",http//http://www.tampabayclassic.com,November 2013,2013-11-01,2013,11,2013-11
+137,Tampa Bay Classic,"Tampa Bay, FL, United States",http//http://www.tampabayclassic.com,November 2014,2014-11-01,2014,11,2014-11
+137,Tampa Bay Classic,"Tampa Bay, FL, United States",http//http://www.tampabayclassic.com,November 2019,2019-11-01,2019,11,2019-11
+137,Tampa Bay Classic,"Tampa Bay, FL, United States",http//http://www.tampabayclassic.com,November 2023,2023-11-01,2023,11,2023-11
+137,Tampa Bay Classic,"Tampa Bay, FL, United States",http//http://www.tampabayclassic.com,November 2025,2025-11-01,2025,11,2025-11
+137,Tampa Bay Classic,"Tampa Bay, FL, United States",http//http://www.tampabayclassic.com,September 2015,2015-09-01,2015,9,2015-09
 138,Music City Swing Dance Championships,"Nashville, TN, United States",,November 2007,2007-11-01,2007,11,2007-11
 138,Music City Swing Dance Championships,"Nashville, TN, United States",,November 2008,2008-11-01,2008,11,2008-11
 139,New Year's Dancin' Eve,"Burlington, MA, United States",,December 2007,2007-12-01,2007,12,2007-12
@@ -1477,11 +1477,11 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 149,Florida Dance Magic,"Fort Lauderdale, FL, United States",https://floridadancemagic.com/,July 2022,2022-07-01,2022,7,2022-07
 149,Florida Dance Magic,"Fort Lauderdale, FL, United States",https://floridadancemagic.com/,July 2024,2024-07-01,2024,7,2024-07
 149,Florida Dance Magic,"Fort Lauderdale, FL, United States",https://floridadancemagic.com/,July 2025,2025-07-01,2025,7,2025-07
-150,Carolina Groove,"North Myrtle Beach, SC, United States",,October 2008,2008-10-01,2008,10,2008-10
-151,Sunshine State Dance Challenge,"Fort Lauderdale, FL, United States",,November 2008,2008-11-01,2008,11,2008-11
-151,Sunshine State Dance Challenge,"Fort Lauderdale, FL, United States",,November 2009,2009-11-01,2009,11,2009-11
-151,Sunshine State Dance Challenge,"Fort Lauderdale, FL, United States",,November 2010,2010-11-01,2010,11,2010-11
-151,Sunshine State Dance Challenge,"Fort Lauderdale, FL, United States",,November 2011,2011-11-01,2011,11,2011-11
+150,Carolina Groove,"N. Myrtle Beach, South Carolina, SC",,October 2008,2008-10-01,2008,10,2008-10
+151,Sunshine State Dance Challenge,"Ft. Lauderdale, Florida, FL",,November 2008,2008-11-01,2008,11,2008-11
+151,Sunshine State Dance Challenge,"Ft. Lauderdale, Florida, FL",,November 2009,2009-11-01,2009,11,2009-11
+151,Sunshine State Dance Challenge,"Ft. Lauderdale, Florida, FL",,November 2010,2010-11-01,2010,11,2010-11
+151,Sunshine State Dance Challenge,"Ft. Lauderdale, Florida, FL",,November 2011,2011-11-01,2011,11,2011-11
 152,Worlds UCWDC,"Orlando, FL, United States",,December 2009,2009-12-01,2009,12,2009-12
 152,Worlds UCWDC,"Orlando, FL, United States",,January 2012,2012-01-01,2012,1,2012-01
 152,Worlds UCWDC,"Orlando, FL, United States",,January 2015,2015-01-01,2015,1,2015-01
@@ -1501,12 +1501,12 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 153,Novice Invitational,"Houston, TX, United States",http://www.htownthrowdownwcs.com,March 2024,2024-03-01,2024,3,2024-03
 153,Novice Invitational,"Houston, TX, United States",http://www.htownthrowdownwcs.com,March 2025,2025-03-01,2025,3,2025-03
 153,Novice Invitational,"Houston, TX, United States",http://www.htownthrowdownwcs.com,March 2026,2026-03-01,2026,3,2026-03
-154,UK WCS Championships,"London, England, United Kingdom",http://www.ukwcschamps.com,April 2009,2009-04-01,2009,4,2009-04
-154,UK WCS Championships,"London, England, United Kingdom",http://www.ukwcschamps.com,April 2010,2010-04-01,2010,4,2010-04
-154,UK WCS Championships,"London, England, United Kingdom",http://www.ukwcschamps.com,April 2011,2011-04-01,2011,4,2011-04
-154,UK WCS Championships,"London, England, United Kingdom",http://www.ukwcschamps.com,April 2012,2012-04-01,2012,4,2012-04
-154,UK WCS Championships,"London, England, United Kingdom",http://www.ukwcschamps.com,March 2025,2025-03-01,2025,3,2025-03
-154,UK WCS Championships,"London, England, United Kingdom",http://www.ukwcschamps.com,March 2026,2026-03-01,2026,3,2026-03
+154,UK WCS Championships,"London, United Kingdom",http://www.ukwcschamps.com,April 2009,2009-04-01,2009,4,2009-04
+154,UK WCS Championships,"London, United Kingdom",http://www.ukwcschamps.com,April 2010,2010-04-01,2010,4,2010-04
+154,UK WCS Championships,"London, United Kingdom",http://www.ukwcschamps.com,April 2011,2011-04-01,2011,4,2011-04
+154,UK WCS Championships,"London, United Kingdom",http://www.ukwcschamps.com,April 2012,2012-04-01,2012,4,2012-04
+154,UK WCS Championships,"London, United Kingdom",http://www.ukwcschamps.com,March 2025,2025-03-01,2025,3,2025-03
+154,UK WCS Championships,"London, United Kingdom",http://www.ukwcschamps.com,March 2026,2026-03-01,2026,3,2026-03
 155,The City of Light,"Paris, France",,July 2009,2009-07-01,2009,7,2009-07
 155,The City of Light,"Paris, France",,July 2010,2010-07-01,2010,7,2010-07
 155,The City of Light,"Paris, France",,July 2011,2011-07-01,2011,7,2011-07
@@ -1580,21 +1580,21 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 164,Sea Sun and Swing,"La Grande Motte, France",http://www.seasunswing.fr,August 2024,2024-08-01,2024,8,2024-08
 164,Sea Sun and Swing,"La Grande Motte, France",http://www.seasunswing.fr,July 2017,2017-07-01,2017,7,2017-07
 164,Sea Sun and Swing,"La Grande Motte, France",http://www.seasunswing.fr,July 2019,2019-07-01,2019,7,2019-07
-165,Midland Swing Open,"London, England, United Kingdom",http://www.MidlandSwingOpen.com,October 2011,2011-10-01,2011,10,2011-10
-165,Midland Swing Open,"London, England, United Kingdom",http://www.MidlandSwingOpen.com,October 2016,2016-10-01,2016,10,2016-10
-165,Midland Swing Open,"London, England, United Kingdom",http://www.MidlandSwingOpen.com,October 2017,2017-10-01,2017,10,2017-10
-165,Midland Swing Open,"London, England, United Kingdom",http://www.MidlandSwingOpen.com,October 2022,2022-10-01,2022,10,2022-10
-165,Midland Swing Open,"London, England, United Kingdom",http://www.MidlandSwingOpen.com,September 2010,2010-09-01,2010,9,2010-09
-165,Midland Swing Open,"London, England, United Kingdom",http://www.MidlandSwingOpen.com,September 2012,2012-09-01,2012,9,2012-09
-165,Midland Swing Open,"London, England, United Kingdom",http://www.MidlandSwingOpen.com,September 2013,2013-09-01,2013,9,2013-09
-165,Midland Swing Open,"London, England, United Kingdom",http://www.MidlandSwingOpen.com,September 2014,2014-09-01,2014,9,2014-09
-165,Midland Swing Open,"London, England, United Kingdom",http://www.MidlandSwingOpen.com,September 2015,2015-09-01,2015,9,2015-09
-165,Midland Swing Open,"London, England, United Kingdom",http://www.MidlandSwingOpen.com,September 2018,2018-09-01,2018,9,2018-09
-165,Midland Swing Open,"London, England, United Kingdom",http://www.MidlandSwingOpen.com,September 2019,2019-09-01,2019,9,2019-09
-165,Midland Swing Open,"London, England, United Kingdom",http://www.MidlandSwingOpen.com,September 2021,2021-09-01,2021,9,2021-09
-165,Midland Swing Open,"London, England, United Kingdom",http://www.MidlandSwingOpen.com,September 2023,2023-09-01,2023,9,2023-09
-165,Midland Swing Open,"London, England, United Kingdom",http://www.MidlandSwingOpen.com,September 2024,2024-09-01,2024,9,2024-09
-165,Midland Swing Open,"London, England, United Kingdom",http://www.MidlandSwingOpen.com,September 2025,2025-09-01,2025,9,2025-09
+165,Midland Swing Open,"London, United Kingdom",http://www.MidlandSwingOpen.com,October 2011,2011-10-01,2011,10,2011-10
+165,Midland Swing Open,"London, United Kingdom",http://www.MidlandSwingOpen.com,October 2016,2016-10-01,2016,10,2016-10
+165,Midland Swing Open,"London, United Kingdom",http://www.MidlandSwingOpen.com,October 2017,2017-10-01,2017,10,2017-10
+165,Midland Swing Open,"London, United Kingdom",http://www.MidlandSwingOpen.com,October 2022,2022-10-01,2022,10,2022-10
+165,Midland Swing Open,"London, United Kingdom",http://www.MidlandSwingOpen.com,September 2010,2010-09-01,2010,9,2010-09
+165,Midland Swing Open,"London, United Kingdom",http://www.MidlandSwingOpen.com,September 2012,2012-09-01,2012,9,2012-09
+165,Midland Swing Open,"London, United Kingdom",http://www.MidlandSwingOpen.com,September 2013,2013-09-01,2013,9,2013-09
+165,Midland Swing Open,"London, United Kingdom",http://www.MidlandSwingOpen.com,September 2014,2014-09-01,2014,9,2014-09
+165,Midland Swing Open,"London, United Kingdom",http://www.MidlandSwingOpen.com,September 2015,2015-09-01,2015,9,2015-09
+165,Midland Swing Open,"London, United Kingdom",http://www.MidlandSwingOpen.com,September 2018,2018-09-01,2018,9,2018-09
+165,Midland Swing Open,"London, United Kingdom",http://www.MidlandSwingOpen.com,September 2019,2019-09-01,2019,9,2019-09
+165,Midland Swing Open,"London, United Kingdom",http://www.MidlandSwingOpen.com,September 2021,2021-09-01,2021,9,2021-09
+165,Midland Swing Open,"London, United Kingdom",http://www.MidlandSwingOpen.com,September 2023,2023-09-01,2023,9,2023-09
+165,Midland Swing Open,"London, United Kingdom",http://www.MidlandSwingOpen.com,September 2024,2024-09-01,2024,9,2024-09
+165,Midland Swing Open,"London, United Kingdom",http://www.MidlandSwingOpen.com,September 2025,2025-09-01,2025,9,2025-09
 166,London SwingVitational,"Windsor, United Kingdom",,November 2010,2010-11-01,2010,11,2010-11
 166,London SwingVitational,"Windsor, United Kingdom",,November 2011,2011-11-01,2011,11,2011-11
 166,London SwingVitational,"Windsor, United Kingdom",,November 2012,2012-11-01,2012,11,2012-11
@@ -1639,7 +1639,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 170,Russian Open WCS Championships,"Moscow, Russia",,March 2016,2016-03-01,2016,3,2016-03
 170,Russian Open WCS Championships,"Moscow, Russia",,March 2018,2018-03-01,2018,3,2018-03
 170,Russian Open WCS Championships,"Moscow, Russia",,March 2019,2019-03-01,2019,3,2019-03
-171,Toronto International Swing Dance,"Toronto, Ontario, Canada",,February 2011,2011-02-01,2011,2,2011-02
+171,Toronto International Swing Dance,"Toronto, Canada",,February 2011,2011-02-01,2011,2,2011-02
 172,International Hustle & Salsa Congress,"Orlando, FL, United States",,April 2011,2011-04-01,2011,4,2011-04
 172,International Hustle & Salsa Congress,"Orlando, FL, United States",,April 2012,2012-04-01,2012,4,2012-04
 172,International Hustle & Salsa Congress,"Orlando, FL, United States",,April 2013,2013-04-01,2013,4,2013-04
@@ -1715,19 +1715,19 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 180,Australian Open Swing Dance Championships,"Melbourne, Australia",,October 2013,2013-10-01,2013,10,2013-10
 180,Australian Open Swing Dance Championships,"Melbourne, Australia",,October 2014,2014-10-01,2014,10,2014-10
 180,Australian Open Swing Dance Championships,"Melbourne, Australia",,October 2015,2015-10-01,2015,10,2015-10
-181,DC Swing eXperience (DCSX),"Washington, DC, United States",http://www.dcswingexperience.com,November 2011,2011-11-01,2011,11,2011-11
-181,DC Swing eXperience (DCSX),"Washington, DC, United States",http://www.dcswingexperience.com,November 2012,2012-11-01,2012,11,2012-11
-181,DC Swing eXperience (DCSX),"Washington, DC, United States",http://www.dcswingexperience.com,November 2013,2013-11-01,2013,11,2013-11
-181,DC Swing eXperience (DCSX),"Washington, DC, United States",http://www.dcswingexperience.com,November 2014,2014-11-01,2014,11,2014-11
-181,DC Swing eXperience (DCSX),"Washington, DC, United States",http://www.dcswingexperience.com,November 2015,2015-11-01,2015,11,2015-11
-181,DC Swing eXperience (DCSX),"Washington, DC, United States",http://www.dcswingexperience.com,November 2016,2016-11-01,2016,11,2016-11
-181,DC Swing eXperience (DCSX),"Washington, DC, United States",http://www.dcswingexperience.com,November 2017,2017-11-01,2017,11,2017-11
-181,DC Swing eXperience (DCSX),"Washington, DC, United States",http://www.dcswingexperience.com,November 2018,2018-11-01,2018,11,2018-11
-181,DC Swing eXperience (DCSX),"Washington, DC, United States",http://www.dcswingexperience.com,November 2019,2019-11-01,2019,11,2019-11
-181,DC Swing eXperience (DCSX),"Washington, DC, United States",http://www.dcswingexperience.com,November 2022,2022-11-01,2022,11,2022-11
-181,DC Swing eXperience (DCSX),"Washington, DC, United States",http://www.dcswingexperience.com,November 2023,2023-11-01,2023,11,2023-11
-181,DC Swing eXperience (DCSX),"Washington, DC, United States",http://www.dcswingexperience.com,November 2024,2024-11-01,2024,11,2024-11
-181,DC Swing eXperience (DCSX),"Washington, DC, United States",http://www.dcswingexperience.com,November 2025,2025-11-01,2025,11,2025-11
+181,DC Swing eXperience (DCSX),"Washington, United States",http://www.dcswingexperience.com,November 2011,2011-11-01,2011,11,2011-11
+181,DC Swing eXperience (DCSX),"Washington, United States",http://www.dcswingexperience.com,November 2012,2012-11-01,2012,11,2012-11
+181,DC Swing eXperience (DCSX),"Washington, United States",http://www.dcswingexperience.com,November 2013,2013-11-01,2013,11,2013-11
+181,DC Swing eXperience (DCSX),"Washington, United States",http://www.dcswingexperience.com,November 2014,2014-11-01,2014,11,2014-11
+181,DC Swing eXperience (DCSX),"Washington, United States",http://www.dcswingexperience.com,November 2015,2015-11-01,2015,11,2015-11
+181,DC Swing eXperience (DCSX),"Washington, United States",http://www.dcswingexperience.com,November 2016,2016-11-01,2016,11,2016-11
+181,DC Swing eXperience (DCSX),"Washington, United States",http://www.dcswingexperience.com,November 2017,2017-11-01,2017,11,2017-11
+181,DC Swing eXperience (DCSX),"Washington, United States",http://www.dcswingexperience.com,November 2018,2018-11-01,2018,11,2018-11
+181,DC Swing eXperience (DCSX),"Washington, United States",http://www.dcswingexperience.com,November 2019,2019-11-01,2019,11,2019-11
+181,DC Swing eXperience (DCSX),"Washington, United States",http://www.dcswingexperience.com,November 2022,2022-11-01,2022,11,2022-11
+181,DC Swing eXperience (DCSX),"Washington, United States",http://www.dcswingexperience.com,November 2023,2023-11-01,2023,11,2023-11
+181,DC Swing eXperience (DCSX),"Washington, United States",http://www.dcswingexperience.com,November 2024,2024-11-01,2024,11,2024-11
+181,DC Swing eXperience (DCSX),"Washington, United States",http://www.dcswingexperience.com,November 2025,2025-11-01,2025,11,2025-11
 183,Freedom Swing Dance Challenge,"Wilmington, DE, United States",https://freedomswingdance.com/,January 2012,2012-01-01,2012,1,2012-01
 183,Freedom Swing Dance Challenge,"Wilmington, DE, United States",https://freedomswingdance.com/,January 2013,2013-01-01,2013,1,2013-01
 183,Freedom Swing Dance Challenge,"Wilmington, DE, United States",https://freedomswingdance.com/,January 2014,2014-01-01,2014,1,2014-01
@@ -1854,13 +1854,13 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 197,5280 Westival,"Denver, CO, United States",https://www.5280westival.com,March 2025,2025-03-01,2025,3,2025-03
 197,5280 Westival,"Denver, CO, United States",https://www.5280westival.com,March 2026,2026-03-01,2026,3,2026-03
 197,5280 Westival,"Denver, CO, United States",https://www.5280westival.com,November 2021,2021-11-01,2021,11,2021-11
-198,U.K. & European WCS Championships,"London, England",http://www.jiveaddiction.com/event,April 2013,2013-04-01,2013,4,2013-04
-198,U.K. & European WCS Championships,"London, England",http://www.jiveaddiction.com/event,April 2014,2014-04-01,2014,4,2014-04
-198,U.K. & European WCS Championships,"London, England",http://www.jiveaddiction.com/event,April 2015,2015-04-01,2015,4,2015-04
-198,U.K. & European WCS Championships,"London, England",http://www.jiveaddiction.com/event,April 2016,2016-04-01,2016,4,2016-04
-198,U.K. & European WCS Championships,"London, England",http://www.jiveaddiction.com/event,April 2017,2017-04-01,2017,4,2017-04
-198,U.K. & European WCS Championships,"London, England",http://www.jiveaddiction.com/event,April 2018,2018-04-01,2018,4,2018-04
-198,U.K. & European WCS Championships,"London, England",http://www.jiveaddiction.com/event,April 2019,2019-04-01,2019,4,2019-04
+198,UK WCS Championships,"London, England",http://www.jiveaddiction.com/event,April 2013,2013-04-01,2013,4,2013-04
+198,UK WCS Championships,"London, England",http://www.jiveaddiction.com/event,April 2014,2014-04-01,2014,4,2014-04
+198,UK WCS Championships,"London, England",http://www.jiveaddiction.com/event,April 2015,2015-04-01,2015,4,2015-04
+198,UK WCS Championships,"London, England",http://www.jiveaddiction.com/event,April 2016,2016-04-01,2016,4,2016-04
+198,UK WCS Championships,"London, England",http://www.jiveaddiction.com/event,April 2017,2017-04-01,2017,4,2017-04
+198,UK WCS Championships,"London, England",http://www.jiveaddiction.com/event,April 2018,2018-04-01,2018,4,2018-04
+198,UK WCS Championships,"London, England",http://www.jiveaddiction.com/event,April 2019,2019-04-01,2019,4,2019-04
 199,San Francisco Dance Sensation,"Oakland, CA, United States",,April 2013,2013-04-01,2013,4,2013-04
 200,Austin Swing Dance Championships,"Austin, TX, United States",http://www.austinswing.com/,April 2013,2013-04-01,2013,4,2013-04
 200,Austin Swing Dance Championships,"Austin, TX, United States",http://www.austinswing.com/,April 2014,2014-04-01,2014,4,2014-04
@@ -1878,18 +1878,18 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 201,MidAtlantic Dance Classic,"Herndon, VA, United States",,May 2015,2015-05-01,2015,5,2015-05
 201,MidAtlantic Dance Classic,"Herndon, VA, United States",,May 2016,2016-05-01,2016,5,2016-05
 202,Asian WCS Open Swingvitation,"Singapore, Singapore",,April 2013,2013-04-01,2013,4,2013-04
-203,Detonation Dance,"Manchester, England, United Kingdom",http://www.DetonationDance.com,April 2013,2013-04-01,2013,4,2013-04
-203,Detonation Dance,"Manchester, England, United Kingdom",http://www.DetonationDance.com,April 2014,2014-04-01,2014,4,2014-04
-203,Detonation Dance,"Manchester, England, United Kingdom",http://www.DetonationDance.com,April 2015,2015-04-01,2015,4,2015-04
-203,Detonation Dance,"Manchester, England, United Kingdom",http://www.DetonationDance.com,April 2016,2016-04-01,2016,4,2016-04
-203,Detonation Dance,"Manchester, England, United Kingdom",http://www.DetonationDance.com,April 2017,2017-04-01,2017,4,2017-04
-203,Detonation Dance,"Manchester, England, United Kingdom",http://www.DetonationDance.com,April 2018,2018-04-01,2018,4,2018-04
-203,Detonation Dance,"Manchester, England, United Kingdom",http://www.DetonationDance.com,April 2019,2019-04-01,2019,4,2019-04
-203,Detonation Dance,"Manchester, England, United Kingdom",http://www.DetonationDance.com,April 2022,2022-04-01,2022,4,2022-04
-203,Detonation Dance,"Manchester, England, United Kingdom",http://www.DetonationDance.com,April 2023,2023-04-01,2023,4,2023-04
-203,Detonation Dance,"Manchester, England, United Kingdom",http://www.DetonationDance.com,April 2024,2024-04-01,2024,4,2024-04
-203,Detonation Dance,"Manchester, England, United Kingdom",http://www.DetonationDance.com,April 2025,2025-04-01,2025,4,2025-04
-203,Detonation Dance,"Manchester, England, United Kingdom",http://www.DetonationDance.com,April 2026,2026-04-01,2026,4,2026-04
+203,Detonation Dance,"Manchester, United Kingdom",http://www.DetonationDance.com,April 2013,2013-04-01,2013,4,2013-04
+203,Detonation Dance,"Manchester, United Kingdom",http://www.DetonationDance.com,April 2014,2014-04-01,2014,4,2014-04
+203,Detonation Dance,"Manchester, United Kingdom",http://www.DetonationDance.com,April 2015,2015-04-01,2015,4,2015-04
+203,Detonation Dance,"Manchester, United Kingdom",http://www.DetonationDance.com,April 2016,2016-04-01,2016,4,2016-04
+203,Detonation Dance,"Manchester, United Kingdom",http://www.DetonationDance.com,April 2017,2017-04-01,2017,4,2017-04
+203,Detonation Dance,"Manchester, United Kingdom",http://www.DetonationDance.com,April 2018,2018-04-01,2018,4,2018-04
+203,Detonation Dance,"Manchester, United Kingdom",http://www.DetonationDance.com,April 2019,2019-04-01,2019,4,2019-04
+203,Detonation Dance,"Manchester, United Kingdom",http://www.DetonationDance.com,April 2022,2022-04-01,2022,4,2022-04
+203,Detonation Dance,"Manchester, United Kingdom",http://www.DetonationDance.com,April 2023,2023-04-01,2023,4,2023-04
+203,Detonation Dance,"Manchester, United Kingdom",http://www.DetonationDance.com,April 2024,2024-04-01,2024,4,2024-04
+203,Detonation Dance,"Manchester, United Kingdom",http://www.DetonationDance.com,April 2025,2025-04-01,2025,4,2025-04
+203,Detonation Dance,"Manchester, United Kingdom",http://www.DetonationDance.com,April 2026,2026-04-01,2026,4,2026-04
 204,Spring Swing,"Stockholm, Sweden",,May 2013,2013-05-01,2013,5,2013-05
 204,Spring Swing,"Stockholm, Sweden",,May 2014,2014-05-01,2014,5,2014-05
 205,SOswing,"Ashland, OR, United States",http://soswingdance.com,April 2018,2018-04-01,2018,4,2018-04
@@ -1927,11 +1927,11 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 209,SinCity Swing,"Las Vegas, NV, United States",,July 2013,2013-07-01,2013,7,2013-07
 209,SinCity Swing,"Las Vegas, NV, United States",,July 2014,2014-07-01,2014,7,2014-07
 209,SinCity Swing,"Las Vegas, NV, United States",,July 2015,2015-07-01,2015,7,2015-07
-210,Korean Open WCS Championships,"Incheon, Republic of Korea",https://www.kopenwcs.com/,April 2023,2023-04-01,2023,4,2023-04
-210,Korean Open WCS Championships,"Incheon, Republic of Korea",https://www.kopenwcs.com/,April 2024,2024-04-01,2024,4,2024-04
-210,Korean Open WCS Championships,"Incheon, Republic of Korea",https://www.kopenwcs.com/,April 2025,2025-04-01,2025,4,2025-04
-210,Korean Open WCS Championships,"Incheon, Republic of Korea",https://www.kopenwcs.com/,April 2026,2026-04-01,2026,4,2026-04
-210,Korean Open WCS Championships,"Incheon, Republic of Korea",https://www.kopenwcs.com/,October 2013,2013-10-01,2013,10,2013-10
+210,Korean Open WCS Championships,"Incheon, South Korea",https://www.kopenwcs.com/,April 2023,2023-04-01,2023,4,2023-04
+210,Korean Open WCS Championships,"Incheon, South Korea",https://www.kopenwcs.com/,April 2024,2024-04-01,2024,4,2024-04
+210,Korean Open WCS Championships,"Incheon, South Korea",https://www.kopenwcs.com/,April 2025,2025-04-01,2025,4,2025-04
+210,Korean Open WCS Championships,"Incheon, South Korea",https://www.kopenwcs.com/,April 2026,2026-04-01,2026,4,2026-04
+210,Korean Open WCS Championships,"Incheon, South Korea",https://www.kopenwcs.com/,October 2013,2013-10-01,2013,10,2013-10
 211,Atlanta Swing Classic,"Atlanta, GA, United States",https://www.atlantaswingclassic.com,October 2013,2013-10-01,2013,10,2013-10
 211,Atlanta Swing Classic,"Atlanta, GA, United States",https://www.atlantaswingclassic.com,October 2014,2014-10-01,2014,10,2014-10
 211,Atlanta Swing Classic,"Atlanta, GA, United States",https://www.atlantaswingclassic.com,October 2015,2015-10-01,2015,10,2015-10
@@ -1964,13 +1964,13 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 213,Swingtimate,"Gold Coast, Australia",https://rawconnection.com.au/swingtimate/,December 2019,2019-12-01,2019,12,2019-12
 213,Swingtimate,"Gold Coast, Australia",https://rawconnection.com.au/swingtimate/,December 2020,2020-12-01,2020,12,2020-12
 213,Swingtimate,"Gold Coast, Australia",https://rawconnection.com.au/swingtimate/,December 2022,2022-12-01,2022,12,2022-12
-214,New Year's Swing Fling,"London, England, United Kingdom",http://www.nyswingfling.com,December 2017,2017-12-01,2017,12,2017-12
-214,New Year's Swing Fling,"London, England, United Kingdom",http://www.nyswingfling.com,January 2014,2014-01-01,2014,1,2014-01
-214,New Year's Swing Fling,"London, England, United Kingdom",http://www.nyswingfling.com,January 2015,2015-01-01,2015,1,2015-01
-214,New Year's Swing Fling,"London, England, United Kingdom",http://www.nyswingfling.com,January 2016,2016-01-01,2016,1,2016-01
-214,New Year's Swing Fling,"London, England, United Kingdom",http://www.nyswingfling.com,January 2017,2017-01-01,2017,1,2017-01
-214,New Year's Swing Fling,"London, England, United Kingdom",http://www.nyswingfling.com,January 2019,2019-01-01,2019,1,2019-01
-214,New Year's Swing Fling,"London, England, United Kingdom",http://www.nyswingfling.com,January 2020,2020-01-01,2020,1,2020-01
+214,New Year's Swing Fling,"London, United Kingdom",http://www.nyswingfling.com,December 2017,2017-12-01,2017,12,2017-12
+214,New Year's Swing Fling,"London, United Kingdom",http://www.nyswingfling.com,January 2014,2014-01-01,2014,1,2014-01
+214,New Year's Swing Fling,"London, United Kingdom",http://www.nyswingfling.com,January 2015,2015-01-01,2015,1,2015-01
+214,New Year's Swing Fling,"London, United Kingdom",http://www.nyswingfling.com,January 2016,2016-01-01,2016,1,2016-01
+214,New Year's Swing Fling,"London, United Kingdom",http://www.nyswingfling.com,January 2017,2017-01-01,2017,1,2017-01
+214,New Year's Swing Fling,"London, United Kingdom",http://www.nyswingfling.com,January 2019,2019-01-01,2019,1,2019-01
+214,New Year's Swing Fling,"London, United Kingdom",http://www.nyswingfling.com,January 2020,2020-01-01,2020,1,2020-01
 215,Swing & Snow,"St. Petersburg, Russia",http://swingandsnow.ru,February 2014,2014-02-01,2014,2,2014-02
 215,Swing & Snow,"St. Petersburg, Russia",http://swingandsnow.ru,February 2015,2015-02-01,2015,2,2015-02
 215,Swing & Snow,"St. Petersburg, Russia",http://swingandsnow.ru,February 2016,2016-02-01,2016,2,2016-02
@@ -2012,16 +2012,16 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 219,KIWI Fest,"Kiev, Ukraine",,May 2017,2017-05-01,2017,5,2017-05
 219,KIWI Fest,"Kiev, Ukraine",,May 2018,2018-05-01,2018,5,2018-05
 219,KIWI Fest,"Kiev, Ukraine",,May 2019,2019-05-01,2019,5,2019-05
-220,D-Town Swing,"Düsseldorf, Germany",http://d-townswing.com,June 2015,2015-06-01,2015,6,2015-06
-220,D-Town Swing,"Düsseldorf, Germany",http://d-townswing.com,June 2016,2016-06-01,2016,6,2016-06
-220,D-Town Swing,"Düsseldorf, Germany",http://d-townswing.com,June 2017,2017-06-01,2017,6,2017-06
-220,D-Town Swing,"Düsseldorf, Germany",http://d-townswing.com,June 2018,2018-06-01,2018,6,2018-06
-220,D-Town Swing,"Düsseldorf, Germany",http://d-townswing.com,June 2019,2019-06-01,2019,6,2019-06
-220,D-Town Swing,"Düsseldorf, Germany",http://d-townswing.com,June 2022,2022-06-01,2022,6,2022-06
-220,D-Town Swing,"Düsseldorf, Germany",http://d-townswing.com,June 2023,2023-06-01,2023,6,2023-06
-220,D-Town Swing,"Düsseldorf, Germany",http://d-townswing.com,June 2024,2024-06-01,2024,6,2024-06
-220,D-Town Swing,"Düsseldorf, Germany",http://d-townswing.com,June 2025,2025-06-01,2025,6,2025-06
-220,D-Town Swing,"Düsseldorf, Germany",http://d-townswing.com,May 2014,2014-05-01,2014,5,2014-05
+220,D-Town Swing,"Boston Club, Germany",http://d-townswing.com,June 2015,2015-06-01,2015,6,2015-06
+220,D-Town Swing,"Boston Club, Germany",http://d-townswing.com,June 2016,2016-06-01,2016,6,2016-06
+220,D-Town Swing,"Boston Club, Germany",http://d-townswing.com,June 2017,2017-06-01,2017,6,2017-06
+220,D-Town Swing,"Boston Club, Germany",http://d-townswing.com,June 2018,2018-06-01,2018,6,2018-06
+220,D-Town Swing,"Boston Club, Germany",http://d-townswing.com,June 2019,2019-06-01,2019,6,2019-06
+220,D-Town Swing,"Boston Club, Germany",http://d-townswing.com,June 2022,2022-06-01,2022,6,2022-06
+220,D-Town Swing,"Boston Club, Germany",http://d-townswing.com,June 2023,2023-06-01,2023,6,2023-06
+220,D-Town Swing,"Boston Club, Germany",http://d-townswing.com,June 2024,2024-06-01,2024,6,2024-06
+220,D-Town Swing,"Boston Club, Germany",http://d-townswing.com,June 2025,2025-06-01,2025,6,2025-06
+220,D-Town Swing,"Boston Club, Germany",http://d-townswing.com,May 2014,2014-05-01,2014,5,2014-05
 221,Gateway Swing Classic,"St. Louis, MO, United States",http://gatewayswing.com,May 2014,2014-05-01,2014,5,2014-05
 221,Gateway Swing Classic,"St. Louis, MO, United States",http://gatewayswing.com,May 2015,2015-05-01,2015,5,2015-05
 221,Gateway Swing Classic,"St. Louis, MO, United States",http://gatewayswing.com,May 2016,2016-05-01,2016,5,2016-05
@@ -2063,11 +2063,11 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 225,Wild Wild Westie,"Dallas, TX, United States",http://www.WildWildWestie.com,July 2023,2023-07-01,2023,7,2023-07
 225,Wild Wild Westie,"Dallas, TX, United States",http://www.WildWildWestie.com,July 2024,2024-07-01,2024,7,2024-07
 225,Wild Wild Westie,"Dallas, TX, United States",http://www.WildWildWestie.com,July 2025,2025-07-01,2025,7,2025-07
-226,Ft. Lauderdale Swing & Shag Beach Bash,"Fort Lauderdale, FL, United States",,July 2014,2014-07-01,2014,7,2014-07
-226,Ft. Lauderdale Swing & Shag Beach Bash,"Fort Lauderdale, FL, United States",,July 2015,2015-07-01,2015,7,2015-07
-226,Ft. Lauderdale Swing & Shag Beach Bash,"Fort Lauderdale, FL, United States",,July 2016,2016-07-01,2016,7,2016-07
-226,Ft. Lauderdale Swing & Shag Beach Bash,"Fort Lauderdale, FL, United States",,July 2017,2017-07-01,2017,7,2017-07
-226,Ft. Lauderdale Swing & Shag Beach Bash,"Fort Lauderdale, FL, United States",,July 2018,2018-07-01,2018,7,2018-07
+226,Ft. Lauderdale Swing & Shag Beach Bash,"Ft. Lauderdale, Florida, FL",,July 2014,2014-07-01,2014,7,2014-07
+226,Ft. Lauderdale Swing & Shag Beach Bash,"Ft. Lauderdale, Florida, FL",,July 2015,2015-07-01,2015,7,2015-07
+226,Ft. Lauderdale Swing & Shag Beach Bash,"Ft. Lauderdale, Florida, FL",,July 2016,2016-07-01,2016,7,2016-07
+226,Ft. Lauderdale Swing & Shag Beach Bash,"Ft. Lauderdale, Florida, FL",,July 2017,2017-07-01,2017,7,2017-07
+226,Ft. Lauderdale Swing & Shag Beach Bash,"Ft. Lauderdale, Florida, FL",,July 2018,2018-07-01,2018,7,2018-07
 227,Swingtacular: The Galactic Open,"San Francisco, CA, United States",http://dancegeekproductions.art,August 2014,2014-08-01,2014,8,2014-08
 227,Swingtacular: The Galactic Open,"San Francisco, CA, United States",http://dancegeekproductions.art,August 2015,2015-08-01,2015,8,2015-08
 227,Swingtacular: The Galactic Open,"San Francisco, CA, United States",http://dancegeekproductions.art,August 2016,2016-08-01,2016,8,2016-08
@@ -2256,14 +2256,14 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 259,Swingover,"Orlando, FL, United States",http://www.swingoverevent.com,March 2018,2018-03-01,2018,3,2018-03
 259,Swingover,"Orlando, FL, United States",http://www.swingoverevent.com,March 2019,2019-03-01,2019,3,2019-03
 260,Sao Paulo Swing Dance Championships,"Sao Paulo, Brazil",,July 2016,2016-07-01,2016,7,2016-07
-261,Neverland Swing,"Amsterdam, North Holland, Netherlands",http://www.neverlandswing.com,July 2017,2017-07-01,2017,7,2017-07
-261,Neverland Swing,"Amsterdam, North Holland, Netherlands",http://www.neverlandswing.com,July 2018,2018-07-01,2018,7,2018-07
-261,Neverland Swing,"Amsterdam, North Holland, Netherlands",http://www.neverlandswing.com,July 2019,2019-07-01,2019,7,2019-07
-261,Neverland Swing,"Amsterdam, North Holland, Netherlands",http://www.neverlandswing.com,July 2022,2022-07-01,2022,7,2022-07
-261,Neverland Swing,"Amsterdam, North Holland, Netherlands",http://www.neverlandswing.com,July 2023,2023-07-01,2023,7,2023-07
-261,Neverland Swing,"Amsterdam, North Holland, Netherlands",http://www.neverlandswing.com,July 2024,2024-07-01,2024,7,2024-07
-261,Neverland Swing,"Amsterdam, North Holland, Netherlands",http://www.neverlandswing.com,June 2016,2016-06-01,2016,6,2016-06
-261,Neverland Swing,"Amsterdam, North Holland, Netherlands",http://www.neverlandswing.com,June 2025,2025-06-01,2025,6,2025-06
+261,Neverland Swing,"Amsterdam, Netherlands",http://www.neverlandswing.com,July 2017,2017-07-01,2017,7,2017-07
+261,Neverland Swing,"Amsterdam, Netherlands",http://www.neverlandswing.com,July 2018,2018-07-01,2018,7,2018-07
+261,Neverland Swing,"Amsterdam, Netherlands",http://www.neverlandswing.com,July 2019,2019-07-01,2019,7,2019-07
+261,Neverland Swing,"Amsterdam, Netherlands",http://www.neverlandswing.com,July 2022,2022-07-01,2022,7,2022-07
+261,Neverland Swing,"Amsterdam, Netherlands",http://www.neverlandswing.com,July 2023,2023-07-01,2023,7,2023-07
+261,Neverland Swing,"Amsterdam, Netherlands",http://www.neverlandswing.com,July 2024,2024-07-01,2024,7,2024-07
+261,Neverland Swing,"Amsterdam, Netherlands",http://www.neverlandswing.com,June 2016,2016-06-01,2016,6,2016-06
+261,Neverland Swing,"Amsterdam, Netherlands",http://www.neverlandswing.com,June 2025,2025-06-01,2025,6,2025-06
 262,Swing It Like It's Hot,"Tel Aviv, Israel",,July 2016,2016-07-01,2016,7,2016-07
 262,Swing It Like It's Hot,"Tel Aviv, Israel",,July 2017,2017-07-01,2017,7,2017-07
 262,Swing It Like It's Hot,"Tel Aviv, Israel",,July 2018,2018-07-01,2018,7,2018-07
@@ -2294,13 +2294,13 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 267,Swustlicious,"Philadelphia, PA, United States",http://www.sparklage.com,October 2023,2023-10-01,2023,10,2023-10
 267,Swustlicious,"Philadelphia, PA, United States",http://www.sparklage.com,October 2024,2024-10-01,2024,10,2024-10
 267,Swustlicious,"Philadelphia, PA, United States",http://www.sparklage.com,October 2025,2025-10-01,2025,10,2025-10
-268,Korea Westival,"Jeju, Republic of Korea",http://koreawestival.com,June 2017,2017-06-01,2017,6,2017-06
-268,Korea Westival,"Jeju, Republic of Korea",http://koreawestival.com,June 2018,2018-06-01,2018,6,2018-06
-268,Korea Westival,"Jeju, Republic of Korea",http://koreawestival.com,June 2019,2019-06-01,2019,6,2019-06
-268,Korea Westival,"Jeju, Republic of Korea",http://koreawestival.com,October 2016,2016-10-01,2016,10,2016-10
-268,Korea Westival,"Jeju, Republic of Korea",http://koreawestival.com,September 2023,2023-09-01,2023,9,2023-09
-268,Korea Westival,"Jeju, Republic of Korea",http://koreawestival.com,September 2024,2024-09-01,2024,9,2024-09
-268,Korea Westival,"Jeju, Republic of Korea",http://koreawestival.com,September 2025,2025-09-01,2025,9,2025-09
+268,Korea Westival,"Jeju, South Korea",http://koreawestival.com,June 2017,2017-06-01,2017,6,2017-06
+268,Korea Westival,"Jeju, South Korea",http://koreawestival.com,June 2018,2018-06-01,2018,6,2018-06
+268,Korea Westival,"Jeju, South Korea",http://koreawestival.com,June 2019,2019-06-01,2019,6,2019-06
+268,Korea Westival,"Jeju, South Korea",http://koreawestival.com,October 2016,2016-10-01,2016,10,2016-10
+268,Korea Westival,"Jeju, South Korea",http://koreawestival.com,September 2023,2023-09-01,2023,9,2023-09
+268,Korea Westival,"Jeju, South Korea",http://koreawestival.com,September 2024,2024-09-01,2024,9,2024-09
+268,Korea Westival,"Jeju, South Korea",http://koreawestival.com,September 2025,2025-09-01,2025,9,2025-09
 269,Autumn Swing Challenge,"Budapest, Hungary",http://www.asc-budapest.com,November 2016,2016-11-01,2016,11,2016-11
 269,Autumn Swing Challenge,"Budapest, Hungary",http://www.asc-budapest.com,November 2017,2017-11-01,2017,11,2017-11
 269,Autumn Swing Challenge,"Budapest, Hungary",http://www.asc-budapest.com,November 2018,2018-11-01,2018,11,2018-11
@@ -2339,19 +2339,19 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 273,Charlotte Westie Fest,"Charlotte, NC, United States",https://charlottewestiefest.com/,February 2025,2025-02-01,2025,2,2025-02
 273,Charlotte Westie Fest,"Charlotte, NC, United States",https://charlottewestiefest.com/,February 2026,2026-02-01,2026,2,2026-02
 274,Australasian WCS & Zouk Champs,"Queensland, Australia",,February 2017,2017-02-01,2017,2,2017-02
-275,Dutch Open West Coast Swing,"Venray, Limburg, Netherlands",http://dutchopenwcs.com,April 2024,2024-04-01,2024,4,2024-04
-275,Dutch Open West Coast Swing,"Venray, Limburg, Netherlands",http://dutchopenwcs.com,March 2017,2017-03-01,2017,3,2017-03
-275,Dutch Open West Coast Swing,"Venray, Limburg, Netherlands",http://dutchopenwcs.com,March 2018,2018-03-01,2018,3,2018-03
-275,Dutch Open West Coast Swing,"Venray, Limburg, Netherlands",http://dutchopenwcs.com,March 2019,2019-03-01,2019,3,2019-03
-275,Dutch Open West Coast Swing,"Venray, Limburg, Netherlands",http://dutchopenwcs.com,March 2023,2023-03-01,2023,3,2023-03
-275,Dutch Open West Coast Swing,"Venray, Limburg, Netherlands",http://dutchopenwcs.com,March 2025,2025-03-01,2025,3,2025-03
-275,Dutch Open West Coast Swing,"Venray, Limburg, Netherlands",http://dutchopenwcs.com,March 2026,2026-03-01,2026,3,2026-03
+275,Dutch Open West Coast Swing,"Venray, Netherlands",http://dutchopenwcs.com,April 2024,2024-04-01,2024,4,2024-04
+275,Dutch Open West Coast Swing,"Venray, Netherlands",http://dutchopenwcs.com,March 2017,2017-03-01,2017,3,2017-03
+275,Dutch Open West Coast Swing,"Venray, Netherlands",http://dutchopenwcs.com,March 2018,2018-03-01,2018,3,2018-03
+275,Dutch Open West Coast Swing,"Venray, Netherlands",http://dutchopenwcs.com,March 2019,2019-03-01,2019,3,2019-03
+275,Dutch Open West Coast Swing,"Venray, Netherlands",http://dutchopenwcs.com,March 2023,2023-03-01,2023,3,2023-03
+275,Dutch Open West Coast Swing,"Venray, Netherlands",http://dutchopenwcs.com,March 2025,2025-03-01,2025,3,2025-03
+275,Dutch Open West Coast Swing,"Venray, Netherlands",http://dutchopenwcs.com,March 2026,2026-03-01,2026,3,2026-03
 276,Anchor Festival,"Hamburg, Germany",,April 2017,2017-04-01,2017,4,2017-04
 276,Anchor Festival,"Hamburg, Germany",,April 2018,2018-04-01,2018,4,2018-04
 276,Anchor Festival,"Hamburg, Germany",,March 2019,2019-03-01,2019,3,2019-03
-277,Scotland Swing Classic,"Glasgow, Scotland, United Kingdom",http://www.scottishswingclassic.com/,May 2017,2017-05-01,2017,5,2017-05
-277,Scotland Swing Classic,"Glasgow, Scotland, United Kingdom",http://www.scottishswingclassic.com/,May 2018,2018-05-01,2018,5,2018-05
-277,Scotland Swing Classic,"Glasgow, Scotland, United Kingdom",http://www.scottishswingclassic.com/,May 2019,2019-05-01,2019,5,2019-05
+277,Scotland Swing Classic,"Glasgow, United Kingdom",http://www.scottishswingclassic.com/,May 2017,2017-05-01,2017,5,2017-05
+277,Scotland Swing Classic,"Glasgow, United Kingdom",http://www.scottishswingclassic.com/,May 2018,2018-05-01,2018,5,2018-05
+277,Scotland Swing Classic,"Glasgow, United Kingdom",http://www.scottishswingclassic.com/,May 2019,2019-05-01,2019,5,2019-05
 278,Americano Dance Camp,"Samara, Russia",https://t.me/americamodancecamp https://vk.com/americano2025,July 2017,2017-07-01,2017,7,2017-07
 278,Americano Dance Camp,"Samara, Russia",https://t.me/americamodancecamp https://vk.com/americano2025,July 2018,2018-07-01,2018,7,2018-07
 278,Americano Dance Camp,"Samara, Russia",https://t.me/americamodancecamp https://vk.com/americano2025,July 2019,2019-07-01,2019,7,2019-07
@@ -2362,14 +2362,14 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 278,Americano Dance Camp,"Samara, Russia",https://t.me/americamodancecamp https://vk.com/americano2025,July 2025,2025-07-01,2025,7,2025-07
 279,Kazan EL Fest,"Kazan, Russia",https://vk.com/kazanelfest,August 2023,2023-08-01,2023,8,2023-08
 279,Kazan EL Fest,"Kazan, Russia",https://vk.com/kazanelfest,June 2017,2017-06-01,2017,6,2017-06
-280,Saint Petersburg WCS Nights,"St. Petersburg, Russia",http://wcsnights.ru,July 2017,2017-07-01,2017,7,2017-07
-280,Saint Petersburg WCS Nights,"St. Petersburg, Russia",http://wcsnights.ru,July 2018,2018-07-01,2018,7,2018-07
-280,Saint Petersburg WCS Nights,"St. Petersburg, Russia",http://wcsnights.ru,July 2019,2019-07-01,2019,7,2019-07
-280,Saint Petersburg WCS Nights,"St. Petersburg, Russia",http://wcsnights.ru,July 2021,2021-07-01,2021,7,2021-07
-280,Saint Petersburg WCS Nights,"St. Petersburg, Russia",http://wcsnights.ru,July 2022,2022-07-01,2022,7,2022-07
-280,Saint Petersburg WCS Nights,"St. Petersburg, Russia",http://wcsnights.ru,July 2023,2023-07-01,2023,7,2023-07
-280,Saint Petersburg WCS Nights,"St. Petersburg, Russia",http://wcsnights.ru,July 2024,2024-07-01,2024,7,2024-07
-280,Saint Petersburg WCS Nights,"St. Petersburg, Russia",http://wcsnights.ru,July 2025,2025-07-01,2025,7,2025-07
+280,Saint Petersburg WCS Nights,"St.Petersburg, Russia",http://wcsnights.ru,July 2017,2017-07-01,2017,7,2017-07
+280,Saint Petersburg WCS Nights,"St.Petersburg, Russia",http://wcsnights.ru,July 2018,2018-07-01,2018,7,2018-07
+280,Saint Petersburg WCS Nights,"St.Petersburg, Russia",http://wcsnights.ru,July 2019,2019-07-01,2019,7,2019-07
+280,Saint Petersburg WCS Nights,"St.Petersburg, Russia",http://wcsnights.ru,July 2021,2021-07-01,2021,7,2021-07
+280,Saint Petersburg WCS Nights,"St.Petersburg, Russia",http://wcsnights.ru,July 2022,2022-07-01,2022,7,2022-07
+280,Saint Petersburg WCS Nights,"St.Petersburg, Russia",http://wcsnights.ru,July 2023,2023-07-01,2023,7,2023-07
+280,Saint Petersburg WCS Nights,"St.Petersburg, Russia",http://wcsnights.ru,July 2024,2024-07-01,2024,7,2024-07
+280,Saint Petersburg WCS Nights,"St.Petersburg, Russia",http://wcsnights.ru,July 2025,2025-07-01,2025,7,2025-07
 281,Sacramento All Swing,"Sacramento, CA, United States",,July 2017,2017-07-01,2017,7,2017-07
 282,German Open,"Freiburg, Germany",http://www.go-wcs.com,August 2017,2017-08-01,2017,8,2017-08
 282,German Open,"Freiburg, Germany",http://www.go-wcs.com,August 2018,2018-08-01,2018,8,2018-08
@@ -2386,23 +2386,23 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 284,Citadel Swing,"Timisoara, Romania",,September 2019,2019-09-01,2019,9,2019-09
 285,Old Town Swing,"Tallinn, Estonia",,October 2017,2017-10-01,2017,10,2017-10
 285,Old Town Swing,"Tallinn, Estonia",,October 2018,2018-10-01,2018,10,2018-10
-286,WCS Festival,"Duesseldorf, Germany",http://www.wcsfestival.com,October 2017,2017-10-01,2017,10,2017-10
-286,WCS Festival,"Duesseldorf, Germany",http://www.wcsfestival.com,October 2018,2018-10-01,2018,10,2018-10
-286,WCS Festival,"Duesseldorf, Germany",http://www.wcsfestival.com,October 2019,2019-10-01,2019,10,2019-10
-286,WCS Festival,"Duesseldorf, Germany",http://www.wcsfestival.com,October 2022,2022-10-01,2022,10,2022-10
-286,WCS Festival,"Duesseldorf, Germany",http://www.wcsfestival.com,October 2023,2023-10-01,2023,10,2023-10
-286,WCS Festival,"Duesseldorf, Germany",http://www.wcsfestival.com,October 2024,2024-10-01,2024,10,2024-10
-286,WCS Festival,"Duesseldorf, Germany",http://www.wcsfestival.com,October 2025,2025-10-01,2025,10,2025-10
+286,WCS Festival,"Boston Club, Germany",http://www.wcsfestival.com,October 2017,2017-10-01,2017,10,2017-10
+286,WCS Festival,"Boston Club, Germany",http://www.wcsfestival.com,October 2018,2018-10-01,2018,10,2018-10
+286,WCS Festival,"Boston Club, Germany",http://www.wcsfestival.com,October 2019,2019-10-01,2019,10,2019-10
+286,WCS Festival,"Boston Club, Germany",http://www.wcsfestival.com,October 2022,2022-10-01,2022,10,2022-10
+286,WCS Festival,"Boston Club, Germany",http://www.wcsfestival.com,October 2023,2023-10-01,2023,10,2023-10
+286,WCS Festival,"Boston Club, Germany",http://www.wcsfestival.com,October 2024,2024-10-01,2024,10,2024-10
+286,WCS Festival,"Boston Club, Germany",http://www.wcsfestival.com,October 2025,2025-10-01,2025,10,2025-10
 287,Florida Westie Fest,"Tampa, FL, United States",,November 2017,2017-11-01,2017,11,2017-11
 287,Florida Westie Fest,"Tampa, FL, United States",,November 2018,2018-11-01,2018,11,2018-11
-288,Midnight Madness,"Dallas, TX, United States",http://www.MidnightMadnessWCS.com,November 2017,2017-11-01,2017,11,2017-11
-288,Midnight Madness,"Dallas, TX, United States",http://www.MidnightMadnessWCS.com,November 2018,2018-11-01,2018,11,2018-11
-288,Midnight Madness,"Dallas, TX, United States",http://www.MidnightMadnessWCS.com,November 2019,2019-11-01,2019,11,2019-11
-288,Midnight Madness,"Dallas, TX, United States",http://www.MidnightMadnessWCS.com,November 2021,2021-11-01,2021,11,2021-11
-288,Midnight Madness,"Dallas, TX, United States",http://www.MidnightMadnessWCS.com,November 2022,2022-11-01,2022,11,2022-11
-288,Midnight Madness,"Dallas, TX, United States",http://www.MidnightMadnessWCS.com,November 2023,2023-11-01,2023,11,2023-11
-288,Midnight Madness,"Dallas, TX, United States",http://www.MidnightMadnessWCS.com,November 2024,2024-11-01,2024,11,2024-11
-288,Midnight Madness,"Dallas, TX, United States",http://www.MidnightMadnessWCS.com,November 2025,2025-11-01,2025,11,2025-11
+288,Midnight Madness,"Dallas Ft. Worth, TX, United States",http://www.MidnightMadnessWCS.com,November 2017,2017-11-01,2017,11,2017-11
+288,Midnight Madness,"Dallas Ft. Worth, TX, United States",http://www.MidnightMadnessWCS.com,November 2018,2018-11-01,2018,11,2018-11
+288,Midnight Madness,"Dallas Ft. Worth, TX, United States",http://www.MidnightMadnessWCS.com,November 2019,2019-11-01,2019,11,2019-11
+288,Midnight Madness,"Dallas Ft. Worth, TX, United States",http://www.MidnightMadnessWCS.com,November 2021,2021-11-01,2021,11,2021-11
+288,Midnight Madness,"Dallas Ft. Worth, TX, United States",http://www.MidnightMadnessWCS.com,November 2022,2022-11-01,2022,11,2022-11
+288,Midnight Madness,"Dallas Ft. Worth, TX, United States",http://www.MidnightMadnessWCS.com,November 2023,2023-11-01,2023,11,2023-11
+288,Midnight Madness,"Dallas Ft. Worth, TX, United States",http://www.MidnightMadnessWCS.com,November 2024,2024-11-01,2024,11,2024-11
+288,Midnight Madness,"Dallas Ft. Worth, TX, United States",http://www.MidnightMadnessWCS.com,November 2025,2025-11-01,2025,11,2025-11
 289,SwingVester,"Wels, Austria",https://www.swingvester.com/,January 2018,2018-01-01,2018,1,2018-01
 289,SwingVester,"Wels, Austria",https://www.swingvester.com/,January 2019,2019-01-01,2019,1,2019-01
 289,SwingVester,"Wels, Austria",https://www.swingvester.com/,January 2020,2020-01-01,2020,1,2020-01
@@ -2456,12 +2456,12 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 300,Austin Rocks,"Austin, TX, United States",http://www.atxrox.com,September 2019,2019-09-01,2019,9,2019-09
 300,Austin Rocks,"Austin, TX, United States",http://www.atxrox.com,September 2024,2024-09-01,2024,9,2024-09
 300,Austin Rocks,"Austin, TX, United States",http://www.atxrox.com,September 2025,2025-09-01,2025,9,2025-09
-301,Swing Resolution,"Edinburgh, Scotland, United Kingdom",http://www.swingresolution.com,January 2019,2019-01-01,2019,1,2019-01
-301,Swing Resolution,"Edinburgh, Scotland, United Kingdom",http://www.swingresolution.com,January 2020,2020-01-01,2020,1,2020-01
-301,Swing Resolution,"Edinburgh, Scotland, United Kingdom",http://www.swingresolution.com,January 2023,2023-01-01,2023,1,2023-01
-301,Swing Resolution,"Edinburgh, Scotland, United Kingdom",http://www.swingresolution.com,January 2024,2024-01-01,2024,1,2024-01
-301,Swing Resolution,"Edinburgh, Scotland, United Kingdom",http://www.swingresolution.com,January 2025,2025-01-01,2025,1,2025-01
-301,Swing Resolution,"Edinburgh, Scotland, United Kingdom",http://www.swingresolution.com,January 2026,2026-01-01,2026,1,2026-01
+301,Swing Resolution,"Edinburgh, United Kingdom",http://www.swingresolution.com,January 2019,2019-01-01,2019,1,2019-01
+301,Swing Resolution,"Edinburgh, United Kingdom",http://www.swingresolution.com,January 2020,2020-01-01,2020,1,2020-01
+301,Swing Resolution,"Edinburgh, United Kingdom",http://www.swingresolution.com,January 2023,2023-01-01,2023,1,2023-01
+301,Swing Resolution,"Edinburgh, United Kingdom",http://www.swingresolution.com,January 2024,2024-01-01,2024,1,2024-01
+301,Swing Resolution,"Edinburgh, United Kingdom",http://www.swingresolution.com,January 2025,2025-01-01,2025,1,2025-01
+301,Swing Resolution,"Edinburgh, United Kingdom",http://www.swingresolution.com,January 2026,2026-01-01,2026,1,2026-01
 302,WesterOz Swing,"Perth, Australia",http://magneticdance.com.au/westeroz,February 2019,2019-02-01,2019,2,2019-02
 302,WesterOz Swing,"Perth, Australia",http://magneticdance.com.au/westeroz,February 2020,2020-02-01,2020,2,2020-02
 302,WesterOz Swing,"Perth, Australia",http://magneticdance.com.au/westeroz,February 2023,2023-02-01,2023,2,2023-02
@@ -2534,8 +2534,8 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 330,Simply Adelaide West Coast Swing,"Adelaide, Australia",http://www.simplyadelaidewcs.com.au,November 2024,2024-11-01,2024,11,2024-11
 330,Simply Adelaide West Coast Swing,"Adelaide, Australia",http://www.simplyadelaidewcs.com.au,November 2025,2025-11-01,2025,11,2025-11
 330,Simply Adelaide West Coast Swing,"Adelaide, Australia",http://www.simplyadelaidewcs.com.au,October 2023,2023-10-01,2023,10,2023-10
-331,Swing Fiction,"Brno, Czech Republic",https://swingfiction.cz/,July 2023,2023-07-01,2023,7,2023-07
-331,Swing Fiction,"Brno, Czech Republic",https://swingfiction.cz/,June 2024,2024-06-01,2024,6,2024-06
+331,Swing Fiction,"Brno, Czechia",https://swingfiction.cz/,July 2023,2023-07-01,2023,7,2023-07
+331,Swing Fiction,"Brno, Czechia",https://swingfiction.cz/,June 2024,2024-06-01,2024,6,2024-06
 333,Swingvasion,"Wellington, New Zealand",https://swingcentral.nz/swingvasion,March 2024,2024-03-01,2024,3,2024-03
 333,Swingvasion,"Wellington, New Zealand",https://swingcentral.nz/swingvasion,March 2025,2025-03-01,2025,3,2025-03
 333,Swingvasion,"Wellington, New Zealand",https://swingcentral.nz/swingvasion,March 2026,2026-03-01,2026,3,2026-03
@@ -2548,15 +2548,15 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 336,SOM - Swing of Music,"Wels, Austria",https://www.swingofmusic.com/,May 2026,2026-05-01,2026,5,2026-05
 338,Sea Dance Fest,"Moscow, Russia",https://vk.com/seadancefest,September 2024,2024-09-01,2024,9,2024-09
 338,Sea Dance Fest,"Moscow, Russia",https://vk.com/seadancefest,September 2025,2025-09-01,2025,9,2025-09
-339,Bristol Swing Fiesta,"Bristol, England, United Kingdom",https://www.bristolcityswing.com/bsf,August 2024,2024-08-01,2024,8,2024-08
-339,Bristol Swing Fiesta,"Bristol, England, United Kingdom",https://www.bristolcityswing.com/bsf,August 2025,2025-08-01,2025,8,2025-08
+339,Bristol Swing Fiesta,"Bristol, United Kingdom",https://www.bristolcityswing.com/bsf,August 2024,2024-08-01,2024,8,2024-08
+339,Bristol Swing Fiesta,"Bristol, United Kingdom",https://www.bristolcityswing.com/bsf,August 2025,2025-08-01,2025,8,2025-08
 340,Spooky Westie Weekend,"Singapore, Singapore",https://spookywestieweekend.com/,November 2024,2024-11-01,2024,11,2024-11
 340,Spooky Westie Weekend,"Singapore, Singapore",https://spookywestieweekend.com/,November 2025,2025-11-01,2025,11,2025-11
 342,Global Grand Prix - West Coast Swing Reunion,"Toulouse-Blagnac, France",http://www.globalgrandprixwcs.com,December 2023,2023-12-01,2023,12,2023-12
 342,Global Grand Prix - West Coast Swing Reunion,"Toulouse-Blagnac, France",http://www.globalgrandprixwcs.com,December 2024,2024-12-01,2024,12,2024-12
 342,Global Grand Prix - West Coast Swing Reunion,"Toulouse-Blagnac, France",http://www.globalgrandprixwcs.com,December 2025,2025-12-01,2025,12,2025-12
-343,Swing Crush,"San Antonio, TX, United States",https://swingcrush.com,February 2025,2025-02-01,2025,2,2025-02
-343,Swing Crush,"San Antonio, TX, United States",https://swingcrush.com,February 2026,2026-02-01,2026,2,2026-02
+343,Swing Crush,"San antonio, Texas, United states",https://swingcrush.com,February 2025,2025-02-01,2025,2,2025-02
+343,Swing Crush,"San antonio, Texas, United states",https://swingcrush.com,February 2026,2026-02-01,2026,2,2026-02
 344,Arousa Westie Fest,"Sanxenxo, Spain",http://arousawestiefest.com,February 2025,2025-02-01,2025,2,2025-02
 344,Arousa Westie Fest,"Sanxenxo, Spain",http://arousawestiefest.com,February 2026,2026-02-01,2026,2,2026-02
 345,HONEY FEST,"Ufa, Russia",https://honeyfest-ufa.ru/,April 2024,2024-04-01,2024,4,2024-04
@@ -2574,7 +2574,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 352,Slovenian Open,"Ljubljana, Slovenia",https://www.slovenianopen.dance,April 2026,2026-04-01,2026,4,2026-04
 354,Spring Time Swing,"Freiburg, Germany",https://springtimeswing.com/,May 2025,2025-05-01,2025,5,2025-05
 354,Spring Time Swing,"Freiburg, Germany",https://springtimeswing.com/,May 2026,2026-05-01,2026,5,2026-05
-355,The Aloha Open,"Wailea, HI, United States",http://www.alohaopenwcs.com,October 2025,2025-10-01,2025,10,2025-10
+355,The Aloha Open,"Wailea, United States",http://www.alohaopenwcs.com,October 2025,2025-10-01,2025,10,2025-10
 356,The Bend Connection,"Bend, OR, United States",http://thebendconnection.com,August 2025,2025-08-01,2025,8,2025-08
 357,WCS Party,"Vienna, Austria",https://www.wcsparty.com/,September 2025,2025-09-01,2025,9,2025-09
 359,Retaliation Swing,"Seattle, WA, United States",https://www.retaliationswing.com,September 2025,2025-09-01,2025,9,2025-09
@@ -2585,17 +2585,17 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 363,Trinity Swing,"Dundalk, Ireland",https://trinityswing.com/,February 2026,2026-02-01,2026,2,2026-02
 364,Nanaimo Dance Fusion,"Nanaimo, Canada",http://www.nanaimodancefusion.ca,May 2025,2025-05-01,2025,5,2025-05
 364,Nanaimo Dance Fusion,"Nanaimo, Canada",http://www.nanaimodancefusion.ca,May 2026,2026-05-01,2026,5,2026-05
-365,Flowstate | West Coast Swing & Zouk Festival,"London, England, United Kingdom",https://eastonswing.com/west-coast-swing-events/world-swing-dance-council/flowstate-west-coast-swing-zouk-festival-eastonswing/,November 2025,2025-11-01,2025,11,2025-11
-367,Go West SwingFest,"Perth, Australia",https://www.gowestdancefest.com/go-west-swingfest,October 2024,2024-10-01,2024,10,2024-10
-367,Go West SwingFest,"Perth, Australia",https://www.gowestdancefest.com/go-west-swingfest,October 2025,2025-10-01,2025,10,2025-10
+365,Flowstate | West Coast Swing & Zouk Festival,"London, United Kingdom",https://eastonswing.com/west-coast-swing-events/world-swing-dance-council/flowstate-west-coast-swing-zouk-festival-eastonswing/,November 2025,2025-11-01,2025,11,2025-11
+367,Go West SwingFest,"Perth, Western Australia",https://www.gowestdancefest.com/go-west-swingfest,October 2024,2024-10-01,2024,10,2024-10
+367,Go West SwingFest,"Perth, Western Australia",https://www.gowestdancefest.com/go-west-swingfest,October 2025,2025-10-01,2025,10,2025-10
 368,Next Level Swing,"Gothenburg, Sweden",http://www.next-level.dance,June 2025,2025-06-01,2025,6,2025-06
 369,FRENCH CONNECTION WCS,"Annecy, France",http://FRENCHCONNECTIONWCS.COM,June 2025,2025-06-01,2025,6,2025-06
 370,SwingIN Festival,"Bonn, Germany",http://www.tanzhaus-bonn.de/swingin-festival,April 2025,2025-04-01,2025,4,2025-04
 370,SwingIN Festival,"Bonn, Germany",http://www.tanzhaus-bonn.de/swingin-festival,April 2026,2026-04-01,2026,4,2026-04
 371,Festival City Swing,"Newcastle, United Kingdom",https://festivalcityswing.co.uk/,June 2025,2025-06-01,2025,6,2025-06
 371,Festival City Swing,"Newcastle, United Kingdom",https://festivalcityswing.co.uk/,June 2026,2026-06-01,2026,6,2026-06
-372,Dance Jam Jack & Jill Weekend,"Washington, DC, United States",http://www.dancejamproductions.com,May 2025,2025-05-01,2025,5,2025-05
-372,Dance Jam Jack & Jill Weekend,"Washington, DC, United States",http://www.dancejamproductions.com,May 2026,2026-05-01,2026,5,2026-05
+372,Dance Jam Jack & Jill Weekend,"Washington, MD, United States",http://www.dancejamproductions.com,May 2025,2025-05-01,2025,5,2025-05
+372,Dance Jam Jack & Jill Weekend,"Washington, MD, United States",http://www.dancejamproductions.com,May 2026,2026-05-01,2026,5,2026-05
 373,Carolina Summer Swing,"Greenville, SC, United States",https://carolinasummerswing.com/,July 2025,2025-07-01,2025,7,2025-07
 374,Barock Swing Ludwigsburg,"Ludwigsburg, Germany",https://lb-barockswing.com/index.php,June 2025,2025-06-01,2025,6,2025-06
 375,Mediterranean Open WCS,"Barcelona, Spain",https://mediterraneanopenwcs.com/,July 2025,2025-07-01,2025,7,2025-07
@@ -2604,7 +2604,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 378,New York Flow Festival,"New York City, NY, United States",https://www.flowfest.nyc,March 2026,2026-03-01,2026,3,2026-03
 379,Med in Swing,"Toulon, France",http://www.medinswing.rocks,May 2025,2025-05-01,2025,5,2025-05
 379,Med in Swing,"Toulon, France",http://www.medinswing.rocks,May 2026,2026-05-01,2026,5,2026-05
-380,SASS Spooky Albany Swing Spectacular,"Albany, NY",http://www.spookyalbanyswing.com/,October 2025,2025-10-01,2025,10,2025-10
+380,SASS Spooky Albany Swing Spectacular,"Albany, NY, United States",http://www.spookyalbanyswing.com/,October 2025,2025-10-01,2025,10,2025-10
 381,The Australian Classic West Coast Swing Dance Championships (Trial Event),"Sydney, Australia",http://www.dancewcsa.com.au,January 2025,2025-01-01,2025,1,2025-01
 382,Lisbon Westie Fest,"Lisbon, Portugal",http://www.lisbonwestiefest.com,August 2025,2025-08-01,2025,8,2025-08
 383,Warsaw Summer Nights Westival,"Warsaw, Poland",https://www.summernightswestival.com/,August 2025,2025-08-01,2025,8,2025-08

@@ -2,7 +2,7 @@ location_id,event_city,event_state,event_country,latitude,longitude,event_locati
 107,London,England,United Kingdom,51.5072178,-0.1275862,"London, England, United Kingdom","London, England, United Kingdom",t
 121,Montreal,Quebec,Canada,45.5018869,-73.56739189999999,"Montreal, Quebec, Canada","Montreal, Quebec, Canada",t
 128,Richmond,British Columbia,Canada,49.1665898,-123.133569,"Richmond, British Columbia, Canada","Richmond, British Columbia, Canada",t
-130,London,England,United Kingdom,51.5077194,-0.4726768,"London, England, United Kingdom","London, England, United Kingdom",t
+130,London,England,United Kingdom,51.5072178,-0.1275862,"London, England, United Kingdom","London, England, United Kingdom",t
 154,Vancouver,British Columbia,Canada,49.2827291,-123.1207375,"Vancouver, British Columbia, Canada","Vancouver, British Columbia, Canada",t
 164,London,England,United Kingdom,51.5072178,-0.1275862,"London, England, United Kingdom","London, England, United Kingdom",t
 30,Seattle,Washington,United States,47.6061389,-122.3328481,"Seattle, WA, United States","Seattle, WA",t
@@ -51,7 +51,7 @@ location_id,event_city,event_state,event_country,latitude,longitude,event_locati
 233,Moscow,,Russia,55.7568721,37.6150527,"Moscow, Russia","Moscow, Russia",t
 235,Milan,,Italy,45.468503,9.182402699999999,"Milan, Italy","Milan, Italy",t
 238,Tallinn,,Estonia,59.43696079999999,24.7535746,"Tallinn, Estonia","Tallinn, Estonia",t
-239,Stockholm,,Sweden,59.3327036,18.0656255,"Stockholm, Sweden","Stockholm, Sweden",t
+239,Stockholm,,Sweden,59.3251172,18.0710935,"Stockholm, Sweden","Stockholm, Sweden",t
 240,Fremantle,,Australia,-32.0517901,115.755096,"Fremantle, Australia","Fremantle, Australia",t
 243,Sao Paulo,,Brazil,-23.5557714,-46.6395571,"Sao Paulo, Brazil","Sao Paulo, Brazil",t
 214,Calgary,Alberta,Canada,51.04473309999999,-114.0718831,"Calgary, Alberta, Canada","Calgary, Alberta, Canada",t
@@ -62,12 +62,11 @@ location_id,event_city,event_state,event_country,latitude,longitude,event_locati
 226,Glasgow,Scotland,United Kingdom,55.86167039999999,-4.2583345,"Glasgow, Scotland, United Kingdom","Glasgow, Scotland, United Kingdom",t
 229,Newcastle,England,United Kingdom,54.978252,-1.61778,"Newcastle, England, United Kingdom","Newcastle, England, United Kingdom",t
 234,Bristol,England,United Kingdom,51.454513,-2.58791,"Bristol, England, United Kingdom","Bristol, England, United Kingdom",t
-227,Venray,Limburg,Netherlands,51.5256257,5.9736992,"Venray, Limburg, Netherlands","Venray, Limburg, Netherlands",t
 213,Jeju,,Republic of Korea,33.5042779,126.519838,"Jeju, Republic of Korea","Jeju, Republic of Korea",t
 215,Umeå,,Sweden,63.5391027,19.4528047,"Umeå, Sweden","Umeå, Sweden",t
 217,Nanaimo,,Canada,49.1658836,-123.9400647,"Nanaimo, Canada","Nanaimo, Canada",t
 218,Toulon,,France,43.1256814,5.9284944,"Toulon, France","Toulon, France",t
-219,Budapest,,Hungary,47.5002356,19.1000054,"Budapest, Hungary","Budapest, Hungary",t
+219,Budapest,,Hungary,47.497912,19.040235,"Budapest, Hungary","Budapest, Hungary",t
 222,St. Petersburg,,Russia,59.9310584,30.3609097,"St. Petersburg, Russia","St. Petersburg, Russia",t
 224,New York City,New York,United States,40.7127753,-74.0059728,"New York City, NY, United States","New York City, NY",t
 225,Lyon,,France,45.764043,4.835659,"Lyon, France","Lyon, France",t
@@ -77,7 +76,7 @@ location_id,event_city,event_state,event_country,latitude,longitude,event_locati
 237,Lyon,,France,45.764043,4.835659,"Lyon, France","Lyon, France",t
 241,Helsinki,,Finland,60.16985569999999,24.938379,"Helsinki, Finland","Helsinki, Finland",t
 242,Wellington,,New Zealand,-41.2923814,174.7787463,"Wellington, New Zealand","Wellington, New Zealand",t
-245,Stockholm,,Sweden,59.3327036,18.0656255,"Stockholm, Sweden","Stockholm, Sweden",t
+245,Stockholm,,Sweden,59.3251172,18.0710935,"Stockholm, Sweden","Stockholm, Sweden",t
 247,St. Petersburg,,Russia,59.9310584,30.3609097,"St. Petersburg, Russia","St. Petersburg, Russia",t
 251,Lisbon,,Portugal,38.7222524,-9.1393366,"Lisbon, Portugal","Lisbon, Portugal",t
 252,Samara,,Russia,53.2226496,50.1728035,"Samara, Russia","Samara, Russia",t
@@ -90,13 +89,12 @@ location_id,event_city,event_state,event_country,latitude,longitude,event_locati
 4,Portland,Oregon,United States,45.515232,-122.6783853,"Portland, OR, United States","Portland, OR",t
 5,Fresno,California,United States,36.7377981,-119.7871247,"Fresno, CA, United States","Fresno, CA",t
 6,Sacramento,California,United States,38.5781342,-121.4944209,"Sacramento, CA, United States","Sacramento, CA",t
-7,New York,New York,United States,40.7127753,-74.0059728,"New York, NY, United States","New York, NY",t
 8,Boston,Massachusetts,United States,42.3555076,-71.0565364,"Boston, MA, United States","Boston, MA",t
 9,Kansas City,Missouri,United States,39.0997265,-94.5785667,"Kansas City, MO, United States","Kansas City, MO",t
 10,San Diego,California,United States,32.715738,-117.1610838,"San Diego, CA, United States","San Diego, CA",t
 11,Boston,Massachusetts,United States,42.3555076,-71.0565364,"Boston, MA, United States","Boston, MA",t
 12,Michigan,Michigan,United States,44.3148443,-85.60236429999999,"Michigan, MI, United States","Michigan, MI",t
-13,Washington,District of Columbia,United States,38.9071923,-77.0368707,"Washington, DC, United States","Washington, DC",t
+13,Washington,District of Columbia,United States,38.9072873,-77.0369274,"Washington, DC, United States","Washington, DC",t
 14,San Bernardino,California,United States,34.1045589,-117.291869,"San Bernardino, CA, United States","San Bernardino, CA",t
 16,San Jose,California,United States,37.33874,-121.8852525,"San Jose, CA, United States","San Jose, CA",t
 17,Phoenix,Arizona,United States,33.4482948,-112.0725488,"Phoenix, AZ, United States","Phoenix, AZ",t
@@ -143,7 +141,7 @@ location_id,event_city,event_state,event_country,latitude,longitude,event_locati
 65,Cape Cod,Massachusetts,United States,41.8111143,-70.1455805,"Cape Cod, MA, United States","Cape Cod, MA",t
 66,Wilmington,Delaware,United States,39.744655,-75.5483909,"Wilmington, DE, United States","Wilmington, DE",t
 67,Washington,District of Columbia,United States,38.9072873,-77.0369274,"Washington, DC, United States","Washington, DC",t
-68,Washington,District of Columbia,United States,38.7134301,-78.1590813,"Washington, DC, United States","Washington, DC",t
+68,Washington,District of Columbia,United States,38.9072873,-77.0369274,"Washington, DC, United States","Washington, DC",t
 69,Austin,Texas,United States,30.267153,-97.7430608,"Austin, TX, United States","Austin, TX",t
 70,Newton,Massachusetts,United States,42.3370413,-71.20922139999999,"Newton, MA, United States","Newton, MA",t
 71,Framingham,Massachusetts,United States,42.279286,-71.4161565,"Framingham, MA, United States","Framingham, MA",t
@@ -167,7 +165,7 @@ location_id,event_city,event_state,event_country,latitude,longitude,event_locati
 95,Modesto,California,United States,37.6392595,-120.9970014,"Modesto, CA, United States","Modesto, CA",t
 97,Redmond,Washington,United States,47.6739881,-122.121512,"Redmond, WA, United States","Redmond, WA",t
 98,Jacksonville,Florida,United States,30.3297566,-81.6591529,"Jacksonville, FL, United States","Jacksonville, FL",t
-99,Washington,District of Columbia,United States,38.9071923,-77.0368707,"Washington, DC, United States","Washington, DC",t
+99,Washington,District of Columbia,United States,38.9072873,-77.0369274,"Washington, DC, United States","Washington, DC",t
 100,Woodland Hills,California,United States,34.1685035,-118.6058267,"Woodland Hills, CA, United States","Woodland Hills, CA",t
 101,Chico,California,United States,39.7282839,-121.8379978,"Chico, CA, United States","Chico, CA",t
 102,St. Louis,Missouri,United States,38.62742799999999,-90.1982439,"St. Louis, MO, United States","St. Louis, MO",t
@@ -188,7 +186,7 @@ location_id,event_city,event_state,event_country,latitude,longitude,event_locati
 123,Secaucus,New Jersey,United States,40.7879996,-74.0545497,"Secaucus, NJ, United States","Secaucus, NJ",t
 124,Wailea,Hawaii,United States,20.6871826,-156.4391668,"Wailea, HI, United States","Wailea, HI",t
 126,Atlanta,Georgia,United States,33.7501275,-84.3885209,"Atlanta, GA, United States","Atlanta, GA",t
-127,Düsseldorf,,Germany,51.2051585,6.8560805,"Düsseldorf, Germany","Düsseldorf, Germany",t
+127,Düsseldorf,,Germany,51.2230411,6.7824545,"Düsseldorf, Germany","Düsseldorf, Germany",t
 129,Munich,,Germany,48.1351253,11.5819806,"Munich, Germany","Munich, Germany",t
 131,Hartford,Connecticut,United States,41.7658043,-72.6733723,"Hartford, CT, United States","Hartford, CT",t
 132,Milan,,Italy,45.468503,9.182402699999999,"Milan, Italy","Milan, Italy",t
@@ -198,7 +196,6 @@ location_id,event_city,event_state,event_country,latitude,longitude,event_locati
 136,Tuscaloosa,Alabama,United States,33.21031,-87.5658722,"Tuscaloosa, AL, United States","Tuscaloosa, AL",t
 137,Huntsville,Alabama,United States,34.7295497,-86.5853155,"Huntsville, AL, United States","Huntsville, AL",t
 138,Fort Wayne,Indiana,United States,41.0794759,-85.1362929,"Fort Wayne, IN, United States","Fort Wayne, IN",t
-139,Albany,New York,United States,42.6518095,-73.75447070000001,"Albany, NY, United States","Albany, NY",t
 140,Morristown,New Jersey,United States,40.7922983,-74.4763123,"Morristown, NJ, United States","Morristown, NJ",t
 141,Tulsa,Oklahoma,United States,36.1551375,-95.98950099999999,"Tulsa, OK, United States","Tulsa, OK",t
 142,Stamford,Connecticut,United States,41.0527986,-73.5394821,"Stamford, CT, United States","Stamford, CT",t
@@ -215,8 +212,7 @@ location_id,event_city,event_state,event_country,latitude,longitude,event_locati
 158,La Grande Motte,,France,43.560704,4.086072000000001,"La Grande Motte, France","La Grande Motte, France",t
 160,Carlisle,Pennsylvania,United States,40.2010241,-77.20027449999999,"Carlisle, PA, United States","Carlisle, PA",t
 163,Rockville,Maryland,United States,39.0839973,-77.1527578,"Rockville, MD, United States","Rockville, MD",t
-165,Washington,District of Columbia,United States,39.1289725,-77.3783789,"Washington, DC, United States","Washington, DC",t
-167,San Antonio,Texas,United States,29.4251905,-98.4945922,"San Antonio, TX, United States","San Antonio, TX",t
+165,Washington,District of Columbia,United States,38.9072873,-77.0369274,"Washington, DC, United States","Washington, DC",t
 168,Auckland,,New Zealand,-36.85088270000001,174.7644881,"Auckland, New Zealand","Auckland, New Zealand",t
 169,Gold Coast,,Australia,-27.9769248,153.380936,"Gold Coast, Australia","Gold Coast, Australia",t
 171,Rome,,Italy,41.8967068,12.4822025,"Rome, Italy","Rome, Italy",t
@@ -239,27 +235,23 @@ location_id,event_city,event_state,event_country,latitude,longitude,event_locati
 196,Freiburg,,Germany,47.9990077,7.842104299999999,"Freiburg, Germany","Freiburg, Germany",t
 197,Wels,,Austria,48.1664268,14.0388714,"Wels, Austria","Wels, Austria",t
 198,Duesseldorf,,Germany,51.2230411,6.7824545,"Duesseldorf, Germany","Duesseldorf, Germany",t
-199,Stockholm,,Sweden,59.3327036,18.0656255,"Stockholm, Sweden","Stockholm, Sweden",t
+199,Stockholm,,Sweden,59.3251172,18.0710935,"Stockholm, Sweden","Stockholm, Sweden",t
 201,Bend,Oregon,United States,44.0581728,-121.3153096,"Bend, OR, United States","Bend, OR",t
-202,Stockholm,,Sweden,59.3327036,18.0656255,"Stockholm, Sweden","Stockholm, Sweden",t
+202,Stockholm,,Sweden,59.3251172,18.0710935,"Stockholm, Sweden","Stockholm, Sweden",t
 166,Manchester,England,United Kingdom,53.4807593,-2.2426305,"Manchester, England, United Kingdom","Manchester, England, United Kingdom",t
 177,Edinburgh,Scotland,United Kingdom,55.953252,-3.188267,"Edinburgh, Scotland, United Kingdom","Edinburgh, Scotland, United Kingdom",t
 178,Toronto,Ontario,Canada,43.653226,-79.3831843,"Toronto, Ontario, Canada","Toronto, Ontario, Canada",t
 205,Edmonton,Alberta,Canada,53.5461663,-113.4937355,"Edmonton, Alberta, Canada","Edmonton, Alberta, Canada",t
-25,Atlanta,Georgia,United States,33.7501275,-84.3885209,"Atlanta, GA, United States","Atlanta, GA, United States",t
-159,Singapore,,Singapore,1.352083,103.819836,"Singapore, Singapore","Singapore, Singapore",t
-244,Singapore,,Singapore,1.352083,103.819836,"Singapore, Singapore","Singapore, Singapore",t
-161,Albany,New York,United States,42.6518095,-73.75447070000001,"Albany, NY","Albany, NY",t
-191,Amsterdam,North Holland,Netherlands,52.3675734,4.9041389,"Amsterdam, North Holland, Netherlands","Amsterdam, North Holland, Netherlands",t
-231,Stockholm,,Sweden,59.3251172,18.0710935,"Stockholm, Sweden","Stockholm, Sweden",t
 255,Ufa,,Russia,54.73479099999999,55.9578555,"Ufa, Russia","Ufa, Russia",t
 257,Timisoara,,Romania,45.7557559,21.2322208,"Timisoara, Romania","Timisoara, Romania",t
 261,Queensland,,Australia,-22.575197,144.0847926,"Queensland, Australia","Queensland, Australia",t
+139,Albany,New York,United States,42.6518095,-73.75447070000001,"Albany, NY, United States","Albany, NY",t
+167,San Antonio,Texas,United States,29.4251905,-98.4945922,"San Antonio, TX, United States","San Antonio, TX",t
 262,Adelaide,,Australia,-34.9284989,138.6007456,"Adelaide, Australia","Adelaide, Australia",t
 263,Kazan,,Russia,55.7878944,49.12332929999999,"Kazan, Russia","Kazan, Russia",t
 276,Prague,,Czech Republic,50.0755381,14.4378005,"Prague, Czech Republic","Prague, Czech Republic",t
 277,Brno,,Czech Republic,49.1950602,16.6068371,"Brno, Czech Republic","Brno, Czech Republic",t
-254,Moscow,,Russia,55.340396,38.2917651,"Moscow, Russia","Moscow, Russia",t
+254,Moscow,,Russia,55.7568721,37.6150527,"Moscow, Russia","Moscow, Russia",t
 256,Ljubljana,,Slovenia,46.0569465,14.5057515,"Ljubljana, Slovenia","Ljubljana, Slovenia",t
 258,Sanxenxo,,Spain,42.416489,-8.8252502,"Sanxenxo, Spain","Sanxenxo, Spain",t
 259,Hobart,,Australia,-42.8826055,147.3257196,"Hobart, Australia","Hobart, Australia",t
@@ -279,3 +271,155 @@ location_id,event_city,event_state,event_country,latitude,longitude,event_locati
 278,Perth,,Australia,-31.9513993,115.8616783,"Perth, Australia","Perth, Australia",t
 279,Ludwigsburg,,Germany,48.8891149,9.1942834,"Ludwigsburg, Germany","Ludwigsburg, Germany",t
 280,Gothenburg,,Sweden,57.70887,11.97456,"Gothenburg, Sweden","Gothenburg, Sweden",t
+335,Richmond,,Canada,,,"Richmond, Canada","Richmond, Canada",
+7,New York,New York,United States,40.7127753,-74.0059728,"New York, NY, United States","New York, NY",t
+396,Adelaide,,Australia,,,"Adelaide, Australia","Adelaide, Australia",
+281,Boston,Massachusetts,United States,,,"Boston, MA, United States","Boston, MA",
+282,Washington,District of Columbia,United States,,,"Washington, DC, United States","Washington, DC",
+283,Monterey,California,United States,,,"Monterey, CA, United States","Monterey, CA",
+284,San Francisco,California,United States,,,"San Francisco, CA, United States","San Francisco, CA",
+285,Sacramento,California,United States,,,"Sacramento, CA, United States","Sacramento, CA",
+286,San Jose,California,United States,,,"San Jose, CA, United States","San Jose, CA",
+287,Phoenix,,usa,,,"Phoenix, usa","Phoenix, usa",
+288,Lancaster,California,United States,,,"Lancaster, CA, United States","Lancaster, CA",
+289,Irvine,California,United States,,,"Irvine, CA, United States","Irvine, CA",
+290,Dallas,Texas,United States,,,"Dallas, TX, United States","Dallas, TX",
+291,Anaheim/Garden Grove,California,United States,,,"Anaheim/Garden Grove, CA, United States","Anaheim/Garden Grove, CA",
+292,Costa Mesa,California,United States,,,"Costa Mesa, CA, United States","Costa Mesa, CA",
+293,South Lake Tahoe (near Reno),Nevada,United States,,,"South Lake Tahoe (near Reno), NV, United States","South Lake Tahoe (near Reno), NV",
+294,New Brunswick,New Jersey,United States,,,"New Brunswick, NJ, United States","New Brunswick, NJ",
+295,Dallas Ft. Worth,Texas,United States,,,"Dallas Ft. Worth, TX, United States","Dallas Ft. Worth, TX",
+296,St. Louis,Missouri,United States,,,"St. Louis, MO, United States","St. Louis, MO",
+297,Nashville,Tennessee,United States,,,"Nashville, TN, United States","Nashville, TN",
+298,Detroit,Michigan,United States,,,"Detroit, MI, United States","Detroit, MI",
+299,Phoenix,Arizona,United States,,,"Phoenix, AZ, United States","Phoenix, AZ",
+300,Tampa Bay,Florida,United States,,,"Tampa Bay, FL, United States","Tampa Bay, FL",
+301,Burbank,California,United States,,,"Burbank, CA, United States","Burbank, CA",
+302,Ft. Lauderdale,Florida,FL,,,"Ft. Lauderdale, Florida, FL","Ft. Lauderdale, Florida, FL",
+303,Atlanta,Georgia,United States,,,"Atlanta, GA, United States","Atlanta, GA",
+304,Tulsa,Oklahoma,United States,,,"Tulsa, OK, United States","Tulsa, OK",
+305,Austin,Texas,United States,,,"Austin, TX, United States","Austin, TX",
+306,Charlotte,North Carolina,United States,,,"Charlotte, NC, United States","Charlotte, NC",
+307,Raleigh,North Carolina,United States,,,"Raleigh, NC, United States","Raleigh, NC",
+308,Wilmington,Delaware,United States,,,"Wilmington, DE, United States","Wilmington, DE",
+309,Washington,District of Columbia,United States,,,"Washington, DC, United States","Washington, DC",
+310,Washington,,United States,,,"Washington, United States","Washington, United States",
+311,Austin,Texas,United States,,,"Austin, TX, United States","Austin, TX",
+312,Orange County,California,United States,,,"Orange County, CA, United States","Orange County, CA",
+313,Denver,Colorado,United States,,,"Denver, CO, United States","Denver, CO",
+314,Orlando,Florida,United States,,,"Orlando, FL, United States","Orlando, FL",
+315,Fort Lauderdale,Florida,United States,,,"Fort Lauderdale, FL, United States","Fort Lauderdale, FL",
+316,Seattle,Washington,United States,,,"Seattle, WA, United States","Seattle, WA",
+317,Portland,Oregon,United States,,,"Portland, OR, United States","Portland, OR",
+318,Denver,Colorado,United States,,,"Denver, CO, United States","Denver, CO",
+319,Jacksonville,Florida,United States,,,"Jacksonville, FL, United States","Jacksonville, FL",
+320,Houston,Texas,United States,,,"Houston, TX, United States","Houston, TX",
+321,London,,United Kingdom,,,"London, United Kingdom","London, United Kingdom",
+322,Wilmington,Delaware,United States,,,"Wilmington, DE, United States","Wilmington, DE",
+323,Paris,,France,,,"Paris, France","Paris, France",
+324,Budapest,,Hungary,,,"Budapest, Hungary","Budapest, Hungary",
+325,N. Myrtle Beach,South Carolina,SC,,,"N. Myrtle Beach, South Carolina, SC","N. Myrtle Beach, South Carolina, SC",
+326,Chicago,Illinois,United States,,,"Chicago, IL, United States","Chicago, IL",
+327,Louisville,Kentucky,United States,,,"Louisville, KY, United States","Louisville, KY",
+328,Sydney,,Australia,,,"Sydney, Australia","Sydney, Australia",
+329,Orlando,Florida,United States,,,"Orlando, FL, United States","Orlando, FL",
+330,Orlando,Florida,United States,,,"Orlando, FL, United States","Orlando, FL",
+331,Montreal,,Canada,,,"Montreal, Canada","Montreal, Canada",
+332,Boston,Massachusetts,United States,,,"Boston, MA, United States","Boston, MA",
+333,Wailea,,United States,,,"Wailea, United States","Wailea, United States",
+334,Boston Club,,Germany,,,"Boston Club, Germany","Boston Club, Germany",
+336,Munich,,Germany,,,"Munich, Germany","Munich, Germany",
+337,London,,United Kingdom,,,"London, United Kingdom","London, United Kingdom",
+338,Milan,,Italy,,,"Milan, Italy","Milan, Italy",
+339,Bend,Oregon,United States,,,"Bend, OR, United States","Bend, OR",
+340,Boston,Massachusetts,United States,,,"Boston, MA, United States","Boston, MA",
+422,Warsaw,,Poland,,,"Warsaw, Poland","Warsaw, Poland",
+341,Huntsville,Alabama,United States,,,"Huntsville, AL, United States","Huntsville, AL",
+342,Fort Wayne,Indiana,United States,,,"Fort Wayne, IN, United States","Fort Wayne, IN",
+343,Morristown,New Jersey,United States,,,"Morristown, NJ, United States","Morristown, NJ",
+344,Freiburg,,Germany,,,"Freiburg, Germany","Freiburg, Germany",
+345,Calgary,,Canada,,,"Calgary, Canada","Calgary, Canada",
+346,Providence,Rhode Island,United States,,,"Providence, RI, United States","Providence, RI",
+347,Vancouver,,Canada,,,"Vancouver, Canada","Vancouver, Canada",
+348,Lyon,,France,,,"Lyon, France","Lyon, France",
+349,La Grande Motte,,France,,,"La Grande Motte, France","La Grande Motte, France",
+350,Singapore,,Singapore,,,"Singapore, Singapore","Singapore, Singapore",
+351,Albany,New York,United States,,,"Albany, NY, United States","Albany, NY",
+352,London,,United Kingdom,,,"London, United Kingdom","London, United Kingdom",
+353,Washington,Maryland,United States,,,"Washington, MD, United States","Washington, MD",
+354,Manchester,,United Kingdom,,,"Manchester, United Kingdom","Manchester, United Kingdom",
+355,San antonio,Texas,United states,,,"San antonio, Texas, United states","San antonio, Texas, United states",
+356,Auckland,,New Zealand,,,"Auckland, New Zealand","Auckland, New Zealand",
+357,Gold Coast,,Australia,,,"Gold Coast, Australia","Gold Coast, Australia",
+358,Rome,,Italy,,,"Rome, Italy","Rome, Italy",
+359,Incheon,,South Korea,,,"Incheon, South Korea","Incheon, South Korea",
+360,Zürich,,Switzerland,,,"Zürich, Switzerland","Zürich, Switzerland",
+361,Melbourne,,Australia,,,"Melbourne, Australia","Melbourne, Australia",
+362,Edinburgh,,United Kingdom,,,"Edinburgh, United Kingdom","Edinburgh, United Kingdom",
+363,Toronto,,Canada,,,"Toronto, Canada","Toronto, Canada",
+364,Waterloo,,Canada,,,"Waterloo, Canada","Waterloo, Canada",
+365,Greenville,South Carolina,United States,,,"Greenville, SC, United States","Greenville, SC",
+366,Cincinnati,Ohio,United States,,,"Cincinnati, OH, United States","Cincinnati, OH",
+367,Sofia,,Bulgaria,,,"Sofia, Bulgaria","Sofia, Bulgaria",
+368,Gdańsk,,Poland,,,"Gdańsk, Poland","Gdańsk, Poland",
+369,Toulouse-Blagnac,,France,,,"Toulouse-Blagnac, France","Toulouse-Blagnac, France",
+370,Annecy,,France,,,"Annecy, France","Annecy, France",
+371,Bonn,,Germany,,,"Bonn, Germany","Bonn, Germany",
+372,Nantes,,France,,,"Nantes, France","Nantes, France",
+373,Amsterdam,,Netherlands,,,"Amsterdam, Netherlands","Amsterdam, Netherlands",
+374,Nimes,,France,,,"Nimes, France","Nimes, France",
+375,Berlin,,Germany,,,"Berlin, Germany","Berlin, Germany",
+376,Augsburg,,Germany,,,"Augsburg, Germany","Augsburg, Germany",
+377,Freiburg,,Germany,,,"Freiburg, Germany","Freiburg, Germany",
+378,Wels,,Austria,,,"Wels, Austria","Wels, Austria",
+379,Stockholm,,Sweden,,,"Stockholm, Sweden","Stockholm, Sweden",
+380,Edmonton,,Canada,,,"Edmonton, Canada","Edmonton, Canada",
+381,Toulouse,,France,,,"Toulouse, France","Toulouse, France",
+382,Jeju,,South Korea,,,"Jeju, South Korea","Jeju, South Korea",
+383,Umeå,,Sweden,,,"Umeå, Sweden","Umeå, Sweden",
+384,Nanaimo,,Canada,,,"Nanaimo, Canada","Nanaimo, Canada",
+385,Toulon,,France,,,"Toulon, France","Toulon, France",
+386,Budapest,,Hungary,,,"Budapest, Hungary","Budapest, Hungary",
+387,St. Petersburg,,Russia,,,"St. Petersburg, Russia","St. Petersburg, Russia",
+388,New York City,New York,United States,,,"New York City, NY, United States","New York City, NY",
+389,Lyon,,France,,,"Lyon, France","Lyon, France",
+390,Glasgow,,United Kingdom,,,"Glasgow, United Kingdom","Glasgow, United Kingdom",
+391,Venray,,Netherlands,,,"Venray, Netherlands","Venray, Netherlands",
+392,Newcastle,,United Kingdom,,,"Newcastle, United Kingdom","Newcastle, United Kingdom",
+393,Dundalk,,Ireland,,,"Dundalk, Ireland","Dundalk, Ireland",
+394,Rust,,Germany,,,"Rust, Germany","Rust, Germany",
+395,Bristol,,United Kingdom,,,"Bristol, United Kingdom","Bristol, United Kingdom",
+397,Lyon,,France,,,"Lyon, France","Lyon, France",
+398,Helsinki,,Finland,,,"Helsinki, Finland","Helsinki, Finland",
+399,Wellington,,New Zealand,,,"Wellington, New Zealand","Wellington, New Zealand",
+400,Stockholm,,Sweden,,,"Stockholm, Sweden","Stockholm, Sweden",
+401,St.Petersburg,,Russia,,,"St.Petersburg, Russia","St.Petersburg, Russia",
+402,Perth,,Australia,,,"Perth, Australia","Perth, Australia",
+403,Lisbon,,Portugal,,,"Lisbon, Portugal","Lisbon, Portugal",
+404,Samara,,Russia,,,"Samara, Russia","Samara, Russia",
+405,Moscow,,Russia,,,"Moscow, Russia","Moscow, Russia",
+406,Ljubljana,,Slovenia,,,"Ljubljana, Slovenia","Ljubljana, Slovenia",
+407,Sanxenxo,,Spain,,,"Sanxenxo, Spain","Sanxenxo, Spain",
+408,Hobart,,Australia,,,"Hobart, Australia","Hobart, Australia",
+409,Christchurch,,New Zealand,,,"Christchurch, New Zealand","Christchurch, New Zealand",
+410,Wels,,Austria,,,"Wels, Austria","Wels, Austria",
+411,Vienna,,Austria,,,"Vienna, Austria","Vienna, Austria",
+412,Brno,,Czechia,,,"Brno, Czechia","Brno, Czechia",
+413,Kraków,,Poland,,,"Kraków, Poland","Kraków, Poland",
+414,Ikaalinen,,Finland,,,"Ikaalinen, Finland","Ikaalinen, Finland",
+415,Kuopio,,Finland,,,"Kuopio, Finland","Kuopio, Finland",
+416,Östersund,,Sweden,,,"Östersund, Sweden","Östersund, Sweden",
+417,Kuala Lumpur,,Malaysia,,,"Kuala Lumpur, Malaysia","Kuala Lumpur, Malaysia",
+418,Liège,,Belgium,,,"Liège, Belgium","Liège, Belgium",
+419,Milan,,Italy,,,"Milan, Italy","Milan, Italy",
+420,Hamar,,Norway,,,"Hamar, Norway","Hamar, Norway",
+421,Ludwigsburg,,Germany,,,"Ludwigsburg, Germany","Ludwigsburg, Germany",
+423,Perth,,Western Australia,,,"Perth, Western Australia","Perth, Western Australia",
+424,Gothenburg,,Sweden,,,"Gothenburg, Sweden","Gothenburg, Sweden",
+25,Atlanta,Georgia,United States,33.7501275,-84.3885209,"Atlanta, GA, United States","Atlanta, GA, United States",t
+159,Singapore,,Singapore,1.352083,103.819836,"Singapore, Singapore","Singapore, Singapore",t
+244,Singapore,,Singapore,1.352083,103.819836,"Singapore, Singapore","Singapore, Singapore",t
+231,Stockholm,,Sweden,59.3251172,18.0710935,"Stockholm, Sweden","Stockholm, Sweden",t
+161,Albany,New York,United States,42.6518095,-73.75447070000001,"Albany, NY","Albany, NY",t
+191,Amsterdam,North Holland,Netherlands,52.3675734,4.9041389,"Amsterdam, North Holland, Netherlands","Amsterdam, North Holland, Netherlands",t
+227,Venray,Limburg,Netherlands,51.5256257,5.9736992,"Venray, Limburg, Netherlands","Venray, Limburg, Netherlands",t
