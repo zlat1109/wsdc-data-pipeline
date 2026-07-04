@@ -35,6 +35,8 @@ LOCATION_ID_MERGE_MAP: dict[str, str] = {
     "382": "213",
     # Montreal duplicate
     "331": "86",
+    # N. Myrtle Beach abbreviation → North Myrtle Beach (canonical id 325)
+    "111": "325",
     # New York City → New York
     "224": "7",
     # Perth state-as-country typo
@@ -89,6 +91,8 @@ LOCATION_STRING_ALIASES: dict[str, str] = {
     "perth, western australia, australia": "253",
     "phoenix, usa": "3",
     "london, england, united kingdom": "107",
+    "north myrtle beach, sc, united states": "325",
+    "n. myrtle beach, sc, united states": "325",
 }
 
 LOCATION_ID_CORRECTIONS: dict[int, LocationPatch] = {
@@ -215,11 +219,13 @@ LOCATION_ID_CORRECTIONS: dict[int, LocationPatch] = {
         'event_location_standardized': 'Düsseldorf, Germany',
     },
     325: {
-        'event_city': 'N. Myrtle Beach',
+        'event_city': 'North Myrtle Beach',
         'event_state': 'South Carolina',
         'event_country': 'United States',
-        'event_location': 'N. Myrtle Beach, SC, United States',
-        'event_location_standardized': 'N. Myrtle Beach, SC',
+        'event_location': 'North Myrtle Beach, SC, United States',
+        'event_location_standardized': 'North Myrtle Beach, SC',
+        'latitude': '33.8160058',
+        'longitude': '-78.680016',
     },
     353: {
         'event_city': 'Washington',

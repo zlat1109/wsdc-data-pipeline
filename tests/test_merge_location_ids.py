@@ -27,7 +27,23 @@ def test_apply_merges_returns_zero_when_sources_missing():
     )
 
 
-def test_apply_location_id_corrections_skips_missing_rows():
+def test_apply_location_id_corrections_parameter_order():
+    """SET cols, then location_id, then DISTINCT cols — not location_id last."""
+    conn = MagicMock()
+    cur = MagicMock()
+    cur.rowcount = 0
+    conn.cursor.return_value.__enter__.return_value = cur
+
+    merge_script.apply_location_id_corrections(conn)
+
+    _, params = cur.execute.call_args_list[0][0]
+    first_id = sorted(merge_script.LOCATION_ID_CORRECTIONS)[0]
+    patch = merge_script.LOCATION_ID_CORRECTIONS[first_id]
+    db_values = [None if patch[col] == "" else patch[col] for col in patch]
+    assert params == db_values + [first_id] + db_values
+
+
+def test_apply_location_id_corrections_runs_for_all_patches():
     conn = MagicMock()
     cur = MagicMock()
     cur.rowcount = 0

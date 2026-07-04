@@ -18,6 +18,13 @@ def test_amsterdam_and_anaheim_merges_configured():
     assert LOCATION_ID_MERGE_MAP["334"] == "127"
 
 
+def test_north_myrtle_beach_spelling_merge():
+    assert LOCATION_ID_MERGE_MAP["111"] == "325"
+    patch = LOCATION_ID_CORRECTIONS[325]
+    assert patch["event_city"] == "North Myrtle Beach"
+    assert patch.get("latitude") and patch.get("longitude")
+
+
 def test_non_us_corrections_clear_event_state():
     for loc_id in (191, 107, 234, 226, 148, 105, 127):
         patch = LOCATION_ID_CORRECTIONS[loc_id]

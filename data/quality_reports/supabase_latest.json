@@ -124,11 +124,11 @@
       "name": "city_equals_country",
       "category": "location",
       "severity": "warn",
-      "value": 1,
+      "value": 0,
       "max_value": 0,
-      "ok": false,
-      "description": "city=country usually geocode bug; Singapore ids 159/244 whitelisted.",
-      "fix_hint": "LOCATION_ID_CORRECTIONS or city-state allowlist in quality_audit"
+      "ok": true,
+      "description": "city=country usually geocode bug; city-states (Singapore) allowed.",
+      "fix_hint": "LOCATION_ID_CORRECTIONS or LOCATION_ID_MERGE_MAP + consolidate_location_ids"
     },
     {
       "name": "double_space_event_location",
@@ -179,14 +179,24 @@
       "ok": true,
       "description": "Events with results must have typical_location in catalog.",
       "fix_hint": "rebuild_event_catalog + enrich_known_events"
+    },
+    {
+      "name": "non_us_event_state",
+      "category": "location",
+      "severity": "error",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "event_state is only valid for United States locations.",
+      "fix_hint": "transform/geography/normalize.py + scripts/merge_location_ids.py"
     }
   ],
   "summary": {
-    "total": 18,
-    "passed": 17,
+    "total": 19,
+    "passed": 19,
     "errors": 0,
-    "warnings": 1
+    "warnings": 0
   },
-  "generated_at": "2026-07-04T07:39:53.002842+00:00",
+  "generated_at": "2026-07-04T11:02:27.742193+00:00",
   "scope": "full"
 }

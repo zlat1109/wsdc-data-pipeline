@@ -31,6 +31,8 @@ def test_build_location_lookup_includes_venue_aliases():
     assert lookup["boston club, germany"] == "127"
     assert lookup["amsterdam, netherlands"] == "191"
     assert lookup["london, england, united kingdom"] == "107"
+    assert lookup["north myrtle beach, sc, united states"] == "325"
+    assert lookup["n. myrtle beach, sc, united states"] == "325"
 
 
 def test_consolidate_location_ids_merges_duplicate_singapore_rows():
