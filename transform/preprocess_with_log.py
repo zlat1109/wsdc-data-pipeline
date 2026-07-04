@@ -7,12 +7,17 @@ from typing import Any
 import pandas as pd
 
 from transform.data_preprocessing import (
+    dedupe_result_rows,
     normalize_dates,
     normalize_results_dates,
     standardize_result,
 )
 from transform.geography import normalize_geography
-from transform.geography.resolve import consolidate_location_ids, resolve_result_location_ids
+from transform.geography.resolve import (
+    consolidate_location_ids,
+    dedupe_location_info,
+    resolve_result_location_ids,
+)
 from transform.knowledge import (
     EVENT_LOCATION_EXACT_CORRECTIONS,
     EVENT_LOCATION_SUBSTRING_CORRECTIONS,
@@ -333,8 +338,35 @@ def preprocess_with_log(data: dict[str, pd.DataFrame]) -> tuple[dict[str, pd.Dat
                 merged_rows,
                 "location_id_fix",
             )
-        result["dancers_results_info"] = merged_results
-        result["location_info"] = merged_locations
+        deduped_results, deduped_locations, loc_merged = dedupe_location_info(
+            merged_results, merged_locations
+        )
+        if loc_merged:
+            tracker.record(
+                "DEDUPE_LOCATION_INFO",
+                "location_info",
+                "location_id",
+                "duplicate canonical place",
+                "lowest location_id per city",
+                loc_merged,
+                "location_id_fix",
+            )
+        result["dancers_results_info"] = deduped_results
+        result["location_info"] = deduped_locations
+
+    if "dancers_results_info" in result:
+        deduped, dropped = dedupe_result_rows(result["dancers_results_info"])
+        if dropped:
+            tracker.record(
+                "DEDUPE_RESULT_ROWS",
+                "dancers_results_info",
+                "*",
+                "duplicate row",
+                "keep first",
+                dropped,
+                "dedupe",
+            )
+        result["dancers_results_info"] = deduped
 
     if "dancer_role_info" in data:
         df = data["dancer_role_info"].copy()

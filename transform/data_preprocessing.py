@@ -187,6 +187,34 @@ def results_date_parse_rate(df: pd.DataFrame) -> float:
 # ФУНКЦИИ СТАНДАРТИЗАЦИИ ФОРМАТОВ
 # ═══════════════════════════════════════════════════════════════════
 
+# Columns that define a unique competitive result row (pre-export contract).
+RESULT_ROW_DEDUP_COLUMNS: tuple[str, ...] = (
+    "dancer_id",
+    "event_dance",
+    "event_competition",
+    "event_role",
+    "event_name_id",
+    "event_name",
+    "event_result",
+    "event_points",
+    "event_year",
+    "event_month",
+    "location_id",
+    "event_year_and_month",
+    "event_location",
+)
+
+
+def dedupe_result_rows(df: pd.DataFrame) -> tuple[pd.DataFrame, int]:
+    """Drop exact duplicate competitive result rows (API may emit the same placement twice)."""
+    cols = [c for c in RESULT_ROW_DEDUP_COLUMNS if c in df.columns]
+    if not cols or df.empty:
+        return df, 0
+    before = len(df)
+    out = df.drop_duplicates(subset=cols, keep="first").reset_index(drop=True)
+    return out, before - len(out)
+
+
 def standardize_result(result: str) -> Optional[str]:
     """
     Стандартизирует формат результата
