@@ -67,7 +67,7 @@ Check definitions live in `db/quality_checks.py` (single source of truth for mon
 | `editions_null_location_id` | Event editions derive location from results mode location_id. |
 | `all_caps_cities` | ALL CAPS city names (CHICAGO, TOULOUSE, WILMINGTON DEL). |
 | `location_id_multiple_strings` | One location_id must not have conflicting event_location strings. |
-| `city_equals_country` | city=country usually geocode bug; Singapore ids 159/244 whitelisted. |
+| `city_equals_country` | city=country usually geocode bug; city-states (Singapore) allowed. |
 | `double_space_event_location` | Double spaces in location strings (Moscow,  Russia). |
 | `catalog_duplicate_city_token` | Duplicated city in typical_location (Madrid, Madrid, Spain). |
 | `phantom_ids_not_merged` | Phantom registry ids must be merged/inactive (Swing&Snow, Grand Nationals). |
