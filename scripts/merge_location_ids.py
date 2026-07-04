@@ -30,6 +30,8 @@ FK_TABLES = (
     ("core.event_instances", "location_id"),
 )
 
+_NUMERIC_COLUMNS = frozenset({"latitude", "longitude"})
+
 _US_COUNTRY_SQL = us_country_sql_in_clause()
 
 
@@ -54,8 +56,12 @@ def apply_location_id_corrections(conn) -> int:
         for location_id, patch in sorted(LOCATION_ID_CORRECTIONS.items()):
             columns = list(patch.keys())
             db_values = [None if patch[col] == "" else patch[col] for col in columns]
-            assignments = [f"{col} = %s" for col in columns]
-            distinct = [f"{col} IS DISTINCT FROM %s" for col in columns]
+            assignments: list[str] = []
+            distinct: list[str] = []
+            for col in columns:
+                cast = "::numeric" if col in _NUMERIC_COLUMNS else ""
+                assignments.append(f"{col} = %s{cast}")
+                distinct.append(f"{col} IS DISTINCT FROM %s{cast}")
             cur.execute(
                 f"""
                 UPDATE core.locations
@@ -63,7 +69,7 @@ def apply_location_id_corrections(conn) -> int:
                 WHERE location_id = %s
                   AND ({" OR ".join(distinct)})
                 """,
-                db_values + db_values + [location_id],
+                db_values + [location_id] + db_values,
             )
             updated += cur.rowcount
     return updated
