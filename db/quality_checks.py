@@ -11,8 +11,6 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Literal
 
-from transform.geography.constants import us_country_sql_in_clause
-
 Severity = Literal["error", "warn", "info"]
 
 # City-states where event_city = event_country is valid (sync with knowledge/locations.py).
@@ -23,7 +21,14 @@ _CITY_STATE_COUNTRY_SQL = ", ".join(
     for country in sorted(_CITY_STATE_COUNTRIES)
 )
 
-_US_COUNTRY_SQL = us_country_sql_in_clause()
+# Keep in sync with transform.geography.constants.US_COUNTRY_VALUES
+_US_COUNTRY_VALUES: frozenset[str] = frozenset(
+    {"United States", "USA", "US", "U.S.", "U.S.A."}
+)
+_US_COUNTRY_SQL = ", ".join(
+    f"'{country.replace(chr(39), chr(39) * 2)}'"
+    for country in sorted(_US_COUNTRY_VALUES)
+)
 
 
 @dataclass(frozen=True)
