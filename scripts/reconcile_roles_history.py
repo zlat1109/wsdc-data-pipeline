@@ -107,3 +107,52 @@ WHERE NOT EXISTS (
       AND {_sig("h.")} = {_sig("c.")}
 )
 """
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument("--dry-run", action="store_true")
+    group.add_argument("--apply", action="store_true")
+    args = parser.parse_args()
+
+    today = date.today()
+
+    with connect() as conn:
+        with conn.cursor() as cur:
+            cur.execute(STALE_COUNT_SQL)
+            stale = int(cur.fetchone()[0])
+            cur.execute(MISSING_COUNT_SQL)
+            missing = int(cur.fetchone()[0])
+
+        print(f"Stale open role intervals to close: {stale}")
+        print(f"Missing open role intervals to insert: {missing}")
+
+        if args.dry_run:
+            print("\nDry run — no changes applied.")
+            return
+
+        with conn.cursor() as cur:
+            cur.execute(
+                "SELECT COALESCE(MAX(run_id), 1) FROM history.parse_runs WHERE status = 'success'"
+            )
+            run_id = int(cur.fetchone()[0])
+            cur.execute(CLOSE_STALE_SQL, {"today": today})
+            closed_stale = cur.rowcount
+            cur.execute(CLOSE_ORPHAN_SQL, {"today": today})
+            closed_orphan = cur.rowcount
+            cur.execute(INSERT_MISSING_SQL, {"today": today, "run_id": run_id})
+            inserted = cur.rowcount
+            cur.execute(STALE_COUNT_SQL)
+            remaining = int(cur.fetchone()[0])
+        conn.commit()
+
+    print(
+        f"\nReconcile complete. Closed {closed_stale + closed_orphan:,} "
+        f"(stale={closed_stale:,}, orphan={closed_orphan:,}), "
+        f"inserted {inserted:,}, remaining drift {remaining:,}."
+    )
+
+
+if __name__ == "__main__":
+    main()

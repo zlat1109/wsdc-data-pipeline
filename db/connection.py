@@ -90,8 +90,12 @@ def get_connection_kwargs() -> dict[str, Any]:
 
 
 def connect():
-    """Open a psycopg connection using .env settings."""
-    return psycopg.connect(**get_connection_kwargs())
+    """Open a psycopg connection using .env settings.
+
+    prepare_threshold=None avoids DuplicatePreparedStatement errors when
+    Supabase PgBouncer (transaction pool mode) reuses server connections.
+    """
+    return psycopg.connect(prepare_threshold=None, **get_connection_kwargs())
 
 
 def load_database_url() -> str:
