@@ -11,13 +11,14 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Literal
 
-from transform.knowledge.locations import CITY_STATE_COUNTRIES
-
 Severity = Literal["error", "warn", "info"]
+
+# City-states where event_city = event_country is valid (sync with knowledge/locations.py).
+_CITY_STATE_COUNTRIES: frozenset[str] = frozenset({"Singapore"})
 
 _CITY_STATE_COUNTRY_SQL = ", ".join(
     f"'{country.replace(chr(39), chr(39) * 2)}'"
-    for country in sorted(CITY_STATE_COUNTRIES)
+    for country in sorted(_CITY_STATE_COUNTRIES)
 )
 
 
