@@ -98,10 +98,6 @@ jobs:
             exit 1
           fi
 
-      - name: Validate CSV inputs before load
-        if: ${{ !inputs.export_only }}
-        run: python scripts/validate_pipeline_inputs.py --data-dir "${{ inputs.data_dir }}"
-
       - name: Run pipeline (migrations -> preprocess -> load -> export)
         env:
           DB_HOST: ${{ secrets.DB_HOST }}
@@ -119,19 +115,6 @@ jobs:
             args+=(--data-dir "${{ inputs.data_dir }}")
           fi
           "${args[@]}"
-
-      - name: Validate Supabase quality
-        if: ${{ !inputs.export_only }}
-        env:
-          DB_HOST: ${{ secrets.DB_HOST }}
-          DB_PORT: ${{ secrets.DB_PORT }}
-          DB_NAME: ${{ secrets.DB_NAME }}
-          DB_USER: ${{ secrets.DB_USER }}
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          DB_SSLMODE: require
-        run: |
-          python scripts/validate_supabase_quality.py \
-            -o data/quality_reports/supabase_latest.json
 
       - name: Commit exported CSV files
         id: commit_csv

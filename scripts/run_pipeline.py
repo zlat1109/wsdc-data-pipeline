@@ -71,6 +71,7 @@ def main() -> None:
         run([py, "scripts/reconcile_points_history.py", "--apply"])
         run([py, "scripts/reconcile_roles_history.py", "--apply"])
         run([py, "scripts/reconcile_names_history.py", "--apply"])
+        run([py, "scripts/repair_divisions.py", "--apply"])
         run([py, "scripts/repair_locations.py"])
 
     run([py, "export.py"])
