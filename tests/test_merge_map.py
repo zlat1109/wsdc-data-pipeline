@@ -18,6 +18,12 @@ def test_apply_merge_event_id_map_without_tracker():
     assert out.loc[0, "event_name_id"] == 47
 
 
+def test_apply_merge_event_id_map_string_dtype_column():
+    df = pd.DataFrame({"event_name_id": pd.Series(["66"], dtype="string")})
+    out = apply_merge_event_id_map(df)
+    assert out.loc[0, "event_name_id"] == "47"
+
+
 def test_apply_merge_event_id_map_records_tracker():
     df = pd.DataFrame({"event_name_id": [66, 66]})
     tracker = PreprocessTracker()
