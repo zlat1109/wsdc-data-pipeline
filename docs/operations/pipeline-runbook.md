@@ -55,6 +55,8 @@ Parser output and preprocess input treat **all columns as strings** (`cloud_pars
 | Sync | Supabase fresh, git CSV stale | [data-sync.md](data-sync.md); run `export.py` and commit |
 | Load | `names_history_drift` > 0 | `scripts/reconcile_names_history.py --apply` |
 | Load | blank dancer names after parse | Check coalesce in `promote_core.sql`; extended check `dancers_empty_name` |
+| Supabase | duplicate result rows / 400+ locations | `scripts/dedupe_core_data.py --apply` — see [repair-scripts.md](repair-scripts.md#dedupe_core_datapy) |
+| Export | row count > unique result keys | Run dedupe on Supabase or wait for preprocess on next full parse (PR #14+) |
 
 ## Multi-machine
 

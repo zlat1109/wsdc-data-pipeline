@@ -58,6 +58,8 @@ python scripts/validate_supabase_quality.py --core-only   # same as monitor
 
 Check definitions live in `db/quality_checks.py` (single source of truth for monitor + validate).
 
+**Duplicate results / bloated locations** are not separate SQL checks (exact duplicates do not break invariants). Detect via reconciliation or row counts, then repair with [repair-scripts.md](repair-scripts.md#dedupe_core_datapy) (`dedupe_core_data.py`) without a full parse. After PR #14, preprocess prevents new duplicates on load.
+
 <!-- docs-sync:extended-quality-checks -->
 | Extended check | Description |
 |----------------|-------------|

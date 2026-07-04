@@ -50,7 +50,10 @@ Applied in preprocess and `db/enrich_known_events.py` during load.
 1. Resolve location strings via `resolve.py`
 2. Apply id-based corrections from knowledge
 3. Standardize labels for `location_info.csv`
-4. Quality audit flags unmapped cities
+4. **Dedupe** duplicate result rows and collapse duplicate location ids (same city, multiple `location_id`)
+5. Quality audit flags unmapped cities
+
+Preprocess dedupe runs on every load (PR #14+). For data **already in Supabase** loaded before that fix, use `scripts/dedupe_core_data.py` — see [../operations/repair-scripts.md](../operations/repair-scripts.md#dedupe_core_datapy).
 
 ## Export
 
@@ -58,13 +61,15 @@ Applied in preprocess and `db/enrich_known_events.py` during load.
 
 `export.geo_events` adds `geo_key` / `geo_event_key` at event brand level (migration 019).
 
-## Repair script
+## Repair scripts
 
 ```bash
 python scripts/repair_locations.py
+python scripts/dedupe_core_data.py --dry-run   # duplicate results / bloated locations only
+python scripts/dedupe_core_data.py --apply
 ```
 
-Runs enrich + catalog rebuild for corrected ids.
+`repair_locations.py` runs enrich + catalog rebuild for corrected ids. `dedupe_core_data.py` is a targeted in-place dedupe; do not use it for NULL `location_id` or event-id merges.
 
 ## Related
 

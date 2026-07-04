@@ -15,6 +15,9 @@ python scripts/repair_divisions.py --apply
 
 python scripts/repair_locations.py
 
+python scripts/dedupe_core_data.py --dry-run    # duplicate results / bloated locations (see below)
+python scripts/dedupe_core_data.py --apply
+
 python scripts/repair_results_location.py --dry-run   # if location_id gaps remain
 python scripts/repair_results_location.py --apply
 
@@ -49,6 +52,7 @@ Note: `repair_locations.py` has no `--dry-run`; it always applies corrections.
 | `merge_event_ids.py` | Remap `core.results.event_id` (geo gate) | Yes |
 | `repair_divisions.py` | Normalize All-Stars, Champions, Masters | Yes |
 | `repair_locations.py` | Apply location corrections + enrich | Yes |
+| `dedupe_core_data.py` | Remove duplicate results + collapse duplicate locations | Yes |
 | `repair_results_location.py` | Backfill missing `location_id` on results | Yes |
 | `cleanup_event_catalog.py` | Phantom ids, inactive empty catalog rows | Yes |
 | `reconcile_points_history.py` | Fix SCD2 drift vs core snapshot | Yes |
@@ -59,6 +63,36 @@ Note: `repair_locations.py` has no `--dry-run`; it always applies corrections.
 | `backfill.py` | Initial CSV → staging → core + full history backfill | Yes |
 | `close_parse_runs.py` | Close stuck `running` parse_runs | Yes |
 | `monitor_data_quality.py` | SQL invariant checks | No |
+
+## dedupe_core_data.py
+
+In-place cleanup for **already loaded** Supabase data — same rules as preprocess (`dedupe_result_rows` + `dedupe_location_info` from PR #14). Does **not** re-fetch dancers from WSDC.
+
+### When to use
+
+| Situation | Use this script? |
+|-----------|------------------|
+| `core.results` has exact duplicate rows (export row count > unique competitive keys; e.g. +77 rows) | **Yes** |
+| `core.locations` is inflated (many `location_id` for the same city: Phoenix USA variants, London UK variants) | **Yes** |
+| Fix needed **without** waiting for a full parse / full reload | **Yes** |
+| After **full parse on `main` with PR #14+** (preprocess dedupes before load) | **No** — preventive only |
+| Missing / NULL `location_id` on results | **No** — use `repair_results_location.py` |
+| Singapore ids 244/350 only | **No** — use `merge_location_ids.py` (this script also handles broader city dedupe) |
+| Wrong `event_id` / event name splits | **No** — use `merge_event_ids.py` |
+
+### What it does
+
+1. Deletes duplicate `core.results` rows (keeps lowest `result_id` per business key: dancer, event, division, role, date, result, points, location).
+2. Remaps `location_id` on `core.results`, `core.event_instances`, `core.event_editions` to canonical ids.
+3. Deletes redundant `core.locations` rows.
+4. Rebuilds event catalog + `ANALYZE`.
+
+```bash
+python scripts/dedupe_core_data.py --dry-run
+python scripts/dedupe_core_data.py --apply
+python scripts/validate_supabase_quality.py
+python export.py --output-dir data   # optional: refresh committed CSVs
+```
 
 ## merge_event_ids.py
 

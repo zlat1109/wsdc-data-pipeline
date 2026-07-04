@@ -24,6 +24,9 @@ python scripts/validate_pipeline_inputs.py --data-dir ./data
 
 # Post-load checks
 python scripts/monitor_data_quality.py
+
+# In-place dedupe (duplicate results / bloated locations; no full parse)
+python scripts/dedupe_core_data.py --dry-run
 ```
 
 ## Legacy doc locations
