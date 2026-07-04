@@ -7,6 +7,7 @@ from typing import Any
 
 import pandas as pd
 
+from transform.csv_cells import cell_str
 from transform.normalize import normalize_dancer_name
 
 UPDATE_DATE = date.today().isoformat()
@@ -25,7 +26,7 @@ def extract_role_row(dancer_data: dict[str, Any]) -> dict[str, Any]:
         non_dominate_required = non_dominate_allowed = non_dominate_recommended = ""
 
     return {
-        "dancer_id": dancer_data.get("dancer_wsdcid", ""),
+        "dancer_id": cell_str(dancer_data.get("dancer_wsdcid", "")),
         "dancer_name": normalize_dancer_name(f"{dancer_first} {dancer_last}") or "",
         "dominate_role": dancer_data.get("short_dominate_role", ""),
         "dominate_required": dancer_data.get("dominate_required", ""),
@@ -46,7 +47,7 @@ def extract_role_row(dancer_data: dict[str, Any]) -> dict[str, Any]:
 
 def extract_points_rows(dancer_data: dict[str, Any]) -> list[list[Any]]:
     rows: list[list[Any]] = []
-    dancer_id = dancer_data.get("dancer_wsdcid", "")
+    dancer_id = cell_str(dancer_data.get("dancer_wsdcid", ""))
     for role in ("leader", "follower"):
         role_data = dancer_data.get(role)
         if not isinstance(role_data, dict):
@@ -64,7 +65,7 @@ def extract_points_rows(dancer_data: dict[str, Any]) -> list[list[Any]]:
                         role,
                         dance,
                         level,
-                        level_data.get("total_points"),
+                        cell_str(level_data.get("total_points")),
                         UPDATE_DATE,
                     ])
     return rows
@@ -72,7 +73,7 @@ def extract_points_rows(dancer_data: dict[str, Any]) -> list[list[Any]]:
 
 def extract_results_rows(dancer_data: dict[str, Any]) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
-    dancer_id = dancer_data.get("dancer_wsdcid", "")
+    dancer_id = cell_str(dancer_data.get("dancer_wsdcid", ""))
     for event_role, role_data in dancer_data.items():
         if event_role not in ("leader", "follower") or not isinstance(role_data, dict):
             continue
@@ -106,15 +107,15 @@ def extract_results_rows(dancer_data: dict[str, Any]) -> list[dict[str, Any]]:
                         # location_id against location_info. The API does NOT
                         # return a numeric location_id, so both are captured here
                         # and location_id is filled later in preprocess.
-                        "event_name_id": event.get("id", ""),
-                        "event_name": event.get("name", ""),
-                        "event_location": event.get("location", ""),
-                        "event_result": competition.get("result", ""),
-                        "event_points": competition.get("points", ""),
-                        "location_id": event.get("location_id", ""),
-                        "event_year": event.get("year", ""),
-                        "event_month": event.get("month", ""),
-                        "event_year_and_month": event.get("date", ""),
+                        "event_name_id": cell_str(event.get("id", "")),
+                        "event_name": cell_str(event.get("name", "")),
+                        "event_location": cell_str(event.get("location", "")),
+                        "event_result": cell_str(competition.get("result", "")),
+                        "event_points": cell_str(competition.get("points", "")),
+                        "location_id": cell_str(event.get("location_id", "")),
+                        "event_year": cell_str(event.get("year", "")),
+                        "event_month": cell_str(event.get("month", "")),
+                        "event_year_and_month": cell_str(event.get("date", "")),
                     })
     return rows
 

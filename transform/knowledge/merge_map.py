@@ -7,6 +7,7 @@ from typing import TYPE_CHECKING
 import pandas as pd
 
 from transform.knowledge.event_aliases import MERGE_EVENT_ID_MAP
+from transform.pandas_utils import assign_column_values
 
 if TYPE_CHECKING:
     from transform.preprocess_tracker import PreprocessTracker
@@ -31,7 +32,6 @@ def apply_merge_event_id_map(
 
     out = df.copy()
     ids = pd.to_numeric(out[column], errors="coerce")
-    string_column = pd.api.types.is_string_dtype(out[column].dtype)
     for source_id, canonical_id in mapping.items():
         mask = ids == source_id
         count = int(mask.sum())
@@ -47,7 +47,6 @@ def apply_merge_event_id_map(
                 count,
                 "known_map",
             )
-        value: int | str = str(canonical_id) if string_column else canonical_id
-        out.loc[mask, column] = value
+        assign_column_values(out, column, mask, canonical_id)
         ids = pd.to_numeric(out[column], errors="coerce")
     return out

@@ -38,10 +38,15 @@ Recommended manual full-parse inputs:
 - `export_only=false`
 - Run `validate_pipeline_inputs` locally first if CSVs were produced elsewhere
 
+## CSV dtype contract (cloud_parse → preprocess)
+
+Parser output and preprocess input treat **all columns as strings** (`cloud_parse` → `astype(str)`; `load_csv_bundle(dtype=str)`). Preprocess must not assign bare Python `int`/`float` into StringDtype columns — use `transform.pandas_utils.assign_column_values` or `cell_str()` in `parser/extract_api.py`.
+
 ## Known failure modes
 
 | Stage | Symptom | Fix |
 |-------|---------|-----|
+| Preprocess | `Invalid value '47' for dtype 'str'` | Fixed in `merge_map` + `pandas_utils`; ensure ID fields are strings end-to-end |
 | Load | `dancer_roles_dancer_id_fkey` | Fixed in `promote_core.sql`; run `validate_pipeline_inputs` |
 | Load | invalid `event_role` / `role` | Fix in preprocess or source CSV |
 | CI commit | `git push rejected (fetch first)` | `git pull --rebase` before push in `full-parse.yml` |
