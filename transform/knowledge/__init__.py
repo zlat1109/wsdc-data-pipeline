@@ -21,8 +21,12 @@ from transform.knowledge.event_aliases import (
 )
 from transform.knowledge.merge_map import apply_merge_event_id_map
 from transform.knowledge.locations import (
+    CITY_STATE_COUNTRIES,
     LOCATION_ID_CORRECTIONS,
+    LOCATION_ID_MERGE_MAP,
     LOCATION_INFO_CITY_CORRECTIONS,
+    LOCATION_STRING_ALIASES,
+    SINGAPORE_CANONICAL_LOCATION_ID,
     LocationPatch,
 )
 
@@ -33,8 +37,12 @@ __all__ = [
     'EVENT_NAME_NORMALIZATION',
     'EVENT_NAME_VARIANT_TO_CATALOG',
     'KNOWN_EVENT_METADATA',
+    'CITY_STATE_COUNTRIES',
     'LOCATION_ID_CORRECTIONS',
+    'LOCATION_ID_MERGE_MAP',
     'LOCATION_INFO_CITY_CORRECTIONS',
+    'LOCATION_STRING_ALIASES',
+    'SINGAPORE_CANONICAL_LOCATION_ID',
     'MERGE_EVENT_ID_MAP',
     'LocationPatch',
     'RESULT_TO_CATALOG_EVENT_NAME',

@@ -11,7 +11,14 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Literal
 
+from transform.knowledge.locations import CITY_STATE_COUNTRIES
+
 Severity = Literal["error", "warn", "info"]
+
+_CITY_STATE_COUNTRY_SQL = ", ".join(
+    f"'{country.replace(chr(39), chr(39) * 2)}'"
+    for country in sorted(CITY_STATE_COUNTRIES)
+)
 
 
 @dataclass(frozen=True)
@@ -229,17 +236,17 @@ EXTENDED_CHECKS: tuple[QualityCheck, ...] = (
     ),
     QualityCheck(
         name="city_equals_country",
-        sql="""
+        sql=f"""
         SELECT count(*) FROM core.locations
         WHERE trim(event_city) = trim(event_country)
           AND trim(event_city) <> ''
-          AND location_id NOT IN (159, 244)
+          AND trim(event_country) NOT IN ({_CITY_STATE_COUNTRY_SQL})
         """,
         max_value=0,
         severity="warn",
         category="location",
-        description="city=country usually geocode bug; Singapore ids 159/244 whitelisted.",
-        fix_hint="LOCATION_ID_CORRECTIONS or city-state allowlist in quality_audit",
+        description="city=country usually geocode bug; city-states (Singapore) allowed.",
+        fix_hint="LOCATION_ID_CORRECTIONS or LOCATION_ID_MERGE_MAP + consolidate_location_ids",
     ),
     QualityCheck(
         name="double_space_event_location",

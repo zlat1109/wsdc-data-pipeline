@@ -17,6 +17,10 @@ from transform.geography.normalize import (
     parse_us_state_from_location_text,
     standardize_country,
 )
+from transform.knowledge.locations import (
+    LOCATION_ID_MERGE_MAP,
+    LOCATION_STRING_ALIASES,
+)
 
 LOCATION_COLUMNS = [
     "location_id",
@@ -77,7 +81,35 @@ def build_location_lookup(location_df: pd.DataFrame) -> dict[str, str]:
             key = _norm(row.get(col)).lower()
             if key and key not in lookup:
                 lookup[key] = loc_id
+    for key, loc_id in LOCATION_STRING_ALIASES.items():
+        lookup.setdefault(key, loc_id)
     return lookup
+
+
+def consolidate_location_ids(
+    results_df: pd.DataFrame,
+    location_df: pd.DataFrame,
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Remap duplicate location_id rows to canonical ids and drop merged location_info rows."""
+    if results_df is None or results_df.empty:
+        return results_df, location_df
+    if not LOCATION_ID_MERGE_MAP:
+        return results_df, location_df
+
+    results_df = results_df.copy()
+    if "location_id" in results_df.columns:
+        loc_col = results_df["location_id"].astype(str).str.strip()
+        for old_id, new_id in LOCATION_ID_MERGE_MAP.items():
+            results_df.loc[loc_col == old_id, "location_id"] = new_id
+
+    if location_df is None or location_df.empty or "location_id" not in location_df.columns:
+        return results_df, location_df
+
+    location_df = location_df.copy()
+    drop_ids = set(LOCATION_ID_MERGE_MAP.keys())
+    keep = ~location_df["location_id"].astype(str).str.strip().isin(drop_ids)
+    location_df = location_df.loc[keep].reset_index(drop=True)
+    return results_df, location_df
 
 
 def resolve_result_location_ids(

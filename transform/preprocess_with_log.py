@@ -12,12 +12,14 @@ from transform.data_preprocessing import (
     standardize_result,
 )
 from transform.geography import normalize_geography
-from transform.geography.resolve import resolve_result_location_ids
+from transform.geography.resolve import consolidate_location_ids, resolve_result_location_ids
 from transform.knowledge import (
     EVENT_LOCATION_EXACT_CORRECTIONS,
     EVENT_LOCATION_SUBSTRING_CORRECTIONS,
     EVENT_NAME_LOCATION_OVERRIDES,
     EVENT_NAME_NORMALIZATION,
+    LOCATION_ID_MERGE_MAP,
+    SINGAPORE_CANONICAL_LOCATION_ID,
     apply_event_location_patches,
     backfill_empty_result_event_locations,
     event_location_patches,
@@ -303,8 +305,36 @@ def preprocess_with_log(data: dict[str, pd.DataFrame]) -> tuple[dict[str, pd.Dat
                 filled,
                 "location_id_fix",
             )
-        result["dancers_results_info"] = resolved_results
-        result["location_info"] = resolved_locations
+        before_merge = (
+            resolved_results["location_id"].astype(str).str.strip().isin(
+                set(LOCATION_ID_MERGE_MAP.keys())
+            ).sum()
+            if "location_id" in resolved_results.columns
+            else 0
+        )
+        merged_results, merged_locations = consolidate_location_ids(
+            resolved_results, resolved_locations
+        )
+        after_merge = (
+            merged_results["location_id"].astype(str).str.strip().isin(
+                set(LOCATION_ID_MERGE_MAP.keys())
+            ).sum()
+            if "location_id" in merged_results.columns
+            else 0
+        )
+        merged_rows = int(before_merge) - int(after_merge)
+        if merged_rows:
+            tracker.record(
+                "CONSOLIDATE_LOCATION_ID",
+                "dancers_results_info",
+                "location_id",
+                "duplicate Singapore ids",
+                f"→ {SINGAPORE_CANONICAL_LOCATION_ID}",
+                merged_rows,
+                "location_id_fix",
+            )
+        result["dancers_results_info"] = merged_results
+        result["location_info"] = merged_locations
 
     if "dancer_role_info" in data:
         df = data["dancer_role_info"].copy()
