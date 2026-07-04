@@ -47,29 +47,37 @@ Applied in preprocess and `db/enrich_known_events.py` during load.
 
 ## Preprocess flow
 
-1. Resolve location strings via `resolve.py`
-2. Apply id-based corrections from knowledge
-3. Standardize labels for `location_info.csv`
-4. **Dedupe** duplicate result rows and collapse duplicate location ids (same city, multiple `location_id`)
+1. Resolve location strings via `resolve.py` (`LOCATION_STRING_ALIASES` + lookup table)
+2. Apply id-based corrections from knowledge (forced overwrite for known `location_id`)
+3. Standardize labels for `location_info.csv`; **clear `event_state` for non-US rows**
+4. **Dedupe** duplicate result rows and collapse duplicate location ids (`LOCATION_ID_MERGE_MAP`)
 5. Quality audit flags unmapped cities
 
 Preprocess dedupe runs on every load (PR #14+). For data **already in Supabase** loaded before that fix, use `scripts/dedupe_core_data.py` — see [../operations/repair-scripts.md](../operations/repair-scripts.md#dedupe_core_datapy).
+
+## Location ID merge map
+
+`LOCATION_ID_MERGE_MAP` remaps duplicate registry ids to canonical rows during preprocess (`consolidate_location_ids`) and via `scripts/merge_location_ids.py` on Supabase. Add new pairs when reconciliation finds duplicate cities with different ids.
+
+## Repair scripts
+
+```bash
+python scripts/repair_locations.py
+python scripts/merge_location_ids.py --dry-run
+python scripts/merge_location_ids.py --apply
+python scripts/dedupe_core_data.py --dry-run   # duplicate results / bloated locations only
+python scripts/dedupe_core_data.py --apply
+```
+
+`repair_locations.py` runs enrich + catalog rebuild for corrected ids. `merge_location_ids.py` applies merge map + field corrections + clears non-US `event_state`. `dedupe_core_data.py` is a targeted in-place dedupe; do not use it for NULL `location_id` or event-id merges.
+
+`scripts/run_pipeline.py` runs `merge_location_ids.py --apply` and `dedupe_core_data.py --apply` after `repair_locations.py` as a post-load safety net.
 
 ## Export
 
 `export.location_info` mirrors `core.locations` (7 columns).
 
 `export.geo_events` adds `geo_key` / `geo_event_key` at event brand level (migration 019).
-
-## Repair scripts
-
-```bash
-python scripts/repair_locations.py
-python scripts/dedupe_core_data.py --dry-run   # duplicate results / bloated locations only
-python scripts/dedupe_core_data.py --apply
-```
-
-`repair_locations.py` runs enrich + catalog rebuild for corrected ids. `dedupe_core_data.py` is a targeted in-place dedupe; do not use it for NULL `location_id` or event-id merges.
 
 ## Related
 

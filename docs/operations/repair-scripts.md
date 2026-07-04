@@ -94,6 +94,17 @@ python scripts/validate_supabase_quality.py
 python export.py --output-dir data   # optional: refresh committed CSVs
 ```
 
+## merge_location_ids.py
+
+Remaps `LOCATION_ID_MERGE_MAP` in `transform/knowledge/locations.py` (duplicate cities, venue labels, country typos). Also applies `LOCATION_ID_CORRECTIONS` (field patches) and clears `event_state` for non-US countries.
+
+```bash
+python scripts/merge_location_ids.py --dry-run
+python scripts/merge_location_ids.py --apply
+```
+
+Updates `core.results`, `core.event_instances`, `core.event_editions`, deletes merged rows, rebuilds event catalog. Use for known duplicate pairs (Amsterdam 373→191, Anaheim 291→23, Boston Club 334→Düsseldorf 127, etc.) — see merge map in `locations.py`.
+
 ## merge_event_ids.py
 
 Requires geo match per [../policies/event-geo-dedup.md](../policies/event-geo-dedup.md).

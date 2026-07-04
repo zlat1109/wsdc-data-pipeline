@@ -121,7 +121,7 @@ def test_parse_region_from_dutch_location():
     assert parse_region_from_location_text("Venray, Nederland") == ""
 
 
-def test_standardize_location_includes_eu_region():
+def test_standardize_location_includes_us_state():
     row = pd.Series({
         "event_city": "Venray",
         "event_state": "Limburg",
@@ -144,9 +144,43 @@ def test_normalize_geography_fixes_dutch_open_venray():
     )
     out = normalize_geography(df)
     assert out.loc[0, "event_country"] == "Netherlands"
-    assert out.loc[0, "event_state"] == "Limburg"
-    assert out.loc[0, "event_location_standardized"] == "Venray, Limburg, Netherlands"
-    assert out.loc[0, "event_location"] == "Venray, Limburg, Netherlands"
+    assert out.loc[0, "event_state"] == ""
+    assert out.loc[0, "event_location_standardized"] == "Venray, Netherlands"
+    assert out.loc[0, "event_location"] == "Venray, Netherlands"
+
+
+def test_normalize_geography_clears_non_us_event_state():
+    df = pd.DataFrame(
+        [{
+            "location_id": "107",
+            "event_city": "London",
+            "event_state": "England",
+            "event_country": "United Kingdom",
+            "latitude": "51.5072178",
+            "longitude": "-0.1275862",
+            "event_location": "London, England, United Kingdom",
+        }]
+    )
+    out = normalize_geography(df)
+    assert out.loc[0, "event_state"] == ""
+    assert out.loc[0, "event_location"] == "London, United Kingdom"
+
+
+def test_normalize_geography_forces_id_correction_over_existing_values():
+    df = pd.DataFrame(
+        [{
+            "location_id": "191",
+            "event_city": "Amsterdam",
+            "event_state": "North Holland",
+            "event_country": "Netherlands",
+            "latitude": "52.3676",
+            "longitude": "4.9041",
+            "event_location": "Amsterdam, North Holland, Netherlands",
+        }]
+    )
+    out = normalize_geography(df)
+    assert out.loc[0, "event_state"] == ""
+    assert out.loc[0, "event_location"] == "Amsterdam, Netherlands"
 
 
 def test_canonicalize_washington_md_suburb_to_dc_center():

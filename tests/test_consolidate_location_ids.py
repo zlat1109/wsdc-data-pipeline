@@ -26,6 +26,13 @@ def test_build_location_lookup_includes_singapore_aliases():
     assert lookup["singapore, singapore, singapore"] == str(SINGAPORE_CANONICAL_LOCATION_ID)
 
 
+def test_build_location_lookup_includes_venue_aliases():
+    lookup = build_location_lookup(pd.DataFrame())
+    assert lookup["boston club, germany"] == "127"
+    assert lookup["amsterdam, netherlands"] == "191"
+    assert lookup["london, england, united kingdom"] == "107"
+
+
 def test_consolidate_location_ids_merges_duplicate_singapore_rows():
     results = pd.DataFrame({"location_id": ["350", "159", "350"]})
     locations = pd.DataFrame(

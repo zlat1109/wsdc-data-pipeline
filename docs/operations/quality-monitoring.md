@@ -75,6 +75,7 @@ Check definitions live in `db/quality_checks.py` (single source of truth for mon
 | `phantom_ids_not_merged` | Phantom registry ids must be merged/inactive (Swing&Snow, Grand Nationals). |
 | `swing_snow_alias` | Swing&Snow spelling variant must alias to canonical event_id 215. |
 | `catalog_with_editions_missing_typical_location` | Events with results must have typical_location in catalog. |
+| `non_us_event_state` | event_state set on non-US locations (England, Alberta, etc.). |
 <!-- /docs-sync:extended-quality-checks -->
 
 ## Event split audit

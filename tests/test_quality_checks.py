@@ -33,9 +33,18 @@ def test_extended_checks_cover_known_regression_categories():
     assert "swing_snow_alias" in names
     assert "double_space_event_location" in names
     assert "dancers_empty_name" in names
+    assert "non_us_event_state" in names
 
 
 def test_singapore_city_state_allowed_in_city_equals_country():
     check = next(c for c in EXTENDED_CHECKS if c.name == "city_equals_country")
     assert "Singapore" in check.sql
     assert "trim(event_country) NOT IN" in check.sql
+
+
+def test_non_us_event_state_uses_shared_us_country_list():
+    from transform.geography.constants import US_COUNTRY_VALUES
+
+    check = next(c for c in EXTENDED_CHECKS if c.name == "non_us_event_state")
+    for country in US_COUNTRY_VALUES:
+        assert country in check.sql

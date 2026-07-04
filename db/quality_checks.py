@@ -11,6 +11,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Literal
 
+from transform.geography.constants import us_country_sql_in_clause
+
 Severity = Literal["error", "warn", "info"]
 
 # City-states where event_city = event_country is valid (sync with knowledge/locations.py).
@@ -20,6 +22,8 @@ _CITY_STATE_COUNTRY_SQL = ", ".join(
     f"'{country.replace(chr(39), chr(39) * 2)}'"
     for country in sorted(_CITY_STATE_COUNTRIES)
 )
+
+_US_COUNTRY_SQL = us_country_sql_in_clause()
 
 
 @dataclass(frozen=True)
@@ -313,6 +317,20 @@ EXTENDED_CHECKS: tuple[QualityCheck, ...] = (
         category="location",
         description="Events with results must have typical_location in catalog.",
         fix_hint="rebuild_event_catalog + enrich_known_events",
+    ),
+    QualityCheck(
+        name="non_us_event_state",
+        sql=f"""
+        SELECT count(*) FROM core.locations
+        WHERE event_state IS NOT NULL
+          AND trim(event_state::text) <> ''
+          AND coalesce(trim(event_country::text), '') NOT IN ({_US_COUNTRY_SQL})
+        """,
+        max_value=0,
+        severity="error",
+        category="location",
+        description="event_state is only valid for United States locations.",
+        fix_hint="transform/geography/normalize.py + scripts/merge_location_ids.py",
     ),
 )
 
