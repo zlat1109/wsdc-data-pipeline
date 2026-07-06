@@ -149,11 +149,29 @@ def resolve_pending_snapshot(
     *,
     today: date | None = None,
 ) -> tuple[WeekendSnapshot | None, list[str], list[str]]:
-    """Pick snapshot with concluded events not yet in DB; prefer newest generated_at."""
+    """Pick snapshot and pending events for concluded weekends not yet in DB."""
     snap, pending, already, status = resolve_event_gate(conn, today=today)
     if status != "pending":
         return None, [], []
     return snap, pending, already
+
+
+def _pick_primary_snapshot(
+    views: list[tuple[WeekendSnapshot, list[str], list[str]]],
+    *,
+    require_pending: bool,
+) -> WeekendSnapshot:
+    """Prefer the snapshot for the most recent weekend window with work left."""
+    candidates = [item for item in views if item[1]] if require_pending else views
+    snap, _, _ = max(
+        candidates,
+        key=lambda item: (
+            item[0].weekend_end,
+            item[0].generated_at or datetime.min,
+            item[0].weekend_start,
+        ),
+    )
+    return snap
 
 
 def resolve_event_gate(
@@ -163,38 +181,55 @@ def resolve_event_gate(
 ) -> tuple[WeekendSnapshot | None, list[str], list[str], str]:
     """Resolve weekend event gate for check-updates.
 
+    Merges pending/already lists across **all** snapshots so a carry-over event
+    from last week (e.g. delayed Neverland) stays in the gate together with this
+    week's concluded events. A newer ``generated_at`` on an older weekend window
+    must not hide pending events from a later weekend.
+
     Returns (snapshot, pending, already_in_db, status):
     - ``no_concluded_events`` — quiet / future-only weekend in snapshots
-    - ``all_loaded`` — concluded events are already in Supabase
+    - ``all_loaded`` — every concluded event in every snapshot is in Supabase
     - ``pending`` — at least one concluded event is still missing from Supabase
     """
-    from event_db import split_pending_events
+    from event_db import events_within_gate_lookback, split_pending_events
 
     today = today or date.today()
     threshold = float(os.getenv("EVENT_COVERAGE_THRESHOLD", "0.75"))
-    best: WeekendSnapshot | None = None
-    best_pending: list[str] = []
-    best_already: list[str] = []
-    best_key: tuple[datetime, date] | None = None
+    views: list[tuple[WeekendSnapshot, list[str], list[str]]] = []
+    merged_pending: list[str] = []
+    pending_names: set[str] = set()
+    merged_already: list[str] = []
+    already_names: set[str] = set()
 
     for snap in list_snapshots():
+        relevant_events = events_within_gate_lookback(snap.events, today=today)
         pending, already = split_pending_events(
-            conn, snap.events, threshold=threshold, today=today
+            conn, relevant_events, threshold=threshold, today=today
         )
-        if len(pending) + len(already) == 0:
+        if not pending and not already:
             continue
-        key = (snap.generated_at or datetime.min, snap.weekend_start)
-        if best_key is None or key > best_key:
-            best_key = key
-            best = snap
-            best_pending = pending
-            best_already = already
+        views.append((snap, pending, already))
+        for name in pending:
+            if name in pending_names:
+                continue
+            pending_names.add(name)
+            merged_pending.append(name)
+            if name in already_names:
+                already_names.remove(name)
+                merged_already = [n for n in merged_already if n != name]
+        for name in already:
+            if name in pending_names or name in already_names:
+                continue
+            already_names.add(name)
+            merged_already.append(name)
 
-    if best is None:
+    if not views:
         return None, [], [], "no_concluded_events"
-    if not best_pending:
-        return best, [], best_already, "all_loaded"
-    return best, best_pending, best_already, "pending"
+    if merged_pending:
+        primary = _pick_primary_snapshot(views, require_pending=True)
+        return primary, merged_pending, merged_already, "pending"
+    primary = _pick_primary_snapshot(views, require_pending=False)
+    return primary, [], merged_already, "all_loaded"
 
 
 def expected_event_names(snapshot: WeekendSnapshot) -> list[str]:

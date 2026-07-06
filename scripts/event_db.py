@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from datetime import date, datetime
+import os
+from datetime import date, datetime, timedelta
 from typing import Any
 
 from parser.event_name_matcher import find_best_match
@@ -38,14 +39,22 @@ def event_results_edition(event: dict[str, Any]) -> tuple[int | None, int | None
 
 
 def event_has_concluded(event: dict[str, Any], today: date | None = None) -> bool:
-    """True when the event weekend is over (results may exist on WSDC)."""
+    """True when the event weekend is over (results may exist on WSDC).
+
+    On Mon–Fri probes, an event whose ``end_date`` is today counts as concluded
+    (e.g. Jul 2–6 events on Monday Jul 6). On Sat/Sun the last calendar day is
+    still treated as ongoing so weekend-day probes do not expect results early.
+    """
     today = today or date.today()
     end = _parse_iso_date(event.get("end_date"))
     start = _parse_iso_date(event.get("start_date"))
     last_day = end or start
     if last_day is None:
         return True
-    return last_day < today
+    if last_day < today:
+        return True
+    # Weekday probe on the event's last day (Mon=0 .. Fri=4).
+    return last_day == today and today.weekday() < 5
 
 
 def fetch_event_names_for_edition(conn, year: int, month: int) -> list[str]:
@@ -77,6 +86,33 @@ def event_edition_in_db(
         return False
     match, _ = find_best_match(event_name, db_names, threshold=threshold)
     return match is not None
+
+
+def event_last_day(event: dict[str, Any]) -> date | None:
+    """Last calendar day of the event (end_date, else start_date)."""
+    end = _parse_iso_date(event.get("end_date"))
+    start = _parse_iso_date(event.get("start_date"))
+    return end or start
+
+
+def events_within_gate_lookback(
+    events: list[dict[str, Any]],
+    *,
+    today: date | None = None,
+    lookback_days: int | None = None,
+) -> list[dict[str, Any]]:
+    """Keep concluded events whose last day is within the gate lookback window."""
+    today = today or date.today()
+    lookback_days = lookback_days or int(os.getenv("EVENT_GATE_LOOKBACK_DAYS", "21"))
+    cutoff = today - timedelta(days=lookback_days)
+    relevant: list[dict[str, Any]] = []
+    for event in events:
+        if not event_has_concluded(event, today):
+            continue
+        last_day = event_last_day(event)
+        if last_day is None or last_day >= cutoff:
+            relevant.append(event)
+    return relevant
 
 
 def split_pending_events(
