@@ -3,8 +3,8 @@
 
 Gate logic (matches manual workflow):
   1. New dancer IDs appeared above DB watermark (Mon–Fri after weekend)
-  2. Pick the newest weekend snapshot with concluded events
-  3. Live WSDC data from new dancers covers ALL pending upcoming events
+  2. Merge concluded events across all weekend snapshots (carry-over + current week)
+  3. Live WSDC data from new dancers covers ALL pending concluded events
 
 Only when (1) and (3) are true → print ``changed`` (triggers full-parse in CI).
 
