@@ -9,6 +9,7 @@ from transform.knowledge.event_aliases import (
     RESULT_TO_CATALOG_EVENT_NAME,
     build_event_name_normalization,
 )
+from transform.knowledge.locations import LOCATION_RAW_ALIASES
 
 EVENT_NAME_NORMALIZATION = build_event_name_normalization()
 
@@ -45,6 +46,7 @@ EVENT_LOCATION_EXACT_CORRECTIONS = {
     'Singapore': 'Singapore, Singapore',
     'Singapore, Singapore, Singapore': 'Singapore, Singapore',
     'New York': 'New York, NY',
+    **LOCATION_RAW_ALIASES,
 }
 
 EVENT_LOCATION_SUBSTRING_CORRECTIONS = [

@@ -20,6 +20,7 @@ from transform.geography.normalize import (
 )
 from transform.knowledge.locations import (
     LOCATION_ID_MERGE_MAP,
+    LOCATION_RAW_ALIASES,
     LOCATION_STRING_ALIASES,
 )
 
@@ -42,9 +43,15 @@ def _norm(value: object) -> str:
     return str(value).strip()
 
 
+def _canonical_location_raw(raw: str) -> str:
+    """Map known WSDC location typos before lookup key generation."""
+    normalized = normalize_location_whitespace(_norm(raw))
+    return LOCATION_RAW_ALIASES.get(normalized, normalized)
+
+
 def location_lookup_key_from_text(raw: str) -> str:
     """Canonical lowercase key for matching event_location strings."""
-    raw = normalize_location_whitespace(_norm(raw))
+    raw = _canonical_location_raw(raw)
     if not raw:
         return ""
 
@@ -213,7 +220,7 @@ def resolve_result_location_ids(
 
     resolved = cur_id.copy()
     for idx in results_df.index[needs_fill]:
-        raw = loc_raw.at[idx]
+        raw = _canonical_location_raw(loc_raw.at[idx])
         key = location_lookup_key_from_text(raw)
         if key in lookup:
             resolved.at[idx] = lookup[key]

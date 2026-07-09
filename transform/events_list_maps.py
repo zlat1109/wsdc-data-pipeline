@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import re
 
+from transform.knowledge.locations import LOCATION_RAW_ALIASES
+
 # Exact scrape typos / formatting fixes (not venue overrides)
 EVENTS_LIST_LOCATION_EXACT: dict[str, str] = {
     "Zurich,  Swintzerland": "Zürich, Switzerland",
@@ -18,7 +20,7 @@ EVENTS_LIST_LOCATION_EXACT: dict[str, str] = {
     "Ft. Lauderdale, FL, United States": "Fort Lauderdale, FL, United States",
     "Deutschland , Germany": "Germany",
     "Albany, NY, Albany": "Albany, NY, United States",
-    "San antonio, Texas, United states": "San Antonio, TX, United States",
+    **LOCATION_RAW_ALIASES,
 }
 
 # Substring replacements (order matters)
