@@ -9,6 +9,15 @@ CITY_STATE_COUNTRIES: frozenset[str] = frozenset({"Singapore"})
 
 # Canonical Singapore row in location_info (has coordinates).
 SINGAPORE_CANONICAL_LOCATION_ID = 159
+SAN_ANTONIO_CANONICAL_LOCATION_ID = 167
+
+# WSDC malformed location strings → canonical text (preprocess + resolve lookup).
+LOCATION_RAW_ALIASES: dict[str, str] = {
+    "San antonio, Texas, United states": "San Antonio, TX, United States",
+    "Phoenix, United States": "Phoenix, AZ, United States",
+    "Washington, United States": "Washington, DC, United States",
+    "Wailea, United States": "Wailea, HI, United States",
+}
 
 # Duplicate location_id rows → canonical location_id (remap FKs, delete source row).
 LOCATION_ID_MERGE_MAP: dict[str, str] = {
@@ -43,10 +52,12 @@ LOCATION_ID_MERGE_MAP: dict[str, str] = {
     "423": "253",
     # Phoenix country typo
     "287": "3",
+    "426": "3",
     # Richmond duplicate
     "335": "128",
     # San Antonio casing / country typo
     "355": "167",
+    "445": str(SAN_ANTONIO_CANONICAL_LOCATION_ID),
     # St.Petersburg spelling
     "401": "222",
     # Tampa Bay → Tampa
@@ -61,8 +72,11 @@ LOCATION_ID_MERGE_MAP: dict[str, str] = {
     "391": "227",
     # Wailea duplicate
     "333": "124",
+    "435": "124",
     # Ambiguous "Washington" (MD suburb / non-DC events in audit) → Washington DC id 13
     "310": "13",
+    # DCSX — country-only label
+    "428": "13",
 }
 
 # Extra lookup keys → canonical location_id (lowercase event_location text).
@@ -90,6 +104,11 @@ LOCATION_STRING_ALIASES: dict[str, str] = {
     "jeju, south korea": "213",
     "perth, western australia, australia": "253",
     "phoenix, usa": "3",
+    "phoenix, united states": "3",
+    "san antonio, texas, united states": str(SAN_ANTONIO_CANONICAL_LOCATION_ID),
+    "san antonio, tx, united states": str(SAN_ANTONIO_CANONICAL_LOCATION_ID),
+    "washington, united states": "13",
+    "wailea, united states": "124",
     "london, england, united kingdom": "107",
     "north myrtle beach, sc, united states": "325",
     "n. myrtle beach, sc, united states": "325",

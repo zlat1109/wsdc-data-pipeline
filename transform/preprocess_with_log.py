@@ -352,7 +352,7 @@ def preprocess_with_log(data: dict[str, pd.DataFrame]) -> tuple[dict[str, pd.Dat
                 "location_id_fix",
             )
         result["dancers_results_info"] = deduped_results
-        result["location_info"] = deduped_locations
+        result["location_info"] = _apply_geography_tracked(deduped_locations, tracker)
 
     if "dancers_results_info" in result:
         deduped, dropped = dedupe_result_rows(result["dancers_results_info"])

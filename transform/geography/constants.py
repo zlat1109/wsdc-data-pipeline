@@ -20,6 +20,7 @@ COUNTRY_STANDARDIZATION = {
     'U.S.': 'United States',
     'U.S.A.': 'United States',
     'United States': 'United States',
+    'United states': 'United States',
     'UK': 'United Kingdom',
     'United Kingdom': 'United Kingdom',
     'CAN': 'Canada',
