@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-02T15:08:38Z",
-  "weekend_start": "2026-06-29",
-  "weekend_end": "2026-07-12",
+  "generated_at": "2026-07-09T09:32:00Z",
+  "weekend_start": "2026-06-25",
+  "weekend_end": "2026-07-06",
   "events": [
     {
       "name": "NeverlandSwing Dutch Swing Championships 2026",
@@ -10,33 +10,9 @@
       "url": "http://www.neverlandswing.com/",
       "start_date": "2026-06-25",
       "end_date": "2026-06-29",
-      "results_month": 6,
-      "results_year": 2026,
       "livestream": null,
       "continent": "Europe",
       "flag": "🇳🇱"
-    },
-    {
-      "name": "Wild Wild Westie",
-      "location": "Dallas, TX, United States",
-      "dates": "Jul 2 - 5, 2026",
-      "url": "https://www.wildwildwestie.com/",
-      "start_date": "2026-07-02",
-      "end_date": "2026-07-05",
-      "livestream": null,
-      "continent": "America",
-      "flag": "🇺🇸"
-    },
-    {
-      "name": "Phoenix 4th of July",
-      "location": "Phoenix, AZ, United States",
-      "dates": "Jul 2 - 5, 2026",
-      "url": "http://phoenix4thofjuly.com/",
-      "start_date": "2026-07-02",
-      "end_date": "2026-07-05",
-      "livestream": null,
-      "continent": "America",
-      "flag": "🇺🇸"
     },
     {
       "name": "SaunaSwing",
@@ -70,6 +46,28 @@
       "livestream": null,
       "continent": "Europe",
       "flag": "🇫🇷"
+    },
+    {
+      "name": "Wild Wild Westie",
+      "location": "Dallas, TX, United States",
+      "dates": "Jul 2 - 5, 2026",
+      "url": "https://www.wildwildwestie.com/",
+      "start_date": "2026-07-02",
+      "end_date": "2026-07-05",
+      "livestream": null,
+      "continent": "America",
+      "flag": "🇺🇸"
+    },
+    {
+      "name": "Phoenix 4th of July",
+      "location": "Phoenix, AZ, United States",
+      "dates": "Jul 2 - 5, 2026",
+      "url": "http://phoenix4thofjuly.com/",
+      "start_date": "2026-07-02",
+      "end_date": "2026-07-05",
+      "livestream": null,
+      "continent": "America",
+      "flag": "🇺🇸"
     }
   ]
 }
