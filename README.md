@@ -153,4 +153,17 @@ Full index: [docs/index.md](docs/index.md). Local preview: `pip install -r requi
 - [x] Фаза 2: `load.py` + `backfill.py`
 - [x] Фаза 3: `export.py` + views
 - [x] Фаза 4: GitHub Actions (`check-updates.yml`, `full-parse.yml`)
-- [ ] Фаза 5: переключение потребителей
+- [x] Фаза 5 (частично): `wsdc-telegram-bot` — автосинк CSV, `scheduled_events.csv`, publication ledger, golden tests для advancement
+- [ ] Фаза 5: Tableau Public / analytics repo — переключение на `main` как единственный источник CSV
+
+## Интеграция с wsdc-telegram-bot
+
+После каждого успешного commit CSV в `full-parse.yml`:
+
+1. Pipeline пушит `data/*.csv` + `data/event_aliases.json`
+2. `repository_dispatch` → bot `sync-data.yml` (секрет `WSDC_BOT_SYNC_TOKEN`)
+3. Bot коммитит свежие CSV в свой `data/` (LFS)
+
+Обратная связь: weekly bot пушит weekend snapshots в pipeline (`WSDC_PIPELINE_SYNC_TOKEN` в bot). См. [docs/operations/github-actions.md](docs/operations/github-actions.md).
+
+Ветка **`old-laptop-version`** — эталонные parser CSV со старого ноутбука для сравнения; не мержить в `main` без `compare_csv_snapshots.py` / `build_merged_load_dataset.py`.

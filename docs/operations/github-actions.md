@@ -124,6 +124,8 @@ Watermark sources: `MAX(dancer_id)` from `core.dancers` (primary) → last probe
 
 **Weekend snapshots (automated):** `wsdc-telegram-bot` weekly bot pushes `data/weekend_events/` here after each Thursday post. See `wsdc-telegram-bot/docs/PIPELINE_SNAPSHOT_SYNC.md`. One-time secret: `WSDC_PIPELINE_SYNC_TOKEN` in the **telegram-bot** repo (not here).
 
+**Bot CSV sync (automated):** after a successful CSV commit, `full-parse.yml` dispatches `pipeline-csv-updated` to **wsdc-telegram-bot**. Secret in **this** repo: `WSDC_BOT_SYNC_TOKEN` (PAT with `contents:read` here + dispatch/write on bot). Bot pulls via `scripts/sync_csv_from_pipeline.sh` (`sync-data.yml`).
+
 ### `full-parse.yml`
 
 Manual or auto-triggered pipeline:
@@ -131,8 +133,9 @@ Manual or auto-triggered pipeline:
 1. **`cloud_parse.py --full`** (when `parse_full=true`) — HTTP fetch **every dancer ID 1..live_max**, replace `dancer_role_info`, `dancers_points_info`, `dancers_results_info` in `data/`. Needed because existing dancers get new results too, not only new registry IDs.
 2. `db/apply.py` — pending migrations
 3. `load.py` — CSV → Supabase (skipped with `export_only=true`)
-4. `export.py` — Supabase → `data/*.csv` (legacy 5 + `event_catalog`, `event_editions`, `scheduled_events`)
-5. Git commit + push `data/*.csv`
+4. `export.py` — Supabase → `data/*.csv` + `data/event_aliases.json` (merged alias maps for bot)
+5. Git commit + push `data/*.csv` and `data/event_aliases.json`
+6. If CSV commit succeeded → `repository_dispatch` to **wsdc-telegram-bot** (`sync-data.yml`) when `WSDC_BOT_SYNC_TOKEN` is set
 
 Optional export flag (manual/local only): `--include-results-by-event` adds ~47 MB `results_by_event.csv`.
 Default CI export uses joins in Tableau instead (catalog + editions + `dancers_results_info`).
