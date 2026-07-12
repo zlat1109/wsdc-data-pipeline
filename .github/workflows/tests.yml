@@ -1,0 +1,46 @@
+name: Tests
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "transform/**"
+      - "parser/**"
+      - "db/**"
+      - "scripts/**"
+      - "tests/**"
+      - "export.py"
+      - "load.py"
+      - "requirements.txt"
+      - ".github/workflows/tests.yml"
+  pull_request:
+    paths:
+      - "transform/**"
+      - "parser/**"
+      - "db/**"
+      - "scripts/**"
+      - "tests/**"
+      - "export.py"
+      - "load.py"
+      - "requirements.txt"
+      - ".github/workflows/tests.yml"
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest
+
+      - name: Run tests
+        run: |
+          pytest tests/ -q --ignore=tests/test_data_analytics.py

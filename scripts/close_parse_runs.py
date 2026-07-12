@@ -52,14 +52,14 @@ def main() -> None:
             cur.execute(
                 """
                 UPDATE history.parse_runs
-                SET status = 'success',
+                SET status = 'failed',
                     finished_at = coalesce(finished_at, %s)
                 WHERE status = 'running'
                   AND (finished_at IS NOT NULL OR source = 'github-actions')
                 """,
                 (now,),
             )
-            closed_partial = cur.rowcount
+            closed_stale = cur.rowcount
             cur.execute(
                 """
                 UPDATE history.parse_runs
@@ -74,7 +74,7 @@ def main() -> None:
             cancelled = cur.rowcount
         conn.commit()
 
-    print(f"\nClosed as success: {closed_partial}; cancelled ancient backfill: {cancelled}")
+    print(f"\nClosed as failed (stale): {closed_stale}; cancelled ancient backfill: {cancelled}")
 
 
 if __name__ == "__main__":
