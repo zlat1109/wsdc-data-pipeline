@@ -141,6 +141,34 @@ def main() -> None:
     if sync_updates:
         print("\nSynced export city columns:", sync_updates)
 
+    import importlib.util
+    import json
+
+    aliases_path = args.output_dir / "event_aliases.json"
+    merged: dict[str, str] = {}
+    for rel in (
+        "transform/knowledge/event_aliases.py",
+        "parser/event_name_matcher.py",
+    ):
+        mod_path = PROJECT_ROOT / rel
+        spec = importlib.util.spec_from_file_location(mod_path.stem, mod_path)
+        mod = importlib.util.module_from_spec(spec)
+        assert spec.loader is not None
+        spec.loader.exec_module(mod)
+        for attr in (
+            "RESULT_TO_CATALOG_EVENT_NAME",
+            "EVENT_NAME_VARIANT_TO_CATALOG",
+            "EVENT_NAME_MAPPINGS",
+        ):
+            block = getattr(mod, attr, None)
+            if isinstance(block, dict):
+                merged.update(block)
+    aliases_path.write_text(
+        json.dumps({"version": 1, "mappings": merged}, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    print(f"\n  event_aliases.json -> {aliases_path}")
+
     print("\nExport complete.")
 
 

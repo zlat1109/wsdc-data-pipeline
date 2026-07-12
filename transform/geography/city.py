@@ -14,6 +14,20 @@ if TYPE_CHECKING:
 
 _LOWercase_PARTICLES = frozenset({"de", "la", "le", "van", "von", "den", "am", "sur", "saint"})
 
+# Common WSDC location typos (also mirrored in wsdc-telegram-bot champion_news_location)
+LOCATION_TOKEN_TYPO_FIXES: dict[str, str] = {
+    "FINALND": "Finland",
+    "ISREAL": "Israel",
+    "HARTFOED": "Hartford",
+}
+
+
+def fix_location_token_typos(text: str) -> str:
+    out = str(text or "")
+    for bad, good in LOCATION_TOKEN_TYPO_FIXES.items():
+        out = re.sub(rf"\b{bad}\b", good, out, flags=re.IGNORECASE)
+    return out
+
 
 def _strip_city_punctuation(city: str) -> str:
     return str(city).strip().strip(",").strip()

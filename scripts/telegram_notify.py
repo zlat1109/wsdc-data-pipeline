@@ -408,6 +408,38 @@ def cmd_pipeline_complete() -> None:
     send_telegram(format_pipeline_message(stats))
 
 
+def format_pipeline_failed_message(context: dict) -> str:
+    workflow = context.get("workflow", "unknown")
+    run_url = context.get("run_url", "")
+    job = context.get("job", "")
+    lines = [
+        "#WSDC_Pipeline_Failed",
+        "",
+        "❌ <b>Pipeline failed</b>",
+        "",
+        f"Workflow: <code>{_esc(workflow)}</code>",
+    ]
+    if job:
+        lines.append(f"Job: <code>{_esc(job)}</code>")
+    if run_url:
+        lines.append(f"Logs: <a href=\"{_esc(run_url)}\">GitHub Actions</a>")
+    lines.extend(["", "Проверь логи и при необходимости перезапусти вручную."])
+    return "\n".join(lines)
+
+
+def cmd_pipeline_failed() -> None:
+    context = {
+        "workflow": os.getenv("GITHUB_WORKFLOW", "unknown"),
+        "job": os.getenv("GITHUB_JOB", ""),
+        "run_url": os.getenv("GITHUB_SERVER_URL", "https://github.com")
+        + "/"
+        + os.getenv("GITHUB_REPOSITORY", "")
+        + "/actions/runs/"
+        + os.getenv("GITHUB_RUN_ID", ""),
+    }
+    send_telegram(format_pipeline_failed_message(context))
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -420,6 +452,7 @@ def main() -> None:
 
     sub.add_parser("parse-start-live", help="Notify parse start using live DB + WSDC scan")
     sub.add_parser("pipeline-complete", help="Notify after full-parse load+export")
+    sub.add_parser("pipeline-failed", help="Notify when a pipeline workflow fails")
 
     events_list = sub.add_parser("events-list", help="Notify after weekly events list sync")
     events_list.add_argument("report", type=Path, nargs="?", default=None)
@@ -433,6 +466,8 @@ def main() -> None:
         cmd_parse_start_live()
     elif args.command == "pipeline-complete":
         cmd_pipeline_complete()
+    elif args.command == "pipeline-failed":
+        cmd_pipeline_failed()
     elif args.command == "events-list":
         cmd_events_list(args.report)
 

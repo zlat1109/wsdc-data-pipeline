@@ -39,59 +39,79 @@ def main() -> None:
     )
     args = parser.parse_args()
 
+    run_id: int | None = None
+    alias_count = 0
+    orphan_event_count = 0
+    catalog_count = 0
+    edition_count = 0
+
     with connect() as conn:
         with conn.cursor() as cur:
             cur.execute("SET statement_timeout = '600s'")
 
         staging_counts = load_staging_from_dir(conn, args.data_dir)
 
-        with conn.cursor() as cur:
-            cur.execute(
-                """
-                INSERT INTO history.parse_runs (source, status)
-                VALUES (%s, 'running')
-                RETURNING run_id
-                """,
-                (args.source,),
-            )
-            run_id = cur.fetchone()[0]
+        try:
+            with conn.cursor() as cur:
+                cur.execute(
+                    """
+                    INSERT INTO history.parse_runs (source, status)
+                    VALUES (%s, 'running')
+                    RETURNING run_id
+                    """,
+                    (args.source,),
+                )
+                run_id = cur.fetchone()[0]
 
-            cur.execute(
-                read_sql("record_weekly_points_history.sql"),
-                {"run_id": run_id},
-            )
-            cur.execute(
-                read_sql("record_weekly_roles_history.sql"),
-                {"run_id": run_id},
-            )
-            cur.execute(
-                read_sql("record_weekly_names_history.sql"),
-                {"run_id": run_id},
-            )
-            cur.execute(read_sql("promote_core.sql"))
-            alias_count, orphan_event_count = prepare_event_resolution(conn)
-            cur.execute(read_sql("promote_core_results.sql"))
-            enrich_core_known_events(conn)
-            catalog_count, edition_count = rebuild_event_catalog(conn)
-            cur.execute("ANALYZE core.results, core.event_editions, core.event_catalog")
+                cur.execute(
+                    read_sql("record_weekly_points_history.sql"),
+                    {"run_id": run_id},
+                )
+                cur.execute(
+                    read_sql("record_weekly_roles_history.sql"),
+                    {"run_id": run_id},
+                )
+                cur.execute(
+                    read_sql("record_weekly_names_history.sql"),
+                    {"run_id": run_id},
+                )
+                cur.execute(read_sql("promote_core.sql"))
+                alias_count, orphan_event_count = prepare_event_resolution(conn)
+                cur.execute(read_sql("promote_core_results.sql"))
+                enrich_core_known_events(conn)
+                catalog_count, edition_count = rebuild_event_catalog(conn)
+                cur.execute("ANALYZE core.results, core.event_editions, core.event_catalog")
 
-            cur.execute(
-                """
-                UPDATE history.parse_runs
-                SET finished_at = %s, status = 'success',
-                    rows_results = %s, rows_points = %s
-                WHERE run_id = %s
-                """,
-                (
-                    datetime.now(timezone.utc),
-                    staging_counts.get("dancers_results_info.csv"),
-                    staging_counts.get("dancers_points_info.csv"),
-                    run_id,
-                ),
-            )
+                cur.execute(
+                    """
+                    UPDATE history.parse_runs
+                    SET finished_at = %s, status = 'success',
+                        rows_results = %s, rows_points = %s
+                    WHERE run_id = %s
+                    """,
+                    (
+                        datetime.now(timezone.utc),
+                        staging_counts.get("dancers_results_info.csv"),
+                        staging_counts.get("dancers_points_info.csv"),
+                        run_id,
+                    ),
+                )
             conn.commit()
             wm = refresh_watermark(conn, run_id)
             print(f"Watermark updated to {wm}")
+        except Exception:
+            if run_id is not None:
+                with conn.cursor() as cur:
+                    cur.execute(
+                        """
+                        UPDATE history.parse_runs
+                        SET finished_at = %s, status = 'failed'
+                        WHERE run_id = %s AND status = 'running'
+                        """,
+                        (datetime.now(timezone.utc), run_id),
+                    )
+                conn.commit()
+            raise
 
     print(f"Load complete (run_id={run_id}).")
     print(f"Event aliases seeded: {alias_count}; result-only events: {orphan_event_count}.")
