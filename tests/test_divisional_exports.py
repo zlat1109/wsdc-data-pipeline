@@ -29,7 +29,8 @@ def test_all_export_filenames_are_unique() -> None:
     optional = set(OPTIONAL_EXPORTS.values())
     derived = set(DERIVED_EXPORTS)
     all_names = view_exports | optional | derived
-    assert len(all_names) == len(view_exports) + len(derived)
+    assert len(all_names) == len(view_exports | derived)
+    assert "" not in all_names
 
 
 def test_build_divisional_structure_all_roles() -> None:

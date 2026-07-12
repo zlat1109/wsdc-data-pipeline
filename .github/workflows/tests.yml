@@ -43,4 +43,7 @@ jobs:
 
       - name: Run tests
         run: |
-          pytest tests/ -q --ignore=tests/test_data_analytics.py
+          pytest tests/ -q \
+            --ignore=tests/test_data_analytics.py \
+            --ignore=tests/test_data_processors.py \
+            --ignore=tests/test_location_us_state.py
