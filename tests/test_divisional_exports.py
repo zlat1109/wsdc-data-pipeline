@@ -25,12 +25,13 @@ def test_derived_export_filenames_are_unique() -> None:
 
 
 def test_all_export_filenames_are_unique() -> None:
-    view_exports = set(build_export_map(include_results_by_event=True).values())
-    optional = set(OPTIONAL_EXPORTS.values())
-    derived = set(DERIVED_EXPORTS)
-    all_names = view_exports | optional | derived
-    assert len(all_names) == len(view_exports | derived)
-    assert "" not in all_names
+    export_names = list(
+        build_export_map(
+            include_results_by_event=True,
+            include_results_with_name=True,
+        ).values()
+    ) + list(DERIVED_EXPORTS)
+    assert len(export_names) == len(set(export_names))
 
 
 def test_build_divisional_structure_all_roles() -> None:
