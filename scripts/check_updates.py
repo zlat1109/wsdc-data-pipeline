@@ -43,6 +43,7 @@ from parser.http_client import WSDCHttpClient  # noqa: E402
 from probe_report import build_probe_report  # noqa: E402
 from weekend_events import resolve_event_gate  # noqa: E402
 from wsdc_id_probe import ScanResult, scan_ids_above_watermark  # noqa: E402
+from event_db import get_db_suggestions  # noqa: E402
 
 MADRID_TZ = ZoneInfo("Europe/Madrid")
 
@@ -216,6 +217,9 @@ def print_report(
         if coverage.missing:
             print(f"missing_events={coverage.missing}", flush=True)
         print(f"coverage_dancers_scanned={coverage.dancers_scanned}", flush=True)
+        suggestions = get_db_suggestions()
+        if suggestions:
+            print(f"db_name_suggestions={list(suggestions.keys())}", flush=True)
 
     if scan.new_ids:
         print("new_dancers_sample:")
@@ -333,6 +337,7 @@ def main() -> None:
             last_success_finished_at=last_success_finished_at.isoformat()
             if last_success_finished_at
             else None,
+            db_name_suggestions=get_db_suggestions(),
         )
 
         if args.json_report:

@@ -95,6 +95,20 @@ def format_probe_message(report: dict) -> str:
         for name in pending:
             lines.append(f"• {_esc(name)}")
 
+    suggestions = report.get("db_name_suggestions") or {}
+    if suggestions:
+        lines.extend(["", "<b>Возможные расхождения в названии (DB подсказки)</b>:"])
+        for name, info in suggestions.items():
+            sug = info.get("suggested_db_name")
+            score = info.get("score")
+            edition_year = info.get("edition_year")
+            edition_month = info.get("edition_month")
+            if sug:
+                lines.append(
+                    f"• {_esc(name)} → {_esc(sug)} "
+                    f"(score <code>{_esc(score)}</code>, edition <code>{_esc(edition_year)}-{_esc(edition_month)}</code>)"
+                )
+
     matched = report.get("matched_events") or {}
     if matched:
         lines.extend(["", "<b>Найдено в live (новые танцоры)</b>:"])

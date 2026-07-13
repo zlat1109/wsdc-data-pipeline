@@ -25,6 +25,7 @@ class ProbeReport:
     matched_events: dict[str, str] = field(default_factory=dict)
     missing_events: list[str] = field(default_factory=list)
     already_in_db_events: list[str] = field(default_factory=list)
+    db_name_suggestions: dict[str, dict[str, Any]] = field(default_factory=dict)
     coverage_dancers_scanned: int = 0
     gate_status: str | None = None
     friday_final_bypass: bool = False
@@ -61,6 +62,7 @@ def build_probe_report(
     cooldown_until: str | None = None,
     last_success_run_id: int | None = None,
     last_success_finished_at: str | None = None,
+    db_name_suggestions: dict[str, dict[str, Any]] | None = None,
 ) -> ProbeReport:
     return ProbeReport(
         ready=ready,
@@ -76,6 +78,7 @@ def build_probe_report(
         matched_events=dict(coverage.matched) if coverage else {},
         missing_events=list(coverage.missing) if coverage else [],
         already_in_db_events=list(already_in_db or []),
+        db_name_suggestions=dict(db_name_suggestions or {}),
         coverage_dancers_scanned=coverage.dancers_scanned if coverage else 0,
         gate_status=gate_status,
         friday_final_bypass=friday_final_bypass,

@@ -3,12 +3,62 @@
 from __future__ import annotations
 
 import os
+import json
+import re
 from datetime import date, datetime, timedelta
 from typing import Any
+from pathlib import Path
 
 from parser.event_name_matcher import find_best_match
 
 ISO_DATE = "%Y-%m-%d"
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+# Suggestions captured during split_pending_events; consumed by check_updates report.
+_DB_SUGGESTIONS: dict[str, dict[str, Any]] = {}
+
+
+def reset_db_suggestions() -> None:
+    _DB_SUGGESTIONS.clear()
+
+
+def get_db_suggestions() -> dict[str, dict[str, Any]]:
+    return dict(_DB_SUGGESTIONS)
+
+
+_YEAR_SUFFIX_RE = re.compile(r"\s+(20\d{2})\s*$")
+
+
+def _strip_year_suffix(name: str) -> str:
+    return _YEAR_SUFFIX_RE.sub("", name).strip()
+
+
+def _load_event_aliases_json() -> dict[str, str]:
+    """Load alias→canonical map exported to data/event_aliases.json (if present)."""
+    path = PROJECT_ROOT / "data" / "event_aliases.json"
+    if not path.exists():
+        return {}
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    mappings = payload.get("mappings")
+    return mappings if isinstance(mappings, dict) else {}
+
+
+def normalize_expected_event_name(raw: str, *, aliases: dict[str, str] | None = None) -> str:
+    """Normalize snapshot/schedule event names into catalog-ish names for matching."""
+    name = (raw or "").strip()
+    if not name:
+        return ""
+    aliases = aliases if aliases is not None else _load_event_aliases_json()
+    if name in aliases:
+        name = str(aliases[name]).strip()
+    # Common snapshot pattern: "Event Name 2026"
+    name = _strip_year_suffix(name)
+    if name in aliases:
+        name = str(aliases[name]).strip()
+    return name
 
 
 def _parse_iso_date(value: Any) -> date | None:
@@ -81,11 +131,37 @@ def event_edition_in_db(
 ) -> bool:
     if year is None or month is None:
         return False
+    aliases = _load_event_aliases_json()
+    event_name = normalize_expected_event_name(event_name, aliases=aliases)
+    if not event_name:
+        return False
     db_names = fetch_event_names_for_edition(conn, year, month)
     if not db_names:
         return False
     match, _ = find_best_match(event_name, db_names, threshold=threshold)
     return match is not None
+
+
+def suggest_db_match(
+    conn,
+    event_name: str,
+    year: int | None,
+    month: int | None,
+    *,
+    threshold: float = 0.60,
+) -> tuple[str | None, float]:
+    """Return best candidate name in DB for this edition (even when below gate threshold)."""
+    if year is None or month is None:
+        return None, 0.0
+    aliases = _load_event_aliases_json()
+    normalized = normalize_expected_event_name(event_name, aliases=aliases)
+    if not normalized:
+        return None, 0.0
+    db_names = fetch_event_names_for_edition(conn, year, month)
+    if not db_names:
+        return None, 0.0
+    match, score = find_best_match(normalized, db_names, threshold=threshold)
+    return match, score
 
 
 def event_last_day(event: dict[str, Any]) -> date | None:
@@ -124,6 +200,7 @@ def split_pending_events(
 ) -> tuple[list[str], list[str]]:
     """Return (pending_names, already_in_db_names) for concluded snapshot events."""
     today = today or date.today()
+    aliases = _load_event_aliases_json()
     pending: list[str] = []
     already: list[str] = []
     for event in events:
@@ -133,8 +210,19 @@ def split_pending_events(
         if not event_has_concluded(event, today):
             continue
         year, month = event_results_edition(event)
-        if event_edition_in_db(conn, name, year, month, threshold=threshold):
+        normalized = normalize_expected_event_name(name, aliases=aliases)
+        if event_edition_in_db(conn, normalized, year, month, threshold=threshold):
             already.append(name)
         else:
             pending.append(name)
+            if name not in _DB_SUGGESTIONS:
+                suggestion, score = suggest_db_match(conn, name, year, month, threshold=0.60)
+                if suggestion:
+                    _DB_SUGGESTIONS[name] = {
+                        "normalized": normalized,
+                        "suggested_db_name": suggestion,
+                        "score": round(float(score), 3),
+                        "edition_year": year,
+                        "edition_month": month,
+                    }
     return pending, already

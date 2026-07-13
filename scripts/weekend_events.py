@@ -191,7 +191,7 @@ def resolve_event_gate(
     - ``all_loaded`` — every concluded event in every snapshot is in Supabase
     - ``pending`` — at least one concluded event is still missing from Supabase
     """
-    from event_db import events_within_gate_lookback, split_pending_events
+    from event_db import events_within_gate_lookback, split_pending_events, reset_db_suggestions
 
     today = today or date.today()
     threshold = float(os.getenv("EVENT_COVERAGE_THRESHOLD", "0.75"))
@@ -201,6 +201,7 @@ def resolve_event_gate(
     merged_already: list[str] = []
     already_names: set[str] = set()
 
+    reset_db_suggestions()
     for snap in list_snapshots():
         relevant_events = events_within_gate_lookback(snap.events, today=today)
         pending, already = split_pending_events(
