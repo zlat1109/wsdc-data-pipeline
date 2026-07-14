@@ -78,6 +78,27 @@ def test_split_pending_skips_events_already_in_db_with_start_date():
     assert set(already) == {"D-Townswing", "SWINGAPALOOZA"}
 
 
+def test_split_pending_matches_neverland_long_snapshot_name():
+    """Year-suffix normalization must not break EVENT_NAME_MAPPINGS on raw name."""
+    conn = MagicMock()
+    conn.cursor.return_value.__enter__.return_value.fetchall.return_value = [
+        ("Neverland Swing",),
+    ]
+
+    events = [
+        {
+            "name": "NeverlandSwing Dutch Swing Championships 2026",
+            "start_date": "2026-06-25",
+            "end_date": "2026-06-29",
+            "results_year": 2026,
+            "results_month": 6,
+        },
+    ]
+    pending, already = split_pending_events(conn, events, today=date(2026, 7, 14))
+    assert pending == []
+    assert already == ["NeverlandSwing Dutch Swing Championships 2026"]
+
+
 def test_events_within_gate_lookback_excludes_stale_concluded():
     events = [
         {"name": "Old", "start_date": "2026-01-01", "end_date": "2026-01-03"},

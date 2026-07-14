@@ -93,6 +93,8 @@ EVENT_NAME_VARIANT_TO_CATALOG: dict[str, str] = {
     'Swing&Snow': 'Swing & Snow',
     'Moscow Westie Fest Gala Edition': 'Moscow Westie Fest',
     'Moscow Westie Dance Fest': 'Moscow Westie Fest',
+    'NeverlandSwing Dutch Swing Championships 2026': 'Neverland Swing',
+    'NeverlandSwing Dutch Swing Championships': 'Neverland Swing',
 }
 
 # Duplicate WSDC registry ids → canonical id (same geo; see event-geo-dedup rule).
