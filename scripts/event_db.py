@@ -121,6 +121,33 @@ def fetch_event_names_for_edition(conn, year: int, month: int) -> list[str]:
         return [row[0] for row in cur.fetchall() if row[0]]
 
 
+def _match_names_for_edition(
+    raw_name: str,
+    db_names: list[str],
+    *,
+    aliases: dict[str, str],
+    threshold: float,
+) -> tuple[str | None, float]:
+    """Try raw snapshot name first (EVENT_NAME_MAPPINGS), then JSON-normalized."""
+    candidates: list[str] = []
+    seen: set[str] = set()
+    for candidate in (
+        (raw_name or "").strip(),
+        normalize_expected_event_name(raw_name, aliases=aliases),
+    ):
+        if candidate and candidate not in seen:
+            seen.add(candidate)
+            candidates.append(candidate)
+    best_match: str | None = None
+    best_score = 0.0
+    for candidate in candidates:
+        match, score = find_best_match(candidate, db_names, threshold=threshold)
+        if match and score > best_score:
+            best_match = match
+            best_score = score
+    return best_match, best_score
+
+
 def event_edition_in_db(
     conn,
     event_name: str,
@@ -131,14 +158,16 @@ def event_edition_in_db(
 ) -> bool:
     if year is None or month is None:
         return False
-    aliases = _load_event_aliases_json()
-    event_name = normalize_expected_event_name(event_name, aliases=aliases)
-    if not event_name:
+    raw_name = (event_name or "").strip()
+    if not raw_name:
         return False
+    aliases = _load_event_aliases_json()
     db_names = fetch_event_names_for_edition(conn, year, month)
     if not db_names:
         return False
-    match, _ = find_best_match(event_name, db_names, threshold=threshold)
+    match, _ = _match_names_for_edition(
+        raw_name, db_names, aliases=aliases, threshold=threshold
+    )
     return match is not None
 
 
@@ -153,15 +182,16 @@ def suggest_db_match(
     """Return best candidate name in DB for this edition (even when below gate threshold)."""
     if year is None or month is None:
         return None, 0.0
-    aliases = _load_event_aliases_json()
-    normalized = normalize_expected_event_name(event_name, aliases=aliases)
-    if not normalized:
+    raw_name = (event_name or "").strip()
+    if not raw_name:
         return None, 0.0
+    aliases = _load_event_aliases_json()
     db_names = fetch_event_names_for_edition(conn, year, month)
     if not db_names:
         return None, 0.0
-    match, score = find_best_match(normalized, db_names, threshold=threshold)
-    return match, score
+    return _match_names_for_edition(
+        raw_name, db_names, aliases=aliases, threshold=threshold
+    )
 
 
 def event_last_day(event: dict[str, Any]) -> date | None:
@@ -211,7 +241,7 @@ def split_pending_events(
             continue
         year, month = event_results_edition(event)
         normalized = normalize_expected_event_name(name, aliases=aliases)
-        if event_edition_in_db(conn, normalized, year, month, threshold=threshold):
+        if event_edition_in_db(conn, name, year, month, threshold=threshold):
             already.append(name)
         else:
             pending.append(name)
