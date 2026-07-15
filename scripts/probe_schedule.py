@@ -13,7 +13,10 @@ _FRIDAY_FINAL_MIN_HOUR = 17
 
 
 def is_friday_final_probe(now: datetime | None = None) -> bool:
-    """True on the last scheduled Friday probe (evening slot, Europe/Madrid).
+    """True on Friday evening probe slot (Europe/Madrid).
+
+    Legacy helper; partial-readiness gate no longer uses Friday fallback.
+    Kept for schedule tests and possible future slot-specific logic.
 
     ``PROBE_SLOT`` env (set by check-updates.yml from cron):
     - ``evening`` — Friday fallback enabled on any Friday run in that slot

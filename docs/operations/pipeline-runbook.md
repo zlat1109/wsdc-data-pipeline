@@ -50,7 +50,7 @@ Parser output and preprocess input treat **all columns as strings** (`cloud_pars
 | Load | `dancer_roles_dancer_id_fkey` | Fixed in `promote_core.sql`; run `validate_pipeline_inputs` |
 | Load | invalid `event_role` / `role` | Fix in preprocess or source CSV |
 | CI commit | `git push rejected (fetch first)` | `git pull --rebase` before push in `full-parse.yml` |
-| Auto re-run | Multiple long parses | Weekly cooldown in `check_updates.py` |
+| Auto re-run | Multiple full parses same week | Expected with partial gate; `parse_in_flight` + workflow concurrency prevent overlap. Weekly cooldown only for `all_loaded` (registry-only). |
 | Load | `event_editions` = 0 | Cloud parse dates; run preprocess with date normalization |
 | Sync | Supabase fresh, git CSV stale | [data-sync.md](data-sync.md); run `export.py` and commit |
 | Load | `names_history_drift` > 0 | `scripts/reconcile_names_history.py --apply` |

@@ -1,17 +1,16 @@
 #!/usr/bin/env python3
 """Detect when WSDC is ready for a full parse after the current upcoming weekend.
 
-Gate logic (matches manual workflow):
+Partial-readiness gate (early full-parse trigger):
   1. New dancer IDs appeared above DB watermark (Mon–Fri after weekend)
   2. Merge concluded events across all weekend snapshots (carry-over + current week)
-  3. Live WSDC data from new dancers covers ALL pending concluded events
+  3. At least one pending event is visible in live WSDC data and not yet in Supabase
 
-Only when (1) and (3) are true → print ``changed`` (triggers full-parse in CI).
+When (1) and (3) are true → print ``changed`` (triggers full-parse in CI).
+Each trigger still runs ``cloud_parse.py --full`` (entire registry 1..live_max).
 
-Friday evening (last probe of the week): if at least one pending event is already
-visible in live data but others are still missing (e.g. delayed Neverland), trigger
-full-parse anyway. Do **not** parse on Friday when zero events matched (single-event
-weekend not loaded yet) or when the snapshot has no concluded events (quiet weekend).
+Weekly cooldown applies only when all weekend events are already loaded
+(registry-only catch-up via ``gate_status=all_loaded``).
 
 Usage:
     python scripts/check_updates.py
@@ -36,7 +35,10 @@ sys.path.insert(0, str(PROJECT_ROOT))
 sys.path.insert(0, str(PROJECT_ROOT / "db"))
 sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 
-from check_updates_gate import evaluate_parse_ready  # noqa: E402
+from check_updates_gate import (  # noqa: E402
+    block_ready_if_parse_in_flight,
+    evaluate_parse_ready,
+)
 from connection import connect  # noqa: E402
 from event_coverage import EventCoverageResult, check_event_coverage  # noqa: E402
 from parser.http_client import WSDCHttpClient  # noqa: E402
@@ -46,6 +48,9 @@ from wsdc_id_probe import ScanResult, scan_ids_above_watermark  # noqa: E402
 from event_db import get_db_suggestions  # noqa: E402
 
 MADRID_TZ = ZoneInfo("Europe/Madrid")
+PARSE_IN_FLIGHT_WINDOW_MINUTES = int(
+    os.getenv("PARSE_IN_FLIGHT_WINDOW_MINUTES", "90")
+)
 
 
 def get_watermark(conn, anchor_override: int | None) -> int:
@@ -74,6 +79,62 @@ def get_watermark(conn, anchor_override: int | None) -> int:
     return int(os.getenv("PROBE_ANCHOR_ID", "26410"))
 
 
+def get_parse_in_flight(
+    conn,
+    *,
+    window_minutes: int | None = None,
+) -> tuple[bool, int | None]:
+    """Return whether a full-parse pipeline run is in progress.
+
+    Covers load.py ``running`` rows and probe triggers awaiting success
+    (cloud_parse phase before load inserts its run).
+    """
+    window = window_minutes or PARSE_IN_FLIGHT_WINDOW_MINUTES
+    cutoff = datetime.now(timezone.utc) - timedelta(minutes=window)
+    with conn.cursor() as cur:
+        cur.execute(
+            """
+            SELECT run_id
+            FROM history.parse_runs
+            WHERE status = 'running'
+              AND rows_results IS NULL
+              AND finished_at IS NULL
+              AND started_at >= %s
+            ORDER BY run_id DESC
+            LIMIT 1
+            """,
+            (cutoff,),
+        )
+        row = cur.fetchone()
+        if row:
+            return True, int(row[0])
+
+        cur.execute(
+            """
+            SELECT pr.run_id
+            FROM history.parse_runs pr
+            WHERE pr.status = 'running'
+              AND pr.finished_at IS NOT NULL
+              AND pr.probe_details->>'parse_ready' = 'true'
+              AND pr.started_at >= %s
+              AND NOT EXISTS (
+                  SELECT 1
+                  FROM history.parse_runs s
+                  WHERE s.status = 'success'
+                    AND s.rows_results IS NOT NULL
+                    AND s.finished_at > pr.finished_at
+              )
+            ORDER BY pr.run_id DESC
+            LIMIT 1
+            """,
+            (cutoff,),
+        )
+        row = cur.fetchone()
+    if not row:
+        return False, None
+    return True, int(row[0])
+
+
 def record_probe(
     conn,
     scan: ScanResult,
@@ -81,8 +142,8 @@ def record_probe(
     *,
     ready: bool,
     gate_status: str | None = None,
-    friday_final_bypass: bool = False,
     ready_reason: str | None = None,
+    trigger_events: list[str] | None = None,
 ) -> None:
     probe_details = {
         "strategy": "new_dancer_id_scan+event_coverage",
@@ -92,8 +153,8 @@ def record_probe(
         "new_dancers_sample": scan.new_dancers[:10],
         "parse_ready": ready,
         "gate_status": gate_status,
-        "friday_final_bypass": friday_final_bypass,
         "ready_reason": ready_reason,
+        "trigger_events": list(trigger_events or []),
     }
     if coverage:
         probe_details.update({
@@ -112,8 +173,8 @@ def record_probe(
             "live_max_id": scan.live_max_id,
             "parse_ready": ready,
             "missing_events": coverage.missing if coverage else [],
-            "friday_final_bypass": friday_final_bypass,
             "ready_reason": ready_reason,
+            "trigger_events": list(trigger_events or []),
         },
         sort_keys=True,
     )
@@ -149,7 +210,6 @@ def get_weekly_cooldown_status(conn) -> tuple[bool, int | None, datetime | None,
     next_week_start_local = week_start_local + timedelta(days=7)
 
     week_start_utc = week_start_local.astimezone(timezone.utc)
-    next_week_start_utc = next_week_start_local.astimezone(timezone.utc)
 
     with conn.cursor() as cur:
         cur.execute(
@@ -178,8 +238,10 @@ def print_report(
     ready: bool,
     already_in_db: list[str] | None = None,
     gate_status: str | None = None,
-    friday_final_bypass: bool = False,
     ready_reason: str | None = None,
+    trigger_events: list[str] | None = None,
+    parse_in_flight: bool = False,
+    parse_in_flight_run_id: int | None = None,
     cooldown_active: bool = False,
     cooldown_until: str | None = None,
     last_success_run_id: int | None = None,
@@ -199,8 +261,13 @@ def print_report(
             "no_concluded_events — quiet weekend or only future events in snapshots",
             flush=True,
         )
-    if friday_final_bypass:
-        print("friday_final_bypass=true", flush=True)
+    if trigger_events:
+        print(f"trigger_events={trigger_events}", flush=True)
+    if parse_in_flight:
+        print(
+            f"parse_in_flight=true (run_id={parse_in_flight_run_id})",
+            flush=True,
+        )
     if ready_reason:
         print(f"ready_reason={ready_reason}", flush=True)
     if cooldown_active:
@@ -260,9 +327,10 @@ def main() -> None:
         ids_changed = scan.live_max_id > scan.watermark
         coverage: EventCoverageResult | None = None
         ready = False
-        friday_final_bypass = False
         ready_reason = "no_new_ids"
+        trigger_events: list[str] = []
         gate_status = "no_concluded_events"
+        pending: list[str] = []
         already_in_db: list[str] = []
         snapshot_name: str | None = None
         weekend_start = weekend_end = None
@@ -270,7 +338,10 @@ def main() -> None:
         cooldown_until: str | None = None
         last_success_run_id: int | None = None
         last_success_finished_at: str | None = None
-        now_madrid = datetime.now(MADRID_TZ)
+        parse_in_flight = False
+        parse_in_flight_run_id: int | None = None
+
+        parse_in_flight, parse_in_flight_run_id = get_parse_in_flight(conn)
 
         if not args.ignore_weekly_cooldown:
             cooldown_active, last_success_run_id, last_success_finished_at, cooldown_until_local = (
@@ -279,14 +350,13 @@ def main() -> None:
             cooldown_until = cooldown_until_local.isoformat()
 
         if args.skip_event_gate:
-            ready, friday_final_bypass, ready_reason = evaluate_parse_ready(
+            ready, ready_reason, trigger_events = evaluate_parse_ready(
                 ids_changed=ids_changed,
                 skip_event_gate=True,
                 cooldown_active=cooldown_active,
                 ignore_cooldown=args.ignore_weekly_cooldown,
                 gate_status="pending",
                 coverage=None,
-                now=now_madrid,
             )
         elif ids_changed:
             snapshot, pending, already_in_db, gate_status = resolve_event_gate(conn)
@@ -308,17 +378,22 @@ def main() -> None:
                     pending,
                 )
                 coverage.already_in_db = already_in_db
-            ready, friday_final_bypass, ready_reason = evaluate_parse_ready(
+            ready, ready_reason, trigger_events = evaluate_parse_ready(
                 ids_changed=ids_changed,
                 skip_event_gate=False,
                 cooldown_active=cooldown_active,
                 ignore_cooldown=args.ignore_weekly_cooldown,
                 gate_status=gate_status,
                 coverage=coverage,
-                now=now_madrid,
+                pending=pending,
+                already_in_db=already_in_db,
             )
-            if friday_final_bypass:
-                cooldown_active = False
+
+        ready, ready_reason = block_ready_if_parse_in_flight(
+            ready,
+            ready_reason,
+            parse_in_flight=parse_in_flight,
+        )
 
         report = build_probe_report(
             scan,
@@ -326,8 +401,10 @@ def main() -> None:
             ready=ready,
             already_in_db=already_in_db,
             gate_status=gate_status,
-            friday_final_bypass=friday_final_bypass,
             ready_reason=ready_reason,
+            trigger_events=trigger_events,
+            parse_in_flight=parse_in_flight,
+            parse_in_flight_run_id=parse_in_flight_run_id,
             snapshot_name=snapshot_name,
             weekend_start=weekend_start,
             weekend_end=weekend_end,
@@ -352,8 +429,10 @@ def main() -> None:
             ready=ready,
             already_in_db=already_in_db,
             gate_status=gate_status,
-            friday_final_bypass=friday_final_bypass,
             ready_reason=ready_reason,
+            trigger_events=trigger_events,
+            parse_in_flight=parse_in_flight,
+            parse_in_flight_run_id=parse_in_flight_run_id,
             cooldown_active=cooldown_active,
             cooldown_until=cooldown_until,
             last_success_run_id=last_success_run_id,
@@ -366,8 +445,8 @@ def main() -> None:
                 coverage,
                 ready=ready,
                 gate_status=gate_status,
-                friday_final_bypass=friday_final_bypass,
                 ready_reason=ready_reason,
+                trigger_events=trigger_events,
             )
 
 

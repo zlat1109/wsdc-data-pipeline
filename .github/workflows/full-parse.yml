@@ -40,6 +40,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: wsdc-full-parse
+  cancel-in-progress: false
+
 jobs:
   pipeline:
     runs-on: ubuntu-latest
