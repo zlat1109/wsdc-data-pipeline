@@ -144,7 +144,11 @@ def record_probe(
     gate_status: str | None = None,
     ready_reason: str | None = None,
     trigger_events: list[str] | None = None,
+    pending: list[str] | None = None,
+    already_in_db: list[str] | None = None,
 ) -> None:
+    pending = list(pending or [])
+    already_in_db = list(already_in_db or [])
     probe_details = {
         "strategy": "new_dancer_id_scan+event_coverage",
         "watermark": scan.watermark,
@@ -155,17 +159,20 @@ def record_probe(
         "gate_status": gate_status,
         "ready_reason": ready_reason,
         "trigger_events": list(trigger_events or []),
+        "pending_events": list(coverage.expected) if coverage else pending,
+        "already_in_db_events": (
+            list(getattr(coverage, "already_in_db", None) or already_in_db)
+            if coverage
+            else already_in_db
+        ),
     }
     if coverage:
         probe_details.update({
-            "pending_events": coverage.expected,
             "matched_events": coverage.matched,
             "missing_events": coverage.missing,
             "dancers_scanned_for_coverage": coverage.dancers_scanned,
             "live_event_names_sample": sorted(coverage.found_live_names)[:20],
         })
-    if coverage and getattr(coverage, "already_in_db", None):
-        probe_details["already_in_db_events"] = coverage.already_in_db
 
     probe_hash = json.dumps(
         {
@@ -236,6 +243,7 @@ def print_report(
     coverage: EventCoverageResult | None,
     *,
     ready: bool,
+    pending: list[str] | None = None,
     already_in_db: list[str] | None = None,
     gate_status: str | None = None,
     ready_reason: str | None = None,
@@ -277,8 +285,10 @@ def print_report(
             flush=True,
         )
 
+    pending_events = list(coverage.expected) if coverage else list(pending or [])
+    if pending_events:
+        print(f"pending_events={pending_events}", flush=True)
     if coverage:
-        print(f"pending_events={coverage.expected}", flush=True)
         for expected, matched in coverage.matched.items():
             print(f"  matched: {expected!r} -> {matched!r}", flush=True)
         if coverage.missing:
@@ -358,7 +368,9 @@ def main() -> None:
                 gate_status="pending",
                 coverage=None,
             )
-        elif ids_changed:
+        else:
+            # Always resolve gate for reporting — even when watermark caught up
+            # after a partial parse (remaining pending events still matter).
             snapshot, pending, already_in_db, gate_status = resolve_event_gate(conn)
             if snapshot:
                 snapshot_name = snapshot.source_path.name
@@ -369,7 +381,7 @@ def main() -> None:
                     f"({weekend_start}..{weekend_end})",
                     flush=True,
                 )
-            if gate_status == "pending":
+            if ids_changed and gate_status == "pending":
                 http = WSDCHttpClient()
                 coverage = check_event_coverage(
                     http,
@@ -399,6 +411,7 @@ def main() -> None:
             scan,
             coverage,
             ready=ready,
+            pending=pending,
             already_in_db=already_in_db,
             gate_status=gate_status,
             ready_reason=ready_reason,
@@ -427,6 +440,7 @@ def main() -> None:
             scan,
             coverage,
             ready=ready,
+            pending=pending,
             already_in_db=already_in_db,
             gate_status=gate_status,
             ready_reason=ready_reason,
@@ -447,6 +461,8 @@ def main() -> None:
                 gate_status=gate_status,
                 ready_reason=ready_reason,
                 trigger_events=trigger_events,
+                pending=pending,
+                already_in_db=already_in_db,
             )
 
 

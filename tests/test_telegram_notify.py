@@ -14,6 +14,44 @@ from telegram_notify import (
 )
 
 
+def test_format_probe_no_new_ids_with_pending():
+    report = {
+        "checked_at": "2026-07-15",
+        "ready": False,
+        "ready_reason": "no_new_ids",
+        "gate_status": "pending",
+        "watermark": 28620,
+        "live_max_id": 28620,
+        "approx_new_ids": 0,
+        "pending_events": ["Big Apple Dance Festival", "Mediterranean Open WCS"],
+        "already_in_db_events": ["SwingLab Berlin"],
+        "matched_events": {},
+        "missing_events": [],
+    }
+    text = format_probe_message(report)
+    assert "Обновления пока нет" in text
+    assert "тихие выходные" not in text
+    assert "Новых dancer ID нет" in text
+    assert "Big Apple Dance Festival" in text
+    assert "Mediterranean Open WCS" in text
+
+
+def test_format_probe_quiet_weekend_only_when_no_concluded():
+    report = {
+        "checked_at": "2026-07-15",
+        "ready": False,
+        "ready_reason": "no_concluded_events",
+        "gate_status": "no_concluded_events",
+        "no_pending": True,
+        "watermark": 28620,
+        "live_max_id": 28620,
+        "approx_new_ids": 0,
+        "pending_events": [],
+    }
+    text = format_probe_message(report)
+    assert "тихие выходные" in text
+
+
 def test_format_probe_unchanged():
     report = {
         "checked_at": "2026-06-12",
