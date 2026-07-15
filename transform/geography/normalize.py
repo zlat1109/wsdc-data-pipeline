@@ -126,6 +126,26 @@ def validate_coordinates(row: pd.Series) -> bool:
         return False
 
 
+_TRUE_STRINGS = frozenset({"t", "true", "1", "yes"})
+
+
+def _coerce_correction_value(column: str, value: object, series: pd.Series) -> object:
+    """Adapt LOCATION_ID_CORRECTIONS values to the target Series dtype."""
+    if value == "" or value is None:
+        return ""
+    if column != "coordinates_valid" and not pd.api.types.is_bool_dtype(series.dtype):
+        return value
+
+    if isinstance(value, bool):
+        truthy = value
+    else:
+        truthy = str(value).strip().lower() in _TRUE_STRINGS
+
+    if pd.api.types.is_bool_dtype(series.dtype):
+        return truthy
+    return "t" if truthy else "f"
+
+
 def _apply_id_corrections(
     df: pd.DataFrame,
     tracker: PreprocessTracker | None,
@@ -141,19 +161,20 @@ def _apply_id_corrections(
 
         for col, val in fixes.items():
             if col in df.columns and mask.any():
+                coerced = _coerce_correction_value(col, val, df[col])
                 if tracker is not None:
                     before = df.loc[mask, col].astype(str).iloc[0]
-                    if str(before) != str(val):
+                    if str(before) != str(coerced):
                         tracker.record(
                             'LOCATION_INFO_ID_CORRECTION',
                             table,
                             col,
                             f'location_id={loc_id} was {before}',
-                            str(val),
+                            str(coerced),
                             int(mask.sum()),
                             'location_id_fix',
                         )
-                df.loc[mask, col] = val if val != '' else ''
+                df.loc[mask, col] = coerced if coerced != '' else ''
     return df
 
 

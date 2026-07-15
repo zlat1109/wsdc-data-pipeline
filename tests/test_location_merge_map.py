@@ -65,3 +65,4 @@ def test_location_353_is_silver_spring_not_washington_md():
     assert patch["event_country"] == "United States"
     assert patch["event_location"] == "Silver Spring, MD, United States"
     assert patch.get("latitude") and patch.get("longitude")
+    assert patch.get("coordinates_valid") in {"t", "true", True}

@@ -31,6 +31,8 @@ FK_TABLES = (
 )
 
 _NUMERIC_COLUMNS = frozenset({"latitude", "longitude"})
+_BOOLEAN_COLUMNS = frozenset({"coordinates_valid"})
+_TRUE_VALUES = frozenset({"t", "true", "1", "yes"})
 
 _US_COUNTRY_SQL = us_country_sql_in_clause()
 
@@ -47,6 +49,14 @@ def _count_refs(conn, location_id: int) -> dict[str, int]:
     return counts
 
 
+def _patch_db_value(column: str, value: str | None):
+    if value is None or value == "":
+        return None
+    if column in _BOOLEAN_COLUMNS:
+        return str(value).strip().lower() in _TRUE_VALUES
+    return value
+
+
 def apply_location_id_corrections(conn) -> int:
     """Apply explicit field patches to canonical location rows."""
     if not LOCATION_ID_CORRECTIONS:
@@ -55,11 +65,16 @@ def apply_location_id_corrections(conn) -> int:
     with conn.cursor() as cur:
         for location_id, patch in sorted(LOCATION_ID_CORRECTIONS.items()):
             columns = list(patch.keys())
-            db_values = [None if patch[col] == "" else patch[col] for col in columns]
+            db_values = [_patch_db_value(col, patch[col]) for col in columns]
             assignments: list[str] = []
             distinct: list[str] = []
             for col in columns:
-                cast = "::numeric" if col in _NUMERIC_COLUMNS else ""
+                if col in _NUMERIC_COLUMNS:
+                    cast = "::numeric"
+                elif col in _BOOLEAN_COLUMNS:
+                    cast = "::boolean"
+                else:
+                    cast = ""
                 assignments.append(f"{col} = %s{cast}")
                 distinct.append(f"{col} IS DISTINCT FROM %s{cast}")
             cur.execute(
