@@ -184,12 +184,9 @@ location_id,event_city,event_state,event_country,latitude,longitude,event_locati
 302,Ft. Lauderdale,,FL,,,"Ft. Lauderdale, FL","Ft. Lauderdale, FL",f
 369,Toulouse-Blagnac,,France,,,"Toulouse-Blagnac, France","Toulouse-Blagnac, France",f
 388,New York City,New York,United States,,,"New York City, NY, United States","New York City, NY",f
-445,San antonio,,United states,,,"San antonio, Texas, United states","San antonio, Texas, United states",
-426,Phoenix,,United States,,,"Phoenix, United States","Phoenix, United States",
-428,Washington,,United States,,,"Washington, United States","Washington, United States",
-435,Wailea,,United States,,,"Wailea, United States","Wailea, United States",
-436,Boston Club,,Germany,,,"Boston Club, Germany","Boston Club, Germany",
-467,Jeju,,South Korea,,,"Jeju, South Korea","Jeju, South Korea",
+436,Boston Club,,Germany,,,"Boston Club, Germany","Boston Club, Germany",f
+467,Jeju,,South Korea,,,"Jeju, South Korea","Jeju, South Korea",f
+470,Anaheim/Garden Grove,California,United States,,,"Anaheim/Garden Grove, CA, United States","Anaheim/Garden Grove, CA",f
 25,Atlanta,Georgia,United States,33.7501275,-84.3885209,"Atlanta, GA, United States","Atlanta, GA, United States",t
 159,Singapore,,Singapore,1.352083,103.819836,"Singapore, Singapore","Singapore, Singapore",t
 191,Amsterdam,,Netherlands,52.3675734,4.9041389,"Amsterdam, Netherlands","Amsterdam, Netherlands",t
