@@ -16,6 +16,8 @@ LOCATION_RAW_ALIASES: dict[str, str] = {
     "San antonio, Texas, United states": "San Antonio, TX, United States",
     "Phoenix, United States": "Phoenix, AZ, United States",
     "Washington, United States": "Washington, DC, United States",
+    # WSDC metro label for Dance Jam / Westie Weekend @ Hollywood Ballroom
+    "Washington, MD, United States": "Silver Spring, MD, United States",
     "Wailea, United States": "Wailea, HI, United States",
 }
 
@@ -118,6 +120,8 @@ LOCATION_STRING_ALIASES: dict[str, str] = {
     "san antonio, texas, united states": str(SAN_ANTONIO_CANONICAL_LOCATION_ID),
     "san antonio, tx, united states": str(SAN_ANTONIO_CANONICAL_LOCATION_ID),
     "washington, united states": "13",
+    "washington, md, united states": "353",
+    "silver spring, md, united states": "353",
     "wailea, united states": "124",
     "london, england, united kingdom": "107",
     "north myrtle beach, sc, united states": "325",
@@ -257,11 +261,14 @@ LOCATION_ID_CORRECTIONS: dict[int, LocationPatch] = {
         'longitude': '-78.680016',
     },
     353: {
-        'event_city': 'Washington',
+        # Dance Jam Jack & Jill Weekend / Westie Weekend — Hollywood Ballroom
+        'event_city': 'Silver Spring',
         'event_state': 'Maryland',
         'event_country': 'United States',
-        'event_location': 'Washington, MD, United States',
-        'event_location_standardized': 'Washington, MD',
+        'event_location': 'Silver Spring, MD, United States',
+        'event_location_standardized': 'Silver Spring, MD',
+        'latitude': '38.9906654',
+        'longitude': '-77.026088',
     },
 }
 

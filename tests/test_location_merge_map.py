@@ -54,3 +54,14 @@ def test_legacy_coordinate_duplicate_merges_configured():
     assert LOCATION_ID_MERGE_MAP["436"] == "127"
     assert LOCATION_ID_MERGE_MAP["467"] == "213"
     assert LOCATION_ID_MERGE_MAP["470"] == "23"
+
+
+def test_location_353_is_silver_spring_not_washington_md():
+    """WSDC 'Washington, MD' for Dance Jam / Westie Weekend → Silver Spring."""
+    assert "353" not in LOCATION_ID_MERGE_MAP
+    patch = LOCATION_ID_CORRECTIONS[353]
+    assert patch["event_city"] == "Silver Spring"
+    assert patch["event_state"] == "Maryland"
+    assert patch["event_country"] == "United States"
+    assert patch["event_location"] == "Silver Spring, MD, United States"
+    assert patch.get("latitude") and patch.get("longitude")

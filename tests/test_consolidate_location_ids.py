@@ -40,6 +40,8 @@ def test_build_location_lookup_includes_venue_aliases():
     assert lookup["n. myrtle beach, sc, united states"] == "325"
     assert lookup["ft. lauderdale, fl, united states"] == "55"
     assert lookup["anaheim/garden grove, ca, united states"] == "23"
+    assert lookup["washington, md, united states"] == "353"
+    assert lookup["silver spring, md, united states"] == "353"
 
 
 def test_consolidate_location_ids_merges_duplicate_singapore_rows():
