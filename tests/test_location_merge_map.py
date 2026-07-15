@@ -44,3 +44,13 @@ def test_corrections_exclude_merge_map_sources():
         "LOCATION_ID_CORRECTIONS must not patch merge-map source ids "
         "(rows are deleted by apply_merges)"
     )
+
+
+def test_legacy_coordinate_duplicate_merges_configured():
+    """New WSDC duplicate location_ids → canonical rows with coordinates."""
+    assert LOCATION_ID_MERGE_MAP["302"] == "55"
+    assert LOCATION_ID_MERGE_MAP["369"] == "208"
+    assert LOCATION_ID_MERGE_MAP["388"] == "7"
+    assert LOCATION_ID_MERGE_MAP["436"] == "127"
+    assert LOCATION_ID_MERGE_MAP["467"] == "213"
+    assert LOCATION_ID_MERGE_MAP["470"] == "23"

@@ -38,6 +38,8 @@ def test_build_location_lookup_includes_venue_aliases():
     assert lookup["london, england, united kingdom"] == "107"
     assert lookup["north myrtle beach, sc, united states"] == "325"
     assert lookup["n. myrtle beach, sc, united states"] == "325"
+    assert lookup["ft. lauderdale, fl, united states"] == "55"
+    assert lookup["anaheim/garden grove, ca, united states"] == "23"
 
 
 def test_consolidate_location_ids_merges_duplicate_singapore_rows():
@@ -179,3 +181,22 @@ def test_preprocess_merges_swing_crush_san_antonio_duplicate():
     assert row["event_city"] == "San Antonio"
     assert row["event_state"] == "Texas"
     assert row["event_country"] == "United States"
+
+
+def test_consolidate_location_ids_merges_boston_club_duplicate():
+    results = pd.DataFrame({"location_id": ["436", "127", "436"]})
+    locations = pd.DataFrame(
+        {
+            "location_id": ["127", "436"],
+            "event_location": [
+                "Düsseldorf, Germany",
+                "Boston Club, Germany",
+            ],
+            "latitude": ["51.2230411", ""],
+            "longitude": ["6.7824545", ""],
+        }
+    )
+    out_results, out_locations = consolidate_location_ids(results, locations)
+    assert out_results["location_id"].tolist() == ["127", "127", "127"]
+    assert set(out_locations["location_id"].astype(str)) == {"127"}
+    assert "436" in LOCATION_ID_MERGE_MAP
