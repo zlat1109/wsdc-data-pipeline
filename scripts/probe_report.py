@@ -52,6 +52,7 @@ def build_probe_report(
     coverage: EventCoverageResult | None,
     *,
     ready: bool,
+    pending: list[str] | None = None,
     already_in_db: list[str] | None = None,
     gate_status: str | None = None,
     ready_reason: str | None = None,
@@ -68,6 +69,7 @@ def build_probe_report(
     last_success_finished_at: str | None = None,
     db_name_suggestions: dict[str, dict[str, Any]] | None = None,
 ) -> ProbeReport:
+    pending_events = list(coverage.expected) if coverage else list(pending or [])
     return ProbeReport(
         ready=ready,
         watermark=scan.watermark,
@@ -78,7 +80,7 @@ def build_probe_report(
         weekend_snapshot=snapshot_name,
         weekend_start=weekend_start.isoformat() if weekend_start else None,
         weekend_end=weekend_end.isoformat() if weekend_end else None,
-        pending_events=list(coverage.expected) if coverage else [],
+        pending_events=pending_events,
         matched_events=dict(coverage.matched) if coverage else {},
         missing_events=list(coverage.missing) if coverage else [],
         already_in_db_events=list(already_in_db or []),

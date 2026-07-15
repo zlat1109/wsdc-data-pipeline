@@ -82,11 +82,23 @@ def format_probe_message(report: dict) -> str:
         for name in report["already_in_db_events"]:
             lines.append(f"• {_esc(name)}")
 
-    if report.get("no_pending") or report.get("gate_status") == "no_concluded_events":
+    pending = report.get("pending_events") or []
+    gate_status = report.get("gate_status")
+    ready_reason = report.get("ready_reason")
+
+    if gate_status == "no_concluded_events":
         lines.extend(
             [
                 "",
                 "ℹ️ Нет завершённых ивентов в snapshot (тихие выходные / только будущие) — parse не запускаем.",
+            ]
+        )
+    elif ready_reason == "no_new_ids" and pending:
+        lines.extend(
+            [
+                "",
+                "ℹ️ Новых dancer ID нет — live-coverage по pending не сканируем. "
+                "Ждём появления результатов (или новых ID) для оставшихся ивентов.",
             ]
         )
     if cooldown_blocks:
@@ -98,7 +110,6 @@ def format_probe_message(report: dict) -> str:
             ]
         )
 
-    pending = report.get("pending_events") or []
     if pending:
         lines.extend(["", "<b>Ждём результаты (pending)</b>:"])
         for name in pending:

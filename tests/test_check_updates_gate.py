@@ -33,6 +33,22 @@ def _coverage(*, matched: dict[str, str], missing: list[str]) -> _Coverage:
     )
 
 
+def test_no_parse_when_zero_new_ids():
+    ready, reason, trigger = evaluate_parse_ready(
+        ids_changed=False,
+        skip_event_gate=False,
+        cooldown_active=False,
+        ignore_cooldown=False,
+        gate_status="pending",
+        coverage=None,
+        pending=["Big Apple Dance Festival", "Mediterranean Open WCS"],
+        already_in_db=["SwingLab Berlin"],
+    )
+    assert ready is False
+    assert reason == "no_new_ids"
+    assert trigger == []
+
+
 def test_compute_live_ready_pending_excludes_already_in_db():
     result = compute_live_ready_pending(
         pending=["A", "B", "C"],
