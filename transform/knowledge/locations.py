@@ -269,6 +269,7 @@ LOCATION_ID_CORRECTIONS: dict[int, LocationPatch] = {
         'event_location_standardized': 'Silver Spring, MD',
         'latitude': '38.9906654',
         'longitude': '-77.026088',
+        'coordinates_valid': 't',
     },
 }
 
