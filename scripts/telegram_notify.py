@@ -15,6 +15,9 @@ import requests
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 sys.path.insert(0, str(PROJECT_ROOT / "db"))
+sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
+
+from check_updates_gate import registry_cooldown_blocks  # noqa: E402
 
 
 def _esc(value: object) -> str:
@@ -46,8 +49,14 @@ def send_telegram(text: str) -> bool:
 def format_probe_message(report: dict) -> str:
     ready = bool(report.get("ready"))
     cooldown_active = bool(report.get("cooldown_active"))
-    if cooldown_active:
-        status = "🧊 <b>Cooldown: parse уже был на этой неделе</b>"
+    cooldown_blocks = registry_cooldown_blocks(
+        cooldown_active=cooldown_active,
+        ready=ready,
+        ready_reason=report.get("ready_reason"),
+        gate_status=report.get("gate_status"),
+    )
+    if cooldown_blocks:
+        status = "🧊 <b>Cooldown: registry catch-up уже был на этой неделе</b>"
     else:
         status = "✅ <b>Готов к обновлению</b>" if ready else "⏸ <b>Обновления пока нет</b>"
     lines = [
@@ -80,7 +89,7 @@ def format_probe_message(report: dict) -> str:
                 "ℹ️ Нет завершённых ивентов в snapshot (тихие выходные / только будущие) — parse не запускаем.",
             ]
         )
-    if cooldown_active:
+    if cooldown_blocks:
         lines.extend(
             [
                 "",
@@ -115,12 +124,15 @@ def format_probe_message(report: dict) -> str:
         for expected, live in matched.items():
             lines.append(f"• {_esc(expected)} → {_esc(live)}")
 
+    trigger_events = report.get("trigger_events") or []
+    if trigger_events:
+        lines.extend(["", "<b>Триггер full-parse (ивенты в live, ещё не в DB)</b>:"])
+        for name in trigger_events:
+            lines.append(f"• {_esc(name)}")
+
     missing = report.get("missing_events") or []
     if missing:
-        header = "<b>Ещё не найдено в live</b>:"
-        if report.get("friday_final_bypass"):
-            header = "<b>Не дождались (пятничный bypass)</b>:"
-        lines.extend(["", header])
+        lines.extend(["", "<b>Ещё не найдено в live</b>:"])
         for name in missing:
             lines.append(f"• {_esc(name)}")
 
@@ -132,14 +144,25 @@ def format_probe_message(report: dict) -> str:
             dancer_id = dancer.get("wscid", "?")
             lines.append(f"• {_esc(label)} (<code>{_esc(dancer_id)}</code>)")
 
-    if cooldown_active:
+    if report.get("parse_in_flight"):
         lines.append("")
-        lines.append("Авто-parse на этой неделе отключён (проверка остаётся только как мониторинг).")
+        lines.append(
+            "⏳ Full-parse уже выполняется "
+            f"(run_id <code>{_esc(report.get('parse_in_flight_run_id', '?'))}</code>) — "
+            "повторный запуск отложен."
+        )
+
+    if cooldown_blocks:
+        lines.append("")
+        lines.append(
+            "Авто-parse для registry-only (все ивенты уже в DB) отключён до следующего понедельника."
+        )
     elif ready:
         lines.append("")
-        if report.get("friday_final_bypass"):
+        if report.get("ready_reason") == "partial_events_ready":
             lines.append(
-                "Пятничный fallback: часть ивентов уже в live — стартуем parse без оставшихся."
+                "Часть ожидаемых ивентов уже в live — стартуем полный full-parse "
+                "(весь registry, не только эти ивенты)."
             )
         else:
             lines.append("Условия gate выполнены — старт parse в отдельном сообщении.")
@@ -160,7 +183,7 @@ def format_parse_start_message(report: dict) -> str:
         report.get("checked_at", ""),
         "#WSDC_Pipeline_Parse_Start",
         "",
-        "🚀 <b>Все условия соблюдены — начинаю полный парсинг</b>",
+        "🚀 <b>Часть ивентов готова — начинаю полный парсинг (full parse)</b>",
         "",
         f"Watermark в Supabase: <code>{_esc(watermark)}</code>",
         f"Live max ID на WSDC: <code>{_esc(live_max)}</code>",
@@ -179,8 +202,17 @@ def format_parse_start_message(report: dict) -> str:
 
     matched = report.get("matched_events") or {}
     pending = report.get("pending_events") or []
-    if matched or pending:
-        lines.extend(["", "<b>Ивенты (gate пройден)</b>:"])
+    trigger_events = report.get("trigger_events") or []
+    if trigger_events:
+        lines.extend(["", "<b>Ивенты-триггер (partial gate)</b>:"])
+        for name in trigger_events:
+            live = matched.get(name)
+            if live:
+                lines.append(f"✅ {_esc(name)} → {_esc(live)}")
+            else:
+                lines.append(f"✅ {_esc(name)}")
+    elif matched or pending:
+        lines.extend(["", "<b>Ивенты (gate)</b>:"])
         for expected, live in matched.items():
             lines.append(f"✅ {_esc(expected)} → {_esc(live)}")
         for name in pending:

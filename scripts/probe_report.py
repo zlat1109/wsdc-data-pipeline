@@ -28,8 +28,10 @@ class ProbeReport:
     db_name_suggestions: dict[str, dict[str, Any]] = field(default_factory=dict)
     coverage_dancers_scanned: int = 0
     gate_status: str | None = None
-    friday_final_bypass: bool = False
     ready_reason: str | None = None
+    trigger_events: list[str] = field(default_factory=list)
+    parse_in_flight: bool = False
+    parse_in_flight_run_id: int | None = None
     no_pending: bool = False
     cooldown_active: bool = False
     cooldown_until: str | None = None
@@ -52,8 +54,10 @@ def build_probe_report(
     ready: bool,
     already_in_db: list[str] | None = None,
     gate_status: str | None = None,
-    friday_final_bypass: bool = False,
     ready_reason: str | None = None,
+    trigger_events: list[str] | None = None,
+    parse_in_flight: bool = False,
+    parse_in_flight_run_id: int | None = None,
     no_pending: bool = False,
     snapshot_name: str | None = None,
     weekend_start: date | None = None,
@@ -81,8 +85,10 @@ def build_probe_report(
         db_name_suggestions=dict(db_name_suggestions or {}),
         coverage_dancers_scanned=coverage.dancers_scanned if coverage else 0,
         gate_status=gate_status,
-        friday_final_bypass=friday_final_bypass,
         ready_reason=ready_reason,
+        trigger_events=list(trigger_events or []),
+        parse_in_flight=parse_in_flight,
+        parse_in_flight_run_id=parse_in_flight_run_id,
         no_pending=no_pending or gate_status == "no_concluded_events",
         cooldown_active=cooldown_active,
         cooldown_until=cooldown_until,

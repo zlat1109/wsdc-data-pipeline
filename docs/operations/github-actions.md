@@ -99,7 +99,7 @@ python scripts/sync_events_list.py
   - CET (winter): same crons → **08:00** / **21:00** local on Tue–Fri, Mon **21:00**
 - **New-ID scan**: linear probe from last known max dancer ID (watermark)
 - New WSDC registry numbers after weekend events → `changed`
-- **Weekly cooldown**: after one successful full parse in the current Madrid week, probe stays monitoring-only and does not auto-trigger another full-parse until next Monday
+- **Weekly cooldown**: after one successful full parse in the current Madrid week, probe does not auto-trigger another **registry-only** parse (`gate_status=all_loaded`) until next Monday. **Partial gate** (weekend events appearing in live) can trigger multiple full parses in the same week.
 - Stores probe result in `history.parse_runs` (`max_dancer_id_watermark`, `new_dancer_ids`)
 - If changed → triggers `full-parse.yml`
 
@@ -108,25 +108,25 @@ python scripts/sync_events_list.py
 1. WSDC assigns new dancer IDs when people first earn points (Newcomer/Novice, etc.)
 2. After weekend events, new IDs appear Mon–Fri the following week
 3. Script scans live max ID above DB watermark
-4. **Event coverage gate**: scans weekend snapshots (newest first), skips events already in Supabase for that edition (`results_year` / `results_month` or `start_date` month). **Future weekends are excluded** — probe only waits for events whose `end_date` is before today.
-5. Waits until live data from new dancer IDs covers **all pending** upcoming events (e.g. Baltic Swing — not last week's J&J / Orange Blossom once loaded)
-6. **`changed` when** new IDs exist **and** all pending events are present in live data → triggers full-parse
-
-**Friday evening fallback** (last probe ~20:00 Europe/Madrid): if at least one pending event is already visible in live data but others are still missing, trigger full-parse without the stragglers (e.g. delayed Neverland). **Do not** parse on Friday when:
-- snapshot has **no concluded events** (quiet weekend / only future events), or
-- **zero** pending events matched in live yet (single-event weekend not loaded).
+4. **Event coverage gate (partial-readiness)**: scans weekend snapshots (newest first), skips events already in Supabase for that edition (`results_year` / `results_month` or `start_date` month). **Future weekends are excluded** — probe only waits for events whose `end_date` is before today.
+5. **`changed` when** new IDs exist **and** at least one pending event is visible in live WSDC data but not yet in Supabase → triggers **full** parse (`parse_full=true`, entire registry 1..live_max). Does **not** wait for all pending events.
+6. Straggler events (e.g. delayed Neverland) carry over to the next week; no forced Friday parse for missing events.
 
 **Quiet weekend:** if snapshots contain no concluded events, check-updates stays `unchanged` even when new dancer IDs exist.
 
+**Parse in flight:** while a full-parse run is active (load ``running`` or probe trigger awaiting success), probe suppresses duplicate triggers. `full-parse.yml` uses concurrency group `wsdc-full-parse`.
+
 Watermark sources: `MAX(dancer_id)` from `core.dancers` (primary) → last probe record → `PROBE_ANCHOR_ID` env.
 
-`check-updates.yml` sets `PROBE_SLOT=evening` for the 20:00 Madrid cron and `morning` for 07:00 — Friday fallback applies only in the evening slot.
+`check-updates.yml` sets `PROBE_SLOT=evening` for the 20:00 Madrid cron and `morning` for 07:00 (reserved for future slot-specific logic).
 
 **Weekend snapshots (automated):** `wsdc-telegram-bot` weekly bot pushes `data/weekend_events/` here after each Thursday post. See `wsdc-telegram-bot/docs/PIPELINE_SNAPSHOT_SYNC.md`. One-time secret: `WSDC_PIPELINE_SYNC_TOKEN` in the **telegram-bot** repo (not here).
 
 **Bot CSV sync (automated):** after a successful CSV commit, `full-parse.yml` dispatches `pipeline-csv-updated` to **wsdc-telegram-bot**. Secret in **this** repo: `WSDC_BOT_SYNC_TOKEN` (PAT with `contents:read` here + dispatch/write on bot). Bot pulls via `scripts/sync_csv_from_pipeline.sh` (`sync-data.yml`).
 
 ### `full-parse.yml`
+
+Concurrency: `wsdc-full-parse` (no parallel runs; queue if probe triggers while previous parse still running).
 
 Manual or auto-triggered pipeline:
 

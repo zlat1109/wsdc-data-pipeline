@@ -33,6 +33,64 @@ def test_format_probe_unchanged():
     assert "WSDC_Pipeline_Check" in text
 
 
+def test_format_probe_ready_partial_gate():
+    report = {
+        "checked_at": "2026-06-12",
+        "ready": True,
+        "ready_reason": "partial_events_ready",
+        "cooldown_active": True,
+        "gate_status": "pending",
+        "watermark": 28367,
+        "live_max_id": 28400,
+        "approx_new_ids": 33,
+        "pending_events": ["Big Apple", "Neverland Swing"],
+        "missing_events": ["Neverland Swing"],
+        "matched_events": {"Big Apple": "Big Apple Dance Festival"},
+        "trigger_events": ["Big Apple"],
+    }
+    text = format_probe_message(report)
+    assert "Готов к обновлению" in text
+    assert "Cooldown" not in text
+    assert "полный full-parse" in text
+    assert "Big Apple" in text
+
+
+def test_format_probe_registry_cooldown_blocks():
+    report = {
+        "checked_at": "2026-06-17",
+        "ready": False,
+        "ready_reason": "cooldown",
+        "gate_status": "all_loaded",
+        "cooldown_active": True,
+        "cooldown_until": "2026-06-22T00:00:00+02:00",
+        "last_success_run_id": 123,
+        "watermark": 28420,
+        "live_max_id": 28435,
+        "approx_new_ids": 15,
+    }
+    text = format_probe_message(report)
+    assert "Cooldown" in text
+    assert "registry-only" in text
+
+
+def test_format_probe_parse_in_flight():
+    report = {
+        "checked_at": "2026-06-12",
+        "ready": False,
+        "ready_reason": "parse_in_flight",
+        "parse_in_flight": True,
+        "parse_in_flight_run_id": 456,
+        "watermark": 28367,
+        "live_max_id": 28400,
+        "approx_new_ids": 33,
+        "trigger_events": ["Big Apple"],
+        "matched_events": {"Big Apple": "Big Apple"},
+    }
+    text = format_probe_message(report)
+    assert "уже выполняется" in text
+    assert "456" in text
+
+
 def test_format_probe_ready():
     report = {
         "checked_at": "2026-06-12",
@@ -53,6 +111,8 @@ def test_format_probe_cooldown():
     report = {
         "checked_at": "2026-06-17",
         "ready": False,
+        "ready_reason": "cooldown",
+        "gate_status": "all_loaded",
         "cooldown_active": True,
         "cooldown_until": "2026-06-22T00:00:00+02:00",
         "last_success_run_id": 123,
