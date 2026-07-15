@@ -16,6 +16,8 @@ LOCATION_RAW_ALIASES: dict[str, str] = {
     "San antonio, Texas, United states": "San Antonio, TX, United States",
     "Phoenix, United States": "Phoenix, AZ, United States",
     "Washington, United States": "Washington, DC, United States",
+    # WSDC metro label for Dance Jam / Westie Weekend @ Hollywood Ballroom
+    "Washington, MD, United States": "Silver Spring, MD, United States",
     "Wailea, United States": "Wailea, HI, United States",
 }
 
@@ -27,8 +29,10 @@ LOCATION_ID_MERGE_MAP: dict[str, str] = {
     "373": "191",
     # Anaheim / Garden Grove metro → Anaheim
     "291": "23",
+    "470": "23",
     # Boston Club venue label → Düsseldorf
     "334": "127",
+    "436": "127",
     # Brno country alias
     "412": "266",
     # Calgary duplicate
@@ -42,12 +46,16 @@ LOCATION_ID_MERGE_MAP: dict[str, str] = {
     # Incheon / Jeju country alias
     "359": "172",
     "382": "213",
+    "467": "213",
+    # Ft. Lauderdale spelling → Fort Lauderdale
+    "302": "55",
     # Montreal duplicate
     "331": "86",
     # N. Myrtle Beach abbreviation → North Myrtle Beach (canonical id 325)
     "111": "325",
     # New York City → New York
     "224": "7",
+    "388": "7",
     # Perth state-as-country typo
     "423": "253",
     # Phoenix country typo
@@ -66,6 +74,7 @@ LOCATION_ID_MERGE_MAP: dict[str, str] = {
     "363": "105",
     # Toulouse-Blagnac airport label → Toulouse
     "187": "208",
+    "369": "208",
     # Vancouver duplicate
     "347": "154",
     # Venray duplicate (keep row with coordinates)
@@ -87,7 +96,10 @@ LOCATION_STRING_ALIASES: dict[str, str] = {
     "singapore, singapore, singapore": str(SINGAPORE_CANONICAL_LOCATION_ID),
     "amsterdam, netherlands": "191",
     "anaheim, ca, united states": "23",
+    "anaheim/garden grove, ca, united states": "23",
     "garden grove, ca, united states": "23",
+    "ft. lauderdale, fl, united states": "55",
+    "fort lauderdale, fl, united states": "55",
     "boston club, germany": "127",
     "dusseldorf, germany": "127",
     "duesseldorf, germany": "127",
@@ -108,6 +120,8 @@ LOCATION_STRING_ALIASES: dict[str, str] = {
     "san antonio, texas, united states": str(SAN_ANTONIO_CANONICAL_LOCATION_ID),
     "san antonio, tx, united states": str(SAN_ANTONIO_CANONICAL_LOCATION_ID),
     "washington, united states": "13",
+    "washington, md, united states": "353",
+    "silver spring, md, united states": "353",
     "wailea, united states": "124",
     "london, england, united kingdom": "107",
     "north myrtle beach, sc, united states": "325",
@@ -247,11 +261,14 @@ LOCATION_ID_CORRECTIONS: dict[int, LocationPatch] = {
         'longitude': '-78.680016',
     },
     353: {
-        'event_city': 'Washington',
+        # Dance Jam Jack & Jill Weekend / Westie Weekend — Hollywood Ballroom
+        'event_city': 'Silver Spring',
         'event_state': 'Maryland',
         'event_country': 'United States',
-        'event_location': 'Washington, MD, United States',
-        'event_location_standardized': 'Washington, MD',
+        'event_location': 'Silver Spring, MD, United States',
+        'event_location_standardized': 'Silver Spring, MD',
+        'latitude': '38.9906654',
+        'longitude': '-77.026088',
     },
 }
 
