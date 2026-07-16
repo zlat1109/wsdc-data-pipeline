@@ -12,6 +12,7 @@
 | `export.event_catalog` | `event_catalog.csv` | Yes |
 | `export.event_editions` | `event_editions.csv` | Yes |
 | `export.scheduled_events` | `scheduled_events.csv` | Yes |
+| `export.edition_calendar_dates` | `edition_calendar_dates.csv` | Yes |
 | `export.changed_dancer_points_info` | `changed_dancer_points_info.csv` | Yes |
 | `export.changed_dancer_role_info` | `changed_dancer_role_info.csv` | Yes |
 | `export.changed_dancer_name_info` | `changed_dancer_name_info.csv` | Yes |
