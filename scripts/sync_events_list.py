@@ -20,6 +20,7 @@ from typing import Any
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 sys.path.insert(0, str(PROJECT_ROOT / "db"))
+sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 
 from parser.events_list_scraper import scrape_events_list  # noqa: E402
 from refresh_events_list_current import refresh_events_list_current  # noqa: E402
@@ -251,6 +252,18 @@ def load_to_supabase(
             current_count = refresh_events_list_current(
                 conn, events, run_id, catalog=catalog
             )
+
+            # Same Tuesday job: calendar day-precision → durable store, then rebuild.
+            try:
+                from sync_events_calendar import sync_events_calendar
+
+                cal = sync_events_calendar(conn=conn, rebuild_catalog=False)
+                print(
+                    f"Calendar sync: {cal.get('event_count', 0)} rows, "
+                    f"upserted={cal.get('upserted', 0)}"
+                )
+            except Exception as exc:
+                print(f"Calendar sync failed (continuing list rebuild): {exc}", file=sys.stderr)
 
             from build_event_catalog import rebuild_event_catalog
 

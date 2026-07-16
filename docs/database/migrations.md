@@ -42,6 +42,7 @@ CI and `scripts/run_pipeline.py` call `db/apply.py` before load.
 | `021_dancer_names_history.sql` | Identity history: display-name changes separate from competitive (points/divisions) history. |
 | `022_dancer_name_exports.sql` | Point-in-time dancer name lookup + split history export views. |
 | `023_dancer_roles_division_sig.sql` | Shared md5 signature for competitive role/division SCD2 (excludes dancer_name). |
+| `024_edition_calendar_dates.sql` | Edition calendar dates archive + start/end on event_editions export |
 <!-- /docs-sync:migration-index -->
 
 ## Adding a migration

@@ -126,7 +126,7 @@ Tableau Public не подключается к Supabase — только лок
 python export.py --output-dir ./data
 ```
 
-Расписание WSDC (scrape worldsdc.com/events/) обновляется отдельно по вторникам — `sync-events-list.yml` коммитит `data/events_list/`; `scheduled_events.csv` попадает в общий экспорт после sync.
+Расписание WSDC (scrape worldsdc.com/events/ + calendar) обновляется по вторникам — `sync-events-list.yml` коммитит `data/events_list/` и `data/events_calendar/`; day-precision даты пишутся в `core.edition_calendar_dates` и копируются в `event_editions` при rebuild.
 
 ## Documentation
 

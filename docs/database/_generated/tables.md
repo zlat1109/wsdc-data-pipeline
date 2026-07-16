@@ -41,6 +41,26 @@
 | dancer_id | text/PK/FK | — |
 | dancer_name | text/PK/FK | — |
 
+## core.edition_calendar_dates
+
+Planned edition dates from worldsdc.com/events/calendar/ (and list backfill). 
+
+| Column | Migration parse | Live type |
+|--------|-----------------|-----------|
+| event_id | text/PK/FK | — |
+| event_year | text/PK/FK | — |
+| event_month | text/PK/FK | — |
+| planned_start_date | text/PK/FK | — |
+| planned_end_date | text/PK/FK | — |
+| calendar_status | text/PK/FK | — |
+| date_source | text/PK/FK | — |
+| source_fingerprint | text/PK/FK | — |
+| calendar_title | text/PK/FK | — |
+| url | text/PK/FK | — |
+| match_via | text/PK/FK | — |
+| scraped_at | text/PK/FK | — |
+| updated_at | text/PK/FK | — |
+
 ## core.event_aliases
 | Column | Migration parse | Live type |
 |--------|-----------------|-----------|

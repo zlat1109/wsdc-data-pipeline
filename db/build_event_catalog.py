@@ -180,6 +180,10 @@ def rebuild_event_catalog(conn: Any) -> tuple[int, int]:
 
         cur.execute(_ENRICH_FROM_SCHEDULE_SQL)
 
+        from edition_calendar import enrich_event_editions_dates
+
+        enrich_event_editions_dates(conn)
+
         for event_id, meta in KNOWN_EVENT_METADATA.items():
             typical = meta.get("typical_location") or ""
             loc = meta.get("location") or {}

@@ -16,6 +16,8 @@
 
 ## export.dancers_results_with_name
 
+## export.edition_calendar_dates
+
 ## export.event_catalog
 
 ## export.event_editions

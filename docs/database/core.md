@@ -220,7 +220,12 @@ Full snapshot replaced each load.
 | event_id | int | NO | FK → `core.events` |
 | event_year | int | NO | Edition year |
 | event_month | int | NO | Edition month |
-| edition_date | date | YES | Parsed edition date |
+| edition_date | date | YES | Month sentinel (`YYYY-MM-01` from results) |
+| start_date | date | YES | Inclusive first day (calendar/list); NULL if hiatus/cancelled |
+| end_date | date | YES | Inclusive last day; NULL if hiatus/cancelled |
+| date_source | text | YES | `wsdc_calendar` or `wsdc_events_list` |
+| calendar_status | text | YES | `scheduled` / `unconfirmed` / `hiatus` / `cancelled` |
+| event_occurred | boolean | YES | FALSE when hiatus/cancelled; TRUE when results exist and status ok |
 | location_id | int | YES | FK → `core.locations` |
 | place_city | text | YES | Edition city |
 | place_state | text | YES | Edition state |
@@ -228,6 +233,30 @@ Full snapshot replaced each load.
 | location_raw | text | YES | Raw location string |
 | result_rows | int | NO | Results in this edition |
 | unique_dancers | int | NO | Distinct dancers |
+
+## core.edition_calendar_dates
+
+**Grain:** planned dates for an event year/month (from WSDC calendar; list may backfill).
+
+**Primary key:** `(event_id, event_year, event_month)`
+
+Survives points-load `TRUNCATE` of `event_editions`. Re-applied in `rebuild_event_catalog`.
+
+| Column | Type | Nullable | Description |
+|--------|------|----------|-------------|
+| event_id | int | NO | FK → `core.events` |
+| event_year | int | NO | Results year |
+| event_month | int | NO | Results month |
+| planned_start_date | date | YES | Inclusive start from calendar |
+| planned_end_date | date | YES | Inclusive end |
+| calendar_status | text | NO | `scheduled` / `unconfirmed` / `hiatus` / `cancelled` |
+| date_source | text | NO | `wsdc_calendar` / `wsdc_events_list` |
+| source_fingerprint | text | YES | Scrape fingerprint |
+| calendar_title | text | YES | Title as on calendar |
+| url | text | YES | Event URL |
+| match_via | text | YES | Match method |
+| scraped_at | timestamptz | YES | Last scrape |
+| updated_at | timestamptz | NO | Last upsert |
 
 ## core.scheduled_events
 

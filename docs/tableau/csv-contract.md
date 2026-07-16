@@ -128,7 +128,12 @@ Note: legacy export has no `event_id` column — join via `event_name` + year/mo
 | event_name | string | NO | From catalog |
 | event_year | integer | NO | Year |
 | event_month | integer | NO | Month |
-| edition_date | date | YES | Parsed date |
+| edition_date | date | YES | Month sentinel from results (`YYYY-MM-01`) |
+| start_date | date | YES | Inclusive first day (calendar/list) |
+| end_date | date | YES | Inclusive last day |
+| date_source | string | YES | `wsdc_calendar` / `wsdc_events_list` |
+| calendar_status | string | YES | `scheduled` / `unconfirmed` / `hiatus` / `cancelled` |
+| event_occurred | boolean | YES | FALSE if hiatus/cancelled |
 | location_id | integer | YES | Location FK |
 | place_city | string | YES | City |
 | place_state | string | YES | State |
@@ -139,6 +144,28 @@ Note: legacy export has no `event_id` column — join via `event_name` + year/mo
 | url | string | YES | Event URL |
 | typical_location | string | YES | Brand typical location |
 | registry_status | string | YES | Status |
+
+## edition_calendar_dates.csv
+
+**Grain:** planned edition dates (durable; survives rebuild)  
+**View:** `export.edition_calendar_dates`
+
+| Column | Type | Nullable | Description |
+|--------|------|----------|-------------|
+| event_id | integer | NO | Registry id |
+| event_name | string | YES | Catalog name |
+| event_year | integer | NO | Year |
+| event_month | integer | NO | Month |
+| planned_start_date | date | YES | Inclusive start |
+| planned_end_date | date | YES | Inclusive end |
+| calendar_status | string | NO | Status flag |
+| date_source | string | NO | Source |
+| source_fingerprint | string | YES | Fingerprint |
+| calendar_title | string | YES | Calendar title |
+| url | string | YES | URL |
+| match_via | string | YES | Match method |
+| scraped_at | timestamp | YES | Scrape time |
+| updated_at | timestamp | NO | Upsert time |
 
 ## scheduled_events.csv
 
