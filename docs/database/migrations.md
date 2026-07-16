@@ -43,6 +43,7 @@ CI and `scripts/run_pipeline.py` call `db/apply.py` before load.
 | `022_dancer_name_exports.sql` | Point-in-time dancer name lookup + split history export views. |
 | `023_dancer_roles_division_sig.sql` | Shared md5 signature for competitive role/division SCD2 (excludes dancer_name). |
 | `024_edition_calendar_dates.sql` | Edition calendar dates archive + start/end on event_editions export |
+| `025_edition_calendar_dates_no_fk.sql` | Drop edition_calendar_dates FK so promote CASCADE cannot wipe dates |
 <!-- /docs-sync:migration-index -->
 
 ## Adding a migration
