@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from typing import Any
 
 _UPSERT_SQL = """
@@ -173,3 +173,100 @@ def enrich_event_editions_dates(conn: Any) -> tuple[int, int]:
         cur.execute(_ENRICH_EDITIONS_FROM_LIST_SQL)
         from_list = cur.rowcount
     return from_cal, from_list
+
+
+def durable_date_count(conn: Any) -> int:
+    with conn.cursor() as cur:
+        cur.execute("SELECT count(*) FROM core.edition_calendar_dates")
+        return int(cur.fetchone()[0])
+
+
+def ensure_edition_calendar_after_load(
+    conn: Any,
+    *,
+    artifact_path: Any | None = None,
+) -> dict[str, Any]:
+    """If durable calendar archive is empty, rebuild from scrape or artifact.
+
+    promote_core used to CASCADE-wipe this table via FK to core.events; even after
+    dropping the FK, recover if the archive is empty so export still has day dates.
+    """
+    from datetime import datetime, timezone
+    from pathlib import Path
+
+    import pandas as pd
+
+    from parser.events_calendar_scraper import scrape_events_calendar
+    from transform.events_calendar_match import match_calendar_to_editions
+    from transform.events_calendar_normalize import normalize_calendar_events
+
+    report: dict[str, Any] = {"durable_before": durable_date_count(conn), "action": "noop"}
+    if report["durable_before"] > 0:
+        enrich_event_editions_dates(conn)
+        report["action"] = "enrich_only"
+        report["durable_after"] = report["durable_before"]
+        return report
+
+    def _frames() -> tuple[Any, Any]:
+        with conn.cursor() as cur:
+            cur.execute(
+                """
+                SELECT
+                    ed.edition_id::text, ed.event_id::text, c.canonical_name,
+                    ed.event_year::text, ed.event_month::text
+                FROM core.event_editions ed
+                JOIN core.event_catalog c ON c.event_id = ed.event_id
+                """
+            )
+            editions = pd.DataFrame(
+                cur.fetchall(),
+                columns=["edition_id", "event_id", "event_name", "event_year", "event_month"],
+            )
+            cur.execute(
+                "SELECT event_id::text, canonical_name, url FROM core.event_catalog"
+            )
+            catalog = pd.DataFrame(
+                cur.fetchall(), columns=["event_id", "canonical_name", "url"]
+            )
+        return editions, catalog
+
+    def _upsert_from_events(events: list[dict[str, Any]], action: str) -> dict[str, Any]:
+        editions, catalog = _frames()
+        if editions.empty:
+            report["action"] = "failed_no_editions"
+            report["durable_after"] = 0
+            return report
+        matched, _summary = match_calendar_to_editions(events, editions, catalog)
+        rows = rows_for_upsert(
+            [r for r in matched if r.get("matched_event_id")],
+            scraped_at=datetime.now(timezone.utc),
+        )
+        upserted = upsert_edition_calendar_dates(conn, rows)
+        enrich_event_editions_dates(conn)
+        report["action"] = action
+        report["upserted"] = upserted
+        report["durable_after"] = durable_date_count(conn)
+        return report
+
+    try:
+        raw = scrape_events_calendar()
+        events = normalize_calendar_events(raw, min_start=date(2025, 1, 1))
+        return _upsert_from_events(events, "scrape_upsert")
+    except Exception as scrape_exc:
+        report["scrape_error"] = str(scrape_exc)
+
+    path = Path(artifact_path) if artifact_path else None
+    if path is None:
+        root = Path(__file__).resolve().parents[1]
+        path = root / "data" / "events_calendar" / "current.json"
+    if not path.exists():
+        report["action"] = "failed_empty"
+        report["durable_after"] = 0
+        return report
+
+    import json
+
+    doc = json.loads(path.read_text(encoding="utf-8"))
+    events = doc.get("events") or []
+    report["artifact"] = str(path)
+    return _upsert_from_events(events, "artifact_upsert")

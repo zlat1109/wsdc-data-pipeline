@@ -121,3 +121,47 @@ def test_rows_for_upsert_keeps_hiatus_planned_dates():
     assert rows[0]["planned_start_date"] == "2025-02-27"
     assert rows[0]["event_year"] == 2025
     assert rows[0]["event_month"] == 3
+
+
+def test_ensure_skips_scrape_when_durable_present(monkeypatch):
+    calls = {"enrich": 0, "scrape": 0}
+
+    class _Cur:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            return False
+
+        def execute(self, sql, params=None):
+            self._sql = sql
+
+        def fetchone(self):
+            return (12,)
+
+    class _Conn:
+        def cursor(self):
+            return _Cur()
+
+    def fake_enrich(conn):
+        calls["enrich"] += 1
+        return (1, 0)
+
+    def fake_scrape():
+        calls["scrape"] += 1
+        raise AssertionError("scrape should not run")
+
+    monkeypatch.setattr("edition_calendar.enrich_event_editions_dates", fake_enrich)
+    monkeypatch.setattr(
+        "edition_calendar.durable_date_count", lambda conn: 12
+    )
+    monkeypatch.setattr(
+        "parser.events_calendar_scraper.scrape_events_calendar", fake_scrape
+    )
+
+    from edition_calendar import ensure_edition_calendar_after_load
+
+    report = ensure_edition_calendar_after_load(_Conn())
+    assert report["action"] == "enrich_only"
+    assert calls["enrich"] == 1
+    assert calls["scrape"] == 0

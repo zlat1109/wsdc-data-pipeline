@@ -242,6 +242,8 @@ Full snapshot replaced each load.
 
 Survives points-load `TRUNCATE` of `event_editions`. Re-applied in `rebuild_event_catalog`.
 
+**Note:** no FK to `core.events` — `promote_core` uses `TRUNCATE … CASCADE` on events; a FK would wipe this archive on every full parse.
+
 | Column | Type | Nullable | Description |
 |--------|------|----------|-------------|
 | event_id | int | NO | FK → `core.events` |

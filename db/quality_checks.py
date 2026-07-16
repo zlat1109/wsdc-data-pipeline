@@ -208,6 +208,32 @@ EXTENDED_CHECKS: tuple[QualityCheck, ...] = (
         fix_hint="db/seed_event_aliases.py seed_result_only_events",
     ),
     QualityCheck(
+        name="edition_calendar_archive_empty",
+        sql="""
+        SELECT CASE WHEN count(*) = 0 THEN 1 ELSE 0 END
+        FROM core.edition_calendar_dates
+        """,
+        max_value=0,
+        severity="warn",
+        category="event_naming",
+        description="Durable WSDC calendar dates archive should not be empty after load.",
+        fix_hint="scripts/sync_events_calendar.py; FK to events must not CASCADE on promote",
+    ),
+    QualityCheck(
+        name="recent_editions_missing_day_dates",
+        sql="""
+        SELECT count(*) FROM core.event_editions
+        WHERE event_year >= 2025
+          AND start_date IS NULL
+          AND COALESCE(calendar_status, '') NOT IN ('hiatus', 'cancelled')
+        """,
+        max_value=50,
+        severity="warn",
+        category="event_naming",
+        description="Most 2025+ editions with results should have calendar day dates.",
+        fix_hint="scripts/sync_events_calendar.py + rebuild_event_catalog",
+    ),
+    QualityCheck(
         name="editions_null_location_id",
         sql="SELECT count(*) FROM core.event_editions WHERE location_id IS NULL",
         max_value=0,

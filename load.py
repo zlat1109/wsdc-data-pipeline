@@ -80,6 +80,13 @@ def main() -> None:
                 cur.execute(read_sql("promote_core_results.sql"))
                 enrich_core_known_events(conn)
                 catalog_count, edition_count = rebuild_event_catalog(conn)
+                from edition_calendar import ensure_edition_calendar_after_load
+
+                cal_report = ensure_edition_calendar_after_load(conn)
+                print(
+                    f"Edition calendar: action={cal_report.get('action')} "
+                    f"durable={cal_report.get('durable_after', cal_report.get('durable_before'))}"
+                )
                 cur.execute("ANALYZE core.results, core.event_editions, core.event_catalog")
 
                 cur.execute(
