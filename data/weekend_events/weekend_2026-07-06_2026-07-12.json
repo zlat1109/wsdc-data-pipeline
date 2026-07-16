@@ -1,0 +1,62 @@
+{
+  "generated_at": "2026-07-16T20:14:59Z",
+  "weekend_start": "2026-07-06",
+  "weekend_end": "2026-07-12",
+  "events": [
+    {
+      "name": "MY Swing",
+      "location": "Kuala Lumpur, Malaysia",
+      "dates": "Jul 9 - 12, 2026",
+      "url": "https://www.myswingopen.com/",
+      "start_date": "2026-07-09",
+      "end_date": "2026-07-12",
+      "livestream": null,
+      "continent": "Asia",
+      "flag": "🇲🇾"
+    },
+    {
+      "name": "Carolina Summer Swing",
+      "location": "Greenville, SC, United States",
+      "dates": "Jul 9 - 12, 2026",
+      "url": "https://carolinasummerswing.com/",
+      "start_date": "2026-07-09",
+      "end_date": "2026-07-12",
+      "livestream": null,
+      "continent": "America",
+      "flag": "🇺🇸"
+    },
+    {
+      "name": "Mediterranean Open WCS",
+      "location": "Barcelona, Spain",
+      "dates": "Jul 9 - 13, 2026",
+      "url": "https://mediterraneanopenwcs.com/",
+      "start_date": "2026-07-09",
+      "end_date": "2026-07-13",
+      "livestream": null,
+      "continent": "Europe",
+      "flag": "🇪🇸"
+    },
+    {
+      "name": "Big Apple Dance Festival",
+      "location": "Morristown, NJ, United States",
+      "dates": "Jul 9 - 12, 2026",
+      "url": "http://bigapplecountrydance.com/",
+      "start_date": "2026-07-09",
+      "end_date": "2026-07-12",
+      "livestream": null,
+      "continent": "America",
+      "flag": "🇺🇸"
+    },
+    {
+      "name": "SwingLab Berlin",
+      "location": "Berlin, Germany",
+      "dates": "Jul 10 - 12, 2026",
+      "url": "http://www.swinglab-berlin.com/",
+      "start_date": "2026-07-10",
+      "end_date": "2026-07-12",
+      "livestream": null,
+      "continent": "Europe",
+      "flag": "🇩🇪"
+    }
+  ]
+}
