@@ -75,10 +75,11 @@ Requires `TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID` in this repo's Actions secret
 ### `sync-events-list.yml`
 
 - **Schedule**: every **Tuesday 08:00 UTC** (~10:00 Europe/Madrid)
-- Scrapes https://www.worldsdc.com/events/ (Playwright)
-- Writes `data/events_list/current.json`, `events_list.csv`, `changelog/run_*.json`
-- Loads `core.scheduled_events` (edition archive), `core.events_list_current` (one row per event), and `history.events_list_changes` in Supabase
-- Commits `data/events_list/` to repo
+- Scrapes https://www.worldsdc.com/events/ (Playwright) **and** https://worldsdc.com/events/calendar/ (HTTP FullCalendar JSON)
+- Writes `data/events_list/` + `data/events_calendar/`
+- Loads `core.scheduled_events`, `core.events_list_current`, `history.events_list_changes`
+- Upserts `core.edition_calendar_dates`, then `rebuild_event_catalog` (copies day dates onto `event_editions`)
+- Commits `data/events_list/` and `data/events_calendar/` to repo
 - Manual: Actions → **Sync WSDC Events List** → Run workflow
 
 Local:
@@ -86,6 +87,8 @@ Local:
 ```bash
 python db/apply.py
 python scripts/sync_events_list.py
+# calendar-only:
+python scripts/sync_events_calendar.py
 ```
 
 ## Workflows

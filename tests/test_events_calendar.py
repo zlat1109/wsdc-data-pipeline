@@ -1,0 +1,123 @@
+"""Tests for WSDC Events Calendar scrape + normalize + durable upsert helpers."""
+
+from __future__ import annotations
+
+import sys
+from datetime import date
+from pathlib import Path
+
+import pandas as pd
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "db"))
+
+from edition_calendar import calendar_status_from_flags, rows_for_upsert
+from parser.events_calendar_scraper import extract_calendar_events_json
+from transform.events_calendar_match import match_calendar_to_editions
+from transform.events_calendar_normalize import (
+    inclusive_end_from_fullcalendar,
+    normalize_calendar_event,
+    normalize_calendar_events,
+)
+
+_SAMPLE_HTML = """
+<html><script>
+document.addEventListener('DOMContentLoaded', function() {
+  var calendar = new FullCalendar.Calendar(el, {
+"events":[{"title":"Atlanta Swing Classic","start":"2025-10-02","end":"2025-10-06","url":"https:\\/\\/atlantaswingclassic.com\\/"},{"title":"Municorn Swing (On Hiatus)","start":"2024-01-25","end":"2024-01-29","url":"https:\\/\\/municornswing.com"},{"title":"MY Swing","start":"2026-07-09","end":"2026-07-13","url":"https:\\/\\/example.com\\/myswing"}]});
+  calendar.render();
+});
+</script></html>
+"""
+
+
+def test_extract_calendar_events_json():
+    events = extract_calendar_events_json(_SAMPLE_HTML)
+    assert len(events) == 3
+    assert events[0]["title"] == "Atlanta Swing Classic"
+
+
+def test_inclusive_end_exclusive_fullcalendar():
+    start = date(2026, 7, 9)
+    end_exclusive = date(2026, 7, 13)
+    assert inclusive_end_from_fullcalendar(start, end_exclusive) == date(2026, 7, 12)
+
+
+def test_normalize_drops_hiatus_flag_and_min_start():
+    raw = extract_calendar_events_json(_SAMPLE_HTML)
+    rows = normalize_calendar_events(raw, min_start=date(2025, 1, 1))
+    assert len(rows) == 2
+    atlanta = next(r for r in rows if r["event_name"] == "Atlanta Swing Classic")
+    assert atlanta["start_date"] == "2025-10-02"
+    assert atlanta["end_date"] == "2025-10-05"
+    my_swing = next(r for r in rows if r["event_name"] == "MY Swing")
+    assert my_swing["end_date"] == "2026-07-12"
+
+
+def test_normalize_hiatus_flag():
+    row = normalize_calendar_event(
+        {
+            "title": "Municorn Swing (On Hiatus)",
+            "start": "2024-01-25",
+            "end": "2024-01-29",
+            "url": "https://municornswing.com",
+        }
+    )
+    assert row is not None
+    assert "hiatus" in row["flags"]
+    assert row["event_name"] == "Municorn Swing"
+    assert calendar_status_from_flags(row["flags"]) == "hiatus"
+
+
+def test_match_by_name_and_ym():
+    cal = normalize_calendar_events(
+        [{"title": "Atlanta Swing Classic", "start": "2025-10-02", "end": "2025-10-06", "url": ""}],
+        min_start=None,
+    )
+    editions = pd.DataFrame(
+        [
+            {
+                "edition_id": "e1",
+                "event_id": "42",
+                "event_name": "Atlanta Swing Classic",
+                "event_year": "2025",
+                "event_month": "10",
+            }
+        ]
+    )
+    catalog = pd.DataFrame(
+        [{"event_id": "42", "canonical_name": "Atlanta Swing Classic", "url": ""}]
+    )
+    rows, summary = match_calendar_to_editions(cal, editions, catalog)
+    assert summary["matched"] == 1
+    assert rows[0]["matched_event_id"] == "42"
+    assert rows[0]["matched_edition_id"] == "e1"
+    assert rows[0]["matched_event_year"] == "2025"
+    assert rows[0]["matched_event_month"] == "10"
+
+
+def test_rows_for_upsert_keeps_hiatus_planned_dates():
+    rows = rows_for_upsert(
+        [
+            {
+                "matched_event_id": "92",
+                "matched_event_year": "2025",
+                "matched_event_month": "3",
+                "match_status": "matched",
+                "start_date": "2025-02-27",
+                "end_date": "2025-03-03",
+                "flags": ["hiatus"],
+                "date_source": "wsdc_calendar",
+                "source_fingerprint": "abc",
+                "calendar_title": "Madjam (On Hiatus)",
+                "url": "http://example.com",
+                "match_via": "name",
+                "results_year": 2025,
+                "results_month": 3,
+            }
+        ]
+    )
+    assert len(rows) == 1
+    assert rows[0]["calendar_status"] == "hiatus"
+    assert rows[0]["planned_start_date"] == "2025-02-27"
+    assert rows[0]["event_year"] == 2025
+    assert rows[0]["event_month"] == 3
