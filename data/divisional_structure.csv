@@ -2052,7 +2052,7 @@ update_date,division,role,type_options,count_dancer
 2026-07-16,Novice,Follower,required,10
 2026-07-16,Novice,Leader,allowed,6
 2026-07-16,Novice,Leader,required,7
-2026-07-16,nan,Follower,allowed,2
-2026-07-16,nan,Follower,required,2
-2026-07-16,nan,Leader,allowed,6
-2026-07-16,nan,Leader,required,7
+2026-07-16,,Follower,allowed,2
+2026-07-16,,Follower,required,2
+2026-07-16,,Leader,allowed,6
+2026-07-16,,Leader,required,7
