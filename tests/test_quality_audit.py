@@ -51,3 +51,19 @@ def test_location_city_equals_country():
     findings = check_location_format(df)
     codes = {f.code for f in findings}
     assert "LOCATION_CITY_EQUALS_COUNTRY" in codes
+
+
+def test_singapore_city_state_not_flagged_as_city_equals_country():
+    """Singapore is a city-state: city=country is valid; event_state stays empty."""
+    df = pd.DataFrame(
+        {
+            "location_id": ["159"],
+            "event_city": ["Singapore"],
+            "event_state": [""],
+            "event_country": ["Singapore"],
+            "event_location": ["Singapore, Singapore"],
+        }
+    )
+    findings = check_location_format(df)
+    codes = {f.code for f in findings}
+    assert "LOCATION_CITY_EQUALS_COUNTRY" not in codes
