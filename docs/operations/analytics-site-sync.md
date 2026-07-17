@@ -37,7 +37,30 @@ full-parse.yml
        commit + push → GitHub Pages
 ```
 
-## Manual run
+## Local paths
+
+| Repo | Path |
+|---|---|
+| Pipeline | `~/.cursor/projects/python/wsdc-data-pipeline` |
+| Analytics site | `~/.cursor/wsdc-analytics-repo` (`wsdc-analytics/wsdc-analytics.github.io`) |
+
+Local rebuild (no CI):
+
+```bash
+PIPE=~/.cursor/projects/python/wsdc-data-pipeline/data
+SITE=~/.cursor/wsdc-analytics-repo
+
+python3 "$SITE/scripts/build_homepage_kpis.py" \
+  --source-dir "$PIPE" --output "$SITE/static/data/homepage_kpis.json"
+
+python3 "$SITE/scripts/update_secondary_country_unified.py" \
+  --source-dir "$PIPE" --output "$SITE/static/data/secondary_country_unified.json"
+
+cd "$SITE" && python3 scripts/validate_site_data.py
+# then commit static/data/*.json and push main → Pages
+```
+
+## Manual CI-style run
 
 ```bash
 export WSDC_ANALYTICS_DEPLOY_TOKEN='ghp_...'
