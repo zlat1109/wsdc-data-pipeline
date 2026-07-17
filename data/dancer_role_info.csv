@@ -2461,6 +2461,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 2634,Don West,Leader,Intermediate,Intermediate,Follower,Novice,Novice,Novice,,,2026-07-16
 2635,Carol Callahan,Follower,Intermediate,Intermediate,Leader,Novice,Novice,Novice,,,2026-07-16
 2636,Deor Orzame,Leader,Intermediate,Intermediate,Follower,Novice,Novice,Novice,,,2026-07-16
+2704,Carol Fraser,Follower,Advanced,Advanced,Leader,nan,Novice,Intermediate,,,2026-07-16
 2637,Kirsten Hirshberger,Follower,Intermediate,Intermediate,Leader,Novice,Novice,Novice,,,2026-07-16
 2639,Lisa Wade,Follower,Intermediate,Intermediate,Leader,Novice,Novice,Novice,,,2026-07-16
 2638,Ben Yau,Leader,Intermediate,Intermediate,Follower,Novice,Novice,Novice,,,2026-07-16
@@ -2527,7 +2528,6 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 2701,Sarah Caissie,Follower,Newcomer,Novice,Leader,nan,nan,,,,2026-07-16
 2703,Discovery Gerdes,Follower,Newcomer,Novice,Leader,nan,nan,,,,2026-07-16
 2705,Manu Smith,Follower,Newcomer,Novice,Leader,nan,nan,,,,2026-07-16
-2704,Carol Fraser,Follower,Advanced,Advanced,Leader,nan,Novice,Intermediate,,,2026-07-16
 2706,Sara Spence,Follower,All-Star,Champion,Leader,Advanced,Advanced,Advanced,,,2026-07-16
 2707,Carla Heiney,Follower,Advanced,Advanced,Leader,nan,Novice,Intermediate,,,2026-07-16
 2708,Laura Dabby,Follower,All-Star,Champion,Leader,Advanced,Advanced,Advanced,,,2026-07-16
@@ -7226,6 +7226,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 7643,Justin Hirschy,Leader,Novice,Intermediate,Follower,nan,nan,,,,2026-07-16
 7644,Matthew Maddin,Leader,Advanced,Advanced,Follower,nan,Novice,Intermediate,,,2026-07-16
 7645,Mackenzie Grover,Follower,Intermediate,Intermediate,Leader,Novice,Novice,Novice,,,2026-07-16
+7710,Skye Lapointe,Follower,All-Star,All-Star,Leader,nan,Intermediate,Advanced,,,2026-07-16
 7646,Delancey Von Langendoerfer,Follower,All-Star,Champion,Leader,Advanced,Advanced,Advanced,,,2026-07-16
 7648,Dena Shrum,Follower,Intermediate,Intermediate,Leader,Novice,Novice,Novice,,,2026-07-16
 7647,Laura Deshano,Follower,All-Star,All-Star,Leader,nan,Intermediate,Advanced,,,2026-07-16
@@ -7290,7 +7291,6 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 7708,Sarah Taylor,Follower,Novice,Novice,Leader,Newcomer,Newcomer,Newcomer,,,2026-07-16
 7707,Bret Navarre,Leader,All-Star,All-Star,Follower,nan,nan,,1,All Star,2026-07-16
 7709,Kyle Cecil,Follower,Newcomer,Novice,Leader,nan,nan,,,,2026-07-16
-7710,Skye Lapointe,Follower,All-Star,All-Star,Leader,nan,Intermediate,Advanced,,,2026-07-16
 7711,Maddy Hobbs,Follower,Newcomer,Novice,Leader,nan,nan,,,,2026-07-16
 7713,Anna Cann,Follower,Novice,Novice,Leader,Newcomer,Newcomer,Newcomer,,,2026-07-16
 7712,Jan Gordon,Follower,Novice,Novice,Leader,Newcomer,Newcomer,Newcomer,,,2026-07-16
@@ -17701,6 +17701,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 18549,Aurelien Bernard,Leader,Novice,Novice,Follower,Newcomer,Newcomer,Newcomer,,,2026-07-16
 18550,Sandie Nicollet,Follower,Novice,Novice,Leader,Newcomer,Newcomer,Newcomer,,,2026-07-16
 18551,Maxime Leveau,Leader,Novice,Novice,Follower,Newcomer,Newcomer,Newcomer,,,2026-07-16
+18682,Valerie Weeks,Follower,Intermediate,Advanced,Leader,Novice,Novice,Novice,2,Novice,2026-07-16
 18552,Mathilde Communier,Follower,Intermediate,Intermediate,Leader,Novice,Novice,Novice,,,2026-07-16
 18553,Alice Delamare,Follower,Novice,Intermediate,Leader,nan,nan,,,,2026-07-16
 18554,Tess Macedo,Follower,Novice,Novice,Leader,Newcomer,Newcomer,Newcomer,,,2026-07-16
@@ -17827,7 +17828,6 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 18679,Katharina Nack,Follower,Advanced,Advanced,Leader,nan,Novice,Intermediate,,,2026-07-16
 18680,Craig Bassett,Leader,Intermediate,Intermediate,Follower,Novice,Novice,Novice,,,2026-07-16
 18681,Sheri Siskin,Follower,Novice,Novice,Leader,Newcomer,Newcomer,Newcomer,,,2026-07-16
-18682,Valerie Weeks,Follower,Intermediate,Advanced,Leader,Novice,Novice,Novice,2,Novice,2026-07-16
 18683,Ilya Kramarenko,Leader,Intermediate,Intermediate,Follower,Novice,Novice,Novice,,,2026-07-16
 18684,Samuel Cariou-Salaun,Leader,Intermediate,Advanced,Follower,Novice,Novice,Novice,,,2026-07-16
 18685,Gauthier Dubois,Leader,Novice,Novice,Follower,Newcomer,Newcomer,Newcomer,,,2026-07-16

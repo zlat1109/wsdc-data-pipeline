@@ -91,6 +91,26 @@
       "fix_hint": "db/seed_event_aliases.py seed_result_only_events"
     },
     {
+      "name": "edition_calendar_archive_empty",
+      "category": "event_naming",
+      "severity": "warn",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "Durable WSDC calendar dates archive should not be empty after load.",
+      "fix_hint": "scripts/sync_events_calendar.py; FK to events must not CASCADE on promote"
+    },
+    {
+      "name": "recent_editions_missing_day_dates",
+      "category": "event_naming",
+      "severity": "warn",
+      "value": 17,
+      "max_value": 50,
+      "ok": true,
+      "description": "Most 2025+ editions with results should have calendar day dates.",
+      "fix_hint": "scripts/sync_events_calendar.py + rebuild_event_catalog"
+    },
+    {
       "name": "editions_null_location_id",
       "category": "location",
       "severity": "error",
@@ -192,11 +212,11 @@
     }
   ],
   "summary": {
-    "total": 19,
-    "passed": 19,
+    "total": 21,
+    "passed": 21,
     "errors": 0,
     "warnings": 0
   },
-  "generated_at": "2026-07-16T19:37:43.886572+00:00",
+  "generated_at": "2026-07-17T11:09:06.846868+00:00",
   "scope": "full"
 }
