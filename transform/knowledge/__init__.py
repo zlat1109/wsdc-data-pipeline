@@ -5,6 +5,7 @@ from transform.knowledge.apply import (
     apply_event_location_patches,
     backfill_empty_result_event_locations,
     event_location_patches,
+    force_result_locations_from_event_name_overrides,
 )
 from transform.knowledge.events import (
     EVENT_LOCATION_EXACT_CORRECTIONS,
@@ -52,4 +53,5 @@ __all__ = [
     'backfill_empty_result_event_locations',
     'build_event_name_normalization',
     'event_location_patches',
+    'force_result_locations_from_event_name_overrides',
 ]

@@ -6,6 +6,12 @@ from typing import TYPE_CHECKING
 
 import pandas as pd
 
+from transform.geography.resolve import (
+    build_location_lookup,
+    location_lookup_key_from_text,
+    _canonical_location_raw,
+    _norm,
+)
 from transform.knowledge.events import (
     EVENT_LOCATION_EXACT_CORRECTIONS,
     EVENT_LOCATION_SUBSTRING_CORRECTIONS,
@@ -99,6 +105,55 @@ def backfill_empty_result_event_locations(results_df: pd.DataFrame) -> pd.DataFr
                 empty = df["event_location"].map(_norm_text) == ""
 
     return df
+
+
+def force_result_locations_from_event_name_overrides(
+    results_df: pd.DataFrame,
+    location_df: pd.DataFrame,
+) -> tuple[pd.DataFrame, int]:
+    """Force event_location + location_id for EVENT_NAME_LOCATION_OVERRIDES.
+
+    WSDC sometimes reuses a wrong location_id across unrelated events (e.g. Sweden
+    Westie Gala rows tagged as Wailea / Aloha Open). Text overrides alone do not
+    fix joins: resolve_result_location_ids only fills *empty* location_id values.
+    """
+    if results_df is None or results_df.empty or "event_name" not in results_df.columns:
+        return results_df, 0
+    if location_df is None or location_df.empty:
+        return results_df, 0
+
+    df = results_df.copy()
+    if "location_id" not in df.columns:
+        df["location_id"] = ""
+    if "event_location" not in df.columns:
+        df["event_location"] = ""
+
+    lookup = build_location_lookup(location_df)
+    changed = 0
+
+    for event_name, target_location in EVENT_NAME_LOCATION_OVERRIDES.items():
+        mask = df["event_name"].astype(str).str.strip() == event_name
+        if not mask.any():
+            continue
+
+        raw = _canonical_location_raw(_norm(target_location))
+        key = location_lookup_key_from_text(raw)
+        loc_id = lookup.get(key) or lookup.get(raw.lower())
+        if not loc_id:
+            continue
+
+        before_loc = df.loc[mask, "location_id"].map(_norm)
+        before_text = df.loc[mask, "event_location"].map(_norm)
+        need = (before_loc != str(loc_id)) | (before_text != raw)
+        n = int(need.sum())
+        if not n:
+            continue
+
+        df.loc[mask, "event_location"] = raw
+        df.loc[mask, "location_id"] = str(loc_id)
+        changed += n
+
+    return df, changed
 
 
 def apply_event_location_patches(

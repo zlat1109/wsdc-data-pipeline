@@ -45,6 +45,22 @@ Both cities count as one geo for duplicate `event_id` merge (Countdown Swing Bos
 
 Applied in preprocess and `db/enrich_known_events.py` during load.
 
+## Event-name location overrides (wrong shared location_id)
+
+Some WSDC result rows reuse another event's `location_id` (classic case: Sweden
+Westie Gala / Swedish Swing Summer Camp tagged as Wailea / Aloha Open `124`).
+
+`EVENT_NAME_LOCATION_OVERRIDES` in `transform/knowledge/events.py` sets the
+correct place string. Preprocess then **forces** `location_id` remap via
+`force_result_locations_from_event_name_overrides` (because
+`resolve_result_location_ids` only fills *empty* ids).
+
+Audit similar collisions:
+
+```bash
+python scripts/audit_event_location_mismatches.py
+```
+
 ## Preprocess flow
 
 1. Resolve location strings via `resolve.py` (`LOCATION_STRING_ALIASES` + lookup table)
