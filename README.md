@@ -164,6 +164,15 @@ Full index: [docs/index.md](docs/index.md). Local preview: `pip install -r requi
 2. `repository_dispatch` → bot `sync-data.yml` (секрет `WSDC_BOT_SYNC_TOKEN`)
 3. Bot коммитит свежие CSV в свой `data/` (LFS)
 
-Обратная связь: weekly bot пушит weekend snapshots в pipeline (`WSDC_PIPELINE_SYNC_TOKEN` в bot). См. [docs/operations/github-actions.md](docs/operations/github-actions.md).
+Обратная связь: weekly/results bot пушит weekend snapshots в pipeline (`WSDC_PIPELINE_SYNC_TOKEN` в bot). См. [docs/operations/github-actions.md](docs/operations/github-actions.md).
+
+## Интеграция с wsdc-analytics.github.io
+
+После каждого успешного full-parse export:
+
+1. `scripts/sync_analytics_site.sh` собирает `homepage_kpis.json` и `secondary_country_unified.json` из `data/`
+2. Пуш в `wsdc-analytics/wsdc-analytics.github.io` (секрет `WSDC_ANALYTICS_DEPLOY_TOKEN`)
+
+См. [docs/operations/analytics-site-sync.md](docs/operations/analytics-site-sync.md).
 
 Ветка **`old-laptop-version`** — эталонные parser CSV со старого ноутбука для сравнения; не мержить в `main` без `compare_csv_snapshots.py` / `build_merged_load_dataset.py`.

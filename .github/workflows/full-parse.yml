@@ -150,6 +150,12 @@ jobs:
             -f client_payload[ref]=main \
             -f client_payload[source]=${{ github.repository }}
 
+      - name: Sync homepage KPIs + secondary-role dashboard to analytics site
+        if: success()
+        env:
+          WSDC_ANALYTICS_DEPLOY_TOKEN: ${{ secrets.WSDC_ANALYTICS_DEPLOY_TOKEN }}
+        run: bash scripts/sync_analytics_site.sh
+
       - name: Notify Telegram (pipeline complete)
         if: success() && inputs.export_only != true
         env:
