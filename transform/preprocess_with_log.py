@@ -28,6 +28,7 @@ from transform.knowledge import (
     apply_event_location_patches,
     backfill_empty_result_event_locations,
     event_location_patches,
+    force_result_locations_from_event_name_overrides,
 )
 from transform.knowledge.merge_map import apply_merge_event_id_map
 from transform.normalize import normalize_division, normalize_level
@@ -308,6 +309,20 @@ def preprocess_with_log(data: dict[str, pd.DataFrame]) -> tuple[dict[str, pd.Dat
                 "(empty)",
                 f"from event_location ({new_locations} new locations)",
                 filled,
+                "location_id_fix",
+            )
+        # Force remap wrong shared location_ids (e.g. Sweden events → Wailea).
+        resolved_results, forced = force_result_locations_from_event_name_overrides(
+            resolved_results, resolved_locations
+        )
+        if forced:
+            tracker.record(
+                "EVENT_NAME_LOCATION_ID_FORCE",
+                "dancers_results_info",
+                "location_id",
+                "wrong shared location_id",
+                "from EVENT_NAME_LOCATION_OVERRIDES",
+                forced,
                 "location_id_fix",
             )
         before_merge = (

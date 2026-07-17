@@ -38,6 +38,9 @@ EVENTS_LIST_LOCATION_SUBSTRINGS: list[tuple[str, str]] = [
 _COUNTRY_ALIASES: dict[str, str] = {
     "russian federation": "Russia",
     "korea, republic of": "Republic of Korea",
+    "south korea": "Republic of Korea",
+    "korea, south": "Republic of Korea",
+    "korea": "Republic of Korea",
     "united states of america": "United States",
     "uk": "United Kingdom",
     "u.s.a.": "United States",

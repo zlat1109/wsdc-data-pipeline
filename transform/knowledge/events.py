@@ -13,9 +13,27 @@ from transform.knowledge.locations import LOCATION_RAW_ALIASES
 
 EVENT_NAME_NORMALIZATION = build_event_name_normalization()
 
+# Force-correct WSDC rows where event_name is tied to the wrong place/location_id.
+# Text alone is not enough: resolve_result_location_ids only fills *empty* ids, so
+# preprocess also remaps location_id from these targets (see apply.py).
 EVENT_NAME_LOCATION_OVERRIDES = {
     'Go West Swing Fest': 'Fremantle, Australia',
     'BeeMAD': 'Madrid, Spain',
+    # Shared Wailea (124 / Aloha Open) wrongly applied to Swedish events.
+    'Sweden Westie Gala': 'Stockholm, Sweden',
+    'Swedish Swing Summer Camp': 'Stockholm, Sweden',
+    # Shared St. Petersburg (222) wrongly applied to Toronto Open.
+    'Toronto Open Swing & Hustle Championships': 'Toronto, Canada',
+    # Calendar/site say Toulouse; results pointed at Düsseldorf (127).
+    'Westie Pink City': 'Toulouse, France',
+    # Calendar/site say Dundalk; results pointed at San Antonio (167).
+    'Trinity Swing': 'Dundalk, Ireland',
+    # Calendar/site say Providence RI; results pointed at Brno (266).
+    'Northeast Swing Classic': 'Providence, RI, United States',
+    # Calendar/site say Sofia; results pointed at Perth (253).
+    'Grand Party Sofia (GPS)': 'Sofia, Bulgaria',
+    # Site/WSDC calendar say Annecy; results pointed at Washington DC (13).
+    'FRENCH CONNECTION WCS': 'Annecy, France',
 }
 
 EVENT_LOCATION_EXACT_CORRECTIONS = {
@@ -35,6 +53,9 @@ EVENT_LOCATION_EXACT_CORRECTIONS = {
     'Redmond, Oregon': 'Redmond, OR',
     'Seoul, South Korea': 'Seoul, Republic of Korea',
     'Seoul, Korea': 'Seoul, Republic of Korea',
+    'Jeju, South Korea': 'Jeju, Republic of Korea',
+    'Incheon, South Korea': 'Incheon, Republic of Korea',
+    'South Korea': 'Republic of Korea',
     'Concord CA': 'Concord, CA',
     'St. Burlatskaya, Russia': 'Samara, Russia',
     'CHICAGO, IL, United States': 'Chicago, IL, United States',
@@ -77,6 +98,102 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_country': 'Sweden',
             'event_location': 'Stockholm, Sweden',
             'event_location_standardized': 'Stockholm, Sweden',
+        },
+    },
+    240: {
+        'name': 'Sweden Westie Gala',
+        'url': 'http://www.westiegala.com/',
+        'typical_location': 'Stockholm, Sweden',
+        'location': {
+            'event_city': 'Stockholm',
+            'event_state': '',
+            'event_country': 'Sweden',
+            'event_location': 'Stockholm, Sweden',
+            'event_location_standardized': 'Stockholm, Sweden',
+        },
+    },
+    264: {
+        'name': 'Swedish Swing Summer Camp',
+        'url': 'http://www.uptownswing.se/',
+        'typical_location': 'Stockholm, Sweden',
+        'location': {
+            'event_city': 'Stockholm',
+            'event_state': '',
+            'event_country': 'Sweden',
+            'event_location': 'Stockholm, Sweden',
+            'event_location_standardized': 'Stockholm, Sweden',
+        },
+    },
+    147: {
+        'name': 'Toronto Open Swing & Hustle Championships',
+        'url': 'http://www.TOSHC.com',
+        'typical_location': 'Toronto, Canada',
+        'location': {
+            'event_city': 'Toronto',
+            'event_state': '',
+            'event_country': 'Canada',
+            'event_location': 'Toronto, Canada',
+            'event_location_standardized': 'Toronto, Canada',
+        },
+    },
+    312: {
+        'name': 'Westie Pink City',
+        'url': 'http://www.westiepinkcity.fr/',
+        'typical_location': 'Toulouse, France',
+        'location': {
+            'event_city': 'Toulouse',
+            'event_state': '',
+            'event_country': 'France',
+            'event_location': 'Toulouse, France',
+            'event_location_standardized': 'Toulouse, France',
+        },
+    },
+    363: {
+        'name': 'Trinity Swing',
+        'url': 'http://www.trinityswing.com/',
+        'typical_location': 'Dundalk, Ireland',
+        'location': {
+            'event_city': 'Dundalk',
+            'event_state': '',
+            'event_country': 'Ireland',
+            'event_location': 'Dundalk, Ireland',
+            'event_location_standardized': 'Dundalk, Ireland',
+        },
+    },
+    376: {
+        'name': 'Northeast Swing Classic',
+        'url': 'http://www.northeastswingclassic.com/',
+        'typical_location': 'Providence, RI, United States',
+        'location': {
+            'event_city': 'Providence',
+            'event_state': 'Rhode Island',
+            'event_country': 'United States',
+            'event_location': 'Providence, RI, United States',
+            'event_location_standardized': 'Providence, RI',
+        },
+    },
+    384: {
+        'name': 'Grand Party Sofia (GPS)',
+        'url': 'https://wcs-gps.com/',
+        'typical_location': 'Sofia, Bulgaria',
+        'location': {
+            'event_city': 'Sofia',
+            'event_state': '',
+            'event_country': 'Bulgaria',
+            'event_location': 'Sofia, Bulgaria',
+            'event_location_standardized': 'Sofia, Bulgaria',
+        },
+    },
+    369: {
+        'name': 'FRENCH CONNECTION WCS',
+        'url': 'http://FRENCHCONNECTIONWCS.COM',
+        'typical_location': 'Annecy, France',
+        'location': {
+            'event_city': 'Annecy',
+            'event_state': '',
+            'event_country': 'France',
+            'event_location': 'Annecy, France',
+            'event_location_standardized': 'Annecy, France',
         },
     },
     324: {
