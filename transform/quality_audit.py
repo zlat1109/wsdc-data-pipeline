@@ -377,6 +377,50 @@ def check_location_format(location_info: pd.DataFrame) -> list[QualityFinding]:
     return findings
 
 
+def check_event_name_location_country_conflicts(
+    results: pd.DataFrame,
+    location_info: pd.DataFrame | None,
+) -> QualityFinding | None:
+    """Flag results where event_name implies a country different from location_id."""
+    from transform.geography.event_location_guard import find_name_location_country_conflicts
+
+    if results is None or results.empty or location_info is None:
+        return None
+    conflicts = find_name_location_country_conflicts(results, location_info)
+    if not conflicts:
+        return None
+    examples = [
+        {
+            "event_name": c.event_name,
+            "location_id": c.location_id,
+            "location_country": c.location_country,
+            "name_hints": list(c.name_hints),
+            "rows": c.row_count,
+        }
+        for c in conflicts[:20]
+    ]
+    return QualityFinding(
+        category="location",
+        code="EVENT_NAME_LOCATION_COUNTRY_CONFLICT",
+        severity="high",
+        message=(
+            "Event name implies a different country than results.location_id "
+            "(often a shared/wrong location_id collision)"
+        ),
+        count=sum(c.row_count for c in conflicts),
+        examples=examples,
+        suggested_fix=(
+            "Add EVENT_NAME_LOCATION_OVERRIDES + force_result_locations_from_event_name_overrides; "
+            "see scripts/audit_event_location_mismatches.py"
+        ),
+        fingerprint=_fingerprint(
+            "location",
+            "EVENT_NAME_LOCATION_COUNTRY_CONFLICT",
+            "|".join(f"{c.event_name}:{c.location_id}" for c in conflicts[:15]),
+        ),
+    )
+
+
 def check_non_canonical_levels(results: pd.DataFrame) -> QualityFinding | None:
     if "event_competition" not in results.columns:
         return None
@@ -477,6 +521,9 @@ def run_audit(
         if item:
             findings.append(item)
         item = check_new_event_names(results, previous_event_names)
+        if item:
+            findings.append(item)
+        item = check_event_name_location_country_conflicts(results, location_info)
         if item:
             findings.append(item)
 

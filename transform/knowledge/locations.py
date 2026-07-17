@@ -43,10 +43,11 @@ LOCATION_ID_MERGE_MAP: dict[str, str] = {
     "198": "127",
     # Edmonton duplicate
     "380": "205",
-    # Incheon / Jeju country alias
+    # Incheon / Jeju country alias (South Korea → Republic of Korea canonical)
     "359": "172",
     "382": "213",
     "467": "213",
+    "395": "213",
     # Ft. Lauderdale spelling → Fort Lauderdale
     "302": "55",
     # Montreal duplicate
@@ -142,6 +143,13 @@ LOCATION_ID_CORRECTIONS: dict[int, LocationPatch] = {
         'event_country': 'Singapore',
         'event_location': 'Singapore, Singapore',
         'event_location_standardized': 'Singapore, Singapore',
+    },
+    213: {
+        'event_city': 'Jeju',
+        'event_state': '',
+        'event_country': 'Republic of Korea',
+        'event_location': 'Jeju, Republic of Korea',
+        'event_location_standardized': 'Jeju, Republic of Korea',
     },
     231: {
         'event_city': 'Stockholm',

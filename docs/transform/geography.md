@@ -61,6 +61,14 @@ Audit similar collisions:
 python scripts/audit_event_location_mismatches.py
 ```
 
+Preprocess quality audit also emits `EVENT_NAME_LOCATION_COUNTRY_CONFLICT` when
+event_name country hints disagree with `location_id` country.
+
+## Country aliases
+
+`COUNTRY_STANDARDIZATION` maps `South Korea` / `Korea, South` / `Korea` →
+`Republic of Korea`. Jeju duplicate id `395` merges to canonical `213`.
+
 ## Preprocess flow
 
 1. Resolve location strings via `resolve.py` (`LOCATION_STRING_ALIASES` + lookup table)
