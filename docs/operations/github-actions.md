@@ -43,6 +43,8 @@ Optional (not required for probe today):
 | `GOOGLE_MAPS_API_KEY` | For future cloud parser (geocoding) |
 | `TELEGRAM_BOT_TOKEN` | Same bot token as `wsdc-telegram-bot` — probe + pipeline notifications |
 | `TELEGRAM_CHAT_ID` | Test channel ID (e.g. `-4228074878`) or production channel |
+| `WSDC_BOT_SYNC_TOKEN` | Dispatch CSV sync to `wsdc-telegram-bot` |
+| `WSDC_ANALYTICS_DEPLOY_TOKEN` | Push homepage KPIs + secondary-role JSON to `wsdc-analytics/wsdc-analytics.github.io` |
 
 Password is the same as in Supabase → Project Settings → Database. No quotes in the secret value.
 
@@ -123,9 +125,11 @@ Watermark sources: `MAX(dancer_id)` from `core.dancers` (primary) → last probe
 
 `check-updates.yml` sets `PROBE_SLOT=evening` for the 20:00 Madrid cron and `morning` for 07:00 (reserved for future slot-specific logic).
 
-**Weekend snapshots (automated):** `wsdc-telegram-bot` weekly bot pushes `data/weekend_events/` here after each Thursday post. See `wsdc-telegram-bot/docs/PIPELINE_SNAPSHOT_SYNC.md`. One-time secret: `WSDC_PIPELINE_SYNC_TOKEN` in the **telegram-bot** repo (not here).
+**Weekend snapshots (automated):** `wsdc-telegram-bot` pushes `data/weekend_events/` here after Thursday weekly, after results-bot, and via weekday reconcile (`sync-weekend-snapshots.yml`). See `wsdc-telegram-bot/docs/PIPELINE_SNAPSHOT_SYNC.md`. Secret: `WSDC_PIPELINE_SYNC_TOKEN` in the **telegram-bot** repo (not here).
 
 **Bot CSV sync (automated):** after a successful CSV commit, `full-parse.yml` dispatches `pipeline-csv-updated` to **wsdc-telegram-bot**. Secret in **this** repo: `WSDC_BOT_SYNC_TOKEN` (PAT with `contents:read` here + dispatch/write on bot). Bot pulls via `scripts/sync_csv_from_pipeline.sh` (`sync-data.yml`).
+
+**Analytics site sync (automated):** after every successful full-parse export, `scripts/sync_analytics_site.sh` rebuilds `homepage_kpis.json` + `secondary_country_unified.json` and pushes to [wsdc-analytics.github.io](https://wsdc-analytics.github.io/). Secret in **this** repo: `WSDC_ANALYTICS_DEPLOY_TOKEN` (write on `wsdc-analytics/wsdc-analytics.github.io`). See [analytics-site-sync.md](analytics-site-sync.md).
 
 ### `full-parse.yml`
 
@@ -139,6 +143,7 @@ Manual or auto-triggered pipeline:
 4. `export.py` — Supabase → `data/*.csv` + `data/event_aliases.json` (merged alias maps for bot)
 5. Git commit + push `data/*.csv` and `data/event_aliases.json`
 6. If CSV commit succeeded → `repository_dispatch` to **wsdc-telegram-bot** (`sync-data.yml`) when `WSDC_BOT_SYNC_TOKEN` is set
+7. Rebuild + push analytics site JSON (`homepage_kpis.json`, `secondary_country_unified.json`) when `WSDC_ANALYTICS_DEPLOY_TOKEN` is set
 
 Optional export flag (manual/local only): `--include-results-by-event` adds ~47 MB `results_by_event.csv`.
 Default CI export uses joins in Tableau instead (catalog + editions + `dancers_results_info`).
