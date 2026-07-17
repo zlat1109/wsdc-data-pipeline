@@ -25,6 +25,7 @@ from transform.geography.geo_event import (
 from transform.knowledge import (
     EVENT_NAME_NORMALIZATION,
 )
+from transform.knowledge.locations import CITY_STATE_COUNTRIES
 from transform.data_preprocessing import (
     validate_data_quality,
     validate_relationships,
@@ -328,11 +329,18 @@ def check_location_format(location_info: pd.DataFrame) -> list[QualityFinding]:
             )
 
     if {"event_city", "event_country"}.issubset(location_info.columns):
-        bad = location_info[
-            location_info["event_city"].fillna("").astype(str).str.strip()
-            == location_info["event_country"].fillna("").astype(str).str.strip()
-        ]
-        bad = bad[bad["event_city"].fillna("").astype(str).str.strip() != ""]
+        city = location_info["event_city"].fillna("").astype(str).str.strip()
+        country = location_info["event_country"].fillna("").astype(str).str.strip()
+        bad = location_info[(city != "") & (city == country)]
+        # City-states (Singapore): city == country is correct; state stays empty (US-only).
+        if not bad.empty:
+            bad = bad[
+                ~bad["event_country"]
+                .fillna("")
+                .astype(str)
+                .str.strip()
+                .isin(CITY_STATE_COUNTRIES)
+            ]
         if not bad.empty:
             findings.append(
                 QualityFinding(
