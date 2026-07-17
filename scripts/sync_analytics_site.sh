@@ -61,16 +61,37 @@ python3 "${WORKDIR}/scripts/validate_site_data.py" || {
   exit 1
 }
 
+# Bust browser/CDN cache and refresh visible "as of" labels on the secondary dashboard.
+AS_OF="$(date -u +%Y-%m-%d)"
+CACHE_V="$(date -u +%Y%m%d)-sync"
+DASHBOARD_HTML="${WORKDIR}/secondary_role_distribution_dashboard_en.html"
+BUBBLE_HTML="${WORKDIR}/interactive_secondary_country_bubble.html"
+if [[ -f "${DASHBOARD_HTML}" ]]; then
+  sed -i \
+    -e "s|(as of [0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\})|(as of ${AS_OF})|g" \
+    -e "s|interactive_secondary_country_bubble.html?v=[^\"]*|interactive_secondary_country_bubble.html?v=${CACHE_V}|g" \
+    "${DASHBOARD_HTML}"
+fi
+if [[ -f "${BUBBLE_HTML}" ]]; then
+  sed -i \
+    -e "s|2026 (partial, as of [0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\})|2026 (partial, as of ${AS_OF})|g" \
+    -e "s|secondary_country_unified.json?v=[^\"]*|secondary_country_unified.json?v=${CACHE_V}|g" \
+    "${BUBBLE_HTML}"
+fi
+echo "Stamped secondary dashboard as_of=${AS_OF} cache_v=${CACHE_V}"
+
 cd "${WORKDIR}"
 git config user.name "github-actions[bot]"
 git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
 git add \
   static/data/homepage_kpis.json \
-  static/data/secondary_country_unified.json
+  static/data/secondary_country_unified.json \
+  secondary_role_distribution_dashboard_en.html \
+  interactive_secondary_country_bubble.html
 
 if git diff --staged --quiet; then
-  echo "No analytics site JSON changes to push"
+  echo "No analytics site changes to push"
   exit 0
 fi
 
