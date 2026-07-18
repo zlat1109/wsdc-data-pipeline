@@ -34,6 +34,8 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'Grand Party Sofia (GPS)': 'Sofia, Bulgaria',
     # Site/WSDC calendar say Annecy; results pointed at Washington DC (13).
     'FRENCH CONNECTION WCS': 'Annecy, France',
+    # Shared Phoenix (3 / Desert City etc.) wrongly applied to Baltic Swing (Gdańsk).
+    'Baltic Swing': 'Gdańsk, Poland',
 }
 
 EVENT_LOCATION_EXACT_CORRECTIONS = {
@@ -98,6 +100,18 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_country': 'Sweden',
             'event_location': 'Stockholm, Sweden',
             'event_location_standardized': 'Stockholm, Sweden',
+        },
+    },
+    222: {
+        'name': 'Baltic Swing',
+        'url': 'http://www.balticswing.com',
+        'typical_location': 'Gdańsk, Poland',
+        'location': {
+            'event_city': 'Gdańsk',
+            'event_state': '',
+            'event_country': 'Poland',
+            'event_location': 'Gdańsk, Poland',
+            'event_location_standardized': 'Gdańsk, Poland',
         },
     },
     240: {

@@ -99,3 +99,45 @@ def test_force_french_connection_to_annecy():
     assert changed == 1
     assert str(out.loc[0, "location_id"]) == "188"
     assert out.loc[0, "event_location"] == "Annecy, France"
+
+
+def test_force_baltic_swing_off_phoenix():
+    location_info = pd.DataFrame(
+        [
+            {
+                "location_id": "3",
+                "event_city": "Phoenix",
+                "event_state": "Arizona",
+                "event_country": "United States",
+                "event_location": "Phoenix, AZ, United States",
+            },
+            {
+                "location_id": "186",
+                "event_city": "Gdańsk",
+                "event_state": "",
+                "event_country": "Poland",
+                "event_location": "Gdańsk, Poland",
+            },
+        ]
+    )
+    results = pd.DataFrame(
+        [
+            {
+                "event_name": "Baltic Swing",
+                "location_id": "3",
+                "event_location": "Phoenix, AZ, United States",
+            },
+            {
+                "event_name": "Desert City Swing",
+                "location_id": "3",
+                "event_location": "Phoenix, AZ, United States",
+            },
+        ]
+    )
+    out, changed = force_result_locations_from_event_name_overrides(results, location_info)
+    assert changed == 1
+    baltic = out.loc[out["event_name"] == "Baltic Swing"].iloc[0]
+    assert str(baltic["location_id"]) == "186"
+    assert baltic["event_location"] == "Gdańsk, Poland"
+    desert = out.loc[out["event_name"] == "Desert City Swing"].iloc[0]
+    assert str(desert["location_id"]) == "3"

@@ -19,6 +19,7 @@ LOCATION_RAW_ALIASES: dict[str, str] = {
     # WSDC metro label for Dance Jam / Westie Weekend @ Hollywood Ballroom
     "Washington, MD, United States": "Silver Spring, MD, United States",
     "Wailea, United States": "Wailea, HI, United States",
+    "Gdansk, Poland": "Gdańsk, Poland",
 }
 
 # Duplicate location_id rows → canonical location_id (remap FKs, delete source row).
