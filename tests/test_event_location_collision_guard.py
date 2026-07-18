@@ -127,3 +127,30 @@ def test_south_korea_aliases_to_republic_of_korea():
 
 def test_jeju_south_korea_location_id_merges_to_canonical():
     assert LOCATION_ID_MERGE_MAP["395"] == "213"
+
+
+def test_guard_detects_baltic_swing_phoenix_collision():
+    location_info = pd.DataFrame(
+        [
+            {
+                "location_id": "3",
+                "event_city": "Phoenix",
+                "event_country": "United States",
+            },
+            {
+                "location_id": "186",
+                "event_city": "Gdańsk",
+                "event_country": "Poland",
+            },
+        ]
+    )
+    results = pd.DataFrame(
+        [
+            {"event_name": "Baltic Swing", "location_id": "3"},
+            {"event_name": "Desert City Swing", "location_id": "3"},
+        ]
+    )
+    conflicts = find_name_location_country_conflicts(results, location_info)
+    names = {c.event_name for c in conflicts}
+    assert "Baltic Swing" in names
+    assert "Desert City Swing" not in names

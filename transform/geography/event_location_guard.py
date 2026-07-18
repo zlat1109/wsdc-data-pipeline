@@ -19,6 +19,8 @@ NAME_COUNTRY_HINTS: list[tuple[str, str]] = [
     (r"\bsofia\b|\bbulgaria\b", "Bulgaria"),
     (r"\btrinity\b", "Ireland"),
     (r"\bnortheast swing classic\b", "United States"),
+    # Baltic Swing is in Gdańsk, Poland (not Phoenix / not Latvia-by-name).
+    (r"\bbaltic swing\b", "Poland"),
 ]
 
 
