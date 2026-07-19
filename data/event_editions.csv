@@ -7,7 +7,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 7886,375,Mediterranean Open WCS,2026,7,2026-07-01,2026-07-09,2026-07-13,wsdc_calendar,scheduled,t,162,Barcelona,,Spain,"Barcelona, Spain",120,99,https://mediterraneanopenwcs.com/,"Barcelona, Spain",
 7864,362,MY Swing,2026,7,2026-07-01,2026-07-09,2026-07-12,wsdc_calendar,scheduled,t,271,Kuala Lumpur,,Malaysia,"Kuala Lumpur, Malaysia",97,94,https://www.myswingopen.com/,"Kuala Lumpur, Malaysia",
 7861,360,SaunaSwing,2026,7,2026-07-01,2026-07-02,2026-07-04,wsdc_calendar,scheduled,t,268,Ikaalinen,,Finland,"Ikaalinen, Finland",92,81,https://ekarolas.com/saunaswing/,"Ikaalinen, Finland",
-7905,396,SwingLab Berlin,2026,7,2026-07-01,,,,,,194,Berlin,,Germany,"Berlin, Germany",118,106,,"Berlin, Germany",
+7905,396,SwingLab Berlin,2026,7,2026-07-01,2026-07-10,2026-07-12,wsdc_calendar,scheduled,t,194,Berlin,,Germany,"Berlin, Germany",118,106,,"Berlin, Germany",
 7324,225,Wild Wild Westie,2026,7,2026-07-01,2026-07-02,2026-07-05,wsdc_calendar,scheduled,t,21,Dallas,Texas,United States,"Dallas, TX, United States",150,146,http://www.WildWildWestie.com,"Dallas, TX",
 7302,222,Baltic Swing,2026,6,2026-06-01,2026-06-11,2026-06-15,wsdc_calendar,scheduled,t,3,Phoenix,Arizona,United States,"Phoenix, AZ, United States",126,115,http://www.balticswing.com,"Phoenix, AZ",
 7884,374,Barock Swing Ludwigsburg,2026,6,2026-06-01,,,,,,279,Ludwigsburg,,Germany,"Ludwigsburg, Germany",97,84,https://lb-barockswing.com/index.php,"Ludwigsburg, Germany",
@@ -16,10 +16,10 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 7878,371,Festival City Swing,2026,6,2026-06-01,2026-05-29,2026-06-01,wsdc_calendar,scheduled,t,229,Newcastle,,United Kingdom,"Newcastle, United Kingdom",62,48,https://www.fcswing.co.uk/,"Newcastle, United Kingdom",Registry Event
 5608,25,J&J O'Rama,2026,6,2026-06-01,2026-06-04,2026-06-08,wsdc_calendar,scheduled,t,23,Anaheim,California,United States,"Anaheim, CA, United States",135,131,https://jackandjillorama.com/,"Anaheim, CA",
 6310,96,Liberty Swing Dance Championships,2026,6,2026-06-01,2026-06-25,2026-06-28,wsdc_calendar,scheduled,t,41,New Brunswick,New Jersey,United States,"New Brunswick, NJ, United States",137,132,http://www.libertyswing.com,"New Brunswick, NJ",
-7904,395,Milan Swing Vibes,2026,6,2026-06-01,,,,,,132,Milan,,Italy,"Milan, Italy",92,80,,"Milan, Italy",
+7904,395,Milan Swing Vibes,2026,6,2026-06-01,2026-06-18,2026-06-21,wsdc_calendar,scheduled,t,132,Milan,,Italy,"Milan, Italy",92,80,,"Milan, Italy",
 7525,261,Neverland Swing,2026,6,2026-06-01,2026-06-25,2026-06-29,wsdc_calendar,scheduled,t,191,Amsterdam,,Netherlands,"Amsterdam, Netherlands",88,75,http://www.neverlandswing.com/,"Amsterdam, Netherlands",Registry Event
 6423,117,Orange Blossom Dance Festival,2026,6,2026-06-01,2026-06-04,2026-06-07,wsdc_calendar,scheduled,t,82,Orlando,Florida,United States,"Orlando, FL, United States",56,48,http://www.orangeblossomdance.net,"Orlando, FL",
-7780,321,Swing Fiction,2026,6,2026-06-01,,,,,,266,Brno,,Czech Republic,"Brno, Czech Republic",104,102,https://www.swingfiction.cz/,"Brno, Czech Republic",
+7780,321,Swing Fiction,2026,6,2026-06-01,2026-06-26,2026-06-28,wsdc_calendar,scheduled,t,266,Brno,,Czech Republic,"Brno, Czech Republic",104,102,https://www.swingfiction.cz/,"Brno, Czech Republic",
 6821,162,Swingapalooza,2026,6,2026-06-01,2026-06-19,2026-06-21,wsdc_calendar,scheduled,t,40,Baton Rouge,Louisiana,United States,"Baton Rouge, LA, United States",103,86,http://www.swingapaloozaevent.com,"Baton Rouge, LA",
 7847,347,BeeMAD,2026,5,2026-05-01,2026-05-01,2026-05-03,wsdc_calendar,scheduled,t,170,Madrid,,Spain,"Madrid, Spain",81,72,https://beemadwcs.com/,"Madrid, Spain",Registry Event
 6355,105,Canadian Swing Championships,2026,5,2026-05-01,2026-05-15,2026-05-18,wsdc_calendar,scheduled,t,86,Montreal,,Canada,"Montreal, Canada",54,53,http://www.canadianswingchampionships.com,"Montreal, Canada",
@@ -110,7 +110,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 5661,31,Mountain Magic,2025,11,2025-11-01,2025-10-30,2025-11-02,wsdc_calendar,scheduled,t,28,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV, United States",57,51,http://mountainmagic.dance/,"South Lake Tahoe (near Reno), NV",Registry Event
 7887,376,Northeast Swing Classic,2025,11,2025-11-01,2025-11-20,2025-11-23,wsdc_calendar,scheduled,t,146,Providence,Rhode Island,United States,"Providence, RI, United States",110,93,http://www.northeastswingclassic.com/,"Providence, RI, United States",Registry Event
 7351,229,Scandinavian Open,2025,11,2025-11-01,2025-10-30,2025-11-02,wsdc_calendar,scheduled,t,199,Stockholm,,Sweden,"Stockholm, Sweden",144,140,http://www.snowcs.se/,"Stockholm, Sweden",Registry Event
-7799,325,Simply Adelaide West Coast Swing,2025,11,2025-11-01,,,,,,236,Adelaide,,Australia,"Adelaide, Australia",76,69,http://www.simplyadelaidewcs.com.au,"Adelaide, Australia",
+7799,325,Simply Adelaide West Coast Swing,2025,11,2025-11-01,2025-11-06,2025-11-09,wsdc_calendar,scheduled,t,236,Adelaide,,Australia,"Adelaide, Australia",76,69,http://www.simplyadelaidewcs.com.au,"Adelaide, Australia",
 7833,340,Spooky Westie Weekend,2025,11,2025-11-01,2025-10-31,2025-11-02,wsdc_calendar,scheduled,t,159,Singapore,,Singapore,"Singapore, Singapore",54,52,https://spookywestieweekend.com/,"Singapore, Singapore",Registry Event
 6607,137,Tampa Bay Classic,2025,11,2025-11-01,2025-11-06,2025-11-09,wsdc_calendar,scheduled,t,53,Tampa,Florida,United States,"Tampa, FL, United States",103,83,http://www.tbcwcs.com/,"Tampa, FL",Registry Event
 6073,68,US Open Swing Dance Championships,2025,11,2025-11-01,2025-11-26,2025-11-30,wsdc_calendar,scheduled,t,22,Los Angeles,California,United States,"Los Angeles, CA, United States",144,135,http://www.theopenswing.com/,"Los Angeles, CA",Registry Event
@@ -199,7 +199,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 7524,261,Neverland Swing,2025,6,2025-06-01,2025-06-26,2025-06-30,wsdc_calendar,scheduled,t,191,Amsterdam,,Netherlands,"Amsterdam, Netherlands",115,96,http://www.neverlandswing.com/,"Amsterdam, Netherlands",Registry Event
 7872,368,Next Level Swing,2025,6,2025-06-01,2025-05-30,2025-06-01,wsdc_calendar,scheduled,t,280,Gothenburg,,Sweden,"Gothenburg, Sweden",74,66,http://www.next-level.dance,"Gothenburg, Sweden",
 6422,117,Orange Blossom Dance Festival,2025,6,2025-06-01,2025-06-05,2025-06-08,wsdc_calendar,scheduled,t,82,Orlando,Florida,United States,"Orlando, FL, United States",57,53,http://www.orangeblossomdance.net,"Orlando, FL",
-7779,321,Swing Fiction,2025,6,2025-06-01,,,,,,266,Brno,,Czech Republic,"Brno, Czech Republic",87,85,https://www.swingfiction.cz/,"Brno, Czech Republic",
+7779,321,Swing Fiction,2025,6,2025-06-01,2025-06-27,2025-06-29,wsdc_calendar,scheduled,t,266,Brno,,Czech Republic,"Brno, Czech Republic",87,85,https://www.swingfiction.cz/,"Brno, Czech Republic",
 6820,162,Swingapalooza,2025,6,2025-06-01,2025-06-20,2025-06-22,wsdc_calendar,scheduled,t,40,Baton Rouge,Louisiana,United States,"Baton Rouge, LA, United States",107,91,http://www.swingapaloozaevent.com,"Baton Rouge, LA",
 7846,347,BeeMAD,2025,5,2025-05-01,2025-05-01,2025-05-04,wsdc_calendar,scheduled,t,170,Madrid,,Spain,"Madrid, Spain",82,70,https://beemadwcs.com/,"Madrid, Spain",Registry Event
 6354,105,Canadian Swing Championships,2025,5,2025-05-01,2025-05-16,2025-05-19,wsdc_calendar,scheduled,t,86,Montreal,,Canada,"Montreal, Canada",50,47,http://www.canadianswingchampionships.com,"Montreal, Canada",
