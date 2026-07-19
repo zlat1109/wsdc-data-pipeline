@@ -165,8 +165,97 @@ def upsert_edition_calendar_dates(conn: Any, rows: list[dict[str, Any]]) -> int:
         return len(rows)
 
 
+def remap_stale_calendar_event_ids(conn: Any) -> int:
+    """Move durable calendar rows onto current edition event_ids when titles match.
+
+    Returns number of source rows remapped or dropped after merge.
+    """
+    import pandas as pd
+
+    from transform.events_calendar_remap import plan_calendar_event_id_remaps
+
+    with conn.cursor() as cur:
+        cur.execute(
+            """
+            SELECT
+                event_id::text,
+                event_year::text,
+                event_month::text,
+                calendar_title
+            FROM core.edition_calendar_dates
+            """
+        )
+        calendar = pd.DataFrame(
+            cur.fetchall(),
+            columns=["event_id", "event_year", "event_month", "calendar_title"],
+        )
+        cur.execute(
+            """
+            SELECT
+                ed.event_id::text,
+                c.canonical_name AS event_name,
+                ed.event_year::text,
+                ed.event_month::text
+            FROM core.event_editions ed
+            JOIN core.event_catalog c ON c.event_id = ed.event_id
+            """
+        )
+        editions = pd.DataFrame(
+            cur.fetchall(),
+            columns=["event_id", "event_name", "event_year", "event_month"],
+        )
+
+    remaps = plan_calendar_event_id_remaps(calendar, editions)
+    if not remaps:
+        return 0
+
+    moved = 0
+    with conn.cursor() as cur:
+        for remap in remaps:
+            old_id = int(remap["old_event_id"])
+            new_id = int(remap["new_event_id"])
+            year = int(remap["event_year"])
+            month = int(remap["event_month"])
+            cur.execute(
+                """
+                SELECT 1
+                FROM core.edition_calendar_dates
+                WHERE event_id = %s AND event_year = %s AND event_month = %s
+                """,
+                (new_id, year, month),
+            )
+            target_exists = cur.fetchone() is not None
+            if target_exists:
+                cur.execute(
+                    """
+                    DELETE FROM core.edition_calendar_dates
+                    WHERE event_id = %s AND event_year = %s AND event_month = %s
+                    """,
+                    (old_id, year, month),
+                )
+            else:
+                cur.execute(
+                    """
+                    UPDATE core.edition_calendar_dates
+                    SET
+                        event_id = %s,
+                        match_via = CASE
+                            WHEN match_via IS NULL OR match_via = '' THEN 'remap_stale_event_id'
+                            WHEN match_via LIKE '%%remap_stale_event_id%%' THEN match_via
+                            ELSE match_via || '+remap_stale_event_id'
+                        END,
+                        updated_at = now()
+                    WHERE event_id = %s AND event_year = %s AND event_month = %s
+                    """,
+                    (new_id, old_id, year, month),
+                )
+            moved += cur.rowcount
+    return moved
+
+
 def enrich_event_editions_dates(conn: Any) -> tuple[int, int]:
     """Copy durable calendar (+ list backfill) onto event_editions. Returns (cal, list)."""
+    remap_stale_calendar_event_ids(conn)
     with conn.cursor() as cur:
         cur.execute(_ENRICH_EDITIONS_FROM_CALENDAR_SQL)
         from_cal = cur.rowcount

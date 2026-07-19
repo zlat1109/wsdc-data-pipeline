@@ -95,6 +95,35 @@ def test_match_by_name_and_ym():
     assert rows[0]["matched_event_month"] == "10"
 
 
+def test_match_prefers_event_id_that_still_has_editions():
+    """Stale catalog duplicate must not win over the live series id."""
+    cal = normalize_calendar_events(
+        [{"title": "SwingLab Berlin", "start": "2026-07-10", "end": "2026-07-13", "url": ""}],
+        min_start=None,
+    )
+    editions = pd.DataFrame(
+        [
+            {
+                "edition_id": "7905",
+                "event_id": "396",
+                "event_name": "SwingLab Berlin",
+                "event_year": "2026",
+                "event_month": "7",
+            }
+        ]
+    )
+    catalog = pd.DataFrame(
+        [
+            {"event_id": "389", "canonical_name": "SwingLab Berlin", "url": ""},
+            {"event_id": "396", "canonical_name": "SwingLab Berlin", "url": ""},
+        ]
+    )
+    rows, summary = match_calendar_to_editions(cal, editions, catalog)
+    assert summary["matched"] == 1
+    assert rows[0]["matched_event_id"] == "396"
+    assert rows[0]["matched_edition_id"] == "7905"
+
+
 def test_rows_for_upsert_keeps_hiatus_planned_dates():
     rows = rows_for_upsert(
         [
