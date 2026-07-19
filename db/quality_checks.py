@@ -220,6 +220,20 @@ EXTENDED_CHECKS: tuple[QualityCheck, ...] = (
         fix_hint="scripts/sync_events_calendar.py; FK to events must not CASCADE on promote",
     ),
     QualityCheck(
+        name="edition_calendar_orphan_event_ids",
+        sql="""
+        SELECT count(*)
+        FROM core.edition_calendar_dates d
+        LEFT JOIN core.event_catalog c ON c.event_id = d.event_id
+        WHERE c.event_id IS NULL
+        """,
+        max_value=0,
+        severity="warn",
+        category="event_naming",
+        description="Calendar date rows must point at a current catalog event_id.",
+        fix_hint="remap_stale_calendar_event_ids via enrich_event_editions_dates / sync_events_calendar",
+    ),
+    QualityCheck(
         name="recent_editions_missing_day_dates",
         sql="""
         SELECT count(*) FROM core.event_editions

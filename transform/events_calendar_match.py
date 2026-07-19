@@ -65,22 +65,37 @@ def _pick_event_id(
 
 
 def _build_name_to_event_id(catalog: pd.DataFrame, editions: pd.DataFrame) -> dict[str, str]:
+    """Map normalized name → event_id, preferring ids that still have editions.
+
+    Catalog rebuilds can leave a duplicate name on a stale id (no editions) while
+    the live series uses a newer id. First-seen-wins would pin calendar matches
+    to the stale id.
+    """
     out: dict[str, str] = {}
+    score: dict[str, int] = {}
     alias_low = {
         **{k.lower(): v for k, v in RESULT_TO_CATALOG_EVENT_NAME.items()},
         **{k.lower(): v for k, v in EVENT_NAME_VARIANT_TO_CATALOG.items()},
     }
+    edition_counts: dict[str, int] = {}
+    if not editions.empty and "event_id" in editions.columns:
+        edition_counts = (
+            editions["event_id"].astype(str).value_counts().astype(int).to_dict()
+        )
 
     def _register(name: str, event_id: str) -> None:
         if not name or not event_id:
             return
-        nk = _edition_name_key(name)
-        if nk and nk not in out:
-            out[nk] = event_id
-        canon = alias_low.get(name.lower(), name)
-        ck = _edition_name_key(canon)
-        if ck and ck not in out:
-            out[ck] = event_id
+        eid = str(event_id).strip()
+        priority = int(edition_counts.get(eid, 0))
+        for label in (name, alias_low.get(name.lower(), name)):
+            nk = _edition_name_key(label)
+            if not nk:
+                continue
+            prev = out.get(nk)
+            if prev is None or priority > score.get(nk, -1):
+                out[nk] = eid
+                score[nk] = priority
 
     if not catalog.empty:
         for _, row in catalog.iterrows():
