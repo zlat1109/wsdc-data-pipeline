@@ -21,6 +21,10 @@ NAME_COUNTRY_HINTS: list[tuple[str, str]] = [
     (r"\bnortheast swing classic\b", "United States"),
     # Baltic Swing is in Gdańsk, Poland (not Phoenix / not Latvia-by-name).
     (r"\bbaltic swing\b", "Poland"),
+    # Berlin events must not stay on Brno (shared location_id with Swing Fiction).
+    (r"\bswinglab berlin\b|\bberlin swing revolution\b", "Germany"),
+    # SaunaSwing is in Ikaalinen, Finland (not Wailea HI).
+    (r"\bsaunaswing\b", "Finland"),
 ]
 
 

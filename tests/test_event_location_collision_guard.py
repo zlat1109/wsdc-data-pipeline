@@ -154,3 +154,34 @@ def test_guard_detects_baltic_swing_phoenix_collision():
     names = {c.event_name for c in conflicts}
     assert "Baltic Swing" in names
     assert "Desert City Swing" not in names
+
+
+def test_guard_detects_berlin_and_saunaswing_collisions():
+    location_info = pd.DataFrame(
+        [
+            {
+                "location_id": "266",
+                "event_city": "Brno",
+                "event_country": "Czech Republic",
+            },
+            {
+                "location_id": "124",
+                "event_city": "Wailea",
+                "event_country": "United States",
+            },
+        ]
+    )
+    results = pd.DataFrame(
+        [
+            {"event_name": "SwingLab Berlin", "location_id": "266"},
+            {"event_name": "Berlin Swing Revolution", "location_id": "266"},
+            {"event_name": "Swing Fiction", "location_id": "266"},
+            {"event_name": "SaunaSwing", "location_id": "124"},
+        ]
+    )
+    conflicts = find_name_location_country_conflicts(results, location_info)
+    names = {c.event_name for c in conflicts}
+    assert "SwingLab Berlin" in names
+    assert "Berlin Swing Revolution" in names
+    assert "SaunaSwing" in names
+    assert "Swing Fiction" not in names

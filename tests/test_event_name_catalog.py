@@ -37,8 +37,19 @@ def test_orphan_result_names_normalize_to_catalog():
         ("Monterey Swingfest", "Monterey SwingFest"),
         ("Swing Fling 2024", "Swing Fling"),
         ("Swing&Snow", "Swing & Snow"),
+        ("5280 Swing Dance Championships", "5280 Westival"),
+        ("LoneStar Invitational", "Lone Star Invitational"),
+        ("French Connection WCS", "FRENCH CONNECTION WCS"),
     ]:
         assert EVENT_NAME_NORMALIZATION[alias] == canonical
+
+
+def test_5280_alias_points_to_westival_not_championships():
+    assert RESULT_TO_CATALOG_EVENT_NAME["5280 Swing Dance Championships"] == "5280 Westival"
+    assert "5280 Westival" not in RESULT_TO_CATALOG_EVENT_NAME
+    from transform.knowledge.event_aliases import MERGE_EVENT_ID_MAP
+
+    assert MERGE_EVENT_ID_MAP[406] == 197
 
 
 def test_merge_map_excludes_geo_split_pairs():

@@ -36,6 +36,11 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'FRENCH CONNECTION WCS': 'Annecy, France',
     # Shared Phoenix (3 / Desert City etc.) wrongly applied to Baltic Swing (Gdańsk).
     'Baltic Swing': 'Gdańsk, Poland',
+    # Shared Brno (266 / Swing Fiction) wrongly applied to Berlin events.
+    'SwingLab Berlin': 'Berlin, Germany',
+    'Berlin Swing Revolution': 'Berlin, Germany',
+    # Shared Wailea (124 / Aloha Open lineage) wrongly applied to SaunaSwing (Finland).
+    'SaunaSwing': 'Ikaalinen, Finland',
 }
 
 EVENT_LOCATION_EXACT_CORRECTIONS = {
@@ -114,6 +119,42 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_location_standardized': 'Gdańsk, Poland',
         },
     },
+    271: {
+        'name': 'Berlin Swing Revolution',
+        'url': '',
+        'typical_location': 'Berlin, Germany',
+        'location': {
+            'event_city': 'Berlin',
+            'event_state': '',
+            'event_country': 'Germany',
+            'event_location': 'Berlin, Germany',
+            'event_location_standardized': 'Berlin, Germany',
+        },
+    },
+    360: {
+        'name': 'SaunaSwing',
+        'url': 'https://ekarolas.com/saunaswing/',
+        'typical_location': 'Ikaalinen, Finland',
+        'location': {
+            'event_city': 'Ikaalinen',
+            'event_state': '',
+            'event_country': 'Finland',
+            'event_location': 'Ikaalinen, Finland',
+            'event_location_standardized': 'Ikaalinen, Finland',
+        },
+    },
+    389: {
+        'name': 'SwingLab Berlin',
+        'url': 'http://www.swinglab-berlin.com',
+        'typical_location': 'Berlin, Germany',
+        'location': {
+            'event_city': 'Berlin',
+            'event_state': '',
+            'event_country': 'Germany',
+            'event_location': 'Berlin, Germany',
+            'event_location_standardized': 'Berlin, Germany',
+        },
+    },
     240: {
         'name': 'Sweden Westie Gala',
         'url': 'http://www.westiegala.com/',
@@ -125,8 +166,7 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_location': 'Stockholm, Sweden',
             'event_location_standardized': 'Stockholm, Sweden',
         },
-    },
-    264: {
+    },    264: {
         'name': 'Swedish Swing Summer Camp',
         'url': 'http://www.uptownswing.se/',
         'typical_location': 'Stockholm, Sweden',
