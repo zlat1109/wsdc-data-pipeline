@@ -248,9 +248,9 @@ Built from `changed_dancer_role_info.csv` (fallback: `dancer_role_info.csv`) aft
 |------|-------|-------------|
 | `divisional_structure.csv` | snapshot × division × role × type | `update_date`, `division`, `role`, **`type_options`**, `count_dancer` |
 | `divisional_structure_only_dominate_role.csv` | same, dominate role only | `update_date`, `division`, `role`, **`type`**, `count_dancer` |
-| `dancer_transitions.csv` | one division change (first seen) | `Update Date`, `Previous Division`, `Currently Division`, `Transition Type`, `Dancer Role`, `Dancer ID`, `Dancer Name` |
+| `dancer_transitions.csv` | one division **A→B** change (both sides set; first seen) | `Update Date`, `Previous Division`, `Currently Division`, `Transition Type`, `Dancer Role`, `Dancer ID`, `Dancer Name` |
 
-Committed baselines in `data/` are kept as-is. Export only appends **newer** snapshot dates (divisional). Transitions append new dates but drop rows whose identity (`Dancer ID` + role + type + previous/current division) already exists — re-stamped full role exports must not replay the same deltas.
+Committed baselines in `data/` are kept as-is. Export only appends **newer** snapshot dates (divisional). Transitions emit only real A→B (no clearance / first-appear), append new dates, and drop rows whose identity (`Dancer ID` + role + type + previous/current division) already exists — re-stamped full role exports must not replay the same deltas.
 
 Skip with `python export.py --skip-derived-exports`.
 

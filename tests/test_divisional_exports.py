@@ -164,6 +164,89 @@ def test_build_dancer_transitions_snapshot_merges_on_dancer_id_only() -> None:
     assert result.iloc[0]["Dancer Name"] == "New Name"
 
 
+def test_build_dancer_transitions_snapshot_keeps_only_ab_both_sides() -> None:
+    current = pd.DataFrame(
+        [
+            {
+                "dancer_id": 10,
+                "dancer_name": "Test",
+                "dominate_role": "Leader",
+                "dominate_required": "Novice",
+                "dominate_allowed": "Intermediate",
+                "non_dominate_role": "Follower",
+                "non_dominate_required": None,
+                "non_dominate_allowed": None,
+            }
+        ]
+    )
+    previous = pd.DataFrame(
+        [
+            {
+                "dancer_id": 10,
+                "dancer_name": "Test",
+                "dominate_role": "Leader",
+                "dominate_required": "Novice",
+                "dominate_allowed": "Novice",
+                "non_dominate_role": "Follower",
+                "non_dominate_required": "Newcomer",
+                "non_dominate_allowed": "Newcomer",
+            }
+        ]
+    )
+
+    result = build_dancer_transitions_snapshot(
+        current,
+        previous,
+        update_date="2025-01-08",
+    )
+
+    # Leader Novice→Intermediate allowed kept; Follower Newcomer→empty dropped.
+    assert len(result) == 1
+    assert result.iloc[0]["Previous Division"] == "Novice"
+    assert result.iloc[0]["Currently Division"] == "Intermediate"
+    assert result.iloc[0]["Transition Type"] == "allowed"
+    assert result.iloc[0]["Dancer Role"] == "Leader"
+
+
+def test_build_dancer_transitions_snapshot_drops_first_appear() -> None:
+    current = pd.DataFrame(
+        [
+            {
+                "dancer_id": 11,
+                "dancer_name": "New",
+                "dominate_role": "Follower",
+                "dominate_required": "Newcomer",
+                "dominate_allowed": "Newcomer",
+                "non_dominate_role": None,
+                "non_dominate_required": None,
+                "non_dominate_allowed": None,
+            }
+        ]
+    )
+    previous = pd.DataFrame(
+        [
+            {
+                "dancer_id": 11,
+                "dancer_name": "New",
+                "dominate_role": "Follower",
+                "dominate_required": None,
+                "dominate_allowed": None,
+                "non_dominate_role": None,
+                "non_dominate_required": None,
+                "non_dominate_allowed": None,
+            }
+        ]
+    )
+
+    result = build_dancer_transitions_snapshot(
+        current,
+        previous,
+        update_date="2025-01-08",
+    )
+
+    assert result.empty
+
+
 def test_merge_snapshot_aggregates_forward_only(tmp_path: Path) -> None:
     baseline = pd.DataFrame(
         [
@@ -258,6 +341,38 @@ def test_merge_transitions_skips_same_identity_on_newer_date(tmp_path: Path) -> 
     assert len(merged) == 2
     assert set(merged["Dancer ID"].astype(int)) == {10, 11}
     assert merged[merged["Dancer ID"].astype(int) == 10]["Update Date"].iloc[0] == "2025-01-08"
+
+
+def test_merge_transitions_drops_clearance_rows_from_history(tmp_path: Path) -> None:
+    path = tmp_path / "dancer_transitions.csv"
+    pd.DataFrame(
+        [
+            {
+                "Update Date": "2025-01-08",
+                "Previous Division": "Newcomer",
+                "Currently Division": "",
+                "Transition Type": "required",
+                "Dancer Role": "Follower",
+                "Dancer ID": 10,
+                "Dancer Name": "Test",
+            },
+            {
+                "Update Date": "2025-01-08",
+                "Previous Division": "Novice",
+                "Currently Division": "Intermediate",
+                "Transition Type": "allowed",
+                "Dancer Role": "Leader",
+                "Dancer ID": 10,
+                "Dancer Name": "Test",
+            },
+        ]
+    ).to_csv(path, index=False)
+
+    merged, added = _merge_transitions(path, pd.DataFrame(columns=TRANSITION_COLUMNS))
+
+    assert added == 0
+    assert len(merged) == 1
+    assert merged.iloc[0]["Currently Division"] == "Intermediate"
 
 
 def test_build_derived_analytics_exports_preserves_existing_baseline(tmp_path: Path) -> None:

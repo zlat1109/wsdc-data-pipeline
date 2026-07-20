@@ -272,7 +272,11 @@ def build_dancer_transitions_snapshot(
     *,
     update_date: str,
 ) -> pd.DataFrame:
-    """Compare two full role snapshots (legacy notebook / weekly parse delta)."""
+    """Compare two full role snapshots; emit only real division A→B changes.
+
+    Clearances (division wiped) and first-appear (empty → division) are not
+    transitions for Tableau KPIs and are dropped.
+    """
     if current_df.empty or previous_df.empty:
         return pd.DataFrame(columns=TRANSITION_COLUMNS)
 
@@ -307,14 +311,15 @@ def build_dancer_transitions_snapshot(
                 prev_val = normalize_division(row.get(f"{prefix}_{field}_prev"))
                 curr_val = normalize_division(row.get(f"{prefix}_{field}_curr"))
 
-                if prev_val == curr_val or (prev_val is None and curr_val is None):
+                # Real transition only: both sides must be named divisions.
+                if not prev_val or not curr_val or prev_val == curr_val:
                     continue
 
                 transitions.append(
                     {
                         "Update Date": update_date,
-                        "Previous Division": prev_val or "—",
-                        "Currently Division": curr_val or "—",
+                        "Previous Division": prev_val,
+                        "Currently Division": curr_val,
                         "Transition Type": label,
                         "Dancer Role": dancer_role,
                         "Dancer ID": dancer_id,
@@ -382,12 +387,20 @@ def _merge_transitions(existing_path: Path, new_df: pd.DataFrame) -> tuple[pd.Da
 
 
 def _dedupe_transition_history(df: pd.DataFrame) -> pd.DataFrame:
-    """Keep the earliest Update Date for each transition identity."""
+    """Keep earliest Update Date per identity; drop non A→B rows."""
     if df.empty:
         return df
     out = df.copy()
     if "Update Date" in out.columns:
         out = _normalize_date_column(out, "Update Date")
+    for col in ("Previous Division", "Currently Division"):
+        if col in out.columns:
+            blank = out[col].isna() | (
+                out[col].astype(str).str.strip().isin(["", "—", "-", "nan", "NaN", "None"])
+            )
+            out = out.loc[~blank]
+    if out.empty:
+        return out.reset_index(drop=True)
     out = out.sort_values(
         ["Update Date", "Dancer ID", "Dancer Role", "Transition Type"]
     )
