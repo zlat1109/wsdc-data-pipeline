@@ -101,10 +101,20 @@
       "fix_hint": "scripts/sync_events_calendar.py; FK to events must not CASCADE on promote"
     },
     {
+      "name": "edition_calendar_orphan_event_ids",
+      "category": "event_naming",
+      "severity": "warn",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "Calendar date rows must point at a current catalog event_id.",
+      "fix_hint": "remap_stale_calendar_event_ids via enrich_event_editions_dates / sync_events_calendar"
+    },
+    {
       "name": "recent_editions_missing_day_dates",
       "category": "event_naming",
       "severity": "warn",
-      "value": 17,
+      "value": 12,
       "max_value": 50,
       "ok": true,
       "description": "Most 2025+ editions with results should have calendar day dates.",
@@ -212,11 +222,11 @@
     }
   ],
   "summary": {
-    "total": 21,
-    "passed": 21,
+    "total": 22,
+    "passed": 22,
     "errors": 0,
     "warnings": 0
   },
-  "generated_at": "2026-07-17T11:09:06.846868+00:00",
+  "generated_at": "2026-07-20T20:11:24.926824+00:00",
   "scope": "full"
 }
