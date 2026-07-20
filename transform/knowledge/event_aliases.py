@@ -48,6 +48,11 @@ RESULT_TO_CATALOG_EVENT_NAME: dict[str, str] = {
     'SOM-Swing of Music': 'SOM - Swing of Music',
     'Swing of Music': 'SOM - Swing of Music',
     'Westie Weekend': 'Dance Jam Jack & Jill Weekend',
+    # Real series title in results/events_wsdc; ghost catalog used old Championships name.
+    '5280 Swing Dance Championships': '5280 Westival',
+    'LoneStar Invitational': 'Lone Star Invitational',
+    'Lonestar Invitational': 'Lone Star Invitational',
+    'French Connection WCS': 'FRENCH CONNECTION WCS',
 }
 
 # Spelling / casing variants → catalog name (not intermediate result labels).
@@ -111,6 +116,10 @@ MERGE_EVENT_ID_MAP: dict[int, int] = {
     325: 330,  # Simply Adelaide — Adelaide
     321: 331,  # Swing Fiction — Brno
     279: 283,  # Kazan EL Fest — Kazan
+    406: 197,  # 5280 Championships ghost → 5280 Westival
+    433: 369,  # French Connection WCS casing duplicate → FRENCH CONNECTION WCS
+    442: 120,  # Lonestar ghost → Lone Star Invitational
+    443: 120,  # LoneStar ghost → Lone Star Invitational
 }
 
 

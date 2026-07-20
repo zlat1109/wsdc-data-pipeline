@@ -19,7 +19,7 @@ EVENT_NAME_MAPPINGS: dict[str, str] = {
     "UpTown Swing": "Swedish Swing Summer Camp",
     "Jax Westie Fest": "River City Swing",
     "Bavarian Open West Coast Swing Championships": "Bavarian Open",
-    "5280 Westival": "5280 Swing Dance Championships",
+    "5280 Swing Dance Championships": "5280 Westival",
     "H-Town Throw Down 2027": "Novice Invitational",
     "UCWDC Country Dance World Championships": "Worlds UCWDC",
     "USA Grand National Dance Championships": "USA Grand Nationals",
@@ -32,6 +32,9 @@ EVENT_NAME_MAPPINGS: dict[str, str] = {
     "Phoenix 4th of July": "4TH of July Convention",
     # Snapshot title variant (weekly bot) → WSDC catalog name
     "NeverlandSwing Dutch Swing Championships 2026": "Neverland Swing",
+    "LoneStar Invitational": "Lone Star Invitational",
+    "Lonestar Invitational": "Lone Star Invitational",
+    "French Connection WCS": "FRENCH CONNECTION WCS",
 }
 
 

@@ -141,3 +141,69 @@ def test_force_baltic_swing_off_phoenix():
     assert baltic["event_location"] == "Gdańsk, Poland"
     desert = out.loc[out["event_name"] == "Desert City Swing"].iloc[0]
     assert str(desert["location_id"]) == "3"
+
+
+def test_force_berlin_events_off_brno_and_saunaswing_off_wailea():
+    location_info = pd.DataFrame(
+        [
+            {
+                "location_id": "266",
+                "event_city": "Brno",
+                "event_state": "",
+                "event_country": "Czech Republic",
+                "event_location": "Brno, Czech Republic",
+            },
+            {
+                "location_id": "194",
+                "event_city": "Berlin",
+                "event_state": "",
+                "event_country": "Germany",
+                "event_location": "Berlin, Germany",
+            },
+            {
+                "location_id": "124",
+                "event_city": "Wailea",
+                "event_state": "Hawaii",
+                "event_country": "United States",
+                "event_location": "Wailea, HI, United States",
+            },
+            {
+                "location_id": "268",
+                "event_city": "Ikaalinen",
+                "event_state": "",
+                "event_country": "Finland",
+                "event_location": "Ikaalinen, Finland",
+            },
+        ]
+    )
+    results = pd.DataFrame(
+        [
+            {
+                "event_name": "SwingLab Berlin",
+                "location_id": "266",
+                "event_location": "Brno, Czech Republic",
+            },
+            {
+                "event_name": "Berlin Swing Revolution",
+                "location_id": "266",
+                "event_location": "Brno, Czech Republic",
+            },
+            {
+                "event_name": "Swing Fiction",
+                "location_id": "266",
+                "event_location": "Brno, Czech Republic",
+            },
+            {
+                "event_name": "SaunaSwing",
+                "location_id": "124",
+                "event_location": "Wailea, HI, United States",
+            },
+        ]
+    )
+    out, changed = force_result_locations_from_event_name_overrides(results, location_info)
+    assert changed == 3
+    assert str(out.loc[out.event_name == "SwingLab Berlin", "location_id"].iloc[0]) == "194"
+    assert str(out.loc[out.event_name == "Berlin Swing Revolution", "location_id"].iloc[0]) == "194"
+    assert str(out.loc[out.event_name == "Swing Fiction", "location_id"].iloc[0]) == "266"
+    assert str(out.loc[out.event_name == "SaunaSwing", "location_id"].iloc[0]) == "268"
+    assert out.loc[out.event_name == "SaunaSwing", "event_location"].iloc[0] == "Ikaalinen, Finland"
