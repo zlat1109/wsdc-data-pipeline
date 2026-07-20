@@ -38,8 +38,8 @@ TRANSITION_COLUMNS = [
     "Dancer Name",
 ]
 
-TRANSITION_DEDUP_KEYS = [
-    "Update Date",
+# Identity without Update Date — a real division change should appear once.
+TRANSITION_IDENTITY_KEYS = [
     "Dancer ID",
     "Dancer Role",
     "Transition Type",
@@ -228,15 +228,25 @@ def _previous_full_snapshot_frame(
     *,
     current_count: int,
 ) -> pd.DataFrame:
-    """Previous global parse snapshot (legacy notebook: full backup CSV)."""
+    """Previous global parse snapshot (legacy notebook: full backup CSV).
+
+    Eligible dates must cover a large share of the known dancer population.
+    Among those, pick the chronologically latest — not the largest count —
+    so successive full parses chain correctly.
+    """
     changed = _prepare_role_history(changed_df)
     counts = changed.groupby("update_date").size()
     prior_dates = sorted(d for d in counts.index if d < current_date)
     if not prior_dates or not current_count:
         return pd.DataFrame()
 
-    threshold = int(current_count * FULL_SNAPSHOT_MIN_COVERAGE)
-    eligible = [(snapshot_date, int(counts[snapshot_date])) for snapshot_date in prior_dates if counts[snapshot_date] >= threshold]
+    max_known = max(int(counts.max()), int(current_count))
+    threshold = int(max_known * FULL_SNAPSHOT_MIN_COVERAGE)
+    eligible = [
+        snapshot_date
+        for snapshot_date in prior_dates
+        if int(counts[snapshot_date]) >= threshold
+    ]
     if not eligible:
         logger.warning(
             "No previous full snapshot before %s with >= %s rows; skipping transitions",
@@ -245,12 +255,12 @@ def _previous_full_snapshot_frame(
         )
         return pd.DataFrame()
 
-    snapshot_date, snapshot_count = max(eligible, key=lambda item: item[1])
+    snapshot_date = eligible[-1]
     snapshot = changed[changed["update_date"] == snapshot_date].copy()
     logger.info(
         "Using previous full snapshot %s (%s dancers, threshold %s)",
         snapshot_date,
-        snapshot_count,
+        int(counts[snapshot_date]),
         threshold,
     )
     return snapshot
@@ -322,33 +332,68 @@ def build_dancer_transitions_snapshot(
 
 
 def _merge_transitions(existing_path: Path, new_df: pd.DataFrame) -> tuple[pd.DataFrame, int]:
+    """Append new Update Date rows, but never re-emit an already-seen transition.
+
+    Full role exports are often re-stamped with today's date while the previous
+    *full* changed snapshot stays weeks back. Without identity dedupe, the same
+    All-Star→Champion change is appended again on every export.
+    """
     if new_df.empty:
         if existing_path.exists():
-            return pd.read_csv(existing_path, low_memory=False), 0
+            return _dedupe_transition_history(pd.read_csv(existing_path, low_memory=False)), 0
         return new_df, 0
 
     new_df = _normalize_date_column(new_df.copy(), "Update Date")
 
     if not existing_path.exists():
-        return new_df, len(new_df)
+        cleaned = _dedupe_transition_history(new_df)
+        return cleaned, len(cleaned)
 
     existing = pd.read_csv(existing_path, low_memory=False)
     if "Update Date" in existing.columns:
         existing = _normalize_date_column(existing, "Update Date")
+    existing = _dedupe_transition_history(existing)
 
     existing_dates = set(existing["Update Date"].unique())
-    append_df = new_df[~new_df["Update Date"].isin(existing_dates)]
+    append_df = new_df[~new_df["Update Date"].isin(existing_dates)].copy()
+    if append_df.empty:
+        return existing.sort_values(
+            ["Update Date", "Dancer ID", "Dancer Role", "Transition Type"]
+        ).reset_index(drop=True), 0
+
+    seen = existing[TRANSITION_IDENTITY_KEYS].drop_duplicates()
+    append_df = append_df.merge(
+        seen.assign(_seen=1),
+        on=TRANSITION_IDENTITY_KEYS,
+        how="left",
+    )
+    append_df = append_df[append_df["_seen"].isna()].drop(columns=["_seen"])
     if append_df.empty:
         return existing.sort_values(
             ["Update Date", "Dancer ID", "Dancer Role", "Transition Type"]
         ).reset_index(drop=True), 0
 
     combined = pd.concat([existing, append_df], ignore_index=True)
-    combined = combined.drop_duplicates(subset=TRANSITION_DEDUP_KEYS, keep="last")
+    combined = _dedupe_transition_history(combined)
     combined = combined.sort_values(
         ["Update Date", "Dancer ID", "Dancer Role", "Transition Type"]
     ).reset_index(drop=True)
     return combined, len(append_df)
+
+
+def _dedupe_transition_history(df: pd.DataFrame) -> pd.DataFrame:
+    """Keep the earliest Update Date for each transition identity."""
+    if df.empty:
+        return df
+    out = df.copy()
+    if "Update Date" in out.columns:
+        out = _normalize_date_column(out, "Update Date")
+    out = out.sort_values(
+        ["Update Date", "Dancer ID", "Dancer Role", "Transition Type"]
+    )
+    return out.drop_duplicates(subset=TRANSITION_IDENTITY_KEYS, keep="first").reset_index(
+        drop=True
+    )
 
 
 def build_derived_analytics_exports(output_dir: Path) -> dict[str, int]:

@@ -96,7 +96,7 @@ def test_build_divisional_structure_dominate_only() -> None:
     assert "type_options" not in result.columns
 
 
-def test_previous_full_snapshot_picks_largest_prior_parse() -> None:
+def test_previous_full_snapshot_skips_sparse_and_picks_latest_full() -> None:
     changed = pd.DataFrame(
         [
             {"dancer_id": i, "update_date": "2025-01-01", "dominate_role": "Leader"}
@@ -107,16 +107,21 @@ def test_previous_full_snapshot_picks_largest_prior_parse() -> None:
             for i in range(5)
         ]
         + [
+            {"dancer_id": i, "update_date": "2025-01-12", "dominate_role": "Leader"}
+            for i in range(95)
+        ]
+        + [
             {"dancer_id": i, "update_date": "2025-01-15", "dominate_role": "Leader"}
             for i in range(100, 110)
         ]
     )
 
-    previous = _previous_full_snapshot_frame(changed, "2025-01-15", current_count=10)
+    # Sparse 01-08 skipped; among full dates pick latest (01-12), not largest (01-01).
+    previous = _previous_full_snapshot_frame(changed, "2025-01-15", current_count=100)
 
-    assert len(previous) == 100
+    assert len(previous) == 95
     assert previous["update_date"].nunique() == 1
-    assert previous["update_date"].iloc[0] == "2025-01-01"
+    assert previous["update_date"].iloc[0] == "2025-01-12"
 
 
 def test_build_dancer_transitions_snapshot_merges_on_dancer_id_only() -> None:
@@ -217,6 +222,42 @@ def test_merge_transitions_deduplicates(tmp_path: Path) -> None:
 
     assert added == 0
     assert len(merged) == 1
+
+
+def test_merge_transitions_skips_same_identity_on_newer_date(tmp_path: Path) -> None:
+    path = tmp_path / "dancer_transitions.csv"
+    existing = {
+        "Update Date": "2025-01-08",
+        "Previous Division": "Novice",
+        "Currently Division": "Intermediate",
+        "Transition Type": "required",
+        "Dancer Role": "Leader",
+        "Dancer ID": 10,
+        "Dancer Name": "Test",
+    }
+    pd.DataFrame([existing]).to_csv(path, index=False)
+
+    replay = {
+        **existing,
+        "Update Date": "2025-01-15",
+        "Dancer Name": "Test Updated",
+    }
+    genuine = {
+        "Update Date": "2025-01-15",
+        "Previous Division": "Intermediate",
+        "Currently Division": "Advanced",
+        "Transition Type": "required",
+        "Dancer Role": "Leader",
+        "Dancer ID": 11,
+        "Dancer Name": "Other",
+    }
+
+    merged, added = _merge_transitions(path, pd.DataFrame([replay, genuine]))
+
+    assert added == 1
+    assert len(merged) == 2
+    assert set(merged["Dancer ID"].astype(int)) == {10, 11}
+    assert merged[merged["Dancer ID"].astype(int) == 10]["Update Date"].iloc[0] == "2025-01-08"
 
 
 def test_build_derived_analytics_exports_preserves_existing_baseline(tmp_path: Path) -> None:
