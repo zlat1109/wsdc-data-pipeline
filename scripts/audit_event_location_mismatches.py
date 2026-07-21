@@ -108,6 +108,53 @@ def main() -> int:
             f"scheduled {expected} ({sch.get('location_raw')})"
         )
 
+    print("\n=== C) Catalog typical vs upcoming country mismatch (possible move OR stuck typical) ===")
+    catalog_path = data_dir / "event_catalog.csv"
+    if catalog_path.exists():
+        import re
+
+        def _country(text: str) -> str:
+            parts = [p.strip() for p in re.split(r"[,/]", text or "") if p.strip()]
+            return (parts[-1] if parts else "").lower()
+
+        aliases = {
+            "usa": "united states",
+            "us": "united states",
+            "uk": "united kingdom",
+            "south korea": "republic of korea",
+            "nederland": "netherlands",
+            "finalnd": "finland",
+        }
+
+        def _norm(c: str) -> str:
+            c = (c or "").strip().lower()
+            return aliases.get(c, c)
+
+        for r in _load_csv(catalog_path):
+            name = (r.get("canonical_name") or "").strip()
+            typ = r.get("typical_location") or ""
+            up = r.get("upcoming_location") or ""
+            if not typ or not up:
+                continue
+            tc = _norm(_country(typ) or (r.get("typical_country") or ""))
+            uc = _norm(_country(up))
+            # skip US state abbreviation false positives (az vs united states)
+            if not tc or not uc or tc == uc:
+                continue
+            if len(tc) <= 3 or len(uc) <= 3:
+                continue
+            covered = " [OVERRIDE]" if name in EVENT_NAME_LOCATION_OVERRIDES else ""
+            print(
+                f"  {name!r}{covered}\n"
+                f"        typical={typ!r} ({tc})\n"
+                f"        upcoming={up!r} ({uc})"
+            )
+            if name not in EVENT_NAME_LOCATION_OVERRIDES:
+                print(
+                    "        note: research before remap — may be series move "
+                    "(keep year-aware) or stuck typical (safe to override)"
+                )
+
     return 0
 
 
