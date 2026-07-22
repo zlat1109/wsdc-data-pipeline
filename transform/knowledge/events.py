@@ -41,6 +41,15 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'Berlin Swing Revolution': 'Berlin, Germany',
     # Shared Wailea (124 / Aloha Open lineage) wrongly applied to SaunaSwing (Finland).
     'SaunaSwing': 'Ikaalinen, Finland',
+    # Shared Venray (227 / Dutch Open) wrongly applied to Freedom Swing (Wilmington DE).
+    # Catalog upcoming already says WILMINGTON DEL; typical was stuck on Venray.
+    'Freedom Swing Dance Challenge': 'Wilmington, DE, United States',
+    # Shared St. Petersburg (222) wrongly applied to West in Lyon (name + calendar = Lyon).
+    'West in Lyon': 'Lyon, France',
+    # Catalog/scheduled say Calgary; results pointed at Perth (253 / WesterOz).
+    'BTO Open': 'Calgary, Canada',
+    # Shared Jeju (213) wrongly applied to The Aloha Open (Wailea / Hawaii).
+    'The Aloha Open': 'Wailea, HI, United States',
 }
 
 EVENT_LOCATION_EXACT_CORRECTIONS = {
@@ -68,6 +77,7 @@ EVENT_LOCATION_EXACT_CORRECTIONS = {
     'CHICAGO, IL, United States': 'Chicago, IL, United States',
     'Atlanta, GA USA': 'Atlanta, GA, United States',
     'St. Louis, Mo, USA': 'St. Louis, MO, USA',
+    'WILMINGTON DEL, Delaware, United States': 'Wilmington, DE, United States',
     'PARIS, France': 'Paris, France',
     'Moscow,  Russia': 'Moscow, Russia',
     'Stockholm,  Sweden': 'Stockholm, Sweden',
@@ -143,6 +153,42 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_location_standardized': 'Ikaalinen, Finland',
         },
     },
+    183: {
+        'name': 'Freedom Swing Dance Challenge',
+        'url': 'https://freedomswingdance.com/',
+        'typical_location': 'Wilmington, DE, United States',
+        'location': {
+            'event_city': 'Wilmington',
+            'event_state': 'Delaware',
+            'event_country': 'United States',
+            'event_location': 'Wilmington, DE, United States',
+            'event_location_standardized': 'Wilmington, DE',
+        },
+    },
+    186: {
+        'name': 'West in Lyon',
+        'url': '',
+        'typical_location': 'Lyon, France',
+        'location': {
+            'event_city': 'Lyon',
+            'event_state': '',
+            'event_country': 'France',
+            'event_location': 'Lyon, France',
+            'event_location_standardized': 'Lyon, France',
+        },
+    },
+    355: {
+        'name': 'The Aloha Open',
+        'url': '',
+        'typical_location': 'Wailea, HI, United States',
+        'location': {
+            'event_city': 'Wailea',
+            'event_state': 'Hawaii',
+            'event_country': 'United States',
+            'event_location': 'Wailea, HI, United States',
+            'event_location_standardized': 'Wailea, HI',
+        },
+    },
     389: {
         'name': 'SwingLab Berlin',
         'url': 'http://www.swinglab-berlin.com',
@@ -166,7 +212,8 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_location': 'Stockholm, Sweden',
             'event_location_standardized': 'Stockholm, Sweden',
         },
-    },    264: {
+    },
+    264: {
         'name': 'Swedish Swing Summer Camp',
         'url': 'http://www.uptownswing.se/',
         'typical_location': 'Stockholm, Sweden',
@@ -253,7 +300,14 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
     324: {
         'name': 'BTO Open',
         'url': 'https://ctodance.ca/',
-        'typical_location': 'Calgary, Alberta, Canada',
+        'typical_location': 'Calgary, Canada',
+        'location': {
+            'event_city': 'Calgary',
+            'event_state': '',
+            'event_country': 'Canada',
+            'event_location': 'Calgary, Canada',
+            'event_location_standardized': 'Calgary, Canada',
+        },
     },
     380: {
         'name': 'SASS Spooky Albany Swing Spectacular',

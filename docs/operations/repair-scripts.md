@@ -62,7 +62,8 @@ Note: `repair_locations.py` has no `--dry-run`; it always applies corrections.
 | `seed_dancer_aliases.py` | Seed core.dancer_aliases from knowledge map | Yes |
 | `backfill.py` | Initial CSV → staging → core + full history backfill | Yes |
 | `close_parse_runs.py` | Close stuck `running` parse_runs | Yes |
-| `monitor_data_quality.py` | SQL invariant checks | No |
+| `apply_event_name_location_overrides_csv.py` | Remap local export CSV `location_id` from `EVENT_NAME_LOCATION_OVERRIDES` | No (CSV only) |
+| `audit_event_location_mismatches.py` | Find shared wrong location_id / calendar mismatches | No |
 
 ## dedupe_core_data.py
 

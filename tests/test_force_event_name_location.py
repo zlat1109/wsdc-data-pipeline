@@ -143,6 +143,107 @@ def test_force_baltic_swing_off_phoenix():
     assert str(desert["location_id"]) == "3"
 
 
+def test_force_freedom_swing_off_venray():
+    location_info = pd.DataFrame(
+        [
+            {
+                "location_id": "227",
+                "event_city": "Venray",
+                "event_state": "",
+                "event_country": "Netherlands",
+                "event_location": "Venray, Netherlands",
+            },
+            {
+                "location_id": "66",
+                "event_city": "Wilmington",
+                "event_state": "Delaware",
+                "event_country": "United States",
+                "event_location": "Wilmington, DE, United States",
+            },
+        ]
+    )
+    results = pd.DataFrame(
+        [
+            {
+                "event_name": "Freedom Swing Dance Challenge",
+                "location_id": "227",
+                "event_location": "Venray, Netherlands",
+            },
+            {
+                "event_name": "Dutch Open West Coast Swing",
+                "location_id": "227",
+                "event_location": "Venray, Netherlands",
+            },
+        ]
+    )
+    out, changed = force_result_locations_from_event_name_overrides(results, location_info)
+    assert changed == 1
+    freedom = out.loc[out["event_name"] == "Freedom Swing Dance Challenge"].iloc[0]
+    assert str(freedom["location_id"]) == "66"
+    assert freedom["event_location"] == "Wilmington, DE, United States"
+    dutch = out.loc[out["event_name"] == "Dutch Open West Coast Swing"].iloc[0]
+    assert str(dutch["location_id"]) == "227"
+
+
+def test_force_west_in_lyon_and_aloha_open():
+    location_info = pd.DataFrame(
+        [
+            {
+                "location_id": "222",
+                "event_city": "St. Petersburg",
+                "event_state": "",
+                "event_country": "Russia",
+                "event_location": "St. Petersburg, Russia",
+            },
+            {
+                "location_id": "156",
+                "event_city": "Lyon",
+                "event_state": "",
+                "event_country": "France",
+                "event_location": "Lyon, France",
+            },
+            {
+                "location_id": "213",
+                "event_city": "Jeju",
+                "event_state": "",
+                "event_country": "Republic of Korea",
+                "event_location": "Jeju, Republic of Korea",
+            },
+            {
+                "location_id": "124",
+                "event_city": "Wailea",
+                "event_state": "Hawaii",
+                "event_country": "United States",
+                "event_location": "Wailea, HI, United States",
+            },
+        ]
+    )
+    results = pd.DataFrame(
+        [
+            {
+                "event_name": "West in Lyon",
+                "location_id": "222",
+                "event_location": "St. Petersburg, Russia",
+            },
+            {
+                "event_name": "The Aloha Open",
+                "location_id": "213",
+                "event_location": "Jeju, Republic of Korea",
+            },
+            {
+                "event_name": "Swing & Snow",
+                "location_id": "222",
+                "event_location": "St. Petersburg, Russia",
+            },
+        ]
+    )
+    out, changed = force_result_locations_from_event_name_overrides(results, location_info)
+    assert changed == 2
+    assert str(out.loc[out.event_name == "West in Lyon", "location_id"].iloc[0]) == "156"
+    assert str(out.loc[out.event_name == "The Aloha Open", "location_id"].iloc[0]) == "124"
+    assert str(out.loc[out.event_name == "Swing & Snow", "location_id"].iloc[0]) == "222"
+
+
 def test_force_berlin_events_off_brno_and_saunaswing_off_wailea():
     location_info = pd.DataFrame(
         [
