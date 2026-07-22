@@ -190,7 +190,7 @@ Not Supabase views. Built by `transform/divisional_exports.py` after view export
 |-----|---------|--------------|
 | `divisional_structure.csv` | melt + aggregate all roles | append dates newer than baseline max |
 | `divisional_structure_only_dominate_role.csv` | dominate role only | same |
-| `dancer_transitions.csv` | current vs previous **full** parse snapshot | append new `Update Date` only |
+| `dancer_transitions.csv` | current vs previous **full** parse; only division **A→B** (both sides set) | append new dates; never re-emit same transition identity |
 
 Skip with `python export.py --skip-derived-exports`. Column contract: [../tableau/csv-contract.md](../tableau/csv-contract.md).
 
