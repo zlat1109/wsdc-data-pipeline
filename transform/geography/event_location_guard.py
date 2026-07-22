@@ -33,6 +33,13 @@ NAME_COUNTRY_HINTS: list[tuple[str, str]] = [
     (r"\bthe aloha open\b|\baloha open\b", "United States"),
     # BTO / By-Town Open is Calgary / Canada (not Perth AU).
     (r"\bbto open\b|\bby-town open\b|\bcalgary town open\b", "Canada"),
+    (r"\bbavarian open\b", "Germany"),
+    (r"\bking swing\b|\bsanta swing\b", "Poland"),
+    (r"\bwesty nantes\b", "France"),
+    (r"\bparis westie fest\b", "France"),
+    (r"\brolling swing\b", "France"),
+    (r"\bdutch open\b", "Netherlands"),
+    (r"\bwinter coast swing\b", "Finland"),
 ]
 
 

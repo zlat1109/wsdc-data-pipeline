@@ -54,6 +54,15 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'Sea Dance Fest': 'Moscow, Russia',
     # Shared Phoenix (3 / Desert City etc.) wrongly applied to Med in Swing (Côte d'Azur).
     'Med in Swing': 'La Londe-les-Maures, France',
+    # Fresh main export: more shared-wrong location_id collisions (calendar ≠ results).
+    'Bavarian Open': 'Munich, Germany',  # was Jeju (213)
+    'King Swing': 'Kraków, Poland',  # was Wailea (124)
+    'Santa Swing': 'Kraków, Poland',  # was Wailea (124)
+    'Westy Nantes': 'Nantes, France',  # was Brno (266)
+    'Paris Westie Fest': 'Paris, France',  # was Venray (227)
+    'Rolling Swing': 'Lyon, France',  # was Phoenix (3)
+    'Dutch Open West Coast Swing': 'Venray, Netherlands',  # was Perth (253)
+    'Winter Coast Swing': 'Kuopio, Finland',  # was Düsseldorf (127)
 }
 
 EVENT_LOCATION_EXACT_CORRECTIONS = {
@@ -241,6 +250,103 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_location_standardized': 'Milan, Italy',
         },
     },
+    233: {
+        'name': 'Bavarian Open',
+        'url': 'https://bavarianopen.com/',
+        'typical_location': 'Munich, Germany',
+        'location': {
+            'event_city': 'Munich',
+            'event_state': '',
+            'event_country': 'Germany',
+            'event_location': 'Munich, Germany',
+            'event_location_standardized': 'Munich, Germany',
+        },
+    },
+    292: {
+        'name': 'King Swing',
+        'url': 'https://kingswing.pl/',
+        'typical_location': 'Kraków, Poland',
+        'location': {
+            'event_city': 'Kraków',
+            'event_state': '',
+            'event_country': 'Poland',
+            'event_location': 'Kraków, Poland',
+            'event_location_standardized': 'Kraków, Poland',
+        },
+    },
+    377: {
+        'name': 'Santa Swing',
+        'url': 'https://www.santaswing.pl/',
+        'typical_location': 'Kraków, Poland',
+        'location': {
+            'event_city': 'Kraków',
+            'event_state': '',
+            'event_country': 'Poland',
+            'event_location': 'Kraków, Poland',
+            'event_location_standardized': 'Kraków, Poland',
+        },
+    },
+    293: {
+        'name': 'Westy Nantes',
+        'url': 'https://www.westynantes.com/',
+        'typical_location': 'Nantes, France',
+        'location': {
+            'event_city': 'Nantes',
+            'event_state': '',
+            'event_country': 'France',
+            'event_location': 'Nantes, France',
+            'event_location_standardized': 'Nantes, France',
+        },
+    },
+    272: {
+        'name': 'Paris Westie Fest',
+        'url': '',
+        'typical_location': 'Paris, France',
+        'location': {
+            'event_city': 'Paris',
+            'event_state': '',
+            'event_country': 'France',
+            'event_location': 'Paris, France',
+            'event_location_standardized': 'Paris, France',
+        },
+    },
+    313: {
+        'name': 'Rolling Swing',
+        'url': 'http://www.frenchywesty.com/',
+        'typical_location': 'Lyon, France',
+        'location': {
+            'event_city': 'Lyon',
+            'event_state': '',
+            'event_country': 'France',
+            'event_location': 'Lyon, France',
+            'event_location_standardized': 'Lyon, France',
+        },
+    },
+    275: {
+        'name': 'Dutch Open West Coast Swing',
+        'url': 'http://www.dutchopenwcs.com/',
+        'typical_location': 'Venray, Netherlands',
+        'location': {
+            'event_city': 'Venray',
+            'event_state': '',
+            'event_country': 'Netherlands',
+            'event_location': 'Venray, Netherlands',
+            'event_location_standardized': 'Venray, Netherlands',
+        },
+    },
+    297: {
+        'name': 'Winter Coast Swing',
+        'url': 'https://www.wintercoastswing.com/',
+        'typical_location': 'Kuopio, Finland',
+        'location': {
+            'event_city': 'Kuopio',
+            'event_state': '',
+            'event_country': 'Finland',
+            'event_location': 'Kuopio, Finland',
+            'event_location_standardized': 'Kuopio, Finland',
+        },
+    },
+
     240: {
         'name': 'Sweden Westie Gala',
         'url': 'http://www.westiegala.com/',
