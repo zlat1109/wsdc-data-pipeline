@@ -1,9 +1,9 @@
 {
-  "scraped_at": "2026-07-16T20:04:48.001627+00:00",
+  "scraped_at": "2026-07-21T10:16:00.261909+00:00",
   "source": "https://worldsdc.com/events/calendar/",
   "min_start": "2025-01-01",
-  "raw_count": 618,
-  "event_count": 445,
+  "raw_count": 623,
+  "event_count": 450,
   "events": [
     {
       "event_name": "SwingCouver",
@@ -2360,7 +2360,7 @@
     {
       "event_name": "Lonestar Invitational",
       "calendar_title": "Lonestar Invitational",
-      "catalog_name": "Lonestar Invitational",
+      "catalog_name": "Lone Star Invitational",
       "name_key": "lonestarinvitational",
       "start_date": "2025-08-07",
       "end_date": "2025-08-10",
@@ -6000,7 +6000,7 @@
     {
       "event_name": "French Connection WCS",
       "calendar_title": "French Connection WCS",
-      "catalog_name": "French Connection WCS",
+      "catalog_name": "FRENCH CONNECTION WCS",
       "name_key": "frenchconnectionwcs",
       "start_date": "2026-07-03",
       "end_date": "2026-07-06",
@@ -9194,6 +9194,28 @@
       "raw_end": "2027-04-12"
     },
     {
+      "event_name": "Slovenian Open",
+      "calendar_title": "Slovenian Open",
+      "catalog_name": "Slovenian Open",
+      "name_key": "slovenianopen",
+      "start_date": "2027-04-14",
+      "end_date": "2027-04-19",
+      "url": "https://slovenianopen.dance/",
+      "url_key": "slovenianopen.dance",
+      "results_year": 2027,
+      "results_month": 4,
+      "edition_ym_candidates": [
+        "2027-04"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "57fd268088f41cacf7ecb9a8",
+      "raw_start": "2027-04-14",
+      "raw_end": "2027-04-20"
+    },
+    {
       "event_name": "Asia WCS Open",
       "calendar_title": "Asia WCS Open 2027",
       "catalog_name": "Asia West Coast Swing Open",
@@ -9640,6 +9662,28 @@
       "raw_end": "2027-06-07"
     },
     {
+      "event_name": "Baltic Swing",
+      "calendar_title": "Baltic Swing",
+      "catalog_name": "Baltic Swing",
+      "name_key": "balticswing",
+      "start_date": "2027-06-10",
+      "end_date": "2027-06-14",
+      "url": "http://www.balticswing.com",
+      "url_key": "balticswing.com",
+      "results_year": 2027,
+      "results_month": 6,
+      "edition_ym_candidates": [
+        "2027-06"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "b9be90ccd8a8b928f10eb9dd",
+      "raw_start": "2027-06-10",
+      "raw_end": "2027-06-15"
+    },
+    {
       "event_name": "D-TOWNSWING",
       "calendar_title": "D-TOWNSWING 2027",
       "catalog_name": "D-Town Swing",
@@ -9706,6 +9750,28 @@
       "raw_end": "2027-06-28"
     },
     {
+      "event_name": "Liberty Swing Dance Championships",
+      "calendar_title": "Liberty Swing Dance Championships",
+      "catalog_name": "Liberty Swing Dance Championships",
+      "name_key": "libertyswingdancechampionships",
+      "start_date": "2027-06-24",
+      "end_date": "2027-06-28",
+      "url": "http://www.libertyswing.com",
+      "url_key": "libertyswing.com",
+      "results_year": 2027,
+      "results_month": 6,
+      "edition_ym_candidates": [
+        "2027-06"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "e4dd0927482e13fa58dcb587",
+      "raw_start": "2027-06-24",
+      "raw_end": "2027-06-29"
+    },
+    {
       "event_name": "NeverlandSwing Dutch Swing Championships",
       "calendar_title": "NeverlandSwing Dutch Swing Championships 2027",
       "catalog_name": "Neverland Swing",
@@ -9730,7 +9796,7 @@
     {
       "event_name": "French Connection WCS",
       "calendar_title": "French Connection WCS",
-      "catalog_name": "French Connection WCS",
+      "catalog_name": "FRENCH CONNECTION WCS",
       "name_key": "frenchconnectionwcs",
       "start_date": "2027-06-25",
       "end_date": "2027-06-28",
@@ -9772,6 +9838,50 @@
       "source_fingerprint": "db5a7c60e225a9ed069e3465",
       "raw_start": "2027-07-01",
       "raw_end": "2026-07-06"
+    },
+    {
+      "event_name": "Swing Valley",
+      "calendar_title": "Swing Valley",
+      "catalog_name": "Swing Valley",
+      "name_key": "swingvalley",
+      "start_date": "2027-07-01",
+      "end_date": "2027-07-04",
+      "url": "http://swing-valley.com",
+      "url_key": "swing-valley.com",
+      "results_year": 2027,
+      "results_month": 7,
+      "edition_ym_candidates": [
+        "2027-07"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "1f06a91c88431dcc10688671",
+      "raw_start": "2027-07-01",
+      "raw_end": "2027-07-05"
+    },
+    {
+      "event_name": "Carolina Summer Swing",
+      "calendar_title": "Carolina Summer Swing",
+      "catalog_name": "Carolina Summer Swing",
+      "name_key": "carolinasummerswing",
+      "start_date": "2027-07-08",
+      "end_date": "2027-07-11",
+      "url": "https://carolinasummerswing.com",
+      "url_key": "carolinasummerswing.com",
+      "results_year": 2027,
+      "results_month": 7,
+      "edition_ym_candidates": [
+        "2027-07"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "f8eacdcd9ba7b9ecdb78b844",
+      "raw_start": "2027-07-08",
+      "raw_end": "2027-07-12"
     },
     {
       "event_name": "Atlanta Swing Classic",

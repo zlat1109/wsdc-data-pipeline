@@ -61,8 +61,33 @@ Audit similar collisions:
 python scripts/audit_event_location_mismatches.py
 ```
 
+Sections:
+- **A** name/country hint vs results country
+- **B** scheduled calendar country vs results mode country
+- **C** catalog `typical_location` vs `upcoming_location` country mismatch
+  (Freedom Swing pattern: typical stuck on wrong city while upcoming is correct;
+  or a real series move — do **not** auto-remap moves without year-aware research)
+
+Apply overrides to local export CSVs without full re-parse:
+
+```bash
+python scripts/apply_event_name_location_overrides_csv.py --dry-run
+python scripts/apply_event_name_location_overrides_csv.py --apply
+```
+
 Preprocess quality audit also emits `EVENT_NAME_LOCATION_COUNTRY_CONFLICT` when
 event_name country hints disagree with `location_id` country.
+
+**Supabase:** next full-parse preprocess rewrites `core.results.location_id` via
+the same force step. Until then, local `data/*.csv` can diverge from DB export.
+After adding overrides, also run the CSV apply script and remap live
+`core.event_editions` / `core.event_catalog` typical_* (or wait for rebuild).
+
+Known false friends (section C) that are often **series moves**, not stuck ids:
+- Westie's Angels: historical Washington DC results; 2026 schedule Lyon
+- Swingside Invitational: historical San Antonio; 2026 schedule Liège
+
+Do not force-remap those without year-aware edition logic.
 
 ## Country aliases
 
