@@ -72,6 +72,8 @@ def load_csv_bundle(data_dir: Path) -> dict[str, pd.DataFrame]:
         "dancers_results_info": "dancers_results_info.csv",
         "dancer_role_info": "dancer_role_info.csv",
         "dancers_points_info": "dancers_points_info.csv",
+        "scheduled_events": "scheduled_events.csv",
+        "event_catalog": "event_catalog.csv",
     }
     data: dict[str, pd.DataFrame] = {}
     for key, filename in files.items():
@@ -429,6 +431,95 @@ def check_event_name_location_country_conflicts(
     )
 
 
+def check_scheduled_vs_results_country(
+    results: pd.DataFrame,
+    location_info: pd.DataFrame | None,
+    scheduled: pd.DataFrame | None,
+) -> QualityFinding | None:
+    """Calendar says one country, results location another → shared wrong location_id."""
+    from transform.geography.event_location_guard import find_scheduled_country_conflicts
+
+    if results is None or results.empty or scheduled is None or location_info is None:
+        return None
+    conflicts = find_scheduled_country_conflicts(results, location_info, scheduled)
+    if not conflicts:
+        return None
+    examples = [
+        {
+            "event_name": c.event_name,
+            "location_id": c.location_id,
+            "results_country": c.results_country,
+            "scheduled_country": c.scheduled_country,
+            "scheduled_location": c.scheduled_location,
+            "rows": c.row_count,
+        }
+        for c in conflicts[:20]
+    ]
+    return QualityFinding(
+        category="location",
+        code="SCHEDULED_VS_RESULTS_COUNTRY_CONFLICT",
+        severity="high",
+        message=(
+            "WSDC calendar country differs from results location country "
+            "(shared/wrong location_id — Sea Dance / Med in Swing pattern)"
+        ),
+        count=sum(c.row_count for c in conflicts),
+        examples=examples,
+        suggested_fix=(
+            "Verify venue, then add EVENT_NAME_LOCATION_OVERRIDES (or KNOWN_SERIES_MOVES "
+            "if the event really moved); scripts/audit_event_location_mismatches.py"
+        ),
+        fingerprint=_fingerprint(
+            "location",
+            "SCHEDULED_VS_RESULTS_COUNTRY_CONFLICT",
+            "|".join(f"{c.event_name}:{c.location_id}" for c in conflicts[:15]),
+        ),
+    )
+
+
+def check_catalog_typical_vs_upcoming(
+    catalog: pd.DataFrame | None,
+) -> QualityFinding | None:
+    """Catalog typical country ≠ upcoming country (stuck typical or series move)."""
+    from transform.geography.event_location_guard import (
+        find_catalog_typical_upcoming_conflicts,
+    )
+
+    if catalog is None or catalog.empty:
+        return None
+    conflicts = find_catalog_typical_upcoming_conflicts(catalog)
+    if not conflicts:
+        return None
+    examples = [
+        {
+            "canonical_name": c.canonical_name,
+            "typical_location": c.typical_location,
+            "upcoming_location": c.upcoming_location,
+        }
+        for c in conflicts[:20]
+    ]
+    return QualityFinding(
+        category="location",
+        code="CATALOG_TYPICAL_UPCOMING_CONFLICT",
+        severity="medium",
+        message=(
+            "event_catalog typical_location country differs from upcoming_location "
+            "(stuck wrong typical OR real series move — research before remap)"
+        ),
+        count=len(conflicts),
+        examples=examples,
+        suggested_fix=(
+            "If venue is stuck: EVENT_NAME_LOCATION_OVERRIDES + apply script. "
+            "If the series moved: add to KNOWN_SERIES_MOVES in event_location_guard.py"
+        ),
+        fingerprint=_fingerprint(
+            "location",
+            "CATALOG_TYPICAL_UPCOMING_CONFLICT",
+            "|".join(c.canonical_name for c in conflicts[:15]),
+        ),
+    )
+
+
 def check_non_canonical_levels(results: pd.DataFrame) -> QualityFinding | None:
     if "event_competition" not in results.columns:
         return None
@@ -534,6 +625,15 @@ def run_audit(
         item = check_event_name_location_country_conflicts(results, location_info)
         if item:
             findings.append(item)
+        item = check_scheduled_vs_results_country(
+            results, location_info, data.get("scheduled_events")
+        )
+        if item:
+            findings.append(item)
+
+    item = check_catalog_typical_vs_upcoming(data.get("event_catalog"))
+    if item:
+        findings.append(item)
 
     if location_info is not None:
         findings.extend(check_location_format(location_info))
