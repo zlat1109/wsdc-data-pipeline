@@ -50,6 +50,10 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'BTO Open': 'Calgary, Canada',
     # Shared Jeju (213) wrongly applied to The Aloha Open (Wailea / Hawaii).
     'The Aloha Open': 'Wailea, HI, United States',
+    # Shared Düsseldorf (127) wrongly applied to Sea Dance Fest (Moscow).
+    'Sea Dance Fest': 'Moscow, Russia',
+    # Shared Phoenix (3 / Desert City etc.) wrongly applied to Med in Swing (Côte d'Azur).
+    'Med in Swing': 'La Londe-les-Maures, France',
 }
 
 EVENT_LOCATION_EXACT_CORRECTIONS = {
@@ -187,6 +191,30 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_country': 'United States',
             'event_location': 'Wailea, HI, United States',
             'event_location_standardized': 'Wailea, HI',
+        },
+    },
+    338: {
+        'name': 'Sea Dance Fest',
+        'url': 'https://vk.com/seadancefest',
+        'typical_location': 'Moscow, Russia',
+        'location': {
+            'event_city': 'Moscow',
+            'event_state': '',
+            'event_country': 'Russia',
+            'event_location': 'Moscow, Russia',
+            'event_location_standardized': 'Moscow, Russia',
+        },
+    },
+    379: {
+        'name': 'Med in Swing',
+        'url': 'http://www.medinswing.rocks',
+        'typical_location': 'La Londe-les-Maures, France',
+        'location': {
+            'event_city': 'La Londe-les-Maures',
+            'event_state': '',
+            'event_country': 'France',
+            'event_location': 'La Londe-les-Maures, France',
+            'event_location_standardized': 'La Londe-les-Maures, France',
         },
     },
     389: {

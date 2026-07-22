@@ -25,6 +25,14 @@ NAME_COUNTRY_HINTS: list[tuple[str, str]] = [
     (r"\bswinglab berlin\b|\bberlin swing revolution\b", "Germany"),
     # SaunaSwing is in Ikaalinen, Finland (not Wailea HI).
     (r"\bsaunaswing\b", "Finland"),
+    # Sea Dance Fest is Moscow (not Düsseldorf).
+    (r"\bsea dance fest\b", "Russia"),
+    # Med in Swing is Côte d'Azur / France (not Phoenix AZ).
+    (r"\bmed in swing\b", "France"),
+    # Aloha Open is Hawaii / USA (not Jeju Korea).
+    (r"\bthe aloha open\b|\baloha open\b", "United States"),
+    # BTO / By-Town Open is Calgary / Canada (not Perth AU).
+    (r"\bbto open\b|\bby-town open\b|\bcalgary town open\b", "Canada"),
 ]
 
 

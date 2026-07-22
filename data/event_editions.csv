@@ -29,7 +29,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 12205,175,French Open West Coast Swing,2026,5,2026-05-01,2026-05-13,2026-05-18,wsdc_calendar,scheduled,t,109,Paris,,France,"Paris, France",157,140,http://www.fowcs.com,"Paris, France",
 12566,221,Gateway Swing Classic,2026,5,2026-05-01,2026-05-14,2026-05-17,wsdc_calendar,scheduled,t,49,St. Louis,Missouri,United States,"St. Louis, MO, United States",87,78,http://gatewayswing.com/,"St. Louis, MO",Registry Event
 12447,206,Hungarian Open,2026,5,2026-05-01,2026-05-22,2026-05-24,wsdc_calendar,scheduled,t,110,Budapest,,Hungary,"Budapest, Hungary",100,89,http://wcs-ho.com/,"Budapest, Hungary",
-13171,379,Med in Swing,2026,5,2026-05-01,2026-05-07,2026-05-11,wsdc_calendar,scheduled,t,3,Phoenix,Arizona,United States,"Phoenix, AZ, United States",143,128,http://www.medinswing.rocks,"Phoenix, AZ",
+13171,379,Med in Swing,2026,5,2026-05-01,2026-05-07,2026-05-11,wsdc_calendar,scheduled,t,386,La Londe-les-Maures,,France,"La Londe-les-Maures, France",143,128,http://www.medinswing.rocks,"La Londe-les-Maures, France",
 11421,76,Michigan Dance Classic,2026,5,2026-05-01,2026-05-28,2026-05-31,wsdc_calendar,scheduled,t,51,Detroit,Michigan,United States,"Detroit, MI, United States",103,88,http://michiganclassicswing.com/,"Detroit, MI",Registry Event
 13148,364,Nanaimo Dance Fusion,2026,5,2026-05-01,2026-05-29,2026-05-31,wsdc_calendar,scheduled,t,217,Nanaimo,,Canada,"Nanaimo, Canada",61,54,http://www.nanaimodancefusion.ca/,"Nanaimo, Canada",Registry Event
 12748,253,Nordic WCS Championships,2026,5,2026-05-01,2026-04-30,2026-05-04,wsdc_calendar,scheduled,t,199,Stockholm,,Sweden,"Stockholm, Sweden",150,134,http://www.nordicwcschamps.com,"Stockholm, Sweden",
@@ -148,7 +148,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 12665,234,Philly Swing Classic,2025,9,2025-09-01,2025-09-19,2025-09-21,wsdc_calendar,scheduled,t,7,New York,New York,United States,"New York, NY, United States",66,60,https://phillyswing.com/,"New York, NY",Registry Event
 13139,359,Retaliation Swing,2025,9,2025-09-01,2025-09-18,2025-09-22,wsdc_calendar,scheduled,t,30,Seattle,Washington,United States,"Seattle, WA, United States",92,90,https://www.retaliationswing.com/,"Seattle, WA",Registry Event
 13046,313,Rolling Swing,2025,9,2025-09-01,2025-08-28,2025-09-01,wsdc_calendar,scheduled,t,156,Lyon,,France,"Lyon, France",124,106,http://www.frenchywesty.com/,"Lyon, France",Registry Event
-13109,338,Sea Dance Fest,2025,9,2025-09-01,2025-09-05,2025-09-07,wsdc_calendar,scheduled,t,127,Düsseldorf,,Germany,"Düsseldorf, Germany",75,64,https://vk.com/seadancefest,"Düsseldorf, Germany",Registry Event
+13109,338,Sea Dance Fest,2025,9,2025-09-01,2025-09-05,2025-09-07,wsdc_calendar,scheduled,t,113,Moscow,,Russia,"Moscow, Russia",75,64,https://vk.com/seadancefest,"Moscow, Russia",Registry Event
 11084,48,South Bay Dance Fling,2025,9,2025-09-01,2025-08-28,2025-09-01,wsdc_calendar,scheduled,t,16,San Jose,California,United States,"San Jose, CA, United States",80,69,https://sbdf.dance/,"San Jose, CA",Registry Event
 12639,231,Trilogy Swing,2025,9,2025-09-01,2025-09-04,2025-09-07,wsdc_calendar,scheduled,t,63,Raleigh,North Carolina,United States,"Raleigh, NC, United States",148,136,https://trilogywcs.com/,"Raleigh, NC",Registry Event
 13138,357,WCS Party,2025,9,2025-09-01,2025-09-19,2025-09-21,wsdc_calendar,scheduled,t,250,Vienna,,Austria,"Vienna, Austria",118,105,https://www.wcsparty.com/,"Vienna, Austria",Registry Event
@@ -207,7 +207,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 11630,105,Canadian Swing Championships,2025,5,2025-05-01,2025-05-16,2025-05-19,wsdc_calendar,scheduled,t,86,Montreal,,Canada,"Montreal, Canada",50,47,http://www.canadianswingchampionships.com,"Montreal, Canada",
 13159,372,Dance Jam Jack & Jill Weekend,2025,5,2025-05-01,2025-05-16,2025-05-18,wsdc_calendar,scheduled,t,353,Silver Spring,Maryland,United States,"Silver Spring, MD, United States",85,81,https://dancejamproductions.com/westieweekend/,"Silver Spring, MD",Registry Event
 12565,221,Gateway Swing Classic,2025,5,2025-05-01,,,,,,49,St. Louis,Missouri,United States,"St. Louis, MO, United States",65,61,http://gatewayswing.com/,"St. Louis, MO",Registry Event
-13170,379,Med in Swing,2025,5,2025-05-01,2025-05-08,2025-05-11,wsdc_calendar,scheduled,t,3,Phoenix,Arizona,United States,"Phoenix, AZ, United States",107,89,http://www.medinswing.rocks,"Phoenix, AZ",
+13170,379,Med in Swing,2025,5,2025-05-01,2025-05-08,2025-05-11,wsdc_calendar,scheduled,t,386,La Londe-les-Maures,,France,"La Londe-les-Maures, France",107,89,http://www.medinswing.rocks,"La Londe-les-Maures, France",
 13147,364,Nanaimo Dance Fusion,2025,5,2025-05-01,2025-05-23,2025-05-25,wsdc_calendar,scheduled,t,217,Nanaimo,,Canada,"Nanaimo, Canada",59,54,http://www.nanaimodancefusion.ca/,"Nanaimo, Canada",Registry Event
 12747,253,Nordic WCS Championships,2025,5,2025-05-01,2025-05-01,2025-05-05,wsdc_calendar,scheduled,t,199,Stockholm,,Sweden,"Stockholm, Sweden",142,133,http://www.nordicwcschamps.com,"Stockholm, Sweden",
 13106,336,SOM - Swing of Music,2025,5,2025-05-01,2025-05-08,2025-05-12,wsdc_calendar,scheduled,t,197,Wels,,Austria,"Wels, Austria",83,75,https://www.swingofmusic.com/,"Wels, Austria",
@@ -312,7 +312,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 12664,234,Philly Swing Classic,2024,9,2024-09-01,,,,,,7,New York,New York,United States,"New York, NY, United States",84,74,https://phillyswing.com/,"New York, NY",Registry Event
 12216,177,River City Swing,2024,9,2024-09-01,,,,,,98,Jacksonville,Florida,United States,"Jacksonville, FL, United States",71,67,http://www.jaxwestiefest.com/,"Jacksonville, FL",Registry Event
 13045,313,Rolling Swing,2024,9,2024-09-01,,,,,,156,Lyon,,France,"Lyon, France",138,124,http://www.frenchywesty.com/,"Lyon, France",Registry Event
-13108,338,Sea Dance Fest,2024,9,2024-09-01,,,,,,127,Düsseldorf,,Germany,"Düsseldorf, Germany",42,39,https://vk.com/seadancefest,"Düsseldorf, Germany",Registry Event
+13108,338,Sea Dance Fest,2024,9,2024-09-01,,,,,,113,Moscow,,Russia,"Moscow, Russia",42,39,https://vk.com/seadancefest,"Moscow, Russia",Registry Event
 11083,48,South Bay Dance Fling,2024,9,2024-09-01,,,,,,16,San Jose,California,United States,"San Jose, CA, United States",62,58,https://sbdf.dance/,"San Jose, CA",Registry Event
 12638,231,Trilogy Swing,2024,9,2024-09-01,,,,,,63,Raleigh,North Carolina,United States,"Raleigh, NC, United States",152,135,https://trilogywcs.com/,"Raleigh, NC",Registry Event
 11439,77,Arizona Dance Classic,2024,8,2024-08-01,,,,,,3,Phoenix,Arizona,United States,"Phoenix, AZ, United States",39,36,https://arizonadanceclassic.com/,"Phoenix, AZ",Registry Event

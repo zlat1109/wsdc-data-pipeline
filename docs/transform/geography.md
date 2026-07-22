@@ -80,6 +80,14 @@ event_name country hints disagree with `location_id` country.
 
 **Supabase:** next full-parse preprocess rewrites `core.results.location_id` via
 the same force step. Until then, local `data/*.csv` can diverge from DB export.
+After adding overrides, also run the CSV apply script and remap live
+`core.event_editions` / `core.event_catalog` typical_* (or wait for rebuild).
+
+Known false friends (section C) that are often **series moves**, not stuck ids:
+- Westie's Angels: historical Washington DC results; 2026 schedule Lyon
+- Swingside Invitational: historical San Antonio; 2026 schedule Liège
+
+Do not force-remap those without year-aware edition logic.
 
 ## Country aliases
 
