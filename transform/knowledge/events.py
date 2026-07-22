@@ -229,6 +229,18 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_location_standardized': 'Berlin, Germany',
         },
     },
+    405: {
+        'name': 'Milan Swing Vibes',
+        'url': '',
+        'typical_location': 'Milan, Italy',
+        'location': {
+            'event_city': 'Milan',
+            'event_state': '',
+            'event_country': 'Italy',
+            'event_location': 'Milan, Italy',
+            'event_location_standardized': 'Milan, Italy',
+        },
+    },
     240: {
         'name': 'Sweden Westie Gala',
         'url': 'http://www.westiegala.com/',

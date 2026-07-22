@@ -24,6 +24,20 @@ def test_result_to_catalog_targets_exist_in_events_wsdc():
     assert not missing, f"Unknown catalog targets: {missing[:5]}"
 
 
+def test_recent_result_only_events_present_in_events_wsdc():
+    """New 2026 events must appear in export.events_wsdc (via event_instances)."""
+    data_dir = Path(__file__).resolve().parents[1] / "data"
+    names = set(
+        pd.read_csv(data_dir / "events_wsdc.csv", dtype=str)["name"].dropna().str.strip()
+    )
+    for required in ("SwingLab Berlin", "Milan Swing Vibes"):
+        assert required in names, f"{required} missing from events_wsdc.csv"
+    from transform.knowledge.events import KNOWN_EVENT_METADATA
+
+    assert KNOWN_EVENT_METADATA[389]["name"] == "SwingLab Berlin"
+    assert KNOWN_EVENT_METADATA[405]["name"] == "Milan Swing Vibes"
+
+
 def test_build_event_name_normalization_is_stable():
     assert build_event_name_normalization() == EVENT_NAME_NORMALIZATION
 
