@@ -50,6 +50,19 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'BTO Open': 'Calgary, Canada',
     # Shared Jeju (213) wrongly applied to The Aloha Open (Wailea / Hawaii).
     'The Aloha Open': 'Wailea, HI, United States',
+    # Shared Düsseldorf (127) wrongly applied to Sea Dance Fest (Moscow).
+    'Sea Dance Fest': 'Moscow, Russia',
+    # Shared Phoenix (3 / Desert City etc.) wrongly applied to Med in Swing (Côte d'Azur).
+    'Med in Swing': 'La Londe-les-Maures, France',
+    # Fresh main export: more shared-wrong location_id collisions (calendar ≠ results).
+    'Bavarian Open': 'Munich, Germany',  # was Jeju (213)
+    'King Swing': 'Kraków, Poland',  # was Wailea (124)
+    'Santa Swing': 'Kraków, Poland',  # was Wailea (124)
+    'Westy Nantes': 'Nantes, France',  # was Brno (266)
+    'Paris Westie Fest': 'Paris, France',  # was Venray (227)
+    'Rolling Swing': 'Lyon, France',  # was Phoenix (3)
+    'Dutch Open West Coast Swing': 'Venray, Netherlands',  # was Perth (253)
+    'Winter Coast Swing': 'Kuopio, Finland',  # was Düsseldorf (127)
 }
 
 EVENT_LOCATION_EXACT_CORRECTIONS = {
@@ -189,6 +202,30 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_location_standardized': 'Wailea, HI',
         },
     },
+    338: {
+        'name': 'Sea Dance Fest',
+        'url': 'https://vk.com/seadancefest',
+        'typical_location': 'Moscow, Russia',
+        'location': {
+            'event_city': 'Moscow',
+            'event_state': '',
+            'event_country': 'Russia',
+            'event_location': 'Moscow, Russia',
+            'event_location_standardized': 'Moscow, Russia',
+        },
+    },
+    379: {
+        'name': 'Med in Swing',
+        'url': 'http://www.medinswing.rocks',
+        'typical_location': 'La Londe-les-Maures, France',
+        'location': {
+            'event_city': 'La Londe-les-Maures',
+            'event_state': '',
+            'event_country': 'France',
+            'event_location': 'La Londe-les-Maures, France',
+            'event_location_standardized': 'La Londe-les-Maures, France',
+        },
+    },
     389: {
         'name': 'SwingLab Berlin',
         'url': 'http://www.swinglab-berlin.com',
@@ -201,6 +238,115 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_location_standardized': 'Berlin, Germany',
         },
     },
+    405: {
+        'name': 'Milan Swing Vibes',
+        'url': '',
+        'typical_location': 'Milan, Italy',
+        'location': {
+            'event_city': 'Milan',
+            'event_state': '',
+            'event_country': 'Italy',
+            'event_location': 'Milan, Italy',
+            'event_location_standardized': 'Milan, Italy',
+        },
+    },
+    233: {
+        'name': 'Bavarian Open',
+        'url': 'https://bavarianopen.com/',
+        'typical_location': 'Munich, Germany',
+        'location': {
+            'event_city': 'Munich',
+            'event_state': '',
+            'event_country': 'Germany',
+            'event_location': 'Munich, Germany',
+            'event_location_standardized': 'Munich, Germany',
+        },
+    },
+    292: {
+        'name': 'King Swing',
+        'url': 'https://kingswing.pl/',
+        'typical_location': 'Kraków, Poland',
+        'location': {
+            'event_city': 'Kraków',
+            'event_state': '',
+            'event_country': 'Poland',
+            'event_location': 'Kraków, Poland',
+            'event_location_standardized': 'Kraków, Poland',
+        },
+    },
+    377: {
+        'name': 'Santa Swing',
+        'url': 'https://www.santaswing.pl/',
+        'typical_location': 'Kraków, Poland',
+        'location': {
+            'event_city': 'Kraków',
+            'event_state': '',
+            'event_country': 'Poland',
+            'event_location': 'Kraków, Poland',
+            'event_location_standardized': 'Kraków, Poland',
+        },
+    },
+    293: {
+        'name': 'Westy Nantes',
+        'url': 'https://www.westynantes.com/',
+        'typical_location': 'Nantes, France',
+        'location': {
+            'event_city': 'Nantes',
+            'event_state': '',
+            'event_country': 'France',
+            'event_location': 'Nantes, France',
+            'event_location_standardized': 'Nantes, France',
+        },
+    },
+    272: {
+        'name': 'Paris Westie Fest',
+        'url': '',
+        'typical_location': 'Paris, France',
+        'location': {
+            'event_city': 'Paris',
+            'event_state': '',
+            'event_country': 'France',
+            'event_location': 'Paris, France',
+            'event_location_standardized': 'Paris, France',
+        },
+    },
+    313: {
+        'name': 'Rolling Swing',
+        'url': 'http://www.frenchywesty.com/',
+        'typical_location': 'Lyon, France',
+        'location': {
+            'event_city': 'Lyon',
+            'event_state': '',
+            'event_country': 'France',
+            'event_location': 'Lyon, France',
+            'event_location_standardized': 'Lyon, France',
+        },
+    },
+    275: {
+        'name': 'Dutch Open West Coast Swing',
+        'url': 'http://www.dutchopenwcs.com/',
+        'typical_location': 'Venray, Netherlands',
+        'location': {
+            'event_city': 'Venray',
+            'event_state': '',
+            'event_country': 'Netherlands',
+            'event_location': 'Venray, Netherlands',
+            'event_location_standardized': 'Venray, Netherlands',
+        },
+    },
+    297: {
+        'name': 'Winter Coast Swing',
+        'url': 'https://www.wintercoastswing.com/',
+        'typical_location': 'Kuopio, Finland',
+        'location': {
+            'event_city': 'Kuopio',
+            'event_state': '',
+            'event_country': 'Finland',
+            'event_location': 'Kuopio, Finland',
+            'event_location_standardized': 'Kuopio, Finland',
+        },
+    },
+
     240: {
         'name': 'Sweden Westie Gala',
         'url': 'http://www.westiegala.com/',

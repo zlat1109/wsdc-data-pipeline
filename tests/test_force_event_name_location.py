@@ -244,6 +244,65 @@ def test_force_west_in_lyon_and_aloha_open():
     assert str(out.loc[out.event_name == "Swing & Snow", "location_id"].iloc[0]) == "222"
 
 
+def test_force_sea_dance_fest_and_med_in_swing():
+    location_info = pd.DataFrame(
+        [
+            {
+                "location_id": "127",
+                "event_city": "Düsseldorf",
+                "event_state": "",
+                "event_country": "Germany",
+                "event_location": "Düsseldorf, Germany",
+            },
+            {
+                "location_id": "113",
+                "event_city": "Moscow",
+                "event_state": "",
+                "event_country": "Russia",
+                "event_location": "Moscow, Russia",
+            },
+            {
+                "location_id": "3",
+                "event_city": "Phoenix",
+                "event_state": "Arizona",
+                "event_country": "United States",
+                "event_location": "Phoenix, AZ, United States",
+            },
+            {
+                "location_id": "386",
+                "event_city": "La Londe-les-Maures",
+                "event_state": "",
+                "event_country": "France",
+                "event_location": "La Londe-les-Maures, France",
+            },
+        ]
+    )
+    results = pd.DataFrame(
+        [
+            {
+                "event_name": "Sea Dance Fest",
+                "location_id": "127",
+                "event_location": "Düsseldorf, Germany",
+            },
+            {
+                "event_name": "Med in Swing",
+                "location_id": "3",
+                "event_location": "Phoenix, AZ, United States",
+            },
+            {
+                "event_name": "4TH of July Convention",
+                "location_id": "3",
+                "event_location": "Phoenix, AZ, United States",
+            },
+        ]
+    )
+    out, changed = force_result_locations_from_event_name_overrides(results, location_info)
+    assert changed == 2
+    assert str(out.loc[out.event_name == "Sea Dance Fest", "location_id"].iloc[0]) == "113"
+    assert str(out.loc[out.event_name == "Med in Swing", "location_id"].iloc[0]) == "386"
+    assert str(out.loc[out.event_name == "4TH of July Convention", "location_id"].iloc[0]) == "3"
+
+
 def test_force_berlin_events_off_brno_and_saunaswing_off_wailea():
     location_info = pd.DataFrame(
         [

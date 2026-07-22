@@ -3,11 +3,19 @@
 import pandas as pd
 
 from transform.geography.constants import COUNTRY_STANDARDIZATION
-from transform.geography.event_location_guard import find_name_location_country_conflicts
+from transform.geography.event_location_guard import (
+    find_catalog_typical_upcoming_conflicts,
+    find_name_location_country_conflicts,
+    find_scheduled_country_conflicts,
+)
 from transform.geography.normalize import standardize_country
 from transform.knowledge.apply import force_result_locations_from_event_name_overrides
 from transform.knowledge.locations import LOCATION_ID_MERGE_MAP
-from transform.quality_audit import check_event_name_location_country_conflicts
+from transform.quality_audit import (
+    check_catalog_typical_vs_upcoming,
+    check_event_name_location_country_conflicts,
+    check_scheduled_vs_results_country,
+)
 
 
 def _collision_fixture() -> tuple[pd.DataFrame, pd.DataFrame]:
@@ -154,6 +162,103 @@ def test_guard_detects_baltic_swing_phoenix_collision():
     names = {c.event_name for c in conflicts}
     assert "Baltic Swing" in names
     assert "Desert City Swing" not in names
+
+
+def test_scheduled_country_conflict_catches_no_hint_events():
+    """Sea Dance / Med in Swing pattern: no country token in name, calendar disagrees."""
+    location_info = pd.DataFrame(
+        [
+            {"location_id": "127", "event_city": "Düsseldorf", "event_country": "Germany"},
+            {"location_id": "3", "event_city": "Phoenix", "event_country": "United States"},
+            {"location_id": "113", "event_city": "Moscow", "event_country": "Russia"},
+        ]
+    )
+    results = pd.DataFrame(
+        [
+            {"event_name": "Sea Dance Fest", "location_id": "127"},
+            {"event_name": "Med in Swing", "location_id": "3"},
+            {"event_name": "Swing & Snow", "location_id": "113"},
+        ]
+    )
+    scheduled = pd.DataFrame(
+        [
+            {
+                "canonical_name": "Sea Dance Fest",
+                "country": "Russia",
+                "location_raw": "Moscow, Moscow region, Russia",
+            },
+            {
+                "canonical_name": "Med in Swing",
+                "country": "France",
+                "location_raw": "La Londe-les-Maures, France",
+            },
+            {
+                "canonical_name": "Swing & Snow",
+                "country": "Russian Federation",
+                "location_raw": "Saint Petersburg, Russia",
+            },
+        ]
+    )
+
+    conflicts = find_scheduled_country_conflicts(results, location_info, scheduled)
+    names = {c.event_name for c in conflicts}
+    assert names == {"Sea Dance Fest", "Med in Swing"}
+
+    finding = check_scheduled_vs_results_country(results, location_info, scheduled)
+    assert finding is not None
+    assert finding.code == "SCHEDULED_VS_RESULTS_COUNTRY_CONFLICT"
+    assert finding.severity == "high"
+
+
+def test_scheduled_country_conflict_skips_known_series_moves():
+    location_info = pd.DataFrame(
+        [{"location_id": "13", "event_city": "Washington", "event_country": "United States"}]
+    )
+    results = pd.DataFrame([{"event_name": "Westie's Angels", "location_id": "13"}])
+    scheduled = pd.DataFrame(
+        [
+            {
+                "canonical_name": "Westie's Angels",
+                "country": "France",
+                "location_raw": "LYON, rhones, FRANCE",
+            }
+        ]
+    )
+    assert find_scheduled_country_conflicts(results, location_info, scheduled) == []
+
+
+def test_catalog_typical_upcoming_conflict_detects_stuck_typical():
+    catalog = pd.DataFrame(
+        [
+            {
+                "canonical_name": "Freedom Swing Dance Challenge",
+                "typical_location": "Venray, Netherlands",
+                "upcoming_location": "WILMINGTON DEL, Delaware, United States",
+                "typical_country": "Netherlands",
+            },
+            {
+                "canonical_name": "USA Grand Nationals",
+                "typical_location": "Atlanta, GA, United States",
+                "upcoming_location": "Atlanta, GA United States",
+                "typical_country": "United States",
+            },
+            {
+                "canonical_name": "Swingside Invitational",
+                "typical_location": "San Antonio, TX",
+                "upcoming_location": "Liège, Belgium",
+                "typical_country": "United States",
+            },
+        ]
+    )
+    conflicts = find_catalog_typical_upcoming_conflicts(catalog)
+    names = {c.canonical_name for c in conflicts}
+    # stuck typical flagged; US alias artefact and known series move skipped
+    assert names == {"Freedom Swing Dance Challenge"}
+
+    finding = check_catalog_typical_vs_upcoming(catalog)
+    assert finding is not None
+    assert finding.code == "CATALOG_TYPICAL_UPCOMING_CONFLICT"
+    assert finding.severity == "medium"
 
 
 def test_guard_detects_berlin_and_saunaswing_collisions():
