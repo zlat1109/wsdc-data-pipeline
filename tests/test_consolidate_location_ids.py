@@ -202,3 +202,22 @@ def test_consolidate_location_ids_merges_boston_club_duplicate():
     assert out_results["location_id"].tolist() == ["127", "127", "127"]
     assert set(out_locations["location_id"].astype(str)) == {"127"}
     assert "436" in LOCATION_ID_MERGE_MAP
+
+
+def test_consolidate_location_ids_merges_boston_club_365():
+    """Current export uses location_id 365 for Boston Club venue."""
+    results = pd.DataFrame({"location_id": ["365", "365", "127"]})
+    locations = pd.DataFrame(
+        {
+            "location_id": ["127", "365"],
+            "event_city": ["Düsseldorf", "Boston Club"],
+            "event_country": ["Germany", "Germany"],
+            "event_location": ["Düsseldorf, Germany", "Boston Club, Germany"],
+            "latitude": ["51.2230411", ""],
+            "longitude": ["6.7824545", ""],
+        }
+    )
+    out_results, out_locations = consolidate_location_ids(results, locations)
+    assert out_results["location_id"].tolist() == ["127", "127", "127"]
+    assert set(out_locations["location_id"].astype(str)) == {"127"}
+    assert LOCATION_ID_MERGE_MAP["365"] == "127"
