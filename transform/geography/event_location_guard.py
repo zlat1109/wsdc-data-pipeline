@@ -40,6 +40,8 @@ NAME_COUNTRY_HINTS: list[tuple[str, str]] = [
     (r"\brolling swing\b", "France"),
     (r"\bdutch open\b", "Netherlands"),
     (r"\bwinter coast swing\b", "Finland"),
+    # NZ Open must not stay on St. Petersburg (shared location_id 222).
+    (r"\bnew zealand open\b|\bnew zealand west coast swing\b", "New Zealand"),
 ]
 
 

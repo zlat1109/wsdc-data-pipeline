@@ -63,6 +63,9 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'Rolling Swing': 'Lyon, France',  # was Phoenix (3)
     'Dutch Open West Coast Swing': 'Venray, Netherlands',  # was Perth (253)
     'Winter Coast Swing': 'Kuopio, Finland',  # was Düsseldorf (127)
+    # Shared St. Petersburg (222 / Swing & Snow) wrongly applied to NZ Open.
+    # Site/URL streetswing.co.nz; calendar sibling in Auckland.
+    'New Zealand Open Swing Dance Championships': 'Auckland, New Zealand',
 }
 
 EVENT_LOCATION_EXACT_CORRECTIONS = {
@@ -344,6 +347,18 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_country': 'Finland',
             'event_location': 'Kuopio, Finland',
             'event_location_standardized': 'Kuopio, Finland',
+        },
+    },
+    179: {
+        'name': 'New Zealand Open Swing Dance Championships',
+        'url': 'https://www.streetswing.co.nz/the-new-zealand-open',
+        'typical_location': 'Auckland, New Zealand',
+        'location': {
+            'event_city': 'Auckland',
+            'event_state': '',
+            'event_country': 'New Zealand',
+            'event_location': 'Auckland, New Zealand',
+            'event_location_standardized': 'Auckland, New Zealand',
         },
     },
 
