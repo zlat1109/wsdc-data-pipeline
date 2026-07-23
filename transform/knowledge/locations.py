@@ -20,6 +20,9 @@ LOCATION_RAW_ALIASES: dict[str, str] = {
     "Washington, MD, United States": "Silver Spring, MD, United States",
     "Wailea, United States": "Wailea, HI, United States",
     "Gdansk, Poland": "Gdańsk, Poland",
+    # Venue name used by WSDC for Düsseldorf (D-Town Swing / WCS Festival)
+    "Boston Club, Germany": "Düsseldorf, Germany",
+    "Boston Club, NRW, Germany": "Düsseldorf, Germany",
 }
 
 # Duplicate location_id rows → canonical location_id (remap FKs, delete source row).
@@ -34,6 +37,7 @@ LOCATION_ID_MERGE_MAP: dict[str, str] = {
     # Boston Club venue label → Düsseldorf
     "334": "127",
     "436": "127",
+    "365": "127",  # current export id for Boston Club, Germany (D-Town / WCS Festival)
     # Brno country alias
     "412": "266",
     # Calgary duplicate

@@ -42,6 +42,8 @@ NAME_COUNTRY_HINTS: list[tuple[str, str]] = [
     (r"\bwinter coast swing\b", "Finland"),
     # NZ Open must not stay on St. Petersburg (shared location_id 222).
     (r"\bnew zealand open\b|\bnew zealand west coast swing\b", "New Zealand"),
+    # D-Town / WCS Festival at Boston Club venue → Germany (city fixed via merge/override).
+    (r"\bd-town swing\b", "Germany"),
 ]
 
 

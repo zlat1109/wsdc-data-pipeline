@@ -66,6 +66,9 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     # Shared St. Petersburg (222 / Swing & Snow) wrongly applied to NZ Open.
     # Site/URL streetswing.co.nz; calendar sibling in Auckland.
     'New Zealand Open Swing Dance Championships': 'Auckland, New Zealand',
+    # WSDC venue label "Boston Club" is in Düsseldorf (not a city name).
+    'D-Town Swing': 'Düsseldorf, Germany',
+    'WCS Festival': 'Düsseldorf, Germany',
 }
 
 EVENT_LOCATION_EXACT_CORRECTIONS = {
@@ -359,6 +362,30 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_country': 'New Zealand',
             'event_location': 'Auckland, New Zealand',
             'event_location_standardized': 'Auckland, New Zealand',
+        },
+    },
+    220: {
+        'name': 'D-Town Swing',
+        'url': 'http://www.d-townswing.com/',
+        'typical_location': 'Düsseldorf, Germany',
+        'location': {
+            'event_city': 'Düsseldorf',
+            'event_state': '',
+            'event_country': 'Germany',
+            'event_location': 'Düsseldorf, Germany',
+            'event_location_standardized': 'Düsseldorf, Germany',
+        },
+    },
+    286: {
+        'name': 'WCS Festival',
+        'url': 'http://www.wcsfestival.com/',
+        'typical_location': 'Düsseldorf, Germany',
+        'location': {
+            'event_city': 'Düsseldorf',
+            'event_state': '',
+            'event_country': 'Germany',
+            'event_location': 'Düsseldorf, Germany',
+            'event_location_standardized': 'Düsseldorf, Germany',
         },
     },
 
