@@ -261,6 +261,36 @@ def test_catalog_typical_upcoming_conflict_detects_stuck_typical():
     assert finding.severity == "medium"
 
 
+def test_guard_detects_nz_open_st_petersburg_collision():
+    location_info = pd.DataFrame(
+        [
+            {
+                "location_id": "222",
+                "event_city": "St. Petersburg",
+                "event_country": "Russia",
+            },
+            {
+                "location_id": "168",
+                "event_city": "Auckland",
+                "event_country": "New Zealand",
+            },
+        ]
+    )
+    results = pd.DataFrame(
+        [
+            {
+                "event_name": "New Zealand Open Swing Dance Championships",
+                "location_id": "222",
+            },
+            {"event_name": "Swing & Snow", "location_id": "222"},
+        ]
+    )
+    conflicts = find_name_location_country_conflicts(results, location_info)
+    names = {c.event_name for c in conflicts}
+    assert "New Zealand Open Swing Dance Championships" in names
+    assert "Swing & Snow" not in names
+
+
 def test_guard_detects_berlin_and_saunaswing_collisions():
     location_info = pd.DataFrame(
         [
