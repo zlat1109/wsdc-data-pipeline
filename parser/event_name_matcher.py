@@ -16,7 +16,6 @@ EVENT_NAME_MAPPINGS: dict[str, str] = {
     "BaroqueSwing": "Barock Swing Ludwigsburg",
     'Scandinavian Open WCS "SNOW"': "Scandinavian Open",
     "Calgary Town Open": "BTO Open",
-    "UpTown Swing": "Swedish Swing Summer Camp",
     "Jax Westie Fest": "River City Swing",
     "Bavarian Open West Coast Swing Championships": "Bavarian Open",
     "5280 Swing Dance Championships": "5280 Westival",

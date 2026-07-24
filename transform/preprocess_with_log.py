@@ -26,6 +26,7 @@ from transform.knowledge import (
     LOCATION_ID_MERGE_MAP,
     SINGAPORE_CANONICAL_LOCATION_ID,
     apply_event_location_patches,
+    apply_event_name_year_splits,
     backfill_empty_result_event_locations,
     event_location_patches,
     force_result_locations_from_event_name_overrides,
@@ -116,6 +117,23 @@ def _apply_event_corrections_tracked(df: pd.DataFrame, tracker: PreprocessTracke
         rule_id="EVENT_NAME_NORMALIZATION",
         tracker=tracker,
     )
+    before_year = df["event_name"].astype(str) if "event_name" in df.columns else None
+    df = apply_event_name_year_splits(df)
+    if before_year is not None and "event_name" in df.columns:
+        changed = before_year != df["event_name"].astype(str)
+        if changed.any():
+            for from_val in before_year[changed].unique():
+                to_val = df.loc[changed & (before_year == from_val), "event_name"].astype(str).iloc[0]
+                count = int((changed & (before_year == from_val)).sum())
+                tracker.record(
+                    "EVENT_NAME_YEAR_SPLIT",
+                    table,
+                    "event_name",
+                    str(from_val),
+                    str(to_val),
+                    count,
+                    "known_map",
+                )
     df = apply_merge_event_id_map(df, tracker=tracker)
 
     if "event_competition" in df.columns:
@@ -211,6 +229,22 @@ def _apply_events_wsdc_tracked(df: pd.DataFrame, tracker: PreprocessTracker) -> 
         rule_id="EVENT_NAME_NORMALIZATION",
         tracker=tracker,
     )
+    before_year = df[name_col].astype(str)
+    df = apply_event_name_year_splits(df)
+    changed = before_year != df[name_col].astype(str)
+    if changed.any():
+        for from_val in before_year[changed].unique():
+            to_val = df.loc[changed & (before_year == from_val), name_col].astype(str).iloc[0]
+            count = int((changed & (before_year == from_val)).sum())
+            tracker.record(
+                "EVENT_NAME_YEAR_SPLIT",
+                table,
+                name_col,
+                str(from_val),
+                str(to_val),
+                count,
+                "known_map",
+            )
     if "location" in df.columns:
         df = _apply_mapping(
             df,

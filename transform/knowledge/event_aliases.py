@@ -7,6 +7,8 @@ core.event_aliases as a second line of defense.
 
 from __future__ import annotations
 
+import pandas as pd
+
 # Result / marketing name → exact core.events.name (must match events_wsdc.csv).
 RESULT_TO_CATALOG_EVENT_NAME: dict[str, str] = {
     'Phoenix 4th of July': '4TH of July Convention',
@@ -31,11 +33,14 @@ RESULT_TO_CATALOG_EVENT_NAME: dict[str, str] = {
     'Swing Over': 'Swingover',
     'Asia WCS Open': 'Asia West Coast Swing Open',
     'Toronto Open': 'Toronto Open Swing & Hustle Championships',
-    'Westie Gala': 'Sweden Westie Gala',
+    'Sweden Westie Gala': 'Westie Gala',
+    'Vestigala': 'Westie Gala',
+    'Westigala': 'Westie Gala',
     'Best of the Best': 'Best of the Best WCS',
     'St.Petersburg WCS Nights': 'Saint Petersburg WCS Nights',
     'Russian Open': 'Russian Open WCS Championships',
-    'UpTown Swing': 'Swedish Swing Summer Camp',
+    # UpTown Swing is the post-2018 name; year split applied separately.
+    # Do NOT map UpTown → Swedish Swing Summer Camp (that collapses the series).
     'New Zealand Open': 'New Zealand Open Swing Dance Championships',
     'Dutch Open': 'Dutch Open West Coast Swing',
     'Global Grand Prix': 'Global Grand Prix - West Coast Swing Reunion',
@@ -121,6 +126,76 @@ MERGE_EVENT_ID_MAP: dict[int, int] = {
     442: 120,  # Lonestar ghost → Lone Star Invitational
     443: 120,  # LoneStar ghost → Lone Star Invitational
 }
+
+# Year-aware series renames (same organizer/geo, marketing rebrand after a gap).
+# Applied after flat EVENT_NAME_NORMALIZATION. Sources match either legacy or modern title.
+# year_max inclusive for early name; year_min inclusive for late name.
+EVENT_NAME_YEAR_SPLITS: list[dict[str, object]] = [
+    {
+        "sources": (
+            "Swedish Swing Summer Camp",
+            "UpTown Swing",
+            "Uptown Swing",
+        ),
+        "early_name": "Swedish Swing Summer Camp",
+        "early_year_max": 2018,
+        "late_name": "UpTown Swing",
+        "late_year_min": 2019,
+        # Stable registry ids (early keeps historic 264; late is new catalog event).
+        "early_event_id": 264,
+        "late_event_id": 493,
+    },
+]
+
+
+def apply_event_name_year_splits(df: pd.DataFrame) -> pd.DataFrame:
+    """Rename event by edition year for known rebranded series.
+
+    Supports results (`event_name`) and events_wsdc (`name` + `id`).
+    """
+    if df is None or df.empty or "event_year" not in df.columns:
+        return df
+    name_col = (
+        "event_name"
+        if "event_name" in df.columns
+        else ("name" if "name" in df.columns else None)
+    )
+    if name_col is None:
+        return df
+
+    out = df.copy()
+    years = pd.to_numeric(out["event_year"], errors="coerce")
+    names = out[name_col].astype(str).str.strip()
+    id_col = (
+        "event_name_id"
+        if "event_name_id" in out.columns
+        else ("id" if "id" in out.columns else None)
+    )
+
+    for rule in EVENT_NAME_YEAR_SPLITS:
+        sources = {str(s).strip() for s in rule["sources"]}  # type: ignore[arg-type]
+        mask_src = names.isin(sources)
+        if not mask_src.any():
+            continue
+        early_max = int(rule["early_year_max"])  # type: ignore[arg-type]
+        late_min = int(rule["late_year_min"])  # type: ignore[arg-type]
+        early_name = str(rule["early_name"])
+        late_name = str(rule["late_name"])
+
+        early = mask_src & years.notna() & (years <= early_max)
+        late = mask_src & years.notna() & (years >= late_min)
+        out.loc[early, name_col] = early_name
+        out.loc[late, name_col] = late_name
+
+        if id_col is not None:
+            early_id = rule.get("early_event_id")
+            late_id = rule.get("late_event_id")
+            if early_id is not None:
+                out.loc[early, id_col] = int(early_id)  # type: ignore[arg-type]
+            if late_id is not None:
+                out.loc[late, id_col] = int(late_id)  # type: ignore[arg-type]
+
+    return out
 
 
 def build_event_name_normalization() -> dict[str, str]:
