@@ -21,7 +21,11 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'BeeMAD': 'Madrid, Spain',
     # Shared Wailea (124 / Aloha Open) wrongly applied to Swedish events.
     'Sweden Westie Gala': 'Stockholm, Sweden',
+    'Westie Gala': 'Stockholm, Sweden',
     'Swedish Swing Summer Camp': 'Stockholm, Sweden',
+    'UpTown Swing': 'Stockholm, Sweden',
+    # Shared Washington DC (13) wrongly applied to Valentine Swing (Johannesberg Castle, SE).
+    'Valentine Swing': 'Stockholm, Sweden',
     # Shared St. Petersburg (222) wrongly applied to Toronto Open.
     'Toronto Open Swing & Hustle Championships': 'Toronto, Canada',
     # Calendar/site say Toulouse; results pointed at Düsseldorf (127).
@@ -390,7 +394,7 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
     },
 
     240: {
-        'name': 'Sweden Westie Gala',
+        'name': 'Westie Gala',
         'url': 'http://www.westiegala.com/',
         'typical_location': 'Stockholm, Sweden',
         'location': {
@@ -404,6 +408,30 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
     264: {
         'name': 'Swedish Swing Summer Camp',
         'url': 'http://www.uptownswing.se/',
+        'typical_location': 'Stockholm, Sweden',
+        'location': {
+            'event_city': 'Stockholm',
+            'event_state': '',
+            'event_country': 'Sweden',
+            'event_location': 'Stockholm, Sweden',
+            'event_location_standardized': 'Stockholm, Sweden',
+        },
+    },
+    493: {
+        'name': 'UpTown Swing',
+        'url': 'http://www.uptownswing.se/',
+        'typical_location': 'Stockholm, Sweden',
+        'location': {
+            'event_city': 'Stockholm',
+            'event_state': '',
+            'event_country': 'Sweden',
+            'event_location': 'Stockholm, Sweden',
+            'event_location_standardized': 'Stockholm, Sweden',
+        },
+    },
+    310: {
+        'name': 'Valentine Swing',
+        'url': 'http://www.valentineswing.dance',
         'typical_location': 'Stockholm, Sweden',
         'location': {
             'event_city': 'Stockholm',
