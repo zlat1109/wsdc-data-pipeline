@@ -23,6 +23,8 @@ LOCATION_RAW_ALIASES: dict[str, str] = {
     # Venue name used by WSDC for Düsseldorf (D-Town Swing / WCS Festival)
     "Boston Club, Germany": "Düsseldorf, Germany",
     "Boston Club, NRW, Germany": "Düsseldorf, Germany",
+    # Airport / suburb label for Global Grand Prix → city Toulouse
+    "Toulouse-Blagnac, France": "Toulouse, France",
 }
 
 # Duplicate location_id rows → canonical location_id (remap FKs, delete source row).
@@ -78,9 +80,10 @@ LOCATION_ID_MERGE_MAP: dict[str, str] = {
     "300": "53",
     # Toronto duplicate
     "363": "105",
-    # Toulouse-Blagnac airport label → Toulouse
+    # Toulouse-Blagnac airport label → Toulouse (keep 208 with coordinates)
     "187": "208",
     "369": "208",
+    "385": "208",  # current export: Toulouse-Blagnac without lat/lon (Null Island in Tableau)
     # Vancouver duplicate
     "347": "154",
     # Venray duplicate (keep row with coordinates)

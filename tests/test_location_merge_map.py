@@ -50,6 +50,7 @@ def test_legacy_coordinate_duplicate_merges_configured():
     """New WSDC duplicate location_ids → canonical rows with coordinates."""
     assert LOCATION_ID_MERGE_MAP["302"] == "55"
     assert LOCATION_ID_MERGE_MAP["369"] == "208"
+    assert LOCATION_ID_MERGE_MAP["385"] == "208"
     assert LOCATION_ID_MERGE_MAP["388"] == "7"
     assert LOCATION_ID_MERGE_MAP["436"] == "127"
     assert LOCATION_ID_MERGE_MAP["467"] == "213"
