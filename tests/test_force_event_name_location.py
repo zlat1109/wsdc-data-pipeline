@@ -367,3 +367,49 @@ def test_force_berlin_events_off_brno_and_saunaswing_off_wailea():
     assert str(out.loc[out.event_name == "Swing Fiction", "location_id"].iloc[0]) == "266"
     assert str(out.loc[out.event_name == "SaunaSwing", "location_id"].iloc[0]) == "268"
     assert out.loc[out.event_name == "SaunaSwing", "event_location"].iloc[0] == "Ikaalinen, Finland"
+
+
+def test_force_swing_fling_and_dcsx_to_herndon():
+    location_info = pd.DataFrame(
+        [
+            {
+                "location_id": "13",
+                "event_city": "Washington",
+                "event_state": "District of Columbia",
+                "event_country": "United States",
+                "event_location": "Washington, DC, United States",
+            },
+            {
+                "location_id": "38",
+                "event_city": "Herndon",
+                "event_state": "Virginia",
+                "event_country": "United States",
+                "event_location": "Herndon, VA, United States",
+            },
+        ]
+    )
+    results = pd.DataFrame(
+        [
+            {
+                "event_name": "Swing Fling",
+                "location_id": "13",
+                "event_location": "Washington, DC, United States",
+            },
+            {
+                "event_name": "DC Swing eXperience (DCSX)",
+                "location_id": "13",
+                "event_location": "Washington, DC, United States",
+            },
+            {
+                "event_name": "Mid-Atlantic Dance Jam",
+                "location_id": "13",
+                "event_location": "Washington, DC, United States",
+            },
+        ]
+    )
+    out, changed = force_result_locations_from_event_name_overrides(results, location_info)
+    assert changed == 2
+    assert str(out.loc[out.event_name == "Swing Fling", "location_id"].iloc[0]) == "38"
+    assert str(out.loc[out.event_name == "DC Swing eXperience (DCSX)", "location_id"].iloc[0]) == "38"
+    # MADjam stays on Washington DC — no override.
+    assert str(out.loc[out.event_name == "Mid-Atlantic Dance Jam", "location_id"].iloc[0]) == "13"
