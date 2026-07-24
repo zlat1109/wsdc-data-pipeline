@@ -26,6 +26,9 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'UpTown Swing': 'Stockholm, Sweden',
     # Shared Washington DC (13) wrongly applied to Valentine Swing (Johannesberg Castle, SE).
     'Valentine Swing': 'Stockholm, Sweden',
+    # Shared Washington DC (13) metro label — venues are Hyatt Regency Dulles, Herndon VA.
+    'Swing Fling': 'Herndon, VA, United States',
+    'DC Swing eXperience (DCSX)': 'Herndon, VA, United States',
     # Shared St. Petersburg (222) wrongly applied to Toronto Open.
     'Toronto Open Swing & Hustle Championships': 'Toronto, Canada',
     # Calendar/site say Toulouse; results pointed at Düsseldorf (127).
@@ -439,6 +442,30 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_country': 'Sweden',
             'event_location': 'Stockholm, Sweden',
             'event_location_standardized': 'Stockholm, Sweden',
+        },
+    },
+    59: {
+        'name': 'Swing Fling',
+        'url': 'http://www.swingfling.com',
+        'typical_location': 'Herndon, VA, United States',
+        'location': {
+            'event_city': 'Herndon',
+            'event_state': 'Virginia',
+            'event_country': 'United States',
+            'event_location': 'Herndon, VA, United States',
+            'event_location_standardized': 'Herndon, VA, United States',
+        },
+    },
+    181: {
+        'name': 'DC Swing eXperience (DCSX)',
+        'url': 'http://www.dcswingexperience.com',
+        'typical_location': 'Herndon, VA, United States',
+        'location': {
+            'event_city': 'Herndon',
+            'event_state': 'Virginia',
+            'event_country': 'United States',
+            'event_location': 'Herndon, VA, United States',
+            'event_location_standardized': 'Herndon, VA, United States',
         },
     },
     147: {
