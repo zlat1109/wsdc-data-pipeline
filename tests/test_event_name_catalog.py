@@ -25,7 +25,7 @@ def test_result_to_catalog_targets_exist_in_events_wsdc():
 
 
 def test_recent_result_only_events_present_in_events_wsdc():
-    """New 2026 events must appear in export.events_wsdc (via event_instances)."""
+    """New 2026 events must appear in export.events_wsdc (via event_editions)."""
     data_dir = Path(__file__).resolve().parents[1] / "data"
     names = set(
         pd.read_csv(data_dir / "events_wsdc.csv", dtype=str)["name"].dropna().str.strip()

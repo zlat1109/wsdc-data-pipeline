@@ -208,6 +208,23 @@ EXTENDED_CHECKS: tuple[QualityCheck, ...] = (
         fix_hint="db/seed_event_aliases.py seed_result_only_events",
     ),
     QualityCheck(
+        name="location_string_multiple_ids",
+        sql="""
+        SELECT count(*) FROM (
+            SELECT lower(btrim(event_location)) AS loc_key
+            FROM core.locations
+            WHERE event_location IS NOT NULL AND btrim(event_location) <> ''
+            GROUP BY 1
+            HAVING count(DISTINCT location_id) > 1
+        ) t
+        """,
+        max_value=0,
+        severity="error",
+        category="location",
+        description="One location string must not map to multiple location_id values.",
+        fix_hint="LOCATION_ID_MERGE_MAP + scripts/merge_location_ids.py --apply",
+    ),
+    QualityCheck(
         name="edition_calendar_archive_empty",
         sql="""
         SELECT CASE WHEN count(*) = 0 THEN 1 ELSE 0 END
@@ -283,6 +300,25 @@ EXTENDED_CHECKS: tuple[QualityCheck, ...] = (
         category="location",
         description="One location_id must not have conflicting event_location strings.",
         fix_hint="Consolidate in location_info + core.locations",
+    ),
+    QualityCheck(
+        name="events_wsdc_edition_location_drift",
+        sql="""
+        SELECT count(*) FROM (
+            SELECT ed.event_id, ed.event_year, ed.event_month
+            FROM core.event_editions ed
+            JOIN core.locations l ON l.location_id = ed.location_id
+            WHERE ed.location_raw IS NOT NULL
+              AND btrim(ed.location_raw) <> ''
+              AND lower(btrim(l.event_location)) <> lower(btrim(ed.location_raw))
+              AND lower(btrim(l.event_location)) NOT LIKE lower(btrim(ed.location_raw)) || ',%'
+        ) t
+        """,
+        max_value=0,
+        severity="warn",
+        category="location",
+        description="event_editions.location_raw disagrees with joined core.locations text.",
+        fix_hint="LOCATION_ID_CORRECTIONS / rebuild editions from results mode location",
     ),
     QualityCheck(
         name="city_equals_country",

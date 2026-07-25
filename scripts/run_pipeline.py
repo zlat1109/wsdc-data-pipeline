@@ -76,7 +76,24 @@ def main() -> None:
         run([py, "scripts/merge_location_ids.py", "--apply"])
         run([py, "scripts/dedupe_core_data.py", "--apply"])
 
+    # Always gate on DB quality before writing CSVs — including --export-only,
+    # which is the path used to refresh Tableau delivery files. Full check set
+    # (not --core-only) so location uniqueness / orphan gates always run.
+    run([
+        py,
+        "scripts/validate_supabase_quality.py",
+        "-o",
+        "data/quality_reports/supabase_pre_export.json",
+    ])
+
     run([py, "export.py"])
+
+    run([
+        py,
+        "scripts/validate_export_vs_db.py",
+        "--data-dir",
+        "data",
+    ])
 
     if not args.export_only:
         run([
