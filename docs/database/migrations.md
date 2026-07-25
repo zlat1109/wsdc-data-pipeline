@@ -44,7 +44,7 @@ CI and `scripts/run_pipeline.py` call `db/apply.py` before load.
 | `023_dancer_roles_division_sig.sql` | Shared md5 signature for competitive role/division SCD2 (excludes dancer_name). |
 | `024_edition_calendar_dates.sql` | Edition calendar dates archive + start/end on event_editions export |
 | `025_edition_calendar_dates_no_fk.sql` | Drop edition_calendar_dates FK so promote CASCADE cannot wipe dates |
-| `026_locations_unique_and_events_wsdc.sql` | Unique index on normalized `core.locations.event_location`; rebuild `export.events_wsdc` from `event_editions` + `locations` (retire stale `event_instances` as export source) |
+| `026_locations_unique_and_events_wsdc.sql` | Stable location identity + authoritative events_wsdc export. |
 <!-- /docs-sync:migration-index -->
 
 ## Adding a migration
