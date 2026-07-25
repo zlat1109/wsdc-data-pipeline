@@ -110,16 +110,19 @@ Note: no `event_id` in export — join via `event_name` + year/month or use `res
 
 ## export.events_wsdc
 
-**Source:** `core.event_instances` JOIN `core.events`
+**Source:** `core.event_editions` JOIN `core.events` LEFT JOIN `core.locations`
+(migration `026_locations_unique_and_events_wsdc.sql`). Prefer `locations.event_location`,
+fallback `editions.location_raw`. Do not use `core.event_instances` — that table is
+legacy and may carry wrong `location_raw` for shared-ID collisions.
 
 | Column | Type | Description |
 |--------|------|-------------|
 | id | int | `event_id` |
 | name | text | Registry name |
-| location | text | Raw location |
+| location | text | Canonical location label |
 | url | text | URL |
-| date | text | Raw date label |
-| parsed_date | date | Parsed edition date |
+| date | text | Month YYYY label from edition year/month |
+| parsed_date | date | `edition_date` |
 | event_year | int | Year |
 | event_month | int | Month |
 | event_year_month | text | `YYYY-MM` when derivable |

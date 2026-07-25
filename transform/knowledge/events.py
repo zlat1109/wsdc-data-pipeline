@@ -61,6 +61,10 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'Sea Dance Fest': 'Moscow, Russia',
     # Shared Phoenix (3 / Desert City etc.) wrongly applied to Med in Swing (Côte d'Azur).
     'Med in Swing': 'La Londe-les-Maures, France',
+    # Shared Washington DC (13) wrongly applied to Westie's Angels (Lyon).
+    "Westie's Angels": 'Lyon, France',
+    # Shared San Antonio (167) wrongly applied to Swingside Invitational (Liège).
+    'Swingside Invitational': 'Liège, Belgium',
     # Fresh main export: more shared-wrong location_id collisions (calendar ≠ results).
     'Bavarian Open': 'Munich, Germany',  # was Jeju (213)
     'King Swing': 'Kraków, Poland',  # was Wailea (124)
@@ -225,6 +229,30 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_country': 'Russia',
             'event_location': 'Moscow, Russia',
             'event_location_standardized': 'Moscow, Russia',
+        },
+    },
+    270: {
+        'name': "Westie's Angels",
+        'url': '',
+        'typical_location': 'Lyon, France',
+        'location': {
+            'event_city': 'Lyon',
+            'event_state': '',
+            'event_country': 'France',
+            'event_location': 'Lyon, France',
+            'event_location_standardized': 'Lyon, France',
+        },
+    },
+    346: {
+        'name': 'Swingside Invitational',
+        'url': '',
+        'typical_location': 'Liège, Belgium',
+        'location': {
+            'event_city': 'Liège',
+            'event_state': '',
+            'event_country': 'Belgium',
+            'event_location': 'Liège, Belgium',
+            'event_location_standardized': 'Liège, Belgium',
         },
     },
     379: {

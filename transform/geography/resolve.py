@@ -210,12 +210,26 @@ def resolve_result_location_ids(
     existing_ids = pd.to_numeric(
         location_df.get("location_id", pd.Series(dtype=str)), errors="coerce"
     )
-    next_id = int(existing_ids.max()) + 1 if existing_ids.notna().any() else 1
+    result_ids = pd.to_numeric(
+        results_df.get("location_id", pd.Series(dtype=str)), errors="coerce"
+    )
+    # Never restart the id space at 1 when results already carry location_ids
+    # (empty/partial location_info would otherwise collide with historical FKs).
+    max_from_loc = int(existing_ids.max()) if existing_ids.notna().any() else 0
+    max_from_res = int(result_ids.max()) if result_ids.notna().any() else 0
+    next_id = max(max_from_loc, max_from_res, 0) + 1
 
     loc_raw = results_df["event_location"].map(_norm)
     cur_id = results_df["location_id"].map(_norm)
 
     needs_fill = (cur_id == "") & (loc_raw != "")
+    if needs_fill.any() and location_df.empty and result_ids.notna().any() and int((result_ids > 0).sum()) > 0:
+        raise RuntimeError(
+            "location_info is empty but dancers_results_info already has "
+            "location_id values; refusing to invent location rows without a "
+            "registry. Restore location_info.csv (or export.location_info) "
+            "before resolve."
+        )
     new_rows: list[dict[str, str]] = []
 
     resolved = cur_id.copy()
