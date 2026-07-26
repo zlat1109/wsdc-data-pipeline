@@ -363,14 +363,31 @@ EXTENDED_CHECKS: tuple[QualityCheck, ...] = (
         name="phantom_ids_not_merged",
         sql="""
         SELECT count(*) FROM core.event_catalog
-        WHERE event_id IN (443, 444, 467, 486, 487, 488)
+        WHERE event_id IN (440, 443, 444, 445, 467, 486, 487, 488, 489, 490)
           AND coalesce(registry_status, '') NOT IN ('merged', 'inactive')
         """,
         max_value=0,
         severity="error",
         category="event_naming",
-        description="Phantom registry ids must be merged/inactive (Swing&Snow, Grand Nationals).",
+        description="Phantom registry ids must be merged/inactive (MADjam, UK WCS, Grand Nationals, Kazan).",
         fix_hint="db/catalog_registry.py PHANTOM_ALIAS_TO_CANONICAL",
+    ),
+    QualityCheck(
+        name="phantom_aliases_point_to_expected_canonicals",
+        sql="""
+        SELECT count(*) FROM core.event_aliases a
+        WHERE (a.alias = 'UK WCS Dance Championships' AND a.event_id IS DISTINCT FROM 154)
+           OR (a.alias = 'UK & European WCS Championships' AND a.event_id IS DISTINCT FROM 154)
+           OR (a.alias = 'Mid Atlantic Dance Jam (MADjam)' AND a.event_id IS DISTINCT FROM 92)
+           OR (a.alias = 'Midnight Madness Swing' AND a.event_id IS DISTINCT FROM 288)
+           OR (a.alias = 'Swing Open Kazan' AND a.event_id IS DISTINCT FROM 283)
+           OR (a.alias = 'USA Grand National Dance Championships' AND a.event_id IS DISTINCT FROM 22)
+        """,
+        max_value=0,
+        severity="error",
+        category="event_naming",
+        description="Phantom name aliases must point at the live canonical event_id.",
+        fix_hint="db/catalog_registry.py + scripts/cleanup_event_catalog.py --apply",
     ),
     QualityCheck(
         name="swing_snow_alias",
