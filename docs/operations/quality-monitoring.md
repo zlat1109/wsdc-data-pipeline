@@ -77,7 +77,8 @@ Check definitions live in `db/quality_checks.py` (single source of truth for mon
 | `city_equals_country` | city=country usually geocode bug; city-states (Singapore) allowed. |
 | `double_space_event_location` | Double spaces in location strings (Moscow,  Russia). |
 | `catalog_duplicate_city_token` | Duplicated city in typical_location (Madrid, Madrid, Spain). |
-| `phantom_ids_not_merged` | Phantom registry ids must be merged/inactive (Swing&Snow, Grand Nationals). |
+| `phantom_ids_not_merged` | Phantom registry ids must be merged/inactive (MADjam, UK WCS, Grand Nationals, Kazan). |
+| `phantom_aliases_point_to_expected_canonicals` | Phantom name aliases must point at the live canonical event_id. |
 | `swing_snow_alias` | Swing&Snow spelling variant must alias to canonical event_id 215. |
 | `catalog_with_editions_missing_typical_location` | Events with results must have typical_location in catalog. |
 | `non_us_event_state` | event_state is only valid for United States locations. |

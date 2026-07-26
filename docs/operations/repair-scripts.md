@@ -123,8 +123,8 @@ Target: `points_history_drift = 0` in monitor.
 
 ## cleanup_event_catalog.py
 
-- Phantom USA Grand Nationals ids 486–488 → alias to event_id 22
-- Empty catalog rows → `registry_status = inactive`
+- Phantom title ghosts (MADjam, Midnight Madness, UK WCS, USA Grand Nationals, Kazan) → `registry_status = merged` + alias to live canonical ids (see `db/catalog_registry.py`)
+- Remaining empty catalog rows → `registry_status = inactive`
 
 ## close_parse_runs.py
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Mark inactive catalog rows and alias phantom USA Grand Nationals ids.
+"""Mark inactive catalog rows and alias phantom / duplicate registry ids.
 
 Usage:
     python scripts/cleanup_event_catalog.py --dry-run

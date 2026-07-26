@@ -4,13 +4,25 @@ from __future__ import annotations
 
 from typing import Any
 
+# Ghost / duplicate WSDC registry ids → canonical event_id.
+# Keys are empty catalog rows (0 results). Values must be live series with results.
+# Re-check after WSDC reuses ids — wrong targets create dangerous name aliases.
 PHANTOM_ALIAS_TO_CANONICAL: dict[int, int] = {
-    486: 22,
-    487: 22,
+    # MADjam spelling/branding ghosts → Mid-Atlantic Dance Jam
+    440: 92,
+    443: 92,
+    # Midnight Madness branding ghosts → Midnight Madness (Dallas)
+    444: 288,
+    445: 288,
+    # Kazan title ghost (not Swing & Snow)
+    467: 283,
+    # UK WCS title ghosts → UK WCS Championships (London)
+    486: 154,
+    487: 154,
+    # USA Grand Nationals title ghosts → USA Grand Nationals (Atlanta)
     488: 22,
-    467: 215,  # Swing&Snow — registry spelling variant of Swing & Snow
-    443: 194,  # Moscow Westie Dance Fest — phantom registry row
-    444: 194,  # Moscow Westie Fest Gala Edition — schedule branding variant
+    489: 22,
+    490: 22,
 }
 
 

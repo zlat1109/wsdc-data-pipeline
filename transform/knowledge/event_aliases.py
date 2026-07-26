@@ -14,6 +14,16 @@ RESULT_TO_CATALOG_EVENT_NAME: dict[str, str] = {
     'Phoenix 4th of July': '4TH of July Convention',
     'Easter Swing': "Seattle's Easter Swing",
     'MADjam': 'Mid-Atlantic Dance Jam',
+    'MADjam (Mid Atlantic Dance Jam)': 'Mid-Atlantic Dance Jam',
+    'Mid Atlantic Dance Jam (MADjam)': 'Mid-Atlantic Dance Jam',
+    'Midnight Madness Swing': 'Midnight Madness',
+    'Midnight Madness WCS': 'Midnight Madness',
+    'Swing Open Kazan': 'Kazan EL Fest',
+    'UK & European WCS Championships': 'UK WCS Championships',
+    'UK WCS Dance Championships': 'UK WCS Championships',
+    'USA Grand National Dance Championships': 'USA Grand Nationals',
+    'USA Grand Nationals Dance Championship': 'USA Grand Nationals',
+    'USA Grand Nationals Dance Championships': 'USA Grand Nationals',
     'Monterey Swing Fest': 'Monterey SwingFest',
     'SwingTime': 'Swingtime in the Rockies',
     "Swingin' New England": "Swingin' New England Dance Festival",
@@ -100,6 +110,8 @@ EVENT_NAME_VARIANT_TO_CATALOG: dict[str, str] = {
     'DC Swing Experience (DCSX)': 'DC Swing eXperience (DCSX)',
     'UK WCS Championships': 'UK WCS Championships',
     'U.K. & European WCS Championships': 'UK WCS Championships',
+    'UK & European WCS Championships': 'UK WCS Championships',
+    'UK WCS Dance Championships': 'UK WCS Championships',
     'Swing&Snow': 'Swing & Snow',
     'Moscow Westie Fest Gala Edition': 'Moscow Westie Fest',
     'Moscow Westie Dance Fest': 'Moscow Westie Fest',
@@ -124,7 +136,8 @@ MERGE_EVENT_ID_MAP: dict[int, int] = {
     406: 197,  # 5280 Championships ghost → 5280 Westival
     433: 369,  # French Connection WCS casing duplicate → FRENCH CONNECTION WCS
     442: 120,  # Lonestar ghost → Lone Star Invitational
-    443: 120,  # LoneStar ghost → Lone Star Invitational
+    # NOTE: id 443 was once a LoneStar ghost; WSDC reused it for MADjam phantom
+    # (see PHANTOM_ALIAS_TO_CANONICAL 443→92). Do not map 443→120.
 }
 
 # Year-aware series renames (same organizer/geo, marketing rebrand after a gap).
