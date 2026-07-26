@@ -413,3 +413,46 @@ def test_force_swing_fling_and_dcsx_to_herndon():
     assert str(out.loc[out.event_name == "DC Swing eXperience (DCSX)", "location_id"].iloc[0]) == "38"
     # MADjam stays on Washington DC — no override.
     assert str(out.loc[out.event_name == "Mid-Atlantic Dance Jam", "location_id"].iloc[0]) == "13"
+
+
+def test_force_philly_swing_classic_to_wilmington():
+    location_info = pd.DataFrame(
+        [
+            {
+                "location_id": "7",
+                "event_city": "New York",
+                "event_state": "New York",
+                "event_country": "United States",
+                "event_location": "New York, NY, United States",
+            },
+            {
+                "location_id": "66",
+                "event_city": "Wilmington",
+                "event_state": "Delaware",
+                "event_country": "United States",
+                "event_location": "Wilmington, DE, United States",
+            },
+        ]
+    )
+    results = pd.DataFrame(
+        [
+            {
+                "event_name": "Philly Swing Classic",
+                "location_id": "7",
+                "event_location": "New York, NY, United States",
+            },
+            {
+                "event_name": "American Swing Dance Championships",
+                "location_id": "7",
+                "event_location": "New York, NY, United States",
+            },
+        ]
+    )
+    out, changed = force_result_locations_from_event_name_overrides(results, location_info)
+    assert changed == 1
+    philly = out.loc[out["event_name"] == "Philly Swing Classic"].iloc[0]
+    assert str(philly["location_id"]) == "66"
+    assert philly["event_location"] == "Wilmington, DE, United States"
+    # NY event on shared lid must stay New York.
+    nyc = out.loc[out["event_name"] == "American Swing Dance Championships"].iloc[0]
+    assert str(nyc["location_id"]) == "7"

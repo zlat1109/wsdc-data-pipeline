@@ -51,6 +51,9 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     # Shared Venray (227 / Dutch Open) wrongly applied to Freedom Swing (Wilmington DE).
     # Catalog upcoming already says WILMINGTON DEL; typical was stuck on Venray.
     'Freedom Swing Dance Challenge': 'Wilmington, DE, United States',
+    # Shared New York (7) wrongly applied to Philly Swing Classic (DoubleTree Wilmington DE).
+    # Catalog upcoming already says WILMINGTON DEL; typical stuck on New York.
+    'Philly Swing Classic': 'Wilmington, DE, United States',
     # Shared St. Petersburg (222) wrongly applied to West in Lyon (name + calendar = Lyon).
     'West in Lyon': 'Lyon, France',
     # Catalog/scheduled say Calgary; results pointed at Perth (253 / WesterOz).
@@ -186,6 +189,18 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
     183: {
         'name': 'Freedom Swing Dance Challenge',
         'url': 'https://freedomswingdance.com/',
+        'typical_location': 'Wilmington, DE, United States',
+        'location': {
+            'event_city': 'Wilmington',
+            'event_state': 'Delaware',
+            'event_country': 'United States',
+            'event_location': 'Wilmington, DE, United States',
+            'event_location_standardized': 'Wilmington, DE',
+        },
+    },
+    234: {
+        'name': 'Philly Swing Classic',
+        'url': 'http://www.phillyswing.com',
         'typical_location': 'Wilmington, DE, United States',
         'location': {
             'event_city': 'Wilmington',
