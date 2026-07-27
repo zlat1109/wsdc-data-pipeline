@@ -289,7 +289,7 @@ Per-edition Tier competitor ranges, prelim rounds, and finalist point awards.
 
 ## core.tier_points
 
-Chart 5 (Points Awarded per Tier): points for placements 1-5.
+Chart 5 places 1-5 plus placement=0 for additional-finalist points.
 
 | Column | Migration parse | Live type |
 |--------|-----------------|-----------|

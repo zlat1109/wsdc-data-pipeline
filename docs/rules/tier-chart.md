@@ -33,29 +33,30 @@ Reference tables for Points Awarded per Tier and competitor-size ranges, sourced
 Explicit charts (inheritance expanded in the DB loader / `TIER_DEFINITIONS`):
 
 <!-- docs-sync:tier-charts -->
-| rules_version | tier | min | max | prelim_rounds | finalist_pts | 1st | 2nd | 3rd | 4th | 5th |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| `2002` | 0 | 5 | — | 1 | 1 | 10 | 6 | 4 | 3 | 2 |
-| `2007` | 1 | 5 | 15 | 1 | 0 | 8 | 6 | 4 | 2 | 1 |
-| `2007` | 2 | 16 | 39 | 2 | 1 | 10 | 8 | 6 | 4 | 2 |
-| `2007` | 3 | 40 | — | 3 | 1 | 12 | 10 | 8 | 6 | 4 |
-| `2009` | 1 | 5 | 15 | 1 | 0 | 5 | 4 | 3 | 2 | 1 |
-| `2009` | 2 | 16 | 39 | 2 | 1 | 10 | 8 | 6 | 4 | 2 |
-| `2009` | 3 | 40 | — | 3 | 1 | 15 | 12 | 10 | 8 | 6 |
-| `2018` | 1 | 5 | 10 | 1 | 0 | 3 | 2 | 1 | 0 | 0 |
-| `2018` | 2 | 11 | 19 | 2 | 0 | 6 | 4 | 3 | 2 | 1 |
-| `2018` | 3 | 20 | 39 | 2 | 1 | 10 | 8 | 6 | 4 | 2 |
-| `2018` | 4 | 40 | 79 | 3 | 1 | 15 | 12 | 10 | 8 | 6 |
-| `2018` | 5 | 80 | 129 | 3 | 2 | 20 | 16 | 14 | 12 | 10 |
-| `2018` | 6 | 130 | — | 4 | 2 | 25 | 22 | 18 | 15 | 12 |
+| rules_version | tier | min | max | prelim | finalist_pts | thru | 1st | 2nd | 3rd | 4th | 5th |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `2002` | 0 | 5 | — | 1 | 1 | 10 | 10 | 6 | 4 | 3 | 2 |
+| `2007` | 1 | 5 | 15 | 1 | 0 | — | 8 | 6 | 4 | 2 | 1 |
+| `2007` | 2 | 16 | 39 | 2 | 1 | 10 | 10 | 8 | 6 | 4 | 2 |
+| `2007` | 3 | 40 | — | 3 | 1 | — | 12 | 10 | 8 | 6 | 4 |
+| `2009` | 1 | 5 | 15 | 1 | 0 | — | 5 | 4 | 3 | 2 | 1 |
+| `2009` | 2 | 16 | 39 | 2 | 1 | 10 | 10 | 8 | 6 | 4 | 2 |
+| `2009` | 3 | 40 | — | 3 | 1 | — | 15 | 12 | 10 | 8 | 6 |
+| `2018` | 1 | 5 | 10 | 1 | 0 | — | 3 | 2 | 1 | 0 | 0 |
+| `2018` | 2 | 11 | 19 | 2 | 0 | — | 6 | 4 | 3 | 2 | 1 |
+| `2018` | 3 | 20 | 39 | 2 | 1 | 12 | 10 | 8 | 6 | 4 | 2 |
+| `2018` | 4 | 40 | 79 | 3 | 1 | 15 | 15 | 12 | 10 | 8 | 6 |
+| `2018` | 5 | 80 | 129 | 3 | 2 | 15 | 20 | 16 | 14 | 12 | 10 |
+| `2018` | 6 | 130 | — | 4 | 2 | 15 | 25 | 22 | 18 | 15 | 12 |
 <!-- /docs-sync:tier-charts -->
 
 ## How to read this
 
 - **tier_basis=`none`** (2002–2006): flat scale, modeled as `tier=0`.
-- **`smaller_role`** (2007–2010): Tier from `min(leaders, followers)` couple count.
+- **`smaller_role`** (2007–2010): Tier from `min(leaders, followers)` couple count; both roles share one inferred Tier.
 - **`per_role`** (2011+): Leaders and Followers can have different Tiers in the same division.
 - Editions with `inherits_from` reuse the parent Chart 5 numbers (no PDF change to points/ranges).
+- **Finalists:** Chart 5 awards points to places 1–5; additional finalists get `finalist_points` (stored as `tier_points.placement=0` / export `points_finalist`). `finalist_max_place` is the deepest place that still gets that award when the PDF specifies a cutoff.
 
 ## Empirical check
 
@@ -66,7 +67,9 @@ Observed 1st–5th place point vectors in `dancers_results_info.csv` match these
 After each points load, `db/build_edition_tiers.py` writes `core.edition_division_tiers` (exported as `edition_division_tiers.csv` / `edition_division_entries.csv`):
 
 1. Aggregate points for placements 1–5 per `(edition, division, role, dance)`
-2. Exact-match Chart 5 for the rules edition covering that date → `matched`
-3. Else exact-match another edition’s chart → `legacy_chart`
-4. Else nearest L1 on the current chart → `matched` with `vector_distance > 0`
-5. Tighten competitor range: `est_min = max(rule_min, scored_dancers)`
+2. Exact-match Chart 5 only if ≥3 placements are observed → `matched`
+3. Else exact-match another edition’s chart (same completeness rule) → `legacy_chart`
+4. Else nearest L1 on the current chart → `matched` with `vector_distance > 0` (sparse zero-distance → `ambiguous`)
+5. For `smaller_role` eras, re-align both roles to one shared Tier from the fuller vector
+6. Tighten competitor range: `est_min = max(rule_min, scored_dancers)`
+7. Pre-2007 flat scale: exact `10/6/4/3/2` → `no_tier_system`; any other distance → `unmatched`

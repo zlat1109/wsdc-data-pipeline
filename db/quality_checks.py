@@ -437,11 +437,16 @@ EXTENDED_CHECKS: tuple[QualityCheck, ...] = (
         WHERE event_year >= 2007
           AND scored_dancers > 0
           AND status IN ('unmatched', 'ambiguous')
+          AND (
+              observed_points_1 IS NOT NULL
+              AND observed_points_2 IS NOT NULL
+              AND observed_points_3 IS NOT NULL
+          )
         """,
-        max_value=200,
+        max_value=50,
         severity="warn",
         category="tier",
-        description="Post-2007 scored groups should resolve to a Chart 5 Tier.",
+        description="Post-2007 scored groups with ≥3 placements should resolve to a Chart 5 Tier.",
         fix_hint="db/build_edition_tiers.py + transform/knowledge/tier_rules.py",
     ),
     QualityCheck(
@@ -450,7 +455,7 @@ EXTENDED_CHECKS: tuple[QualityCheck, ...] = (
         SELECT count(*) FROM core.edition_division_tiers
         WHERE range_conflict = true
         """,
-        max_value=100,
+        max_value=50,
         severity="warn",
         category="tier",
         description="scored_dancers exceeding rule_max_competitors is rare (data or chart mismatch).",
@@ -468,6 +473,19 @@ EXTENDED_CHECKS: tuple[QualityCheck, ...] = (
         category="tier",
         description="Groups from 2002+ must resolve to a rules_version.",
         fix_hint="transform/knowledge/tier_rules.py validity windows",
+    ),
+    QualityCheck(
+        name="tier_rules_missing_finalist_points",
+        sql="""
+        SELECT CASE WHEN EXISTS (
+            SELECT 1 FROM core.tier_points WHERE placement = 0
+        ) THEN 0 ELSE 1 END
+        """,
+        max_value=0,
+        severity="error",
+        category="tier",
+        description="tier_points must include placement=0 (additional finalist) rows.",
+        fix_hint="scripts/load_tier_rules.py + transform/knowledge/tier_rules.py",
     ),
 )
 

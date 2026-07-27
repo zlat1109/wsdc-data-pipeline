@@ -47,6 +47,7 @@ CI and `scripts/run_pipeline.py` call `db/apply.py` before load.
 | `026_locations_unique_and_events_wsdc.sql` | Stable location identity + authoritative events_wsdc export. |
 | `027_tier_rules.sql` | WSDC tier rules reference (editions, competitor ranges, Chart 5 points) |
 | `028_edition_division_tiers.sql` | Infer Tier and competitor ranges per edition/division/role/dance |
+| `029_tier_finalist_points.sql` | Tier points placement 0 = finalist award; finalist_max_place; status rollup fix |
 <!-- /docs-sync:migration-index -->
 
 ## Adding a migration

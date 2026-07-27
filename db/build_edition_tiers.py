@@ -7,6 +7,7 @@ Rebuilt after catalog rebuild. Natural key:
 from __future__ import annotations
 
 import sys
+from collections import defaultdict
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
@@ -30,6 +31,11 @@ STATUS_NO_TIER = "no_tier_system"
 STATUS_NO_POINTS = "no_points"
 STATUS_AMBIGUOUS = "ambiguous"
 STATUS_UNMATCHED = "unmatched"
+
+# Exact match requires this many non-null placements among 1..5 (avoids 1st-only false positives).
+MIN_EXACT_PLACEMENTS = 3
+# Pre-tier flat scale: larger distance → unmatched rather than no_tier_system.
+MAX_FLAT_DISTANCE = 0
 
 _AGGREGATE_SQL = """
 SELECT
@@ -77,28 +83,6 @@ GROUP BY
     ed.edition_id
 """
 
-_INSERT_SQL = """
-INSERT INTO core.edition_division_tiers (
-    event_id, event_year, event_month, division, role, dance, edition_id,
-    rules_version,
-    observed_points_1, observed_points_2, observed_points_3,
-    observed_points_4, observed_points_5,
-    finalists, scored_dancers,
-    tier, status, vector_distance, range_basis,
-    rule_min_competitors, rule_max_competitors,
-    est_min_competitors, est_max_competitors, range_conflict
-) VALUES (
-    %(event_id)s, %(event_year)s, %(event_month)s, %(division)s, %(role)s,
-    %(dance)s, %(edition_id)s, %(rules_version)s,
-    %(observed_points_1)s, %(observed_points_2)s, %(observed_points_3)s,
-    %(observed_points_4)s, %(observed_points_5)s,
-    %(finalists)s, %(scored_dancers)s,
-    %(tier)s, %(status)s, %(vector_distance)s, %(range_basis)s,
-    %(rule_min_competitors)s, %(rule_max_competitors)s,
-    %(est_min_competitors)s, %(est_max_competitors)s, %(range_conflict)s
-)
-"""
-
 
 @dataclass(frozen=True)
 class TierMatch:
@@ -122,6 +106,10 @@ def _as_int(value: Any) -> int | None:
 
 def observed_vector(row: dict[str, Any]) -> tuple[int | None, ...]:
     return tuple(_as_int(row.get(f"observed_points_{i}")) for i in range(1, 6))
+
+
+def observed_placement_count(observed: tuple[int | None, ...]) -> int:
+    return sum(1 for v in observed if v is not None)
 
 
 def vector_l1_distance(
@@ -149,10 +137,22 @@ def _defs_for_version(rules_version: str) -> dict[int, tuple[int, int | None]]:
     return out
 
 
+def _exact_tiers(
+    observed: tuple[int | None, ...],
+    chart: dict[int, tuple[int, int, int, int, int]],
+) -> list[int]:
+    if observed_placement_count(observed) < MIN_EXACT_PLACEMENTS:
+        return []
+    return [
+        tier
+        for tier, pts in chart.items()
+        if vector_l1_distance(observed, pts) == 0
+    ]
+
+
 def match_vector(
     observed: tuple[int | None, ...],
     as_of: date,
-    scored_dancers: int,
 ) -> TierMatch:
     ed = edition_for_date(as_of)
     if ed is None:
@@ -194,22 +194,15 @@ def match_vector(
         if flat is None:
             return TierMatch(None, STATUS_UNMATCHED, 0, ed.rules_version, "none", None, None)
         dist = vector_l1_distance(observed, flat)
-        if dist == 0:
-            status, distance = STATUS_NO_TIER, 0
-        elif dist is not None:
-            status, distance = STATUS_NO_TIER, dist
-        else:
-            status, distance = STATUS_UNMATCHED, 0
         defs = _defs_for_version(ed.rules_version).get(0, (ed.min_role_competitors, None))
-        return TierMatch(0, status, distance, ed.rules_version, "none", defs[0], defs[1])
+        if dist is None:
+            return TierMatch(None, STATUS_UNMATCHED, 0, ed.rules_version, "none", None, None)
+        if dist == 0:
+            return TierMatch(0, STATUS_NO_TIER, 0, ed.rules_version, "none", defs[0], defs[1])
+        return TierMatch(None, STATUS_UNMATCHED, dist, ed.rules_version, "none", None, None)
 
-    # Exact match on current edition chart
     current = chart_vectors(ed.rules_version)
-    exact = [
-        tier
-        for tier, pts in current.items()
-        if vector_l1_distance(observed, pts) == 0
-    ]
+    exact = _exact_tiers(observed, current)
     if len(exact) == 1:
         tier = exact[0]
         lo, hi = _defs_for_version(ed.rules_version)[tier]
@@ -224,9 +217,7 @@ def match_vector(
         if other.rules_version == ed.rules_version:
             continue
         owner = resolve_chart_version(other.rules_version)
-        for tier, pts in chart_vectors(other.rules_version).items():
-            if vector_l1_distance(observed, pts) != 0:
-                continue
+        for tier in _exact_tiers(observed, chart_vectors(other.rules_version)):
             key = (owner, tier)
             if key in seen_owner_tier:
                 continue
@@ -237,7 +228,6 @@ def match_vector(
         lo, hi = _defs_for_version(ver)[tier]
         return TierMatch(tier, STATUS_LEGACY, 0, ver, ed.tier_basis, lo, hi)
     if len(legacy_hits) > 1:
-        # Prefer the chronologically closest edition to as_of
         scored: list[tuple[int, str, int]] = []
         for ver, tier in legacy_hits:
             other = next(e for e in RULES_EDITIONS if e.rules_version == ver)
@@ -250,8 +240,8 @@ def match_vector(
             return TierMatch(tier, STATUS_LEGACY, 0, ver, ed.tier_basis, lo, hi)
         return TierMatch(None, STATUS_AMBIGUOUS, 0, ed.rules_version, ed.tier_basis, None, None)
 
-    # Nearest on current chart
-    candidates: list[tuple[int, int]] = []  # (distance, tier)
+    # Nearest on current chart (allowed with sparse vectors)
+    candidates: list[tuple[int, int]] = []
     for tier, pts in current.items():
         dist = vector_l1_distance(observed, pts)
         if dist is not None:
@@ -267,6 +257,11 @@ def match_vector(
 
     tier = best_tiers[0]
     lo, hi = _defs_for_version(ed.rules_version)[tier]
+    if best_dist == 0 and observed_placement_count(observed) < MIN_EXACT_PLACEMENTS:
+        # Sparse vector that happens to match one tier's visible places — low confidence
+        return TierMatch(
+            tier, STATUS_AMBIGUOUS, best_dist, ed.rules_version, ed.tier_basis, lo, hi
+        )
     return TierMatch(tier, STATUS_MATCHED, best_dist, ed.rules_version, ed.tier_basis, lo, hi)
 
 
@@ -281,11 +276,7 @@ def tighten_range(
     lo = rule_min if rule_min is not None else 0
     est_min = max(lo, scored_dancers)
     conflict = rule_max is not None and scored_dancers > rule_max
-    est_max = rule_max
-    if conflict:
-        # Keep rule_max as soft upper bound but flag conflict; est_min still scored.
-        pass
-    return est_min, est_max, conflict
+    return est_min, rule_max, conflict
 
 
 def infer_row(row: dict[str, Any]) -> dict[str, Any]:
@@ -294,7 +285,7 @@ def infer_row(row: dict[str, Any]) -> dict[str, Any]:
     as_of = date(year, month, 15)
     observed = observed_vector(row)
     scored = int(row.get("scored_dancers") or 0)
-    match = match_vector(observed, as_of, scored)
+    match = match_vector(observed, as_of)
     est_min, est_max, conflict = tighten_range(match.rule_min, match.rule_max, scored)
 
     return {
@@ -325,6 +316,65 @@ def infer_row(row: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def _vector_completeness(row: dict[str, Any]) -> int:
+    return observed_placement_count(observed_vector(row))
+
+
+def align_smaller_role_groups(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """2007–2010: Tier from couples = min(roles); assign the same tier to both roles."""
+    groups: dict[tuple, list[dict[str, Any]]] = defaultdict(list)
+    for row in rows:
+        key = (
+            row["event_id"],
+            row["event_year"],
+            row["event_month"],
+            row["division"],
+            row["dance"],
+        )
+        groups[key].append(row)
+
+    out: list[dict[str, Any]] = []
+    for group in groups.values():
+        if not any(r.get("range_basis") == "smaller_role" for r in group):
+            out.extend(group)
+            continue
+        if len(group) == 1:
+            out.extend(group)
+            continue
+
+        # Prefer the role with the more complete placement vector for matching.
+        seed = max(group, key=_vector_completeness)
+        year, month = int(seed["event_year"]), int(seed["event_month"])
+        shared = match_vector(observed_vector(seed), date(year, month, 15))
+        couple_scored = min(int(r.get("scored_dancers") or 0) for r in group)
+
+        for row in group:
+            est_min, est_max, conflict = tighten_range(
+                shared.rule_min, shared.rule_max, int(row.get("scored_dancers") or 0)
+            )
+            # Couple-level range estimate also stored via rule_*; per-role est uses own scored.
+            updated = dict(row)
+            updated.update(
+                {
+                    "tier": shared.tier,
+                    "status": shared.status,
+                    "vector_distance": shared.vector_distance,
+                    "rules_version": shared.rules_version,
+                    "range_basis": "smaller_role",
+                    "rule_min_competitors": shared.rule_min,
+                    "rule_max_competitors": shared.rule_max,
+                    "est_min_competitors": est_min,
+                    "est_max_competitors": est_max,
+                    "range_conflict": conflict
+                    or (
+                        shared.rule_max is not None and couple_scored > shared.rule_max
+                    ),
+                }
+            )
+            out.append(updated)
+    return out
+
+
 def rebuild_edition_tiers(conn: Any) -> tuple[int, dict[str, int]]:
     """Truncate and rebuild core.edition_division_tiers. Returns (rows, status_counts)."""
     with conn.cursor() as cur:
@@ -332,7 +382,7 @@ def rebuild_edition_tiers(conn: Any) -> tuple[int, dict[str, int]]:
         columns = [d.name for d in cur.description]
         raw_rows = [dict(zip(columns, r)) for r in cur.fetchall()]
 
-        inferred = [infer_row(r) for r in raw_rows]
+        inferred = align_smaller_role_groups([infer_row(r) for r in raw_rows])
         cur.execute("TRUNCATE core.edition_division_tiers")
 
         cols = [
