@@ -60,3 +60,13 @@ Explicit charts (inheritance expanded in the DB loader / `TIER_DEFINITIONS`):
 ## Empirical check
 
 Observed 1st–5th place point vectors in `dancers_results_info.csv` match these charts by era (`10/6/4/3/2` pre-2007; three-tier charts 2007/2009; six-tier chart from 2018). Run `scripts/reconcile_tier_charts.py` after rule updates.
+
+## Edition inference
+
+After each points load, `db/build_edition_tiers.py` writes `core.edition_division_tiers` (exported as `edition_division_tiers.csv` / `edition_division_entries.csv`):
+
+1. Aggregate points for placements 1–5 per `(edition, division, role, dance)`
+2. Exact-match Chart 5 for the rules edition covering that date → `matched`
+3. Else exact-match another edition’s chart → `legacy_chart`
+4. Else nearest L1 on the current chart → `matched` with `vector_distance > 0`
+5. Tighten competitor range: `est_min = max(rule_min, scored_dancers)`

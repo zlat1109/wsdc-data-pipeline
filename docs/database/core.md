@@ -244,6 +244,20 @@ WSDC Points Registry / Event Rules reference for Chart 5 (points per Tier) and c
 | `core.tier_definitions` | `(rules_version, tier)` | Competitor min/max, prelim rounds, finalist points |
 | `core.tier_points` | `(rules_version, tier, placement)` | Points for places 1–5 |
 
+## core.edition_division_tiers
+
+**Grain:** one contest role per edition — `(event_id, event_year, event_month, division, role, dance)`.
+
+Inferred Tier and competitor-size range from observed placement points vs Chart 5. Rebuilt by `db/build_edition_tiers.py` after each catalog rebuild. See [../rules/tier-chart.md](../rules/tier-chart.md).
+
+| Column | Type | Nullable | Description |
+|--------|------|----------|-------------|
+| tier | int | YES | Inferred Tier |
+| status | text | NO | Match quality |
+| rule_min/max_competitors | int | YES | From Chart 5 |
+| est_min/max_competitors | int | YES | Tightened by scored dancers |
+| range_conflict | boolean | NO | scored > rule_max |
+
 ## core.edition_calendar_dates
 
 **Grain:** planned dates for an event year/month (from WSDC calendar; list may backfill).

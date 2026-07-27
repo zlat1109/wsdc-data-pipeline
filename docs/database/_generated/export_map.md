@@ -14,6 +14,8 @@
 | `export.scheduled_events` | `scheduled_events.csv` | Yes |
 | `export.edition_calendar_dates` | `edition_calendar_dates.csv` | Yes |
 | `export.tier_rules` | `tier_rules.csv` | Yes |
+| `export.edition_division_tiers` | `edition_division_tiers.csv` | Yes |
+| `export.edition_division_entries` | `edition_division_entries.csv` | Yes |
 | `export.changed_dancer_points_info` | `changed_dancer_points_info.csv` | Yes |
 | `export.changed_dancer_role_info` | `changed_dancer_role_info.csv` | Yes |
 | `export.changed_dancer_name_info` | `changed_dancer_name_info.csv` | Yes |

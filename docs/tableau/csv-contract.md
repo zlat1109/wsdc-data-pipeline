@@ -260,6 +260,35 @@ Denormalized results with catalog + edition fields. ~47 MB. See [../database/exp
 
 See [../rules/tier-chart.md](../rules/tier-chart.md).
 
+## edition_division_tiers.csv
+
+**Grain:** one row per `(event_id, event_year, event_month, division, role, dance)`  
+**View:** `export.edition_division_tiers`  
+**Built by:** `db/build_edition_tiers.py` (after each points load)
+
+| Column | Type | Nullable | Description |
+|--------|------|----------|-------------|
+| edition_id | integer | YES | FK-like to `event_editions` (rebuilt) |
+| event_id / event_name | — | — | Event |
+| event_year / event_month | integer | NO | Edition |
+| division / role / dance | string | NO | Contest grain |
+| rules_version | string | YES | Matched rules edition |
+| observed_points_1..5 | integer | YES | Max points at each placement |
+| finalists / scored_dancers | integer | NO | Observed counts |
+| tier | integer | YES | Inferred Tier (`0` = flat pre-2007) |
+| status | string | NO | `matched` / `legacy_chart` / `no_tier_system` / `no_points` / `ambiguous` / `unmatched` |
+| vector_distance | integer | NO | L1 distance to chart (0 = exact) |
+| rule_min/max_competitors | integer | YES | Chart range |
+| est_min/max_competitors | integer | YES | Tightened by `scored_dancers` |
+| range_conflict | boolean | NO | True if scored > rule_max |
+
+## edition_division_entries.csv
+
+**Grain:** one row per `(event_id, event_year, event_month, division, dance)`  
+**View:** `export.edition_division_entries`
+
+Rollup of both roles: `est_min_entries` / `est_max_entries` = sum of role estimates when both roles are present; otherwise null + `both_roles_present=false`.
+
 ## Derived analytics CSVs (post-export)
 
 Built from `changed_dancer_role_info.csv` (fallback: `dancer_role_info.csv`) after Supabase views export. Same logic as legacy notebook aggregation cells.

@@ -87,6 +87,15 @@ def main() -> None:
                     f"Edition calendar: action={cal_report.get('action')} "
                     f"durable={cal_report.get('durable_after', cal_report.get('durable_before'))}"
                 )
+                from build_edition_tiers import rebuild_edition_tiers
+
+                tier_rows, tier_status = rebuild_edition_tiers(conn)
+                print(
+                    f"Edition tiers: {tier_rows:,} rows "
+                    f"(matched={tier_status.get('matched', 0):,}, "
+                    f"legacy={tier_status.get('legacy_chart', 0):,}, "
+                    f"unmatched={tier_status.get('unmatched', 0):,})"
+                )
                 cur.execute("ANALYZE core.results, core.event_editions, core.event_catalog")
 
                 cur.execute(
