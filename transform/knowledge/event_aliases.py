@@ -9,6 +9,8 @@ from __future__ import annotations
 
 import pandas as pd
 
+from transform.pandas_utils import assign_column_values
+
 # Result / marketing name → exact core.events.name (must match events_wsdc.csv).
 RESULT_TO_CATALOG_EVENT_NAME: dict[str, str] = {
     'Phoenix 4th of July': '4TH of July Convention',
@@ -204,9 +206,9 @@ def apply_event_name_year_splits(df: pd.DataFrame) -> pd.DataFrame:
             early_id = rule.get("early_event_id")
             late_id = rule.get("late_event_id")
             if early_id is not None:
-                out.loc[early, id_col] = int(early_id)  # type: ignore[arg-type]
+                assign_column_values(out, id_col, early, int(early_id))
             if late_id is not None:
-                out.loc[late, id_col] = int(late_id)  # type: ignore[arg-type]
+                assign_column_values(out, id_col, late, int(late_id))
 
     return out
 

@@ -58,6 +58,20 @@ def test_year_split_events_wsdc_ids():
     assert out.loc[1, "name"] == "UpTown Swing"
 
 
+def test_year_split_ids_on_string_dtype_frame():
+    # Preprocess loads CSVs with dtype=str; pandas 3 rejects int into a str column.
+    df = pd.DataFrame(
+        [
+            {"id": "264", "name": "Swedish Swing Summer Camp", "event_year": "2016"},
+            {"id": "264", "name": "Swedish Swing Summer Camp", "event_year": "2023"},
+        ]
+    ).astype("str")
+    out = apply_event_name_year_splits(df)
+    assert out.loc[0, "id"] == "264"
+    assert out.loc[1, "id"] == "493"
+    assert out.loc[1, "name"] == "UpTown Swing"
+
+
 def test_normalization_map_exports_westie_gala():
     # Shared preprocess map must match alias builder.
     assert EVENT_NAME_NORMALIZATION["Sweden Westie Gala"] == "Westie Gala"
