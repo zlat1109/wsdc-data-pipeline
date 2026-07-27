@@ -123,7 +123,12 @@ def main() -> int:
         default=PROJECT_ROOT / "data" / "quality_reports" / "point_summary_last.json",
     )
     parser.add_argument("--dry-run", action="store_true")
-    parser.add_argument("--max-entries", type=int, default=52)
+    parser.add_argument(
+        "--max-entries",
+        type=int,
+        default=0,
+        help="Keep at most N post_date blocks (0 = keep all; default)",
+    )
     args = parser.parse_args()
 
     if args.output:

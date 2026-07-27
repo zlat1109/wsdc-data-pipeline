@@ -88,11 +88,13 @@ def merge_points_summaries(
     cutoff: date,
     update_window_days: int = 30,
     today: date | None = None,
-    max_entries: int = 52,
+    max_entries: int = 0,
 ) -> tuple[dict, dict[str, Any]]:
     """Merge candidate event reports into the site JSON.
 
     candidates: list of event dicts with slug, start_date, end_date, divisions…
+    max_entries: keep at most N post_date blocks (0 = no truncate). Default 0 so
+    historical site blocks are never dropped by a pipeline refresh.
     """
     today = today or date.today()
     run_post_date = post_date_today(today)

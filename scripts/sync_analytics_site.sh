@@ -103,9 +103,13 @@ git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 git add \
   static/data/homepage_kpis.json \
   static/data/secondary_country_unified.json \
-  static/data/points_summaries.json \
   secondary_role_distribution_dashboard_en.html \
   interactive_secondary_country_bubble.html
+
+# Only stage Point Summary when the file exists (build may have failed warn-only).
+if [[ -f static/data/points_summaries.json ]]; then
+  git add static/data/points_summaries.json
+fi
 
 if git diff --staged --quiet; then
   echo "No analytics site changes to push"
