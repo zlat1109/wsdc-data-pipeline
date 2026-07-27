@@ -430,6 +430,45 @@ EXTENDED_CHECKS: tuple[QualityCheck, ...] = (
         description="event_state is only valid for United States locations.",
         fix_hint="transform/geography/normalize.py + scripts/merge_location_ids.py",
     ),
+    QualityCheck(
+        name="tier_unmatched_groups",
+        sql="""
+        SELECT count(*) FROM core.edition_division_tiers
+        WHERE event_year >= 2007
+          AND scored_dancers > 0
+          AND status IN ('unmatched', 'ambiguous')
+        """,
+        max_value=200,
+        severity="warn",
+        category="tier",
+        description="Post-2007 scored groups should resolve to a Chart 5 Tier.",
+        fix_hint="db/build_edition_tiers.py + transform/knowledge/tier_rules.py",
+    ),
+    QualityCheck(
+        name="tier_range_conflicts",
+        sql="""
+        SELECT count(*) FROM core.edition_division_tiers
+        WHERE range_conflict = true
+        """,
+        max_value=100,
+        severity="warn",
+        category="tier",
+        description="scored_dancers exceeding rule_max_competitors is rare (data or chart mismatch).",
+        fix_hint="scripts/build_edition_tiers.py; inspect observed vectors",
+    ),
+    QualityCheck(
+        name="tier_missing_rules_version",
+        sql="""
+        SELECT count(*) FROM core.edition_division_tiers
+        WHERE event_year >= 2002
+          AND rules_version IS NULL
+        """,
+        max_value=0,
+        severity="error",
+        category="tier",
+        description="Groups from 2002+ must resolve to a rules_version.",
+        fix_hint="transform/knowledge/tier_rules.py validity windows",
+    ),
 )
 
 ALL_CHECKS: tuple[QualityCheck, ...] = CORE_CHECKS + EXTENDED_CHECKS

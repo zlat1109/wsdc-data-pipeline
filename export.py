@@ -32,6 +32,8 @@ EVENT_CATALOG_EXPORTS: dict[str, str] = {
     "export.scheduled_events": "scheduled_events.csv",
     "export.edition_calendar_dates": "edition_calendar_dates.csv",
     "export.tier_rules": "tier_rules.csv",
+    "export.edition_division_tiers": "edition_division_tiers.csv",
+    "export.edition_division_entries": "edition_division_entries.csv",
 }
 
 # SCD2 history as drop-in changed_*.csv (same contract as old-laptop workflow)
