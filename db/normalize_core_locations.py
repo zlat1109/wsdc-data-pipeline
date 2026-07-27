@@ -5,6 +5,7 @@ from __future__ import annotations
 import pandas as pd
 import psycopg
 
+from db.location_guard import location_text_owner
 from transform.geography.city import format_event_location, normalize_city_field
 from transform.geography.normalize import standardize_country, standardize_location
 
@@ -60,6 +61,17 @@ def normalize_core_location_cities(conn: psycopg.Connection) -> int:
                 and new_location == old_location
                 and new_standardized == old_standardized
             ):
+                continue
+
+            target_location = new_location or old_location
+            owner = location_text_owner(cur, target_location, location_id)
+            if owner is not None:
+                # Duplicate row awaiting LOCATION_ID_MERGE_MAP cleanup; rewriting it
+                # here would violate locations_event_location_norm_uidx.
+                print(
+                    f"WARN: skipping city normalization for location {location_id} → "
+                    f"{target_location!r}: already owned by location_id {owner}"
+                )
                 continue
 
             cur.execute(

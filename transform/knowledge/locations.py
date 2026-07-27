@@ -31,6 +31,8 @@ LOCATION_RAW_ALIASES: dict[str, str] = {
 LOCATION_ID_MERGE_MAP: dict[str, str] = {
     "244": str(SINGAPORE_CANONICAL_LOCATION_ID),
     "350": str(SINGAPORE_CANONICAL_LOCATION_ID),
+    # Albany duplicate — 139 carries every result and edition
+    "161": "139",
     # Amsterdam — keep 191 (coordinates)
     "373": "191",
     # Anaheim / Garden Grove metro → Anaheim
@@ -80,6 +82,8 @@ LOCATION_ID_MERGE_MAP: dict[str, str] = {
     "300": "53",
     # Toronto duplicate
     "363": "105",
+    # Stockholm duplicate — 199 is canonical and already carries coordinates
+    "231": "199",
     # Toulouse-Blagnac airport label → Toulouse (keep 208 with coordinates)
     "187": "208",
     "369": "208",
@@ -159,20 +163,11 @@ LOCATION_ID_CORRECTIONS: dict[int, LocationPatch] = {
         'event_location': 'Jeju, Republic of Korea',
         'event_location_standardized': 'Jeju, Republic of Korea',
     },
-    231: {
-        'event_city': 'Stockholm',
-        'event_state': '',
-        'event_country': 'Sweden',
-        'event_location': 'Stockholm, Sweden',
-        'event_location_standardized': 'Stockholm, Sweden',
-        'latitude': '59.3251172',
-        'longitude': '18.0710935',
-    },
-    161: {
+    139: {
         'event_city': 'Albany',
         'event_state': 'New York',
         'event_country': 'United States',
-        'event_location': 'Albany, NY',
+        'event_location': 'Albany, NY, United States',
         'event_location_standardized': 'Albany, NY',
     },
     # Non-US: event_state only for United States

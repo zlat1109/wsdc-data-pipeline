@@ -9,28 +9,7 @@ from transform.knowledge import (
     LOCATION_ID_CORRECTIONS,
     event_location_patches,
 )
-
-
-def _location_text_owner(
-    cur: psycopg.Cursor,
-    event_location: str | None,
-    exclude_id: int,
-) -> int | None:
-    """Return the location_id already holding this place string, if any."""
-    if not event_location or not str(event_location).strip():
-        return None
-    cur.execute(
-        """
-        SELECT location_id
-        FROM core.locations
-        WHERE lower(btrim(event_location)) = lower(btrim(%s))
-          AND location_id <> %s
-        LIMIT 1
-        """,
-        (event_location, exclude_id),
-    )
-    row = cur.fetchone()
-    return int(row[0]) if row else None
+from db.location_guard import location_text_owner
 
 
 def _apply_location_patch(
@@ -42,7 +21,7 @@ def _apply_location_patch(
 ) -> None:
     # core.locations keeps one row per place string (locations_event_location_norm_uidx),
     # so a patch aimed at a merged-away id must not resurrect or duplicate it.
-    owner = _location_text_owner(cur, fixes.get("event_location"), location_id)
+    owner = location_text_owner(cur, fixes.get("event_location"), location_id)
     if owner is not None:
         print(
             f"WARN: skipping location patch {location_id} → "
