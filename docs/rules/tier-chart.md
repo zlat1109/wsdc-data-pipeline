@@ -2,7 +2,7 @@
 
 Reference tables for Points Awarded per Tier and competitor-size ranges, sourced from public WSDC rules PDFs and loaded into Supabase (`core.rules_editions`, `core.tier_definitions`, `core.tier_points`).
 
-**Source of truth:** [`transform/knowledge/tier_rules.py`](../../transform/knowledge/tier_rules.py)  
+**Source of truth:** `transform/knowledge/tier_rules.py`  
 **Loader:** `python scripts/load_tier_rules.py`  
 **PDF text cache:** `data/reference/rules_text/`  
 **Reconcile vs results:** `python scripts/reconcile_tier_charts.py`
