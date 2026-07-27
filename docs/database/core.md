@@ -236,7 +236,7 @@ Full snapshot replaced each load.
 
 ## core.rules_editions / core.tier_definitions / core.tier_points
 
-WSDC Points Registry / Event Rules reference for Chart 5 (points per Tier) and competitor-size ranges. Loaded from [`transform/knowledge/tier_rules.py`](../../transform/knowledge/tier_rules.py). See [../rules/tier-chart.md](../rules/tier-chart.md).
+WSDC Points Registry / Event Rules reference for Chart 5 (points per Tier) and competitor-size ranges. Loaded from `transform/knowledge/tier_rules.py`. See [../rules/tier-chart.md](../rules/tier-chart.md).
 
 | Table | Grain | Purpose |
 |-------|-------|---------|

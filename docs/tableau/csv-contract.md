@@ -244,7 +244,7 @@ Denormalized results with catalog + edition fields. ~47 MB. See [../database/exp
 
 **Grain:** one row per `(rules_version, tier)`  
 **View:** `export.tier_rules`  
-**Source:** [`transform/knowledge/tier_rules.py`](../../transform/knowledge/tier_rules.py) via `scripts/load_tier_rules.py`
+**Source:** `transform/knowledge/tier_rules.py` via `scripts/load_tier_rules.py`
 
 | Column | Type | Nullable | Description |
 |--------|------|----------|-------------|
