@@ -107,6 +107,10 @@ def promote_staging_to_core(conn, cur) -> tuple[int, int, int, int]:
     cur.execute(read_sql("promote_core_results.sql"))
     enrich_core_known_events(conn)
     catalog_count, edition_count = rebuild_event_catalog(conn)
+    from build_edition_tiers import rebuild_edition_tiers
+
+    tier_rows, _tier_status = rebuild_edition_tiers(conn)
+    print(f"Edition tiers rebuilt: {tier_rows:,} rows")
     cur.execute("ANALYZE core.results, core.event_editions, core.event_catalog")
     return alias_count, orphan_event_count, catalog_count, edition_count
 

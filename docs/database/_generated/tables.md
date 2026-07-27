@@ -61,6 +61,41 @@ Planned edition dates from worldsdc.com/events/calendar/ (and list backfill).
 | scraped_at | text/PK/FK | — |
 | updated_at | text/PK/FK | — |
 
+## core.edition_division_tiers
+
+Inferred Tier + competitor range per edition/division/role/dance from Chart 5 vectors.
+
+| Column | Migration parse | Live type |
+|--------|-----------------|-----------|
+| event_id | text/PK/FK | — |
+| event_year | text/PK/FK | — |
+| event_month | text/PK/FK | — |
+| division | text/PK/FK | — |
+| role | text/PK/FK | — |
+| dance | text/PK/FK | — |
+| edition_id | text/PK/FK | — |
+| rules_version | text/PK/FK | — |
+| observed_points_1 | text/PK/FK | — |
+| observed_points_2 | text/PK/FK | — |
+| observed_points_3 | text/PK/FK | — |
+| observed_points_4 | text/PK/FK | — |
+| observed_points_5 | text/PK/FK | — |
+| finalists | text/PK/FK | — |
+| scored_dancers | text/PK/FK | — |
+| tier | text/PK/FK | — |
+| status | text/PK/FK | — |
+| 'matched', | text/PK/FK | — |
+| 'no_points', | text/PK/FK | — |
+| )) | text/PK/FK | — |
+| vector_distance | text/PK/FK | — |
+| range_basis | text/PK/FK | — |
+| rule_min_competitors | text/PK/FK | — |
+| rule_max_competitors | text/PK/FK | — |
+| est_min_competitors | text/PK/FK | — |
+| est_max_competitors | text/PK/FK | — |
+| range_conflict | text/PK/FK | — |
+| updated_at | text/PK/FK | — |
+
 ## core.event_aliases
 | Column | Migration parse | Live type |
 |--------|-----------------|-----------|
