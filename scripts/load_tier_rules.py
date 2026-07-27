@@ -76,8 +76,8 @@ def load_tier_rules(conn, *, dry_run: bool = False) -> dict[str, int]:
                 """
                 INSERT INTO core.tier_definitions (
                     rules_version, tier, min_competitors, max_competitors,
-                    prelim_rounds, finalist_points, source
-                ) VALUES (%s, %s, %s, %s, %s, %s, %s)
+                    prelim_rounds, finalist_points, finalist_max_place, source
+                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
                 """,
                 (
                     d.rules_version,
@@ -86,6 +86,7 @@ def load_tier_rules(conn, *, dry_run: bool = False) -> dict[str, int]:
                     d.max_competitors,
                     d.prelim_rounds,
                     d.finalist_points,
+                    d.finalist_max_place,
                     d.source,
                 ),
             )

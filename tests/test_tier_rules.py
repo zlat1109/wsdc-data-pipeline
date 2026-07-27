@@ -58,6 +58,8 @@ def test_competitor_ranges_contiguous_within_version():
 def test_points_monotonic_by_placement_and_tier():
     by_ver_tier: dict[tuple[str, int], dict[int, int]] = {}
     for p in TIER_POINTS:
+        if p.placement < 1:
+            continue
         by_ver_tier.setdefault((p.rules_version, p.tier), {})[p.placement] = p.points
 
     for (version, tier), places in by_ver_tier.items():
@@ -73,6 +75,21 @@ def test_points_monotonic_by_placement_and_tier():
         for lo, hi in zip(tiers, tiers[1:]):
             for pl in range(1, 6):
                 assert by_ver_tier[(version, hi)][pl] >= by_ver_tier[(version, lo)][pl]
+
+
+def test_finalist_points_in_tier_points():
+    from transform.knowledge.tier_rules import PLACEMENT_FINALIST, finalist_points_for
+
+    assert finalist_points_for("2018", 6) == 2
+    assert finalist_points_for("2018", 1) == 0
+    assert finalist_points_for("2002", 0) == 1
+    finals = [p for p in TIER_POINTS if p.placement == PLACEMENT_FINALIST]
+    assert finals
+    assert all(p.placement == 0 for p in finals)
+    # Every definition has a matching finalist row
+    for d in TIER_DEFINITIONS:
+        assert finalist_points_for(d.rules_version, d.tier) == d.finalist_points
+        assert d.finalist_max_place is None or d.finalist_max_place >= 6
 
 
 def test_inherits_from_resolves():

@@ -82,9 +82,10 @@ Check definitions live in `db/quality_checks.py` (single source of truth for mon
 | `swing_snow_alias` | Swing&Snow spelling variant must alias to canonical event_id 215. |
 | `catalog_with_editions_missing_typical_location` | Events with results must have typical_location in catalog. |
 | `non_us_event_state` | event_state is only valid for United States locations. |
-| `tier_unmatched_groups` | Post-2007 scored groups should resolve to a Chart 5 Tier. |
+| `tier_unmatched_groups` | Post-2007 scored groups with ≥3 placements should resolve to a Chart 5 Tier. |
 | `tier_range_conflicts` | scored_dancers exceeding rule_max_competitors is rare (data or chart mismatch). |
 | `tier_missing_rules_version` | Groups from 2002+ must resolve to a rules_version. |
+| `tier_rules_missing_finalist_points` | tier_points must include placement=0 (additional finalist) rows. |
 <!-- /docs-sync:extended-quality-checks -->
 
 ## Event split audit

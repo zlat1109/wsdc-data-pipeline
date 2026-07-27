@@ -170,16 +170,17 @@ def build_tier_charts_table() -> str:
     vectors = {owner: tr.chart_vectors(owner) for owner in owners}
     defs = [d for d in tr._TIER_DEFINITIONS_EXPLICIT if d.rules_version in owners]
     rows = [
-        "| rules_version | tier | min | max | prelim_rounds | finalist_pts "
-        "| 1st | 2nd | 3rd | 4th | 5th |",
-        "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
+        "| rules_version | tier | min | max | prelim | finalist_pts | thru | "
+        "1st | 2nd | 3rd | 4th | 5th |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
     ]
     for d in sorted(defs, key=lambda x: (x.rules_version, x.tier)):
         pts = vectors[d.rules_version][d.tier]
         max_c = "—" if d.max_competitors is None else str(d.max_competitors)
+        thru = "—" if d.finalist_max_place is None else str(d.finalist_max_place)
         rows.append(
             f"| `{d.rules_version}` | {d.tier} | {d.min_competitors} | {max_c} "
-            f"| {d.prelim_rounds} | {d.finalist_points} "
+            f"| {d.prelim_rounds} | {d.finalist_points} | {thru} "
             f"| {pts[0]} | {pts[1]} | {pts[2]} | {pts[3]} | {pts[4]} |"
         )
     return "\n".join(rows)

@@ -255,8 +255,10 @@ Denormalized results with catalog + edition fields. ~47 MB. See [../database/exp
 | tier | integer | NO | `0` = flat pre-tier scale; else 1–6 |
 | min_competitors / max_competitors | integer | YES | Competitor range for this Tier (`max` null = open) |
 | prelim_rounds | integer | NO | Typical / mandatory rounds |
-| finalist_points | integer | NO | Points for additional finalists |
+| finalist_points | integer | NO | Points for additional finalists beyond top 5 |
+| finalist_max_place | integer | YES | Highest place receiving finalist points (`NULL` = remaining finalists / N/A) |
 | points_1st … points_5th | integer | YES | Chart 5 placement points |
+| points_finalist | integer | YES | Same award as `finalist_points` (from `tier_points.placement=0`) |
 
 See [../rules/tier-chart.md](../rules/tier-chart.md).
 
@@ -287,7 +289,7 @@ See [../rules/tier-chart.md](../rules/tier-chart.md).
 **Grain:** one row per `(event_id, event_year, event_month, division, dance)`  
 **View:** `export.edition_division_entries`
 
-Rollup of both roles: `est_min_entries` / `est_max_entries` = sum of role estimates when both roles are present; otherwise null + `both_roles_present=false`.
+Rollup of both roles: `est_min_entries` / `est_max_entries` = sum of role estimates when both roles are present; otherwise null + `both_roles_present=false`. Includes `worst_status` (severity-aware across roles; not lexicographic `MAX(status)`).
 
 ## Derived analytics CSVs (post-export)
 

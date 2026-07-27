@@ -239,40 +239,44 @@ class TierDefinition:
     prelim_rounds: int
     finalist_points: int
     source: str
+    # Highest place that still receives finalist_points (None = all remaining finalists / N/A)
+    finalist_max_place: int | None = None
 
 
 # Explicit charts (not inherited). Tier 0 used for flat pre-2007 scale.
 _TIER_DEFINITIONS_EXPLICIT: tuple[TierDefinition, ...] = (
-    # 2002 / 2004 flat
-    TierDefinition("2002", 0, 5, None, 1, 1, "pdf_page:WSDC-Points-Registry-2002.pdf#1"),
+    # 2002 / 2004 flat — finalists thru ~10th get 1 pt
+    TierDefinition("2002", 0, 5, None, 1, 1, "pdf_page:WSDC-Points-Registry-2002.pdf#1", 10),
     # 2007
-    TierDefinition("2007", 1, 5, 15, 1, 0, "pdf_page:WSDC Points Registry Document_2007.pdf#1"),
-    TierDefinition("2007", 2, 16, 39, 2, 1, "pdf_page:WSDC Points Registry Document_2007.pdf#1"),
-    TierDefinition("2007", 3, 40, None, 3, 1, "pdf_page:WSDC Points Registry Document_2007.pdf#1"),
+    TierDefinition("2007", 1, 5, 15, 1, 0, "pdf_page:WSDC Points Registry Document_2007.pdf#1", None),
+    TierDefinition("2007", 2, 16, 39, 2, 1, "pdf_page:WSDC Points Registry Document_2007.pdf#1", 10),
+    TierDefinition("2007", 3, 40, None, 3, 1, "pdf_page:WSDC Points Registry Document_2007.pdf#1", None),
     # 2009 (also inherited by 2011, 2015)
-    TierDefinition("2009", 1, 5, 15, 1, 0, "pdf_page:WSDC Points Registry Document_2009.pdf#1"),
-    TierDefinition("2009", 2, 16, 39, 2, 1, "pdf_page:WSDC Points Registry Document_2009.pdf#1"),
-    TierDefinition("2009", 3, 40, None, 3, 1, "pdf_page:WSDC Points Registry Document_2009.pdf#1"),
-    # 2018 six-tier chart (inherited by 2019+)
-    TierDefinition("2018", 1, 5, 10, 1, 0, "pdf_page:2018-WSDC-Registry-Event-Rules-Combined.pdf#1"),
-    TierDefinition("2018", 2, 11, 19, 2, 0, "pdf_page:2018-WSDC-Registry-Event-Rules-Combined.pdf#1"),
-    TierDefinition("2018", 3, 20, 39, 2, 1, "pdf_page:2018-WSDC-Registry-Event-Rules-Combined.pdf#1"),
-    TierDefinition("2018", 4, 40, 79, 3, 1, "pdf_page:2018-WSDC-Registry-Event-Rules-Combined.pdf#1"),
-    TierDefinition("2018", 5, 80, 129, 3, 2, "pdf_page:2018-WSDC-Registry-Event-Rules-Combined.pdf#1"),
-    TierDefinition("2018", 6, 130, None, 4, 2, "pdf_page:2018-WSDC-Registry-Event-Rules-Combined.pdf#1"),
+    TierDefinition("2009", 1, 5, 15, 1, 0, "pdf_page:WSDC Points Registry Document_2009.pdf#1", None),
+    TierDefinition("2009", 2, 16, 39, 2, 1, "pdf_page:WSDC Points Registry Document_2009.pdf#1", 10),
+    TierDefinition("2009", 3, 40, None, 3, 1, "pdf_page:WSDC Points Registry Document_2009.pdf#1", None),
+    # 2018 six-tier chart (inherited by 2019+ for 1-5; finalist depth from Chart 5)
+    TierDefinition("2018", 1, 5, 10, 1, 0, "pdf_page:2018-WSDC-Registry-Event-Rules-Combined.pdf#1", None),
+    TierDefinition("2018", 2, 11, 19, 2, 0, "pdf_page:2018-WSDC-Registry-Event-Rules-Combined.pdf#1", None),
+    TierDefinition("2018", 3, 20, 39, 2, 1, "pdf_page:2018-WSDC-Registry-Event-Rules-Combined.pdf#1", 12),
+    TierDefinition("2018", 4, 40, 79, 3, 1, "pdf_page:2018-WSDC-Registry-Event-Rules-Combined.pdf#1", 15),
+    TierDefinition("2018", 5, 80, 129, 3, 2, "pdf_page:2018-WSDC-Registry-Event-Rules-Combined.pdf#1", 15),
+    TierDefinition("2018", 6, 130, None, 4, 2, "pdf_page:2018-WSDC-Registry-Event-Rules-Combined.pdf#1", 15),
 )
 
 
 # ---------------------------------------------------------------------------
-# Placement points (1st..5th)
+# Placement points (0 = additional finalist award; 1..5 = Chart 5 places)
 # ---------------------------------------------------------------------------
+
+PLACEMENT_FINALIST = 0
 
 
 @dataclass(frozen=True)
 class TierPoints:
     rules_version: str
     tier: int
-    placement: int  # 1..5
+    placement: int  # 0 = additional finalist; 1..5 = place
     points: int
     source: str
 
@@ -282,56 +286,62 @@ def _points_rows(
     tier: int,
     pts: tuple[int, int, int, int, int],
     source: str,
+    *,
+    finalist_points: int,
 ) -> tuple[TierPoints, ...]:
-    return tuple(
+    rows = [
         TierPoints(version, tier, place, value, source)
         for place, value in enumerate(pts, start=1)
-    )
+    ]
+    rows.append(TierPoints(version, tier, PLACEMENT_FINALIST, finalist_points, source))
+    return tuple(rows)
 
 
 _TIER_POINTS_EXPLICIT: tuple[TierPoints, ...] = (
-    *_points_rows("2002", 0, (10, 6, 4, 3, 2), "pdf_page:WSDC-Points-Registry-2002.pdf#1"),
+    *_points_rows("2002", 0, (10, 6, 4, 3, 2), "pdf_page:WSDC-Points-Registry-2002.pdf#1", finalist_points=1),
     *_points_rows(
-        "2007", 1, (8, 6, 4, 2, 1), "pdf_page:WSDC Points Registry Document_2007.pdf#1"
+        "2007", 1, (8, 6, 4, 2, 1), "pdf_page:WSDC Points Registry Document_2007.pdf#1", finalist_points=0
     ),
     *_points_rows(
-        "2007", 2, (10, 8, 6, 4, 2), "pdf_page:WSDC Points Registry Document_2007.pdf#1"
+        "2007", 2, (10, 8, 6, 4, 2), "pdf_page:WSDC Points Registry Document_2007.pdf#1", finalist_points=1
     ),
     *_points_rows(
-        "2007", 3, (12, 10, 8, 6, 4), "pdf_page:WSDC Points Registry Document_2007.pdf#1"
+        "2007", 3, (12, 10, 8, 6, 4), "pdf_page:WSDC Points Registry Document_2007.pdf#1", finalist_points=1
     ),
     *_points_rows(
-        "2009", 1, (5, 4, 3, 2, 1), "pdf_page:WSDC Points Registry Document_2009.pdf#1"
+        "2009", 1, (5, 4, 3, 2, 1), "pdf_page:WSDC Points Registry Document_2009.pdf#1", finalist_points=0
     ),
     *_points_rows(
-        "2009", 2, (10, 8, 6, 4, 2), "pdf_page:WSDC Points Registry Document_2009.pdf#1"
+        "2009", 2, (10, 8, 6, 4, 2), "pdf_page:WSDC Points Registry Document_2009.pdf#1", finalist_points=1
     ),
     *_points_rows(
-        "2009", 3, (15, 12, 10, 8, 6), "pdf_page:WSDC Points Registry Document_2009.pdf#1"
+        "2009", 3, (15, 12, 10, 8, 6), "pdf_page:WSDC Points Registry Document_2009.pdf#1", finalist_points=1
     ),
     *_points_rows(
-        "2018", 1, (3, 2, 1, 0, 0), "pdf_page:2018-WSDC-Registry-Event-Rules-Combined.pdf#1"
+        "2018", 1, (3, 2, 1, 0, 0), "pdf_page:2018-WSDC-Registry-Event-Rules-Combined.pdf#1", finalist_points=0
     ),
     *_points_rows(
-        "2018", 2, (6, 4, 3, 2, 1), "pdf_page:2018-WSDC-Registry-Event-Rules-Combined.pdf#1"
+        "2018", 2, (6, 4, 3, 2, 1), "pdf_page:2018-WSDC-Registry-Event-Rules-Combined.pdf#1", finalist_points=0
     ),
     *_points_rows(
-        "2018", 3, (10, 8, 6, 4, 2), "pdf_page:2018-WSDC-Registry-Event-Rules-Combined.pdf#1"
+        "2018", 3, (10, 8, 6, 4, 2), "pdf_page:2018-WSDC-Registry-Event-Rules-Combined.pdf#1", finalist_points=1
     ),
     *_points_rows(
-        "2018", 4, (15, 12, 10, 8, 6), "pdf_page:2018-WSDC-Registry-Event-Rules-Combined.pdf#1"
+        "2018", 4, (15, 12, 10, 8, 6), "pdf_page:2018-WSDC-Registry-Event-Rules-Combined.pdf#1", finalist_points=1
     ),
     *_points_rows(
         "2018",
         5,
         (20, 16, 14, 12, 10),
         "pdf_page:2018-WSDC-Registry-Event-Rules-Combined.pdf#1",
+        finalist_points=2,
     ),
     *_points_rows(
         "2018",
         6,
         (25, 22, 18, 15, 12),
         "pdf_page:2018-WSDC-Registry-Event-Rules-Combined.pdf#1",
+        finalist_points=2,
     ),
 )
 
@@ -381,6 +391,7 @@ def expanded_tier_definitions() -> tuple[TierDefinition, ...]:
                     prelim_rounds=row.prelim_rounds,
                     finalist_points=row.finalist_points,
                     source=row.source if owner == ed.rules_version else f"inherits:{owner}",
+                    finalist_max_place=row.finalist_max_place,
                 )
             )
     return tuple(out)
@@ -420,8 +431,12 @@ def edition_for_date(as_of: date) -> RulesEdition | None:
 
 
 def chart_vectors(rules_version: str) -> dict[int, tuple[int, int, int, int, int]]:
-    """Map tier → (p1, p2, p3, p4, p5) for a rules_version."""
-    pts = [p for p in TIER_POINTS if p.rules_version == rules_version]
+    """Map tier → (p1, p2, p3, p4, p5) for a rules_version (excludes finalist row)."""
+    pts = [
+        p
+        for p in TIER_POINTS
+        if p.rules_version == rules_version and p.placement >= 1
+    ]
     by_tier: dict[int, dict[int, int]] = {}
     for p in pts:
         by_tier.setdefault(p.tier, {})[p.placement] = p.points
@@ -429,6 +444,18 @@ def chart_vectors(rules_version: str) -> dict[int, tuple[int, int, int, int, int
         tier: (vals[1], vals[2], vals[3], vals[4], vals[5])
         for tier, vals in by_tier.items()
     }
+
+
+def finalist_points_for(rules_version: str, tier: int) -> int:
+    for p in TIER_POINTS:
+        if (
+            p.rules_version == rules_version
+            and p.tier == tier
+            and p.placement == PLACEMENT_FINALIST
+        ):
+            return p.points
+    return 0
+
 
 
 def iter_year_coverage(start_year: int = 2002, end_year: int = 2026) -> Iterable[tuple[int, str]]:
