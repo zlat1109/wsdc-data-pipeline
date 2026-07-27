@@ -1,20 +1,22 @@
-# Analytics site sync (homepage KPIs + secondary-role dashboard)
+# Analytics site sync (homepage KPIs + secondary-role + Point Summary)
 
 After each successful `full-parse.yml` export, the pipeline rebuilds JSON for
 [wsdc-analytics.github.io](https://wsdc-analytics.github.io/) and pushes it.
 
 ## What gets updated
 
-| Site surface | File | Builder (in analytics repo) |
+| Site surface | File | Builder |
 |---|---|---|
-| Homepage counters (events / points / dancers) | `static/data/homepage_kpis.json` | `scripts/build_homepage_kpis.py` |
-| Secondary-role country dashboard | `static/data/secondary_country_unified.json` | `scripts/update_secondary_country_unified.py` |
+| Homepage counters (events / points / dancers) | `static/data/homepage_kpis.json` | analytics `scripts/build_homepage_kpis.py` |
+| Secondary-role country dashboard | `static/data/secondary_country_unified.json` | analytics `scripts/update_secondary_country_unified.py` |
+| Point Summary catalog | `static/data/points_summaries.json` | pipeline `scripts/build_points_summary.py` |
 
 Live:
 - https://wsdc-analytics.github.io/index.html?lang=en
 - https://wsdc-analytics.github.io/secondary_role_distribution_dashboard_en.html
+- https://wsdc-analytics.github.io/points-summary.html
 
-`points_summaries.json` is still updated by **wsdc-telegram-bot** results runs (separate flow).
+See also [point-summary.md](point-summary.md).
 
 ## Secret (this repo)
 
@@ -33,8 +35,10 @@ full-parse.yml
   → sync_analytics_site.sh
        clone analytics site
        build homepage_kpis.json + secondary_country_unified.json from data/
+       build/merge points_summaries.json (cutoff + 30d window; warn-on-fail)
        validate_site_data.py
        commit + push → GitHub Pages
+  → Telegram #WSDC_Pipeline_Complete (+ Point Summary line)
 ```
 
 ## Local paths
@@ -56,6 +60,9 @@ python3 "$SITE/scripts/build_homepage_kpis.py" \
 python3 "$SITE/scripts/update_secondary_country_unified.py" \
   --source-dir "$PIPE" --output "$SITE/static/data/secondary_country_unified.json"
 
+python3 ~/.cursor/projects/python/wsdc-data-pipeline/scripts/build_points_summary.py \
+  --data-dir "$PIPE" --site-repo "$SITE" --cutoff 2026-07-28
+
 cd "$SITE" && python3 scripts/validate_site_data.py
 # then commit static/data/*.json and push main → Pages
 ```
@@ -65,13 +72,6 @@ cd "$SITE" && python3 scripts/validate_site_data.py
 ```bash
 export WSDC_ANALYTICS_DEPLOY_TOKEN='ghp_...'
 bash scripts/sync_analytics_site.sh
-```
-
-Local build only (no push):
-
-```bash
-python /path/to/wsdc-analytics-repo/scripts/build_homepage_kpis.py --source-dir data
-python /path/to/wsdc-analytics-repo/scripts/update_secondary_country_unified.py --source-dir data
 ```
 
 ## Extending later (articles)
