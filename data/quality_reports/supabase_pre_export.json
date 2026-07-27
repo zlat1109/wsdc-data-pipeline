@@ -124,7 +124,7 @@
       "name": "recent_editions_missing_day_dates",
       "category": "event_naming",
       "severity": "warn",
-      "value": 12,
+      "value": 14,
       "max_value": 50,
       "ok": true,
       "description": "Most 2025+ editions with results should have calendar day dates.",
@@ -297,6 +297,6 @@
     "errors": 0,
     "warnings": 1
   },
-  "generated_at": "2026-07-27T21:01:13.930009+00:00",
+  "generated_at": "2026-07-27T21:38:15.695688+00:00",
   "scope": "full"
 }
