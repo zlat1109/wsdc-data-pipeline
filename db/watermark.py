@@ -7,8 +7,12 @@ from pathlib import Path
 
 import requests
 
+# Append, never prepend: scripts/ holds CLI wrappers named after their db/
+# counterparts (build_edition_tiers, build_event_catalog), and prepending makes
+# those wrappers shadow the real modules for every later import in load.py.
 SCRIPTS = Path(__file__).resolve().parents[1] / "scripts"
-sys.path.insert(0, str(SCRIPTS))
+if str(SCRIPTS) not in sys.path:
+    sys.path.append(str(SCRIPTS))
 
 from wsdc_id_probe import scan_ids_above_watermark  # noqa: E402
 
