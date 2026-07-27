@@ -40,3 +40,5 @@
 
 Deprecated Tableau source: all active editions. Prefer export.scheduled_events (one row per event).
 
+
+## export.tier_rules

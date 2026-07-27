@@ -45,6 +45,7 @@ CI and `scripts/run_pipeline.py` call `db/apply.py` before load.
 | `024_edition_calendar_dates.sql` | Edition calendar dates archive + start/end on event_editions export |
 | `025_edition_calendar_dates_no_fk.sql` | Drop edition_calendar_dates FK so promote CASCADE cannot wipe dates |
 | `026_locations_unique_and_events_wsdc.sql` | Stable location identity + authoritative events_wsdc export. |
+| `027_tier_rules.sql` | WSDC tier rules reference (editions, competitor ranges, Chart 5 points) |
 <!-- /docs-sync:migration-index -->
 
 ## Adding a migration

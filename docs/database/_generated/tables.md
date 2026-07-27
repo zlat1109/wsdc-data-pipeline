@@ -194,6 +194,24 @@ Latest schedule snapshot: one row per logical event (nearest upcoming edition).
 | result_standardized | text/PK/FK | — |
 | points | text/PK/FK | — |
 
+## core.rules_editions
+
+WSDC Points Registry / Event Rules editions with validity windows and tier basis.
+
+| Column | Migration parse | Live type |
+|--------|-----------------|-----------|
+| rules_version | text/PK/FK | — |
+| valid_from | text/PK/FK | — |
+| valid_to | text/PK/FK | — |
+| tier_basis | text/PK/FK | — |
+| min_role_competitors | text/PK/FK | — |
+| points_depth | text/PK/FK | — |
+| inherits_from | text/PK/FK | — |
+| source_url | text/PK/FK | — |
+| source | text/PK/FK | — |
+| notes | text/PK/FK | — |
+| updated_at | text/PK/FK | — |
+
 ## core.scheduled_events
 
 Edition-level schedule archive keyed by source_fingerprint (all scrape observations).
@@ -219,6 +237,33 @@ Edition-level schedule archive keyed by source_fingerprint (all scrape observati
 | first_seen_at | text/PK/FK | — |
 | last_seen_at | text/PK/FK | — |
 | last_run_id | text/PK/FK | — |
+
+## core.tier_definitions
+
+Per-edition Tier competitor ranges, prelim rounds, and finalist point awards.
+
+| Column | Migration parse | Live type |
+|--------|-----------------|-----------|
+| rules_version | text/PK/FK | — |
+| tier | text/PK/FK | — |
+| min_competitors | text/PK/FK | — |
+| max_competitors | text/PK/FK | — |
+| prelim_rounds | text/PK/FK | — |
+| finalist_points | text/PK/FK | — |
+| source | text/PK/FK | — |
+
+## core.tier_points
+
+Chart 5 (Points Awarded per Tier): points for placements 1-5.
+
+| Column | Migration parse | Live type |
+|--------|-----------------|-----------|
+| rules_version | text/PK/FK | — |
+| tier | text/PK/FK | — |
+| placement | text/PK/FK | — |
+| points | text/PK/FK | — |
+| source | text/PK/FK | — |
+| REFERENCES | text/PK/FK | — |
 
 ## history.dancer_names_history
 | Column | Migration parse | Live type |

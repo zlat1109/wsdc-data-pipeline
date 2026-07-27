@@ -26,3 +26,6 @@ data/merged_load/
 
 # MkDocs
 site/
+
+# Rules PDF binaries (text cache under data/reference/rules_text is committed)
+data/reference/rules_pdfs/

@@ -102,6 +102,8 @@ nav:
     - GitHub Actions: operations/github-actions.md
     - Repair scripts: operations/repair-scripts.md
     - Quality monitoring: operations/quality-monitoring.md
+  - Rules:
+    - Tier chart (Chart 5): rules/tier-chart.md
   - Policies:
     - Geo dedup: policies/event-geo-dedup.md
     - Event renames: policies/event-rename-aliases.md

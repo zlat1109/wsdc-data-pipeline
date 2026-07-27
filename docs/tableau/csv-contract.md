@@ -240,6 +240,26 @@ Same as `dancers_results_info.csv` plus `dancer_name` from `core.dancer_name_at(
 
 Denormalized results with catalog + edition fields. ~47 MB. See [../database/export-views.md](../database/export-views.md).
 
+## tier_rules.csv
+
+**Grain:** one row per `(rules_version, tier)`  
+**View:** `export.tier_rules`  
+**Source:** `transform/knowledge/tier_rules.py` via `scripts/load_tier_rules.py`
+
+| Column | Type | Nullable | Description |
+|--------|------|----------|-------------|
+| rules_version | string | NO | Rules edition id (e.g. `2018`, `2026`) |
+| valid_from / valid_to | date | YES | Validity window (`valid_to` null = current) |
+| tier_basis | string | NO | `none` / `smaller_role` / `per_role` |
+| min_role_competitors | integer | NO | Minimum for points eligibility |
+| tier | integer | NO | `0` = flat pre-tier scale; else 1–6 |
+| min_competitors / max_competitors | integer | YES | Competitor range for this Tier (`max` null = open) |
+| prelim_rounds | integer | NO | Typical / mandatory rounds |
+| finalist_points | integer | NO | Points for additional finalists |
+| points_1st … points_5th | integer | YES | Chart 5 placement points |
+
+See [../rules/tier-chart.md](../rules/tier-chart.md).
+
 ## Derived analytics CSVs (post-export)
 
 Built from `changed_dancer_role_info.csv` (fallback: `dancer_role_info.csv`) after Supabase views export. Same logic as legacy notebook aggregation cells.
