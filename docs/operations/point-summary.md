@@ -29,6 +29,11 @@ python scripts/build_points_summary.py \
   --report data/quality_reports/point_summary_last.json
 ```
 
+When `event_editions.start_date` is blank (common for month-level WSDC list
+rows), the builder fills dates from `scheduled_events.csv` for the same
+`event_id` / name + year/month so trial events like Infinite Swing still get a
+stable `{start_date}-…` slug.
+
 Modules:
 
 - `transform/knowledge/geo_flags.py` — continent / flag from `place_country`

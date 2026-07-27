@@ -34,6 +34,7 @@ from transform.points_summary import (  # noqa: E402
     merge_points_summaries,
     write_summaries,
 )
+from transform.points_summary.report import format_date_range  # noqa: E402
 
 DEFAULT_CUTOFF = date(2026, 7, 28)
 SITE_REL = Path("static/data/points_summaries.json")
@@ -48,6 +49,87 @@ def load_editions(path: Path) -> list[dict]:
         return list(csv.DictReader(fh))
 
 
+def _norm_event_name(name: str) -> str:
+    return " ".join((name or "").strip().lower().split())
+
+
+def _ym_key(year: object, month: object) -> tuple[str, str] | None:
+    y = str(year or "").strip()
+    m_raw = str(month or "").strip()
+    if not y or not m_raw:
+        return None
+    try:
+        m = str(int(m_raw))
+    except ValueError:
+        return None
+    return y, m
+
+
+def load_scheduled_date_overrides(
+    path: Path,
+) -> tuple[dict[tuple[str, str, str], tuple[str, str]], dict[tuple[str, str, str], tuple[str, str]]]:
+    """Return (by_name, by_event_id) maps of (key, year, month) → (start, end).
+
+    Used when event_editions.start_date is blank (WSDC list often only has
+    month-level edition_date) but scheduled_events has calendar dates.
+    """
+    by_name: dict[tuple[str, str, str], tuple[str, str]] = {}
+    by_id: dict[tuple[str, str, str], tuple[str, str]] = {}
+    if not path.exists():
+        return by_name, by_id
+    with path.open("r", encoding="utf-8") as fh:
+        for row in csv.DictReader(fh):
+            start = (row.get("start_date") or "").strip()[:10]
+            end = (row.get("end_date") or "").strip()[:10] or start
+            if not start:
+                continue
+            ym = _ym_key(row.get("results_year"), row.get("results_month"))
+            if not ym:
+                continue
+            year, month = ym
+            name = _norm_event_name(
+                row.get("canonical_name") or row.get("event_name") or ""
+            )
+            if name:
+                by_name[(name, year, month)] = (start, end)
+            eid = str(row.get("canonical_event_id") or "").strip()
+            if eid:
+                by_id[(eid, year, month)] = (start, end)
+    return by_name, by_id
+
+
+def enrich_meta_dates_from_schedule(
+    meta: dict,
+    *,
+    by_name: dict[tuple[str, str, str], tuple[str, str]],
+    by_id: dict[tuple[str, str, str], tuple[str, str]],
+) -> dict:
+    """Fill missing start/end/dates from scheduled_events overrides."""
+    if meta.get("start_date"):
+        return meta
+    ym = _ym_key(meta.get("event_year"), meta.get("event_month"))
+    if not ym:
+        return meta
+    year, month = ym
+    hit = None
+    eid = str(meta.get("event_id") or "").strip()
+    if eid:
+        hit = by_id.get((eid, year, month))
+    if not hit:
+        hit = by_name.get((_norm_event_name(meta.get("name") or ""), year, month))
+    if not hit:
+        return meta
+    start_s, end_s = hit
+    start_d = date.fromisoformat(start_s)
+    end_d = date.fromisoformat(end_s) if end_s else start_d
+    enriched = dict(meta)
+    enriched["start_date"] = start_d.isoformat()
+    enriched["end_date"] = end_d.isoformat()
+    # Keep human dates in sync with the calendar range used for the slug.
+    enriched["dates"] = format_date_range(start_d, end_d)
+    return enriched
+
+
 def build_candidates(
     data_dir: Path,
     *,
@@ -57,6 +139,7 @@ def build_candidates(
 ) -> list[dict]:
     today = today or date.today()
     editions = load_editions(data_dir / "event_editions.csv")
+    by_name, by_id = load_scheduled_date_overrides(data_dir / "scheduled_events.csv")
     results_rows = load_results_rows(data_dir / "dancers_results_info.csv")
     dancers_map = load_dancers_map(data_dir / "dancer_role_info.csv")
     points_csv = data_dir / "dancers_points_info.csv"
@@ -68,7 +151,9 @@ def build_candidates(
 
     candidates: list[dict] = []
     for row in editions:
-        meta = edition_meta_from_row(row)
+        meta = enrich_meta_dates_from_schedule(
+            edition_meta_from_row(row), by_name=by_name, by_id=by_id
+        )
         start = meta.get("start_date")
         if not start:
             continue
