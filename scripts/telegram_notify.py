@@ -279,6 +279,10 @@ def format_pipeline_message(stats: dict) -> str:
     if stats.get("csv_committed"):
         lines.extend(["", "📁 CSV экспорт закоммичен в <code>data/*.csv</code>"])
 
+    ps = _format_point_summary_section()
+    if ps:
+        lines.extend(["", *ps])
+
     attention = _format_attention_sections()
     if attention:
         lines.extend(["", "⚠️ <b>Требует внимания</b>", ""] + attention)
@@ -287,6 +291,38 @@ def format_pipeline_message(stats: dict) -> str:
         lines.append(f"Repo: {_esc(stats['repo'])}")
 
     return "\n".join(lines)
+
+
+def _format_point_summary_section() -> list[str]:
+    """Optional Point Summary line for #WSDC_Pipeline_Complete."""
+    report_path = Path(
+        os.getenv(
+            "POINT_SUMMARY_REPORT",
+            "data/quality_reports/point_summary_last.json",
+        )
+    )
+    data = _load_json(report_path)
+    if not data:
+        return []
+    created = int(data.get("created_count") or 0)
+    updated = int(data.get("updated_count") or 0)
+    names = []
+    for slug in (data.get("created") or [])[:8]:
+        # slug: YYYY-MM-DD-event-name → title-ish
+        parts = str(slug).split("-", 3)
+        label = parts[3].replace("-", " ").title() if len(parts) >= 4 else slug
+        names.append(label)
+    lines = [
+        f"📊 Point Summary: +<code>{created}</code> "
+        f"(updated <code>{updated}</code>)",
+        '<a href="https://wsdc-analytics.github.io/points-summary.html">'
+        "points-summary.html</a>",
+    ]
+    for name in names:
+        lines.append(f"• {_esc(name)}")
+    if created > len(names):
+        lines.append(f"• … +{created - len(names)} more")
+    return lines
 
 
 def _load_json(path: Path) -> dict | None:

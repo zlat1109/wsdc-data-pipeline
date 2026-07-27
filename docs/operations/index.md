@@ -9,6 +9,8 @@ Runbooks for pipeline execution, CI, data sync, repairs, and monitoring.
 | [github-actions.md](github-actions.md) | CI secrets, workflows, probe logic |
 | [repair-scripts.md](repair-scripts.md) | One-off DB fixes after audit |
 | [quality-monitoring.md](quality-monitoring.md) | Quality reports + post-load SQL checks |
+| [analytics-site-sync.md](analytics-site-sync.md) | Push KPIs / Point Summary to the analytics site |
+| [point-summary.md](point-summary.md) | Point Summary entity build + cutoff rules |
 
 ## Quick commands
 

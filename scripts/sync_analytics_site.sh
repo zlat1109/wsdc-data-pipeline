@@ -56,6 +56,22 @@ python3 "${WORKDIR}/scripts/update_secondary_country_unified.py" \
   --output "${WORKDIR}/static/data/secondary_country_unified.json" \
   --years ${SITE_YEARS}
 
+PIPELINE_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+POINT_SUMMARY_CUTOFF="${POINT_SUMMARY_CUTOFF:-2026-07-28}"
+POINT_SUMMARY_REPORT="${POINT_SUMMARY_REPORT:-${PIPELINE_DATA_ABS}/quality_reports/point_summary_last.json}"
+echo "Building points_summaries.json (cutoff=${POINT_SUMMARY_CUTOFF})"
+if python3 "${PIPELINE_ROOT}/scripts/build_points_summary.py" \
+  --data-dir "${PIPELINE_DATA_ABS}" \
+  --site-repo "${WORKDIR}" \
+  --cutoff "${POINT_SUMMARY_CUTOFF}" \
+  --update-window-days 30 \
+  --report "${POINT_SUMMARY_REPORT}"
+then
+  echo "Point Summary build OK"
+else
+  echo "::warning::Point Summary build failed — continuing without updating points_summaries.json"
+fi
+
 python3 "${WORKDIR}/scripts/validate_site_data.py" || {
   echo "::error::Site data validation failed after rebuild"
   exit 1
@@ -90,13 +106,18 @@ git add \
   secondary_role_distribution_dashboard_en.html \
   interactive_secondary_country_bubble.html
 
+# Only stage Point Summary when the file exists (build may have failed warn-only).
+if [[ -f static/data/points_summaries.json ]]; then
+  git add static/data/points_summaries.json
+fi
+
 if git diff --staged --quiet; then
   echo "No analytics site changes to push"
   exit 0
 fi
 
 git commit -m "$(cat <<EOF
-chore(data): refresh homepage KPIs and secondary-role dashboard
+chore(data): refresh homepage KPIs, secondary-role dashboard, Point Summary
 
 Automated push from wsdc-data-pipeline after full-parse / export.
 EOF
