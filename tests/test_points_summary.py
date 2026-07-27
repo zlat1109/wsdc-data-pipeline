@@ -276,3 +276,26 @@ def test_golden_recent_summary_blocks_match_pipeline_builder():
     assert compared >= 8, f"too few comparable podium lines: {compared}"
     # A few historical name/CSV drifts are expected (renames, later results).
     assert len(mismatches) <= 5, "\n".join(mismatches[:20])
+
+
+def test_enrich_meta_dates_from_schedule_fills_blank_edition_dates():
+    from scripts.build_points_summary import enrich_meta_dates_from_schedule
+
+    meta = {
+        "name": "Infinite Swing",
+        "event_id": "404",
+        "event_year": "2026",
+        "event_month": "7",
+        "start_date": None,
+        "end_date": None,
+        "dates": "",
+    }
+    by_id = {("404", "2026", "7"): ("2026-07-23", "2026-07-26")}
+    enriched = enrich_meta_dates_from_schedule(meta, by_name={}, by_id=by_id)
+    assert enriched["start_date"] == "2026-07-23"
+    assert enriched["end_date"] == "2026-07-26"
+    assert "Jul" in enriched["dates"]
+    # Existing start_date must win over schedule.
+    meta2 = dict(meta, start_date="2026-07-01", end_date="2026-07-01")
+    kept = enrich_meta_dates_from_schedule(meta2, by_name={}, by_id=by_id)
+    assert kept["start_date"] == "2026-07-01"
