@@ -1,0 +1,2 @@
+# Dev-only tools (not required for CI / production load)
+pypdf>=5.0.0

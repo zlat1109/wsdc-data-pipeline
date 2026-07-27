@@ -234,6 +234,16 @@ Full snapshot replaced each load.
 | result_rows | int | NO | Results in this edition |
 | unique_dancers | int | NO | Distinct dancers |
 
+## core.rules_editions / core.tier_definitions / core.tier_points
+
+WSDC Points Registry / Event Rules reference for Chart 5 (points per Tier) and competitor-size ranges. Loaded from [`transform/knowledge/tier_rules.py`](../../transform/knowledge/tier_rules.py). See [../rules/tier-chart.md](../rules/tier-chart.md).
+
+| Table | Grain | Purpose |
+|-------|-------|---------|
+| `core.rules_editions` | `rules_version` | Validity window, `tier_basis`, provenance |
+| `core.tier_definitions` | `(rules_version, tier)` | Competitor min/max, prelim rounds, finalist points |
+| `core.tier_points` | `(rules_version, tier, placement)` | Points for places 1–5 |
+
 ## core.edition_calendar_dates
 
 **Grain:** planned dates for an event year/month (from WSDC calendar; list may backfill).

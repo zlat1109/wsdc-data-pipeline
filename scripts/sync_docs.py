@@ -32,6 +32,7 @@ WATCH_PATHS = (
     "docs/database/migrations.md",
     "docs/database/export-views.md",
     "docs/operations/quality-monitoring.md",
+    "docs/rules/tier-chart.md",
 )
 
 
@@ -138,6 +139,52 @@ def build_extended_quality_checks_table(checks) -> str:
     return "\n".join(lines)
 
 
+def _load_tier_rules():
+    return _load_module(
+        "tier_rules_knowledge",
+        PROJECT_ROOT / "transform" / "knowledge" / "tier_rules.py",
+    )
+
+
+def build_tier_editions_table() -> str:
+    tr = _load_tier_rules()
+    rows = [
+        "| rules_version | valid_from | valid_to | tier_basis | inherits_from | source |",
+        "|---|---|---|---|---|---|",
+    ]
+    for e in tr.RULES_EDITIONS:
+        valid_to = e.valid_to.isoformat() if e.valid_to else "—"
+        inherits = e.inherits_from or "—"
+        rows.append(
+            f"| `{e.rules_version}` | {e.valid_from.isoformat()} | {valid_to} "
+            f"| `{e.tier_basis}` | {inherits} | {_escape_md_cell(e.source)} |"
+        )
+    return "\n".join(rows)
+
+
+def build_tier_charts_table() -> str:
+    tr = _load_tier_rules()
+    owners = {
+        e.rules_version for e in tr.RULES_EDITIONS if e.inherits_from is None
+    }
+    vectors = {owner: tr.chart_vectors(owner) for owner in owners}
+    defs = [d for d in tr._TIER_DEFINITIONS_EXPLICIT if d.rules_version in owners]
+    rows = [
+        "| rules_version | tier | min | max | prelim_rounds | finalist_pts "
+        "| 1st | 2nd | 3rd | 4th | 5th |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
+    ]
+    for d in sorted(defs, key=lambda x: (x.rules_version, x.tier)):
+        pts = vectors[d.rules_version][d.tier]
+        max_c = "—" if d.max_competitors is None else str(d.max_competitors)
+        rows.append(
+            f"| `{d.rules_version}` | {d.tier} | {d.min_competitors} | {max_c} "
+            f"| {d.prelim_rounds} | {d.finalist_points} "
+            f"| {pts[0]} | {pts[1]} | {pts[2]} | {pts[3]} | {pts[4]} |"
+        )
+    return "\n".join(rows)
+
+
 def compute_updates() -> dict[Path, str]:
     """Return absolute path -> desired file content (no disk writes)."""
     gsd = _load_generate_schema_docs()
@@ -165,6 +212,8 @@ def compute_updates() -> dict[Path, str]:
             "extended-quality-checks",
             build_extended_quality_checks_table(qc),
         ),
+        (DOCS / "rules" / "tier-chart.md", "tier-editions", build_tier_editions_table()),
+        (DOCS / "rules" / "tier-chart.md", "tier-charts", build_tier_charts_table()),
     )
 
     marker_content: dict[Path, str] = {}
