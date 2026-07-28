@@ -1,9 +1,9 @@
 {
-  "scraped_at": "2026-07-21T10:16:00.261909+00:00",
+  "scraped_at": "2026-07-28T10:24:45.171208+00:00",
   "source": "https://worldsdc.com/events/calendar/",
   "min_start": "2025-01-01",
-  "raw_count": 623,
-  "event_count": 450,
+  "raw_count": 627,
+  "event_count": 454,
   "events": [
     {
       "event_name": "SwingCouver",
@@ -1419,8 +1419,8 @@
     {
       "event_name": "USA Grand National Dance Championships",
       "calendar_title": "USA Grand National Dance Championships",
-      "catalog_name": "USA Grand National Dance Championships",
-      "name_key": "usagrandnationaldancechampionships",
+      "catalog_name": "USA Grand Nationals",
+      "name_key": "usagrandnationals",
       "start_date": "2025-05-22",
       "end_date": "2025-05-26",
       "url": "http://www.usagrandnationals.com",
@@ -2492,8 +2492,8 @@
     {
       "event_name": "UpTown Swing",
       "calendar_title": "UpTown Swing",
-      "catalog_name": "Swedish Swing Summer Camp",
-      "name_key": "swedishswingsummercamp",
+      "catalog_name": "UpTown Swing",
+      "name_key": "uptownswing",
       "start_date": "2025-08-15",
       "end_date": "2025-08-18",
       "url": "http://www.uptownswing.se",
@@ -3622,8 +3622,8 @@
     {
       "event_name": "Midnight Madness WCS",
       "calendar_title": "Midnight Madness WCS",
-      "catalog_name": "Midnight Madness WCS",
-      "name_key": "midnightmadnesswcs",
+      "catalog_name": "Midnight Madness",
+      "name_key": "midnightmadness",
       "start_date": "2025-11-13",
       "end_date": "2025-11-16",
       "url": "http://www.MidnightMadnessWCS.com",
@@ -3912,8 +3912,8 @@
     {
       "event_name": "Westie Gala",
       "calendar_title": "Westie Gala",
-      "catalog_name": "Sweden Westie Gala",
-      "name_key": "swedenwestiegala",
+      "catalog_name": "Westie Gala",
+      "name_key": "westiegala",
       "start_date": "2025-12-28",
       "end_date": "2026-01-01",
       "url": "http://www.westiegala.com",
@@ -5533,8 +5533,8 @@
     {
       "event_name": "USA Grand National Dance Championships",
       "calendar_title": "USA Grand National Dance Championships",
-      "catalog_name": "USA Grand National Dance Championships",
-      "name_key": "usagrandnationaldancechampionships",
+      "catalog_name": "USA Grand Nationals",
+      "name_key": "usagrandnationals",
       "start_date": "2026-05-21",
       "end_date": "2026-05-25",
       "url": "http://www.usagrandnationals.com",
@@ -6492,8 +6492,8 @@
     {
       "event_name": "UpTown Swing",
       "calendar_title": "UpTown Swing",
-      "catalog_name": "Swedish Swing Summer Camp",
-      "name_key": "swedishswingsummercamp",
+      "catalog_name": "UpTown Swing",
+      "name_key": "uptownswing",
       "start_date": "2026-08-14",
       "end_date": "2026-08-17",
       "url": "http://www.uptownswing.se",
@@ -7795,8 +7795,8 @@
     {
       "event_name": "Midnight Madness WCS",
       "calendar_title": "Midnight Madness WCS 2026",
-      "catalog_name": "Midnight Madness WCS",
-      "name_key": "midnightmadnesswcs",
+      "catalog_name": "Midnight Madness",
+      "name_key": "midnightmadness",
       "start_date": "2026-11-12",
       "end_date": "2026-11-15",
       "url": "http://www.MidnightMadnessWCS.com",
@@ -8268,8 +8268,8 @@
     {
       "event_name": "Westie Gala",
       "calendar_title": "Westie Gala",
-      "catalog_name": "Sweden Westie Gala",
-      "name_key": "swedenwestiegala",
+      "catalog_name": "Westie Gala",
+      "name_key": "westiegala",
       "start_date": "2026-12-31",
       "end_date": "2027-01-04",
       "url": "http://www.westiegala.com",
@@ -8727,6 +8727,28 @@
       "source_fingerprint": "c49284ca484a8983ae077ae6",
       "raw_start": "2027-02-19",
       "raw_end": "2027-02-22"
+    },
+    {
+      "event_name": "Valentine Swing",
+      "calendar_title": "Valentine Swing",
+      "catalog_name": "Valentine Swing",
+      "name_key": "valentineswing",
+      "start_date": "2027-02-19",
+      "end_date": "2027-02-22",
+      "url": "http://www.valentineswing.dance",
+      "url_key": "valentineswing.dance",
+      "results_year": 2027,
+      "results_month": 2,
+      "edition_ym_candidates": [
+        "2027-02"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "b38034eb233fca768a67e52d",
+      "raw_start": "2027-02-19",
+      "raw_end": "2027-02-23"
     },
     {
       "event_name": "Paris Swing Classic",
@@ -9194,6 +9216,28 @@
       "raw_end": "2027-04-12"
     },
     {
+      "event_name": "KOREAN OPEN WCS CHAMPIONSHIPS",
+      "calendar_title": "KOREAN OPEN WCS CHAMPIONSHIPS",
+      "catalog_name": "KOREAN OPEN WCS CHAMPIONSHIPS",
+      "name_key": "koreanopenwcschampionships",
+      "start_date": "2027-04-08",
+      "end_date": "2027-04-11",
+      "url": "https://www.kopenwcs.com",
+      "url_key": "kopenwcs.com",
+      "results_year": 2027,
+      "results_month": 4,
+      "edition_ym_candidates": [
+        "2027-04"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "4387e59e411ddba91259cfa1",
+      "raw_start": "2027-04-08",
+      "raw_end": "2027-04-12"
+    },
+    {
       "event_name": "Slovenian Open",
       "calendar_title": "Slovenian Open",
       "catalog_name": "Slovenian Open",
@@ -9598,8 +9642,8 @@
     {
       "event_name": "USA Grand National Dance Championships",
       "calendar_title": "USA Grand National Dance Championships",
-      "catalog_name": "USA Grand National Dance Championships",
-      "name_key": "usagrandnationaldancechampionships",
+      "catalog_name": "USA Grand Nationals",
+      "name_key": "usagrandnationals",
       "start_date": "2027-05-27",
       "end_date": "2027-05-31",
       "url": "http://www.usagrandnationals.com",
@@ -9840,6 +9884,30 @@
       "raw_end": "2026-07-06"
     },
     {
+      "event_name": "SaunaSwing",
+      "calendar_title": "SaunaSwing",
+      "catalog_name": "SaunaSwing",
+      "name_key": "saunaswing",
+      "start_date": "2027-07-01",
+      "end_date": "",
+      "url": "http://www.ekarolas.com/saunaswing",
+      "url_key": "ekarolas.com/saunaswing",
+      "results_year": 2027,
+      "results_month": 7,
+      "edition_ym_candidates": [
+        "2027-07"
+      ],
+      "date_precision": "day_start_only",
+      "date_source": "wsdc_calendar",
+      "flags": [
+        "invalid_end"
+      ],
+      "status_tags": [],
+      "source_fingerprint": "575b5b32c1dcc74214992092",
+      "raw_start": "2027-07-01",
+      "raw_end": "2026-07-06"
+    },
+    {
       "event_name": "Swing Valley",
       "calendar_title": "Swing Valley",
       "catalog_name": "Swing Valley",
@@ -9882,6 +9950,28 @@
       "source_fingerprint": "f8eacdcd9ba7b9ecdb78b844",
       "raw_start": "2027-07-08",
       "raw_end": "2027-07-12"
+    },
+    {
+      "event_name": "Midwest Westie Fest",
+      "calendar_title": "Midwest Westie Fest",
+      "catalog_name": "Midwest Westie Fest",
+      "name_key": "midwestwestiefest",
+      "start_date": "2027-07-15",
+      "end_date": "2027-07-18",
+      "url": "http://www.midwestwestiefest.com",
+      "url_key": "midwestwestiefest.com",
+      "results_year": 2027,
+      "results_month": 7,
+      "edition_ym_candidates": [
+        "2027-07"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "f96eb07ff9da4d802b4a4c70",
+      "raw_start": "2027-07-15",
+      "raw_end": "2027-07-19"
     },
     {
       "event_name": "Atlanta Swing Classic",
