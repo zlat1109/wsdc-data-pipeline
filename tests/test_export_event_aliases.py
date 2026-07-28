@@ -33,7 +33,10 @@ def test_build_event_aliases_includes_schedule_and_result_maps():
     mappings = _merge_aliases()
     assert mappings["Paris Swing Classic"] == "Paris Westie Fest"
     assert mappings["Westie Weekend"] == "Dance Jam Jack & Jill Weekend"
-    assert mappings["MADjam"] == "Mid-Atlantic Dance Jam"
+    assert mappings["MADjam"] == "MADjam"
+    assert mappings["Mid-Atlantic Dance Jam"] == "MADjam"
+    assert mappings["Easter Swing"] == "Easter Swing"
+    assert mappings["Seattle's Easter Swing"] == "Easter Swing"
 
 
 def test_export_event_aliases_json_shape(tmp_path: Path):
