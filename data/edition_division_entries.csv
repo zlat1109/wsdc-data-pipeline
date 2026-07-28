@@ -310,6 +310,13 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1876,203,Detonation Dance,2026,4,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 1876,203,Detonation Dance,2026,4,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
 1876,203,Detonation Dance,2026,4,Sophisticated,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
+240,18,Easter Swing,2026,4,Advanced,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
+240,18,Easter Swing,2026,4,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+240,18,Easter Swing,2026,4,Champion,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+240,18,Easter Swing,2026,4,Intermediate,West Coast Swing,4,5,matched,matched,matched,12,15,120,208,t,f
+240,18,Easter Swing,2026,4,Master,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+240,18,Easter Swing,2026,4,Newcomer,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
+240,18,Easter Swing,2026,4,Novice,West Coast Swing,5,5,matched,matched,matched,15,15,160,258,t,f
 2577,345,HONEY FEST,2026,4,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 2577,345,HONEY FEST,2026,4,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 2577,345,HONEY FEST,2026,4,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
@@ -323,13 +330,6 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1918,210,Korean Open WCS Championships,2026,4,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 1918,210,Korean Open WCS Championships,2026,4,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
 1918,210,Korean Open WCS Championships,2026,4,Sophisticated,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
-240,18,Seattle's Easter Swing,2026,4,Advanced,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
-240,18,Seattle's Easter Swing,2026,4,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-240,18,Seattle's Easter Swing,2026,4,Champion,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-240,18,Seattle's Easter Swing,2026,4,Intermediate,West Coast Swing,4,5,matched,matched,matched,12,15,120,208,t,f
-240,18,Seattle's Easter Swing,2026,4,Master,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-240,18,Seattle's Easter Swing,2026,4,Newcomer,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
-240,18,Seattle's Easter Swing,2026,4,Novice,West Coast Swing,5,5,matched,matched,matched,15,15,160,258,t,f
 2587,352,Slovenian Open,2026,4,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 2587,352,Slovenian Open,2026,4,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 2587,352,Slovenian Open,2026,4,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
@@ -411,14 +411,14 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2430,292,King Swing,2026,3,Intermediate,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
 2430,292,King Swing,2026,3,Newcomer,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
 2430,292,King Swing,2026,3,Novice,West Coast Swing,5,6,matched,matched,matched,15,15,210,,t,f
-1003,92,Mid-Atlantic Dance Jam,2026,3,Advanced,West Coast Swing,4,5,matched,matched,matched,12,13,120,208,t,f
-1003,92,Mid-Atlantic Dance Jam,2026,3,All-Star,West Coast Swing,4,4,matched,matched,matched,11,11,80,158,t,f
-1003,92,Mid-Atlantic Dance Jam,2026,3,Champion,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-1003,92,Mid-Atlantic Dance Jam,2026,3,Intermediate,West Coast Swing,5,5,matched,matched,matched,15,15,160,258,t,f
-1003,92,Mid-Atlantic Dance Jam,2026,3,Master,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-1003,92,Mid-Atlantic Dance Jam,2026,3,Newcomer,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
-1003,92,Mid-Atlantic Dance Jam,2026,3,Novice,West Coast Swing,5,6,matched,matched,matched,15,15,210,,t,f
-1003,92,Mid-Atlantic Dance Jam,2026,3,Sophisticated,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
+1003,92,MADjam,2026,3,Advanced,West Coast Swing,4,5,matched,matched,matched,12,13,120,208,t,f
+1003,92,MADjam,2026,3,All-Star,West Coast Swing,4,4,matched,matched,matched,11,11,80,158,t,f
+1003,92,MADjam,2026,3,Champion,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+1003,92,MADjam,2026,3,Intermediate,West Coast Swing,5,5,matched,matched,matched,15,15,160,258,t,f
+1003,92,MADjam,2026,3,Master,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+1003,92,MADjam,2026,3,Newcomer,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
+1003,92,MADjam,2026,3,Novice,West Coast Swing,5,6,matched,matched,matched,15,15,210,,t,f
+1003,92,MADjam,2026,3,Sophisticated,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
 2623,378,New York Flow Festival,2026,3,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 2623,378,New York Flow Festival,2026,3,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 2623,378,New York Flow Festival,2026,3,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
@@ -1420,6 +1420,13 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1875,203,Detonation Dance,2025,4,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 1875,203,Detonation Dance,2025,4,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
 1875,203,Detonation Dance,2025,4,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+239,18,Easter Swing,2025,4,Advanced,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
+239,18,Easter Swing,2025,4,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+239,18,Easter Swing,2025,4,Champion,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+239,18,Easter Swing,2025,4,Intermediate,West Coast Swing,4,5,matched,matched,matched,12,15,120,208,t,f
+239,18,Easter Swing,2025,4,Master,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+239,18,Easter Swing,2025,4,Newcomer,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+239,18,Easter Swing,2025,4,Novice,West Coast Swing,5,5,matched,matched,matched,15,15,160,258,t,f
 2576,345,HONEY FEST,2025,4,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 2576,345,HONEY FEST,2025,4,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 2576,345,HONEY FEST,2025,4,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
@@ -1433,13 +1440,6 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1917,210,Korean Open WCS Championships,2025,4,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 1917,210,Korean Open WCS Championships,2025,4,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
 1917,210,Korean Open WCS Championships,2025,4,Sophisticated,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
-239,18,Seattle's Easter Swing,2025,4,Advanced,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
-239,18,Seattle's Easter Swing,2025,4,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-239,18,Seattle's Easter Swing,2025,4,Champion,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-239,18,Seattle's Easter Swing,2025,4,Intermediate,West Coast Swing,4,5,matched,matched,matched,12,15,120,208,t,f
-239,18,Seattle's Easter Swing,2025,4,Master,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-239,18,Seattle's Easter Swing,2025,4,Newcomer,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-239,18,Seattle's Easter Swing,2025,4,Novice,West Coast Swing,5,5,matched,matched,matched,15,15,160,258,t,f
 2586,352,Slovenian Open,2025,4,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 2586,352,Slovenian Open,2025,4,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 2586,352,Slovenian Open,2025,4,Intermediate,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
@@ -2314,6 +2314,13 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2343,275,Dutch Open West Coast Swing,2024,4,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 2343,275,Dutch Open West Coast Swing,2024,4,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 2343,275,Dutch Open West Coast Swing,2024,4,Sophisticated,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+238,18,Easter Swing,2024,4,Advanced,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+238,18,Easter Swing,2024,4,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+238,18,Easter Swing,2024,4,Champion,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+238,18,Easter Swing,2024,4,Intermediate,West Coast Swing,4,5,matched,matched,matched,15,15,120,208,t,f
+238,18,Easter Swing,2024,4,Master,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+238,18,Easter Swing,2024,4,Newcomer,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+238,18,Easter Swing,2024,4,Novice,West Coast Swing,4,5,matched,matched,matched,15,15,120,208,t,f
 2575,345,HONEY FEST,2024,4,Advanced,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
 2575,345,HONEY FEST,2024,4,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 2575,345,HONEY FEST,2024,4,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
@@ -2333,13 +2340,6 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2199,253,Nordic WCS Championships,2024,4,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 2199,253,Nordic WCS Championships,2024,4,Novice,West Coast Swing,4,5,matched,matched,matched,15,15,120,208,t,f
 2199,253,Nordic WCS Championships,2024,4,Sophisticated,West Coast Swing,3,4,matched,matched,matched,10,15,60,118,t,f
-238,18,Seattle's Easter Swing,2024,4,Advanced,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-238,18,Seattle's Easter Swing,2024,4,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-238,18,Seattle's Easter Swing,2024,4,Champion,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-238,18,Seattle's Easter Swing,2024,4,Intermediate,West Coast Swing,4,5,matched,matched,matched,15,15,120,208,t,f
-238,18,Seattle's Easter Swing,2024,4,Master,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-238,18,Seattle's Easter Swing,2024,4,Newcomer,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-238,18,Seattle's Easter Swing,2024,4,Novice,West Coast Swing,4,5,matched,matched,matched,15,15,120,208,t,f
 2246,259,Swingover,2024,4,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 2246,259,Swingover,2024,4,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 2246,259,Swingover,2024,4,Champion,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
@@ -2390,14 +2390,14 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2428,292,King Swing,2024,3,Intermediate,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 2428,292,King Swing,2024,3,Newcomer,West Coast Swing,3,4,matched,matched,matched,10,15,60,118,t,f
 2428,292,King Swing,2024,3,Novice,West Coast Swing,5,5,matched,matched,matched,15,15,160,258,t,f
-1002,92,Mid-Atlantic Dance Jam,2024,3,Advanced,West Coast Swing,4,5,matched,matched,matched,15,15,120,208,t,f
-1002,92,Mid-Atlantic Dance Jam,2024,3,All-Star,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-1002,92,Mid-Atlantic Dance Jam,2024,3,Champion,West Coast Swing,3,2,matched,matched,matched,10,5,31,58,t,f
-1002,92,Mid-Atlantic Dance Jam,2024,3,Intermediate,West Coast Swing,5,5,matched,matched,matched,15,15,160,258,t,f
-1002,92,Mid-Atlantic Dance Jam,2024,3,Master,West Coast Swing,3,2,matched,matched,matched,10,5,31,58,t,f
-1002,92,Mid-Atlantic Dance Jam,2024,3,Newcomer,West Coast Swing,3,4,matched,matched,matched,10,14,60,118,t,f
-1002,92,Mid-Atlantic Dance Jam,2024,3,Novice,West Coast Swing,5,6,matched,matched,matched,15,15,210,,t,f
-1002,92,Mid-Atlantic Dance Jam,2024,3,Sophisticated,West Coast Swing,3,4,matched,matched,matched,10,15,60,118,t,f
+1002,92,MADjam,2024,3,Advanced,West Coast Swing,4,5,matched,matched,matched,15,15,120,208,t,f
+1002,92,MADjam,2024,3,All-Star,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+1002,92,MADjam,2024,3,Champion,West Coast Swing,3,2,matched,matched,matched,10,5,31,58,t,f
+1002,92,MADjam,2024,3,Intermediate,West Coast Swing,5,5,matched,matched,matched,15,15,160,258,t,f
+1002,92,MADjam,2024,3,Master,West Coast Swing,3,2,matched,matched,matched,10,5,31,58,t,f
+1002,92,MADjam,2024,3,Newcomer,West Coast Swing,3,4,matched,matched,matched,10,14,60,118,t,f
+1002,92,MADjam,2024,3,Novice,West Coast Swing,5,6,matched,matched,matched,15,15,210,,t,f
+1002,92,MADjam,2024,3,Sophisticated,West Coast Swing,3,4,matched,matched,matched,10,15,60,118,t,f
 1475,153,Novice Invitational,2024,3,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1475,153,Novice Invitational,2024,3,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 1475,153,Novice Invitational,2024,3,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
@@ -3091,19 +3091,19 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1873,203,Detonation Dance,2023,4,Newcomer,West Coast Swing,1,1,matched,matched,matched,2,3,10,20,t,f
 1873,203,Detonation Dance,2023,4,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 1873,203,Detonation Dance,2023,4,Sophisticated,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
+237,18,Easter Swing,2023,4,Advanced,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+237,18,Easter Swing,2023,4,All-Star,West Coast Swing,4,3,matched,matched,matched,15,10,60,118,t,f
+237,18,Easter Swing,2023,4,Champion,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+237,18,Easter Swing,2023,4,Intermediate,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+237,18,Easter Swing,2023,4,Master,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+237,18,Easter Swing,2023,4,Newcomer,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+237,18,Easter Swing,2023,4,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 1915,210,Korean Open WCS Championships,2023,4,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 1915,210,Korean Open WCS Championships,2023,4,All-Star,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
 1915,210,Korean Open WCS Championships,2023,4,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1915,210,Korean Open WCS Championships,2023,4,Master,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 1915,210,Korean Open WCS Championships,2023,4,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
 1915,210,Korean Open WCS Championships,2023,4,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-237,18,Seattle's Easter Swing,2023,4,Advanced,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-237,18,Seattle's Easter Swing,2023,4,All-Star,West Coast Swing,4,3,matched,matched,matched,15,10,60,118,t,f
-237,18,Seattle's Easter Swing,2023,4,Champion,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-237,18,Seattle's Easter Swing,2023,4,Intermediate,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-237,18,Seattle's Easter Swing,2023,4,Master,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-237,18,Seattle's Easter Swing,2023,4,Newcomer,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-237,18,Seattle's Easter Swing,2023,4,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 2245,259,Swingover,2023,4,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 2245,259,Swingover,2023,4,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 2245,259,Swingover,2023,4,Intermediate,West Coast Swing,3,4,matched,matched,matched,10,15,60,118,t,f
@@ -3139,14 +3139,14 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2427,292,King Swing,2023,3,Intermediate,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 2427,292,King Swing,2023,3,Newcomer,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 2427,292,King Swing,2023,3,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-1001,92,Mid-Atlantic Dance Jam,2023,3,Advanced,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-1001,92,Mid-Atlantic Dance Jam,2023,3,All-Star,West Coast Swing,3,4,matched,matched,matched,10,15,60,118,t,f
-1001,92,Mid-Atlantic Dance Jam,2023,3,Champion,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-1001,92,Mid-Atlantic Dance Jam,2023,3,Intermediate,West Coast Swing,5,5,matched,matched,matched,15,15,160,258,t,f
-1001,92,Mid-Atlantic Dance Jam,2023,3,Master,West Coast Swing,2,3,matched,matched,matched,5,9,31,58,t,f
-1001,92,Mid-Atlantic Dance Jam,2023,3,Newcomer,West Coast Swing,4,5,matched,matched,matched,15,15,120,208,t,f
-1001,92,Mid-Atlantic Dance Jam,2023,3,Novice,West Coast Swing,5,5,matched,matched,matched,15,15,160,258,t,f
-1001,92,Mid-Atlantic Dance Jam,2023,3,Sophisticated,West Coast Swing,3,4,matched,matched,matched,10,15,60,118,t,f
+1001,92,MADjam,2023,3,Advanced,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+1001,92,MADjam,2023,3,All-Star,West Coast Swing,3,4,matched,matched,matched,10,15,60,118,t,f
+1001,92,MADjam,2023,3,Champion,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+1001,92,MADjam,2023,3,Intermediate,West Coast Swing,5,5,matched,matched,matched,15,15,160,258,t,f
+1001,92,MADjam,2023,3,Master,West Coast Swing,2,3,matched,matched,matched,5,9,31,58,t,f
+1001,92,MADjam,2023,3,Newcomer,West Coast Swing,4,5,matched,matched,matched,15,15,120,208,t,f
+1001,92,MADjam,2023,3,Novice,West Coast Swing,5,5,matched,matched,matched,15,15,160,258,t,f
+1001,92,MADjam,2023,3,Sophisticated,West Coast Swing,3,4,matched,matched,matched,10,15,60,118,t,f
 1474,153,Novice Invitational,2023,3,Advanced,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 1474,153,Novice Invitational,2023,3,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 1474,153,Novice Invitational,2023,3,Intermediate,West Coast Swing,3,2,matched,matched,matched,10,5,31,58,t,f
@@ -3657,13 +3657,13 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1872,203,Detonation Dance,2022,4,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
 1872,203,Detonation Dance,2022,4,Master,West Coast Swing,1,1,ambiguous,matched,ambiguous,2,3,10,20,t,f
 1872,203,Detonation Dance,2022,4,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
-236,18,Seattle's Easter Swing,2022,4,Advanced,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
-236,18,Seattle's Easter Swing,2022,4,All-Star,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
-236,18,Seattle's Easter Swing,2022,4,Champion,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
-236,18,Seattle's Easter Swing,2022,4,Intermediate,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
-236,18,Seattle's Easter Swing,2022,4,Master,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-236,18,Seattle's Easter Swing,2022,4,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-236,18,Seattle's Easter Swing,2022,4,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+236,18,Easter Swing,2022,4,Advanced,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
+236,18,Easter Swing,2022,4,All-Star,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
+236,18,Easter Swing,2022,4,Champion,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
+236,18,Easter Swing,2022,4,Intermediate,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
+236,18,Easter Swing,2022,4,Master,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+236,18,Easter Swing,2022,4,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+236,18,Easter Swing,2022,4,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 2244,259,Swingover,2022,4,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 2244,259,Swingover,2022,4,All-Star,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
 2244,259,Swingover,2022,4,Intermediate,West Coast Swing,3,3,matched,matched,matched,11,11,40,78,t,f
@@ -3687,13 +3687,13 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2426,292,King Swing,2022,3,Intermediate,West Coast Swing,4,3,matched,matched,matched,15,12,60,118,t,f
 2426,292,King Swing,2022,3,Newcomer,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 2426,292,King Swing,2022,3,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-1000,92,Mid-Atlantic Dance Jam,2022,3,Advanced,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-1000,92,Mid-Atlantic Dance Jam,2022,3,All-Star,West Coast Swing,3,3,matched,matched,matched,11,11,40,78,t,f
-1000,92,Mid-Atlantic Dance Jam,2022,3,Champion,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-1000,92,Mid-Atlantic Dance Jam,2022,3,Intermediate,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-1000,92,Mid-Atlantic Dance Jam,2022,3,Master,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-1000,92,Mid-Atlantic Dance Jam,2022,3,Newcomer,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
-1000,92,Mid-Atlantic Dance Jam,2022,3,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+1000,92,MADjam,2022,3,Advanced,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+1000,92,MADjam,2022,3,All-Star,West Coast Swing,3,3,matched,matched,matched,11,11,40,78,t,f
+1000,92,MADjam,2022,3,Champion,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+1000,92,MADjam,2022,3,Intermediate,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+1000,92,MADjam,2022,3,Master,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+1000,92,MADjam,2022,3,Newcomer,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
+1000,92,MADjam,2022,3,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 1473,153,Novice Invitational,2022,3,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 1473,153,Novice Invitational,2022,3,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 1473,153,Novice Invitational,2022,3,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
@@ -3899,13 +3899,13 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2524,330,Simply Adelaide West Coast Swing,2020,11,Novice,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 1691,179,New Zealand Open Swing Dance Championships,2020,10,Intermediate,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 1691,179,New Zealand Open Swing Dance Championships,2020,10,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-999,92,Mid-Atlantic Dance Jam,2020,3,Advanced,West Coast Swing,4,4,matched,matched,matched,10,10,80,158,t,f
-999,92,Mid-Atlantic Dance Jam,2020,3,All-Star,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
-999,92,Mid-Atlantic Dance Jam,2020,3,Champion,West Coast Swing,2,3,matched,matched,matched,5,9,31,58,t,f
-999,92,Mid-Atlantic Dance Jam,2020,3,Intermediate,West Coast Swing,5,5,matched,matched,matched,15,15,160,258,t,f
-999,92,Mid-Atlantic Dance Jam,2020,3,Master,West Coast Swing,3,3,matched,matched,matched,11,11,40,78,t,f
-999,92,Mid-Atlantic Dance Jam,2020,3,Newcomer,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-999,92,Mid-Atlantic Dance Jam,2020,3,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+999,92,MADjam,2020,3,Advanced,West Coast Swing,4,4,matched,matched,matched,10,10,80,158,t,f
+999,92,MADjam,2020,3,All-Star,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
+999,92,MADjam,2020,3,Champion,West Coast Swing,2,3,matched,matched,matched,5,9,31,58,t,f
+999,92,MADjam,2020,3,Intermediate,West Coast Swing,5,5,matched,matched,matched,15,15,160,258,t,f
+999,92,MADjam,2020,3,Master,West Coast Swing,3,3,matched,matched,matched,11,11,40,78,t,f
+999,92,MADjam,2020,3,Newcomer,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+999,92,MADjam,2020,3,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 166,12,Capital Swing Dance Convention,2020,2,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 166,12,Capital Swing Dance Convention,2020,2,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 166,12,Capital Swing Dance Convention,2020,2,Champion,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
@@ -4564,6 +4564,13 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1871,203,Detonation Dance,2019,4,Master,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
 1871,203,Detonation Dance,2019,4,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 1871,203,Detonation Dance,2019,4,Novice,West Coast Swing,3,3,matched,matched,matched,8,8,40,78,t,f
+235,18,Easter Swing,2019,4,Advanced,West Coast Swing,3,4,matched,matched,matched,12,12,60,118,t,f
+235,18,Easter Swing,2019,4,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+235,18,Easter Swing,2019,4,Champion,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+235,18,Easter Swing,2019,4,Intermediate,West Coast Swing,3,4,matched,matched,matched,12,12,60,118,t,f
+235,18,Easter Swing,2019,4,Master,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+235,18,Easter Swing,2019,4,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+235,18,Easter Swing,2019,4,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 2474,306,Go West Swing Fest,2019,4,Intermediate,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 2474,306,Go West Swing Fest,2019,4,Newcomer,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 2474,306,Go West Swing Fest,2019,4,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
@@ -4577,13 +4584,6 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1981,217,San Diego Dance Festival,2019,4,Intermediate,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 1981,217,San Diego Dance Festival,2019,4,Master,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
 1981,217,San Diego Dance Festival,2019,4,Novice,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-235,18,Seattle's Easter Swing,2019,4,Advanced,West Coast Swing,3,4,matched,matched,matched,12,12,60,118,t,f
-235,18,Seattle's Easter Swing,2019,4,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-235,18,Seattle's Easter Swing,2019,4,Champion,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-235,18,Seattle's Easter Swing,2019,4,Intermediate,West Coast Swing,3,4,matched,matched,matched,12,12,60,118,t,f
-235,18,Seattle's Easter Swing,2019,4,Master,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-235,18,Seattle's Easter Swing,2019,4,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-235,18,Seattle's Easter Swing,2019,4,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 1297,134,Swing Dance America,2019,4,Advanced,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
 1297,134,Swing Dance America,2019,4,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 1297,134,Swing Dance America,2019,4,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
@@ -4640,13 +4640,13 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2425,292,King Swing,2019,3,Intermediate,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
 2425,292,King Swing,2019,3,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,11,31,58,t,f
 2425,292,King Swing,2019,3,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-998,92,Mid-Atlantic Dance Jam,2019,3,Advanced,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-998,92,Mid-Atlantic Dance Jam,2019,3,All-Star,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-998,92,Mid-Atlantic Dance Jam,2019,3,Champion,West Coast Swing,3,3,matched,matched,matched,10,9,40,78,t,f
-998,92,Mid-Atlantic Dance Jam,2019,3,Intermediate,West Coast Swing,5,4,matched,matched,matched,15,15,120,208,t,f
-998,92,Mid-Atlantic Dance Jam,2019,3,Master,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
-998,92,Mid-Atlantic Dance Jam,2019,3,Newcomer,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
-998,92,Mid-Atlantic Dance Jam,2019,3,Novice,West Coast Swing,4,5,matched,matched,matched,15,15,120,208,t,f
+998,92,MADjam,2019,3,Advanced,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+998,92,MADjam,2019,3,All-Star,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+998,92,MADjam,2019,3,Champion,West Coast Swing,3,3,matched,matched,matched,10,9,40,78,t,f
+998,92,MADjam,2019,3,Intermediate,West Coast Swing,5,4,matched,matched,matched,15,15,120,208,t,f
+998,92,MADjam,2019,3,Master,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
+998,92,MADjam,2019,3,Newcomer,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
+998,92,MADjam,2019,3,Novice,West Coast Swing,4,5,matched,matched,matched,15,15,120,208,t,f
 1472,153,Novice Invitational,2019,3,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 1472,153,Novice Invitational,2019,3,All-Star,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
 1472,153,Novice Invitational,2019,3,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
@@ -5335,6 +5335,14 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1870,203,Detonation Dance,2018,4,Master,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 1870,203,Detonation Dance,2018,4,Newcomer,West Coast Swing,1,1,ambiguous,matched,ambiguous,2,3,10,20,t,f
 1870,203,Detonation Dance,2018,4,Novice,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+234,18,Easter Swing,2018,4,Advanced,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
+234,18,Easter Swing,2018,4,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+234,18,Easter Swing,2018,4,Champion,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+234,18,Easter Swing,2018,4,Intermediate,West Coast Swing,3,4,matched,matched,matched,12,13,60,118,t,f
+234,18,Easter Swing,2018,4,Juniors,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+234,18,Easter Swing,2018,4,Master,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+234,18,Easter Swing,2018,4,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+234,18,Easter Swing,2018,4,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 2195,253,Nordic WCS Championships,2018,4,Advanced,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 2195,253,Nordic WCS Championships,2018,4,All-Star,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
 2195,253,Nordic WCS Championships,2018,4,Intermediate,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
@@ -5345,14 +5353,6 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1980,217,San Diego Dance Festival,2018,4,Intermediate,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 1980,217,San Diego Dance Festival,2018,4,Master,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
 1980,217,San Diego Dance Festival,2018,4,Novice,West Coast Swing,2,3,matched,matched,matched,5,7,31,58,t,f
-234,18,Seattle's Easter Swing,2018,4,Advanced,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
-234,18,Seattle's Easter Swing,2018,4,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-234,18,Seattle's Easter Swing,2018,4,Champion,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-234,18,Seattle's Easter Swing,2018,4,Intermediate,West Coast Swing,3,4,matched,matched,matched,12,13,60,118,t,f
-234,18,Seattle's Easter Swing,2018,4,Juniors,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-234,18,Seattle's Easter Swing,2018,4,Master,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-234,18,Seattle's Easter Swing,2018,4,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-234,18,Seattle's Easter Swing,2018,4,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 1883,205,SOswing,2018,4,Advanced,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
 1883,205,SOswing,2018,4,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 1883,205,SOswing,2018,4,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
@@ -5401,13 +5401,13 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2424,292,King Swing,2018,3,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 2424,292,King Swing,2018,3,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,11,31,58,t,f
 2424,292,King Swing,2018,3,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-997,92,Mid-Atlantic Dance Jam,2018,3,Advanced,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-997,92,Mid-Atlantic Dance Jam,2018,3,All-Star,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-997,92,Mid-Atlantic Dance Jam,2018,3,Champion,West Coast Swing,3,2,matched,matched,matched,10,5,31,58,t,f
-997,92,Mid-Atlantic Dance Jam,2018,3,Intermediate,West Coast Swing,5,5,matched,matched,matched,15,15,160,258,t,f
-997,92,Mid-Atlantic Dance Jam,2018,3,Master,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
-997,92,Mid-Atlantic Dance Jam,2018,3,Newcomer,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-997,92,Mid-Atlantic Dance Jam,2018,3,Novice,West Coast Swing,5,5,matched,matched,matched,14,15,160,258,t,f
+997,92,MADjam,2018,3,Advanced,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+997,92,MADjam,2018,3,All-Star,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+997,92,MADjam,2018,3,Champion,West Coast Swing,3,2,matched,matched,matched,10,5,31,58,t,f
+997,92,MADjam,2018,3,Intermediate,West Coast Swing,5,5,matched,matched,matched,15,15,160,258,t,f
+997,92,MADjam,2018,3,Master,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
+997,92,MADjam,2018,3,Newcomer,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+997,92,MADjam,2018,3,Novice,West Coast Swing,5,5,matched,matched,matched,14,15,160,258,t,f
 1471,153,Novice Invitational,2018,3,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 1471,153,Novice Invitational,2018,3,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
 1471,153,Novice Invitational,2018,3,Master,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
@@ -6072,6 +6072,13 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1869,203,Detonation Dance,2017,4,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
 1869,203,Detonation Dance,2017,4,Newcomer,West Coast Swing,1,1,matched,matched,matched,4,5,10,30,t,f
 1869,203,Detonation Dance,2017,4,Novice,West Coast Swing,1,2,matched,matched,matched,5,10,21,54,t,f
+233,18,Easter Swing,2017,4,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+233,18,Easter Swing,2017,4,All-Star,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+233,18,Easter Swing,2017,4,Champion,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
+233,18,Easter Swing,2017,4,Intermediate,West Coast Swing,3,3,matched,matched,matched,15,15,80,,t,f
+233,18,Easter Swing,2017,4,Master,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+233,18,Easter Swing,2017,4,Newcomer,West Coast Swing,1,2,matched,matched,matched,5,6,21,54,t,f
+233,18,Easter Swing,2017,4,Novice,West Coast Swing,3,3,matched,matched,matched,15,15,80,,t,f
 2194,253,Nordic WCS Championships,2017,4,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
 2194,253,Nordic WCS Championships,2017,4,All-Star,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 2194,253,Nordic WCS Championships,2017,4,Intermediate,West Coast Swing,2,3,matched,matched,matched,10,15,56,,t,f
@@ -6085,13 +6092,6 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1979,217,San Diego Dance Festival,2017,4,Intermediate,West Coast Swing,1,2,matched,matched,matched,5,10,21,54,t,f
 1979,217,San Diego Dance Festival,2017,4,Master,West Coast Swing,1,2,matched,matched,matched,5,10,21,54,t,f
 1979,217,San Diego Dance Festival,2017,4,Novice,West Coast Swing,1,2,matched,matched,matched,5,10,21,54,t,f
-233,18,Seattle's Easter Swing,2017,4,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-233,18,Seattle's Easter Swing,2017,4,All-Star,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-233,18,Seattle's Easter Swing,2017,4,Champion,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
-233,18,Seattle's Easter Swing,2017,4,Intermediate,West Coast Swing,3,3,matched,matched,matched,15,15,80,,t,f
-233,18,Seattle's Easter Swing,2017,4,Master,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-233,18,Seattle's Easter Swing,2017,4,Newcomer,West Coast Swing,1,2,matched,matched,matched,5,6,21,54,t,f
-233,18,Seattle's Easter Swing,2017,4,Novice,West Coast Swing,3,3,matched,matched,matched,15,15,80,,t,f
 1295,134,Swing Dance America,2017,4,Advanced,West Coast Swing,1,2,matched,matched,matched,5,10,21,54,t,f
 1295,134,Swing Dance America,2017,4,All-Star,West Coast Swing,1,2,matched,matched,matched,5,10,21,54,t,f
 1295,134,Swing Dance America,2017,4,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
@@ -6127,13 +6127,13 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1381,143,High Desert Dance Classic,2017,3,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
 1381,143,High Desert Dance Classic,2017,3,Master,West Coast Swing,1,2,matched,matched,matched,5,10,21,54,t,f
 1381,143,High Desert Dance Classic,2017,3,Novice,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-996,92,Mid-Atlantic Dance Jam,2017,3,Advanced,West Coast Swing,3,3,matched,matched,matched,15,15,80,,t,f
-996,92,Mid-Atlantic Dance Jam,2017,3,All-Star,West Coast Swing,3,3,matched,matched,matched,15,15,80,,t,f
-996,92,Mid-Atlantic Dance Jam,2017,3,Champion,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-996,92,Mid-Atlantic Dance Jam,2017,3,Intermediate,West Coast Swing,3,3,matched,matched,matched,15,15,80,,t,f
-996,92,Mid-Atlantic Dance Jam,2017,3,Master,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-996,92,Mid-Atlantic Dance Jam,2017,3,Newcomer,West Coast Swing,2,3,matched,matched,matched,10,15,56,,t,f
-996,92,Mid-Atlantic Dance Jam,2017,3,Novice,West Coast Swing,3,3,matched,matched,matched,15,15,80,,t,f
+996,92,MADjam,2017,3,Advanced,West Coast Swing,3,3,matched,matched,matched,15,15,80,,t,f
+996,92,MADjam,2017,3,All-Star,West Coast Swing,3,3,matched,matched,matched,15,15,80,,t,f
+996,92,MADjam,2017,3,Champion,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+996,92,MADjam,2017,3,Intermediate,West Coast Swing,3,3,matched,matched,matched,15,15,80,,t,f
+996,92,MADjam,2017,3,Master,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+996,92,MADjam,2017,3,Newcomer,West Coast Swing,2,3,matched,matched,matched,10,15,56,,t,f
+996,92,MADjam,2017,3,Novice,West Coast Swing,3,3,matched,matched,matched,15,15,80,,t,f
 1470,153,Novice Invitational,2017,3,Advanced,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1470,153,Novice Invitational,2017,3,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
 1470,153,Novice Invitational,2017,3,Master,West Coast Swing,1,2,matched,matched,matched,5,9,21,54,t,f
@@ -6775,18 +6775,24 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 108,9,Boston Tea Party,2016,3,Master,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 108,9,Boston Tea Party,2016,3,Newcomer,West Coast Swing,3,3,matched,matched,matched,15,15,80,,t,f
 108,9,Boston Tea Party,2016,3,Novice,West Coast Swing,2,3,matched,matched,matched,10,10,56,,t,f
+232,18,Easter Swing,2016,3,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+232,18,Easter Swing,2016,3,All-Star,West Coast Swing,2,1,matched,matched,matched,10,5,21,54,t,f
+232,18,Easter Swing,2016,3,Champion,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
+232,18,Easter Swing,2016,3,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,80,,t,f
+232,18,Easter Swing,2016,3,Master,West Coast Swing,1,2,matched,matched,matched,5,10,21,54,t,f
+232,18,Easter Swing,2016,3,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,80,,t,f
 1380,143,High Desert Dance Classic,2016,3,Advanced,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1380,143,High Desert Dance Classic,2016,3,All-Star,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1380,143,High Desert Dance Classic,2016,3,Intermediate,West Coast Swing,1,2,matched,matched,matched,5,10,21,54,t,f
 1380,143,High Desert Dance Classic,2016,3,Master,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1380,143,High Desert Dance Classic,2016,3,Novice,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-995,92,Mid-Atlantic Dance Jam,2016,3,Advanced,West Coast Swing,3,3,matched,matched,matched,12,12,80,,t,f
-995,92,Mid-Atlantic Dance Jam,2016,3,All-Star,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-995,92,Mid-Atlantic Dance Jam,2016,3,Champion,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-995,92,Mid-Atlantic Dance Jam,2016,3,Intermediate,West Coast Swing,3,3,matched,matched,matched,15,15,80,,t,f
-995,92,Mid-Atlantic Dance Jam,2016,3,Master,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-995,92,Mid-Atlantic Dance Jam,2016,3,Newcomer,West Coast Swing,2,3,matched,matched,matched,10,10,56,,t,f
-995,92,Mid-Atlantic Dance Jam,2016,3,Novice,West Coast Swing,3,3,matched,matched,matched,14,14,80,,t,f
+995,92,MADjam,2016,3,Advanced,West Coast Swing,3,3,matched,matched,matched,12,12,80,,t,f
+995,92,MADjam,2016,3,All-Star,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+995,92,MADjam,2016,3,Champion,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+995,92,MADjam,2016,3,Intermediate,West Coast Swing,3,3,matched,matched,matched,15,15,80,,t,f
+995,92,MADjam,2016,3,Master,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+995,92,MADjam,2016,3,Newcomer,West Coast Swing,2,3,matched,matched,matched,10,10,56,,t,f
+995,92,MADjam,2016,3,Novice,West Coast Swing,3,3,matched,matched,matched,14,14,80,,t,f
 1469,153,Novice Invitational,2016,3,Advanced,West Coast Swing,1,1,matched,matched,matched,5,4,10,30,t,f
 1469,153,Novice Invitational,2016,3,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
 1469,153,Novice Invitational,2016,3,Master,West Coast Swing,1,1,matched,matched,matched,5,4,10,30,t,f
@@ -6800,12 +6806,6 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1978,217,San Diego Dance Festival,2016,3,Intermediate,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1978,217,San Diego Dance Festival,2016,3,Master,West Coast Swing,1,2,matched,matched,matched,5,9,21,54,t,f
 1978,217,San Diego Dance Festival,2016,3,Novice,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
-232,18,Seattle's Easter Swing,2016,3,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-232,18,Seattle's Easter Swing,2016,3,All-Star,West Coast Swing,2,1,matched,matched,matched,10,5,21,54,t,f
-232,18,Seattle's Easter Swing,2016,3,Champion,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
-232,18,Seattle's Easter Swing,2016,3,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,80,,t,f
-232,18,Seattle's Easter Swing,2016,3,Master,West Coast Swing,1,2,matched,matched,matched,5,10,21,54,t,f
-232,18,Seattle's Easter Swing,2016,3,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,80,,t,f
 2240,259,Swingover,2016,3,Advanced,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 2240,259,Swingover,2016,3,All-Star,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 2240,259,Swingover,2016,3,Intermediate,West Coast Swing,2,1,matched,matched,matched,10,5,21,54,t,f
@@ -7354,17 +7354,17 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1867,203,Detonation Dance,2015,4,Advanced,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1867,203,Detonation Dance,2015,4,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
 1867,203,Detonation Dance,2015,4,Novice,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+231,18,Easter Swing,2015,4,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+231,18,Easter Swing,2015,4,All-Star,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+231,18,Easter Swing,2015,4,Champion,West Coast Swing,2,2,matched,matched,matched,8,8,32,78,t,f
+231,18,Easter Swing,2015,4,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,80,,t,f
+231,18,Easter Swing,2015,4,Master,West Coast Swing,2,2,matched,matched,matched,9,9,32,78,t,f
+231,18,Easter Swing,2015,4,Novice,West Coast Swing,3,3,matched,matched,matched,11,11,80,,t,f
 1977,217,San Diego Dance Festival,2015,4,Advanced,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1977,217,San Diego Dance Festival,2015,4,All-Star,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1977,217,San Diego Dance Festival,2015,4,Intermediate,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1977,217,San Diego Dance Festival,2015,4,Master,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1977,217,San Diego Dance Festival,2015,4,Novice,West Coast Swing,2,2,matched,matched,matched,8,8,32,78,t,f
-231,18,Seattle's Easter Swing,2015,4,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-231,18,Seattle's Easter Swing,2015,4,All-Star,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-231,18,Seattle's Easter Swing,2015,4,Champion,West Coast Swing,2,2,matched,matched,matched,8,8,32,78,t,f
-231,18,Seattle's Easter Swing,2015,4,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,80,,t,f
-231,18,Seattle's Easter Swing,2015,4,Master,West Coast Swing,2,2,matched,matched,matched,9,9,32,78,t,f
-231,18,Seattle's Easter Swing,2015,4,Novice,West Coast Swing,3,3,matched,matched,matched,11,11,80,,t,f
 1293,134,Swing Dance America,2015,4,Advanced,West Coast Swing,1,1,matched,matched,matched,5,4,10,30,t,f
 1293,134,Swing Dance America,2015,4,All-Star,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1293,134,Swing Dance America,2015,4,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
@@ -7406,13 +7406,13 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2182,245,Holy Land Open,2015,3,Intermediate,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 2182,245,Holy Land Open,2015,3,Newcomer,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 2182,245,Holy Land Open,2015,3,Novice,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-994,92,Mid-Atlantic Dance Jam,2015,3,Advanced,West Coast Swing,3,3,matched,matched,matched,15,15,80,,t,f
-994,92,Mid-Atlantic Dance Jam,2015,3,All-Star,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-994,92,Mid-Atlantic Dance Jam,2015,3,Champion,West Coast Swing,2,2,matched,matched,matched,9,9,32,78,t,f
-994,92,Mid-Atlantic Dance Jam,2015,3,Intermediate,West Coast Swing,3,3,matched,matched,matched,15,15,80,,t,f
-994,92,Mid-Atlantic Dance Jam,2015,3,Master,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-994,92,Mid-Atlantic Dance Jam,2015,3,Newcomer,West Coast Swing,3,3,matched,matched,matched,15,15,80,,t,f
-994,92,Mid-Atlantic Dance Jam,2015,3,Novice,West Coast Swing,3,3,matched,matched,matched,15,15,80,,t,f
+994,92,MADjam,2015,3,Advanced,West Coast Swing,3,3,matched,matched,matched,15,15,80,,t,f
+994,92,MADjam,2015,3,All-Star,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+994,92,MADjam,2015,3,Champion,West Coast Swing,2,2,matched,matched,matched,9,9,32,78,t,f
+994,92,MADjam,2015,3,Intermediate,West Coast Swing,3,3,matched,matched,matched,15,15,80,,t,f
+994,92,MADjam,2015,3,Master,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+994,92,MADjam,2015,3,Newcomer,West Coast Swing,3,3,matched,matched,matched,15,15,80,,t,f
+994,92,MADjam,2015,3,Novice,West Coast Swing,3,3,matched,matched,matched,15,15,80,,t,f
 1468,153,Novice Invitational,2015,3,Advanced,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1468,153,Novice Invitational,2015,3,Intermediate,West Coast Swing,1,2,matched,matched,matched,5,9,21,54,t,f
 1468,153,Novice Invitational,2015,3,Master,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
@@ -7929,6 +7929,12 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1866,203,Detonation Dance,2014,4,Intermediate,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1866,203,Detonation Dance,2014,4,Newcomer,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1866,203,Detonation Dance,2014,4,Novice,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+230,18,Easter Swing,2014,4,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+230,18,Easter Swing,2014,4,All-Star,West Coast Swing,2,1,matched,matched,matched,10,5,21,54,t,f
+230,18,Easter Swing,2014,4,Champion,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+230,18,Easter Swing,2014,4,Intermediate,West Coast Swing,2,3,matched,matched,matched,10,12,56,,t,f
+230,18,Easter Swing,2014,4,Master,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+230,18,Easter Swing,2014,4,Novice,West Coast Swing,3,3,matched,matched,matched,14,14,80,,t,f
 1994,219,KIWI Fest,2014,4,Intermediate,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1994,219,KIWI Fest,2014,4,Newcomer,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1994,219,KIWI Fest,2014,4,Novice,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
@@ -7937,12 +7943,6 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1976,217,San Diego Dance Festival,2014,4,Intermediate,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1976,217,San Diego Dance Festival,2014,4,Master,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1976,217,San Diego Dance Festival,2014,4,Novice,West Coast Swing,1,2,matched,matched,matched,5,10,21,54,t,f
-230,18,Seattle's Easter Swing,2014,4,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-230,18,Seattle's Easter Swing,2014,4,All-Star,West Coast Swing,2,1,matched,matched,matched,10,5,21,54,t,f
-230,18,Seattle's Easter Swing,2014,4,Champion,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-230,18,Seattle's Easter Swing,2014,4,Intermediate,West Coast Swing,2,3,matched,matched,matched,10,12,56,,t,f
-230,18,Seattle's Easter Swing,2014,4,Master,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-230,18,Seattle's Easter Swing,2014,4,Novice,West Coast Swing,3,3,matched,matched,matched,14,14,80,,t,f
 1292,134,Swing Dance America,2014,4,Advanced,West Coast Swing,1,2,matched,matched,matched,5,10,21,54,t,f
 1292,134,Swing Dance America,2014,4,All-Star,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1292,134,Swing Dance America,2014,4,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
@@ -7972,12 +7972,12 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1378,143,High Desert Dance Classic,2014,3,Intermediate,West Coast Swing,2,2,matched,matched,matched,9,9,32,78,t,f
 1378,143,High Desert Dance Classic,2014,3,Master,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1378,143,High Desert Dance Classic,2014,3,Novice,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-993,92,Mid-Atlantic Dance Jam,2014,3,Advanced,West Coast Swing,2,3,matched,matched,matched,10,14,56,,t,f
-993,92,Mid-Atlantic Dance Jam,2014,3,All-Star,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-993,92,Mid-Atlantic Dance Jam,2014,3,Champion,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-993,92,Mid-Atlantic Dance Jam,2014,3,Intermediate,West Coast Swing,3,3,matched,matched,matched,15,15,80,,t,f
-993,92,Mid-Atlantic Dance Jam,2014,3,Newcomer,West Coast Swing,2,3,matched,matched,matched,10,16,56,,t,f
-993,92,Mid-Atlantic Dance Jam,2014,3,Novice,West Coast Swing,3,3,matched,matched,matched,15,15,80,,t,f
+993,92,MADjam,2014,3,Advanced,West Coast Swing,2,3,matched,matched,matched,10,14,56,,t,f
+993,92,MADjam,2014,3,All-Star,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+993,92,MADjam,2014,3,Champion,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+993,92,MADjam,2014,3,Intermediate,West Coast Swing,3,3,matched,matched,matched,15,15,80,,t,f
+993,92,MADjam,2014,3,Newcomer,West Coast Swing,2,3,matched,matched,matched,10,16,56,,t,f
+993,92,MADjam,2014,3,Novice,West Coast Swing,3,3,matched,matched,matched,15,15,80,,t,f
 1467,153,Novice Invitational,2014,3,Advanced,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1467,153,Novice Invitational,2014,3,Intermediate,West Coast Swing,1,2,matched,matched,matched,5,10,21,54,t,f
 1467,153,Novice Invitational,2014,3,Master,West Coast Swing,1,1,matched,matched,matched,4,5,10,30,t,f
@@ -8453,30 +8453,30 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 105,9,Boston Tea Party,2013,3,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
 105,9,Boston Tea Party,2013,3,Newcomer,West Coast Swing,2,3,matched,matched,matched,10,13,56,,t,f
 105,9,Boston Tea Party,2013,3,Novice,West Coast Swing,2,3,matched,matched,matched,10,14,56,,t,f
+229,18,Easter Swing,2013,3,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+229,18,Easter Swing,2013,3,All-Star,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
+229,18,Easter Swing,2013,3,Champion,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
+229,18,Easter Swing,2013,3,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+229,18,Easter Swing,2013,3,Master,West Coast Swing,2,1,matched,matched,matched,8,5,21,54,t,f
+229,18,Easter Swing,2013,3,Novice,West Coast Swing,3,3,matched,matched,matched,15,15,80,,t,f
 1377,143,High Desert Dance Classic,2013,3,Advanced,West Coast Swing,1,1,matched,matched,matched,5,4,10,30,t,f
 1377,143,High Desert Dance Classic,2013,3,All-Star,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1377,143,High Desert Dance Classic,2013,3,Intermediate,West Coast Swing,1,2,matched,matched,matched,5,9,21,54,t,f
 1377,143,High Desert Dance Classic,2013,3,Master,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1377,143,High Desert Dance Classic,2013,3,Novice,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-992,92,Mid-Atlantic Dance Jam,2013,3,Advanced,West Coast Swing,2,3,matched,matched,matched,10,11,56,,t,f
-992,92,Mid-Atlantic Dance Jam,2013,3,All-Star,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-992,92,Mid-Atlantic Dance Jam,2013,3,Champion,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-992,92,Mid-Atlantic Dance Jam,2013,3,Intermediate,West Coast Swing,3,3,matched,matched,matched,14,14,80,,t,f
-992,92,Mid-Atlantic Dance Jam,2013,3,Juniors,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
-992,92,Mid-Atlantic Dance Jam,2013,3,Newcomer,West Coast Swing,2,3,matched,matched,matched,10,12,56,,t,f
-992,92,Mid-Atlantic Dance Jam,2013,3,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,80,,t,f
+992,92,MADjam,2013,3,Advanced,West Coast Swing,2,3,matched,matched,matched,10,11,56,,t,f
+992,92,MADjam,2013,3,All-Star,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+992,92,MADjam,2013,3,Champion,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+992,92,MADjam,2013,3,Intermediate,West Coast Swing,3,3,matched,matched,matched,14,14,80,,t,f
+992,92,MADjam,2013,3,Juniors,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
+992,92,MADjam,2013,3,Newcomer,West Coast Swing,2,3,matched,matched,matched,10,12,56,,t,f
+992,92,MADjam,2013,3,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,80,,t,f
 1466,153,Novice Invitational,2013,3,Advanced,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1466,153,Novice Invitational,2013,3,Intermediate,West Coast Swing,1,2,matched,matched,matched,5,10,21,54,t,f
 1466,153,Novice Invitational,2013,3,Novice,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
 1617,170,Russian Open WCS Championships,2013,3,Advanced,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1617,170,Russian Open WCS Championships,2013,3,Intermediate,West Coast Swing,2,1,matched,matched,matched,10,5,21,54,t,f
 1617,170,Russian Open WCS Championships,2013,3,Novice,West Coast Swing,3,3,matched,matched,matched,17,17,80,,t,f
-229,18,Seattle's Easter Swing,2013,3,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-229,18,Seattle's Easter Swing,2013,3,All-Star,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
-229,18,Seattle's Easter Swing,2013,3,Champion,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
-229,18,Seattle's Easter Swing,2013,3,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-229,18,Seattle's Easter Swing,2013,3,Master,West Coast Swing,2,1,matched,matched,matched,8,5,21,54,t,f
-229,18,Seattle's Easter Swing,2013,3,Novice,West Coast Swing,3,3,matched,matched,matched,15,15,80,,t,f
 1361,142,The Chicago Classic,2013,3,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
 1361,142,The Chicago Classic,2013,3,All-Star,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
 1361,142,The Chicago Classic,2013,3,Champion,West Coast Swing,1,2,matched,matched,matched,5,9,21,54,t,f
@@ -8852,16 +8852,16 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1762,187,City of Angels WCS,2012,4,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
 1762,187,City of Angels WCS,2012,4,Master,West Coast Swing,2,2,matched,matched,matched,9,9,32,78,t,f
 1762,187,City of Angels WCS,2012,4,Novice,West Coast Swing,2,3,matched,matched,matched,10,13,56,,t,f
+228,18,Easter Swing,2012,4,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+228,18,Easter Swing,2012,4,All-Star,West Coast Swing,2,1,matched,matched,matched,10,5,21,54,t,f
+228,18,Easter Swing,2012,4,Champion,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
+228,18,Easter Swing,2012,4,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,80,,t,f
+228,18,Easter Swing,2012,4,Master,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+228,18,Easter Swing,2012,4,Novice,West Coast Swing,3,3,matched,matched,matched,13,13,80,,t,f
 1627,172,International Hustle & Salsa Congress,2012,4,Advanced,West Coast Swing,1,1,matched,matched,matched,4,4,10,30,t,f
 1627,172,International Hustle & Salsa Congress,2012,4,Intermediate,West Coast Swing,1,1,matched,matched,matched,4,5,10,30,t,f
 1627,172,International Hustle & Salsa Congress,2012,4,Master,West Coast Swing,1,1,matched,matched,matched,4,5,10,30,t,f
 1627,172,International Hustle & Salsa Congress,2012,4,Novice,West Coast Swing,1,2,matched,matched,matched,5,8,21,54,t,f
-228,18,Seattle's Easter Swing,2012,4,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-228,18,Seattle's Easter Swing,2012,4,All-Star,West Coast Swing,2,1,matched,matched,matched,10,5,21,54,t,f
-228,18,Seattle's Easter Swing,2012,4,Champion,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
-228,18,Seattle's Easter Swing,2012,4,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,80,,t,f
-228,18,Seattle's Easter Swing,2012,4,Master,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-228,18,Seattle's Easter Swing,2012,4,Novice,West Coast Swing,3,3,matched,matched,matched,13,13,80,,t,f
 1290,134,Swing Dance America,2012,4,Advanced,West Coast Swing,1,2,matched,matched,matched,5,9,21,54,t,f
 1290,134,Swing Dance America,2012,4,All-Star,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1290,134,Swing Dance America,2012,4,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
@@ -8894,13 +8894,13 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1376,143,High Desert Dance Classic,2012,3,Intermediate,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1376,143,High Desert Dance Classic,2012,3,Master,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1376,143,High Desert Dance Classic,2012,3,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,80,,t,f
-991,92,Mid-Atlantic Dance Jam,2012,3,Advanced,West Coast Swing,3,3,matched,matched,matched,9,9,80,,t,f
-991,92,Mid-Atlantic Dance Jam,2012,3,All-Star,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-991,92,Mid-Atlantic Dance Jam,2012,3,Champion,West Coast Swing,2,2,matched,matched,matched,9,9,32,78,t,f
-991,92,Mid-Atlantic Dance Jam,2012,3,Intermediate,West Coast Swing,3,3,matched,matched,matched,11,11,80,,t,f
-991,92,Mid-Atlantic Dance Jam,2012,3,Juniors,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
-991,92,Mid-Atlantic Dance Jam,2012,3,Newcomer,West Coast Swing,3,3,matched,matched,matched,11,11,80,,t,f
-991,92,Mid-Atlantic Dance Jam,2012,3,Novice,West Coast Swing,3,3,matched,matched,matched,9,9,80,,t,f
+991,92,MADjam,2012,3,Advanced,West Coast Swing,3,3,matched,matched,matched,9,9,80,,t,f
+991,92,MADjam,2012,3,All-Star,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+991,92,MADjam,2012,3,Champion,West Coast Swing,2,2,matched,matched,matched,9,9,32,78,t,f
+991,92,MADjam,2012,3,Intermediate,West Coast Swing,3,3,matched,matched,matched,11,11,80,,t,f
+991,92,MADjam,2012,3,Juniors,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
+991,92,MADjam,2012,3,Newcomer,West Coast Swing,3,3,matched,matched,matched,11,11,80,,t,f
+991,92,MADjam,2012,3,Novice,West Coast Swing,3,3,matched,matched,matched,9,9,80,,t,f
 1465,153,Novice Invitational,2012,3,Advanced,West Coast Swing,1,1,matched,matched,matched,5,4,10,30,t,f
 1465,153,Novice Invitational,2012,3,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
 1465,153,Novice Invitational,2012,3,Novice,West Coast Swing,2,3,matched,matched,matched,10,13,56,,t,f
@@ -9239,6 +9239,12 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 295,22,USA Grand Nationals,2011,5,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
 295,22,USA Grand Nationals,2011,5,Intermediate,West Coast Swing,1,2,matched,matched,matched,5,10,21,54,t,f
 295,22,USA Grand Nationals,2011,5,Novice,West Coast Swing,3,3,matched,matched,matched,13,13,80,,t,f
+227,18,Easter Swing,2011,4,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+227,18,Easter Swing,2011,4,All-Star,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+227,18,Easter Swing,2011,4,Champion,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
+227,18,Easter Swing,2011,4,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+227,18,Easter Swing,2011,4,Master,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+227,18,Easter Swing,2011,4,Novice,West Coast Swing,3,3,matched,matched,matched,11,11,80,,t,f
 1626,172,International Hustle & Salsa Congress,2011,4,Advanced,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1626,172,International Hustle & Salsa Congress,2011,4,Intermediate,West Coast Swing,1,1,matched,matched,matched,5,4,10,30,t,f
 1626,172,International Hustle & Salsa Congress,2011,4,Master,West Coast Swing,1,1,matched,matched,matched,4,5,10,30,t,f
@@ -9256,12 +9262,6 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 982,91,Reno Dance Sensation,2011,4,Newcomer,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 982,91,Reno Dance Sensation,2011,4,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,80,,t,f
 1615,170,Russian Open WCS Championships,2011,4,Novice,West Coast Swing,3,3,matched,matched,matched,11,11,80,,t,f
-227,18,Seattle's Easter Swing,2011,4,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-227,18,Seattle's Easter Swing,2011,4,All-Star,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-227,18,Seattle's Easter Swing,2011,4,Champion,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
-227,18,Seattle's Easter Swing,2011,4,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-227,18,Seattle's Easter Swing,2011,4,Master,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-227,18,Seattle's Easter Swing,2011,4,Novice,West Coast Swing,3,3,matched,matched,matched,11,11,80,,t,f
 1274,132,Tulsa Spring Swing,2011,4,Advanced,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1274,132,Tulsa Spring Swing,2011,4,Intermediate,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1274,132,Tulsa Spring Swing,2011,4,Master,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
@@ -9283,12 +9283,12 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1375,143,High Desert Dance Classic,2011,3,All-Star,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1375,143,High Desert Dance Classic,2011,3,Intermediate,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1375,143,High Desert Dance Classic,2011,3,Novice,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-990,92,Mid-Atlantic Dance Jam,2011,3,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-990,92,Mid-Atlantic Dance Jam,2011,3,All-Star,West Coast Swing,2,2,matched,matched,matched,8,8,32,78,t,f
-990,92,Mid-Atlantic Dance Jam,2011,3,Champion,West Coast Swing,2,2,matched,matched,matched,9,9,32,78,t,f
-990,92,Mid-Atlantic Dance Jam,2011,3,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,80,,t,f
-990,92,Mid-Atlantic Dance Jam,2011,3,Newcomer,West Coast Swing,2,3,matched,matched,matched,10,15,56,,t,f
-990,92,Mid-Atlantic Dance Jam,2011,3,Novice,West Coast Swing,3,3,matched,matched,matched,13,13,80,,t,f
+990,92,MADjam,2011,3,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+990,92,MADjam,2011,3,All-Star,West Coast Swing,2,2,matched,matched,matched,8,8,32,78,t,f
+990,92,MADjam,2011,3,Champion,West Coast Swing,2,2,matched,matched,matched,9,9,32,78,t,f
+990,92,MADjam,2011,3,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,80,,t,f
+990,92,MADjam,2011,3,Newcomer,West Coast Swing,2,3,matched,matched,matched,10,15,56,,t,f
+990,92,MADjam,2011,3,Novice,West Coast Swing,3,3,matched,matched,matched,13,13,80,,t,f
 1464,153,Novice Invitational,2011,3,Advanced,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1464,153,Novice Invitational,2011,3,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,32,78,t,f
 1464,153,Novice Invitational,2011,3,Novice,West Coast Swing,2,3,matched,matched,matched,10,15,56,,t,f
@@ -9589,18 +9589,18 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 836,73,World Swing Dance Championships,2010,5,Master,West Coast Swing,1,1,matched,matched,matched,5,4,10,30,t,f
 836,73,World Swing Dance Championships,2010,5,Novice,West Coast Swing,2,2,matched,matched,matched,9,10,32,78,t,f
 1128,116,Calgary Dance Stampede,2010,4,Novice,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
+226,18,Easter Swing,2010,4,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+226,18,Easter Swing,2010,4,All-Star,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
+226,18,Easter Swing,2010,4,Champion,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
+226,18,Easter Swing,2010,4,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+226,18,Easter Swing,2010,4,Master,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
+226,18,Easter Swing,2010,4,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,80,,t,f
 1064,104,Los Angeles Premiere Dance Classic,2010,4,Advanced,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1064,104,Los Angeles Premiere Dance Classic,2010,4,All-Star,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1064,104,Los Angeles Premiere Dance Classic,2010,4,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
 1064,104,Los Angeles Premiere Dance Classic,2010,4,Juniors,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1064,104,Los Angeles Premiere Dance Classic,2010,4,Master,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1064,104,Los Angeles Premiere Dance Classic,2010,4,Novice,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-226,18,Seattle's Easter Swing,2010,4,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-226,18,Seattle's Easter Swing,2010,4,All-Star,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
-226,18,Seattle's Easter Swing,2010,4,Champion,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
-226,18,Seattle's Easter Swing,2010,4,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-226,18,Seattle's Easter Swing,2010,4,Master,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
-226,18,Seattle's Easter Swing,2010,4,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,80,,t,f
 1288,134,Swing Dance America,2010,4,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
 1288,134,Swing Dance America,2010,4,All-Star,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1288,134,Swing Dance America,2010,4,Intermediate,West Coast Swing,2,2,matched,matched,matched,9,9,32,78,t,f
@@ -9629,12 +9629,12 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1374,143,High Desert Dance Classic,2010,3,Intermediate,West Coast Swing,1,1,matched,matched,matched,4,5,10,30,t,f
 1374,143,High Desert Dance Classic,2010,3,Juniors,West Coast Swing,1,1,matched,matched,matched,4,5,10,30,t,f
 1374,143,High Desert Dance Classic,2010,3,Novice,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-989,92,Mid-Atlantic Dance Jam,2010,3,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-989,92,Mid-Atlantic Dance Jam,2010,3,All-Star,West Coast Swing,2,2,matched,matched,matched,8,8,32,78,t,f
-989,92,Mid-Atlantic Dance Jam,2010,3,Champion,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
-989,92,Mid-Atlantic Dance Jam,2010,3,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-989,92,Mid-Atlantic Dance Jam,2010,3,Newcomer,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-989,92,Mid-Atlantic Dance Jam,2010,3,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,80,,t,f
+989,92,MADjam,2010,3,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+989,92,MADjam,2010,3,All-Star,West Coast Swing,2,2,matched,matched,matched,8,8,32,78,t,f
+989,92,MADjam,2010,3,Champion,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
+989,92,MADjam,2010,3,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+989,92,MADjam,2010,3,Newcomer,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+989,92,MADjam,2010,3,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,80,,t,f
 1463,153,Novice Invitational,2010,3,Advanced,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1463,153,Novice Invitational,2010,3,Intermediate,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1463,153,Novice Invitational,2010,3,Novice,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
@@ -9930,17 +9930,17 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 293,22,USA Grand Nationals,2009,5,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
 293,22,USA Grand Nationals,2009,5,Novice,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
 1127,116,Calgary Dance Stampede,2009,4,Novice,West Coast Swing,2,2,matched,matched,matched,9,11,32,78,t,f
+225,18,Easter Swing,2009,4,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+225,18,Easter Swing,2009,4,All-Star,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
+225,18,Easter Swing,2009,4,Champion,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
+225,18,Easter Swing,2009,4,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+225,18,Easter Swing,2009,4,Master,West Coast Swing,2,2,matched,matched,matched,11,9,32,78,t,f
+225,18,Easter Swing,2009,4,Novice,West Coast Swing,3,3,matched,matched,matched,13,13,80,,t,f
 1063,104,Los Angeles Premiere Dance Classic,2009,4,Advanced,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1063,104,Los Angeles Premiere Dance Classic,2009,4,Champion,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1063,104,Los Angeles Premiere Dance Classic,2009,4,Intermediate,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1063,104,Los Angeles Premiere Dance Classic,2009,4,Master,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
 1063,104,Los Angeles Premiere Dance Classic,2009,4,Novice,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-225,18,Seattle's Easter Swing,2009,4,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-225,18,Seattle's Easter Swing,2009,4,All-Star,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
-225,18,Seattle's Easter Swing,2009,4,Champion,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
-225,18,Seattle's Easter Swing,2009,4,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-225,18,Seattle's Easter Swing,2009,4,Master,West Coast Swing,2,2,matched,matched,matched,11,9,32,78,t,f
-225,18,Seattle's Easter Swing,2009,4,Novice,West Coast Swing,3,3,matched,matched,matched,13,13,80,,t,f
 1287,134,Swing Dance America,2009,4,Advanced,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1287,134,Swing Dance America,2009,4,All-Star,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1287,134,Swing Dance America,2009,4,Intermediate,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
@@ -9960,12 +9960,12 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1373,143,High Desert Dance Classic,2009,3,Juniors,West Coast Swing,1,1,matched,matched,matched,3,5,10,30,t,f
 1373,143,High Desert Dance Classic,2009,3,Master,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1373,143,High Desert Dance Classic,2009,3,Novice,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-988,92,Mid-Atlantic Dance Jam,2009,3,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-988,92,Mid-Atlantic Dance Jam,2009,3,All-Star,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-988,92,Mid-Atlantic Dance Jam,2009,3,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-988,92,Mid-Atlantic Dance Jam,2009,3,Invitational,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
-988,92,Mid-Atlantic Dance Jam,2009,3,Newcomer,West Coast Swing,3,3,matched,matched,matched,12,12,80,,t,f
-988,92,Mid-Atlantic Dance Jam,2009,3,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,80,,t,f
+988,92,MADjam,2009,3,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+988,92,MADjam,2009,3,All-Star,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+988,92,MADjam,2009,3,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+988,92,MADjam,2009,3,Invitational,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
+988,92,MADjam,2009,3,Newcomer,West Coast Swing,3,3,matched,matched,matched,12,12,80,,t,f
+988,92,MADjam,2009,3,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,80,,t,f
 1462,153,Novice Invitational,2009,3,Advanced,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1462,153,Novice Invitational,2009,3,Intermediate,West Coast Swing,1,1,matched,matched,matched,4,5,10,30,t,f
 1462,153,Novice Invitational,2009,3,Novice,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
@@ -10212,17 +10212,17 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 835,73,World Swing Dance Championships,2008,5,Master,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 835,73,World Swing Dance Championships,2008,5,Novice,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1126,116,Calgary Dance Stampede,2008,4,Novice,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
+224,18,Easter Swing,2008,4,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+224,18,Easter Swing,2008,4,All-Star,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
+224,18,Easter Swing,2008,4,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+224,18,Easter Swing,2008,4,Invitational,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
+224,18,Easter Swing,2008,4,Master,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+224,18,Easter Swing,2008,4,Novice,West Coast Swing,3,3,matched,matched,matched,13,13,80,,t,f
 1062,104,Los Angeles Premiere Dance Classic,2008,4,Advanced,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1062,104,Los Angeles Premiere Dance Classic,2008,4,Champion,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1062,104,Los Angeles Premiere Dance Classic,2008,4,Intermediate,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1062,104,Los Angeles Premiere Dance Classic,2008,4,Master,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1062,104,Los Angeles Premiere Dance Classic,2008,4,Novice,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-224,18,Seattle's Easter Swing,2008,4,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-224,18,Seattle's Easter Swing,2008,4,All-Star,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
-224,18,Seattle's Easter Swing,2008,4,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-224,18,Seattle's Easter Swing,2008,4,Invitational,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
-224,18,Seattle's Easter Swing,2008,4,Master,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-224,18,Seattle's Easter Swing,2008,4,Novice,West Coast Swing,3,3,matched,matched,matched,13,13,80,,t,f
 1286,134,Swing Dance America,2008,4,Advanced,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1286,134,Swing Dance America,2008,4,All-Star,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1286,134,Swing Dance America,2008,4,Intermediate,West Coast Swing,2,2,matched,matched,matched,9,11,32,78,t,f
@@ -10238,12 +10238,12 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1372,143,High Desert Dance Classic,2008,3,Juniors,West Coast Swing,1,1,matched,matched,matched,1,0,10,30,t,f
 1372,143,High Desert Dance Classic,2008,3,Master,West Coast Swing,,,no_points,no_points,no_points,0,0,10,,t,f
 1372,143,High Desert Dance Classic,2008,3,Novice,West Coast Swing,,,no_points,no_points,no_points,3,2,10,,t,f
-987,92,Mid-Atlantic Dance Jam,2008,3,Advanced,West Coast Swing,2,2,matched,matched,matched,10,9,32,78,t,f
-987,92,Mid-Atlantic Dance Jam,2008,3,All-Star,West Coast Swing,2,2,matched,matched,matched,8,8,32,78,t,f
-987,92,Mid-Atlantic Dance Jam,2008,3,Champion,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
-987,92,Mid-Atlantic Dance Jam,2008,3,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-987,92,Mid-Atlantic Dance Jam,2008,3,Newcomer,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-987,92,Mid-Atlantic Dance Jam,2008,3,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,80,,t,f
+987,92,MADjam,2008,3,Advanced,West Coast Swing,2,2,matched,matched,matched,10,9,32,78,t,f
+987,92,MADjam,2008,3,All-Star,West Coast Swing,2,2,matched,matched,matched,8,8,32,78,t,f
+987,92,MADjam,2008,3,Champion,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
+987,92,MADjam,2008,3,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+987,92,MADjam,2008,3,Newcomer,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+987,92,MADjam,2008,3,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,80,,t,f
 979,91,Reno Dance Sensation,2008,3,Advanced,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 979,91,Reno Dance Sensation,2008,3,Champion,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 979,91,Reno Dance Sensation,2008,3,Champion,Lindy,1,1,matched,matched,matched,5,5,10,30,t,f
@@ -10473,6 +10473,12 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 834,73,World Swing Dance Championships,2007,5,Novice,West Coast Swing,2,2,matched,matched,matched,9,9,32,78,t,f
 1125,116,Calgary Dance Stampede,2007,4,Invitational,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1125,116,Calgary Dance Stampede,2007,4,Novice,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
+223,18,Easter Swing,2007,4,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+223,18,Easter Swing,2007,4,All-Star,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
+223,18,Easter Swing,2007,4,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+223,18,Easter Swing,2007,4,Invitational,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
+223,18,Easter Swing,2007,4,Master,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+223,18,Easter Swing,2007,4,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,80,,t,f
 1061,104,Los Angeles Premiere Dance Classic,2007,4,Advanced,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1061,104,Los Angeles Premiere Dance Classic,2007,4,Champion,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1061,104,Los Angeles Premiere Dance Classic,2007,4,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
@@ -10481,12 +10487,6 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1088,107,Motown Dance Championships,2007,4,Advanced,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1088,107,Motown Dance Championships,2007,4,Intermediate,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1088,107,Motown Dance Championships,2007,4,Novice,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-223,18,Seattle's Easter Swing,2007,4,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-223,18,Seattle's Easter Swing,2007,4,All-Star,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
-223,18,Seattle's Easter Swing,2007,4,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-223,18,Seattle's Easter Swing,2007,4,Invitational,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
-223,18,Seattle's Easter Swing,2007,4,Master,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-223,18,Seattle's Easter Swing,2007,4,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,80,,t,f
 1285,134,Swing Dance America,2007,4,Advanced,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1285,134,Swing Dance America,2007,4,All-Star,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1285,134,Swing Dance America,2007,4,Intermediate,West Coast Swing,2,2,matched,matched,matched,7,7,32,78,t,f
@@ -10500,12 +10500,12 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1119,114,British Columbia Dance Challenge,2007,3,Intermediate,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1119,114,British Columbia Dance Challenge,2007,3,Invitational,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 1119,114,British Columbia Dance Challenge,2007,3,Novice,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
-986,92,Mid-Atlantic Dance Jam,2007,3,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-986,92,Mid-Atlantic Dance Jam,2007,3,All-Star,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
-986,92,Mid-Atlantic Dance Jam,2007,3,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-986,92,Mid-Atlantic Dance Jam,2007,3,Invitational,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
-986,92,Mid-Atlantic Dance Jam,2007,3,Newcomer,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
-986,92,Mid-Atlantic Dance Jam,2007,3,Novice,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+986,92,MADjam,2007,3,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+986,92,MADjam,2007,3,All-Star,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
+986,92,MADjam,2007,3,Intermediate,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+986,92,MADjam,2007,3,Invitational,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
+986,92,MADjam,2007,3,Newcomer,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
+986,92,MADjam,2007,3,Novice,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
 978,91,Reno Dance Sensation,2007,3,Advanced,West Coast Swing,2,2,matched,matched,matched,10,10,32,78,t,f
 978,91,Reno Dance Sensation,2007,3,Champion,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
 978,91,Reno Dance Sensation,2007,3,Intermediate,West Coast Swing,1,1,matched,matched,matched,5,5,10,30,t,f
@@ -10721,6 +10721,12 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 290,22,USA Grand Nationals,2006,5,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,16,16,32,,t,f
 1090,108,Vancouver Vibrations,2006,5,Novice,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
 1124,116,Calgary Dance Stampede,2006,4,Novice,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
+222,18,Easter Swing,2006,4,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
+222,18,Easter Swing,2006,4,All-Star,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
+222,18,Easter Swing,2006,4,Intermediate,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
+222,18,Easter Swing,2006,4,Invitational,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
+222,18,Easter Swing,2006,4,Master,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
+222,18,Easter Swing,2006,4,Novice,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
 1060,104,Los Angeles Premiere Dance Classic,2006,4,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
 1060,104,Los Angeles Premiere Dance Classic,2006,4,Champion,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
 1060,104,Los Angeles Premiere Dance Classic,2006,4,Intermediate,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
@@ -10731,12 +10737,6 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1085,106,Phoenix Dance Festival,2006,4,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
 1085,106,Phoenix Dance Festival,2006,4,Intermediate,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,4,10,,t,f
 1085,106,Phoenix Dance Festival,2006,4,Novice,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,4,5,10,,t,f
-222,18,Seattle's Easter Swing,2006,4,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
-222,18,Seattle's Easter Swing,2006,4,All-Star,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
-222,18,Seattle's Easter Swing,2006,4,Intermediate,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
-222,18,Seattle's Easter Swing,2006,4,Invitational,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
-222,18,Seattle's Easter Swing,2006,4,Master,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
-222,18,Seattle's Easter Swing,2006,4,Novice,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
 98,9,Boston Tea Party,2006,3,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
 98,9,Boston Tea Party,2006,3,All-Star,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
 98,9,Boston Tea Party,2006,3,Intermediate,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,9,9,18,,t,f
@@ -10746,17 +10746,17 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1118,114,British Columbia Dance Challenge,2006,3,Intermediate,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
 1118,114,British Columbia Dance Challenge,2006,3,Invitational,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
 1118,114,British Columbia Dance Challenge,2006,3,Novice,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,9,9,18,,t,f
-985,92,Mid-Atlantic Dance Jam,2006,3,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
-985,92,Mid-Atlantic Dance Jam,2006,3,All-Star,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,6,6,12,,t,f
-985,92,Mid-Atlantic Dance Jam,2006,3,Intermediate,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
-985,92,Mid-Atlantic Dance Jam,2006,3,Invitational,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
-985,92,Mid-Atlantic Dance Jam,2006,3,Novice,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,9,19,,t,f
-985,92,Mid-Atlantic Dance Jam,2006,3,Sophisticated,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
+985,92,MADjam,2006,3,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
+985,92,MADjam,2006,3,All-Star,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,6,6,12,,t,f
+985,92,MADjam,2006,3,Intermediate,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
+985,92,MADjam,2006,3,Invitational,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
+985,92,MADjam,2006,3,Novice,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,9,19,,t,f
+985,92,MADjam,2006,3,Sophisticated,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
 977,91,Reno Dance Sensation,2006,3,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,8,8,16,,t,f
-977,91,Reno Dance Sensation,2006,3,Champion,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
 977,91,Reno Dance Sensation,2006,3,Champion,Lindy,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
-977,91,Reno Dance Sensation,2006,3,Intermediate,Lindy,0,0,no_tier_system,no_tier_system,no_tier_system,8,8,16,,t,f
+977,91,Reno Dance Sensation,2006,3,Champion,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
 977,91,Reno Dance Sensation,2006,3,Intermediate,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,9,9,18,,t,f
+977,91,Reno Dance Sensation,2006,3,Intermediate,Lindy,0,0,no_tier_system,no_tier_system,no_tier_system,8,8,16,,t,f
 977,91,Reno Dance Sensation,2006,3,Master,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,8,8,16,,t,f
 977,91,Reno Dance Sensation,2006,3,Novice,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,9,19,,t,f
 152,12,Capital Swing Dance Convention,2006,2,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
@@ -10804,11 +10804,11 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 373,31,Mountain Magic,2005,11,Invitational,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
 373,31,Mountain Magic,2005,11,Master,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
 373,31,Mountain Magic,2005,11,Novice,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
-712,63,Swingin' New England Dance Festival,2005,11,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,6,6,12,,t,f
 712,63,Swingin' New England Dance Festival,2005,11,Advanced,Lindy,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
+712,63,Swingin' New England Dance Festival,2005,11,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,6,6,12,,t,f
 712,63,Swingin' New England Dance Festival,2005,11,All-Star,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
-712,63,Swingin' New England Dance Festival,2005,11,Intermediate,Lindy,0,0,no_tier_system,no_tier_system,no_tier_system,4,4,10,,t,f
 712,63,Swingin' New England Dance Festival,2005,11,Intermediate,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
+712,63,Swingin' New England Dance Festival,2005,11,Intermediate,Lindy,0,0,no_tier_system,no_tier_system,no_tier_system,4,4,10,,t,f
 712,63,Swingin' New England Dance Festival,2005,11,Invitational,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
 712,63,Swingin' New England Dance Festival,2005,11,Invitational,Lindy,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
 712,63,Swingin' New England Dance Festival,2005,11,Newcomer,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,12,11,23,,t,f
@@ -10957,6 +10957,11 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 833,73,World Swing Dance Championships,2005,5,Juniors,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
 833,73,World Swing Dance Championships,2005,5,Master,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,3,10,,t,f
 833,73,World Swing Dance Championships,2005,5,Novice,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,7,7,14,,t,f
+221,18,Easter Swing,2005,4,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
+221,18,Easter Swing,2005,4,Intermediate,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,9,9,18,,t,f
+221,18,Easter Swing,2005,4,Invitational,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
+221,18,Easter Swing,2005,4,Master,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
+221,18,Easter Swing,2005,4,Novice,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
 1059,104,Los Angeles Premiere Dance Classic,2005,4,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
 1059,104,Los Angeles Premiere Dance Classic,2005,4,Champion,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
 1059,104,Los Angeles Premiere Dance Classic,2005,4,Intermediate,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
@@ -10967,11 +10972,6 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1084,106,Phoenix Dance Festival,2005,4,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,3,5,10,,t,f
 1084,106,Phoenix Dance Festival,2005,4,Intermediate,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,4,5,10,,t,f
 1084,106,Phoenix Dance Festival,2005,4,Novice,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
-221,18,Seattle's Easter Swing,2005,4,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
-221,18,Seattle's Easter Swing,2005,4,Intermediate,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,9,9,18,,t,f
-221,18,Seattle's Easter Swing,2005,4,Invitational,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
-221,18,Seattle's Easter Swing,2005,4,Master,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
-221,18,Seattle's Easter Swing,2005,4,Novice,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
 97,9,Boston Tea Party,2005,3,Advanced,Lindy,0,0,no_tier_system,no_tier_system,no_tier_system,8,8,16,,t,f
 97,9,Boston Tea Party,2005,3,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,6,6,12,,t,f
 97,9,Boston Tea Party,2005,3,Intermediate,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,6,6,12,,t,f
@@ -10980,11 +10980,11 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 97,9,Boston Tea Party,2005,3,Newcomer,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
 97,9,Boston Tea Party,2005,3,Novice,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,6,6,12,,t,f
 97,9,Boston Tea Party,2005,3,Novice,Lindy,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
-984,92,Mid-Atlantic Dance Jam,2005,3,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
-984,92,Mid-Atlantic Dance Jam,2005,3,Intermediate,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,8,8,16,,t,f
-984,92,Mid-Atlantic Dance Jam,2005,3,Invitational,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
-984,92,Mid-Atlantic Dance Jam,2005,3,Novice,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
-984,92,Mid-Atlantic Dance Jam,2005,3,Sophisticated,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,4,5,10,,t,f
+984,92,MADjam,2005,3,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
+984,92,MADjam,2005,3,Intermediate,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,8,8,16,,t,f
+984,92,MADjam,2005,3,Invitational,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
+984,92,MADjam,2005,3,Novice,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
+984,92,MADjam,2005,3,Sophisticated,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,4,5,10,,t,f
 976,91,Reno Dance Sensation,2005,3,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,9,9,18,,t,f
 976,91,Reno Dance Sensation,2005,3,Advanced,Lindy,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
 976,91,Reno Dance Sensation,2005,3,Champion,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
@@ -11171,26 +11171,26 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 832,73,World Swing Dance Championships,2004,5,Intermediate,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
 832,73,World Swing Dance Championships,2004,5,Master,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,3,10,,t,f
 832,73,World Swing Dance Championships,2004,5,Novice,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,4,5,10,,t,f
+220,18,Easter Swing,2004,4,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
+220,18,Easter Swing,2004,4,Intermediate,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
+220,18,Easter Swing,2004,4,Invitational,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
+220,18,Easter Swing,2004,4,Juniors,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,2,5,10,,t,f
+220,18,Easter Swing,2004,4,Master,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,4,5,10,,t,f
+220,18,Easter Swing,2004,4,Novice,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
 415,40,North Atlantic Swing Dance Championships,2004,4,All-Star,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,4,10,,t,f
 415,40,North Atlantic Swing Dance Championships,2004,4,Intermediate,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
-220,18,Seattle's Easter Swing,2004,4,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
-220,18,Seattle's Easter Swing,2004,4,Intermediate,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
-220,18,Seattle's Easter Swing,2004,4,Invitational,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
-220,18,Seattle's Easter Swing,2004,4,Juniors,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,2,5,10,,t,f
-220,18,Seattle's Easter Swing,2004,4,Master,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,4,5,10,,t,f
-220,18,Seattle's Easter Swing,2004,4,Novice,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
-96,9,Boston Tea Party,2004,3,Advanced,Lindy,0,0,no_tier_system,no_tier_system,no_tier_system,6,6,12,,t,f
 96,9,Boston Tea Party,2004,3,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,8,8,16,,t,f
+96,9,Boston Tea Party,2004,3,Advanced,Lindy,0,0,no_tier_system,no_tier_system,no_tier_system,6,6,12,,t,f
 96,9,Boston Tea Party,2004,3,Intermediate,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,4,10,,t,f
 96,9,Boston Tea Party,2004,3,Invitational,Lindy,0,0,no_tier_system,no_tier_system,no_tier_system,5,4,10,,t,f
 96,9,Boston Tea Party,2004,3,Invitational,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,4,5,10,,t,f
 96,9,Boston Tea Party,2004,3,Newcomer,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,9,11,20,,t,f
 96,9,Boston Tea Party,2004,3,Novice,Lindy,0,0,no_tier_system,no_tier_system,no_tier_system,8,8,16,,t,f
 96,9,Boston Tea Party,2004,3,Novice,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
-983,92,Mid-Atlantic Dance Jam,2004,3,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,6,6,12,,t,f
-983,92,Mid-Atlantic Dance Jam,2004,3,Intermediate,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,6,11,,t,f
-983,92,Mid-Atlantic Dance Jam,2004,3,Novice,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,8,8,16,,t,f
-983,92,Mid-Atlantic Dance Jam,2004,3,Sophisticated,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
+983,92,MADjam,2004,3,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,6,6,12,,t,f
+983,92,MADjam,2004,3,Intermediate,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,6,11,,t,f
+983,92,MADjam,2004,3,Novice,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,8,8,16,,t,f
+983,92,MADjam,2004,3,Sophisticated,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
 975,91,Reno Dance Sensation,2004,3,Advanced,Lindy,0,0,no_tier_system,no_tier_system,no_tier_system,8,8,16,,t,f
 975,91,Reno Dance Sensation,2004,3,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
 975,91,Reno Dance Sensation,2004,3,Champion,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
@@ -11377,12 +11377,12 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 974,90,Chicago Dance Challenge,2003,4,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,4,5,10,,t,f
 974,90,Chicago Dance Challenge,2003,4,Master,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,9,9,18,,t,f
 974,90,Chicago Dance Challenge,2003,4,Novice,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,8,8,16,,t,f
+219,18,Easter Swing,2003,4,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
+219,18,Easter Swing,2003,4,Intermediate,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
+219,18,Easter Swing,2003,4,Invitational,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
+219,18,Easter Swing,2003,4,Master,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,4,5,10,,t,f
+219,18,Easter Swing,2003,4,Novice,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
 414,40,North Atlantic Swing Dance Championships,2003,4,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
-219,18,Seattle's Easter Swing,2003,4,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
-219,18,Seattle's Easter Swing,2003,4,Intermediate,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
-219,18,Seattle's Easter Swing,2003,4,Invitational,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
-219,18,Seattle's Easter Swing,2003,4,Master,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,4,5,10,,t,f
-219,18,Seattle's Easter Swing,2003,4,Novice,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
 95,9,Boston Tea Party,2003,3,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,7,7,14,,t,f
 95,9,Boston Tea Party,2003,3,Intermediate,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,9,9,18,,t,f
 95,9,Boston Tea Party,2003,3,Invitational,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
@@ -11546,14 +11546,14 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 830,73,World Swing Dance Championships,2002,5,Juniors,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,4,4,10,,t,f
 830,73,World Swing Dance Championships,2002,5,Novice,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
 830,73,World Swing Dance Championships,2002,5,Professional,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
-413,40,North Atlantic Swing Dance Championships,2002,4,Intermediate,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
+218,18,Easter Swing,2002,4,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,9,9,18,,t,f
+218,18,Easter Swing,2002,4,Intermediate,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,9,9,18,,t,f
+218,18,Easter Swing,2002,4,Novice,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,11,11,22,,t,f
+218,18,Easter Swing,2002,4,Professional,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
 413,40,North Atlantic Swing Dance Championships,2002,4,Intermediate,Lindy,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
-413,40,North Atlantic Swing Dance Championships,2002,4,Professional,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,9,10,19,,t,f
+413,40,North Atlantic Swing Dance Championships,2002,4,Intermediate,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,10,10,20,,t,f
 413,40,North Atlantic Swing Dance Championships,2002,4,Professional,Lindy,0,0,no_tier_system,no_tier_system,no_tier_system,9,10,19,,t,f
-218,18,Seattle's Easter Swing,2002,4,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,9,9,18,,t,f
-218,18,Seattle's Easter Swing,2002,4,Intermediate,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,9,9,18,,t,f
-218,18,Seattle's Easter Swing,2002,4,Novice,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,11,11,22,,t,f
-218,18,Seattle's Easter Swing,2002,4,Professional,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,5,5,10,,t,f
+413,40,North Atlantic Swing Dance Championships,2002,4,Professional,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,9,10,19,,t,f
 94,9,Boston Tea Party,2002,3,Advanced,Lindy,0,0,no_tier_system,no_tier_system,no_tier_system,7,7,14,,t,f
 94,9,Boston Tea Party,2002,3,Advanced,West Coast Swing,0,0,no_tier_system,no_tier_system,no_tier_system,6,6,12,,t,f
 94,9,Boston Tea Party,2002,3,Intermediate,Lindy,0,0,no_tier_system,no_tier_system,no_tier_system,6,6,12,,t,f
@@ -11701,15 +11701,15 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 829,73,World Swing Dance Championships,2001,5,Intermediate,West Coast Swing,,,unmatched,unmatched,unmatched,7,7,14,,t,f
 829,73,World Swing Dance Championships,2001,5,Novice,West Coast Swing,,,unmatched,unmatched,unmatched,6,6,12,,t,f
 829,73,World Swing Dance Championships,2001,5,Professional,West Coast Swing,,,unmatched,unmatched,unmatched,7,8,15,,t,f
-412,40,North Atlantic Swing Dance Championships,2001,4,Intermediate,West Coast Swing,,,unmatched,unmatched,unmatched,10,10,20,,t,f
+217,18,Easter Swing,2001,4,Advanced,West Coast Swing,,,unmatched,unmatched,unmatched,8,7,15,,t,f
+217,18,Easter Swing,2001,4,Intermediate,West Coast Swing,,,unmatched,unmatched,unmatched,3,2,5,,t,f
+217,18,Easter Swing,2001,4,Master,West Coast Swing,,,unmatched,unmatched,unmatched,0,0,,,t,f
+217,18,Easter Swing,2001,4,Novice,West Coast Swing,,,unmatched,unmatched,unmatched,6,7,13,,t,f
+217,18,Easter Swing,2001,4,Professional,West Coast Swing,,,unmatched,unmatched,unmatched,0,0,,,t,f
 412,40,North Atlantic Swing Dance Championships,2001,4,Intermediate,Lindy,,,unmatched,unmatched,unmatched,15,15,30,,t,f
-412,40,North Atlantic Swing Dance Championships,2001,4,Professional,West Coast Swing,,,unmatched,unmatched,unmatched,5,4,9,,t,f
+412,40,North Atlantic Swing Dance Championships,2001,4,Intermediate,West Coast Swing,,,unmatched,unmatched,unmatched,10,10,20,,t,f
 412,40,North Atlantic Swing Dance Championships,2001,4,Professional,Lindy,,,unmatched,unmatched,unmatched,5,5,10,,t,f
-217,18,Seattle's Easter Swing,2001,4,Advanced,West Coast Swing,,,unmatched,unmatched,unmatched,8,7,15,,t,f
-217,18,Seattle's Easter Swing,2001,4,Intermediate,West Coast Swing,,,unmatched,unmatched,unmatched,3,2,5,,t,f
-217,18,Seattle's Easter Swing,2001,4,Master,West Coast Swing,,,unmatched,unmatched,unmatched,0,0,,,t,f
-217,18,Seattle's Easter Swing,2001,4,Novice,West Coast Swing,,,unmatched,unmatched,unmatched,6,7,13,,t,f
-217,18,Seattle's Easter Swing,2001,4,Professional,West Coast Swing,,,unmatched,unmatched,unmatched,0,0,,,t,f
+412,40,North Atlantic Swing Dance Championships,2001,4,Professional,West Coast Swing,,,unmatched,unmatched,unmatched,5,4,9,,t,f
 93,9,Boston Tea Party,2001,3,Advanced,West Coast Swing,,,unmatched,unmatched,unmatched,5,5,10,,t,f
 93,9,Boston Tea Party,2001,3,Newcomer,West Coast Swing,,,unmatched,unmatched,unmatched,18,18,36,,t,f
 93,9,Boston Tea Party,2001,3,Novice,West Coast Swing,,,unmatched,unmatched,unmatched,9,9,18,,t,f
@@ -11832,13 +11832,13 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 257,20,FreZno Dance Classic,2000,5,Master,West Coast Swing,,,unmatched,unmatched,unmatched,5,5,10,,t,f
 257,20,FreZno Dance Classic,2000,5,Novice,West Coast Swing,,,unmatched,unmatched,unmatched,5,5,10,,t,f
 284,22,USA Grand Nationals,2000,5,Advanced,West Coast Swing,,,unmatched,unmatched,unmatched,16,16,32,,t,f
+216,18,Easter Swing,2000,4,Advanced,West Coast Swing,,,unmatched,unmatched,unmatched,7,7,14,,t,f
+216,18,Easter Swing,2000,4,Master,West Coast Swing,,,unmatched,unmatched,unmatched,5,5,10,,t,f
+216,18,Easter Swing,2000,4,Novice,West Coast Swing,,,unmatched,unmatched,unmatched,12,12,24,,t,f
+216,18,Easter Swing,2000,4,Professional,West Coast Swing,,,unmatched,unmatched,unmatched,5,3,8,,t,f
 411,40,North Atlantic Swing Dance Championships,2000,4,Advanced,Lindy,,,unmatched,unmatched,unmatched,15,15,30,,t,f
 411,40,North Atlantic Swing Dance Championships,2000,4,Advanced,West Coast Swing,,,unmatched,unmatched,unmatched,14,14,28,,t,f
 411,40,North Atlantic Swing Dance Championships,2000,4,Professional,West Coast Swing,,,unmatched,unmatched,unmatched,5,5,10,,t,f
-216,18,Seattle's Easter Swing,2000,4,Advanced,West Coast Swing,,,unmatched,unmatched,unmatched,7,7,14,,t,f
-216,18,Seattle's Easter Swing,2000,4,Master,West Coast Swing,,,unmatched,unmatched,unmatched,5,5,10,,t,f
-216,18,Seattle's Easter Swing,2000,4,Novice,West Coast Swing,,,unmatched,unmatched,unmatched,12,12,24,,t,f
-216,18,Seattle's Easter Swing,2000,4,Professional,West Coast Swing,,,unmatched,unmatched,unmatched,5,3,8,,t,f
 606,56,Swing Break,2000,4,Advanced,West Coast Swing,,,unmatched,unmatched,unmatched,0,1,,,t,f
 606,56,Swing Break,2000,4,Intermediate,West Coast Swing,,,unmatched,unmatched,unmatched,5,4,9,,t,f
 606,56,Swing Break,2000,4,Juniors,West Coast Swing,,,unmatched,unmatched,unmatched,0,0,,,t,f
@@ -11975,15 +11975,15 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 256,20,FreZno Dance Classic,1999,5,Novice,West Coast Swing,,,unmatched,unmatched,unmatched,10,11,21,,t,f
 256,20,FreZno Dance Classic,1999,5,Professional,West Coast Swing,,,unmatched,unmatched,unmatched,5,5,10,,t,f
 283,22,USA Grand Nationals,1999,5,Advanced,West Coast Swing,,,unmatched,unmatched,unmatched,10,10,20,,t,f
-410,40,North Atlantic Swing Dance Championships,1999,4,Advanced,Lindy,,,unmatched,unmatched,unmatched,15,14,29,,t,f
+215,18,Easter Swing,1999,4,Advanced,West Coast Swing,,,unmatched,unmatched,unmatched,10,10,20,,t,f
+215,18,Easter Swing,1999,4,Master,West Coast Swing,,,unmatched,unmatched,unmatched,5,5,10,,t,f
+215,18,Easter Swing,1999,4,Novice,West Coast Swing,,,unmatched,unmatched,unmatched,11,11,22,,t,f
+215,18,Easter Swing,1999,4,Professional,West Coast Swing,,,unmatched,unmatched,unmatched,5,5,10,,t,f
 410,40,North Atlantic Swing Dance Championships,1999,4,Advanced,West Coast Swing,,,unmatched,unmatched,unmatched,0,0,,,t,f
+410,40,North Atlantic Swing Dance Championships,1999,4,Advanced,Lindy,,,unmatched,unmatched,unmatched,15,14,29,,t,f
 410,40,North Atlantic Swing Dance Championships,1999,4,Intermediate,West Coast Swing,,,unmatched,unmatched,unmatched,0,0,,,t,f
 410,40,North Atlantic Swing Dance Championships,1999,4,Novice,West Coast Swing,,,unmatched,unmatched,unmatched,0,0,,,t,f
 410,40,North Atlantic Swing Dance Championships,1999,4,Professional,West Coast Swing,,,unmatched,unmatched,unmatched,0,1,,,t,f
-215,18,Seattle's Easter Swing,1999,4,Advanced,West Coast Swing,,,unmatched,unmatched,unmatched,10,10,20,,t,f
-215,18,Seattle's Easter Swing,1999,4,Master,West Coast Swing,,,unmatched,unmatched,unmatched,5,5,10,,t,f
-215,18,Seattle's Easter Swing,1999,4,Novice,West Coast Swing,,,unmatched,unmatched,unmatched,11,11,22,,t,f
-215,18,Seattle's Easter Swing,1999,4,Professional,West Coast Swing,,,unmatched,unmatched,unmatched,5,5,10,,t,f
 605,56,Swing Break,1999,4,Advanced,West Coast Swing,,,unmatched,unmatched,unmatched,7,9,16,,t,f
 605,56,Swing Break,1999,4,Intermediate,West Coast Swing,,,unmatched,unmatched,unmatched,10,10,20,,t,f
 605,56,Swing Break,1999,4,Newcomer,West Coast Swing,,,unmatched,unmatched,unmatched,8,13,21,,t,f
@@ -12121,6 +12121,10 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 544,49,Spring Fling,1998,5,Novice,West Coast Swing,,,unmatched,unmatched,unmatched,10,10,20,,t,f
 544,49,Spring Fling,1998,5,Professional,West Coast Swing,,,unmatched,unmatched,unmatched,8,6,14,,t,f
 282,22,USA Grand Nationals,1998,5,Intermediate,West Coast Swing,,,unmatched,unmatched,unmatched,14,14,28,,t,f
+214,18,Easter Swing,1998,4,Advanced,West Coast Swing,,,unmatched,unmatched,unmatched,6,5,11,,t,f
+214,18,Easter Swing,1998,4,Master,West Coast Swing,,,unmatched,unmatched,unmatched,4,4,8,,t,f
+214,18,Easter Swing,1998,4,Novice,West Coast Swing,,,unmatched,unmatched,unmatched,7,6,13,,t,f
+214,18,Easter Swing,1998,4,Professional,West Coast Swing,,,unmatched,unmatched,unmatched,0,0,,,t,f
 279,21,Golden State Classic,1998,4,Advanced,West Coast Swing,,,unmatched,unmatched,unmatched,6,6,12,,t,f
 279,21,Golden State Classic,1998,4,Intermediate,West Coast Swing,,,unmatched,unmatched,unmatched,3,3,6,,t,f
 279,21,Golden State Classic,1998,4,Novice,West Coast Swing,,,unmatched,unmatched,unmatched,3,3,6,,t,f
@@ -12129,10 +12133,6 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 409,40,North Atlantic Swing Dance Championships,1998,4,Intermediate,West Coast Swing,,,unmatched,unmatched,unmatched,8,8,16,,t,f
 409,40,North Atlantic Swing Dance Championships,1998,4,Novice,West Coast Swing,,,unmatched,unmatched,unmatched,10,10,20,,t,f
 409,40,North Atlantic Swing Dance Championships,1998,4,Professional,West Coast Swing,,,unmatched,unmatched,unmatched,5,5,10,,t,f
-214,18,Seattle's Easter Swing,1998,4,Advanced,West Coast Swing,,,unmatched,unmatched,unmatched,6,5,11,,t,f
-214,18,Seattle's Easter Swing,1998,4,Master,West Coast Swing,,,unmatched,unmatched,unmatched,4,4,8,,t,f
-214,18,Seattle's Easter Swing,1998,4,Novice,West Coast Swing,,,unmatched,unmatched,unmatched,7,6,13,,t,f
-214,18,Seattle's Easter Swing,1998,4,Professional,West Coast Swing,,,unmatched,unmatched,unmatched,0,0,,,t,f
 90,9,Boston Tea Party,1998,3,Advanced,West Coast Swing,,,unmatched,unmatched,unmatched,16,16,32,,t,f
 90,9,Boston Tea Party,1998,3,Novice,West Coast Swing,,,unmatched,unmatched,unmatched,11,11,22,,t,f
 172,13,Chicago Classic,1998,3,Advanced,West Coast Swing,,,unmatched,unmatched,unmatched,9,9,18,,t,f
@@ -12243,13 +12243,13 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 543,49,Spring Fling,1997,5,Novice,West Coast Swing,,,unmatched,unmatched,unmatched,7,7,14,,t,f
 543,49,Spring Fling,1997,5,Professional,West Coast Swing,,,unmatched,unmatched,unmatched,6,6,12,,t,f
 281,22,USA Grand Nationals,1997,5,Advanced,West Coast Swing,,,unmatched,unmatched,unmatched,5,5,10,,t,f
+213,18,Easter Swing,1997,4,Advanced,West Coast Swing,,,unmatched,unmatched,unmatched,5,6,11,,t,f
+213,18,Easter Swing,1997,4,Master,West Coast Swing,,,unmatched,unmatched,unmatched,5,5,10,,t,f
+213,18,Easter Swing,1997,4,Novice,West Coast Swing,,,unmatched,unmatched,unmatched,6,5,11,,t,f
 278,21,Golden State Classic,1997,4,Advanced,West Coast Swing,,,unmatched,unmatched,unmatched,5,5,10,,t,f
 278,21,Golden State Classic,1997,4,Intermediate,West Coast Swing,,,unmatched,unmatched,unmatched,5,5,10,,t,f
 278,21,Golden State Classic,1997,4,Novice,West Coast Swing,,,unmatched,unmatched,unmatched,5,5,10,,t,f
 278,21,Golden State Classic,1997,4,Professional,West Coast Swing,,,unmatched,unmatched,unmatched,7,7,14,,t,f
-213,18,Seattle's Easter Swing,1997,4,Advanced,West Coast Swing,,,unmatched,unmatched,unmatched,5,6,11,,t,f
-213,18,Seattle's Easter Swing,1997,4,Master,West Coast Swing,,,unmatched,unmatched,unmatched,5,5,10,,t,f
-213,18,Seattle's Easter Swing,1997,4,Novice,West Coast Swing,,,unmatched,unmatched,unmatched,6,5,11,,t,f
 655,60,Swing Jam,1997,4,Advanced,West Coast Swing,,,unmatched,unmatched,unmatched,3,5,8,,t,f
 655,60,Swing Jam,1997,4,Novice,West Coast Swing,,,unmatched,unmatched,unmatched,1,0,,,t,f
 655,60,Swing Jam,1997,4,Professional,West Coast Swing,,,unmatched,unmatched,unmatched,0,0,,,t,f
@@ -12414,10 +12414,10 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 541,49,Spring Fling,1995,5,Newcomer,West Coast Swing,,,unmatched,unmatched,unmatched,4,7,11,,t,f
 541,49,Spring Fling,1995,5,Novice,West Coast Swing,,,unmatched,unmatched,unmatched,6,5,11,,t,f
 541,49,Spring Fling,1995,5,Professional,West Coast Swing,,,unmatched,unmatched,unmatched,4,5,9,,t,f
-212,18,Seattle's Easter Swing,1995,4,Advanced,West Coast Swing,,,unmatched,unmatched,unmatched,5,5,10,,t,f
-212,18,Seattle's Easter Swing,1995,4,Newcomer,West Coast Swing,,,unmatched,unmatched,unmatched,5,5,10,,t,f
-212,18,Seattle's Easter Swing,1995,4,Novice,West Coast Swing,,,unmatched,unmatched,unmatched,5,5,10,,t,f
-212,18,Seattle's Easter Swing,1995,4,Professional,West Coast Swing,,,unmatched,unmatched,unmatched,5,5,10,,t,f
+212,18,Easter Swing,1995,4,Advanced,West Coast Swing,,,unmatched,unmatched,unmatched,5,5,10,,t,f
+212,18,Easter Swing,1995,4,Newcomer,West Coast Swing,,,unmatched,unmatched,unmatched,5,5,10,,t,f
+212,18,Easter Swing,1995,4,Novice,West Coast Swing,,,unmatched,unmatched,unmatched,5,5,10,,t,f
+212,18,Easter Swing,1995,4,Professional,West Coast Swing,,,unmatched,unmatched,unmatched,5,5,10,,t,f
 653,60,Swing Jam,1995,4,Advanced,West Coast Swing,,,unmatched,,unmatched,1,,,,f,f
 653,60,Swing Jam,1995,4,Professional,West Coast Swing,,,unmatched,unmatched,unmatched,1,1,2,,t,f
 48,6,Bay Swingers,1995,2,Advanced,West Coast Swing,,,unmatched,unmatched,unmatched,3,3,6,,t,f
@@ -12469,8 +12469,8 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 540,49,Spring Fling,1994,5,Newcomer,West Coast Swing,,,unmatched,unmatched,unmatched,3,3,6,,t,f
 540,49,Spring Fling,1994,5,Novice,West Coast Swing,,,unmatched,unmatched,unmatched,3,3,6,,t,f
 540,49,Spring Fling,1994,5,Professional,West Coast Swing,,,unmatched,unmatched,unmatched,3,3,6,,t,f
-211,18,Seattle's Easter Swing,1994,4,Advanced,West Coast Swing,,,unmatched,unmatched,unmatched,3,3,6,,t,f
-211,18,Seattle's Easter Swing,1994,4,Novice,West Coast Swing,,,unmatched,unmatched,unmatched,3,4,7,,t,f
+211,18,Easter Swing,1994,4,Advanced,West Coast Swing,,,unmatched,unmatched,unmatched,3,3,6,,t,f
+211,18,Easter Swing,1994,4,Novice,West Coast Swing,,,unmatched,unmatched,unmatched,3,4,7,,t,f
 652,60,Swing Jam,1994,4,Novice,West Coast Swing,,,,unmatched,unmatched,,1,,,f,f
 652,60,Swing Jam,1994,4,Professional,West Coast Swing,,,unmatched,unmatched,unmatched,1,1,2,,t,f
 47,6,Bay Swingers,1994,2,Advanced,West Coast Swing,,,unmatched,unmatched,unmatched,3,2,5,,t,f

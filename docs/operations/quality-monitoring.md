@@ -74,6 +74,7 @@ Check definitions live in `db/quality_checks.py` (single source of truth for mon
 | `all_caps_cities` | ALL CAPS city names (CHICAGO, TOULOUSE, WILMINGTON DEL). |
 | `location_id_multiple_strings` | One location_id must not have conflicting event_location strings. |
 | `events_wsdc_edition_location_drift` | event_editions.location_raw disagrees with joined core.locations text. |
+| `source_vs_results_location_conflicts_recent` | Source-derived edition location differs from results majority location_id (recent years). |
 | `city_equals_country` | city=country usually geocode bug; city-states (Singapore) allowed. |
 | `double_space_event_location` | Double spaces in location strings (Moscow,  Russia). |
 | `catalog_duplicate_city_token` | Duplicated city in typical_location (Madrid, Madrid, Spain). |

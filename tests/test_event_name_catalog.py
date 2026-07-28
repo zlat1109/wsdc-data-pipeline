@@ -46,7 +46,10 @@ def test_orphan_result_names_normalize_to_catalog():
     """Top orphan names from staging audit should map to catalog."""
     for alias, canonical in [
         ("Phoenix 4th of July", "4TH of July Convention"),
-        ("MADjam", "Mid-Atlantic Dance Jam"),
+        ("MADjam", "MADjam"),
+        ("Mid-Atlantic Dance Jam", "MADjam"),
+        ("Easter Swing", "Easter Swing"),
+        ("Seattle's Easter Swing", "Easter Swing"),
         ("D-Townswing", "D-Town Swing"),
         ("Monterey Swingfest", "Monterey SwingFest"),
         ("Swing Fling 2024", "Swing Fling"),

@@ -27,6 +27,58 @@ WITH base AS (
       AND r.event_month IS NOT NULL
     GROUP BY r.event_id, r.event_year, r.event_month
 ),
+event_urls AS (
+    SELECT event_id, NULLIF(TRIM(url), '') AS event_url
+    FROM core.events
+),
+schedule_loc_rank AS (
+    SELECT
+        b.event_id,
+        b.event_year,
+        b.event_month,
+        s.location_raw,
+        ROW_NUMBER() OVER (
+            PARTITION BY b.event_id, b.event_year, b.event_month
+            ORDER BY COALESCE(s.is_active, false) DESC, s.last_seen_at DESC NULLS LAST, s.first_seen_at DESC NULLS LAST
+        ) AS rn
+    FROM base b
+    JOIN event_urls eu
+      ON eu.event_id = b.event_id
+     AND eu.event_url IS NOT NULL
+    JOIN core.scheduled_events s
+      ON lower(btrim(s.url)) = lower(btrim(eu.event_url))
+     AND s.results_year = b.event_year
+     AND s.results_month = b.event_month
+     AND s.location_raw IS NOT NULL
+     AND btrim(s.location_raw) <> ''
+),
+schedule_loc AS (
+    SELECT
+        event_id,
+        event_year,
+        event_month,
+        location_raw
+    FROM schedule_loc_rank
+    WHERE rn = 1
+),
+schedule_loc_mapped AS (
+    SELECT
+        sl.event_id,
+        sl.event_year,
+        sl.event_month,
+        l.location_id,
+        l.event_city,
+        l.event_state,
+        l.event_country,
+        COALESCE(l.event_location_standardized, l.event_location) AS location_raw
+    FROM schedule_loc sl
+    LEFT JOIN core.locations l
+      ON lower(btrim(l.event_location)) = lower(btrim(sl.location_raw))
+      OR (
+        l.event_location_standardized IS NOT NULL
+        AND lower(btrim(l.event_location_standardized)) = lower(btrim(sl.location_raw))
+      )
+),
 loc_rank AS (
     SELECT
         r.event_id,
@@ -55,11 +107,14 @@ SELECT
     b.event_year,
     b.event_month,
     b.edition_date,
-    tl.location_id,
-    l.event_city,
-    l.event_state,
-    l.event_country,
-    COALESCE(l.event_location_standardized, l.event_location),
+    COALESCE(slm.location_id, tl.location_id),
+    COALESCE(slm.event_city, l.event_city),
+    COALESCE(slm.event_state, l.event_state),
+    COALESCE(slm.event_country, l.event_country),
+    COALESCE(
+        slm.location_raw,
+        COALESCE(l.event_location_standardized, l.event_location)
+    ),
     b.result_rows,
     b.unique_dancers
 FROM base b
@@ -67,6 +122,10 @@ LEFT JOIN top_loc tl
     ON tl.event_id = b.event_id
    AND tl.event_year = b.event_year
    AND tl.event_month = b.event_month
+LEFT JOIN schedule_loc_mapped slm
+    ON slm.event_id = b.event_id
+   AND slm.event_year = b.event_year
+   AND slm.event_month = b.event_month
 LEFT JOIN core.locations l ON l.location_id = tl.location_id
 """
 

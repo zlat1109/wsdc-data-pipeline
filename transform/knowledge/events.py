@@ -51,11 +51,16 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     # Shared Venray (227 / Dutch Open) wrongly applied to Freedom Swing (Wilmington DE).
     # Catalog upcoming already says WILMINGTON DEL; typical was stuck on Venray.
     'Freedom Swing Dance Challenge': 'Wilmington, DE, United States',
-    # Shared New York (7) wrongly applied to Philly Swing Classic (DoubleTree Wilmington DE).
-    # Catalog upcoming already says WILMINGTON DEL; typical stuck on New York.
+    # Philly Swing Classic is held in Wilmington, Delaware.
     'Philly Swing Classic': 'Wilmington, DE, United States',
     # Shared St. Petersburg (222) wrongly applied to West in Lyon (name + calendar = Lyon).
     'West in Lyon': 'Lyon, France',
+    # Registry/site venue is Rome; legacy results were mapped to St. Petersburg (222).
+    'Swing In Capital': 'Rome, Italy',
+    # Registry/site venue is Ljubljana; legacy results were mapped to Perth (253).
+    'Slovenian Open': 'Ljubljana, Slovenia',
+    # Official site: Freiburg, Germany; legacy rows were mapped to Jeju (213).
+    'Spring Time Swing': 'Freiburg, Germany',
     # Catalog/scheduled say Calgary; results pointed at Perth (253 / WesterOz).
     'BTO Open': 'Calgary, Canada',
     # Shared Jeju (213) wrongly applied to The Aloha Open (Wailea / Hawaii).
@@ -603,5 +608,65 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
     323: {
         'url': 'http://rocketcityswing.com/',
         'typical_location': 'Huntsville, Alabama, United States',
+    },
+    18: {
+        'name': 'Easter Swing',
+        'url': 'https://easterswing.org/',
+        'typical_location': 'Seattle, WA, United States',
+        'location': {
+            'event_city': 'Seattle',
+            'event_state': 'Washington',
+            'event_country': 'United States',
+            'event_location': 'Seattle, WA, United States',
+            'event_location_standardized': 'Seattle, WA',
+        },
+    },
+    92: {
+        'name': 'MADjam',
+        'url': 'http://www.atlanticdancejam.com',
+        'typical_location': 'Washington, DC, United States',
+        'location': {
+            'event_city': 'Washington',
+            'event_state': 'District of Columbia',
+            'event_country': 'United States',
+            'event_location': 'Washington, DC, United States',
+            'event_location_standardized': 'Washington, DC',
+        },
+    },
+    354: {
+        'name': 'Spring Time Swing',
+        'url': 'https://springtimeswing.com/',
+        'typical_location': 'Freiburg, Germany',
+        'location': {
+            'event_city': 'Freiburg',
+            'event_state': '',
+            'event_country': 'Germany',
+            'event_location': 'Freiburg, Germany',
+            'event_location_standardized': 'Freiburg, Germany',
+        },
+    },
+    304: {
+        'name': 'Swing In Capital',
+        'url': 'https://www.westcoastswingroma.it/swing-in-capital/',
+        'typical_location': 'Rome, Italy',
+        'location': {
+            'event_city': 'Rome',
+            'event_state': '',
+            'event_country': 'Italy',
+            'event_location': 'Rome, Italy',
+            'event_location_standardized': 'Rome, Italy',
+        },
+    },
+    352: {
+        'name': 'Slovenian Open',
+        'url': 'https://slovenianopen.dance/',
+        'typical_location': 'Ljubljana, Slovenia',
+        'location': {
+            'event_city': 'Ljubljana',
+            'event_state': '',
+            'event_country': 'Slovenia',
+            'event_location': 'Ljubljana, Slovenia',
+            'event_location_standardized': 'Ljubljana, Slovenia',
+        },
     },
 }
