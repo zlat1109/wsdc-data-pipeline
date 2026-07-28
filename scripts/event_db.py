@@ -26,6 +26,16 @@ def get_db_suggestions() -> dict[str, dict[str, Any]]:
     return dict(_DB_SUGGESTIONS)
 
 
+def _forced_gate_event_names() -> set[str]:
+    """Events treated as gate-relevant even before standard concluded checks.
+
+    Use for known lagging score publications where we still want check-updates
+    to keep showing the event as pending this week.
+    """
+    raw = os.getenv("EVENT_GATE_FORCE_PENDING_NAMES", "Sea Sun and Swing")
+    return {name.strip() for name in raw.split(",") if name.strip()}
+
+
 _YEAR_SUFFIX_RE = re.compile(r"\s+(20\d{2})\s*$")
 
 
@@ -212,8 +222,11 @@ def events_within_gate_lookback(
     lookback_days = lookback_days or int(os.getenv("EVENT_GATE_LOOKBACK_DAYS", "21"))
     cutoff = today - timedelta(days=lookback_days)
     relevant: list[dict[str, Any]] = []
+    forced_names = _forced_gate_event_names()
     for event in events:
-        if not event_has_concluded(event, today):
+        name = (event.get("name") or "").strip()
+        forced = name in forced_names
+        if not forced and not event_has_concluded(event, today):
             continue
         last_day = event_last_day(event)
         if last_day is None or last_day >= cutoff:
@@ -233,11 +246,13 @@ def split_pending_events(
     aliases = _load_event_aliases_json()
     pending: list[str] = []
     already: list[str] = []
+    forced_names = _forced_gate_event_names()
     for event in events:
         name = (event.get("name") or "").strip()
         if not name:
             continue
-        if not event_has_concluded(event, today):
+        forced = name in forced_names
+        if not forced and not event_has_concluded(event, today):
             continue
         year, month = event_results_edition(event)
         normalized = normalize_expected_event_name(name, aliases=aliases)

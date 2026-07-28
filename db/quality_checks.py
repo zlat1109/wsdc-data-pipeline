@@ -321,6 +321,41 @@ EXTENDED_CHECKS: tuple[QualityCheck, ...] = (
         fix_hint="LOCATION_ID_CORRECTIONS / rebuild editions from results mode location",
     ),
     QualityCheck(
+        name="source_vs_results_location_conflicts_recent",
+        sql="""
+        WITH result_mode AS (
+            SELECT
+                ed.event_id,
+                ed.event_year,
+                ed.event_month,
+                ed.location_id AS source_location_id,
+                (
+                    SELECT r.location_id
+                    FROM core.results r
+                    WHERE r.event_id = ed.event_id
+                      AND r.event_year = ed.event_year
+                      AND r.event_month = ed.event_month
+                      AND r.location_id IS NOT NULL
+                    GROUP BY r.location_id
+                    ORDER BY count(*) DESC, r.location_id
+                    LIMIT 1
+                ) AS results_location_id
+            FROM core.event_editions ed
+            WHERE ed.event_year >= 2024
+        )
+        SELECT count(*)
+        FROM result_mode
+        WHERE source_location_id IS NOT NULL
+          AND results_location_id IS NOT NULL
+          AND source_location_id <> results_location_id
+        """,
+        max_value=20,
+        severity="warn",
+        category="location",
+        description="Source-derived edition location differs from results majority location_id (recent years).",
+        fix_hint="Audit event mapping/source location; if needed fix results location_id or add override.",
+    ),
+    QualityCheck(
         name="city_equals_country",
         sql=f"""
         SELECT count(*) FROM core.locations

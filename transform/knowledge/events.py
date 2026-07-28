@@ -56,6 +56,8 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'Philly Swing Classic': 'Wilmington, DE, United States',
     # Shared St. Petersburg (222) wrongly applied to West in Lyon (name + calendar = Lyon).
     'West in Lyon': 'Lyon, France',
+    # Registry/site venue is Rome; legacy results were mapped to St. Petersburg (222).
+    'Swing In Capital': 'Rome, Italy',
     # Catalog/scheduled say Calgary; results pointed at Perth (253 / WesterOz).
     'BTO Open': 'Calgary, Canada',
     # Shared Jeju (213) wrongly applied to The Aloha Open (Wailea / Hawaii).
@@ -603,5 +605,17 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
     323: {
         'url': 'http://rocketcityswing.com/',
         'typical_location': 'Huntsville, Alabama, United States',
+    },
+    304: {
+        'name': 'Swing In Capital',
+        'url': 'https://www.westcoastswingroma.it/swing-in-capital/',
+        'typical_location': 'Rome, Italy',
+        'location': {
+            'event_city': 'Rome',
+            'event_state': '',
+            'event_country': 'Italy',
+            'event_location': 'Rome, Italy',
+            'event_location_standardized': 'Rome, Italy',
+        },
     },
 }
