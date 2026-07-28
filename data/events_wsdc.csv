@@ -316,7 +316,6 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2011,2011-06-01,2011,6,2011-06
 25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2012,2012-06-01,2012,6,2012-06
 25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2013,2013-06-01,2013,6,2013-06
-238,Winter White,"Oslo, Norway",http://www.winterwhite.no,December 2024,2024-12-01,2024,12,2024-12
 25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2014,2014-06-01,2014,6,2014-06
 25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2015,2015-06-01,2015,6,2015-06
 25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2016,2016-06-01,2016,6,2016-06
@@ -1986,15 +1985,15 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 233,Bavarian Open,"Munich, Germany",https://bavarianopen.com/,September 2022,2022-09-01,2022,9,2022-09
 233,Bavarian Open,"Munich, Germany",https://bavarianopen.com/,September 2023,2023-09-01,2023,9,2023-09
 233,Bavarian Open,"Munich, Germany",https://bavarianopen.com/,September 2024,2024-09-01,2024,9,2024-09
-234,Philly Swing Classic,"Philadelphia, PA, United States",http://www.phillyswing.com,September 2014,2014-09-01,2014,9,2014-09
-234,Philly Swing Classic,"Philadelphia, PA, United States",http://www.phillyswing.com,October 2015,2015-10-01,2015,10,2015-10
-234,Philly Swing Classic,"Philadelphia, PA, United States",http://www.phillyswing.com,September 2016,2016-09-01,2016,9,2016-09
-234,Philly Swing Classic,"Philadelphia, PA, United States",http://www.phillyswing.com,September 2017,2017-09-01,2017,9,2017-09
-234,Philly Swing Classic,"Philadelphia, PA, United States",http://www.phillyswing.com,September 2018,2018-09-01,2018,9,2018-09
-234,Philly Swing Classic,"Philadelphia, PA, United States",http://www.phillyswing.com,September 2019,2019-09-01,2019,9,2019-09
-234,Philly Swing Classic,"Philadelphia, PA, United States",http://www.phillyswing.com,September 2021,2021-09-01,2021,9,2021-09
-234,Philly Swing Classic,"Philadelphia, PA, United States",http://www.phillyswing.com,September 2022,2022-09-01,2022,9,2022-09
-234,Philly Swing Classic,"Philadelphia, PA, United States",http://www.phillyswing.com,September 2024,2024-09-01,2024,9,2024-09
+234,Philly Swing Classic,"Wilmington, DE, United States",http://www.phillyswing.com,September 2014,2014-09-01,2014,9,2014-09
+234,Philly Swing Classic,"Wilmington, DE, United States",http://www.phillyswing.com,October 2015,2015-10-01,2015,10,2015-10
+234,Philly Swing Classic,"Wilmington, DE, United States",http://www.phillyswing.com,September 2016,2016-09-01,2016,9,2016-09
+234,Philly Swing Classic,"Wilmington, DE, United States",http://www.phillyswing.com,September 2017,2017-09-01,2017,9,2017-09
+234,Philly Swing Classic,"Wilmington, DE, United States",http://www.phillyswing.com,September 2018,2018-09-01,2018,9,2018-09
+234,Philly Swing Classic,"Wilmington, DE, United States",http://www.phillyswing.com,September 2019,2019-09-01,2019,9,2019-09
+234,Philly Swing Classic,"Wilmington, DE, United States",http://www.phillyswing.com,September 2021,2021-09-01,2021,9,2021-09
+234,Philly Swing Classic,"Wilmington, DE, United States",http://www.phillyswing.com,September 2022,2022-09-01,2022,9,2022-09
+234,Philly Swing Classic,"Wilmington, DE, United States",http://www.phillyswing.com,September 2024,2024-09-01,2024,9,2024-09
 236,Warsaw Halloween Swing,"Warsaw, Poland",http://www.warsawhalloweenswing.com,October 2012,2012-10-01,2012,10,2012-10
 236,Warsaw Halloween Swing,"Warsaw, Poland",http://www.warsawhalloweenswing.com,October 2013,2013-10-01,2013,10,2013-10
 236,Warsaw Halloween Swing,"Warsaw, Poland",http://www.warsawhalloweenswing.com,November 2014,2014-11-01,2014,11,2014-11
@@ -2019,6 +2018,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 238,Winter White,"Oslo, Norway",http://www.winterwhite.no,December 2019,2019-12-01,2019,12,2019-12
 238,Winter White,"Oslo, Norway",http://www.winterwhite.no,December 2022,2022-12-01,2022,12,2022-12
 238,Winter White,"Oslo, Norway",http://www.winterwhite.no,December 2023,2023-12-01,2023,12,2023-12
+238,Winter White,"Oslo, Norway",http://www.winterwhite.no,December 2024,2024-12-01,2024,12,2024-12
 239,The Challenge,"Dallas, TX, United States",,December 2014,2014-12-01,2014,12,2014-12
 239,The Challenge,"Dallas, TX, United States",,December 2015,2015-12-01,2015,12,2015-12
 240,Westie Gala,"Stockholm, Sweden",http://www.westiegala.com/,January 2015,2015-01-01,2015,1,2015-01
@@ -2392,6 +2392,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 18,Seattle's Easter Swing,"Seattle, WA, United States",https://easterswing.org/,April 2026,2026-04-01,2026,4,2026-04
 22,USA Grand Nationals,"Atlanta, GA, United States",http://www.usagrandnationals.com,May 2025,2025-05-01,2025,5,2025-05
 22,USA Grand Nationals,"Atlanta, GA, United States",http://www.usagrandnationals.com,May 2026,2026-05-01,2026,5,2026-05
+238,Winter White,"Oslo, Norway",http://www.winterwhite.no,December 2025,2025-12-01,2025,12,2025-12
 25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2025,2025-06-01,2025,6,2025-06
 25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2026,2026-06-01,2026,6,2026-06
 31,Mountain Magic,"South Lake Tahoe (near Reno), NV, United States",http://mountainmagic.dance,November 2025,2025-11-01,2025,11,2025-11
@@ -2399,7 +2400,6 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 43,Paradise Dance Festival,"Irvine, CA, United States",http://www.ParadiseCountryDanceFestival.com,October 2025,2025-10-01,2025,10,2025-10
 47,Swingtime in the Rockies,"Denver, CO, United States",http://www.swingtimewcs.com,August 2025,2025-08-01,2025,8,2025-08
 48,South Bay Dance Fling,"San Jose, CA, United States",http://www.SBDF.dance,September 2025,2025-09-01,2025,9,2025-09
-238,Winter White,"Oslo, Norway",http://www.winterwhite.no,December 2025,2025-12-01,2025,12,2025-12
 53,Summer Hummer,"Boston, MA, United States",https://summerhummerboston.com/,August 2025,2025-08-01,2025,8,2025-08
 59,Swing Fling,"Herndon, VA, United States",http://www.swingfling.com,August 2025,2025-08-01,2025,8,2025-08
 62,Monterey SwingFest,"Monterey, CA, United States",http://www.montereyswing.com,January 2025,2025-01-01,2025,1,2025-01
@@ -2504,7 +2504,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 229,Scandinavian Open,"Stockholm, Sweden",http://www.snowcs.se/,November 2025,2025-11-01,2025,11,2025-11
 231,Trilogy Swing,"Raleigh, NC, United States",http://www.trilogywcs.com,September 2025,2025-09-01,2025,9,2025-09
 233,Bavarian Open,"Munich, Germany",https://bavarianopen.com/,September 2025,2025-09-01,2025,9,2025-09
-234,Philly Swing Classic,"Philadelphia, PA, United States",http://www.phillyswing.com,September 2025,2025-09-01,2025,9,2025-09
+234,Philly Swing Classic,"Wilmington, DE, United States",http://www.phillyswing.com,September 2025,2025-09-01,2025,9,2025-09
 236,Warsaw Halloween Swing,"Warsaw, Poland",http://www.warsawhalloweenswing.com,November 2025,2025-11-01,2025,11,2025-11
 240,Westie Gala,"Stockholm, Sweden",http://www.westiegala.com/,January 2026,2026-01-01,2026,1,2026-01
 242,Derby City Swing,"Louisville, KY, United States",https://derbycityswing.com/,January 2025,2025-01-01,2025,1,2025-01
