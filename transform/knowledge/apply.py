@@ -8,13 +8,11 @@ from typing import TYPE_CHECKING
 import pandas as pd
 
 from transform.geography.resolve import (
+    _canonical_location_raw,
     build_location_lookup,
     location_lookup_key_from_text,
-    _canonical_location_raw,
 )
-from transform.geography.utils import norm_value as _norm
-
-logger = logging.getLogger(__name__)
+from transform.geography.utils import norm_value
 from transform.knowledge.events import (
     EVENT_LOCATION_EXACT_CORRECTIONS,
     EVENT_LOCATION_SUBSTRING_CORRECTIONS,
@@ -26,6 +24,11 @@ from transform.knowledge.locations import LocationPatch
 
 if TYPE_CHECKING:
     from transform.preprocess_tracker import PreprocessTracker
+
+logger = logging.getLogger(__name__)
+
+# Module-level alias so call sites read naturally.
+_norm = norm_value
 
 
 def event_location_patches() -> dict[int, LocationPatch]:
@@ -48,12 +51,6 @@ def _location_row_empty(df: pd.DataFrame, mask: pd.Series) -> pd.Series:
     return empty
 
 
-def _norm_text(value: object) -> str:
-    if value is None or (isinstance(value, float) and pd.isna(value)):
-        return ""
-    return str(value).strip()
-
-
 def backfill_empty_result_event_locations(results_df: pd.DataFrame) -> pd.DataFrame:
     """Fill empty results.event_location from catalog metadata.
 
@@ -67,45 +64,45 @@ def backfill_empty_result_event_locations(results_df: pd.DataFrame) -> pd.DataFr
     if "event_location" not in df.columns:
         df["event_location"] = ""
 
-    empty = df["event_location"].map(_norm_text) == ""
+    empty = df["event_location"].map(norm_value) == ""
 
     if "event_name_id" in df.columns:
         for event_id, meta in KNOWN_EVENT_METADATA.items():
             loc = meta.get("location")
             if isinstance(loc, dict) and loc.get("event_location"):
-                event_loc = _norm_text(loc["event_location"])
+                event_loc = norm_value(loc["event_location"])
             else:
-                event_loc = _norm_text(meta.get("typical_location"))
+                event_loc = norm_value(meta.get("typical_location"))
             if not event_loc:
                 continue
             mask = empty & (df["event_name_id"].astype(str).str.strip() == str(event_id))
             if mask.any():
                 df.loc[mask, "event_location"] = event_loc
-                empty = df["event_location"].map(_norm_text) == ""
+                empty = df["event_location"].map(norm_value) == ""
 
     if "event_name" in df.columns:
         for event_id, meta in KNOWN_EVENT_METADATA.items():
-            name = _norm_text(meta.get("name"))
+            name = norm_value(meta.get("name"))
             if not name:
                 continue
             loc = meta.get("location")
             if isinstance(loc, dict) and loc.get("event_location"):
-                event_loc = _norm_text(loc["event_location"])
+                event_loc = norm_value(loc["event_location"])
             else:
-                event_loc = _norm_text(meta.get("typical_location"))
+                event_loc = norm_value(meta.get("typical_location"))
             if not event_loc:
                 continue
             mask = empty & (df["event_name"].astype(str).str.strip() == name)
             if mask.any():
                 df.loc[mask, "event_location"] = event_loc
-                empty = df["event_location"].map(_norm_text) == ""
+                empty = df["event_location"].map(norm_value) == ""
 
     if "event_name" in df.columns:
         for name, location in EVENT_NAME_LOCATION_OVERRIDES.items():
             mask = empty & (df["event_name"].astype(str).str.strip() == name)
             if mask.any():
                 df.loc[mask, "event_location"] = location
-                empty = df["event_location"].map(_norm_text) == ""
+                empty = df["event_location"].map(norm_value) == ""
 
     return df
 
