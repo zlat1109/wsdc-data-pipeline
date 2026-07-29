@@ -81,6 +81,8 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'Paris Westie Fest': 'Paris, France',  # was Venray (227)
     'Rolling Swing': 'Lyon, France',  # was Phoenix (3)
     'Dutch Open West Coast Swing': 'Venray, Netherlands',  # was Perth (253)
+    # Shared Venray (227 / Dutch Open) wrongly applied to Best of the Best (Sydney, AU).
+    'Best of the Best WCS': 'Sydney, Australia',
     'Winter Coast Swing': 'Kuopio, Finland',  # was Düsseldorf (127)
     # Shared St. Petersburg (222 / Swing & Snow) wrongly applied to NZ Open.
     # Site/URL streetswing.co.nz; calendar sibling in Auckland.
@@ -667,6 +669,18 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_country': 'Slovenia',
             'event_location': 'Ljubljana, Slovenia',
             'event_location_standardized': 'Ljubljana, Slovenia',
+        },
+    },
+    167: {
+        'name': 'Best of the Best WCS',
+        'url': 'https://www.bestofthebestwcs.com/',
+        'typical_location': 'Sydney, Australia',
+        'location': {
+            'event_city': 'Sydney',
+            'event_state': '',
+            'event_country': 'Australia',
+            'event_location': 'Sydney, Australia',
+            'event_location_standardized': 'Sydney, Australia',
         },
     },
 }
