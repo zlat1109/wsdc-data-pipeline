@@ -156,20 +156,16 @@ def _apply_event_corrections_tracked(df: pd.DataFrame, tracker: PreprocessTracke
                 "known_map",
             )
 
+    # Apply text-only part of EVENT_NAME_LOCATION_OVERRIDES here so that
+    # resolve_result_location_ids sees the correct event_location strings.
+    # NOTE: location_id remapping is tracked separately after
+    # force_result_locations_from_event_name_overrides runs — do not add a
+    # duplicate tracker.record here for the id change.
     if "event_name" in df.columns and "event_location" in df.columns:
         for name, location in EVENT_NAME_LOCATION_OVERRIDES.items():
             mask = df["event_name"].astype(str).str.strip() == name
             count = int(mask.sum())
             if count:
-                tracker.record(
-                    "EVENT_NAME_LOCATION_OVERRIDE",
-                    table,
-                    "event_location",
-                    f"(when event_name={name})",
-                    location,
-                    count,
-                    "known_map",
-                )
                 df.loc[mask, "event_location"] = location
 
     if "event_location" in df.columns:
@@ -351,13 +347,13 @@ def preprocess_with_log(data: dict[str, pd.DataFrame]) -> tuple[dict[str, pd.Dat
         )
         if forced:
             tracker.record(
-                "EVENT_NAME_LOCATION_ID_FORCE",
+                "EVENT_NAME_LOCATION_OVERRIDE",
                 "dancers_results_info",
-                "location_id",
-                "wrong shared location_id",
+                "event_location + location_id",
+                "wrong shared location_id (event_name match)",
                 "from EVENT_NAME_LOCATION_OVERRIDES",
                 forced,
-                "location_id_fix",
+                "known_map",
             )
         before_merge = (
             resolved_results["location_id"].astype(str).str.strip().isin(

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import logging
 from typing import TYPE_CHECKING
 
 import pandas as pd
@@ -10,8 +11,10 @@ from transform.geography.resolve import (
     build_location_lookup,
     location_lookup_key_from_text,
     _canonical_location_raw,
-    _norm,
 )
+from transform.geography.utils import norm_value as _norm
+
+logger = logging.getLogger(__name__)
 from transform.knowledge.events import (
     EVENT_LOCATION_EXACT_CORRECTIONS,
     EVENT_LOCATION_SUBSTRING_CORRECTIONS,
@@ -140,6 +143,14 @@ def force_result_locations_from_event_name_overrides(
         key = location_lookup_key_from_text(raw)
         loc_id = lookup.get(key) or lookup.get(raw.lower())
         if not loc_id:
+            logger.warning(
+                "force_result_locations_from_event_name_overrides: target location %r "
+                "(key=%r) for event %r not found in location_info — override skipped. "
+                "Add this city to location_info or check EVENT_NAME_LOCATION_OVERRIDES.",
+                target_location,
+                key,
+                event_name,
+            )
             continue
 
         before_loc = df.loc[mask, "location_id"].map(_norm)
