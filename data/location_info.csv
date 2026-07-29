@@ -180,13 +180,6 @@ location_id,event_city,event_state,event_country,latitude,longitude,event_locati
 279,Ludwigsburg,,Germany,48.8891149,9.1942834,"Ludwigsburg, Germany","Ludwigsburg, Germany",t
 280,Gothenburg,,Sweden,57.70887,11.97456,"Gothenburg, Sweden","Gothenburg, Sweden",t
 386,La Londe-les-Maures,,France,43.1381313,6.2355346,"La Londe-les-Maures, France","La Londe-les-Maures, France",t
-128,Richmond,,Canada,49.1665898,-123.133569,"Richmond, Canada","Richmond, Canada",t
-148,Calgary,,Canada,51.04473309999999,-114.0718831,"Calgary, Canada","Calgary, Canada",t
-154,Vancouver,,Canada,49.2827291,-123.1207375,"Vancouver, Canada","Vancouver, Canada",t
-179,Ottawa,,Canada,45.4200572,-75.7003397,"Ottawa, Canada","Ottawa, Canada",t
-205,Edmonton,,Canada,53.5461663,-113.4937355,"Edmonton, Canada","Edmonton, Canada",t
-127,Düsseldorf,,Germany,51.2230411,6.7824545,"Düsseldorf, Germany","Düsseldorf, Germany",t
-325,North Myrtle Beach,South Carolina,United States,33.8160058,-78.680016,"North Myrtle Beach, SC, United States","North Myrtle Beach, SC",t
 25,Atlanta,Georgia,United States,33.7501275,-84.3885209,"Atlanta, GA, United States","Atlanta, GA, United States",t
 159,Singapore,,Singapore,1.352083,103.819836,"Singapore, Singapore","Singapore, Singapore",t
 213,Jeju,,Republic of Korea,33.5042779,126.519838,"Jeju, Republic of Korea","Jeju, Republic of Korea",t
@@ -198,4 +191,11 @@ location_id,event_city,event_state,event_country,latitude,longitude,event_locati
 226,Glasgow,,United Kingdom,55.86167039999999,-4.2583345,"Glasgow, United Kingdom","Glasgow, United Kingdom",t
 86,Montreal,,Canada,45.5018869,-73.56739189999999,"Montreal, Canada","Montreal, Canada",t
 105,Toronto,,Canada,43.653226,-79.3831843,"Toronto, Canada","Toronto, Canada",t
+128,Richmond,,Canada,49.1665898,-123.133569,"Richmond, Canada","Richmond, Canada",t
+148,Calgary,,Canada,51.04473309999999,-114.0718831,"Calgary, Canada","Calgary, Canada",t
+154,Vancouver,,Canada,49.2827291,-123.1207375,"Vancouver, Canada","Vancouver, Canada",t
+179,Ottawa,,Canada,45.4200572,-75.7003397,"Ottawa, Canada","Ottawa, Canada",t
+205,Edmonton,,Canada,53.5461663,-113.4937355,"Edmonton, Canada","Edmonton, Canada",t
+127,Düsseldorf,,Germany,51.2230411,6.7824545,"Düsseldorf, Germany","Düsseldorf, Germany",t
+325,North Myrtle Beach,South Carolina,United States,33.8160058,-78.680016,"North Myrtle Beach, SC, United States","North Myrtle Beach, SC",t
 353,Silver Spring,Maryland,United States,38.9906654,-77.026088,"Silver Spring, MD, United States","Silver Spring, MD",t

@@ -114,7 +114,7 @@
       "name": "edition_calendar_orphan_event_ids",
       "category": "event_naming",
       "severity": "warn",
-      "value": 6,
+      "value": 10,
       "max_value": 0,
       "ok": false,
       "description": "Calendar date rows must point at a current catalog event_id.",
@@ -124,7 +124,7 @@
       "name": "recent_editions_missing_day_dates",
       "category": "event_naming",
       "severity": "warn",
-      "value": 14,
+      "value": 11,
       "max_value": 50,
       "ok": true,
       "description": "Most 2025+ editions with results should have calendar day dates.",
@@ -169,6 +169,16 @@
       "ok": true,
       "description": "event_editions.location_raw disagrees with joined core.locations text.",
       "fix_hint": "LOCATION_ID_CORRECTIONS / rebuild editions from results mode location"
+    },
+    {
+      "name": "source_vs_results_location_conflicts_recent",
+      "category": "location",
+      "severity": "warn",
+      "value": 0,
+      "max_value": 20,
+      "ok": true,
+      "description": "Source-derived edition location differs from results majority location_id (recent years).",
+      "fix_hint": "Audit event mapping/source location; if needed fix results location_id or add override."
     },
     {
       "name": "city_equals_country",
@@ -292,11 +302,11 @@
     }
   ],
   "summary": {
-    "total": 29,
-    "passed": 28,
+    "total": 30,
+    "passed": 29,
     "errors": 0,
     "warnings": 1
   },
-  "generated_at": "2026-07-27T21:38:15.695688+00:00",
+  "generated_at": "2026-07-29T08:34:43.854866+00:00",
   "scope": "full"
 }
