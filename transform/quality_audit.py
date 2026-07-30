@@ -520,6 +520,80 @@ def check_catalog_typical_vs_upcoming(
     )
 
 
+def check_event_name_location_id_collision(
+    results: pd.DataFrame,
+    location_info: pd.DataFrame | None,
+) -> QualityFinding | None:
+    """Detect event names whose results span more than one location_id.
+
+    This is the root cause of "Slovenian Open in Australia" style bugs: WSDC
+    reuses or misassigns a location_id and the pipeline silently inherits it.
+    Every canonical event_name should map to exactly one location_id (or zero
+    if location is missing). More than one signals a collision or series move.
+    """
+    if results is None or results.empty:
+        return None
+    if "event_name" not in results.columns or "location_id" not in results.columns:
+        return None
+
+    loc_col = results["location_id"].astype(str).str.strip()
+    name_col = results["event_name"].astype(str).str.strip()
+
+    # Build country lookup to enrich examples
+    loc_country: dict[str, str] = {}
+    if location_info is not None and not location_info.empty:
+        for _, row in location_info.iterrows():
+            lid = str(row.get("location_id", "")).strip()
+            country = str(row.get("event_country", "")).strip()
+            if lid and country:
+                loc_country[lid] = country
+
+    examples = []
+    for name, grp in results.groupby(name_col):
+        ids = {
+            v
+            for v in grp["location_id"].astype(str).str.strip()
+            if v and v not in {"", "nan"}
+        }
+        if len(ids) <= 1:
+            continue
+        id_list = sorted(ids, key=lambda x: int(x) if x.isdigit() else 0)
+        countries = [loc_country.get(i, "?") for i in id_list]
+        examples.append(
+            {
+                "event_name": name,
+                "location_ids": id_list,
+                "countries": countries,
+                "row_count": len(grp),
+            }
+        )
+
+    if not examples:
+        return None
+
+    examples.sort(key=lambda x: x["row_count"], reverse=True)
+    return QualityFinding(
+        category="location",
+        code="EVENT_NAME_LOCATION_ID_COLLISION",
+        severity="high",
+        message=(
+            f"{len(examples)} event name(s) map to multiple location_ids "
+            "(shared or misassigned id — likely wrong country in some rows)"
+        ),
+        count=len(examples),
+        examples=examples[:20],
+        suggested_fix=(
+            "Add to EVENT_NAME_LOCATION_OVERRIDES in transform/knowledge/events.py "
+            "and run force_result_locations_from_event_name_overrides"
+        ),
+        fingerprint=_fingerprint(
+            "location",
+            "EVENT_NAME_LOCATION_ID_COLLISION",
+            "|".join(e["event_name"] for e in examples[:15]),
+        ),
+    )
+
+
 def check_non_canonical_levels(results: pd.DataFrame) -> QualityFinding | None:
     if "event_competition" not in results.columns:
         return None
@@ -623,6 +697,9 @@ def run_audit(
         if item:
             findings.append(item)
         item = check_event_name_location_country_conflicts(results, location_info)
+        if item:
+            findings.append(item)
+        item = check_event_name_location_id_collision(results, location_info)
         if item:
             findings.append(item)
         item = check_scheduled_vs_results_country(

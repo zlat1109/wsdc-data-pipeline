@@ -10,6 +10,8 @@ parser dropped the field).
 
 from __future__ import annotations
 
+import logging
+
 import pandas as pd
 
 from transform.geography.city import format_event_location, normalize_location_whitespace
@@ -18,11 +20,14 @@ from transform.geography.normalize import (
     parse_us_state_from_location_text,
     standardize_country,
 )
+from transform.geography.utils import norm_value
 from transform.knowledge.locations import (
     LOCATION_ID_MERGE_MAP,
     LOCATION_RAW_ALIASES,
     LOCATION_STRING_ALIASES,
 )
+
+logger = logging.getLogger(__name__)
 
 LOCATION_COLUMNS = [
     "location_id",
@@ -38,9 +43,7 @@ LOCATION_COLUMNS = [
 
 
 def _norm(value: object) -> str:
-    if value is None or (isinstance(value, float) and pd.isna(value)):
-        return ""
-    return str(value).strip()
+    return norm_value(value)
 
 
 def _canonical_location_raw(raw: str) -> str:
@@ -111,6 +114,11 @@ def _register_lookup_keys(lookup: dict[str, str], row: pd.Series, loc_id: str) -
         key = _norm(row.get(col)).lower()
         if key:
             lookup.setdefault(key, loc_id)
+            # Also register the lookup-key-normalised form so two-part strings
+            # like "Washington, DC" and "Washington, DC, United States" both hit.
+            canon_from_raw = location_lookup_key_from_text(key)
+            if canon_from_raw and canon_from_raw != key:
+                lookup.setdefault(canon_from_raw, loc_id)
     canon = location_lookup_key_from_row(row)
     if canon:
         lookup.setdefault(canon, loc_id)
@@ -144,7 +152,12 @@ def build_location_lookup(location_df: pd.DataFrame) -> dict[str, str]:
     """
     lookup: dict[str, str] = {}
     if location_df is not None and not location_df.empty and "location_id" in location_df.columns:
-        for _, row in location_df.iterrows():
+        # Sort by numeric location_id so the lowest (canonical) id wins when
+        # multiple rows share the same lookup key (setdefault keeps first).
+        sorted_df = location_df.copy()
+        sorted_df["_sort_id"] = pd.to_numeric(sorted_df["location_id"], errors="coerce")
+        sorted_df = sorted_df.sort_values("_sort_id", na_position="last").drop(columns=["_sort_id"])
+        for _, row in sorted_df.iterrows():
             loc_id = _norm(row.get("location_id"))
             if not loc_id:
                 continue
@@ -168,7 +181,7 @@ def consolidate_location_ids(
     if "location_id" in results_df.columns:
         loc_col = results_df["location_id"].astype(str).str.strip()
         for old_id, new_id in LOCATION_ID_MERGE_MAP.items():
-            results_df.loc[loc_col == old_id, "location_id"] = new_id
+            results_df.loc[loc_col == old_id.strip(), "location_id"] = new_id.strip()
 
     if location_df is None or location_df.empty or "location_id" not in location_df.columns:
         return results_df, location_df
@@ -223,13 +236,27 @@ def resolve_result_location_ids(
     cur_id = results_df["location_id"].map(_norm)
 
     needs_fill = (cur_id == "") & (loc_raw != "")
-    if needs_fill.any() and location_df.empty and result_ids.notna().any() and int((result_ids > 0).sum()) > 0:
+    existing_result_ids = result_ids.notna() & (result_ids > 0)
+    if needs_fill.any() and location_df.empty and existing_result_ids.any():
         raise RuntimeError(
             "location_info is empty but dancers_results_info already has "
             "location_id values; refusing to invent location rows without a "
             "registry. Restore location_info.csv (or export.location_info) "
             "before resolve."
         )
+    # Warn when location_df is non-empty but suspiciously small — new ids could
+    # collide with historical FKs if the registry is incomplete.
+    if needs_fill.any() and not location_df.empty and existing_result_ids.any():
+        max_result_id = int(result_ids.max())
+        max_loc_id = int(existing_ids.max()) if existing_ids.notna().any() else 0
+        if max_result_id > max_loc_id * 2 + 100:
+            logger.warning(
+                "resolve_result_location_ids: max location_id in results (%d) is "
+                "much larger than in location_info (%d); location_info may be "
+                "incomplete — new location rows may collide with historical FKs.",
+                max_result_id,
+                max_loc_id,
+            )
     new_rows: list[dict[str, str]] = []
 
     resolved = cur_id.copy()
@@ -245,6 +272,7 @@ def resolve_result_location_ids(
             continue
         new_id = str(next_id)
         next_id += 1
+        logger.debug("resolve_result_location_ids: new location_id=%s for %r", new_id, raw)
         if key:
             lookup[key] = new_id
         lookup[raw_lower] = new_id

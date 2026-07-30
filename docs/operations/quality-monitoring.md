@@ -14,7 +14,24 @@ Two layers: preprocess quality reports (CSV) and post-load SQL checks (database)
 
 Add fixes to knowledge maps / preprocess based on `manual_review_required`, not items already in `applied_normalizations`.
 
-See [../transform/index.md](../transform/index.md).
+See [../transform/index.md](../transform/index.md) and [../transform/geography.md](../transform/geography.md) for location-collision handling.
+
+### Location findings in preprocess audit
+
+`run_audit` / preprocess report flags (among others):
+
+| Code | Severity | What to do |
+|------|----------|------------|
+| `EVENT_NAME_LOCATION_ID_COLLISION` | high | Same `event_name` has multiple `location_id`s. Triage: wrong shared id → `EVENT_NAME_LOCATION_OVERRIDES`; metro/series move → leave or year-aware logic |
+| `EVENT_NAME_LOCATION_COUNTRY_CONFLICT` | high | Name implies country ≠ results location country |
+| `SCHEDULED_VS_RESULTS_COUNTRY_CONFLICT` | high | WSDC calendar country ≠ results location country |
+| `CATALOG_TYPICAL_UPCOMING_CONFLICT` | medium | Catalog typical ≠ upcoming (stuck typical or real move) |
+
+Quick offline scan (no full preprocess):
+
+```bash
+python -c "from pathlib import Path; from transform.quality_audit import load_csv_bundle, check_event_name_location_id_collision; d=load_csv_bundle(Path('data')); print(check_event_name_location_id_collision(d['dancers_results_info'], d.get('location_info')))"
+```
 
 ### Manual run
 
