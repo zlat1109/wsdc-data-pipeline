@@ -8,7 +8,8 @@ Locations are normalized for consistent maps, joins, and geo-aware event dedupli
 |------|------|
 | `transform/geography/canonical.py` | City keys, coordinate lookup |
 | `transform/geography/normalize.py` | String cleanup |
-| `transform/geography/resolve.py` | Parse `"City, ST USA"` patterns |
+| `transform/geography/resolve.py` | Fill `results.location_id` from `event_location` + location registry |
+| `transform/geography/utils.py` | Shared `norm_value()` for empty/NaN → stripped string |
 | `transform/geography/corrections.py` | Row-level fixes |
 | `transform/geography/constants.py` | Country/state constants |
 | `transform/geography/geo_event.py` | `geo_key`, metro clusters, split classification |
@@ -55,7 +56,24 @@ correct place string. Preprocess then **forces** `location_id` remap via
 `force_result_locations_from_event_name_overrides` (because
 `resolve_result_location_ids` only fills *empty* ids).
 
-Audit similar collisions:
+If the override target city is missing from `location_info`, the force step
+**skips with a WARNING** (does not invent a new id). Add the place to the
+registry or fix the override string.
+
+### Resolve / lookup hardening
+
+`build_location_lookup` sorts by numeric `location_id` so the lowest
+(canonical) id wins when several registry rows share a key. Lookup also
+registers the canonicalised form of each raw/standardised string so
+two-part labels (`"Washington, DC"`) match three-part variants
+(`"Washington, DC, United States"`).
+
+`resolve_result_location_ids` still refuses to invent rows when
+`location_info` is empty but results already carry ids. It also WARNINGs when
+`max(results.location_id)` is far above `max(location_info.location_id)`
+(incomplete registry / FK collision risk).
+
+### Audit similar collisions
 
 ```bash
 python scripts/audit_event_location_mismatches.py
@@ -75,8 +93,17 @@ python scripts/apply_event_name_location_overrides_csv.py --dry-run
 python scripts/apply_event_name_location_overrides_csv.py --apply
 ```
 
-Preprocess quality audit also emits `EVENT_NAME_LOCATION_COUNTRY_CONFLICT` when
-event_name country hints disagree with `location_id` country.
+Preprocess quality audit emits:
+
+| Code | Meaning |
+|------|---------|
+| `EVENT_NAME_LOCATION_COUNTRY_CONFLICT` | Event-name country hint ≠ `location_id` country |
+| `EVENT_NAME_LOCATION_ID_COLLISION` | Same `event_name` spans **multiple** `location_id` values |
+| `SCHEDULED_VS_RESULTS_COUNTRY_CONFLICT` | Calendar country ≠ results location country |
+
+`EVENT_NAME_LOCATION_ID_COLLISION` is the Slovenian Open / Best of the Best /
+NZ Open pattern. Not every hit is a bug: metro moves (Countdown Framingham→Boston)
+and true series relocates (Sunny Side Crimea→Spain) also appear — triage by year.
 
 **Supabase:** next full-parse preprocess rewrites `core.results.location_id` via
 the same force step. Until then, local `data/*.csv` can diverge from DB export.
@@ -97,10 +124,10 @@ Do not force-remap those without year-aware edition logic.
 ## Preprocess flow
 
 1. Resolve location strings via `resolve.py` (`LOCATION_STRING_ALIASES` + lookup table)
-2. Apply id-based corrections from knowledge (forced overwrite for known `location_id`)
+2. Force remap from `EVENT_NAME_LOCATION_OVERRIDES` (`force_result_locations_from_event_name_overrides`)
 3. Standardize labels for `location_info.csv`; **clear `event_state` for non-US rows**
 4. **Dedupe** duplicate result rows and collapse duplicate location ids (`LOCATION_ID_MERGE_MAP`)
-5. Quality audit flags unmapped cities
+5. Quality audit flags collisions (`EVENT_NAME_LOCATION_ID_COLLISION`), country mismatches, unmapped cities
 
 Preprocess dedupe runs on every load (PR #14+). For data **already in Supabase** loaded before that fix, use `scripts/dedupe_core_data.py` — see [../operations/repair-scripts.md](../operations/repair-scripts.md#dedupe_core_datapy).
 
