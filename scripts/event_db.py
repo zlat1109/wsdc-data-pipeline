@@ -32,7 +32,7 @@ def _forced_gate_event_names() -> set[str]:
     Use for known lagging score publications where we still want check-updates
     to keep showing the event as pending this week.
     """
-    raw = os.getenv("EVENT_GATE_FORCE_PENDING_NAMES", "Sea Sun and Swing")
+    raw = os.getenv("EVENT_GATE_FORCE_PENDING_NAMES", "")
     return {name.strip() for name in raw.split(",") if name.strip()}
 
 

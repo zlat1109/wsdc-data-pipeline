@@ -61,6 +61,8 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'Slovenian Open': 'Ljubljana, Slovenia',
     # Official site: Freiburg, Germany; legacy rows were mapped to Jeju (213).
     'Spring Time Swing': 'Freiburg, Germany',
+    # Official site seasunswing.fr / calendar: La Grande Motte; all results stuck on Jeju (213).
+    'Sea Sun and Swing': 'La Grande Motte, France',
     # Catalog/scheduled say Calgary; results pointed at Perth (253 / WesterOz).
     'BTO Open': 'Calgary, Canada',
     # Shared Jeju (213) wrongly applied to The Aloha Open (Wailea / Hawaii).
@@ -681,6 +683,18 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_country': 'Australia',
             'event_location': 'Sydney, Australia',
             'event_location_standardized': 'Sydney, Australia',
+        },
+    },
+    164: {
+        'name': 'Sea Sun and Swing',
+        'url': 'https://www.seasunswing.fr/',
+        'typical_location': 'La Grande Motte, France',
+        'location': {
+            'event_city': 'La Grande Motte',
+            'event_state': '',
+            'event_country': 'France',
+            'event_location': 'La Grande Motte, France',
+            'event_location_standardized': 'La Grande Motte, France',
         },
     },
 }
