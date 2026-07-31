@@ -6,6 +6,7 @@ from transform.champion_news.detect import (
     make_transition_slug,
 )
 from transform.champion_news.merge import (
+    flatten_by_slug,
     load_champion_news,
     merge_champion_news,
     write_champion_news,
@@ -27,6 +28,7 @@ __all__ = [
     "STATUS_REQUIRED",
     "build_champion_path",
     "detect_transitions",
+    "flatten_by_slug",
     "load_champion_news",
     "load_timeline_events",
     "make_transition_slug",

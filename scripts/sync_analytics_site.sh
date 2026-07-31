@@ -72,7 +72,7 @@ else
   echo "::warning::Point Summary build failed — continuing without updating points_summaries.json"
 fi
 
-CHAMPION_NEWS_CUTOFF="${CHAMPION_NEWS_CUTOFF:-2026-07-28}"
+CHAMPION_NEWS_CUTOFF="${CHAMPION_NEWS_CUTOFF:-2026-07-25}"
 CHAMPION_NEWS_REPORT="${CHAMPION_NEWS_REPORT:-${PIPELINE_DATA_ABS}/quality_reports/champion_news_last.json}"
 echo "Building champion_news.json (cutoff=${CHAMPION_NEWS_CUTOFF})"
 if python3 "${PIPELINE_ROOT}/scripts/build_champion_news.py" \

@@ -8,20 +8,38 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any
 
-PRESERVE_FIELDS = ("notes", "overrides")
+PRESERVE_FIELDS = ("notes", "overrides", "telegram_msg_id", "probe")
 
 
 def post_date_today(today: date | None = None) -> str:
     d = today or date.today()
-    return d.strftime("%d-%m-%Y")
+    return d.isoformat()
+
+
+def parse_post_date(post_date: str) -> date | None:
+    """Parse publication date as YYYY-MM-DD (legacy DD-MM-YYYY accepted)."""
+    text = (post_date or "").strip()
+    if not text:
+        return None
+    try:
+        parts = text.split("-")
+        if len(parts) != 3:
+            return None
+        a, b, c = (int(parts[0]), int(parts[1]), int(parts[2]))
+        # YYYY-MM-DD
+        if a >= 1000:
+            return date(a, b, c)
+        # legacy DD-MM-YYYY
+        return date(c, b, a)
+    except (ValueError, TypeError):
+        return None
 
 
 def _post_date_sort_key(post_date: str) -> tuple[int, int, int]:
-    try:
-        d, m, y = post_date.strip().split("-")
-        return (int(y), int(m), int(d))
-    except (ValueError, TypeError, AttributeError):
+    parsed = parse_post_date(post_date)
+    if parsed is None:
         return (0, 0, 0)
+    return (parsed.year, parsed.month, parsed.day)
 
 
 def load_champion_news(path: Path) -> dict:

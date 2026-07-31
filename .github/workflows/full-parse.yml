@@ -166,7 +166,7 @@ jobs:
           WSDC_ANALYTICS_DEPLOY_TOKEN: ${{ secrets.WSDC_ANALYTICS_DEPLOY_TOKEN }}
           POINT_SUMMARY_CUTOFF: "2026-07-28"
           POINT_SUMMARY_REPORT: data/quality_reports/point_summary_last.json
-          CHAMPION_NEWS_CUTOFF: "2026-07-28"
+          CHAMPION_NEWS_CUTOFF: "2026-07-25"
           CHAMPION_NEWS_REPORT: data/quality_reports/champion_news_last.json
         run: bash scripts/sync_analytics_site.sh
 

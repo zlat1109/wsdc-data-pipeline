@@ -63,11 +63,51 @@ def _parse_iso(value: object) -> date | None:
         return None
 
 
-def load_edition_dates(path: Path) -> dict[tuple[str, int, int], tuple[date | None, date | None, str, str, str]]:
-    """(event_name_norm, year, month) → (start, end, city, country, location_display)."""
+def load_scheduled_date_overrides(
+    path: Path,
+) -> dict[tuple[str, int, int], tuple[date | None, date | None]]:
+    """(event_name_norm, year, month) → (start, end) from scheduled_events.csv."""
+    out: dict[tuple[str, int, int], tuple[date | None, date | None]] = {}
+    if not path.exists():
+        return out
+    with path.open(encoding="utf-8", newline="") as fh:
+        for row in csv.DictReader(fh):
+            start = _parse_iso(row.get("start_date"))
+            if start is None:
+                continue
+            end = _parse_iso(row.get("end_date")) or start
+            year = _parse_int(row.get("results_year"))
+            month = _parse_int(row.get("results_month"))
+            if not year or not month:
+                continue
+            name = " ".join(
+                (
+                    (row.get("canonical_name") or row.get("event_name") or "")
+                    .strip()
+                    .lower()
+                    .split()
+                )
+            )
+            if not name:
+                continue
+            out[(name, year, month)] = (start, end)
+    return out
+
+
+def load_edition_dates(path: Path, schedule_path: Path | None = None) -> dict[tuple[str, int, int], tuple[date | None, date | None, str, str, str]]:
+    """(event_name_norm, year, month) → (start, end, city, country, location_display).
+
+    Blank edition start/end dates are filled from ``scheduled_events.csv`` the
+    same way Point Summary does, so threshold_date prefers real calendar days.
+    """
     out: dict[tuple[str, int, int], tuple[date | None, date | None, str, str, str]] = {}
     if not path.exists():
         return out
+    schedule = load_scheduled_date_overrides(
+        schedule_path
+        if schedule_path is not None
+        else path.parent / "scheduled_events.csv"
+    )
     with path.open(encoding="utf-8", newline="") as fh:
         for row in csv.DictReader(fh):
             name = " ".join((row.get("event_name") or "").strip().lower().split())
@@ -79,9 +119,17 @@ def load_edition_dates(path: Path) -> dict[tuple[str, int, int], tuple[date | No
             country = (row.get("place_country") or "").strip()
             raw = (row.get("location_raw") or "").strip()
             display = raw or (", ".join(p for p in (city, country) if p))
+            start = _parse_iso(row.get("start_date"))
+            end = _parse_iso(row.get("end_date"))
+            if start is None:
+                sched = schedule.get((name, year, month))
+                if sched:
+                    start, end = sched
+            elif end is None:
+                end = start
             out[(name, year, month)] = (
-                _parse_iso(row.get("start_date")),
-                _parse_iso(row.get("end_date")),
+                start,
+                end,
                 city,
                 country,
                 display,
