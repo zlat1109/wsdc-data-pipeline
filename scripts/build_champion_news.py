@@ -30,6 +30,7 @@ from transform.champion_news import (  # noqa: E402
     merge_champion_news,
     write_champion_news,
 )
+from transform.champion_news.merge import parse_post_date  # noqa: E402
 
 DEFAULT_CUTOFF = date(2026, 7, 28)
 SITE_REL = Path("static/data/champion_news.json")
@@ -37,14 +38,6 @@ SITE_REL = Path("static/data/champion_news.json")
 
 def _parse_date(value: str) -> date:
     return date.fromisoformat(value.strip())
-
-
-def _parse_post_date(post_date: str) -> date | None:
-    try:
-        d, m, y = post_date.strip().split("-")
-        return date(int(y), int(m), int(d))
-    except (ValueError, TypeError, AttributeError):
-        return None
 
 
 def enrich_with_paths(
@@ -66,7 +59,7 @@ def enrich_with_paths(
         prior = by_slug.get(slug)
         as_of = snapshot
         if prior:
-            parsed = _parse_post_date(prior.get("post_date") or "")
+            parsed = parse_post_date(prior.get("post_date") or "")
             if parsed is not None:
                 as_of = parsed
         enriched = dict(card)
@@ -80,9 +73,11 @@ def refresh_paths_as_of_post_date(payload: dict, timelines: dict) -> int:
     """Rebuild path for every card using that block's post_date as as_of."""
     refreshed = 0
     for block in payload.get("summaries") or []:
-        as_of = _parse_post_date(block.get("post_date") or "")
+        as_of = parse_post_date(block.get("post_date") or "")
         if as_of is None:
             continue
+        # Normalize stored publication date to YYYY-MM-DD.
+        block["post_date"] = as_of.isoformat()
         for event in block.get("events") or []:
             dancer_id = str(event.get("dancer_id") or "").strip()
             role = (event.get("role") or "").strip()

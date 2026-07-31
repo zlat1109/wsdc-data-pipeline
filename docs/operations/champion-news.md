@@ -26,14 +26,14 @@ File: `static/data/champion_news.json`
 
 ```text
 { "summaries": [ {
-    post_date, events_count,
+    post_date (YYYY-MM-DD), events_count,
     events: [{
       slug, title, dancer_id, dancer_name, role,
       status, required_pathway,
       threshold_date, threshold_event, threshold_location,
       als_total, chmp_total, flag, continent,
       path: { first_points, first_all_stars, event_counts, top_*, continents_* },
-      notes?, overrides?
+      path_as_of?, notes?, overrides?
     }]
 } ] }
 ```

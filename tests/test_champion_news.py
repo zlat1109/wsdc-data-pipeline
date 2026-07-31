@@ -124,7 +124,7 @@ def test_merge_preserves_notes():
     existing = {
         "summaries": [
             {
-                "post_date": "30-07-2026",
+                "post_date": "2026-07-30",
                 "events_count": 1,
                 "events": [
                     {
@@ -153,6 +153,7 @@ def test_merge_preserves_notes():
         existing, candidates, today=date(2026, 7, 31)
     )
     assert report["updated_count"] == 1
+    assert report["post_date"] == "2026-07-31"
     ev = payload["summaries"][0]["events"][0]
     assert ev["notes"] == "manual fix"
     assert ev["als_total"] == 151
