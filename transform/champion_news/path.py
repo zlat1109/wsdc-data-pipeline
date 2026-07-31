@@ -82,8 +82,9 @@ def build_champion_path(events: list[ResultEvent]) -> dict:
     als_editions = [e for e in editions if e["als_points"] > 0]
     chmp_editions = [e for e in editions if e["chmp_points"] > 0]
 
-    top_events = _top_n(editions, key="points", n=3)
-    top_als = _top_n(als_editions, key="als_points", n=3)
+    # Top lists are career highlights: sum points across editions of the same series.
+    top_events = _top_n_by_series(editions, key="points", n=3)
+    top_als = _top_n_by_series(als_editions, key="als_points", n=3)
     top_cities = _rank_cities(ordered, n=3)
     continents_total = _continent_points(editions, points_key="points")
     continents_als = _continent_points(als_editions, points_key="als_points")
@@ -118,6 +119,48 @@ def _top_n(items: list[dict], *, key: str, n: int) -> list[dict]:
             }
         )
     return out
+
+
+def _top_n_by_series(items: list[dict], *, key: str, n: int) -> list[dict]:
+    """Rank event series by summed points across years/editions."""
+    series: dict[str, dict] = {}
+    for item in items:
+        name = (item.get("event_name") or "").strip()
+        if not name:
+            continue
+        bucket_key = name.casefold()
+        bucket = series.setdefault(
+            bucket_key,
+            {
+                "event_name": name,
+                "points": 0.0,
+                "location": item.get("location") or "",
+                "event_year": item.get("event_year"),
+                "event_month": item.get("event_month"),
+            },
+        )
+        bucket["points"] += float(item.get(key, 0) or 0)
+        # Prefer the most recent edition for display year/month/location.
+        prev_y = bucket.get("event_year") or 0
+        cur_y = item.get("event_year") or 0
+        prev_m = bucket.get("event_month") or 0
+        cur_m = item.get("event_month") or 0
+        if (cur_y, cur_m) >= (prev_y, prev_m):
+            bucket["event_year"] = item.get("event_year")
+            bucket["event_month"] = item.get("event_month")
+            if item.get("location"):
+                bucket["location"] = item.get("location")
+    ranked = sorted(series.values(), key=lambda x: x["points"], reverse=True)[:n]
+    return [
+        {
+            "event_name": item["event_name"],
+            "points": int(round(item["points"])),
+            "location": item.get("location") or "",
+            "year": item.get("event_year"),
+            "month": item.get("event_month"),
+        }
+        for item in ranked
+    ]
 
 
 def _rank_cities(events: list[ResultEvent], n: int = 3) -> list[dict]:
