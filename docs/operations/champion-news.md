@@ -43,6 +43,11 @@ Slug: `{threshold_date}-{dancer_id}-{role}-{allowed|required}`
 Create rule: `threshold_date >= CHAMPION_NEWS_CUTOFF` (default **2026-07-28**).
 Merge refreshes auto fields and **preserves** `notes` / `overrides`.
 
+`path` is computed **as of the block `post_date`** (publication snapshot), not
+today. Each card also stores `path_as_of` (ISO date). Rebuild refreshes every
+existing card's path with that freeze date so archive cards do not pick up
+later editions.
+
 ## Builder
 
 ```bash

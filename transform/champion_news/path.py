@@ -9,8 +9,31 @@ from transform.champion_news.detect import ResultEvent, _sort_key
 from transform.knowledge.geo_flags import continent_for_country
 
 
-def build_champion_path(events: list[ResultEvent]) -> dict:
-    """Build expandable path block from point-bearing events for one role."""
+def _event_as_of_date(ev: ResultEvent) -> date:
+    return ev.start_date or date(ev.event_year, ev.event_month, 1)
+
+
+def filter_events_as_of(
+    events: list[ResultEvent],
+    as_of: date | None,
+) -> list[ResultEvent]:
+    """Keep only events known on/before as_of (publication / snapshot date)."""
+    if as_of is None:
+        return list(events)
+    return [ev for ev in events if _event_as_of_date(ev) <= as_of]
+
+
+def build_champion_path(
+    events: list[ResultEvent],
+    *,
+    as_of: date | None = None,
+) -> dict:
+    """Build expandable path block from point-bearing events for one role.
+
+    If ``as_of`` is set, only editions on/before that date are included so
+    archive cards reflect the state at publication time.
+    """
+    events = filter_events_as_of(events, as_of)
     if not events:
         return {
             "first_points": None,

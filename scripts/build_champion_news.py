@@ -24,6 +24,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from transform.champion_news import (  # noqa: E402
     build_champion_path,
     detect_transitions,
+    flatten_by_slug,
     load_champion_news,
     load_timeline_events,
     merge_champion_news,
@@ -38,19 +39,60 @@ def _parse_date(value: str) -> date:
     return date.fromisoformat(value.strip())
 
 
+def _parse_post_date(post_date: str) -> date | None:
+    try:
+        d, m, y = post_date.strip().split("-")
+        return date(int(y), int(m), int(d))
+    except (ValueError, TypeError, AttributeError):
+        return None
+
+
 def enrich_with_paths(
     candidates: list[dict],
     timelines: dict,
+    *,
+    existing: dict | None = None,
+    today: date | None = None,
 ) -> list[dict]:
+    """Attach Champion Path; freeze at card post_date when refreshing archives."""
+    by_slug = flatten_by_slug(existing) if existing else {}
+    snapshot = today or date.today()
     out: list[dict] = []
     for card in candidates:
         dancer_id = card["dancer_id"]
         role = card["role"]
         events = timelines.get((dancer_id, role), [])
+        slug = (card.get("slug") or "").strip()
+        prior = by_slug.get(slug)
+        as_of = snapshot
+        if prior:
+            parsed = _parse_post_date(prior.get("post_date") or "")
+            if parsed is not None:
+                as_of = parsed
         enriched = dict(card)
-        enriched["path"] = build_champion_path(events)
+        enriched["path"] = build_champion_path(events, as_of=as_of)
+        enriched["path_as_of"] = as_of.isoformat()
         out.append(enriched)
     return out
+
+
+def refresh_paths_as_of_post_date(payload: dict, timelines: dict) -> int:
+    """Rebuild path for every card using that block's post_date as as_of."""
+    refreshed = 0
+    for block in payload.get("summaries") or []:
+        as_of = _parse_post_date(block.get("post_date") or "")
+        if as_of is None:
+            continue
+        for event in block.get("events") or []:
+            dancer_id = str(event.get("dancer_id") or "").strip()
+            role = (event.get("role") or "").strip()
+            if not dancer_id or not role:
+                continue
+            events = timelines.get((dancer_id, role), [])
+            event["path"] = build_champion_path(events, as_of=as_of)
+            event["path_as_of"] = as_of.isoformat()
+            refreshed += 1
+    return refreshed
 
 
 def main() -> int:
@@ -117,7 +159,12 @@ def main() -> int:
     candidates = detect_transitions(
         args.data_dir, cutoff=args.cutoff, timelines=timelines
     )
-    candidates = enrich_with_paths(candidates, timelines)
+    candidates = enrich_with_paths(
+        candidates,
+        timelines,
+        existing=existing,
+        today=args.today,
+    )
     print(f"Candidates after cutoff: {len(candidates)}")
 
     payload, report = merge_champion_news(
@@ -125,6 +172,10 @@ def main() -> int:
         candidates,
         today=args.today,
     )
+    # Refresh paths on all existing cards frozen at their post_date
+    # (archives not in today's candidate set still get corrected).
+    refreshed = refresh_paths_as_of_post_date(payload, timelines)
+    report["paths_refreshed"] = refreshed
     report["output"] = str(out_path)
     report["cutoff"] = args.cutoff.isoformat()
     report["candidate_count"] = len(candidates)

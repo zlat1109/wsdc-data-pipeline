@@ -172,16 +172,24 @@ def test_path_counts_and_tops():
     assert path["first_points"]["event_name"] == "One"
 
 
-def test_top_events_sum_same_series_across_years():
+def test_path_as_of_excludes_later_champions():
     events = [
-        _ev(year=2024, month=1, points=10, division="ALS", name="BudaFest Open WCS Championships"),
-        _ev(year=2026, month=1, points=12, division="ALS", name="BudaFest Open WCS Championships"),
-        _ev(year=2026, month=1, points=10, division="ALS", name="Paris Westie Fest"),
+        _ev(year=2025, month=6, points=10, division="ALS", name="ALS Event"),
+        _ev(
+            year=2026,
+            month=7,
+            day=2,
+            points=6,
+            division="CHMP",
+            name="Wild Wild Westie",
+        ),
     ]
-    path = build_champion_path(events)
-    tops = path["top_all_stars_events"]
-    assert tops[0]["event_name"] == "BudaFest Open WCS Championships"
-    assert tops[0]["points"] == 22
-    assert len([t for t in tops if t["event_name"] == "BudaFest Open WCS Championships"]) == 1
-    assert tops[1]["event_name"] == "Paris Westie Fest"
-    assert tops[1]["points"] == 10
+    full = build_champion_path(events)
+    assert full["event_counts"]["champions"] == 1
+    assert full["event_counts"]["total"] == 2
+
+    as_of = build_champion_path(events, as_of=date(2026, 6, 17))
+    assert as_of["event_counts"]["champions"] == 0
+    assert as_of["event_counts"]["all_stars"] == 1
+    assert as_of["event_counts"]["total"] == 1
+    assert as_of["top_events"][0]["event_name"] == "ALS Event"
