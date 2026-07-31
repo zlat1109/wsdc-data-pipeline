@@ -72,6 +72,20 @@ else
   echo "::warning::Point Summary build failed — continuing without updating points_summaries.json"
 fi
 
+CHAMPION_NEWS_CUTOFF="${CHAMPION_NEWS_CUTOFF:-2026-07-28}"
+CHAMPION_NEWS_REPORT="${CHAMPION_NEWS_REPORT:-${PIPELINE_DATA_ABS}/quality_reports/champion_news_last.json}"
+echo "Building champion_news.json (cutoff=${CHAMPION_NEWS_CUTOFF})"
+if python3 "${PIPELINE_ROOT}/scripts/build_champion_news.py" \
+  --data-dir "${PIPELINE_DATA_ABS}" \
+  --site-repo "${WORKDIR}" \
+  --cutoff "${CHAMPION_NEWS_CUTOFF}" \
+  --report "${CHAMPION_NEWS_REPORT}"
+then
+  echo "Champion News build OK"
+else
+  echo "::warning::Champion News build failed — continuing without updating champion_news.json"
+fi
+
 python3 "${WORKDIR}/scripts/validate_site_data.py" || {
   echo "::error::Site data validation failed after rebuild"
   exit 1
@@ -110,6 +124,9 @@ git add \
 if [[ -f static/data/points_summaries.json ]]; then
   git add static/data/points_summaries.json
 fi
+if [[ -f static/data/champion_news.json ]]; then
+  git add static/data/champion_news.json
+fi
 
 if git diff --staged --quiet; then
   echo "No analytics site changes to push"
@@ -117,7 +134,7 @@ if git diff --staged --quiet; then
 fi
 
 git commit -m "$(cat <<EOF
-chore(data): refresh homepage KPIs, secondary-role dashboard, Point Summary
+chore(data): refresh homepage KPIs, secondary-role dashboard, Point Summary, Champion News
 
 Automated push from wsdc-data-pipeline after full-parse / export.
 EOF

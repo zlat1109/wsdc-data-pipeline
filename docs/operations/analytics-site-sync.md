@@ -10,13 +10,15 @@ After each successful `full-parse.yml` export, the pipeline rebuilds JSON for
 | Homepage counters (events / points / dancers) | `static/data/homepage_kpis.json` | analytics `scripts/build_homepage_kpis.py` |
 | Secondary-role country dashboard | `static/data/secondary_country_unified.json` | analytics `scripts/update_secondary_country_unified.py` |
 | Point Summary catalog | `static/data/points_summaries.json` | pipeline `scripts/build_points_summary.py` |
+| Champion News chronology | `static/data/champion_news.json` | pipeline `scripts/build_champion_news.py` |
 
 Live:
 - https://wsdc-analytics.github.io/index.html?lang=en
 - https://wsdc-analytics.github.io/secondary_role_distribution_dashboard_en.html
 - https://wsdc-analytics.github.io/points-summary.html
+- https://wsdc-analytics.github.io/champion-news.html (v1: direct URL only; no chrome link yet)
 
-See also [point-summary.md](point-summary.md).
+See also [point-summary.md](point-summary.md) and [champion-news.md](champion-news.md).
 
 ## Secret (this repo)
 

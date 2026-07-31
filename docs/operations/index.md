@@ -11,6 +11,7 @@ Runbooks for pipeline execution, CI, data sync, repairs, and monitoring.
 | [quality-monitoring.md](quality-monitoring.md) | Quality reports + post-load SQL checks |
 | [analytics-site-sync.md](analytics-site-sync.md) | Push KPIs / Point Summary to the analytics site |
 | [point-summary.md](point-summary.md) | Point Summary entity build + cutoff rules |
+| [champion-news.md](champion-news.md) | Champion News Allowed/Required cards + cutoff |
 
 ## Quick commands
 
