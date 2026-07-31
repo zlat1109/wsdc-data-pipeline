@@ -166,6 +166,8 @@ jobs:
           WSDC_ANALYTICS_DEPLOY_TOKEN: ${{ secrets.WSDC_ANALYTICS_DEPLOY_TOKEN }}
           POINT_SUMMARY_CUTOFF: "2026-07-28"
           POINT_SUMMARY_REPORT: data/quality_reports/point_summary_last.json
+          CHAMPION_NEWS_CUTOFF: "2026-07-28"
+          CHAMPION_NEWS_REPORT: data/quality_reports/champion_news_last.json
         run: bash scripts/sync_analytics_site.sh
 
       - name: Point Summary status
@@ -186,6 +188,22 @@ jobs:
               print("dry_run report only")
           PY
 
+      - name: Champion News status
+        if: always() && hashFiles('data/quality_reports/champion_news_last.json') != ''
+        id: champion_news
+        continue-on-error: true
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path("data/quality_reports/champion_news_last.json")
+          if not p.exists():
+              print("No Champion News report")
+              raise SystemExit(0)
+          r = json.loads(p.read_text())
+          print(f"created={r.get('created_count', 0)} updated={r.get('updated_count', 0)}")
+          PY
+
       - name: Notify Telegram (pipeline complete)
         if: success() && inputs.export_only != true
         env:
@@ -200,6 +218,7 @@ jobs:
           PIPELINE_CSV_COMMITTED: ${{ steps.commit_csv.outputs.committed }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           POINT_SUMMARY_REPORT: data/quality_reports/point_summary_last.json
+          CHAMPION_NEWS_REPORT: data/quality_reports/champion_news_last.json
         run: python scripts/telegram_notify.py pipeline-complete
 
       - name: Notify Telegram (pipeline failed)

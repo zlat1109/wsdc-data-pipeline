@@ -283,6 +283,10 @@ def format_pipeline_message(stats: dict) -> str:
     if ps:
         lines.extend(["", *ps])
 
+    cn = _format_champion_news_section()
+    if cn:
+        lines.extend(["", *cn])
+
     attention = _format_attention_sections()
     if attention:
         lines.extend(["", "⚠️ <b>Требует внимания</b>", ""] + attention)
@@ -322,6 +326,32 @@ def _format_point_summary_section() -> list[str]:
         lines.append(f"• {_esc(name)}")
     if created > len(names):
         lines.append(f"• … +{created - len(names)} more")
+    return lines
+
+
+def _format_champion_news_section() -> list[str]:
+    """Optional Champion News line for #WSDC_Pipeline_Complete."""
+    report_path = Path(
+        os.getenv(
+            "CHAMPION_NEWS_REPORT",
+            "data/quality_reports/champion_news_last.json",
+        )
+    )
+    data = _load_json(report_path)
+    if not data:
+        return []
+    created = int(data.get("created_count") or 0)
+    updated = int(data.get("updated_count") or 0)
+    lines = [
+        f"👑 Champion News: +<code>{created}</code> "
+        f"(updated <code>{updated}</code>)",
+        '<a href="https://wsdc-analytics.github.io/champion-news.html">'
+        "champion-news.html</a>",
+    ]
+    for slug in (data.get("created") or [])[:8]:
+        lines.append(f"• {_esc(slug)}")
+    if created > 8:
+        lines.append(f"• … +{created - 8} more")
     return lines
 
 
