@@ -40,8 +40,13 @@ File: `static/data/champion_news.json`
 
 Slug: `{threshold_date}-{dancer_id}-{role}-{allowed|required}`
 
-Create rule: `threshold_date >= CHAMPION_NEWS_CUTOFF` (default **2026-07-28**).
-Merge refreshes auto fields and **preserves** `notes` / `overrides`.
+Create rule: `threshold_date >= CHAMPION_NEWS_CUTOFF` (default **2026-07-25**).
+Merge refreshes auto fields and **preserves** `notes` / `overrides` /
+`telegram_msg_id` / `probe`.
+
+`threshold_date` prefers `event_editions.start_date`, then
+`scheduled_events.csv` calendar dates (same enrichment as Point Summary),
+then month fallback `YYYY-MM-01`.
 
 `path` is computed **as of the block `post_date`** (publication snapshot), not
 today. Each card also stores `path_as_of` (ISO date). Rebuild refreshes every
@@ -54,11 +59,15 @@ later editions.
 python scripts/build_champion_news.py \
   --data-dir data \
   --site-repo /tmp/wsdc-site \
-  --cutoff 2026-07-28 \
+  --cutoff 2026-07-25 \
   --report data/quality_reports/champion_news_last.json
 ```
 
 Modules: `transform/champion_news/` (`detect`, `path`, `merge`, `thresholds`).
+
+Create semantics mirror Point Summary: cutoff gates **new** cards by entity date
+(`threshold_date` ≈ edition `start_date`). Existing archive cards stay and get
+path refresh; they are not deleted by cutoff.
 
 ## CI
 
@@ -67,7 +76,9 @@ Modules: `transform/champion_news/` (`detect`, `path`, `merge`, `thresholds`).
 
 ## Archive
 
-Historical Telegram posts are **out of scope for v1**. Later: CSV backfill with a separate cutoff.
+Historical Telegram `#ChampNews` posts may be backfilled into
+`champion_news.json` with their original `post_date`. Auto-create only adds
+crossings on/after the cutoff.
 
 ## Related
 

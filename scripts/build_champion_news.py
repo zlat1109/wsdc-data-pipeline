@@ -4,7 +4,7 @@
 Usage:
     python scripts/build_champion_news.py \\
       --data-dir data --site-repo /tmp/wsdc-site \\
-      --cutoff 2026-07-28 [--dry-run]
+      --cutoff 2026-07-25 [--dry-run]
 
 Writes static/data/champion_news.json under --site-repo (or --output).
 Emits a machine-readable report to --report.
@@ -32,7 +32,7 @@ from transform.champion_news import (  # noqa: E402
 )
 from transform.champion_news.merge import parse_post_date  # noqa: E402
 
-DEFAULT_CUTOFF = date(2026, 7, 28)
+DEFAULT_CUTOFF = date(2026, 7, 25)
 SITE_REL = Path("static/data/champion_news.json")
 
 

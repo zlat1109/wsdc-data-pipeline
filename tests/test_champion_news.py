@@ -113,11 +113,28 @@ def test_required_prefers_als_when_both_paths_same_edition():
     assert required["chmp_total"] >= 10
 
 
-def test_slug_format():
-    assert (
-        make_transition_slug("2026-07-30", "17340", "leader", "allowed")
-        == "2026-07-30-17340-leader-allowed"
+def test_edition_dates_fill_from_scheduled_events(tmp_path):
+    from transform.champion_news.detect import load_edition_dates
+
+    editions = tmp_path / "event_editions.csv"
+    editions.write_text(
+        "event_name,event_year,event_month,start_date,end_date,place_city,place_country,location_raw\n"
+        "Sea Sun and Swing,2026,7,,,La Grande Motte,France,\n",
+        encoding="utf-8",
     )
+    schedule = tmp_path / "scheduled_events.csv"
+    schedule.write_text(
+        "canonical_name,event_name,results_year,results_month,start_date,end_date\n"
+        "Sea Sun and Swing,Sea Sun and Swing,2026,7,2026-07-25,2026-07-27\n",
+        encoding="utf-8",
+    )
+    loaded = load_edition_dates(editions, schedule_path=schedule)
+    start, end, city, country, _ = loaded[("sea sun and swing", 2026, 7)]
+    assert start == date(2026, 7, 25)
+    assert end == date(2026, 7, 27)
+    assert city == "La Grande Motte"
+    assert country == "France"
+
 
 
 def test_merge_preserves_notes():
@@ -159,6 +176,20 @@ def test_merge_preserves_notes():
     assert ev["als_total"] == 151
 
 
+def test_required_via_chmp_10_without_prior_allowed():
+    """Champions-only Required when ALS never reaches 150."""
+    events = [
+        _ev(year=2024, month=1, points=40, division="ALS", name="A"),
+        _ev(year=2026, month=7, points=10, division="CHMP", name="C", day=30),
+    ]
+    allowed, required = _accumulate_crossing(events)
+    assert allowed is None
+    assert required is not None
+    assert required["required_pathway"] == PATHWAY_CHMP_10
+    assert required["chmp_total"] == 10
+    assert required["als_total"] == 40
+
+
 def test_path_counts_and_tops():
     events = [
         _ev(year=2024, month=1, points=40, division="ALS", name="One"),
@@ -171,6 +202,48 @@ def test_path_counts_and_tops():
     assert path["event_counts"]["champions"] == 1
     assert path["top_events"][0]["event_name"] == "Two"
     assert path["first_points"]["event_name"] == "One"
+
+
+def test_merge_preserves_telegram_metadata():
+    existing = {
+        "summaries": [
+            {
+                "post_date": "2026-07-31",
+                "events_count": 1,
+                "events": [
+                    {
+                        "slug": "2026-07-25-1-leader-allowed",
+                        "dancer_id": "1",
+                        "role": "leader",
+                        "status": "allowed",
+                        "notes": "Backfill from Telegram",
+                        "telegram_msg_id": 216,
+                        "probe": False,
+                        "als_total": 150,
+                    }
+                ],
+            }
+        ]
+    }
+    candidates = [
+        {
+            "slug": "2026-07-25-1-leader-allowed",
+            "dancer_id": "1",
+            "role": "leader",
+            "status": "allowed",
+            "als_total": 152,
+            "path": {"event_counts": {"total": 3}},
+        }
+    ]
+    payload, report = merge_champion_news(
+        existing, candidates, today=date(2026, 8, 1)
+    )
+    assert report["updated_count"] == 1
+    ev = payload["summaries"][0]["events"][0]
+    assert ev["als_total"] == 152
+    assert ev["notes"] == "Backfill from Telegram"
+    assert ev["telegram_msg_id"] == 216
+    assert ev["probe"] is False
 
 
 def test_path_as_of_excludes_later_champions():

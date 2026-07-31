@@ -8,7 +8,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any
 
-PRESERVE_FIELDS = ("notes", "overrides")
+PRESERVE_FIELDS = ("notes", "overrides", "telegram_msg_id", "probe")
 
 
 def post_date_today(today: date | None = None) -> str:

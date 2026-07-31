@@ -65,6 +65,9 @@ python3 "$SITE/scripts/update_secondary_country_unified.py" \
 python3 ~/.cursor/projects/python/wsdc-data-pipeline/scripts/build_points_summary.py \
   --data-dir "$PIPE" --site-repo "$SITE" --cutoff 2026-07-28
 
+python3 ~/.cursor/projects/python/wsdc-data-pipeline/scripts/build_champion_news.py \
+  --data-dir "$PIPE" --site-repo "$SITE" --cutoff 2026-07-25
+
 cd "$SITE" && python3 scripts/validate_site_data.py
 # then commit static/data/*.json and push main → Pages
 ```
