@@ -209,10 +209,9 @@ def _continent_points(editions: list[dict], *, points_key: str) -> dict[str, int
         if not continent:
             continent = "Unknown"
         totals[continent] += ed.get(points_key, 0) or 0
-    # Stable continent order for display.
-    order = ["Europe", "America", "Asia", "Australia", "Africa", "South America", "Unknown"]
-    return {
-        c: int(round(totals[c]))
-        for c in order
-        if totals.get(c, 0) > 0
-    }
+    # Highest points first; tie-break by continent name.
+    ranked = sorted(
+        ((c, pts) for c, pts in totals.items() if pts > 0),
+        key=lambda item: (-item[1], item[0]),
+    )
+    return {c: int(round(pts)) for c, pts in ranked}
