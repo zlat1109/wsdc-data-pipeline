@@ -290,10 +290,14 @@ def detect_transitions(
     data_dir: Path,
     *,
     cutoff: date,
+    timelines: dict[tuple[str, str], list[ResultEvent]] | None = None,
+    names: dict[str, str] | None = None,
 ) -> list[dict]:
     """Return candidate transition cards with threshold_date >= cutoff."""
-    names = load_dancer_names(data_dir / "dancer_role_info.csv")
-    timelines = load_timeline_events(data_dir)
+    if names is None:
+        names = load_dancer_names(data_dir / "dancer_role_info.csv")
+    if timelines is None:
+        timelines = load_timeline_events(data_dir)
     candidates: list[dict] = []
 
     for (dancer_id, role), events in timelines.items():

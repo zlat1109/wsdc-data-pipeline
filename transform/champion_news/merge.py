@@ -20,7 +20,7 @@ def _post_date_sort_key(post_date: str) -> tuple[int, int, int]:
     try:
         d, m, y = post_date.strip().split("-")
         return (int(y), int(m), int(d))
-    except Exception:
+    except (ValueError, TypeError, AttributeError):
         return (0, 0, 0)
 
 

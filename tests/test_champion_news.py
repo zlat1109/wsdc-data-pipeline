@@ -86,15 +86,31 @@ def test_required_via_chmp_10():
 
 
 def test_same_month_ordering_by_start_date():
-    # Without day-level dates, month-level order is by name; with dates, earlier day wins.
+    # Alphabetical-only order would process "A Late" before "Z Early" and assign
+    # Allowed to the wrong event. Day-level start_date must win.
     events = [
-        _ev(year=2026, month=7, points=100, division="ALS", name="Late", day=20),
-        _ev(year=2026, month=7, points=50, division="ALS", name="Early", day=10),
+        _ev(year=2026, month=7, points=100, division="ALS", name="A Late", day=20),
+        _ev(year=2026, month=7, points=50, division="ALS", name="Z Early", day=10),
     ]
     allowed, _ = _accumulate_crossing(events)
     assert allowed is not None
-    assert allowed["threshold_event"] == "Late"
+    assert allowed["threshold_event"] == "A Late"
     assert allowed["threshold_date"] == "2026-07-20"
+    assert allowed["als_total"] == 150
+
+
+def test_required_prefers_als_when_both_paths_same_edition():
+    events = [
+        _ev(year=2024, month=1, points=200, division="ALS", name="Prior"),
+        _ev(year=2024, month=1, points=5, division="CHMP", name="Prior"),
+        _ev(year=2026, month=7, points=30, division="ALS", name="Both", day=28),
+        _ev(year=2026, month=7, points=5, division="CHMP", name="Both", day=28),
+    ]
+    _, required = _accumulate_crossing(events)
+    assert required is not None
+    assert required["required_pathway"] == PATHWAY_ALS_225
+    assert required["als_total"] >= 225
+    assert required["chmp_total"] >= 10
 
 
 def test_slug_format():

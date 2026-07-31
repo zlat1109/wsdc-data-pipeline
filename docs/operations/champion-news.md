@@ -16,6 +16,10 @@ Telegram Champion News stays a separate manual RU editorial workflow.
 
 Roles: `leader` and `follower` are tracked separately (up to four cards per dancer).
 
+If both Required paths are crossed in the **same edition**, the recorded pathway is
+`als_225` (All-Stars checked first). Champions-only Required without prior Allowed
+is possible when CHMP ≥ 10 while ALS < 150.
+
 ## Entity model
 
 File: `static/data/champion_news.json`

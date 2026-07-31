@@ -38,8 +38,10 @@ def _parse_date(value: str) -> date:
     return date.fromisoformat(value.strip())
 
 
-def enrich_with_paths(candidates: list[dict], data_dir: Path) -> list[dict]:
-    timelines = load_timeline_events(data_dir)
+def enrich_with_paths(
+    candidates: list[dict],
+    timelines: dict,
+) -> list[dict]:
     out: list[dict] = []
     for card in candidates:
         dancer_id = card["dancer_id"]
@@ -111,8 +113,11 @@ def main() -> int:
         f"Building Champion News candidates from {args.data_dir} "
         f"(cutoff={args.cutoff.isoformat()})"
     )
-    candidates = detect_transitions(args.data_dir, cutoff=args.cutoff)
-    candidates = enrich_with_paths(candidates, args.data_dir)
+    timelines = load_timeline_events(args.data_dir)
+    candidates = detect_transitions(
+        args.data_dir, cutoff=args.cutoff, timelines=timelines
+    )
+    candidates = enrich_with_paths(candidates, timelines)
     print(f"Candidates after cutoff: {len(candidates)}")
 
     payload, report = merge_champion_news(
