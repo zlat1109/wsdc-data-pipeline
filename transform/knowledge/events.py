@@ -18,6 +18,8 @@ EVENT_NAME_NORMALIZATION = build_event_name_normalization()
 # preprocess also remaps location_id from these targets (see apply.py).
 EVENT_NAME_LOCATION_OVERRIDES = {
     'Go West Swing Fest': 'Fremantle, Australia',
+    # Same Perth-area brand, separate WSDC event_id 367 (2024+); keep distinct from 306.
+    'Go West SwingFest': 'Perth, Australia',
     'BeeMAD': 'Madrid, Spain',
     # Shared Wailea (124 / Aloha Open) wrongly applied to Swedish events.
     'Sweden Westie Gala': 'Stockholm, Sweden',

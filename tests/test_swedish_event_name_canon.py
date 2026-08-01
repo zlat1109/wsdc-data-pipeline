@@ -31,6 +31,9 @@ def test_westie_gala_metadata_and_stockholm_override():
     assert EVENT_NAME_LOCATION_OVERRIDES["Korea Westival"] == "Jeju, Republic of Korea"
     assert EVENT_NAME_LOCATION_OVERRIDES["Warsaw Summer Nights Westival"] == "Warsaw, Poland"
     assert EVENT_NAME_LOCATION_OVERRIDES["Mooseland Swing"] == "Östersund, Sweden"
+    assert EVENT_NAME_LOCATION_OVERRIDES["Go West SwingFest"] == "Perth, Australia"
+    assert EVENT_NAME_LOCATION_OVERRIDES["New Zealand Open Swing Dance Championships"] == "Auckland, New Zealand"
+    assert EVENT_NAME_LOCATION_OVERRIDES["DC Swing eXperience (DCSX)"] == "Herndon, VA, United States"
 
 
 def test_year_split_sssc_vs_uptown_results():

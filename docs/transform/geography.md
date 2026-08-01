@@ -128,6 +128,11 @@ Known false friends (section C) that are often **series moves**, not stuck ids:
 
 Do not force-remap those without year-aware edition logic.
 
+**Related Perth-area brands (two WSDC ids):** `Go West Swing Fest` (306,
+Fremantle, 2019) and `Go West SwingFest` (367, Perth, 2024+) are separate
+registry events for the same organiser/region — not a shared-wrong-`location_id`
+bug. Do not merge ids without an explicit event-id merge decision.
+
 ## Country aliases
 
 `COUNTRY_STANDARDIZATION` maps `South Korea` / `Korea, South` / `Korea` →
