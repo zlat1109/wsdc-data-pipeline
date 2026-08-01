@@ -320,3 +320,147 @@ def test_guard_detects_berlin_and_saunaswing_collisions():
     assert "Berlin Swing Revolution" in names
     assert "SaunaSwing" in names
     assert "Swing Fiction" not in names
+
+
+def test_event_id_canonical_mismatch_uniform_wrong_location():
+    """All rows on one foreign location_id — name-collision audit is silent."""
+    from transform.geography.event_location_guard import (
+        find_event_id_canonical_location_mismatches,
+    )
+    from transform.quality_audit import check_event_id_canonical_location_mismatch
+
+    location_info = pd.DataFrame(
+        [
+            {
+                "location_id": "222",
+                "event_city": "St. Petersburg",
+                "event_country": "Russia",
+            },
+            {
+                "location_id": "174",
+                "event_city": "Melbourne",
+                "event_country": "Australia",
+            },
+        ]
+    )
+    catalog = pd.DataFrame(
+        [
+            {
+                "event_id": "385",
+                "canonical_name": "Revitalise WCS",
+                "typical_location": "St. Petersburg, Russia",
+                "upcoming_location": "",
+            }
+        ]
+    )
+    results = pd.DataFrame(
+        [
+            {"event_name": "Revitalise WCS", "location_id": "222"},
+            {"event_name": "Revitalise WCS", "location_id": "222"},
+        ]
+    )
+    editions = pd.DataFrame(
+        [
+            {
+                "event_id": "385",
+                "event_name": "Revitalise WCS",
+                "location_id": "222",
+            }
+        ]
+    )
+    known = {385: {"typical_location": "Melbourne, Australia"}}
+    mismatches = find_event_id_canonical_location_mismatches(
+        results,
+        location_info,
+        catalog,
+        editions,
+        known_metadata=known,
+        name_overrides={},
+    )
+    assert len(mismatches) == 1
+    m = mismatches[0]
+    assert m.event_id == "385"
+    assert m.canonical_source == "known"
+    assert m.mismatch_side == "both"
+    assert m.results_country == "russia"
+    assert m.canonical_country == "australia"
+
+    finding = check_event_id_canonical_location_mismatch(
+        results, location_info, catalog, editions
+    )
+    # production KNOWN/overrides also cover Revitalise → still flags Russia vs Australia
+    assert finding is not None
+    assert finding.code == "EVENT_ID_CANONICAL_LOCATION_MISMATCH"
+    assert finding.severity == "high"
+
+
+def test_event_id_canonical_from_name_override_via_catalog():
+    from transform.geography.event_location_guard import (
+        find_event_id_canonical_location_mismatches,
+    )
+
+    location_info = pd.DataFrame(
+        [
+            {"location_id": "7", "event_city": "New York", "event_country": "United States"},
+            {"location_id": "86", "event_city": "Montreal", "event_country": "Canada"},
+        ]
+    )
+    catalog = pd.DataFrame(
+        [
+            {
+                "event_id": "178",
+                "canonical_name": "Montreal Westie Fest",
+                "typical_location": "New York, NY",
+                "upcoming_location": "Montreal, Quebec, Canada",
+            }
+        ]
+    )
+    results = pd.DataFrame(
+        [{"event_name": "Montreal Westie Fest", "location_id": "7"}] * 3
+    )
+    mismatches = find_event_id_canonical_location_mismatches(
+        results,
+        location_info,
+        catalog,
+        known_metadata={},
+        name_overrides={"Montreal Westie Fest": "Montreal, Canada"},
+    )
+    assert len(mismatches) == 1
+    assert mismatches[0].canonical_source == "name_override"
+    assert mismatches[0].results_location_id == "7"
+
+
+def test_event_id_canonical_ignores_series_moves():
+    from transform.geography.event_location_guard import (
+        KNOWN_SERIES_MOVES,
+        find_event_id_canonical_location_mismatches,
+    )
+
+    location_info = pd.DataFrame(
+        [
+            {"location_id": "13", "event_city": "Washington", "event_country": "United States"},
+            {"location_id": "156", "event_city": "Lyon", "event_country": "France"},
+        ]
+    )
+    catalog = pd.DataFrame(
+        [
+            {
+                "event_id": "999",
+                "canonical_name": "Westie's Angels",
+                "typical_location": "Washington, DC",
+                "upcoming_location": "Lyon, France",
+            }
+        ]
+    )
+    results = pd.DataFrame(
+        [{"event_name": "Westie's Angels", "location_id": "13"}]
+    )
+    assert "Westie's Angels" in KNOWN_SERIES_MOVES
+    mismatches = find_event_id_canonical_location_mismatches(
+        results,
+        location_info,
+        catalog,
+        known_metadata={},
+        name_overrides={},
+    )
+    assert mismatches == []

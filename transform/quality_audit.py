@@ -477,6 +477,63 @@ def check_scheduled_vs_results_country(
     )
 
 
+def check_event_id_canonical_location_mismatch(
+    results: pd.DataFrame,
+    location_info: pd.DataFrame | None,
+    catalog: pd.DataFrame | None,
+    editions: pd.DataFrame | None = None,
+) -> QualityFinding | None:
+    """Curated event_id location ≠ results/editions mode location country."""
+    from transform.geography.event_location_guard import (
+        find_event_id_canonical_location_mismatches,
+    )
+
+    if results is None or results.empty or location_info is None:
+        return None
+    conflicts = find_event_id_canonical_location_mismatches(
+        results, location_info, catalog, editions
+    )
+    if not conflicts:
+        return None
+    examples = [
+        {
+            "event_id": c.event_id,
+            "event_name": c.event_name,
+            "canonical_source": c.canonical_source,
+            "canonical_location": c.canonical_location,
+            "canonical_country": c.canonical_country,
+            "results_location_id": c.results_location_id,
+            "results_country": c.results_country,
+            "results_rows": c.results_rows,
+            "editions_location_id": c.editions_location_id,
+            "editions_country": c.editions_country,
+            "mismatch_side": c.mismatch_side,
+        }
+        for c in conflicts[:20]
+    ]
+    return QualityFinding(
+        category="location",
+        code="EVENT_ID_CANONICAL_LOCATION_MISMATCH",
+        severity="high",
+        message=(
+            "Results/editions location country differs from curated event_id "
+            "canonical location (KNOWN / name override / upcoming)"
+        ),
+        count=sum(max(c.results_rows, 1) for c in conflicts),
+        examples=examples,
+        suggested_fix=(
+            "Confirm venue, then add/update KNOWN_EVENT_METADATA[event_id] or "
+            "EVENT_NAME_LOCATION_OVERRIDES + force_result_locations; "
+            "see scripts/audit_event_location_mismatches.py section D"
+        ),
+        fingerprint=_fingerprint(
+            "location",
+            "EVENT_ID_CANONICAL_LOCATION_MISMATCH",
+            "|".join(f"{c.event_id}:{c.results_location_id}" for c in conflicts[:15]),
+        ),
+    )
+
+
 def check_catalog_typical_vs_upcoming(
     catalog: pd.DataFrame | None,
 ) -> QualityFinding | None:
@@ -704,6 +761,14 @@ def run_audit(
             findings.append(item)
         item = check_scheduled_vs_results_country(
             results, location_info, data.get("scheduled_events")
+        )
+        if item:
+            findings.append(item)
+        item = check_event_id_canonical_location_mismatch(
+            results,
+            location_info,
+            data.get("event_catalog"),
+            data.get("event_editions"),
         )
         if item:
             findings.append(item)

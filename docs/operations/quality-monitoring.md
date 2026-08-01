@@ -25,6 +25,7 @@ See [../transform/index.md](../transform/index.md) and [../transform/geography.m
 | `EVENT_NAME_LOCATION_ID_COLLISION` | high | Same `event_name` has multiple `location_id`s. Triage: wrong shared id → `EVENT_NAME_LOCATION_OVERRIDES`; metro/series move → leave or year-aware logic |
 | `EVENT_NAME_LOCATION_COUNTRY_CONFLICT` | high | Name implies country ≠ results location country |
 | `SCHEDULED_VS_RESULTS_COUNTRY_CONFLICT` | high | WSDC calendar country ≠ results location country |
+| `EVENT_ID_CANONICAL_LOCATION_MISMATCH` | high | Results/editions country ≠ curated `event_id` canon (KNOWN / name override / upcoming). Catches uniform shared-wrong ids |
 | `CATALOG_TYPICAL_UPCOMING_CONFLICT` | medium | Catalog typical ≠ upcoming (stuck typical or real move) |
 
 Quick offline scan (no full preprocess):
