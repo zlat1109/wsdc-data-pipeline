@@ -26,6 +26,7 @@ def test_westie_gala_metadata_and_stockholm_override():
     assert EVENT_NAME_LOCATION_OVERRIDES["Westie Gala"] == "Stockholm, Sweden"
     assert EVENT_NAME_LOCATION_OVERRIDES["Valentine Swing"] == "Stockholm, Sweden"
     assert EVENT_NAME_LOCATION_OVERRIDES["UpTown Swing"] == "Stockholm, Sweden"
+    assert EVENT_NAME_LOCATION_OVERRIDES["Revitalise WCS"] == "Melbourne, Australia"
 
 
 def test_year_split_sssc_vs_uptown_results():

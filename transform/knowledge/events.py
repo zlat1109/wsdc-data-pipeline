@@ -31,6 +31,8 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'DC Swing eXperience (DCSX)': 'Herndon, VA, United States',
     # Shared St. Petersburg (222) wrongly applied to Toronto Open.
     'Toronto Open Swing & Hustle Championships': 'Toronto, Canada',
+    # Shared St. Petersburg (222) wrongly applied to Revitalise WCS (Melbourne).
+    'Revitalise WCS': 'Melbourne, Australia',
     # Calendar/site say Toulouse; results pointed at Düsseldorf (127).
     'Westie Pink City': 'Toulouse, France',
     # Calendar/site say Dundalk; results pointed at San Antonio (167).
