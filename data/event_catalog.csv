@@ -159,7 +159,7 @@ event_id,canonical_name,url,registry_status,typical_city,typical_state,typical_c
 88,KC Swing Challenge and Heartland Dance Festival,,,Kansas City,Missouri,United States,"Kansas City, MO",2003,2003,1,54,51,,,2026-07-30 20:57:42.585349+00
 292,King Swing,https://kingswing.pl/,Registry Event,Kraków,,Poland,"Kraków, Poland",2018,2026,7,771,553,2027-03-18,"Kraków, Poland",2026-07-30 20:57:42.585349+00
 219,KIWI Fest,,,Kiev,,Ukraine,"Kiev, Ukraine",2014,2019,6,377,288,,,2026-07-30 20:57:42.585349+00
-268,Korea Westival,http://koreawestival.com/,Registry Event,Brno,,Czech Republic,"Brno, Czech Republic",2016,2025,7,394,198,2026-09-03,"Jeju, Jeju, Republic of Korea",2026-07-30 20:57:42.585349+00
+268,Korea Westival,http://koreawestival.com/,Registry Event,Jeju,,Republic of Korea,"Jeju, Republic of Korea",2016,2025,7,394,198,2026-09-03,"Jeju, Jeju, Republic of Korea",2026-07-30 20:57:42.585349+00
 528,Korean Open Swing Dance Championships,,inactive,,,,,,,0,0,0,,,2026-07-30 20:57:42.585349+00
 210,Korean Open WCS Championships,https://www.kopenwcs.com/,Registry Event,Incheon,,Republic of Korea,"Incheon, Republic of Korea",2013,2026,5,499,349,2027-04-08,"Incheon, Incheon, Republic of Korea",2026-07-30 20:57:42.585349+00
 529,Korean Open WCS Championsips,,inactive,,,,,,,0,0,0,,,2026-07-30 20:57:42.585349+00
@@ -191,8 +191,8 @@ event_id,canonical_name,url,registry_status,typical_city,typical_state,typical_c
 62,Monterey SwingFest,http://www.montereyswing.com/,Registry Event,Monterey,California,United States,"Monterey, CA",1994,2026,32,2691,1280,2027-01-15,"Monterey, CA, United States",2026-07-30 20:57:42.585349+00
 532,Monterey Swingfest (Cancelled due to Covid-19),,inactive,,,,,,,0,0,0,,,2026-07-30 20:57:42.585349+00
 533,Montreal WCS Fest,,inactive,,,,,,,0,0,0,,,2026-07-30 20:57:42.585349+00
-178,Montreal Westie Fest,http://montrealwestiefest.com/,Registry Event,New York,New York,United States,"New York, NY",2011,2025,11,823,531,2026-10-09,"Montreal, Quebec, Canada",2026-07-30 20:57:42.585349+00
-361,Mooseland Swing,https://mooselandswing.com/,Registry Event,Phoenix,Arizona,United States,"Phoenix, AZ",2025,2025,1,71,66,2026-09-24,"Östersund, Jämtland, Sweden",2026-07-30 20:57:42.585349+00
+178,Montreal Westie Fest,http://montrealwestiefest.com/,Registry Event,Montreal,,Canada,"Montreal, Canada",2011,2025,11,823,531,2026-10-09,"Montreal, Quebec, Canada",2026-07-30 20:57:42.585349+00
+361,Mooseland Swing,https://mooselandswing.com/,Registry Event,Östersund,,Sweden,"Östersund, Sweden",2025,2025,1,71,66,2026-09-24,"Östersund, Jämtland, Sweden",2026-07-30 20:57:42.585349+00
 194,Moscow Westie Fest,http://westiefest.org/,Registry Event,Moscow,,Russia,"Moscow, Russia",2012,2025,13,965,494,2026-11-06,"Moscow, Russia",2026-07-30 20:57:42.585349+00
 241,Moscow Xmas Dance Camp,,,Moscow,,Russia,"Moscow, Russia",2015,2017,3,129,106,,,2026-07-30 20:57:42.585349+00
 82,Motor City Jam,,,Michigan,Michigan,United States,"Michigan, MI",2003,2007,5,59,46,,,2026-07-30 20:57:42.585349+00
@@ -252,7 +252,7 @@ event_id,canonical_name,url,registry_status,typical_city,typical_state,typical_c
 124,ProviDANCE Swing in the City,,,Providence,Rhode Island,United States,"Providence, RI",2006,2006,1,39,39,,,2026-07-30 20:57:42.585349+00
 91,Reno Dance Sensation,,,Reno,Nevada,United States,"Reno, NV",2004,2011,8,765,475,,,2026-07-30 20:57:42.585349+00
 359,Retaliation Swing,https://www.retaliationswing.com/,Registry Event,Seattle,Washington,United States,"Seattle, WA",2025,2025,1,92,90,2026-09-17,"Seattle, WA, United States",2026-07-30 20:57:42.585349+00
-385,Revitalise WCS,https://withjoy.com/revitalisewcs-melbourne2025/welcome,,St. Petersburg,,Russia,"St. Petersburg, Russia",2025,2026,2,128,106,,,2026-07-30 20:57:42.585349+00
+385,Revitalise WCS,https://withjoy.com/revitalisewcs-melbourne2025/welcome,,Melbourne,,Australia,"Melbourne, Australia",2025,2026,2,128,106,,,2026-07-30 20:57:42.585349+00
 263,Riga Summer Swing,,,Riga,,Latvia,"Riga, Latvia",2016,2024,5,423,356,,,2026-07-30 20:57:42.585349+00
 45,Rising Star - Chicago,,,Chicago,Illinois,United States,"Chicago, IL",1997,2000,3,154,130,,,2026-07-30 20:57:42.585349+00
 46,Rising Star - Dallas,,,Dallas,Texas,United States,"Dallas, TX",1996,1996,1,31,31,,,2026-07-30 20:57:42.585349+00
@@ -404,7 +404,7 @@ event_id,canonical_name,url,registry_status,typical_city,typical_state,typical_c
 70,Virginia State Open,,,Herndon,Virginia,United States,"Herndon, VA",1993,2010,17,602,399,,,2026-07-30 20:57:42.585349+00
 128,Waltz Across Texas,,,Houston,Texas,United States,"Houston, TX",2006,2006,1,18,18,,,2026-07-30 20:57:42.585349+00
 236,Warsaw Halloween Swing,http://www.warsawhalloweenswing.com/,Registry Event,Warsaw,,Poland,"Warsaw, Poland",2012,2025,13,1292,859,2026-10-29,"Warsaw, Poland",2026-07-30 20:57:42.585349+00
-383,Warsaw Summer Nights Westival,https://www.summernightswestival.com/,Registry Event,Washington,District of Columbia,United States,"Washington, DC",2025,2025,1,94,93,2026-07-30,"Warsaw, mazowieckie, Poland",2026-07-30 20:57:42.585349+00
+383,Warsaw Summer Nights Westival,https://www.summernightswestival.com/,Registry Event,Warsaw,,Poland,"Warsaw, Poland",2025,2025,1,94,93,2026-07-30,"Warsaw, mazowieckie, Poland",2026-07-30 20:57:42.585349+00
 574,Warsaw Swing,,inactive,,,,,,,0,0,0,,,2026-07-30 20:57:42.585349+00
 387,Waterloo Ontario Open West Coast Swing Championships,http://www.waterlooopenwcs.com/,Registry Event,Waterloo,,Canada,"Waterloo, Canada",2026,2026,1,79,72,2027-02-04,"Waterloo, Ontario, Canada",2026-07-30 20:57:42.585349+00
 286,WCS Festival,http://www.wcsfestival.com/,Registry Event,Düsseldorf,,Germany,"Düsseldorf, Germany",2017,2025,7,651,397,2026-10-15,"Düsseldorf, Germany",2026-07-30 20:57:42.585349+00
