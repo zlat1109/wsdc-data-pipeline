@@ -201,6 +201,13 @@ def _rank_cities(events: list[ResultEvent], n: int = 3) -> list[dict]:
     ]
 
 
+def _normalize_continent_label(continent: str) -> str:
+    """Champion News treats the Americas as one bucket."""
+    if continent in {"South America", "North America", "Central America"}:
+        return "America"
+    return continent
+
+
 def _continent_points(editions: list[dict], *, points_key: str) -> dict[str, int]:
     totals: dict[str, float] = defaultdict(float)
     for ed in editions:
@@ -208,6 +215,7 @@ def _continent_points(editions: list[dict], *, points_key: str) -> dict[str, int
         continent = continent_for_country(country) if country else "Unknown"
         if not continent:
             continent = "Unknown"
+        continent = _normalize_continent_label(continent)
         totals[continent] += ed.get(points_key, 0) or 0
     # Highest points first; tie-break by continent name.
     ranked = sorted(
