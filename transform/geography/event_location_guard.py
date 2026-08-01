@@ -293,3 +293,213 @@ def find_catalog_typical_upcoming_conflicts(
             )
         )
     return out
+
+
+@dataclass(frozen=True)
+class EventIdCanonicalLocationMismatch:
+    """Results/editions location disagrees with curated event_id canonical place."""
+
+    event_id: str
+    event_name: str
+    canonical_source: str  # known | name_override | upcoming
+    canonical_location: str
+    canonical_country: str
+    results_location_id: str
+    results_country: str
+    results_rows: int
+    editions_location_id: str
+    editions_country: str
+    mismatch_side: str  # results | editions | both
+
+
+def _countries_agree(a: str, b: str) -> bool:
+    if not a or not b:
+        return True
+    if a == b:
+        return True
+    if a in b or b in a:
+        return True
+    return False
+
+
+def build_event_id_canonical_locations(
+    catalog_df: pd.DataFrame | None,
+    *,
+    known_metadata: dict[int, dict] | None = None,
+    name_overrides: dict[str, str] | None = None,
+) -> dict[str, tuple[str, str]]:
+    """event_id → (canonical_location_text, source).
+
+    Priority (curated first; never use results-derived typical alone):
+    1. KNOWN_EVENT_METADATA[event_id].typical_location
+    2. EVENT_NAME_LOCATION_OVERRIDES[canonical_name]
+    3. event_catalog.upcoming_location (schedule-backed)
+    """
+    from transform.knowledge.events import (
+        EVENT_NAME_LOCATION_OVERRIDES,
+        KNOWN_EVENT_METADATA,
+    )
+
+    known = known_metadata if known_metadata is not None else KNOWN_EVENT_METADATA
+    overrides = name_overrides if name_overrides is not None else EVENT_NAME_LOCATION_OVERRIDES
+
+    out: dict[str, tuple[str, str]] = {}
+    for eid, meta in known.items():
+        loc = _norm((meta or {}).get("typical_location"))
+        if loc:
+            out[str(int(eid))] = (loc, "known")
+
+    name_to_eid: dict[str, str] = {}
+    upcoming_by_eid: dict[str, str] = {}
+    if catalog_df is not None and not catalog_df.empty:
+        for _, row in catalog_df.iterrows():
+            eid = _norm(row.get("event_id"))
+            name = _norm(row.get("canonical_name"))
+            if eid and name:
+                name_to_eid[name] = eid
+            up = _norm(row.get("upcoming_location"))
+            if eid and up:
+                upcoming_by_eid[eid] = up
+
+    for name, place in overrides.items():
+        loc = _norm(place)
+        eid = name_to_eid.get(_norm(name))
+        if not eid or not loc or eid in out:
+            continue
+        out[eid] = (loc, "name_override")
+
+    for eid, up in upcoming_by_eid.items():
+        if eid not in out and up:
+            out[eid] = (up, "upcoming")
+
+    return out
+
+
+def find_event_id_canonical_location_mismatches(
+    results_df: pd.DataFrame,
+    location_df: pd.DataFrame,
+    catalog_df: pd.DataFrame | None,
+    editions_df: pd.DataFrame | None = None,
+    *,
+    known_metadata: dict[int, dict] | None = None,
+    name_overrides: dict[str, str] | None = None,
+    ignore_names: frozenset[str] = KNOWN_SERIES_MOVES,
+) -> list[EventIdCanonicalLocationMismatch]:
+    """Flag when results/editions country ≠ curated event_id canonical country.
+
+    Catches uniform shared-wrong location_id (all rows on one foreign id) that
+    name-collision and name-hint audits miss. Requires a curated/upcoming canon;
+    does not treat results-derived catalog.typical alone as truth.
+    """
+    if results_df is None or results_df.empty:
+        return []
+    if location_df is None or location_df.empty:
+        return []
+    if "event_name" not in results_df.columns or "location_id" not in results_df.columns:
+        return []
+
+    canonical = build_event_id_canonical_locations(
+        catalog_df,
+        known_metadata=known_metadata,
+        name_overrides=name_overrides,
+    )
+    if not canonical:
+        return []
+
+    loc_country = {
+        _norm(row.get("location_id")): normalize_country_label(row.get("event_country"))
+        for _, row in location_df.iterrows()
+        if _norm(row.get("location_id"))
+    }
+
+    eid_to_name: dict[str, str] = {}
+    name_to_eid: dict[str, str] = {}
+    if catalog_df is not None and not catalog_df.empty:
+        for _, row in catalog_df.iterrows():
+            eid = _norm(row.get("event_id"))
+            name = _norm(row.get("canonical_name"))
+            if eid and name:
+                eid_to_name[eid] = name
+                name_to_eid[name] = eid
+
+    # results mode lid by event_id (prefer event_name_id, else name→catalog)
+    id_col = "event_name_id" if "event_name_id" in results_df.columns else None
+    counts: dict[str, dict[str, int]] = {}
+    for _, row in results_df.iterrows():
+        en = _norm(row.get("event_name"))
+        lid = _norm(row.get("location_id"))
+        if not en or not lid:
+            continue
+        if en in ignore_names:
+            continue
+        eid = ""
+        if id_col:
+            raw_eid = _norm(row.get(id_col))
+            if raw_eid.isdigit():
+                eid = str(int(raw_eid))
+        if not eid:
+            eid = name_to_eid.get(en, "")
+        if not eid or eid not in canonical:
+            continue
+        bucket = counts.setdefault(eid, {})
+        bucket[lid] = bucket.get(lid, 0) + 1
+
+    results_mode: dict[str, tuple[str, int]] = {}
+    for eid, lids in counts.items():
+        lid, n = max(lids.items(), key=lambda kv: kv[1])
+        results_mode[eid] = (lid, n)
+
+    editions_mode: dict[str, tuple[str, int]] = {}
+    if editions_df is not None and not editions_df.empty and "event_id" in editions_df.columns:
+        ed_counts: dict[str, dict[str, int]] = {}
+        for _, row in editions_df.iterrows():
+            eid = _norm(row.get("event_id"))
+            lid = _norm(row.get("location_id"))
+            if not eid or not lid or eid not in canonical:
+                continue
+            name = eid_to_name.get(eid, _norm(row.get("event_name")))
+            if name in ignore_names:
+                continue
+            bucket = ed_counts.setdefault(eid, {})
+            bucket[lid] = bucket.get(lid, 0) + 1
+        for eid, lids in ed_counts.items():
+            lid, n = max(lids.items(), key=lambda kv: kv[1])
+            editions_mode[eid] = (lid, n)
+
+    out: list[EventIdCanonicalLocationMismatch] = []
+    for eid, (canon_loc, source) in sorted(canonical.items(), key=lambda kv: int(kv[0]) if kv[0].isdigit() else 0):
+        name = eid_to_name.get(eid, "")
+        if name in ignore_names:
+            continue
+        expected_country = country_from_location_text(canon_loc)
+        if not expected_country:
+            continue
+
+        res_lid, res_n = results_mode.get(eid, ("", 0))
+        res_country = loc_country.get(res_lid, "") if res_lid else ""
+        ed_lid, _ed_n = editions_mode.get(eid, ("", 0))
+        ed_country = loc_country.get(ed_lid, "") if ed_lid else ""
+
+        res_bad = bool(res_lid and res_country and not _countries_agree(expected_country, res_country))
+        ed_bad = bool(ed_lid and ed_country and not _countries_agree(expected_country, ed_country))
+        if not res_bad and not ed_bad:
+            continue
+        side = "both" if res_bad and ed_bad else ("results" if res_bad else "editions")
+        out.append(
+            EventIdCanonicalLocationMismatch(
+                event_id=eid,
+                event_name=name or f"event_id:{eid}",
+                canonical_source=source,
+                canonical_location=canon_loc,
+                canonical_country=expected_country,
+                results_location_id=res_lid,
+                results_country=res_country,
+                results_rows=res_n,
+                editions_location_id=ed_lid,
+                editions_country=ed_country,
+                mismatch_side=side,
+            )
+        )
+
+    out.sort(key=lambda c: (-c.results_rows, c.event_id))
+    return out

@@ -100,10 +100,22 @@ Preprocess quality audit emits:
 | `EVENT_NAME_LOCATION_COUNTRY_CONFLICT` | Event-name country hint ≠ `location_id` country |
 | `EVENT_NAME_LOCATION_ID_COLLISION` | Same `event_name` spans **multiple** `location_id` values |
 | `SCHEDULED_VS_RESULTS_COUNTRY_CONFLICT` | Calendar country ≠ results location country |
+| `EVENT_ID_CANONICAL_LOCATION_MISMATCH` | Results/editions ≠ curated `event_id` canon (KNOWN / override / upcoming) |
+| `CATALOG_TYPICAL_UPCOMING_CONFLICT` | Catalog typical ≠ upcoming country |
 
 `EVENT_NAME_LOCATION_ID_COLLISION` is the Slovenian Open / Best of the Best /
 NZ Open pattern. Not every hit is a bug: metro moves (Countdown Framingham→Boston)
 and true series relocates (Sunny Side Crimea→Spain) also appear — triage by year.
+
+**`EVENT_ID_CANONICAL_LOCATION_MISMATCH`** compares results/editions mode country
+to a curated canon keyed by **`event_id`** (not event name):
+
+1. `KNOWN_EVENT_METADATA[event_id].typical_location`
+2. else `EVENT_NAME_LOCATION_OVERRIDES` via catalog name→id
+3. else catalog `upcoming_location` (schedule-backed)
+
+Does **not** treat results-derived `typical_location` alone as truth (circular).
+Series moves listed in `KNOWN_SERIES_MOVES` are ignored.
 
 **Supabase:** next full-parse preprocess rewrites `core.results.location_id` via
 the same force step. Until then, local `data/*.csv` can diverge from DB export.

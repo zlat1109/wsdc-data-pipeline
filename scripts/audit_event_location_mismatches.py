@@ -155,6 +155,33 @@ def main() -> int:
                     "(keep year-aware) or stuck typical (safe to override)"
                 )
 
+    print("\n=== D) event_id canonical location ≠ results/editions ===")
+    from transform.geography.event_location_guard import (
+        find_event_id_canonical_location_mismatches,
+    )
+
+    catalog_rows = _load_csv(catalog_path) if catalog_path.exists() else []
+    editions_path = data_dir / "event_editions.csv"
+    editions_rows = _load_csv(editions_path) if editions_path.exists() else []
+    import pandas as pd
+
+    mismatches = find_event_id_canonical_location_mismatches(
+        pd.DataFrame(results_rows),
+        pd.DataFrame(loc_rows),
+        pd.DataFrame(catalog_rows) if catalog_rows else None,
+        pd.DataFrame(editions_rows) if editions_rows else None,
+    )
+    if not mismatches:
+        print("  (none)")
+    for c in mismatches:
+        print(
+            f"  event_id={c.event_id} {c.event_name!r} [{c.canonical_source}] "
+            f"canon={c.canonical_location!r} ({c.canonical_country})\n"
+            f"        results lid={c.results_location_id} {c.results_country} "
+            f"rows={c.results_rows}; editions lid={c.editions_location_id} "
+            f"{c.editions_country}; side={c.mismatch_side}"
+        )
+
     return 0
 
 
