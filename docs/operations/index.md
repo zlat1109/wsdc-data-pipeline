@@ -12,6 +12,7 @@ Runbooks for pipeline execution, CI, data sync, repairs, and monitoring.
 | [analytics-site-sync.md](analytics-site-sync.md) | Push KPIs / Point Summary to the analytics site |
 | [point-summary.md](point-summary.md) | Point Summary entity build + cutoff rules |
 | [champion-news.md](champion-news.md) | Champion News Allowed/Required cards + cutoff |
+| [year-event-calendar.md](year-event-calendar.md) | Year calendar → weekend map → event card |
 
 ## Quick commands
 

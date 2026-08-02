@@ -86,6 +86,18 @@ else
   echo "::warning::Champion News build failed — continuing without updating champion_news.json"
 fi
 
+YEAR_CAL_REPORT="${YEAR_CAL_REPORT:-${PIPELINE_DATA_ABS}/quality_reports/year_event_calendar_last.json}"
+echo "Building events_year_calendar.json"
+if python3 "${PIPELINE_ROOT}/scripts/build_year_event_calendar.py" \
+  --data-dir "${PIPELINE_DATA_ABS}" \
+  --site-repo "${WORKDIR}" \
+  --report "${YEAR_CAL_REPORT}"
+then
+  echo "Year Event Calendar build OK"
+else
+  echo "::warning::Year Event Calendar build failed — continuing without updating events_year_calendar.json"
+fi
+
 python3 "${WORKDIR}/scripts/validate_site_data.py" || {
   echo "::error::Site data validation failed after rebuild"
   exit 1
@@ -127,6 +139,9 @@ fi
 if [[ -f static/data/champion_news.json ]]; then
   git add static/data/champion_news.json
 fi
+if [[ -f static/data/events_year_calendar.json ]]; then
+  git add static/data/events_year_calendar.json
+fi
 
 if git diff --staged --quiet; then
   echo "No analytics site changes to push"
@@ -134,7 +149,7 @@ if git diff --staged --quiet; then
 fi
 
 git commit -m "$(cat <<EOF
-chore(data): refresh homepage KPIs, secondary-role dashboard, Point Summary, Champion News
+chore(data): refresh homepage KPIs, secondary-role dashboard, Point Summary, Champion News, Events Calendar
 
 Automated push from wsdc-data-pipeline after full-parse / export.
 EOF
