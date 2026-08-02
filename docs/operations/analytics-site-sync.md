@@ -11,14 +11,16 @@ After each successful `full-parse.yml` export, the pipeline rebuilds JSON for
 | Secondary-role country dashboard | `static/data/secondary_country_unified.json` | analytics `scripts/update_secondary_country_unified.py` |
 | Point Summary catalog | `static/data/points_summaries.json` | pipeline `scripts/build_points_summary.py` |
 | Champion News chronology | `static/data/champion_news.json` | pipeline `scripts/build_champion_news.py` |
+| Year Event Calendar | `static/data/events_year_calendar.json` | pipeline `scripts/build_year_event_calendar.py` |
 
 Live:
 - https://wsdc-analytics.github.io/index.html?lang=en
 - https://wsdc-analytics.github.io/secondary_role_distribution_dashboard_en.html
 - https://wsdc-analytics.github.io/points-summary.html
-- https://wsdc-analytics.github.io/champion-news.html (v1: direct URL only; no chrome link yet)
+- https://wsdc-analytics.github.io/champion-news.html
+- https://wsdc-analytics.github.io/events-calendar.html
 
-See also [point-summary.md](point-summary.md) and [champion-news.md](champion-news.md).
+See also [point-summary.md](point-summary.md), [champion-news.md](champion-news.md), and [year-event-calendar.md](year-event-calendar.md).
 
 ## Secret (this repo)
 
