@@ -113,6 +113,64 @@ def _load_catalog(data_dir: Path) -> pd.DataFrame:
     return cat
 
 
+def _norm_place(value: Any) -> str | None:
+    text = _clean_name(value)
+    return text.lower() if text else None
+
+
+def _location_id_by_event(data_dir: Path) -> dict[int, int]:
+    """Most recent known ``location_id`` per ``event_id`` from event_editions (DB export).
+
+    Scheduled / calendar-date rows often lack ``location_id``; far-future years
+    also drop edition rows before dedupe. Inherit the latest edition location so
+    map pins can resolve from ``location_info``.
+    """
+    path = data_dir / "event_editions.csv"
+    if not path.exists():
+        return {}
+    df = pd.read_csv(path, low_memory=False)
+    if df.empty or "event_id" not in df.columns or "location_id" not in df.columns:
+        return {}
+    df = df.dropna(subset=["event_id", "location_id"]).copy()
+    if df.empty:
+        return {}
+    df["event_id"] = pd.to_numeric(df["event_id"], errors="coerce")
+    df["location_id"] = pd.to_numeric(df["location_id"], errors="coerce")
+    df = df.dropna(subset=["event_id", "location_id"])
+    if df.empty:
+        return {}
+    df["event_id"] = df["event_id"].astype(int)
+    df["location_id"] = df["location_id"].astype(int)
+    if "start_date" in df.columns:
+        df["_start"] = pd.to_datetime(df["start_date"], errors="coerce")
+        df = df.sort_values("_start", na_position="first")
+    out: dict[int, int] = {}
+    for rec in df.to_dict(orient="records"):
+        out[int(rec["event_id"])] = int(rec["location_id"])
+    return out
+
+
+def _coords_by_city_country(locations: pd.DataFrame) -> dict[tuple[str, str], tuple[float, float]]:
+    """Fallback lat/lon keyed by normalized (city, country) from location_info."""
+    out: dict[tuple[str, str], tuple[float, float]] = {}
+    if locations.empty:
+        return out
+    for rec in locations.to_dict(orient="records"):
+        if not _truthy(rec.get("coordinates_valid")):
+            continue
+        city = _norm_place(rec.get("event_city"))
+        country = _norm_place(rec.get("event_country"))
+        if not city or not country:
+            continue
+        try:
+            lat = float(rec["latitude"])
+            lon = float(rec["longitude"])
+        except (TypeError, ValueError, KeyError):
+            continue
+        out[(city, country)] = (lat, lon)
+    return out
+
+
 def _rows_from_edition_calendar_dates(data_dir: Path) -> list[dict]:
     path = data_dir / "edition_calendar_dates.csv"
     if not path.exists():
@@ -315,7 +373,13 @@ def _dedupe_rows(rows: list[dict]) -> list[dict]:
     return list(by_key.values())
 
 
-def _enrich_geo(rows: list[dict], locations: pd.DataFrame, catalog: pd.DataFrame) -> None:
+def _enrich_geo(
+    rows: list[dict],
+    locations: pd.DataFrame,
+    catalog: pd.DataFrame,
+    *,
+    location_id_by_event: dict[int, int] | None = None,
+) -> None:
     loc_by_id = {}
     if not locations.empty:
         for rec in locations.to_dict(orient="records"):
@@ -330,6 +394,8 @@ def _enrich_geo(rows: list[dict], locations: pd.DataFrame, catalog: pd.DataFrame
             if pd.isna(eid):
                 continue
             cat_by_id[int(eid)] = rec
+    loc_by_event = location_id_by_event or {}
+    coords_by_place = _coords_by_city_country(locations)
 
     for row in rows:
         eid = row.get("event_id")
@@ -343,6 +409,10 @@ def _enrich_geo(rows: list[dict], locations: pd.DataFrame, catalog: pd.DataFrame
                 row["city"] = _clean_name(cat.get("typical_city"))
             if not row.get("country"):
                 row["country"] = _clean_name(cat.get("typical_country"))
+        if row.get("location_id") is None and eid is not None:
+            inherited = loc_by_event.get(int(eid))
+            if inherited is not None:
+                row["location_id"] = inherited
         lid = row.get("location_id")
         if lid is not None and lid in loc_by_id:
             loc = loc_by_id[lid]
@@ -364,6 +434,11 @@ def _enrich_geo(rows: list[dict], locations: pd.DataFrame, catalog: pd.DataFrame
         else:
             row.setdefault("lat", None)
             row.setdefault("lon", None)
+        # City/country fallback when location_id is missing or coords invalid
+        if row.get("lat") is None or row.get("lon") is None:
+            place = (_norm_place(row.get("city")), _norm_place(row.get("country")))
+            if place[0] and place[1] and place in coords_by_place:
+                row["lat"], row["lon"] = coords_by_place[place]
         # Normalize name after enrichment
         row["name"] = _clean_name(row.get("name"))
 
@@ -425,6 +500,7 @@ def build_year_event_calendar(
     locations = _load_locations(data_dir)
     catalog = _load_catalog(data_dir)
     inactive_ids = _inactive_event_ids(catalog)
+    location_id_by_event = _location_id_by_event(data_dir)
 
     base_rows = (
         _rows_from_edition_calendar_dates(data_dir)
@@ -489,7 +565,12 @@ def build_year_event_calendar(
         expected_rows.extend(kept)
 
     all_rows = _dedupe_rows(merged + expected_rows)
-    _enrich_geo(all_rows, locations, catalog)
+    _enrich_geo(
+        all_rows,
+        locations,
+        catalog,
+        location_id_by_event=location_id_by_event,
+    )
 
     # Drop nameless rows after catalog enrichment
     named_rows = [r for r in all_rows if _clean_name(r.get("name"))]

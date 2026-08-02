@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from datetime import date
 
+import pandas as pd
+
 from transform.year_event_calendar.expected import (
     iter_expected_candidates,
     match_expected_to_confirmed,
@@ -11,7 +13,11 @@ from transform.year_event_calendar.expected import (
     within_expected_window,
 )
 from transform.year_event_calendar.weekends import weekend_bounds, weekend_key
-from transform.year_event_calendar.build import _clean_name
+from transform.year_event_calendar.build import (
+    _clean_name,
+    _enrich_geo,
+    _location_id_by_event,
+)
 
 
 def test_clean_name_rejects_nan_strings():
@@ -91,3 +97,85 @@ def test_iter_expected_skips_known_ids():
     assert stubs[0]["event_id"] == 2
     assert stubs[0]["start_date"] == date(2026, 5, 15)
     assert stubs[0]["status"] == "expected"
+
+
+def test_enrich_geo_inherits_location_id_from_editions_map():
+    locations = pd.DataFrame(
+        [
+            {
+                "location_id": 29,
+                "event_city": "Denver",
+                "event_country": "United States",
+                "latitude": 39.7392,
+                "longitude": -104.9903,
+                "coordinates_valid": True,
+            }
+        ]
+    )
+    catalog = pd.DataFrame(
+        [
+            {
+                "event_id": 197,
+                "canonical_name": "5280 Westival",
+                "url": None,
+                "typical_city": "Denver",
+                "typical_country": "United States",
+            }
+        ]
+    )
+    rows = [
+        {
+            "event_id": 197,
+            "name": "5280 Westival",
+            "city": None,
+            "country": None,
+            "location_id": None,
+            "url": None,
+        }
+    ]
+    _enrich_geo(rows, locations, catalog, location_id_by_event={197: 29})
+    assert rows[0]["location_id"] == 29
+    assert rows[0]["lat"] == 39.7392
+    assert rows[0]["lon"] == -104.9903
+    assert rows[0]["city"] == "Denver"
+
+
+def test_enrich_geo_city_country_fallback():
+    locations = pd.DataFrame(
+        [
+            {
+                "location_id": 1,
+                "event_city": "Venray",
+                "event_country": "Netherlands",
+                "latitude": 51.525,
+                "longitude": 5.975,
+                "coordinates_valid": True,
+            }
+        ]
+    )
+    catalog = pd.DataFrame(columns=["event_id", "canonical_name", "url"])
+    rows = [
+        {
+            "event_id": None,
+            "name": "Dutch Open Wcs",
+            "city": "Venray",
+            "country": "Netherlands",
+            "location_id": None,
+            "url": None,
+        }
+    ]
+    _enrich_geo(rows, locations, catalog, location_id_by_event={})
+    assert rows[0]["lat"] == 51.525
+    assert rows[0]["lon"] == 5.975
+
+
+def test_location_id_by_event_picks_latest(tmp_path):
+    path = tmp_path / "event_editions.csv"
+    path.write_text(
+        "event_id,location_id,start_date\n"
+        "197,10,2024-03-01\n"
+        "197,29,2025-03-20\n"
+        "197,29,\n",
+        encoding="utf-8",
+    )
+    assert _location_id_by_event(tmp_path)[197] == 29
