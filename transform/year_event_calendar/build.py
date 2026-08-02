@@ -42,6 +42,16 @@ def _parse_date(value: Any) -> date | None:
         return None
 
 
+def _clean_name(value: Any) -> str | None:
+    """Return a display name, or None if missing / pandas NaN stringified."""
+    if value is None or (isinstance(value, float) and pd.isna(value)):
+        return None
+    text = str(value).strip()
+    if not text or text.lower() in {"nan", "none", "null", "nat", "unknown event"}:
+        return None
+    return text
+
+
 def _truthy(value: Any) -> bool:
     if value is None or (isinstance(value, float) and pd.isna(value)):
         return False
@@ -120,15 +130,16 @@ def _rows_from_edition_calendar_dates(data_dir: Path) -> list[dict]:
             eid_i = int(eid) if eid is not None and not pd.isna(eid) else None
         except (TypeError, ValueError):
             eid_i = None
+        name = _clean_name(rec.get("event_name")) or _clean_name(rec.get("calendar_title"))
         rows.append(
             {
                 "event_id": eid_i,
-                "name": str(rec.get("event_name") or rec.get("calendar_title") or "").strip(),
+                "name": name,
                 "start_date": start,
                 "end_date": end,
                 "status": status,
-                "kind": _kind_from_status_event("", str(rec.get("calendar_title") or "")),
-                "url": str(rec.get("url") or "").strip() or None,
+                "kind": _kind_from_status_event("", name or ""),
+                "url": _clean_name(rec.get("url")),
                 "city": None,
                 "country": None,
                 "location_id": None,
@@ -182,17 +193,18 @@ def _rows_from_editions(data_dir: Path) -> list[dict]:
             loc_i = int(loc_id) if loc_id is not None and not pd.isna(loc_id) else None
         except (TypeError, ValueError):
             loc_i = None
+        name = _clean_name(rec.get("event_name"))
         rows.append(
             {
                 "event_id": eid_i,
-                "name": str(rec.get("event_name") or "").strip(),
+                "name": name,
                 "start_date": start,
                 "end_date": end,
                 "status": status,
-                "kind": _kind_from_status_event(rec.get("registry_status"), str(rec.get("event_name") or "")),
-                "url": str(rec.get("url") or "").strip() or None,
-                "city": str(rec.get("place_city") or "").strip() or None,
-                "country": str(rec.get("place_country") or "").strip() or None,
+                "kind": _kind_from_status_event(rec.get("registry_status"), name or ""),
+                "url": _clean_name(rec.get("url")),
+                "city": _clean_name(rec.get("place_city")),
+                "country": _clean_name(rec.get("place_country")),
                 "location_id": loc_i,
                 "source": "event_editions",
                 "year": start.year,
@@ -224,26 +236,42 @@ def _rows_from_scheduled(data_dir: Path) -> list[dict]:
             eid_i = int(eid) if eid is not None and not pd.isna(eid) else None
         except (TypeError, ValueError):
             eid_i = None
+        name = _clean_name(rec.get("event_name")) or _clean_name(rec.get("canonical_name"))
         rows.append(
             {
                 "event_id": eid_i,
-                "name": str(rec.get("event_name") or rec.get("canonical_name") or "").strip(),
+                "name": name,
                 "start_date": start,
                 "end_date": _parse_date(rec.get("end_date")),
                 "status": status,
                 "kind": _kind_from_status_event(
                     rec.get("status_event") or rec.get("registry_trial_status"),
-                    str(rec.get("event_name") or ""),
+                    name or "",
                 ),
-                "url": str(rec.get("url") or "").strip() or None,
+                "url": _clean_name(rec.get("url")),
                 "city": None,
-                "country": str(rec.get("country") or "").strip() or None,
+                "country": _clean_name(rec.get("country")),
                 "location_id": None,
                 "source": "scheduled_events",
                 "year": start.year,
             }
         )
     return rows
+
+
+def _inactive_event_ids(catalog: pd.DataFrame) -> set[int]:
+    if catalog.empty or "registry_status" not in catalog.columns:
+        return set()
+    out: set[int] = set()
+    for rec in catalog.to_dict(orient="records"):
+        status = str(rec.get("registry_status") or "").strip().lower()
+        if status not in {"inactive", "merged"}:
+            continue
+        eid = rec.get("event_id")
+        if eid is None or (isinstance(eid, float) and pd.isna(eid)):
+            continue
+        out.add(int(eid))
+    return out
 
 
 def _prefer_row(existing: dict, new: dict) -> dict:
@@ -307,22 +335,21 @@ def _enrich_geo(rows: list[dict], locations: pd.DataFrame, catalog: pd.DataFrame
         eid = row.get("event_id")
         if eid is not None and eid in cat_by_id:
             cat = cat_by_id[eid]
+            if not _clean_name(row.get("name")):
+                row["name"] = _clean_name(cat.get("canonical_name"))
             if not row.get("url"):
-                row["url"] = str(cat.get("url") or "").strip() or None
-            if not row.get("name"):
-                row["name"] = str(cat.get("canonical_name") or "").strip()
+                row["url"] = _clean_name(cat.get("url"))
             if not row.get("city"):
-                row["city"] = str(cat.get("typical_city") or "").strip() or None
+                row["city"] = _clean_name(cat.get("typical_city"))
             if not row.get("country"):
-                row["country"] = str(cat.get("typical_country") or "").strip() or None
-            # Trial only if catalog/name says so; registry_status active≠trial
+                row["country"] = _clean_name(cat.get("typical_country"))
         lid = row.get("location_id")
         if lid is not None and lid in loc_by_id:
             loc = loc_by_id[lid]
             if not row.get("city"):
-                row["city"] = str(loc.get("event_city") or "").strip() or None
+                row["city"] = _clean_name(loc.get("event_city"))
             if not row.get("country"):
-                row["country"] = str(loc.get("event_country") or "").strip() or None
+                row["country"] = _clean_name(loc.get("event_country"))
             if _truthy(loc.get("coordinates_valid")):
                 try:
                     lat = float(loc["latitude"])
@@ -337,6 +364,8 @@ def _enrich_geo(rows: list[dict], locations: pd.DataFrame, catalog: pd.DataFrame
         else:
             row.setdefault("lat", None)
             row.setdefault("lon", None)
+        # Normalize name after enrichment
+        row["name"] = _clean_name(row.get("name"))
 
 
 def _serialize_event(row: dict) -> dict:
@@ -376,18 +405,40 @@ def build_year_event_calendar(
     *,
     as_of: date | None = None,
     year_radius: int = 2,
+    expected_horizon_years: int = 0,
 ) -> dict:
-    """Assemble payload for ``events_year_calendar.json``."""
+    """Assemble payload for ``events_year_calendar.json``.
+
+    Expected (YoY) projections are limited to ``as_of.year .. as_of.year +
+    expected_horizon_years`` (default: current year only) so future years are
+    not flooded with gray placeholders. Years beyond that horizon only keep
+    ``scheduled_events`` rows.
+    """
     data_dir = Path(data_dir)
     as_of = as_of or date.today()
     years = _year_window(as_of, radius=year_radius)
+    expected_years = {
+        y for y in years if as_of.year <= y <= as_of.year + expected_horizon_years
+    }
+    far_years = {y for y in years if y > as_of.year + expected_horizon_years}
+
+    locations = _load_locations(data_dir)
+    catalog = _load_catalog(data_dir)
+    inactive_ids = _inactive_event_ids(catalog)
 
     base_rows = (
         _rows_from_edition_calendar_dates(data_dir)
         + _rows_from_editions(data_dir)
         + _rows_from_scheduled(data_dir)
     )
-    merged = _dedupe_rows(base_rows)
+    # Far future: only published schedule (avoid long-range calendar scrape noise)
+    filtered_base: list[dict] = []
+    for row in base_rows:
+        y = row["start_date"].year
+        if y in far_years and row.get("source") != "scheduled_events":
+            continue
+        filtered_base.append(row)
+    merged = _dedupe_rows(filtered_base)
 
     # Event-ids that already have a non-expected status in each year
     skip_by_year: dict[int, set] = {y: set() for y in years}
@@ -405,25 +456,27 @@ def build_year_event_calendar(
         if row["status"] == STATUS_CONFIRMED:
             confirmed_by_year[y].setdefault(eid, []).append(start)
 
-    # Expected from prior year day-dated confirmed/occurred rows
+    # Expected from prior year — only within horizon; skip inactive/merged series
     expected_rows: list[dict] = []
     prior_pool = [
         r
         for r in merged
-        if r["status"] == STATUS_CONFIRMED and isinstance(r.get("start_date"), date)
+        if r["status"] == STATUS_CONFIRMED
+        and isinstance(r.get("start_date"), date)
+        and r.get("event_id") not in inactive_ids
     ]
-    for y in years:
+    for y in sorted(expected_years):
         priors = [r for r in prior_pool if r["start_date"].year == y - 1]
+        skip_ids = set(skip_by_year.get(y, set())) | inactive_ids
         stubs = iter_expected_candidates(
             priors,
             target_year=y,
-            skip_event_ids=skip_by_year.get(y, set()),
+            skip_event_ids=skip_ids,
         )
-        # Drop stubs that match a confirmed start within ±7d (belt+suspenders)
         kept = []
         for stub in stubs:
             eid = stub.get("event_id")
-            if eid is None:
+            if eid is None or eid in inactive_ids:
                 continue
             hit = match_expected_to_confirmed(
                 event_id=eid,
@@ -436,28 +489,35 @@ def build_year_event_calendar(
         expected_rows.extend(kept)
 
     all_rows = _dedupe_rows(merged + expected_rows)
-    locations = _load_locations(data_dir)
-    catalog = _load_catalog(data_dir)
     _enrich_geo(all_rows, locations, catalog)
 
-    in_window = [r for r in all_rows if r["start_date"].year in years]
+    # Drop nameless rows after catalog enrichment
+    named_rows = [r for r in all_rows if _clean_name(r.get("name"))]
+
+    in_window = [r for r in named_rows if r["start_date"].year in years]
     in_window.sort(key=lambda r: (r["start_date"], r.get("name") or ""))
 
     events = [_serialize_event(r) for r in in_window]
     by_year = {str(y): sum(1 for e in events if e["year"] == y) for y in years}
+    # Omit empty years from the selector (e.g. 2024 with no day-precision dates)
+    years_with_data = [y for y in years if by_year.get(str(y), 0) > 0]
+    default_year = as_of.year if as_of.year in years_with_data else (
+        years_with_data[0] if years_with_data else as_of.year
+    )
 
     return {
         "as_of": as_of.isoformat(),
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "years": years,
-        "default_year": as_of.year,
+        "years": years_with_data,
+        "default_year": default_year,
         "expected_window_days": EXPECTED_WINDOW_DAYS,
+        "expected_horizon_years": expected_horizon_years,
         "weekend": {"start_weekday": "thu", "end_weekday": "sun"},
-        "counts_by_year": by_year,
+        "counts_by_year": {str(y): by_year[str(y)] for y in years_with_data},
         "disclaimer": {
-            "en": "Expected (gray) events are projected from the prior year (±1 week per WSDC Registry Rules). They are unconfirmed until published on the WSDC calendar.",
-            "ru": "Серые (expected) ивенты — проекция с прошлого года (±1 неделя по правилам WSDC). Это неподтверждённые даты, пока ивент не появится в календаре WSDC.",
-            "es": "Los eventos expected (gris) se proyectan del año anterior (±1 semana según reglas WSDC). No están confirmados hasta publicarse en el calendario WSDC.",
+            "en": "Expected (gray) events are projected from the prior year (±1 week per WSDC Registry Rules) for the current calendar year only. They are unconfirmed until published on the WSDC calendar.",
+            "ru": "Серые (expected) ивенты — проекция с прошлого года (±1 неделя по правилам WSDC) только для текущего года. Это неподтверждённые даты, пока ивент не появится в календаре WSDC.",
+            "es": "Los eventos expected (gris) se proyectan del año anterior (±1 semana según reglas WSDC) solo para el año actual. No están confirmados hasta publicarse en el calendario WSDC.",
         },
         "events": events,
     }

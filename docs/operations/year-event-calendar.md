@@ -18,10 +18,12 @@ Writes `static/data/events_year_calendar.json` on the analytics site (via `--sit
 | Status | Meaning |
 |--------|---------|
 | `confirmed` | Published / scheduled / occurred with day date |
-| `expected` | Projected from prior-year start (±1 week, WSDC Registry Rules 1.4.1) when no confirmed/cancelled/hiatus row for that `event_id` in the target year |
+| `expected` | Projected from prior-year start (±1 week, WSDC Registry Rules 1.4.1) when no confirmed/cancelled/hiatus row for that `event_id` in the target year. **Current calendar year only** by default (`expected_horizon_years=0`). |
 | `cancelled` / `hiatus` | From calendar scrape flags |
 
-Expected rows stay until explicit hiatus/cancelled (product rule; may change later).
+Years beyond the expected horizon keep only `scheduled_events` rows (no YoY gray flood). Empty years (no day-precision dates) are omitted from the selector. Inactive/merged catalog ids are not projected. Nameless/`nan` rows are dropped after catalog enrichment.
+
+Expected rows stay until explicit hiatus/cancelled within the horizon (product rule; may change later).
 
 ## Spike
 

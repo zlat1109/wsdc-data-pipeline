@@ -11,6 +11,14 @@ from transform.year_event_calendar.expected import (
     within_expected_window,
 )
 from transform.year_event_calendar.weekends import weekend_bounds, weekend_key
+from transform.year_event_calendar.build import _clean_name
+
+
+def test_clean_name_rejects_nan_strings():
+    assert _clean_name(None) is None
+    assert _clean_name("nan") is None
+    assert _clean_name("NaN") is None
+    assert _clean_name("  Berlin Swing  ") == "Berlin Swing"
 
 
 def test_weekend_bounds_thursday_start():
