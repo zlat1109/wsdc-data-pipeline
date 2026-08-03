@@ -323,6 +323,66 @@ def test_calendar_listing_mismatch_rejects_soul_flow_on_ggp():
     )
 
 
+def test_is_stale_expected_past_year_and_grace():
+    from transform.year_event_calendar.expected import is_stale_expected
+
+    as_of = date(2026, 8, 3)
+    assert is_stale_expected(start=date(2025, 6, 1), end=date(2025, 6, 4), as_of=as_of)
+    assert is_stale_expected(start=date(2026, 5, 30), end=date(2026, 6, 1), as_of=as_of)
+    assert not is_stale_expected(start=date(2026, 7, 24), end=date(2026, 7, 27), as_of=as_of)
+    assert not is_stale_expected(start=date(2026, 9, 18), end=date(2026, 9, 21), as_of=as_of)
+    # Still inside grace (end + 7 days >= as_of)
+    assert not is_stale_expected(
+        start=date(2026, 7, 24), end=date(2026, 7, 27), as_of=date(2026, 8, 3)
+    )
+    assert is_stale_expected(
+        start=date(2026, 7, 24), end=date(2026, 7, 27), as_of=date(2026, 8, 4)
+    )
+
+
+def test_drop_stale_expected_keeps_official_and_future():
+    from transform.year_event_calendar.build import _drop_stale_expected
+
+    as_of = date(2026, 8, 3)
+    rows = [
+        {
+            "event_id": 1,
+            "name": "Past Expected",
+            "start_date": date(2026, 5, 1),
+            "end_date": date(2026, 5, 4),
+            "status": "expected",
+            "source": "expected_yoy",
+        },
+        {
+            "event_id": 2,
+            "name": "Future Expected",
+            "start_date": date(2026, 9, 10),
+            "end_date": date(2026, 9, 13),
+            "status": "expected",
+            "source": "expected_yoy",
+        },
+        {
+            "event_id": 3,
+            "name": "Confirmed Past",
+            "start_date": date(2026, 5, 1),
+            "end_date": date(2026, 5, 4),
+            "status": "confirmed",
+            "source": "scheduled_events",
+        },
+        {
+            "event_id": 4,
+            "name": "Hiatus Past",
+            "start_date": date(2026, 6, 1),
+            "end_date": date(2026, 6, 3),
+            "status": "hiatus",
+            "source": "scheduled_events",
+        },
+    ]
+    out = _drop_stale_expected(rows, as_of)
+    ids = {r["event_id"] for r in out}
+    assert ids == {2, 3, 4}
+
+
 def test_dedupe_keeps_distinct_weekends_same_event_year():
     from transform.year_event_calendar.build import _dedupe_rows
 
@@ -353,6 +413,17 @@ def test_dedupe_keeps_distinct_weekends_same_event_year():
     assert by_month[9]["kind"] == "trial"
     assert by_month[9].get("kind_from_schedule") is True
     assert by_month[12]["status"] == "hiatus"
+
+
+def test_calendar_continent_folds_south_america():
+    from transform.year_event_calendar.build import _calendar_continent
+
+    assert _calendar_continent("United States") == "America"
+    assert _calendar_continent("Brazil") == "America"
+    assert _calendar_continent("Germany") == "Europe"
+    assert _calendar_continent("Japan") == "Asia"
+    assert _calendar_continent("Australia") == "Australia"
+    assert _calendar_continent(None) is None
 
 
 def test_prefer_row_does_not_steal_schedule_trial_lock():
