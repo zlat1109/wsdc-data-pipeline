@@ -682,7 +682,13 @@ def _prefer_calendar_row(
         cat = cat_by_id.get(int(best["event_id"]))
         if cat is not None:
             cname = _clean_name(cat.get("canonical_name"))
-            if cname:
+            wname = _clean_name(winner.get("name"))
+            # Keep live schedule/calendar renames (SwingCo vs catalog SwingCouver)
+            if cname and not (
+                wname
+                and winner.get("source") in {"scheduled_events", "edition_calendar_dates"}
+                and _fingerprint_event_name(wname) != _fingerprint_event_name(cname)
+            ):
                 winner["name"] = cname
     return winner
 
@@ -979,6 +985,7 @@ def build_year_event_calendar(
     # Event-ids that already have a non-expected status in each year
     skip_by_year: dict[int, set] = {y: set() for y in years}
     confirmed_by_year: dict[int, dict] = {y: {} for y in years}
+    confirmed_by_event: dict[int, list[date]] = {}
     for row in merged:
         start = row["start_date"]
         y = start.year
@@ -991,9 +998,10 @@ def build_year_event_calendar(
             skip_by_year[y].add(eid)
         if row["status"] == STATUS_CONFIRMED:
             confirmed_by_year[y].setdefault(eid, []).append(start)
+            confirmed_by_event.setdefault(int(eid), []).append(start)
 
     # Expected from latest confirmed edition before target year (WSDC ±1 week rule
-    # applied when matching against any already-confirmed start in the target year).
+    # vs any confirmed start — including year-boundary moves like NYE → early Jan).
     expected_rows: list[dict] = []
     prior_pool = [
         r
@@ -1019,7 +1027,7 @@ def build_year_event_calendar(
             hit = match_expected_to_confirmed(
                 event_id=eid,
                 projected_start=stub["start_date"],
-                confirmed_by_event=confirmed_by_year.get(y, {}),
+                confirmed_by_event=confirmed_by_event,
                 window_days=EXPECTED_WINDOW_DAYS,
             )
             if hit is not None:
