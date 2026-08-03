@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import json
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
@@ -353,13 +353,48 @@ def _prefer_row(existing: dict, new: dict) -> dict:
     e_score = (rank.get(existing["status"], 0), src_rank.get(existing.get("source"), 0))
     n_score = (rank.get(new["status"], 0), src_rank.get(new.get("source"), 0))
     winner = new if n_score >= e_score else existing
-    # Keep richer geo/url from either
-    for key in ("url", "city", "country", "location_id", "kind", "name"):
+    # Keep richer geo/url/end from either
+    for key in ("url", "city", "country", "location_id", "kind", "name", "end_date"):
         if not winner.get(key) and existing.get(key):
             winner[key] = existing[key]
         if not winner.get(key) and new.get(key):
             winner[key] = new[key]
     return winner
+
+
+def _fill_missing_end_dates(rows: list[dict]) -> None:
+    """Fill blank end_date from prior edition duration, else Thu–Sun weekend Sunday.
+
+    WSDC calendar scrapes sometimes publish only a start day (e.g. Chicago Classic
+    2026-03-19). Without an end, the year grid paints a single-day spike.
+    """
+    duration_by_eid: dict[int, int] = {}
+    for row in rows:
+        eid = row.get("event_id")
+        start = row.get("start_date")
+        end = row.get("end_date")
+        if eid is None or not isinstance(start, date) or not isinstance(end, date):
+            continue
+        if end < start:
+            continue
+        days = (end - start).days
+        prev = duration_by_eid.get(int(eid))
+        # Prefer longer observed span (weekend festivals), keep latest overwrite
+        if prev is None or days >= prev:
+            duration_by_eid[int(eid)] = days
+
+    for row in rows:
+        start = row.get("start_date")
+        if not isinstance(start, date):
+            continue
+        if isinstance(row.get("end_date"), date):
+            continue
+        eid = row.get("event_id")
+        if eid is not None and int(eid) in duration_by_eid:
+            row["end_date"] = start + timedelta(days=duration_by_eid[int(eid)])
+            continue
+        _thu, sun = weekend_bounds(start)
+        row["end_date"] = sun if sun >= start else start
 
 
 def _dedupe_rows(rows: list[dict]) -> list[dict]:
@@ -641,6 +676,7 @@ def build_year_event_calendar(
         catalog,
         location_id_by_event=location_id_by_event,
     )
+    _fill_missing_end_dates(all_rows)
 
     # Drop nameless rows after catalog enrichment
     named_rows = [r for r in all_rows if _clean_name(r.get("name"))]

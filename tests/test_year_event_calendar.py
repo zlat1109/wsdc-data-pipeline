@@ -228,6 +228,37 @@ def test_latest_confirmed_priors_and_terminal_block():
     assert emit_ids == {1}
 
 
+def test_fill_missing_end_dates_uses_prior_duration_then_weekend():
+    from transform.year_event_calendar.build import _fill_missing_end_dates
+
+    rows = [
+        {
+            "event_id": 142,
+            "name": "The Chicago Classic",
+            "start_date": date(2025, 3, 13),
+            "end_date": date(2025, 3, 16),
+            "status": "confirmed",
+        },
+        {
+            "event_id": 142,
+            "name": "The Chicago Classic",
+            "start_date": date(2026, 3, 19),
+            "end_date": None,
+            "status": "confirmed",
+        },
+        {
+            "event_id": 999,
+            "name": "Lonely Start",
+            "start_date": date(2026, 4, 9),  # Thursday
+            "end_date": None,
+            "status": "confirmed",
+        },
+    ]
+    _fill_missing_end_dates(rows)
+    assert rows[1]["end_date"] == date(2026, 3, 22)  # +3 days from 2025 span
+    assert rows[2]["end_date"] == date(2026, 4, 12)  # weekend Sunday
+
+
 def test_calendar_continent_folds_south_america():
     from transform.year_event_calendar.build import _calendar_continent
 
