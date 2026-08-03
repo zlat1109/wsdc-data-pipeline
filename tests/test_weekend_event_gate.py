@@ -16,6 +16,23 @@ def test_event_results_edition_from_start_date():
     assert event_results_edition(event) == (2026, 6)
 
 
+def test_event_results_edition_cross_month_uses_scheduled_or_end():
+    """Jul→Aug events must resolve to August results edition (not July start)."""
+    event = {
+        "name": "Sea Sun and Swing",
+        "start_date": "2026-07-25",
+        "end_date": "2026-08-01",
+    }
+    assert event_results_edition(event) == (2026, 8)
+
+    lisbon = {
+        "name": "Lisbon Westie Fest",
+        "start_date": "2026-07-30",
+        "end_date": "2026-08-02",
+    }
+    assert event_results_edition(lisbon) == (2026, 8)
+
+
 def test_event_has_concluded_uses_end_date():
     event = {"name": "SWINGAPALOOZA", "start_date": "2026-06-19", "end_date": "2026-06-21"}
     assert not event_has_concluded(event, date(2026, 6, 21))
@@ -97,6 +114,56 @@ def test_split_pending_matches_neverland_long_snapshot_name():
     pending, already = split_pending_events(conn, events, today=date(2026, 7, 14))
     assert pending == []
     assert already == ["NeverlandSwing Dutch Swing Championships 2026"]
+
+
+def test_split_pending_lisbon_not_confused_with_midwest_july():
+    """Lisbon must stay pending; Sea Sun in August results counts as already loaded."""
+    conn = MagicMock()
+    cursor = conn.cursor.return_value.__enter__.return_value
+    cursor._params = None
+
+    def execute(_sql, params=None):
+        cursor._params = params
+
+    def fetchall():
+        year, month = cursor._params or (None, None)
+        if (year, month) == (2026, 7):
+            return [("Midwest Westie Fest",)]
+        if (year, month) == (2026, 8):
+            return [("Sea Sun and Swing",)]
+        return []
+
+    cursor.execute.side_effect = execute
+    cursor.fetchall.side_effect = fetchall
+
+    events = [
+        {
+            "name": "Lisbon Westie Fest",
+            "start_date": "2026-07-30",
+            "end_date": "2026-08-02",
+        },
+        {
+            "name": "Sea Sun and Swing",
+            "start_date": "2026-07-25",
+            "end_date": "2026-08-01",
+        },
+        {
+            "name": "Warsaw Summer Nights Westival",
+            "start_date": "2026-07-30",
+            "end_date": "2026-08-02",
+        },
+        {
+            "name": "Arizona Dance Classic",
+            "start_date": "2026-07-31",
+            "end_date": "2026-08-02",
+        },
+    ]
+    pending, already = split_pending_events(conn, events, today=date(2026, 8, 3))
+    assert "Lisbon Westie Fest" in pending
+    assert "Warsaw Summer Nights Westival" in pending
+    assert "Arizona Dance Classic" in pending
+    assert "Sea Sun and Swing" in already
+    assert "Lisbon Westie Fest" not in already
 
 
 def test_events_within_gate_lookback_excludes_stale_concluded():
