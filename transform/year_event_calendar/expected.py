@@ -51,7 +51,12 @@ def match_expected_to_confirmed(
     confirmed_by_event: dict[int | str, list[date]],
     window_days: int = EXPECTED_WINDOW_DAYS,
 ) -> date | None:
-    """Return matching confirmed start_date if within ±window_days, else None."""
+    """Return matching confirmed start if within ±window_days, else None.
+
+    ``confirmed_by_event`` may include starts from adjacent years so a NYE
+    projection (e.g. 2026-12-31) is satisfied by a published Jan date in the
+    next year (SwingCo 2027-01-07) and does not leave a ghost expected.
+    """
     for actual in confirmed_by_event.get(event_id, []):
         if within_expected_window(projected_start, actual, days=window_days):
             return actual

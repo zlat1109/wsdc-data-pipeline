@@ -310,6 +310,26 @@ def test_fingerprint_and_weekend_dedupe_collapses_title_variants():
     assert by_fp["boston tea"]["source"] == "scheduled_events"
 
 
+def test_match_expected_cross_year_boundary():
+    from transform.year_event_calendar.expected import match_expected_to_confirmed
+
+    # SwingCouver NYE projection suppressed by SwingCo one week later in Jan
+    hit = match_expected_to_confirmed(
+        event_id=196,
+        projected_start=date(2026, 12, 31),
+        confirmed_by_event={196: [date(2027, 1, 7)]},
+    )
+    assert hit == date(2027, 1, 7)
+    assert (
+        match_expected_to_confirmed(
+            event_id=196,
+            projected_start=date(2026, 12, 31),
+            confirmed_by_event={196: [date(2027, 1, 15)]},
+        )
+        is None
+    )
+
+
 def test_calendar_listing_mismatch_rejects_soul_flow_on_ggp():
     from transform.year_event_calendar.build import _calendar_listing_matches_event
 
