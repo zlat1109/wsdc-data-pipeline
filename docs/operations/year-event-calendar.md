@@ -30,6 +30,7 @@ Years beyond the expected horizon keep only `scheduled_events` rows (no YoY gray
 - Drop `edition_calendar_dates` rows whose `calendar_title` does not match the assigned `event_name` (guards URL mis-matches such as Soul Flow hiatus → Global Grand Prix). Distinct weekends for the same `event_id`+year are kept separately.
 - **Stale expected**: past years never keep `expected`. In the current year, expected rows are dropped once their end date + **7 days** is before `as_of` (projected weekend passed without confirm / hiatus / cancel). Official hiatus/cancelled remain.
 - Expected YoY also matches confirmed starts across year boundaries (±1 week), so a NYE projection does not ghost when the live schedule moved into early January (e.g. SwingCouver → SwingCo).
+- **Operator overrides**: curated gaps (not yet on WSDC calendar/list) live in `transform/knowledge/calendar_operator_overrides.py` and are re-applied after each calendar sync with `date_source=operator`. Official `wsdc_calendar` for the same `(event_id, year, month)` wins. Example: Dance Mardi Gras 2026 provisional hiatus.
 
 Each event includes `continent` in `{America, Europe, Asia, Australia}` (South America → America).
 
