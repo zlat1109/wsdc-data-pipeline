@@ -208,6 +208,17 @@ def sync_events_calendar(
             )
             result["upserted"] = upsert_edition_calendar_dates(conn, upsert_rows)
 
+            from transform.knowledge.calendar_operator_overrides import (
+                operator_override_upsert_rows,
+            )
+
+            # Fill gaps with curated hiatus/cancelled assumptions; never clobbers
+            # an existing wsdc_calendar row (upsert WHERE blocks that).
+            op_rows = operator_override_upsert_rows(
+                scraped_at=datetime.now(timezone.utc),
+            )
+            result["operator_overrides"] = upsert_edition_calendar_dates(conn, op_rows)
+
             if rebuild_catalog:
                 from build_event_catalog import rebuild_event_catalog
 
