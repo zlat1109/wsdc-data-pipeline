@@ -28,6 +28,7 @@ Years beyond the expected horizon keep only `scheduled_events` rows (no YoY gray
 - Ghost / inactive duplicate ids are remapped via `MERGE_EVENT_ID_MAP`; remaining same-weekend title variants collapse by name fingerprint (e.g. Boston Tea Party vs The Boston Tea Party).
 - **Registry vs Trial (`kind`)**: live `scheduled_events` Trial flags are trusted; expected YoY rows are always Registry; after a series' first points year, Trial-in-title/catalog does not stick; from **2025+**, first points year (`event_catalog.first_edition_year` / editions with results) marks that year as Trial (heuristic after the registry-points-at-trial rule change).
 - Drop `edition_calendar_dates` rows whose `calendar_title` does not match the assigned `event_name` (guards URL mis-matches such as Soul Flow hiatus → Global Grand Prix). Distinct weekends for the same `event_id`+year are kept separately.
+- **Stale expected**: past years never keep `expected`. In the current year, expected rows are dropped once their end date + **7 days** is before `as_of` (projected weekend passed without confirm / hiatus / cancel). Official hiatus/cancelled remain.
 
 Each event includes `continent` in `{America, Europe, Asia, Australia}` (South America → America).
 

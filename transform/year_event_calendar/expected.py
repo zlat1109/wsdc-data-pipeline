@@ -7,6 +7,8 @@ from typing import Iterable
 
 
 EXPECTED_WINDOW_DAYS = 7
+# Keep expected visible through the weekend + one week; then drop if still unconfirmed.
+EXPECTED_STALE_GRACE_DAYS = 7
 
 
 def project_start_to_year(start: date, target_year: int) -> date:
@@ -20,6 +22,26 @@ def project_start_to_year(start: date, target_year: int) -> date:
 
 def within_expected_window(projected: date, actual: date, *, days: int = EXPECTED_WINDOW_DAYS) -> bool:
     return abs((actual - projected).days) <= days
+
+
+def is_stale_expected(
+    *,
+    start: date,
+    end: date | None,
+    as_of: date,
+    grace_days: int = EXPECTED_STALE_GRACE_DAYS,
+) -> bool:
+    """True when an expected row should leave the calendar.
+
+    Past years never keep expected (only confirmed / hiatus / cancelled belong
+    there). In the current/future year, expected expires once ``end`` (or start)
+    plus grace days is before ``as_of`` — the projected weekend passed without
+    confirmation or official hiatus/cancel.
+    """
+    if start.year < as_of.year:
+        return True
+    last = end if isinstance(end, date) else start
+    return last + timedelta(days=grace_days) < as_of
 
 
 def match_expected_to_confirmed(

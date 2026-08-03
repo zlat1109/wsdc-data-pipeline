@@ -16,7 +16,9 @@ from transform.knowledge.event_aliases import (
 )
 from transform.knowledge.geo_flags import continent_for_country
 from transform.year_event_calendar.expected import (
+    EXPECTED_STALE_GRACE_DAYS,
     EXPECTED_WINDOW_DAYS,
+    is_stale_expected,
     iter_expected_candidates,
     match_expected_to_confirmed,
     project_start_to_year,
@@ -898,6 +900,28 @@ def _serialize_event(row: dict) -> dict:
     return out
 
 
+def _drop_stale_expected(
+    rows: list[dict],
+    as_of: date,
+    *,
+    grace_days: int = EXPECTED_STALE_GRACE_DAYS,
+) -> list[dict]:
+    """Remove expected rows for finished periods (past year or past+grace)."""
+    out: list[dict] = []
+    for row in rows:
+        if row.get("status") != STATUS_EXPECTED:
+            out.append(row)
+            continue
+        start = row.get("start_date")
+        if not isinstance(start, date):
+            continue
+        end = row.get("end_date") if isinstance(row.get("end_date"), date) else None
+        if is_stale_expected(start=start, end=end, as_of=as_of, grace_days=grace_days):
+            continue
+        out.append(row)
+    return out
+
+
 def build_year_event_calendar(
     data_dir: Path | str,
     *,
@@ -998,8 +1022,15 @@ def build_year_event_calendar(
                 confirmed_by_event=confirmed_by_year.get(y, {}),
                 window_days=EXPECTED_WINDOW_DAYS,
             )
-            if hit is None:
-                kept.append(stub)
+            if hit is not None:
+                continue
+            if is_stale_expected(
+                start=stub["start_date"],
+                end=stub.get("end_date") if isinstance(stub.get("end_date"), date) else None,
+                as_of=as_of,
+            ):
+                continue
+            kept.append(stub)
         expected_rows.extend(kept)
 
     all_rows = _dedupe_weekend_name_collisions(
@@ -1022,6 +1053,7 @@ def build_year_event_calendar(
 
     # Drop nameless rows after catalog enrichment
     named_rows = [r for r in all_rows if _clean_name(r.get("name"))]
+    named_rows = _drop_stale_expected(named_rows, as_of)
 
     in_window = [r for r in named_rows if r["start_date"].year in years]
     in_window.sort(key=lambda r: (r["start_date"], r.get("name") or ""))
