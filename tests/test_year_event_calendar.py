@@ -259,6 +259,65 @@ def test_fill_missing_end_dates_uses_prior_duration_then_weekend():
     assert rows[2]["end_date"] == date(2026, 4, 12)  # weekend Sunday
 
 
+def test_fingerprint_and_weekend_dedupe_collapses_title_variants():
+    from transform.year_event_calendar.build import (
+        _dedupe_weekend_name_collisions,
+        _fingerprint_event_name,
+        _resolve_merge_event_id,
+    )
+
+    assert _fingerprint_event_name("The Boston Tea Party") == _fingerprint_event_name(
+        "Boston Tea Party"
+    )
+    assert _fingerprint_event_name("Paris Swing Classic") == "paris westie"
+    assert _resolve_merge_event_id(307) == 272
+    assert _resolve_merge_event_id(543) == 272
+    assert _resolve_merge_event_id(566) == 9
+
+    rows = [
+        {
+            "event_id": 543,
+            "name": "Paris Swing Classic",
+            "start_date": date(2027, 2, 25),
+            "end_date": date(2027, 3, 1),
+            "status": "confirmed",
+            "source": "edition_calendar_dates",
+        },
+        {
+            "event_id": 272,
+            "name": "Paris Swing Classic",
+            "start_date": date(2027, 2, 25),
+            "end_date": date(2027, 3, 1),
+            "status": "confirmed",
+            "source": "scheduled_events",
+        },
+        {
+            "event_id": 9,
+            "name": "Boston Tea Party",
+            "start_date": date(2027, 3, 19),
+            "end_date": date(2027, 3, 22),
+            "status": "confirmed",
+            "source": "edition_calendar_dates",
+        },
+        {
+            "event_id": 566,
+            "name": "The Boston Tea Party",
+            "start_date": date(2027, 3, 19),
+            "end_date": date(2027, 3, 22),
+            "status": "confirmed",
+            "source": "scheduled_events",
+        },
+    ]
+    # Simulate post-merge ids
+    for r in rows:
+        r["event_id"] = _resolve_merge_event_id(r["event_id"])
+    out = _dedupe_weekend_name_collisions(rows)
+    assert len(out) == 2
+    by_fp = {_fingerprint_event_name(r["name"]): r for r in out}
+    assert by_fp["paris westie"]["event_id"] == 272
+    assert by_fp["boston tea"]["source"] == "scheduled_events"
+
+
 def test_calendar_continent_folds_south_america():
     from transform.year_event_calendar.build import _calendar_continent
 

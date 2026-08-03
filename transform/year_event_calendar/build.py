@@ -9,6 +9,11 @@ from typing import Any
 
 import pandas as pd
 
+from transform.knowledge.event_aliases import (
+    EVENT_NAME_VARIANT_TO_CATALOG,
+    MERGE_EVENT_ID_MAP,
+    RESULT_TO_CATALOG_EVENT_NAME,
+)
 from transform.knowledge.geo_flags import continent_for_country
 from transform.year_event_calendar.expected import (
     EXPECTED_WINDOW_DAYS,
@@ -28,6 +33,40 @@ KIND_TRIAL = "trial"
 
 # Public calendar uses four continents (South America folds into America).
 CALENDAR_CONTINENTS = ("America", "Europe", "Asia", "Australia")
+
+_NAME_ALIAS_LOOKUP = {
+    **{k.lower(): v for k, v in RESULT_TO_CATALOG_EVENT_NAME.items()},
+    **{k.lower(): v for k, v in EVENT_NAME_VARIANT_TO_CATALOG.items()},
+}
+
+_NAME_STOPWORDS = frozenset(
+    {
+        "the",
+        "a",
+        "an",
+        "and",
+        "of",
+        "for",
+        "wcs",
+        "west",
+        "coast",
+        "swing",
+        "dance",
+        "championships",
+        "championship",
+        "open",
+        "classic",
+        "festival",
+        "ball",
+        "party",
+        "fest",
+        "weekend",
+        "invitational",
+        "nationals",
+        "national",
+        "convention",
+    }
+)
 
 
 def _parse_date(value: Any) -> date | None:
@@ -397,7 +436,112 @@ def _fill_missing_end_dates(rows: list[dict]) -> None:
         row["end_date"] = sun if sun >= start else start
 
 
-def _dedupe_rows(rows: list[dict]) -> list[dict]:
+def _resolve_merge_event_id(eid: int | None) -> int | None:
+    if eid is None:
+        return None
+    seen: set[int] = set()
+    cur = int(eid)
+    while cur in MERGE_EVENT_ID_MAP and cur not in seen:
+        seen.add(cur)
+        cur = int(MERGE_EVENT_ID_MAP[cur])
+    return cur
+
+
+def _alias_event_name(name: str | None) -> str | None:
+    cleaned = _clean_name(name)
+    if not cleaned:
+        return None
+    return _NAME_ALIAS_LOOKUP.get(cleaned.lower(), cleaned)
+
+
+def _fingerprint_event_name(name: str | None) -> str:
+    """Loose token fingerprint for cross-source near-duplicate matching."""
+    text = _alias_event_name(name) or ""
+    tokens = [
+        tok
+        for tok in "".join(ch if ch.isalnum() else " " for ch in text.lower()).split()
+        if tok and tok not in _NAME_STOPWORDS
+    ]
+    return " ".join(tokens)
+
+
+def _catalog_quality(eid: int | None, cat_by_id: dict[int, dict]) -> tuple[int, int]:
+    if eid is None or eid not in cat_by_id:
+        return (0, 0)
+    cat = cat_by_id[eid]
+    status = str(cat.get("registry_status") or "").strip().lower()
+    active = 0 if status in {"inactive", "merged"} else 1
+    try:
+        editions = int(cat.get("edition_count") or 0)
+    except (TypeError, ValueError):
+        editions = 0
+    return (active, editions)
+
+
+def _canonicalize_calendar_rows(rows: list[dict], catalog: pd.DataFrame) -> None:
+    """Remap ghost event ids / alias names onto catalog identities before dedupe."""
+    cat_by_id: dict[int, dict] = {}
+    cat_by_name: dict[str, dict] = {}
+    if not catalog.empty:
+        for rec in catalog.to_dict(orient="records"):
+            eid = rec.get("event_id")
+            if eid is None or (isinstance(eid, float) and pd.isna(eid)):
+                continue
+            eid_i = int(eid)
+            cat_by_id[eid_i] = rec
+            cname = _clean_name(rec.get("canonical_name"))
+            if cname:
+                cat_by_name[cname.lower()] = rec
+
+    for row in rows:
+        eid = row.get("event_id")
+        if eid is not None:
+            row["event_id"] = _resolve_merge_event_id(int(eid))
+        aliased = _alias_event_name(row.get("name"))
+        if aliased:
+            row["name"] = aliased
+            cat = cat_by_name.get(aliased.lower())
+            if cat is not None:
+                cat_eid = int(cat["event_id"])
+                cur = row.get("event_id")
+                if cur is None or _catalog_quality(cat_eid, cat_by_id) >= _catalog_quality(
+                    int(cur) if cur is not None else None, cat_by_id
+                ):
+                    row["event_id"] = cat_eid
+
+
+def _prefer_calendar_row(
+    existing: dict,
+    new: dict,
+    *,
+    cat_by_id: dict[int, dict] | None = None,
+) -> dict:
+    winner = _prefer_row(existing, new)
+    if not cat_by_id:
+        return winner
+    candidates = [existing, new]
+    best = max(
+        candidates,
+        key=lambda r: (
+            _catalog_quality(
+                int(r["event_id"]) if r.get("event_id") is not None else None,
+                cat_by_id,
+            ),
+            1 if r.get("end_date") else 0,
+            1 if r.get("url") else 0,
+        ),
+    )
+    if best.get("event_id") is not None:
+        winner["event_id"] = best["event_id"]
+        cat = cat_by_id.get(int(best["event_id"]))
+        if cat is not None:
+            cname = _clean_name(cat.get("canonical_name"))
+            if cname:
+                winner["name"] = cname
+    return winner
+
+
+def _dedupe_rows(rows: list[dict], *, cat_by_id: dict[int, dict] | None = None) -> list[dict]:
     by_key: dict[tuple, dict] = {}
     for row in rows:
         eid = row.get("event_id")
@@ -406,10 +550,38 @@ def _dedupe_rows(rows: list[dict]) -> list[dict]:
             continue
         key = (eid if eid is not None else row.get("name"), start.year)
         if key in by_key:
-            by_key[key] = _prefer_row(by_key[key], row)
+            by_key[key] = _prefer_calendar_row(by_key[key], row, cat_by_id=cat_by_id)
         else:
             by_key[key] = row
     return list(by_key.values())
+
+
+def _dedupe_weekend_name_collisions(
+    rows: list[dict],
+    *,
+    cat_by_id: dict[int, dict] | None = None,
+) -> list[dict]:
+    """Merge same-weekend near-duplicates that still carry different event_ids.
+
+    Cross-source scrapes often emit ghost ids / \"The …\" title variants for one
+    festival (Paris Swing Classic ×3, Boston Tea Party vs The Boston Tea Party).
+    """
+    by_key: dict[tuple, dict] = {}
+    passthrough: list[dict] = []
+    for row in rows:
+        start = row.get("start_date")
+        if not isinstance(start, date):
+            continue
+        fp = _fingerprint_event_name(row.get("name"))
+        if not fp:
+            passthrough.append(row)
+            continue
+        key = (start.year, weekend_key(start), fp)
+        if key in by_key:
+            by_key[key] = _prefer_calendar_row(by_key[key], row, cat_by_id=cat_by_id)
+        else:
+            by_key[key] = row
+    return passthrough + list(by_key.values())
 
 
 def _enrich_geo(
@@ -604,12 +776,20 @@ def build_year_event_calendar(
     catalog = _load_catalog(data_dir)
     inactive_ids = _inactive_event_ids(catalog)
     location_id_by_event = _location_id_by_event(data_dir)
+    cat_by_id: dict[int, dict] = {}
+    if not catalog.empty:
+        for rec in catalog.to_dict(orient="records"):
+            eid = rec.get("event_id")
+            if eid is None or (isinstance(eid, float) and pd.isna(eid)):
+                continue
+            cat_by_id[int(eid)] = rec
 
     base_rows = (
         _rows_from_edition_calendar_dates(data_dir)
         + _rows_from_editions(data_dir)
         + _rows_from_scheduled(data_dir)
     )
+    _canonicalize_calendar_rows(base_rows, catalog)
     # Far future: only published schedule (avoid long-range calendar scrape noise)
     filtered_base: list[dict] = []
     for row in base_rows:
@@ -617,7 +797,10 @@ def build_year_event_calendar(
         if y in far_years and row.get("source") != "scheduled_events":
             continue
         filtered_base.append(row)
-    merged = _dedupe_rows(filtered_base)
+    merged = _dedupe_weekend_name_collisions(
+        _dedupe_rows(filtered_base, cat_by_id=cat_by_id),
+        cat_by_id=cat_by_id,
+    )
 
     # Event-ids that already have a non-expected status in each year
     skip_by_year: dict[int, set] = {y: set() for y in years}
@@ -669,7 +852,10 @@ def build_year_event_calendar(
                 kept.append(stub)
         expected_rows.extend(kept)
 
-    all_rows = _dedupe_rows(merged + expected_rows)
+    all_rows = _dedupe_weekend_name_collisions(
+        _dedupe_rows(merged + expected_rows, cat_by_id=cat_by_id),
+        cat_by_id=cat_by_id,
+    )
     _enrich_geo(
         all_rows,
         locations,

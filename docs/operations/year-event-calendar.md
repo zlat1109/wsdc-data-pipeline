@@ -25,6 +25,7 @@ Years beyond the expected horizon keep only `scheduled_events` rows (no YoY gray
 
 - Missing `location_id` on schedule rows inherits the latest edition `location_id`, then `location_info` coords (city/country fallback).
 - Missing `end_date` inherits duration from another edition of the same `event_id`, else the Sunday of the Thu–Sun weekend containing `start_date`.
+- Ghost / inactive duplicate ids are remapped via `MERGE_EVENT_ID_MAP`; remaining same-weekend title variants collapse by name fingerprint (e.g. Boston Tea Party vs The Boston Tea Party).
 
 Each event includes `continent` in `{America, Europe, Asia, Australia}` (South America → America).
 
