@@ -23,7 +23,8 @@ Writes `static/data/events_year_calendar.json` on the analytics site (via `--sit
 
 Years beyond the expected horizon keep only `scheduled_events` rows (no YoY gray flood from scrape noise). Empty years (no day-precision dates) are omitted from the selector. Inactive/merged catalog ids are not projected. Nameless/`nan` rows are dropped after catalog enrichment.
 
-Missing `location_id` on schedule rows inherits the latest edition `location_id`, then `location_info` coords (city/country fallback).
+- Missing `location_id` on schedule rows inherits the latest edition `location_id`, then `location_info` coords (city/country fallback).
+- Missing `end_date` inherits duration from another edition of the same `event_id`, else the Sunday of the Thu–Sun weekend containing `start_date`.
 
 Each event includes `continent` in `{America, Europe, Asia, Australia}` (South America → America).
 
