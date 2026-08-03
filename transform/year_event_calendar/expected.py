@@ -72,6 +72,8 @@ def iter_expected_candidates(
             stub["end_date"] = None
         stub["status"] = "expected"
         stub["source"] = "expected_yoy"
+        stub["kind"] = "registry"
+        stub.pop("kind_from_schedule", None)
         stub["projected_from_year"] = start.year
         stub["projected_from_start"] = start.isoformat()
         out.append(stub)

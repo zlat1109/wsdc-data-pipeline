@@ -31,6 +31,10 @@ STATUS_HIATUS = "hiatus"
 KIND_REGISTRY = "registry"
 KIND_TRIAL = "trial"
 
+# From 2025 WSDC awards registry points at trial events, so a series' first
+# points year is a usable (heuristic) trial signal for that calendar year only.
+TRIAL_FIRST_YEAR_HEURISTIC_FROM = 2025
+
 # Public calendar uses four continents (South America folds into America).
 CALENDAR_CONTINENTS = ("America", "Europe", "Asia", "Australia")
 
@@ -123,6 +127,125 @@ def _kind_from_status_event(raw: Any, name: str = "") -> str:
     if "trial" in text:
         return KIND_TRIAL
     return KIND_REGISTRY
+
+
+def _status_flags_say_trial(*values: Any) -> bool:
+    for value in values:
+        if value is None or (isinstance(value, float) and pd.isna(value)):
+            continue
+        if "trial" in str(value).strip().lower():
+            return True
+    return False
+
+
+def _first_points_year_by_event(data_dir: Path, catalog: pd.DataFrame) -> dict[int, int]:
+    """Earliest year an event appears with points/results (catalog + editions)."""
+    out: dict[int, int] = {}
+    if not catalog.empty and "first_edition_year" in catalog.columns:
+        for rec in catalog.to_dict(orient="records"):
+            eid = rec.get("event_id")
+            year = rec.get("first_edition_year")
+            if eid is None or (isinstance(eid, float) and pd.isna(eid)):
+                continue
+            if year is None or (isinstance(year, float) and pd.isna(year)):
+                continue
+            try:
+                out[int(eid)] = int(year)
+            except (TypeError, ValueError):
+                continue
+
+    path = data_dir / "event_editions.csv"
+    if path.exists():
+        df = pd.read_csv(path, low_memory=False)
+        if not df.empty and "event_id" in df.columns:
+            df = df.dropna(subset=["event_id"]).copy()
+            df["event_id"] = pd.to_numeric(df["event_id"], errors="coerce")
+            df["event_year"] = pd.to_numeric(df.get("event_year"), errors="coerce")
+            if "result_rows" in df.columns:
+                df["result_rows"] = pd.to_numeric(df["result_rows"], errors="coerce").fillna(0)
+                scored = df[df["result_rows"] > 0]
+            else:
+                scored = df
+            scored = scored.dropna(subset=["event_id", "event_year"])
+            for eid, year in (
+                scored.groupby("event_id")["event_year"].min().astype(int).items()
+            ):
+                eid_i = int(eid)
+                prev = out.get(eid_i)
+                out[eid_i] = year if prev is None else min(prev, year)
+    return out
+
+
+def _apply_kind_rules(
+    rows: list[dict],
+    *,
+    first_points_year: dict[int, int],
+    catalog: pd.DataFrame,
+) -> None:
+    """Resolve Registry vs Trial with first-year semantics.
+
+    - Expected YoY projections are never Trial (trial is a first-year phase).
+    - Live WSDC schedule Trial flags are trusted as published.
+    - After a series' first points year, Trial labels (name/catalog) do not stick.
+    - From 2025+, first points year ≈ Trial for that year only (rule change heuristic).
+    """
+    cat_trial_ids: set[int] = set()
+    if not catalog.empty and "registry_status" in catalog.columns:
+        for rec in catalog.to_dict(orient="records"):
+            eid = rec.get("event_id")
+            if eid is None or (isinstance(eid, float) and pd.isna(eid)):
+                continue
+            if _status_flags_say_trial(rec.get("registry_status")):
+                cat_trial_ids.add(int(eid))
+
+    for row in rows:
+        start = row.get("start_date")
+        if not isinstance(start, date):
+            row["kind"] = KIND_REGISTRY
+            continue
+        year = start.year
+        eid = row.get("event_id")
+        eid_i = int(eid) if eid is not None else None
+        first = first_points_year.get(eid_i) if eid_i is not None else None
+
+        if row.get("source") == "expected_yoy":
+            row["kind"] = KIND_REGISTRY
+            row.pop("kind_from_schedule", None)
+            continue
+
+        if row.get("kind_from_schedule"):
+            row["kind"] = KIND_TRIAL
+            continue
+
+        # Past the first points year → Registry even if title still says Trial Event
+        if first is not None and year > first:
+            row["kind"] = KIND_REGISTRY
+            continue
+
+        name = row.get("name") or ""
+        if _kind_from_status_event("", name) == KIND_TRIAL:
+            row["kind"] = KIND_TRIAL
+            continue
+
+        if row.get("kind") == KIND_TRIAL:
+            continue
+
+        if (
+            first is not None
+            and first == year
+            and year >= TRIAL_FIRST_YEAR_HEURISTIC_FROM
+        ):
+            row["kind"] = KIND_TRIAL
+            continue
+
+        if (
+            eid_i in cat_trial_ids
+            and (first is None or first == year)
+        ):
+            row["kind"] = KIND_TRIAL
+            continue
+
+        row["kind"] = KIND_REGISTRY
 
 
 def _year_window(as_of: date, *, radius: int = 2) -> list[int]:
@@ -338,6 +461,8 @@ def _rows_from_scheduled(data_dir: Path) -> list[dict]:
         except (TypeError, ValueError):
             eid_i = None
         name = _clean_name(rec.get("event_name")) or _clean_name(rec.get("canonical_name"))
+        status_flags = rec.get("status_event") or rec.get("registry_trial_status")
+        kind_from_schedule = _status_flags_say_trial(status_flags)
         rows.append(
             {
                 "event_id": eid_i,
@@ -345,10 +470,8 @@ def _rows_from_scheduled(data_dir: Path) -> list[dict]:
                 "start_date": start,
                 "end_date": _parse_date(rec.get("end_date")),
                 "status": status,
-                "kind": _kind_from_status_event(
-                    rec.get("status_event") or rec.get("registry_trial_status"),
-                    name or "",
-                ),
+                "kind": _kind_from_status_event(status_flags, name or ""),
+                "kind_from_schedule": kind_from_schedule,
                 "url": _clean_name(rec.get("url")),
                 "city": None,
                 "country": _clean_name(rec.get("country")),
@@ -391,13 +514,16 @@ def _prefer_row(existing: dict, new: dict) -> dict:
     }
     e_score = (rank.get(existing["status"], 0), src_rank.get(existing.get("source"), 0))
     n_score = (rank.get(new["status"], 0), src_rank.get(new.get("source"), 0))
-    winner = new if n_score >= e_score else existing
+    winner = dict(new if n_score >= e_score else existing)
+    loser = existing if n_score >= e_score else new
     # Keep richer geo/url/end from either
     for key in ("url", "city", "country", "location_id", "kind", "name", "end_date"):
-        if not winner.get(key) and existing.get(key):
-            winner[key] = existing[key]
-        if not winner.get(key) and new.get(key):
-            winner[key] = new[key]
+        if not winner.get(key) and loser.get(key):
+            winner[key] = loser[key]
+    # Do not inherit kind_from_schedule from a losing same-year sibling
+    # (e.g. Trial schedule in Sep vs hiatus edition in Dec for one event_id).
+    if not winner.get("kind_from_schedule"):
+        winner.pop("kind_from_schedule", None)
     return winner
 
 
@@ -863,6 +989,12 @@ def build_year_event_calendar(
         location_id_by_event=location_id_by_event,
     )
     _fill_missing_end_dates(all_rows)
+    first_points_year = _first_points_year_by_event(data_dir, catalog)
+    _apply_kind_rules(
+        all_rows,
+        first_points_year=first_points_year,
+        catalog=catalog,
+    )
 
     # Drop nameless rows after catalog enrichment
     named_rows = [r for r in all_rows if _clean_name(r.get("name"))]
