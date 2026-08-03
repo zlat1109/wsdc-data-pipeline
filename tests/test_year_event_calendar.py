@@ -179,3 +179,61 @@ def test_location_id_by_event_picks_latest(tmp_path):
         encoding="utf-8",
     )
     assert _location_id_by_event(tmp_path)[197] == 29
+
+
+def test_latest_confirmed_priors_and_terminal_block():
+    from transform.year_event_calendar.build import (
+        _ids_blocked_by_terminal,
+        _latest_confirmed_priors,
+    )
+
+    rows = [
+        {
+            "event_id": 1,
+            "start_date": date(2024, 5, 10),
+            "status": "confirmed",
+            "name": "A",
+        },
+        {
+            "event_id": 1,
+            "start_date": date(2025, 5, 12),
+            "status": "confirmed",
+            "name": "A",
+        },
+        {
+            "event_id": 2,
+            "start_date": date(2025, 6, 1),
+            "status": "hiatus",
+            "name": "B",
+        },
+        {
+            "event_id": 2,
+            "start_date": date(2024, 6, 1),
+            "status": "confirmed",
+            "name": "B",
+        },
+    ]
+    priors = _latest_confirmed_priors(
+        [r for r in rows if r["status"] == "confirmed"],
+        before_year=2026,
+    )
+    by_id = {r["event_id"]: r["start_date"] for r in priors}
+    assert by_id[1] == date(2025, 5, 12)
+    assert by_id[2] == date(2024, 6, 1)  # latest confirmed still 2024
+    blocked = _ids_blocked_by_terminal(rows, before_year=2026)
+    assert 2 in blocked
+    assert 1 not in blocked
+    # Production skips blocked ids before emitting expected
+    emit_ids = {eid for eid in by_id if eid not in blocked}
+    assert emit_ids == {1}
+
+
+def test_calendar_continent_folds_south_america():
+    from transform.year_event_calendar.build import _calendar_continent
+
+    assert _calendar_continent("United States") == "America"
+    assert _calendar_continent("Brazil") == "America"
+    assert _calendar_continent("Germany") == "Europe"
+    assert _calendar_continent("Japan") == "Asia"
+    assert _calendar_continent("Australia") == "Australia"
+    assert _calendar_continent(None) is None

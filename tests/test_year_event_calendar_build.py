@@ -20,22 +20,28 @@ def test_build_year_event_calendar_smoke():
     assert payload["default_year"] == 2026
     assert len(payload["events"]) > 0
     assert "en" in payload["disclaimer"]
+    assert payload["expected_horizon_years"] == 2
+    assert payload["continents"] == ["America", "Europe", "Asia", "Australia"]
     statuses = {e["status"] for e in payload["events"]}
     assert "confirmed" in statuses
     assert payload["counts_by_year"]["2025"] > 0
     assert payload["counts_by_year"]["2026"] > 0
-    # Expected horizon: current year only by default
+    # Expected horizon covers selector future years (YoY from latest confirmed)
     expected_by_year = {}
     for e in payload["events"]:
         if e["status"] != "expected":
             continue
         expected_by_year[e["year"]] = expected_by_year.get(e["year"], 0) + 1
-    assert expected_by_year.get(2027, 0) == 0
-    assert expected_by_year.get(2028, 0) == 0
+    assert expected_by_year.get(2026, 0) > 0
+    assert expected_by_year.get(2027, 0) > 0
     assert all(
         (e.get("name") or "").lower() not in {"nan", "none", ""}
         for e in payload["events"]
     )
+    # Continent present when country is known
+    with_country = [e for e in payload["events"] if e.get("country")]
+    assert with_country
+    assert all(e.get("continent") in payload["continents"] for e in with_country)
 
 
 def test_spike_2025_to_2026_has_reasonable_match_rate():

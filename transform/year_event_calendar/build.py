@@ -9,6 +9,7 @@ from typing import Any
 
 import pandas as pd
 
+from transform.knowledge.geo_flags import continent_for_country
 from transform.year_event_calendar.expected import (
     EXPECTED_WINDOW_DAYS,
     iter_expected_candidates,
@@ -24,6 +25,9 @@ STATUS_HIATUS = "hiatus"
 
 KIND_REGISTRY = "registry"
 KIND_TRIAL = "trial"
+
+# Public calendar uses four continents (South America folds into America).
+CALENDAR_CONTINENTS = ("America", "Europe", "Asia", "Australia")
 
 
 def _parse_date(value: Any) -> date | None:
@@ -443,6 +447,66 @@ def _enrich_geo(
         row["name"] = _clean_name(row.get("name"))
 
 
+def _calendar_continent(country: str | None) -> str | None:
+    """Map country to the four calendar continents (America/Europe/Asia/Australia)."""
+    if not _clean_name(country):
+        return None
+    raw = continent_for_country(country)
+    if raw == "South America":
+        return "America"
+    if raw in CALENDAR_CONTINENTS:
+        return raw
+    return "America"
+
+
+def _latest_confirmed_priors(
+    confirmed_rows: list[dict],
+    *,
+    before_year: int,
+) -> list[dict]:
+    """Most recent confirmed edition per event_id with start_date.year < before_year."""
+    best: dict[int, dict] = {}
+    for row in confirmed_rows:
+        eid = row.get("event_id")
+        start = row.get("start_date")
+        if eid is None or not isinstance(start, date):
+            continue
+        if start.year >= before_year:
+            continue
+        prev = best.get(eid)
+        if prev is None or start > prev["start_date"]:
+            best[int(eid)] = row
+    return list(best.values())
+
+
+def _ids_blocked_by_terminal(
+    rows: list[dict],
+    *,
+    before_year: int,
+) -> set[int]:
+    """Event ids whose latest confirmed/cancelled/hiatus before ``before_year`` is terminal."""
+    latest: dict[int, tuple[date, str]] = {}
+    for row in rows:
+        eid = row.get("event_id")
+        start = row.get("start_date")
+        status = row.get("status")
+        if eid is None or not isinstance(start, date):
+            continue
+        if start.year >= before_year:
+            continue
+        if status not in {STATUS_CONFIRMED, STATUS_CANCELLED, STATUS_HIATUS}:
+            continue
+        eid_i = int(eid)
+        prev = latest.get(eid_i)
+        if prev is None or start > prev[0]:
+            latest[eid_i] = (start, status)
+    return {
+        eid
+        for eid, (_start, status) in latest.items()
+        if status in {STATUS_CANCELLED, STATUS_HIATUS}
+    }
+
+
 def _serialize_event(row: dict) -> dict:
     start: date = row["start_date"]
     end = row.get("end_date")
@@ -450,6 +514,7 @@ def _serialize_event(row: dict) -> dict:
     eid = row.get("event_id")
     status = row["status"]
     uid = f"{status}:{eid if eid is not None else 'x'}:{start.isoformat()}"
+    country = row.get("country")
     out = {
         "id": uid,
         "event_id": eid,
@@ -462,7 +527,8 @@ def _serialize_event(row: dict) -> dict:
         "status": status,
         "kind": row.get("kind") or KIND_REGISTRY,
         "city": row.get("city"),
-        "country": row.get("country"),
+        "country": country,
+        "continent": _calendar_continent(country),
         "lat": row.get("lat"),
         "lon": row.get("lon"),
         "url": row.get("url"),
@@ -480,17 +546,19 @@ def build_year_event_calendar(
     *,
     as_of: date | None = None,
     year_radius: int = 2,
-    expected_horizon_years: int = 0,
+    expected_horizon_years: int | None = None,
 ) -> dict:
     """Assemble payload for ``events_year_calendar.json``.
 
-    Expected (YoY) projections are limited to ``as_of.year .. as_of.year +
-    expected_horizon_years`` (default: current year only) so future years are
-    not flooded with gray placeholders. Years beyond that horizon only keep
-    ``scheduled_events`` rows.
+    Expected (YoY) projections cover ``as_of.year .. as_of.year +
+    expected_horizon_years`` (default: same span as ``year_radius`` so future
+    selector years get gray expected pins from the latest confirmed edition).
+    Years beyond that horizon only keep ``scheduled_events`` rows.
     """
     data_dir = Path(data_dir)
     as_of = as_of or date.today()
+    if expected_horizon_years is None:
+        expected_horizon_years = year_radius
     years = _year_window(as_of, radius=year_radius)
     expected_years = {
         y for y in years if as_of.year <= y <= as_of.year + expected_horizon_years
@@ -532,7 +600,8 @@ def build_year_event_calendar(
         if row["status"] == STATUS_CONFIRMED:
             confirmed_by_year[y].setdefault(eid, []).append(start)
 
-    # Expected from prior year — only within horizon; skip inactive/merged series
+    # Expected from latest confirmed edition before target year (WSDC ±1 week rule
+    # applied when matching against any already-confirmed start in the target year).
     expected_rows: list[dict] = []
     prior_pool = [
         r
@@ -542,8 +611,9 @@ def build_year_event_calendar(
         and r.get("event_id") not in inactive_ids
     ]
     for y in sorted(expected_years):
-        priors = [r for r in prior_pool if r["start_date"].year == y - 1]
-        skip_ids = set(skip_by_year.get(y, set())) | inactive_ids
+        priors = _latest_confirmed_priors(prior_pool, before_year=y)
+        blocked = _ids_blocked_by_terminal(merged, before_year=y)
+        skip_ids = set(skip_by_year.get(y, set())) | inactive_ids | blocked
         stubs = iter_expected_candidates(
             priors,
             target_year=y,
@@ -593,12 +663,13 @@ def build_year_event_calendar(
         "default_year": default_year,
         "expected_window_days": EXPECTED_WINDOW_DAYS,
         "expected_horizon_years": expected_horizon_years,
+        "continents": list(CALENDAR_CONTINENTS),
         "weekend": {"start_weekday": "thu", "end_weekday": "sun"},
         "counts_by_year": {str(y): by_year[str(y)] for y in years_with_data},
         "disclaimer": {
-            "en": "Expected (gray) events are projected from the prior year (±1 week per WSDC Registry Rules) for the current calendar year only. They are unconfirmed until published on the WSDC calendar.",
-            "ru": "Серые (expected) ивенты — проекция с прошлого года (±1 неделя по правилам WSDC) только для текущего года. Это неподтверждённые даты, пока ивент не появится в календаре WSDC.",
-            "es": "Los eventos expected (gris) se proyectan del año anterior (±1 semana según reglas WSDC) solo para el año actual. No están confirmados hasta publicarse en el calendario WSDC.",
+            "en": "Expected events are projected from the latest confirmed edition (±1 week per WSDC Registry Rules) for the current year and near-future years in the selector. They stay unconfirmed until published on the WSDC calendar; hiatus/cancelled stops the projection.",
+            "ru": "Expected-ивенты — проекция с последней подтверждённой edition (±1 неделя по правилам WSDC) на текущий и ближайшие годы в селекторе. Неподтверждены, пока не появятся в календаре WSDC; hiatus/отмена останавливает проекцию.",
+            "es": "Los eventos expected se proyectan desde la última edición confirmada (±1 semana según reglas WSDC) para el año actual y años cercanos del selector. Siguen sin confirmar hasta publicarse en el calendario WSDC; hiatus/cancelación detiene la proyección.",
         },
         "events": events,
     }
