@@ -337,6 +337,19 @@ def _coords_by_city_country(locations: pd.DataFrame) -> dict[tuple[str, str], tu
     return out
 
 
+def _calendar_listing_matches_event(event_name: Any, calendar_title: Any) -> bool:
+    """Reject scrape rows matched to the wrong series (e.g. Soul Flow → GGP via URL)."""
+    title = _clean_name(calendar_title)
+    ename = _clean_name(event_name)
+    if not title or not ename:
+        return True
+    fp_t = set(_fingerprint_event_name(title).split())
+    fp_e = set(_fingerprint_event_name(ename).split())
+    if not fp_t or not fp_e:
+        return True
+    return bool(fp_t & fp_e)
+
+
 def _rows_from_edition_calendar_dates(data_dir: Path) -> list[dict]:
     path = data_dir / "edition_calendar_dates.csv"
     if not path.exists():
@@ -344,6 +357,10 @@ def _rows_from_edition_calendar_dates(data_dir: Path) -> list[dict]:
     df = pd.read_csv(path)
     rows: list[dict] = []
     for rec in df.to_dict(orient="records"):
+        if not _calendar_listing_matches_event(
+            rec.get("event_name"), rec.get("calendar_title")
+        ):
+            continue
         start = _parse_date(rec.get("planned_start_date"))
         if start is None:
             continue
@@ -354,7 +371,8 @@ def _rows_from_edition_calendar_dates(data_dir: Path) -> list[dict]:
             eid_i = int(eid) if eid is not None and not pd.isna(eid) else None
         except (TypeError, ValueError):
             eid_i = None
-        name = _clean_name(rec.get("event_name")) or _clean_name(rec.get("calendar_title"))
+        # Prefer the live listing title when present (relocation / rename nuances)
+        name = _clean_name(rec.get("calendar_title")) or _clean_name(rec.get("event_name"))
         rows.append(
             {
                 "event_id": eid_i,
@@ -674,7 +692,13 @@ def _dedupe_rows(rows: list[dict], *, cat_by_id: dict[int, dict] | None = None) 
         start = row.get("start_date")
         if not isinstance(start, date):
             continue
-        key = (eid if eid is not None else row.get("name"), start.year)
+        # Keep distinct weekends for the same series (relocation / false hiatus
+        # matches must not erase a real scheduled weekend in the same year).
+        key = (
+            eid if eid is not None else row.get("name"),
+            start.year,
+            weekend_key(start),
+        )
         if key in by_key:
             by_key[key] = _prefer_calendar_row(by_key[key], row, cat_by_id=cat_by_id)
         else:
