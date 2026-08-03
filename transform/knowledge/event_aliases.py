@@ -121,6 +121,11 @@ EVENT_NAME_VARIANT_TO_CATALOG: dict[str, str] = {
     'Moscow Westie Dance Fest': 'Moscow Westie Fest',
     'NeverlandSwing Dutch Swing Championships 2026': 'Neverland Swing',
     'NeverlandSwing Dutch Swing Championships': 'Neverland Swing',
+    'Paris Swing Classic': 'Paris Westie Fest',
+    'The Boston Tea Party': 'Boston Tea Party',
+    'Capital Swing Convention': 'Capital Swing Dance Convention',
+    'The New Zealand West Coast Swing Open': 'New Zealand Open Swing Dance Championships',
+    'BaroqueSwing': 'Barock Swing Ludwigsburg',
 }
 
 # Duplicate WSDC registry ids → canonical id (same geo; see event-geo-dedup rule).
@@ -134,12 +139,17 @@ MERGE_EVENT_ID_MAP: dict[int, int] = {
     202: 218,  # Asia WCS Open — Singapore
     39: 334,   # Countdown Swing Boston — Boston/Framingham metro
     307: 272,  # Paris Westie Fest — Paris
+    543: 272,  # Paris Swing Classic ghost / inactive → Paris Westie Fest
     325: 330,  # Simply Adelaide — Adelaide
     321: 331,  # Swing Fiction — Brno
     279: 283,  # Kazan EL Fest — Kazan
     406: 197,  # 5280 Championships ghost → 5280 Westival
     433: 369,  # French Connection WCS casing duplicate → FRENCH CONNECTION WCS
     442: 120,  # Lonestar ghost → Lone Star Invitational
+    566: 9,    # The Boston Tea Party inactive → Boston Tea Party
+    506: 12,   # Capital Swing Convention inactive → Capital Swing Dance Convention
+    571: 179,  # NZ WCS Open inactive → New Zealand Open Swing Dance Championships
+    412: 374,  # BaroqueSwing ghost → Barock Swing Ludwigsburg
     # NOTE: id 443 was once a LoneStar ghost; WSDC reused it for MADjam phantom
     # (see PHANTOM_ALIAS_TO_CANONICAL 443→92). Do not map 443→120.
 }
