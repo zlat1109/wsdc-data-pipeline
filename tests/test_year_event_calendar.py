@@ -310,15 +310,49 @@ def test_fingerprint_and_weekend_dedupe_collapses_title_variants():
     assert by_fp["boston tea"]["source"] == "scheduled_events"
 
 
-def test_calendar_continent_folds_south_america():
-    from transform.year_event_calendar.build import _calendar_continent
+def test_calendar_listing_mismatch_rejects_soul_flow_on_ggp():
+    from transform.year_event_calendar.build import _calendar_listing_matches_event
 
-    assert _calendar_continent("United States") == "America"
-    assert _calendar_continent("Brazil") == "America"
-    assert _calendar_continent("Germany") == "Europe"
-    assert _calendar_continent("Japan") == "Asia"
-    assert _calendar_continent("Australia") == "Australia"
-    assert _calendar_continent(None) is None
+    assert _calendar_listing_matches_event(
+        "Global Grand Prix - West Coast Swing Reunion",
+        "Global Grand Prix -- West Coast Swing Championships",
+    )
+    assert not _calendar_listing_matches_event(
+        "Global Grand Prix - West Coast Swing Reunion",
+        "Soul Flow - West Coast Swing Festival (Hiatus -- 2026)",
+    )
+
+
+def test_dedupe_keeps_distinct_weekends_same_event_year():
+    from transform.year_event_calendar.build import _dedupe_rows
+
+    rows = [
+        {
+            "event_id": 342,
+            "name": "Global Grand Prix -- West Coast Swing Championships",
+            "start_date": date(2026, 9, 18),
+            "end_date": date(2026, 9, 21),
+            "status": "confirmed",
+            "kind": "trial",
+            "kind_from_schedule": True,
+            "source": "scheduled_events",
+        },
+        {
+            "event_id": 342,
+            "name": "Global Grand Prix - West Coast Swing Reunion",
+            "start_date": date(2026, 12, 11),
+            "end_date": date(2026, 12, 13),
+            "status": "hiatus",
+            "kind": "registry",
+            "source": "edition_calendar_dates",
+        },
+    ]
+    out = _dedupe_rows(rows)
+    assert len(out) == 2
+    by_month = {r["start_date"].month: r for r in out}
+    assert by_month[9]["kind"] == "trial"
+    assert by_month[9].get("kind_from_schedule") is True
+    assert by_month[12]["status"] == "hiatus"
 
 
 def test_prefer_row_does_not_steal_schedule_trial_lock():
