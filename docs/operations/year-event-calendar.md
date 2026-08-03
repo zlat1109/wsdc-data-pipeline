@@ -26,6 +26,7 @@ Years beyond the expected horizon keep only `scheduled_events` rows (no YoY gray
 - Missing `location_id` on schedule rows inherits the latest edition `location_id`, then `location_info` coords (city/country fallback).
 - Missing `end_date` inherits duration from another edition of the same `event_id`, else the Sunday of the Thu–Sun weekend containing `start_date`.
 - Ghost / inactive duplicate ids are remapped via `MERGE_EVENT_ID_MAP`; remaining same-weekend title variants collapse by name fingerprint (e.g. Boston Tea Party vs The Boston Tea Party).
+- **Registry vs Trial (`kind`)**: live `scheduled_events` Trial flags are trusted; expected YoY rows are always Registry; after a series' first points year, Trial-in-title/catalog does not stick; from **2025+**, first points year (`event_catalog.first_edition_year` / editions with results) marks that year as Trial (heuristic after the registry-points-at-trial rule change).
 
 Each event includes `continent` in `{America, Europe, Asia, Australia}` (South America → America).
 

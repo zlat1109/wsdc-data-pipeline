@@ -73,30 +73,22 @@ def test_match_expected_to_confirmed():
     )
 
 
-def test_iter_expected_skips_known_ids():
+def test_iter_expected_forces_registry_kind():
     priors = [
         {
             "event_id": 1,
-            "name": "A",
+            "name": "A Trial Event",
             "start_date": date(2025, 5, 8),
             "end_date": date(2025, 5, 11),
             "status": "confirmed",
-            "kind": "registry",
-        },
-        {
-            "event_id": 2,
-            "name": "B",
-            "start_date": date(2025, 5, 15),
-            "end_date": None,
-            "status": "confirmed",
             "kind": "trial",
+            "kind_from_schedule": True,
         },
     ]
-    stubs = iter_expected_candidates(priors, target_year=2026, skip_event_ids={1})
+    stubs = iter_expected_candidates(priors, target_year=2026, skip_event_ids=set())
     assert len(stubs) == 1
-    assert stubs[0]["event_id"] == 2
-    assert stubs[0]["start_date"] == date(2026, 5, 15)
-    assert stubs[0]["status"] == "expected"
+    assert stubs[0]["kind"] == "registry"
+    assert "kind_from_schedule" not in stubs[0]
 
 
 def test_enrich_geo_inherits_location_id_from_editions_map():
@@ -327,3 +319,110 @@ def test_calendar_continent_folds_south_america():
     assert _calendar_continent("Japan") == "Asia"
     assert _calendar_continent("Australia") == "Australia"
     assert _calendar_continent(None) is None
+
+
+def test_prefer_row_does_not_steal_schedule_trial_lock():
+    from transform.year_event_calendar.build import _prefer_row
+
+    hiatus = {
+        "event_id": 342,
+        "start_date": date(2026, 12, 11),
+        "status": "hiatus",
+        "kind": "registry",
+        "source": "edition_calendar_dates",
+        "name": "Global Grand Prix",
+    }
+    schedule_trial = {
+        "event_id": 342,
+        "start_date": date(2026, 9, 18),
+        "status": "confirmed",
+        "kind": "trial",
+        "kind_from_schedule": True,
+        "source": "scheduled_events",
+        "name": "Global Grand Prix",
+        "url": "https://example.com",
+    }
+    winner = _prefer_row(hiatus, schedule_trial)
+    assert winner["status"] == "hiatus"
+    assert winner.get("kind_from_schedule") is not True
+    assert winner.get("url") == "https://example.com"
+
+
+def test_apply_kind_rules_first_year_trial_then_registry():
+    from transform.year_event_calendar.build import _apply_kind_rules
+
+    catalog = pd.DataFrame(
+        [
+            {
+                "event_id": 381,
+                "canonical_name": "Australian Classic",
+                "registry_status": None,
+                "first_edition_year": 2025,
+            },
+            {
+                "event_id": 342,
+                "canonical_name": "Global Grand Prix",
+                "registry_status": "Trial Event",
+                "first_edition_year": 2025,
+            },
+        ]
+    )
+    rows = [
+        {
+            "event_id": 381,
+            "name": "The Australian Classic (Trial Event)",
+            "start_date": date(2025, 1, 17),
+            "status": "confirmed",
+            "kind": "registry",
+            "source": "edition_calendar_dates",
+        },
+        {
+            "event_id": 381,
+            "name": "The Australian Classic (Trial Event)",
+            "start_date": date(2026, 1, 16),
+            "status": "confirmed",
+            "kind": "trial",
+            "source": "edition_calendar_dates",
+        },
+        {
+            "event_id": 342,
+            "name": "Global Grand Prix - West Coast Swing Reunion",
+            "start_date": date(2025, 6, 1),
+            "status": "confirmed",
+            "kind": "registry",
+            "source": "edition_calendar_dates",
+        },
+        {
+            "event_id": 381,
+            "name": "The Australian Classic (Trial Event)",
+            "start_date": date(2027, 1, 16),
+            "status": "expected",
+            "kind": "trial",
+            "source": "expected_yoy",
+        },
+        {
+            "event_id": 99,
+            "name": "Brand New Swing",
+            "start_date": date(2025, 5, 1),
+            "status": "confirmed",
+            "kind": "registry",
+            "source": "edition_calendar_dates",
+        },
+        {
+            "event_id": 50,
+            "name": "Live Trial From Schedule",
+            "start_date": date(2026, 8, 1),
+            "status": "confirmed",
+            "kind": "trial",
+            "kind_from_schedule": True,
+            "source": "scheduled_events",
+        },
+    ]
+    first = {381: 2025, 342: 2025, 99: 2025}
+    _apply_kind_rules(rows, first_points_year=first, catalog=catalog)
+    assert rows[0]["kind"] == "trial"  # first year + name
+    assert rows[1]["kind"] == "registry"  # second year despite Trial in title
+    assert rows[2]["kind"] == "trial"  # first year heuristic / catalog
+    assert rows[3]["kind"] == "registry"  # expected never trial
+    assert rows[4]["kind"] == "trial"  # 2025 first points heuristic
+    assert rows[5]["kind"] == "trial"  # locked from schedule
