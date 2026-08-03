@@ -83,8 +83,107 @@ def _parse_iso_date(value: Any) -> date | None:
         return None
 
 
+_SCHEDULED_RESULTS_INDEX: dict[str, list[dict[str, Any]]] | None = None
+
+
+def _load_scheduled_results_index() -> dict[str, list[dict[str, Any]]]:
+    """Map normalized event name → scheduled edition rows with results_year/month."""
+    global _SCHEDULED_RESULTS_INDEX
+    if _SCHEDULED_RESULTS_INDEX is not None:
+        return _SCHEDULED_RESULTS_INDEX
+    path = PROJECT_ROOT / "data" / "scheduled_events.csv"
+    index: dict[str, list[dict[str, Any]]] = {}
+    if not path.exists():
+        _SCHEDULED_RESULTS_INDEX = index
+        return index
+    try:
+        import csv
+
+        with path.open(newline="", encoding="utf-8") as handle:
+            reader = csv.DictReader(handle)
+            for row in reader:
+                name = (row.get("canonical_name") or row.get("event_name") or "").strip()
+                if not name:
+                    continue
+                try:
+                    year = int(row["results_year"])
+                    month = int(row["results_month"])
+                except (KeyError, TypeError, ValueError):
+                    continue
+                key = normalize_expected_event_name(name).lower()
+                if not key:
+                    continue
+                index.setdefault(key, []).append(
+                    {
+                        "results_year": year,
+                        "results_month": month,
+                        "start_date": _parse_iso_date(row.get("start_date")),
+                        "end_date": _parse_iso_date(row.get("end_date")),
+                    }
+                )
+    except OSError:
+        index = {}
+    _SCHEDULED_RESULTS_INDEX = index
+    return index
+
+
+def _lookup_scheduled_results_edition(event: dict[str, Any]) -> tuple[int | None, int | None]:
+    """Prefer results edition from scheduled_events when snapshot omits results_*."""
+    raw_name = (event.get("name") or "").strip()
+    if not raw_name:
+        return None, None
+    aliases = _load_event_aliases_json()
+    keys = {
+        normalize_expected_event_name(raw_name, aliases=aliases).lower(),
+        raw_name.lower(),
+    }
+    start = _parse_iso_date(event.get("start_date"))
+    end = _parse_iso_date(event.get("end_date"))
+    index = _load_scheduled_results_index()
+    candidates: list[dict[str, Any]] = []
+    seen_ids: set[int] = set()
+    for key in keys:
+        if not key:
+            continue
+        for row in index.get(key, []):
+            row_id = id(row)
+            if row_id in seen_ids:
+                continue
+            seen_ids.add(row_id)
+            candidates.append(row)
+    if not candidates:
+        return None, None
+
+    scored: list[tuple[int, dict[str, Any]]] = []
+    for row in candidates:
+        row_start = row.get("start_date")
+        row_end = row.get("end_date")
+        if start is not None and row_start is not None:
+            delta = abs((start - row_start).days)
+            if delta <= 14:
+                scored.append((delta, row))
+                continue
+        # Date-range overlap for cross-month / slight drift.
+        if start is not None and end is not None and row_start is not None and row_end is not None:
+            if start <= row_end and end >= row_start:
+                scored.append((abs((start - row_start).days), row))
+
+    if not scored:
+        return None, None
+    scored.sort(key=lambda item: item[0])
+    row = scored[0][1]
+    return int(row["results_year"]), int(row["results_month"])
+
+
 def event_results_edition(event: dict[str, Any]) -> tuple[int | None, int | None]:
-    """WSDC results edition year/month from snapshot row (explicit or start_date)."""
+    """WSDC results edition year/month for gate lookups.
+
+    Preference:
+    1. Explicit snapshot ``results_year`` / ``results_month``
+    2. Matching row in ``data/scheduled_events.csv``
+    3. ``end_date`` month when the event spans months (WSDC editions follow end month)
+    4. ``start_date`` month
+    """
     year = event.get("results_year")
     month = event.get("results_month")
     if year is not None and month is not None:
@@ -92,9 +191,19 @@ def event_results_edition(event: dict[str, Any]) -> tuple[int | None, int | None
             return int(year), int(month)
         except (TypeError, ValueError):
             pass
+
+    scheduled = _lookup_scheduled_results_edition(event)
+    if scheduled[0] is not None and scheduled[1] is not None:
+        return scheduled
+
     start = _parse_iso_date(event.get("start_date"))
+    end = _parse_iso_date(event.get("end_date"))
+    if start is not None and end is not None and (end.year, end.month) != (start.year, start.month):
+        return end.year, end.month
     if start is not None:
         return start.year, start.month
+    if end is not None:
+        return end.year, end.month
     return None, None
 
 

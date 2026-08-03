@@ -28,6 +28,24 @@ def test_fuzzy_substring_match():
     assert score >= 0.75
 
 
+def test_westie_fest_requires_matching_city_token():
+    match, score = find_best_match(
+        "Lisbon Westie Fest",
+        ["Midwest Westie Fest", "Paris Westie Fest", "Moscow Westie Fest"],
+        threshold=0.75,
+    )
+    assert match is None
+    assert score == 0.0
+
+    match, score = find_best_match(
+        "Lisbon Westie Fest",
+        ["Lisbon Westie Fest", "Midwest Westie Fest"],
+        threshold=0.75,
+    )
+    assert match == "Lisbon Westie Fest"
+    assert score == 1.0
+
+
 def test_split_pending_skips_events_already_in_db():
     from unittest.mock import MagicMock
 

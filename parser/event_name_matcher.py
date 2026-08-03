@@ -41,6 +41,13 @@ def normalize_event_name(name: str) -> str:
     return " ".join(name.lower().strip().split())
 
 
+_STOPWORDS = frozenset({"the", "a", "an", "and", "&", "wcs"})
+
+
+def _significant_tokens(norm: str) -> list[str]:
+    return [tok for tok in norm.split() if tok not in _STOPWORDS]
+
+
 def fuzzy_match_score(name1: str, name2: str) -> float:
     norm1 = normalize_event_name(name1)
     norm2 = normalize_event_name(name2)
@@ -51,7 +58,15 @@ def fuzzy_match_score(name1: str, name2: str) -> float:
         # Avoid matching "Westie Weekend" → "Spooky Westie Weekend" as near-certain.
         if len(shorter) / len(longer) >= 0.88:
             return 0.95
-    return SequenceMatcher(None, norm1, norm2).ratio()
+    score = SequenceMatcher(None, norm1, norm2).ratio()
+    # Distinct city "X Westie Fest" brands must share the leading city token
+    # (Lisbon Westie Fest must not match Midwest / Paris / Moscow Westie Fest).
+    if norm1.endswith("westie fest") and norm2.endswith("westie fest"):
+        tokens1 = _significant_tokens(norm1)
+        tokens2 = _significant_tokens(norm2)
+        if tokens1 and tokens2 and tokens1[0] != tokens2[0]:
+            return 0.0
+    return score
 
 
 def find_best_match(
