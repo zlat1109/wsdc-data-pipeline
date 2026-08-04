@@ -718,3 +718,21 @@ def test_ids_blocked_by_terminal_expands_series_links():
     blocked = _ids_blocked_by_terminal(rows, before_year=2026)
     assert 493 in blocked
     assert 264 in blocked
+
+
+def test_operator_overrides_emit_soul_flow_hiatus_and_expected():
+    from transform.knowledge.calendar_operator_overrides import (
+        SOUL_FLOW_PROVISIONAL_EVENT_ID,
+    )
+    from transform.year_event_calendar.build import _rows_from_operator_overrides
+
+    rows = _rows_from_operator_overrides()
+    by_year = {
+        (r["event_id"], r["year"]): r
+        for r in rows
+        if r["event_id"] == SOUL_FLOW_PROVISIONAL_EVENT_ID
+    }
+    assert by_year[(SOUL_FLOW_PROVISIONAL_EVENT_ID, 2026)]["status"] == "hiatus"
+    assert by_year[(SOUL_FLOW_PROVISIONAL_EVENT_ID, 2027)]["status"] == "expected"
+    assert by_year[(SOUL_FLOW_PROVISIONAL_EVENT_ID, 2026)]["country"] == "France"
+    assert by_year[(SOUL_FLOW_PROVISIONAL_EVENT_ID, 2026)]["source"] == "operator_override"

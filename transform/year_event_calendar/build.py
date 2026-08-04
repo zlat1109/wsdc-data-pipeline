@@ -9,6 +9,9 @@ from typing import Any
 
 import pandas as pd
 
+from transform.knowledge.calendar_operator_overrides import (
+    CALENDAR_OPERATOR_OVERRIDES,
+)
 from transform.knowledge.event_aliases import (
     EVENT_NAME_VARIANT_TO_CATALOG,
     MERGE_EVENT_ID_MAP,
@@ -404,6 +407,44 @@ def _rows_from_edition_calendar_dates(data_dir: Path) -> list[dict]:
     return rows
 
 
+def _rows_from_operator_overrides() -> list[dict]:
+    """Curated hiatus/expected stubs (provisional ids allowed; no WSDC match yet)."""
+    rows: list[dict] = []
+    for rec in CALENDAR_OPERATOR_OVERRIDES:
+        start = rec.get("planned_start_date")
+        if not isinstance(start, date):
+            start = _parse_date(start)
+        if start is None:
+            continue
+        end = rec.get("planned_end_date")
+        if not isinstance(end, date):
+            end = _parse_date(end)
+        status = _norm_status_calendar(rec.get("calendar_status")) or STATUS_CONFIRMED
+        name = _clean_name(rec.get("calendar_title")) or "Unknown event"
+        try:
+            eid_i = int(rec["event_id"])
+            year_i = int(rec.get("event_year") or start.year)
+        except (TypeError, ValueError, KeyError):
+            continue
+        rows.append(
+            {
+                "event_id": eid_i,
+                "name": name,
+                "start_date": start,
+                "end_date": end if isinstance(end, date) else None,
+                "status": status,
+                "kind": KIND_REGISTRY,
+                "url": _clean_name(rec.get("url")),
+                "city": _clean_name(rec.get("city")),
+                "country": _clean_name(rec.get("country")),
+                "location_id": None,
+                "source": "operator_override",
+                "year": year_i,
+            }
+        )
+    return rows
+
+
 def _rows_from_editions(data_dir: Path) -> list[dict]:
     path = data_dir / "event_editions.csv"
     if not path.exists():
@@ -572,6 +613,7 @@ def _prefer_row(existing: dict, new: dict) -> dict:
     src_rank = {
         "scheduled_events": 4,
         "edition_calendar_dates": 3,
+        "operator_override": 3,
         "event_editions": 2,
         "event_editions_month_only": 1,
         "expected_yoy": 0,
@@ -1102,6 +1144,7 @@ def build_year_event_calendar(
 
     base_rows = (
         _rows_from_edition_calendar_dates(data_dir)
+        + _rows_from_operator_overrides()
         + _rows_from_editions(data_dir)
         + _rows_from_scheduled(data_dir)
     )
