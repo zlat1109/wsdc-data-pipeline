@@ -29,6 +29,7 @@ from transform.knowledge import (
     apply_event_name_year_splits,
     backfill_empty_result_event_locations,
     event_location_patches,
+    force_events_wsdc_locations_from_event_name_overrides,
     force_result_locations_from_event_name_overrides,
 )
 from transform.knowledge.merge_map import apply_merge_event_id_map
@@ -250,6 +251,17 @@ def _apply_events_wsdc_tracked(df: pd.DataFrame, tracker: PreprocessTracker) -> 
             rule_id="EVENT_LOCATION_EXACT",
             tracker=tracker,
         )
+        df, forced = force_events_wsdc_locations_from_event_name_overrides(df)
+        if forced:
+            tracker.record(
+                "EVENT_NAME_LOCATION_OVERRIDE",
+                table,
+                "location",
+                "wrong shared location string (event_name match)",
+                "from EVENT_NAME_LOCATION_OVERRIDES",
+                forced,
+                "known_map",
+            )
     return normalize_dates(df)
 
 

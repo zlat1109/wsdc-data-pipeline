@@ -164,6 +164,40 @@ def force_result_locations_from_event_name_overrides(
     return df, changed
 
 
+def force_events_wsdc_locations_from_event_name_overrides(
+    events_df: pd.DataFrame,
+    *,
+    name_col: str = "name",
+    location_col: str = "location",
+) -> tuple[pd.DataFrame, int]:
+    """Force events_wsdc.location text from EVENT_NAME_LOCATION_OVERRIDES.
+
+    Results get location_id remaps in force_result_locations_*; the WSDC scrape
+    table only has a free-text location and was previously left on shared-wrong
+    strings (e.g. Dance Jam → Jeju), which then polluted export/catalog views.
+    """
+    if events_df is None or events_df.empty:
+        return events_df, 0
+    if name_col not in events_df.columns or location_col not in events_df.columns:
+        return events_df, 0
+
+    df = events_df.copy()
+    changed = 0
+    for event_name, target_location in EVENT_NAME_LOCATION_OVERRIDES.items():
+        mask = df[name_col].astype(str).str.strip() == event_name
+        if not mask.any():
+            continue
+        raw = _canonical_location_raw(_norm(target_location))
+        before = df.loc[mask, location_col].map(_norm)
+        need = before != raw
+        n = int(need.sum())
+        if not n:
+            continue
+        df.loc[mask & need, location_col] = raw
+        changed += n
+    return df, changed
+
+
 def apply_event_location_patches(
     location_df: pd.DataFrame,
     results_df: pd.DataFrame | None,

@@ -39,6 +39,15 @@ def test_westie_gala_metadata_and_stockholm_override():
         == "Silver Spring, MD, United States"
     )
     assert KNOWN_EVENT_METADATA[372]["typical_location"] == "Silver Spring, MD, United States"
+    assert (
+        EVENT_NAME_LOCATION_OVERRIDES[
+            "Waterloo Ontario Open West Coast Swing Championships"
+        ]
+        == "Waterloo, Canada"
+    )
+    assert KNOWN_EVENT_METADATA[387]["typical_location"] == "Waterloo, Canada"
+    assert EVENT_NAME_LOCATION_OVERRIDES["Euro Dance Festival"] == "Rust, Germany"
+    assert EVENT_NAME_LOCATION_OVERRIDES["Barock Swing Ludwigsburg"] == "Ludwigsburg, Germany"
 
 
 def test_year_split_sssc_vs_uptown_results():
