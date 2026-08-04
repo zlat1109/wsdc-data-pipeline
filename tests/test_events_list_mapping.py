@@ -346,3 +346,39 @@ def test_rocket_city_not_fuzzy_matched_to_rose_city():
     assert result.match_status == "new"
     assert result.canonical_event_id is None
 
+
+def test_ucwdc_championships_maps_to_dallas_75_not_orlando_152():
+    """Plural Championships schedule title belongs on Dallas series 75, not Worlds UCWDC."""
+    catalog = [
+        CatalogEvent(
+            event_id=75,
+            name="UCWDC Country Dance World Championship",
+            url="https://ucwdc.org/worlds-home/",
+            url_norm="ucwdc.org",
+            typical_location="Dallas, TX, United States",
+        ),
+        CatalogEvent(
+            event_id=152,
+            name="Worlds UCWDC",
+            url="http://www.ucwdcworlds.com/",
+            url_norm="ucwdcworlds.com",
+            typical_location="Orlando, FL, United States",
+        ),
+    ]
+    row = {
+        "source_fingerprint": "ucwdc-worlds-dallas",
+        "event_name": "UCWDC Country Dance World Championships",
+        "start_date": "2026-12-28",
+        "location_raw": "Dallas, TX, United States",
+        "url": "http://www.ucwdcworlds.com/",
+        "status_event": "Registry Event",
+        "is_active": True,
+    }
+    result = map_scheduled_event(
+        row, catalog, build_url_index(catalog), [c.name for c in catalog]
+    )
+    assert result.match_status == "confirmed"
+    assert result.match_method == "explicit"
+    assert result.canonical_event_id == 75
+    assert result.canonical_name == "UCWDC Country Dance World Championship"
+

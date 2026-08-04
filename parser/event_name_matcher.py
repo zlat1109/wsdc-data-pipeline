@@ -20,7 +20,8 @@ EVENT_NAME_MAPPINGS: dict[str, str] = {
     "Bavarian Open West Coast Swing Championships": "Bavarian Open",
     "5280 Swing Dance Championships": "5280 Westival",
     "H-Town Throw Down 2027": "Novice Invitational",
-    "UCWDC Country Dance World Championships": "Worlds UCWDC",
+    # Dallas Championship series (id 75). Do NOT map to Worlds UCWDC (id 152, Orlando-only).
+    "UCWDC Country Dance World Championships": "UCWDC Country Dance World Championship",
     "USA Grand National Dance Championships": "USA Grand Nationals",
     "USA Grand Nationals Dance Championships": "USA Grand Nationals",
     "USA Grand Nationals Dance Championship": "USA Grand Nationals",

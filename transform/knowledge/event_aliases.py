@@ -69,6 +69,8 @@ RESULT_TO_CATALOG_EVENT_NAME: dict[str, str] = {
     'Westie Weekend': 'Dance Jam Jack & Jill Weekend',
     # Real series title in results/events_wsdc; ghost catalog used old Championships name.
     '5280 Swing Dance Championships': '5280 Westival',
+    # Dallas Worlds (id 75). Do NOT map to Worlds UCWDC (id 152, Orlando 2009/2012/2015).
+    'UCWDC Country Dance World Championships': 'UCWDC Country Dance World Championship',
     'LoneStar Invitational': 'Lone Star Invitational',
     'Lonestar Invitational': 'Lone Star Invitational',
     'French Connection WCS': 'FRENCH CONNECTION WCS',
@@ -151,6 +153,7 @@ MERGE_EVENT_ID_MAP: dict[int, int] = {
     571: 179,  # NZ WCS Open inactive → New Zealand Open Swing Dance Championships
     412: 374,  # BaroqueSwing ghost → Barock Swing Ludwigsburg
     493: 264,  # UpTown Swing catalog ghost → Swedish/UpTown series (results on 264)
+    480: 75,   # UCWDC Championships inactive ghost → Dallas Championship series
     551: 221,  # Show Me Showdown inactive → id reused by Gateway (results on 221)
     552: 221,  # Show-Me Showdown spelling ghost → 221
     467: 221,  # Orphan calendar match for Show Me Showdown → 221
