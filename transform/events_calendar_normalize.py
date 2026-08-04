@@ -175,7 +175,10 @@ def normalize_calendar_events(
     *,
     min_start: date | None = date(2025, 1, 1),
 ) -> list[dict[str, Any]]:
-    """Normalize and optionally filter by start date."""
+    """Normalize and optionally filter by date window.
+
+    Includes cross-year weekends that start before ``min_start`` but overlap it.
+    """
     out: list[dict[str, Any]] = []
     seen: set[str] = set()
     for raw in raw_events:
@@ -183,7 +186,8 @@ def normalize_calendar_events(
         if row is None:
             continue
         start = date.fromisoformat(row["start_date"])
-        if min_start is not None and start < min_start:
+        end = date.fromisoformat(row["end_date"]) if row.get("end_date") else start
+        if min_start is not None and end < min_start:
             continue
         fp = row["source_fingerprint"]
         if fp in seen:

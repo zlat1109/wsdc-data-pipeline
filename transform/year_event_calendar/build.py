@@ -373,6 +373,11 @@ def _rows_from_edition_calendar_dates(data_dir: Path) -> list[dict]:
             eid_i = int(eid) if eid is not None and not pd.isna(eid) else None
         except (TypeError, ValueError):
             eid_i = None
+        year_raw = rec.get("event_year")
+        try:
+            year_i = int(year_raw) if year_raw is not None and not pd.isna(year_raw) else start.year
+        except (TypeError, ValueError):
+            year_i = start.year
         # Prefer the live listing title when present (relocation / rename nuances)
         name = _clean_name(rec.get("calendar_title")) or _clean_name(rec.get("event_name"))
         rows.append(
@@ -388,7 +393,7 @@ def _rows_from_edition_calendar_dates(data_dir: Path) -> list[dict]:
                 "country": None,
                 "location_id": None,
                 "source": "edition_calendar_dates",
-                "year": start.year,
+                "year": year_i,
             }
         )
     return rows
@@ -824,19 +829,33 @@ def _calendar_continent(country: str | None) -> str | None:
     return "America"
 
 
+def _row_year(row: dict) -> int | None:
+    year = row.get("year")
+    if year is not None:
+        try:
+            return int(year)
+        except (TypeError, ValueError):
+            pass
+    start = row.get("start_date")
+    if isinstance(start, date):
+        return start.year
+    return None
+
+
 def _latest_confirmed_priors(
     confirmed_rows: list[dict],
     *,
     before_year: int,
 ) -> list[dict]:
-    """Most recent confirmed edition per event_id with start_date.year < before_year."""
+    """Most recent confirmed edition per event_id with row year < before_year."""
     best: dict[int, dict] = {}
     for row in confirmed_rows:
         eid = row.get("event_id")
         start = row.get("start_date")
+        row_year = _row_year(row)
         if eid is None or not isinstance(start, date):
             continue
-        if start.year >= before_year:
+        if row_year is None or row_year >= before_year:
             continue
         prev = best.get(eid)
         if prev is None or start > prev["start_date"]:
@@ -855,9 +874,10 @@ def _ids_blocked_by_terminal(
         eid = row.get("event_id")
         start = row.get("start_date")
         status = row.get("status")
+        row_year = _row_year(row)
         if eid is None or not isinstance(start, date):
             continue
-        if start.year >= before_year:
+        if row_year is None or row_year >= before_year:
             continue
         if status not in {STATUS_CONFIRMED, STATUS_CANCELLED, STATUS_HIATUS}:
             continue
@@ -880,6 +900,11 @@ def _serialize_event(row: dict) -> dict:
     status = row["status"]
     uid = f"{status}:{eid if eid is not None else 'x'}:{start.isoformat()}"
     country = row.get("country")
+    year = row.get("year")
+    try:
+        year_i = int(year)
+    except (TypeError, ValueError):
+        year_i = start.year
     out = {
         "id": uid,
         "event_id": eid,
@@ -897,7 +922,7 @@ def _serialize_event(row: dict) -> dict:
         "lat": row.get("lat"),
         "lon": row.get("lon"),
         "url": row.get("url"),
-        "year": start.year,
+        "year": year_i,
         "source": row.get("source"),
     }
     if row.get("projected_from_year") is not None:
@@ -973,7 +998,9 @@ def build_year_event_calendar(
     # Far future: only published schedule (avoid long-range calendar scrape noise)
     filtered_base: list[dict] = []
     for row in base_rows:
-        y = row["start_date"].year
+        y = _row_year(row)
+        if y is None:
+            continue
         if y in far_years and row.get("source") != "scheduled_events":
             continue
         filtered_base.append(row)
@@ -988,7 +1015,9 @@ def build_year_event_calendar(
     confirmed_by_event: dict[int, list[date]] = {}
     for row in merged:
         start = row["start_date"]
-        y = start.year
+        y = _row_year(row)
+        if y is None:
+            continue
         if y not in skip_by_year:
             continue
         eid = row.get("event_id")
@@ -1063,7 +1092,7 @@ def build_year_event_calendar(
     named_rows = [r for r in all_rows if _clean_name(r.get("name"))]
     named_rows = _drop_stale_expected(named_rows, as_of)
 
-    in_window = [r for r in named_rows if r["start_date"].year in years]
+    in_window = [r for r in named_rows if (_row_year(r) in years)]
     in_window.sort(key=lambda r: (r["start_date"], r.get("name") or ""))
 
     events = [_serialize_event(r) for r in in_window]

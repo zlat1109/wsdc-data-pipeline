@@ -220,6 +220,24 @@ def test_latest_confirmed_priors_and_terminal_block():
     assert emit_ids == {1}
 
 
+def test_year_override_beats_cross_year_start_for_prior_logic():
+    from transform.year_event_calendar.build import _latest_confirmed_priors
+
+    rows = [
+        {
+            "event_id": 42,
+            "start_date": date(2024, 12, 31),
+            "year": 2025,  # Cross-year Jan edition assigned to 2025
+            "status": "confirmed",
+            "name": "Countdown Swing Boston",
+        }
+    ]
+    priors_2025 = _latest_confirmed_priors(rows, before_year=2025)
+    priors_2026 = _latest_confirmed_priors(rows, before_year=2026)
+    assert priors_2025 == []
+    assert len(priors_2026) == 1
+
+
 def test_fill_missing_end_dates_uses_prior_duration_then_weekend():
     from transform.year_event_calendar.build import _fill_missing_end_dates
 
