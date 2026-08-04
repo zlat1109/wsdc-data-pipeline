@@ -686,3 +686,35 @@ def test_dedupe_prefers_day_dates_over_stats_only():
     assert merged[0].get("stats_only") is not True
     assert merged[0]["source"] == "edition_calendar_dates"
     assert merged[0]["has_results"] is True
+
+
+def test_series_linked_ids_bidirectional():
+    from transform.year_event_calendar.build import _series_linked_ids
+
+    assert _series_linked_ids(264) == {264, 493}
+    assert _series_linked_ids(493) == {264, 493}
+    assert _series_linked_ids(999) == {999}
+
+
+def test_ids_blocked_by_terminal_expands_series_links():
+    from transform.year_event_calendar.build import _ids_blocked_by_terminal
+
+    rows = [
+        {
+            "event_id": 493,
+            "start_date": date(2025, 8, 14),
+            "year": 2025,
+            "status": "hiatus",
+            "name": "UpTown Swing",
+        },
+        {
+            "event_id": 264,
+            "start_date": date(2024, 8, 15),
+            "year": 2024,
+            "status": "confirmed",
+            "name": "Swedish Swing Summer Camp",
+        },
+    ]
+    blocked = _ids_blocked_by_terminal(rows, before_year=2026)
+    assert 493 in blocked
+    assert 264 in blocked
