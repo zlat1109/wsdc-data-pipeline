@@ -91,8 +91,14 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     "Westie's Angels": 'Lyon, France',
     # Shared San Antonio (167) wrongly applied to Swingside Invitational (Liège).
     'Swingside Invitational': 'Liège, Belgium',
+    # Shared St. Petersburg (222) wrongly applied to Waterloo Ontario Open.
+    'Waterloo Ontario Open West Coast Swing Championships': 'Waterloo, Canada',
+    # Shared Brno (266) wrongly applied to Euro Dance Festival (Rust, DE).
+    'Euro Dance Festival': 'Rust, Germany',
+    # Shared Perth (253) wrongly applied to Barock Swing Ludwigsburg.
+    'Barock Swing Ludwigsburg': 'Ludwigsburg, Germany',
     # Fresh main export: more shared-wrong location_id collisions (calendar ≠ results).
-    'Bavarian Open': 'Munich, Germany',  # was Jeju (213)
+    'Bavarian Open': 'Munich, Germany',  # was Jeju (213) / Venray (227)
     'King Swing': 'Kraków, Poland',  # was Wailea (124)
     'Santa Swing': 'Kraków, Poland',  # was Wailea (124)
     'Westy Nantes': 'Nantes, France',  # was Brno (266)
@@ -723,6 +729,42 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_country': 'United States',
             'event_location': 'Silver Spring, MD, United States',
             'event_location_standardized': 'Silver Spring, MD',
+        },
+    },
+    387: {
+        'name': 'Waterloo Ontario Open West Coast Swing Championships',
+        'url': 'http://www.waterlooopenwcs.com/',
+        'typical_location': 'Waterloo, Canada',
+        'location': {
+            'event_city': 'Waterloo',
+            'event_state': '',
+            'event_country': 'Canada',
+            'event_location': 'Waterloo, Canada',
+            'event_location_standardized': 'Waterloo, Canada',
+        },
+    },
+    348: {
+        'name': 'Euro Dance Festival',
+        'url': 'https://www.euro-dance-festival.com/',
+        'typical_location': 'Rust, Germany',
+        'location': {
+            'event_city': 'Rust',
+            'event_state': '',
+            'event_country': 'Germany',
+            'event_location': 'Rust, Germany',
+            'event_location_standardized': 'Rust, Germany',
+        },
+    },
+    374: {
+        'name': 'Barock Swing Ludwigsburg',
+        'url': 'https://baroqueswing.com/',
+        'typical_location': 'Ludwigsburg, Germany',
+        'location': {
+            'event_city': 'Ludwigsburg',
+            'event_state': '',
+            'event_country': 'Germany',
+            'event_location': 'Ludwigsburg, Germany',
+            'event_location_standardized': 'Ludwigsburg, Germany',
         },
     },
 }
