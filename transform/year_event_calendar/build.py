@@ -14,6 +14,7 @@ from transform.knowledge.calendar_operator_overrides import (
 )
 from transform.knowledge.event_aliases import (
     EVENT_NAME_VARIANT_TO_CATALOG,
+    EVENT_NAME_YEAR_SPLITS,
     MERGE_EVENT_ID_MAP,
     RESULT_TO_CATALOG_EVENT_NAME,
 )
@@ -43,10 +44,10 @@ TRIAL_FIRST_YEAR_HEURISTIC_FROM = 2025
 # Public calendar uses four continents (South America folds into America).
 CALENDAR_CONTINENTS = ("America", "Europe", "Asia", "Australia")
 
-# Series successor links for calendar expected suppression (keep registry ids split).
-SERIES_SUCCESSOR_MAP: dict[int, int] = {
-    264: 493,  # Swedish Swing Summer Camp -> UpTown Swing
-}
+# Optional series successor links for expected suppression when two live registry
+# ids must stay split. Prefer MERGE_EVENT_ID_MAP + EVENT_NAME_YEAR_SPLITS (one id,
+# year-aware display) for rebrands / WSDC id reuse.
+SERIES_SUCCESSOR_MAP: dict[int, int] = {}
 
 _NAME_ALIAS_LOOKUP = {
     **{k.lower(): v for k, v in RESULT_TO_CATALOG_EVENT_NAME.items()},
@@ -724,6 +725,80 @@ def _resolve_merge_event_id(eid: int | None) -> int | None:
     return cur
 
 
+def _apply_year_aware_series_names(rows: list[dict]) -> None:
+    """Set display name (+ stable id) from EVENT_NAME_YEAR_SPLITS.
+
+    Catalog ``canonical_name`` reflects the *current* WSDC registry label, which
+    is wrong for earlier editions when WSDC reuses an id or the series rebrands.
+    Call after merge/dedupe so ghosts collapse first.
+    """
+    if not rows or not EVENT_NAME_YEAR_SPLITS:
+        return
+    for row in rows:
+        year = _row_year(row)
+        if year is None:
+            continue
+        name = _clean_name(row.get("name"))
+        eid = row.get("event_id")
+        try:
+            eid_i = int(eid) if eid is not None else None
+        except (TypeError, ValueError):
+            eid_i = None
+        name_l = name.lower() if name else ""
+        for rule in EVENT_NAME_YEAR_SPLITS:
+            sources = {str(s).strip().lower() for s in rule["sources"]}  # type: ignore[arg-type]
+            early_id = rule.get("early_event_id")
+            late_id = rule.get("late_event_id")
+            id_match = eid_i is not None and (
+                (early_id is not None and eid_i == int(early_id))
+                or (late_id is not None and eid_i == int(late_id))
+            )
+            name_match = bool(name_l) and name_l in sources
+            if not (id_match or name_match):
+                continue
+            early_max = int(rule["early_year_max"])  # type: ignore[arg-type]
+            late_min = int(rule["late_year_min"])  # type: ignore[arg-type]
+            if year <= early_max:
+                row["name"] = str(rule["early_name"])
+                if early_id is not None:
+                    row["event_id"] = int(early_id)
+            elif year >= late_min:
+                row["name"] = str(rule["late_name"])
+                if late_id is not None:
+                    row["event_id"] = int(late_id)
+            break
+
+
+def _drop_redundant_stats_only(rows: list[dict]) -> list[dict]:
+    """Drop month-placeholder editions when a day-precision row exists for same id+year.
+
+    ``_dedupe_rows`` only merges same weekend; results often use the 1st of the
+    month while the calendar has the real weekend later in the month.
+    """
+    day_keys: set[tuple[int, int]] = set()
+    for row in rows:
+        if row.get("stats_only"):
+            continue
+        eid = row.get("event_id")
+        year = _row_year(row)
+        if eid is None or year is None:
+            continue
+        day_keys.add((int(eid), int(year)))
+    out: list[dict] = []
+    for row in rows:
+        if row.get("stats_only"):
+            eid = row.get("event_id")
+            year = _row_year(row)
+            if (
+                eid is not None
+                and year is not None
+                and (int(eid), int(year)) in day_keys
+            ):
+                continue
+        out.append(row)
+    return out
+
+
 def _alias_event_name(name: str | None) -> str | None:
     cleaned = _clean_name(name)
     if not cleaned:
@@ -1162,6 +1237,8 @@ def build_year_event_calendar(
         _dedupe_rows(filtered_base, cat_by_id=cat_by_id),
         cat_by_id=cat_by_id,
     )
+    _apply_year_aware_series_names(merged)
+    merged = _drop_redundant_stats_only(merged)
 
     # Event-ids that already have a non-expected status in each year
     skip_by_year: dict[int, set] = {y: set() for y in years}
@@ -1243,6 +1320,8 @@ def build_year_event_calendar(
         catalog=catalog,
     )
     _mark_has_results(all_rows, data_dir)
+    _apply_year_aware_series_names(all_rows)
+    all_rows = _drop_redundant_stats_only(all_rows)
 
     # Drop nameless rows after catalog enrichment
     named_rows = [r for r in all_rows if _clean_name(r.get("name"))]
