@@ -318,6 +318,29 @@ def _location_id_by_event(data_dir: Path) -> dict[int, int]:
     return out
 
 
+def _result_event_year_keys(data_dir: Path) -> set[tuple[int, int]]:
+    """(event_id, event_year) pairs that have result rows."""
+    path = data_dir / "event_editions.csv"
+    if not path.exists():
+        return set()
+    df = pd.read_csv(path)
+    if df.empty or "event_id" not in df.columns or "event_year" not in df.columns:
+        return set()
+    out: set[tuple[int, int]] = set()
+    for rec in df.to_dict(orient="records"):
+        eid = rec.get("event_id")
+        year = rec.get("event_year")
+        try:
+            eid_i = int(float(eid))
+            year_i = int(float(year))
+            rows_i = int(float(rec.get("result_rows") or 0))
+        except (TypeError, ValueError):
+            continue
+        if rows_i > 0:
+            out.add((eid_i, year_i))
+    return out
+
+
 def _coords_by_city_country(locations: pd.DataFrame) -> dict[tuple[str, str], tuple[float, float]]:
     """Fallback lat/lon keyed by normalized (city, country) from location_info."""
     out: dict[tuple[str, str], tuple[float, float]] = {}
@@ -394,7 +417,7 @@ def _rows_from_edition_calendar_dates(data_dir: Path) -> list[dict]:
     return rows
 
 
-def _rows_from_editions(data_dir: Path) -> list[dict]:
+def _rows_from_editions(data_dir: Path, *, stats_only_year: int | None = None) -> list[dict]:
     path = data_dir / "event_editions.csv"
     if not path.exists():
         return []
@@ -402,14 +425,27 @@ def _rows_from_editions(data_dir: Path) -> list[dict]:
     rows: list[dict] = []
     for rec in df.to_dict(orient="records"):
         start = _parse_date(rec.get("start_date"))
+        stats_only = False
         if start is None:
-            continue
+            # Keep result-backed month-only editions in counters, but do not
+            # render them on day cells (no day-precision calendar date).
+            edition_date = _parse_date(rec.get("edition_date"))
+            try:
+                result_rows = int(float(rec.get("result_rows")))
+            except (TypeError, ValueError):
+                result_rows = 0
+            if edition_date is None or result_rows <= 0:
+                continue
+            if stats_only_year is None or edition_date.year != stats_only_year:
+                continue
+            start = edition_date
+            stats_only = True
         # Month-only placeholders (YYYY-MM-01 with no real calendar day) — skip
         # when date_source is missing and day is 1 and no calendar_status.
         # Keep rows that have calendar_status or date_source day.
         date_source = str(rec.get("date_source") or "").strip().lower()
         cal_status = _norm_status_calendar(rec.get("calendar_status"))
-        if start.day == 1 and not cal_status and date_source not in {
+        if not stats_only and start.day == 1 and not cal_status and date_source not in {
             "wsdc_calendar",
             "wsdc_events_list",
             "day",
@@ -450,8 +486,9 @@ def _rows_from_editions(data_dir: Path) -> list[dict]:
                 "city": _clean_name(rec.get("place_city")),
                 "country": _clean_name(rec.get("place_country")),
                 "location_id": loc_i,
-                "source": "event_editions",
+                "source": "event_editions_month_only" if stats_only else "event_editions",
                 "year": start.year,
+                "stats_only": stats_only,
             }
         )
     return rows
@@ -903,6 +940,10 @@ def _serialize_event(row: dict) -> dict:
     if row.get("projected_from_year") is not None:
         out["projected_from_year"] = row["projected_from_year"]
         out["projected_from_start"] = row.get("projected_from_start")
+    if row.get("has_results"):
+        out["has_results"] = True
+    if row.get("stats_only"):
+        out["stats_only"] = True
     return out
 
 
@@ -956,6 +997,7 @@ def build_year_event_calendar(
     catalog = _load_catalog(data_dir)
     inactive_ids = _inactive_event_ids(catalog)
     location_id_by_event = _location_id_by_event(data_dir)
+    result_event_year = _result_event_year_keys(data_dir)
     cat_by_id: dict[int, dict] = {}
     if not catalog.empty:
         for rec in catalog.to_dict(orient="records"):
@@ -966,7 +1008,7 @@ def build_year_event_calendar(
 
     base_rows = (
         _rows_from_edition_calendar_dates(data_dir)
-        + _rows_from_editions(data_dir)
+        + _rows_from_editions(data_dir, stats_only_year=as_of.year - 1)
         + _rows_from_scheduled(data_dir)
     )
     _canonicalize_calendar_rows(base_rows, catalog)
@@ -996,7 +1038,7 @@ def build_year_event_calendar(
             continue
         if row["status"] in {STATUS_CONFIRMED, STATUS_CANCELLED, STATUS_HIATUS}:
             skip_by_year[y].add(eid)
-        if row["status"] == STATUS_CONFIRMED:
+        if row["status"] == STATUS_CONFIRMED and not row.get("stats_only"):
             confirmed_by_year[y].setdefault(eid, []).append(start)
             confirmed_by_event.setdefault(int(eid), []).append(start)
 
@@ -1007,6 +1049,7 @@ def build_year_event_calendar(
         r
         for r in merged
         if r["status"] == STATUS_CONFIRMED
+        and not r.get("stats_only")
         and isinstance(r.get("start_date"), date)
         and r.get("event_id") not in inactive_ids
     ]
@@ -1058,6 +1101,14 @@ def build_year_event_calendar(
         first_points_year=first_points_year,
         catalog=catalog,
     )
+    for row in all_rows:
+        eid = row.get("event_id")
+        start = row.get("start_date")
+        row["has_results"] = (
+            isinstance(eid, int)
+            and isinstance(start, date)
+            and (eid, start.year) in result_event_year
+        )
 
     # Drop nameless rows after catalog enrichment
     named_rows = [r for r in all_rows if _clean_name(r.get("name"))]

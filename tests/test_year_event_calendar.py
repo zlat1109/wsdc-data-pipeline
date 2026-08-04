@@ -173,6 +173,25 @@ def test_location_id_by_event_picks_latest(tmp_path):
     assert _location_id_by_event(tmp_path)[197] == 29
 
 
+def test_rows_from_editions_keeps_result_backed_month_only_as_stats_only(tmp_path):
+    from transform.year_event_calendar.build import _rows_from_editions
+
+    path = tmp_path / "event_editions.csv"
+    path.write_text(
+        "event_id,event_name,event_year,event_month,edition_date,start_date,end_date,"
+        "date_source,calendar_status,event_occurred,location_id,place_city,place_country,"
+        "result_rows,unique_dancers,url,registry_status\n"
+        "10,Month Stub Event,2025,7,2025-07-01,,,,,t,1,Paris,France,22,20,https://x.test,\n",
+        encoding="utf-8",
+    )
+
+    rows = _rows_from_editions(tmp_path, stats_only_year=2025)
+    assert len(rows) == 1
+    assert rows[0]["start_date"] == date(2025, 7, 1)
+    assert rows[0]["source"] == "event_editions_month_only"
+    assert rows[0]["stats_only"] is True
+
+
 def test_latest_confirmed_priors_and_terminal_block():
     from transform.year_event_calendar.build import (
         _ids_blocked_by_terminal,
