@@ -53,6 +53,22 @@ def test_normalize_drops_hiatus_flag_and_min_start():
     assert my_swing["end_date"] == "2026-07-12"
 
 
+def test_normalize_keeps_cross_year_overlap_on_min_start():
+    raw = [
+        {
+            "title": "Countdown Swing Boston",
+            "start": "2024-12-31",
+            "end": "2025-01-06",
+            "url": "http://countdownswingboston.com",
+        }
+    ]
+    rows = normalize_calendar_events(raw, min_start=date(2025, 1, 1))
+    assert len(rows) == 1
+    assert rows[0]["event_name"] == "Countdown Swing Boston"
+    assert rows[0]["results_year"] == 2025
+    assert rows[0]["results_month"] == 1
+
+
 def test_normalize_hiatus_flag():
     row = normalize_calendar_event(
         {
