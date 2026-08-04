@@ -70,8 +70,16 @@ def test_5280_alias_points_to_westival_not_championships():
 
 
 def test_merge_map_excludes_geo_split_pairs():
+    """Geo-split live ids must not merge into each other.
+
+    Ghosts may still remap *onto* a split anchor (e.g. inactive 480 → Dallas 75).
+    """
+    from transform.geography.geo_event import KEEP_SEPARATE_EVENT_PAIRS
     from transform.knowledge.event_aliases import MERGE_EVENT_ID_MAP
 
-    blocked = {75, 152, 191, 230, 83, 204}
-    assert not blocked.intersection(MERGE_EVENT_ID_MAP.keys())
-    assert not blocked.intersection(MERGE_EVENT_ID_MAP.values())
+    blocked_sources = set().union(*KEEP_SEPARATE_EVENT_PAIRS)
+    assert not blocked_sources.intersection(MERGE_EVENT_ID_MAP.keys())
+    for pair in KEEP_SEPARATE_EVENT_PAIRS:
+        a, b = tuple(pair)
+        assert MERGE_EVENT_ID_MAP.get(a) != b
+        assert MERGE_EVENT_ID_MAP.get(b) != a
