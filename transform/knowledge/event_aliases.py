@@ -150,13 +150,18 @@ MERGE_EVENT_ID_MAP: dict[int, int] = {
     506: 12,   # Capital Swing Convention inactive → Capital Swing Dance Convention
     571: 179,  # NZ WCS Open inactive → New Zealand Open Swing Dance Championships
     412: 374,  # BaroqueSwing ghost → Barock Swing Ludwigsburg
+    493: 264,  # UpTown Swing catalog ghost → Swedish/UpTown series (results on 264)
+    551: 221,  # Show Me Showdown inactive → id reused by Gateway (results on 221)
+    552: 221,  # Show-Me Showdown spelling ghost → 221
+    467: 221,  # Orphan calendar match for Show Me Showdown → 221
     # NOTE: id 443 was once a LoneStar ghost; WSDC reused it for MADjam phantom
     # (see PHANTOM_ALIAS_TO_CANONICAL 443→92). Do not map 443→120.
 }
 
-# Year-aware series renames (same organizer/geo, marketing rebrand after a gap).
+# Year-aware series renames (same organizer/geo, marketing rebrand / WSDC id reuse).
 # Applied after flat EVENT_NAME_NORMALIZATION. Sources match either legacy or modern title.
 # year_max inclusive for early name; year_min inclusive for late name.
+# Prefer one stable results id for the whole series; display name follows the year.
 EVENT_NAME_YEAR_SPLITS: list[dict[str, object]] = [
     {
         "sources": (
@@ -168,9 +173,23 @@ EVENT_NAME_YEAR_SPLITS: list[dict[str, object]] = [
         "early_year_max": 2018,
         "late_name": "UpTown Swing",
         "late_year_min": 2019,
-        # Stable registry ids (early keeps historic 264; late is new catalog event).
+        # Results live on 264 for all years; 493 is a catalog/schedule ghost (merged).
         "early_event_id": 264,
-        "late_event_id": 493,
+        "late_event_id": 264,
+    },
+    {
+        "sources": (
+            "Show Me Showdown",
+            "Show-Me Showdown",
+            "Gateway Swing Classic",
+        ),
+        "early_name": "Show Me Showdown",
+        "early_year_max": 2025,
+        "late_name": "Gateway Swing Classic",
+        "late_year_min": 2026,
+        # WSDC reused registry id 221 (Show Me history → Gateway from 2026).
+        "early_event_id": 221,
+        "late_event_id": 221,
     },
 ]
 

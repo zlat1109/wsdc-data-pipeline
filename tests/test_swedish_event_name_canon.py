@@ -62,7 +62,7 @@ def test_year_split_events_wsdc_ids():
     out = apply_event_name_year_splits(df)
     assert int(out.loc[0, "id"]) == 264
     assert out.loc[0, "name"] == "Swedish Swing Summer Camp"
-    assert int(out.loc[1, "id"]) == 493
+    assert int(out.loc[1, "id"]) == 264
     assert out.loc[1, "name"] == "UpTown Swing"
 
 
@@ -76,8 +76,35 @@ def test_year_split_ids_on_string_dtype_frame():
     ).astype("str")
     out = apply_event_name_year_splits(df)
     assert out.loc[0, "id"] == "264"
-    assert out.loc[1, "id"] == "493"
+    assert out.loc[1, "id"] == "264"
     assert out.loc[1, "name"] == "UpTown Swing"
+
+
+def test_year_split_show_me_vs_gateway():
+    df = pd.DataFrame(
+        [
+            {"event_name": "Show Me Showdown", "event_year": 2025, "event_name_id": 221},
+            {"event_name": "Gateway Swing Classic", "event_year": 2025, "event_name_id": 221},
+            {"event_name": "Show Me Showdown", "event_year": 2026, "event_name_id": 221},
+            {"event_name": "Gateway Swing Classic", "event_year": 2026, "event_name_id": 221},
+        ]
+    )
+    out = apply_event_name_year_splits(df)
+    assert out.loc[0, "event_name"] == "Show Me Showdown"
+    assert out.loc[1, "event_name"] == "Show Me Showdown"
+    assert out.loc[2, "event_name"] == "Gateway Swing Classic"
+    assert out.loc[3, "event_name"] == "Gateway Swing Classic"
+    assert int(out.loc[0, "event_name_id"]) == 221
+    assert int(out.loc[3, "event_name_id"]) == 221
+
+
+def test_uptown_and_show_me_ghosts_merge_to_results_ids():
+    from transform.knowledge.event_aliases import MERGE_EVENT_ID_MAP
+
+    assert MERGE_EVENT_ID_MAP[493] == 264
+    assert MERGE_EVENT_ID_MAP[551] == 221
+    assert MERGE_EVENT_ID_MAP[552] == 221
+    assert MERGE_EVENT_ID_MAP[467] == 221
 
 
 def test_normalization_map_exports_westie_gala():

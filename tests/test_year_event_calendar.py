@@ -643,6 +643,45 @@ def test_rows_from_editions_stats_only_and_results_year(tmp_path):
     assert ser["year"] == 2025
 
 
+def test_drop_redundant_stats_only_when_day_precision_exists():
+    from transform.year_event_calendar.build import _drop_redundant_stats_only
+
+    rows = [
+        {
+            "event_id": 221,
+            "name": "Show Me Showdown",
+            "start_date": date(2025, 5, 1),
+            "year": 2025,
+            "status": "confirmed",
+            "stats_only": True,
+            "source": "event_editions_month_only",
+            "has_results": True,
+        },
+        {
+            "event_id": 221,
+            "name": "Show Me Showdown",
+            "start_date": date(2025, 5, 15),
+            "year": 2025,
+            "status": "confirmed",
+            "source": "edition_calendar_dates",
+            "has_results": True,
+        },
+        {
+            "event_id": 99,
+            "name": "Only Stats",
+            "start_date": date(2025, 6, 1),
+            "year": 2025,
+            "status": "confirmed",
+            "stats_only": True,
+            "has_results": True,
+        },
+    ]
+    out = _drop_redundant_stats_only(rows)
+    assert len(out) == 2
+    assert {r["event_id"] for r in out} == {221, 99}
+    assert not any(r.get("stats_only") and r["event_id"] == 221 for r in out)
+
+
 def test_dedupe_prefers_day_dates_over_stats_only():
     from transform.year_event_calendar.build import _dedupe_rows
 
@@ -691,9 +730,55 @@ def test_dedupe_prefers_day_dates_over_stats_only():
 def test_series_linked_ids_bidirectional():
     from transform.year_event_calendar.build import _series_linked_ids
 
-    assert _series_linked_ids(264) == {264, 493}
-    assert _series_linked_ids(493) == {264, 493}
+    # Successor map empty after single-id merges; identity is the id itself.
+    assert _series_linked_ids(264) == {264}
+    assert _series_linked_ids(493) == {493}
     assert _series_linked_ids(999) == {999}
+
+
+def test_apply_year_aware_series_names_uptown_and_show_me():
+    from transform.year_event_calendar.build import _apply_year_aware_series_names
+
+    rows = [
+        {
+            "event_id": 264,
+            "name": "Swedish Swing Summer Camp",
+            "year": 2025,
+            "start_date": date(2025, 8, 15),
+            "status": "confirmed",
+        },
+        {
+            "event_id": 493,
+            "name": "UpTown Swing",
+            "year": 2025,
+            "start_date": date(2025, 8, 15),
+            "status": "confirmed",
+        },
+        {
+            "event_id": 221,
+            "name": "Gateway Swing Classic",
+            "year": 2025,
+            "start_date": date(2025, 5, 15),
+            "status": "confirmed",
+        },
+        {
+            "event_id": 221,
+            "name": "Show Me Showdown",
+            "year": 2026,
+            "start_date": date(2026, 5, 14),
+            "status": "confirmed",
+        },
+    ]
+    _apply_year_aware_series_names(rows)
+    assert rows[0]["name"] == "UpTown Swing"
+    assert rows[0]["event_id"] == 264
+    # 493 is not in the split id list until MERGE; name still matches sources → UpTown@264
+    assert rows[1]["name"] == "UpTown Swing"
+    assert rows[1]["event_id"] == 264
+    assert rows[2]["name"] == "Show Me Showdown"
+    assert rows[2]["event_id"] == 221
+    assert rows[3]["name"] == "Gateway Swing Classic"
+    assert rows[3]["event_id"] == 221
 
 
 def test_ids_blocked_by_terminal_expands_series_links():
@@ -701,7 +786,7 @@ def test_ids_blocked_by_terminal_expands_series_links():
 
     rows = [
         {
-            "event_id": 493,
+            "event_id": 264,
             "start_date": date(2025, 8, 14),
             "year": 2025,
             "status": "hiatus",
@@ -712,13 +797,12 @@ def test_ids_blocked_by_terminal_expands_series_links():
             "start_date": date(2024, 8, 15),
             "year": 2024,
             "status": "confirmed",
-            "name": "Swedish Swing Summer Camp",
+            "name": "UpTown Swing",
         },
     ]
     blocked = _ids_blocked_by_terminal(rows, before_year=2026)
-    assert 493 in blocked
     assert 264 in blocked
-
+    assert 493 not in blocked  # ghost merged away; no successor expansion
 
 def test_operator_overrides_emit_soul_flow_hiatus_and_expected():
     from transform.knowledge.calendar_operator_overrides import (
