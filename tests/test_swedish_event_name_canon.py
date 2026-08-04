@@ -34,6 +34,11 @@ def test_westie_gala_metadata_and_stockholm_override():
     assert EVENT_NAME_LOCATION_OVERRIDES["Go West SwingFest"] == "Perth, Australia"
     assert EVENT_NAME_LOCATION_OVERRIDES["New Zealand Open Swing Dance Championships"] == "Auckland, New Zealand"
     assert EVENT_NAME_LOCATION_OVERRIDES["DC Swing eXperience (DCSX)"] == "Herndon, VA, United States"
+    assert (
+        EVENT_NAME_LOCATION_OVERRIDES["Dance Jam Jack & Jill Weekend"]
+        == "Silver Spring, MD, United States"
+    )
+    assert KNOWN_EVENT_METADATA[372]["typical_location"] == "Silver Spring, MD, United States"
 
 
 def test_year_split_sssc_vs_uptown_results():
