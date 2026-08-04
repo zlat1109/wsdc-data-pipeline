@@ -10,7 +10,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 10547,375,Mediterranean Open WCS,2026,7,2026-07-01,2026-07-09,2026-07-13,wsdc_calendar,scheduled,t,162,Barcelona,,Spain,"Barcelona, Spain",120,99,https://mediterraneanopenwcs.com/,"Barcelona, Spain",
 9968,224,Midwest Westie Fest,2026,7,2026-07-01,2026-07-16,2026-07-19,wsdc_calendar,scheduled,t,48,Overland Park,Kansas,United States,"Overland Park, KS",112,103,http://www.midwestwestiefest.com/,"Overland Park, KS",Registry Event
 10525,362,MY Swing,2026,7,2026-07-01,2026-07-09,2026-07-12,wsdc_calendar,scheduled,t,271,Kuala Lumpur,,Malaysia,"Kuala Lumpur, Malaysia",97,94,https://www.myswingopen.com/,"Kuala Lumpur, Malaysia",
-10559,385,Revitalise WCS,2026,7,2026-07-01,2026-07-16,2026-07-19,wsdc_calendar,scheduled,t,174,Melbourne,,Australia,"Melbourne, Australia",76,72,https://withjoy.com/revitalisewcs-melbourne2025/welcome,"Melbourne, Australia",
+10559,385,Revitalise WCS,2026,7,2026-07-01,2026-07-16,2026-07-19,wsdc_calendar,scheduled,t,222,St. Petersburg,,Russia,"St. Petersburg, Russia",76,72,https://withjoy.com/revitalisewcs-melbourne2025/welcome,"St. Petersburg, Russia",
 10155,256,Rock the Barn,2026,7,2026-07-01,2026-07-17,2026-07-19,wsdc_calendar,scheduled,t,215,Umeå,,Sweden,"Umeå, Sweden",98,90,http://rockthebarn.se,"Umeå, Sweden",
 10296,280,Saint Petersburg WCS Nights,2026,7,2026-07-01,2026-07-22,2026-07-26,wsdc_calendar,scheduled,t,222,St. Petersburg,,Russia,"St. Petersburg, Russia",102,91,http://wcsnights.ru,"St. Petersburg, Russia",
 10522,360,SaunaSwing,2026,7,2026-07-01,2026-07-02,2026-07-04,wsdc_calendar,scheduled,t,268,Ikaalinen,,Finland,"Ikaalinen, Finland",92,81,https://ekarolas.com/saunaswing/,"Ikaalinen, Finland",
@@ -95,7 +95,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 8363,42,Floorplay Swing Vacation,2026,1,2026-01-01,2025-12-30,2026-01-04,wsdc_calendar,scheduled,t,82,Orlando,Florida,United States,"Orlando, FL",95,92,http://www.floorplayswingvacation.com/,"Orlando, FL",Registry Event
 9654,183,Freedom Swing Dance Challenge,2026,1,2026-01-01,2026-01-23,2026-01-25,wsdc_calendar,scheduled,t,66,Wilmington,Delaware,United States,"Wilmington, DE",100,94,https://freedomswingdance.com/,"Wilmington, DE, United States",Registry Event
 8631,62,Monterey SwingFest,2026,1,2026-01-01,2026-01-15,2026-01-19,wsdc_calendar,scheduled,t,1,Monterey,California,United States,"Monterey, CA",138,136,http://www.montereyswing.com/,"Monterey, CA",Registry Event
-10255,272,Paris Westie Fest,2026,1,2026-01-01,,,,,,109,Paris,,France,"Paris, France",160,145,http://https//parisswingclassic.com,"Paris, France",Registry Event
+10255,272,Paris Westie Fest,2026,1,2026-01-01,2026-01-23,2026-01-25,wsdc_calendar,scheduled,t,109,Paris,,France,"Paris, France",160,145,http://https//parisswingclassic.com,"Paris, France",Registry Event
 9283,141,Spotlight New Year's Celebration,2026,1,2026-01-01,2025-12-31,2026-01-04,wsdc_calendar,scheduled,t,43,Nashville,Tennessee,United States,"Nashville, TN",145,142,http://www.spotlightnewyears.com/,"Nashville, TN",Registry Event
 10390,301,Swing Resolution,2026,1,2026-01-01,2026-01-22,2026-01-26,wsdc_calendar,scheduled,t,177,Edinburgh,,United Kingdom,"Edinburgh, United Kingdom",102,89,http://www.swingresolution.com/,"Edinburgh, United Kingdom",Registry Event
 9762,196,SwingCouver,2026,1,2026-01-01,2025-12-31,2026-01-04,wsdc_calendar,scheduled,t,4,Portland,Oregon,United States,"Portland, OR",117,109,https://swingco.dance/,"Portland, OR",Registry Event
@@ -110,7 +110,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 10072,238,Winter White,2025,12,2025-12-01,2025-12-04,2025-12-08,wsdc_calendar,scheduled,t,223,Oslo,,Norway,"Oslo, Norway",102,99,http://www.winterwhite.no/,"Oslo, Norway",Registry Event
 10230,269,Autumn Swing Challenge,2025,11,2025-11-01,2025-11-07,2025-11-09,wsdc_calendar,scheduled,t,110,Budapest,,Hungary,"Budapest, Hungary",127,112,http://www.asc-budapest.com/,"Budapest, Hungary",Registry Event
 8895,87,CASH Bash,2025,11,2025-11-01,2025-11-27,2025-11-27,wsdc_calendar,scheduled,t,96,Cleveland,Ohio,United States,"Cleveland, OH",54,50,https://cashdanceclub.org/cash-bash/,"Cleveland, OH",Registry Event
-9640,181,DC Swing eXperience (DCSX),2025,11,2025-11-01,2025-11-13,2025-11-16,wsdc_calendar,scheduled,t,38,Herndon,Virginia,United States,"Herndon, VA",156,142,http://www.dcswingexperience.com,"Herndon, VA",Registry Event
+9640,181,DC Swing eXperience (DCSX),2025,11,2025-11-01,2025-11-13,2025-11-16,wsdc_calendar,scheduled,t,38,Herndon,Virginia,United States,"Herndon, VA",156,142,http://www.dcswingexperience.com,"Herndon, VA, United States",Registry Event
 10530,365,Flowstate | West Coast Swing & Zouk Festival,2025,11,2025-11-01,2025-11-14,2025-11-16,wsdc_calendar,scheduled,t,107,London,,United Kingdom,"London, United Kingdom",58,55,http://www.flowstatefest.com/,"London, United Kingdom",Registry Event
 10331,288,Midnight Madness,2025,11,2025-11-01,2025-11-13,2025-11-16,wsdc_calendar,scheduled,t,21,Dallas,Texas,United States,"Dallas, TX",146,137,http://www.midnightmadnesswcs.com/,"Dallas, TX",Registry Event
 9731,194,Moscow Westie Fest,2025,11,2025-11-01,2025-11-07,2025-11-10,wsdc_calendar,scheduled,t,113,Moscow,,Russia,"Moscow, Russia",99,85,http://westiefest.org/,"Moscow, Russia",Registry Event
@@ -131,8 +131,8 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 10532,367,Go West SwingFest,2025,10,2025-10-01,2025-10-10,2025-10-12,wsdc_calendar,scheduled,t,253,Perth,,Australia,"Perth, Australia",41,30,https://www.gowestdancefest.com/go-west-swingfest,"Perth, Australia",
 8684,65,Halloween SwingThing,2025,10,2025-10-01,2025-10-23,2025-10-26,wsdc_calendar,scheduled,t,24,Costa Mesa,California,United States,"Costa Mesa, CA",108,104,http://hstswing.com/,"Costa Mesa, CA",Registry Event
 10442,322,Milan Modern Swing,2025,10,2025-10-01,2025-10-09,2025-10-12,wsdc_calendar,scheduled,t,132,Milan,,Italy,"Milan, Italy",164,150,https://www.westcoastswingmilan.com/,"Milan, Italy",Registry Event
-9608,178,Montreal Westie Fest,2025,10,2025-10-01,2025-10-17,2025-10-19,wsdc_calendar,scheduled,t,86,Montreal,,Canada,"Montreal, Canada",100,92,http://montrealwestiefest.com/,"Montreal, Canada",Registry Event
-9622,179,New Zealand Open Swing Dance Championships,2025,10,2025-10-01,2025-10-16,2025-10-19,wsdc_calendar,scheduled,t,168,Auckland,,New Zealand,"Auckland, New Zealand",60,57,https://www.streetswing.co.nz/the-new-zealand-open,"Auckland, New Zealand",
+9608,178,Montreal Westie Fest,2025,10,2025-10-01,2025-10-17,2025-10-19,wsdc_calendar,scheduled,t,7,New York,New York,United States,"New York, NY",100,92,http://montrealwestiefest.com/,"New York, NY",Registry Event
+9622,179,New Zealand Open Swing Dance Championships,2025,10,2025-10-01,2025-10-16,2025-10-19,wsdc_calendar,scheduled,t,253,Perth,,Australia,"Perth, Australia",60,57,https://www.streetswing.co.nz/the-new-zealand-open,"Auckland, New Zealand",
 10562,388,Norwegian Open WCS,2025,10,2025-10-01,2025-10-02,2025-10-06,wsdc_calendar,scheduled,t,274,Hamar,,Norway,"Hamar, Norway",81,75,https://norwegianopen.no/,"Hamar, Norway",Registry Event
 8386,43,Paradise Dance Festival,2025,10,2025-10-01,2025-10-09,2025-10-12,wsdc_calendar,scheduled,t,19,Irvine,California,United States,"Irvine, CA",82,78,https://paradisecountrydancefestival.com/,"Irvine, CA",Registry Event
 10553,380,SASS Spooky Albany Swing Spectacular,2025,10,2025-10-01,2025-10-24,2025-10-26,wsdc_calendar,scheduled,t,139,Albany,New York,United States,"Albany, NY",67,58,http://www.spookyalbanyswing.com/,"Albany, NY, United States",Registry Event
@@ -146,10 +146,10 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 9528,167,Best of the Best WCS,2025,9,2025-09-01,2025-09-11,2025-09-14,wsdc_calendar,scheduled,t,117,Sydney,,Australia,"Sydney, Australia",77,64,https://www.bestofthebestwcs.com/,"Sydney, Australia",Registry Event
 9244,135,Desert City Swing,2025,9,2025-09-01,2025-08-28,2025-09-01,wsdc_calendar,scheduled,t,3,Phoenix,Arizona,United States,"Phoenix, AZ",133,128,http://www.desertcityswing.com/,"Phoenix, AZ",Registry Event
 10137,254,Finnfest,2025,9,2025-09-01,2025-09-19,2025-09-22,wsdc_calendar,scheduled,t,204,Helsinki,,Finland,"Helsinki, Finland",135,119,http://www.finnfest.fi/,"Helsinki, Finland",Registry Event
-10222,268,Korea Westival,2025,9,2025-09-01,2025-09-04,2025-09-07,wsdc_calendar,scheduled,t,213,Jeju,,Republic of Korea,"Jeju, Republic of Korea",90,81,http://koreawestival.com/,"Jeju, Republic of Korea",Registry Event
+10222,268,Korea Westival,2025,9,2025-09-01,2025-09-04,2025-09-07,wsdc_calendar,scheduled,t,266,Brno,,Czech Republic,"Brno, Czech Republic",90,81,http://koreawestival.com/,"Brno, Czech Republic",Registry Event
 9195,131,Meet Me In St Louis,2025,9,2025-09-01,2025-09-25,2025-09-28,wsdc_calendar,scheduled,t,49,St. Louis,Missouri,United States,"St. Louis, MO",117,101,http://www.mmisl.com/,"St. Louis, MO",Registry Event
 9507,165,Midland Swing Open,2025,9,2025-09-01,2025-09-25,2025-09-29,wsdc_calendar,scheduled,t,107,London,,United Kingdom,"London, United Kingdom",138,123,http://www.midlandswingopen.com/,"London, United Kingdom",Registry Event
-10523,361,Mooseland Swing,2025,9,2025-09-01,2025-09-25,2025-09-29,wsdc_calendar,scheduled,t,270,Östersund,,Sweden,"Östersund, Sweden",71,66,https://mooselandswing.com/,"Östersund, Sweden",Registry Event
+10523,361,Mooseland Swing,2025,9,2025-09-01,2025-09-25,2025-09-29,wsdc_calendar,scheduled,t,3,Phoenix,Arizona,United States,"Phoenix, AZ",71,66,https://mooselandswing.com/,"Phoenix, AZ",Registry Event
 10045,234,Philly Swing Classic,2025,9,2025-09-01,2025-09-19,2025-09-21,wsdc_calendar,scheduled,t,66,Wilmington,Delaware,United States,"Wilmington, DE",66,60,http://www.phillyswing.com,"Wilmington, DE, United States",Registry Event
 10520,359,Retaliation Swing,2025,9,2025-09-01,2025-09-18,2025-09-22,wsdc_calendar,scheduled,t,30,Seattle,Washington,United States,"Seattle, WA",92,90,https://www.retaliationswing.com/,"Seattle, WA",Registry Event
 10427,313,Rolling Swing,2025,9,2025-09-01,2025-08-28,2025-09-01,wsdc_calendar,scheduled,t,156,Lyon,,France,"Lyon, France",124,106,http://www.frenchywesty.com/,"Lyon, France",Registry Event
@@ -168,13 +168,13 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 9597,177,River City Swing,2025,8,2025-08-01,2025-08-28,2025-08-31,wsdc_calendar,scheduled,t,98,Jacksonville,Florida,United States,"Jacksonville, FL",80,74,http://www.jaxwestiefest.com/,"Jacksonville, FL",Registry Event
 10378,298,Shakedown Swing,2025,8,2025-08-01,2025-08-22,2025-08-24,wsdc_calendar,scheduled,t,260,Christchurch,,New Zealand,"Christchurch, New Zealand",38,37,http://www.code03swing.com/shakedown,"Christchurch, New Zealand",Registry Event
 8527,53,Summer Hummer,2025,8,2025-08-01,2025-08-21,2025-08-24,wsdc_calendar,scheduled,t,8,Boston,Massachusetts,United States,"Boston, MA",135,123,http://summerhummerboston.com/,"Boston, MA",Registry Event
-10201,264,Swedish Swing Summer Camp,2025,8,2025-08-01,,,,,,199,Stockholm,,Sweden,"Stockholm, Sweden",114,102,http://www.uptownswing.se/,"Stockholm, Sweden",
+10201,264,Swedish Swing Summer Camp,2025,8,2025-08-01,2025-08-15,2025-08-18,wsdc_calendar,scheduled,t,199,Stockholm,,Sweden,"Stockholm, Sweden",114,102,http://www.uptownswing.se/,"Stockholm, Sweden",
 10564,391,Swing Dance Mania,2025,8,2025-08-01,2025-08-21,2025-08-24,wsdc_calendar,scheduled,t,183,Cincinnati,Ohio,United States,"Cincinnati, OH",80,70,http://swingdancemania.com,"Cincinnati, OH",
 8576,59,Swing Fling,2025,8,2025-08-01,2025-08-07,2025-08-11,wsdc_calendar,scheduled,t,38,Herndon,Virginia,United States,"Herndon, VA",146,133,http://www.swingfling.com,"Herndon, VA, United States",Registry Event
 9995,227,Swingtacular: The Galactic Open,2025,8,2025-08-01,2025-08-07,2025-08-10,wsdc_calendar,scheduled,t,2,San Francisco,California,United States,"San Francisco, CA",118,116,http://www.dancegeekproductions.art/,"San Francisco, CA",Registry Event
 8438,47,Swingtime in the Rockies,2025,8,2025-08-01,2025-08-14,2025-08-17,wsdc_calendar,scheduled,t,29,Denver,Colorado,United States,"Denver, CO",139,129,http://www.swingtimewcs.com,"Denver, CO",
 10518,356,The Bend Connection,2025,8,2025-08-01,2025-08-21,2025-08-24,wsdc_calendar,scheduled,t,133,Bend,Oregon,United States,"Bend, OR",69,65,http://thebendconnection.com/,"Bend, OR",Registry Event
-10556,383,Warsaw Summer Nights Westival,2025,8,2025-08-01,2025-08-01,2025-08-03,wsdc_calendar,scheduled,t,155,Warsaw,,Poland,"Warsaw, Poland",94,93,https://www.summernightswestival.com/,"Warsaw, Poland",Registry Event
+10556,383,Warsaw Summer Nights Westival,2025,8,2025-08-01,2025-08-01,2025-08-03,wsdc_calendar,scheduled,t,13,Washington,District of Columbia,United States,"Washington, DC",94,93,https://www.summernightswestival.com/,"Washington, DC",Registry Event
 7959,1,4TH of July Convention,2025,7,2025-07-01,2025-07-03,2025-07-06,wsdc_calendar,scheduled,t,3,Phoenix,Arizona,United States,"Phoenix, AZ",111,109,http://phoenix4thofjuly.com,"Phoenix, AZ",
 10286,278,Americano Dance Camp,2025,7,2025-07-01,2025-07-03,2025-07-07,wsdc_calendar,scheduled,t,252,Samara,,Russia,"Samara, Russia",86,77,https://t.me/americamodancecamp https://vk.com/americano2025,"Samara, Russia",
 9434,156,Big Apple Dance Festival,2025,7,2025-07-01,2025-07-10,2025-07-13,wsdc_calendar,scheduled,t,140,Morristown,New Jersey,United States,"Morristown, NJ",43,41,http://bigapplecountrydance.com/,"Morristown, NJ",
@@ -184,7 +184,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 10546,375,Mediterranean Open WCS,2025,7,2025-07-01,2025-07-11,2025-07-13,wsdc_calendar,scheduled,t,162,Barcelona,,Spain,"Barcelona, Spain",138,121,https://mediterraneanopenwcs.com/,"Barcelona, Spain",
 9967,224,Midwest Westie Fest,2025,7,2025-07-01,2025-07-17,2025-07-20,wsdc_calendar,scheduled,t,48,Overland Park,Kansas,United States,"Overland Park, KS",123,111,http://www.midwestwestiefest.com/,"Overland Park, KS",Registry Event
 10524,362,MY Swing,2025,7,2025-07-01,2025-07-10,2025-07-13,wsdc_calendar,scheduled,t,271,Kuala Lumpur,,Malaysia,"Kuala Lumpur, Malaysia",92,90,https://www.myswingopen.com/,"Kuala Lumpur, Malaysia",
-10558,385,Revitalise WCS,2025,7,2025-07-01,2025-07-18,2025-07-20,wsdc_calendar,scheduled,t,174,Melbourne,,Australia,"Melbourne, Australia",52,51,https://withjoy.com/revitalisewcs-melbourne2025/welcome,"Melbourne, Australia",
+10558,385,Revitalise WCS,2025,7,2025-07-01,2025-07-18,2025-07-20,wsdc_calendar,scheduled,t,222,St. Petersburg,,Russia,"St. Petersburg, Russia",52,51,https://withjoy.com/revitalisewcs-melbourne2025/welcome,"St. Petersburg, Russia",
 10154,256,Rock the Barn,2025,7,2025-07-01,2025-07-18,2025-07-20,wsdc_calendar,scheduled,t,215,Umeå,,Sweden,"Umeå, Sweden",79,76,http://rockthebarn.se,"Umeå, Sweden",
 10295,280,Saint Petersburg WCS Nights,2025,7,2025-07-01,2025-07-17,2025-07-20,wsdc_calendar,scheduled,t,222,St. Petersburg,,Russia,"St. Petersburg, Russia",122,109,http://wcsnights.ru,"St. Petersburg, Russia",
 10521,360,SaunaSwing,2025,7,2025-07-01,2025-07-03,2025-07-06,wsdc_calendar,scheduled,t,268,Ikaalinen,,Finland,"Ikaalinen, Finland",94,76,https://ekarolas.com/saunaswing/,"Ikaalinen, Finland",
@@ -250,7 +250,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 10500,344,Arousa Westie Fest,2025,2,2025-02-01,2025-02-20,2025-02-23,wsdc_calendar,scheduled,t,258,Sanxenxo,,Spain,"Sanxenxo, Spain",94,73,https://www.arousawestiefest.com/,"Sanxenxo, Spain",Registry Event
 8095,12,Capital Swing Dance Convention,2025,2,2025-02-01,2025-02-13,2025-02-16,wsdc_calendar,scheduled,t,6,Sacramento,California,United States,"Sacramento, CA",122,118,http://www.capitalswingconvention.com,"Sacramento, CA",
 10263,273,Charlotte Westie Fest,2025,2,2025-02-01,2025-01-30,2025-02-03,wsdc_calendar,scheduled,t,62,Charlotte,North Carolina,United States,"Charlotte, NC",156,140,https://charlottewestiefest.com/,"Charlotte, NC",Registry Event
-10254,272,Paris Westie Fest,2025,2,2025-02-01,,,,,,109,Paris,,France,"Paris, France",138,123,http://https//parisswingclassic.com,"Paris, France",Registry Event
+10254,272,Paris Westie Fest,2025,2,2025-02-01,2025-01-30,2025-02-02,wsdc_calendar,scheduled,t,109,Paris,,France,"Paris, France",138,123,http://https//parisswingclassic.com,"Paris, France",Registry Event
 10107,244,Rose City Swing,2025,2,2025-02-01,2025-02-20,2025-02-23,wsdc_calendar,scheduled,t,4,Portland,Oregon,United States,"Portland, OR",146,135,https://rosecityswing.com/,"Portland, OR",Registry Event
 9896,215,Swing & Snow,2025,2,2025-02-01,2025-01-29,2025-02-02,wsdc_calendar,scheduled,t,222,St. Petersburg,,Russia,"St. Petersburg, Russia",113,107,http://swingandsnow.ru/,"St. Petersburg, Russia",Registry Event
 10498,343,Swing Crush,2025,2,2025-02-01,2025-02-20,2025-02-23,wsdc_calendar,scheduled,t,167,San Antonio,Texas,United States,"San Antonio, TX",92,88,https://swingcrush.com/,"San Antonio, TX",Registry Event
@@ -262,18 +262,18 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 9786,200,Austin Swing Dance Championships,2025,1,2025-01-01,2025-01-16,2025-01-19,wsdc_calendar,scheduled,t,39,Austin,Texas,United States,"Austin, TX",106,104,https://austinswingdance.com/,"Austin, TX",Registry Event
 10405,309,Avignon City Swing,2025,1,2025-01-01,2025-01-17,2025-01-20,wsdc_calendar,scheduled,t,192,Nimes,,France,"Nimes, France",124,105,https://www.avignoncityswing.com/,"Nimes, France",Registry Event
 9667,184,BudaFest Open WCS Championships,2025,1,2025-01-01,2025-01-07,2025-01-12,wsdc_calendar,scheduled,t,110,Budapest,,Hungary,"Budapest, Hungary",169,163,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
-10485,334,Countdown Swing Boston,2025,1,2025-01-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA",114,106,http://countdownswingboston.com/,"Boston, MA",Registry Event
+10485,334,Countdown Swing Boston,2025,1,2025-01-01,2024-12-31,2025-01-05,wsdc_calendar,scheduled,t,8,Boston,Massachusetts,United States,"Boston, MA",114,106,http://countdownswingboston.com/,"Boston, MA",Registry Event
 10095,242,Derby City Swing,2025,1,2025-01-01,2025-01-23,2025-01-26,wsdc_calendar,scheduled,t,116,Louisville,Kentucky,United States,"Louisville, KY",106,91,https://derbycityswing.com/,"Louisville, KY",Registry Event
-8362,42,Floorplay Swing Vacation,2025,1,2025-01-01,,,,,,82,Orlando,Florida,United States,"Orlando, FL",115,112,http://www.floorplayswingvacation.com/,"Orlando, FL",Registry Event
+8362,42,Floorplay Swing Vacation,2025,1,2025-01-01,2024-12-27,2025-01-01,wsdc_calendar,scheduled,t,82,Orlando,Florida,United States,"Orlando, FL",115,112,http://www.floorplayswingvacation.com/,"Orlando, FL",Registry Event
 9653,183,Freedom Swing Dance Challenge,2025,1,2025-01-01,2025-01-24,2025-01-26,wsdc_calendar,scheduled,t,66,Wilmington,Delaware,United States,"Wilmington, DE",100,90,https://freedomswingdance.com/,"Wilmington, DE, United States",Registry Event
 8630,62,Monterey SwingFest,2025,1,2025-01-01,2025-01-14,2025-01-19,wsdc_calendar,scheduled,t,1,Monterey,California,United States,"Monterey, CA",111,107,http://www.montereyswing.com/,"Monterey, CA",Registry Event
-9282,141,Spotlight New Year's Celebration,2025,1,2025-01-01,,,,,,43,Nashville,Tennessee,United States,"Nashville, TN",151,144,http://www.spotlightnewyears.com/,"Nashville, TN",Registry Event
+9282,141,Spotlight New Year's Celebration,2025,1,2025-01-01,2024-12-28,2025-01-01,wsdc_calendar,scheduled,t,43,Nashville,Tennessee,United States,"Nashville, TN",151,144,http://www.spotlightnewyears.com/,"Nashville, TN",Registry Event
 10389,301,Swing Resolution,2025,1,2025-01-01,2025-01-23,2025-01-26,wsdc_calendar,scheduled,t,177,Edinburgh,,United Kingdom,"Edinburgh, United Kingdom",98,84,http://www.swingresolution.com/,"Edinburgh, United Kingdom",Registry Event
 9761,196,SwingCouver,2025,1,2025-01-01,2025-01-02,2025-01-05,wsdc_calendar,scheduled,t,4,Portland,Oregon,United States,"Portland, OR",131,118,https://swingco.dance/,"Portland, OR",Registry Event
-10337,289,SwingVester,2025,1,2025-01-01,,,,,,197,Wels,,Austria,"Wels, Austria",149,141,https://www.swingvester.com/,"Wels, Austria",Registry Event
+10337,289,SwingVester,2025,1,2025-01-01,2024-12-28,2025-01-02,wsdc_calendar,scheduled,t,197,Wels,,Austria,"Wels, Austria",149,141,https://www.swingvester.com/,"Wels, Austria",Registry Event
 10554,381,The Australian Classic West Coast Swing Dance Championships (Trial Event),2025,1,2025-01-01,2025-01-17,2025-01-19,wsdc_calendar,scheduled,t,117,Sydney,,Australia,"Sydney, Australia",50,35,http://www.dancewcsa.com.au,"Sydney, Australia",
-8780,75,UCWDC Country Dance World Championship,2025,1,2025-01-01,,,,,,21,Dallas,Texas,United States,"Dallas, TX",55,50,https://ucwdc.org/worlds-home/,"Dallas, TX",
-10082,240,Westie Gala,2025,1,2025-01-01,,,,,,199,Stockholm,,Sweden,"Stockholm, Sweden",111,97,http://www.westiegala.com/,"Stockholm, Sweden",Registry Event
+8780,75,UCWDC Country Dance World Championship,2025,1,2025-01-01,2024-12-29,2025-01-05,wsdc_calendar,scheduled,t,21,Dallas,Texas,United States,"Dallas, TX",55,50,https://ucwdc.org/worlds-home/,"Dallas, TX",
+10082,240,Westie Gala,2025,1,2025-01-01,2024-12-28,2025-01-01,wsdc_calendar,scheduled,t,199,Stockholm,,Sweden,"Stockholm, Sweden",111,97,http://www.westiegala.com/,"Stockholm, Sweden",Registry Event
 10246,271,Berlin Swing Revolution,2024,12,2024-12-01,,,,,,194,Berlin,,Germany,"Berlin, Germany",61,57,https://berlinswingrevolution.com/,"Berlin, Germany",Registry Event
 8894,87,CASH Bash,2024,12,2024-12-01,,,,,,96,Cleveland,Ohio,United States,"Cleveland, OH",76,70,https://cashdanceclub.org/cash-bash/,"Cleveland, OH",Registry Event
 10496,342,Global Grand Prix - West Coast Swing Reunion,2024,12,2024-12-01,,,,,,208,Toulouse,,France,"Toulouse, France",118,110,https://www.globalgrandprixwcs.com/,"Toulouse, France",Trial Event
@@ -282,7 +282,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 8728,68,US Open Swing Dance Championships,2024,12,2024-12-01,,,,,,22,Los Angeles,California,United States,"Los Angeles, CA",163,151,http://www.theopenswing.com/,"Los Angeles, CA",Registry Event
 10071,238,Winter White,2024,12,2024-12-01,,,,,,223,Oslo,,Norway,"Oslo, Norway",106,104,http://www.winterwhite.no/,"Oslo, Norway",Registry Event
 10229,269,Autumn Swing Challenge,2024,11,2024-11-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",126,121,http://www.asc-budapest.com/,"Budapest, Hungary",Registry Event
-9639,181,DC Swing eXperience (DCSX),2024,11,2024-11-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA",171,164,http://www.dcswingexperience.com,"Herndon, VA",Registry Event
+9639,181,DC Swing eXperience (DCSX),2024,11,2024-11-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA",171,164,http://www.dcswingexperience.com,"Herndon, VA, United States",Registry Event
 10330,288,Midnight Madness,2024,11,2024-11-01,,,,,,21,Dallas,Texas,United States,"Dallas, TX",111,105,http://www.midnightmadnesswcs.com/,"Dallas, TX",Registry Event
 8316,31,Mountain Magic,2024,11,2024-11-01,,,,,,28,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV",52,49,http://mountainmagic.dance/,"South Lake Tahoe (near Reno), NV",Registry Event
 9621,179,New Zealand Open Swing Dance Championships,2024,11,2024-11-01,,,,,,168,Auckland,,New Zealand,"Auckland, New Zealand",56,54,https://www.streetswing.co.nz/the-new-zealand-open,"Auckland, New Zealand",
@@ -299,7 +299,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 10531,367,Go West SwingFest,2024,10,2024-10-01,,,,,,253,Perth,,Australia,"Perth, Australia",25,25,https://www.gowestdancefest.com/go-west-swingfest,"Perth, Australia",
 8683,65,Halloween SwingThing,2024,10,2024-10-01,,,,,,24,Costa Mesa,California,United States,"Costa Mesa, CA",128,124,http://hstswing.com/,"Costa Mesa, CA",Registry Event
 10441,322,Milan Modern Swing,2024,10,2024-10-01,,,,,,132,Milan,,Italy,"Milan, Italy",142,134,https://www.westcoastswingmilan.com/,"Milan, Italy",Registry Event
-9607,178,Montreal Westie Fest,2024,10,2024-10-01,,,,,,86,Montreal,,Canada,"Montreal, Canada",95,91,http://montrealwestiefest.com/,"Montreal, Canada",Registry Event
+9607,178,Montreal Westie Fest,2024,10,2024-10-01,,,,,,7,New York,New York,United States,"New York, NY",95,91,http://montrealwestiefest.com/,"New York, NY",Registry Event
 8385,43,Paradise Dance Festival,2024,10,2024-10-01,,,,,,19,Irvine,California,United States,"Irvine, CA",80,79,https://paradisecountrydancefestival.com/,"Irvine, CA",Registry Event
 9158,125,Swing City Chicago,2024,10,2024-10-01,,,,,,34,Chicago,Illinois,United States,"Chicago, IL",153,137,https://swingcitychicago.com/,"Chicago, IL",Registry Event
 10505,346,Swingside Invitational,2024,10,2024-10-01,,,,,,272,Liège,,Belgium,"Liège, Belgium",106,96,http://www.swingside-invitational.com/,"Liège, Belgium",Registry Event
@@ -311,7 +311,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 9527,167,Best of the Best WCS,2024,9,2024-09-01,,,,,,117,Sydney,,Australia,"Sydney, Australia",82,66,https://www.bestofthebestwcs.com/,"Sydney, Australia",Registry Event
 9243,135,Desert City Swing,2024,9,2024-09-01,,,,,,3,Phoenix,Arizona,United States,"Phoenix, AZ",147,141,http://www.desertcityswing.com/,"Phoenix, AZ",Registry Event
 10136,254,Finnfest,2024,9,2024-09-01,,,,,,204,Helsinki,,Finland,"Helsinki, Finland",140,127,http://www.finnfest.fi/,"Helsinki, Finland",Registry Event
-10221,268,Korea Westival,2024,9,2024-09-01,,,,,,213,Jeju,,Republic of Korea,"Jeju, Republic of Korea",77,68,http://koreawestival.com/,"Jeju, Republic of Korea",Registry Event
+10221,268,Korea Westival,2024,9,2024-09-01,,,,,,266,Brno,,Czech Republic,"Brno, Czech Republic",77,68,http://koreawestival.com/,"Brno, Czech Republic",Registry Event
 9194,131,Meet Me In St Louis,2024,9,2024-09-01,,,,,,49,St. Louis,Missouri,United States,"St. Louis, MO",116,105,http://www.mmisl.com/,"St. Louis, MO",Registry Event
 9506,165,Midland Swing Open,2024,9,2024-09-01,,,,,,107,London,,United Kingdom,"London, United Kingdom",149,134,http://www.midlandswingopen.com/,"London, United Kingdom",Registry Event
 10044,234,Philly Swing Classic,2024,9,2024-09-01,,,,,,66,Wilmington,Delaware,United States,"Wilmington, DE",84,74,http://www.phillyswing.com,"Wilmington, DE, United States",Registry Event
@@ -420,7 +420,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 10070,238,Winter White,2023,12,2023-12-01,,,,,,223,Oslo,,Norway,"Oslo, Norway",81,77,http://www.winterwhite.no/,"Oslo, Norway",Registry Event
 10228,269,Autumn Swing Challenge,2023,11,2023-11-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",107,100,http://www.asc-budapest.com/,"Budapest, Hungary",Registry Event
 8893,87,CASH Bash,2023,11,2023-11-01,,,,,,96,Cleveland,Ohio,United States,"Cleveland, OH",41,38,https://cashdanceclub.org/cash-bash/,"Cleveland, OH",Registry Event
-9638,181,DC Swing eXperience (DCSX),2023,11,2023-11-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA",168,155,http://www.dcswingexperience.com,"Herndon, VA",Registry Event
+9638,181,DC Swing eXperience (DCSX),2023,11,2023-11-01,,,,,,227,Venray,,Netherlands,"Venray, Netherlands",168,155,http://www.dcswingexperience.com,"Herndon, VA, United States",Registry Event
 10329,288,Midnight Madness,2023,11,2023-11-01,,,,,,21,Dallas,Texas,United States,"Dallas, TX",102,97,http://www.midnightmadnesswcs.com/,"Dallas, TX",Registry Event
 9730,194,Moscow Westie Fest,2023,11,2023-11-01,,,,,,113,Moscow,,Russia,"Moscow, Russia",81,74,http://westiefest.org/,"Moscow, Russia",Registry Event
 8315,31,Mountain Magic,2023,11,2023-11-01,,,,,,28,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV",64,59,http://mountainmagic.dance/,"South Lake Tahoe (near Reno), NV",Registry Event
@@ -435,7 +435,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 8012,8,Boogie By The Bay,2023,10,2023-10-01,,,,,,2,San Francisco,California,United States,"San Francisco, CA",150,146,https://boogiebythebay.com/,"San Francisco, CA",Registry Event
 8682,65,Halloween SwingThing,2023,10,2023-10-01,,,,,,24,Costa Mesa,California,United States,"Costa Mesa, CA",128,122,http://hstswing.com/,"Costa Mesa, CA",Registry Event
 10440,322,Milan Modern Swing,2023,10,2023-10-01,,,,,,132,Milan,,Italy,"Milan, Italy",121,113,https://www.westcoastswingmilan.com/,"Milan, Italy",Registry Event
-9606,178,Montreal Westie Fest,2023,10,2023-10-01,,,,,,86,Montreal,,Canada,"Montreal, Canada",80,75,http://montrealwestiefest.com/,"Montreal, Canada",Registry Event
+9606,178,Montreal Westie Fest,2023,10,2023-10-01,,,,,,7,New York,New York,United States,"New York, NY",80,75,http://montrealwestiefest.com/,"New York, NY",Registry Event
 9620,179,New Zealand Open Swing Dance Championships,2023,10,2023-10-01,,,,,,168,Auckland,,New Zealand,"Auckland, New Zealand",45,44,https://www.streetswing.co.nz/the-new-zealand-open,"Auckland, New Zealand",
 8384,43,Paradise Dance Festival,2023,10,2023-10-01,,,,,,19,Irvine,California,United States,"Irvine, CA",84,77,https://paradisecountrydancefestival.com/,"Irvine, CA",Registry Event
 10454,330,Simply Adelaide West Coast Swing,2023,10,2023-10-01,,,,,,236,Adelaide,,Australia,"Adelaide, Australia",59,54,http://www.simplyadelaidewcs.com.au/,"Adelaide, Australia",Registry Event
@@ -448,7 +448,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 8061,10,Bridgetown Swing Boogie,2023,9,2023-09-01,,,,,,74,Vancouver,Washington,United States,"Vancouver, WA",109,102,,"Vancouver, WA",
 9242,135,Desert City Swing,2023,9,2023-09-01,,,,,,3,Phoenix,Arizona,United States,"Phoenix, AZ",126,126,http://www.desertcityswing.com/,"Phoenix, AZ",Registry Event
 10135,254,Finnfest,2023,9,2023-09-01,,,,,,204,Helsinki,,Finland,"Helsinki, Finland",101,91,http://www.finnfest.fi/,"Helsinki, Finland",Registry Event
-10220,268,Korea Westival,2023,9,2023-09-01,,,,,,213,Jeju,,Republic of Korea,"Jeju, Republic of Korea",60,51,http://koreawestival.com/,"Jeju, Republic of Korea",Registry Event
+10220,268,Korea Westival,2023,9,2023-09-01,,,,,,266,Brno,,Czech Republic,"Brno, Czech Republic",60,51,http://koreawestival.com/,"Brno, Czech Republic",Registry Event
 9193,131,Meet Me In St Louis,2023,9,2023-09-01,,,,,,49,St. Louis,Missouri,United States,"St. Louis, MO",83,80,http://www.mmisl.com/,"St. Louis, MO",Registry Event
 9505,165,Midland Swing Open,2023,9,2023-09-01,,,,,,107,London,,United Kingdom,"London, United Kingdom",116,101,http://www.midlandswingopen.com/,"London, United Kingdom",Registry Event
 9595,177,River City Swing,2023,9,2023-09-01,,,,,,98,Jacksonville,Florida,United States,"Jacksonville, FL",75,69,http://www.jaxwestiefest.com/,"Jacksonville, FL",Registry Event
@@ -540,7 +540,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 10069,238,Winter White,2022,12,2022-12-01,,,,,,223,Oslo,,Norway,"Oslo, Norway",73,72,http://www.winterwhite.no/,"Oslo, Norway",Registry Event
 10227,269,Autumn Swing Challenge,2022,11,2022-11-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",83,80,http://www.asc-budapest.com/,"Budapest, Hungary",Registry Event
 8892,87,CASH Bash,2022,11,2022-11-01,,,,,,96,Cleveland,Ohio,United States,"Cleveland, OH",55,46,https://cashdanceclub.org/cash-bash/,"Cleveland, OH",Registry Event
-9637,181,DC Swing eXperience (DCSX),2022,11,2022-11-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA",141,132,http://www.dcswingexperience.com,"Herndon, VA",Registry Event
+9637,181,DC Swing eXperience (DCSX),2022,11,2022-11-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA",141,132,http://www.dcswingexperience.com,"Herndon, VA, United States",Registry Event
 10328,288,Midnight Madness,2022,11,2022-11-01,,,,,,21,Dallas,Texas,United States,"Dallas, TX",110,102,http://www.midnightmadnesswcs.com/,"Dallas, TX",Registry Event
 9729,194,Moscow Westie Fest,2022,11,2022-11-01,,,,,,113,Moscow,,Russia,"Moscow, Russia",57,57,http://westiefest.org/,"Moscow, Russia",Registry Event
 8314,31,Mountain Magic,2022,11,2022-11-01,,,,,,28,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV",74,65,http://mountainmagic.dance/,"South Lake Tahoe (near Reno), NV",Registry Event
@@ -555,7 +555,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 8681,65,Halloween SwingThing,2022,10,2022-10-01,,,,,,24,Costa Mesa,California,United States,"Costa Mesa, CA",120,118,http://hstswing.com/,"Costa Mesa, CA",Registry Event
 9504,165,Midland Swing Open,2022,10,2022-10-01,,,,,,107,London,,United Kingdom,"London, United Kingdom",65,61,http://www.midlandswingopen.com/,"London, United Kingdom",Registry Event
 10439,322,Milan Modern Swing,2022,10,2022-10-01,,,,,,132,Milan,,Italy,"Milan, Italy",82,81,https://www.westcoastswingmilan.com/,"Milan, Italy",Registry Event
-9619,179,New Zealand Open Swing Dance Championships,2022,10,2022-10-01,,,,,,168,Auckland,,New Zealand,"Auckland, New Zealand",34,34,https://www.streetswing.co.nz/the-new-zealand-open,"Auckland, New Zealand",
+9619,179,New Zealand Open Swing Dance Championships,2022,10,2022-10-01,,,,,,253,Perth,,Australia,"Perth, Australia",34,34,https://www.streetswing.co.nz/the-new-zealand-open,"Auckland, New Zealand",
 8383,43,Paradise Dance Festival,2022,10,2022-10-01,,,,,,19,Irvine,California,United States,"Irvine, CA",70,66,https://paradisecountrydancefestival.com/,"Irvine, CA",Registry Event
 9156,125,Swing City Chicago,2022,10,2022-10-01,,,,,,34,Chicago,Illinois,United States,"Chicago, IL",120,114,https://swingcitychicago.com/,"Chicago, IL",Registry Event
 10212,267,Swustlicious,2022,10,2022-10-01,,,,,,149,Philadelphia,Pennsylvania,United States,"Philadelphia, PA",56,50,http://www.swustlicious.com/,"Philadelphia, PA",Registry Event
@@ -692,7 +692,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 8725,68,US Open Swing Dance Championships,2019,12,2019-12-01,,,,,,22,Los Angeles,California,United States,"Los Angeles, CA",128,124,http://www.theopenswing.com/,"Los Angeles, CA",Registry Event
 10068,238,Winter White,2019,12,2019-12-01,,,,,,223,Oslo,,Norway,"Oslo, Norway",73,73,http://www.winterwhite.no/,"Oslo, Norway",Registry Event
 10226,269,Autumn Swing Challenge,2019,11,2019-11-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",61,61,http://www.asc-budapest.com/,"Budapest, Hungary",Registry Event
-9636,181,DC Swing eXperience (DCSX),2019,11,2019-11-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA",127,125,http://www.dcswingexperience.com,"Herndon, VA",Registry Event
+9636,181,DC Swing eXperience (DCSX),2019,11,2019-11-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA",127,125,http://www.dcswingexperience.com,"Herndon, VA, United States",Registry Event
 9515,166,London SwingVitational,2019,11,2019-11-01,,,,,,212,Windsor,,United Kingdom,"Windsor, United Kingdom",49,49,,"Windsor, United Kingdom",
 10326,288,Midnight Madness,2019,11,2019-11-01,,,,,,21,Dallas,Texas,United States,"Dallas, TX",53,53,http://www.midnightmadnesswcs.com/,"Dallas, TX",Registry Event
 9726,194,Moscow Westie Fest,2019,11,2019-11-01,,,,,,113,Moscow,,Russia,"Moscow, Russia",68,68,http://westiefest.org/,"Moscow, Russia",Registry Event
@@ -708,7 +708,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 10366,294,European Swing Challenge,2019,10,2019-10-01,,,,,,212,Windsor,,United Kingdom,"Windsor, United Kingdom",41,41,https://www.jiveaddiction.com/,"Windsor, United Kingdom",
 8680,65,Halloween SwingThing,2019,10,2019-10-01,,,,,,24,Costa Mesa,California,United States,"Costa Mesa, CA",86,86,http://hstswing.com/,"Costa Mesa, CA",Registry Event
 10438,322,Milan Modern Swing,2019,10,2019-10-01,,,,,,132,Milan,,Italy,"Milan, Italy",80,80,https://www.westcoastswingmilan.com/,"Milan, Italy",Registry Event
-9605,178,Montreal Westie Fest,2019,10,2019-10-01,,,,,,86,Montreal,,Canada,"Montreal, Canada",75,75,http://montrealwestiefest.com/,"Montreal, Canada",Registry Event
+9605,178,Montreal Westie Fest,2019,10,2019-10-01,,,,,,7,New York,New York,United States,"New York, NY",75,75,http://montrealwestiefest.com/,"New York, NY",Registry Event
 9617,179,New Zealand Open Swing Dance Championships,2019,10,2019-10-01,,,,,,168,Auckland,,New Zealand,"Auckland, New Zealand",40,40,https://www.streetswing.co.nz/the-new-zealand-open,"Auckland, New Zealand",
 8382,43,Paradise Dance Festival,2019,10,2019-10-01,,,,,,19,Irvine,California,United States,"Irvine, CA",78,75,https://paradisecountrydancefestival.com/,"Irvine, CA",Registry Event
 9155,125,Swing City Chicago,2019,10,2019-10-01,,,,,,34,Chicago,Illinois,United States,"Chicago, IL",111,111,https://swingcitychicago.com/,"Chicago, IL",Registry Event
@@ -764,7 +764,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 9580,175,French Open West Coast Swing,2019,6,2019-06-01,,,,,,109,Paris,,France,"Paris, France",120,117,http://www.fowcs.com,"Paris, France",
 10142,255,Indy Dance Explosion,2019,6,2019-06-01,,,,,,138,Fort Wayne,Indiana,United States,"Fort Wayne, IN",36,34,http://www.indydancex.com,"Fort Wayne, IN",
 8260,25,J&J O'Rama,2019,6,2019-06-01,,,,,,23,Anaheim,California,United States,"Anaheim, CA",149,149,https://jackandjillorama.com/,"Anaheim, CA",
-10219,268,Korea Westival,2019,6,2019-06-01,,,,,,213,Jeju,,Republic of Korea,"Jeju, Republic of Korea",47,47,http://koreawestival.com/,"Jeju, Republic of Korea",Registry Event
+10219,268,Korea Westival,2019,6,2019-06-01,,,,,,266,Brno,,Czech Republic,"Brno, Czech Republic",47,47,http://koreawestival.com/,"Brno, Czech Republic",Registry Event
 8959,96,Liberty Swing Dance Championships,2019,6,2019-06-01,,,,,,41,New Brunswick,New Jersey,United States,"New Brunswick, NJ",138,138,http://www.libertyswing.com/,"New Brunswick, NJ",Registry Event
 8796,76,Michigan Dance Classic,2019,6,2019-06-01,,,,,,51,Detroit,Michigan,United States,"Detroit, MI",95,95,http://michiganclassicswing.com/,"Detroit, MI",Registry Event
 9709,188,NSW West Coast Swing Dance Championships,2019,6,2019-06-01,,,,,,117,Sydney,,Australia,"Sydney, Australia",42,42,,"Sydney, Australia",
@@ -842,7 +842,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 10067,238,Winter White,2018,12,2018-12-01,,,,,,223,Oslo,,Norway,"Oslo, Norway",73,73,http://www.winterwhite.no/,"Oslo, Norway",Registry Event
 10225,269,Autumn Swing Challenge,2018,11,2018-11-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",74,74,http://www.asc-budapest.com/,"Budapest, Hungary",Registry Event
 8890,87,CASH Bash,2018,11,2018-11-01,,,,,,96,Cleveland,Ohio,United States,"Cleveland, OH",70,63,https://cashdanceclub.org/cash-bash/,"Cleveland, OH",Registry Event
-9635,181,DC Swing eXperience (DCSX),2018,11,2018-11-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA",139,138,http://www.dcswingexperience.com,"Herndon, VA",Registry Event
+9635,181,DC Swing eXperience (DCSX),2018,11,2018-11-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA",139,138,http://www.dcswingexperience.com,"Herndon, VA, United States",Registry Event
 10323,287,Florida Westie Fest,2018,11,2018-11-01,,,,,,53,Tampa,Florida,United States,"Tampa, FL",54,49,,"Tampa, FL",
 9514,166,London SwingVitational,2018,11,2018-11-01,,,,,,212,Windsor,,United Kingdom,"Windsor, United Kingdom",40,40,,"Windsor, United Kingdom",
 10325,288,Midnight Madness,2018,11,2018-11-01,,,,,,21,Dallas,Texas,United States,"Dallas, TX",49,48,http://www.midnightmadnesswcs.com/,"Dallas, TX",Registry Event
@@ -859,7 +859,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 8009,8,Boogie By The Bay,2018,10,2018-10-01,,,,,,2,San Francisco,California,United States,"San Francisco, CA",116,114,https://boogiebythebay.com/,"San Francisco, CA",Registry Event
 10365,294,European Swing Challenge,2018,10,2018-10-01,,,,,,212,Windsor,,United Kingdom,"Windsor, United Kingdom",38,38,https://www.jiveaddiction.com/,"Windsor, United Kingdom",
 8679,65,Halloween SwingThing,2018,10,2018-10-01,,,,,,24,Costa Mesa,California,United States,"Costa Mesa, CA",113,112,http://hstswing.com/,"Costa Mesa, CA",Registry Event
-9604,178,Montreal Westie Fest,2018,10,2018-10-01,,,,,,86,Montreal,,Canada,"Montreal, Canada",83,83,http://montrealwestiefest.com/,"Montreal, Canada",Registry Event
+9604,178,Montreal Westie Fest,2018,10,2018-10-01,,,,,,7,New York,New York,United States,"New York, NY",83,83,http://montrealwestiefest.com/,"New York, NY",Registry Event
 10314,285,Old Town Swing,2018,10,2018-10-01,,,,,,238,Tallinn,,Estonia,"Tallinn, Estonia",63,63,,"Tallinn, Estonia",
 8381,43,Paradise Dance Festival,2018,10,2018-10-01,,,,,,19,Irvine,California,United States,"Irvine, CA",76,75,https://paradisecountrydancefestival.com/,"Irvine, CA",Registry Event
 9154,125,Swing City Chicago,2018,10,2018-10-01,,,,,,34,Chicago,Illinois,United States,"Chicago, IL",118,115,https://swingcitychicago.com/,"Chicago, IL",Registry Event
@@ -919,7 +919,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 9833,207,Dance N Play,2018,6,2018-06-01,,,,,,133,Bend,Oregon,United States,"Bend, OR",56,55,https://dancenplay.com/,"Bend, OR",
 10132,254,Finnfest,2018,6,2018-06-01,,,,,,204,Helsinki,,Finland,"Helsinki, Finland",64,64,http://www.finnfest.fi/,"Helsinki, Finland",Registry Event
 8259,25,J&J O'Rama,2018,6,2018-06-01,,,,,,23,Anaheim,California,United States,"Anaheim, CA",136,135,https://jackandjillorama.com/,"Anaheim, CA",
-10218,268,Korea Westival,2018,6,2018-06-01,,,,,,213,Jeju,,Republic of Korea,"Jeju, Republic of Korea",43,43,http://koreawestival.com/,"Jeju, Republic of Korea",Registry Event
+10218,268,Korea Westival,2018,6,2018-06-01,,,,,,266,Brno,,Czech Republic,"Brno, Czech Republic",43,43,http://koreawestival.com/,"Brno, Czech Republic",Registry Event
 8795,76,Michigan Dance Classic,2018,6,2018-06-01,,,,,,51,Detroit,Michigan,United States,"Detroit, MI",90,89,http://michiganclassicswing.com/,"Detroit, MI",Registry Event
 9616,179,New Zealand Open Swing Dance Championships,2018,6,2018-06-01,,,,,,168,Auckland,,New Zealand,"Auckland, New Zealand",22,22,https://www.streetswing.co.nz/the-new-zealand-open,"Auckland, New Zealand",
 9708,188,NSW West Coast Swing Dance Championships,2018,6,2018-06-01,,,,,,117,Sydney,,Australia,"Sydney, Australia",35,35,,"Sydney, Australia",
@@ -990,7 +990,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 10066,238,Winter White,2017,12,2017-12-01,,,,,,223,Oslo,,Norway,"Oslo, Norway",69,69,http://www.winterwhite.no/,"Oslo, Norway",Registry Event
 10224,269,Autumn Swing Challenge,2017,11,2017-11-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",72,72,http://www.asc-budapest.com/,"Budapest, Hungary",Registry Event
 8889,87,CASH Bash,2017,11,2017-11-01,,,,,,96,Cleveland,Ohio,United States,"Cleveland, OH",88,81,https://cashdanceclub.org/cash-bash/,"Cleveland, OH",Registry Event
-9634,181,DC Swing eXperience (DCSX),2017,11,2017-11-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA",155,155,http://www.dcswingexperience.com,"Herndon, VA",Registry Event
+9634,181,DC Swing eXperience (DCSX),2017,11,2017-11-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA",155,155,http://www.dcswingexperience.com,"Herndon, VA, United States",Registry Event
 10322,287,Florida Westie Fest,2017,11,2017-11-01,,,,,,53,Tampa,Florida,United States,"Tampa, FL",60,53,,"Tampa, FL",
 9513,166,London SwingVitational,2017,11,2017-11-01,,,,,,212,Windsor,,United Kingdom,"Windsor, United Kingdom",50,50,,"Windsor, United Kingdom",
 10324,288,Midnight Madness,2017,11,2017-11-01,,,,,,21,Dallas,Texas,United States,"Dallas, TX",58,55,http://www.midnightmadnesswcs.com/,"Dallas, TX",Registry Event
@@ -1008,7 +1008,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 8678,65,Halloween SwingThing,2017,10,2017-10-01,,,,,,24,Costa Mesa,California,United States,"Costa Mesa, CA",116,115,http://hstswing.com/,"Costa Mesa, CA",Registry Event
 10158,257,Italian Open,2017,10,2017-10-01,,,,,,132,Milan,,Italy,"Milan, Italy",89,89,,"Milan, Italy",
 9500,165,Midland Swing Open,2017,10,2017-10-01,,,,,,107,London,,United Kingdom,"London, United Kingdom",50,50,http://www.midlandswingopen.com/,"London, United Kingdom",Registry Event
-9603,178,Montreal Westie Fest,2017,10,2017-10-01,,,,,,86,Montreal,,Canada,"Montreal, Canada",68,68,http://montrealwestiefest.com/,"Montreal, Canada",Registry Event
+9603,178,Montreal Westie Fest,2017,10,2017-10-01,,,,,,7,New York,New York,United States,"New York, NY",68,68,http://montrealwestiefest.com/,"New York, NY",Registry Event
 10313,285,Old Town Swing,2017,10,2017-10-01,,,,,,238,Tallinn,,Estonia,"Tallinn, Estonia",52,52,,"Tallinn, Estonia",
 8380,43,Paradise Dance Festival,2017,10,2017-10-01,,,,,,19,Irvine,California,United States,"Irvine, CA",80,77,https://paradisecountrydancefestival.com/,"Irvine, CA",Registry Event
 9153,125,Swing City Chicago,2017,10,2017-10-01,,,,,,34,Chicago,Illinois,United States,"Chicago, IL",122,122,https://swingcitychicago.com/,"Chicago, IL",Registry Event
@@ -1067,7 +1067,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 10131,254,Finnfest,2017,6,2017-06-01,,,,,,204,Helsinki,,Finland,"Helsinki, Finland",49,49,http://www.finnfest.fi/,"Helsinki, Finland",Registry Event
 8258,25,J&J O'Rama,2017,6,2017-06-01,,,,,,23,Anaheim,California,United States,"Anaheim, CA",135,134,https://jackandjillorama.com/,"Anaheim, CA",
 10305,283,Kazan EL Fest,2017,6,2017-06-01,,,,,,263,Kazan,,Russia,"Kazan, Russia",35,35,,"Kazan, Russia",
-10217,268,Korea Westival,2017,6,2017-06-01,,,,,,213,Jeju,,Republic of Korea,"Jeju, Republic of Korea",45,45,http://koreawestival.com/,"Jeju, Republic of Korea",Registry Event
+10217,268,Korea Westival,2017,6,2017-06-01,,,,,,266,Brno,,Czech Republic,"Brno, Czech Republic",45,45,http://koreawestival.com/,"Brno, Czech Republic",Registry Event
 8794,76,Michigan Dance Classic,2017,6,2017-06-01,,,,,,51,Detroit,Michigan,United States,"Detroit, MI",92,90,http://michiganclassicswing.com/,"Detroit, MI",Registry Event
 9707,188,NSW West Coast Swing Dance Championships,2017,6,2017-06-01,,,,,,117,Sydney,,Australia,"Sydney, Australia",42,42,,"Sydney, Australia",
 9069,117,Orange Blossom Dance Festival,2017,6,2017-06-01,,,,,,82,Orlando,Florida,United States,"Orlando, FL",45,40,http://www.orangeblossomdance.net,"Orlando, FL",
@@ -1135,7 +1135,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 10065,238,Winter White,2016,12,2016-12-01,,,,,,223,Oslo,,Norway,"Oslo, Norway",50,50,http://www.winterwhite.no/,"Oslo, Norway",Registry Event
 10223,269,Autumn Swing Challenge,2016,11,2016-11-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",49,49,http://www.asc-budapest.com/,"Budapest, Hungary",Registry Event
 8888,87,CASH Bash,2016,11,2016-11-01,,,,,,96,Cleveland,Ohio,United States,"Cleveland, OH",85,75,https://cashdanceclub.org/cash-bash/,"Cleveland, OH",Registry Event
-9633,181,DC Swing eXperience (DCSX),2016,11,2016-11-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA",131,130,http://www.dcswingexperience.com,"Herndon, VA",Registry Event
+9633,181,DC Swing eXperience (DCSX),2016,11,2016-11-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA",131,130,http://www.dcswingexperience.com,"Herndon, VA, United States",Registry Event
 9723,194,Moscow Westie Fest,2016,11,2016-11-01,,,,,,113,Moscow,,Russia,"Moscow, Russia",88,88,http://westiefest.org/,"Moscow, Russia",Registry Event
 8310,31,Mountain Magic,2016,11,2016-11-01,,,,,,28,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV",68,61,http://mountainmagic.dance/,"South Lake Tahoe (near Reno), NV",Registry Event
 10000,229,Scandinavian Open,2016,11,2016-11-01,,,,,,199,Stockholm,,Sweden,"Stockholm, Sweden",75,75,http://www.snowcs.se/,"Stockholm, Sweden",Registry Event
@@ -1149,9 +1149,9 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 8056,10,Bridgetown Swing Boogie,2016,10,2016-10-01,,,,,,74,Vancouver,Washington,United States,"Vancouver, WA",119,119,,"Vancouver, WA",
 8677,65,Halloween SwingThing,2016,10,2016-10-01,,,,,,24,Costa Mesa,California,United States,"Costa Mesa, CA",96,93,http://hstswing.com/,"Costa Mesa, CA",Registry Event
 10157,257,Italian Open,2016,10,2016-10-01,,,,,,132,Milan,,Italy,"Milan, Italy",95,95,,"Milan, Italy",
-10216,268,Korea Westival,2016,10,2016-10-01,,,,,,213,Jeju,,Republic of Korea,"Jeju, Republic of Korea",32,32,http://koreawestival.com/,"Jeju, Republic of Korea",Registry Event
+10216,268,Korea Westival,2016,10,2016-10-01,,,,,,266,Brno,,Czech Republic,"Brno, Czech Republic",32,32,http://koreawestival.com/,"Brno, Czech Republic",Registry Event
 9499,165,Midland Swing Open,2016,10,2016-10-01,,,,,,107,London,,United Kingdom,"London, United Kingdom",50,50,http://www.midlandswingopen.com/,"London, United Kingdom",Registry Event
-9602,178,Montreal Westie Fest,2016,10,2016-10-01,,,,,,86,Montreal,,Canada,"Montreal, Canada",75,75,http://montrealwestiefest.com/,"Montreal, Canada",Registry Event
+9602,178,Montreal Westie Fest,2016,10,2016-10-01,,,,,,7,New York,New York,United States,"New York, NY",75,75,http://montrealwestiefest.com/,"New York, NY",Registry Event
 9614,179,New Zealand Open Swing Dance Championships,2016,10,2016-10-01,,,,,,168,Auckland,,New Zealand,"Auckland, New Zealand",30,30,https://www.streetswing.co.nz/the-new-zealand-open,"Auckland, New Zealand",
 8379,43,Paradise Dance Festival,2016,10,2016-10-01,,,,,,19,Irvine,California,United States,"Irvine, CA",83,75,https://paradisecountrydancefestival.com/,"Irvine, CA",Registry Event
 9152,125,Swing City Chicago,2016,10,2016-10-01,,,,,,34,Chicago,Illinois,United States,"Chicago, IL",127,124,https://swingcitychicago.com/,"Chicago, IL",Registry Event
@@ -1268,7 +1268,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 10074,239,The Challenge,2015,12,2015-12-01,,,,,,21,Dallas,Texas,United States,"Dallas, TX",115,113,,"Dallas, TX",
 10064,238,Winter White,2015,12,2015-12-01,,,,,,223,Oslo,,Norway,"Oslo, Norway",54,54,http://www.winterwhite.no/,"Oslo, Norway",Registry Event
 8887,87,CASH Bash,2015,11,2015-11-01,,,,,,96,Cleveland,Ohio,United States,"Cleveland, OH",84,83,https://cashdanceclub.org/cash-bash/,"Cleveland, OH",Registry Event
-9632,181,DC Swing eXperience (DCSX),2015,11,2015-11-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA",124,121,http://www.dcswingexperience.com,"Herndon, VA",Registry Event
+9632,181,DC Swing eXperience (DCSX),2015,11,2015-11-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA",124,121,http://www.dcswingexperience.com,"Herndon, VA, United States",Registry Event
 8676,65,Halloween SwingThing,2015,11,2015-11-01,,,,,,24,Costa Mesa,California,United States,"Costa Mesa, CA",107,104,http://hstswing.com/,"Costa Mesa, CA",Registry Event
 9512,166,London SwingVitational,2015,11,2015-11-01,,,,,,212,Windsor,,United Kingdom,"Windsor, United Kingdom",55,55,,"Windsor, United Kingdom",
 9722,194,Moscow Westie Fest,2015,11,2015-11-01,,,,,,113,Moscow,,Russia,"Moscow, Russia",80,80,http://westiefest.org/,"Moscow, Russia",Registry Event
@@ -1282,7 +1282,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 9627,180,Australian Open Swing Dance Championships,2015,10,2015-10-01,,,,,,174,Melbourne,,Australia,"Melbourne, Australia",50,50,,"Melbourne, Australia",
 8006,8,Boogie By The Bay,2015,10,2015-10-01,,,,,,2,San Francisco,California,United States,"San Francisco, CA",120,118,https://boogiebythebay.com/,"San Francisco, CA",Registry Event
 10156,257,Italian Open,2015,10,2015-10-01,,,,,,132,Milan,,Italy,"Milan, Italy",110,110,,"Milan, Italy",
-9601,178,Montreal Westie Fest,2015,10,2015-10-01,,,,,,86,Montreal,,Canada,"Montreal, Canada",69,69,http://montrealwestiefest.com/,"Montreal, Canada",Registry Event
+9601,178,Montreal Westie Fest,2015,10,2015-10-01,,,,,,7,New York,New York,United States,"New York, NY",69,69,http://montrealwestiefest.com/,"New York, NY",Registry Event
 9613,179,New Zealand Open Swing Dance Championships,2015,10,2015-10-01,,,,,,168,Auckland,,New Zealand,"Auckland, New Zealand",39,39,https://www.streetswing.co.nz/the-new-zealand-open,"Auckland, New Zealand",
 8378,43,Paradise Dance Festival,2015,10,2015-10-01,,,,,,19,Irvine,California,United States,"Irvine, CA",63,58,https://paradisecountrydancefestival.com/,"Irvine, CA",Registry Event
 10037,234,Philly Swing Classic,2015,10,2015-10-01,,,,,,66,Wilmington,Delaware,United States,"Wilmington, DE",79,76,http://www.phillyswing.com,"Wilmington, DE, United States",Registry Event
@@ -1391,7 +1391,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 10073,239,The Challenge,2014,12,2014-12-01,,,,,,21,Dallas,Texas,United States,"Dallas, TX",100,99,,"Dallas, TX",
 10063,238,Winter White,2014,12,2014-12-01,,,,,,223,Oslo,,Norway,"Oslo, Norway",57,57,http://www.winterwhite.no/,"Oslo, Norway",Registry Event
 8886,87,CASH Bash,2014,11,2014-11-01,,,,,,96,Cleveland,Ohio,United States,"Cleveland, OH",85,83,https://cashdanceclub.org/cash-bash/,"Cleveland, OH",Registry Event
-9631,181,DC Swing eXperience (DCSX),2014,11,2014-11-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA",101,101,http://www.dcswingexperience.com,"Herndon, VA",Registry Event
+9631,181,DC Swing eXperience (DCSX),2014,11,2014-11-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA",101,101,http://www.dcswingexperience.com,"Herndon, VA, United States",Registry Event
 9721,194,Moscow Westie Fest,2014,11,2014-11-01,,,,,,113,Moscow,,Russia,"Moscow, Russia",78,78,http://westiefest.org/,"Moscow, Russia",Registry Event
 8308,31,Mountain Magic,2014,11,2014-11-01,,,,,,28,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV",65,61,http://mountainmagic.dance/,"South Lake Tahoe (near Reno), NV",Registry Event
 8831,79,Sea to Sky,2014,11,2014-11-01,,,,,,30,Seattle,Washington,United States,"Seattle, WA",86,85,http://Seatoskywcs.com,"Seattle, WA",
@@ -1510,7 +1510,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 9870,213,Swingtimate,2013,12,2013-12-01,,,,,,169,Gold Coast,,Australia,"Gold Coast, Australia",54,54,https://rawconnection.com.au/swingtimate/,"Gold Coast, Australia",
 9858,212,The After Party (TAP),2013,12,2013-12-01,,,,,,73,Orange County,California,United States,"Orange County, CA",86,86,http://www.tapwcs.com/,"Orange County, CA",Registry Event
 8719,68,US Open Swing Dance Championships,2013,12,2013-12-01,,,,,,22,Los Angeles,California,United States,"Los Angeles, CA",109,103,http://www.theopenswing.com/,"Los Angeles, CA",Registry Event
-9630,181,DC Swing eXperience (DCSX),2013,11,2013-11-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA",91,91,http://www.dcswingexperience.com,"Herndon, VA",Registry Event
+9630,181,DC Swing eXperience (DCSX),2013,11,2013-11-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA",91,91,http://www.dcswingexperience.com,"Herndon, VA, United States",Registry Event
 9511,166,London SwingVitational,2013,11,2013-11-01,,,,,,212,Windsor,,United Kingdom,"Windsor, United Kingdom",68,68,,"Windsor, United Kingdom",
 9720,194,Moscow Westie Fest,2013,11,2013-11-01,,,,,,113,Moscow,,Russia,"Moscow, Russia",74,74,http://westiefest.org/,"Moscow, Russia",Registry Event
 8307,31,Mountain Magic,2013,11,2013-11-01,,,,,,28,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV",62,60,http://mountainmagic.dance/,"South Lake Tahoe (near Reno), NV",Registry Event
@@ -1522,7 +1522,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 8004,8,Boogie By The Bay,2013,10,2013-10-01,,,,,,2,San Francisco,California,United States,"San Francisco, CA",122,121,https://boogiebythebay.com/,"San Francisco, CA",Registry Event
 8674,65,Halloween SwingThing,2013,10,2013-10-01,,,,,,24,Costa Mesa,California,United States,"Costa Mesa, CA",100,98,http://hstswing.com/,"Costa Mesa, CA",Registry Event
 9841,210,Korean Open WCS Championships,2013,10,2013-10-01,,,,,,172,Incheon,,Republic of Korea,"Incheon, Republic of Korea",40,40,https://www.kopenwcs.com/,"Incheon, Republic of Korea",Registry Event
-9600,178,Montreal Westie Fest,2013,10,2013-10-01,,,,,,86,Montreal,,Canada,"Montreal, Canada",68,68,http://montrealwestiefest.com/,"Montreal, Canada",Registry Event
+9600,178,Montreal Westie Fest,2013,10,2013-10-01,,,,,,7,New York,New York,United States,"New York, NY",68,68,http://montrealwestiefest.com/,"New York, NY",Registry Event
 9611,179,New Zealand Open Swing Dance Championships,2013,10,2013-10-01,,,,,,168,Auckland,,New Zealand,"Auckland, New Zealand",30,30,https://www.streetswing.co.nz/the-new-zealand-open,"Auckland, New Zealand",
 8376,43,Paradise Dance Festival,2013,10,2013-10-01,,,,,,19,Irvine,California,United States,"Irvine, CA",70,67,https://paradisecountrydancefestival.com/,"Irvine, CA",Registry Event
 9149,125,Swing City Chicago,2013,10,2013-10-01,,,,,,34,Chicago,Illinois,United States,"Chicago, IL",113,108,https://swingcitychicago.com/,"Chicago, IL",Registry Event
@@ -1611,7 +1611,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 8770,75,UCWDC Country Dance World Championship,2013,1,2013-01-01,,,,,,21,Dallas,Texas,United States,"Dallas, TX",45,45,https://ucwdc.org/worlds-home/,"Dallas, TX",
 9166,126,Chico Dance Sensation,2012,12,2012-12-01,,,,,,101,Chico,California,United States,"Chico, CA",97,97,,"Chico, CA",
 8884,87,CASH Bash,2012,11,2012-11-01,,,,,,96,Cleveland,Ohio,United States,"Cleveland, OH",69,67,https://cashdanceclub.org/cash-bash/,"Cleveland, OH",Registry Event
-9629,181,DC Swing eXperience (DCSX),2012,11,2012-11-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA",100,100,http://www.dcswingexperience.com,"Herndon, VA",Registry Event
+9629,181,DC Swing eXperience (DCSX),2012,11,2012-11-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA",100,100,http://www.dcswingexperience.com,"Herndon, VA, United States",Registry Event
 9510,166,London SwingVitational,2012,11,2012-11-01,,,,,,212,Windsor,,United Kingdom,"Windsor, United Kingdom",52,52,,"Windsor, United Kingdom",
 9719,194,Moscow Westie Fest,2012,11,2012-11-01,,,,,,113,Moscow,,Russia,"Moscow, Russia",66,66,http://westiefest.org/,"Moscow, Russia",Registry Event
 8306,31,Mountain Magic,2012,11,2012-11-01,,,,,,28,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV",75,70,http://mountainmagic.dance/,"South Lake Tahoe (near Reno), NV",Registry Event
@@ -1622,7 +1622,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 9624,180,Australian Open Swing Dance Championships,2012,10,2012-10-01,,,,,,174,Melbourne,,Australia,"Melbourne, Australia",42,42,,"Melbourne, Australia",
 8003,8,Boogie By The Bay,2012,10,2012-10-01,,,,,,2,San Francisco,California,United States,"San Francisco, CA",139,139,https://boogiebythebay.com/,"San Francisco, CA",Registry Event
 8673,65,Halloween SwingThing,2012,10,2012-10-01,,,,,,24,Costa Mesa,California,United States,"Costa Mesa, CA",92,92,http://hstswing.com/,"Costa Mesa, CA",Registry Event
-9599,178,Montreal Westie Fest,2012,10,2012-10-01,,,,,,86,Montreal,,Canada,"Montreal, Canada",60,60,http://montrealwestiefest.com/,"Montreal, Canada",Registry Event
+9599,178,Montreal Westie Fest,2012,10,2012-10-01,,,,,,7,New York,New York,United States,"New York, NY",60,60,http://montrealwestiefest.com/,"New York, NY",Registry Event
 9610,179,New Zealand Open Swing Dance Championships,2012,10,2012-10-01,,,,,,168,Auckland,,New Zealand,"Auckland, New Zealand",30,30,https://www.streetswing.co.nz/the-new-zealand-open,"Auckland, New Zealand",
 8375,43,Paradise Dance Festival,2012,10,2012-10-01,,,,,,19,Irvine,California,United States,"Irvine, CA",55,50,https://paradisecountrydancefestival.com/,"Irvine, CA",Registry Event
 9148,125,Swing City Chicago,2012,10,2012-10-01,,,,,,34,Chicago,Illinois,United States,"Chicago, IL",102,101,https://swingcitychicago.com/,"Chicago, IL",Registry Event
@@ -1702,7 +1702,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 9386,152,Worlds UCWDC,2012,1,2012-01-01,,,,,,82,Orlando,Florida,United States,"Orlando, FL",43,39,http://www.ucwdcworlds.com/,"Orlando, FL",Registry Event
 9165,126,Chico Dance Sensation,2011,12,2011-12-01,,,,,,101,Chico,California,United States,"Chico, CA",88,88,,"Chico, CA",
 8883,87,CASH Bash,2011,11,2011-11-01,,,,,,96,Cleveland,Ohio,United States,"Cleveland, OH",51,51,https://cashdanceclub.org/cash-bash/,"Cleveland, OH",Registry Event
-9628,181,DC Swing eXperience (DCSX),2011,11,2011-11-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA",70,70,http://www.dcswingexperience.com,"Herndon, VA",Registry Event
+9628,181,DC Swing eXperience (DCSX),2011,11,2011-11-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA",70,70,http://www.dcswingexperience.com,"Herndon, VA, United States",Registry Event
 9509,166,London SwingVitational,2011,11,2011-11-01,,,,,,212,Windsor,,United Kingdom,"Windsor, United Kingdom",41,41,,"Windsor, United Kingdom",
 8305,31,Mountain Magic,2011,11,2011-11-01,,,,,,28,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV",79,78,http://mountainmagic.dance/,"South Lake Tahoe (near Reno), NV",Registry Event
 9384,151,Sunshine State Dance Challenge,2011,11,2011-11-01,,,,,,55,Fort Lauderdale,Florida,United States,"Fort Lauderdale, FL",38,36,,"Fort Lauderdale, FL",
@@ -1713,7 +1713,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 8002,8,Boogie By The Bay,2011,10,2011-10-01,,,,,,2,San Francisco,California,United States,"San Francisco, CA",135,135,https://boogiebythebay.com/,"San Francisco, CA",Registry Event
 8672,65,Halloween SwingThing,2011,10,2011-10-01,,,,,,24,Costa Mesa,California,United States,"Costa Mesa, CA",90,82,http://hstswing.com/,"Costa Mesa, CA",Registry Event
 9494,165,Midland Swing Open,2011,10,2011-10-01,,,,,,107,London,,United Kingdom,"London, United Kingdom",40,40,http://www.midlandswingopen.com/,"London, United Kingdom",Registry Event
-9598,178,Montreal Westie Fest,2011,10,2011-10-01,,,,,,86,Montreal,,Canada,"Montreal, Canada",50,50,http://montrealwestiefest.com/,"Montreal, Canada",Registry Event
+9598,178,Montreal Westie Fest,2011,10,2011-10-01,,,,,,7,New York,New York,United States,"New York, NY",50,50,http://montrealwestiefest.com/,"New York, NY",Registry Event
 9609,179,New Zealand Open Swing Dance Championships,2011,10,2011-10-01,,,,,,168,Auckland,,New Zealand,"Auckland, New Zealand",28,28,https://www.streetswing.co.nz/the-new-zealand-open,"Auckland, New Zealand",
 8374,43,Paradise Dance Festival,2011,10,2011-10-01,,,,,,19,Irvine,California,United States,"Irvine, CA",53,50,https://paradisecountrydancefestival.com/,"Irvine, CA",Registry Event
 8828,79,Sea to Sky,2011,10,2011-10-01,,,,,,30,Seattle,Washington,United States,"Seattle, WA",77,76,http://Seatoskywcs.com,"Seattle, WA",

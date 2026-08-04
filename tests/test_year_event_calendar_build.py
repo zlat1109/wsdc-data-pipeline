@@ -14,7 +14,9 @@ def test_build_year_event_calendar_smoke():
     if not (DATA / "event_editions.csv").exists():
         return
     payload = build_year_event_calendar(DATA, as_of=date(2026, 8, 2), year_radius=2)
-    assert 2024 not in payload["years"]  # no day-precision data
+    # Cross-year Dec->Jan weekends are assigned to results year, so selector may
+    # include 2024 when starts fall in Dec 2024.
+    assert 2024 in payload["years"]
     assert 2025 in payload["years"]
     assert 2026 in payload["years"]
     assert payload["default_year"] == 2026

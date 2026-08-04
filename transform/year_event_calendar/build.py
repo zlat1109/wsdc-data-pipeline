@@ -407,18 +407,42 @@ def _rows_from_editions(data_dir: Path) -> list[dict]:
     rows: list[dict] = []
     for rec in df.to_dict(orient="records"):
         start = _parse_date(rec.get("start_date"))
+        stats_only = False
+        try:
+            result_rows = int(float(rec.get("result_rows") or 0))
+        except (TypeError, ValueError):
+            result_rows = 0
+        year_raw = rec.get("event_year")
+        try:
+            year_i = int(year_raw) if year_raw is not None and not pd.isna(year_raw) else None
+        except (TypeError, ValueError):
+            year_i = None
         if start is None:
-            continue
+            # Results are source of truth: keep result-backed editions even when
+            # calendar/list dates were dropped. Do not paint day cells.
+            edition_date = _parse_date(rec.get("edition_date"))
+            if edition_date is None or result_rows <= 0:
+                continue
+            start = edition_date
+            stats_only = True
+            if year_i is None:
+                year_i = edition_date.year
         # Month-only placeholders (YYYY-MM-01 with no real calendar day) — skip
         # when date_source is missing and day is 1 and no calendar_status.
         # Keep rows that have calendar_status or date_source day.
         date_source = str(rec.get("date_source") or "").strip().lower()
         cal_status = _norm_status_calendar(rec.get("calendar_status"))
-        if start.day == 1 and not cal_status and date_source not in {
-            "wsdc_calendar",
-            "wsdc_events_list",
-            "day",
-        }:
+        if (
+            not stats_only
+            and start.day == 1
+            and not cal_status
+            and date_source
+            not in {
+                "wsdc_calendar",
+                "wsdc_events_list",
+                "day",
+            }
+        ):
             # Still allow if explicitly marked scheduled with day source elsewhere;
             # bare month stubs are not calendar-grade.
             if date_source in {"", "nan", "month", "edition"}:
@@ -443,6 +467,8 @@ def _rows_from_editions(data_dir: Path) -> list[dict]:
         except (TypeError, ValueError):
             loc_i = None
         name = _clean_name(rec.get("event_name"))
+        if year_i is None:
+            year_i = start.year
         rows.append(
             {
                 "event_id": eid_i,
@@ -455,8 +481,10 @@ def _rows_from_editions(data_dir: Path) -> list[dict]:
                 "city": _clean_name(rec.get("place_city")),
                 "country": _clean_name(rec.get("place_country")),
                 "location_id": loc_i,
-                "source": "event_editions",
-                "year": start.year,
+                "source": "event_editions_month_only" if stats_only else "event_editions",
+                "year": year_i,
+                "stats_only": stats_only,
+                "has_results": result_rows > 0,
             }
         )
     return rows
@@ -488,6 +516,11 @@ def _rows_from_scheduled(data_dir: Path) -> list[dict]:
         name = _clean_name(rec.get("event_name")) or _clean_name(rec.get("canonical_name"))
         status_flags = rec.get("status_event") or rec.get("registry_trial_status")
         kind_from_schedule = _status_flags_say_trial(status_flags)
+        year_raw = rec.get("results_year")
+        try:
+            year_i = int(year_raw) if year_raw is not None and not pd.isna(year_raw) else start.year
+        except (TypeError, ValueError):
+            year_i = start.year
         rows.append(
             {
                 "event_id": eid_i,
@@ -502,7 +535,7 @@ def _rows_from_scheduled(data_dir: Path) -> list[dict]:
                 "country": _clean_name(rec.get("country")),
                 "location_id": None,
                 "source": "scheduled_events",
-                "year": start.year,
+                "year": year_i,
             }
         )
     return rows
@@ -535,16 +568,30 @@ def _prefer_row(existing: dict, new: dict) -> dict:
         "scheduled_events": 4,
         "edition_calendar_dates": 3,
         "event_editions": 2,
+        "event_editions_month_only": 1,
         "expected_yoy": 0,
     }
-    e_score = (rank.get(existing["status"], 0), src_rank.get(existing.get("source"), 0))
-    n_score = (rank.get(new["status"], 0), src_rank.get(new.get("source"), 0))
+    e_score = (
+        rank.get(existing["status"], 0),
+        src_rank.get(existing.get("source"), 0),
+        0 if existing.get("stats_only") else 1,
+    )
+    n_score = (
+        rank.get(new["status"], 0),
+        src_rank.get(new.get("source"), 0),
+        0 if new.get("stats_only") else 1,
+    )
     winner = dict(new if n_score >= e_score else existing)
     loser = existing if n_score >= e_score else new
     # Keep richer geo/url/end from either
     for key in ("url", "city", "country", "location_id", "kind", "name", "end_date"):
         if not winner.get(key) and loser.get(key):
             winner[key] = loser[key]
+    if winner.get("stats_only") and not loser.get("stats_only"):
+        winner["stats_only"] = False
+        winner["source"] = loser.get("source") or winner.get("source")
+    if loser.get("has_results"):
+        winner["has_results"] = True
     # Do not inherit kind_from_schedule from a losing same-year sibling
     # (e.g. Trial schedule in Sep vs hiatus edition in Dec for one event_id).
     if not winner.get("kind_from_schedule"):
@@ -560,6 +607,8 @@ def _fill_missing_end_dates(rows: list[dict]) -> None:
     """
     duration_by_eid: dict[int, int] = {}
     for row in rows:
+        if row.get("stats_only"):
+            continue
         eid = row.get("event_id")
         start = row.get("start_date")
         end = row.get("end_date")
@@ -574,6 +623,8 @@ def _fill_missing_end_dates(rows: list[dict]) -> None:
             duration_by_eid[int(eid)] = days
 
     for row in rows:
+        if row.get("stats_only"):
+            continue
         start = row.get("start_date")
         if not isinstance(start, date):
             continue
@@ -585,6 +636,34 @@ def _fill_missing_end_dates(rows: list[dict]) -> None:
             continue
         _thu, sun = weekend_bounds(start)
         row["end_date"] = sun if sun >= start else start
+
+
+def _mark_has_results(rows: list[dict], data_dir: Path) -> None:
+    """Flag calendar rows whose (event_id, year) has competition results."""
+    path = Path(data_dir) / "event_editions.csv"
+    keys: set[tuple[int, int]] = set()
+    if path.exists():
+        df = pd.read_csv(path)
+        for rec in df.to_dict(orient="records"):
+            try:
+                rr = int(float(rec.get("result_rows") or 0))
+            except (TypeError, ValueError):
+                rr = 0
+            if rr <= 0:
+                continue
+            try:
+                eid = int(rec["event_id"])
+                year = int(rec["event_year"])
+            except (TypeError, ValueError, KeyError):
+                continue
+            keys.add((eid, year))
+    for row in rows:
+        eid = row.get("event_id")
+        y = _row_year(row)
+        if eid is None or y is None:
+            continue
+        if (int(eid), y) in keys:
+            row["has_results"] = True
 
 
 def _resolve_merge_event_id(eid: int | None) -> int | None:
@@ -705,11 +784,15 @@ def _dedupe_rows(rows: list[dict], *, cat_by_id: dict[int, dict] | None = None) 
         start = row.get("start_date")
         if not isinstance(start, date):
             continue
+        row_year = _row_year(row)
+        if row_year is None:
+            continue
         # Keep distinct weekends for the same series (relocation / false hiatus
         # matches must not erase a real scheduled weekend in the same year).
+        # Use edition/results year so Dec→Jan weekends dedupe inside the results year.
         key = (
             eid if eid is not None else row.get("name"),
-            start.year,
+            row_year,
             weekend_key(start),
         )
         if key in by_key:
@@ -928,6 +1011,10 @@ def _serialize_event(row: dict) -> dict:
     if row.get("projected_from_year") is not None:
         out["projected_from_year"] = row["projected_from_year"]
         out["projected_from_start"] = row.get("projected_from_start")
+    if row.get("stats_only"):
+        out["stats_only"] = True
+    if row.get("has_results"):
+        out["has_results"] = True
     return out
 
 
@@ -1036,6 +1123,7 @@ def build_year_event_calendar(
         r
         for r in merged
         if r["status"] == STATUS_CONFIRMED
+        and not r.get("stats_only")
         and isinstance(r.get("start_date"), date)
         and r.get("event_id") not in inactive_ids
     ]
@@ -1087,6 +1175,7 @@ def build_year_event_calendar(
         first_points_year=first_points_year,
         catalog=catalog,
     )
+    _mark_has_results(all_rows, data_dir)
 
     # Drop nameless rows after catalog enrichment
     named_rows = [r for r in all_rows if _clean_name(r.get("name"))]

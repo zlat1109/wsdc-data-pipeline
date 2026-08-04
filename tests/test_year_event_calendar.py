@@ -569,3 +569,120 @@ def test_apply_kind_rules_first_year_trial_then_registry():
     assert rows[3]["kind"] == "registry"  # expected never trial
     assert rows[4]["kind"] == "trial"  # 2025 first points heuristic
     assert rows[5]["kind"] == "trial"  # locked from schedule
+
+
+def test_rows_from_editions_stats_only_and_results_year(tmp_path):
+    from transform.year_event_calendar.build import (
+        _rows_from_editions,
+        _serialize_event,
+    )
+
+    path = tmp_path / "event_editions.csv"
+    pd.DataFrame(
+        [
+            {
+                "edition_id": 1,
+                "event_id": 221,
+                "event_name": "Gateway",
+                "event_year": 2025,
+                "event_month": 7,
+                "edition_date": "2025-07-01",
+                "start_date": "",
+                "end_date": "",
+                "date_source": "edition",
+                "calendar_status": "",
+                "event_occurred": "",
+                "location_id": "",
+                "place_city": "",
+                "place_state": "",
+                "place_country": "",
+                "location_raw": "",
+                "result_rows": 120,
+                "unique_dancers": 50,
+                "url": "",
+                "typical_location": "",
+                "registry_status": "",
+            },
+            {
+                "edition_id": 2,
+                "event_id": 42,
+                "event_name": "Floorplay",
+                "event_year": 2025,
+                "event_month": 1,
+                "edition_date": "2025-01-01",
+                "start_date": "2024-12-27",
+                "end_date": "2025-01-01",
+                "date_source": "wsdc_calendar",
+                "calendar_status": "confirmed",
+                "event_occurred": True,
+                "location_id": "",
+                "place_city": "",
+                "place_state": "",
+                "place_country": "",
+                "location_raw": "",
+                "result_rows": 200,
+                "unique_dancers": 80,
+                "url": "",
+                "typical_location": "",
+                "registry_status": "",
+            },
+        ]
+    ).to_csv(path, index=False)
+    rows = _rows_from_editions(tmp_path)
+    by_eid = {r["event_id"]: r for r in rows}
+    assert by_eid[221]["stats_only"] is True
+    assert by_eid[221]["has_results"] is True
+    assert by_eid[221]["year"] == 2025
+    assert by_eid[221]["source"] == "event_editions_month_only"
+    assert by_eid[42]["stats_only"] is False
+    assert by_eid[42]["year"] == 2025
+    assert by_eid[42]["start_date"].year == 2024
+    ser = _serialize_event(by_eid[221])
+    assert ser["stats_only"] is True
+    assert ser["has_results"] is True
+    assert ser["year"] == 2025
+
+
+def test_dedupe_prefers_day_dates_over_stats_only():
+    from transform.year_event_calendar.build import _dedupe_rows
+
+    rows = [
+        {
+            "event_id": 221,
+            "name": "Gateway",
+            "start_date": date(2025, 7, 1),
+            "end_date": None,
+            "status": "confirmed",
+            "source": "event_editions_month_only",
+            "year": 2025,
+            "stats_only": True,
+            "has_results": True,
+        },
+        {
+            "event_id": 221,
+            "name": "Gateway",
+            "start_date": date(2025, 7, 3),
+            "end_date": date(2025, 7, 6),
+            "status": "confirmed",
+            "source": "edition_calendar_dates",
+            "year": 2025,
+            "has_results": True,
+        },
+    ]
+    # Different weekends — both kept
+    out = _dedupe_rows(rows)
+    assert len(out) == 2
+
+    same_weekend = [
+        rows[0],
+        {
+            **rows[1],
+            "start_date": date(2025, 7, 1),
+            "end_date": date(2025, 7, 4),
+        },
+    ]
+    merged = _dedupe_rows(same_weekend)
+    assert len(merged) == 1
+    assert merged[0].get("stats_only") is not True
+    assert merged[0]["source"] == "edition_calendar_dates"
+    assert merged[0]["has_results"] is True
