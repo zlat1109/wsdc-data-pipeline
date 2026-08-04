@@ -40,6 +40,11 @@ TRIAL_FIRST_YEAR_HEURISTIC_FROM = 2025
 # Public calendar uses four continents (South America folds into America).
 CALENDAR_CONTINENTS = ("America", "Europe", "Asia", "Australia")
 
+# Series successor links for calendar expected suppression (keep registry ids split).
+SERIES_SUCCESSOR_MAP: dict[int, int] = {
+    264: 493,  # Swedish Swing Summer Camp -> UpTown Swing
+}
+
 _NAME_ALIAS_LOOKUP = {
     **{k.lower(): v for k, v in RESULT_TO_CATALOG_EVENT_NAME.items()},
     **{k.lower(): v for k, v in EVENT_NAME_VARIANT_TO_CATALOG.items()},
@@ -925,6 +930,21 @@ def _row_year(row: dict) -> int | None:
     return None
 
 
+def _series_linked_ids(event_id: int | None) -> set[int]:
+    """Return all known linked ids in the same rebranded series."""
+    if event_id is None:
+        return set()
+    eid = int(event_id)
+    linked = {eid}
+    nxt = SERIES_SUCCESSOR_MAP.get(eid)
+    if nxt is not None:
+        linked.add(int(nxt))
+    for src, dst in SERIES_SUCCESSOR_MAP.items():
+        if int(dst) == eid:
+            linked.add(int(src))
+    return linked
+
+
 def _latest_confirmed_priors(
     confirmed_rows: list[dict],
     *,
@@ -968,11 +988,15 @@ def _ids_blocked_by_terminal(
         prev = latest.get(eid_i)
         if prev is None or start > prev[0]:
             latest[eid_i] = (start, status)
-    return {
+    blocked = {
         eid
         for eid, (_start, status) in latest.items()
         if status in {STATUS_CANCELLED, STATUS_HIATUS}
     }
+    out: set[int] = set()
+    for eid in blocked:
+        out.update(_series_linked_ids(eid))
+    return out
 
 
 def _serialize_event(row: dict) -> dict:
@@ -1111,7 +1135,7 @@ def build_year_event_calendar(
         if eid is None:
             continue
         if row["status"] in {STATUS_CONFIRMED, STATUS_CANCELLED, STATUS_HIATUS}:
-            skip_by_year[y].add(eid)
+            skip_by_year[y].update(_series_linked_ids(int(eid)))
         if row["status"] == STATUS_CONFIRMED:
             confirmed_by_year[y].setdefault(eid, []).append(start)
             confirmed_by_event.setdefault(int(eid), []).append(start)
