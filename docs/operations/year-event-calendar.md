@@ -17,7 +17,9 @@ Writes `static/data/events_year_calendar.json` on the analytics site (via `--sit
 
 | Status | Meaning |
 |--------|---------|
-| `confirmed` | Published / scheduled / occurred with day date |
+| `confirmed` | Published / scheduled / occurred (day date when known) |
+| `stats_only` (flag) | Result-backed edition without day-precision dates: counts in past-year Confirmed, no day-grid pin |
+| `has_results` (flag) | `(event_id, year)` has competition `result_rows > 0`; past-year Confirmed on the site uses distinct ids with this flag |
 | `expected` | Projected from the **latest confirmed** edition before the target year (±1 week match vs any confirmed start already in that year, WSDC Registry Rules 1.4.1). Emitted for `as_of.year .. as_of.year + expected_horizon_years` (default: same as `year_radius`, typically current + 2). Skipped when the target year already has confirmed/cancelled/hiatus, or when the series' latest status before the target year is cancelled/hiatus. |
 | `cancelled` / `hiatus` | From calendar scrape flags |
 
@@ -31,6 +33,9 @@ Years beyond the expected horizon keep only `scheduled_events` rows (no YoY gray
 - **Stale expected**: past years never keep `expected`. In the current year, expected rows are dropped once their end date + **7 days** is before `as_of` (projected weekend passed without confirm / hiatus / cancel). Official hiatus/cancelled remain.
 - Expected YoY also matches confirmed starts across year boundaries (±1 week), so a NYE projection does not ghost when the live schedule moved into early January (e.g. SwingCouver → SwingCo).
 - **Operator overrides**: curated gaps (not yet on WSDC calendar/list) live in `transform/knowledge/calendar_operator_overrides.py` and are re-applied after each calendar sync with `date_source=operator`. Official `wsdc_calendar` for the same `(event_id, year, month)` wins. Example: Dance Mardi Gras 2026 provisional hiatus.
+- **Year of event** = results/`event_year` (not always `start_date.year`). Cross-year weekends (Dec → Jan) stay in the results year; the day grid only paints ISO days that fall in the selected year.
+- **Missing day dates** with results: emit `stats_only` from `event_editions` (placeholder `edition_date`); exclude from YoY expected priors; site skips day cells.
+- **Scheduled / calendar rows** carry `year` from `results_year` / `event_year` when present.
 
 Each event includes `continent` in `{America, Europe, Asia, Australia}` (South America → America).
 
