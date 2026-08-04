@@ -4,12 +4,19 @@ These rows are upserted into ``core.edition_calendar_dates`` with
 ``date_source='operator'``. A later official ``wsdc_calendar`` scrape for the
 same ``(event_id, year, month)`` overwrites them (see upsert WHERE in
 ``db/edition_calendar.py``).
+
+The year-calendar builder also reads this list directly so provisional /
+orphan listings appear even before a DB export.
 """
 
 from __future__ import annotations
 
 from datetime import date, datetime, timezone
 from typing import Any
+
+# Provisional registry-less id until WSDC assigns a real Soul Flow event_id.
+# Reserved high range avoids collisions with live WSDC ids (currently < 600).
+SOUL_FLOW_PROVISIONAL_EVENT_ID = 990001
 
 # Provisional assumptions — review when the WSDC calendar/list catches up.
 CALENDAR_OPERATOR_OVERRIDES: list[dict[str, Any]] = [
@@ -22,12 +29,55 @@ CALENDAR_OPERATOR_OVERRIDES: list[dict[str, Any]] = [
         "calendar_status": "hiatus",
         "calendar_title": "Dance Mardi Gras (Hiatus -- 2026)",
         "url": "https://dancemardigras.com/",
+        "city": None,
+        "country": "United States",
         "match_via": "operator_assumption",
         "source_fingerprint": "operator:dmg-2026-hiatus-assumption",
         "notes": (
             "2026 edition not on WSDC calendar/list after 2025 results; "
             "site suggests a skip year — treat as hiatus until list confirms "
             "or 2027 appears."
+        ),
+    },
+    {
+        # WSDC lists Soul Flow hiatus under the old Toulouse GGP URL, so scrape
+        # matching incorrectly assigns event_id=342. Keep GGP and Soul Flow
+        # separate: provisional id until points/registry creates a real one.
+        "event_id": SOUL_FLOW_PROVISIONAL_EVENT_ID,
+        "event_year": 2026,
+        "event_month": 12,
+        "planned_start_date": date(2026, 12, 11),
+        "planned_end_date": date(2026, 12, 13),
+        "calendar_status": "hiatus",
+        "calendar_title": "Soul Flow - West Coast Swing Festival (Hiatus -- 2026)",
+        "url": "https://www.globalgrandprixwcs.com/",
+        "city": "Toulouse",
+        "country": "France",
+        "match_via": "operator_assumption",
+        "source_fingerprint": "operator:soul-flow-2026-hiatus",
+        "notes": (
+            "Same organizers formerly behind Toulouse Global Grand Prix; brand "
+            "sold / Paris GGP continues separately. WSDC calendar marks Soul "
+            "Flow hiatus for Dec 2026 — keep visible under a provisional id."
+        ),
+    },
+    {
+        # Explicit expected: hiatus in 2026 would normally block YoY projection.
+        "event_id": SOUL_FLOW_PROVISIONAL_EVENT_ID,
+        "event_year": 2027,
+        "event_month": 12,
+        "planned_start_date": date(2027, 12, 10),
+        "planned_end_date": date(2027, 12, 12),
+        "calendar_status": "unconfirmed",
+        "calendar_title": "Soul Flow - West Coast Swing Festival",
+        "url": "https://www.globalgrandprixwcs.com/",
+        "city": "Toulouse",
+        "country": "France",
+        "match_via": "operator_assumption",
+        "source_fingerprint": "operator:soul-flow-2027-expected",
+        "notes": (
+            "Provisional return year after 2026 hiatus; replace with real "
+            "WSDC dates/event_id when published."
         ),
     },
 ]
