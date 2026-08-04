@@ -820,3 +820,33 @@ def test_operator_overrides_emit_soul_flow_hiatus_and_expected():
     assert by_year[(SOUL_FLOW_PROVISIONAL_EVENT_ID, 2027)]["status"] == "expected"
     assert by_year[(SOUL_FLOW_PROVISIONAL_EVENT_ID, 2026)]["country"] == "France"
     assert by_year[(SOUL_FLOW_PROVISIONAL_EVENT_ID, 2026)]["source"] == "operator_override"
+
+
+def test_city_from_location_raw_first_segment():
+    from transform.year_event_calendar.build import _city_from_location_raw
+
+    assert _city_from_location_raw("Dallas, TX, United States") == "Dallas"
+    assert _city_from_location_raw(None) is None
+    assert _city_from_location_raw("nan") is None
+
+
+def test_correct_ucwdc_worlds_remaps_152_championships_to_75():
+    from transform.year_event_calendar.build import _correct_ucwdc_worlds_event_ids
+
+    rows = [
+        {
+            "event_id": 152,
+            "name": "UCWDC Country Dance World Championships",
+            "city": "Dallas",
+        },
+        {
+            "event_id": 152,
+            "name": "Worlds UCWDC",
+            "city": "Orlando",
+        },
+    ]
+    _correct_ucwdc_worlds_event_ids(rows)
+    assert rows[0]["event_id"] == 75
+    assert rows[0]["name"] == "UCWDC Country Dance World Championship"
+    assert rows[1]["event_id"] == 152
+    assert rows[1]["name"] == "Worlds UCWDC"

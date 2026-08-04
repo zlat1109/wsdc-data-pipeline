@@ -537,6 +537,46 @@ def _rows_from_editions(data_dir: Path) -> list[dict]:
     return rows
 
 
+def _city_from_location_raw(raw: Any) -> str | None:
+    """First comma segment of schedule location_raw (e.g. Dallas, TX, United States)."""
+    text = _clean_name(raw)
+    if not text:
+        return None
+    return text.split(",")[0].strip() or None
+
+
+def _is_ucwdc_dallas_worlds_title(name: str | None) -> bool:
+    """True for the Dallas Championship series title (not Orlando 'Worlds UCWDC')."""
+    cleaned = _clean_name(name)
+    if not cleaned:
+        return False
+    low = cleaned.lower()
+    if low == "worlds ucwdc":
+        return False
+    return "ucwdc" in low and "country dance world championship" in low
+
+
+def _correct_ucwdc_worlds_event_ids(rows: list[dict]) -> None:
+    """Keep Dallas Worlds on results id 75; do not attach to Orlando id 152.
+
+    Schedule/calendar historically matched ``ucwdcworlds.com`` + plural
+    Championships title onto catalog id 152 (Worlds UCWDC, Orlando 2009–2015).
+    Those are separate series — remapped here by title.
+    """
+    for row in rows:
+        if not _is_ucwdc_dallas_worlds_title(row.get("name")):
+            continue
+        eid = row.get("event_id")
+        try:
+            eid_i = int(eid) if eid is not None else None
+        except (TypeError, ValueError):
+            eid_i = None
+        if eid_i in (None, 152, 480):
+            row["event_id"] = 75
+            if "championships" in str(row.get("name") or "").lower():
+                row["name"] = "UCWDC Country Dance World Championship"
+
+
 def _rows_from_scheduled(data_dir: Path) -> list[dict]:
     path = data_dir / "scheduled_events.csv"
     if not path.exists():
@@ -551,10 +591,8 @@ def _rows_from_scheduled(data_dir: Path) -> list[dict]:
             status = STATUS_CANCELLED
         elif _truthy(rec.get("on_hiatus")):
             status = STATUS_HIATUS
-        elif _truthy(rec.get("confirmed")):
-            status = STATUS_CONFIRMED
         else:
-            status = STATUS_EXPECTED
+            status = STATUS_CONFIRMED if _truthy(rec.get("confirmed")) else STATUS_EXPECTED
         eid = rec.get("canonical_event_id")
         try:
             eid_i = int(eid) if eid is not None and not pd.isna(eid) else None
@@ -578,7 +616,7 @@ def _rows_from_scheduled(data_dir: Path) -> list[dict]:
                 "kind": _kind_from_status_event(status_flags, name or ""),
                 "kind_from_schedule": kind_from_schedule,
                 "url": _clean_name(rec.get("url")),
-                "city": None,
+                "city": _city_from_location_raw(rec.get("location_raw")),
                 "country": _clean_name(rec.get("country")),
                 "location_id": None,
                 "source": "scheduled_events",
@@ -1224,6 +1262,7 @@ def build_year_event_calendar(
         + _rows_from_scheduled(data_dir)
     )
     _canonicalize_calendar_rows(base_rows, catalog)
+    _correct_ucwdc_worlds_event_ids(base_rows)
     # Far future: only published schedule (avoid long-range calendar scrape noise)
     filtered_base: list[dict] = []
     for row in base_rows:
