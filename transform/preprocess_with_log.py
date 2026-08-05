@@ -367,6 +367,26 @@ def preprocess_with_log(data: dict[str, pd.DataFrame]) -> tuple[dict[str, pd.Dat
                 forced,
                 "known_map",
             )
+        # Trial bridge: schedule location_id (list geo) → results when safe.
+        scheduled = result.get("scheduled_events")
+        if scheduled is not None and not getattr(scheduled, "empty", True):
+            from transform.geography.schedule_locations import (
+                seed_result_locations_from_schedule,
+            )
+
+            resolved_results, seeded = seed_result_locations_from_schedule(
+                resolved_results, scheduled
+            )
+            if seeded:
+                tracker.record(
+                    "SCHEDULE_LOCATION_SEED",
+                    "dancers_results_info",
+                    "location_id",
+                    "empty/wrong trial lid from points",
+                    "from scheduled_events.location_id",
+                    seeded,
+                    "schedule_geo",
+                )
         before_merge = (
             resolved_results["location_id"].astype(str).str.strip().isin(
                 set(LOCATION_ID_MERGE_MAP.keys())

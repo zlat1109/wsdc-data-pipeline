@@ -86,6 +86,8 @@ def _current_row(
         "country_flag": row.get("country_flag") or "",
         "url": row.get("url") or "",
         "status_event": row.get("status_event") or "",
+        "location_id": row.get("location_id"),
+        "location_source": row.get("location_source") or "",
         "confirmed": bool(row.get("confirmed", True)),
         "canceled": bool(row.get("canceled")),
         "on_hiatus": bool(row.get("on_hiatus")),

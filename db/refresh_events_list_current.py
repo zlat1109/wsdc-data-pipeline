@@ -15,7 +15,8 @@ _INSERT_SQL = """
         event_name, canonical_name, original_date,
         start_date, end_date, results_year, results_month,
         location_raw, country, country_flag, url,
-        status_event, confirmed, canceled, on_hiatus,
+        status_event, location_id, location_source,
+        confirmed, canceled, on_hiatus,
         match_status, match_method, match_confidence,
         upcoming_editions, updated_at, last_run_id
     ) VALUES (
@@ -23,7 +24,8 @@ _INSERT_SQL = """
         %(event_name)s, %(canonical_name)s, %(original_date)s,
         %(start_date)s, %(end_date)s, %(results_year)s, %(results_month)s,
         %(location_raw)s, %(country)s, %(country_flag)s, %(url)s,
-        %(status_event)s, %(confirmed)s, %(canceled)s, %(on_hiatus)s,
+        %(status_event)s, %(location_id)s, %(location_source)s,
+        %(confirmed)s, %(canceled)s, %(on_hiatus)s,
         %(match_status)s, %(match_method)s, %(match_confidence)s,
         %(upcoming_editions)s, %(now)s, %(run_id)s
     )
@@ -43,7 +45,17 @@ def refresh_events_list_current(
     rows = build_events_list_current(events, catalog)
     now = datetime.now(timezone.utc)
 
-    params = [{**row, "now": now, "run_id": run_id} for row in rows]
+    params = []
+    for row in rows:
+        params.append(
+            {
+                **row,
+                "now": now,
+                "run_id": run_id,
+                "location_id": row.get("location_id") or None,
+                "location_source": row.get("location_source") or None,
+            }
+        )
 
     with conn.cursor() as cur:
         cur.execute("TRUNCATE core.events_list_current")

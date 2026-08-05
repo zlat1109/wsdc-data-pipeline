@@ -47,17 +47,18 @@ jobs:
           DB_SSLMODE: require
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
         run: python scripts/sync_events_list.py --source github-actions
 
       - name: Commit events list + calendar data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/events_list/ data/events_calendar/
+          git add data/events_list/ data/events_calendar/ data/location_info.csv
           if git diff --staged --quiet; then
-            echo "No events list/calendar changes to commit"
+            echo "No events list/calendar/location changes to commit"
           else
-            git commit -m "Update WSDC events list and calendar date snapshots."
+            git commit -m "Update WSDC events list, calendar, and trial location geo."
             git pull --rebase origin main
             git push
           fi

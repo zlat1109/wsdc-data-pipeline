@@ -700,6 +700,85 @@ def check_new_event_names(
     )
 
 
+def check_trial_schedule_geo_gaps(
+    scheduled: pd.DataFrame | None,
+    location_info: pd.DataFrame | None,
+) -> QualityFinding | None:
+    """Trial Event rows on the list without usable location_id / coordinates."""
+    if scheduled is None or scheduled.empty:
+        return None
+    if "status_event" not in scheduled.columns:
+        return None
+
+    status = scheduled["status_event"].astype(str).str.lower()
+    trials = scheduled[status.str.contains("trial", na=False)].copy()
+    if trials.empty:
+        return None
+
+    loc_coords: dict[str, bool] = {}
+    if location_info is not None and not location_info.empty:
+        for _, row in location_info.iterrows():
+            lid = str(row.get("location_id") or "").strip()
+            if not lid:
+                continue
+            try:
+                lat = str(row.get("latitude") or "").strip()
+                lon = str(row.get("longitude") or "").strip()
+                loc_coords[lid] = bool(lat and lon and lat.lower() != "nan" and lon.lower() != "nan")
+            except Exception:  # noqa: BLE001
+                loc_coords[lid] = False
+
+    examples: list[dict] = []
+    for _, row in trials.iterrows():
+        name = str(row.get("event_name") or "").strip()
+        lid = str(row.get("location_id") or "").strip()
+        if lid.lower() in {"", "nan", "none"}:
+            examples.append(
+                {
+                    "event_name": name,
+                    "start_date": str(row.get("start_date") or ""),
+                    "location_raw": str(row.get("location_raw") or ""),
+                    "reason": "missing_location_id",
+                }
+            )
+            continue
+        if not loc_coords.get(lid, False):
+            examples.append(
+                {
+                    "event_name": name,
+                    "start_date": str(row.get("start_date") or ""),
+                    "location_raw": str(row.get("location_raw") or ""),
+                    "location_id": lid,
+                    "reason": "missing_coordinates",
+                }
+            )
+
+    if not examples:
+        return None
+
+    examples.sort(key=lambda x: x.get("event_name") or "")
+    return QualityFinding(
+        category="location",
+        code="TRIAL_SCHEDULE_GEO_GAP",
+        severity="medium",
+        message=(
+            f"{len(examples)} Trial Event(s) on the WSDC list lack location_id "
+            "or coordinates (list geo ensure_location / Google geocode)"
+        ),
+        count=len(examples),
+        examples=examples[:20],
+        suggested_fix=(
+            "Re-run sync_events_list with GOOGLE_MAPS_API_KEY; or add city to "
+            "location_info / CITY_CANONICAL_COORDINATES"
+        ),
+        fingerprint=_fingerprint(
+            "location",
+            "TRIAL_SCHEDULE_GEO_GAP",
+            "|".join(e["event_name"] for e in examples[:15]),
+        ),
+    )
+
+
 def _legacy_issues_to_findings(issues: list[dict]) -> list[QualityFinding]:
     out: list[QualityFinding] = []
     for issue in issues:
@@ -774,6 +853,10 @@ def run_audit(
             findings.append(item)
 
     item = check_catalog_typical_vs_upcoming(data.get("event_catalog"))
+    if item:
+        findings.append(item)
+
+    item = check_trial_schedule_geo_gaps(data.get("scheduled_events"), location_info)
     if item:
         findings.append(item)
 

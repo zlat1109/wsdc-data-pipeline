@@ -115,6 +115,8 @@ def save_artifacts(
         "country_flag",
         "url",
         "status_event",
+        "location_id",
+        "location_source",
         "confirmed",
         "canceled",
         "on_hiatus",
@@ -141,14 +143,22 @@ def load_to_supabase(
     unchanged: int,
     source: str,
     catalog: list[CatalogEvent],
+    *,
+    location_df: Any = None,
+    location_ids_touched: set[str] | None = None,
 ) -> tuple[int, int]:
     from connection import connect
+    from transform.geography.schedule_locations import upsert_locations_to_db
 
     now = datetime.now(timezone.utc)
     current_fps = {e["source_fingerprint"] for e in events}
 
     with connect() as conn:
         with conn.cursor() as cur:
+            if location_df is not None and location_ids_touched:
+                n_loc = upsert_locations_to_db(cur, location_df, location_ids_touched)
+                print(f"Locations upserted: {n_loc}")
+
             cur.execute(
                 """
                 INSERT INTO history.events_list_runs
@@ -167,13 +177,15 @@ def load_to_supabase(
                         source_fingerprint, event_name, original_date,
                         start_date, end_date, results_year, results_month,
                         location_raw, country, country_flag, url,
-                        status_event, confirmed, canceled, on_hiatus, is_active,
+                        status_event, location_id, location_source,
+                        confirmed, canceled, on_hiatus, is_active,
                         first_seen_at, last_seen_at, last_run_id
                     ) VALUES (
                         %(source_fingerprint)s, %(event_name)s, %(original_date)s,
                         %(start_date)s, %(end_date)s, %(results_year)s, %(results_month)s,
                         %(location_raw)s, %(country)s, %(country_flag)s, %(url)s,
-                        %(status_event)s, %(confirmed)s, %(canceled)s, %(on_hiatus)s, %(is_active)s,
+                        %(status_event)s, %(location_id)s, %(location_source)s,
+                        %(confirmed)s, %(canceled)s, %(on_hiatus)s, %(is_active)s,
                         %(now)s, %(now)s, %(run_id)s
                     )
                     ON CONFLICT (source_fingerprint) DO UPDATE SET
@@ -188,6 +200,14 @@ def load_to_supabase(
                         country_flag = EXCLUDED.country_flag,
                         url = EXCLUDED.url,
                         status_event = EXCLUDED.status_event,
+                        location_id = COALESCE(
+                            core.scheduled_events.location_id, EXCLUDED.location_id
+                        ),
+                        location_source = CASE
+                            WHEN core.scheduled_events.location_id IS NULL
+                            THEN EXCLUDED.location_source
+                            ELSE core.scheduled_events.location_source
+                        END,
                         confirmed = EXCLUDED.confirmed,
                         canceled = EXCLUDED.canceled,
                         on_hiatus = EXCLUDED.on_hiatus,
@@ -195,7 +215,9 @@ def load_to_supabase(
                         last_seen_at = EXCLUDED.last_seen_at,
                         last_run_id = EXCLUDED.last_run_id
                     """,
-                    {**ev, "now": now, "run_id": run_id},
+                    {**ev, "now": now, "run_id": run_id,
+                     "location_id": ev.get("location_id"),
+                     "location_source": ev.get("location_source") or None},
                 )
 
             if current_fps:
@@ -319,11 +341,77 @@ def print_summary(report: dict[str, Any]) -> None:
             print(f"  - {ev['event_name']} ({ev.get('start_date')})")
 
 
+def _carry_forward_location_ids(
+    events: list[dict[str, Any]],
+    previous: dict[str, dict[str, Any]],
+) -> None:
+    """Keep previously resolved schedule location_id across scrapes."""
+    for ev in events:
+        if ev.get("location_id"):
+            continue
+        prev = previous.get(ev["source_fingerprint"]) or {}
+        lid = prev.get("location_id")
+        if lid is None or str(lid).strip() == "":
+            continue
+        ev["location_id"] = lid
+        ev["location_source"] = prev.get("location_source") or "location_info"
+
+
+def _assign_trial_geo(
+    events: list[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], Any, list[dict[str, Any]], set[str]]:
+    """Resolve Trial Event geo into location_info + event location_id fields."""
+    import pandas as pd
+    from transform.geography.schedule_locations import assign_schedule_locations
+
+    loc_path = PROJECT_ROOT / "data" / "location_info.csv"
+    location_df = (
+        pd.read_csv(loc_path, dtype=str)
+        if loc_path.exists()
+        else pd.DataFrame()
+    )
+    before_ids = set(
+        location_df["location_id"].astype(str).str.strip()
+        if not location_df.empty and "location_id" in location_df.columns
+        else []
+    )
+    before_coords = {}
+    if not location_df.empty:
+        for _, row in location_df.iterrows():
+            lid = str(row.get("location_id") or "").strip()
+            before_coords[lid] = (
+                str(row.get("latitude") or ""),
+                str(row.get("longitude") or ""),
+            )
+
+    events, location_df, review = assign_schedule_locations(events, location_df)
+
+    touched: set[str] = set()
+    if not location_df.empty and "location_id" in location_df.columns:
+        for _, row in location_df.iterrows():
+            lid = str(row.get("location_id") or "").strip()
+            if not lid:
+                continue
+            if lid not in before_ids:
+                touched.add(lid)
+                continue
+            coords = (str(row.get("latitude") or ""), str(row.get("longitude") or ""))
+            if before_coords.get(lid) != coords:
+                touched.add(lid)
+
+    if touched or len(location_df) != len(before_ids):
+        location_df.to_csv(loc_path, index=False)
+        print(f"Updated location_info.csv (touched_ids={len(touched)})")
+
+    return events, location_df, review, touched
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--dry-run", action="store_true", help="Scrape + diff only, no DB/Telegram")
     parser.add_argument("--skip-db", action="store_true")
     parser.add_argument("--skip-telegram", action="store_true")
+    parser.add_argument("--skip-geocode", action="store_true", help="Reuse locations only; no Google")
     parser.add_argument("--source", default="local", choices=["local", "github-actions"])
     args = parser.parse_args()
 
@@ -336,10 +424,34 @@ def main() -> None:
     current_map = {e["source_fingerprint"]: e for e in events}
 
     previous = load_previous_current()
+    _carry_forward_location_ids(events, previous)
     added, removed, unchanged = compute_diff(previous, current_map)
+
+    geo_review: list[dict[str, Any]] = []
+    location_df = None
+    location_ids_touched: set[str] = set()
+    try:
+        if args.skip_geocode:
+            import os
+
+            os.environ.pop("GOOGLE_MAPS_API_KEY", None)
+        events, location_df, geo_review, location_ids_touched = _assign_trial_geo(events)
+        trial_with_geo = sum(
+            1
+            for e in events
+            if "trial" in str(e.get("status_event") or "").lower() and e.get("location_id")
+        )
+        print(f"Trial geo: {trial_with_geo} with location_id, review={len(geo_review)}")
+    except Exception as exc:
+        print(f"Trial geo assignment failed (continuing): {exc}", file=sys.stderr)
 
     report = save_artifacts(
         events, added, removed, unchanged, args.source, parse_errors=parse_error_count
+    )
+    report["summary"]["geo_review_count"] = len(geo_review)
+    report["geo_review"] = geo_review
+    (CHANGELOG_DIR / "latest.json").write_text(
+        json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8"
     )
     print_summary(report)
 
@@ -360,7 +472,14 @@ def main() -> None:
             if catalog is None:
                 catalog = load_catalog()
             run_id, current_count = load_to_supabase(
-                events, added, removed, unchanged, args.source, catalog
+                events,
+                added,
+                removed,
+                unchanged,
+                args.source,
+                catalog,
+                location_df=location_df,
+                location_ids_touched=location_ids_touched,
             )
             print(f"\nSupabase run_id={run_id}  current_events={current_count}")
             report["run_id"] = run_id
