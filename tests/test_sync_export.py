@@ -227,3 +227,150 @@ def test_backfill_wsdc_locations_from_editions():
     out, changed = backfill_wsdc_locations_from_editions(frame, "location", editions)
     assert changed == 1
     assert out.loc[0, "location"] == "Chicago, IL, United States"
+
+
+def test_backfill_skips_event_name_location_overrides():
+    """Stale edition Jeju must not undo EVENT_NAME_LOCATION_OVERRIDES (Montreal)."""
+    editions = pd.DataFrame(
+        [
+            {
+                "event_id": 178,
+                "event_year": 2011,
+                "event_month": 10,
+                "location_raw": "Jeju, Republic of Korea",
+            }
+        ]
+    )
+    frame = pd.DataFrame(
+        [
+            {
+                "id": 178,
+                "name": "Montreal Westie Fest",
+                "event_year": 2011,
+                "event_month": 10,
+                "location": "Montreal, Canada",
+            }
+        ]
+    )
+    out, changed = backfill_wsdc_locations_from_editions(
+        frame,
+        "location",
+        editions,
+        skip_event_names=frozenset({"Montreal Westie Fest"}),
+    )
+    assert changed == 0
+    assert out.loc[0, "location"] == "Montreal, Canada"
+
+
+def test_backfill_empty_skip_set_is_honored():
+    """Explicit empty frozenset must not fall back to default override skips."""
+    editions = pd.DataFrame(
+        [
+            {
+                "event_id": 178,
+                "event_year": 2011,
+                "event_month": 10,
+                "location_raw": "Jeju, Republic of Korea",
+            }
+        ]
+    )
+    frame = pd.DataFrame(
+        [
+            {
+                "id": 178,
+                "name": "Montreal Westie Fest",
+                "event_year": 2011,
+                "event_month": 10,
+                "location": "Montreal, Canada",
+            }
+        ]
+    )
+    out, changed = backfill_wsdc_locations_from_editions(
+        frame,
+        "location",
+        editions,
+        skip_event_names=frozenset(),
+    )
+    assert changed == 1
+    assert out.loc[0, "location"] == "Jeju, Republic of Korea"
+
+
+def test_backfill_default_skips_year_override_names():
+    """Year-scoped override names are skipped by default (None)."""
+    editions = pd.DataFrame(
+        [
+            {
+                "event_id": 306,
+                "event_year": 2019,
+                "event_month": 1,
+                "location_raw": "Wrong City, Somewhere",
+            }
+        ]
+    )
+    frame = pd.DataFrame(
+        [
+            {
+                "id": 306,
+                "name": "Go West SwingFest",
+                "event_year": 2019,
+                "event_month": 1,
+                "location": "Fremantle, Australia",
+            }
+        ]
+    )
+    out, changed = backfill_wsdc_locations_from_editions(frame, "location", editions)
+    assert changed == 0
+    assert out.loc[0, "location"] == "Fremantle, Australia"
+
+
+def test_sync_export_does_not_undo_override_on_events_wsdc(tmp_path):
+    """normalize_export_location_columns must not restore Jeju from stale editions."""
+    location_info = pd.DataFrame(
+        [
+            {
+                "location_id": 86,
+                "event_city": "Montreal",
+                "event_state": "",
+                "event_country": "Canada",
+                "event_location": "Montreal, Canada",
+            },
+            {
+                "location_id": 213,
+                "event_city": "Jeju",
+                "event_state": "",
+                "event_country": "Republic of Korea",
+                "event_location": "Jeju, Republic of Korea",
+            },
+        ]
+    )
+    location_info.to_csv(tmp_path / "location_info.csv", index=False)
+    editions = pd.DataFrame(
+        [
+            {
+                "event_id": 178,
+                "event_year": 2011,
+                "event_month": 10,
+                "location_id": 213,
+                "place_city": "Jeju",
+                "location_raw": "Jeju, Republic of Korea",
+            }
+        ]
+    )
+    editions.to_csv(tmp_path / "event_editions.csv", index=False)
+    events_wsdc = pd.DataFrame(
+        [
+            {
+                "id": 178,
+                "name": "Montreal Westie Fest",
+                "event_year": 2011,
+                "event_month": 10,
+                "location": "Montreal, Canada",
+            }
+        ]
+    )
+    events_wsdc.to_csv(tmp_path / "events_wsdc.csv", index=False)
+
+    sync_export_city_columns(tmp_path)
+
+    out = pd.read_csv(tmp_path / "events_wsdc.csv")
+    assert out.loc[0, "location"] == "Montreal, Canada"
