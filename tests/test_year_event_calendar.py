@@ -850,3 +850,70 @@ def test_correct_ucwdc_worlds_remaps_152_championships_to_75():
     assert rows[0]["name"] == "UCWDC Country Dance World Championship"
     assert rows[1]["event_id"] == 152
     assert rows[1]["name"] == "Worlds UCWDC"
+
+
+def test_serialize_event_unique_ids_for_unlinked_trials_same_start():
+    """Two trial rows with null event_id on the same day must not share ``id``."""
+    from transform.year_event_calendar.build import _serialize_event
+
+    base = {
+        "start_date": date(2026, 8, 21),
+        "end_date": date(2026, 8, 23),
+        "event_id": None,
+        "status": "confirmed",
+        "kind": "trial",
+        "year": 2026,
+        "source": "scheduled_events",
+        "url": None,
+        "lat": None,
+        "lon": None,
+    }
+    a = _serialize_event(
+        {
+            **base,
+            "name": "Manneken Swing",
+            "city": "Bruxelles",
+            "country": "Belgium",
+        }
+    )
+    b = _serialize_event(
+        {
+            **base,
+            "name": "Westie Joy",
+            "city": "Bucharest",
+            "country": "Romania",
+        }
+    )
+    assert a["id"] != b["id"]
+    assert a["id"] == "confirmed:t-manneken-swing-bruxelles-belgium:2026-08-21"
+    assert b["id"] == "confirmed:t-westie-joy-bucharest-romania:2026-08-21"
+    linked = _serialize_event(
+        {
+            **base,
+            "event_id": 135,
+            "name": "Desert City Swing",
+            "city": "Phoenix",
+            "country": "United States",
+        }
+    )
+    assert linked["id"] == "confirmed:135:2026-08-21"
+    diacritic = _serialize_event(
+        {
+            **base,
+            "name": "Cologne Calling WCS",
+            "city": "Köln",
+            "country": "Germany",
+        }
+    )
+    assert diacritic["id"] == "confirmed:t-cologne-calling-wcs-koln-germany:2026-08-21"
+    # Numeric-only slug must not collide with a real event_id token.
+    numeric_name = _serialize_event(
+        {
+            **base,
+            "name": "135",
+            "city": "",
+            "country": "",
+        }
+    )
+    assert numeric_name["id"] == "confirmed:t-135:2026-08-21"
+    assert numeric_name["id"] != linked["id"]

@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+import re
+import unicodedata
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
@@ -1159,13 +1161,43 @@ def _ids_blocked_by_terminal(
     return out
 
 
+def _uid_token_for_row(row: dict) -> str:
+    """Stable middle segment for calendar row ``id``.
+
+    Registry rows use ``event_id``. Unlinked trials (``event_id`` null) used to
+    share ``x`` and collided when two trials started on the same day — L2 hover
+    / select / marker lookup all key off ``id``.
+
+    Unlinked tokens are prefixed with ``t-`` so a numeric-only slug cannot
+    collide with a real ``event_id`` token on the same date.
+    """
+    eid = row.get("event_id")
+    if eid is not None:
+        try:
+            return str(int(eid))
+        except (TypeError, ValueError):
+            return str(eid)
+    parts = [
+        str(row.get("name") or "").strip().lower(),
+        str(row.get("city") or "").strip().lower(),
+        str(row.get("country") or "").strip().lower(),
+    ]
+    raw = "-".join(p for p in parts if p)
+    # Fold diacritics (Köln → koln) before ASCII slugify.
+    raw = unicodedata.normalize("NFKD", raw)
+    raw = "".join(ch for ch in raw if not unicodedata.combining(ch))
+    slug = re.sub(r"[^a-z0-9]+", "-", raw).strip("-")
+    token = slug[:62] if slug else "x"
+    return f"t-{token}"
+
+
 def _serialize_event(row: dict) -> dict:
     start: date = row["start_date"]
     end = row.get("end_date")
     thu, sun = weekend_bounds(start)
     eid = row.get("event_id")
     status = row["status"]
-    uid = f"{status}:{eid if eid is not None else 'x'}:{start.isoformat()}"
+    uid = f"{status}:{_uid_token_for_row(row)}:{start.isoformat()}"
     country = row.get("country")
     year = row.get("year")
     try:
