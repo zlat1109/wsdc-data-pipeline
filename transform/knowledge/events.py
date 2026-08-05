@@ -99,6 +99,12 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'Barock Swing Ludwigsburg': 'Ludwigsburg, Germany',
     # Fresh main export: more shared-wrong location_id collisions (calendar ≠ results).
     'Bavarian Open': 'Munich, Germany',  # was Jeju (213) / Venray (227)
+    'Bavarian Open WCS': 'Munich, Germany',
+    'Bavarian Open West Coast Swing Championships': 'Munich, Germany',
+    # Metro move Framingham → Boston for recent editions; unify on Boston (8).
+    'Countdown Swing Boston': 'Boston, MA, United States',
+    # Camp moved Crimea → Torrevieja; flat override fixes shared-wrong lid collision.
+    'Sunny Side Dance Camp': 'Torrevieja, Spain',
     'King Swing': 'Kraków, Poland',  # was Wailea (124)
     'Santa Swing': 'Kraków, Poland',  # was Wailea (124)
     'Westy Nantes': 'Nantes, France',  # was Brno (266)

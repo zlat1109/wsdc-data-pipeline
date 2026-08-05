@@ -74,6 +74,11 @@ RESULT_TO_CATALOG_EVENT_NAME: dict[str, str] = {
     'LoneStar Invitational': 'Lone Star Invitational',
     'Lonestar Invitational': 'Lone Star Invitational',
     'French Connection WCS': 'FRENCH CONNECTION WCS',
+    'Arizona Dance Classic (Cancelled due to Covid-19)': 'Arizona Dance Classic',
+    'Citadel Swing (Cancelled due to Covid-19)': 'Citadel Swing',
+    'Go West Swing Fest': 'Go West SwingFest',
+    'Bavarian Open WCS': 'Bavarian Open',
+    'Bavarian Open West Coast Swing Championships': 'Bavarian Open',
 }
 
 # Spelling / casing variants → catalog name (not intermediate result labels).
@@ -128,6 +133,11 @@ EVENT_NAME_VARIANT_TO_CATALOG: dict[str, str] = {
     'Capital Swing Convention': 'Capital Swing Dance Convention',
     'The New Zealand West Coast Swing Open': 'New Zealand Open Swing Dance Championships',
     'BaroqueSwing': 'Barock Swing Ludwigsburg',
+    'Go West Swing Fest': 'Go West SwingFest',
+    'Bavarian Open WCS': 'Bavarian Open',
+    'Bavarian Open West Coast Swing Championships': 'Bavarian Open',
+    'Arizona Dance Classic (Cancelled due to Covid-19)': 'Arizona Dance Classic',
+    'Citadel Swing (Cancelled due to Covid-19)': 'Citadel Swing',
 }
 
 # Duplicate WSDC registry ids → canonical id (same geo; see event-geo-dedup rule).

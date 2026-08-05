@@ -57,6 +57,11 @@ def test_orphan_result_names_normalize_to_catalog():
         ("5280 Swing Dance Championships", "5280 Westival"),
         ("LoneStar Invitational", "Lone Star Invitational"),
         ("French Connection WCS", "FRENCH CONNECTION WCS"),
+        ("Go West Swing Fest", "Go West SwingFest"),
+        ("Arizona Dance Classic (Cancelled due to Covid-19)", "Arizona Dance Classic"),
+        ("Citadel Swing (Cancelled due to Covid-19)", "Citadel Swing"),
+        ("Bavarian Open WCS", "Bavarian Open"),
+        ("Bavarian Open West Coast Swing Championships", "Bavarian Open"),
     ]:
         assert EVENT_NAME_NORMALIZATION[alias] == canonical
 

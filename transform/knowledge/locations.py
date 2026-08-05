@@ -18,6 +18,7 @@ LOCATION_RAW_ALIASES: dict[str, str] = {
     "Washington, United States": "Washington, DC, United States",
     # WSDC metro label for Dance Jam / Westie Weekend @ Hollywood Ballroom
     "Washington, MD, United States": "Silver Spring, MD, United States",
+    "Atlanta, GA United States": "Atlanta, GA, United States",
     "Wailea, United States": "Wailea, HI, United States",
     "Gdansk, Poland": "Gdańsk, Poland",
     # Venue name used by WSDC for Düsseldorf (D-Town Swing / WCS Festival)
