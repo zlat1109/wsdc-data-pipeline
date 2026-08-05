@@ -51,7 +51,7 @@ Legacy audit-only: `scripts/data_quality_audit.py` (prefer preprocess).
 | Check | Target | Meaning |
 |-------|--------|---------|
 | `results_null_location_id` | 0 | Cloud parse drops location_id; resolve.py backfills from event_location. |
-| `split_names_same_geo` | 0 | Same raw event name + same geo must not map to multiple event_id. Intentional relocates in `KEEP_SEPARATE_EVENT_PAIRS` are excluded. |
+| `split_names_same_geo` | 0 | Same raw event name + same geo must not map to multiple event_id. KEEP_SEPARATE pairs must keep distinct cities (use EVENT_NAME_YEAR_LOCATION_OVERRIDES for relocating series). |
 | `noncanonical_divisions` | 0 | Legacy plural division labels from old parser/registry. |
 | `points_history_drift` | 0 | SCD2 open row must match core.dancer_points snapshot. |
 | `roles_history_drift` | 0 | SCD2 open role row must match core.dancer_roles divisions. |

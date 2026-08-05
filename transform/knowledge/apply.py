@@ -200,6 +200,19 @@ def force_result_locations_from_event_name_overrides(
         )
 
     years = _result_event_years(df)
+    year_names = {name for name, _y0, _y1 in EVENT_NAME_YEAR_LOCATION_OVERRIDES}
+    for event_name in sorted(year_names):
+        name_mask = df["event_name"].astype(str).str.strip() == event_name
+        missing_year = name_mask & years.isna()
+        n_missing = int(missing_year.sum())
+        if n_missing:
+            logger.warning(
+                "force_result_locations_from_event_name_overrides: %s row(s) named %r "
+                "have null event_year — year-scoped location override skipped",
+                n_missing,
+                event_name,
+            )
+
     for (event_name, y0, y1), target_location in EVENT_NAME_YEAR_LOCATION_OVERRIDES.items():
         mask = (
             (df["event_name"].astype(str).str.strip() == event_name)

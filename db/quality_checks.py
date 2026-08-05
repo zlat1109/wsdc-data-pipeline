@@ -67,33 +67,23 @@ CORE_CHECKS: tuple[QualityCheck, ...] = (
         ),
         splits AS (
             SELECT event_name_raw FROM per GROUP BY 1 HAVING count(DISTINCT event_id) > 1
-        ),
-        -- Sync with transform.geography.geo_event.KEEP_SEPARATE_EVENT_PAIRS
-        keep_separate(ids) AS (
-            VALUES
-                (ARRAY[75, 152]::int[]),
-                (ARRAY[83, 204]::int[]),
-                (ARRAY[191, 230]::int[]),
-                (ARRAY[306, 367]::int[])
-        ),
-        same_geo AS (
-            SELECT p.event_name_raw,
-                   array_agg(DISTINCT p.event_id ORDER BY p.event_id) AS event_ids
-            FROM per p
-            JOIN splits s ON s.event_name_raw = p.event_name_raw
+        )
+        SELECT count(*) FROM (
+            SELECT p.event_name_raw
+            FROM per p JOIN splits s ON s.event_name_raw = p.event_name_raw
             GROUP BY p.event_name_raw
             HAVING count(DISTINCT p.city || '|' || coalesce(p.country, '')) = 1
-        )
-        SELECT count(*) FROM same_geo g
-        WHERE NOT EXISTS (
-            SELECT 1 FROM keep_separate k WHERE k.ids = g.event_ids
-        )
+        ) t
         """,
         max_value=0,
         severity="error",
         category="event_naming",
-        description="Same raw event name + same geo must not map to multiple event_id.",
-        fix_hint="scripts/merge_event_ids.py + MERGE_EVENT_ID_MAP (or KEEP_SEPARATE if intentional)",
+        description=(
+            "Same raw event name + same geo must not map to multiple event_id. "
+            "KEEP_SEPARATE pairs must keep distinct cities "
+            "(use EVENT_NAME_YEAR_LOCATION_OVERRIDES for relocating series)."
+        ),
+        fix_hint="EVENT_NAME_YEAR_LOCATION_OVERRIDES / merge_event_ids.py + MERGE_EVENT_ID_MAP",
     ),
     QualityCheck(
         name="noncanonical_divisions",

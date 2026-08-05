@@ -127,6 +127,7 @@ EVENT_NAME_LOCATION_OVERRIDES = {
 # or when name aliases collapse two KEEP_SEPARATE event_ids onto one string.
 EVENT_NAME_YEAR_LOCATION_OVERRIDES: dict[tuple[str, int, int], str] = {
     # event_id 306 (2019 Fremantle) vs 367 (2024+ Perth); alias → SwingFest.
+    # No WSDC editions 2020–2023 for these ids — gaps intentionally uncovered.
     ("Go West SwingFest", 2019, 2019): "Fremantle, Australia",
     ("Go West SwingFest", 2024, 2099): "Perth, Australia",
     ("Go West Swing Fest", 2019, 2019): "Fremantle, Australia",

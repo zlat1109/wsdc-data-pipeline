@@ -131,8 +131,9 @@ Do not force-remap those without year-aware edition logic.
 **Related Perth-area brands (two WSDC ids):** `Go West Swing Fest` (306,
 Fremantle, 2019) and `Go West SwingFest` (367, Perth, 2024+) are separate
 registry events. Alias maps Fest→SwingFest; year overrides restore Fremantle
-for 2019 so `split_names_same_geo` stays clean. Pair is also in
-`KEEP_SEPARATE_EVENT_PAIRS`. Do not merge ids without an explicit decision.
+for 2019 so `split_names_same_geo` stays clean (distinct cities). Pair is also in
+`KEEP_SEPARATE_EVENT_PAIRS` for merge/classify. Do not merge ids without an
+explicit decision.
 
 ## Country aliases
 
