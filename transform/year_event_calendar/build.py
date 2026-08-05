@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import re
+import unicodedata
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
@@ -1166,6 +1167,9 @@ def _uid_token_for_row(row: dict) -> str:
     Registry rows use ``event_id``. Unlinked trials (``event_id`` null) used to
     share ``x`` and collided when two trials started on the same day — L2 hover
     / select / marker lookup all key off ``id``.
+
+    Unlinked tokens are prefixed with ``t-`` so a numeric-only slug cannot
+    collide with a real ``event_id`` token on the same date.
     """
     eid = row.get("event_id")
     if eid is not None:
@@ -1179,8 +1183,12 @@ def _uid_token_for_row(row: dict) -> str:
         str(row.get("country") or "").strip().lower(),
     ]
     raw = "-".join(p for p in parts if p)
+    # Fold diacritics (Köln → koln) before ASCII slugify.
+    raw = unicodedata.normalize("NFKD", raw)
+    raw = "".join(ch for ch in raw if not unicodedata.combining(ch))
     slug = re.sub(r"[^a-z0-9]+", "-", raw).strip("-")
-    return (slug[:64] if slug else "x")
+    token = slug[:62] if slug else "x"
+    return f"t-{token}"
 
 
 def _serialize_event(row: dict) -> dict:
