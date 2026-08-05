@@ -204,6 +204,18 @@ def test_path_counts_and_tops():
     assert path["first_points"]["event_name"] == "One"
 
 
+def test_path_merges_south_america_into_america():
+    events = [
+        _ev(year=2024, month=1, points=10, division="ALS", name="US", country="United States"),
+        _ev(year=2024, month=2, points=7, division="ALS", name="BR", country="Brazil"),
+        _ev(year=2024, month=3, points=3, division="CHMP", name="CA", country="Canada"),
+    ]
+    path = build_champion_path(events)
+    assert path["continents_total"] == {"America": 20}
+    assert path["continents_all_stars"] == {"America": 17}
+    assert "South America" not in path["continents_total"]
+
+
 def test_merge_preserves_telegram_metadata():
     existing = {
         "summaries": [
