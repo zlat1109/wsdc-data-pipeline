@@ -15,21 +15,41 @@ from transform.geography.resolve import (
     location_lookup_key_from_text,
 )
 from transform.geography.utils import norm_value
-from transform.knowledge.events import EVENT_NAME_LOCATION_OVERRIDES
+from transform.knowledge.events import (
+    EVENT_NAME_LOCATION_OVERRIDES,
+    EVENT_NAME_YEAR_LOCATION_OVERRIDES,
+)
 
 DATA = Path(__file__).resolve().parents[1] / "data"
 
 
-def _resolve_override_lids(location_df: pd.DataFrame) -> dict[str, str]:
+def _resolve_lid(location_df: pd.DataFrame, target: str) -> str | None:
     lookup = build_location_lookup(location_df)
+    raw = _canonical_location_raw(norm_value(target))
+    key = location_lookup_key_from_text(raw)
+    lid = lookup.get(key) or lookup.get(raw.lower())
+    return str(lid) if lid else None
+
+
+def _resolve_override_lids(location_df: pd.DataFrame) -> dict[str, str]:
     out: dict[str, str] = {}
     for name, target in EVENT_NAME_LOCATION_OVERRIDES.items():
-        raw = _canonical_location_raw(norm_value(target))
-        key = location_lookup_key_from_text(raw)
-        lid = lookup.get(key) or lookup.get(raw.lower())
+        lid = _resolve_lid(location_df, target)
         if lid:
-            out[name] = str(lid)
+            out[name] = lid
     return out
+
+
+def _year_override_want(
+    name: str, year: int | None, location_df: pd.DataFrame
+) -> str | None:
+    if year is None:
+        return None
+    for (ov_name, y0, y1), target in EVENT_NAME_YEAR_LOCATION_OVERRIDES.items():
+        if ov_name != name or year < y0 or year > y1:
+            continue
+        return _resolve_lid(location_df, target)
+    return None
 
 
 @pytest.mark.skipif(not (DATA / "location_info.csv").exists(), reason="no export data")
@@ -54,6 +74,12 @@ def test_results_mode_location_matches_overrides():
         mode = counts.most_common(1)[0][0]
         if mode != want:
             failures.append(f"{name}: mode location_id={mode} want={want} ({dict(counts)})")
+        # Any non-target lid is a regression (e.g. Montreal partial Jeju 213).
+        foreign = {lid: n for lid, n in counts.items() if lid and lid != want}
+        if foreign:
+            failures.append(
+                f"{name}: non-target location_ids={foreign} want={want} (all={dict(counts)})"
+            )
     assert not failures, "results export drifted from overrides:\n" + "\n".join(failures)
 
 
@@ -71,7 +97,12 @@ def test_editions_location_matches_overrides():
     with (DATA / "event_editions.csv").open(encoding="utf-8-sig", newline="") as f:
         for row in csv.DictReader(f):
             name = (row.get("event_name") or "").strip()
-            want = name_to_lid.get(name)
+            year_raw = row.get("event_year")
+            try:
+                year = int(year_raw) if year_raw not in (None, "") else None
+            except ValueError:
+                year = None
+            want = _year_override_want(name, year, location_df) or name_to_lid.get(name)
             if not want:
                 continue
             got = str(row.get("location_id") or "")
@@ -92,7 +123,17 @@ def test_events_wsdc_location_matches_overrides():
     with (DATA / "events_wsdc.csv").open(encoding="utf-8-sig", newline="") as f:
         for row in csv.DictReader(f):
             name = (row.get("name") or "").strip()
-            want = EVENT_NAME_LOCATION_OVERRIDES.get(name)
+            year_raw = row.get("event_year")
+            try:
+                year = int(year_raw) if year_raw not in (None, "") else None
+            except ValueError:
+                year = None
+            year_target = None
+            for (ov_name, y0, y1), target in EVENT_NAME_YEAR_LOCATION_OVERRIDES.items():
+                if ov_name == name and year is not None and y0 <= year <= y1:
+                    year_target = target
+                    break
+            want = year_target or EVENT_NAME_LOCATION_OVERRIDES.get(name)
             if not want:
                 continue
             got = (row.get("location") or "").strip()
@@ -102,3 +143,14 @@ def test_events_wsdc_location_matches_overrides():
                     f"{name} {row.get('event_year')}: location={got!r} want={raw!r}"
                 )
     assert not failures, "events_wsdc drifted from overrides:\n" + "\n".join(failures)
+
+
+@pytest.mark.skipif(not (DATA / "location_info.csv").exists(), reason="no export data")
+def test_year_overrides_resolve_in_location_info():
+    """Every year-scoped target must exist in location_info (else force skips)."""
+    location_df = pd.read_csv(DATA / "location_info.csv", dtype=str)
+    missing = []
+    for (name, y0, y1), target in EVENT_NAME_YEAR_LOCATION_OVERRIDES.items():
+        if not _resolve_lid(location_df, target):
+            missing.append(f"{name} [{y0}-{y1}] → {target}")
+    assert not missing, "unresolvable year location overrides:\n" + "\n".join(missing)

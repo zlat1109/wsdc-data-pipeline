@@ -17,9 +17,7 @@ EVENT_NAME_NORMALIZATION = build_event_name_normalization()
 # Text alone is not enough: resolve_result_location_ids only fills *empty* ids, so
 # preprocess also remaps location_id from these targets (see apply.py).
 EVENT_NAME_LOCATION_OVERRIDES = {
-    'Go West Swing Fest': 'Fremantle, Australia',
-    # Same Perth-area brand, separate WSDC event_id 367 (2024+); keep distinct from 306.
-    'Go West SwingFest': 'Perth, Australia',
+    # Go West: year ranges below (Fest alias collapses into SwingFest).
     'BeeMAD': 'Madrid, Spain',
     # Shared Wailea (124 / Aloha Open) wrongly applied to Swedish events.
     'Sweden Westie Gala': 'Stockholm, Sweden',
@@ -35,7 +33,7 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'Toronto Open Swing & Hustle Championships': 'Toronto, Canada',
     # Shared St. Petersburg (222) wrongly applied to Revitalise WCS (Melbourne).
     'Revitalise WCS': 'Melbourne, Australia',
-    # Calendar/site Montreal; results stuck on shared New York (7).
+    # Calendar/site Montreal; results/editions stuck on shared Jeju (213).
     'Montreal Westie Fest': 'Montreal, Canada',
     # Catalog upcoming + 2026 schedule Jeju; results stuck on shared Brno (266).
     # Flat override (not year-aware): historical Korean cities may differ, but Brno is wrong.
@@ -103,8 +101,8 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'Bavarian Open West Coast Swing Championships': 'Munich, Germany',
     # Metro move Framingham → Boston for recent editions; unify on Boston (8).
     'Countdown Swing Boston': 'Boston, MA, United States',
-    # Camp moved Crimea → Torrevieja; flat override fixes shared-wrong lid collision.
-    'Sunny Side Dance Camp': 'Torrevieja, Spain',
+    # Sunny Side Crimea→Spain: year ranges in EVENT_NAME_YEAR_LOCATION_OVERRIDES
+    # (flat Torrevieja override collapsed KEEP_SEPARATE ids 191/230 → CI fail).
     'King Swing': 'Kraków, Poland',  # was Wailea (124)
     'Santa Swing': 'Kraków, Poland',  # was Wailea (124)
     'Westy Nantes': 'Nantes, France',  # was Brno (266)
@@ -119,9 +117,26 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     # Shared St. Petersburg (222 / Swing & Snow) wrongly applied to NZ Open.
     # Site/URL streetswing.co.nz; calendar sibling in Auckland.
     'New Zealand Open Swing Dance Championships': 'Auckland, New Zealand',
+    # Shared St. Petersburg (222) wrongly applied to Swingsation (AU / Raw Connection).
+    # Calendar + site: Gold Coast, Queensland; URL rawconnection.com.au/swingsation.
+    'Swingsation': 'Gold Coast, Australia',
     # WSDC venue label "Boston Club" is in Düsseldorf (not a city name).
     'D-Town Swing': 'Düsseldorf, Germany',
     'WCS Festival': 'Düsseldorf, Germany',
+}
+
+# (event_name, year_from, year_to_inclusive) → location text.
+# Applied after flat EVENT_NAME_LOCATION_OVERRIDES; use when a series relocated
+# or when name aliases collapse two KEEP_SEPARATE event_ids onto one string.
+EVENT_NAME_YEAR_LOCATION_OVERRIDES: dict[tuple[str, int, int], str] = {
+    # event_id 306 (2019 Fremantle) vs 367 (2024+ Perth); alias → SwingFest.
+    # No WSDC editions 2020–2023 for these ids — gaps intentionally uncovered.
+    ("Go West SwingFest", 2019, 2019): "Fremantle, Australia",
+    ("Go West SwingFest", 2024, 2099): "Perth, Australia",
+    ("Go West Swing Fest", 2019, 2019): "Fremantle, Australia",
+    # event_id 191 (Crimea) vs 230 (Spain).
+    ("Sunny Side Dance Camp", 2012, 2013): "Crimea, Ukraine",
+    ("Sunny Side Dance Camp", 2014, 2099): "Torrevieja, Spain",
 }
 
 EVENT_LOCATION_EXACT_CORRECTIONS = {
@@ -343,6 +358,30 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_country': 'Germany',
             'event_location': 'Munich, Germany',
             'event_location_standardized': 'Munich, Germany',
+        },
+    },
+    174: {
+        'name': 'Swingsation',
+        'url': 'https://rawconnection.com.au/swingsation/',
+        'typical_location': 'Gold Coast, Australia',
+        'location': {
+            'event_city': 'Gold Coast',
+            'event_state': '',
+            'event_country': 'Australia',
+            'event_location': 'Gold Coast, Australia',
+            'event_location_standardized': 'Gold Coast, Australia',
+        },
+    },
+    178: {
+        'name': 'Montreal Westie Fest',
+        'url': 'http://www.montrealwestiefest.com',
+        'typical_location': 'Montreal, Canada',
+        'location': {
+            'event_city': 'Montreal',
+            'event_state': '',
+            'event_country': 'Canada',
+            'event_location': 'Montreal, Canada',
+            'event_location_standardized': 'Montreal, Canada',
         },
     },
     405: {

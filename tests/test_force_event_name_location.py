@@ -456,3 +456,45 @@ def test_force_philly_swing_classic_to_wilmington():
     # NY event on shared lid must stay New York.
     nyc = out.loc[out["event_name"] == "American Swing Dance Championships"].iloc[0]
     assert str(nyc["location_id"]) == "7"
+
+
+def test_force_swingsation_off_st_petersburg_to_gold_coast():
+    location_info = pd.DataFrame(
+        [
+            {
+                "location_id": "222",
+                "event_city": "St. Petersburg",
+                "event_state": "",
+                "event_country": "Russia",
+                "event_location": "St. Petersburg, Russia",
+            },
+            {
+                "location_id": "169",
+                "event_city": "Gold Coast",
+                "event_state": "",
+                "event_country": "Australia",
+                "event_location": "Gold Coast, Australia",
+            },
+        ]
+    )
+    results = pd.DataFrame(
+        [
+            {
+                "event_name": "Swingsation",
+                "location_id": "222",
+                "event_location": "St. Petersburg, Russia",
+            },
+            {
+                "event_name": "Swing & Snow",
+                "location_id": "222",
+                "event_location": "St. Petersburg, Russia",
+            },
+        ]
+    )
+    out, changed = force_result_locations_from_event_name_overrides(results, location_info)
+    assert changed == 1
+    swing = out.loc[out["event_name"] == "Swingsation"].iloc[0]
+    assert str(swing["location_id"]) == "169"
+    assert swing["event_location"] == "Gold Coast, Australia"
+    snow = out.loc[out["event_name"] == "Swing & Snow"].iloc[0]
+    assert str(snow["location_id"]) == "222"

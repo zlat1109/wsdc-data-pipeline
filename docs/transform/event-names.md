@@ -64,6 +64,7 @@ from transform.knowledge.merge_map import apply_merge_event_id_map
 | 75, 152 | Worlds UCWDC — Dallas vs Orlando |
 | 191, 230 | Sunny Side — Crimea vs Spain |
 | 83, 204 | Spring Swing — Detroit vs Stockholm |
+| 306, 367 | Go West — Fremantle 2019 vs Perth 2024+ |
 
 ## event_name_raw
 

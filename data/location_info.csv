@@ -180,6 +180,11 @@ location_id,event_city,event_state,event_country,latitude,longitude,event_locati
 279,Ludwigsburg,,Germany,48.8891149,9.1942834,"Ludwigsburg, Germany","Ludwigsburg, Germany",t
 280,Gothenburg,,Sweden,57.70887,11.97456,"Gothenburg, Sweden","Gothenburg, Sweden",t
 386,La Londe-les-Maures,,France,43.1381313,6.2355346,"La Londe-les-Maures, France","La Londe-les-Maures, France",t
+387,Bruxelles,,Belgium,50.84770289999999,4.357200100000001,"Bruxelles, Belgium","Bruxelles, Belgium",t
+389,Dresden,,Germany,51.0504088,13.7372621,"Dresden, Germany","Dresden, Germany",t
+390,Geneva,,Switzerland,46.2043907,6.1431577,"Geneva, Switzerland","Geneva, Switzerland",t
+392,Nürnberg,,Germany,49.45428810000001,11.0745641,"Nürnberg, Germany","Nürnberg, Germany",t
+393,Bad Hofgastein,,Austria,47.1725556,13.0987448,"Bad Hofgastein, Austria","Bad Hofgastein, Austria",t
 25,Atlanta,Georgia,United States,33.7501275,-84.3885209,"Atlanta, GA, United States","Atlanta, GA, United States",t
 159,Singapore,,Singapore,1.352083,103.819836,"Singapore, Singapore","Singapore, Singapore",t
 213,Jeju,,Republic of Korea,33.5042779,126.519838,"Jeju, Republic of Korea","Jeju, Republic of Korea",t
@@ -199,10 +204,3 @@ location_id,event_city,event_state,event_country,latitude,longitude,event_locati
 127,Düsseldorf,,Germany,51.2230411,6.7824545,"Düsseldorf, Germany","Düsseldorf, Germany",t
 325,North Myrtle Beach,South Carolina,United States,33.8160058,-78.680016,"North Myrtle Beach, SC, United States","North Myrtle Beach, SC",t
 353,Silver Spring,Maryland,United States,38.9906654,-77.026088,"Silver Spring, MD, United States","Silver Spring, MD",t
-387,Bruxelles,,Belgium,50.84770289999999,4.357200100000001,"Bruxelles, Bruxelles, Belgium","Bruxelles, Bruxelles, Belgium",t
-388,Bucharest,,Romania,44.4267674,26.1025384,"Bucharest, Romania","Bucharest, Romania",t
-389,Dresden,,Germany,51.0504088,13.7372621,"Dresden, Germany","Dresden, Germany",t
-390,Geneva,,Switzerland,46.2043907,6.1431577,"Geneva, Switzerland","Geneva, Switzerland",t
-391,Köln,,Germany,50.937531,6.9602786,"Köln, NRW, Germany","Köln, NRW, Germany",t
-392,Nürnberg,,Germany,49.45428810000001,11.0745641,"Nürnberg, Bavaria, Germany","Nürnberg, Bavaria, Germany",t
-393,Bad Hofgastein,,Austria,47.1725556,13.0987448,"Bad Hofgastein, Salzburg, Austria","Bad Hofgastein, Salzburg, Austria",t
