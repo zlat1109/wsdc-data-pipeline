@@ -48,6 +48,8 @@ def test_westie_gala_metadata_and_stockholm_override():
     assert KNOWN_EVENT_METADATA[387]["typical_location"] == "Waterloo, Canada"
     assert EVENT_NAME_LOCATION_OVERRIDES["Euro Dance Festival"] == "Rust, Germany"
     assert EVENT_NAME_LOCATION_OVERRIDES["Barock Swing Ludwigsburg"] == "Ludwigsburg, Germany"
+    assert EVENT_NAME_LOCATION_OVERRIDES["Infinite Swing"] == "Munich, Germany"
+    assert KNOWN_EVENT_METADATA[404]["typical_location"] == "Munich, Germany"
 
 
 def test_year_split_sssc_vs_uptown_results():
