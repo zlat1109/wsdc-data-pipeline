@@ -606,6 +606,11 @@ def _rows_from_scheduled(data_dir: Path) -> list[dict]:
             year_i = int(year_raw) if year_raw is not None and not pd.isna(year_raw) else start.year
         except (TypeError, ValueError):
             year_i = start.year
+        loc_raw = rec.get("location_id")
+        try:
+            loc_i = int(loc_raw) if loc_raw is not None and not pd.isna(loc_raw) else None
+        except (TypeError, ValueError):
+            loc_i = None
         rows.append(
             {
                 "event_id": eid_i,
@@ -618,7 +623,7 @@ def _rows_from_scheduled(data_dir: Path) -> list[dict]:
                 "url": _clean_name(rec.get("url")),
                 "city": _city_from_location_raw(rec.get("location_raw")),
                 "country": _clean_name(rec.get("country")),
-                "location_id": None,
+                "location_id": loc_i,
                 "source": "scheduled_events",
                 "year": year_i,
             }

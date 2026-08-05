@@ -40,7 +40,7 @@ Optional (not required for probe today):
 
 | Secret | Value |
 |---|---|
-| `GOOGLE_MAPS_API_KEY` | For future cloud parser (geocoding) |
+| `GOOGLE_MAPS_API_KEY` | Events-list trial geo + optional geocode |
 | `TELEGRAM_BOT_TOKEN` | Same bot token as `wsdc-telegram-bot` — probe + pipeline notifications |
 | `TELEGRAM_CHAT_ID` | Test channel ID (e.g. `-4228074878`) or production channel |
 | `WSDC_BOT_SYNC_TOKEN` | Dispatch CSV sync to `wsdc-telegram-bot` |

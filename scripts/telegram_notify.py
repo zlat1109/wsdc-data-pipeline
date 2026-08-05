@@ -659,6 +659,24 @@ def format_events_list_message(report: dict) -> str:
     if s.get("added", 0) == 0 and s.get("removed", 0) == 0:
         lines.extend(["", "Изменений с прошлого запуска нет."])
 
+    geo_review = report.get("geo_review") or []
+    geo_count = int(s.get("geo_review_count", len(geo_review)) or 0)
+    if geo_count:
+        lines.extend(
+            [
+                "",
+                f"⚠️ <b>Trial geo review</b>: <code>{_esc(geo_count)}</code>",
+            ]
+        )
+        for item in geo_review[:8]:
+            lines.append(
+                f"• {_esc(item.get('event_name'))} "
+                f"(<code>{_esc(item.get('reason'))}</code>) "
+                f"— {_esc((item.get('location_raw') or '')[:40])}"
+            )
+        if len(geo_review) > 8:
+            lines.append(f"… +{len(geo_review) - 8} ещё")
+
     ms = report.get("mapping_summary") or {}
     mapping_path = PROJECT_ROOT / "data" / "events_list" / "mapping" / "latest.json"
     if not ms and mapping_path.exists():
