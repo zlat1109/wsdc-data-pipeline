@@ -917,3 +917,19 @@ def test_serialize_event_unique_ids_for_unlinked_trials_same_start():
     )
     assert numeric_name["id"] == "confirmed:t-135:2026-08-21"
     assert numeric_name["id"] != linked["id"]
+
+
+def test_cancelled_calendar_status_coerced_to_hiatus():
+    from transform.year_event_calendar.build import (
+        STATUS_CANCELLED,
+        STATUS_HIATUS,
+        _coerce_cancelled_to_hiatus,
+        _norm_status_calendar,
+    )
+
+    assert _norm_status_calendar("cancelled") == STATUS_HIATUS
+    assert _norm_status_calendar("canceled") == STATUS_HIATUS
+    assert _norm_status_calendar("hiatus") == STATUS_HIATUS
+    rows = [{"status": STATUS_CANCELLED, "name": "Swing Dance America"}]
+    _coerce_cancelled_to_hiatus(rows)
+    assert rows[0]["status"] == STATUS_HIATUS

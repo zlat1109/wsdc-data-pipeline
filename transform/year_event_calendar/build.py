@@ -124,15 +124,21 @@ def _norm_status_calendar(raw: Any) -> str | None:
     if raw is None or (isinstance(raw, float) and pd.isna(raw)):
         return None
     text = str(raw).strip().lower()
-    if text in {"cancelled", "canceled"}:
-        return STATUS_CANCELLED
-    if text in {"hiatus", "on_hiatus"}:
+    # Product rule: calendar has no separate Cancelled — force Hiatus.
+    if text in {"cancelled", "canceled", "hiatus", "on_hiatus"}:
         return STATUS_HIATUS
     if text in {"unconfirmed", "unconirmed"}:
         return STATUS_EXPECTED
     if text in {"scheduled", "confirmed"}:
         return STATUS_CONFIRMED
     return None
+
+
+def _coerce_cancelled_to_hiatus(rows: list[dict]) -> None:
+    """Force any leftover cancelled rows to hiatus before emit."""
+    for row in rows:
+        if row.get("status") == STATUS_CANCELLED:
+            row["status"] = STATUS_HIATUS
 
 
 def _kind_from_status_event(raw: Any, name: str = "") -> str:
@@ -589,9 +595,7 @@ def _rows_from_scheduled(data_dir: Path) -> list[dict]:
         start = _parse_date(rec.get("start_date"))
         if start is None:
             continue
-        if _truthy(rec.get("canceled")):
-            status = STATUS_CANCELLED
-        elif _truthy(rec.get("on_hiatus")):
+        if _truthy(rec.get("canceled")) or _truthy(rec.get("on_hiatus")):
             status = STATUS_HIATUS
         else:
             status = STATUS_CONFIRMED if _truthy(rec.get("confirmed")) else STATUS_EXPECTED
@@ -1298,6 +1302,7 @@ def build_year_event_calendar(
         + _rows_from_editions(data_dir)
         + _rows_from_scheduled(data_dir)
     )
+    _coerce_cancelled_to_hiatus(base_rows)
     _canonicalize_calendar_rows(base_rows, catalog)
     _correct_ucwdc_worlds_event_ids(base_rows)
     # Far future: only published schedule (avoid long-range calendar scrape noise)
@@ -1404,6 +1409,7 @@ def build_year_event_calendar(
     named_rows = _drop_stale_expected(named_rows, as_of)
 
     in_window = [r for r in named_rows if (_row_year(r) in years)]
+    _coerce_cancelled_to_hiatus(in_window)
     in_window.sort(key=lambda r: (r["start_date"], r.get("name") or ""))
 
     events = [_serialize_event(r) for r in in_window]
@@ -1425,9 +1431,9 @@ def build_year_event_calendar(
         "weekend": {"start_weekday": "thu", "end_weekday": "sun"},
         "counts_by_year": {str(y): by_year[str(y)] for y in years_with_data},
         "disclaimer": {
-            "en": "Expected events are projected from the latest confirmed edition (±1 week per WSDC Registry Rules) for the current year and near-future years in the selector. They stay unconfirmed until published on the WSDC calendar; hiatus/cancelled stops the projection.",
-            "ru": "Expected-ивенты — проекция с последней подтверждённой edition (±1 неделя по правилам WSDC) на текущий и ближайшие годы в селекторе. Неподтверждены, пока не появятся в календаре WSDC; hiatus/отмена останавливает проекцию.",
-            "es": "Los eventos expected se proyectan desde la última edición confirmada (±1 semana según reglas WSDC) para el año actual y años cercanos del selector. Siguen sin confirmar hasta publicarse en el calendario WSDC; hiatus/cancelación detiene la proyección.",
+            "en": "Expected events are projected from the latest confirmed edition (±1 week per WSDC Registry Rules) for the current year and near-future years in the selector. They stay unconfirmed until published on the WSDC calendar; hiatus stops the projection.",
+            "ru": "Expected-ивенты — проекция с последней подтверждённой edition (±1 неделя по правилам WSDC) на текущий и ближайшие годы в селекторе. Неподтверждены, пока не появятся в календаре WSDC; hiatus останавливает проекцию.",
+            "es": "Los eventos expected se proyectan desde la última edición confirmada (±1 semana según reglas WSDC) para el año actual y años cercanos del selector. Siguen sin confirmar hasta publicarse en el calendario WSDC; el hiatus detiene la proyección.",
         },
         "events": events,
     }
