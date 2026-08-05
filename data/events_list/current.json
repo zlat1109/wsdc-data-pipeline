@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-08-04T10:27:31.140198+00:00",
+  "scraped_at": "2026-08-05T14:02:15.768257+00:00",
   "source": "github-actions",
   "events": [
     {
@@ -190,7 +190,9 @@
       "confirmed": true,
       "canceled": false,
       "on_hiatus": false,
-      "is_active": true
+      "is_active": true,
+      "location_id": 221,
+      "location_source": "location_info"
     },
     {
       "source_fingerprint": "60ba1b6056cb977623ec8064",
@@ -228,7 +230,9 @@
       "confirmed": true,
       "canceled": false,
       "on_hiatus": false,
-      "is_active": true
+      "is_active": true,
+      "location_id": 387,
+      "location_source": "google_maps"
     },
     {
       "source_fingerprint": "dd68305c3ac38eadb87a5a5a",
@@ -247,7 +251,9 @@
       "confirmed": true,
       "canceled": false,
       "on_hiatus": false,
-      "is_active": true
+      "is_active": true,
+      "location_id": 388,
+      "location_source": "google_maps"
     },
     {
       "source_fingerprint": "0c9f27d896a78942522a77dc",
@@ -532,7 +538,9 @@
       "confirmed": true,
       "canceled": false,
       "on_hiatus": false,
-      "is_active": true
+      "is_active": true,
+      "location_id": 109,
+      "location_source": "location_info"
     },
     {
       "source_fingerprint": "0a8fc0e18bc2cd5e937a906d",
@@ -703,7 +711,9 @@
       "confirmed": true,
       "canceled": false,
       "on_hiatus": false,
-      "is_active": true
+      "is_active": true,
+      "location_id": 389,
+      "location_source": "google_maps"
     },
     {
       "source_fingerprint": "8d1dae25426572b4b2669238",
@@ -722,7 +732,9 @@
       "confirmed": true,
       "canceled": false,
       "on_hiatus": false,
-      "is_active": true
+      "is_active": true,
+      "location_id": 280,
+      "location_source": "location_info"
     },
     {
       "source_fingerprint": "cfb58853d68c552a8f01e344",
@@ -760,7 +772,9 @@
       "confirmed": true,
       "canceled": false,
       "on_hiatus": false,
-      "is_active": true
+      "is_active": true,
+      "location_id": 203,
+      "location_source": "location_info"
     },
     {
       "source_fingerprint": "fba93e3875ae13599366b4aa",
@@ -1482,7 +1496,9 @@
       "confirmed": true,
       "canceled": false,
       "on_hiatus": false,
-      "is_active": true
+      "is_active": true,
+      "location_id": 390,
+      "location_source": "google_maps"
     },
     {
       "source_fingerprint": "9a31883cf60e263f75d348e9",
@@ -1691,7 +1707,9 @@
       "confirmed": true,
       "canceled": false,
       "on_hiatus": false,
-      "is_active": true
+      "is_active": true,
+      "location_id": 391,
+      "location_source": "google_maps"
     },
     {
       "source_fingerprint": "e1d9833f24ce487d85fdd220",
@@ -1805,7 +1823,9 @@
       "confirmed": true,
       "canceled": false,
       "on_hiatus": false,
-      "is_active": true
+      "is_active": true,
+      "location_id": 109,
+      "location_source": "location_info"
     },
     {
       "source_fingerprint": "456e9587ab408a61ee8fb8dd",
@@ -2166,7 +2186,9 @@
       "confirmed": true,
       "canceled": false,
       "on_hiatus": false,
-      "is_active": true
+      "is_active": true,
+      "location_id": 181,
+      "location_source": "location_info"
     },
     {
       "source_fingerprint": "5cb418e1cefe86f59aa9c02c",
@@ -2413,7 +2435,9 @@
       "confirmed": true,
       "canceled": false,
       "on_hiatus": false,
-      "is_active": true
+      "is_active": true,
+      "location_id": 392,
+      "location_source": "google_maps"
     },
     {
       "source_fingerprint": "4387e59e411ddba91259cfa1",
@@ -2964,7 +2988,9 @@
       "confirmed": true,
       "canceled": false,
       "on_hiatus": false,
-      "is_active": true
+      "is_active": true,
+      "location_id": 393,
+      "location_source": "google_maps"
     },
     {
       "source_fingerprint": "f8eacdcd9ba7b9ecdb78b844",

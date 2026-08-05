@@ -1,106 +1,24 @@
 {
-  "scraped_at": "2026-08-04T10:27:31.140198+00:00",
+  "scraped_at": "2026-08-05T14:02:15.768257+00:00",
   "source": "github-actions",
   "summary": {
     "total": 164,
     "active": 163,
     "inactive": 1,
     "added": 0,
-    "removed": 4,
+    "removed": 0,
     "unchanged": 164,
-    "parse_errors": 0
+    "parse_errors": 0,
+    "geo_review_count": 0
   },
   "added": [],
-  "removed": [
-    {
-      "source_fingerprint": "89aa9e3a7652da962625e204",
-      "event_name": "Sea Sun and Swing",
-      "original_date": "Jul 25 - Aug 1, 2026",
-      "start_date": "2026-07-25",
-      "end_date": "2026-08-01",
-      "results_year": 2026,
-      "results_month": 8,
-      "location_raw": "La Grande Motte, Herault, France",
-      "location_raw_original": "La Grande Motte, Herault, France",
-      "country": "France",
-      "country_flag": "FRA",
-      "url": "http://www.seasunswing.fr/",
-      "status_event": "Registry Event",
-      "confirmed": true,
-      "canceled": false,
-      "on_hiatus": false,
-      "is_active": true
-    },
-    {
-      "source_fingerprint": "5c7517cf7cbd14739f9f32d5",
-      "event_name": "Warsaw Summer Nights Westival",
-      "original_date": "Jul 30 - Aug 2, 2026",
-      "start_date": "2026-07-30",
-      "end_date": "2026-08-02",
-      "results_year": 2026,
-      "results_month": 8,
-      "location_raw": "Warsaw, mazowieckie, Poland",
-      "location_raw_original": "Warsaw, mazowieckie, Poland",
-      "country": "Poland",
-      "country_flag": "POL",
-      "url": "https://www.summernightswestival.com/",
-      "status_event": "Registry Event",
-      "confirmed": true,
-      "canceled": false,
-      "on_hiatus": false,
-      "is_active": true
-    },
-    {
-      "source_fingerprint": "45971d139bb1fdbc112375d6",
-      "event_name": "Lisbon Westie Fest",
-      "original_date": "Jul 30 - Aug 2, 2026",
-      "start_date": "2026-07-30",
-      "end_date": "2026-08-02",
-      "results_year": 2026,
-      "results_month": 8,
-      "location_raw": "Lisbon, Portugal",
-      "location_raw_original": "Lisbon,  Portugal",
-      "country": "Portugal",
-      "country_flag": "PRT",
-      "url": "https://lisbonwestiefest.com/",
-      "status_event": "Registry Event",
-      "confirmed": true,
-      "canceled": false,
-      "on_hiatus": false,
-      "is_active": true
-    },
-    {
-      "source_fingerprint": "53ee0fce64669be2c6b496b2",
-      "event_name": "Arizona Dance Classic",
-      "original_date": "Jul 31 - Aug 2, 2026",
-      "start_date": "2026-07-31",
-      "end_date": "2026-08-02",
-      "results_year": 2026,
-      "results_month": 8,
-      "location_raw": "Phoenix, arizona, United States",
-      "location_raw_original": "Phoenix, arizona, usa",
-      "country": "United States",
-      "country_flag": "USA",
-      "url": "https://arizonadanceclassic.com/",
-      "status_event": "Registry Event",
-      "confirmed": true,
-      "canceled": false,
-      "on_hiatus": false,
-      "is_active": true
-    }
-  ],
+  "removed": [],
   "paths": {
     "current": "/home/runner/work/wsdc-data-pipeline/wsdc-data-pipeline/data/events_list/current.json",
     "csv": "/home/runner/work/wsdc-data-pipeline/wsdc-data-pipeline/data/events_list/events_list.csv",
-    "changelog": "/home/runner/work/wsdc-data-pipeline/wsdc-data-pipeline/data/events_list/changelog/run_20260804T102731Z.json"
+    "changelog": "/home/runner/work/wsdc-data-pipeline/wsdc-data-pipeline/data/events_list/changelog/run_20260805T140215Z.json"
   },
-  "mapping_summary": {
-    "scheduled_active": 163,
-    "confirmed": 151,
-    "suggested": 0,
-    "review": 0,
-    "new_unmapped": 12,
-    "location_drifts": 7,
-    "name_variants": 40
-  }
+  "geo_review": [],
+  "run_id": 15,
+  "current_events": 155
 }
