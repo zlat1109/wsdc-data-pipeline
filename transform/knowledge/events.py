@@ -113,6 +113,8 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'Dutch Open West Coast Swing': 'Venray, Netherlands',  # was Perth (253)
     # Shared Venray (227 / Dutch Open) wrongly applied to Best of the Best (Sydney, AU).
     'Best of the Best WCS': 'Sydney, Australia',
+    # Trial 2026: WSDC points reused Dutch Open lid 227 (Venray); events list says Munich.
+    'Infinite Swing': 'Munich, Germany',
     'Winter Coast Swing': 'Kuopio, Finland',  # was Düsseldorf (127)
     # Shared St. Petersburg (222 / Swing & Snow) wrongly applied to NZ Open.
     # Site/URL streetswing.co.nz; calendar sibling in Auckland.
@@ -329,6 +331,18 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_country': 'Germany',
             'event_location': 'Berlin, Germany',
             'event_location_standardized': 'Berlin, Germany',
+        },
+    },
+    404: {
+        'name': 'Infinite Swing',
+        'url': 'http://infinite-swing.com',
+        'typical_location': 'Munich, Germany',
+        'location': {
+            'event_city': 'Munich',
+            'event_state': '',
+            'event_country': 'Germany',
+            'event_location': 'Munich, Germany',
+            'event_location_standardized': 'Munich, Germany',
         },
     },
     405: {
