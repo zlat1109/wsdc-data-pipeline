@@ -117,6 +117,9 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     # Shared St. Petersburg (222 / Swing & Snow) wrongly applied to NZ Open.
     # Site/URL streetswing.co.nz; calendar sibling in Auckland.
     'New Zealand Open Swing Dance Championships': 'Auckland, New Zealand',
+    # Shared St. Petersburg (222) wrongly applied to Swingsation (AU / Raw Connection).
+    # Calendar + site: Gold Coast, Queensland; URL rawconnection.com.au/swingsation.
+    'Swingsation': 'Gold Coast, Australia',
     # WSDC venue label "Boston Club" is in Düsseldorf (not a city name).
     'D-Town Swing': 'Düsseldorf, Germany',
     'WCS Festival': 'Düsseldorf, Germany',
@@ -355,6 +358,18 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_country': 'Germany',
             'event_location': 'Munich, Germany',
             'event_location_standardized': 'Munich, Germany',
+        },
+    },
+    174: {
+        'name': 'Swingsation',
+        'url': 'https://rawconnection.com.au/swingsation/',
+        'typical_location': 'Gold Coast, Australia',
+        'location': {
+            'event_city': 'Gold Coast',
+            'event_state': '',
+            'event_country': 'Australia',
+            'event_location': 'Gold Coast, Australia',
+            'event_location_standardized': 'Gold Coast, Australia',
         },
     },
     405: {
