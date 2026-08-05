@@ -354,6 +354,7 @@ def preprocess_with_log(data: dict[str, pd.DataFrame]) -> tuple[dict[str, pd.Dat
                 "location_id_fix",
             )
         # Force remap wrong shared location_ids (e.g. Sweden events → Wailea).
+        # Must run BEFORE schedule seed so EVENT_NAME_LOCATION_OVERRIDES win.
         resolved_results, forced = force_result_locations_from_event_name_overrides(
             resolved_results, resolved_locations
         )

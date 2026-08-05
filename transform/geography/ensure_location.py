@@ -36,6 +36,9 @@ SOURCE_UNRESOLVED = "unresolved"
 
 GeocodeFn = Callable[[str], tuple[float, float] | None]
 
+_gmaps_client = None
+_gmaps_client_failed = False
+
 
 @dataclass(frozen=True)
 class EnsureLocationResult:
@@ -48,17 +51,20 @@ class EnsureLocationResult:
 
 def google_geocode(query: str) -> tuple[float, float] | None:
     """Geocode via Google Maps when GOOGLE_MAPS_API_KEY is set."""
+    global _gmaps_client, _gmaps_client_failed
     key = (os.getenv("GOOGLE_MAPS_API_KEY") or "").strip()
-    if not key or not query.strip():
+    if not key or not query.strip() or _gmaps_client_failed:
         return None
     try:
         import googlemaps
     except ImportError:
         logger.warning("googlemaps package not installed; skipping Google geocode")
+        _gmaps_client_failed = True
         return None
     try:
-        client = googlemaps.Client(key=key)
-        results = client.geocode(query)
+        if _gmaps_client is None:
+            _gmaps_client = googlemaps.Client(key=key)
+        results = _gmaps_client.geocode(query)
         if not results:
             return None
         loc = results[0]["geometry"]["location"]
@@ -94,30 +100,35 @@ def _canonical_coords(city: str, state: str, country: str) -> tuple[float, float
 
 
 def _coords_from_city_country(
-    location_df: pd.DataFrame, city: str, country: str
+    location_df: pd.DataFrame,
+    city: str,
+    country: str,
+    *,
+    state: str = "",
 ) -> tuple[float, float] | None:
-    """Reuse lat/lon from any location_info row with same city+country."""
-    if location_df is None or location_df.empty or not city or not country:
+    """Reuse lat/lon from any location_info row with same city+country (+ US state)."""
+    lid = _find_id_by_city_country(location_df, city, country, state=state)
+    if not lid:
         return None
-    city_l = city.strip().lower()
-    country_l = country.strip().lower()
-    for _, row in location_df.iterrows():
-        if str(row.get("event_city") or "").strip().lower() != city_l:
-            continue
-        if str(row.get("event_country") or "").strip().lower() != country_l:
-            continue
-        if _coords_valid(row.get("latitude"), row.get("longitude")):
-            return float(row["latitude"]), float(row["longitude"])
-    return None
+    row = _row_by_id(location_df, lid)
+    if row is None or not _coords_valid(row.get("latitude"), row.get("longitude")):
+        return None
+    return float(row["latitude"]), float(row["longitude"])
 
 
 def _find_id_by_city_country(
-    location_df: pd.DataFrame, city: str, country: str
+    location_df: pd.DataFrame,
+    city: str,
+    country: str,
+    *,
+    state: str = "",
 ) -> str | None:
     if location_df is None or location_df.empty or not city or not country:
         return None
     city_l = city.strip().lower()
     country_l = country.strip().lower()
+    state_l = state.strip().lower()
+    require_state = country_l in {"united states", "usa", "us"} and bool(state_l)
     best: str | None = None
     best_num = 10**18
     for _, row in location_df.iterrows():
@@ -125,6 +136,10 @@ def _find_id_by_city_country(
             continue
         if str(row.get("event_country") or "").strip().lower() != country_l:
             continue
+        if require_state:
+            row_state = str(row.get("event_state") or "").strip().lower()
+            if row_state != state_l:
+                continue
         lid = str(row.get("location_id") or "").strip()
         if not lid:
             continue
@@ -137,12 +152,46 @@ def _find_id_by_city_country(
     return best
 
 
-def _next_location_id(location_df: pd.DataFrame) -> str:
-    ids = pd.to_numeric(
-        location_df.get("location_id", pd.Series(dtype=str)), errors="coerce"
-    )
-    max_id = int(ids.max()) if ids.notna().any() else 0
-    return str(max_id + 1)
+def _find_id_by_event_location(
+    location_df: pd.DataFrame, event_location: str
+) -> str | None:
+    """Match exact normalized event_location string (DB unique key)."""
+    want = norm_value(event_location).lower()
+    if not want or location_df is None or location_df.empty:
+        return None
+    best: str | None = None
+    best_num = 10**18
+    for _, row in location_df.iterrows():
+        for col in ("event_location", "event_location_standardized"):
+            got = norm_value(row.get(col)).lower()
+            if got != want:
+                continue
+            lid = str(row.get("location_id") or "").strip()
+            if not lid:
+                continue
+            try:
+                n = int(lid)
+            except ValueError:
+                n = best_num
+            if best is None or n < best_num:
+                best, best_num = lid, n
+            break
+    return best
+
+
+def csv_max_location_id(location_df: pd.DataFrame | None) -> int:
+    if location_df is None or location_df.empty or "location_id" not in location_df.columns:
+        return 0
+    ids = pd.to_numeric(location_df["location_id"], errors="coerce")
+    if not ids.notna().any():
+        return 0
+    return int(ids.max())
+
+
+def _next_location_id(location_df: pd.DataFrame, *, id_floor: int = 0) -> str:
+    """Allocate next id above CSV max and optional DB floor."""
+    max_csv = csv_max_location_id(location_df)
+    return str(max(max_csv, int(id_floor), 0) + 1)
 
 
 def _row_by_id(location_df: pd.DataFrame, loc_id: str) -> pd.Series | None:
@@ -160,8 +209,12 @@ def ensure_location(
     geocode_fn: GeocodeFn | None = None,
     allow_create: bool = True,
     allow_geocode: bool = True,
+    id_floor: int = 0,
 ) -> tuple[EnsureLocationResult, pd.DataFrame]:
     """Match or create a location row; fill blank coords without overwriting.
+
+    ``id_floor`` should be ``max(location_id)`` from the live DB (or 0 offline)
+    so newly allocated ids never collide with rows missing from the CSV export.
 
     Returns (result, possibly-updated location_df).
     """
@@ -188,13 +241,23 @@ def ensure_location(
     if not city and country_use:
         city = ""
 
+    if not loc_id:
+        loc_id = _find_id_by_event_location(location_df, raw)
+
     if not loc_id and city and (country_use or parsed_country):
         loc_id = _find_id_by_city_country(
-            location_df, city, country_use or parsed_country
+            location_df,
+            city,
+            country_use or parsed_country,
+            state=state,
         )
 
     geocode = geocode_fn if geocode_fn is not None else google_geocode
-    query = raw if not country_use or country_use.lower() in raw.lower() else f"{raw}, {country_use}"
+    query = (
+        raw
+        if not country_use or country_use.lower() in raw.lower()
+        else f"{raw}, {country_use}"
+    )
 
     if loc_id:
         row = _row_by_id(location_df, loc_id)
@@ -203,7 +266,6 @@ def ensure_location(
                 EnsureLocationResult(str(loc_id), SOURCE_LOCATION_INFO),
                 location_df,
             )
-        # Matched place but missing coords — fill only blanks
         coords, src = _resolve_coords(
             city,
             state,
@@ -248,7 +310,7 @@ def ensure_location(
         geocode,
         allow_geocode,
     )
-    new_id = _next_location_id(location_df)
+    new_id = _next_location_id(location_df, id_floor=id_floor)
     event_location = raw
     new_row = {
         "location_id": new_id,
@@ -298,7 +360,7 @@ def _resolve_coords(
     canon = _canonical_coords(city, state, country)
     if canon:
         return canon, SOURCE_CITY_CANONICAL
-    reused = _coords_from_city_country(location_df, city, country)
+    reused = _coords_from_city_country(location_df, city, country, state=state)
     if reused:
         return reused, SOURCE_LOCATION_INFO
     if allow_geocode:
