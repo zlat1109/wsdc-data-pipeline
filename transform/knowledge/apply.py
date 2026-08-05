@@ -18,6 +18,7 @@ from transform.knowledge.events import (
     EVENT_LOCATION_SUBSTRING_CORRECTIONS,
     EVENT_NAME_LOCATION_OVERRIDES,
     EVENT_NAME_NORMALIZATION,
+    EVENT_NAME_YEAR_LOCATION_OVERRIDES,
     KNOWN_EVENT_METADATA,
 )
 from transform.knowledge.locations import LocationPatch
@@ -29,6 +30,49 @@ logger = logging.getLogger(__name__)
 
 # Module-level alias so call sites read naturally.
 _norm = norm_value
+
+
+def _result_event_years(df: pd.DataFrame) -> pd.Series:
+    """Numeric event year for year-scoped location overrides."""
+    if "event_year" in df.columns:
+        return pd.to_numeric(df["event_year"], errors="coerce")
+    return pd.Series(pd.NA, index=df.index, dtype="Float64")
+
+
+def _apply_location_target(
+    df: pd.DataFrame,
+    mask: pd.Series,
+    target_location: str,
+    lookup: dict,
+    *,
+    event_label: str,
+) -> int:
+    """Set event_location + location_id for masked rows; return count changed."""
+    raw = _canonical_location_raw(_norm(target_location))
+    key = location_lookup_key_from_text(raw)
+    loc_id = lookup.get(key) or lookup.get(raw.lower())
+    if not loc_id:
+        logger.warning(
+            "force_result_locations_from_event_name_overrides: target location %r "
+            "(key=%r) for event %r not found in location_info — override skipped. "
+            "Add this city to location_info or check EVENT_NAME_*_LOCATION_OVERRIDES.",
+            target_location,
+            key,
+            event_label,
+        )
+        return 0
+
+    before_loc = df.loc[mask, "location_id"].map(_norm)
+    before_text = df.loc[mask, "event_location"].map(_norm)
+    need = (before_loc != str(loc_id)) | (before_text != raw)
+    n = int(need.sum())
+    if not n:
+        return 0
+
+    apply_mask = mask & need
+    df.loc[apply_mask, "event_location"] = raw
+    df.loc[apply_mask, "location_id"] = str(loc_id)
+    return n
 
 
 def event_location_patches() -> dict[int, LocationPatch]:
@@ -104,6 +148,19 @@ def backfill_empty_result_event_locations(results_df: pd.DataFrame) -> pd.DataFr
                 df.loc[mask, "event_location"] = location
                 empty = df["event_location"].map(norm_value) == ""
 
+        years = _result_event_years(df)
+        for (name, y0, y1), location in EVENT_NAME_YEAR_LOCATION_OVERRIDES.items():
+            mask = (
+                empty
+                & (df["event_name"].astype(str).str.strip() == name)
+                & years.notna()
+                & (years >= y0)
+                & (years <= y1)
+            )
+            if mask.any():
+                df.loc[mask, "event_location"] = location
+                empty = df["event_location"].map(norm_value) == ""
+
     return df
 
 
@@ -111,11 +168,14 @@ def force_result_locations_from_event_name_overrides(
     results_df: pd.DataFrame,
     location_df: pd.DataFrame,
 ) -> tuple[pd.DataFrame, int]:
-    """Force event_location + location_id for EVENT_NAME_LOCATION_OVERRIDES.
+    """Force event_location + location_id for name (and year) location overrides.
 
     WSDC sometimes reuses a wrong location_id across unrelated events (e.g. Sweden
     Westie Gala rows tagged as Wailea / Aloha Open). Text overrides alone do not
     fix joins: resolve_result_location_ids only fills *empty* location_id values.
+
+    Year-scoped overrides run after flat ones so relocating series (Sunny Side,
+    Go West) keep distinct cities per KEEP_SEPARATE event_id.
     """
     if results_df is None or results_df.empty or "event_name" not in results_df.columns:
         return results_df, 0
@@ -135,31 +195,27 @@ def force_result_locations_from_event_name_overrides(
         mask = df["event_name"].astype(str).str.strip() == event_name
         if not mask.any():
             continue
+        changed += _apply_location_target(
+            df, mask, target_location, lookup, event_label=event_name
+        )
 
-        raw = _canonical_location_raw(_norm(target_location))
-        key = location_lookup_key_from_text(raw)
-        loc_id = lookup.get(key) or lookup.get(raw.lower())
-        if not loc_id:
-            logger.warning(
-                "force_result_locations_from_event_name_overrides: target location %r "
-                "(key=%r) for event %r not found in location_info — override skipped. "
-                "Add this city to location_info or check EVENT_NAME_LOCATION_OVERRIDES.",
-                target_location,
-                key,
-                event_name,
-            )
+    years = _result_event_years(df)
+    for (event_name, y0, y1), target_location in EVENT_NAME_YEAR_LOCATION_OVERRIDES.items():
+        mask = (
+            (df["event_name"].astype(str).str.strip() == event_name)
+            & years.notna()
+            & (years >= y0)
+            & (years <= y1)
+        )
+        if not mask.any():
             continue
-
-        before_loc = df.loc[mask, "location_id"].map(_norm)
-        before_text = df.loc[mask, "event_location"].map(_norm)
-        need = (before_loc != str(loc_id)) | (before_text != raw)
-        n = int(need.sum())
-        if not n:
-            continue
-
-        df.loc[mask, "event_location"] = raw
-        df.loc[mask, "location_id"] = str(loc_id)
-        changed += n
+        changed += _apply_location_target(
+            df,
+            mask,
+            target_location,
+            lookup,
+            event_label=f"{event_name} [{y0}-{y1}]",
+        )
 
     return df, changed
 
@@ -170,7 +226,7 @@ def force_events_wsdc_locations_from_event_name_overrides(
     name_col: str = "name",
     location_col: str = "location",
 ) -> tuple[pd.DataFrame, int]:
-    """Force events_wsdc.location text from EVENT_NAME_LOCATION_OVERRIDES.
+    """Force events_wsdc.location text from name (and year) location overrides.
 
     Results get location_id remaps in force_result_locations_*; the WSDC scrape
     table only has a free-text location and was previously left on shared-wrong
@@ -183,18 +239,37 @@ def force_events_wsdc_locations_from_event_name_overrides(
 
     df = events_df.copy()
     changed = 0
-    for event_name, target_location in EVENT_NAME_LOCATION_OVERRIDES.items():
-        mask = df[name_col].astype(str).str.strip() == event_name
+
+    def _apply_text(mask: pd.Series, target_location: str) -> int:
+        nonlocal changed
         if not mask.any():
-            continue
+            return 0
         raw = _canonical_location_raw(_norm(target_location))
         before = df.loc[mask, location_col].map(_norm)
         need = before != raw
         n = int(need.sum())
         if not n:
-            continue
+            return 0
         df.loc[mask & need, location_col] = raw
         changed += n
+        return n
+
+    for event_name, target_location in EVENT_NAME_LOCATION_OVERRIDES.items():
+        _apply_text(df[name_col].astype(str).str.strip() == event_name, target_location)
+
+    years = _result_event_years(df)
+    # events_wsdc uses `year` in some exports; prefer event_year then year.
+    if years.isna().all() and "year" in df.columns:
+        years = pd.to_numeric(df["year"], errors="coerce")
+    for (event_name, y0, y1), target_location in EVENT_NAME_YEAR_LOCATION_OVERRIDES.items():
+        mask = (
+            (df[name_col].astype(str).str.strip() == event_name)
+            & years.notna()
+            & (years >= y0)
+            & (years <= y1)
+        )
+        _apply_text(mask, target_location)
+
     return df, changed
 
 

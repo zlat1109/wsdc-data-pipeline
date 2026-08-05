@@ -9,6 +9,7 @@ from transform.knowledge.event_aliases import (
 from transform.knowledge.events import (
     EVENT_NAME_LOCATION_OVERRIDES,
     EVENT_NAME_NORMALIZATION,
+    EVENT_NAME_YEAR_LOCATION_OVERRIDES,
     KNOWN_EVENT_METADATA,
 )
 
@@ -31,7 +32,22 @@ def test_westie_gala_metadata_and_stockholm_override():
     assert EVENT_NAME_LOCATION_OVERRIDES["Korea Westival"] == "Jeju, Republic of Korea"
     assert EVENT_NAME_LOCATION_OVERRIDES["Warsaw Summer Nights Westival"] == "Warsaw, Poland"
     assert EVENT_NAME_LOCATION_OVERRIDES["Mooseland Swing"] == "Östersund, Sweden"
-    assert EVENT_NAME_LOCATION_OVERRIDES["Go West SwingFest"] == "Perth, Australia"
+    assert (
+        EVENT_NAME_YEAR_LOCATION_OVERRIDES[("Go West SwingFest", 2019, 2019)]
+        == "Fremantle, Australia"
+    )
+    assert (
+        EVENT_NAME_YEAR_LOCATION_OVERRIDES[("Go West SwingFest", 2024, 2099)]
+        == "Perth, Australia"
+    )
+    assert (
+        EVENT_NAME_YEAR_LOCATION_OVERRIDES[("Sunny Side Dance Camp", 2012, 2013)]
+        == "Crimea, Ukraine"
+    )
+    assert (
+        EVENT_NAME_YEAR_LOCATION_OVERRIDES[("Sunny Side Dance Camp", 2014, 2099)]
+        == "Torrevieja, Spain"
+    )
     assert EVENT_NAME_LOCATION_OVERRIDES["New Zealand Open Swing Dance Championships"] == "Auckland, New Zealand"
     assert EVENT_NAME_LOCATION_OVERRIDES["DC Swing eXperience (DCSX)"] == "Herndon, VA, United States"
     assert (
