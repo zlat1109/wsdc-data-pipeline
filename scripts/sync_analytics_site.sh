@@ -142,6 +142,9 @@ fi
 if [[ -f static/data/events_year_calendar.json ]]; then
   git add static/data/events_year_calendar.json
 fi
+if [[ -f static/data/event_l2_cards.json ]]; then
+  git add static/data/event_l2_cards.json
+fi
 
 if git diff --staged --quiet; then
   echo "No analytics site changes to push"
