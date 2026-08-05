@@ -33,7 +33,7 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'Toronto Open Swing & Hustle Championships': 'Toronto, Canada',
     # Shared St. Petersburg (222) wrongly applied to Revitalise WCS (Melbourne).
     'Revitalise WCS': 'Melbourne, Australia',
-    # Calendar/site Montreal; results stuck on shared New York (7).
+    # Calendar/site Montreal; results/editions stuck on shared Jeju (213).
     'Montreal Westie Fest': 'Montreal, Canada',
     # Catalog upcoming + 2026 schedule Jeju; results stuck on shared Brno (266).
     # Flat override (not year-aware): historical Korean cities may differ, but Brno is wrong.
@@ -117,6 +117,9 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     # Shared St. Petersburg (222 / Swing & Snow) wrongly applied to NZ Open.
     # Site/URL streetswing.co.nz; calendar sibling in Auckland.
     'New Zealand Open Swing Dance Championships': 'Auckland, New Zealand',
+    # Shared St. Petersburg (222) wrongly applied to Swingsation (AU / Raw Connection).
+    # Calendar + site: Gold Coast, Queensland; URL rawconnection.com.au/swingsation.
+    'Swingsation': 'Gold Coast, Australia',
     # WSDC venue label "Boston Club" is in Düsseldorf (not a city name).
     'D-Town Swing': 'Düsseldorf, Germany',
     'WCS Festival': 'Düsseldorf, Germany',
@@ -355,6 +358,30 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_country': 'Germany',
             'event_location': 'Munich, Germany',
             'event_location_standardized': 'Munich, Germany',
+        },
+    },
+    174: {
+        'name': 'Swingsation',
+        'url': 'https://rawconnection.com.au/swingsation/',
+        'typical_location': 'Gold Coast, Australia',
+        'location': {
+            'event_city': 'Gold Coast',
+            'event_state': '',
+            'event_country': 'Australia',
+            'event_location': 'Gold Coast, Australia',
+            'event_location_standardized': 'Gold Coast, Australia',
+        },
+    },
+    178: {
+        'name': 'Montreal Westie Fest',
+        'url': 'http://www.montrealwestiefest.com',
+        'typical_location': 'Montreal, Canada',
+        'location': {
+            'event_city': 'Montreal',
+            'event_state': '',
+            'event_country': 'Canada',
+            'event_location': 'Montreal, Canada',
+            'event_location_standardized': 'Montreal, Canada',
         },
     },
     405: {

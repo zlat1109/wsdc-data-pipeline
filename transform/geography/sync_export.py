@@ -13,6 +13,15 @@ from transform.geography.city import (
     sync_typical_location_from_edition,
     sync_upcoming_location_string,
 )
+from transform.knowledge.events import (
+    EVENT_NAME_LOCATION_OVERRIDES,
+    EVENT_NAME_YEAR_LOCATION_OVERRIDES,
+)
+
+# Names whose preprocess/force locations must not be overwritten by stale editions.
+_OVERRIDE_SKIP_EVENT_NAMES: frozenset[str] = frozenset(EVENT_NAME_LOCATION_OVERRIDES) | frozenset(
+    name for name, _y0, _y1 in EVENT_NAME_YEAR_LOCATION_OVERRIDES
+)
 
 _EDITION_LOCATION_FIELDS = (
     ("event_city", "place_city"),
@@ -120,17 +129,31 @@ def backfill_wsdc_locations_from_editions(
     frame: pd.DataFrame,
     location_col: str,
     editions: pd.DataFrame,
+    *,
+    skip_event_names: frozenset[str] | None = None,
 ) -> tuple[pd.DataFrame, int]:
-    """Fill events_wsdc location from matching edition when replacement pass left text unchanged."""
+    """Fill events_wsdc location from matching edition when replacement pass left text unchanged.
+
+    Never overwrite names in ``skip_event_names`` (flat + year location overrides):
+    stale edition rows can still carry a shared-wrong city (e.g. Montreal Westie
+    Fest → Jeju) and would undo preprocess. Pass an empty frozenset to disable.
+    """
     out = frame.copy()
     changed = 0
     id_col = "id" if "id" in out.columns else "event_id"
     if id_col not in out.columns or "event_year" not in out.columns or "event_month" not in out.columns:
         return out, 0
+    # Use `is None` so an explicit empty frozenset is honored (not treated as falsy).
+    skip = _OVERRIDE_SKIP_EVENT_NAMES if skip_event_names is None else skip_event_names
+    name_col = "name" if "name" in out.columns else ("event_name" if "event_name" in out.columns else None)
 
     for idx, value in out[location_col].items():
         if pd.isna(value):
             continue
+        if name_col is not None:
+            event_name = str(out.at[idx, name_col] or "").strip()
+            if event_name in skip:
+                continue
         text = str(value).strip()
         event_id = out.at[idx, id_col]
         event_year = out.at[idx, "event_year"]
@@ -186,6 +209,7 @@ def normalize_export_location_columns(
                 subset,
                 location_col,
                 editions,
+                skip_event_names=_OVERRIDE_SKIP_EVENT_NAMES,
             )
             if backfill_changed:
                 frame.loc[unchanged_rows, location_col] = subset[location_col]

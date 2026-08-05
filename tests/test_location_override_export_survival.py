@@ -74,6 +74,12 @@ def test_results_mode_location_matches_overrides():
         mode = counts.most_common(1)[0][0]
         if mode != want:
             failures.append(f"{name}: mode location_id={mode} want={want} ({dict(counts)})")
+        # Any non-target lid is a regression (e.g. Montreal partial Jeju 213).
+        foreign = {lid: n for lid, n in counts.items() if lid and lid != want}
+        if foreign:
+            failures.append(
+                f"{name}: non-target location_ids={foreign} want={want} (all={dict(counts)})"
+            )
     assert not failures, "results export drifted from overrides:\n" + "\n".join(failures)
 
 
