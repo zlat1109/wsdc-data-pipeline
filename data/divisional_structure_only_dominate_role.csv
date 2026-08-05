@@ -1805,3 +1805,15 @@ update_date,division,role,type,count_dancer
 2026-08-04,Novice,Follower,required,12
 2026-08-04,Novice,Leader,allowed,5
 2026-08-04,Novice,Leader,required,6
+2026-08-05,Advanced,Follower,allowed,2
+2026-08-05,Advanced,Follower,required,1
+2026-08-05,Advanced,Leader,allowed,5
+2026-08-05,Advanced,Leader,required,2
+2026-08-05,Intermediate,Follower,allowed,5
+2026-08-05,Intermediate,Follower,required,4
+2026-08-05,Intermediate,Leader,allowed,3
+2026-08-05,Intermediate,Leader,required,4
+2026-08-05,Novice,Follower,allowed,17
+2026-08-05,Novice,Follower,required,19
+2026-08-05,Novice,Leader,allowed,9
+2026-08-05,Novice,Leader,required,11
