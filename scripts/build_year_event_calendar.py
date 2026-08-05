@@ -25,8 +25,13 @@ from transform.year_event_calendar.build import (  # noqa: E402
     spike_expected_accuracy,
     write_year_event_calendar,
 )
+from transform.year_event_calendar.event_cards import (  # noqa: E402
+    build_event_l2_cards,
+    write_event_l2_cards,
+)
 
 SITE_REL = Path("static/data/events_year_calendar.json")
+CARDS_REL = Path("static/data/event_l2_cards.json")
 
 
 def _parse_date(value: str) -> date:
@@ -38,6 +43,7 @@ def main() -> int:
     parser.add_argument("--data-dir", type=Path, default=PROJECT_ROOT / "data")
     parser.add_argument("--site-repo", type=Path, default=None)
     parser.add_argument("--output", type=Path, default=None)
+    parser.add_argument("--cards-output", type=Path, default=None)
     parser.add_argument("--as-of", type=_parse_date, default=None)
     parser.add_argument("--year-radius", type=int, default=2)
     parser.add_argument(
@@ -75,11 +81,23 @@ def main() -> int:
         out = PROJECT_ROOT / "data" / "quality_reports" / "events_year_calendar.json"
 
     write_year_event_calendar(payload, out)
+
+    cards = build_event_l2_cards(args.data_dir, as_of=args.as_of or date.fromisoformat(payload["as_of"]))
+    if args.cards_output:
+        cards_out = args.cards_output
+    elif args.site_repo:
+        cards_out = Path(args.site_repo) / CARDS_REL
+    else:
+        cards_out = PROJECT_ROOT / "data" / "quality_reports" / "event_l2_cards.json"
+    write_event_l2_cards(cards, cards_out)
+
     summary = {
         "output": str(out),
+        "cards_output": str(cards_out),
         "as_of": payload["as_of"],
         "years": payload["years"],
         "event_count": len(payload["events"]),
+        "card_count": len(cards.get("cards") or {}),
         "counts_by_year": payload["counts_by_year"],
         "status_counts": {},
     }
