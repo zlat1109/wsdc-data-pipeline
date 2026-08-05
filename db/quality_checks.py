@@ -78,8 +78,12 @@ CORE_CHECKS: tuple[QualityCheck, ...] = (
         max_value=0,
         severity="error",
         category="event_naming",
-        description="Same raw event name + same geo must not map to multiple event_id.",
-        fix_hint="scripts/merge_event_ids.py + MERGE_EVENT_ID_MAP",
+        description=(
+            "Same raw event name + same geo must not map to multiple event_id. "
+            "KEEP_SEPARATE pairs must keep distinct cities "
+            "(use EVENT_NAME_YEAR_LOCATION_OVERRIDES for relocating series)."
+        ),
+        fix_hint="EVENT_NAME_YEAR_LOCATION_OVERRIDES / merge_event_ids.py + MERGE_EVENT_ID_MAP",
     ),
     QualityCheck(
         name="noncanonical_divisions",

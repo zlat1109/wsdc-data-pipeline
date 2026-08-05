@@ -107,3 +107,125 @@ class TestForceResultLocations:
 
         _, changed = force_result_locations_from_event_name_overrides(results_df, location_df)
         assert changed == 0
+
+    def test_year_scoped_override_beats_wrong_shared_city(self, monkeypatch):
+        """Relocating series: early years keep origin city after flat collapse."""
+        monkeypatch.setattr(
+            "transform.knowledge.apply.EVENT_NAME_LOCATION_OVERRIDES", {}
+        )
+        monkeypatch.setattr(
+            "transform.knowledge.apply.EVENT_NAME_YEAR_LOCATION_OVERRIDES",
+            {
+                ("Sunny Side Dance Camp", 2012, 2013): "Crimea, Ukraine",
+                ("Sunny Side Dance Camp", 2014, 2099): "Torrevieja, Spain",
+            },
+        )
+        location_df = pd.concat(
+            [
+                _make_location_df("249", "Crimea", "Ukraine", "Crimea, Ukraine"),
+                _make_location_df("248", "Torrevieja", "Spain", "Torrevieja, Spain"),
+            ],
+            ignore_index=True,
+        )
+        results_df = pd.DataFrame(
+            [
+                {
+                    "event_name": "Sunny Side Dance Camp",
+                    "event_year": 2012,
+                    "location_id": "248",
+                    "event_location": "Torrevieja, Spain",
+                },
+                {
+                    "event_name": "Sunny Side Dance Camp",
+                    "event_year": 2015,
+                    "location_id": "248",
+                    "event_location": "Torrevieja, Spain",
+                },
+            ]
+        )
+
+        out, changed = force_result_locations_from_event_name_overrides(
+            results_df, location_df
+        )
+
+        assert changed == 1
+        assert out.loc[0, "location_id"] == "249"
+        assert out.loc[0, "event_location"] == "Crimea, Ukraine"
+        assert out.loc[1, "location_id"] == "248"
+
+    def test_go_west_year_scoped_fremantle_vs_perth(self, monkeypatch):
+        monkeypatch.setattr(
+            "transform.knowledge.apply.EVENT_NAME_LOCATION_OVERRIDES", {}
+        )
+        monkeypatch.setattr(
+            "transform.knowledge.apply.EVENT_NAME_YEAR_LOCATION_OVERRIDES",
+            {
+                ("Go West SwingFest", 2019, 2019): "Fremantle, Australia",
+                ("Go West SwingFest", 2024, 2099): "Perth, Australia",
+            },
+        )
+        location_df = pd.concat(
+            [
+                _make_location_df("240", "Fremantle", "Australia", "Fremantle, Australia"),
+                _make_location_df("253", "Perth", "Australia", "Perth, Australia"),
+            ],
+            ignore_index=True,
+        )
+        results_df = pd.DataFrame(
+            [
+                {
+                    "event_name": "Go West SwingFest",
+                    "event_year": 2019,
+                    "location_id": "253",
+                    "event_location": "Perth, Australia",
+                },
+                {
+                    "event_name": "Go West SwingFest",
+                    "event_year": 2024,
+                    "location_id": "253",
+                    "event_location": "Perth, Australia",
+                },
+            ]
+        )
+
+        out, changed = force_result_locations_from_event_name_overrides(
+            results_df, location_df
+        )
+
+        assert changed == 1
+        assert out.loc[0, "location_id"] == "240"
+        assert out.loc[0, "event_location"] == "Fremantle, Australia"
+        assert out.loc[1, "location_id"] == "253"
+
+    def test_warns_when_year_override_name_missing_event_year(
+        self, monkeypatch, caplog
+    ):
+        import logging
+
+        monkeypatch.setattr(
+            "transform.knowledge.apply.EVENT_NAME_LOCATION_OVERRIDES", {}
+        )
+        monkeypatch.setattr(
+            "transform.knowledge.apply.EVENT_NAME_YEAR_LOCATION_OVERRIDES",
+            {("Sunny Side Dance Camp", 2012, 2013): "Crimea, Ukraine"},
+        )
+        location_df = _make_location_df("249", "Crimea", "Ukraine", "Crimea, Ukraine")
+        results_df = pd.DataFrame(
+            [
+                {
+                    "event_name": "Sunny Side Dance Camp",
+                    "event_year": None,
+                    "location_id": "248",
+                    "event_location": "Torrevieja, Spain",
+                }
+            ]
+        )
+
+        with caplog.at_level(logging.WARNING):
+            out, changed = force_result_locations_from_event_name_overrides(
+                results_df, location_df
+            )
+
+        assert changed == 0
+        assert out.loc[0, "location_id"] == "248"
+        assert "null event_year" in caplog.text

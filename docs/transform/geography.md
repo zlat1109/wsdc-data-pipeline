@@ -130,8 +130,10 @@ Do not force-remap those without year-aware edition logic.
 
 **Related Perth-area brands (two WSDC ids):** `Go West Swing Fest` (306,
 Fremantle, 2019) and `Go West SwingFest` (367, Perth, 2024+) are separate
-registry events for the same organiser/region — not a shared-wrong-`location_id`
-bug. Do not merge ids without an explicit event-id merge decision.
+registry events. Alias maps Fest→SwingFest; year overrides restore Fremantle
+for 2019 so `split_names_same_geo` stays clean (distinct cities). Pair is also in
+`KEEP_SEPARATE_EVENT_PAIRS` for merge/classify. Do not merge ids without an
+explicit decision.
 
 ## Country aliases
 
@@ -141,7 +143,9 @@ bug. Do not merge ids without an explicit event-id merge decision.
 ## Preprocess flow
 
 1. Resolve location strings via `resolve.py` (`LOCATION_STRING_ALIASES` + lookup table)
-2. Force remap from `EVENT_NAME_LOCATION_OVERRIDES` (`force_result_locations_from_event_name_overrides`)
+2. Force remap from `EVENT_NAME_LOCATION_OVERRIDES` then
+   `EVENT_NAME_YEAR_LOCATION_OVERRIDES` (`force_result_locations_from_event_name_overrides`)
+   — year ranges keep relocating series on distinct cities (Sunny Side, Go West).
 3. Standardize labels for `location_info.csv`; **clear `event_state` for non-US rows**
 4. **Dedupe** duplicate result rows and collapse duplicate location ids (`LOCATION_ID_MERGE_MAP`)
 5. Quality audit flags collisions (`EVENT_NAME_LOCATION_ID_COLLISION`), country mismatches, unmapped cities

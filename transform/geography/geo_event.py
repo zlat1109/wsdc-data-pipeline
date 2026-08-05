@@ -25,6 +25,7 @@ KEEP_SEPARATE_EVENT_PAIRS: frozenset[frozenset[int]] = frozenset(
         frozenset({75, 152}),   # Worlds UCWDC: Dallas vs Orlando
         frozenset({191, 230}),  # Sunny Side Dance Camp: Crimea vs Spain
         frozenset({83, 204}),   # Spring Swing: Detroit vs Stockholm
+        frozenset({306, 367}),  # Go West SwingFest: Fremantle 2019 vs Perth 2024+
     }
 )
 

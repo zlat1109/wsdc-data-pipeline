@@ -52,3 +52,15 @@ def test_non_us_event_state_uses_shared_us_country_list():
         "U.S.A.",
     ):
         assert country in check.sql
+
+
+def test_split_names_same_geo_does_not_exempt_keep_separate():
+    """KEEP_SEPARATE pairs must keep distinct cities; gate must still catch same-geo."""
+    from transform.geography.geo_event import KEEP_SEPARATE_EVENT_PAIRS
+
+    check = next(c for c in CORE_CHECKS if c.name == "split_names_same_geo")
+    assert "keep_separate" not in check.sql.lower()
+    assert "EVENT_NAME_YEAR_LOCATION_OVERRIDES" in check.description
+    # Documented pairs still exist for merge/classify (not for gate exemption).
+    assert frozenset({191, 230}) in KEEP_SEPARATE_EVENT_PAIRS
+    assert frozenset({306, 367}) in KEEP_SEPARATE_EVENT_PAIRS

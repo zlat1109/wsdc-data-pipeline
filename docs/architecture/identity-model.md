@@ -52,7 +52,7 @@ Defined in `transform/geography/geo_event.py` and `export.geo_events` (migration
 
 - `geo_key(city, state, country)` — normalized location fingerprint
 - **Metro clusters:** Boston + Framingham, MA → `metro:greater_boston_ma` (one geo for merge)
-- **Keep separate** (hardcoded): Worlds UCWDC 75/152, Sunny Side 191/230, Spring Swing 83/204
+- **Keep separate** (hardcoded): Worlds UCWDC 75/152, Sunny Side 191/230, Spring Swing 83/204, Go West 306/367
 
 Export views:
 
