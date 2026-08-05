@@ -39,8 +39,8 @@ Wire `GOOGLE_MAPS_API_KEY` in:
 
 If the secret is missing, reuse/canonical still run; unresolved trials go to review.
 
-## Modules
+## Safety (post-#96 review)
 
-- `transform/geography/ensure_location.py`
-- `transform/geography/schedule_locations.py`
-- `tests/test_schedule_trial_geo.py`
+- New `location_id` values use `max(CSV max, DB max) + 1` (`id_floor` from `core.locations`).
+- Upsert looks up `lower(btrim(event_location))` before insert; unique conflicts remap to the owner id.
+- `location_info.csv` is written **after** a successful DB commit (offline `--skip-db` may write immediately).

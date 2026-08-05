@@ -146,9 +146,12 @@ def load_to_supabase(
     *,
     location_df: Any = None,
     location_ids_touched: set[str] | None = None,
-) -> tuple[int, int]:
+) -> tuple[int, int, Any, list[dict[str, Any]]]:
     from connection import connect
-    from transform.geography.schedule_locations import upsert_locations_to_db
+    from transform.geography.schedule_locations import (
+        apply_location_id_remaps,
+        upsert_locations_to_db,
+    )
 
     now = datetime.now(timezone.utc)
     current_fps = {e["source_fingerprint"] for e in events}
@@ -156,7 +159,14 @@ def load_to_supabase(
     with connect() as conn:
         with conn.cursor() as cur:
             if location_df is not None and location_ids_touched:
-                n_loc = upsert_locations_to_db(cur, location_df, location_ids_touched)
+                n_loc, remaps = upsert_locations_to_db(
+                    cur, location_df, location_ids_touched
+                )
+                if remaps:
+                    events, location_df = apply_location_id_remaps(
+                        events, location_df, remaps
+                    )
+                    print(f"Location id remaps: {remaps}")
                 print(f"Locations upserted: {n_loc}")
 
             cur.execute(
@@ -215,10 +225,15 @@ def load_to_supabase(
                         last_seen_at = EXCLUDED.last_seen_at,
                         last_run_id = EXCLUDED.last_run_id
                     """,
-                    {**ev, "now": now, "run_id": run_id,
-                     "location_id": ev.get("location_id"),
-                     "location_source": ev.get("location_source") or None},
+                    {
+                        **ev,
+                        "now": now,
+                        "run_id": run_id,
+                        "location_id": ev.get("location_id"),
+                        "location_source": ev.get("location_source") or None,
+                    },
                 )
+
 
             if current_fps:
                 cur.execute(
@@ -292,7 +307,7 @@ def load_to_supabase(
             rebuild_event_catalog(conn)
 
         conn.commit()
-    return run_id, current_count
+    return run_id, current_count, location_df, events
 
 
 def run_mapping_analysis(
@@ -359,8 +374,16 @@ def _carry_forward_location_ids(
 
 def _assign_trial_geo(
     events: list[dict[str, Any]],
+    *,
+    allow_geocode: bool = True,
+    id_floor: int = 0,
+    write_csv: bool = False,
 ) -> tuple[list[dict[str, Any]], Any, list[dict[str, Any]], set[str]]:
-    """Resolve Trial Event geo into location_info + event location_id fields."""
+    """Resolve Trial Event geo into location_info + event location_id fields.
+
+    By default does **not** write location_info.csv — caller should persist after
+    a successful DB commit (or pass write_csv=True for offline --skip-db runs).
+    """
     import pandas as pd
     from transform.geography.schedule_locations import assign_schedule_locations
 
@@ -384,7 +407,12 @@ def _assign_trial_geo(
                 str(row.get("longitude") or ""),
             )
 
-    events, location_df, review = assign_schedule_locations(events, location_df)
+    events, location_df, review = assign_schedule_locations(
+        events,
+        location_df,
+        allow_geocode=allow_geocode,
+        id_floor=id_floor,
+    )
 
     touched: set[str] = set()
     if not location_df.empty and "location_id" in location_df.columns:
@@ -399,11 +427,32 @@ def _assign_trial_geo(
             if before_coords.get(lid) != coords:
                 touched.add(lid)
 
-    if touched or len(location_df) != len(before_ids):
+    if write_csv and (touched or len(location_df) != len(before_ids)):
         location_df.to_csv(loc_path, index=False)
         print(f"Updated location_info.csv (touched_ids={len(touched)})")
 
     return events, location_df, review, touched
+
+
+def _fetch_db_location_id_floor() -> int:
+    try:
+        from connection import connect
+        from transform.geography.schedule_locations import db_max_location_id
+
+        with connect() as conn:
+            with conn.cursor() as cur:
+                return db_max_location_id(cur)
+    except Exception as exc:  # noqa: BLE001
+        print(f"DB location_id floor unavailable ({exc}); using CSV max only", flush=True)
+        return 0
+
+
+def _persist_location_info_csv(location_df: Any) -> None:
+    if location_df is None:
+        return
+    loc_path = PROJECT_ROOT / "data" / "location_info.csv"
+    location_df.to_csv(loc_path, index=False)
+    print(f"Wrote location_info.csv ({len(location_df)} rows)")
 
 
 def main() -> None:
@@ -431,11 +480,17 @@ def main() -> None:
     location_df = None
     location_ids_touched: set[str] = set()
     try:
-        if args.skip_geocode:
-            import os
-
-            os.environ.pop("GOOGLE_MAPS_API_KEY", None)
-        events, location_df, geo_review, location_ids_touched = _assign_trial_geo(events)
+        id_floor = 0
+        if not args.dry_run and not args.skip_db:
+            id_floor = _fetch_db_location_id_floor()
+            if id_floor:
+                print(f"DB location_id floor: {id_floor}")
+        events, location_df, geo_review, location_ids_touched = _assign_trial_geo(
+            events,
+            allow_geocode=not args.skip_geocode,
+            id_floor=id_floor,
+            write_csv=bool(args.skip_db or args.dry_run),
+        )
         trial_with_geo = sum(
             1
             for e in events
@@ -471,7 +526,7 @@ def main() -> None:
         try:
             if catalog is None:
                 catalog = load_catalog()
-            run_id, current_count = load_to_supabase(
+            run_id, current_count, location_df, events = load_to_supabase(
                 events,
                 added,
                 removed,
@@ -481,9 +536,26 @@ def main() -> None:
                 location_df=location_df,
                 location_ids_touched=location_ids_touched,
             )
-            print(f"\nSupabase run_id={run_id}  current_events={current_count}")
+            # Persist CSV only after successful DB commit.
+            if location_ids_touched:
+                _persist_location_info_csv(location_df)
+            # Refresh local artifacts with remapped location_ids.
+            report = save_artifacts(
+                events,
+                added,
+                removed,
+                unchanged,
+                args.source,
+                parse_errors=parse_error_count,
+            )
+            report["summary"]["geo_review_count"] = len(geo_review)
+            report["geo_review"] = geo_review
             report["run_id"] = run_id
             report["current_events"] = current_count
+            (CHANGELOG_DIR / "latest.json").write_text(
+                json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8"
+            )
+            print(f"\nSupabase run_id={run_id}  current_events={current_count}")
         except Exception as exc:
             print(f"\nDB load failed: {exc}", file=sys.stderr)
             if args.source == "github-actions":

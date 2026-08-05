@@ -12,6 +12,7 @@ from transform.geography.ensure_location import (
     EnsureLocationResult,
     ensure_location,
 )
+from transform.geography.utils import norm_value
 from transform.knowledge.events import EVENT_NAME_LOCATION_OVERRIDES
 
 logger = logging.getLogger(__name__)
@@ -37,6 +38,7 @@ def assign_schedule_locations(
     *,
     allow_geocode: bool = True,
     geocode_fn=None,
+    id_floor: int = 0,
 ) -> tuple[list[dict[str, Any]], pd.DataFrame, list[dict[str, Any]]]:
     """Fill location_id/location_source on Trial list rows. Returns review items."""
     review: list[dict[str, Any]] = []
@@ -51,6 +53,7 @@ def assign_schedule_locations(
             geocode_fn=geocode_fn,
             allow_create=True,
             allow_geocode=allow_geocode,
+            id_floor=id_floor,
         )
         _apply_result(ev, result)
         if result.review_reason:
@@ -70,7 +73,11 @@ def assign_schedule_locations(
 
 def _apply_result(ev: dict[str, Any], result: EnsureLocationResult) -> None:
     if result.location_id:
-        ev["location_id"] = int(result.location_id) if str(result.location_id).isdigit() else result.location_id
+        ev["location_id"] = (
+            int(result.location_id)
+            if str(result.location_id).isdigit()
+            else result.location_id
+        )
         ev["location_source"] = result.source
     else:
         ev["location_id"] = None
@@ -87,7 +94,6 @@ def schedule_location_by_event_name(
         return {}
 
     out: dict[str, str] = {}
-    # Trials first so trial geo wins for shared brand names
     order = scheduled.copy()
     if "status_event" in order.columns:
         order["_trial"] = order["status_event"].map(is_trial_status)
@@ -147,60 +153,177 @@ def seed_result_locations_from_schedule(
         if cur == want:
             continue
         if cur and name not in trial_names:
-            continue  # non-trial: never overwrite existing coverage
+            continue
         out.at[idx, "location_id"] = want
         changed += 1
     return out, changed
 
 
-def upsert_locations_to_db(cur: Any, location_df: pd.DataFrame, new_ids: set[str]) -> int:
-    """Insert/update core.locations for ids in new_ids (created or coords-filled)."""
+def db_max_location_id(cur: Any) -> int:
+    cur.execute("SELECT COALESCE(MAX(location_id), 0) FROM core.locations")
+    row = cur.fetchone()
+    return int(row[0] or 0) if row else 0
+
+
+def lookup_location_id_by_event_location(cur: Any, event_location: str) -> int | None:
+    text = norm_value(event_location)
+    if not text:
+        return None
+    cur.execute(
+        """
+        SELECT location_id
+        FROM core.locations
+        WHERE event_location IS NOT NULL
+          AND btrim(event_location) <> ''
+          AND lower(btrim(event_location)) = lower(btrim(%s))
+        ORDER BY location_id
+        LIMIT 1
+        """,
+        (text,),
+    )
+    row = cur.fetchone()
+    return int(row[0]) if row else None
+
+
+def upsert_locations_to_db(
+    cur: Any,
+    location_df: pd.DataFrame,
+    new_ids: set[str],
+) -> tuple[int, dict[str, str]]:
+    """Insert/update core.locations; reuse existing row on event_location unique hit.
+
+    Returns (rows_touched, id_remaps) where id_remaps maps provisional CSV id →
+    canonical DB id when the unique place string already existed.
+    """
     if not new_ids or location_df is None or location_df.empty:
-        return 0
+        return 0, {}
+
+    remaps: dict[str, str] = {}
     n = 0
     for _, row in location_df.iterrows():
         lid = str(row.get("location_id") or "").strip()
         if lid not in new_ids:
             continue
+        event_location = str(row.get("event_location") or "").strip() or None
+        existing = (
+            lookup_location_id_by_event_location(cur, event_location)
+            if event_location
+            else None
+        )
+        if existing is not None and str(existing) != lid:
+            remaps[lid] = str(existing)
+            lid = str(existing)
+
         lat = row.get("latitude")
         lon = row.get("longitude")
         lat_v = float(lat) if str(lat).strip() not in {"", "nan", "None"} else None
         lon_v = float(lon) if str(lon).strip() not in {"", "nan", "None"} else None
         valid = lat_v is not None and lon_v is not None
-        cur.execute(
-            """
-            INSERT INTO core.locations (
-                location_id, event_city, event_state, event_country,
-                latitude, longitude, event_location, event_location_standardized,
-                coordinates_valid
-            ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
-            ON CONFLICT (location_id) DO UPDATE SET
-                event_city = COALESCE(NULLIF(EXCLUDED.event_city, ''), core.locations.event_city),
-                event_state = COALESCE(NULLIF(EXCLUDED.event_state, ''), core.locations.event_state),
-                event_country = COALESCE(NULLIF(EXCLUDED.event_country, ''), core.locations.event_country),
-                event_location = COALESCE(NULLIF(EXCLUDED.event_location, ''), core.locations.event_location),
-                event_location_standardized = COALESCE(
-                    NULLIF(EXCLUDED.event_location_standardized, ''),
-                    core.locations.event_location_standardized
+        try:
+            cur.execute(
+                """
+                INSERT INTO core.locations (
+                    location_id, event_city, event_state, event_country,
+                    latitude, longitude, event_location, event_location_standardized,
+                    coordinates_valid
+                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+                ON CONFLICT (location_id) DO UPDATE SET
+                    event_city = COALESCE(
+                        NULLIF(EXCLUDED.event_city, ''), core.locations.event_city
+                    ),
+                    event_state = COALESCE(
+                        NULLIF(EXCLUDED.event_state, ''), core.locations.event_state
+                    ),
+                    event_country = COALESCE(
+                        NULLIF(EXCLUDED.event_country, ''), core.locations.event_country
+                    ),
+                    event_location = COALESCE(
+                        NULLIF(EXCLUDED.event_location, ''), core.locations.event_location
+                    ),
+                    event_location_standardized = COALESCE(
+                        NULLIF(EXCLUDED.event_location_standardized, ''),
+                        core.locations.event_location_standardized
+                    ),
+                    latitude = COALESCE(core.locations.latitude, EXCLUDED.latitude),
+                    longitude = COALESCE(core.locations.longitude, EXCLUDED.longitude),
+                    coordinates_valid = CASE
+                        WHEN core.locations.coordinates_valid IS TRUE THEN true
+                        ELSE EXCLUDED.coordinates_valid
+                    END
+                """,
+                (
+                    int(lid),
+                    str(row.get("event_city") or "") or None,
+                    str(row.get("event_state") or "") or None,
+                    str(row.get("event_country") or "") or None,
+                    lat_v,
+                    lon_v,
+                    event_location,
+                    str(row.get("event_location_standardized") or "") or None,
+                    valid,
                 ),
-                latitude = COALESCE(core.locations.latitude, EXCLUDED.latitude),
-                longitude = COALESCE(core.locations.longitude, EXCLUDED.longitude),
-                coordinates_valid = CASE
-                    WHEN core.locations.coordinates_valid IS TRUE THEN true
-                    ELSE EXCLUDED.coordinates_valid
-                END
-            """,
-            (
-                int(lid),
-                str(row.get("event_city") or "") or None,
-                str(row.get("event_state") or "") or None,
-                str(row.get("event_country") or "") or None,
-                lat_v,
-                lon_v,
-                str(row.get("event_location") or "") or None,
-                str(row.get("event_location_standardized") or "") or None,
-                valid,
-            ),
-        )
+            )
+        except Exception as exc:
+            unique = False
+            try:
+                from psycopg.errors import UniqueViolation
+
+                unique = isinstance(exc, UniqueViolation)
+            except ImportError:
+                unique = "locations_event_location_norm_uidx" in str(exc)
+            if not unique and "locations_event_location_norm_uidx" not in str(exc):
+                raise
+            owner = lookup_location_id_by_event_location(cur, event_location or "")
+            if owner is None:
+                raise
+            remaps[str(row.get("location_id") or "").strip()] = str(owner)
+            if lat_v is not None and lon_v is not None:
+                cur.execute(
+                    """
+                    UPDATE core.locations
+                    SET latitude = COALESCE(latitude, %s),
+                        longitude = COALESCE(longitude, %s),
+                        coordinates_valid = CASE
+                            WHEN coordinates_valid IS TRUE THEN true
+                            ELSE %s
+                        END
+                    WHERE location_id = %s
+                    """,
+                    (lat_v, lon_v, valid, owner),
+                )
+            n += 1
+            continue
         n += 1
-    return n
+    return n, remaps
+
+
+def apply_location_id_remaps(
+    events: list[dict[str, Any]],
+    location_df: pd.DataFrame,
+    remaps: dict[str, str],
+) -> tuple[list[dict[str, Any]], pd.DataFrame]:
+    """Rewrite provisional ids to canonical DB owners; drop duplicate CSV rows."""
+    if not remaps:
+        return events, location_df
+    for ev in events:
+        lid = str(ev.get("location_id") or "").strip()
+        if lid in remaps:
+            canon = remaps[lid]
+            ev["location_id"] = int(canon) if canon.isdigit() else canon
+    if location_df is None or location_df.empty:
+        return events, location_df
+    out = location_df.copy()
+    drop_ids = set()
+    for provisional, canon in remaps.items():
+        if provisional == canon:
+            continue
+        pmask = out["location_id"].astype(str).str.strip() == provisional
+        cmask = out["location_id"].astype(str).str.strip() == canon
+        if pmask.any() and cmask.any():
+            # Prefer coords already on canonical; then drop provisional row.
+            drop_ids.add(provisional)
+        elif pmask.any() and not cmask.any():
+            out.loc[pmask, "location_id"] = canon
+    if drop_ids:
+        out = out[~out["location_id"].astype(str).str.strip().isin(drop_ids)].copy()
+    return events, out

@@ -168,10 +168,84 @@ def test_seed_results_fills_empty_and_forces_trial():
     assert str(out.loc[2, "location_id"]) == "8"
 
 
+def test_next_location_id_respects_db_floor():
+    locations = _loc_df(
+        {
+            "location_id": "10",
+            "event_city": "X",
+            "event_country": "Y",
+            "event_location": "X, Y",
+        }
+    )
+    result, out = ensure_location(
+        "BrandNew City, Atlantis",
+        location_df=locations,
+        allow_geocode=True,
+        geocode_fn=lambda q: (9.0, 9.0),
+        id_floor=500,
+    )
+    assert result.location_id == "501"
+    assert result.created
+    assert float(out.iloc[-1]["latitude"]) == 9.0
+
+
+def test_apply_location_id_remaps_rewrites_events():
+    from transform.geography.schedule_locations import apply_location_id_remaps
+
+    events = [{"event_name": "T", "location_id": 999}]
+    locations = _loc_df(
+        {
+            "location_id": "999",
+            "event_city": "Munich",
+            "event_country": "Germany",
+            "event_location": "Munich, Bavaria, Germany",
+        },
+        {
+            "location_id": "129",
+            "event_city": "Munich",
+            "event_country": "Germany",
+            "event_location": "Munich, Germany",
+            "latitude": "48",
+            "longitude": "11",
+        },
+    )
+    events, out = apply_location_id_remaps(events, locations, {"999": "129"})
+    assert events[0]["location_id"] == 129
+    assert "999" not in set(out["location_id"].astype(str))
+
+
+def test_us_city_match_requires_state():
+    locations = _loc_df(
+        {
+            "location_id": "1",
+            "event_city": "Portland",
+            "event_state": "OR",
+            "event_country": "United States",
+            "latitude": "45",
+            "longitude": "-122",
+            "event_location": "Portland, OR, United States",
+        },
+        {
+            "location_id": "2",
+            "event_city": "Portland",
+            "event_state": "ME",
+            "event_country": "United States",
+            "latitude": "43",
+            "longitude": "-70",
+            "event_location": "Portland, ME, United States",
+        },
+    )
+    result, _ = ensure_location(
+        "Portland, ME, United States",
+        location_df=locations,
+        allow_geocode=False,
+    )
+    assert result.location_id == "2"
+
+
 def test_seed_respects_event_name_overrides():
     from transform.knowledge.events import EVENT_NAME_LOCATION_OVERRIDES
 
-    # Pick any known override name if present; otherwise skip-shaped assert
     name = next(iter(EVENT_NAME_LOCATION_OVERRIDES), None)
     if not name:
         return
