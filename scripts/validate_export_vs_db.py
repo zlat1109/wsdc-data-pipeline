@@ -55,6 +55,20 @@ def _view_rows(cur, view: str) -> int:
     return int(cur.fetchone()[0])
 
 
+def _scheduled_events_health_problem(data_dir: Path) -> str | None:
+    """Return gate error when schedule export is header-only / empty."""
+    path = data_dir / "scheduled_events.csv"
+    rows = _csv_rows(path)
+    if rows < 0:
+        return "scheduled_events.csv: missing on disk"
+    if rows == 0:
+        return (
+            "scheduled_events.csv: 0 data rows (header-only). "
+            "Health-check failed: would publish empty schedule."
+        )
+    return None
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -71,6 +85,13 @@ def main() -> int:
     args = parser.parse_args()
 
     problems: list[str] = []
+    schedule_problem = _scheduled_events_health_problem(args.data_dir)
+    if schedule_problem:
+        problems.append(schedule_problem)
+        print("[FAIL] scheduled_events.csv health-check")
+    else:
+        print("[OK] scheduled_events.csv health-check")
+
     with connect() as conn:
         with conn.cursor() as cur:
             for view, filename in EXPORT_CHECKS:
