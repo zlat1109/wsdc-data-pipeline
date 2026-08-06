@@ -8,6 +8,7 @@ from pathlib import Path
 import pandas as pd
 
 from transform.year_event_calendar.event_cards import (
+    HISTORY_LIMIT,
     _tier_table_for_edition,
     build_event_l2_cards,
 )
@@ -193,11 +194,12 @@ def test_build_event_l2_cards_picks_last_with_results(tmp_path: Path):
     assert card["history"][1]["points"] == 9
 
 
-def test_history_caps_at_ten_scored_editions(tmp_path: Path):
+def test_history_caps_at_history_limit(tmp_path: Path):
     data_dir = tmp_path
     editions = []
     results = []
-    for year in range(2012, 2026):
+    start_year = 2025 - HISTORY_LIMIT - 3
+    for year in range(start_year, 2026):
         editions.append(
             {
                 "edition_id": year,
@@ -235,6 +237,6 @@ def test_history_caps_at_ten_scored_editions(tmp_path: Path):
 
     payload = build_event_l2_cards(data_dir, as_of=date(2026, 8, 5))
     history = payload["cards"]["7"]["history"]
-    assert len(history) == 10
-    assert history[0]["year"] == 2016
+    assert len(history) == HISTORY_LIMIT
+    assert history[0]["year"] == 2025 - HISTORY_LIMIT + 1
     assert history[-1]["year"] == 2025
