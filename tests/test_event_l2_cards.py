@@ -186,3 +186,8 @@ def test_build_event_l2_cards_picks_last_with_results(tmp_path: Path):
     assert card["last_edition"]["unique_dancers"] == 2
     assert card["last_edition"]["new_dancers"] == 1  # dancer 3 first appears in 2025-05
     assert card["last_edition"]["tiers"]["Novice"] == {"Leader": 2, "Follower": 3}
+    assert len(card["history"]) == 2
+    assert card["history"][0]["year"] == 2024
+    assert card["history"][0]["unique_dancers"] == 2
+    assert card["history"][1]["year"] == 2025
+    assert card["history"][1]["points"] == 9

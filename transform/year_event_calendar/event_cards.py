@@ -20,6 +20,9 @@ SKILL_ALIASES = {
     "Champions": "Champions",
 }
 
+# Last N scored editions for the Metrics sparkline (oldest → newest).
+HISTORY_LIMIT = 5
+
 TIER_TIP = {
     "en": (
         "Tier reflects field size for that role under the WSDC points chart. "
@@ -254,7 +257,8 @@ def build_event_l2_cards(
         past = group[group["ym"] <= as_of_ym]
         if past.empty:
             past = group
-        last = past.sort_values(["ym", "edition_id"], ascending=[False, False]).iloc[0]
+        past_sorted = past.sort_values(["ym", "edition_id"], ascending=[False, False])
+        last = past_sorted.iloc[0]
 
         metrics = _edition_metrics(
             res,
@@ -267,6 +271,28 @@ def build_event_l2_cards(
         tier_table = _tier_table_for_edition(
             tiers, int(event_id), int(last["event_year"]), int(last["event_month"])
         )
+
+        # Sparkline history: up to HISTORY_LIMIT scored editions ending at last, oldest first.
+        history_rows = past_sorted.head(HISTORY_LIMIT).iloc[::-1]
+        history: list[dict[str, int]] = []
+        for rec in history_rows.to_dict(orient="records"):
+            hist_metrics = _edition_metrics(
+                res,
+                first_ym,
+                str(rec.get("event_name") or ""),
+                int(rec["event_year"]),
+                int(rec["event_month"]),
+                rec.get("unique_dancers"),
+            )
+            history.append(
+                {
+                    "year": int(rec["event_year"]),
+                    "month": int(rec["event_month"]),
+                    "unique_dancers": hist_metrics["unique_dancers"],
+                    "points": hist_metrics["points"],
+                    "new_dancers": hist_metrics["new_dancers"],
+                }
+            )
 
         cards[str(int(event_id))] = {
             "event_id": int(event_id),
@@ -285,6 +311,7 @@ def build_event_l2_cards(
                 "new_dancers": metrics["new_dancers"],
                 "tiers": tier_table,
             },
+            "history": history,
         }
 
     return {
