@@ -933,3 +933,60 @@ def test_cancelled_calendar_status_coerced_to_hiatus():
     rows = [{"status": STATUS_CANCELLED, "name": "Swing Dance America"}]
     _coerce_cancelled_to_hiatus(rows)
     assert rows[0]["status"] == STATUS_HIATUS
+
+
+def test_build_uses_events_list_fallback_when_scheduled_export_empty(tmp_path):
+    from transform.year_event_calendar.build import build_year_event_calendar
+
+    (tmp_path / "scheduled_events.csv").write_text(
+        "schedule_event_key,source_fingerprint,canonical_event_id,event_name,start_date,end_date,results_year,results_month,status_event,registry_trial_status,location_raw,country,url,confirmed,canceled,on_hiatus\n",
+        encoding="utf-8",
+    )
+    events_list_dir = tmp_path / "events_list"
+    events_list_dir.mkdir(parents=True, exist_ok=True)
+    (events_list_dir / "current.json").write_text(
+        """
+{
+  "events": [
+    {
+      "source_fingerprint": "trial-2026-a",
+      "event_name": "Autumn Beat Trial Event",
+      "start_date": "2026-10-02",
+      "end_date": "2026-10-05",
+      "results_year": 2026,
+      "status_event": "Trial Event",
+      "location_raw": "Warsaw, Poland",
+      "country": "Poland",
+      "url": "https://example.com/autumn",
+      "confirmed": true,
+      "canceled": false,
+      "on_hiatus": false
+    },
+    {
+      "source_fingerprint": "trial-2027-a",
+      "event_name": "Swing Valley Trial Event",
+      "start_date": "2027-07-01",
+      "end_date": "2027-07-04",
+      "results_year": 2027,
+      "status_event": "Trial Event",
+      "location_raw": "Prague, Czechia",
+      "country": "Czechia",
+      "url": "https://example.com/valley",
+      "confirmed": true,
+      "canceled": false,
+      "on_hiatus": false
+    }
+  ]
+}
+""".strip()
+        + "\n",
+        encoding="utf-8",
+    )
+
+    payload = build_year_event_calendar(tmp_path, as_of=date(2026, 8, 5), year_radius=2)
+    trials = [
+        e for e in payload["events"]
+        if e["kind"] == "trial" and e["year"] in {2026, 2027}
+    ]
+    assert any(e["name"] == "Autumn Beat Trial Event" for e in trials)
+    assert any(e["name"] == "Swing Valley Trial Event" for e in trials)

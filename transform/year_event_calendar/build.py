@@ -637,6 +637,71 @@ def _rows_from_scheduled(data_dir: Path) -> list[dict]:
     return rows
 
 
+def _rows_from_events_list_current(data_dir: Path) -> list[dict]:
+    """Fallback schedule rows from events_list/current.json when export is empty."""
+    path = data_dir / "events_list" / "current.json"
+    if not path.exists():
+        return []
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return []
+    if isinstance(payload, dict):
+        records = payload.get("events") or []
+    elif isinstance(payload, list):
+        records = payload
+    else:
+        records = []
+
+    rows: list[dict] = []
+    for rec in records:
+        if not isinstance(rec, dict):
+            continue
+        start = _parse_date(rec.get("start_date"))
+        if start is None:
+            continue
+        if _truthy(rec.get("canceled")) or _truthy(rec.get("on_hiatus")):
+            status = STATUS_HIATUS
+        else:
+            status = STATUS_CONFIRMED if _truthy(rec.get("confirmed")) else STATUS_EXPECTED
+        eid = rec.get("canonical_event_id")
+        try:
+            eid_i = int(eid) if eid is not None and not pd.isna(eid) else None
+        except (TypeError, ValueError):
+            eid_i = None
+        name = _clean_name(rec.get("event_name")) or _clean_name(rec.get("canonical_name"))
+        status_flags = rec.get("status_event") or rec.get("registry_trial_status")
+        kind_from_schedule = _status_flags_say_trial(status_flags)
+        year_raw = rec.get("results_year")
+        try:
+            year_i = int(year_raw) if year_raw is not None and not pd.isna(year_raw) else start.year
+        except (TypeError, ValueError):
+            year_i = start.year
+        loc_raw = rec.get("location_id")
+        try:
+            loc_i = int(loc_raw) if loc_raw is not None and not pd.isna(loc_raw) else None
+        except (TypeError, ValueError):
+            loc_i = None
+        rows.append(
+            {
+                "event_id": eid_i,
+                "name": name,
+                "start_date": start,
+                "end_date": _parse_date(rec.get("end_date")),
+                "status": status,
+                "kind": _kind_from_status_event(status_flags, name or ""),
+                "kind_from_schedule": kind_from_schedule,
+                "url": _clean_name(rec.get("url")),
+                "city": _city_from_location_raw(rec.get("location_raw")),
+                "country": _clean_name(rec.get("country")),
+                "location_id": loc_i,
+                "source": "events_list_current",
+                "year": year_i,
+            }
+        )
+    return rows
+
+
 def _inactive_event_ids(catalog: pd.DataFrame) -> set[int]:
     if catalog.empty or "registry_status" not in catalog.columns:
         return set()
@@ -662,6 +727,7 @@ def _prefer_row(existing: dict, new: dict) -> dict:
     }
     src_rank = {
         "scheduled_events": 4,
+        "events_list_current": 4,
         "edition_calendar_dates": 3,
         "operator_override": 3,
         "event_editions": 2,
@@ -1296,11 +1362,15 @@ def build_year_event_calendar(
                 continue
             cat_by_id[int(eid)] = rec
 
+    scheduled_rows = _rows_from_scheduled(data_dir)
+    if not scheduled_rows:
+        scheduled_rows = _rows_from_events_list_current(data_dir)
+
     base_rows = (
         _rows_from_edition_calendar_dates(data_dir)
         + _rows_from_operator_overrides()
         + _rows_from_editions(data_dir)
-        + _rows_from_scheduled(data_dir)
+        + scheduled_rows
     )
     _coerce_cancelled_to_hiatus(base_rows)
     _canonicalize_calendar_rows(base_rows, catalog)
