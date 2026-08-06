@@ -21,6 +21,7 @@ SKILL_ALIASES = {
 }
 
 # Last N scored editions for the series sparkline (oldest → newest).
+# Annual events ≈ last N years; multi-edition/year series is a shorter calendar window.
 HISTORY_LIMIT = 10
 
 TIER_TIP = {
