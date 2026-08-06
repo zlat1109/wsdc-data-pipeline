@@ -191,3 +191,50 @@ def test_build_event_l2_cards_picks_last_with_results(tmp_path: Path):
     assert card["history"][0]["unique_dancers"] == 2
     assert card["history"][1]["year"] == 2025
     assert card["history"][1]["points"] == 9
+
+
+def test_history_caps_at_ten_scored_editions(tmp_path: Path):
+    data_dir = tmp_path
+    editions = []
+    results = []
+    for year in range(2012, 2026):
+        editions.append(
+            {
+                "edition_id": year,
+                "event_id": 7,
+                "event_name": "Long Swing",
+                "event_year": year,
+                "event_month": 3,
+                "result_rows": 10,
+                "unique_dancers": 5,
+            }
+        )
+        results.append(
+            {
+                "dancer_id": year,
+                "event_points": 1,
+                "event_name": "Long Swing",
+                "event_year": year,
+                "event_month": 3,
+            }
+        )
+    pd.DataFrame(editions).to_csv(data_dir / "event_editions.csv", index=False)
+    pd.DataFrame(results).to_csv(data_dir / "dancers_results_info.csv", index=False)
+    pd.DataFrame(
+        columns=[
+            "event_id",
+            "event_year",
+            "event_month",
+            "division",
+            "role",
+            "tier",
+            "status",
+            "dance",
+        ]
+    ).to_csv(data_dir / "edition_division_tiers.csv", index=False)
+
+    payload = build_event_l2_cards(data_dir, as_of=date(2026, 8, 5))
+    history = payload["cards"]["7"]["history"]
+    assert len(history) == 10
+    assert history[0]["year"] == 2016
+    assert history[-1]["year"] == 2025
