@@ -20,8 +20,8 @@ SKILL_ALIASES = {
     "Champions": "Champions",
 }
 
-# Last N scored editions for the Metrics sparkline (oldest → newest).
-HISTORY_LIMIT = 5
+# Last N scored editions for the series sparkline (oldest → newest).
+HISTORY_LIMIT = 10
 
 TIER_TIP = {
     "en": (
