@@ -1256,3 +1256,73 @@ def test_build_projects_upcoming_unlinked_trial_then_stops_after_end(tmp_path):
         e["name"] == "Swing Creation Hamburg" and e["year"] == 2027 and e["status"] == "expected"
         for e in after["events"]
     )
+
+
+def test_build_projects_prior_year_unlinked_confirmed_into_next_year(tmp_path):
+    """Published list-only 2027 row (no event_id) should bridge to 2028 expected."""
+    from transform.year_event_calendar.build import build_year_event_calendar
+
+    (tmp_path / "scheduled_events.csv").write_text(
+        "schedule_event_key,source_fingerprint,canonical_event_id,event_name,start_date,end_date,results_year,results_month,status_event,registry_trial_status,location_raw,country,url,confirmed,canceled,on_hiatus\n",
+        encoding="utf-8",
+    )
+    events_list_dir = tmp_path / "events_list"
+    events_list_dir.mkdir(parents=True, exist_ok=True)
+    (events_list_dir / "current.json").write_text(
+        """
+{
+  "events": [
+    {
+      "source_fingerprint": "cologne-2027",
+      "event_name": "Cologne Calling WCS",
+      "start_date": "2027-01-14",
+      "end_date": "2027-01-17",
+      "results_year": 2027,
+      "status_event": "Trial Event",
+      "location_raw": "Cologne, Germany",
+      "country": "Germany",
+      "url": "https://example.com/cologne",
+      "confirmed": true,
+      "canceled": false,
+      "on_hiatus": false
+    },
+    {
+      "source_fingerprint": "htown-2027",
+      "event_name": "H-Town Throw Down 2027",
+      "start_date": "2027-03-11",
+      "end_date": "2027-03-14",
+      "results_year": 2027,
+      "status_event": "Registry Event",
+      "location_raw": "Houston, United States",
+      "country": "United States",
+      "url": "https://example.com/htown",
+      "confirmed": true,
+      "canceled": false,
+      "on_hiatus": false
+    }
+  ]
+}
+""".strip()
+        + "\n",
+        encoding="utf-8",
+    )
+
+    payload = build_year_event_calendar(tmp_path, as_of=date(2026, 8, 7), year_radius=2)
+    cologne_28 = [
+        e
+        for e in payload["events"]
+        if e["name"] == "Cologne Calling WCS" and e["year"] == 2028
+    ]
+    assert len(cologne_28) == 1
+    assert cologne_28[0]["status"] == "expected"
+    assert cologne_28[0]["kind"] == "registry"
+    assert cologne_28[0].get("provisional_unlinked_trial") is True
+
+    htown_28 = [
+        e
+        for e in payload["events"]
+        if "H-Town" in e["name"] and e["year"] == 2028
+    ]
+    assert len(htown_28) == 1
+    assert htown_28[0]["status"] == "expected"
+    assert htown_28[0]["kind"] == "registry"

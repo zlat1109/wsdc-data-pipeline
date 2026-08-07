@@ -177,6 +177,12 @@ def unlinked_trial_series_key(
     city_tokens = re.findall(r"[a-z0-9]+", str(city or "").lower())
     if city_tokens and len(tokens) > len(city_tokens) and tokens[-len(city_tokens) :] == city_tokens:
         tokens = tokens[: -len(city_tokens)]
+    # Drop edition-year suffixes in titles ("H-Town Throw Down 2027").
+    tokens = [
+        tok
+        for tok in tokens
+        if not (tok.isdigit() and len(tok) == 4 and tok.startswith("20"))
+    ]
     if not tokens:
         tokens = list(raw_tokens)
     country_norm = " ".join(str(country or "").strip().lower().split())
@@ -259,12 +265,12 @@ def iter_unlinked_trial_expected_candidates(
     target_year: int,
     skip_keys: set[str],
 ) -> list[dict]:
-    """Project upcoming current-year trials that still lack a catalog event_id.
+    """Project confirmed list-only rows (no catalog event_id) into ``target_year``.
 
-    Temporary bridge until the first edition runs and a normal ``event_id``
-    appears. Future stubs are **Registry** (trial is a first-year phase only)
-    and keep ``provisional_unlinked_trial`` for debug. After the source edition
-    has passed, the bridge stops even if an id is not assigned yet.
+    Used as a temporary YoY bridge until a normal ``event_id`` appears. Future
+    stubs are **Registry** (trial is a first-year phase only) and keep
+    ``provisional_unlinked_trial`` for debug. Callers choose which prior years
+    to feed (current-year upcoming trials and/or earlier published list rows).
     """
     out: list[dict] = []
     seen: set[str] = set()
