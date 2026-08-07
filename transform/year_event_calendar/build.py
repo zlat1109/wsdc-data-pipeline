@@ -1202,6 +1202,43 @@ def _unlinked_trial_still_upcoming(row: dict, as_of: date) -> bool:
     return end >= as_of
 
 
+def _latest_unlinked_confirmed_priors(
+    confirmed_rows: list[dict],
+    *,
+    before_year: int,
+    as_of: date,
+) -> list[dict]:
+    """Most recent confirmed list-only edition per series key with year < before_year.
+
+    - Past / future published years (relative to ``as_of``): always eligible.
+    - ``as_of.year``: only while the edition is still upcoming — after it ends
+      without a catalog id the bridge stops until the series is linked.
+    """
+    best: dict[str, dict] = {}
+    for row in confirmed_rows:
+        if row.get("event_id") is not None:
+            continue
+        start = row.get("start_date")
+        if not isinstance(start, date):
+            continue
+        row_year = _row_year(row)
+        if row_year is None or row_year >= before_year:
+            continue
+        if row_year == as_of.year and not _unlinked_trial_still_upcoming(row, as_of):
+            continue
+        key = unlinked_trial_series_key(
+            name=row.get("name"),
+            country=row.get("country"),
+            city=row.get("city"),
+        )
+        if not key:
+            continue
+        prev = best.get(key)
+        if prev is None or start > prev["start_date"]:
+            best[key] = row
+    return list(best.values())
+
+
 def _series_linked_ids(event_id: int | None) -> set[int]:
     """Return all known linked ids in the same rebranded series."""
     if event_id is None:
@@ -1483,16 +1520,6 @@ def build_year_event_calendar(
         and isinstance(r.get("start_date"), date)
         and r.get("event_id") not in inactive_ids
     ]
-    # Upcoming current-year trials still missing a catalog id: bridge YoY until
-    # the first edition runs and a normal event_id appears.
-    unlinked_trial_priors = [
-        r
-        for r in prior_pool
-        if r.get("event_id") is None
-        and _row_year(r) == as_of.year
-        and (r.get("kind") == KIND_TRIAL or r.get("kind_from_schedule"))
-        and _unlinked_trial_still_upcoming(r, as_of)
-    ]
     for y in sorted(expected_years):
         priors = _latest_confirmed_priors(prior_pool, before_year=y)
         blocked = _ids_blocked_by_terminal(merged, before_year=y)
@@ -1524,8 +1551,13 @@ def build_year_event_calendar(
                 continue
             kept.append(stub)
         if y > as_of.year:
+            # List-only confirmed rows (any prior year < y): bridge YoY until a
+            # catalog event_id appears. Current-year priors still require upcoming.
+            unlinked_priors = _latest_unlinked_confirmed_priors(
+                prior_pool, before_year=y, as_of=as_of
+            )
             unlinked_stubs = iter_unlinked_trial_expected_candidates(
-                unlinked_trial_priors,
+                unlinked_priors,
                 target_year=y,
                 skip_keys=set(skip_unlinked_by_year.get(y, set())),
             )
