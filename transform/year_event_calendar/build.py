@@ -24,13 +24,14 @@ from transform.knowledge.geo_flags import continent_for_country
 from transform.year_event_calendar.expected import (
     EXPECTED_STALE_GRACE_DAYS,
     EXPECTED_WINDOW_DAYS,
+    UNLINKED_PRIOR_LOOKBACK_YEARS,
     is_stale_expected,
     iter_expected_candidates,
-    iter_unlinked_trial_expected_candidates,
+    iter_unlinked_expected_candidates,
     match_expected_to_confirmed,
     match_expected_to_starts,
     project_start_to_year,
-    unlinked_trial_series_key,
+    unlinked_series_key,
 )
 from transform.year_event_calendar.weekends import weekend_bounds, weekend_key
 
@@ -232,7 +233,7 @@ def _apply_kind_rules(
 
         if row.get("source") == "expected_yoy":
             # Expected YoY is never Trial — trial is a first-year phase only
-            # (including provisional bridges for list-only trials).
+            # (including provisional bridges for list-only rows).
             row["kind"] = KIND_REGISTRY
             row.pop("kind_from_schedule", None)
             continue
@@ -1193,8 +1194,8 @@ def _row_year(row: dict) -> int | None:
     return None
 
 
-def _unlinked_trial_still_upcoming(row: dict, as_of: date) -> bool:
-    """True while a current-year list-only trial has not finished yet."""
+def _unlinked_still_upcoming(row: dict, as_of: date) -> bool:
+    """True while a current-year list-only edition has not finished yet."""
     start = row.get("start_date")
     if not isinstance(start, date):
         return False
@@ -1207,13 +1208,17 @@ def _latest_unlinked_confirmed_priors(
     *,
     before_year: int,
     as_of: date,
+    lookback_years: int = UNLINKED_PRIOR_LOOKBACK_YEARS,
 ) -> list[dict]:
     """Most recent confirmed list-only edition per series key with year < before_year.
 
-    - Past / future published years (relative to ``as_of``): always eligible.
-    - ``as_of.year``: only while the edition is still upcoming — after it ends
-      without a catalog id the bridge stops until the series is linked.
+    Lookback floor is ``as_of.year - lookback_years`` so old one-off list rows
+    without a catalog id do not resurrect as eternal expected stubs.
+
+    - ``as_of.year``: only while the edition is still upcoming.
+    - Later published years (``as_of.year < year < before_year``): always eligible.
     """
+    min_year = as_of.year - max(int(lookback_years), 0)
     best: dict[str, dict] = {}
     for row in confirmed_rows:
         if row.get("event_id") is not None:
@@ -1222,11 +1227,11 @@ def _latest_unlinked_confirmed_priors(
         if not isinstance(start, date):
             continue
         row_year = _row_year(row)
-        if row_year is None or row_year >= before_year:
+        if row_year is None or row_year >= before_year or row_year < min_year:
             continue
-        if row_year == as_of.year and not _unlinked_trial_still_upcoming(row, as_of):
+        if row_year == as_of.year and not _unlinked_still_upcoming(row, as_of):
             continue
-        key = unlinked_trial_series_key(
+        key = unlinked_series_key(
             name=row.get("name"),
             country=row.get("country"),
             city=row.get("city"),
@@ -1374,8 +1379,8 @@ def _serialize_event(row: dict) -> dict:
     if row.get("projected_from_year") is not None:
         out["projected_from_year"] = row["projected_from_year"]
         out["projected_from_start"] = row.get("projected_from_start")
-    if row.get("provisional_unlinked_trial"):
-        out["provisional_unlinked_trial"] = True
+    if row.get("provisional_unlinked") or row.get("provisional_unlinked_trial"):
+        out["provisional_unlinked"] = True
     if row.get("stats_only"):
         out["stats_only"] = True
     if row.get("has_results"):
@@ -1497,7 +1502,7 @@ def build_year_event_calendar(
                 confirmed_by_year[y].setdefault(eid, []).append(start)
                 confirmed_by_event.setdefault(int(eid), []).append(start)
             continue
-        key = unlinked_trial_series_key(
+        key = unlinked_series_key(
             name=row.get("name"),
             country=row.get("country"),
             city=row.get("city"),
@@ -1551,18 +1556,18 @@ def build_year_event_calendar(
                 continue
             kept.append(stub)
         if y > as_of.year:
-            # List-only confirmed rows (any prior year < y): bridge YoY until a
+            # List-only confirmed rows within lookback: bridge YoY until a
             # catalog event_id appears. Current-year priors still require upcoming.
             unlinked_priors = _latest_unlinked_confirmed_priors(
                 prior_pool, before_year=y, as_of=as_of
             )
-            unlinked_stubs = iter_unlinked_trial_expected_candidates(
+            unlinked_stubs = iter_unlinked_expected_candidates(
                 unlinked_priors,
                 target_year=y,
                 skip_keys=set(skip_unlinked_by_year.get(y, set())),
             )
             for stub in unlinked_stubs:
-                key = stub.get("unlinked_trial_key") or unlinked_trial_series_key(
+                key = stub.get("unlinked_key") or unlinked_series_key(
                     name=stub.get("name"),
                     country=stub.get("country"),
                     city=stub.get("city"),
