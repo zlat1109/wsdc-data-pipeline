@@ -532,6 +532,38 @@ def test_calendar_listing_keeps_place_suffix_marketing_title():
     assert not _calendar_listing_matches_event("WCS Party", "Soul Flow in Vienna")
 
 
+def test_canonicalize_calgary_town_open_to_bto_open():
+    """Calgary Town Open is a marketing rename of catalog BTO Open (event_id 324)."""
+    import pandas as pd
+
+    from transform.year_event_calendar.build import _canonicalize_calendar_rows
+
+    catalog = pd.DataFrame(
+        [
+            {
+                "event_id": 324,
+                "canonical_name": "BTO Open",
+                "registry_status": "Registry Event",
+                "edition_count": 3,
+            }
+        ]
+    )
+    rows = [
+        {
+            "event_id": None,
+            "name": "Calgary Town Open",
+            "start_date": date(2026, 9, 24),
+            "status": "confirmed",
+            "kind": "registry",
+            "source": "events_list_current",
+            "year": 2026,
+        }
+    ]
+    _canonicalize_calendar_rows(rows, catalog)
+    assert rows[0]["name"] == "BTO Open"
+    assert rows[0]["event_id"] == 324
+
+
 def test_is_stale_expected_past_year_and_grace():
     from transform.year_event_calendar.expected import is_stale_expected
 
