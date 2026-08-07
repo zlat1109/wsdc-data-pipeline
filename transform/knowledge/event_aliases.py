@@ -133,6 +133,8 @@ EVENT_NAME_VARIANT_TO_CATALOG: dict[str, str] = {
     'NeverlandSwing Dutch Swing Championships': 'Neverland Swing',
     'Paris Swing Classic': 'Paris Westie Fest',
     'The Boston Tea Party': 'Boston Tea Party',
+    # WSDC calendar/list marketing title for event_id 357 (catalog still "WCS Party").
+    'WCS Party in Vienna': 'WCS Party',
     'Capital Swing Convention': 'Capital Swing Dance Convention',
     'The New Zealand West Coast Swing Open': 'New Zealand Open Swing Dance Championships',
     'BaroqueSwing': 'Barock Swing Ludwigsburg',

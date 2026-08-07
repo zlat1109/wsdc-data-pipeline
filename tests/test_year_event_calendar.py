@@ -421,6 +421,15 @@ def test_calendar_listing_mismatch_rejects_soul_flow_on_ggp():
     )
 
 
+def test_calendar_listing_keeps_place_suffix_marketing_title():
+    """Catalog stopword-only names must still accept ``Name in City`` listings."""
+    from transform.year_event_calendar.build import _calendar_listing_matches_event
+
+    assert _calendar_listing_matches_event("WCS Party", "WCS Party in Vienna")
+    assert _calendar_listing_matches_event("WCS Party", "WCS Party")
+    assert not _calendar_listing_matches_event("WCS Party", "Soul Flow in Vienna")
+
+
 def test_is_stale_expected_past_year_and_grace():
     from transform.year_event_calendar.expected import is_stale_expected
 
