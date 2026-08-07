@@ -59,6 +59,9 @@ RESULT_TO_CATALOG_EVENT_NAME: dict[str, str] = {
     'Dutch Open': 'Dutch Open West Coast Swing',
     'Global Grand Prix': 'Global Grand Prix - West Coast Swing Reunion',
     'The Open World Swing Dance Championships': 'World Swing Dance Championships',
+    # WSDC listing title for event_id 68 (catalog still "US Open…")
+    'The Open Swing Dance Championships': 'US Open Swing Dance Championships',
+    'The Open Swing Dance  Championships': 'US Open Swing Dance Championships',
     'Korean Open': 'Korean Open WCS Championships',
     'UK West Coast Swing Championships': 'UK WCS Championships',
     'Jax Westie Fest': 'River City Swing',

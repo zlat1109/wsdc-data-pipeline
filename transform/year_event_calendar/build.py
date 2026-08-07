@@ -750,6 +750,8 @@ def _prefer_row(existing: dict, new: dict) -> dict:
     for key in ("url", "city", "country", "location_id", "kind", "name", "end_date"):
         if not winner.get(key) and loser.get(key):
             winner[key] = loser[key]
+    if winner.get("event_id") is None and loser.get("event_id") is not None:
+        winner["event_id"] = loser["event_id"]
     if winner.get("stats_only") and not loser.get("stats_only"):
         winner["stats_only"] = False
         winner["source"] = loser.get("source") or winner.get("source")
@@ -922,14 +924,24 @@ def _alias_event_name(name: str | None) -> str | None:
 
 
 def _fingerprint_event_name(name: str | None) -> str:
-    """Loose token fingerprint for cross-source near-duplicate matching."""
+    """Loose token fingerprint for cross-source near-duplicate matching.
+
+    When a title is only stopwords (e.g. \"The Open Swing Dance Championships\"),
+    strip only light function words so weekend dedupe still has a key instead of
+    passthrough duplicates.
+    """
     text = _alias_event_name(name) or ""
-    tokens = [
+    raw_tokens = [
         tok
         for tok in "".join(ch if ch.isalnum() else " " for ch in text.lower()).split()
-        if tok and tok not in _NAME_STOPWORDS
+        if tok
     ]
-    return " ".join(tokens)
+    tokens = [tok for tok in raw_tokens if tok not in _NAME_STOPWORDS]
+    if tokens:
+        return " ".join(tokens)
+    light = frozenset({"the", "a", "an", "and", "of", "for"})
+    kept = [tok for tok in raw_tokens if tok not in light]
+    return " ".join(kept) if kept else " ".join(raw_tokens)
 
 
 def _catalog_quality(eid: int | None, cat_by_id: dict[int, dict]) -> tuple[int, int]:
