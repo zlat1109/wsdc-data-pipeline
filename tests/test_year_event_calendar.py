@@ -137,7 +137,16 @@ def test_iter_unlinked_trial_expected_keeps_trial_kind():
             "kind": "trial",
         },
     ]
-    key = unlinked_trial_series_key(name="Swing Creation Hamburg", country="Germany")
+    key = unlinked_trial_series_key(
+        name="Swing Creation Hamburg", country="Germany", city="Hamburg"
+    )
+    # City suffix stripped + swing stopword → creation|germany
+    assert key == "creation|germany"
+    # Rename without city in the title still matches.
+    assert (
+        unlinked_trial_series_key(name="Swing Creation", country="Germany", city="Hamburg")
+        == key
+    )
     stubs = iter_unlinked_trial_expected_candidates(
         priors, target_year=2027, skip_keys=set()
     )
@@ -154,6 +163,24 @@ def test_iter_unlinked_trial_expected_keeps_trial_kind():
         priors, target_year=2027, skip_keys={key}
     )
     assert skipped == []
+
+
+def test_match_expected_to_starts_accepts_string_series_key():
+    from transform.year_event_calendar.expected import match_expected_to_starts
+
+    assert match_expected_to_starts(
+        series_key="creation|germany",
+        projected_start=date(2027, 8, 19),
+        confirmed_starts_by_key={"creation|germany": [date(2027, 8, 20)]},
+    ) == date(2027, 8, 20)
+    assert (
+        match_expected_to_starts(
+            series_key="creation|germany",
+            projected_start=date(2027, 8, 19),
+            confirmed_starts_by_key={"creation|germany": [date(2026, 8, 20)]},
+        )
+        is None
+    )
 
 
 def test_apply_kind_rules_keeps_provisional_unlinked_trial():
@@ -1175,3 +1202,57 @@ def test_build_uses_events_list_fallback_when_scheduled_export_empty(tmp_path):
     ]
     assert any(e["name"] == "Autumn Beat Trial Event" for e in trials)
     assert any(e["name"] == "Swing Valley Trial Event" for e in trials)
+
+
+def test_build_projects_upcoming_unlinked_trial_then_stops_after_end(tmp_path):
+    """Integration: upcoming list-only trial → expected y+1; gone after edition ends."""
+    from transform.year_event_calendar.build import build_year_event_calendar
+
+    (tmp_path / "scheduled_events.csv").write_text(
+        "schedule_event_key,source_fingerprint,canonical_event_id,event_name,start_date,end_date,results_year,results_month,status_event,registry_trial_status,location_raw,country,url,confirmed,canceled,on_hiatus\n",
+        encoding="utf-8",
+    )
+    events_list_dir = tmp_path / "events_list"
+    events_list_dir.mkdir(parents=True, exist_ok=True)
+    (events_list_dir / "current.json").write_text(
+        """
+{
+  "events": [
+    {
+      "source_fingerprint": "hamburg-2026",
+      "event_name": "Swing Creation Hamburg",
+      "start_date": "2026-08-20",
+      "end_date": "2026-08-23",
+      "results_year": 2026,
+      "status_event": "Trial Event",
+      "location_raw": "Hamburg, Germany",
+      "country": "Germany",
+      "url": "https://example.com/hamburg",
+      "confirmed": true,
+      "canceled": false,
+      "on_hiatus": false
+    }
+  ]
+}
+""".strip()
+        + "\n",
+        encoding="utf-8",
+    )
+
+    before = build_year_event_calendar(tmp_path, as_of=date(2026, 8, 7), year_radius=2)
+    projected = [
+        e
+        for e in before["events"]
+        if e["name"] == "Swing Creation Hamburg" and e["year"] == 2027
+    ]
+    assert len(projected) == 1
+    assert projected[0]["status"] == "expected"
+    assert projected[0]["kind"] == "trial"
+    assert projected[0].get("provisional_unlinked_trial") is True
+    assert projected[0].get("event_id") is None
+
+    after = build_year_event_calendar(tmp_path, as_of=date(2026, 8, 30), year_radius=2)
+    assert not any(
+        e["name"] == "Swing Creation Hamburg" and e["year"] == 2027 and e["status"] == "expected"
+        for e in after["events"]
+    )

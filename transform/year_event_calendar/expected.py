@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
+import re
 from datetime import date, timedelta
-from typing import Iterable
+from typing import Any, Iterable
 
 
 EXPECTED_WINDOW_DAYS = 7
@@ -12,6 +13,30 @@ EXPECTED_STALE_GRACE_DAYS = 7
 # Snap anniversary to the same weekday as the prior start (Thu→Thu, Fri→Fri).
 # ±3 covers a full week uniquely without jumping to the next dance weekend.
 EXPECTED_WEEKDAY_SNAP_DAYS = 3
+
+# Light stopwords for provisional unlinked-trial keys (avoid importing build).
+_UNLINKED_KEY_STOPWORDS = frozenset(
+    {
+        "the",
+        "a",
+        "an",
+        "and",
+        "of",
+        "for",
+        "wcs",
+        "west",
+        "coast",
+        "swing",
+        "dance",
+        "trial",
+        "event",
+        "festival",
+        "fest",
+        "open",
+        "championships",
+        "championship",
+    }
+)
 
 
 def anniversary_date(start: date, target_year: int) -> date:
@@ -96,6 +121,25 @@ def is_stale_expected(
     return last + timedelta(days=grace_days) < as_of
 
 
+def match_expected_to_starts(
+    *,
+    series_key: int | str,
+    projected_start: date,
+    confirmed_starts_by_key: dict[int | str, list[date]],
+    window_days: int = EXPECTED_WINDOW_DAYS,
+) -> date | None:
+    """Return a confirmed start within ±window_days for ``series_key``, else None.
+
+    ``series_key`` is a catalog ``event_id`` or an unlinked-trial name key.
+    ``confirmed_starts_by_key`` may include adjacent years so a NYE projection
+    (e.g. 2026-12-31) is satisfied by a published Jan date in the next year.
+    """
+    for actual in confirmed_starts_by_key.get(series_key, []):
+        if within_expected_window(projected_start, actual, days=window_days):
+            return actual
+    return None
+
+
 def match_expected_to_confirmed(
     *,
     event_id: int | str,
@@ -103,29 +147,83 @@ def match_expected_to_confirmed(
     confirmed_by_event: dict[int | str, list[date]],
     window_days: int = EXPECTED_WINDOW_DAYS,
 ) -> date | None:
-    """Return matching confirmed start if within ±window_days, else None.
-
-    ``confirmed_by_event`` may include starts from adjacent years so a NYE
-    projection (e.g. 2026-12-31) is satisfied by a published Jan date in the
-    next year (SwingCo 2027-01-07) and does not leave a ghost expected.
-    """
-    for actual in confirmed_by_event.get(event_id, []):
-        if within_expected_window(projected_start, actual, days=window_days):
-            return actual
-    return None
+    """Backward-compatible alias for :func:`match_expected_to_starts`."""
+    return match_expected_to_starts(
+        series_key=event_id,
+        projected_start=projected_start,
+        confirmed_starts_by_key=confirmed_by_event,
+        window_days=window_days,
+    )
 
 
 def unlinked_trial_series_key(
     *,
     name: str | None,
     country: str | None = None,
+    city: str | None = None,
 ) -> str | None:
-    """Stable key for provisional YoY stubs of list-only trials (no event_id)."""
-    n = " ".join(str(name or "").strip().lower().split())
-    if not n:
+    """Stable key for provisional YoY stubs of list-only trials (no event_id).
+
+    Uses alnum tokens minus light stopwords, and drops a trailing city token
+    when ``city`` is known so ``Swing Creation Hamburg`` (Hamburg) matches
+    ``Swing Creation`` under the same country.
+    """
+    raw_tokens = re.findall(r"[a-z0-9]+", str(name or "").lower())
+    if not raw_tokens:
         return None
-    c = " ".join(str(country or "").strip().lower().split())
-    return f"{n}|{c}"
+    tokens = [tok for tok in raw_tokens if tok not in _UNLINKED_KEY_STOPWORDS]
+    if not tokens:
+        tokens = list(raw_tokens)
+    city_tokens = re.findall(r"[a-z0-9]+", str(city or "").lower())
+    if city_tokens and len(tokens) > len(city_tokens) and tokens[-len(city_tokens) :] == city_tokens:
+        tokens = tokens[: -len(city_tokens)]
+    if not tokens:
+        tokens = list(raw_tokens)
+    country_norm = " ".join(str(country or "").strip().lower().split())
+    return f"{' '.join(tokens)}|{country_norm}"
+
+
+def _project_expected_stub(
+    row: dict[str, Any],
+    *,
+    target_year: int,
+    kind: str,
+    provisional_unlinked_trial: bool = False,
+    unlinked_trial_key: str | None = None,
+) -> dict[str, Any] | None:
+    """Shared YoY stub builder for catalog-backed and provisional unlinked trials."""
+    start = row.get("start_date")
+    if not isinstance(start, date):
+        return None
+    projected = project_start_to_year(start, target_year)
+    end = project_end_from_prior(
+        prior_start=start,
+        prior_end=row.get("end_date") if isinstance(row.get("end_date"), date) else None,
+        projected_start=projected,
+    )
+    touches_target = projected.year == target_year or (
+        isinstance(end, date) and end.year == target_year
+    )
+    if not touches_target:
+        return None
+    stub = dict(row)
+    stub["start_date"] = projected
+    stub["end_date"] = end
+    stub["status"] = "expected"
+    stub["source"] = "expected_yoy"
+    stub["kind"] = kind
+    stub["year"] = target_year
+    stub.pop("kind_from_schedule", None)
+    if provisional_unlinked_trial:
+        stub["provisional_unlinked_trial"] = True
+        if unlinked_trial_key:
+            stub["unlinked_trial_key"] = unlinked_trial_key
+    else:
+        stub.pop("provisional_unlinked_trial", None)
+        stub.pop("unlinked_trial_key", None)
+    stub["projected_from_year"] = start.year
+    stub["projected_from_start"] = start.isoformat()
+    return stub
 
 
 def iter_expected_candidates(
@@ -147,33 +245,10 @@ def iter_expected_candidates(
         eid = row.get("event_id")
         if eid is None or eid in skip_event_ids or eid in seen:
             continue
-        start = row.get("start_date")
-        if not isinstance(start, date):
-            continue
-        projected = project_start_to_year(start, target_year)
-        # Allow Dec spill from weekday snap only when the span still touches target_year.
-        end = project_end_from_prior(
-            prior_start=start,
-            prior_end=row.get("end_date") if isinstance(row.get("end_date"), date) else None,
-            projected_start=projected,
-        )
-        touches_target = projected.year == target_year or (
-            isinstance(end, date) and end.year == target_year
-        )
-        if not touches_target:
+        stub = _project_expected_stub(row, target_year=target_year, kind="registry")
+        if stub is None:
             continue
         seen.add(eid)
-        stub = dict(row)
-        stub["start_date"] = projected
-        stub["end_date"] = end
-        stub["status"] = "expected"
-        stub["source"] = "expected_yoy"
-        stub["kind"] = "registry"
-        stub["year"] = target_year
-        stub.pop("kind_from_schedule", None)
-        stub.pop("provisional_unlinked_trial", None)
-        stub["projected_from_year"] = start.year
-        stub["projected_from_start"] = start.isoformat()
         out.append(stub)
     return out
 
@@ -188,41 +263,30 @@ def iter_unlinked_trial_expected_candidates(
 
     Temporary bridge until the first edition runs and a normal ``event_id``
     appears. Stubs keep ``kind=trial`` and ``provisional_unlinked_trial``.
+    After the source edition has passed, the bridge stops even if an id is not
+    assigned yet (gap until the next scrape links the series).
     """
     out: list[dict] = []
     seen: set[str] = set()
     for row in prior_rows:
         if row.get("event_id") is not None:
             continue
-        key = unlinked_trial_series_key(name=row.get("name"), country=row.get("country"))
+        key = unlinked_trial_series_key(
+            name=row.get("name"),
+            country=row.get("country"),
+            city=row.get("city"),
+        )
         if not key or key in skip_keys or key in seen:
             continue
-        start = row.get("start_date")
-        if not isinstance(start, date):
-            continue
-        projected = project_start_to_year(start, target_year)
-        end = project_end_from_prior(
-            prior_start=start,
-            prior_end=row.get("end_date") if isinstance(row.get("end_date"), date) else None,
-            projected_start=projected,
+        stub = _project_expected_stub(
+            row,
+            target_year=target_year,
+            kind="trial",
+            provisional_unlinked_trial=True,
+            unlinked_trial_key=key,
         )
-        touches_target = projected.year == target_year or (
-            isinstance(end, date) and end.year == target_year
-        )
-        if not touches_target:
+        if stub is None:
             continue
         seen.add(key)
-        stub = dict(row)
-        stub["start_date"] = projected
-        stub["end_date"] = end
-        stub["status"] = "expected"
-        stub["source"] = "expected_yoy"
-        stub["kind"] = "trial"
-        stub["provisional_unlinked_trial"] = True
-        stub["year"] = target_year
-        stub.pop("kind_from_schedule", None)
-        stub["projected_from_year"] = start.year
-        stub["projected_from_start"] = start.isoformat()
-        stub["unlinked_trial_key"] = key
         out.append(stub)
     return out
