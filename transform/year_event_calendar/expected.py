@@ -13,8 +13,12 @@ EXPECTED_STALE_GRACE_DAYS = 7
 # Snap anniversary to the same weekday as the prior start (Thu→Thu, Fri→Fri).
 # ±3 covers a full week uniquely without jumping to the next dance weekend.
 EXPECTED_WEEKDAY_SNAP_DAYS = 3
+# Unlinked YoY bridge: do not resurrect list-only rows older than
+# ``as_of.year - UNLINKED_PRIOR_LOOKBACK_YEARS`` (0 = current year and later
+# published list years only).
+UNLINKED_PRIOR_LOOKBACK_YEARS = 0
 
-# Light stopwords for provisional unlinked-trial keys (avoid importing build).
+# Light stopwords for provisional unlinked series keys (avoid importing build).
 _UNLINKED_KEY_STOPWORDS = frozenset(
     {
         "the",
@@ -130,7 +134,7 @@ def match_expected_to_starts(
 ) -> date | None:
     """Return a confirmed start within ±window_days for ``series_key``, else None.
 
-    ``series_key`` is a catalog ``event_id`` or an unlinked-trial name key.
+    ``series_key`` is a catalog ``event_id`` or an unlinked series name key.
     ``confirmed_starts_by_key`` may include adjacent years so a NYE projection
     (e.g. 2026-12-31) is satisfied by a published Jan date in the next year.
     """
@@ -156,17 +160,16 @@ def match_expected_to_confirmed(
     )
 
 
-def unlinked_trial_series_key(
+def unlinked_series_key(
     *,
     name: str | None,
     country: str | None = None,
     city: str | None = None,
 ) -> str | None:
-    """Stable key for provisional YoY stubs of list-only trials (no event_id).
+    """Stable key for provisional YoY stubs of list-only rows (no event_id).
 
-    Uses alnum tokens minus light stopwords, and drops a trailing city token
-    when ``city`` is known so ``Swing Creation Hamburg`` (Hamburg) matches
-    ``Swing Creation`` under the same country.
+    Uses alnum tokens minus light stopwords, drops a trailing city token when
+    ``city`` is known, and strips edition-year suffixes (``… 2027``).
     """
     raw_tokens = re.findall(r"[a-z0-9]+", str(name or "").lower())
     if not raw_tokens:
@@ -189,15 +192,19 @@ def unlinked_trial_series_key(
     return f"{' '.join(tokens)}|{country_norm}"
 
 
+# Backward-compatible alias (older call sites / tests).
+unlinked_trial_series_key = unlinked_series_key
+
+
 def _project_expected_stub(
     row: dict[str, Any],
     *,
     target_year: int,
     kind: str,
-    provisional_unlinked_trial: bool = False,
-    unlinked_trial_key: str | None = None,
+    provisional_unlinked: bool = False,
+    unlinked_key: str | None = None,
 ) -> dict[str, Any] | None:
-    """Shared YoY stub builder for catalog-backed and provisional unlinked trials."""
+    """Shared YoY stub builder for catalog-backed and provisional unlinked rows."""
     start = row.get("start_date")
     if not isinstance(start, date):
         return None
@@ -220,13 +227,15 @@ def _project_expected_stub(
     stub["kind"] = kind
     stub["year"] = target_year
     stub.pop("kind_from_schedule", None)
-    if provisional_unlinked_trial:
-        stub["provisional_unlinked_trial"] = True
-        if unlinked_trial_key:
-            stub["unlinked_trial_key"] = unlinked_trial_key
+    if provisional_unlinked:
+        stub["provisional_unlinked"] = True
+        if unlinked_key:
+            stub["unlinked_key"] = unlinked_key
     else:
-        stub.pop("provisional_unlinked_trial", None)
-        stub.pop("unlinked_trial_key", None)
+        stub.pop("provisional_unlinked", None)
+        stub.pop("unlinked_key", None)
+    stub.pop("provisional_unlinked_trial", None)
+    stub.pop("unlinked_trial_key", None)
     stub["projected_from_year"] = start.year
     stub["projected_from_start"] = start.isoformat()
     return stub
@@ -259,7 +268,7 @@ def iter_expected_candidates(
     return out
 
 
-def iter_unlinked_trial_expected_candidates(
+def iter_unlinked_expected_candidates(
     prior_rows: Iterable[dict],
     *,
     target_year: int,
@@ -267,17 +276,16 @@ def iter_unlinked_trial_expected_candidates(
 ) -> list[dict]:
     """Project confirmed list-only rows (no catalog event_id) into ``target_year``.
 
-    Used as a temporary YoY bridge until a normal ``event_id`` appears. Future
-    stubs are **Registry** (trial is a first-year phase only) and keep
-    ``provisional_unlinked_trial`` for debug. Callers choose which prior years
-    to feed (current-year upcoming trials and/or earlier published list rows).
+    Temporary YoY bridge until a normal ``event_id`` appears. Future stubs are
+    **Registry** and keep ``provisional_unlinked`` for debug. Callers choose
+    which prior years to feed (lookback is enforced upstream).
     """
     out: list[dict] = []
     seen: set[str] = set()
     for row in prior_rows:
         if row.get("event_id") is not None:
             continue
-        key = unlinked_trial_series_key(
+        key = unlinked_series_key(
             name=row.get("name"),
             country=row.get("country"),
             city=row.get("city"),
@@ -288,11 +296,15 @@ def iter_unlinked_trial_expected_candidates(
             row,
             target_year=target_year,
             kind="registry",
-            provisional_unlinked_trial=True,
-            unlinked_trial_key=key,
+            provisional_unlinked=True,
+            unlinked_key=key,
         )
         if stub is None:
             continue
         seen.add(key)
         out.append(stub)
     return out
+
+
+# Backward-compatible alias.
+iter_unlinked_trial_expected_candidates = iter_unlinked_expected_candidates
