@@ -47,8 +47,20 @@ def test_weekend_key_stable():
 
 
 def test_project_leap_day():
-    assert project_start_to_year(date(2024, 2, 29), 2025) == date(2025, 2, 28)
-    assert project_start_to_year(date(2024, 3, 15), 2025) == date(2025, 3, 15)
+    # 2024-02-29 Thu → anniversary 2025-02-28 Fri → snap back to Thu
+    assert project_start_to_year(date(2024, 2, 29), 2025) == date(2025, 2, 27)
+    # 2024-03-15 Fri → anniversary 2025-03-15 Sat → snap to Fri
+    assert project_start_to_year(date(2024, 3, 15), 2025) == date(2025, 3, 14)
+
+
+def test_project_preserves_weekday_for_multi_year_horizon():
+    """Naive month/day copy drifts; snap keeps Thu/Fri starts for expected YoY."""
+    thu = date(2026, 5, 14)  # Thursday
+    assert thu.weekday() == 3
+    for year in (2027, 2028):
+        projected = project_start_to_year(thu, year)
+        assert projected.weekday() == 3
+        assert abs((projected - thu.replace(year=year)).days) <= 3
 
 
 def test_within_expected_window_wsdc_one_week():
@@ -89,6 +101,11 @@ def test_iter_expected_forces_registry_kind():
     assert len(stubs) == 1
     assert stubs[0]["kind"] == "registry"
     assert "kind_from_schedule" not in stubs[0]
+    # 2025-05-08 Thu → 2026 snap keeps Thursday; span 3 days → Sun end
+    assert stubs[0]["start_date"] == date(2026, 5, 7)
+    assert stubs[0]["start_date"].weekday() == 3
+    assert stubs[0]["end_date"] == date(2026, 5, 10)
+    assert stubs[0]["end_date"].weekday() == 6
 
 
 def test_enrich_geo_inherits_location_id_from_editions_map():

@@ -9,15 +9,62 @@ from typing import Iterable
 EXPECTED_WINDOW_DAYS = 7
 # Keep expected visible through the weekend + one week; then drop if still unconfirmed.
 EXPECTED_STALE_GRACE_DAYS = 7
+# Snap anniversary to the same weekday as the prior start (Thu→Thu, Fri→Fri).
+# ±3 covers a full week uniquely without jumping to the next dance weekend.
+EXPECTED_WEEKDAY_SNAP_DAYS = 3
 
 
-def project_start_to_year(start: date, target_year: int) -> date:
-    """Map a prior-year start_date into ``target_year`` (same month/day)."""
+def anniversary_date(start: date, target_year: int) -> date:
+    """Same month/day in ``target_year`` (Feb 29 → Feb 28 in non-leap years)."""
     try:
         return start.replace(year=target_year)
     except ValueError:
-        # Feb 29 → Feb 28 in non-leap years
         return date(target_year, 2, 28)
+
+
+def snap_to_weekday(
+    anchor: date,
+    target_weekday: int,
+    *,
+    prefer_year: int | None = None,
+) -> date:
+    """Move ``anchor`` to the nearest day with ``target_weekday`` (Mon=0…Sun=6).
+
+    Distance is always in ``[-3, 3]``. When the short snap leaves ``prefer_year``,
+    try the opposite ±7 day candidate if it lands in that year (Jan/Dec edges).
+    """
+    delta = (target_weekday - anchor.weekday()) % 7
+    if delta > EXPECTED_WEEKDAY_SNAP_DAYS:
+        delta -= 7
+    snapped = anchor + timedelta(days=delta)
+    if prefer_year is None or snapped.year == prefer_year:
+        return snapped
+    alt = snapped + timedelta(days=7 if snapped.year < prefer_year else -7)
+    if alt.year == prefer_year:
+        return alt
+    return snapped
+
+
+def project_start_to_year(start: date, target_year: int) -> date:
+    """Map a prior start into ``target_year``, preserving weekday near the anniversary.
+
+    Naive month/day copy drifts ~1 weekday per year (Thu festivals land on Mon/Sun
+    by year+2). Snap keeps typical Thu/Fri starts realistic for expected stubs.
+    """
+    anchor = anniversary_date(start, target_year)
+    return snap_to_weekday(anchor, start.weekday(), prefer_year=target_year)
+
+
+def project_end_from_prior(
+    *,
+    prior_start: date,
+    prior_end: date | None,
+    projected_start: date,
+) -> date | None:
+    """Keep the prior edition span when projecting end_date."""
+    if not isinstance(prior_end, date):
+        return None
+    return projected_start + timedelta(days=max((prior_end - prior_start).days, 0))
 
 
 def within_expected_window(projected: date, actual: date, *, days: int = EXPECTED_WINDOW_DAYS) -> bool:
@@ -86,17 +133,21 @@ def iter_expected_candidates(
         if not isinstance(start, date):
             continue
         projected = project_start_to_year(start, target_year)
-        if projected.year != target_year:
+        # Allow Dec spill from weekday snap only when the span still touches target_year.
+        end = project_end_from_prior(
+            prior_start=start,
+            prior_end=row.get("end_date") if isinstance(row.get("end_date"), date) else None,
+            projected_start=projected,
+        )
+        touches_target = projected.year == target_year or (
+            isinstance(end, date) and end.year == target_year
+        )
+        if not touches_target:
             continue
         seen.add(eid)
         stub = dict(row)
         stub["start_date"] = projected
-        end = row.get("end_date")
-        if isinstance(end, date):
-            delta = (end - start).days
-            stub["end_date"] = projected + timedelta(days=max(delta, 0))
-        else:
-            stub["end_date"] = None
+        stub["end_date"] = end
         stub["status"] = "expected"
         stub["source"] = "expected_yoy"
         stub["kind"] = "registry"
