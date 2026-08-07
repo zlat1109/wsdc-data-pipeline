@@ -328,6 +328,49 @@ def test_fingerprint_and_weekend_dedupe_collapses_title_variants():
     assert by_fp["boston tea"]["source"] == "scheduled_events"
 
 
+def test_fingerprint_fallback_collapses_stopword_only_titles():
+    """Titles made only of stopwords must still dedupe across sources."""
+    from transform.year_event_calendar.build import (
+        _dedupe_weekend_name_collisions,
+        _fingerprint_event_name,
+    )
+
+    # Alias maps The Open… → US Open… so both share fingerprint "us".
+    assert _fingerprint_event_name("The Open Swing Dance Championships") == "us"
+    assert _fingerprint_event_name("The Open Swing Dance  Championships") == "us"
+    assert _fingerprint_event_name("US Open Swing Dance Championships") == "us"
+    # Unaliased stopword-only title: keep content tokens after light strip.
+    assert _fingerprint_event_name("The Open Swing Dance Classic") == (
+        "open swing dance classic"
+    )
+
+    rows = [
+        {
+            "event_id": 68,
+            "name": "The Open Swing Dance  Championships",
+            "start_date": date(2026, 11, 25),
+            "end_date": date(2026, 11, 29),
+            "status": "confirmed",
+            "source": "edition_calendar_dates",
+            "city": "Los Angeles",
+        },
+        {
+            "event_id": None,
+            "name": "The Open Swing Dance  Championships",
+            "start_date": date(2026, 11, 25),
+            "end_date": date(2026, 11, 29),
+            "status": "confirmed",
+            "source": "events_list_current",
+            "city": "Los Angeles",
+        },
+    ]
+    out = _dedupe_weekend_name_collisions(rows)
+    assert len(out) == 1
+    assert out[0]["event_id"] == 68
+    # Higher source rank keeps list scrape, but inherits catalog event_id.
+    assert out[0]["source"] == "events_list_current"
+
+
 def test_match_expected_cross_year_boundary():
     from transform.year_event_calendar.expected import match_expected_to_confirmed
 
