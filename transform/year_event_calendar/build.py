@@ -1332,7 +1332,13 @@ def _drop_stale_expected(
         if not isinstance(start, date):
             continue
         end = row.get("end_date") if isinstance(row.get("end_date"), date) else None
-        if is_stale_expected(start=start, end=end, as_of=as_of, grace_days=grace_days):
+        if is_stale_expected(
+            start=start,
+            end=end,
+            as_of=as_of,
+            grace_days=grace_days,
+            event_year=_row_year(row),
+        ):
             continue
         out.append(row)
     return out
@@ -1460,6 +1466,7 @@ def build_year_event_calendar(
                 start=stub["start_date"],
                 end=stub.get("end_date") if isinstance(stub.get("end_date"), date) else None,
                 as_of=as_of,
+                event_year=_row_year(stub),
             ):
                 continue
             kept.append(stub)

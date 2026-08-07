@@ -438,6 +438,47 @@ def test_is_stale_expected_past_year_and_grace():
     )
 
 
+def test_is_stale_expected_dec_spill_keeps_nye_weekend():
+    """Weekday snap may place start in Dec of prior calendar year."""
+    from transform.year_event_calendar.expected import is_stale_expected
+
+    start = date(2026, 12, 31)  # Thu spill into prior calendar year
+    end = date(2027, 1, 3)  # Sun
+    as_of = date(2027, 1, 2)
+    # Without event_year: end year 2027 keeps it alive
+    assert not is_stale_expected(start=start, end=end, as_of=as_of)
+    # Explicit results year also protects Dec spill
+    assert not is_stale_expected(
+        start=start, end=end, as_of=as_of, event_year=2027
+    )
+    # Past results year still drops even if dates look current
+    assert is_stale_expected(
+        start=start, end=end, as_of=as_of, event_year=2026
+    )
+
+
+def test_snap_to_weekday_prefer_year_jan_edge():
+    from transform.year_event_calendar.expected import (
+        anniversary_date,
+        project_start_to_year,
+        snap_to_weekday,
+    )
+
+    # 2027-01-01 Fri; want Thu → short snap Dec 31 2026; prefer_year flips to Jan 7
+    anchor = anniversary_date(date(2026, 1, 1), 2027)
+    assert anchor == date(2027, 1, 1)
+    snapped = snap_to_weekday(anchor, target_weekday=3, prefer_year=2027)
+    assert snapped == date(2027, 1, 7)
+    assert snapped.weekday() == 3
+
+    prior = date(2026, 1, 1)  # Thursday
+    assert prior.weekday() == 3
+    projected = project_start_to_year(prior, 2027)
+    assert projected == date(2027, 1, 7)
+    assert projected.weekday() == 3
+    assert projected.year == 2027
+
+
 def test_drop_stale_expected_keeps_official_and_future():
     from transform.year_event_calendar.build import _drop_stale_expected
 
