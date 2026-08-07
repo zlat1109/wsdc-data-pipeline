@@ -77,17 +77,22 @@ def is_stale_expected(
     end: date | None,
     as_of: date,
     grace_days: int = EXPECTED_STALE_GRACE_DAYS,
+    event_year: int | None = None,
 ) -> bool:
     """True when an expected row should leave the calendar.
 
-    Past years never keep expected (only confirmed / hiatus / cancelled belong
-    there). In the current/future year, expected expires once ``end`` (or start)
-    plus grace days is before ``as_of`` — the projected weekend passed without
-    confirmation or official hiatus/cancel.
+    Past **event/results years** never keep expected (only confirmed / hiatus /
+    cancelled belong there). Use ``event_year`` when known so a Dec→Jan span
+    snapped into the prior calendar year is not dropped on 1 Jan of the target
+    year. Without ``event_year``, fall back to the span's end year (or start).
+
+    In the current/future event year, expected expires once ``end`` (or start)
+    plus grace days is before ``as_of``.
     """
-    if start.year < as_of.year:
-        return True
     last = end if isinstance(end, date) else start
+    ref_year = int(event_year) if event_year is not None else last.year
+    if ref_year < as_of.year:
+        return True
     return last + timedelta(days=grace_days) < as_of
 
 
