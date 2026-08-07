@@ -262,9 +262,9 @@ def iter_unlinked_trial_expected_candidates(
     """Project upcoming current-year trials that still lack a catalog event_id.
 
     Temporary bridge until the first edition runs and a normal ``event_id``
-    appears. Stubs keep ``kind=trial`` and ``provisional_unlinked_trial``.
-    After the source edition has passed, the bridge stops even if an id is not
-    assigned yet (gap until the next scrape links the series).
+    appears. Future stubs are **Registry** (trial is a first-year phase only)
+    and keep ``provisional_unlinked_trial`` for debug. After the source edition
+    has passed, the bridge stops even if an id is not assigned yet.
     """
     out: list[dict] = []
     seen: set[str] = set()
@@ -281,7 +281,7 @@ def iter_unlinked_trial_expected_candidates(
         stub = _project_expected_stub(
             row,
             target_year=target_year,
-            kind="trial",
+            kind="registry",
             provisional_unlinked_trial=True,
             unlinked_trial_key=key,
         )

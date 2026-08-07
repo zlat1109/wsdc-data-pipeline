@@ -108,7 +108,7 @@ def test_iter_expected_forces_registry_kind():
     assert stubs[0]["end_date"].weekday() == 6
 
 
-def test_iter_unlinked_trial_expected_keeps_trial_kind():
+def test_iter_unlinked_trial_expected_uses_registry_kind():
     from transform.year_event_calendar.expected import (
         iter_unlinked_trial_expected_candidates,
         unlinked_trial_series_key,
@@ -153,7 +153,7 @@ def test_iter_unlinked_trial_expected_keeps_trial_kind():
     assert len(stubs) == 1
     assert stubs[0]["name"] == "Swing Creation Hamburg"
     assert stubs[0]["event_id"] is None
-    assert stubs[0]["kind"] == "trial"
+    assert stubs[0]["kind"] == "registry"
     assert stubs[0]["provisional_unlinked_trial"] is True
     assert stubs[0]["status"] == "expected"
     assert stubs[0]["unlinked_trial_key"] == key
@@ -183,7 +183,7 @@ def test_match_expected_to_starts_accepts_string_series_key():
     )
 
 
-def test_apply_kind_rules_keeps_provisional_unlinked_trial():
+def test_apply_kind_rules_forces_registry_for_provisional_unlinked_expected():
     from transform.year_event_calendar.build import _apply_kind_rules
 
     rows = [
@@ -193,7 +193,7 @@ def test_apply_kind_rules_keeps_provisional_unlinked_trial():
             "start_date": date(2027, 10, 1),
             "status": "expected",
             "source": "expected_yoy",
-            "kind": "registry",
+            "kind": "trial",
             "provisional_unlinked_trial": True,
         },
         {
@@ -206,7 +206,7 @@ def test_apply_kind_rules_keeps_provisional_unlinked_trial():
         },
     ]
     _apply_kind_rules(rows, first_points_year={}, catalog=pd.DataFrame())
-    assert rows[0]["kind"] == "trial"
+    assert rows[0]["kind"] == "registry"
     assert rows[1]["kind"] == "registry"
 
 
@@ -1247,7 +1247,7 @@ def test_build_projects_upcoming_unlinked_trial_then_stops_after_end(tmp_path):
     ]
     assert len(projected) == 1
     assert projected[0]["status"] == "expected"
-    assert projected[0]["kind"] == "trial"
+    assert projected[0]["kind"] == "registry"
     assert projected[0].get("provisional_unlinked_trial") is True
     assert projected[0].get("event_id") is None
 
