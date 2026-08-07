@@ -108,6 +108,81 @@ def test_iter_expected_forces_registry_kind():
     assert stubs[0]["end_date"].weekday() == 6
 
 
+def test_iter_unlinked_trial_expected_keeps_trial_kind():
+    from transform.year_event_calendar.expected import (
+        iter_unlinked_trial_expected_candidates,
+        unlinked_trial_series_key,
+    )
+
+    priors = [
+        {
+            "event_id": None,
+            "name": "Swing Creation Hamburg",
+            "country": "Germany",
+            "city": "Hamburg",
+            "start_date": date(2026, 8, 20),
+            "end_date": date(2026, 8, 23),
+            "status": "confirmed",
+            "kind": "trial",
+            "kind_from_schedule": True,
+        },
+        {
+            # Already has a catalog id — ignored by the unlinked iterator.
+            "event_id": 389,
+            "name": "SwingLab Berlin",
+            "country": "Germany",
+            "start_date": date(2026, 7, 10),
+            "end_date": date(2026, 7, 12),
+            "status": "confirmed",
+            "kind": "trial",
+        },
+    ]
+    key = unlinked_trial_series_key(name="Swing Creation Hamburg", country="Germany")
+    stubs = iter_unlinked_trial_expected_candidates(
+        priors, target_year=2027, skip_keys=set()
+    )
+    assert len(stubs) == 1
+    assert stubs[0]["name"] == "Swing Creation Hamburg"
+    assert stubs[0]["event_id"] is None
+    assert stubs[0]["kind"] == "trial"
+    assert stubs[0]["provisional_unlinked_trial"] is True
+    assert stubs[0]["status"] == "expected"
+    assert stubs[0]["unlinked_trial_key"] == key
+    assert stubs[0]["start_date"].year == 2027
+
+    skipped = iter_unlinked_trial_expected_candidates(
+        priors, target_year=2027, skip_keys={key}
+    )
+    assert skipped == []
+
+
+def test_apply_kind_rules_keeps_provisional_unlinked_trial():
+    from transform.year_event_calendar.build import _apply_kind_rules
+
+    rows = [
+        {
+            "event_id": None,
+            "name": "RiverSwingNights",
+            "start_date": date(2027, 10, 1),
+            "status": "expected",
+            "source": "expected_yoy",
+            "kind": "registry",
+            "provisional_unlinked_trial": True,
+        },
+        {
+            "event_id": 389,
+            "name": "SwingLab Berlin",
+            "start_date": date(2027, 7, 9),
+            "status": "expected",
+            "source": "expected_yoy",
+            "kind": "trial",
+        },
+    ]
+    _apply_kind_rules(rows, first_points_year={}, catalog=pd.DataFrame())
+    assert rows[0]["kind"] == "trial"
+    assert rows[1]["kind"] == "registry"
+
+
 def test_enrich_geo_inherits_location_id_from_editions_map():
     locations = pd.DataFrame(
         [

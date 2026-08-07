@@ -115,6 +115,19 @@ def match_expected_to_confirmed(
     return None
 
 
+def unlinked_trial_series_key(
+    *,
+    name: str | None,
+    country: str | None = None,
+) -> str | None:
+    """Stable key for provisional YoY stubs of list-only trials (no event_id)."""
+    n = " ".join(str(name or "").strip().lower().split())
+    if not n:
+        return None
+    c = " ".join(str(country or "").strip().lower().split())
+    return f"{n}|{c}"
+
+
 def iter_expected_candidates(
     prior_rows: Iterable[dict],
     *,
@@ -158,7 +171,58 @@ def iter_expected_candidates(
         stub["kind"] = "registry"
         stub["year"] = target_year
         stub.pop("kind_from_schedule", None)
+        stub.pop("provisional_unlinked_trial", None)
         stub["projected_from_year"] = start.year
         stub["projected_from_start"] = start.isoformat()
+        out.append(stub)
+    return out
+
+
+def iter_unlinked_trial_expected_candidates(
+    prior_rows: Iterable[dict],
+    *,
+    target_year: int,
+    skip_keys: set[str],
+) -> list[dict]:
+    """Project upcoming current-year trials that still lack a catalog event_id.
+
+    Temporary bridge until the first edition runs and a normal ``event_id``
+    appears. Stubs keep ``kind=trial`` and ``provisional_unlinked_trial``.
+    """
+    out: list[dict] = []
+    seen: set[str] = set()
+    for row in prior_rows:
+        if row.get("event_id") is not None:
+            continue
+        key = unlinked_trial_series_key(name=row.get("name"), country=row.get("country"))
+        if not key or key in skip_keys or key in seen:
+            continue
+        start = row.get("start_date")
+        if not isinstance(start, date):
+            continue
+        projected = project_start_to_year(start, target_year)
+        end = project_end_from_prior(
+            prior_start=start,
+            prior_end=row.get("end_date") if isinstance(row.get("end_date"), date) else None,
+            projected_start=projected,
+        )
+        touches_target = projected.year == target_year or (
+            isinstance(end, date) and end.year == target_year
+        )
+        if not touches_target:
+            continue
+        seen.add(key)
+        stub = dict(row)
+        stub["start_date"] = projected
+        stub["end_date"] = end
+        stub["status"] = "expected"
+        stub["source"] = "expected_yoy"
+        stub["kind"] = "trial"
+        stub["provisional_unlinked_trial"] = True
+        stub["year"] = target_year
+        stub.pop("kind_from_schedule", None)
+        stub["projected_from_year"] = start.year
+        stub["projected_from_start"] = start.isoformat()
+        stub["unlinked_trial_key"] = key
         out.append(stub)
     return out

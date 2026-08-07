@@ -26,8 +26,10 @@ from transform.year_event_calendar.expected import (
     EXPECTED_WINDOW_DAYS,
     is_stale_expected,
     iter_expected_candidates,
+    iter_unlinked_trial_expected_candidates,
     match_expected_to_confirmed,
     project_start_to_year,
+    unlinked_trial_series_key,
 )
 from transform.year_event_calendar.weekends import weekend_bounds, weekend_key
 
@@ -228,7 +230,12 @@ def _apply_kind_rules(
         first = first_points_year.get(eid_i) if eid_i is not None else None
 
         if row.get("source") == "expected_yoy":
-            row["kind"] = KIND_REGISTRY
+            # Catalog-backed YoY is never Trial. Provisional stubs for upcoming
+            # list-only trials keep Trial until a real event_id appears.
+            if row.get("provisional_unlinked_trial"):
+                row["kind"] = KIND_TRIAL
+            else:
+                row["kind"] = KIND_REGISTRY
             row.pop("kind_from_schedule", None)
             continue
 
@@ -1188,6 +1195,15 @@ def _row_year(row: dict) -> int | None:
     return None
 
 
+def _unlinked_trial_still_upcoming(row: dict, as_of: date) -> bool:
+    """True while a current-year list-only trial has not finished yet."""
+    start = row.get("start_date")
+    if not isinstance(start, date):
+        return False
+    end = row.get("end_date") if isinstance(row.get("end_date"), date) else start
+    return end >= as_of
+
+
 def _series_linked_ids(event_id: int | None) -> set[int]:
     """Return all known linked ids in the same rebranded series."""
     if event_id is None:
@@ -1425,8 +1441,10 @@ def build_year_event_calendar(
 
     # Event-ids that already have a non-expected status in each year
     skip_by_year: dict[int, set] = {y: set() for y in years}
+    skip_unlinked_by_year: dict[int, set[str]] = {y: set() for y in years}
     confirmed_by_year: dict[int, dict] = {y: {} for y in years}
     confirmed_by_event: dict[int, list[date]] = {}
+    confirmed_unlinked_by_key: dict[str, list[date]] = {}
     for row in merged:
         start = row["start_date"]
         y = _row_year(row)
@@ -1435,13 +1453,20 @@ def build_year_event_calendar(
         if y not in skip_by_year:
             continue
         eid = row.get("event_id")
-        if eid is None:
+        if eid is not None:
+            if row["status"] in {STATUS_CONFIRMED, STATUS_CANCELLED, STATUS_HIATUS}:
+                skip_by_year[y].update(_series_linked_ids(int(eid)))
+            if row["status"] == STATUS_CONFIRMED:
+                confirmed_by_year[y].setdefault(eid, []).append(start)
+                confirmed_by_event.setdefault(int(eid), []).append(start)
+            continue
+        key = unlinked_trial_series_key(name=row.get("name"), country=row.get("country"))
+        if not key:
             continue
         if row["status"] in {STATUS_CONFIRMED, STATUS_CANCELLED, STATUS_HIATUS}:
-            skip_by_year[y].update(_series_linked_ids(int(eid)))
-        if row["status"] == STATUS_CONFIRMED:
-            confirmed_by_year[y].setdefault(eid, []).append(start)
-            confirmed_by_event.setdefault(int(eid), []).append(start)
+            skip_unlinked_by_year[y].add(key)
+        if row["status"] == STATUS_CONFIRMED and isinstance(start, date):
+            confirmed_unlinked_by_key.setdefault(key, []).append(start)
 
     # Expected from latest confirmed edition before target year (WSDC ±1 week rule
     # vs any confirmed start — including year-boundary moves like NYE → early Jan).
@@ -1453,6 +1478,16 @@ def build_year_event_calendar(
         and not r.get("stats_only")
         and isinstance(r.get("start_date"), date)
         and r.get("event_id") not in inactive_ids
+    ]
+    # Upcoming current-year trials still missing a catalog id: bridge YoY until
+    # the first edition runs and a normal event_id appears.
+    unlinked_trial_priors = [
+        r
+        for r in prior_pool
+        if r.get("event_id") is None
+        and _row_year(r) == as_of.year
+        and (r.get("kind") == KIND_TRIAL or r.get("kind_from_schedule"))
+        and _unlinked_trial_still_upcoming(r, as_of)
     ]
     for y in sorted(expected_years):
         priors = _latest_confirmed_priors(prior_pool, before_year=y)
@@ -1484,6 +1519,31 @@ def build_year_event_calendar(
             ):
                 continue
             kept.append(stub)
+        if y > as_of.year:
+            unlinked_stubs = iter_unlinked_trial_expected_candidates(
+                unlinked_trial_priors,
+                target_year=y,
+                skip_keys=set(skip_unlinked_by_year.get(y, set())),
+            )
+            for stub in unlinked_stubs:
+                key = stub.get("unlinked_trial_key") or unlinked_trial_series_key(
+                    name=stub.get("name"), country=stub.get("country")
+                )
+                if key and match_expected_to_confirmed(
+                    event_id=key,
+                    projected_start=stub["start_date"],
+                    confirmed_by_event=confirmed_unlinked_by_key,
+                    window_days=EXPECTED_WINDOW_DAYS,
+                ):
+                    continue
+                if is_stale_expected(
+                    start=stub["start_date"],
+                    end=stub.get("end_date") if isinstance(stub.get("end_date"), date) else None,
+                    as_of=as_of,
+                    event_year=_row_year(stub),
+                ):
+                    continue
+                kept.append(stub)
         expected_rows.extend(kept)
 
     all_rows = _dedupe_weekend_name_collisions(
