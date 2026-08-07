@@ -231,12 +231,9 @@ def _apply_kind_rules(
         first = first_points_year.get(eid_i) if eid_i is not None else None
 
         if row.get("source") == "expected_yoy":
-            # Catalog-backed YoY is never Trial. Provisional stubs for upcoming
-            # list-only trials keep Trial until a real event_id appears.
-            if row.get("provisional_unlinked_trial"):
-                row["kind"] = KIND_TRIAL
-            else:
-                row["kind"] = KIND_REGISTRY
+            # Expected YoY is never Trial — trial is a first-year phase only
+            # (including provisional bridges for list-only trials).
+            row["kind"] = KIND_REGISTRY
             row.pop("kind_from_schedule", None)
             continue
 
