@@ -28,6 +28,7 @@ from transform.year_event_calendar.expected import (
     iter_expected_candidates,
     iter_unlinked_trial_expected_candidates,
     match_expected_to_confirmed,
+    match_expected_to_starts,
     project_start_to_year,
     unlinked_trial_series_key,
 )
@@ -1339,6 +1340,8 @@ def _serialize_event(row: dict) -> dict:
     if row.get("projected_from_year") is not None:
         out["projected_from_year"] = row["projected_from_year"]
         out["projected_from_start"] = row.get("projected_from_start")
+    if row.get("provisional_unlinked_trial"):
+        out["provisional_unlinked_trial"] = True
     if row.get("stats_only"):
         out["stats_only"] = True
     if row.get("has_results"):
@@ -1460,7 +1463,11 @@ def build_year_event_calendar(
                 confirmed_by_year[y].setdefault(eid, []).append(start)
                 confirmed_by_event.setdefault(int(eid), []).append(start)
             continue
-        key = unlinked_trial_series_key(name=row.get("name"), country=row.get("country"))
+        key = unlinked_trial_series_key(
+            name=row.get("name"),
+            country=row.get("country"),
+            city=row.get("city"),
+        )
         if not key:
             continue
         if row["status"] in {STATUS_CONFIRMED, STATUS_CANCELLED, STATUS_HIATUS}:
@@ -1527,12 +1534,14 @@ def build_year_event_calendar(
             )
             for stub in unlinked_stubs:
                 key = stub.get("unlinked_trial_key") or unlinked_trial_series_key(
-                    name=stub.get("name"), country=stub.get("country")
+                    name=stub.get("name"),
+                    country=stub.get("country"),
+                    city=stub.get("city"),
                 )
-                if key and match_expected_to_confirmed(
-                    event_id=key,
+                if key and match_expected_to_starts(
+                    series_key=key,
                     projected_start=stub["start_date"],
-                    confirmed_by_event=confirmed_unlinked_by_key,
+                    confirmed_starts_by_key=confirmed_unlinked_by_key,
                     window_days=EXPECTED_WINDOW_DAYS,
                 ):
                     continue
