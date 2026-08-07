@@ -105,6 +105,8 @@ EVENT_NAME_VARIANT_TO_CATALOG: dict[str, str] = {
     'BALTIC SWING': 'Baltic Swing',
     'Halloween Swingthing': 'Halloween SwingThing',
     'By-Town Open (BTO)': 'BTO Open',
+    # Marketing rename (same series / ctodance.ca); WSDC catalog still "BTO Open".
+    'Calgary Town Open': 'BTO Open',
     'Monterey Swingfest': 'Monterey SwingFest',
     'Monterey Swing Fest 2024': 'Monterey SwingFest',
     'Swing Fling 2024': 'Swing Fling',
