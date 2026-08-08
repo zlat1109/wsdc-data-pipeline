@@ -40,9 +40,15 @@ python scripts/seed_dancer_aliases.py --apply
 
 python scripts/monitor_data_quality.py
 python export.py --output-dir data
+# export.py re-applies EVENT_NAME_LOCATION_OVERRIDES after COPY; if you
+# refresh CSVs another way, run the apply script explicitly:
+# python scripts/apply_event_name_location_overrides_csv.py --apply
 ```
 
 Note: `repair_locations.py` has no `--dry-run`; it always applies corrections.
+After any DB→CSV export, overrides must land on `dancers_results_info` /
+`event_editions` / `events_wsdc` (stale Supabase otherwise undoes Champion News
+fixes). `export.py` does this automatically.
 
 ## Script reference
 
@@ -92,7 +98,7 @@ In-place cleanup for **already loaded** Supabase data — same rules as preproce
 python scripts/dedupe_core_data.py --dry-run
 python scripts/dedupe_core_data.py --apply
 python scripts/validate_supabase_quality.py
-python export.py --output-dir data   # optional: refresh committed CSVs
+python export.py --output-dir data   # optional: refresh CSVs (+ re-applies location overrides)
 ```
 
 ## merge_location_ids.py

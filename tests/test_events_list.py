@@ -59,6 +59,9 @@ def test_clean_list_location():
     assert "Fort Lauderdale" in clean_list_location("Ft. Lauderdale, FL, United States")
     assert clean_list_location("Albany, NY, Albany") == "Albany, NY, United States"
     assert clean_list_location("San antonio, Texas, United states") == "San Antonio, TX, United States"
+    assert clean_list_location("Wels, Austria, Austria") == "Wels, Austria"
+    assert clean_list_location("Singapore, Singapore, Singapore") == "Singapore"
+    assert clean_list_location("Stockholm, Sweden, Sweden") == "Stockholm, Sweden"
 
 
 def test_site_location_not_overridden_by_event_name():

@@ -178,18 +178,8 @@ def _update_catalog(path: Path, dry_run: bool) -> int:
     return changed
 
 
-def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--data-dir", type=Path, default=PROJECT_ROOT / "data")
-    parser.add_argument("--dry-run", action="store_true")
-    parser.add_argument("--apply", action="store_true")
-    args = parser.parse_args()
-    if args.dry_run == args.apply:
-        print("Specify exactly one of --dry-run or --apply")
-        return 2
-    dry_run = args.dry_run
-    data_dir: Path = args.data_dir
-
+def apply_overrides(data_dir: Path, *, dry_run: bool = False) -> int:
+    """Remap export CSVs from EVENT_NAME_LOCATION_OVERRIDES. Returns forced result rows."""
     location_df = pd.read_csv(data_dir / "location_info.csv", dtype=str)
     results_df = pd.read_csv(data_dir / "dancers_results_info.csv", dtype=str)
     name_to_lid = _resolve_target_ids(location_df)
@@ -220,13 +210,26 @@ def main() -> int:
 
     if dry_run:
         print("dry-run only; no files written")
-        return 0
+        return forced
 
     out.to_csv(data_dir / "dancers_results_info.csv", index=False)
     _update_editions(data_dir / "event_editions.csv", name_to_lid, dry_run=False)
     _update_events_wsdc(data_dir / "events_wsdc.csv", name_to_target, dry_run=False)
     _update_catalog(data_dir / "event_catalog.csv", dry_run=False)
     print(f"✅ applied: results forced={forced} (before sample size {len(before)})")
+    return forced
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--data-dir", type=Path, default=PROJECT_ROOT / "data")
+    parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--apply", action="store_true")
+    args = parser.parse_args()
+    if args.dry_run == args.apply:
+        print("Specify exactly one of --dry-run or --apply")
+        return 2
+    apply_overrides(args.data_dir, dry_run=args.dry_run)
     return 0
 
 

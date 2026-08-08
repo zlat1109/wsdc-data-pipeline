@@ -145,7 +145,20 @@ def main() -> None:
     if sync_updates:
         print("\nSynced export city columns:", sync_updates)
 
+    # DB export can reintroduce stale location_ids until core is remapped.
+    # Always re-apply EVENT_NAME_LOCATION_OVERRIDES after writing CSVs.
     import importlib.util
+
+    apply_path = PROJECT_ROOT / "scripts" / "apply_event_name_location_overrides_csv.py"
+    apply_spec = importlib.util.spec_from_file_location(
+        "apply_event_name_location_overrides_csv", apply_path
+    )
+    assert apply_spec is not None and apply_spec.loader is not None
+    apply_mod = importlib.util.module_from_spec(apply_spec)
+    apply_spec.loader.exec_module(apply_mod)
+    print("\nRe-applying EVENT_NAME_LOCATION_OVERRIDES to export CSVs:")
+    apply_mod.apply_overrides(args.output_dir, dry_run=False)
+
     import json
 
     aliases_path = args.output_dir / "event_aliases.json"

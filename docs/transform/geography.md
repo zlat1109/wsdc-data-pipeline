@@ -93,6 +93,9 @@ python scripts/apply_event_name_location_overrides_csv.py --dry-run
 python scripts/apply_event_name_location_overrides_csv.py --apply
 ```
 
+`export.py` runs the same apply step after copying views, so a refresh from
+stale Supabase cannot silently undo `EVENT_NAME_LOCATION_OVERRIDES` in git CSVs.
+
 Preprocess quality audit emits:
 
 | Code | Meaning |
