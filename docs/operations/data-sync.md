@@ -45,7 +45,7 @@ python export.py
    - `git pull --rebase origin main`
    - Compare local `data/*.csv` to `main`
    - One authoritative parse per week
-   - After load: `export.py` → commit `data/*.csv`
+   - After load: `export.py` (re-applies location overrides) → commit `data/*.csv`
 
 7. **CI / pooler:** GitHub Actions must use Supabase transaction pooler — [github-actions.md](github-actions.md).
 

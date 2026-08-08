@@ -823,6 +823,27 @@ def _fill_missing_end_dates(rows: list[dict]) -> None:
         row["end_date"] = sun if sun >= start else start
 
 
+def _correct_cross_year_results_years(rows: list[dict]) -> None:
+    """After end dates are known, snap Dec→Jan weekends to the end/results year.
+
+    Durable calendar scrapes can store ``event_year=start.year`` for a NYE
+    start-only row (e.g. 2026-12-30 → year 2026). Once ``end_date`` lands in
+    January, the results year is the end year.
+    """
+    for row in rows:
+        if row.get("stats_only"):
+            continue
+        start = row.get("start_date")
+        end = row.get("end_date")
+        if not isinstance(start, date) or not isinstance(end, date):
+            continue
+        if start.month != 12 or end.year <= start.year:
+            continue
+        year = row.get("year")
+        if year == start.year:
+            row["year"] = end.year
+
+
 def _mark_has_results(rows: list[dict], data_dir: Path) -> None:
     """Flag calendar rows whose (event_id, year) has competition results."""
     path = Path(data_dir) / "event_editions.csv"
@@ -1600,6 +1621,7 @@ def build_year_event_calendar(
         location_id_by_event=location_id_by_event,
     )
     _fill_missing_end_dates(all_rows)
+    _correct_cross_year_results_years(all_rows)
     first_points_year = _first_points_year_by_event(data_dir, catalog)
     _apply_kind_rules(
         all_rows,

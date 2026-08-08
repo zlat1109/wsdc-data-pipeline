@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-08-05T14:01:17.571315+00:00",
+  "scraped_at": "2026-08-08T11:32:16.581562+00:00",
   "source": "https://worldsdc.com/events/calendar/",
   "min_start": "2025-01-01",
   "raw_count": 627,
@@ -7070,8 +7070,8 @@
     {
       "event_name": "WCS Party in Vienna",
       "calendar_title": "WCS Party in Vienna",
-      "catalog_name": "WCS Party in Vienna",
-      "name_key": "wcspartyinvienna",
+      "catalog_name": "WCS Party",
+      "name_key": "wcsparty",
       "start_date": "2026-09-17",
       "end_date": "2026-09-21",
       "url": "https://www.wcsparty.com/",
@@ -7202,8 +7202,8 @@
     {
       "event_name": "Calgary Town Open",
       "calendar_title": "Calgary Town Open",
-      "catalog_name": "Calgary Town Open",
-      "name_key": "calgarytownopen",
+      "catalog_name": "BTO Open",
+      "name_key": "btoopen",
       "start_date": "2026-09-24",
       "end_date": "2026-09-27",
       "url": "https://ctodance.ca",
@@ -8087,8 +8087,8 @@
     {
       "event_name": "The Open Swing Dance Championships",
       "calendar_title": "The Open Swing Dance  Championships",
-      "catalog_name": "The Open Swing Dance Championships",
-      "name_key": "theopenswingdancechampionships",
+      "catalog_name": "US Open Swing Dance Championships",
+      "name_key": "usopenswingdancechampionships",
       "start_date": "2026-11-25",
       "end_date": "2026-11-29",
       "url": "http://www.theopenswing.com",
@@ -8362,19 +8362,18 @@
       "catalog_name": "SwingVester",
       "name_key": "swingvester",
       "start_date": "2026-12-30",
-      "end_date": "",
+      "end_date": "2027-01-04",
       "url": "https://www.swingvester.com/",
       "url_key": "swingvester.com",
-      "results_year": 2026,
-      "results_month": 12,
+      "results_year": 2027,
+      "results_month": 1,
       "edition_ym_candidates": [
+        "2027-01",
         "2026-12"
       ],
-      "date_precision": "day_start_only",
+      "date_precision": "day",
       "date_source": "wsdc_calendar",
-      "flags": [
-        "invalid_end"
-      ],
+      "flags": [],
       "status_tags": [],
       "source_fingerprint": "d8a575f459c377efad9e5a4b",
       "raw_start": "2026-12-30",

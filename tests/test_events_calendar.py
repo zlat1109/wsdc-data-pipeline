@@ -84,6 +84,23 @@ def test_normalize_hiatus_flag():
     assert calendar_status_from_flags(row["flags"]) == "hiatus"
 
 
+def test_normalize_nye_start_only_uses_next_january_results_year():
+    row = normalize_calendar_event(
+        {
+            "title": "SwingVester",
+            "start": "2026-12-30",
+            "end": "2026-12-30",  # exclusive end == start → invalid_end
+            "url": "https://www.swingvester.com/",
+        }
+    )
+    assert row is not None
+    assert "invalid_end" in row["flags"]
+    assert row["end_date"] == ""
+    assert row["results_year"] == 2027
+    assert row["results_month"] == 1
+    assert row["edition_ym_candidates"][0] == "2027-01"
+
+
 def test_match_by_name_and_ym():
     cal = normalize_calendar_events(
         [{"title": "Atlanta Swing Classic", "start": "2025-10-02", "end": "2025-10-06", "url": ""}],
