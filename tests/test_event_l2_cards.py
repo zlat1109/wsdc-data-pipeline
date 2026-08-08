@@ -9,6 +9,7 @@ import pandas as pd
 
 from transform.year_event_calendar.event_cards import (
     HISTORY_LIMIT,
+    TIER_TIP,
     _estimate_dancers_from_tiers,
     _tier_competitor_range,
     _tier_table_for_edition,
@@ -22,6 +23,21 @@ def test_tier_competitor_range_current_chart():
     assert _tier_competitor_range(6) == (130, 140)
     assert _tier_competitor_range(2, rule_min=11, rule_max=19) == (11, 19)
     assert _tier_competitor_range(6, rule_min=130, rule_max=None) == (130, 140)
+
+
+def test_tier_tip_copy_lists_role_ranges():
+    for lang in ("en", "ru", "es"):
+        text = TIER_TIP[lang]
+        assert "5–10" in text
+        assert "11–19" in text
+        assert "20–39" in text
+        assert "40–79" in text
+        assert "80–129" in text
+        assert "130+" in text
+        assert "\n" in text
+    assert "unique competitors" in TIER_TIP["en"]
+    assert "уникальных конкурентов" in TIER_TIP["ru"]
+    assert "competidores únicos" in TIER_TIP["es"]
 
 
 def test_estimate_dancers_sums_newcomer_and_skill_roles():
