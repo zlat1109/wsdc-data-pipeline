@@ -208,7 +208,12 @@ def _project_expected_stub(
     start = row.get("start_date")
     if not isinstance(start, date):
         return None
-    projected = project_start_to_year(start, target_year)
+    # Results year may be end-year for Dec→Jan weekends (year=2027, start=2026-12-30).
+    # Project into the same calendar-year offset so NYE expected stay Dec→Jan, not
+    # collapsed into late December of the results year.
+    prior_results_year = int(row.get("year") or start.year)
+    start_cal_year = target_year + (start.year - prior_results_year)
+    projected = project_start_to_year(start, start_cal_year)
     end = project_end_from_prior(
         prior_start=start,
         prior_end=row.get("end_date") if isinstance(row.get("end_date"), date) else None,

@@ -740,6 +740,49 @@ def test_snap_to_weekday_prefer_year_jan_edge():
     assert projected.year == 2027
 
 
+def test_project_expected_stub_preserves_nye_dec_jan_span():
+    """NYE priors must project to Dec→Jan, not collapse into late Dec of results year."""
+    from transform.year_event_calendar.expected import _project_expected_stub
+
+    prior = {
+        "event_id": 42,
+        "name": "Floorplay Swing Vacation",
+        "start_date": date(2026, 12, 30),
+        "end_date": date(2027, 1, 3),
+        "year": 2027,
+        "status": "confirmed",
+        "kind": "registry",
+        "country": "USA",
+    }
+    stub = _project_expected_stub(prior, target_year=2028, kind="registry")
+    assert stub is not None
+    assert stub["year"] == 2028
+    assert stub["status"] == "expected"
+    assert stub["start_date"].year == 2027
+    assert stub["start_date"].month == 12
+    assert isinstance(stub["end_date"], date)
+    assert stub["end_date"].year == 2028
+    assert stub["end_date"].month == 1
+    assert stub["start_date"].weekday() == prior["start_date"].weekday()
+    assert (stub["end_date"] - stub["start_date"]).days == 4
+
+    # Same-year festivals still project into the target calendar year.
+    march = {
+        "event_id": 1,
+        "name": "March Fest",
+        "start_date": date(2026, 3, 12),
+        "end_date": date(2026, 3, 15),
+        "year": 2026,
+        "status": "confirmed",
+        "kind": "registry",
+    }
+    march_stub = _project_expected_stub(march, target_year=2028, kind="registry")
+    assert march_stub is not None
+    assert march_stub["start_date"].year == 2028
+    assert march_stub["start_date"].month == 3
+    assert march_stub["year"] == 2028
+
+
 def test_drop_stale_expected_keeps_official_and_future():
     from transform.year_event_calendar.build import _drop_stale_expected
 
