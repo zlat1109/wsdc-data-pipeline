@@ -120,6 +120,8 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     # Shared St. Petersburg (222) wrongly applied to Swingsation (AU / Raw Connection).
     # Calendar + site: Gold Coast, Queensland; URL rawconnection.com.au/swingsation.
     'Swingsation': 'Gold Coast, Australia',
+    # Shared Brno (266) wrongly applied; always Wels AT (event 289).
+    'SwingVester': 'Wels, Austria',
     # WSDC venue label "Boston Club" is in Düsseldorf (not a city name).
     'D-Town Swing': 'Düsseldorf, Germany',
     'WCS Festival': 'Düsseldorf, Germany',
@@ -370,6 +372,18 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_country': 'Australia',
             'event_location': 'Gold Coast, Australia',
             'event_location_standardized': 'Gold Coast, Australia',
+        },
+    },
+    289: {
+        'name': 'SwingVester',
+        'url': 'https://www.swingvester.com/',
+        'typical_location': 'Wels, Austria',
+        'location': {
+            'event_city': 'Wels',
+            'event_state': '',
+            'event_country': 'Austria',
+            'event_location': 'Wels, Austria',
+            'event_location_standardized': 'Wels, Austria',
         },
     },
     178: {

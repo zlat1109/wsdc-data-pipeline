@@ -498,3 +498,45 @@ def test_force_swingsation_off_st_petersburg_to_gold_coast():
     assert swing["event_location"] == "Gold Coast, Australia"
     snow = out.loc[out["event_name"] == "Swing & Snow"].iloc[0]
     assert str(snow["location_id"]) == "222"
+
+
+def test_force_swingvester_off_brno_to_wels():
+    location_info = pd.DataFrame(
+        [
+            {
+                "location_id": "266",
+                "event_city": "Brno",
+                "event_state": "",
+                "event_country": "Czech Republic",
+                "event_location": "Brno, Czech Republic",
+            },
+            {
+                "location_id": "197",
+                "event_city": "Wels",
+                "event_state": "",
+                "event_country": "Austria",
+                "event_location": "Wels, Austria",
+            },
+        ]
+    )
+    results = pd.DataFrame(
+        [
+            {
+                "event_name": "SwingVester",
+                "location_id": "266",
+                "event_location": "Brno, Czech Republic",
+            },
+            {
+                "event_name": "Swing Fiction",
+                "location_id": "266",
+                "event_location": "Brno, Czech Republic",
+            },
+        ]
+    )
+    out, changed = force_result_locations_from_event_name_overrides(results, location_info)
+    assert changed == 1
+    swingvester = out.loc[out["event_name"] == "SwingVester"].iloc[0]
+    assert str(swingvester["location_id"]) == "197"
+    assert swingvester["event_location"] == "Wels, Austria"
+    fiction = out.loc[out["event_name"] == "Swing Fiction"].iloc[0]
+    assert str(fiction["location_id"]) == "266"
