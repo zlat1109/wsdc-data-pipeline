@@ -251,6 +251,93 @@ def test_enrich_geo_inherits_location_id_from_editions_map():
     assert rows[0]["city"] == "Denver"
 
 
+def test_enrich_geo_overwrites_scraped_brno_with_inherited_wels():
+    """Schedule city from location_raw must not stick after lid remap (SwingVester)."""
+    locations = pd.DataFrame(
+        [
+            {
+                "location_id": 197,
+                "event_city": "Wels",
+                "event_country": "Austria",
+                "event_location": "Wels, Austria",
+                "event_location_standardized": "Wels, Austria",
+                "latitude": 48.1664268,
+                "longitude": 14.0388714,
+                "coordinates_valid": True,
+            },
+            {
+                "location_id": 266,
+                "event_city": "Brno",
+                "event_country": "Czech Republic",
+                "event_location": "Brno, Czech Republic",
+                "event_location_standardized": "Brno, Czech Republic",
+                "latitude": 49.1950602,
+                "longitude": 16.6068371,
+                "coordinates_valid": True,
+            },
+        ]
+    )
+    catalog = pd.DataFrame(
+        [
+            {
+                "event_id": 289,
+                "canonical_name": "SwingVester",
+                "url": "https://www.swingvester.com/",
+                "typical_city": "Wels",
+                "typical_country": "Austria",
+            }
+        ]
+    )
+    rows = [
+        {
+            "event_id": 289,
+            "name": "SwingVester",
+            "city": "Brno",
+            "country": "Czech Republic",
+            "location_id": None,
+            "url": "https://www.swingvester.com/",
+        }
+    ]
+    _enrich_geo(rows, locations, catalog, location_id_by_event={289: 197})
+    assert rows[0]["location_id"] == 197
+    assert rows[0]["city"] == "Wels"
+    assert rows[0]["country"] == "Austria"
+    assert rows[0]["lat"] == 48.1664268
+    assert rows[0]["lon"] == 14.0388714
+
+
+def test_enrich_geo_name_override_forces_wels_without_event_id():
+    locations = pd.DataFrame(
+        [
+            {
+                "location_id": 197,
+                "event_city": "Wels",
+                "event_country": "Austria",
+                "event_location": "Wels, Austria",
+                "event_location_standardized": "Wels, Austria",
+                "latitude": 48.1664268,
+                "longitude": 14.0388714,
+                "coordinates_valid": True,
+            }
+        ]
+    )
+    catalog = pd.DataFrame(columns=["event_id", "canonical_name", "url"])
+    rows = [
+        {
+            "event_id": None,
+            "name": "SwingVester",
+            "city": "Brno",
+            "country": "Czech Republic",
+            "location_id": None,
+            "url": None,
+        }
+    ]
+    _enrich_geo(rows, locations, catalog, location_id_by_event={})
+    assert rows[0]["location_id"] == 197
+    assert rows[0]["city"] == "Wels"
+    assert rows[0]["country"] == "Austria"
+
+
 def test_enrich_geo_city_country_fallback():
     locations = pd.DataFrame(
         [

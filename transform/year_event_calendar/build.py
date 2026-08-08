@@ -20,6 +20,7 @@ from transform.knowledge.event_aliases import (
     MERGE_EVENT_ID_MAP,
     RESULT_TO_CATALOG_EVENT_NAME,
 )
+from transform.knowledge.events import EVENT_NAME_LOCATION_OVERRIDES
 from transform.knowledge.geo_flags import continent_for_country
 from transform.year_event_calendar.expected import (
     EXPECTED_STALE_GRACE_DAYS,
@@ -1120,6 +1121,36 @@ def _dedupe_weekend_name_collisions(
     return passthrough + list(by_key.values())
 
 
+def _location_id_for_override_text(
+    target: str,
+    locations: pd.DataFrame,
+) -> int | None:
+    """Resolve ``EVENT_NAME_LOCATION_OVERRIDES`` text to a ``location_id``."""
+    want = _norm_place(target)
+    if not want or locations.empty:
+        return None
+    for rec in locations.to_dict(orient="records"):
+        lid = rec.get("location_id")
+        if pd.isna(lid):
+            continue
+        for key in (
+            "event_location_standardized",
+            "event_location",
+            "event_city",
+        ):
+            raw = _clean_name(rec.get(key))
+            if not raw:
+                continue
+            if _norm_place(raw) == want:
+                return int(lid)
+            # "Wels, Austria" vs city-only column "Wels"
+            if "," in want and _norm_place(raw) == want.split(",")[0].strip():
+                country = _norm_place(rec.get("event_country"))
+                if country and country in want:
+                    return int(lid)
+    return None
+
+
 def _enrich_geo(
     rows: list[dict],
     locations: pd.DataFrame,
@@ -1143,6 +1174,11 @@ def _enrich_geo(
             cat_by_id[int(eid)] = rec
     loc_by_event = location_id_by_event or {}
     coords_by_place = _coords_by_city_country(locations)
+    override_lid_by_name = {
+        name: lid
+        for name, text in EVENT_NAME_LOCATION_OVERRIDES.items()
+        if (lid := _location_id_for_override_text(text, locations)) is not None
+    }
 
     for row in rows:
         eid = row.get("event_id")
@@ -1156,6 +1192,10 @@ def _enrich_geo(
                 row["city"] = _clean_name(cat.get("typical_city"))
             if not row.get("country"):
                 row["country"] = _clean_name(cat.get("typical_country"))
+        # Name overrides beat scrape/catalog city (e.g. SwingVester → Wels, not Brno).
+        name = _clean_name(row.get("name"))
+        if name and name in override_lid_by_name:
+            row["location_id"] = override_lid_by_name[name]
         if row.get("location_id") is None and eid is not None:
             inherited = loc_by_event.get(int(eid))
             if inherited is not None:
@@ -1163,10 +1203,10 @@ def _enrich_geo(
         lid = row.get("location_id")
         if lid is not None and lid in loc_by_id:
             loc = loc_by_id[lid]
-            if not row.get("city"):
-                row["city"] = _clean_name(loc.get("event_city"))
-            if not row.get("country"):
-                row["country"] = _clean_name(loc.get("event_country"))
+            # location_id is authoritative: overwrite scraped city/country (Brno
+            # left on a schedule row after a lid remap must not stick).
+            row["city"] = _clean_name(loc.get("event_city")) or row.get("city")
+            row["country"] = _clean_name(loc.get("event_country")) or row.get("country")
             if _truthy(loc.get("coordinates_valid")):
                 try:
                     lat = float(loc["latitude"])
