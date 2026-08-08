@@ -47,8 +47,20 @@ def test_weekend_key_stable():
 
 
 def test_project_leap_day():
-    assert project_start_to_year(date(2024, 2, 29), 2025) == date(2025, 2, 28)
-    assert project_start_to_year(date(2024, 3, 15), 2025) == date(2025, 3, 15)
+    # 2024-02-29 Thu → anniversary 2025-02-28 Fri → snap back to Thu
+    assert project_start_to_year(date(2024, 2, 29), 2025) == date(2025, 2, 27)
+    # 2024-03-15 Fri → anniversary 2025-03-15 Sat → snap to Fri
+    assert project_start_to_year(date(2024, 3, 15), 2025) == date(2025, 3, 14)
+
+
+def test_project_preserves_weekday_for_multi_year_horizon():
+    """Naive month/day copy drifts; snap keeps Thu/Fri starts for expected YoY."""
+    thu = date(2026, 5, 14)  # Thursday
+    assert thu.weekday() == 3
+    for year in (2027, 2028):
+        projected = project_start_to_year(thu, year)
+        assert projected.weekday() == 3
+        assert abs((projected - thu.replace(year=year)).days) <= 3
 
 
 def test_within_expected_window_wsdc_one_week():
@@ -89,6 +101,113 @@ def test_iter_expected_forces_registry_kind():
     assert len(stubs) == 1
     assert stubs[0]["kind"] == "registry"
     assert "kind_from_schedule" not in stubs[0]
+    # 2025-05-08 Thu → 2026 snap keeps Thursday; span 3 days → Sun end
+    assert stubs[0]["start_date"] == date(2026, 5, 7)
+    assert stubs[0]["start_date"].weekday() == 3
+    assert stubs[0]["end_date"] == date(2026, 5, 10)
+    assert stubs[0]["end_date"].weekday() == 6
+
+
+def test_iter_unlinked_expected_uses_registry_kind():
+    from transform.year_event_calendar.expected import (
+        iter_unlinked_expected_candidates,
+        unlinked_series_key,
+    )
+
+    priors = [
+        {
+            "event_id": None,
+            "name": "Swing Creation Hamburg",
+            "country": "Germany",
+            "city": "Hamburg",
+            "start_date": date(2026, 8, 20),
+            "end_date": date(2026, 8, 23),
+            "status": "confirmed",
+            "kind": "trial",
+            "kind_from_schedule": True,
+        },
+        {
+            # Already has a catalog id — ignored by the unlinked iterator.
+            "event_id": 389,
+            "name": "SwingLab Berlin",
+            "country": "Germany",
+            "start_date": date(2026, 7, 10),
+            "end_date": date(2026, 7, 12),
+            "status": "confirmed",
+            "kind": "trial",
+        },
+    ]
+    key = unlinked_series_key(
+        name="Swing Creation Hamburg", country="Germany", city="Hamburg"
+    )
+    # City suffix stripped + swing stopword → creation|germany
+    assert key == "creation|germany"
+    # Rename without city in the title still matches.
+    assert (
+        unlinked_series_key(name="Swing Creation", country="Germany", city="Hamburg")
+        == key
+    )
+    stubs = iter_unlinked_expected_candidates(
+        priors, target_year=2027, skip_keys=set()
+    )
+    assert len(stubs) == 1
+    assert stubs[0]["name"] == "Swing Creation Hamburg"
+    assert stubs[0]["event_id"] is None
+    assert stubs[0]["kind"] == "registry"
+    assert stubs[0]["provisional_unlinked"] is True
+    assert stubs[0]["status"] == "expected"
+    assert stubs[0]["unlinked_key"] == key
+    assert stubs[0]["start_date"].year == 2027
+
+    skipped = iter_unlinked_expected_candidates(
+        priors, target_year=2027, skip_keys={key}
+    )
+    assert skipped == []
+
+
+def test_match_expected_to_starts_accepts_string_series_key():
+    from transform.year_event_calendar.expected import match_expected_to_starts
+
+    assert match_expected_to_starts(
+        series_key="creation|germany",
+        projected_start=date(2027, 8, 19),
+        confirmed_starts_by_key={"creation|germany": [date(2027, 8, 20)]},
+    ) == date(2027, 8, 20)
+    assert (
+        match_expected_to_starts(
+            series_key="creation|germany",
+            projected_start=date(2027, 8, 19),
+            confirmed_starts_by_key={"creation|germany": [date(2026, 8, 20)]},
+        )
+        is None
+    )
+
+
+def test_apply_kind_rules_forces_registry_for_provisional_unlinked_expected():
+    from transform.year_event_calendar.build import _apply_kind_rules
+
+    rows = [
+        {
+            "event_id": None,
+            "name": "RiverSwingNights",
+            "start_date": date(2027, 10, 1),
+            "status": "expected",
+            "source": "expected_yoy",
+            "kind": "trial",
+            "provisional_unlinked": True,
+        },
+        {
+            "event_id": 389,
+            "name": "SwingLab Berlin",
+            "start_date": date(2027, 7, 9),
+            "status": "expected",
+            "source": "expected_yoy",
+            "kind": "trial",
+        },
+    ]
+    _apply_kind_rules(rows, first_points_year={}, catalog=pd.DataFrame())
+    assert rows[0]["kind"] == "registry"
+    assert rows[1]["kind"] == "registry"
 
 
 def test_enrich_geo_inherits_location_id_from_editions_map():
@@ -328,6 +447,49 @@ def test_fingerprint_and_weekend_dedupe_collapses_title_variants():
     assert by_fp["boston tea"]["source"] == "scheduled_events"
 
 
+def test_fingerprint_fallback_collapses_stopword_only_titles():
+    """Titles made only of stopwords must still dedupe across sources."""
+    from transform.year_event_calendar.build import (
+        _dedupe_weekend_name_collisions,
+        _fingerprint_event_name,
+    )
+
+    # Alias maps The Open… → US Open… so both share fingerprint "us".
+    assert _fingerprint_event_name("The Open Swing Dance Championships") == "us"
+    assert _fingerprint_event_name("The Open Swing Dance  Championships") == "us"
+    assert _fingerprint_event_name("US Open Swing Dance Championships") == "us"
+    # Unaliased stopword-only title: keep content tokens after light strip.
+    assert _fingerprint_event_name("The Open Swing Dance Classic") == (
+        "open swing dance classic"
+    )
+
+    rows = [
+        {
+            "event_id": 68,
+            "name": "The Open Swing Dance  Championships",
+            "start_date": date(2026, 11, 25),
+            "end_date": date(2026, 11, 29),
+            "status": "confirmed",
+            "source": "edition_calendar_dates",
+            "city": "Los Angeles",
+        },
+        {
+            "event_id": None,
+            "name": "The Open Swing Dance  Championships",
+            "start_date": date(2026, 11, 25),
+            "end_date": date(2026, 11, 29),
+            "status": "confirmed",
+            "source": "events_list_current",
+            "city": "Los Angeles",
+        },
+    ]
+    out = _dedupe_weekend_name_collisions(rows)
+    assert len(out) == 1
+    assert out[0]["event_id"] == 68
+    # Higher source rank keeps list scrape, but inherits catalog event_id.
+    assert out[0]["source"] == "events_list_current"
+
+
 def test_match_expected_cross_year_boundary():
     from transform.year_event_calendar.expected import match_expected_to_confirmed
 
@@ -361,6 +523,47 @@ def test_calendar_listing_mismatch_rejects_soul_flow_on_ggp():
     )
 
 
+def test_calendar_listing_keeps_place_suffix_marketing_title():
+    """Catalog stopword-only names must still accept ``Name in City`` listings."""
+    from transform.year_event_calendar.build import _calendar_listing_matches_event
+
+    assert _calendar_listing_matches_event("WCS Party", "WCS Party in Vienna")
+    assert _calendar_listing_matches_event("WCS Party", "WCS Party")
+    assert not _calendar_listing_matches_event("WCS Party", "Soul Flow in Vienna")
+
+
+def test_canonicalize_calgary_town_open_to_bto_open():
+    """Calgary Town Open is a marketing rename of catalog BTO Open (event_id 324)."""
+    import pandas as pd
+
+    from transform.year_event_calendar.build import _canonicalize_calendar_rows
+
+    catalog = pd.DataFrame(
+        [
+            {
+                "event_id": 324,
+                "canonical_name": "BTO Open",
+                "registry_status": "Registry Event",
+                "edition_count": 3,
+            }
+        ]
+    )
+    rows = [
+        {
+            "event_id": None,
+            "name": "Calgary Town Open",
+            "start_date": date(2026, 9, 24),
+            "status": "confirmed",
+            "kind": "registry",
+            "source": "events_list_current",
+            "year": 2026,
+        }
+    ]
+    _canonicalize_calendar_rows(rows, catalog)
+    assert rows[0]["name"] == "BTO Open"
+    assert rows[0]["event_id"] == 324
+
+
 def test_is_stale_expected_past_year_and_grace():
     from transform.year_event_calendar.expected import is_stale_expected
 
@@ -376,6 +579,47 @@ def test_is_stale_expected_past_year_and_grace():
     assert is_stale_expected(
         start=date(2026, 7, 24), end=date(2026, 7, 27), as_of=date(2026, 8, 4)
     )
+
+
+def test_is_stale_expected_dec_spill_keeps_nye_weekend():
+    """Weekday snap may place start in Dec of prior calendar year."""
+    from transform.year_event_calendar.expected import is_stale_expected
+
+    start = date(2026, 12, 31)  # Thu spill into prior calendar year
+    end = date(2027, 1, 3)  # Sun
+    as_of = date(2027, 1, 2)
+    # Without event_year: end year 2027 keeps it alive
+    assert not is_stale_expected(start=start, end=end, as_of=as_of)
+    # Explicit results year also protects Dec spill
+    assert not is_stale_expected(
+        start=start, end=end, as_of=as_of, event_year=2027
+    )
+    # Past results year still drops even if dates look current
+    assert is_stale_expected(
+        start=start, end=end, as_of=as_of, event_year=2026
+    )
+
+
+def test_snap_to_weekday_prefer_year_jan_edge():
+    from transform.year_event_calendar.expected import (
+        anniversary_date,
+        project_start_to_year,
+        snap_to_weekday,
+    )
+
+    # 2027-01-01 Fri; want Thu → short snap Dec 31 2026; prefer_year flips to Jan 7
+    anchor = anniversary_date(date(2026, 1, 1), 2027)
+    assert anchor == date(2027, 1, 1)
+    snapped = snap_to_weekday(anchor, target_weekday=3, prefer_year=2027)
+    assert snapped == date(2027, 1, 7)
+    assert snapped.weekday() == 3
+
+    prior = date(2026, 1, 1)  # Thursday
+    assert prior.weekday() == 3
+    projected = project_start_to_year(prior, 2027)
+    assert projected == date(2027, 1, 7)
+    assert projected.weekday() == 3
+    assert projected.year == 2027
 
 
 def test_drop_stale_expected_keeps_official_and_future():
@@ -852,8 +1096,8 @@ def test_correct_ucwdc_worlds_remaps_152_championships_to_75():
     assert rows[1]["name"] == "Worlds UCWDC"
 
 
-def test_serialize_event_unique_ids_for_unlinked_trials_same_start():
-    """Two trial rows with null event_id on the same day must not share ``id``."""
+def test_serialize_event_unique_ids_for_unlinked_rows_same_start():
+    """Two list-only rows with null event_id on the same day must not share ``id``."""
     from transform.year_event_calendar.build import _serialize_event
 
     base = {
@@ -919,6 +1163,31 @@ def test_serialize_event_unique_ids_for_unlinked_trials_same_start():
     assert numeric_name["id"] != linked["id"]
 
 
+def test_serialize_event_emits_provisional_unlinked_flag():
+    from transform.year_event_calendar.build import _serialize_event
+
+    out = _serialize_event(
+        {
+            "start_date": date(2027, 8, 19),
+            "end_date": date(2027, 8, 22),
+            "event_id": None,
+            "status": "expected",
+            "kind": "registry",
+            "year": 2027,
+            "source": "expected_yoy",
+            "name": "Swing Creation Hamburg",
+            "city": "Hamburg",
+            "country": "Germany",
+            "provisional_unlinked": True,
+            "url": None,
+            "lat": None,
+            "lon": None,
+        }
+    )
+    assert out["provisional_unlinked"] is True
+    assert "provisional_unlinked_trial" not in out
+
+
 def test_cancelled_calendar_status_coerced_to_hiatus():
     from transform.year_event_calendar.build import (
         STATUS_CANCELLED,
@@ -933,3 +1202,303 @@ def test_cancelled_calendar_status_coerced_to_hiatus():
     rows = [{"status": STATUS_CANCELLED, "name": "Swing Dance America"}]
     _coerce_cancelled_to_hiatus(rows)
     assert rows[0]["status"] == STATUS_HIATUS
+
+
+def test_build_uses_events_list_fallback_when_scheduled_export_empty(tmp_path):
+    from transform.year_event_calendar.build import build_year_event_calendar
+
+    (tmp_path / "scheduled_events.csv").write_text(
+        "schedule_event_key,source_fingerprint,canonical_event_id,event_name,start_date,end_date,results_year,results_month,status_event,registry_trial_status,location_raw,country,url,confirmed,canceled,on_hiatus\n",
+        encoding="utf-8",
+    )
+    events_list_dir = tmp_path / "events_list"
+    events_list_dir.mkdir(parents=True, exist_ok=True)
+    (events_list_dir / "current.json").write_text(
+        """
+{
+  "events": [
+    {
+      "source_fingerprint": "trial-2026-a",
+      "event_name": "Autumn Beat Trial Event",
+      "start_date": "2026-10-02",
+      "end_date": "2026-10-05",
+      "results_year": 2026,
+      "status_event": "Trial Event",
+      "location_raw": "Warsaw, Poland",
+      "country": "Poland",
+      "url": "https://example.com/autumn",
+      "confirmed": true,
+      "canceled": false,
+      "on_hiatus": false
+    },
+    {
+      "source_fingerprint": "trial-2027-a",
+      "event_name": "Swing Valley Trial Event",
+      "start_date": "2027-07-01",
+      "end_date": "2027-07-04",
+      "results_year": 2027,
+      "status_event": "Trial Event",
+      "location_raw": "Prague, Czechia",
+      "country": "Czechia",
+      "url": "https://example.com/valley",
+      "confirmed": true,
+      "canceled": false,
+      "on_hiatus": false
+    }
+  ]
+}
+""".strip()
+        + "\n",
+        encoding="utf-8",
+    )
+
+    payload = build_year_event_calendar(tmp_path, as_of=date(2026, 8, 5), year_radius=2)
+    trials = [
+        e for e in payload["events"]
+        if e["kind"] == "trial" and e["year"] in {2026, 2027}
+    ]
+    assert any(e["name"] == "Autumn Beat Trial Event" for e in trials)
+    assert any(e["name"] == "Swing Valley Trial Event" for e in trials)
+
+
+def test_build_projects_upcoming_unlinked_then_stops_after_end(tmp_path):
+    """Integration: upcoming list-only row → expected y+1; gone after edition ends."""
+    from transform.year_event_calendar.build import build_year_event_calendar
+
+    (tmp_path / "scheduled_events.csv").write_text(
+        "schedule_event_key,source_fingerprint,canonical_event_id,event_name,start_date,end_date,results_year,results_month,status_event,registry_trial_status,location_raw,country,url,confirmed,canceled,on_hiatus\n",
+        encoding="utf-8",
+    )
+    events_list_dir = tmp_path / "events_list"
+    events_list_dir.mkdir(parents=True, exist_ok=True)
+    (events_list_dir / "current.json").write_text(
+        """
+{
+  "events": [
+    {
+      "source_fingerprint": "hamburg-2026",
+      "event_name": "Swing Creation Hamburg",
+      "start_date": "2026-08-20",
+      "end_date": "2026-08-23",
+      "results_year": 2026,
+      "status_event": "Trial Event",
+      "location_raw": "Hamburg, Germany",
+      "country": "Germany",
+      "url": "https://example.com/hamburg",
+      "confirmed": true,
+      "canceled": false,
+      "on_hiatus": false
+    }
+  ]
+}
+""".strip()
+        + "\n",
+        encoding="utf-8",
+    )
+
+    before = build_year_event_calendar(tmp_path, as_of=date(2026, 8, 7), year_radius=2)
+    projected = [
+        e
+        for e in before["events"]
+        if e["name"] == "Swing Creation Hamburg" and e["year"] == 2027
+    ]
+    assert len(projected) == 1
+    assert projected[0]["status"] == "expected"
+    assert projected[0]["kind"] == "registry"
+    assert projected[0].get("provisional_unlinked") is True
+    assert projected[0].get("event_id") is None
+
+    after = build_year_event_calendar(tmp_path, as_of=date(2026, 8, 30), year_radius=2)
+    assert not any(
+        e["name"] == "Swing Creation Hamburg" and e["year"] == 2027 and e["status"] == "expected"
+        for e in after["events"]
+    )
+
+
+def test_build_projects_prior_year_unlinked_confirmed_into_next_year(tmp_path):
+    """Published list-only 2027 row (no event_id) should bridge to 2028 expected."""
+    from transform.year_event_calendar.build import build_year_event_calendar
+
+    (tmp_path / "scheduled_events.csv").write_text(
+        "schedule_event_key,source_fingerprint,canonical_event_id,event_name,start_date,end_date,results_year,results_month,status_event,registry_trial_status,location_raw,country,url,confirmed,canceled,on_hiatus\n",
+        encoding="utf-8",
+    )
+    events_list_dir = tmp_path / "events_list"
+    events_list_dir.mkdir(parents=True, exist_ok=True)
+    (events_list_dir / "current.json").write_text(
+        """
+{
+  "events": [
+    {
+      "source_fingerprint": "cologne-2027",
+      "event_name": "Cologne Calling WCS",
+      "start_date": "2027-01-14",
+      "end_date": "2027-01-17",
+      "results_year": 2027,
+      "status_event": "Trial Event",
+      "location_raw": "Cologne, Germany",
+      "country": "Germany",
+      "url": "https://example.com/cologne",
+      "confirmed": true,
+      "canceled": false,
+      "on_hiatus": false
+    },
+    {
+      "source_fingerprint": "htown-2027",
+      "event_name": "H-Town Throw Down 2027",
+      "start_date": "2027-03-11",
+      "end_date": "2027-03-14",
+      "results_year": 2027,
+      "status_event": "Registry Event",
+      "location_raw": "Houston, United States",
+      "country": "United States",
+      "url": "https://example.com/htown",
+      "confirmed": true,
+      "canceled": false,
+      "on_hiatus": false
+    }
+  ]
+}
+""".strip()
+        + "\n",
+        encoding="utf-8",
+    )
+
+    payload = build_year_event_calendar(tmp_path, as_of=date(2026, 8, 7), year_radius=2)
+    cologne_28 = [
+        e
+        for e in payload["events"]
+        if e["name"] == "Cologne Calling WCS" and e["year"] == 2028
+    ]
+    assert len(cologne_28) == 1
+    assert cologne_28[0]["status"] == "expected"
+    assert cologne_28[0]["kind"] == "registry"
+    assert cologne_28[0].get("provisional_unlinked") is True
+
+    htown_28 = [
+        e
+        for e in payload["events"]
+        if "H-Town" in e["name"] and e["year"] == 2028
+    ]
+    assert len(htown_28) == 1
+    assert htown_28[0]["status"] == "expected"
+    assert htown_28[0]["kind"] == "registry"
+
+
+def test_build_excludes_old_past_year_unlinked_from_expected(tmp_path):
+    """Lookback 0: a finished 2025 list-only one-off must not resurrect in 2027+."""
+    from transform.year_event_calendar.build import build_year_event_calendar
+
+    (tmp_path / "scheduled_events.csv").write_text(
+        "schedule_event_key,source_fingerprint,canonical_event_id,event_name,start_date,end_date,results_year,results_month,status_event,registry_trial_status,location_raw,country,url,confirmed,canceled,on_hiatus\n",
+        encoding="utf-8",
+    )
+    events_list_dir = tmp_path / "events_list"
+    events_list_dir.mkdir(parents=True, exist_ok=True)
+    (events_list_dir / "current.json").write_text(
+        """
+{
+  "events": [
+    {
+      "source_fingerprint": "zombie-2025",
+      "event_name": "One Off Swing Zombie",
+      "start_date": "2025-06-12",
+      "end_date": "2025-06-15",
+      "results_year": 2025,
+      "status_event": "Trial Event",
+      "location_raw": "Berlin, Germany",
+      "country": "Germany",
+      "url": "https://example.com/zombie",
+      "confirmed": true,
+      "canceled": false,
+      "on_hiatus": false
+    },
+    {
+      "source_fingerprint": "alive-2026",
+      "event_name": "Swing Creation Hamburg",
+      "start_date": "2026-08-20",
+      "end_date": "2026-08-23",
+      "results_year": 2026,
+      "status_event": "Trial Event",
+      "location_raw": "Hamburg, Germany",
+      "country": "Germany",
+      "url": "https://example.com/hamburg",
+      "confirmed": true,
+      "canceled": false,
+      "on_hiatus": false
+    }
+  ]
+}
+""".strip()
+        + "\n",
+        encoding="utf-8",
+    )
+
+    payload = build_year_event_calendar(tmp_path, as_of=date(2026, 8, 7), year_radius=2)
+    assert not any(
+        e["name"] == "One Off Swing Zombie" and e["status"] == "expected"
+        for e in payload["events"]
+    )
+    alive = [
+        e
+        for e in payload["events"]
+        if e["name"] == "Swing Creation Hamburg" and e["year"] == 2027
+    ]
+    assert len(alive) == 1
+    assert alive[0]["status"] == "expected"
+    assert alive[0].get("provisional_unlinked") is True
+
+
+def test_latest_unlinked_priors_respects_lookback():
+    from datetime import date as d
+
+    from transform.year_event_calendar.build import _latest_unlinked_confirmed_priors
+
+    rows = [
+        {
+            "event_id": None,
+            "name": "Old One Off",
+            "country": "Germany",
+            "city": "Berlin",
+            "start_date": d(2024, 5, 1),
+            "end_date": d(2024, 5, 4),
+            "status": "confirmed",
+            "year": 2024,
+        },
+        {
+            "event_id": None,
+            "name": "Current Upcoming",
+            "country": "Germany",
+            "city": "Hamburg",
+            "start_date": d(2026, 9, 10),
+            "end_date": d(2026, 9, 13),
+            "status": "confirmed",
+            "year": 2026,
+        },
+        {
+            "event_id": None,
+            "name": "Published Future",
+            "country": "Germany",
+            "city": "Cologne",
+            "start_date": d(2027, 1, 14),
+            "end_date": d(2027, 1, 17),
+            "status": "confirmed",
+            "year": 2027,
+        },
+    ]
+    as_of = d(2026, 8, 7)
+    priors = _latest_unlinked_confirmed_priors(rows, before_year=2028, as_of=as_of)
+    names = {r["name"] for r in priors}
+    assert "Old One Off" not in names
+    assert "Current Upcoming" in names
+    assert "Published Future" in names
+
+    # Explicit lookback of 2 years resurrects 2024.
+    with_lookback = _latest_unlinked_confirmed_priors(
+        rows, before_year=2028, as_of=as_of, lookback_years=2
+    )
+    assert {r["name"] for r in with_lookback} == {
+        "Old One Off",
+        "Current Upcoming",
+        "Published Future",
+    }

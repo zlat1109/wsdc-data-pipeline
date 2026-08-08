@@ -59,6 +59,9 @@ RESULT_TO_CATALOG_EVENT_NAME: dict[str, str] = {
     'Dutch Open': 'Dutch Open West Coast Swing',
     'Global Grand Prix': 'Global Grand Prix - West Coast Swing Reunion',
     'The Open World Swing Dance Championships': 'World Swing Dance Championships',
+    # WSDC listing title for event_id 68 (catalog still "US Open…")
+    'The Open Swing Dance Championships': 'US Open Swing Dance Championships',
+    'The Open Swing Dance  Championships': 'US Open Swing Dance Championships',
     'Korean Open': 'Korean Open WCS Championships',
     'UK West Coast Swing Championships': 'UK WCS Championships',
     'Jax Westie Fest': 'River City Swing',
@@ -102,6 +105,8 @@ EVENT_NAME_VARIANT_TO_CATALOG: dict[str, str] = {
     'BALTIC SWING': 'Baltic Swing',
     'Halloween Swingthing': 'Halloween SwingThing',
     'By-Town Open (BTO)': 'BTO Open',
+    # Marketing rename (same series / ctodance.ca); WSDC catalog still "BTO Open".
+    'Calgary Town Open': 'BTO Open',
     'Monterey Swingfest': 'Monterey SwingFest',
     'Monterey Swing Fest 2024': 'Monterey SwingFest',
     'Swing Fling 2024': 'Swing Fling',
@@ -130,6 +135,8 @@ EVENT_NAME_VARIANT_TO_CATALOG: dict[str, str] = {
     'NeverlandSwing Dutch Swing Championships': 'Neverland Swing',
     'Paris Swing Classic': 'Paris Westie Fest',
     'The Boston Tea Party': 'Boston Tea Party',
+    # WSDC calendar/list marketing title for event_id 357 (catalog still "WCS Party").
+    'WCS Party in Vienna': 'WCS Party',
     'Capital Swing Convention': 'Capital Swing Dance Convention',
     'The New Zealand West Coast Swing Open': 'New Zealand Open Swing Dance Championships',
     'BaroqueSwing': 'Barock Swing Ludwigsburg',

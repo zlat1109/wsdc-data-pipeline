@@ -24,10 +24,14 @@ from transform.knowledge.geo_flags import continent_for_country
 from transform.year_event_calendar.expected import (
     EXPECTED_STALE_GRACE_DAYS,
     EXPECTED_WINDOW_DAYS,
+    UNLINKED_PRIOR_LOOKBACK_YEARS,
     is_stale_expected,
     iter_expected_candidates,
+    iter_unlinked_expected_candidates,
     match_expected_to_confirmed,
+    match_expected_to_starts,
     project_start_to_year,
+    unlinked_series_key,
 )
 from transform.year_event_calendar.weekends import weekend_bounds, weekend_key
 
@@ -228,6 +232,8 @@ def _apply_kind_rules(
         first = first_points_year.get(eid_i) if eid_i is not None else None
 
         if row.get("source") == "expected_yoy":
+            # Expected YoY is never Trial — trial is a first-year phase only
+            # (including provisional bridges for list-only rows).
             row["kind"] = KIND_REGISTRY
             row.pop("kind_from_schedule", None)
             continue
@@ -357,11 +363,25 @@ def _coords_by_city_country(locations: pd.DataFrame) -> dict[tuple[str, str], tu
 
 
 def _calendar_listing_matches_event(event_name: Any, calendar_title: Any) -> bool:
-    """Reject scrape rows matched to the wrong series (e.g. Soul Flow → GGP via URL)."""
+    """Reject scrape rows matched to the wrong series (e.g. Soul Flow → GGP via URL).
+
+    Keep marketing renames that extend the catalog title with a place suffix
+    (``WCS Party`` → ``WCS Party in Vienna``): stopword-only catalog names
+    otherwise fingerprint to a different token set than ``in <city>`` titles and
+    drop the real edition row, leaving an unlinked list twin + YoY expected ghost.
+    """
     title = _clean_name(calendar_title)
     ename = _clean_name(event_name)
     if not title or not ename:
         return True
+    t_l, e_l = title.lower(), ename.lower()
+    if t_l == e_l or t_l.startswith(e_l + " ") or e_l.startswith(t_l + " "):
+        return True
+    for sep in (" in ", " - ", " – ", " — ", " @ ", " | "):
+        if sep in t_l:
+            base = t_l.split(sep, 1)[0].strip()
+            if base and (base == e_l or e_l.startswith(base + " ") or base.startswith(e_l + " ")):
+                return True
     fp_t = set(_fingerprint_event_name(title).split())
     fp_e = set(_fingerprint_event_name(ename).split())
     if not fp_t or not fp_e:
@@ -637,6 +657,71 @@ def _rows_from_scheduled(data_dir: Path) -> list[dict]:
     return rows
 
 
+def _rows_from_events_list_current(data_dir: Path) -> list[dict]:
+    """Fallback schedule rows from events_list/current.json when export is empty."""
+    path = data_dir / "events_list" / "current.json"
+    if not path.exists():
+        return []
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return []
+    if isinstance(payload, dict):
+        records = payload.get("events") or []
+    elif isinstance(payload, list):
+        records = payload
+    else:
+        records = []
+
+    rows: list[dict] = []
+    for rec in records:
+        if not isinstance(rec, dict):
+            continue
+        start = _parse_date(rec.get("start_date"))
+        if start is None:
+            continue
+        if _truthy(rec.get("canceled")) or _truthy(rec.get("on_hiatus")):
+            status = STATUS_HIATUS
+        else:
+            status = STATUS_CONFIRMED if _truthy(rec.get("confirmed")) else STATUS_EXPECTED
+        eid = rec.get("canonical_event_id")
+        try:
+            eid_i = int(eid) if eid is not None and not pd.isna(eid) else None
+        except (TypeError, ValueError):
+            eid_i = None
+        name = _clean_name(rec.get("event_name")) or _clean_name(rec.get("canonical_name"))
+        status_flags = rec.get("status_event") or rec.get("registry_trial_status")
+        kind_from_schedule = _status_flags_say_trial(status_flags)
+        year_raw = rec.get("results_year")
+        try:
+            year_i = int(year_raw) if year_raw is not None and not pd.isna(year_raw) else start.year
+        except (TypeError, ValueError):
+            year_i = start.year
+        loc_raw = rec.get("location_id")
+        try:
+            loc_i = int(loc_raw) if loc_raw is not None and not pd.isna(loc_raw) else None
+        except (TypeError, ValueError):
+            loc_i = None
+        rows.append(
+            {
+                "event_id": eid_i,
+                "name": name,
+                "start_date": start,
+                "end_date": _parse_date(rec.get("end_date")),
+                "status": status,
+                "kind": _kind_from_status_event(status_flags, name or ""),
+                "kind_from_schedule": kind_from_schedule,
+                "url": _clean_name(rec.get("url")),
+                "city": _city_from_location_raw(rec.get("location_raw")),
+                "country": _clean_name(rec.get("country")),
+                "location_id": loc_i,
+                "source": "events_list_current",
+                "year": year_i,
+            }
+        )
+    return rows
+
+
 def _inactive_event_ids(catalog: pd.DataFrame) -> set[int]:
     if catalog.empty or "registry_status" not in catalog.columns:
         return set()
@@ -662,6 +747,7 @@ def _prefer_row(existing: dict, new: dict) -> dict:
     }
     src_rank = {
         "scheduled_events": 4,
+        "events_list_current": 4,
         "edition_calendar_dates": 3,
         "operator_override": 3,
         "event_editions": 2,
@@ -684,6 +770,8 @@ def _prefer_row(existing: dict, new: dict) -> dict:
     for key in ("url", "city", "country", "location_id", "kind", "name", "end_date"):
         if not winner.get(key) and loser.get(key):
             winner[key] = loser[key]
+    if winner.get("event_id") is None and loser.get("event_id") is not None:
+        winner["event_id"] = loser["event_id"]
     if winner.get("stats_only") and not loser.get("stats_only"):
         winner["stats_only"] = False
         winner["source"] = loser.get("source") or winner.get("source")
@@ -856,14 +944,24 @@ def _alias_event_name(name: str | None) -> str | None:
 
 
 def _fingerprint_event_name(name: str | None) -> str:
-    """Loose token fingerprint for cross-source near-duplicate matching."""
+    """Loose token fingerprint for cross-source near-duplicate matching.
+
+    When a title is only stopwords (e.g. \"The Open Swing Dance Championships\"),
+    strip only light function words so weekend dedupe still has a key instead of
+    passthrough duplicates.
+    """
     text = _alias_event_name(name) or ""
-    tokens = [
+    raw_tokens = [
         tok
         for tok in "".join(ch if ch.isalnum() else " " for ch in text.lower()).split()
-        if tok and tok not in _NAME_STOPWORDS
+        if tok
     ]
-    return " ".join(tokens)
+    tokens = [tok for tok in raw_tokens if tok not in _NAME_STOPWORDS]
+    if tokens:
+        return " ".join(tokens)
+    light = frozenset({"the", "a", "an", "and", "of", "for"})
+    kept = [tok for tok in raw_tokens if tok not in light]
+    return " ".join(kept) if kept else " ".join(raw_tokens)
 
 
 def _catalog_quality(eid: int | None, cat_by_id: dict[int, dict]) -> tuple[int, int]:
@@ -1096,6 +1194,56 @@ def _row_year(row: dict) -> int | None:
     return None
 
 
+def _unlinked_still_upcoming(row: dict, as_of: date) -> bool:
+    """True while a current-year list-only edition has not finished yet."""
+    start = row.get("start_date")
+    if not isinstance(start, date):
+        return False
+    end = row.get("end_date") if isinstance(row.get("end_date"), date) else start
+    return end >= as_of
+
+
+def _latest_unlinked_confirmed_priors(
+    confirmed_rows: list[dict],
+    *,
+    before_year: int,
+    as_of: date,
+    lookback_years: int = UNLINKED_PRIOR_LOOKBACK_YEARS,
+) -> list[dict]:
+    """Most recent confirmed list-only edition per series key with year < before_year.
+
+    Lookback floor is ``as_of.year - lookback_years`` so old one-off list rows
+    without a catalog id do not resurrect as eternal expected stubs.
+
+    - ``as_of.year``: only while the edition is still upcoming.
+    - Later published years (``as_of.year < year < before_year``): always eligible.
+    """
+    min_year = as_of.year - max(int(lookback_years), 0)
+    best: dict[str, dict] = {}
+    for row in confirmed_rows:
+        if row.get("event_id") is not None:
+            continue
+        start = row.get("start_date")
+        if not isinstance(start, date):
+            continue
+        row_year = _row_year(row)
+        if row_year is None or row_year >= before_year or row_year < min_year:
+            continue
+        if row_year == as_of.year and not _unlinked_still_upcoming(row, as_of):
+            continue
+        key = unlinked_series_key(
+            name=row.get("name"),
+            country=row.get("country"),
+            city=row.get("city"),
+        )
+        if not key:
+            continue
+        prev = best.get(key)
+        if prev is None or start > prev["start_date"]:
+            best[key] = row
+    return list(best.values())
+
+
 def _series_linked_ids(event_id: int | None) -> set[int]:
     """Return all known linked ids in the same rebranded series."""
     if event_id is None:
@@ -1231,6 +1379,8 @@ def _serialize_event(row: dict) -> dict:
     if row.get("projected_from_year") is not None:
         out["projected_from_year"] = row["projected_from_year"]
         out["projected_from_start"] = row.get("projected_from_start")
+    if row.get("provisional_unlinked") or row.get("provisional_unlinked_trial"):
+        out["provisional_unlinked"] = True
     if row.get("stats_only"):
         out["stats_only"] = True
     if row.get("has_results"):
@@ -1254,7 +1404,13 @@ def _drop_stale_expected(
         if not isinstance(start, date):
             continue
         end = row.get("end_date") if isinstance(row.get("end_date"), date) else None
-        if is_stale_expected(start=start, end=end, as_of=as_of, grace_days=grace_days):
+        if is_stale_expected(
+            start=start,
+            end=end,
+            as_of=as_of,
+            grace_days=grace_days,
+            event_year=_row_year(row),
+        ):
             continue
         out.append(row)
     return out
@@ -1296,11 +1452,15 @@ def build_year_event_calendar(
                 continue
             cat_by_id[int(eid)] = rec
 
+    scheduled_rows = _rows_from_scheduled(data_dir)
+    if not scheduled_rows:
+        scheduled_rows = _rows_from_events_list_current(data_dir)
+
     base_rows = (
         _rows_from_edition_calendar_dates(data_dir)
         + _rows_from_operator_overrides()
         + _rows_from_editions(data_dir)
-        + _rows_from_scheduled(data_dir)
+        + scheduled_rows
     )
     _coerce_cancelled_to_hiatus(base_rows)
     _canonicalize_calendar_rows(base_rows, catalog)
@@ -1323,8 +1483,10 @@ def build_year_event_calendar(
 
     # Event-ids that already have a non-expected status in each year
     skip_by_year: dict[int, set] = {y: set() for y in years}
+    skip_unlinked_by_year: dict[int, set[str]] = {y: set() for y in years}
     confirmed_by_year: dict[int, dict] = {y: {} for y in years}
     confirmed_by_event: dict[int, list[date]] = {}
+    confirmed_unlinked_by_key: dict[str, list[date]] = {}
     for row in merged:
         start = row["start_date"]
         y = _row_year(row)
@@ -1333,13 +1495,24 @@ def build_year_event_calendar(
         if y not in skip_by_year:
             continue
         eid = row.get("event_id")
-        if eid is None:
+        if eid is not None:
+            if row["status"] in {STATUS_CONFIRMED, STATUS_CANCELLED, STATUS_HIATUS}:
+                skip_by_year[y].update(_series_linked_ids(int(eid)))
+            if row["status"] == STATUS_CONFIRMED:
+                confirmed_by_year[y].setdefault(eid, []).append(start)
+                confirmed_by_event.setdefault(int(eid), []).append(start)
+            continue
+        key = unlinked_series_key(
+            name=row.get("name"),
+            country=row.get("country"),
+            city=row.get("city"),
+        )
+        if not key:
             continue
         if row["status"] in {STATUS_CONFIRMED, STATUS_CANCELLED, STATUS_HIATUS}:
-            skip_by_year[y].update(_series_linked_ids(int(eid)))
-        if row["status"] == STATUS_CONFIRMED:
-            confirmed_by_year[y].setdefault(eid, []).append(start)
-            confirmed_by_event.setdefault(int(eid), []).append(start)
+            skip_unlinked_by_year[y].add(key)
+        if row["status"] == STATUS_CONFIRMED and isinstance(start, date):
+            confirmed_unlinked_by_key.setdefault(key, []).append(start)
 
     # Expected from latest confirmed edition before target year (WSDC ±1 week rule
     # vs any confirmed start — including year-boundary moves like NYE → early Jan).
@@ -1378,9 +1551,42 @@ def build_year_event_calendar(
                 start=stub["start_date"],
                 end=stub.get("end_date") if isinstance(stub.get("end_date"), date) else None,
                 as_of=as_of,
+                event_year=_row_year(stub),
             ):
                 continue
             kept.append(stub)
+        if y > as_of.year:
+            # List-only confirmed rows within lookback: bridge YoY until a
+            # catalog event_id appears. Current-year priors still require upcoming.
+            unlinked_priors = _latest_unlinked_confirmed_priors(
+                prior_pool, before_year=y, as_of=as_of
+            )
+            unlinked_stubs = iter_unlinked_expected_candidates(
+                unlinked_priors,
+                target_year=y,
+                skip_keys=set(skip_unlinked_by_year.get(y, set())),
+            )
+            for stub in unlinked_stubs:
+                key = stub.get("unlinked_key") or unlinked_series_key(
+                    name=stub.get("name"),
+                    country=stub.get("country"),
+                    city=stub.get("city"),
+                )
+                if key and match_expected_to_starts(
+                    series_key=key,
+                    projected_start=stub["start_date"],
+                    confirmed_starts_by_key=confirmed_unlinked_by_key,
+                    window_days=EXPECTED_WINDOW_DAYS,
+                ):
+                    continue
+                if is_stale_expected(
+                    start=stub["start_date"],
+                    end=stub.get("end_date") if isinstance(stub.get("end_date"), date) else None,
+                    as_of=as_of,
+                    event_year=_row_year(stub),
+                ):
+                    continue
+                kept.append(stub)
         expected_rows.extend(kept)
 
     all_rows = _dedupe_weekend_name_collisions(
