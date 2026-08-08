@@ -9,6 +9,11 @@ PR #121 fixed git CSVs / knowledge overrides, but live DB still had:
 Usage:
     python scripts/repair_swingvester_and_schedule_db.py --dry-run
     python scripts/repair_swingvester_and_schedule_db.py --apply
+
+After DB repair, refresh git CSVs with `python export.py` (applies
+EVENT_NAME_LOCATION_OVERRIDES automatically). Do not commit a raw DB export
+without that post-step — stale core location_ids will fail
+tests/test_location_override_export_survival.py.
 """
 
 from __future__ import annotations

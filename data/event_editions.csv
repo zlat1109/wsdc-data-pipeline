@@ -44,7 +44,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 9822,205,SOswing,2026,5,2026-05-01,2026-05-14,2026-05-17,wsdc_calendar,scheduled,t,88,Ashland,Oregon,United States,"Ashland, OR, United States",106,98,http://wwww.soswingdance.com/,"Ashland, OR",Registry Event
 10522,354,Spring Time Swing,2026,5,2026-05-01,2026-04-30,2026-05-04,wsdc_calendar,scheduled,t,143,Freiburg,,Germany,"Freiburg, Germany",128,116,https://springtimeswing.com/,"Freiburg, Germany",
 9334,144,Swingin' Into Spring,2026,5,2026-05-01,2026-04-30,2026-05-03,wsdc_calendar,scheduled,t,131,Hartford,Connecticut,United States,"Hartford, CT, United States",65,51,http://www.sis.djkenm.com/,"Hartford, CT",Registry Event
-9577,174,Swingsation,2026,5,2026-05-01,2026-05-15,2026-05-18,wsdc_calendar,scheduled,t,222,St. Petersburg,,Russia,"St. Petersburg, Russia",60,54,https://rawconnection.com.au/swingsation/,"Gold Coast, Australia",Registry Event
+9577,174,Swingsation,2026,5,2026-05-01,2026-05-15,2026-05-18,wsdc_calendar,scheduled,t,169,Gold Coast,,Australia,"Gold Coast, Australia",60,54,https://rawconnection.com.au/swingsation/,"Gold Coast, Australia",Registry Event
 9141,121,The Texas Classic,2026,5,2026-05-01,2026-05-15,2026-05-16,wsdc_calendar,scheduled,t,39,Austin,Texas,United States,"Austin, TX, United States",45,41,http://Www.thetexasclassic.com,"Austin, TX",
 8239,22,USA Grand Nationals,2026,5,2026-05-01,2026-05-21,2026-05-25,wsdc_calendar,scheduled,t,25,Atlanta,Georgia,United States,"Atlanta, GA, United States",127,120,http://www.usagrandnationals.com/,"Atlanta, GA, United States",Registry Event
 9926,218,Asia West Coast Swing Open,2026,4,2026-04-01,2026-04-16,2026-04-19,wsdc_calendar,scheduled,t,159,Singapore,,Singapore,"Singapore, Singapore",118,115,https://asiawcsopen.com/,"Singapore, Singapore",Registry Event
@@ -221,7 +221,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 9821,205,SOswing,2025,5,2025-05-01,2025-05-15,2025-05-18,wsdc_calendar,scheduled,t,88,Ashland,Oregon,United States,"Ashland, OR, United States",113,109,http://wwww.soswingdance.com/,"Ashland, OR",Registry Event
 10521,354,Spring Time Swing,2025,5,2025-05-01,2025-04-30,2025-05-04,wsdc_calendar,scheduled,t,143,Freiburg,,Germany,"Freiburg, Germany",136,125,https://springtimeswing.com/,"Freiburg, Germany",
 9333,144,Swingin' Into Spring,2025,5,2025-05-01,2025-05-01,2025-05-04,wsdc_calendar,scheduled,t,131,Hartford,Connecticut,United States,"Hartford, CT, United States",44,42,http://www.sis.djkenm.com/,"Hartford, CT",Registry Event
-9576,174,Swingsation,2025,5,2025-05-01,2025-05-09,2025-05-11,wsdc_calendar,scheduled,t,222,St. Petersburg,,Russia,"St. Petersburg, Russia",66,63,https://rawconnection.com.au/swingsation/,"Gold Coast, Australia",Registry Event
+9576,174,Swingsation,2025,5,2025-05-01,2025-05-09,2025-05-11,wsdc_calendar,scheduled,t,169,Gold Coast,,Australia,"Gold Coast, Australia",66,63,https://rawconnection.com.au/swingsation/,"Gold Coast, Australia",Registry Event
 9140,121,The Texas Classic,2025,5,2025-05-01,2025-05-16,2025-05-18,wsdc_calendar,scheduled,t,39,Austin,Texas,United States,"Austin, TX, United States",43,43,http://Www.thetexasclassic.com,"Austin, TX",
 8238,22,USA Grand Nationals,2025,5,2025-05-01,2025-05-22,2025-05-26,wsdc_calendar,scheduled,t,25,Atlanta,Georgia,United States,"Atlanta, GA, United States",137,132,http://www.usagrandnationals.com/,"Atlanta, GA, United States",Registry Event
 9925,218,Asia West Coast Swing Open,2025,4,2025-04-01,2025-04-17,2025-04-20,wsdc_calendar,scheduled,t,159,Singapore,,Singapore,"Singapore, Singapore",116,113,https://asiawcsopen.com/,"Singapore, Singapore",Registry Event
@@ -365,7 +365,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 9820,205,SOswing,2024,5,2024-05-01,,,,,,88,Ashland,Oregon,United States,"Ashland, OR, United States",107,102,http://wwww.soswingdance.com/,"Ashland, OR",Registry Event
 9232,134,Swing Dance America,2024,5,2024-05-01,,,,,,89,Lake Geneva,Illinois,United States,"Lake Geneva, IL, United States",63,58,,"Lake Geneva, IL",
 9332,144,Swingin' Into Spring,2024,5,2024-05-01,,,,,,131,Hartford,Connecticut,United States,"Hartford, CT, United States",23,22,http://www.sis.djkenm.com/,"Hartford, CT",Registry Event
-9575,174,Swingsation,2024,5,2024-05-01,,,,,,222,St. Petersburg,,Russia,"St. Petersburg, Russia",66,63,https://rawconnection.com.au/swingsation/,"Gold Coast, Australia",Registry Event
+9575,174,Swingsation,2024,5,2024-05-01,,,,,,169,Gold Coast,,Australia,"Gold Coast, Australia",66,63,https://rawconnection.com.au/swingsation/,"Gold Coast, Australia",Registry Event
 9139,121,The Texas Classic,2024,5,2024-05-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",58,54,http://Www.thetexasclassic.com,"Austin, TX",
 8237,22,USA Grand Nationals,2024,5,2024-05-01,,,,,,25,Atlanta,Georgia,United States,"Atlanta, GA, United States",150,140,http://www.usagrandnationals.com/,"Atlanta, GA, United States",Registry Event
 9924,218,Asia West Coast Swing Open,2024,4,2024-04-01,,,,,,159,Singapore,,Singapore,"Singapore, Singapore",125,122,https://asiawcsopen.com/,"Singapore, Singapore",Registry Event
@@ -422,7 +422,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 10076,238,Winter White,2023,12,2023-12-01,,,,,,223,Oslo,,Norway,"Oslo, Norway",81,77,http://www.winterwhite.no/,"Oslo, Norway",Registry Event
 10234,269,Autumn Swing Challenge,2023,11,2023-11-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",107,100,http://www.asc-budapest.com/,"Budapest, Hungary",Registry Event
 8899,87,CASH Bash,2023,11,2023-11-01,,,,,,96,Cleveland,Ohio,United States,"Cleveland, OH, United States",41,38,https://cashdanceclub.org/cash-bash/,"Cleveland, OH",Registry Event
-9644,181,DC Swing eXperience (DCSX),2023,11,2023-11-01,,,,,,13,Washington,District of Columbia,United States,"Washington, DC, United States",168,155,http://www.dcswingexperience.com,"Herndon, VA, United States",Registry Event
+9644,181,DC Swing eXperience (DCSX),2023,11,2023-11-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA, United States",168,155,http://www.dcswingexperience.com,"Herndon, VA",Registry Event
 10335,288,Midnight Madness,2023,11,2023-11-01,,,,,,21,Dallas,Texas,United States,"Dallas, TX, United States",102,97,http://www.midnightmadnesswcs.com/,"Dallas, TX",Registry Event
 9736,194,Moscow Westie Fest,2023,11,2023-11-01,,,,,,113,Moscow,,Russia,"Moscow, Russia",81,74,http://westiefest.org/,"Moscow, Russia",Registry Event
 8321,31,Mountain Magic,2023,11,2023-11-01,,,,,,28,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV, United States",64,59,http://mountainmagic.dance,"South Lake Tahoe (near Reno), NV",
@@ -494,7 +494,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 10131,253,Nordic WCS Championships,2023,5,2023-05-01,,,,,,199,Stockholm,,Sweden,"Stockholm, Sweden",100,97,http://www.nordicwcschamps.com,"Stockholm, Sweden",
 9819,205,SOswing,2023,5,2023-05-01,,,,,,88,Ashland,Oregon,United States,"Ashland, OR, United States",105,98,http://wwww.soswingdance.com/,"Ashland, OR",Registry Event
 9231,134,Swing Dance America,2023,5,2023-05-01,,,,,,89,Lake Geneva,Illinois,United States,"Lake Geneva, IL, United States",58,55,,"Lake Geneva, IL",
-9574,174,Swingsation,2023,5,2023-05-01,,,,,,222,St. Petersburg,,Russia,"St. Petersburg, Russia",46,44,https://rawconnection.com.au/swingsation/,"Gold Coast, Australia",Registry Event
+9574,174,Swingsation,2023,5,2023-05-01,,,,,,169,Gold Coast,,Australia,"Gold Coast, Australia",46,44,https://rawconnection.com.au/swingsation/,"Gold Coast, Australia",Registry Event
 9138,121,The Texas Classic,2023,5,2023-05-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",60,57,http://Www.thetexasclassic.com,"Austin, TX",
 10420,311,TLV SwingFest,2023,5,2023-05-01,,,,,,147,Tel Aviv,,Israel,"Tel Aviv, Israel",67,65,http://www.tlv-swingfest.com/,"Tel Aviv, Israel",
 8236,22,USA Grand Nationals,2023,5,2023-05-01,,,,,,25,Atlanta,Georgia,United States,"Atlanta, GA, United States",157,141,http://www.usagrandnationals.com/,"Atlanta, GA, United States",Registry Event
@@ -650,7 +650,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 10297,280,Saint Petersburg WCS Nights,2021,7,2021-07-01,,,,,,222,St. Petersburg,,Russia,"St. Petersburg, Russia",60,60,http://wcsnights.ru,"St. Petersburg, Russia",
 9981,225,Wild Wild Westie,2021,7,2021-07-01,,,,,,21,Dallas,Texas,United States,"Dallas, TX, United States",170,164,http://www.WildWildWestie.com,"Dallas, TX",
 9078,117,Orange Blossom Dance Festival,2021,6,2021-06-01,,,,,,82,Orlando,Florida,United States,"Orlando, FL, United States",67,64,http://www.orangeblossomdance.net,"Orlando, FL",
-9573,174,Swingsation,2021,6,2021-06-01,,,,,,222,St. Petersburg,,Russia,"St. Petersburg, Russia",33,30,https://rawconnection.com.au/swingsation/,"Gold Coast, Australia",Registry Event
+9573,174,Swingsation,2021,6,2021-06-01,,,,,,169,Gold Coast,,Australia,"Gold Coast, Australia",33,30,https://rawconnection.com.au/swingsation/,"Gold Coast, Australia",Registry Event
 9557,170,Russian Open WCS Championships,2021,4,2021-04-01,,,,,,113,Moscow,,Russia,"Moscow, Russia",65,65,,"Moscow, Russia",
 9898,215,Swing & Snow,2021,2,2021-02-01,,,,,,222,St. Petersburg,,Russia,"St. Petersburg, Russia",48,48,http://swingandsnow.ru/,"St. Petersburg, Russia",Registry Event
 10348,290,Shooba Dooba Swing,2020,12,2020-12-01,,,,,,113,Moscow,,Russia,"Moscow, Russia",52,52,https://danceconvention.net/eventdirector/ru/eventpage/6023470-shooba-dooba-swing-2020/info,"Moscow, Russia",
@@ -781,7 +781,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 9817,205,SOswing,2019,5,2019-05-01,,,,,,88,Ashland,Oregon,United States,"Ashland, OR, United States",83,81,http://wwww.soswingdance.com/,"Ashland, OR",Registry Event
 8605,61,SwingDiego,2019,5,2019-05-01,,,,,,10,San Diego,California,United States,"San Diego, CA, United States",110,108,,"San Diego, CA",
 9330,144,Swingin' Into Spring,2019,5,2019-05-01,,,,,,131,Hartford,Connecticut,United States,"Hartford, CT, United States",64,64,http://www.sis.djkenm.com/,"Hartford, CT",Registry Event
-9572,174,Swingsation,2019,5,2019-05-01,,,,,,222,St. Petersburg,,Russia,"St. Petersburg, Russia",68,68,https://rawconnection.com.au/swingsation/,"Gold Coast, Australia",Registry Event
+9572,174,Swingsation,2019,5,2019-05-01,,,,,,169,Gold Coast,,Australia,"Gold Coast, Australia",68,68,https://rawconnection.com.au/swingsation/,"Gold Coast, Australia",Registry Event
 9136,121,The Texas Classic,2019,5,2019-05-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",46,45,http://Www.thetexasclassic.com,"Austin, TX",
 10419,311,TLV SwingFest,2019,5,2019-05-01,,,,,,147,Tel Aviv,,Israel,"Tel Aviv, Israel",65,65,http://www.tlv-swingfest.com/,"Tel Aviv, Israel",
 8235,22,USA Grand Nationals,2019,5,2019-05-01,,,,,,25,Atlanta,Georgia,United States,"Atlanta, GA, United States",135,132,http://www.usagrandnationals.com/,"Atlanta, GA, United States",Registry Event
@@ -823,7 +823,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 10374,297,Winter Coast Swing,2019,2,2019-02-01,,,,,,269,Kuopio,,Finland,"Kuopio, Finland",44,44,https://www.wintercoastswing.com/,"Kuopio, Finland",Registry Event
 9789,200,Austin Swing Dance Championships,2019,1,2019-01-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",108,106,https://austinswingdance.com/,"Austin, TX",Registry Event
 9668,184,BudaFest Open WCS Championships,2019,1,2019-01-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",138,138,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
-10486,334,Countdown Swing Boston,2019,1,2019-01-01,,,,,,71,Framingham,Massachusetts,United States,"Framingham, MA, United States",63,63,http://countdownswingboston.com/,"Boston, MA",Registry Event
+10486,334,Countdown Swing Boston,2019,1,2019-01-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",63,63,http://countdownswingboston.com/,"Boston, MA",Registry Event
 10097,242,Derby City Swing,2019,1,2019-01-01,,,,,,116,Louisville,Kentucky,United States,"Louisville, KY, United States",93,90,https://derbycityswing.com/,"Louisville, KY",Registry Event
 8363,42,Floorplay Swing Vacation,2019,1,2019-01-01,,,,,,82,Orlando,Florida,United States,"Orlando, FL, United States",93,89,http://www.floorplayswingvacation.com/,"Orlando, FL",Registry Event
 9654,183,Freedom Swing Dance Challenge,2019,1,2019-01-01,,,,,,66,Wilmington,Delaware,United States,"Wilmington, DE, United States",89,87,https://freedomswingdance.com/,"Wilmington, DE, United States",Registry Event
@@ -936,7 +936,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 9948,221,Show Me Showdown,2018,5,2018-05-01,,,,,,49,St. Louis,Missouri,United States,"St. Louis, MO, United States",64,62,http://gatewayswing.com,"St. Louis, MO",
 8604,61,SwingDiego,2018,5,2018-05-01,,,,,,10,San Diego,California,United States,"San Diego, CA, United States",113,111,,"San Diego, CA",
 9329,144,Swingin' Into Spring,2018,5,2018-05-01,,,,,,131,Hartford,Connecticut,United States,"Hartford, CT, United States",64,64,http://www.sis.djkenm.com/,"Hartford, CT",Registry Event
-9571,174,Swingsation,2018,5,2018-05-01,,,,,,222,St. Petersburg,,Russia,"St. Petersburg, Russia",64,64,https://rawconnection.com.au/swingsation/,"Gold Coast, Australia",Registry Event
+9571,174,Swingsation,2018,5,2018-05-01,,,,,,169,Gold Coast,,Australia,"Gold Coast, Australia",64,64,https://rawconnection.com.au/swingsation/,"Gold Coast, Australia",Registry Event
 9135,121,The Texas Classic,2018,5,2018-05-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",43,39,http://Www.thetexasclassic.com,"Austin, TX",
 8234,22,USA Grand Nationals,2018,5,2018-05-01,,,,,,25,Atlanta,Georgia,United States,"Atlanta, GA, United States",132,129,http://www.usagrandnationals.com/,"Atlanta, GA, United States",Registry Event
 10280,276,Anchor Festival,2018,4,2018-04-01,,,,,,221,Hamburg,,Germany,"Hamburg, Germany",76,76,,"Hamburg, Germany",
@@ -971,7 +971,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 10167,258,Swingtzerland,2018,2,2018-02-01,,,,,,173,Zürich,,Switzerland,"Zürich, Switzerland",70,70,https://swingtzerland.com/,"Zürich, Switzerland",Registry Event
 9788,200,Austin Swing Dance Championships,2018,1,2018-01-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",109,107,https://austinswingdance.com/,"Austin, TX",Registry Event
 9667,184,BudaFest Open WCS Championships,2018,1,2018-01-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",131,131,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
-10485,334,Countdown Swing Boston,2018,1,2018-01-01,,,,,,71,Framingham,Massachusetts,United States,"Framingham, MA, United States",90,90,http://countdownswingboston.com/,"Boston, MA",Registry Event
+10485,334,Countdown Swing Boston,2018,1,2018-01-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",90,90,http://countdownswingboston.com/,"Boston, MA",Registry Event
 10096,242,Derby City Swing,2018,1,2018-01-01,,,,,,116,Louisville,Kentucky,United States,"Louisville, KY, United States",92,87,https://derbycityswing.com/,"Louisville, KY",Registry Event
 9653,183,Freedom Swing Dance Challenge,2018,1,2018-01-01,,,,,,66,Wilmington,Delaware,United States,"Wilmington, DE, United States",101,99,https://freedomswingdance.com/,"Wilmington, DE, United States",Registry Event
 8630,62,Monterey SwingFest,2018,1,2018-01-01,,,,,,1,Monterey,California,United States,"Monterey, CA, United States",120,117,http://www.montereyswing.com/,"Monterey, CA",Registry Event
@@ -1010,7 +1010,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 8684,65,Halloween SwingThing,2017,10,2017-10-01,,,,,,24,Costa Mesa,California,United States,"Costa Mesa, CA, United States",116,115,http://hstswing.com/,"Costa Mesa, CA",Registry Event
 10164,257,Italian Open,2017,10,2017-10-01,,,,,,132,Milan,,Italy,"Milan, Italy",89,89,,"Milan, Italy",
 9506,165,Midland Swing Open,2017,10,2017-10-01,,,,,,107,London,,United Kingdom,"London, United Kingdom",50,50,http://www.midlandswingopen.com/,"London, United Kingdom",Registry Event
-9609,178,Montreal Westie Fest,2017,10,2017-10-01,,,,,,213,Jeju,,Republic of Korea,"Jeju, Republic of Korea",68,68,http://www.montrealwestiefest.com,"Montreal, Canada",Registry Event
+9609,178,Montreal Westie Fest,2017,10,2017-10-01,,,,,,86,Montreal,,Canada,"Montreal, Canada",68,68,http://www.montrealwestiefest.com,"Montreal, Canada",Registry Event
 10319,285,Old Town Swing,2017,10,2017-10-01,,,,,,238,Tallinn,,Estonia,"Tallinn, Estonia",52,52,,"Tallinn, Estonia",
 8386,43,Paradise Dance Festival,2017,10,2017-10-01,,,,,,19,Irvine,California,United States,"Irvine, CA, United States",80,77,https://paradisecountrydancefestival.com/,"Irvine, CA",Registry Event
 9159,125,Swing City Chicago,2017,10,2017-10-01,,,,,,34,Chicago,Illinois,United States,"Chicago, IL, United States",122,122,https://swingcitychicago.com/,"Chicago, IL",Registry Event
@@ -1084,7 +1084,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 9815,205,SOswing,2017,5,2017-05-01,,,,,,88,Ashland,Oregon,United States,"Ashland, OR, United States",90,89,http://wwww.soswingdance.com/,"Ashland, OR",Registry Event
 8603,61,SwingDiego,2017,5,2017-05-01,,,,,,10,San Diego,California,United States,"San Diego, CA, United States",117,117,,"San Diego, CA",
 9328,144,Swingin' Into Spring,2017,5,2017-05-01,,,,,,131,Hartford,Connecticut,United States,"Hartford, CT, United States",74,74,http://www.sis.djkenm.com/,"Hartford, CT",Registry Event
-9570,174,Swingsation,2017,5,2017-05-01,,,,,,222,St. Petersburg,,Russia,"St. Petersburg, Russia",60,60,https://rawconnection.com.au/swingsation/,"Gold Coast, Australia",Registry Event
+9570,174,Swingsation,2017,5,2017-05-01,,,,,,169,Gold Coast,,Australia,"Gold Coast, Australia",60,60,https://rawconnection.com.au/swingsation/,"Gold Coast, Australia",Registry Event
 9134,121,The Texas Classic,2017,5,2017-05-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",49,46,http://Www.thetexasclassic.com,"Austin, TX",
 8233,22,USA Grand Nationals,2017,5,2017-05-01,,,,,,25,Atlanta,Georgia,United States,"Atlanta, GA, United States",116,116,http://www.usagrandnationals.com/,"Atlanta, GA, United States",Registry Event
 10279,276,Anchor Festival,2017,4,2017-04-01,,,,,,221,Hamburg,,Germany,"Hamburg, Germany",69,69,,"Hamburg, Germany",
@@ -1118,7 +1118,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 10166,258,Swingtzerland,2017,2,2017-02-01,,,,,,173,Zürich,,Switzerland,"Zürich, Switzerland",75,75,https://swingtzerland.com/,"Zürich, Switzerland",Registry Event
 9787,200,Austin Swing Dance Championships,2017,1,2017-01-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",110,105,https://austinswingdance.com/,"Austin, TX",Registry Event
 9666,184,BudaFest Open WCS Championships,2017,1,2017-01-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",115,115,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
-10484,334,Countdown Swing Boston,2017,1,2017-01-01,,,,,,71,Framingham,Massachusetts,United States,"Framingham, MA, United States",76,76,http://countdownswingboston.com/,"Boston, MA",Registry Event
+10484,334,Countdown Swing Boston,2017,1,2017-01-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",76,76,http://countdownswingboston.com/,"Boston, MA",Registry Event
 10095,242,Derby City Swing,2017,1,2017-01-01,,,,,,116,Louisville,Kentucky,United States,"Louisville, KY, United States",105,101,https://derbycityswing.com/,"Louisville, KY",Registry Event
 8361,42,Floorplay Swing Vacation,2017,1,2017-01-01,,,,,,82,Orlando,Florida,United States,"Orlando, FL, United States",80,73,http://www.floorplayswingvacation.com/,"Orlando, FL",Registry Event
 9652,183,Freedom Swing Dance Challenge,2017,1,2017-01-01,,,,,,66,Wilmington,Delaware,United States,"Wilmington, DE, United States",82,78,https://freedomswingdance.com/,"Wilmington, DE, United States",Registry Event
@@ -1153,7 +1153,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 10163,257,Italian Open,2016,10,2016-10-01,,,,,,132,Milan,,Italy,"Milan, Italy",95,95,,"Milan, Italy",
 10222,268,Korea Westival,2016,10,2016-10-01,,,,,,213,Jeju,,Republic of Korea,"Jeju, Republic of Korea",32,32,http://koreawestival.com/,"Jeju, Republic of Korea",Registry Event
 9505,165,Midland Swing Open,2016,10,2016-10-01,,,,,,107,London,,United Kingdom,"London, United Kingdom",50,50,http://www.midlandswingopen.com/,"London, United Kingdom",Registry Event
-9608,178,Montreal Westie Fest,2016,10,2016-10-01,,,,,,213,Jeju,,Republic of Korea,"Jeju, Republic of Korea",75,75,http://www.montrealwestiefest.com,"Montreal, Canada",Registry Event
+9608,178,Montreal Westie Fest,2016,10,2016-10-01,,,,,,86,Montreal,,Canada,"Montreal, Canada",75,75,http://www.montrealwestiefest.com,"Montreal, Canada",Registry Event
 9620,179,New Zealand Open Swing Dance Championships,2016,10,2016-10-01,,,,,,168,Auckland,,New Zealand,"Auckland, New Zealand",30,30,https://www.streetswing.co.nz/the-new-zealand-open,"Auckland, New Zealand",Registry Event
 8385,43,Paradise Dance Festival,2016,10,2016-10-01,,,,,,19,Irvine,California,United States,"Irvine, CA, United States",83,75,https://paradisecountrydancefestival.com/,"Irvine, CA",Registry Event
 9158,125,Swing City Chicago,2016,10,2016-10-01,,,,,,34,Chicago,Illinois,United States,"Chicago, IL, United States",127,124,https://swingcitychicago.com/,"Chicago, IL",Registry Event
@@ -1223,7 +1223,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 9226,134,Swing Dance America,2016,5,2016-05-01,,,,,,89,Lake Geneva,Illinois,United States,"Lake Geneva, IL, United States",85,78,,"Lake Geneva, IL",
 8602,61,SwingDiego,2016,5,2016-05-01,,,,,,10,San Diego,California,United States,"San Diego, CA, United States",128,126,,"San Diego, CA",
 9327,144,Swingin' Into Spring,2016,5,2016-05-01,,,,,,131,Hartford,Connecticut,United States,"Hartford, CT, United States",75,75,http://www.sis.djkenm.com/,"Hartford, CT",Registry Event
-9569,174,Swingsation,2016,5,2016-05-01,,,,,,222,St. Petersburg,,Russia,"St. Petersburg, Russia",65,65,https://rawconnection.com.au/swingsation/,"Gold Coast, Australia",Registry Event
+9569,174,Swingsation,2016,5,2016-05-01,,,,,,169,Gold Coast,,Australia,"Gold Coast, Australia",65,65,https://rawconnection.com.au/swingsation/,"Gold Coast, Australia",Registry Event
 9133,121,The Texas Classic,2016,5,2016-05-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",61,60,http://Www.thetexasclassic.com,"Austin, TX",
 8232,22,USA Grand Nationals,2016,5,2016-05-01,,,,,,25,Atlanta,Georgia,United States,"Atlanta, GA, United States",113,109,http://www.usagrandnationals.com/,"Atlanta, GA, United States",Registry Event
 9919,218,Asia West Coast Swing Open,2016,4,2016-04-01,,,,,,159,Singapore,,Singapore,"Singapore, Singapore",60,60,https://asiawcsopen.com/,"Singapore, Singapore",Registry Event
@@ -1254,7 +1254,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 10165,258,Swingtzerland,2016,2,2016-02-01,,,,,,173,Zürich,,Switzerland,"Zürich, Switzerland",52,52,https://swingtzerland.com/,"Zürich, Switzerland",Registry Event
 9786,200,Austin Swing Dance Championships,2016,1,2016-01-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",99,98,https://austinswingdance.com/,"Austin, TX",Registry Event
 9665,184,BudaFest Open WCS Championships,2016,1,2016-01-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",106,106,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
-10483,334,Countdown Swing Boston,2016,1,2016-01-01,,,,,,71,Framingham,Massachusetts,United States,"Framingham, MA, United States",79,79,http://countdownswingboston.com/,"Boston, MA",Registry Event
+10483,334,Countdown Swing Boston,2016,1,2016-01-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",79,79,http://countdownswingboston.com/,"Boston, MA",Registry Event
 10094,242,Derby City Swing,2016,1,2016-01-01,,,,,,116,Louisville,Kentucky,United States,"Louisville, KY, United States",87,81,https://derbycityswing.com/,"Louisville, KY",Registry Event
 8360,42,Floorplay Swing Vacation,2016,1,2016-01-01,,,,,,82,Orlando,Florida,United States,"Orlando, FL, United States",70,65,http://www.floorplayswingvacation.com/,"Orlando, FL",Registry Event
 9651,183,Freedom Swing Dance Challenge,2016,1,2016-01-01,,,,,,66,Wilmington,Delaware,United States,"Wilmington, DE, United States",80,77,https://freedomswingdance.com/,"Wilmington, DE, United States",Registry Event
@@ -1284,7 +1284,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 9633,180,Australian Open Swing Dance Championships,2015,10,2015-10-01,,,,,,174,Melbourne,,Australia,"Melbourne, Australia",50,50,,"Melbourne, Australia",
 8012,8,Boogie By The Bay,2015,10,2015-10-01,,,,,,2,San Francisco,California,United States,"San Francisco, CA, United States",120,118,https://boogiebythebay.com/,"San Francisco, CA",Registry Event
 10162,257,Italian Open,2015,10,2015-10-01,,,,,,132,Milan,,Italy,"Milan, Italy",110,110,,"Milan, Italy",
-9607,178,Montreal Westie Fest,2015,10,2015-10-01,,,,,,213,Jeju,,Republic of Korea,"Jeju, Republic of Korea",69,69,http://www.montrealwestiefest.com,"Montreal, Canada",Registry Event
+9607,178,Montreal Westie Fest,2015,10,2015-10-01,,,,,,86,Montreal,,Canada,"Montreal, Canada",69,69,http://www.montrealwestiefest.com,"Montreal, Canada",Registry Event
 9619,179,New Zealand Open Swing Dance Championships,2015,10,2015-10-01,,,,,,168,Auckland,,New Zealand,"Auckland, New Zealand",39,39,https://www.streetswing.co.nz/the-new-zealand-open,"Auckland, New Zealand",Registry Event
 8384,43,Paradise Dance Festival,2015,10,2015-10-01,,,,,,19,Irvine,California,United States,"Irvine, CA, United States",63,58,https://paradisecountrydancefestival.com/,"Irvine, CA",Registry Event
 10043,234,Philly Swing Classic,2015,10,2015-10-01,,,,,,66,Wilmington,Delaware,United States,"Wilmington, DE, United States",79,76,http://www.phillyswing.com,"Wilmington, DE, United States",Registry Event
@@ -1345,7 +1345,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 9945,221,Show Me Showdown,2015,5,2015-05-01,,,,,,49,St. Louis,Missouri,United States,"St. Louis, MO, United States",43,43,http://gatewayswing.com,"St. Louis, MO",
 8601,61,SwingDiego,2015,5,2015-05-01,,,,,,10,San Diego,California,United States,"San Diego, CA, United States",104,104,,"San Diego, CA",
 9326,144,Swingin' Into Spring,2015,5,2015-05-01,,,,,,131,Hartford,Connecticut,United States,"Hartford, CT, United States",61,61,http://www.sis.djkenm.com/,"Hartford, CT",Registry Event
-9568,174,Swingsation,2015,5,2015-05-01,,,,,,222,St. Petersburg,,Russia,"St. Petersburg, Russia",58,58,https://rawconnection.com.au/swingsation/,"Gold Coast, Australia",Registry Event
+9568,174,Swingsation,2015,5,2015-05-01,,,,,,169,Gold Coast,,Australia,"Gold Coast, Australia",58,58,https://rawconnection.com.au/swingsation/,"Gold Coast, Australia",Registry Event
 9132,121,The Texas Classic,2015,5,2015-05-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",43,43,http://Www.thetexasclassic.com,"Austin, TX",
 8231,22,USA Grand Nationals,2015,5,2015-05-01,,,,,,25,Atlanta,Georgia,United States,"Atlanta, GA, United States",106,106,http://www.usagrandnationals.com/,"Atlanta, GA, United States",Registry Event
 9918,218,Asia West Coast Swing Open,2015,4,2015-04-01,,,,,,159,Singapore,,Singapore,"Singapore, Singapore",62,62,https://asiawcsopen.com/,"Singapore, Singapore",Registry Event
@@ -1377,7 +1377,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 9892,215,Swing & Snow,2015,2,2015-02-01,,,,,,222,St. Petersburg,,Russia,"St. Petersburg, Russia",71,71,http://swingandsnow.ru/,"St. Petersburg, Russia",Registry Event
 9785,200,Austin Swing Dance Championships,2015,1,2015-01-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",105,103,https://austinswingdance.com/,"Austin, TX",Registry Event
 9664,184,BudaFest Open WCS Championships,2015,1,2015-01-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",116,116,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
-10482,334,Countdown Swing Boston,2015,1,2015-01-01,,,,,,71,Framingham,Massachusetts,United States,"Framingham, MA, United States",75,75,http://countdownswingboston.com/,"Boston, MA",Registry Event
+10482,334,Countdown Swing Boston,2015,1,2015-01-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",75,75,http://countdownswingboston.com/,"Boston, MA",Registry Event
 8359,42,Floorplay Swing Vacation,2015,1,2015-01-01,,,,,,82,Orlando,Florida,United States,"Orlando, FL, United States",65,57,http://www.floorplayswingvacation.com/,"Orlando, FL",Registry Event
 9650,183,Freedom Swing Dance Challenge,2015,1,2015-01-01,,,,,,66,Wilmington,Delaware,United States,"Wilmington, DE, United States",122,116,https://freedomswingdance.com/,"Wilmington, DE, United States",Registry Event
 8627,62,Monterey SwingFest,2015,1,2015-01-01,,,,,,1,Monterey,California,United States,"Monterey, CA, United States",95,94,http://www.montereyswing.com/,"Monterey, CA",Registry Event
@@ -1469,7 +1469,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 9472,162,Swingapalooza,2014,5,2014-05-01,,,,,,40,Baton Rouge,Louisiana,United States,"Baton Rouge, LA, United States",65,65,http://www.swingapaloozaevent.com/,"Baton Rouge, LA",Registry Event
 8600,61,SwingDiego,2014,5,2014-05-01,,,,,,10,San Diego,California,United States,"San Diego, CA, United States",110,110,,"San Diego, CA",
 9325,144,Swingin' Into Spring,2014,5,2014-05-01,,,,,,131,Hartford,Connecticut,United States,"Hartford, CT, United States",75,75,http://www.sis.djkenm.com/,"Hartford, CT",Registry Event
-9567,174,Swingsation,2014,5,2014-05-01,,,,,,222,St. Petersburg,,Russia,"St. Petersburg, Russia",60,60,https://rawconnection.com.au/swingsation/,"Gold Coast, Australia",Registry Event
+9567,174,Swingsation,2014,5,2014-05-01,,,,,,169,Gold Coast,,Australia,"Gold Coast, Australia",60,60,https://rawconnection.com.au/swingsation/,"Gold Coast, Australia",Registry Event
 9131,121,The Texas Classic,2014,5,2014-05-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",41,41,http://Www.thetexasclassic.com,"Austin, TX",
 8230,22,USA Grand Nationals,2014,5,2014-05-01,,,,,,25,Atlanta,Georgia,United States,"Atlanta, GA, United States",84,84,http://www.usagrandnationals.com/,"Atlanta, GA, United States",Registry Event
 9917,218,Asia West Coast Swing Open,2014,4,2014-04-01,,,,,,159,Singapore,,Singapore,"Singapore, Singapore",63,63,https://asiawcsopen.com/,"Singapore, Singapore",Registry Event
@@ -1506,7 +1506,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 9758,196,SwingCouver,2014,1,2014-01-01,,,,,,4,Portland,Oregon,United States,"Portland, OR, United States",82,81,https://swingco.dance/,"Portland, OR",Registry Event
 8777,75,UCWDC Country Dance World Championship,2014,1,2014-01-01,,,,,,21,Dallas,Texas,United States,"Dallas, TX, United States",35,35,http://www.ucwdcworlds.com/,"Dallas, TX",Registry Event
 8891,87,CASH Bash,2013,12,2013-12-01,,,,,,96,Cleveland,Ohio,United States,"Cleveland, OH, United States",83,83,https://cashdanceclub.org/cash-bash/,"Cleveland, OH",Registry Event
-10481,334,Countdown Swing Boston,2013,12,2013-12-01,,,,,,71,Framingham,Massachusetts,United States,"Framingham, MA, United States",58,58,http://countdownswingboston.com/,"Boston, MA",Registry Event
+10481,334,Countdown Swing Boston,2013,12,2013-12-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",58,58,http://countdownswingboston.com/,"Boston, MA",Registry Event
 8358,42,Floorplay Swing Vacation,2013,12,2013-12-01,,,,,,82,Orlando,Florida,United States,"Orlando, FL, United States",45,45,http://www.floorplayswingvacation.com/,"Orlando, FL",Registry Event
 9280,141,Spotlight New Year's Celebration,2013,12,2013-12-01,,,,,,43,Nashville,Tennessee,United States,"Nashville, TN, United States",103,101,http://www.spotlightnewyears.com/,"Nashville, TN",Registry Event
 9876,213,Swingtimate,2013,12,2013-12-01,,,,,,169,Gold Coast,,Australia,"Gold Coast, Australia",54,54,https://rawconnection.com.au/swingtimate/,"Gold Coast, Australia",
@@ -1524,7 +1524,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 8010,8,Boogie By The Bay,2013,10,2013-10-01,,,,,,2,San Francisco,California,United States,"San Francisco, CA, United States",122,121,https://boogiebythebay.com/,"San Francisco, CA",Registry Event
 8680,65,Halloween SwingThing,2013,10,2013-10-01,,,,,,24,Costa Mesa,California,United States,"Costa Mesa, CA, United States",100,98,http://hstswing.com/,"Costa Mesa, CA",Registry Event
 9847,210,Korean Open WCS Championships,2013,10,2013-10-01,,,,,,172,Incheon,,Republic of Korea,"Incheon, Republic of Korea",40,40,https://www.kopenwcs.com/,"Incheon, Republic of Korea",Registry Event
-9606,178,Montreal Westie Fest,2013,10,2013-10-01,,,,,,213,Jeju,,Republic of Korea,"Jeju, Republic of Korea",68,68,http://www.montrealwestiefest.com,"Montreal, Canada",Registry Event
+9606,178,Montreal Westie Fest,2013,10,2013-10-01,,,,,,86,Montreal,,Canada,"Montreal, Canada",68,68,http://www.montrealwestiefest.com,"Montreal, Canada",Registry Event
 9617,179,New Zealand Open Swing Dance Championships,2013,10,2013-10-01,,,,,,168,Auckland,,New Zealand,"Auckland, New Zealand",30,30,https://www.streetswing.co.nz/the-new-zealand-open,"Auckland, New Zealand",Registry Event
 8382,43,Paradise Dance Festival,2013,10,2013-10-01,,,,,,19,Irvine,California,United States,"Irvine, CA, United States",70,67,https://paradisecountrydancefestival.com/,"Irvine, CA",Registry Event
 9155,125,Swing City Chicago,2013,10,2013-10-01,,,,,,34,Chicago,Illinois,United States,"Chicago, IL, United States",113,108,https://swingcitychicago.com/,"Chicago, IL",Registry Event
@@ -1575,7 +1575,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 9471,162,Swingapalooza,2013,5,2013-05-01,,,,,,40,Baton Rouge,Louisiana,United States,"Baton Rouge, LA, United States",44,44,http://www.swingapaloozaevent.com/,"Baton Rouge, LA",Registry Event
 8599,61,SwingDiego,2013,5,2013-05-01,,,,,,10,San Diego,California,United States,"San Diego, CA, United States",112,112,,"San Diego, CA",
 9324,144,Swingin' Into Spring,2013,5,2013-05-01,,,,,,131,Hartford,Connecticut,United States,"Hartford, CT, United States",78,78,http://www.sis.djkenm.com/,"Hartford, CT",Registry Event
-9566,174,Swingsation,2013,5,2013-05-01,,,,,,222,St. Petersburg,,Russia,"St. Petersburg, Russia",65,65,https://rawconnection.com.au/swingsation/,"Gold Coast, Australia",Registry Event
+9566,174,Swingsation,2013,5,2013-05-01,,,,,,169,Gold Coast,,Australia,"Gold Coast, Australia",65,65,https://rawconnection.com.au/swingsation/,"Gold Coast, Australia",Registry Event
 9130,121,The Texas Classic,2013,5,2013-05-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",33,33,http://Www.thetexasclassic.com,"Austin, TX",
 8229,22,USA Grand Nationals,2013,5,2013-05-01,,,,,,25,Atlanta,Georgia,United States,"Atlanta, GA, United States",67,67,http://www.usagrandnationals.com/,"Atlanta, GA, United States",Registry Event
 9916,218,Asia West Coast Swing Open,2013,4,2013-04-01,,,,,,159,Singapore,,Singapore,"Singapore, Singapore",40,40,https://asiawcsopen.com/,"Singapore, Singapore",Registry Event
@@ -1603,7 +1603,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 8708,67,Americas Classic,2013,1,2013-01-01,,,,,,44,Houston,Texas,United States,"Houston, TX, United States",102,97,,"Houston, TX",
 9524,167,Best of the Best WCS,2013,1,2013-01-01,,,,,,117,Sydney,,Australia,"Sydney, Australia",47,47,https://www.bestofthebestwcs.com/,"Sydney, Australia",Registry Event
 9662,184,BudaFest Open WCS Championships,2013,1,2013-01-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",89,89,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
-10480,334,Countdown Swing Boston,2013,1,2013-01-01,,,,,,71,Framingham,Massachusetts,United States,"Framingham, MA, United States",69,69,http://countdownswingboston.com/,"Boston, MA",Registry Event
+10480,334,Countdown Swing Boston,2013,1,2013-01-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",69,69,http://countdownswingboston.com/,"Boston, MA",Registry Event
 8357,42,Floorplay Swing Vacation,2013,1,2013-01-01,,,,,,82,Orlando,Florida,United States,"Orlando, FL, United States",60,56,http://www.floorplayswingvacation.com/,"Orlando, FL",Registry Event
 9648,183,Freedom Swing Dance Challenge,2013,1,2013-01-01,,,,,,66,Wilmington,Delaware,United States,"Wilmington, DE, United States",82,82,https://freedomswingdance.com/,"Wilmington, DE, United States",Registry Event
 8625,62,Monterey SwingFest,2013,1,2013-01-01,,,,,,1,Monterey,California,United States,"Monterey, CA, United States",100,99,http://www.montereyswing.com/,"Monterey, CA",Registry Event
@@ -1624,7 +1624,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 9630,180,Australian Open Swing Dance Championships,2012,10,2012-10-01,,,,,,174,Melbourne,,Australia,"Melbourne, Australia",42,42,,"Melbourne, Australia",
 8009,8,Boogie By The Bay,2012,10,2012-10-01,,,,,,2,San Francisco,California,United States,"San Francisco, CA, United States",139,139,https://boogiebythebay.com/,"San Francisco, CA",Registry Event
 8679,65,Halloween SwingThing,2012,10,2012-10-01,,,,,,24,Costa Mesa,California,United States,"Costa Mesa, CA, United States",92,92,http://hstswing.com/,"Costa Mesa, CA",Registry Event
-9605,178,Montreal Westie Fest,2012,10,2012-10-01,,,,,,213,Jeju,,Republic of Korea,"Jeju, Republic of Korea",60,60,http://www.montrealwestiefest.com,"Montreal, Canada",Registry Event
+9605,178,Montreal Westie Fest,2012,10,2012-10-01,,,,,,86,Montreal,,Canada,"Montreal, Canada",60,60,http://www.montrealwestiefest.com,"Montreal, Canada",Registry Event
 9616,179,New Zealand Open Swing Dance Championships,2012,10,2012-10-01,,,,,,168,Auckland,,New Zealand,"Auckland, New Zealand",30,30,https://www.streetswing.co.nz/the-new-zealand-open,"Auckland, New Zealand",Registry Event
 8381,43,Paradise Dance Festival,2012,10,2012-10-01,,,,,,19,Irvine,California,United States,"Irvine, CA, United States",55,50,https://paradisecountrydancefestival.com/,"Irvine, CA",Registry Event
 9154,125,Swing City Chicago,2012,10,2012-10-01,,,,,,34,Chicago,Illinois,United States,"Chicago, IL, United States",102,101,https://swingcitychicago.com/,"Chicago, IL",Registry Event
@@ -1672,7 +1672,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 9470,162,Swingapalooza,2012,5,2012-05-01,,,,,,40,Baton Rouge,Louisiana,United States,"Baton Rouge, LA, United States",50,50,http://www.swingapaloozaevent.com/,"Baton Rouge, LA",Registry Event
 8598,61,SwingDiego,2012,5,2012-05-01,,,,,,10,San Diego,California,United States,"San Diego, CA, United States",106,106,,"San Diego, CA",
 9323,144,Swingin' Into Spring,2012,5,2012-05-01,,,,,,131,Hartford,Connecticut,United States,"Hartford, CT, United States",70,70,http://www.sis.djkenm.com/,"Hartford, CT",Registry Event
-9565,174,Swingsation,2012,5,2012-05-01,,,,,,222,St. Petersburg,,Russia,"St. Petersburg, Russia",40,40,https://rawconnection.com.au/swingsation/,"Gold Coast, Australia",Registry Event
+9565,174,Swingsation,2012,5,2012-05-01,,,,,,169,Gold Coast,,Australia,"Gold Coast, Australia",40,40,https://rawconnection.com.au/swingsation/,"Gold Coast, Australia",Registry Event
 9129,121,The Texas Classic,2012,5,2012-05-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",29,29,http://Www.thetexasclassic.com,"Austin, TX",
 8228,22,USA Grand Nationals,2012,5,2012-05-01,,,,,,25,Atlanta,Georgia,United States,"Atlanta, GA, United States",76,76,http://www.usagrandnationals.com/,"Atlanta, GA, United States",Registry Event
 9695,187,City of Angels WCS,2012,4,2012-04-01,,,,,,54,Burbank,California,United States,"Burbank, CA, United States",121,101,https://cityofangelswcs.com/,"Burbank, CA",Registry Event
@@ -1695,7 +1695,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 8707,67,Americas Classic,2012,1,2012-01-01,,,,,,44,Houston,Texas,United States,"Houston, TX, United States",115,113,,"Houston, TX",
 9523,167,Best of the Best WCS,2012,1,2012-01-01,,,,,,117,Sydney,,Australia,"Sydney, Australia",40,40,https://www.bestofthebestwcs.com/,"Sydney, Australia",Registry Event
 9661,184,BudaFest Open WCS Championships,2012,1,2012-01-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",50,50,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
-10479,334,Countdown Swing Boston,2012,1,2012-01-01,,,,,,71,Framingham,Massachusetts,United States,"Framingham, MA, United States",69,69,http://countdownswingboston.com/,"Boston, MA",Registry Event
+10479,334,Countdown Swing Boston,2012,1,2012-01-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",69,69,http://countdownswingboston.com/,"Boston, MA",Registry Event
 8356,42,Floorplay Swing Vacation,2012,1,2012-01-01,,,,,,82,Orlando,Florida,United States,"Orlando, FL, United States",58,57,http://www.floorplayswingvacation.com/,"Orlando, FL",Registry Event
 9647,183,Freedom Swing Dance Challenge,2012,1,2012-01-01,,,,,,66,Wilmington,Delaware,United States,"Wilmington, DE, United States",70,70,https://freedomswingdance.com/,"Wilmington, DE, United States",Registry Event
 8624,62,Monterey SwingFest,2012,1,2012-01-01,,,,,,1,Monterey,California,United States,"Monterey, CA, United States",107,94,http://www.montereyswing.com/,"Monterey, CA",Registry Event
@@ -1715,7 +1715,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 8008,8,Boogie By The Bay,2011,10,2011-10-01,,,,,,2,San Francisco,California,United States,"San Francisco, CA, United States",135,135,https://boogiebythebay.com/,"San Francisco, CA",Registry Event
 8678,65,Halloween SwingThing,2011,10,2011-10-01,,,,,,24,Costa Mesa,California,United States,"Costa Mesa, CA, United States",90,82,http://hstswing.com/,"Costa Mesa, CA",Registry Event
 9500,165,Midland Swing Open,2011,10,2011-10-01,,,,,,107,London,,United Kingdom,"London, United Kingdom",40,40,http://www.midlandswingopen.com/,"London, United Kingdom",Registry Event
-9604,178,Montreal Westie Fest,2011,10,2011-10-01,,,,,,213,Jeju,,Republic of Korea,"Jeju, Republic of Korea",50,50,http://www.montrealwestiefest.com,"Montreal, Canada",Registry Event
+9604,178,Montreal Westie Fest,2011,10,2011-10-01,,,,,,86,Montreal,,Canada,"Montreal, Canada",50,50,http://www.montrealwestiefest.com,"Montreal, Canada",Registry Event
 9615,179,New Zealand Open Swing Dance Championships,2011,10,2011-10-01,,,,,,168,Auckland,,New Zealand,"Auckland, New Zealand",28,28,https://www.streetswing.co.nz/the-new-zealand-open,"Auckland, New Zealand",Registry Event
 8380,43,Paradise Dance Festival,2011,10,2011-10-01,,,,,,19,Irvine,California,United States,"Irvine, CA, United States",53,50,https://paradisecountrydancefestival.com/,"Irvine, CA",Registry Event
 8834,79,Sea to Sky,2011,10,2011-10-01,,,,,,30,Seattle,Washington,United States,"Seattle, WA, United States",77,76,http://Seatoskywcs.com,"Seattle, WA",
@@ -1762,7 +1762,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 9469,162,Swingapalooza,2011,5,2011-05-01,,,,,,40,Baton Rouge,Louisiana,United States,"Baton Rouge, LA, United States",48,48,http://www.swingapaloozaevent.com/,"Baton Rouge, LA",Registry Event
 8597,61,SwingDiego,2011,5,2011-05-01,,,,,,10,San Diego,California,United States,"San Diego, CA, United States",116,116,,"San Diego, CA",
 9322,144,Swingin' Into Spring,2011,5,2011-05-01,,,,,,131,Hartford,Connecticut,United States,"Hartford, CT, United States",63,63,http://www.sis.djkenm.com/,"Hartford, CT",Registry Event
-9564,174,Swingsation,2011,5,2011-05-01,,,,,,222,St. Petersburg,,Russia,"St. Petersburg, Russia",36,36,https://rawconnection.com.au/swingsation/,"Gold Coast, Australia",Registry Event
+9564,174,Swingsation,2011,5,2011-05-01,,,,,,169,Gold Coast,,Australia,"Gold Coast, Australia",36,36,https://rawconnection.com.au/swingsation/,"Gold Coast, Australia",Registry Event
 8227,22,USA Grand Nationals,2011,5,2011-05-01,,,,,,25,Atlanta,Georgia,United States,"Atlanta, GA, United States",61,61,http://www.usagrandnationals.com/,"Atlanta, GA, United States",Registry Event
 8159,18,Easter Swing,2011,4,2011-04-01,,,,,,30,Seattle,Washington,United States,"Seattle, WA, United States",112,111,https://easterswing.org/,"Seattle, WA, United States",Registry Event
 9559,172,International Hustle & Salsa Congress,2011,4,2011-04-01,,,,,,82,Orlando,Florida,United States,"Orlando, FL, United States",43,39,,"Orlando, FL",
@@ -2146,7 +2146,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 8084,12,Capital Swing Dance Convention,2006,2,2006-02-01,,,,,,6,Sacramento,California,United States,"Sacramento, CA, United States",133,133,http://www.capitalswingconvention.com/,"Sacramento, CA",Registry Event
 9052,115,Da Dance Camp,2006,2,2006-02-01,,,,,,34,Chicago,Illinois,United States,"Chicago, IL, United States",35,35,,"Chicago, IL",
 8859,82,Motor City Jam,2006,2,2006-02-01,,,,,,12,Michigan,Michigan,United States,"Michigan, MI, United States",10,10,,"Michigan, MI",
-10478,334,Countdown Swing Boston,2006,1,2006-01-01,,,,,,71,Framingham,Massachusetts,United States,"Framingham, MA, United States",65,65,http://countdownswingboston.com/,"Boston, MA",Registry Event
+10478,334,Countdown Swing Boston,2006,1,2006-01-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",65,65,http://countdownswingboston.com/,"Boston, MA",Registry Event
 8618,62,Monterey SwingFest,2006,1,2006-01-01,,,,,,1,Monterey,California,United States,"Monterey, CA, United States",90,83,http://www.montereyswing.com/,"Monterey, CA",Registry Event
 8592,61,SwingDiego,2006,1,2006-01-01,,,,,,10,San Diego,California,United States,"San Diego, CA, United States",98,98,,"San Diego, CA",
 9742,195,Palm Springs New Years Swing Dance Classic,2005,12,2005-12-01,,,,,,20,Palm Springs,California,United States,"Palm Springs, CA, United States",96,91,,"Palm Springs, CA",
@@ -2205,7 +2205,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 8083,12,Capital Swing Dance Convention,2005,2,2005-02-01,,,,,,6,Sacramento,California,United States,"Sacramento, CA, United States",136,136,http://www.capitalswingconvention.com/,"Sacramento, CA",Registry Event
 8858,82,Motor City Jam,2005,2,2005-02-01,,,,,,12,Michigan,Michigan,United States,"Michigan, MI, United States",10,10,,"Michigan, MI",
 8990,103,Xanadu - Midwinter Dance Celebration,2005,2,2005-02-01,,,,,,4,Portland,Oregon,United States,"Portland, OR, United States",36,36,,"Portland, OR",
-10477,334,Countdown Swing Boston,2005,1,2005-01-01,,,,,,71,Framingham,Massachusetts,United States,"Framingham, MA, United States",80,76,http://countdownswingboston.com/,"Boston, MA",Registry Event
+10477,334,Countdown Swing Boston,2005,1,2005-01-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",80,76,http://countdownswingboston.com/,"Boston, MA",Registry Event
 8989,102,Dance America Seattle,2005,1,2005-01-01,,,,,,30,Seattle,Washington,United States,"Seattle, WA, United States",30,30,,"Seattle, WA",
 8617,62,Monterey SwingFest,2005,1,2005-01-01,,,,,,1,Monterey,California,United States,"Monterey, CA, United States",68,65,http://www.montereyswing.com/,"Monterey, CA",Registry Event
 8591,61,SwingDiego,2005,1,2005-01-01,,,,,,10,San Diego,California,United States,"San Diego, CA, United States",102,102,,"San Diego, CA",
@@ -2255,7 +2255,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 8907,91,Reno Dance Sensation,2004,3,2004-03-01,,,,,,77,Reno,Nevada,United States,"Reno, NV, United States",105,96,,"Reno, NV",
 8082,12,Capital Swing Dance Convention,2004,2,2004-02-01,,,,,,6,Sacramento,California,United States,"Sacramento, CA, United States",154,154,http://www.capitalswingconvention.com/,"Sacramento, CA",Registry Event
 8857,82,Motor City Jam,2004,2,2004-02-01,,,,,,12,Michigan,Michigan,United States,"Michigan, MI, United States",12,12,,"Michigan, MI",
-10476,334,Countdown Swing Boston,2004,1,2004-01-01,,,,,,71,Framingham,Massachusetts,United States,"Framingham, MA, United States",72,71,http://countdownswingboston.com/,"Boston, MA",Registry Event
+10476,334,Countdown Swing Boston,2004,1,2004-01-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",72,71,http://countdownswingboston.com/,"Boston, MA",Registry Event
 8285,28,Las Vegas Swing Expo,2004,1,2004-01-01,,,,,,27,Las Vegas,Nevada,United States,"Las Vegas, NV, United States",30,26,,"Las Vegas, NV",
 8616,62,Monterey SwingFest,2004,1,2004-01-01,,,,,,1,Monterey,California,United States,"Monterey, CA, United States",64,62,http://www.montereyswing.com/,"Monterey, CA",Registry Event
 8988,101,New Years Swing & Salsa Ball,2004,1,2004-01-01,,,,,,20,Palm Springs,California,United States,"Palm Springs, CA, United States",10,10,,"Palm Springs, CA",
@@ -2304,7 +2304,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 8478,50,St. Patrick's Day Swing,2003,3,2003-03-01,,,,,,100,Woodland Hills,California,United States,"Woodland Hills, CA, United States",75,75,,"Woodland Hills, CA",
 8081,12,Capital Swing Dance Convention,2003,2,2003-02-01,,,,,,6,Sacramento,California,United States,"Sacramento, CA, United States",127,127,http://www.capitalswingconvention.com/,"Sacramento, CA",Registry Event
 8856,82,Motor City Jam,2003,2,2003-02-01,,,,,,12,Michigan,Michigan,United States,"Michigan, MI, United States",22,21,,"Michigan, MI",
-10475,334,Countdown Swing Boston,2003,1,2003-01-01,,,,,,71,Framingham,Massachusetts,United States,"Framingham, MA, United States",77,75,http://countdownswingboston.com/,"Boston, MA",Registry Event
+10475,334,Countdown Swing Boston,2003,1,2003-01-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",77,75,http://countdownswingboston.com/,"Boston, MA",Registry Event
 8615,62,Monterey SwingFest,2003,1,2003-01-01,,,,,,1,Monterey,California,United States,"Monterey, CA, United States",66,63,http://www.montereyswing.com/,"Monterey, CA",Registry Event
 8552,58,Swing Expo,2003,1,2003-01-01,,,,,,27,Las Vegas,Nevada,United States,"Las Vegas, NV, United States",66,52,,"Las Vegas, NV",
 8589,61,SwingDiego,2003,1,2003-01-01,,,,,,10,San Diego,California,United States,"San Diego, CA, United States",80,80,,"San Diego, CA",
@@ -2345,7 +2345,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 8297,30,Mid USA Jack & Jill,2002,3,2002-03-01,,,,,,12,Michigan,Michigan,United States,"Michigan, MI, United States",20,20,,"Michigan, MI",
 8477,50,St. Patrick's Day Swing,2002,3,2002-03-01,,,,,,100,Woodland Hills,California,United States,"Woodland Hills, CA, United States",86,86,,"Woodland Hills, CA",
 8080,12,Capital Swing Dance Convention,2002,2,2002-02-01,,,,,,6,Sacramento,California,United States,"Sacramento, CA, United States",144,144,http://www.capitalswingconvention.com/,"Sacramento, CA",Registry Event
-10474,334,Countdown Swing Boston,2002,1,2002-01-01,,,,,,71,Framingham,Massachusetts,United States,"Framingham, MA, United States",90,84,http://countdownswingboston.com/,"Boston, MA",Registry Event
+10474,334,Countdown Swing Boston,2002,1,2002-01-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",90,84,http://countdownswingboston.com/,"Boston, MA",Registry Event
 8614,62,Monterey SwingFest,2002,1,2002-01-01,,,,,,1,Monterey,California,United States,"Monterey, CA, United States",68,67,http://www.montereyswing.com/,"Monterey, CA",Registry Event
 8551,58,Swing Expo,2002,1,2002-01-01,,,,,,27,Las Vegas,Nevada,United States,"Las Vegas, NV, United States",60,47,,"Las Vegas, NV",
 8588,61,SwingDiego,2002,1,2002-01-01,,,,,,10,San Diego,California,United States,"San Diego, CA, United States",86,86,,"San Diego, CA",
@@ -2380,7 +2380,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 8025,9,Boston Tea Party,2001,3,2001-03-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",74,74,http://teapartyswings.com/,"Boston, MA",Registry Event
 8141,16,Dancers Fund/Moover & Groover/SwingExpo,2001,3,2001-03-01,,,,,,27,Las Vegas,Nevada,United States,"Las Vegas, NV, United States",63,52,,"Las Vegas, NV",
 8079,12,Capital Swing Dance Convention,2001,2,2001-02-01,,,,,,6,Sacramento,California,United States,"Sacramento, CA, United States",132,132,http://www.capitalswingconvention.com/,"Sacramento, CA",Registry Event
-10473,334,Countdown Swing Boston,2001,1,2001-01-01,,,,,,71,Framingham,Massachusetts,United States,"Framingham, MA, United States",158,126,http://countdownswingboston.com/,"Boston, MA",Registry Event
+10473,334,Countdown Swing Boston,2001,1,2001-01-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",158,126,http://countdownswingboston.com/,"Boston, MA",Registry Event
 8613,62,Monterey SwingFest,2001,1,2001-01-01,,,,,,1,Monterey,California,United States,"Monterey, CA, United States",42,42,http://www.montereyswing.com/,"Monterey, CA",Registry Event
 8550,58,Swing Expo,2001,1,2001-01-01,,,,,,27,Las Vegas,Nevada,United States,"Las Vegas, NV, United States",64,60,,"Las Vegas, NV",
 8338,36,New Years Dance Camp,2000,12,2000-12-01,,,,,,42,Bakersfield,California,United States,"Bakersfield, CA, United States",63,61,,"Bakersfield, CA",
@@ -2412,7 +2412,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 8538,56,Swing Break,2000,4,2000-04-01,,,,,,72,Santa Clara,California,United States,"Santa Clara, CA, United States",81,77,,"Santa Clara, CA",
 8024,9,Boston Tea Party,2000,3,2000-03-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",70,70,http://teapartyswings.com/,"Boston, MA",Registry Event
 8078,12,Capital Swing Dance Convention,2000,2,2000-02-01,,,,,,6,Sacramento,California,United States,"Sacramento, CA, United States",107,107,http://www.capitalswingconvention.com/,"Sacramento, CA",Registry Event
-10472,334,Countdown Swing Boston,2000,1,2000-01-01,,,,,,71,Framingham,Massachusetts,United States,"Framingham, MA, United States",101,97,http://countdownswingboston.com/,"Boston, MA",Registry Event
+10472,334,Countdown Swing Boston,2000,1,2000-01-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",101,97,http://countdownswingboston.com/,"Boston, MA",Registry Event
 8284,28,Las Vegas Swing Expo,2000,1,2000-01-01,,,,,,27,Las Vegas,Nevada,United States,"Las Vegas, NV, United States",36,35,,"Las Vegas, NV",
 8612,62,Monterey SwingFest,2000,1,2000-01-01,,,,,,1,Monterey,California,United States,"Monterey, CA, United States",60,60,http://www.montereyswing.com/,"Monterey, CA",Registry Event
 8340,38,New Year's Dance Championships,2000,1,2000-01-01,,,,,,5,Fresno,California,United States,"Fresno, CA, United States",58,58,,"Fresno, CA",
@@ -2450,7 +2450,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 8077,12,Capital Swing Dance Convention,1999,2,1999-02-01,,,,,,6,Sacramento,California,United States,"Sacramento, CA, United States",145,144,http://www.capitalswingconvention.com/,"Sacramento, CA",Registry Event
 8112,14,Country Boogie,1999,2,1999-02-01,,,,,,15,Buena Park,California,United States,"Buena Park, CA, United States",22,22,,"Buena Park, CA",
 8271,26,Jitterbug Jam,1999,2,1999-02-01,,,,,,153,Thousand Oaks,California,United States,"Thousand Oaks, CA, United States",12,12,,"Thousand Oaks, CA",
-10471,334,Countdown Swing Boston,1999,1,1999-01-01,,,,,,71,Framingham,Massachusetts,United States,"Framingham, MA, United States",40,39,http://countdownswingboston.com/,"Boston, MA",Registry Event
+10471,334,Countdown Swing Boston,1999,1,1999-01-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",40,39,http://countdownswingboston.com/,"Boston, MA",Registry Event
 8283,28,Las Vegas Swing Expo,1999,1,1999-01-01,,,,,,27,Las Vegas,Nevada,United States,"Las Vegas, NV, United States",30,27,,"Las Vegas, NV",
 8611,62,Monterey SwingFest,1999,1,1999-01-01,,,,,,1,Monterey,California,United States,"Monterey, CA, United States",78,78,http://www.montereyswing.com/,"Monterey, CA",Registry Event
 8339,38,New Year's Dance Championships,1999,1,1999-01-01,,,,,,5,Fresno,California,United States,"Fresno, CA, United States",56,56,,"Fresno, CA",
@@ -2590,7 +2590,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 7980,6,Bay Swingers,1995,2,1995-02-01,,,,,,2,San Francisco,California,United States,"San Francisco, CA, United States",11,10,,"San Francisco, CA",
 8073,12,Capital Swing Dance Convention,1995,2,1995-02-01,,,,,,6,Sacramento,California,United States,"Sacramento, CA, United States",33,33,http://www.capitalswingconvention.com/,"Sacramento, CA",Registry Event
 8108,14,Country Boogie,1995,2,1995-02-01,,,,,,15,Buena Park,California,United States,"Buena Park, CA, United States",29,29,,"Buena Park, CA",
-10470,334,Countdown Swing Boston,1995,1,1995-01-01,,,,,,71,Framingham,Massachusetts,United States,"Framingham, MA, United States",1,1,http://countdownswingboston.com/,"Boston, MA",Registry Event
+10470,334,Countdown Swing Boston,1995,1,1995-01-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",1,1,http://countdownswingboston.com/,"Boston, MA",Registry Event
 8279,28,Las Vegas Swing Expo,1995,1,1995-01-01,,,,,,27,Las Vegas,Nevada,United States,"Las Vegas, NV, United States",1,1,,"Las Vegas, NV",
 8607,62,Monterey SwingFest,1995,1,1995-01-01,,,,,,1,Monterey,California,United States,"Monterey, CA, United States",11,11,http://www.montereyswing.com/,"Monterey, CA",Registry Event
 8544,58,Swing Expo,1995,1,1995-01-01,,,,,,27,Las Vegas,Nevada,United States,"Las Vegas, NV, United States",11,11,,"Las Vegas, NV",
