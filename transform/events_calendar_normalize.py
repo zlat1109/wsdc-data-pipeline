@@ -146,7 +146,14 @@ def normalize_calendar_event(raw: dict[str, Any]) -> dict[str, Any] | None:
     catalog_name = catalog_name_from_calendar_title(title)
     start_s = start.isoformat()
     end_s = end.isoformat() if end else ""
-    yms = edition_month_candidates(start, end or start)
+    # FullCalendar sometimes emits NYE starts with a broken exclusive end
+    # (invalid_end). Matching on start-only Dec would store event_year=Dec of
+    # the start year (e.g. SwingVester 2026-12) instead of the results year
+    # (Jan of the following year). Treat late-December start-only as NYE.
+    if end is None and start.month == 12 and start.day >= 27:
+        yms = [(start.year + 1, 1), (start.year, 12)]
+    else:
+        yms = edition_month_candidates(start, end or start)
 
     return {
         "event_name": clean_name,

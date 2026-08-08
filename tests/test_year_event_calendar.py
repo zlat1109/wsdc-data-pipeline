@@ -388,6 +388,37 @@ def test_fill_missing_end_dates_uses_prior_duration_then_weekend():
     assert rows[2]["end_date"] == date(2026, 4, 12)  # weekend Sunday
 
 
+def test_correct_cross_year_results_years_nye():
+    from transform.year_event_calendar.build import (
+        _correct_cross_year_results_years,
+        _fill_missing_end_dates,
+    )
+
+    rows = [
+        {
+            "event_id": 289,
+            "name": "SwingVester",
+            "start_date": date(2025, 12, 31),
+            "end_date": date(2026, 1, 5),
+            "year": 2026,
+            "status": "confirmed",
+        },
+        {
+            "event_id": 289,
+            "name": "SwingVester",
+            "start_date": date(2026, 12, 30),
+            "end_date": None,
+            "year": 2026,
+            "status": "confirmed",
+        },
+    ]
+    _fill_missing_end_dates(rows)
+    _correct_cross_year_results_years(rows)
+    assert rows[1]["end_date"] == date(2027, 1, 4)
+    assert rows[1]["year"] == 2027
+    assert rows[0]["year"] == 2026
+
+
 def test_fingerprint_and_weekend_dedupe_collapses_title_variants():
     from transform.year_event_calendar.build import (
         _dedupe_weekend_name_collisions,

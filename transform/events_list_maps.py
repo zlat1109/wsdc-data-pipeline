@@ -160,6 +160,9 @@ def clean_list_location(location_raw: str) -> str:
         loc = ", ".join(parts[:2])
 
     parts = [p.strip() for p in loc.split(",") if p.strip()]
+    # Collapse "Wels, Austria, Austria" / "Singapore, Singapore, Singapore"
+    while len(parts) >= 2 and parts[-1].casefold() == parts[-2].casefold():
+        parts.pop()
     if parts:
         parts = _normalize_us_location_parts(parts)
         loc = ", ".join(parts)
