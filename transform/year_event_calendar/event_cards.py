@@ -48,25 +48,34 @@ HISTORY_LIMIT = 10
 
 TIER_TIP = {
     "en": (
-        "Tier reflects field size for that role under the WSDC points chart. "
-        "Larger fields award higher placement points. "
-        "Current ranges (per role, from 5 competitors): "
-        "Tier 1: 5–10 · Tier 2: 11–19 · Tier 3: 20–39 · "
-        "Tier 4: 40–79 · Tier 5: 80–129 · Tier 6: 130+."
+        "Tier depends on the number of unique competitors in each role.\n"
+        "\n"
+        "Tier 1: 5–10\n"
+        "Tier 2: 11–19\n"
+        "Tier 3: 20–39\n"
+        "Tier 4: 40–79\n"
+        "Tier 5: 80–129\n"
+        "Tier 6: 130+"
     ),
     "ru": (
-        "Тир отражает размер поля в роли по чарту очков WSDC. "
-        "Чем больше поле, тем выше очки за места. "
-        "Текущие диапазоны (на роль, от 5 участников): "
-        "Тир 1: 5–10 · Тир 2: 11–19 · Тир 3: 20–39 · "
-        "Тир 4: 40–79 · Тир 5: 80–129 · Тир 6: 130+."
+        "Тир зависит от количества уникальных конкурентов в каждой роли.\n"
+        "\n"
+        "Тир 1: 5–10\n"
+        "Тир 2: 11–19\n"
+        "Тир 3: 20–39\n"
+        "Тир 4: 40–79\n"
+        "Тир 5: 80–129\n"
+        "Тир 6: 130+"
     ),
     "es": (
-        "El tier refleja el tamaño del campo por rol según la tabla de puntos WSDC. "
-        "Campos más grandes dan más puntos por plaza. "
-        "Rangos actuales (por rol, desde 5 competidores): "
-        "Tier 1: 5–10 · Tier 2: 11–19 · Tier 3: 20–39 · "
-        "Tier 4: 40–79 · Tier 5: 80–129 · Tier 6: 130+."
+        "El tier depende del número de competidores únicos en cada rol.\n"
+        "\n"
+        "Tier 1: 5–10\n"
+        "Tier 2: 11–19\n"
+        "Tier 3: 20–39\n"
+        "Tier 4: 40–79\n"
+        "Tier 5: 80–129\n"
+        "Tier 6: 130+"
     ),
 }
 
