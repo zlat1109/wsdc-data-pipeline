@@ -90,7 +90,7 @@ def refresh_events_list_current(
 ) -> int:
     """Replace current-event snapshot; return row count."""
     if catalog is None:
-        catalog = load_catalog()
+        catalog = load_catalog(conn)
     rows = build_events_list_current(events, catalog)
     now = datetime.now(timezone.utc)
 
@@ -172,7 +172,7 @@ def restore_events_list_from_snapshot(
     source: str = "full-parse-restore",
 ) -> dict[str, Any]:
     """Upsert snapshot rows into the archive and rebuild events_list_current."""
-    catalog = load_catalog()
+    catalog = load_catalog(conn)
     with conn.cursor() as cur:
         cur.execute("SELECT location_id FROM core.locations")
         valid = {int(r[0]) for r in cur.fetchall()}
