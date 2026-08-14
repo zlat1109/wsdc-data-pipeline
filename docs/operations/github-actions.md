@@ -137,10 +137,15 @@ Concurrency: `wsdc-full-parse` (no parallel runs; queue if probe triggers while 
 
 Two jobs so a load/export failure does **not** re-hit the WSDC points API:
 
-1. **`parse`** (only when `parse_full` or `parse_new_only`) — `cloud_parse.py`, then upload `parser-csvs` artifact (30 days).
-2. **`pipeline`** — download that artifact (or use committed `data/` if parse was skipped) → migrations → preprocess → load → export → git commit.
+1. **`parse`** (only when `parse_full` or `parse_new_only`, and `reuse_parse_artifact_run_id` is empty) — `cloud_parse.py`, then upload `parser-csvs` (the three parser CSVs, 30 days).
+2. **`pipeline`** — download that artifact (or a previous run’s artifact, or committed `data/` if parse was skipped) → migrations → preprocess → load → export → git commit to **`main` only**.
 
-If **pipeline** fails after a successful **parse**: Actions → the run → **Re-run failed jobs**. GitHub reuses the artifact; WSDC is not parsed again.
+If **pipeline** fails after a successful **parse**:
+
+- Prefer **Re-run failed jobs** (not Re-run all jobs) — GitHub reuses the artifact; WSDC is not parsed again.
+- Or dispatch a new run on **`main`** with `parse_full=false` and `reuse_parse_artifact_run_id=<run id>`.
+
+CSV commit is skipped unless `github.ref_name` is `main` (`git push origin HEAD:main`). Dispatch full-parse on `main`.
 
 `load.py` rolls back `promote_core` on error (does not commit an empty `core.results`). Staging CSVs stay in Supabase from the earlier staging COPY commit.
 
@@ -169,6 +174,7 @@ Options:
 
 - `export_only=true` — refresh Tableau CSV from current Supabase state
 - `export_only=false` — loads from `data/` (committed CSVs) by default
+- `reuse_parse_artifact_run_id` — skip WSDC HTTP; download `parser-csvs` from that run (must be dispatched on `main` to publish CSVs)
 
 ## Until cloud parser is enabled
 
