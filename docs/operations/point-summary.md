@@ -16,7 +16,11 @@ bot only posts links to entities that already exist on the site.
 | `telegraph_url` | Optional; bot may patch it later without rewriting the body |
 
 Cutoff default: **2026-07-28** (`POINT_SUMMARY_CUTOFF`). Historical blocks in
-`points_summaries.json` are left untouched.
+`points_summaries.json` are not **created** before cutoff. Existing blocks
+inside the 30-day update window are rebuilt, but `[N]` registry totals and
+🟡/🟢 markers are **as of that edition's start date** (later results are
+subtracted from the live CSV snapshot). Do not copy today's totals onto
+older cards.
 
 ## Builder
 

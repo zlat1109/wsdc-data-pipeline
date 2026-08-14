@@ -34,6 +34,10 @@ from transform.points_summary import (  # noqa: E402
     merge_points_summaries,
     write_summaries,
 )
+from transform.points_summary.advancement import (  # noqa: E402
+    editions_start_lookup,
+    set_event_points_timeline,
+)
 from transform.points_summary.report import format_date_range  # noqa: E402
 
 DEFAULT_CUTOFF = date(2026, 7, 28)
@@ -144,6 +148,7 @@ def build_candidates(
     dancers_map = load_dancers_map(data_dir / "dancer_role_info.csv")
     points_csv = data_dir / "dancers_points_info.csv"
     clear_points_cache()
+    set_event_points_timeline(results_rows, editions_start_lookup(editions))
 
     window_start = today - timedelta(days=update_window_days)
     # Also rebuild a bit before cutoff so merge can update near-window editions.

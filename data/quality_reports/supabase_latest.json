@@ -114,11 +114,31 @@
       "name": "edition_calendar_orphan_event_ids",
       "category": "event_naming",
       "severity": "warn",
-      "value": 7,
+      "value": 6,
       "max_value": 0,
       "ok": false,
       "description": "Calendar date rows must point at a current catalog event_id.",
       "fix_hint": "remap_stale_calendar_event_ids via enrich_event_editions_dates / sync_events_calendar"
+    },
+    {
+      "name": "events_list_current_empty",
+      "category": "event_naming",
+      "severity": "warn",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "Upcoming WSDC list snapshot should not be empty after load.",
+      "fix_hint": "scripts/sync_events_list.py; location_id FK must not CASCADE on promote (031)"
+    },
+    {
+      "name": "schedule_orphan_location_id",
+      "category": "location",
+      "severity": "warn",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "events_list_current.location_id must exist in core.locations (no FK).",
+      "fix_hint": "sync_events_list ensure_location; null invalid lids on restore"
     },
     {
       "name": "recent_editions_missing_day_dates",
@@ -302,11 +322,11 @@
     }
   ],
   "summary": {
-    "total": 30,
-    "passed": 29,
+    "total": 32,
+    "passed": 31,
     "errors": 0,
     "warnings": 1
   },
-  "generated_at": "2026-08-05T20:54:20.426909+00:00",
+  "generated_at": "2026-08-14T16:03:37.416063+00:00",
   "scope": "full"
 }
