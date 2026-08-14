@@ -45,10 +45,10 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  pipeline:
+  parse:
+    if: ${{ !inputs.export_only && (inputs.parse_full || inputs.parse_new_only) }}
     runs-on: ubuntu-latest
     timeout-minutes: 360
-
     steps:
       - uses: actions/checkout@v4
 
@@ -60,7 +60,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Notify Telegram (parse starting)
-        if: ${{ !inputs.export_only && inputs.parse_full && inputs.notify_parse_start }}
+        if: ${{ inputs.parse_full && inputs.notify_parse_start }}
         env:
           DB_HOST: ${{ secrets.DB_HOST }}
           DB_PORT: ${{ secrets.DB_PORT }}
@@ -73,7 +73,7 @@ jobs:
         run: python scripts/telegram_notify.py parse-start-live
 
       - name: Run HTTP cloud parser (full database)
-        if: ${{ !inputs.export_only && inputs.parse_full }}
+        if: ${{ inputs.parse_full }}
         env:
           DB_HOST: ${{ secrets.DB_HOST }}
           DB_PORT: ${{ secrets.DB_PORT }}
@@ -84,7 +84,7 @@ jobs:
         run: python scripts/cloud_parse.py --full --base-dir data
 
       - name: Run HTTP cloud parser (new IDs only, legacy)
-        if: ${{ !inputs.export_only && inputs.parse_new_only && !inputs.parse_full }}
+        if: ${{ inputs.parse_new_only && !inputs.parse_full }}
         env:
           DB_HOST: ${{ secrets.DB_HOST }}
           DB_PORT: ${{ secrets.DB_PORT }}
@@ -94,11 +94,58 @@ jobs:
           DB_SSLMODE: require
         run: python scripts/cloud_parse.py --new-only --base-dir data
 
+      - name: Upload parser CSVs
+        uses: actions/upload-artifact@v4
+        with:
+          name: parser-csvs
+          path: |
+            data/dancers_points_info.csv
+            data/dancer_role_info.csv
+            data/dancers_results_info.csv
+            data/location_info.csv
+            data/events_wsdc.csv
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Notify Telegram (parse failed)
+        if: failure()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GITHUB_WORKFLOW: ${{ github.workflow }}
+          GITHUB_JOB: ${{ github.job }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          GITHUB_SERVER_URL: ${{ github.server_url }}
+        run: python scripts/telegram_notify.py pipeline-failed
+
+  pipeline:
+    needs: parse
+    if: ${{ !cancelled() && (needs.parse.result == 'success' || needs.parse.result == 'skipped') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Download parser CSVs
+        if: ${{ needs.parse.result == 'success' }}
+        uses: actions/download-artifact@v4
+        with:
+          name: parser-csvs
+          path: data
+
       - name: Verify CSV inputs exist
-        if: ${{ !inputs.export_only && !inputs.parse_full && !inputs.parse_new_only }}
+        if: ${{ !inputs.export_only }}
         run: |
           if [ ! -f "${{ inputs.data_dir }}/dancers_points_info.csv" ]; then
-            echo "Missing CSVs in ${{ inputs.data_dir }}/ — run with parse_full=true or commit data/*.csv"
+            echo "Missing CSVs in ${{ inputs.data_dir }}/ — run with parse_full=true or Re-run failed jobs after a successful parse job"
             exit 1
           fi
 

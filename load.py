@@ -47,7 +47,7 @@ def main() -> None:
 
     with connect() as conn:
         with conn.cursor() as cur:
-            cur.execute("SET statement_timeout = '600s'")
+            cur.execute("SET statement_timeout = '30min'")
 
         staging_counts = load_staging_from_dir(conn, args.data_dir)
 
@@ -124,6 +124,7 @@ def main() -> None:
             wm = refresh_watermark(conn, run_id)
             print(f"Watermark updated to {wm}")
         except Exception:
+            conn.rollback()
             if run_id is not None:
                 with conn.cursor() as cur:
                     cur.execute(
