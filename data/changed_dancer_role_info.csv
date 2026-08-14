@@ -14524,6 +14524,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 2495,Erica Smith,Follower,All-Star,Champion,Leader,,,2026-01-26,6.0,All-Star,
 2495,Erica Smith,Follower,All-Star,Champion,Leader,n/a,n/a,2026-06-23,6,All-Star,n/a
 2495,Erica Smith,Follower,All-Star,Champion,Leader,nan,nan,2026-06-28,6,All Star,
+2495,Erica Smith,Follower,All-Star,Champion,Leader,nan,nan,2026-08-10,7,All Star,
 2496,Robert Kleinpeter,Follower,Newcomer,Novice,Leader,Newcomer,Novice,2025-04-30,,,
 2496,Robert Kleinpeter,Follower,Newcomer,Novice,Leader,,,2025-05-08,,,
 2496,Robert Kleinpeter,Follower,Newcomer,Novice,Leader,n/a,n/a,2026-06-23,N/A,N/A,n/a
@@ -16121,6 +16122,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 2761,Samantha Buckwalter,Follower,Champion,Champion,Leader,All-Star,All-Star,2026-04-15,75.0,All-Star,All-Star
 2761,Samantha Buckwalter,Follower,Champion,Champion,Leader,All-Star,All-Star,2026-05-22,83.0,All-Star,All-Star
 2761,Samantha Buckwalter,Follower,Champion,Champion,Leader,All-Star,All-Star,2026-06-28,83,All Star,All-Star
+2761,Samantha Buckwalter,Follower,Champion,Champion,Leader,All-Star,All-Star,2026-08-10,84,All Star,All-Star
 2762,Noel Brown,Follower,Newcomer,Novice,Leader,Newcomer,Novice,2025-04-30,,,
 2762,Noel Brown,Follower,Newcomer,Novice,Leader,,,2025-05-08,,,
 2762,Noel Brown,Follower,Newcomer,Novice,Leader,n/a,n/a,2026-06-23,N/A,N/A,n/a
@@ -22835,6 +22837,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 3967,Catherine Cogut,Follower,Advanced,Advanced,Leader,,Novice,2025-08-06,7.0,Novice,Intermediate
 3967,Catherine Cogut,Follower,Advanced,Advanced,Leader,,Novice,2025-08-14,2.0,Novice,Intermediate
 3967,Catherine Cogut,Follower,Advanced,Advanced,Leader,nan,Novice,2026-06-28,2,Novice,Intermediate
+3967,Catherine Cogut,Follower,Advanced,Advanced,Leader,nan,Novice,2026-08-11,3,Novice,Intermediate
 3968,Dorry Seyev,Leader,Novice,Novice,Follower,Newcomer,Novice,2025-04-30,,,
 3968,Dorry Seyev,Leader,Novice,Novice,Follower,,,2025-05-08,,,
 3968,Dorry Seyev,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-16,,,
@@ -45425,6 +45428,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 7899,Derek Leyva,Leader,All-Star,All-Star,Follower,,,2025-05-16,20.0,All-Star,
 7899,Derek Leyva,Leader,All-Star,All-Star,Follower,n/a,n/a,2026-06-23,20,All-Star,n/a
 7899,Derek Leyva,Leader,All-Star,All-Star,Follower,nan,nan,2026-06-28,20,All Star,
+7899,Derek Leyva,Leader,All-Star,All-Star,Follower,nan,nan,2026-08-11,21,All Star,
 7900,Tyler Beyett,Leader,Novice,Novice,Follower,Newcomer,Novice,2025-04-30,,,
 7900,Tyler Beyett,Leader,Novice,Novice,Follower,,,2025-05-08,,,
 7900,Tyler Beyett,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-16,,,
@@ -57746,6 +57750,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 9888,Nataliya Kane,Follower,All-Star,All-Star,Leader,,Intermediate,2025-05-17,,,Advanced
 9888,Nataliya Kane,Follower,All-Star,All-Star,Leader,,Intermediate,2026-06-23,N/A,N/A,Advanced
 9888,Nataliya Kane,Follower,All-Star,All-Star,Leader,nan,Intermediate,2026-06-28,,,Advanced
+9888,Nataliya Kane,Follower,All-Star,Champion,Leader,Advanced,Advanced,2026-08-10,,,Advanced
 9889,Hajni Torok,Follower,Novice,Novice,Leader,Newcomer,Novice,2025-04-30,,,
 9889,Hajni Torok,Follower,Novice,Novice,Leader,,,2025-05-08,,,
 9889,Hajni Torok,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-16,,,
@@ -61681,6 +61686,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 10532,Ulric Tyson,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2025-05-17,,,Novice
 10532,Ulric Tyson,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-06-23,N/A,N/A,Novice
 10532,Ulric Tyson,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-06-28,,,Novice
+10532,Ulric Tyson,Leader,Intermediate,Advanced,Follower,Novice,Novice,2026-08-10,,,Novice
 10533,Deborah Simmons,Follower,Newcomer,Novice,Leader,Newcomer,Novice,2025-04-30,,,
 10533,Deborah Simmons,Follower,Newcomer,Novice,Leader,,,2025-05-08,,,
 10533,Deborah Simmons,Follower,Newcomer,Novice,Leader,n/a,n/a,2026-06-23,N/A,N/A,n/a
@@ -62240,6 +62246,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 10624,Hyejun Park,Follower,Intermediate,Advanced,Leader,Novice,Novice,2026-04-15,,,Novice
 10624,Hyejun Park,Follower,Intermediate,Advanced,Leader,Novice,Novice,2026-06-23,N/A,N/A,Novice
 10624,Hyejun Park,Follower,Intermediate,Advanced,Leader,Novice,Novice,2026-06-28,,,Novice
+10624,Hyejun Park,Follower,Advanced,Advanced,Leader,nan,Novice,2026-08-10,,,Intermediate
 10625,Jinhwa Hong,Leader,Novice,Novice,Follower,Newcomer,Novice,2025-04-30,,,
 10625,Jinhwa Hong,Leader,Novice,Novice,Follower,,,2025-05-08,,,
 10625,Jinhwa Hong,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-16,,,
@@ -64912,6 +64919,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 11058,Rosemary Whitson,Follower,All-Star,All-Star,Leader,Advanced,Advanced,2026-05-22,7.0,Advance,Advanced
 11058,Rosemary Whitson,Follower,All-Star,All-Star,Leader,Advanced,Advanced,2026-06-10,8.0,Advance,Advanced
 11058,Rosemary Whitson,Follower,All-Star,All-Star,Leader,Advanced,Advanced,2026-06-28,8,Advance,Advanced
+11058,Rosemary Whitson,Follower,All-Star,All-Star,Leader,Advanced,Advanced,2026-08-10,16,Advance,Advanced
 11059,Jackson Woodward,Leader,Novice,Novice,Follower,Newcomer,Novice,2025-04-30,,,
 11059,Jackson Woodward,Leader,Novice,Novice,Follower,,,2025-05-08,,,
 11059,Jackson Woodward,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-16,,,
@@ -67286,6 +67294,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 11443,Sebastian Rohrer,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-17,,,Newcomer
 11443,Sebastian Rohrer,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 11443,Sebastian Rohrer,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-28,,,Newcomer
+11443,Sebastian Rohrer,Leader,Novice,Intermediate,Follower,nan,nan,2026-08-10,,,
 11444,Daniela Fabian,Follower,Novice,Novice,Leader,Newcomer,Novice,2024-06-14,,,
 11444,Daniela Fabian,Follower,Novice,Intermediate,Leader,Newcomer,Novice,2024-06-18,,,
 11444,Daniela Fabian,Follower,Novice,Intermediate,Leader,,,2025-05-08,,,
@@ -68448,6 +68457,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 11629,Igor Pitangui,Follower,Champion,Champion,Leader,All-Star,All-Star,2026-06-28,146,All Star,All-Star
 11629,Igor Pitangui,Follower,Champion,Champion,Leader,All-Star,All-Star,2026-07-09,147,All Star,All-Star
 11629,Igor Pitangui,Follower,Champion,Champion,Leader,All-Star,All-Star,2026-07-30,150,All Star,All-Star
+11629,Igor Pitangui,Follower,Champion,Champion,Leader,All-Star,All-Star,2026-08-10,154,All Star,All-Star
 11630,Mirella Fernandes,Follower,Advanced,Advanced,Leader,Intermediate,Intermediate,2025-01-08,,,
 11630,Mirella Fernandes,Follower,Advanced,Advanced,Leader,Novice,Novice,2025-01-14,,,
 11630,Mirella Fernandes,Follower,Advanced,Advanced,Leader,,,2025-05-08,,,
@@ -79968,6 +79978,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 13530,Alli Reese,Follower,Advanced,Advanced,Leader,,Novice,2025-05-17,,,Intermediate
 13530,Alli Reese,Follower,Advanced,Advanced,Leader,,Novice,2026-06-23,N/A,N/A,Intermediate
 13530,Alli Reese,Follower,Advanced,Advanced,Leader,nan,Novice,2026-06-28,,,Intermediate
+13530,Alli Reese,Follower,Advanced,All-Star,Leader,Intermediate,Intermediate,2026-08-11,,,Intermediate
 13531,David Dixon,Leader,Novice,Novice,Follower,Newcomer,Novice,2025-04-30,,,
 13531,David Dixon,Leader,Novice,Novice,Follower,,,2025-05-08,,,
 13531,David Dixon,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-16,,,
@@ -86389,6 +86400,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 14601,Jaden Pfeiffer,Leader,All-Star,All-Star,Follower,,Intermediate,2025-05-17,,,Advanced
 14601,Jaden Pfeiffer,Leader,All-Star,All-Star,Follower,,Intermediate,2026-06-23,N/A,N/A,Advanced
 14601,Jaden Pfeiffer,Leader,All-Star,All-Star,Follower,nan,Intermediate,2026-06-28,,,Advanced
+14601,Jaden Pfeiffer,Leader,All-Star,Champion,Follower,Advanced,Advanced,2026-08-10,,,Advanced
 14602,Joyce Carnes,Follower,Novice,Novice,Leader,Newcomer,Novice,2025-04-30,,,
 14602,Joyce Carnes,Follower,Novice,Novice,Leader,,,2025-05-08,,,
 14602,Joyce Carnes,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-16,,,
@@ -88573,6 +88585,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 14972,Bruno Michel,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2025-08-14,2.0,Novice,Novice
 14972,Bruno Michel,Leader,Intermediate,Advanced,Follower,Novice,Novice,2026-04-15,2.0,Novice,Novice
 14972,Bruno Michel,Leader,Intermediate,Advanced,Follower,Novice,Novice,2026-06-28,2,Novice,Novice
+14972,Bruno Michel,Leader,Advanced,Advanced,Follower,nan,Novice,2026-08-10,2,Novice,Intermediate
 14973,Megan Dupree,Follower,Novice,Novice,Leader,Newcomer,Novice,2025-04-30,,,
 14973,Megan Dupree,Follower,Novice,Novice,Leader,,,2025-05-08,,,
 14973,Megan Dupree,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-16,,,
@@ -89074,6 +89087,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 15053,Tegan Wilson,Follower,Advanced,Advanced,Leader,,,2025-08-14,5.0,Advance,
 15053,Tegan Wilson,Follower,Advanced,Advanced,Leader,n/a,n/a,2026-06-23,5,Advance,n/a
 15053,Tegan Wilson,Follower,Advanced,Advanced,Leader,nan,nan,2026-06-28,5,Advance,
+15053,Tegan Wilson,Follower,Advanced,Advanced,Leader,nan,nan,2026-08-11,7,Advance,
 15054,Miri Zilka,Follower,Intermediate,Advanced,Leader,Novice,Intermediate,2025-01-08,,,
 15054,Miri Zilka,Follower,Intermediate,Advanced,Leader,Novice,Novice,2025-01-14,,,
 15054,Miri Zilka,Follower,Intermediate,Advanced,Leader,,,2025-05-08,,,
@@ -92095,6 +92109,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 15553,Miranda Lam,Follower,Advanced,Advanced,Leader,,Novice,2025-11-25,14.0,Novice,Intermediate
 15553,Miranda Lam,Follower,Advanced,Advanced,Leader,nan,Novice,2026-06-28,14,Novice,Intermediate
 15553,Miranda Lam,Follower,Advanced,Advanced,Leader,nan,Novice,2026-07-09,15,Novice,Intermediate
+15553,Miranda Lam,Follower,Advanced,Advanced,Leader,nan,Novice,2026-08-10,21,Novice,Intermediate
 15554,Gregoire Omont,Leader,Novice,Intermediate,Follower,Newcomer,Novice,2025-04-30,,,
 15554,Gregoire Omont,Leader,Novice,Intermediate,Follower,,,2025-05-08,,,
 15554,Gregoire Omont,Leader,Novice,Intermediate,Follower,Newcomer,Newcomer,2025-05-16,,,
@@ -94859,6 +94874,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 16013,Olivia Schrantz,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2025-05-16,2.0,Novice,
 16013,Olivia Schrantz,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2025-05-17,2.0,Novice,Novice
 16013,Olivia Schrantz,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-06-28,2,Novice,Novice
+16013,Olivia Schrantz,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-08-11,3,Novice,Novice
 16014,Jihyun Park,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2025-04-30,,,
 16014,Jihyun Park,Follower,Intermediate,Intermediate,Leader,,,2025-05-08,,,
 16014,Jihyun Park,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2025-05-16,,,
@@ -96901,6 +96917,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 16365,Alyssa Schoeller,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-05-05,8.0,Novice,Novice
 16365,Alyssa Schoeller,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-06-28,8,Novice,Novice
 16365,Alyssa Schoeller,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-07-16,10,Novice,Novice
+16365,Alyssa Schoeller,Follower,Intermediate,Advanced,Leader,Novice,Novice,2026-08-11,18,Novice,Novice
 16366,Kendra Brooks,Follower,Intermediate,Advanced,Leader,Novice,Intermediate,2025-01-08,,,
 16366,Kendra Brooks,Follower,Intermediate,Advanced,Leader,Novice,Novice,2025-01-14,,,
 16366,Kendra Brooks,Follower,Intermediate,Advanced,Leader,Novice,Novice,2025-05-17,,,Novice
@@ -101185,6 +101202,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 17223,Henry Phan,Leader,Advanced,Advanced,Follower,,Novice,2025-05-17,,,Intermediate
 17223,Henry Phan,Leader,Advanced,Advanced,Follower,,Novice,2026-06-23,N/A,N/A,Intermediate
 17223,Henry Phan,Leader,Advanced,Advanced,Follower,nan,Novice,2026-06-28,,,Intermediate
+17223,Henry Phan,Leader,Advanced,All-Star,Follower,Intermediate,Intermediate,2026-08-10,,,Intermediate
 17224,Jodi Solbrig,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2025-05-16,,,
 17224,Jodi Solbrig,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2025-05-17,,,Novice
 17224,Jodi Solbrig,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-06-23,N/A,N/A,Novice
@@ -102135,6 +102153,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 17415,Tina Lin,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-02-17,4.0,Novice,Novice
 17415,Tina Lin,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-06-28,4,Novice,Novice
 17415,Tina Lin,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-07-04,5,Novice,Novice
+17415,Tina Lin,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-08-10,7,Novice,Novice
 17416,Maria McNally,Follower,Novice,Novice,Leader,Newcomer,Novice,2025-03-20,,,
 17416,Mars McNally,Follower,Novice,Intermediate,Leader,Novice,Novice,2025-03-27,,,
 17416,Mars McNally,Follower,Novice,Intermediate,Leader,,,2025-05-08,,,
@@ -102618,6 +102637,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 17509,Jewel Soiland,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2025-05-17,,,Novice
 17509,Jewel Soiland,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-06-23,N/A,N/A,Novice
 17509,Jewel Soiland,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-06-28,,,Novice
+17509,Jewel Soiland,Follower,Intermediate,Advanced,Leader,Novice,Novice,2026-08-10,,,Novice
 17510,William Hughes,Leader,Advanced,Advanced,Follower,Intermediate,Intermediate,2024-02-18,,,
 17510,William Hughes,Leader,Advanced,All-Star,Follower,Intermediate,Advanced,2024-03-09,,,
 17510,William Hughes,Leader,Advanced,All-Star,Follower,Novice,Intermediate,2025-01-14,,,
@@ -105050,6 +105070,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 17992,Tyler Doss,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-01-26,4.0,Novice,Novice
 17992,Tyler Doss,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-06-03,12.0,Novice,Novice
 17992,Tyler Doss,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-06-28,12,Novice,Novice
+17992,Tyler Doss,Leader,Intermediate,Advanced,Follower,Novice,Novice,2026-08-10,12,Novice,Novice
 17993,Leandro Dantas,Leader,Novice,Novice,Follower,Newcomer,Novice,2025-01-08,,,
 17993,Leandro Dantas,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-08,,,
 17993,Leandro Dantas,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -106266,6 +106287,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 18232,Melina Voglhuber,Follower,Advanced,Advanced,Leader,Intermediate,Intermediate,2026-06-28,22,Intermediate,Intermediate
 18232,Melina Voglhuber,Follower,Advanced,Advanced,Leader,Intermediate,Intermediate,2026-07-04,23,Intermediate,Intermediate
 18232,Melina Voglhuber,Follower,Advanced,Advanced,Leader,Intermediate,Intermediate,2026-07-27,25,Intermediate,Intermediate
+18232,Melina Voglhuber,Follower,Advanced,Advanced,Leader,Intermediate,Intermediate,2026-08-10,26,Intermediate,Intermediate
 18233,Jacek Chmiel,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2025-05-16,,,
 18233,Jacek Chmiel,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2025-05-17,,,Novice
 18233,Jacek Chmiel,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-06-23,N/A,N/A,Novice
@@ -106473,6 +106495,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 18274,Annie Kapitan,Leader,Intermediate,Intermediate,Follower,,,2025-05-16,30.0,Novice,
 18274,Annie Kapitan,Leader,Intermediate,Intermediate,Follower,n/a,n/a,2026-06-23,30,Novice,n/a
 18274,Annie Kapitan,Leader,Intermediate,Intermediate,Follower,nan,nan,2026-06-28,30,Novice,
+18274,Annie Kapitan,Leader,Intermediate,Intermediate,Follower,nan,nan,2026-08-10,1,Intermediate,
 18275,Przemyslaw Adamowicz,Leader,Novice,Intermediate,Follower,Newcomer,Novice,2024-10-16,,,
 18275,Przemyslaw Adamowicz,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2024-10-23,,,
 18275,Przemyslaw Adamowicz,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2025-05-17,,,Novice
@@ -106483,6 +106506,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 18276,Maya Sigl,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2025-05-17,,,Novice
 18276,Maya Sigl,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-06-23,N/A,N/A,Novice
 18276,Maya Sigl,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-06-28,,,Novice
+18276,Maya Sigl,Follower,Intermediate,Advanced,Leader,Novice,Novice,2026-08-10,,,Novice
 18277,Steve Charpentier,Leader,Novice,Novice,Follower,Newcomer,Novice,2025-04-30,,,
 18277,Steve Charpentier,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-08,,,
 18277,Steve Charpentier,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -107691,6 +107715,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 18511,Kyle Eckman,Leader,Advanced,Advanced,Follower,,Novice,2025-05-17,,,Intermediate
 18511,Kyle Eckman,Leader,Advanced,Advanced,Follower,,Novice,2026-06-23,N/A,N/A,Intermediate
 18511,Kyle Eckman,Leader,Advanced,Advanced,Follower,nan,Novice,2026-06-28,,,Intermediate
+18511,Kyle Eckman,Leader,Advanced,All-Star,Follower,Intermediate,Intermediate,2026-08-10,,,Intermediate
 18512,James Tolson,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2024-10-16,,,
 18513,Brycellyn LaBorde,Follower,Novice,Novice,Leader,Newcomer,Novice,2025-04-30,,,
 18513,Brycellyn LaBorde,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-08,,,
@@ -111280,6 +111305,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 19208,Jasmin Mann,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-17,,,Newcomer
 19208,Jasmin Mann,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 19208,Jasmin Mann,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
+19208,Jasmin Mann,Follower,Novice,Intermediate,Leader,nan,nan,2026-08-10,,,
 19209,Pascal Spengler,Leader,Novice,Novice,Follower,Newcomer,Novice,2025-04-30,,,
 19209,Pascal Spengler,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-08,,,
 19209,Pascal Spengler,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -111500,6 +111526,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 19249,Lara Beecher,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-17,,,Newcomer
 19249,Lara Beecher,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 19249,Lara Beecher,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
+19249,Lara Beecher,Follower,Novice,Intermediate,Leader,nan,nan,2026-08-11,,,
 19250,Maria Afanador,Leader,Novice,Novice,Follower,Newcomer,Novice,2025-04-30,,,
 19250,Maria Afanador,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-08,,,
 19250,Maria Afanador,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -113214,6 +113241,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 19577,Arina Fedorova,Follower,Intermediate,Advanced,Leader,Novice,Novice,2026-05-05,,,Novice
 19577,Arina Fedorova,Follower,Intermediate,Advanced,Leader,Novice,Novice,2026-06-23,N/A,N/A,Novice
 19577,Arina Fedorova,Follower,Intermediate,Advanced,Leader,Novice,Novice,2026-06-28,,,Novice
+19577,Arina Fedorova,Follower,Advanced,Advanced,Leader,nan,Novice,2026-08-10,,,Intermediate
 19578,Aleksandra Telenkova,Follower,Intermediate,Advanced,Leader,Novice,Intermediate,2025-01-08,,,
 19578,Aleksandra Telenkova,Follower,Intermediate,Advanced,Leader,Novice,Novice,2025-01-14,,,
 19578,Aleksandra Telenkova,Follower,Intermediate,Advanced,Leader,Novice,Novice,2025-05-16,1.0,Novice,
@@ -114805,6 +114833,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 19893,Louise Renoul,Follower,Novice,Novice,Leader,,,2026-05-22,1.0,Newcomer,
 19893,Louise Renoul,Follower,Novice,Novice,Leader,n/a,n/a,2026-06-23,1,Newcomer,n/a
 19893,Louise Renoul,Follower,Novice,Novice,Leader,nan,nan,2026-06-28,1,Newcomer,
+19893,Louise Renoul,Follower,Novice,Intermediate,Leader,nan,nan,2026-08-10,1,Newcomer,
 19894,Adeline Boulet,Follower,Novice,Intermediate,Leader,Newcomer,Novice,2024-08-14,,,
 19894,Adeline Boulet,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2024-08-21,,,
 19894,Adeline Boulet,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2025-05-16,2.0,Novice,
@@ -115967,6 +115996,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 20112,Vladimir Geneste-Samissoff,Leader,Intermediate,Advanced,Follower,Novice,Novice,2025-05-17,,,Novice
 20112,Vladimir Geneste-Samissoff,Leader,Intermediate,Advanced,Follower,Novice,Novice,2026-06-23,N/A,N/A,Novice
 20112,Vladimir Geneste-Samissoff,Leader,Intermediate,Advanced,Follower,Novice,Novice,2026-06-28,,,Novice
+20112,Vladimir Geneste-Samissoff,Leader,Advanced,Advanced,Follower,nan,Novice,2026-08-10,,,Intermediate
 20113,Mel Verduci,Leader,Advanced,All-Star,Follower,Intermediate,Advanced,2024-02-18,,,
 20113,Mel Verduci,Leader,All-Star,All-Star,Follower,Advanced,Advanced,2024-03-09,,,
 20113,Mel Verduci,Leader,All-Star,All-Star,Follower,Intermediate,Intermediate,2025-01-14,,,
@@ -116068,6 +116098,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 20128,Chase Warner,Leader,All-Star,All-Star,Follower,Advanced,Advanced,2026-01-06,15.0,Advance,Advanced
 20128,Chase Warner,Leader,All-Star,All-Star,Follower,Advanced,Advanced,2026-06-28,15,Advance,Advanced
 20128,Chase Warner,Leader,All-Star,All-Star,Follower,Advanced,Advanced,2026-07-09,16,Advance,Advanced
+20128,Chase Warner,Leader,All-Star,All-Star,Follower,Advanced,Advanced,2026-08-10,17,Advance,Advanced
 20129,Deitric Thompson,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2024-06-14,,,
 20129,Deitric Thompson,Leader,Intermediate,Advanced,Follower,Novice,Intermediate,2024-06-18,,,
 20129,Deitric Thompson,Leader,Advanced,Advanced,Follower,Intermediate,Intermediate,2024-10-16,,,
@@ -116939,6 +116970,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 20284,Nina Winkler,Follower,Advanced,Advanced,Leader,Intermediate,Intermediate,2026-05-14,14.0,Intermediate,Intermediate
 20284,Nina Winkler,Follower,Advanced,Advanced,Leader,Intermediate,Intermediate,2026-06-23,20,Intermediate,Intermediate
 20284,Nina Winkler,Follower,Advanced,Advanced,Leader,Intermediate,Intermediate,2026-07-27,24,Intermediate,Intermediate
+20284,Nina Winkler,Follower,Advanced,Advanced,Leader,Intermediate,Intermediate,2026-08-10,25,Intermediate,Intermediate
 20285,Monika Misztal,Follower,Novice,Novice,Leader,Newcomer,Novice,2025-04-30,,,
 20285,Monika Misztal,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-08,,,
 20285,Monika Misztal,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -117232,6 +117264,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 20343,Skylar Moore,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2025-05-16,2.0,Newcomer,
 20343,Skylar Moore,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2025-05-17,2.0,Newcomer,Novice
 20343,Skylar Moore,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-06-28,2,Newcomer,Novice
+20343,Skylar Moore,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-08-10,1,Novice,Novice
 20344,Jared Cogswell,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2025-05-16,,,
 20344,Jared Cogswell,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2025-05-17,,,Novice
 20344,Jared Cogswell,Leader,Intermediate,Advanced,Follower,Novice,Novice,2026-04-07,,,Novice
@@ -118644,6 +118677,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 20603,Leo Nguyen,Leader,All-Star,All-Star,Follower,,Intermediate,2026-03-18,3.0,Intermediate,Advanced
 20603,Leo Nguyen,Leader,All-Star,All-Star,Follower,,Intermediate,2026-06-23,4,Intermediate,Advanced
 20603,Leo Nguyen,Leader,All-Star,All-Star,Follower,nan,Intermediate,2026-06-28,4,Intermediate,Advanced
+20603,Leo Nguyen,Leader,All-Star,All-Star,Follower,nan,Intermediate,2026-08-10,5,Intermediate,Advanced
 20604,Kai Ploeger,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2025-04-30,,,
 20604,Kai Ploeger,Leader,Intermediate,Advanced,Follower,Novice,Novice,2025-05-08,,,
 20604,Kai Ploeger,Leader,Intermediate,Advanced,Follower,Novice,Novice,2025-05-17,,,Novice
@@ -119933,6 +119967,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 20832,Christina Landowski,Follower,All-Star,All-Star,Leader,Advanced,Advanced,2026-06-23,35,Advance,Advanced
 20832,Christina Landowski,Follower,All-Star,All-Star,Leader,Advanced,Advanced,2026-07-04,38,Advance,Advanced
 20832,Christina Landowski,Follower,All-Star,All-Star,Leader,Advanced,Advanced,2026-07-15,46,Advance,Advanced
+20832,Christina Landowski,Follower,All-Star,All-Star,Leader,Advanced,Advanced,2026-08-10,47,Advance,Advanced
 20833,Luca Wenchel,Leader,Novice,Novice,Follower,Newcomer,Novice,2024-06-14,,,
 20833,Luca Wenchel,Leader,Novice,Novice,Follower,Novice,Novice,2024-06-18,,,
 20833,Luca Wenchel,Leader,Novice,Intermediate,Follower,Novice,Novice,2024-07-05,,,
@@ -120653,6 +120688,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 20961,Yushi Wang,Leader,Advanced,Advanced,Follower,,Novice,2025-05-17,,,Intermediate
 20961,Yushi Wang,Leader,Advanced,Advanced,Follower,,Novice,2026-02-17,2.0,Novice,Intermediate
 20961,Yushi Wang,Leader,Advanced,Advanced,Follower,nan,Novice,2026-06-28,2,Novice,Intermediate
+20961,Yushi Wang,Leader,Advanced,Advanced,Follower,nan,Novice,2026-08-10,4,Novice,Intermediate
 20962,Jessica Morgenstern,Follower,Novice,Novice,Leader,Newcomer,Novice,2024-10-10,,,
 20962,Jessica Morgenstern,Follower,Novice,Intermediate,Leader,Newcomer,Novice,2024-10-16,,,
 20962,Jessica Morgenstern,Follower,Novice,Intermediate,Leader,Newcomer,Newcomer,2025-05-08,,,
@@ -122051,6 +122087,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 21225,Tobias Heinlein,Leader,Advanced,Advanced,Follower,,,2026-04-28,8.0,Advance,
 21225,Tobias Heinlein,Leader,Advanced,Advanced,Follower,n/a,n/a,2026-06-23,8,Advance,n/a
 21225,Tobias Heinlein,Leader,Advanced,Advanced,Follower,nan,nan,2026-06-28,8,Advance,
+21225,Tobias Heinlein,Leader,Advanced,Advanced,Follower,nan,nan,2026-08-10,9,Advance,
 21226,Hwee Meng Yeak,Follower,Novice,Novice,Leader,Novice,Novice,2025-04-30,,,
 21226,Hwee Meng Yeak,Follower,Novice,Novice,Leader,,,2025-05-08,,,
 21226,Hwee Meng Yeak,Follower,Novice,Novice,Leader,,,2025-05-16,2.0,Newcomer,
@@ -122282,6 +122319,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 21266,Pete Castro,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-06-23,N/A,N/A,Novice
 21266,Pete Castro,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-06-28,,,Novice
 21266,Pete Castro,Leader,Intermediate,Advanced,Follower,Novice,Novice,2026-07-09,,,Novice
+21266,Pete Castro,Leader,Advanced,Advanced,Follower,nan,Novice,2026-08-10,,,Intermediate
 21267,Daniel Mors,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2025-01-03,,,
 21267,Daniel Mors,Leader,Intermediate,Advanced,Follower,Novice,Intermediate,2025-01-08,,,
 21267,Daniel Mors,Leader,Intermediate,Advanced,Follower,Novice,Novice,2025-01-14,,,
@@ -123556,6 +123594,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 21504,Lukas Weiß,Leader,Advanced,Advanced,Follower,,Novice,2025-05-17,,,Intermediate
 21504,Lukas Weiß,Leader,Advanced,Advanced,Follower,,Novice,2026-06-23,N/A,N/A,Intermediate
 21504,Lukas Weiß,Leader,Advanced,Advanced,Follower,nan,Novice,2026-06-28,,,Intermediate
+21504,Lukas Weiß,Leader,Advanced,All-Star,Follower,Intermediate,Intermediate,2026-08-10,,,Intermediate
 21505,Fiona Klüser,Follower,Novice,Novice,Leader,Newcomer,Novice,2024-10-10,,,
 21505,Fiona Klüser,Follower,Novice,Intermediate,Leader,Newcomer,Novice,2024-10-16,,,
 21505,Fiona Klüser,Follower,Novice,Intermediate,Leader,Newcomer,Newcomer,2025-05-08,,,
@@ -125937,6 +125976,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 21934,Patrick Thompson,Leader,Novice,Intermediate,Follower,,,2025-10-25,1.0,Newcomer,
 21934,Patrick Thompson,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2025-10-29,1.0,Newcomer,Novice
 21934,Patrick Thompson,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-06-28,1,Newcomer,Novice
+21934,Patrick Thompson,Leader,Intermediate,Advanced,Follower,Novice,Novice,2026-08-10,1,Newcomer,Novice
 21935,Amy Howansky,Leader,Novice,Novice,Follower,Newcomer,Novice,2024-10-16,,,
 21935,Amy Howansky,Follower,Novice,Novice,Leader,Novice,Novice,2024-10-23,,,
 21935,Amy Howansky,Follower,Novice,Novice,Leader,,,2025-05-08,,,
@@ -128352,6 +128392,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 22376,Ryan Osbourn,Leader,Advanced,All-Star,Follower,Intermediate,Intermediate,2026-04-03,,,Intermediate
 22376,Ryan Osbourn,Leader,Advanced,All-Star,Follower,Intermediate,Intermediate,2026-06-23,N/A,N/A,Intermediate
 22376,Ryan Osbourn,Leader,Advanced,All-Star,Follower,Intermediate,Intermediate,2026-06-28,,,Intermediate
+22376,Ryan Osbourn,Leader,All-Star,All-Star,Follower,nan,Intermediate,2026-08-10,,,Advanced
 22377,Will Zhang,Leader,Novice,Novice,Follower,Newcomer,Novice,2024-04-02,,,
 22377,Will Zhang,Leader,Novice,Intermediate,Follower,Newcomer,Novice,2024-05-06,,,
 22377,Will Zhang,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2024-06-07,,,
@@ -129182,6 +129223,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 22525,Elise Holland,Follower,Advanced,All-Star,Leader,Intermediate,Intermediate,2026-05-27,9.0,Intermediate,Intermediate
 22525,Elise Holland,Follower,Advanced,All-Star,Leader,Intermediate,Intermediate,2026-06-28,9,Intermediate,Intermediate
 22525,Elise Holland,Follower,Advanced,All-Star,Leader,Intermediate,Intermediate,2026-07-27,11,Intermediate,Intermediate
+22525,Elise Holland,Follower,Advanced,All-Star,Leader,Intermediate,Intermediate,2026-08-10,13,Intermediate,Intermediate
 22526,Jindalae Suh,Follower,Novice,Novice,Leader,Newcomer,Novice,2024-03-09,,,
 22526,Jindalae Suh,Follower,Novice,Intermediate,Leader,Newcomer,Novice,2024-04-02,,,
 22526,Jindalae Suh,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2024-06-07,,,
@@ -129480,6 +129522,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 22578,Sourav Sarkar,Leader,Intermediate,Advanced,Follower,Novice,Novice,2026-05-14,,,Novice
 22578,Sourav Sarkar,Leader,Intermediate,Advanced,Follower,Novice,Novice,2026-06-23,N/A,N/A,Novice
 22578,Sourav Sarkar,Leader,Intermediate,Advanced,Follower,Novice,Novice,2026-06-28,,,Novice
+22578,Sourav Sarkar,Leader,Intermediate,Advanced,Follower,Novice,Novice,2026-08-10,1,Novice,Novice
 22579,Andreas Kloo,Leader,Novice,Novice,Follower,Newcomer,Novice,2025-04-30,,,
 22579,Andreas Kloo,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-08,,,
 22579,Andreas Kloo,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -129953,6 +129996,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 22662,Sarah Vollmerhaus,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2025-05-17,,,Novice
 22662,Sarah Vollmerhaus,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-06-23,N/A,N/A,Novice
 22662,Sarah Vollmerhaus,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-06-28,,,Novice
+22662,Sarah Vollmerhaus,Follower,Intermediate,Advanced,Leader,Novice,Novice,2026-08-10,,,Novice
 22664,Stephanie A Reed,Follower,Novice,Novice,Leader,Newcomer,Novice,2025-04-30,,,
 22664,Stephanie A Reed,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-08,,,
 22664,Stephanie A Reed,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -130099,6 +130143,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 22690,Saumya Bhandarkar,Follower,Novice,Novice,Leader,,,2025-10-25,10.0,Newcomer,
 22690,Saumya Bhandarkar,Follower,Novice,Novice,Leader,n/a,n/a,2026-06-23,10,Newcomer,n/a
 22690,Saumya Bhandarkar,Follower,Novice,Novice,Leader,nan,nan,2026-06-28,10,Newcomer,
+22690,Saumya Bhandarkar,Follower,Novice,Intermediate,Leader,nan,nan,2026-08-10,10,Newcomer,
 22691,Ellis Permann,Follower,Novice,Novice,Leader,Newcomer,Novice,2024-09-06,,,
 22691,Ellis Permann,Follower,Novice,Intermediate,Leader,Newcomer,Novice,2024-09-11,,,
 22691,Ellis Permann,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2025-01-03,,,
@@ -130552,6 +130597,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 22776,Jonathan Lin,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2025-05-24,,,Novice
 22776,Jonathan Lin,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-06-23,N/A,N/A,Novice
 22776,Jonathan Lin,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-06-28,,,Novice
+22776,Jonathan Lin,Leader,Intermediate,Advanced,Follower,Novice,Novice,2026-08-10,,,Novice
 22777,Marcus Hammond,Leader,Novice,Novice,Follower,Newcomer,Novice,2025-04-30,,,
 22777,Marcus Hammond,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-08,,,
 22777,Marcus Hammond,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -131116,6 +131162,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 22878,Egan Anselmo,Leader,Advanced,Advanced,Follower,,Novice,2025-05-17,,,Intermediate
 22878,Egan Anselmo,Leader,Advanced,Advanced,Follower,,Novice,2025-10-16,8.0,Novice,Intermediate
 22878,Egan Anselmo,Leader,Advanced,Advanced,Follower,nan,Novice,2026-06-28,8,Novice,Intermediate
+22878,Egan Anselmo,Leader,Advanced,All-Star,Follower,Intermediate,Intermediate,2026-08-10,8,Novice,Intermediate
 22879,Audrey Hoo,Leader,Novice,Novice,Follower,Newcomer,Novice,2024-05-06,,,
 22879,Audrey Hoo,Leader,Novice,Novice,Follower,Novice,Novice,2024-06-07,,,
 22879,Audrey Hoo,Leader,Novice,Intermediate,Follower,Novice,Novice,2024-12-13,,,
@@ -131154,6 +131201,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 22883,Jefferson Flowers,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2025-05-17,,,Novice
 22883,Jefferson Flowers,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-06-23,N/A,N/A,Novice
 22883,Jefferson Flowers,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-06-28,,,Novice
+22883,Jefferson Flowers,Leader,Intermediate,Advanced,Follower,Novice,Novice,2026-08-10,,,Novice
 22884,Piper Karren,Follower,Novice,Novice,Leader,Newcomer,Novice,2024-06-07,,,
 22884,Piper Karren,Follower,Novice,Intermediate,Leader,Newcomer,Novice,2024-06-14,,,
 22884,Piper Karren,Follower,Novice,Intermediate,Leader,Newcomer,Newcomer,2025-05-08,,,
@@ -131190,6 +131238,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 22888,Amanda Ho,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-01-09,,,Novice
 22888,Amanda Ho,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-06-23,N/A,N/A,Novice
 22888,Amanda Ho,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-06-28,,,Novice
+22888,Amanda Ho,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-08-10,4,Novice,Novice
 22889,Chad Humberstone,Leader,Novice,Novice,Follower,Newcomer,Novice,2025-04-30,,,
 22889,Chad Humberstone,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-08,,,
 22889,Chad Humberstone,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -131824,6 +131873,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 23001,Fanny Herisson,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-17,,,Newcomer
 23001,Fanny Herisson,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 23001,Fanny Herisson,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
+23001,Fanny Herisson,Follower,Novice,Intermediate,Leader,nan,nan,2026-08-11,,,
 23002,Elizabeth Bastable,Follower,Novice,Novice,Leader,Newcomer,Novice,2025-04-30,,,
 23002,Elizabeth Bastable,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-08,,,
 23002,Elizabeth Bastable,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -131879,6 +131929,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 23011,Kelsey Oertly,Follower,Novice,Intermediate,Leader,,,2026-05-14,1.0,Newcomer,
 23011,Kelsey Oertly,Follower,Novice,Intermediate,Leader,n/a,n/a,2026-06-23,1,Newcomer,n/a
 23011,Kelsey Oertly,Follower,Novice,Intermediate,Leader,nan,nan,2026-06-28,1,Newcomer,
+23011,Kelsey Oertly,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-08-10,1,Newcomer,Novice
 23012,Graylen Kirby,Follower,Novice,Novice,Leader,Newcomer,Novice,2024-05-06,,,
 23012,Graylen Kirby,Follower,Novice,Intermediate,Leader,Newcomer,Novice,2024-06-07,,,
 23012,Graylen Kirby,Follower,Novice,Intermediate,Leader,Novice,Novice,2024-09-11,,,
@@ -132799,6 +132850,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 23180,Claire McCarthy,Follower,Novice,Intermediate,Leader,,,2026-01-21,,,
 23180,Claire McCarthy,Follower,Novice,Intermediate,Leader,n/a,n/a,2026-06-23,N/A,N/A,n/a
 23180,Claire McCarthy,Follower,Novice,Intermediate,Leader,nan,nan,2026-06-28,,,
+23180,Claire McCarthy,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-08-11,,,Novice
 23181,LeeAnn Gordon,Follower,Novice,Novice,Leader,Newcomer,Novice,2024-04-02,,,
 23181,LeeAnn Gordon,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-08,,,
 23181,LeeAnn Gordon,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -133177,6 +133229,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 23246,Britta Albertson,Follower,Advanced,Advanced,Leader,nan,Novice,2026-06-28,6,Novice,Intermediate
 23246,Britta Albertson,Follower,Advanced,Advanced,Leader,nan,Novice,2026-07-09,26,Novice,Intermediate
 23246,Britta Albertson,Follower,Advanced,Advanced,Leader,nan,Novice,2026-07-20,27,Novice,Intermediate
+23246,Britta Albertson,Follower,Advanced,Advanced,Leader,Intermediate,Intermediate,2026-08-10,37,Novice,Intermediate
 23247,Nicole Young,Follower,Novice,Novice,Leader,Newcomer,Novice,2024-04-02,,,
 23247,Nicole Young,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-08,,,
 23247,Nicole Young,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -133410,6 +133463,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 23286,Stacey Potter,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2025-07-21,4.0,Newcomer,Novice
 23286,Stacey Potter,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-06-10,2.0,Novice,Novice
 23286,Stacey Potter,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-06-28,2,Novice,Novice
+23286,Stacey Potter,Follower,Intermediate,Advanced,Leader,Novice,Novice,2026-08-10,2,Novice,Novice
 23287,Cassidy Lukaart,Follower,Novice,Novice,Leader,Newcomer,Novice,2024-05-06,,,
 23287,Cassidy Lukaart,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-08,,,
 23287,Cassidy Lukaart,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -133633,6 +133687,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 23324,Brady Richter,Leader,Novice,Novice,Follower,,,2025-05-16,1.0,Newcomer,
 23324,Brady Richter,Leader,Novice,Novice,Follower,n/a,n/a,2026-06-23,1,Newcomer,n/a
 23324,Brady Richter,Leader,Novice,Novice,Follower,nan,nan,2026-06-28,1,Newcomer,
+23324,Brady Richter,Leader,Novice,Intermediate,Follower,nan,nan,2026-08-11,1,Newcomer,
 23325,Sebastien Sery,Leader,Novice,Novice,Follower,Newcomer,Novice,2024-05-06,,,
 23325,Sebastien Sery,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-08,,,
 23325,Sebastien Sery,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -133804,6 +133859,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 23356,Isabelle Staquet,Follower,Novice,Intermediate,Leader,,,2026-01-21,,,
 23356,Isabelle Staquet,Follower,Novice,Intermediate,Leader,n/a,n/a,2026-06-23,N/A,N/A,n/a
 23356,Isabelle Staquet,Follower,Novice,Intermediate,Leader,nan,nan,2026-06-28,,,
+23356,Isabelle Staquet,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-08-10,,,Novice
 23357,Nick Mueller,Leader,Novice,Novice,Follower,Newcomer,Novice,2024-05-06,,,
 23357,Nick Mueller,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-08,,,
 23357,Nick Mueller,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -134554,6 +134610,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 23493,Ju Ansorge,Follower,Novice,Intermediate,Leader,,,2026-02-25,19.0,Novice,
 23493,Ju Ansorge,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-05-22,26.0,Novice,Novice
 23493,Ju Ansorge,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-06-28,26,Novice,Novice
+23493,Ju Ansorge,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-08-10,28,Novice,Novice
 23494,Eliott Basse Green,Leader,Novice,Novice,Follower,Newcomer,Novice,2024-06-07,,,
 23494,Eliott Basse Green,Leader,Novice,Intermediate,Follower,Newcomer,Novice,2025-04-18,,,
 23494,Eliott Basse Green,Leader,Novice,Intermediate,Follower,Newcomer,Newcomer,2025-05-08,,,
@@ -135666,6 +135723,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 23694,Tristan Gaudron,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-17,,,Newcomer
 23694,Tristan Gaudron,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 23694,Tristan Gaudron,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-28,,,Newcomer
+23694,Tristan Gaudron,Leader,Novice,Intermediate,Follower,nan,nan,2026-08-10,,,
 23695,Kyrylo Yakymenko,Leader,Novice,Novice,Follower,Newcomer,Novice,2024-07-05,,,
 23695,Kyrylo Yakymenko,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-08,,,
 23695,Kyrylo Yakymenko,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -135825,6 +135883,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 23723,Alesia Haxhia,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2025-06-12,,,Novice
 23723,Alesia Haxhia,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-06-23,N/A,N/A,Novice
 23723,Alesia Haxhia,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-06-28,,,Novice
+23723,Alesia Haxhia,Follower,Intermediate,Advanced,Leader,Novice,Novice,2026-08-10,,,Novice
 23724,Carinna Hem,Follower,Novice,Novice,Leader,Newcomer,Novice,2024-07-05,,,
 23724,Carinna Hem,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-08,,,
 23724,Carinna Hem,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -136037,6 +136096,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 23761,Jason Math,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-02-25,1.0,Newcomer,Novice
 23761,Jason Math,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-05-22,2.0,Novice,Novice
 23761,Jason Math,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-06-28,2,Novice,Novice
+23761,Jason Math,Leader,Intermediate,Advanced,Follower,Novice,Novice,2026-08-10,2,Novice,Novice
 23762,Ryan Slagle,Leader,Novice,Novice,Follower,Newcomer,Novice,2024-07-10,,,
 23762,Ryan Slagle,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-08,,,
 23762,Ryan Slagle,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -136957,6 +137017,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 23929,Moritz Herlyn,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-17,,,Newcomer
 23929,Moritz Herlyn,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 23929,Moritz Herlyn,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-28,,,Newcomer
+23929,Moritz Herlyn,Leader,Novice,Novice,Follower,nan,nan,2026-08-10,1,Newcomer,
 23930,Sarah Kniewel,Leader,Novice,Novice,Follower,Newcomer,Novice,2024-08-08,,,
 23930,Felix Wagner,Leader,Novice,Intermediate,Follower,Newcomer,Newcomer,2025-05-08,,,
 23930,Felix Wagner,Leader,Novice,Intermediate,Follower,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -137062,6 +137123,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 23947,Janina Ziegler,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 23947,Janina Ziegler,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
 23947,Janina Ziegler,Leader,Novice,Novice,Follower,nan,nan,2026-07-04,1,Newcomer,
+23947,Janina Ziegler,Follower,Novice,Novice,Leader,nan,nan,2026-08-10,8,Newcomer,
 23948,Hannah Schimanski,Follower,Novice,Novice,Leader,Newcomer,Novice,2024-08-08,,,
 23948,Hannah Schimanski,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-08,,,
 23948,Hannah Schimanski,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -137157,6 +137219,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 23962,Ngoc Phan,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-06-23,N/A,N/A,Novice
 23962,Ngoc Phan,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-06-28,,,Novice
 23962,Ngoc Phan,Follower,Intermediate,Advanced,Leader,Novice,Novice,2026-07-09,,,Novice
+23962,Ngoc Phan,Follower,Advanced,Advanced,Leader,nan,Novice,2026-08-10,,,Intermediate
 23963,Arun Ganti,Leader,Novice,Novice,Follower,Newcomer,Novice,2024-08-08,,,
 23963,Arun Ganti,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-08,,,
 23963,Arun Ganti,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -137212,6 +137275,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 23973,Heather Sabel,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2025-05-17,,,Novice
 23973,Heather Sabel,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-06-23,N/A,N/A,Novice
 23973,Heather Sabel,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-06-28,,,Novice
+23973,Heather Sabel,Follower,Intermediate,Advanced,Leader,Novice,Novice,2026-08-10,,,Novice
 23974,Kyra Peters,Follower,Novice,Novice,Leader,Newcomer,Novice,2024-08-08,,,
 23974,Kyra Peters,Follower,Novice,Intermediate,Leader,Newcomer,Novice,2025-02-19,,,
 23974,Kyra Peters,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2025-03-14,,,
@@ -137990,6 +138054,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 24116,Fafadji Gnofame,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-01-13,,,Novice
 24116,Fafadji Gnofame,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-06-23,N/A,N/A,Novice
 24116,Fafadji Gnofame,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-06-28,,,Novice
+24116,Fafadji Gnofame,Leader,Intermediate,Advanced,Follower,Novice,Novice,2026-08-10,,,Novice
 24117,Quentin Chan-Wai-Nam,Leader,Novice,Novice,Follower,Newcomer,Novice,2024-09-11,,,
 24117,Quentin Chan-Wai-Nam,Follower,Novice,Novice,Leader,Novice,Novice,2024-10-04,,,
 24117,Quentin Chan-Wai-Nam,Leader,Novice,Novice,Follower,Novice,Novice,2025-04-10,,,
@@ -138995,6 +139060,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 24298,Lindsey Todd,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 24298,Lindsey Todd,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
 24298,Lindsey Todd,Follower,Novice,Novice,Leader,nan,nan,2026-07-15,2,Newcomer,
+24298,Lindsey Todd,Follower,Novice,Intermediate,Leader,nan,nan,2026-08-10,2,Newcomer,
 24299,Jonathan Fuller,Leader,Novice,Novice,Follower,Newcomer,Novice,2024-10-10,,,
 24299,Jonathan Fuller,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-08,,,
 24299,Jonathan Fuller,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -139326,6 +139392,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 24361,Zuzanna Beckmann,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-17,,,Newcomer
 24361,Zuzanna Beckmann,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 24361,Zuzanna Beckmann,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
+24361,Zuzanna Beckmann,Follower,Novice,Intermediate,Leader,nan,nan,2026-08-10,,,
 24362,Hanna Müller,Follower,Novice,Novice,Leader,Newcomer,Novice,2024-10-23,,,
 24362,Hanna Müller,Follower,Novice,Novice,Leader,Novice,Novice,2025-01-03,,,
 24362,Hanna Müller,Follower,Novice,Novice,Leader,,,2025-05-08,,,
@@ -139369,6 +139436,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 24368,Ute Thust,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-17,,,Newcomer
 24368,Ute Thust,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 24368,Ute Thust,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
+24368,Ute Thust,Follower,Novice,Intermediate,Leader,nan,nan,2026-08-10,,,
 24369,Jennifer Xiao,Leader,Novice,Novice,Follower,Newcomer,Novice,2024-10-23,,,
 24369,Jennifer Xiao,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-08,,,
 24369,Jennifer Xiao,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -140171,6 +140239,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 24512,Salomon Alcantar,Leader,Novice,Intermediate,Follower,,,2025-10-07,1.0,Newcomer,
 24512,Salomon Alcantar,Leader,Novice,Intermediate,Follower,n/a,n/a,2026-06-23,1,Newcomer,n/a
 24512,Salomon Alcantar,Leader,Novice,Intermediate,Follower,nan,nan,2026-06-28,1,Newcomer,
+24512,Salomon Alcantar,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-08-10,1,Newcomer,Novice
 24513,Mach Jackson,Leader,Novice,Novice,Follower,Newcomer,Novice,2024-11-06,,,
 24513,Mach Jackson,Leader,Novice,Intermediate,Follower,Newcomer,Novice,2025-04-23,,,
 24513,Mach Jackson,Leader,Novice,Intermediate,Follower,Newcomer,Newcomer,2025-05-08,,,
@@ -140357,6 +140426,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 24545,Claire Olson,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-17,,,Newcomer
 24545,Claire Olson,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 24545,Claire Olson,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
+24545,Claire Olson,Leader,Novice,Novice,Follower,nan,nan,2026-08-10,3,Newcomer,
 24546,Jenn Westerson,Follower,Novice,Novice,Leader,Newcomer,Novice,2024-11-06,,,
 24546,Jenn Westerson,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-08,,,
 24546,Jenn Westerson,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -141030,6 +141100,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 24674,Leonardo Pahuriray,Leader,Novice,Intermediate,Follower,,,2026-01-21,,,
 24674,Leonardo Pahuriray,Leader,Novice,Intermediate,Follower,n/a,n/a,2026-06-23,N/A,N/A,n/a
 24674,Leonardo Pahuriray,Leader,Novice,Intermediate,Follower,nan,nan,2026-06-28,,,
+24674,Leonardo Pahuriray,Leader,Novice,Intermediate,Follower,nan,nan,2026-08-10,1,Novice,
 24675,Daniel Gallagher,Leader,Novice,Novice,Follower,Newcomer,Novice,2024-11-22,,,
 24675,Daniel Gallagher,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-08,,,
 24675,Daniel Gallagher,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -142386,6 +142457,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 24914,Dana Johnson,Follower,Novice,Intermediate,Leader,,,2025-12-04,11.0,Novice,
 24914,Dana Johnson,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-01-21,12.0,Novice,Novice
 24914,Dana Johnson,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-06-28,12,Novice,Novice
+24914,Dana Johnson,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-08-10,14,Novice,Novice
 24915,Sheri Loraine,Follower,Novice,Novice,Leader,Newcomer,Novice,2025-01-23,,,
 24915,Sheri Loraine,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-08,,,
 24915,Sheri Loraine,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -142393,6 +142465,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 24915,Sheri Loraine,Follower,Novice,Intermediate,Leader,,,2026-01-21,,,
 24915,Sheri Loraine,Follower,Novice,Intermediate,Leader,n/a,n/a,2026-06-23,N/A,N/A,n/a
 24915,Sheri Loraine,Follower,Novice,Intermediate,Leader,nan,nan,2026-06-28,,,
+24915,Sheri Loraine,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-08-10,,,Novice
 24916,Florent Chauvin,Leader,Novice,Novice,Follower,Newcomer,Novice,2025-01-23,,,
 24916,Florent Chauvin,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-08,,,
 24916,Florent Chauvin,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -143208,11 +143281,13 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 25070,Alana Swift,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2025-10-16,,,Novice
 25070,Alana Swift,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-06-23,N/A,N/A,Novice
 25070,Alana Swift,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-06-28,,,Novice
+25070,Alana Swift,Follower,Intermediate,Advanced,Leader,Novice,Novice,2026-08-10,,,Novice
 25071,Eric Fernandez,Leader,Novice,Novice,Follower,Newcomer,Novice,2025-02-19,,,
 25071,Eric Fernandez,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-08,,,
 25071,Eric Fernandez,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-17,,,Newcomer
 25071,Eric Fernandez,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 25071,Eric Fernandez,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-28,,,Newcomer
+25071,Eric Fernandez,Leader,Novice,Intermediate,Follower,nan,nan,2026-08-10,,,
 25072,Leon Kong,Leader,Novice,Novice,Follower,Newcomer,Novice,2025-02-19,,,
 25072,Leon Kong,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-08,,,
 25072,Leon Kong,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -143839,6 +143914,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 25190,Morgan Halstead,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-04-15,18.0,Novice,Novice
 25190,Morgan Halstead,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-06-28,18,Novice,Novice
 25190,Morgan Halstead,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-07-09,19,Novice,Novice
+25190,Morgan Halstead,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-08-10,21,Novice,Novice
 25191,Larissa Silovieva,Follower,Novice,Novice,Leader,Newcomer,Novice,2025-03-14,,,
 25191,Larissa Silovieva,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-08,,,
 25191,Larissa Silovieva,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -145344,6 +145420,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 25474,Jacquelyn Parker,Follower,Novice,Novice,Leader,,,2025-09-23,8.0,Newcomer,
 25474,Jacquelyn Parker,Follower,Novice,Novice,Leader,n/a,n/a,2026-06-23,8,Newcomer,n/a
 25474,Jacquelyn Parker,Follower,Novice,Novice,Leader,nan,nan,2026-06-28,8,Newcomer,
+25474,Jacquelyn Parker,Follower,Novice,Intermediate,Leader,nan,nan,2026-08-10,8,Newcomer,
 25475,Carly Wells,Follower,Novice,Novice,Leader,Newcomer,Novice,2025-04-23,,,
 25475,Carly Wells,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-08,,,
 25475,Carly Wells,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -145441,6 +145518,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 25492,Jacob Guerin,Leader,Novice,Intermediate,Follower,,,2026-05-27,,,
 25492,Jacob Guerin,Leader,Novice,Intermediate,Follower,n/a,n/a,2026-06-23,N/A,N/A,n/a
 25492,Jacob Guerin,Leader,Novice,Intermediate,Follower,nan,nan,2026-06-28,,,
+25492,Jacob Guerin,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-08-11,,,Novice
 25493,Annalise Charoonsophonsak,Follower,Novice,Novice,Leader,Newcomer,Novice,2025-04-23,,,
 25493,Annalise Charoonsophonsak,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-08,,,
 25493,Annalise Charoonsophonsak,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -145871,6 +145949,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 25572,Janine Schön,Follower,Novice,Novice,Leader,,,2026-04-28,1.0,Newcomer,
 25572,Janine Schön,Follower,Novice,Novice,Leader,n/a,n/a,2026-06-23,1,Newcomer,n/a
 25572,Janine Schön,Follower,Novice,Novice,Leader,nan,nan,2026-06-28,1,Newcomer,
+25572,Janine Schön,Follower,Novice,Intermediate,Leader,nan,nan,2026-08-10,1,Newcomer,
 25573,Caroline Maiß,Follower,Novice,Novice,Leader,Newcomer,Novice,2025-04-30,,,
 25573,Caroline Maiß,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-08,,,
 25573,Caroline Maiß,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -146572,9 +146651,11 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 25744,Madelena Pine,Follower,Novice,Intermediate,Leader,,,2026-01-21,,,
 25744,Madelena Pine,Follower,Novice,Intermediate,Leader,n/a,n/a,2026-06-23,N/A,N/A,n/a
 25744,Madelena Pine,Follower,Novice,Intermediate,Leader,nan,nan,2026-06-28,,,
+25744,Madelena Pine,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-08-10,,,Novice
 25745,Georgia Cowart,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-24,,,Newcomer
 25745,Georgia Cowart,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 25745,Georgia Cowart,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
+25745,Georgia Cowart,Follower,Novice,Novice,Leader,nan,nan,2026-08-10,4,Newcomer,
 25746,Emily Sowers,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-24,,,Newcomer
 25746,Emily Sowers,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 25746,Emily Sowers,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
@@ -146584,6 +146665,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 25748,Jenny Liversedge,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-24,,,Newcomer
 25748,Jenny Liversedge,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 25748,Jenny Liversedge,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
+25748,Jenny Liversedge,Follower,Novice,Intermediate,Leader,nan,nan,2026-08-10,,,
 25749,Kylie Davidson,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-24,,,Newcomer
 25749,Kylie Davidson,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 25749,Kylie Davidson,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
@@ -146658,6 +146740,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 25766,Madelaine Briggs,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-30,,,Newcomer
 25766,Madelaine Briggs,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 25766,Madelaine Briggs,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
+25766,Madelaine Briggs,Follower,Novice,Intermediate,Leader,nan,nan,2026-08-10,,,
 25767,Preksha Jain,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-30,,,Newcomer
 25767,Preksha Jain,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 25767,Preksha Jain,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
@@ -146793,6 +146876,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 25804,Barbara Sophie Wölfer,Follower,Novice,Intermediate,Leader,,,2026-03-23,10.0,Newcomer,
 25804,Barbara Sophie Wölfer,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-05-14,10.0,Newcomer,Novice
 25804,Barbara Sophie Wölfer,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-06-28,10,Newcomer,Novice
+25804,Barbara Sophie Wölfer,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-08-10,2,Novice,Novice
 25805,Anita Palkovics,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-06-04,,,Newcomer
 25805,Anita Palkovics,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 25805,Anita Palkovics,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
@@ -146987,6 +147071,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 25862,Chase Beloff,Leader,Intermediate,Advanced,Follower,Novice,Novice,2025-09-05,,,Novice
 25862,Chase Beloff,Leader,Intermediate,Advanced,Follower,Novice,Novice,2026-06-23,N/A,N/A,Novice
 25862,Chase Beloff,Leader,Intermediate,Advanced,Follower,Novice,Novice,2026-06-28,,,Novice
+25862,Chase Beloff,Leader,Advanced,Advanced,Follower,nan,Novice,2026-08-10,,,Intermediate
 25863,Diego Brea,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-06-12,,,Newcomer
 25863,Diego Brea,Leader,Novice,Novice,Follower,,,2025-10-29,2.0,Newcomer,
 25863,Diego Brea,Leader,Novice,Intermediate,Follower,,,2025-12-11,2.0,Newcomer,
@@ -147142,6 +147227,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 25906,Daniel Schreiber,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-06-20,,,Newcomer
 25906,Daniel Schreiber,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 25906,Daniel Schreiber,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-28,,,Newcomer
+25906,Daniel Schreiber,Leader,Novice,Intermediate,Follower,nan,nan,2026-08-10,,,
 25907,Marc Kröll,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-06-20,,,Newcomer
 25907,Marc Kröll,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 25907,Marc Kröll,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-28,,,Newcomer
@@ -147730,6 +147816,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 26095,Anni Vartila,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-07-09,,,Newcomer
 26095,Anni Vartila,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 26095,Anni Vartila,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
+26095,Anni Vartila,Follower,Novice,Novice,Leader,nan,nan,2026-08-10,12,Newcomer,
 26096,Anne Rantala,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-07-09,,,Newcomer
 26096,Anne Rantala,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 26096,Anne Rantala,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
@@ -148594,6 +148681,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 26362,Sofia Wyatt,Follower,Novice,Intermediate,Leader,,,2026-01-09,1.0,Novice,
 26362,Sofia Wyatt,Follower,Novice,Intermediate,Leader,n/a,n/a,2026-06-23,1,Novice,n/a
 26362,Sofia Wyatt,Follower,Novice,Intermediate,Leader,nan,nan,2026-06-28,1,Novice,
+26362,Sofia Wyatt,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-08-10,11,Novice,Novice
 26363,Caitlin Tang-Hornbuckle,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-08-06,,,Newcomer
 26363,Caitlin Tang-Hornbuckle,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 26363,Caitlin Tang-Hornbuckle,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
@@ -148678,6 +148766,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 26388,Marietta Schuster,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-08-14,,,Newcomer
 26388,Marietta Schuster,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 26388,Marietta Schuster,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
+26388,Marietta Schuster,Follower,Novice,Novice,Leader,nan,nan,2026-08-10,10,Newcomer,
 26389,Monica Karimi - Frohnwieser,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-08-14,,,Newcomer
 26389,Monica Karimi - Frohnwieser,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 26389,Monica Karimi - Frohnwieser,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
@@ -149077,6 +149166,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 26507,Christopher Ling,Leader,Novice,Novice,Follower,,,2026-04-07,1.0,Newcomer,
 26507,Christopher Ling,Leader,Novice,Novice,Follower,n/a,n/a,2026-06-23,1,Newcomer,n/a
 26507,Christopher Ling,Leader,Novice,Novice,Follower,nan,nan,2026-06-28,1,Newcomer,
+26507,Christopher Ling,Leader,Novice,Intermediate,Follower,nan,nan,2026-08-10,1,Newcomer,
 26508,Ravikiran Kawade,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-09-05,,,Newcomer
 26508,Ravikiran Kawade,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 26508,Ravikiran Kawade,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-28,,,Newcomer
@@ -149395,6 +149485,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 26610,Kareen Rivera,Follower,Novice,Intermediate,Leader,nan,nan,2026-06-28,1,Novice,
 26610,Kareen Rivera,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-07-15,1,Novice,Novice
 26610,Kareen Rivera,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-07-27,9,Novice,Novice
+26610,Kareen Rivera,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-08-10,10,Novice,Novice
 26611,Emma Zajonc,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-09-09,,,Newcomer
 26611,Emma Zajonc,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 26611,Emma Zajonc,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
@@ -149468,6 +149559,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 26634,Carolin Steinegger,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 26634,Carolin Steinegger,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
 26634,Carolin Steinegger,Follower,Novice,Novice,Leader,nan,nan,2026-07-15,2,Newcomer,
+26634,Carolin Steinegger,Follower,Novice,Intermediate,Leader,nan,nan,2026-08-10,2,Newcomer,
 26635,Octavia Ciora,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-09-16,,,Newcomer
 26635,Octavia Ciora,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 26635,Octavia Ciora,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
@@ -150147,6 +150239,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 26845,Torre Viola,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-10-25,,,Newcomer
 26845,Torre Viola,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 26845,Torre Viola,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
+26845,Torre Viola,Follower,Novice,Novice,Leader,nan,nan,2026-08-10,1,Newcomer,
 26846,Gregoire Bornais,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-10-25,,,Newcomer
 26846,Gregoire Bornais,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 26846,Gregoire Bornais,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-28,,,Newcomer
@@ -150257,16 +150350,19 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 26883,Zachary Barbieri,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-04-15,1.0,Newcomer,Novice
 26883,Zachary Barbieri,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-05-22,2.0,Novice,Novice
 26883,Zachary Barbieri,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-06-28,2,Novice,Novice
+26883,Zachary Barbieri,Leader,Intermediate,Advanced,Follower,Novice,Novice,2026-08-10,2,Novice,Novice
 26884,Riley Farrell,Follower,Novice,Intermediate,Leader,Newcomer,Newcomer,2025-10-25,,,Newcomer
 26884,Riley Farrell,Follower,Novice,Intermediate,Leader,,,2026-01-21,,,
 26884,Riley Farrell,Follower,Novice,Intermediate,Leader,n/a,n/a,2026-06-23,N/A,N/A,n/a
 26884,Riley Farrell,Follower,Novice,Intermediate,Leader,nan,nan,2026-06-28,,,
+26884,Riley Farrell,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-08-10,,,Novice
 26885,Morgan Cremin,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-10-25,,,Newcomer
 26885,Morgan Cremin,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 26885,Morgan Cremin,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
 26886,Michaela Sadler,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-10-25,,,Newcomer
 26886,Michaela Sadler,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 26886,Michaela Sadler,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
+26886,Michaela Sadler,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-08-10,,,Novice
 26887,Aaron Sy,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-10-25,,,Newcomer
 26887,Aaron Sy,Follower,Novice,Intermediate,Leader,,,2026-01-21,,,
 26887,Aaron Sy,Follower,Novice,Intermediate,Leader,n/a,n/a,2026-06-23,N/A,N/A,n/a
@@ -150391,6 +150487,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 26925,Lisa Koeffer,Follower,Intermediate,Advanced,Leader,Novice,Novice,2026-05-22,,,Novice
 26925,Lisa Koeffer,Follower,Intermediate,Advanced,Leader,Novice,Novice,2026-06-23,N/A,N/A,Novice
 26925,Lisa Koeffer,Follower,Intermediate,Advanced,Leader,Novice,Novice,2026-06-28,,,Novice
+26925,Lisa Koeffer,Follower,Advanced,Advanced,Leader,nan,Novice,2026-08-10,,,Intermediate
 26926,Caroline Forin,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-10-29,,,Newcomer
 26926,Caroline Forin,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 26926,Caroline Forin,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
@@ -150416,6 +150513,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 26933,Reyna Shisbey,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-10-29,,,Newcomer
 26933,Reyna Shisbey,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 26933,Reyna Shisbey,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
+26933,Reyna Shisbey,Follower,Novice,Intermediate,Leader,nan,nan,2026-08-10,,,
 26934,Heather Whim,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-10-29,,,Newcomer
 26934,Heather Whim,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 26934,Heather Whim,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
@@ -150914,6 +151012,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 27087,Jaedell Gresham,Leader,Advanced,Advanced,Follower,,Novice,2026-03-23,,,Intermediate
 27087,Jaedell Gresham,Leader,Advanced,Advanced,Follower,,Novice,2026-06-23,N/A,N/A,Intermediate
 27087,Jaedell Gresham,Leader,Advanced,Advanced,Follower,nan,Novice,2026-06-28,,,Intermediate
+27087,Jaedell Gresham,Leader,Advanced,All-Star,Follower,Intermediate,Intermediate,2026-08-10,,,Intermediate
 27088,Luis Möller,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-11-10,,,Newcomer
 27089,Colleen Madden,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-11-10,,,Newcomer
 27089,Colleen Madden,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
@@ -151132,6 +151231,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 27158,Eszter Erdei,Follower,Novice,Intermediate,Leader,,,2026-01-21,,,
 27158,Eszter Erdei,Follower,Novice,Intermediate,Leader,n/a,n/a,2026-06-23,N/A,N/A,n/a
 27158,Eszter Erdei,Follower,Novice,Intermediate,Leader,nan,nan,2026-06-28,,,
+27158,Eszter Erdei,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-08-10,,,Novice
 27159,Natalie Bell,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-11-19,,,Newcomer
 27159,Natalie Bell,Follower,Novice,Intermediate,Leader,,,2026-01-21,,,
 27159,Natalie Bell,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-02-25,,,Novice
@@ -151427,6 +151527,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 27251,Tony Cheang,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-12-11,,,Newcomer
 27251,Tony Cheang,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 27251,Tony Cheang,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-28,,,Newcomer
+27251,Tony Cheang,Leader,Novice,Intermediate,Follower,nan,nan,2026-08-10,,,
 27252,Nina Chere Norgaard,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-12-11,,,Newcomer
 27252,Nina Chere Norgaard,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-03-18,,,Novice
 27252,Nina Chere Norgaard,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-06-23,N/A,N/A,Novice
@@ -151551,6 +151652,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 27292,Mathieu Urcun,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-12-17,,,Newcomer
 27292,Mathieu Urcun,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 27292,Mathieu Urcun,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-28,,,Newcomer
+27292,Mathieu Urcun,Leader,Novice,Intermediate,Follower,nan,nan,2026-08-10,,,
 27293,Michael De San Féliciano,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-12-17,,,Newcomer
 27293,Michael De San Féliciano,Leader,Novice,Intermediate,Follower,,,2026-04-28,10.0,Newcomer,
 27293,Michael De San Féliciano,Leader,Novice,Intermediate,Follower,n/a,n/a,2026-06-23,10,Newcomer,n/a
@@ -151825,9 +151927,11 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 27378,Dianne Bangle,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-01-09,,,Newcomer
 27378,Dianne Bangle,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 27378,Dianne Bangle,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
+27378,Dianne Bangle,Follower,Novice,Intermediate,Leader,nan,nan,2026-08-10,,,
 27379,Joseph Lucero,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-01-09,,,Newcomer
 27379,Joseph Lucero,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 27379,Joseph Lucero,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-28,,,Newcomer
+27379,Joseph Lucero,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-08-10,,,Novice
 27380,Jaxon McClelland,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-01-09,,,Newcomer
 27380,Jaxon McClelland,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 27380,Jaxon McClelland,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-28,,,Newcomer
@@ -152227,6 +152331,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 27502,Alice Stratmann,Follower,Novice,Intermediate,Leader,nan,nan,2026-06-28,6,Newcomer,
 27502,Alice Stratmann,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-07-04,1,Novice,Novice
 27502,Alice Stratmann,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-07-27,2,Novice,Novice
+27502,Alice Stratmann,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-08-10,3,Novice,Novice
 27503,Eric Liotta,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-01-26,,,Newcomer
 27503,Eric Liotta,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 27503,Eric Liotta,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-28,,,Newcomer
@@ -152741,6 +152846,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 27670,Barbara Noll,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-02-25,,,Newcomer
 27670,Barbara Noll,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 27670,Barbara Noll,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
+27670,Barbara Noll,Leader,Novice,Novice,Follower,nan,nan,2026-08-10,1,Newcomer,
 27671,Xiana Hoppe,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-02-25,,,Newcomer
 27671,Xiana Hoppe,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 27671,Xiana Hoppe,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
@@ -152753,6 +152859,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 27674,Melissa Buser,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-02-25,,,Newcomer
 27674,Melissa Buser,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 27674,Melissa Buser,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
+27674,Melissa Buser,Follower,Novice,Novice,Leader,nan,nan,2026-08-10,1,Newcomer,
 27675,Eva Garcia Taboada,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-02-25,,,Newcomer
 27675,Eva Garcia Taboada,Leader,Novice,Novice,Follower,,,2026-05-14,1.0,Newcomer,
 27675,Eva Garcia Taboada,Leader,Novice,Novice,Follower,n/a,n/a,2026-06-23,1,Newcomer,n/a
@@ -154390,6 +154497,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 28214,Rosemary Doerner,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-05-14,,,Newcomer
 28214,Rosemary Doerner,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 28214,Rosemary Doerner,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-28,,,Newcomer
+28214,Rosemary Doerner,Follower,Novice,Novice,Leader,nan,nan,2026-08-10,2,Newcomer,
 28215,Angela Graf,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-05-14,,,Newcomer
 28215,Angela Graf,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 28215,Angela Graf,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-28,,,Newcomer
@@ -154724,6 +154832,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 28326,Kyler Pleasant,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-05-27,,,Newcomer
 28326,Kyler Pleasant,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 28326,Kyler Pleasant,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-28,,,Newcomer
+28326,Kyler Pleasant,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-08-10,,,Novice
 28327,Rachel Shiffman,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-05-27,,,Newcomer
 28327,Rachel Shiffman,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 28327,Rachel Shiffman,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
@@ -154815,6 +154924,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 28356,T Antonio,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-10,,,Newcomer
 28356,T Antonio,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 28356,T Antonio,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-06-28,,,Newcomer
+28356,T Antonio,Leader,Novice,Intermediate,Follower,nan,nan,2026-08-10,,,
 28357,Ariadna Protti,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-10,,,Newcomer
 28357,Ariadna Protti,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 28357,Ariadna Protti,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
@@ -154923,6 +155033,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 28393,Bettina Grempels,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
 28394,Sara Pfannkuchen,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 28394,Sara Pfannkuchen,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
+28394,Sara Pfannkuchen,Follower,Novice,Novice,Leader,nan,nan,2026-08-10,1,Newcomer,
 28395,Felicia Ridder,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 28395,Felicia Ridder,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
 28396,Sandra Kebe,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
@@ -155164,9 +155275,11 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 28600,Seabastian King,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-07-15,,,Newcomer
 28601,Shari Nudelman,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-07-15,,,Newcomer
 28601,Shari Nudelman,Follower,Novice,Intermediate,Leader,nan,nan,2026-07-27,,,
+28601,Shari Nudelman,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-08-10,,,Novice
 28602,Dawn Jonckowski,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-07-15,,,Newcomer
 28603,David Bergida,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-07-15,,,Newcomer
 28604,Dustin Eisenhardt,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-07-15,,,Newcomer
+28604,Dustin Eisenhardt,Leader,Novice,Novice,Follower,nan,nan,2026-08-10,1,Newcomer,
 28605,Julius Uhlmann,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-07-15,,,Newcomer
 28606,Anne Lange,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-07-15,,,Newcomer
 28607,Krzysztof Dietrich,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-07-15,,,Newcomer
@@ -155355,3 +155468,53 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 28789,Monika Pietranek,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-05,,,Newcomer
 28790,Klaudia Wiktorzak,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-05,,,Newcomer
 28791,Paulina Krzyżak,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-05,,,Newcomer
+28792,Paul Solhaven,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28793,Travis Lo,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28794,Nova Scott,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28795,Rose Snyder,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28796,Eric Burian,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28797,Nathan Sese,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28798,Alex Schotz,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28799,Taylor Flight,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28800,Tiffany Brantner,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28801,Betsy Hall,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28802,Catherine Rohsner,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28803,Elizabeth Denniston,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28804,Ashraya Sreedhar,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28805,Austin Ganzer,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28806,Violet Presley-Wolff,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28807,Ruby Harris,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28808,Gianna Paratore,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28809,Di Wu,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28810,Charlene Vo,Follower,Novice,Intermediate,Leader,nan,nan,2026-08-10,,,
+28811,Cibele Damasceno de Oliveira,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28812,Grace Dekermenjian,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28813,Maiya Yu,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28814,Nicolas Woelke,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28815,Lukas Weiermann,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28816,Christian Haas,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28817,Sebastian Stapfer,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28818,Bernhard Fraidel,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28819,Zoe Stephan,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28820,Bent Gerce,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28821,Christina Weber,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28822,Maria Duhs,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28823,Jana Seyfried,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28824,Hannah Froschauer,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28825,Frauke Winterhalder,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28826,Hannah Voß,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28827,Sandra Helber,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28828,Caloling Sun-Haug,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28829,Geli Mauser,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28830,Marie Uibel,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28831,Antoine Momper,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-08-10,,,Newcomer
+28832,Jack Walsh,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-08-11,,,Newcomer
+28833,Ricky Sato,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-08-11,,,Newcomer
+28834,Craig Van Alsten,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-08-11,,,Newcomer
+28835,Stacey Giangregorio,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-11,,,Newcomer
+28836,Ellen Rubner,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-11,,,Newcomer
+28837,Mari Black,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-11,,,Newcomer
+28838,Erin Vermilye,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-11,,,Newcomer
+28839,Dana Dessereaux,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-08-11,,,Newcomer
+28840,Ted Lee,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-08-11,,,Newcomer
+28841,Christina De Bruyn Kops,Follower,Newcomer,Novice,Leader,nan,nan,2026-08-11,,,
