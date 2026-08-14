@@ -122,6 +122,9 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'Swingsation': 'Gold Coast, Australia',
     # Shared Brno (266) wrongly applied; always Wels AT (event 289).
     'SwingVester': 'Wels, Austria',
+    # Shared Brno (266 / Swing Fiction) wrongly applied; always Umeå SE (event 256).
+    'Rock the Barn': 'Umeå, Sweden',
+    'Rock The Barn': 'Umeå, Sweden',
     # WSDC venue label "Boston Club" is in Düsseldorf (not a city name).
     'D-Town Swing': 'Düsseldorf, Germany',
     'WCS Festival': 'Düsseldorf, Germany',
@@ -384,6 +387,18 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_country': 'Austria',
             'event_location': 'Wels, Austria',
             'event_location_standardized': 'Wels, Austria',
+        },
+    },
+    256: {
+        'name': 'Rock the Barn',
+        'url': 'https://rockthebarn.se/',
+        'typical_location': 'Umeå, Sweden',
+        'location': {
+            'event_city': 'Umeå',
+            'event_state': '',
+            'event_country': 'Sweden',
+            'event_location': 'Umeå, Sweden',
+            'event_location_standardized': 'Umeå, Sweden',
         },
     },
     178: {

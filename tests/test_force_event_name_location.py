@@ -540,3 +540,51 @@ def test_force_swingvester_off_brno_to_wels():
     assert swingvester["event_location"] == "Wels, Austria"
     fiction = out.loc[out["event_name"] == "Swing Fiction"].iloc[0]
     assert str(fiction["location_id"]) == "266"
+
+
+def test_force_rock_the_barn_off_brno_to_umea():
+    location_info = pd.DataFrame(
+        [
+            {
+                "location_id": "266",
+                "event_city": "Brno",
+                "event_state": "",
+                "event_country": "Czech Republic",
+                "event_location": "Brno, Czech Republic",
+            },
+            {
+                "location_id": "215",
+                "event_city": "Umeå",
+                "event_state": "",
+                "event_country": "Sweden",
+                "event_location": "Umeå, Sweden",
+            },
+        ]
+    )
+    results = pd.DataFrame(
+        [
+            {
+                "event_name": "Rock the Barn",
+                "location_id": "266",
+                "event_location": "Brno, Czech Republic",
+            },
+            {
+                "event_name": "Rock The Barn",
+                "location_id": "266",
+                "event_location": "Brno, Czech Republic",
+            },
+            {
+                "event_name": "Swing Fiction",
+                "location_id": "266",
+                "event_location": "Brno, Czech Republic",
+            },
+        ]
+    )
+    out, changed = force_result_locations_from_event_name_overrides(results, location_info)
+    assert changed == 2
+    for name in ("Rock the Barn", "Rock The Barn"):
+        row = out.loc[out["event_name"] == name].iloc[0]
+        assert str(row["location_id"]) == "215"
+        assert row["event_location"] == "Umeå, Sweden"
+    fiction = out.loc[out["event_name"] == "Swing Fiction"].iloc[0]
+    assert str(fiction["location_id"]) == "266"

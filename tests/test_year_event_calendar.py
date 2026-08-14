@@ -338,6 +338,49 @@ def test_enrich_geo_name_override_forces_wels_without_event_id():
     assert rows[0]["country"] == "Austria"
 
 
+def test_enrich_geo_name_override_forces_umea_for_rock_the_barn():
+    locations = pd.DataFrame(
+        [
+            {
+                "location_id": 215,
+                "event_city": "Umeå",
+                "event_country": "Sweden",
+                "event_location": "Umeå, Sweden",
+                "event_location_standardized": "Umeå, Sweden",
+                "latitude": 63.5391027,
+                "longitude": 19.4528047,
+                "coordinates_valid": True,
+            },
+            {
+                "location_id": 266,
+                "event_city": "Brno",
+                "event_country": "Czech Republic",
+                "event_location": "Brno, Czech Republic",
+                "event_location_standardized": "Brno, Czech Republic",
+                "latitude": 49.1950602,
+                "longitude": 16.6068371,
+                "coordinates_valid": True,
+            },
+        ]
+    )
+    catalog = pd.DataFrame(columns=["event_id", "canonical_name", "url"])
+    rows = [
+        {
+            "event_id": 256,
+            "name": "Rock the Barn",
+            "city": "Brno",
+            "country": "Czech Republic",
+            "location_id": 266,
+            "url": "https://rockthebarn.se/",
+        }
+    ]
+    _enrich_geo(rows, locations, catalog, location_id_by_event={256: 266})
+    assert rows[0]["location_id"] == 215
+    assert rows[0]["city"] == "Umeå"
+    assert rows[0]["country"] == "Sweden"
+    assert rows[0]["lat"] == 63.5391027
+
+
 def test_enrich_geo_city_country_fallback():
     locations = pd.DataFrame(
         [
