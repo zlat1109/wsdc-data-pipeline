@@ -290,7 +290,9 @@ Survives points-load `TRUNCATE` of `event_editions`. Re-applied in `rebuild_even
 
 **Primary key:** `source_fingerprint`
 
-Updated by `scripts/sync_events_list.py`. Not truncated by points load.
+Updated by `scripts/sync_events_list.py`. Not truncated by points load
+(`promote_core` must not CASCADE into this table — no `location_id` FK, see
+migration 031).
 
 | Column | Type | Nullable | Description |
 |--------|------|----------|-------------|
@@ -319,6 +321,9 @@ Updated by `scripts/sync_events_list.py`. Not truncated by points load.
 **Grain:** one logical upcoming event (nearest edition per brand).
 
 **Primary key:** `schedule_event_key`
+
+`location_id` is stored without an FK to `core.locations` (migration 031) so
+points `TRUNCATE … CASCADE` cannot wipe this snapshot.
 
 | Column | Type | Nullable | Description |
 |--------|------|----------|-------------|

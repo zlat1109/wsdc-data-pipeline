@@ -87,6 +87,8 @@ Check definitions live in `db/quality_checks.py` (single source of truth for mon
 | `location_string_multiple_ids` | One location string must not map to multiple location_id values. |
 | `edition_calendar_archive_empty` | Durable WSDC calendar dates archive should not be empty after load. |
 | `edition_calendar_orphan_event_ids` | Calendar date rows must point at a current catalog event_id. |
+| `events_list_current_empty` | Upcoming WSDC list snapshot should not be empty after load. |
+| `schedule_orphan_location_id` | events_list_current.location_id must exist in core.locations (no FK). |
 | `recent_editions_missing_day_dates` | Most 2025+ editions with results should have calendar day dates. |
 | `editions_null_location_id` | Event editions derive location from results mode location_id. |
 | `all_caps_cities` | ALL CAPS city names (CHICAGO, TOULOUSE, WILMINGTON DEL). |
