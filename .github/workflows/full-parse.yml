@@ -36,9 +36,15 @@ on:
         required: false
         default: true
         type: boolean
+      reuse_parse_artifact_run_id:
+        description: "Skip WSDC parse; download parser-csvs from this Actions run id"
+        required: false
+        default: ""
+        type: string
 
 permissions:
   contents: write
+  actions: read
 
 concurrency:
   group: wsdc-full-parse
@@ -46,7 +52,7 @@ concurrency:
 
 jobs:
   parse:
-    if: ${{ !inputs.export_only && (inputs.parse_full || inputs.parse_new_only) }}
+    if: ${{ !inputs.export_only && inputs.reuse_parse_artifact_run_id == '' && (inputs.parse_full || inputs.parse_new_only) }}
     runs-on: ubuntu-latest
     timeout-minutes: 360
     steps:
@@ -102,8 +108,6 @@ jobs:
             data/dancers_points_info.csv
             data/dancer_role_info.csv
             data/dancers_results_info.csv
-            data/location_info.csv
-            data/events_wsdc.csv
           if-no-files-found: error
           retention-days: 30
 
@@ -141,11 +145,21 @@ jobs:
           name: parser-csvs
           path: data
 
+      - name: Download parser CSVs from a previous run
+        if: ${{ inputs.reuse_parse_artifact_run_id != '' }}
+        uses: actions/download-artifact@v4
+        with:
+          name: parser-csvs
+          path: data
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: ${{ inputs.reuse_parse_artifact_run_id || github.run_id }}
+
       - name: Verify CSV inputs exist
         if: ${{ !inputs.export_only }}
         run: |
           if [ ! -f "${{ inputs.data_dir }}/dancers_points_info.csv" ]; then
-            echo "Missing CSVs in ${{ inputs.data_dir }}/ — run with parse_full=true or Re-run failed jobs after a successful parse job"
+            echo "Missing CSVs in ${{ inputs.data_dir }}/ — run with parse_full=true, Re-run failed jobs after a successful parse, or reuse_parse_artifact_run_id"
             exit 1
           fi
 
@@ -183,6 +197,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ "${GITHUB_REF_NAME}" != "main" ]; then
+            echo "::warning::Skipping CSV commit (ref=${GITHUB_REF_NAME}; only main publishes data)."
+            echo "committed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
           git add data/*.csv data/event_aliases.json data/quality_reports/
           if git diff --staged --quiet; then
             echo "No CSV changes to commit."
@@ -190,7 +209,7 @@ jobs:
           else
             git commit -m "chore(data): update WSDC CSV export [skip ci]"
             git pull --rebase origin main
-            git push
+            git push origin HEAD:main
             echo "committed=true" >> "$GITHUB_OUTPUT"
           fi
 
