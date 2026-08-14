@@ -76,6 +76,14 @@ def main() -> None:
                     {"run_id": run_id},
                 )
                 cur.execute(read_sql("promote_core.sql"))
+                from refresh_events_list_current import ensure_events_list_after_load
+
+                list_report = ensure_events_list_after_load(conn)
+                print(
+                    "Events list: "
+                    f"action={list_report.get('action')} "
+                    f"current={list_report.get('current_after', list_report.get('current_before'))}"
+                )
                 alias_count, orphan_event_count = prepare_event_resolution(conn)
                 cur.execute(read_sql("promote_core_results.sql"))
                 enrich_core_known_events(conn)

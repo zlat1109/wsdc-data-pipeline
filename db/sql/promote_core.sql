@@ -6,6 +6,10 @@ CREATE TEMP TABLE _preserved_dancer_names AS
 SELECT dancer_id, dancer_name FROM core.dancers;
 
 -- Clear core data (keep levels dictionary).
+-- Do not add FKs from schedule tables (core.events_list_current,
+-- core.scheduled_events) to tables listed here. TRUNCATE CASCADE follows
+-- those FKs and wipes the WSDC calendar (full-parse runs 31421430091 /
+-- 31525495964). See migrations 025 and 031.
 TRUNCATE
     core.results,
     core.dancer_points,
