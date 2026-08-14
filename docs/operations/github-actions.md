@@ -135,6 +135,15 @@ Watermark sources: `MAX(dancer_id)` from `core.dancers` (primary) → last probe
 
 Concurrency: `wsdc-full-parse` (no parallel runs; queue if probe triggers while previous parse still running).
 
+Two jobs so a load/export failure does **not** re-hit the WSDC points API:
+
+1. **`parse`** (only when `parse_full` or `parse_new_only`) — `cloud_parse.py`, then upload `parser-csvs` artifact (30 days).
+2. **`pipeline`** — download that artifact (or use committed `data/` if parse was skipped) → migrations → preprocess → load → export → git commit.
+
+If **pipeline** fails after a successful **parse**: Actions → the run → **Re-run failed jobs**. GitHub reuses the artifact; WSDC is not parsed again.
+
+`load.py` rolls back `promote_core` on error (does not commit an empty `core.results`). Staging CSVs stay in Supabase from the earlier staging COPY commit.
+
 Manual or auto-triggered pipeline:
 
 1. **`cloud_parse.py --full`** (when `parse_full=true`) — HTTP fetch **every dancer ID 1..live_max**, replace `dancer_role_info`, `dancers_points_info`, `dancers_results_info` in `data/`. Needed because existing dancers get new results too, not only new registry IDs.
