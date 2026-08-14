@@ -2217,10 +2217,10 @@ update_date,division,role,type_options,count_dancer
 2026-08-10,Novice,Follower,required,60
 2026-08-10,Novice,Leader,allowed,47
 2026-08-10,Novice,Leader,required,51
-2026-08-10,nan,Follower,allowed,15
-2026-08-10,nan,Follower,required,22
-2026-08-10,nan,Leader,allowed,23
-2026-08-10,nan,Leader,required,28
+2026-08-10,,Follower,allowed,15
+2026-08-10,,Follower,required,22
+2026-08-10,,Leader,allowed,23
+2026-08-10,,Leader,required,28
 2026-08-11,Advanced,Follower,allowed,3
 2026-08-11,Advanced,Follower,required,3
 2026-08-11,All-Star,Follower,allowed,1
@@ -2238,7 +2238,7 @@ update_date,division,role,type_options,count_dancer
 2026-08-11,Novice,Follower,required,9
 2026-08-11,Novice,Leader,allowed,7
 2026-08-11,Novice,Leader,required,7
-2026-08-11,nan,Follower,allowed,2
-2026-08-11,nan,Follower,required,2
-2026-08-11,nan,Leader,allowed,4
-2026-08-11,nan,Leader,required,5
+2026-08-11,,Follower,allowed,2
+2026-08-11,,Follower,required,2
+2026-08-11,,Leader,allowed,4
+2026-08-11,,Leader,required,5
