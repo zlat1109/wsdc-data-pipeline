@@ -1,8 +1,4 @@
 source_fingerprint,event_name,original_date,start_date,end_date,results_year,results_month,location_raw,country,country_flag,url,status_event,location_id,location_source,confirmed,canceled,on_hiatus,is_active
-c0d939ffeebc10d57a306022,German Open WCS,"Aug 5 - 9, 2026",2026-08-05,2026-08-09,2026,8,"Freiburg, Baden-Württemberg, Germany",Germany,DEU,http://www.go-wcs.com/,Registry Event,,,True,False,False,True
-795afa0f32c630ebf4cefdfe,New England Dance Festival,"Aug 6 - 9, 2026",2026-08-06,2026-08-09,2026,8,"Boston, Massachusetts, United States",United States,USA,http://www.nedancefestival.com/,Registry Event,,,True,False,False,True
-f614ad6dbb7c54cb4e6d992a,Swing Fling,"Aug 6 - 9, 2026",2026-08-06,2026-08-09,2026,8,"Washington, DC., VA, United States",United States,USA,http://www.swingfling.com/,Registry Event,,,True,False,False,True
-1454d5792be65f4630422699,Swingtacular: The Galactic Open,"Aug 6 - 9, 2026",2026-08-06,2026-08-09,2026,8,"San Francisco, CA, United States",United States,USA,http://www.dancegeekproductions.art/,Registry Event,,,True,False,False,True
 082f42a7e47044412f8f7362,Grand Party Sofia (GPS),"Aug 14 - 17, 2026",2026-08-14,2026-08-17,2026,8,"Sofia, Bulgaria",Bulgaria,BGR,https://wcs-gps.com/,Registry Event,,,True,False,False,True
 5bc8004ec3ef52e3227c452b,UpTown Swing,"Aug 14 - 17, 2026",2026-08-14,2026-08-17,2026,8,"Stockholm, Stockholm, Sweden",Sweden,SWE,http://www.uptownswing.se/,Registry Event,,,True,False,False,True
 646321624c37f590d56e85aa,Shakedown Swing,"Aug 20 - 23, 2026",2026-08-20,2026-08-23,2026,8,"Christchurch, Canterbury, New Zealand",New Zealand,NZL,http://www.code03swing.com/shakedown,Registry Event,,,True,False,False,True
@@ -11,7 +7,7 @@ f614ad6dbb7c54cb4e6d992a,Swing Fling,"Aug 6 - 9, 2026",2026-08-06,2026-08-09,202
 f3bb0061917b5b97537a937a,The Bend Connection,"Aug 20 - 23, 2026",2026-08-20,2026-08-23,2026,8,"Bend, OR, United States",United States,USA,http://thebendconnection.com/,Registry Event,,,True,False,False,True
 60ba1b6056cb977623ec8064,Chicagoland Country and Swing Dance Festival,"Aug 21 - 23, 2026",2026-08-21,2026-08-23,2026,8,"Chicago, Illinois, United States",United States,USA,http://www.chicagolanddancefestival.com/,Registry Event,,,True,False,False,True
 d6da1946dde9d4d6a0dd88d5,Manneken Swing,"Aug 21 - 23, 2026",2026-08-21,2026-08-23,2026,8,"Bruxelles, Bruxelles, Belgium",Belgium,BEL,https://www.mannekenswing.com/,Trial Event,387,google_maps,True,False,False,True
-dd68305c3ac38eadb87a5a5a,Westie Joy,"Aug 21 - 23, 2026",2026-08-21,2026-08-23,2026,8,"Bucharest, Romania",Romania,ROU,https://www.westiejoy.com/,Trial Event,388,google_maps,True,False,False,True
+dd68305c3ac38eadb87a5a5a,Westie Joy,"Aug 21 - 23, 2026",2026-08-21,2026-08-23,2026,8,"Bucharest, Romania",Romania,ROU,https://www.westiejoy.com/,Trial Event,394,google_maps,True,False,False,True
 3c0023dca48b84525b39af78,Desert City Swing,"Aug 27 - 30, 2026",2026-08-27,2026-08-30,2026,8,"Phoenix, AZ, United States",United States,USA,http://www.desertcityswing.com/,Registry Event,,,True,False,False,True
 0c9f27d896a78942522a77dc,Rolling Swing,"Aug 27 - 31, 2026",2026-08-27,2026-08-31,2026,8,"LYON, Rhone, France",France,FRA,http://www.frenchywesty.com/,Registry Event,,,True,False,False,True
 6e75503f5c7e438cf016399c,Bristol Swing Fiesta,"Aug 28 - 30, 2026",2026-08-28,2026-08-30,2026,8,"Bristol, Bristol, City of, United Kingdom",United Kingdom,GBR,https://www.bristolcityswing.com/bsf,Registry Event,,,True,False,False,True
@@ -53,8 +49,8 @@ c19a0c0b39051a0a674cd4df,SASS- Spooky Albany Swing Spectacular,"Oct 22 - 25, 202
 4e3a3aefb59eb188b5826016,Swing City Chicago,"Oct 22 - 25, 2026",2026-10-22,2026-10-25,2026,10,"CHICAGO, IL, United States",United States,USA,https://swingcitychicago.com/,Registry Event,,,True,False,False,True
 0a34dbf37538b2155c2a5fc2,Swingside Invitational,"Oct 22 - 24, 2026",2026-10-22,2026-10-24,2026,10,"Liège, Belgium",Belgium,BEL,http://www.swingside-invitational.com/,Registry Event,,,True,False,False,True
 9ee0dd84cb9512c11ab44bf5,Swingside Invitational,"Oct 23 - 25, 2026",2026-10-23,2026-10-25,2026,10,"Liège, Liège, Belgique",Belgium,BEL,https://www.swingside-invitational.com/,Registry Event,,,True,False,False,True
-b3f14e09dd2097b15eeb2515,"Scandinavian Open WCS ""SNOW""","Oct 28 - Nov 2, 2026",2026-10-28,2026-11-02,2026,11,"Stockholm, Sweden, Sweden",Sweden,SWE,http://www.snowcs.se/,Registry Event,,,True,False,False,True
-2d52dfcc0e676c47d89ab1d3,Spooky Westie Weekend,"Oct 29 - Nov 1, 2026",2026-10-29,2026-11-01,2026,11,"Singapore, Singapore, Singapore",Singapore,SGP,https://spookywestieweekend.com/,Registry Event,,,True,False,False,True
+b3f14e09dd2097b15eeb2515,"Scandinavian Open WCS ""SNOW""","Oct 28 - Nov 2, 2026",2026-10-28,2026-11-02,2026,11,"Stockholm, Sweden",Sweden,SWE,http://www.snowcs.se/,Registry Event,,,True,False,False,True
+2d52dfcc0e676c47d89ab1d3,Spooky Westie Weekend,"Oct 29 - Nov 1, 2026",2026-10-29,2026-11-01,2026,11,Singapore,Singapore,SGP,https://spookywestieweekend.com/,Registry Event,,,True,False,False,True
 359c690048b2bb2978c21856,Warsaw Halloween Swing,"Oct 29 - Nov 2, 2026",2026-10-29,2026-11-02,2026,11,"Warsaw, Poland",Poland,POL,http://www.warsawhalloweenswing.com/,Registry Event,,,True,False,False,True
 5df815d9ce1315224c001f44,Mountain Magic Dance Convention,"Nov 5 - 8, 2026",2026-11-05,2026-11-08,2026,11,"South Lake Tahoe (near Reno), NV, United States",United States,USA,http://mountainmagic.dance/,Registry Event,,,True,False,False,True
 267c5c38307061d765d6841c,Sea to Sky Seattle,"Nov 5 - 9, 2026",2026-11-05,2026-11-09,2026,11,"Seattle, WA, United States",United States,USA,http://seatoskywcs.com/,Registry Event,,,True,False,False,True
@@ -81,13 +77,13 @@ f834b6a8821e2000d3f24be0,Berlin Swing Revolution,"Dec 10 - 13, 2026",2026-12-10,
 3d1a373a646fd7a9259aa177,Floorplay Swing Vacation,Dec 30 2026 - Jan 3 2027,2026-12-30,2027-01-03,2027,1,"Orlando, Florida, United States",United States,USA,http://www.floorplayswingvacation.com/,Registry Event,,,True,False,False,True
 806db9430ca1669dbdd1db68,New Years Swing Fling,Dec 30 2026 - Jan 3 2027,2026-12-30,2027-01-03,2027,1,"London, London, United Kingdom",United Kingdom,GBR,http://nysf.uk/,Registry Event,,,True,False,False,True
 265041bf8f9831e810135cfd,Spotlight New Year's Celebration,Dec 30 2026 - Jan 3 2027,2026-12-30,2027-01-03,2027,1,"Nashville, TN, United States",United States,USA,http://www.spotlightnewyears.com/,Registry Event,,,True,False,False,True
-d8a575f459c377efad9e5a4b,SwingVester,Dec 30 2026 - Jan 4 2027,2026-12-30,2027-01-04,2027,1,"Wels, Austria, Austria",Austria,AUT,https://www.swingvester.com/,Registry Event,,,True,False,False,True
+d8a575f459c377efad9e5a4b,SwingVester,Dec 30 2026 - Jan 4 2027,2026-12-30,2027-01-04,2027,1,"Wels, Austria",Austria,AUT,https://www.swingvester.com/,Registry Event,,,True,False,False,True
 b67285afe74986042474995d,Countdown Swing Boston,Dec 31 2026 - Jan 3 2027,2026-12-31,2027-01-03,2027,1,"Boston, Massachusetts, United States",United States,USA,http://countdownswingboston.com/,Registry Event,,,True,False,False,True
 1fb9bccd04bd5603050fff13,Westie Gala,Dec 31 2026 - Jan 4 2027,2026-12-31,2027-01-04,2027,1,"Stockholm, Stockholm, Sweden",Sweden,SWE,http://www.westiegala.com/,Registry Event,,,True,False,False,True
 f0ac9f7662095c059e33b588,BudaFest Open WCS Championships,"Jan 5 - 10, 2027",2027-01-05,2027-01-10,2027,1,"Budapest, Budapest, Hungary",Hungary,HUN,http://wcs-budafest.com/,Registry Event,,,True,False,False,True
 8e9d2f0dbe5d184365b8112e,SwingCo,"Jan 7 - 11, 2027",2027-01-07,2027-01-11,2027,1,"Portland, OR, United States",United States,USA,https://swingco.dance/,Registry Event,,,True,False,False,True
 02fe2e08635061dd65b6643b,Austin Swing Dance Championships,"Jan 14 - 17, 2027",2027-01-14,2027-01-17,2027,1,"Austin, Texas, United States",United States,USA,https://austinswingdance.com/,Registry Event,,,True,False,False,True
-adf527827352752eb5e8d2d7,Cologne Calling WCS,"Jan 14 - 17, 2027",2027-01-14,2027-01-17,2027,1,"Köln, NRW, Germany",Germany,DEU,https://colognecallingwcs.com/,Trial Event,391,google_maps,True,False,False,True
+adf527827352752eb5e8d2d7,Cologne Calling WCS,"Jan 14 - 17, 2027",2027-01-14,2027-01-17,2027,1,"Köln, NRW, Germany",Germany,DEU,https://colognecallingwcs.com/,Trial Event,395,google_maps,True,False,False,True
 e1d9833f24ce487d85fdd220,Avignon City Swing,"Jan 15 - 17, 2027",2027-01-15,2027-01-17,2027,1,"Nimes, Occitanie, France",France,FRA,https://www.avignoncityswing.com/,Registry Event,,,True,False,False,True
 4e8f029ff9764913b91ef381,Monterey Swing Fest,"Jan 15 - 17, 2027",2027-01-15,2027-01-17,2027,1,"Monterey, CA, United States",United States,USA,http://www.montereyswing.com/,Registry Event,,,True,False,False,True
 fd4820df09caec60306ecb5c,Derby City Swing,"Jan 21 - 24, 2027",2027-01-21,2027-01-24,2027,1,"Louisville, Kentucky, United States",United States,USA,https://derbycityswing.com/,Registry Event,,,True,False,False,True
@@ -128,7 +124,7 @@ aa533072fad248f8c14e2bfa,Easter Swing,"Mar 25 - 28, 2027",2027-03-25,2027-03-28,
 f0946489d01ea007f2e64d27,Franconian Swing Project,"Apr 8 - 11, 2027",2027-04-08,2027-04-11,2027,4,"Nürnberg, Bavaria, Germany",Germany,DEU,https://franconian-swing-project.de/,Trial Event,392,google_maps,True,False,False,True
 4387e59e411ddba91259cfa1,KOREAN OPEN WCS CHAMPIONSHIPS,"Apr 8 - 11, 2027",2027-04-08,2027-04-11,2027,4,"Incheon, Incheon, Republic of Korea",Republic of Korea,KOR,https://www.kopenwcs.com/,Registry Event,,,True,False,False,True
 57fd268088f41cacf7ecb9a8,Slovenian Open,"Apr 14 - 19, 2027",2027-04-14,2027-04-19,2027,4,"Ljubljana, -, Slovenia",Slovenia,SVN,https://slovenianopen.dance/,Registry Event,,,True,False,False,True
-9eb4e92c441cadd7a288df00,Asia WCS Open 2027,"Apr 15 - 18, 2027",2027-04-15,2027-04-18,2027,4,"Singapore, Singapore, Singapore",Singapore,SGP,https://asiawcsopen.com/,Registry Event,,,True,False,False,True
+9eb4e92c441cadd7a288df00,Asia WCS Open 2027,"Apr 15 - 18, 2027",2027-04-15,2027-04-18,2027,4,Singapore,Singapore,SGP,https://asiawcsopen.com/,Registry Event,,,True,False,False,True
 12dd04939cc7c2cf4c940810,WESTY NANTES,"Apr 16 - 18, 2027",2027-04-16,2027-04-18,2027,4,"Nantes, Loire-Atlantique, France",France,FRA,https://www.westynantes.com/,Registry Event,,,True,False,False,True
 177ab9b6fc92e510ecae6a30,Detonation Dance,"Apr 22 - 26, 2027",2027-04-22,2027-04-26,2027,4,"Manchester, Manchester, United Kingdom",United Kingdom,GBR,http://www.detonationdance.com/,Registry Event,,,True,False,False,True
 ee85219d85cfa5e99b61ddc5,HONEY FEST,"Apr 22 - 25, 2027",2027-04-22,2027-04-25,2027,4,"Ufa, Russia",Russia,RUS,https://t.me/honeyfest,Registry Event,,,True,False,False,True

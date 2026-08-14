@@ -251,6 +251,93 @@ def test_enrich_geo_inherits_location_id_from_editions_map():
     assert rows[0]["city"] == "Denver"
 
 
+def test_enrich_geo_overwrites_scraped_brno_with_inherited_wels():
+    """Schedule city from location_raw must not stick after lid remap (SwingVester)."""
+    locations = pd.DataFrame(
+        [
+            {
+                "location_id": 197,
+                "event_city": "Wels",
+                "event_country": "Austria",
+                "event_location": "Wels, Austria",
+                "event_location_standardized": "Wels, Austria",
+                "latitude": 48.1664268,
+                "longitude": 14.0388714,
+                "coordinates_valid": True,
+            },
+            {
+                "location_id": 266,
+                "event_city": "Brno",
+                "event_country": "Czech Republic",
+                "event_location": "Brno, Czech Republic",
+                "event_location_standardized": "Brno, Czech Republic",
+                "latitude": 49.1950602,
+                "longitude": 16.6068371,
+                "coordinates_valid": True,
+            },
+        ]
+    )
+    catalog = pd.DataFrame(
+        [
+            {
+                "event_id": 289,
+                "canonical_name": "SwingVester",
+                "url": "https://www.swingvester.com/",
+                "typical_city": "Wels",
+                "typical_country": "Austria",
+            }
+        ]
+    )
+    rows = [
+        {
+            "event_id": 289,
+            "name": "SwingVester",
+            "city": "Brno",
+            "country": "Czech Republic",
+            "location_id": None,
+            "url": "https://www.swingvester.com/",
+        }
+    ]
+    _enrich_geo(rows, locations, catalog, location_id_by_event={289: 197})
+    assert rows[0]["location_id"] == 197
+    assert rows[0]["city"] == "Wels"
+    assert rows[0]["country"] == "Austria"
+    assert rows[0]["lat"] == 48.1664268
+    assert rows[0]["lon"] == 14.0388714
+
+
+def test_enrich_geo_name_override_forces_wels_without_event_id():
+    locations = pd.DataFrame(
+        [
+            {
+                "location_id": 197,
+                "event_city": "Wels",
+                "event_country": "Austria",
+                "event_location": "Wels, Austria",
+                "event_location_standardized": "Wels, Austria",
+                "latitude": 48.1664268,
+                "longitude": 14.0388714,
+                "coordinates_valid": True,
+            }
+        ]
+    )
+    catalog = pd.DataFrame(columns=["event_id", "canonical_name", "url"])
+    rows = [
+        {
+            "event_id": None,
+            "name": "SwingVester",
+            "city": "Brno",
+            "country": "Czech Republic",
+            "location_id": None,
+            "url": None,
+        }
+    ]
+    _enrich_geo(rows, locations, catalog, location_id_by_event={})
+    assert rows[0]["location_id"] == 197
+    assert rows[0]["city"] == "Wels"
+    assert rows[0]["country"] == "Austria"
+
+
 def test_enrich_geo_city_country_fallback():
     locations = pd.DataFrame(
         [
@@ -651,6 +738,49 @@ def test_snap_to_weekday_prefer_year_jan_edge():
     assert projected == date(2027, 1, 7)
     assert projected.weekday() == 3
     assert projected.year == 2027
+
+
+def test_project_expected_stub_preserves_nye_dec_jan_span():
+    """NYE priors must project to Dec→Jan, not collapse into late Dec of results year."""
+    from transform.year_event_calendar.expected import _project_expected_stub
+
+    prior = {
+        "event_id": 42,
+        "name": "Floorplay Swing Vacation",
+        "start_date": date(2026, 12, 30),
+        "end_date": date(2027, 1, 3),
+        "year": 2027,
+        "status": "confirmed",
+        "kind": "registry",
+        "country": "USA",
+    }
+    stub = _project_expected_stub(prior, target_year=2028, kind="registry")
+    assert stub is not None
+    assert stub["year"] == 2028
+    assert stub["status"] == "expected"
+    assert stub["start_date"].year == 2027
+    assert stub["start_date"].month == 12
+    assert isinstance(stub["end_date"], date)
+    assert stub["end_date"].year == 2028
+    assert stub["end_date"].month == 1
+    assert stub["start_date"].weekday() == prior["start_date"].weekday()
+    assert (stub["end_date"] - stub["start_date"]).days == 4
+
+    # Same-year festivals still project into the target calendar year.
+    march = {
+        "event_id": 1,
+        "name": "March Fest",
+        "start_date": date(2026, 3, 12),
+        "end_date": date(2026, 3, 15),
+        "year": 2026,
+        "status": "confirmed",
+        "kind": "registry",
+    }
+    march_stub = _project_expected_stub(march, target_year=2028, kind="registry")
+    assert march_stub is not None
+    assert march_stub["start_date"].year == 2028
+    assert march_stub["start_date"].month == 3
+    assert march_stub["year"] == 2028
 
 
 def test_drop_stale_expected_keeps_official_and_future():

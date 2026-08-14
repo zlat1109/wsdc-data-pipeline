@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-08-08T11:32:16.581562+00:00",
+  "scraped_at": "2026-08-11T08:44:33.573420+00:00",
   "source": "https://worldsdc.com/events/calendar/",
   "min_start": "2025-01-01",
   "raw_count": 627,
@@ -8362,7 +8362,7 @@
       "catalog_name": "SwingVester",
       "name_key": "swingvester",
       "start_date": "2026-12-30",
-      "end_date": "2027-01-04",
+      "end_date": "",
       "url": "https://www.swingvester.com/",
       "url_key": "swingvester.com",
       "results_year": 2027,
@@ -8371,9 +8371,11 @@
         "2027-01",
         "2026-12"
       ],
-      "date_precision": "day",
+      "date_precision": "day_start_only",
       "date_source": "wsdc_calendar",
-      "flags": [],
+      "flags": [
+        "invalid_end"
+      ],
       "status_tags": [],
       "source_fingerprint": "d8a575f459c377efad9e5a4b",
       "raw_start": "2026-12-30",

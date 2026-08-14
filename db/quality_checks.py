@@ -255,6 +255,32 @@ EXTENDED_CHECKS: tuple[QualityCheck, ...] = (
         fix_hint="remap_stale_calendar_event_ids via enrich_event_editions_dates / sync_events_calendar",
     ),
     QualityCheck(
+        name="events_list_current_empty",
+        sql="""
+        SELECT CASE WHEN count(*) = 0 THEN 1 ELSE 0 END
+        FROM core.events_list_current
+        """,
+        max_value=0,
+        severity="warn",
+        category="event_naming",
+        description="Upcoming WSDC list snapshot should not be empty after load.",
+        fix_hint="scripts/sync_events_list.py; location_id FK must not CASCADE on promote (031)",
+    ),
+    QualityCheck(
+        name="schedule_orphan_location_id",
+        sql="""
+        SELECT count(*)
+        FROM core.events_list_current s
+        LEFT JOIN core.locations l ON l.location_id = s.location_id
+        WHERE s.location_id IS NOT NULL AND l.location_id IS NULL
+        """,
+        max_value=0,
+        severity="warn",
+        category="location",
+        description="events_list_current.location_id must exist in core.locations (no FK).",
+        fix_hint="sync_events_list ensure_location; null invalid lids on restore",
+    ),
+    QualityCheck(
         name="recent_editions_missing_day_dates",
         sql="""
         SELECT count(*) FROM core.event_editions

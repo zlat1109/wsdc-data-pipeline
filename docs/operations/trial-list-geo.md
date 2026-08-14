@@ -22,11 +22,17 @@ reuse a wrong shared `location_id`.
 
 ## Schema
 
-Migration `030_scheduled_events_location.sql`:
+Migration `030_scheduled_events_location.sql` added the columns. Migration
+`031_schedule_location_no_fk.sql` **drops the `location_id` FKs** so
+`promote_core` `TRUNCATE core.locations … CASCADE` cannot wipe
+`core.scheduled_events` / `core.events_list_current` (PostgreSQL `TRUNCATE
+CASCADE` truncates referencing tables; `ON DELETE SET NULL` does not apply).
 
 - `core.scheduled_events.location_id` / `location_source`
 - `core.events_list_current.location_id` / `location_source`
 - Export views include both columns
+- Soft integrity: quality checks `events_list_current_empty`,
+  `schedule_orphan_location_id`
 
 `location_source` vocabulary: `location_info` | `city_canonical` | `google_maps` | `event_website` | `unresolved`
 

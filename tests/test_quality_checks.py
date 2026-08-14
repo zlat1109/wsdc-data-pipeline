@@ -28,6 +28,9 @@ def test_core_checks_include_ci_invariants():
 
 def test_extended_checks_cover_known_regression_categories():
     names = {c.name for c in EXTENDED_CHECKS}
+    assert "edition_calendar_orphan_event_ids" in names
+    assert "events_list_current_empty" in names
+    assert "schedule_orphan_location_id" in names
     assert "all_caps_cities" in names
     assert "phantom_ids_not_merged" in names
     assert "swing_snow_alias" in names
