@@ -241,3 +241,31 @@ def test_fingerprint_differs_by_date():
     fp1 = source_fingerprint("Annual Event", "2026-06-01", "https://example.com/event")
     fp2 = source_fingerprint("Annual Event", "2027-06-01", "https://example.com/event")
     assert fp1 != fp2
+
+
+def test_load_catalog_uses_passed_conn():
+    """Nested connect() deadlocks against promote_core TRUNCATE core.events."""
+
+    class _Cur:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            return False
+
+        def execute(self, sql, params=None):
+            self._sql = sql
+
+        def fetchall(self):
+            if "event_instances" in (self._sql or ""):
+                return []
+            return [(289, "SwingVester", "https://www.swingvester.com/")]
+
+    class _Conn:
+        def cursor(self):
+            return _Cur()
+
+    from transform.events_list_catalog import load_catalog
+
+    rows = load_catalog(_Conn())
+    assert any(r.event_id == 289 and r.name == "SwingVester" for r in rows)

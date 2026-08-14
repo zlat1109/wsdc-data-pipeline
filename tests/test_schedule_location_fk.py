@@ -37,6 +37,14 @@ def test_promote_core_warns_against_schedule_location_fk():
     assert "031" in text
 
 
+def test_restore_loads_catalog_on_same_connection():
+    text = (PROJECT_ROOT / "db" / "refresh_events_list_current.py").read_text(
+        encoding="utf-8"
+    )
+    assert "load_catalog(conn)" in text
+    assert "load_catalog()" not in text
+
+
 def test_ensure_keeps_existing_snapshot(monkeypatch):
     class _Cur:
         def __enter__(self):

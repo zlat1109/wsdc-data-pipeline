@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 from transform.knowledge import KNOWN_EVENT_METADATA
 from transform.events_list_mapping import CatalogEvent
 from transform.events_list_normalize import normalize_url
@@ -21,24 +23,37 @@ def _supplement_catalog(events: list[tuple[int, str, str]]) -> list[tuple[int, s
     return sorted(by_id.values(), key=lambda row: row[1].lower())
 
 
-def load_catalog() -> list[CatalogEvent]:
-    from connection import connect
+def _fetch_catalog_rows(cur: Any) -> tuple[list[tuple[int, str, str]], list[Any]]:
+    cur.execute("SELECT event_id, name, COALESCE(url, '') FROM core.events ORDER BY name")
+    events = _supplement_catalog([(int(r[0]), r[1], r[2] or "") for r in cur.fetchall()])
+    cur.execute(
+        """
+        SELECT e.event_id, ei.location_raw, COUNT(*) AS cnt
+        FROM core.event_instances ei
+        JOIN core.events e ON e.event_id = ei.event_id
+        WHERE ei.location_raw IS NOT NULL AND TRIM(ei.location_raw) <> ''
+        GROUP BY e.event_id, ei.location_raw
+        ORDER BY e.event_id, cnt DESC
+        """
+    )
+    return events, cur.fetchall()
 
-    with connect() as conn, conn.cursor() as cur:
-        cur.execute("SELECT event_id, name, COALESCE(url, '') FROM core.events ORDER BY name")
-        events = _supplement_catalog([(int(r[0]), r[1], r[2] or "") for r in cur.fetchall()])
 
-        cur.execute(
-            """
-            SELECT e.event_id, ei.location_raw, COUNT(*) AS cnt
-            FROM core.event_instances ei
-            JOIN core.events e ON e.event_id = ei.event_id
-            WHERE ei.location_raw IS NOT NULL AND TRIM(ei.location_raw) <> ''
-            GROUP BY e.event_id, ei.location_raw
-            ORDER BY e.event_id, cnt DESC
-            """
-        )
-        loc_rows = cur.fetchall()
+def load_catalog(conn: Any | None = None) -> list[CatalogEvent]:
+    """Load points catalog for schedule mapping.
+
+    Pass ``conn`` when called inside an open load transaction. A nested
+    ``connect()`` would block on ``TRUNCATE core.events`` until statement_timeout
+    (full-parse run 31808709100).
+    """
+    if conn is not None:
+        with conn.cursor() as cur:
+            events, loc_rows = _fetch_catalog_rows(cur)
+    else:
+        from connection import connect
+
+        with connect() as owned, owned.cursor() as cur:
+            events, loc_rows = _fetch_catalog_rows(cur)
 
     typical: dict[int, str] = {}
     by_event: dict[int, list[tuple[str, int]]] = {}
