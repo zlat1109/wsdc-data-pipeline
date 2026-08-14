@@ -13,7 +13,12 @@ from transform.knowledge.geo_flags import (
     flag_for_country,
     resolve_flag_and_continent,
 )
-from transform.points_summary.advancement import clear_points_cache
+from transform.points_summary.advancement import (
+    clear_points_cache,
+    editions_start_lookup,
+    get_advancement_status,
+    set_event_points_timeline,
+)
 from transform.points_summary.merge import merge_points_summaries
 from transform.points_summary.report import (
     build_full_event_report,
@@ -190,8 +195,8 @@ def _find_edition_row(editions: list[dict], event_name: str) -> dict | None:
 def _place_signature(place: dict) -> tuple:
     """Compare podium composition + points earned; ignore running totals/markers.
 
-    Registry totals in [] advance after later events, so exact equality against an
-    older points_summaries.json snapshot is not stable. Names and (+N) are.
+    Registry totals in [] are as-of the edition start date (later results
+    subtracted from the live CSV). Names and (+N) must still match.
     """
     import re
 
@@ -225,6 +230,7 @@ def test_golden_recent_summary_blocks_match_pipeline_builder():
     dancers_map = load_dancers_map(DATA_DIR / "dancer_role_info.csv")
     points_csv = DATA_DIR / "dancers_points_info.csv"
     clear_points_cache()
+    set_event_points_timeline(results_rows, editions_start_lookup(editions))
 
     compared = 0
     mismatches: list[str] = []
@@ -299,3 +305,93 @@ def test_enrich_meta_dates_from_schedule_fills_blank_edition_dates():
     meta2 = dict(meta, start_date="2026-07-01", end_date="2026-07-01")
     kept = enrich_meta_dates_from_schedule(meta2, by_name={}, by_id=by_id)
     assert kept["start_date"] == "2026-07-01"
+
+
+def test_as_of_registry_total_excludes_later_events(tmp_path: Path):
+    """Live CSV snapshot must not be copied onto an earlier edition card."""
+    points_csv = tmp_path / "dancers_points_info.csv"
+    points_csv.write_text(
+        "dancer_id,role,dance,level,total_points,update_date\n"
+        "14601,Leader,West Coast Swing,All-Star,153,2026-08-14\n",
+        encoding="utf-8",
+    )
+    results_rows = [
+        {
+            "dancer_id": "14601",
+            "event_dance": "West Coast Swing",
+            "event_competition": "All-Star",
+            "event_role": "leader",
+            "event_points": "4",
+            "event_name": "Florida Dance Magic",
+            "event_year": "2026",
+            "event_month": "7",
+        },
+        {
+            "dancer_id": "14601",
+            "event_dance": "West Coast Swing",
+            "event_competition": "All-Star",
+            "event_role": "leader",
+            "event_points": "6",
+            "event_name": "Swingtacular: The Galactic Open",
+            "event_year": "2026",
+            "event_month": "8",
+        },
+    ]
+    lookup = {
+        ("florida dance magic", "2026", "7"): date(2026, 7, 23),
+        ("swingtacular: the galactic open", "2026", "8"): date(2026, 8, 6),
+    }
+    clear_points_cache()
+    set_event_points_timeline(results_rows, lookup)
+
+    _before, after_fdm, marker_fdm = get_advancement_status(
+        "14601",
+        "leader",
+        "All-Stars",
+        4,
+        points_csv,
+        as_of=date(2026, 7, 23),
+    )
+    assert after_fdm == 147
+    assert marker_fdm == ""
+
+    _before, after_swing, marker_swing = get_advancement_status(
+        "14601",
+        "leader",
+        "All-Stars",
+        6,
+        points_csv,
+        as_of=date(2026, 8, 6),
+    )
+    assert after_swing == 153
+    assert marker_swing == "🟡"
+
+
+def test_florida_dance_magic_jaden_not_current_snapshot():
+    """Regression: FDM 2026 must keep [147], not Swingtacular's live [153]."""
+    _required_csvs()
+    import csv
+
+    with (DATA_DIR / "event_editions.csv").open(encoding="utf-8") as fh:
+        editions = list(csv.DictReader(fh))
+    results_rows = load_results_rows(DATA_DIR / "dancers_results_info.csv")
+    dancers_map = load_dancers_map(DATA_DIR / "dancer_role_info.csv")
+    points_csv = DATA_DIR / "dancers_points_info.csv"
+    clear_points_cache()
+    set_event_points_timeline(results_rows, editions_start_lookup(editions))
+
+    fdm = next(
+        r
+        for r in editions
+        if r.get("event_name") == "Florida Dance Magic"
+        and str(r.get("event_year")) == "2026"
+    )
+    rebuilt = build_full_event_report(
+        edition_meta_from_row(fdm), results_rows, dancers_map, points_csv
+    )
+    assert rebuilt is not None
+    als = next(d for d in rebuilt["divisions"] if d["division"] == "All-Stars")
+    second = next(p for p in als["places"] if p["place"] == "2")
+    assert "Jaden Pfeiffer (+4) [147]" in second["leader"]
+    assert "🟡" not in second["leader"]
+
