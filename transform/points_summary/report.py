@@ -14,7 +14,10 @@ from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 
 from transform.knowledge.geo_flags import resolve_flag_and_continent
-from transform.points_summary.advancement import get_advancement_status
+from transform.points_summary.advancement import (
+    ensure_event_points_timeline,
+    get_advancement_status,
+)
 
 PLACE_EMOJI = {"1": "🥇", "2": "🥈", "3": "🥉"}
 
@@ -311,12 +314,13 @@ def _format_dancer_result_line(
     place: str,
     dancers_map: Dict[str, str],
     points_csv: Path,
+    as_of: date | None = None,
 ) -> str:
     name = dancers_map.get(dancer_id, "???")
     if is_newcomer:
         return f"{name} (+{points})"
     _, total_after, status = get_advancement_status(
-        dancer_id, role, division, points, points_csv
+        dancer_id, role, division, points, points_csv, as_of=as_of
     )
     total_after = _apply_manual_total_delta_override(
         event_name, division, place, role, dancer_id, str(total_after)
@@ -339,6 +343,7 @@ def _pair_or_list_place(
     dancers_map: Dict[str, str],
     points_csv: Path,
     include_points_on_single: bool = True,
+    as_of: date | None = None,
 ) -> dict | None:
     if leaders and followers:
         ld, fd = leaders[0], followers[0]
@@ -347,10 +352,10 @@ def _pair_or_list_place(
             follower_s = f"{dancers_map.get(fd['id'], '???')} (+{fd['points']})"
         else:
             _, la, ls = get_advancement_status(
-                ld["id"], "leader", division, ld["points"], points_csv
+                ld["id"], "leader", division, ld["points"], points_csv, as_of=as_of
             )
             _, fa, fs = get_advancement_status(
-                fd["id"], "follower", division, fd["points"], points_csv
+                fd["id"], "follower", division, fd["points"], points_csv, as_of=as_of
             )
             la = _apply_manual_total_delta_override(
                 event_name, division, place, "leader", ld["id"], str(la)
@@ -383,6 +388,7 @@ def _pair_or_list_place(
                 place,
                 dancers_map,
                 points_csv,
+                as_of,
             )
             if include_points_on_single
             else dancers_map.get(ld["id"], "???")
@@ -408,6 +414,7 @@ def _pair_or_list_place(
                 place,
                 dancers_map,
                 points_csv,
+                as_of,
             )
             if include_points_on_single
             else dancers_map.get(fd["id"], "???")
@@ -439,6 +446,18 @@ def build_full_event_report(
     )
     if not all_results or not event_has_top3(all_results):
         return None
+
+    as_of = _parse_iso_date(event_meta.get("start_date"))
+    if as_of is None:
+        try:
+            as_of = date(
+                int(event_meta.get("event_year")),
+                int(event_meta.get("event_month")),
+                1,
+            )
+        except (TypeError, ValueError):
+            as_of = None
+    ensure_event_points_timeline(results_rows)
 
     divisions_out: List[dict] = []
     ordered = [d for d in DIVISION_ORDER if d in all_results]
@@ -481,6 +500,7 @@ def build_full_event_report(
                         is_newcomer=is_newcomer,
                         dancers_map=dancers_map,
                         points_csv=points_csv,
+                        as_of=as_of,
                     )
                     if rec:
                         places_out.append(rec)
@@ -494,7 +514,12 @@ def build_full_event_report(
                         leader_items.append(ln)
                     else:
                         _, la, ls = get_advancement_status(
-                            ld["id"], "leader", division, ld["points"], points_csv
+                            ld["id"],
+                            "leader",
+                            division,
+                            ld["points"],
+                            points_csv,
+                            as_of=as_of,
                         )
                         item = f"{ln} [{la}]"
                         if ls:
@@ -507,7 +532,12 @@ def build_full_event_report(
                         follower_items.append(fn)
                     else:
                         _, fa, fs = get_advancement_status(
-                            fd["id"], "follower", division, fd["points"], points_csv
+                            fd["id"],
+                            "follower",
+                            division,
+                            fd["points"],
+                            points_csv,
+                            as_of=as_of,
                         )
                         item = f"{fn} [{fa}]"
                         if fs:
