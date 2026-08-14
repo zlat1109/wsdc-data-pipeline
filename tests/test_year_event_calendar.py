@@ -381,6 +381,145 @@ def test_enrich_geo_name_override_forces_umea_for_rock_the_barn():
     assert rows[0]["lat"] == 63.5391027
 
 
+def test_enrich_geo_name_override_forces_vienna_for_wcs_party():
+    locations = pd.DataFrame(
+        [
+            {
+                "location_id": 250,
+                "event_city": "Vienna",
+                "event_country": "Austria",
+                "event_location": "Vienna, Austria",
+                "event_location_standardized": "Vienna, Austria",
+                "latitude": 48.2080696,
+                "longitude": 16.3713095,
+                "coordinates_valid": True,
+            },
+            {
+                "location_id": 3,
+                "event_city": "Phoenix",
+                "event_country": "United States",
+                "event_location": "Phoenix, AZ, United States",
+                "event_location_standardized": "Phoenix, AZ",
+                "latitude": 33.4482948,
+                "longitude": -112.0725488,
+                "coordinates_valid": True,
+            },
+        ]
+    )
+    catalog = pd.DataFrame(columns=["event_id", "canonical_name", "url"])
+    rows = [
+        {
+            "event_id": 357,
+            "name": "WCS Party",
+            "city": "Phoenix",
+            "country": "United States",
+            "location_id": 3,
+            "url": "https://www.wcsparty.com/",
+        }
+    ]
+    _enrich_geo(rows, locations, catalog, location_id_by_event={357: 3})
+    assert rows[0]["location_id"] == 250
+    assert rows[0]["city"] == "Vienna"
+    assert rows[0]["country"] == "Austria"
+
+
+def test_enrich_geo_name_override_forces_hobart_for_southern_lights():
+    locations = pd.DataFrame(
+        [
+            {
+                "location_id": 259,
+                "event_city": "Hobart",
+                "event_country": "Australia",
+                "event_location": "Hobart, Australia",
+                "event_location_standardized": "Hobart, Australia",
+                "latitude": -42.8826055,
+                "longitude": 147.3257196,
+                "coordinates_valid": True,
+            },
+            {
+                "location_id": 253,
+                "event_city": "Perth",
+                "event_country": "Australia",
+                "event_location": "Perth, Australia",
+                "event_location_standardized": "Perth, Australia",
+                "latitude": -31.9513993,
+                "longitude": 115.8616783,
+                "coordinates_valid": True,
+            },
+        ]
+    )
+    catalog = pd.DataFrame(columns=["event_id", "canonical_name", "url"])
+    rows = [
+        {
+            "event_id": 394,
+            "name": "Southern Lights Swing",
+            "city": "Perth",
+            "country": "Australia",
+            "location_id": 253,
+            "url": "https://www.southernlightsswing.com.au/",
+        }
+    ]
+    _enrich_geo(rows, locations, catalog, location_id_by_event={394: 253})
+    assert rows[0]["location_id"] == 259
+    assert rows[0]["city"] == "Hobart"
+    assert rows[0]["country"] == "Australia"
+
+
+def test_enrich_geo_year_override_ggp_2026_paris_not_toulouse():
+    """GGP relocated Toulouse → Paris in 2026; do not inherit 2025 edition lid."""
+    locations = pd.DataFrame(
+        [
+            {
+                "location_id": 208,
+                "event_city": "Toulouse",
+                "event_country": "France",
+                "event_location": "Toulouse, France",
+                "event_location_standardized": "Toulouse, France",
+                "latitude": 43.6048462,
+                "longitude": 1.442848,
+                "coordinates_valid": True,
+            },
+            {
+                "location_id": 109,
+                "event_city": "Paris",
+                "event_country": "France",
+                "event_location": "Paris, France",
+                "event_location_standardized": "Paris, France",
+                "latitude": 48.8575475,
+                "longitude": 2.3513765,
+                "coordinates_valid": True,
+            },
+        ]
+    )
+    catalog = pd.DataFrame(columns=["event_id", "canonical_name", "url"])
+    paris_2026 = {
+        "event_id": 342,
+        "name": "Global Grand Prix - West Coast Swing Reunion",
+        "city": "Paris",
+        "country": "France",
+        "location_id": None,
+        "year": 2026,
+        "start_date": date(2026, 9, 18),
+        "url": "https://www.globalgrandprixwcs.com/",
+    }
+    toulouse_2025 = {
+        "event_id": 342,
+        "name": "Global Grand Prix - West Coast Swing Reunion",
+        "city": "Toulouse",
+        "country": "France",
+        "location_id": None,
+        "year": 2025,
+        "start_date": date(2025, 12, 12),
+        "url": "https://www.globalgrandprixwcs.com/",
+    }
+    rows = [paris_2026, toulouse_2025]
+    _enrich_geo(rows, locations, catalog, location_id_by_event={342: 208})
+    assert rows[0]["location_id"] == 109
+    assert rows[0]["city"] == "Paris"
+    assert rows[1]["location_id"] == 208
+    assert rows[1]["city"] == "Toulouse"
+
+
 def test_enrich_geo_city_country_fallback():
     locations = pd.DataFrame(
         [

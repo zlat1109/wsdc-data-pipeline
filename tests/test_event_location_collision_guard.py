@@ -456,6 +456,7 @@ def test_event_id_canonical_ignores_series_moves():
         [{"event_name": "Westie's Angels", "location_id": "13"}]
     )
     assert "Westie's Angels" in KNOWN_SERIES_MOVES
+    assert "Global Grand Prix - West Coast Swing Reunion" in KNOWN_SERIES_MOVES
     mismatches = find_event_id_canonical_location_mismatches(
         results,
         location_info,

@@ -125,6 +125,11 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     # Shared Brno (266 / Swing Fiction) wrongly applied; always Umeå SE (event 256).
     'Rock the Barn': 'Umeå, Sweden',
     'Rock The Barn': 'Umeå, Sweden',
+    # Shared Phoenix (3 / Desert City) wrongly applied; always Vienna (event 357).
+    'WCS Party': 'Vienna, Austria',
+    'WCS Party in Vienna': 'Vienna, Austria',
+    # Shared Perth (253 / WesterOz) wrongly applied; always Hobart TAS (event 394).
+    'Southern Lights Swing': 'Hobart, Australia',
     # WSDC venue label "Boston Club" is in Düsseldorf (not a city name).
     'D-Town Swing': 'Düsseldorf, Germany',
     'WCS Festival': 'Düsseldorf, Germany',
@@ -142,6 +147,12 @@ EVENT_NAME_YEAR_LOCATION_OVERRIDES: dict[tuple[str, int, int], str] = {
     # event_id 191 (Crimea) vs 230 (Spain).
     ("Sunny Side Dance Camp", 2012, 2013): "Crimea, Ukraine",
     ("Sunny Side Dance Camp", 2014, 2099): "Torrevieja, Spain",
+    # event_id 342: Toulouse 2023–2025; 5-year anniversary moved to Paris CDG 2026.
+    # Do not flatten to Paris — historical results stay Toulouse. Soul Flow keeps
+    # the Toulouse date (provisional id) in calendar_operator_overrides.
+    ("Global Grand Prix - West Coast Swing Reunion", 2026, 2099): "Paris, France",
+    ("Global Grand Prix -- West Coast Swing Championships", 2026, 2099): "Paris, France",
+    ("Global Grand Prix", 2026, 2099): "Paris, France",
 }
 
 EVENT_LOCATION_EXACT_CORRECTIONS = {
@@ -399,6 +410,30 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_country': 'Sweden',
             'event_location': 'Umeå, Sweden',
             'event_location_standardized': 'Umeå, Sweden',
+        },
+    },
+    357: {
+        'name': 'WCS Party',
+        'url': 'https://www.wcsparty.com/',
+        'typical_location': 'Vienna, Austria',
+        'location': {
+            'event_city': 'Vienna',
+            'event_state': '',
+            'event_country': 'Austria',
+            'event_location': 'Vienna, Austria',
+            'event_location_standardized': 'Vienna, Austria',
+        },
+    },
+    394: {
+        'name': 'Southern Lights Swing',
+        'url': 'https://www.southernlightsswing.com.au/',
+        'typical_location': 'Hobart, Australia',
+        'location': {
+            'event_city': 'Hobart',
+            'event_state': '',
+            'event_country': 'Australia',
+            'event_location': 'Hobart, Australia',
+            'event_location_standardized': 'Hobart, Australia',
         },
     },
     178: {
