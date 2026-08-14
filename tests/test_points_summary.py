@@ -21,6 +21,7 @@ from transform.points_summary.advancement import (
 )
 from transform.points_summary.merge import merge_points_summaries
 from transform.points_summary.report import (
+    DIVISION_ORDER,
     build_full_event_report,
     canonicalize_division,
     edition_meta_from_row,
@@ -72,6 +73,26 @@ def test_canonicalize_division_variants():
     assert canonicalize_division("All-Star") == "All-Stars"
     assert canonicalize_division("Champion") == "Champions"
     assert canonicalize_division("Novice") == "Novices"
+
+
+def test_division_order_skill_ladder_before_age_tracks():
+    """Sophisticated/Masters/Juniors must not sit between Advanced and Intermediate."""
+    assert DIVISION_ORDER == [
+        "Champions",
+        "All-Stars",
+        "Advanced",
+        "Intermediate",
+        "Novices",
+        "Newcomers",
+        "Sophisticated",
+        "Masters",
+        "Juniors",
+    ]
+    skill_end = DIVISION_ORDER.index("Newcomers")
+    for age in ("Sophisticated", "Masters", "Juniors"):
+        assert DIVISION_ORDER.index(age) > skill_end
+    assert DIVISION_ORDER.index("Advanced") < DIVISION_ORDER.index("Intermediate")
+    assert DIVISION_ORDER.index("Sophisticated") > DIVISION_ORDER.index("Advanced")
 
 
 def test_merge_preserves_telegraph_url_and_creates_after_cutoff():
