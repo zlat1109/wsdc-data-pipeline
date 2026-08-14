@@ -20,7 +20,10 @@ from transform.knowledge.event_aliases import (
     MERGE_EVENT_ID_MAP,
     RESULT_TO_CATALOG_EVENT_NAME,
 )
-from transform.knowledge.events import EVENT_NAME_LOCATION_OVERRIDES
+from transform.knowledge.events import (
+    EVENT_NAME_LOCATION_OVERRIDES,
+    EVENT_NAME_YEAR_LOCATION_OVERRIDES,
+)
 from transform.knowledge.geo_flags import continent_for_country
 from transform.year_event_calendar.expected import (
     EXPECTED_STALE_GRACE_DAYS,
@@ -1151,6 +1154,22 @@ def _location_id_for_override_text(
     return None
 
 
+def _override_lid_for_calendar_row(
+    name: str | None,
+    year: int | None,
+    override_lid_by_name: dict[str, int],
+    year_override_lids: list[tuple[str, int, int, int]],
+) -> int | None:
+    """Year-scoped location overrides beat flat EVENT_NAME_LOCATION_OVERRIDES."""
+    if not name:
+        return None
+    if year is not None:
+        for oname, y0, y1, lid in year_override_lids:
+            if name == oname and y0 <= year <= y1:
+                return lid
+    return override_lid_by_name.get(name)
+
+
 def _enrich_geo(
     rows: list[dict],
     locations: pd.DataFrame,
@@ -1179,6 +1198,11 @@ def _enrich_geo(
         for name, text in EVENT_NAME_LOCATION_OVERRIDES.items()
         if (lid := _location_id_for_override_text(text, locations)) is not None
     }
+    year_override_lids: list[tuple[str, int, int, int]] = []
+    for (name, y0, y1), text in EVENT_NAME_YEAR_LOCATION_OVERRIDES.items():
+        lid = _location_id_for_override_text(text, locations)
+        if lid is not None:
+            year_override_lids.append((name, y0, y1, lid))
 
     for row in rows:
         eid = row.get("event_id")
@@ -1193,9 +1217,13 @@ def _enrich_geo(
             if not row.get("country"):
                 row["country"] = _clean_name(cat.get("typical_country"))
         # Name overrides beat scrape/catalog city (e.g. SwingVester → Wels, not Brno).
+        # Year-scoped overrides beat flat ones (GGP Toulouse → Paris from 2026).
         name = _clean_name(row.get("name"))
-        if name and name in override_lid_by_name:
-            row["location_id"] = override_lid_by_name[name]
+        override_lid = _override_lid_for_calendar_row(
+            name, _row_year(row), override_lid_by_name, year_override_lids
+        )
+        if override_lid is not None:
+            row["location_id"] = override_lid
         if row.get("location_id") is None and eid is not None:
             inherited = loc_by_event.get(int(eid))
             if inherited is not None:
