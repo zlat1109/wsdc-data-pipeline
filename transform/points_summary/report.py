@@ -21,14 +21,17 @@ from transform.points_summary.advancement import (
 
 PLACE_EMOJI = {"1": "🥇", "2": "🥈", "3": "🥉"}
 
+# Skill ladder first (Champions → Newcomers), then age/special tracks.
+# Keeps Sophisticated/Masters/Juniors after Newcomers so they never sit
+# between Advanced and Intermediate when an event has both tracks.
 DIVISION_ORDER = [
     "Champions",
     "All-Stars",
     "Advanced",
-    "Sophisticated",
     "Intermediate",
     "Novices",
     "Newcomers",
+    "Sophisticated",
     "Masters",
     "Juniors",
 ]
