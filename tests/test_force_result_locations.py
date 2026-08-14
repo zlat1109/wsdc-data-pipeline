@@ -229,3 +229,46 @@ class TestForceResultLocations:
         assert changed == 0
         assert out.loc[0, "location_id"] == "248"
         assert "null event_year" in caplog.text
+
+    def test_ggp_year_scoped_paris_from_2026_keeps_toulouse(self, monkeypatch):
+        monkeypatch.setattr(
+            "transform.knowledge.apply.EVENT_NAME_LOCATION_OVERRIDES", {}
+        )
+        monkeypatch.setattr(
+            "transform.knowledge.apply.EVENT_NAME_YEAR_LOCATION_OVERRIDES",
+            {
+                ("Global Grand Prix - West Coast Swing Reunion", 2026, 2099): "Paris, France",
+            },
+        )
+        location_df = pd.concat(
+            [
+                _make_location_df("208", "Toulouse", "France", "Toulouse, France"),
+                _make_location_df("109", "Paris", "France", "Paris, France"),
+            ],
+            ignore_index=True,
+        )
+        results_df = pd.DataFrame(
+            [
+                {
+                    "event_name": "Global Grand Prix - West Coast Swing Reunion",
+                    "event_year": 2025,
+                    "location_id": "208",
+                    "event_location": "Toulouse, France",
+                },
+                {
+                    "event_name": "Global Grand Prix - West Coast Swing Reunion",
+                    "event_year": 2026,
+                    "location_id": "208",
+                    "event_location": "Toulouse, France",
+                },
+            ]
+        )
+
+        out, changed = force_result_locations_from_event_name_overrides(
+            results_df, location_df
+        )
+
+        assert changed == 1
+        assert out.loc[0, "location_id"] == "208"
+        assert out.loc[1, "location_id"] == "109"
+        assert out.loc[1, "event_location"] == "Paris, France"

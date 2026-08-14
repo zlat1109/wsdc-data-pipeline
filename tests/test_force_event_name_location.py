@@ -588,3 +588,93 @@ def test_force_rock_the_barn_off_brno_to_umea():
         assert row["event_location"] == "Umeå, Sweden"
     fiction = out.loc[out["event_name"] == "Swing Fiction"].iloc[0]
     assert str(fiction["location_id"]) == "266"
+
+
+def test_force_wcs_party_off_phoenix_to_vienna():
+    location_info = pd.DataFrame(
+        [
+            {
+                "location_id": "3",
+                "event_city": "Phoenix",
+                "event_state": "Arizona",
+                "event_country": "United States",
+                "event_location": "Phoenix, AZ, United States",
+            },
+            {
+                "location_id": "250",
+                "event_city": "Vienna",
+                "event_state": "",
+                "event_country": "Austria",
+                "event_location": "Vienna, Austria",
+            },
+        ]
+    )
+    results = pd.DataFrame(
+        [
+            {
+                "event_name": "WCS Party",
+                "location_id": "3",
+                "event_location": "Phoenix, AZ, United States",
+            },
+            {
+                "event_name": "WCS Party in Vienna",
+                "location_id": "3",
+                "event_location": "Phoenix, AZ, United States",
+            },
+            {
+                "event_name": "Desert City Swing",
+                "location_id": "3",
+                "event_location": "Phoenix, AZ, United States",
+            },
+        ]
+    )
+    out, changed = force_result_locations_from_event_name_overrides(results, location_info)
+    assert changed == 2
+    for name in ("WCS Party", "WCS Party in Vienna"):
+        row = out.loc[out["event_name"] == name].iloc[0]
+        assert str(row["location_id"]) == "250"
+        assert row["event_location"] == "Vienna, Austria"
+    desert = out.loc[out["event_name"] == "Desert City Swing"].iloc[0]
+    assert str(desert["location_id"]) == "3"
+
+
+def test_force_southern_lights_off_perth_to_hobart():
+    location_info = pd.DataFrame(
+        [
+            {
+                "location_id": "253",
+                "event_city": "Perth",
+                "event_state": "",
+                "event_country": "Australia",
+                "event_location": "Perth, Australia",
+            },
+            {
+                "location_id": "259",
+                "event_city": "Hobart",
+                "event_state": "",
+                "event_country": "Australia",
+                "event_location": "Hobart, Australia",
+            },
+        ]
+    )
+    results = pd.DataFrame(
+        [
+            {
+                "event_name": "Southern Lights Swing",
+                "location_id": "253",
+                "event_location": "Perth, Australia",
+            },
+            {
+                "event_name": "Westerly Winds",
+                "location_id": "253",
+                "event_location": "Perth, Australia",
+            },
+        ]
+    )
+    out, changed = force_result_locations_from_event_name_overrides(results, location_info)
+    assert changed == 1
+    lights = out.loc[out["event_name"] == "Southern Lights Swing"].iloc[0]
+    assert str(lights["location_id"]) == "259"
+    assert lights["event_location"] == "Hobart, Australia"
+    westerly = out.loc[out["event_name"] == "Westerly Winds"].iloc[0]
+    assert str(westerly["location_id"]) == "253"

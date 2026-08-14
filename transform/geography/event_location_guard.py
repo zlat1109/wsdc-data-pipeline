@@ -54,6 +54,10 @@ KNOWN_SERIES_MOVES: frozenset[str] = frozenset(
     {
         "Westie's Angels",  # historical Washington DC results; 2026 schedule Lyon
         "Swingside Invitational",  # historical San Antonio; 2026 schedule Liège
+        # Toulouse 2023–2025; Paris CDG from 2026 (Soul Flow keeps Toulouse).
+        "Global Grand Prix - West Coast Swing Reunion",
+        "Global Grand Prix -- West Coast Swing Championships",
+        "Global Grand Prix",
     }
 )
 

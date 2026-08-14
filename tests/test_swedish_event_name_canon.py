@@ -75,6 +75,17 @@ def test_westie_gala_metadata_and_stockholm_override():
     assert EVENT_NAME_LOCATION_OVERRIDES["Rock the Barn"] == "Umeå, Sweden"
     assert EVENT_NAME_LOCATION_OVERRIDES["Rock The Barn"] == "Umeå, Sweden"
     assert KNOWN_EVENT_METADATA[256]["typical_location"] == "Umeå, Sweden"
+    assert EVENT_NAME_LOCATION_OVERRIDES["WCS Party"] == "Vienna, Austria"
+    assert EVENT_NAME_LOCATION_OVERRIDES["WCS Party in Vienna"] == "Vienna, Austria"
+    assert KNOWN_EVENT_METADATA[357]["typical_location"] == "Vienna, Austria"
+    assert EVENT_NAME_LOCATION_OVERRIDES["Southern Lights Swing"] == "Hobart, Australia"
+    assert KNOWN_EVENT_METADATA[394]["typical_location"] == "Hobart, Australia"
+    assert (
+        EVENT_NAME_YEAR_LOCATION_OVERRIDES[
+            ("Global Grand Prix - West Coast Swing Reunion", 2026, 2099)
+        ]
+        == "Paris, France"
+    )
 
 
 def test_year_split_sssc_vs_uptown_results():
