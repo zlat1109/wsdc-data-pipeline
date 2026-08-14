@@ -49,7 +49,8 @@ Parser output and preprocess input treat **all columns as strings** (`cloud_pars
 | Preprocess | `Invalid value '47' for dtype 'str'` | Fixed in `merge_map` + `pandas_utils`; ensure ID fields are strings end-to-end |
 | Load | `dancer_roles_dancer_id_fkey` | Fixed in `promote_core.sql`; run `validate_pipeline_inputs` |
 | Load | invalid `event_role` / `role` | Fix in preprocess or source CSV |
-| CI commit | `git push rejected (fetch first)` | `git pull --rebase` before push in `full-parse.yml` |
+| CI commit | `git push rejected (fetch first)` | `git pull --rebase origin main` then `git push origin HEAD:main` (only when the run is on `main`) |
+| CI commit | CSV landed on a feature branch | Dispatch on `main`; or `reuse_parse_artifact_run_id` + `parse_full=false` |
 | Auto re-run | Multiple full parses same week | Expected with partial gate; `parse_in_flight` + workflow concurrency prevent overlap. Weekly cooldown only for `all_loaded` (registry-only). |
 | Load | `event_editions` = 0 | Cloud parse dates; run preprocess with date normalization |
 | Sync | Supabase fresh, git CSV stale | [data-sync.md](data-sync.md); run `export.py` and commit |
