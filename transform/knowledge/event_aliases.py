@@ -156,7 +156,7 @@ MERGE_EVENT_ID_MAP: dict[int, int] = {
     99: 119,   # Chicagoland Dance Festival — Chicago
     198: 154,  # UK WCS — London
     202: 218,  # Asia WCS Open — Singapore
-    39: 334,   # Countdown Swing Boston — Boston/Framingham metro
+    39: 334,   # Countdown Swing Boston — Greater Boston metro (Mansfield venue)
     307: 272,  # Paris Westie Fest — Paris
     543: 272,  # Paris Swing Classic ghost / inactive → Paris Westie Fest
     325: 330,  # Simply Adelaide — Adelaide
