@@ -99,10 +99,9 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'Bavarian Open': 'Munich, Germany',  # was Jeju (213) / Venray (227)
     'Bavarian Open WCS': 'Munich, Germany',
     'Bavarian Open West Coast Swing Championships': 'Munich, Germany',
-    # Metro move Framingham → Boston for recent editions; unify on Boston (8).
-    'Countdown Swing Boston': 'Boston, MA, United States',
     # Sunny Side Crimea→Spain: year ranges in EVENT_NAME_YEAR_LOCATION_OVERRIDES
     # (flat Torrevieja override collapsed KEEP_SEPARATE ids 191/230 → CI fail).
+    # Countdown Swing Boston: Mansfield from 2025 (year override); not flat Boston.
     'King Swing': 'Kraków, Poland',  # was Wailea (124)
     'Santa Swing': 'Kraków, Poland',  # was Wailea (124)
     'Westy Nantes': 'Nantes, France',  # was Brno (266)
@@ -153,6 +152,9 @@ EVENT_NAME_YEAR_LOCATION_OVERRIDES: dict[tuple[str, int, int], str] = {
     ("Global Grand Prix - West Coast Swing Reunion", 2026, 2099): "Paris, France",
     ("Global Grand Prix -- West Coast Swing Championships", 2026, 2099): "Paris, France",
     ("Global Grand Prix", 2026, 2099): "Paris, France",
+    # event_id 334: Envision Hotel Mansfield-Foxboro from 2025 NYE edition.
+    # Do not flatten all years — older results stay Boston metro (8).
+    ("Countdown Swing Boston", 2025, 2099): "Mansfield, MA, United States",
 }
 
 EVENT_LOCATION_EXACT_CORRECTIONS = {
@@ -434,6 +436,18 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_country': 'Australia',
             'event_location': 'Hobart, Australia',
             'event_location_standardized': 'Hobart, Australia',
+        },
+    },
+    334: {
+        'name': 'Countdown Swing Boston',
+        'url': 'https://countdownswingboston.com/',
+        'typical_location': 'Mansfield, MA, United States',
+        'location': {
+            'event_city': 'Mansfield',
+            'event_state': 'Massachusetts',
+            'event_country': 'United States',
+            'event_location': 'Mansfield, MA, United States',
+            'event_location_standardized': 'Mansfield, MA',
         },
     },
     178: {

@@ -86,6 +86,14 @@ def test_westie_gala_metadata_and_stockholm_override():
         ]
         == "Paris, France"
     )
+    assert "Countdown Swing Boston" not in EVENT_NAME_LOCATION_OVERRIDES
+    assert (
+        EVENT_NAME_YEAR_LOCATION_OVERRIDES[
+            ("Countdown Swing Boston", 2025, 2099)
+        ]
+        == "Mansfield, MA, United States"
+    )
+    assert KNOWN_EVENT_METADATA[334]["typical_location"] == "Mansfield, MA, United States"
 
 
 def test_year_split_sssc_vs_uptown_results():

@@ -35,7 +35,9 @@ Used for merge gate in `scripts/merge_event_ids.py` and quality audit split chec
 |------------|--------|---------------|
 | `greater_boston_ma` | Boston, Framingham (MA, US) | Boston / Framingham, MA |
 
-Both cities count as one geo for duplicate `event_id` merge (Countdown Swing Boston).
+Both cities count as one geo for duplicate `event_id` merge. **Mansfield, MA**
+(Countdown Swing Boston venue from 2025) is a separate `location_id` — not in
+this cluster.
 
 ## Location ID corrections
 

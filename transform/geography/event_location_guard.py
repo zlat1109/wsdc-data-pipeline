@@ -58,6 +58,8 @@ KNOWN_SERIES_MOVES: frozenset[str] = frozenset(
         "Global Grand Prix - West Coast Swing Reunion",
         "Global Grand Prix -- West Coast Swing Championships",
         "Global Grand Prix",
+        # Boston metro historically; Envision Mansfield-Foxboro from 2025.
+        "Countdown Swing Boston",
     }
 )
 

@@ -520,6 +520,61 @@ def test_enrich_geo_year_override_ggp_2026_paris_not_toulouse():
     assert rows[1]["city"] == "Toulouse"
 
 
+def test_enrich_geo_year_override_countdown_2026_mansfield_not_boston():
+    locations = pd.DataFrame(
+        [
+            {
+                "location_id": 8,
+                "event_city": "Boston",
+                "event_country": "United States",
+                "event_location": "Boston, MA, United States",
+                "event_location_standardized": "Boston, MA",
+                "latitude": 42.3555076,
+                "longitude": -71.0565364,
+                "coordinates_valid": True,
+            },
+            {
+                "location_id": 395,
+                "event_city": "Mansfield",
+                "event_country": "United States",
+                "event_location": "Mansfield, MA, United States",
+                "event_location_standardized": "Mansfield, MA",
+                "latitude": 42.0285490,
+                "longitude": -71.2507759,
+                "coordinates_valid": True,
+            },
+        ]
+    )
+    catalog = pd.DataFrame(columns=["event_id", "canonical_name", "url"])
+    rows = [
+        {
+            "event_id": 334,
+            "name": "Countdown Swing Boston",
+            "city": "Boston",
+            "country": "United States",
+            "location_id": None,
+            "year": 2026,
+            "start_date": date(2025, 12, 31),
+            "url": "https://countdownswingboston.com/",
+        },
+        {
+            "event_id": 334,
+            "name": "Countdown Swing Boston",
+            "city": "Boston",
+            "country": "United States",
+            "location_id": None,
+            "year": 2024,
+            "start_date": date(2023, 12, 31),
+            "url": "https://countdownswingboston.com/",
+        },
+    ]
+    _enrich_geo(rows, locations, catalog, location_id_by_event={334: 8})
+    assert rows[0]["location_id"] == 395
+    assert rows[0]["city"] == "Mansfield"
+    assert rows[1]["location_id"] == 8
+    assert rows[1]["city"] == "Boston"
+
+
 def test_enrich_geo_city_country_fallback():
     locations = pd.DataFrame(
         [

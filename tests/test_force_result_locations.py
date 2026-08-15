@@ -272,3 +272,65 @@ class TestForceResultLocations:
         assert out.loc[0, "location_id"] == "208"
         assert out.loc[1, "location_id"] == "109"
         assert out.loc[1, "event_location"] == "Paris, France"
+
+    def test_countdown_year_scoped_mansfield_from_2025(self, monkeypatch):
+        monkeypatch.setattr(
+            "transform.knowledge.apply.EVENT_NAME_LOCATION_OVERRIDES", {}
+        )
+        monkeypatch.setattr(
+            "transform.knowledge.apply.EVENT_NAME_YEAR_LOCATION_OVERRIDES",
+            {
+                ("Countdown Swing Boston", 2025, 2099): "Mansfield, MA, United States",
+            },
+        )
+        location_df = pd.concat(
+            [
+                _make_location_df(
+                    "8", "Boston", "United States", "Boston, MA, United States"
+                ),
+                _make_location_df(
+                    "395",
+                    "Mansfield",
+                    "United States",
+                    "Mansfield, MA, United States",
+                ),
+            ],
+            ignore_index=True,
+        )
+        # US rows need state in location_df for lookup — mirror export shape
+        location_df.loc[location_df["location_id"] == "8", "event_state"] = "Massachusetts"
+        location_df.loc[location_df["location_id"] == "395", "event_state"] = (
+            "Massachusetts"
+        )
+        results_df = pd.DataFrame(
+            [
+                {
+                    "event_name": "Countdown Swing Boston",
+                    "event_year": 2024,
+                    "location_id": "8",
+                    "event_location": "Boston, MA, United States",
+                },
+                {
+                    "event_name": "Countdown Swing Boston",
+                    "event_year": 2025,
+                    "location_id": "8",
+                    "event_location": "Boston, MA, United States",
+                },
+                {
+                    "event_name": "Countdown Swing Boston",
+                    "event_year": 2026,
+                    "location_id": "8",
+                    "event_location": "Boston, MA, United States",
+                },
+            ]
+        )
+
+        out, changed = force_result_locations_from_event_name_overrides(
+            results_df, location_df
+        )
+
+        assert changed == 2
+        assert out.loc[0, "location_id"] == "8"
+        assert out.loc[1, "location_id"] == "395"
+        assert out.loc[2, "location_id"] == "395"
+        assert out.loc[1, "event_location"] == "Mansfield, MA, United States"
