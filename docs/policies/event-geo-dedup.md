@@ -6,7 +6,7 @@ Merge WSDC registry `event_id` values only when **normalized name and geography*
 
 - Same name, **same city/country** (or same metro cluster) → merge candidate (duplicate registry ids).
 - Same name, **different city/country** → two geo-events; **do not merge**.
-- Metro clusters (e.g. Boston + Framingham, MA) count as one geo for merge purposes.
+- Metro clusters (e.g. Greater Boston, MA) count as one geo for merge purposes.
 
 ## Keep separate (hardcoded)
 

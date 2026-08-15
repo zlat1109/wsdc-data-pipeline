@@ -26,6 +26,13 @@ LOCATION_RAW_ALIASES: dict[str, str] = {
     "Boston Club, NRW, Germany": "Düsseldorf, Germany",
     # Airport / suburb label for Global Grand Prix → city Toulouse
     "Toulouse-Blagnac, France": "Toulouse, France",
+    # Greater Boston suburb display labels (city stays Mansfield/Woburn/…)
+    "Mansfield, MA, United States": "Mansfield (Boston), MA, United States",
+    "Woburn, MA, United States": "Woburn (Boston), MA, United States",
+    "Newton, MA, United States": "Newton (Boston), MA, United States",
+    "Burlington, MA, United States": "Burlington (Boston), MA, United States",
+    "Newton, MA": "Newton (Boston), MA, United States",
+    "Burlington, MA": "Burlington (Boston), MA, United States",
 }
 
 # Duplicate location_id rows → canonical location_id (remap FKs, delete source row).
