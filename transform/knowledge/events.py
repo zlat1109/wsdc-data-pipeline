@@ -100,9 +100,9 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'Bavarian Open WCS': 'Munich, Germany',
     'Bavarian Open West Coast Swing Championships': 'Munich, Germany',
     # Greater Boston suburbs (venue cities), labeled as metro for Tableau.
-    # Countdown: Envision Hotel Mansfield-Foxboro; Summer Hummer: Crowne Plaza Woburn;
-    # NEDF / Swingin' New England: Boston Marriott Newton.
-    'Countdown Swing Boston': 'Mansfield (Boston), MA, United States',
+    # Countdown: Envision Mansfield from 2025+ (year override); pre-2025 stays Boston.
+    # Summer Hummer / NEDF / Swingin': current suburb venues for all editions.
+    'Countdown Swing Boston': 'Boston, MA, United States',
     'Summer Hummer': 'Woburn (Boston), MA, United States',
     'New England Dance Festival': 'Newton (Boston), MA, United States',
     "Swingin' New England Dance Festival": 'Newton (Boston), MA, United States',
@@ -159,6 +159,8 @@ EVENT_NAME_YEAR_LOCATION_OVERRIDES: dict[tuple[str, int, int], str] = {
     ("Global Grand Prix - West Coast Swing Reunion", 2026, 2099): "Paris, France",
     ("Global Grand Prix -- West Coast Swing Championships", 2026, 2099): "Paris, France",
     ("Global Grand Prix", 2026, 2099): "Paris, France",
+    # Countdown: Envision Hotel Mansfield-Foxboro from 2025 editions onward.
+    ("Countdown Swing Boston", 2025, 2099): "Mansfield (Boston), MA, United States",
 }
 
 EVENT_LOCATION_EXACT_CORRECTIONS = {

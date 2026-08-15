@@ -31,8 +31,10 @@ LOCATION_RAW_ALIASES: dict[str, str] = {
     "Woburn, MA, United States": "Woburn (Boston), MA, United States",
     "Newton, MA, United States": "Newton (Boston), MA, United States",
     "Burlington, MA, United States": "Burlington (Boston), MA, United States",
+    "Framingham, MA, United States": "Framingham (Boston), MA, United States",
     "Newton, MA": "Newton (Boston), MA, United States",
     "Burlington, MA": "Burlington (Boston), MA, United States",
+    "Framingham, MA": "Framingham (Boston), MA, United States",
 }
 
 # Duplicate location_id rows → canonical location_id (remap FKs, delete source row).

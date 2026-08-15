@@ -79,10 +79,7 @@ def test_westie_gala_metadata_and_stockholm_override():
     assert EVENT_NAME_LOCATION_OVERRIDES["WCS Party in Vienna"] == "Vienna, Austria"
     assert KNOWN_EVENT_METADATA[357]["typical_location"] == "Vienna, Austria"
     assert EVENT_NAME_LOCATION_OVERRIDES["Southern Lights Swing"] == "Hobart, Australia"
-    assert (
-        EVENT_NAME_LOCATION_OVERRIDES["Countdown Swing Boston"]
-        == "Mansfield (Boston), MA, United States"
-    )
+    assert EVENT_NAME_LOCATION_OVERRIDES["Countdown Swing Boston"] == "Boston, MA, United States"
     assert EVENT_NAME_LOCATION_OVERRIDES["Summer Hummer"] == "Woburn (Boston), MA, United States"
     assert (
         EVENT_NAME_LOCATION_OVERRIDES["New England Dance Festival"]
@@ -91,6 +88,10 @@ def test_westie_gala_metadata_and_stockholm_override():
     assert (
         EVENT_NAME_LOCATION_OVERRIDES["New Year's Dancin' Eve"]
         == "Burlington (Boston), MA, United States"
+    )
+    assert (
+        EVENT_NAME_YEAR_LOCATION_OVERRIDES[("Countdown Swing Boston", 2025, 2099)]
+        == "Mansfield (Boston), MA, United States"
     )
     assert KNOWN_EVENT_METADATA[394]["typical_location"] == "Hobart, Australia"
     assert (

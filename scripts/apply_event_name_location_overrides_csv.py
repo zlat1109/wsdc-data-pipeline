@@ -30,72 +30,118 @@ from transform.geography.resolve import (  # noqa: E402
     _norm,
 )
 from transform.knowledge.apply import (  # noqa: E402
+    force_events_wsdc_locations_from_event_name_overrides,
     force_result_locations_from_event_name_overrides,
 )
 from transform.knowledge.events import (  # noqa: E402
     EVENT_NAME_LOCATION_OVERRIDES,
+    EVENT_NAME_YEAR_LOCATION_OVERRIDES,
     KNOWN_EVENT_METADATA,
 )
+
+
+def _resolve_text_to_lid(lookup: dict[str, str], target: str) -> str | None:
+    raw = _canonical_location_raw(_norm(target))
+    key = location_lookup_key_from_text(raw)
+    loc_id = lookup.get(key) or lookup.get(raw.lower())
+    return str(loc_id) if loc_id else None
 
 
 def _resolve_target_ids(location_df: pd.DataFrame) -> dict[str, str]:
     lookup = build_location_lookup(location_df)
     out: dict[str, str] = {}
     for name, target in EVENT_NAME_LOCATION_OVERRIDES.items():
-        raw = _canonical_location_raw(_norm(target))
-        key = location_lookup_key_from_text(raw)
-        loc_id = lookup.get(key) or lookup.get(raw.lower())
+        loc_id = _resolve_text_to_lid(lookup, target)
         if loc_id:
-            out[name] = str(loc_id)
+            out[name] = loc_id
         else:
             print(f"⚠️  cannot resolve {name!r} → {target!r}")
     return out
 
 
-def _update_editions(path: Path, name_to_lid: dict[str, str], dry_run: bool) -> int:
+def _target_for_name_year(name: str, year: int | None) -> str | None:
+    """Flat override, then year-scoped override (same order as force_*)."""
+    target = EVENT_NAME_LOCATION_OVERRIDES.get(name)
+    if year is None:
+        return target
+    for (n, y0, y1), loc in EVENT_NAME_YEAR_LOCATION_OVERRIDES.items():
+        if n == name and y0 <= year <= y1:
+            return loc
+    return target
+
+
+def _parse_year(row: dict[str, str], *keys: str) -> int | None:
+    for key in keys:
+        raw = (row.get(key) or "").strip()
+        if not raw:
+            continue
+        try:
+            return int(float(raw))
+        except ValueError:
+            continue
+    return None
+
+
+def _apply_edition_location(row: dict[str, str], loc_row: dict[str, str]) -> None:
+    row["location_id"] = loc_row.get("location_id") or row.get("location_id") or ""
+    if "place_city" in row:
+        row["place_city"] = loc_row.get("event_city") or row.get("place_city") or ""
+    if "place_state" in row:
+        row["place_state"] = loc_row.get("event_state") or ""
+    if "place_country" in row:
+        row["place_country"] = loc_row.get("event_country") or row.get("place_country") or ""
+    if "location_raw" in row:
+        row["location_raw"] = (
+            loc_row.get("event_location")
+            or loc_row.get("event_location_standardized")
+            or row.get("location_raw")
+            or ""
+        )
+    if "typical_location" in row:
+        row["typical_location"] = (
+            loc_row.get("event_location_standardized")
+            or loc_row.get("event_location")
+            or row.get("typical_location")
+            or ""
+        )
+
+
+def _update_editions(path: Path, location_df: pd.DataFrame, dry_run: bool) -> int:
     if not path.exists():
         return 0
     rows = list(csv.DictReader(path.open(encoding="utf-8-sig", newline="")))
     if not rows:
         return 0
     fields = list(rows[0].keys())
-    changed = 0
+    lookup = build_location_lookup(location_df)
     loc = {
-        r["location_id"]: r
-        for r in csv.DictReader((path.parent / "location_info.csv").open(encoding="utf-8-sig"))
+        str(r["location_id"]): r
+        for r in location_df.to_dict(orient="records")
+        if str(r.get("location_id") or "")
     }
+    override_names = set(EVENT_NAME_LOCATION_OVERRIDES) | {
+        name for name, _y0, _y1 in EVENT_NAME_YEAR_LOCATION_OVERRIDES
+    }
+    changed = 0
     for row in rows:
         name = (row.get("event_name") or "").strip()
-        if name not in name_to_lid:
+        if name not in override_names:
             continue
-        new_lid = name_to_lid[name]
-        if row.get("location_id") == new_lid:
+        year = _parse_year(row, "event_year", "year")
+        target = _target_for_name_year(name, year)
+        if not target:
+            continue
+        new_lid = _resolve_text_to_lid(lookup, target)
+        if not new_lid:
+            continue
+        L = loc.get(new_lid, {})
+        want_raw = L.get("event_location") or target
+        if row.get("location_id") == new_lid and (row.get("location_raw") or "") == want_raw:
             continue
         changed += 1
         if dry_run:
             continue
-        L = loc.get(new_lid, {})
-        row["location_id"] = new_lid
-        if "place_city" in row:
-            row["place_city"] = L.get("event_city") or row.get("place_city") or ""
-        if "place_state" in row:
-            row["place_state"] = L.get("event_state") or ""
-        if "place_country" in row:
-            row["place_country"] = L.get("event_country") or row.get("place_country") or ""
-        if "location_raw" in row:
-            row["location_raw"] = (
-                L.get("event_location")
-                or L.get("event_location_standardized")
-                or row.get("location_raw")
-                or ""
-            )
-        if "typical_location" in row:
-            row["typical_location"] = (
-                L.get("event_location_standardized")
-                or L.get("event_location")
-                or row.get("typical_location")
-                or ""
-            )
+        _apply_edition_location(row, {**L, "location_id": new_lid})
     if not dry_run and changed:
         with path.open("w", encoding="utf-8", newline="") as f:
             w = csv.DictWriter(f, fieldnames=fields)
@@ -104,35 +150,27 @@ def _update_editions(path: Path, name_to_lid: dict[str, str], dry_run: bool) -> 
     return changed
 
 
-def _update_events_wsdc(path: Path, name_to_target: dict[str, str], dry_run: bool) -> int:
+def _update_events_wsdc(path: Path, dry_run: bool) -> int:
     if not path.exists():
         return 0
-    rows = list(csv.DictReader(path.open(encoding="utf-8-sig", newline="")))
-    if not rows:
-        return 0
-    fields = list(rows[0].keys())
-    changed = 0
-    for row in rows:
-        name = (row.get("name") or "").strip()
-        if name not in name_to_target:
-            continue
-        target = name_to_target[name]
-        if (row.get("location") or "").strip() == target:
-            continue
-        changed += 1
-        if not dry_run:
-            row["location"] = target
-    if not dry_run and changed:
-        with path.open("w", encoding="utf-8", newline="") as f:
-            w = csv.DictWriter(f, fieldnames=fields)
-            w.writeheader()
-            w.writerows(rows)
+    df = pd.read_csv(path, dtype=str)
+    out, changed = force_events_wsdc_locations_from_event_name_overrides(df)
+    if dry_run:
+        return changed
+    if changed:
+        out.to_csv(path, index=False)
     return changed
+
+
+def _detect_newline(path: Path) -> str:
+    raw = path.read_bytes()
+    return "\r\n" if b"\r\n" in raw else "\n"
 
 
 def _update_catalog(path: Path, dry_run: bool) -> int:
     if not path.exists():
         return 0
+    newline = _detect_newline(path)
     rows = list(csv.DictReader(path.open(encoding="utf-8-sig", newline="")))
     if not rows:
         return 0
@@ -172,18 +210,17 @@ def _update_catalog(path: Path, dry_run: bool) -> int:
             row["typical_country"] = after[2] or ""
     if not dry_run and changed:
         with path.open("w", encoding="utf-8", newline="") as f:
-            w = csv.DictWriter(f, fieldnames=fields)
+            w = csv.DictWriter(f, fieldnames=fields, lineterminator=newline)
             w.writeheader()
             w.writerows(rows)
     return changed
 
 
 def apply_overrides(data_dir: Path, *, dry_run: bool = False) -> int:
-    """Remap export CSVs from EVENT_NAME_LOCATION_OVERRIDES. Returns forced result rows."""
+    """Remap export CSVs from name/year location overrides. Returns forced result rows."""
     location_df = pd.read_csv(data_dir / "location_info.csv", dtype=str)
     results_df = pd.read_csv(data_dir / "dancers_results_info.csv", dtype=str)
     name_to_lid = _resolve_target_ids(location_df)
-    name_to_target = dict(EVENT_NAME_LOCATION_OVERRIDES)
 
     before = Counter(
         (r.event_name, str(r.location_id))
@@ -199,10 +236,10 @@ def apply_overrides(data_dir: Path, *, dry_run: bool = False) -> int:
             .mode(dropna=True)
             .tolist()
         )
-        print(f"  {name}: {n} rows, mode lid={cur[:1]} → {lid}")
+        print(f"  {name}: {n} rows, mode lid={cur[:1]} → flat {lid}")
 
-    editions_n = _update_editions(data_dir / "event_editions.csv", name_to_lid, dry_run=True)
-    wsdc_n = _update_events_wsdc(data_dir / "events_wsdc.csv", name_to_target, dry_run=True)
+    editions_n = _update_editions(data_dir / "event_editions.csv", location_df, dry_run=True)
+    wsdc_n = _update_events_wsdc(data_dir / "events_wsdc.csv", dry_run=True)
     catalog_n = _update_catalog(data_dir / "event_catalog.csv", dry_run=True)
     print(f"event_editions rows to update: {editions_n}")
     print(f"events_wsdc rows to update: {wsdc_n}")
@@ -213,8 +250,8 @@ def apply_overrides(data_dir: Path, *, dry_run: bool = False) -> int:
         return forced
 
     out.to_csv(data_dir / "dancers_results_info.csv", index=False)
-    _update_editions(data_dir / "event_editions.csv", name_to_lid, dry_run=False)
-    _update_events_wsdc(data_dir / "events_wsdc.csv", name_to_target, dry_run=False)
+    _update_editions(data_dir / "event_editions.csv", location_df, dry_run=False)
+    _update_events_wsdc(data_dir / "events_wsdc.csv", dry_run=False)
     _update_catalog(data_dir / "event_catalog.csv", dry_run=False)
     print(f"✅ applied: results forced={forced} (before sample size {len(before)})")
     return forced
