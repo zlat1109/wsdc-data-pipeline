@@ -22,12 +22,14 @@ DEFAULT_DATA_DIR = PROJECT_ROOT / "data"
 sys.path.insert(0, str(PROJECT_ROOT))
 sys.path.insert(0, str(PROJECT_ROOT / "db"))
 
+from csv_bool import csv_bool_sql_expr  # noqa: E402
+
 
 def read_sql(name: str) -> str:
     return (PROJECT_ROOT / "db" / "sql" / name).read_text(encoding="utf-8")
 
 
-_SYNC_LOCATIONS_SQL = """
+_SYNC_LOCATIONS_SQL = f"""
 INSERT INTO core.locations (
     location_id, event_city, event_state, event_country,
     latitude, longitude, event_location, event_location_standardized, coordinates_valid
@@ -41,17 +43,7 @@ SELECT
     NULLIF(TRIM(longitude), '')::numeric,
     NULLIF(TRIM(event_location), ''),
     NULLIF(TRIM(event_location_standardized), ''),
-    CASE LOWER(TRIM(coordinates_valid))
-        WHEN 'true' THEN true
-        WHEN 't' THEN true
-        WHEN '1' THEN true
-        WHEN 'yes' THEN true
-        WHEN 'false' THEN false
-        WHEN 'f' THEN false
-        WHEN '0' THEN false
-        WHEN 'no' THEN false
-        ELSE NULL
-    END
+    {csv_bool_sql_expr("coordinates_valid")}
 FROM staging.location_info
 WHERE location_id ~ '^\\d+$'
 ON CONFLICT (location_id) DO UPDATE SET

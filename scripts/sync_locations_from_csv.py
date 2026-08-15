@@ -26,6 +26,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 sys.path.insert(0, str(PROJECT_ROOT / "db"))
 
 from connection import connect  # noqa: E402
+from csv_bool import parse_csv_bool  # noqa: E402
 from transform.geography import normalize_geography  # noqa: E402
 
 
@@ -44,7 +45,9 @@ def sync_locations(conn, df: pd.DataFrame, dry_run: bool) -> int:
             loc_id = int(str(row.location_id))
             lat = float(row.latitude) if str(row.latitude).strip() else None
             lon = float(row.longitude) if str(row.longitude).strip() else None
-            coords_valid = str(getattr(row, "coordinates_valid", "")).lower() == "true"
+            coords_valid = parse_csv_bool(getattr(row, "coordinates_valid", ""))
+            if coords_valid is None:
+                coords_valid = False
 
             cur.execute(
                 """
