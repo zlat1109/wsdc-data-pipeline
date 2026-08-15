@@ -20,6 +20,8 @@ python scripts/dedupe_core_data.py --apply
 
 python scripts/repair_results_location.py --dry-run   # if location_id gaps remain
 python scripts/repair_results_location.py --apply
+# Staging CSV uses postgres-style t/f for coordinates_valid; promote_core.sql and
+# repair_results_location both map t/f/true/false via db/csv_bool.py.
 
 python scripts/cleanup_event_catalog.py --dry-run
 python scripts/cleanup_event_catalog.py --apply

@@ -64,7 +64,15 @@ SELECT
     NULLIF(TRIM(event_location), ''),
     NULLIF(TRIM(event_location_standardized), ''),
     CASE LOWER(TRIM(coordinates_valid))
-        WHEN 'true' THEN true WHEN 'false' THEN false ELSE NULL
+        WHEN 'true' THEN true
+        WHEN 't' THEN true
+        WHEN '1' THEN true
+        WHEN 'yes' THEN true
+        WHEN 'false' THEN false
+        WHEN 'f' THEN false
+        WHEN '0' THEN false
+        WHEN 'no' THEN false
+        ELSE NULL
     END
 FROM staging.location_info
 WHERE location_id ~ '^\d+$';
