@@ -12,10 +12,17 @@ SplitAction = Literal["merge_candidate", "keep_separate", "manual_review"]
 # Key -> set of city names; all must share state/country context when resolved.
 METRO_CLUSTERS: dict[str, dict[str, object]] = {
     "greater_boston_ma": {
-        "cities": {"Boston", "Framingham"},
+        "cities": {
+            "Boston",
+            "Framingham",
+            "Mansfield",
+            "Woburn",
+            "Newton",
+            "Burlington",
+        },
         "state": "Massachusetts",
         "country": "United States",
-        "label": "Boston / Framingham, MA",
+        "label": "Greater Boston, MA",
     },
 }
 

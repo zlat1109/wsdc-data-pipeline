@@ -58,29 +58,31 @@ def test_results_mode_location_matches_overrides():
     name_to_lid = _resolve_override_lids(location_df)
     assert name_to_lid, "expected resolvable EVENT_NAME_LOCATION_OVERRIDES"
 
-    modes: dict[str, Counter[str]] = {}
+    override_names = set(name_to_lid) | {
+        name for name, _y0, _y1 in EVENT_NAME_YEAR_LOCATION_OVERRIDES
+    }
+    failures: list[str] = []
     with (DATA / "dancers_results_info.csv").open(encoding="utf-8-sig", newline="") as f:
         for row in csv.DictReader(f):
             name = (row.get("event_name") or "").strip()
-            if name not in name_to_lid:
+            if name not in override_names:
                 continue
-            modes.setdefault(name, Counter())[str(row.get("location_id") or "")] += 1
-
-    failures: list[str] = []
-    for name, want in sorted(name_to_lid.items()):
-        counts = modes.get(name)
-        if not counts:
-            continue
-        mode = counts.most_common(1)[0][0]
-        if mode != want:
-            failures.append(f"{name}: mode location_id={mode} want={want} ({dict(counts)})")
-        # Any non-target lid is a regression (e.g. Montreal partial Jeju 213).
-        foreign = {lid: n for lid, n in counts.items() if lid and lid != want}
-        if foreign:
-            failures.append(
-                f"{name}: non-target location_ids={foreign} want={want} (all={dict(counts)})"
-            )
-    assert not failures, "results export drifted from overrides:\n" + "\n".join(failures)
+            year_raw = row.get("event_year")
+            try:
+                year = int(year_raw) if year_raw not in (None, "") else None
+            except ValueError:
+                year = None
+            want = _year_override_want(name, year, location_df) or name_to_lid.get(name)
+            if not want:
+                continue
+            got = str(row.get("location_id") or "")
+            if got != want:
+                failures.append(
+                    f"{name} year={year_raw}: location_id={got} want={want}"
+                )
+    assert not failures, "results export drifted from overrides:\n" + "\n".join(
+        failures[:40]
+    ) + (f"\n... and {len(failures) - 40} more" if len(failures) > 40 else "")
 
 
 @pytest.mark.skipif(not (DATA / "event_editions.csv").exists(), reason="no export data")

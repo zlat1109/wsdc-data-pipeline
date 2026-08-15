@@ -2,7 +2,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3543,77,Arizona Dance Classic,2026,8,2026-08-01,2026-07-31,2026-08-02,wsdc_calendar,scheduled,t,3,Phoenix,Arizona,United States,"Phoenix, AZ, United States",59,54,,"Phoenix, AZ",
 5032,282,German Open,2026,8,2026-08-01,2026-08-05,2026-08-09,wsdc_calendar,scheduled,t,143,Freiburg,,Germany,"Freiburg, Germany",159,146,http://www.go-wcs.com,"Freiburg, Germany",
 5284,382,Lisbon Westie Fest,2026,8,2026-08-01,2026-07-30,2026-08-02,wsdc_calendar,scheduled,t,251,Lisbon,,Portugal,"Lisbon, Portugal",112,96,http://www.lisbonwestiefest.com,"Lisbon, Portugal",
-4176,157,New England Dance Festival,2026,8,2026-08-01,2026-08-06,2026-08-09,wsdc_calendar,scheduled,t,8,Boston,Massachusetts,United States,"Boston, MA, United States",66,59,http://www.nedancefestival.com,"Boston, MA",
+4176,157,New England Dance Festival,2026,8,2026-08-01,2026-08-06,2026-08-09,wsdc_calendar,scheduled,t,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",66,59,http://www.nedancefestival.com,"Newton (Boston), MA",
 4218,164,Sea Sun and Swing,2026,8,2026-08-01,2026-07-25,2026-08-01,wsdc_calendar,scheduled,t,158,La Grande Motte,,France,"La Grande Motte, France",86,73,https://www.seasunswing.fr/,"La Grande Motte, France",
 3300,59,Swing Fling,2026,8,2026-08-01,2026-08-06,2026-08-09,wsdc_calendar,scheduled,t,38,Herndon,Virginia,United States,"Herndon, VA, United States",139,127,http://www.swingfling.com,"Herndon, VA, United States",
 4722,227,Swingtacular: The Galactic Open,2026,8,2026-08-01,2026-08-06,2026-08-09,wsdc_calendar,scheduled,t,2,San Francisco,California,United States,"San Francisco, CA, United States",118,116,http://dancegeekproductions.art,"San Francisco, CA",
@@ -97,7 +97,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 4513,200,Austin Swing Dance Championships,2026,1,2026-01-01,2026-01-15,2026-01-19,wsdc_calendar,scheduled,t,39,Austin,Texas,United States,"Austin, TX, United States",106,100,https://austinswingdance.com/,"Austin, TX",Registry Event
 5134,309,Avignon City Swing,2026,1,2026-01-01,2026-01-16,2026-01-18,wsdc_calendar,scheduled,t,192,Nimes,,France,"Nimes, France",108,99,https://www.avignoncityswing.com/,"Nimes, France",Registry Event
 4394,184,BudaFest Open WCS Championships,2026,1,2026-01-01,2026-01-06,2026-01-11,wsdc_calendar,scheduled,t,110,Budapest,,Hungary,"Budapest, Hungary",166,161,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
-5214,334,Countdown Swing Boston,2026,1,2026-01-01,2025-12-31,2026-01-04,wsdc_calendar,scheduled,t,8,Boston,Massachusetts,United States,"Boston, MA, United States",102,87,http://countdownswingboston.com/,"Boston, MA",Registry Event
+5214,334,Countdown Swing Boston,2026,1,2026-01-01,2025-12-31,2026-01-04,wsdc_calendar,scheduled,t,396,Mansfield,Massachusetts,United States,"Mansfield (Boston), MA, United States",102,87,http://countdownswingboston.com/,"Mansfield (Boston), MA",Registry Event
 4823,242,Derby City Swing,2026,1,2026-01-01,2026-01-22,2026-01-25,wsdc_calendar,scheduled,t,116,Louisville,Kentucky,United States,"Louisville, KY, United States",82,72,https://derbycityswing.com/,"Louisville, KY",Registry Event
 3086,42,Floorplay Swing Vacation,2026,1,2026-01-01,2025-12-30,2026-01-04,wsdc_calendar,scheduled,t,82,Orlando,Florida,United States,"Orlando, FL, United States",95,92,http://www.floorplayswingvacation.com/,"Orlando, FL",Registry Event
 4380,183,Freedom Swing Dance Challenge,2026,1,2026-01-01,2026-01-23,2026-01-25,wsdc_calendar,scheduled,t,66,Wilmington,Delaware,United States,"Wilmington, DE, United States",100,94,https://freedomswingdance.com/,"Wilmington, DE, United States",Registry Event
@@ -171,10 +171,10 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 5287,384,Grand Party Sofia (GPS),2025,8,2025-08-01,2025-08-15,2025-08-17,wsdc_calendar,scheduled,t,184,Sofia,,Bulgaria,"Sofia, Bulgaria",77,69,https://wcs-gps.com/,"Sofia, Bulgaria",Registry Event
 5283,382,Lisbon Westie Fest,2025,8,2025-08-01,2025-08-01,2025-08-03,wsdc_calendar,scheduled,t,251,Lisbon,,Portugal,"Lisbon, Portugal",100,88,http://www.lisbonwestiefest.com,"Lisbon, Portugal",
 3842,120,Lone Star Invitational,2025,8,2025-08-01,2025-08-07,2025-08-10,wsdc_calendar,scheduled,t,39,Austin,Texas,United States,"Austin, TX, United States",23,23,,"Austin, TX",
-4175,157,New England Dance Festival,2025,8,2025-08-01,2025-07-31,2025-08-03,wsdc_calendar,scheduled,t,8,Boston,Massachusetts,United States,"Boston, MA, United States",82,75,http://www.nedancefestival.com,"Boston, MA",
+4175,157,New England Dance Festival,2025,8,2025-08-01,2025-07-31,2025-08-03,wsdc_calendar,scheduled,t,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",82,75,http://www.nedancefestival.com,"Newton (Boston), MA",
 4323,177,River City Swing,2025,8,2025-08-01,2025-08-28,2025-08-31,wsdc_calendar,scheduled,t,98,Jacksonville,Florida,United States,"Jacksonville, FL, United States",80,74,http://www.jaxwestiefest.com/,"Jacksonville, FL",Registry Event
 5106,298,Shakedown Swing,2025,8,2025-08-01,2025-08-22,2025-08-24,wsdc_calendar,scheduled,t,260,Christchurch,,New Zealand,"Christchurch, New Zealand",38,37,http://www.code03swing.com/shakedown,"Christchurch, New Zealand",Registry Event
-3250,53,Summer Hummer,2025,8,2025-08-01,2025-08-21,2025-08-24,wsdc_calendar,scheduled,t,8,Boston,Massachusetts,United States,"Boston, MA, United States",135,123,http://summerhummerboston.com/,"Boston, MA",Registry Event
+3250,53,Summer Hummer,2025,8,2025-08-01,2025-08-21,2025-08-24,wsdc_calendar,scheduled,t,397,Woburn,Massachusetts,United States,"Woburn (Boston), MA, United States",135,123,http://summerhummerboston.com/,"Woburn (Boston), MA",Registry Event
 4928,264,Swedish Swing Summer Camp,2025,8,2025-08-01,2025-08-15,2025-08-18,wsdc_calendar,scheduled,t,199,Stockholm,,Sweden,"Stockholm, Sweden",114,102,http://www.uptownswing.se/,"Stockholm, Sweden",Registry Event
 5294,391,Swing Dance Mania,2025,8,2025-08-01,2025-08-21,2025-08-24,wsdc_calendar,scheduled,t,183,Cincinnati,Ohio,United States,"Cincinnati, OH, United States",80,70,http://swingdancemania.com,"Cincinnati, OH",
 3299,59,Swing Fling,2025,8,2025-08-01,2025-08-07,2025-08-11,wsdc_calendar,scheduled,t,38,Herndon,Virginia,United States,"Herndon, VA, United States",146,133,http://www.swingfling.com,"Herndon, VA, United States",
@@ -269,7 +269,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 4512,200,Austin Swing Dance Championships,2025,1,2025-01-01,2025-01-16,2025-01-19,wsdc_calendar,scheduled,t,39,Austin,Texas,United States,"Austin, TX, United States",106,104,https://austinswingdance.com/,"Austin, TX",Registry Event
 5133,309,Avignon City Swing,2025,1,2025-01-01,2025-01-17,2025-01-20,wsdc_calendar,scheduled,t,192,Nimes,,France,"Nimes, France",124,105,https://www.avignoncityswing.com/,"Nimes, France",Registry Event
 4393,184,BudaFest Open WCS Championships,2025,1,2025-01-01,2025-01-07,2025-01-12,wsdc_calendar,scheduled,t,110,Budapest,,Hungary,"Budapest, Hungary",169,163,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
-5213,334,Countdown Swing Boston,2025,1,2025-01-01,2024-12-31,2025-01-05,wsdc_calendar,scheduled,t,8,Boston,Massachusetts,United States,"Boston, MA, United States",114,106,http://countdownswingboston.com/,"Boston, MA",Registry Event
+5213,334,Countdown Swing Boston,2025,1,2025-01-01,2024-12-31,2025-01-05,wsdc_calendar,scheduled,t,396,Mansfield,Massachusetts,United States,"Mansfield (Boston), MA, United States",114,106,http://countdownswingboston.com/,"Mansfield (Boston), MA",Registry Event
 4822,242,Derby City Swing,2025,1,2025-01-01,2025-01-23,2025-01-26,wsdc_calendar,scheduled,t,116,Louisville,Kentucky,United States,"Louisville, KY, United States",106,91,https://derbycityswing.com/,"Louisville, KY",Registry Event
 3085,42,Floorplay Swing Vacation,2025,1,2025-01-01,2024-12-27,2025-01-01,wsdc_calendar,scheduled,t,82,Orlando,Florida,United States,"Orlando, FL, United States",115,112,http://www.floorplayswingvacation.com/,"Orlando, FL",Registry Event
 4379,183,Freedom Swing Dance Challenge,2025,1,2025-01-01,2025-01-24,2025-01-26,wsdc_calendar,scheduled,t,66,Wilmington,Delaware,United States,"Wilmington, DE, United States",100,90,https://freedomswingdance.com/,"Wilmington, DE, United States",Registry Event
@@ -332,10 +332,10 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3822,119,Chicagoland Country and Swing Dance Festival,2024,8,2024-08-01,,,,,,34,Chicago,Illinois,United States,"Chicago, IL, United States",64,61,http://www.chicagolanddancefestival.com/,"Chicago, IL",Registry Event
 5030,282,German Open,2024,8,2024-08-01,,,,,,143,Freiburg,,Germany,"Freiburg, Germany",170,153,http://www.go-wcs.com,"Freiburg, Germany",
 3841,120,Lone Star Invitational,2024,8,2024-08-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",42,39,,"Austin, TX",
-4174,157,New England Dance Festival,2024,8,2024-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",68,63,http://www.nedancefestival.com,"Boston, MA",
+4174,157,New England Dance Festival,2024,8,2024-08-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",68,63,http://www.nedancefestival.com,"Newton (Boston), MA",
 4217,164,Sea Sun and Swing,2024,8,2024-08-01,,,,,,158,La Grande Motte,,France,"La Grande Motte, France",130,120,https://www.seasunswing.fr/,"La Grande Motte, France",
 5105,298,Shakedown Swing,2024,8,2024-08-01,,,,,,260,Christchurch,,New Zealand,"Christchurch, New Zealand",36,35,http://www.code03swing.com/shakedown,"Christchurch, New Zealand",Registry Event
-3249,53,Summer Hummer,2024,8,2024-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",136,125,http://summerhummerboston.com/,"Boston, MA",Registry Event
+3249,53,Summer Hummer,2024,8,2024-08-01,,,,,,397,Woburn,Massachusetts,United States,"Woburn (Boston), MA, United States",136,125,http://summerhummerboston.com/,"Woburn (Boston), MA",Registry Event
 4927,264,Swedish Swing Summer Camp,2024,8,2024-08-01,,,,,,199,Stockholm,,Sweden,"Stockholm, Sweden",126,112,http://www.uptownswing.se/,"Stockholm, Sweden",Registry Event
 3298,59,Swing Fling,2024,8,2024-08-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA, United States",170,154,http://www.swingfling.com,"Herndon, VA, United States",
 4720,227,Swingtacular: The Galactic Open,2024,8,2024-08-01,,,,,,2,San Francisco,California,United States,"San Francisco, CA, United States",140,138,http://dancegeekproductions.art,"San Francisco, CA",
@@ -467,7 +467,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 5029,282,German Open,2023,8,2023-08-01,,,,,,143,Freiburg,,Germany,"Freiburg, Germany",145,134,http://www.go-wcs.com,"Freiburg, Germany",
 5037,283,Kazan EL Fest,2023,8,2023-08-01,,,,,,263,Kazan,,Russia,"Kazan, Russia",51,51,,"Kazan, Russia",
 3840,120,Lone Star Invitational,2023,8,2023-08-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",58,57,,"Austin, TX",
-4173,157,New England Dance Festival,2023,8,2023-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",51,49,http://www.nedancefestival.com,"Boston, MA",
+4173,157,New England Dance Festival,2023,8,2023-08-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",51,49,http://www.nedancefestival.com,"Newton (Boston), MA",
 4216,164,Sea Sun and Swing,2023,8,2023-08-01,,,,,,158,La Grande Motte,,France,"La Grande Motte, France",83,73,https://www.seasunswing.fr/,"La Grande Motte, France",
 5104,298,Shakedown Swing,2023,8,2023-08-01,,,,,,260,Christchurch,,New Zealand,"Christchurch, New Zealand",36,34,http://www.code03swing.com/shakedown,"Christchurch, New Zealand",Registry Event
 4926,264,Swedish Swing Summer Camp,2023,8,2023-08-01,,,,,,199,Stockholm,,Sweden,"Stockholm, Sweden",111,98,http://www.uptownswing.se/,"Stockholm, Sweden",Registry Event
@@ -583,7 +583,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 5028,282,German Open,2022,8,2022-08-01,,,,,,143,Freiburg,,Germany,"Freiburg, Germany",90,85,http://www.go-wcs.com,"Freiburg, Germany",
 5036,283,Kazan EL Fest,2022,8,2022-08-01,,,,,,263,Kazan,,Russia,"Kazan, Russia",46,45,,"Kazan, Russia",
 3839,120,Lone Star Invitational,2022,8,2022-08-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",57,56,,"Austin, TX",
-4172,157,New England Dance Festival,2022,8,2022-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",36,35,http://www.nedancefestival.com,"Boston, MA",
+4172,157,New England Dance Festival,2022,8,2022-08-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",36,35,http://www.nedancefestival.com,"Newton (Boston), MA",
 4878,256,Rock the Barn,2022,8,2022-08-01,,,,,,215,Umeå,,Sweden,"Umeå, Sweden",52,49,http://rockthebarn.se,"Umeå, Sweden",
 4925,264,Swedish Swing Summer Camp,2022,8,2022-08-01,,,,,,199,Stockholm,,Sweden,"Stockholm, Sweden",80,74,http://www.uptownswing.se/,"Stockholm, Sweden",Registry Event
 3296,59,Swing Fling,2022,8,2022-08-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA, United States",126,121,http://www.swingfling.com,"Herndon, VA, United States",
@@ -740,11 +740,11 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 5027,282,German Open,2019,8,2019-08-01,,,,,,143,Freiburg,,Germany,"Freiburg, Germany",105,103,http://www.go-wcs.com,"Freiburg, Germany",
 5035,283,Kazan EL Fest,2019,8,2019-08-01,,,,,,263,Kazan,,Russia,"Kazan, Russia",34,34,,"Kazan, Russia",
 3837,120,Lone Star Invitational,2019,8,2019-08-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",57,56,,"Austin, TX",
-4171,157,New England Dance Festival,2019,8,2019-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",30,30,http://www.nedancefestival.com,"Boston, MA",
+4171,157,New England Dance Festival,2019,8,2019-08-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",30,30,http://www.nedancefestival.com,"Newton (Boston), MA",
 3215,51,Palm Springs Summer Dance Classic,2019,8,2019-08-01,,,,,,20,Palm Springs,California,United States,"Palm Springs, CA, United States",76,76,,"Palm Springs, CA",
 4919,263,Riga Summer Swing,2019,8,2019-08-01,,,,,,203,Riga,,Latvia,"Riga, Latvia",102,102,,"Riga, Latvia",
 5103,298,Shakedown Swing,2019,8,2019-08-01,,,,,,260,Christchurch,,New Zealand,"Christchurch, New Zealand",42,42,http://www.code03swing.com/shakedown,"Christchurch, New Zealand",Registry Event
-3248,53,Summer Hummer,2019,8,2019-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",131,131,http://summerhummerboston.com/,"Boston, MA",Registry Event
+3248,53,Summer Hummer,2019,8,2019-08-01,,,,,,397,Woburn,Massachusetts,United States,"Woburn (Boston), MA, United States",131,131,http://summerhummerboston.com/,"Woburn (Boston), MA",Registry Event
 4924,264,Swedish Swing Summer Camp,2019,8,2019-08-01,,,,,,199,Stockholm,,Sweden,"Stockholm, Sweden",72,72,http://www.uptownswing.se/,"Stockholm, Sweden",Registry Event
 3295,59,Swing Fling,2019,8,2019-08-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA, United States",121,120,http://www.swingfling.com,"Herndon, VA, United States",
 4717,227,Swingtacular: The Galactic Open,2019,8,2019-08-01,,,,,,2,San Francisco,California,United States,"San Francisco, CA, United States",113,113,http://dancegeekproductions.art,"San Francisco, CA",
@@ -857,7 +857,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3035,31,Mountain Magic,2018,11,2018-11-01,,,,,,28,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV, United States",69,63,http://mountainmagic.dance/,"South Lake Tahoe (near Reno), NV",Registry Event
 4729,229,Scandinavian Open,2018,11,2018-11-01,,,,,,199,Stockholm,,Sweden,"Stockholm, Sweden",86,86,http://www.snowcs.se/,"Stockholm, Sweden",Registry Event
 3560,79,Sea to Sky,2018,11,2018-11-01,,,,,,30,Seattle,Washington,United States,"Seattle, WA, United States",101,100,http://seatoskywcs.com/,"Seattle, WA",Registry Event
-3375,63,Swingin' New England Dance Festival,2018,11,2018-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton, MA, United States",86,86,,"Newton, MA",
+3375,63,Swingin' New England Dance Festival,2018,11,2018-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",86,86,,"Newton (Boston), MA",
 3448,68,US Open Swing Dance Championships,2018,11,2018-11-01,,,,,,22,Los Angeles,California,United States,"Los Angeles, CA, United States",111,108,http://www.theopenswing.com/,"Los Angeles, CA",Registry Event
 4779,236,Warsaw Halloween Swing,2018,11,2018-11-01,,,,,,155,Warsaw,,Poland,"Warsaw, Poland",82,82,http://www.warsawhalloweenswing.com/,"Warsaw, Poland",Registry Event
 5143,312,Westie Pink City,2018,11,2018-11-01,,,,,,208,Toulouse,,France,"Toulouse, France",64,64,http://www.westiepinkcity.fr/,"Toulouse, France",Registry Event
@@ -895,11 +895,11 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 5026,282,German Open,2018,8,2018-08-01,,,,,,143,Freiburg,,Germany,"Freiburg, Germany",63,63,http://www.go-wcs.com,"Freiburg, Germany",
 3836,120,Lone Star Invitational,2018,8,2018-08-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",49,48,,"Austin, TX",
 4689,224,Midwest Westie Fest,2018,8,2018-08-01,,,,,,48,Overland Park,Kansas,United States,"Overland Park, KS, United States",67,65,http://www.midwestwestiefest.com/,"Overland Park, KS",Registry Event
-4170,157,New England Dance Festival,2018,8,2018-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",38,38,http://www.nedancefestival.com,"Boston, MA",
+4170,157,New England Dance Festival,2018,8,2018-08-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",38,38,http://www.nedancefestival.com,"Newton (Boston), MA",
 3214,51,Palm Springs Summer Dance Classic,2018,8,2018-08-01,,,,,,20,Palm Springs,California,United States,"Palm Springs, CA, United States",83,83,,"Palm Springs, CA",
 4918,263,Riga Summer Swing,2018,8,2018-08-01,,,,,,203,Riga,,Latvia,"Riga, Latvia",91,91,,"Riga, Latvia",
 5102,298,Shakedown Swing,2018,8,2018-08-01,,,,,,260,Christchurch,,New Zealand,"Christchurch, New Zealand",32,32,http://www.code03swing.com/shakedown,"Christchurch, New Zealand",Registry Event
-3247,53,Summer Hummer,2018,8,2018-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",134,134,http://summerhummerboston.com/,"Boston, MA",Registry Event
+3247,53,Summer Hummer,2018,8,2018-08-01,,,,,,397,Woburn,Massachusetts,United States,"Woburn (Boston), MA, United States",134,134,http://summerhummerboston.com/,"Woburn (Boston), MA",Registry Event
 4923,264,Swedish Swing Summer Camp,2018,8,2018-08-01,,,,,,199,Stockholm,,Sweden,"Stockholm, Sweden",60,60,http://www.uptownswing.se/,"Stockholm, Sweden",Registry Event
 3294,59,Swing Fling,2018,8,2018-08-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA, United States",150,148,http://www.swingfling.com,"Herndon, VA, United States",
 4716,227,Swingtacular: The Galactic Open,2018,8,2018-08-01,,,,,,2,San Francisco,California,United States,"San Francisco, CA, United States",137,136,http://dancegeekproductions.art,"San Francisco, CA",
@@ -1005,7 +1005,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3034,31,Mountain Magic,2017,11,2017-11-01,,,,,,28,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV, United States",59,54,http://mountainmagic.dance/,"South Lake Tahoe (near Reno), NV",Registry Event
 4728,229,Scandinavian Open,2017,11,2017-11-01,,,,,,199,Stockholm,,Sweden,"Stockholm, Sweden",80,80,http://www.snowcs.se/,"Stockholm, Sweden",Registry Event
 3559,79,Sea to Sky,2017,11,2017-11-01,,,,,,30,Seattle,Washington,United States,"Seattle, WA, United States",85,85,http://seatoskywcs.com/,"Seattle, WA",Registry Event
-3374,63,Swingin' New England Dance Festival,2017,11,2017-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton, MA, United States",100,100,,"Newton, MA",
+3374,63,Swingin' New England Dance Festival,2017,11,2017-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",100,100,,"Newton (Boston), MA",
 3447,68,US Open Swing Dance Championships,2017,11,2017-11-01,,,,,,22,Los Angeles,California,United States,"Los Angeles, CA, United States",115,106,http://www.theopenswing.com/,"Los Angeles, CA",Registry Event
 4789,237,WCS Helsinki,2017,11,2017-11-01,,,,,,204,Helsinki,,Finland,"Helsinki, Finland",29,29,,"Helsinki, Finland",
 4959,270,Westie's Angels,2017,11,2017-11-01,,,,,,156,Lyon,,France,"Lyon, France",80,80,http://www.frenchywesty.com/,"Lyon, France",Registry Event
@@ -1039,9 +1039,9 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 5034,283,Kazan EL Fest,2017,8,2017-08-01,,,,,,263,Kazan,,Russia,"Kazan, Russia",40,40,,"Kazan, Russia",
 3835,120,Lone Star Invitational,2017,8,2017-08-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",60,58,,"Austin, TX",
 4688,224,Midwest Westie Fest,2017,8,2017-08-01,,,,,,48,Overland Park,Kansas,United States,"Overland Park, KS, United States",83,78,http://www.midwestwestiefest.com/,"Overland Park, KS",Registry Event
-4169,157,New England Dance Festival,2017,8,2017-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",49,49,http://www.nedancefestival.com,"Boston, MA",
+4169,157,New England Dance Festival,2017,8,2017-08-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",49,49,http://www.nedancefestival.com,"Newton (Boston), MA",
 4917,263,Riga Summer Swing,2017,8,2017-08-01,,,,,,203,Riga,,Latvia,"Riga, Latvia",85,85,,"Riga, Latvia",
-3246,53,Summer Hummer,2017,8,2017-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",115,115,http://summerhummerboston.com/,"Boston, MA",Registry Event
+3246,53,Summer Hummer,2017,8,2017-08-01,,,,,,397,Woburn,Massachusetts,United States,"Woburn (Boston), MA, United States",115,115,http://summerhummerboston.com/,"Woburn (Boston), MA",Registry Event
 4922,264,Swedish Swing Summer Camp,2017,8,2017-08-01,,,,,,199,Stockholm,,Sweden,"Stockholm, Sweden",73,73,http://www.uptownswing.se/,"Stockholm, Sweden",Registry Event
 3293,59,Swing Fling,2017,8,2017-08-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA, United States",135,134,http://www.swingfling.com,"Herndon, VA, United States",
 4715,227,Swingtacular: The Galactic Open,2017,8,2017-08-01,,,,,,2,San Francisco,California,United States,"San Francisco, CA, United States",116,114,http://dancegeekproductions.art,"San Francisco, CA",
@@ -1147,7 +1147,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3033,31,Mountain Magic,2016,11,2016-11-01,,,,,,28,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV, United States",68,61,http://mountainmagic.dance/,"South Lake Tahoe (near Reno), NV",Registry Event
 4727,229,Scandinavian Open,2016,11,2016-11-01,,,,,,199,Stockholm,,Sweden,"Stockholm, Sweden",75,75,http://www.snowcs.se/,"Stockholm, Sweden",Registry Event
 3558,79,Sea to Sky,2016,11,2016-11-01,,,,,,30,Seattle,Washington,United States,"Seattle, WA, United States",107,107,http://seatoskywcs.com/,"Seattle, WA",Registry Event
-3373,63,Swingin' New England Dance Festival,2016,11,2016-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton, MA, United States",100,100,,"Newton, MA",
+3373,63,Swingin' New England Dance Festival,2016,11,2016-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",100,100,,"Newton (Boston), MA",
 3446,68,US Open Swing Dance Championships,2016,11,2016-11-01,,,,,,22,Los Angeles,California,United States,"Los Angeles, CA, United States",110,105,http://www.theopenswing.com/,"Los Angeles, CA",Registry Event
 4788,237,WCS Helsinki,2016,11,2016-11-01,,,,,,204,Helsinki,,Finland,"Helsinki, Finland",48,48,,"Helsinki, Finland",
 4958,270,Westie's Angels,2016,11,2016-11-01,,,,,,156,Lyon,,France,"Lyon, France",73,73,http://www.frenchywesty.com/,"Lyon, France",Registry Event
@@ -1180,11 +1180,11 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3815,119,Chicagoland Country and Swing Dance Festival,2016,8,2016-08-01,,,,,,34,Chicago,Illinois,United States,"Chicago, IL, United States",70,70,http://www.chicagolanddancefestival.com/,"Chicago, IL",Registry Event
 3834,120,Lone Star Invitational,2016,8,2016-08-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",79,78,,"Austin, TX",
 4687,224,Midwest Westie Fest,2016,8,2016-08-01,,,,,,48,Overland Park,Kansas,United States,"Overland Park, KS, United States",76,73,http://www.midwestwestiefest.com/,"Overland Park, KS",Registry Event
-4168,157,New England Dance Festival,2016,8,2016-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",40,40,http://www.nedancefestival.com,"Boston, MA",
+4168,157,New England Dance Festival,2016,8,2016-08-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",40,40,http://www.nedancefestival.com,"Newton (Boston), MA",
 3212,51,Palm Springs Summer Dance Classic,2016,8,2016-08-01,,,,,,20,Palm Springs,California,United States,"Palm Springs, CA, United States",113,111,,"Palm Springs, CA",
 4916,263,Riga Summer Swing,2016,8,2016-08-01,,,,,,203,Riga,,Latvia,"Riga, Latvia",62,62,,"Riga, Latvia",
 4213,164,Sea Sun and Swing,2016,8,2016-08-01,,,,,,158,La Grande Motte,,France,"La Grande Motte, France",75,75,https://www.seasunswing.fr/,"La Grande Motte, France",
-3245,53,Summer Hummer,2016,8,2016-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",113,113,http://summerhummerboston.com/,"Boston, MA",Registry Event
+3245,53,Summer Hummer,2016,8,2016-08-01,,,,,,397,Woburn,Massachusetts,United States,"Woburn (Boston), MA, United States",113,113,http://summerhummerboston.com/,"Woburn (Boston), MA",Registry Event
 4921,264,Swedish Swing Summer Camp,2016,8,2016-08-01,,,,,,199,Stockholm,,Sweden,"Stockholm, Sweden",70,70,http://www.uptownswing.se/,"Stockholm, Sweden",Registry Event
 3292,59,Swing Fling,2016,8,2016-08-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA, United States",130,128,http://www.swingfling.com,"Herndon, VA, United States",
 4714,227,Swingtacular: The Galactic Open,2016,8,2016-08-01,,,,,,2,San Francisco,California,United States,"San Francisco, CA, United States",117,116,http://dancegeekproductions.art,"San Francisco, CA",
@@ -1282,7 +1282,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3032,31,Mountain Magic,2015,11,2015-11-01,,,,,,28,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV, United States",68,63,http://mountainmagic.dance/,"South Lake Tahoe (near Reno), NV",Registry Event
 3557,79,Sea to Sky,2015,11,2015-11-01,,,,,,30,Seattle,Washington,United States,"Seattle, WA, United States",102,100,http://seatoskywcs.com/,"Seattle, WA",Registry Event
 3876,125,Swing City Chicago,2015,11,2015-11-01,,,,,,34,Chicago,Illinois,United States,"Chicago, IL, United States",109,106,https://swingcitychicago.com/,"Chicago, IL",Registry Event
-3372,63,Swingin' New England Dance Festival,2015,11,2015-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton, MA, United States",96,96,,"Newton, MA",
+3372,63,Swingin' New England Dance Festival,2015,11,2015-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",96,96,,"Newton (Boston), MA",
 3445,68,US Open Swing Dance Championships,2015,11,2015-11-01,,,,,,22,Los Angeles,California,United States,"Los Angeles, CA, United States",116,114,http://www.theopenswing.com/,"Los Angeles, CA",Registry Event
 4776,236,Warsaw Halloween Swing,2015,11,2015-11-01,,,,,,155,Warsaw,,Poland,"Warsaw, Poland",100,100,http://www.warsawhalloweenswing.com/,"Warsaw, Poland",Registry Event
 4574,211,Atlanta Swing Classic,2015,10,2015-10-01,,,,,,25,Atlanta,Georgia,United States,"Atlanta, GA, United States",106,104,https://www.atlantaswingclassic.com/,"Atlanta, GA, United States",Registry Event
@@ -1311,9 +1311,9 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3533,77,Arizona Dance Classic,2015,8,2015-08-01,,,,,,3,Phoenix,Arizona,United States,"Phoenix, AZ, United States",44,42,,"Phoenix, AZ",
 3814,119,Chicagoland Country and Swing Dance Festival,2015,8,2015-08-01,,,,,,34,Chicago,Illinois,United States,"Chicago, IL, United States",69,69,http://www.chicagolanddancefestival.com/,"Chicago, IL",Registry Event
 3833,120,Lone Star Invitational,2015,8,2015-08-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",65,64,,"Austin, TX",
-4167,157,New England Dance Festival,2015,8,2015-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",49,49,http://www.nedancefestival.com,"Boston, MA",
+4167,157,New England Dance Festival,2015,8,2015-08-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",49,49,http://www.nedancefestival.com,"Newton (Boston), MA",
 3211,51,Palm Springs Summer Dance Classic,2015,8,2015-08-01,,,,,,20,Palm Springs,California,United States,"Palm Springs, CA, United States",93,90,,"Palm Springs, CA",
-3244,53,Summer Hummer,2015,8,2015-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",106,106,http://summerhummerboston.com/,"Boston, MA",Registry Event
+3244,53,Summer Hummer,2015,8,2015-08-01,,,,,,397,Woburn,Massachusetts,United States,"Woburn (Boston), MA, United States",106,106,http://summerhummerboston.com/,"Woburn (Boston), MA",Registry Event
 4724,228,Summer Swing Classic,2015,8,2015-08-01,,,,,,151,St. Petersburg,Florida,United States,"St. Petersburg, FL, United States",69,65,,"St. Petersburg, FL",
 3291,59,Swing Fling,2015,8,2015-08-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA, United States",97,97,http://www.swingfling.com,"Herndon, VA, United States",
 4713,227,Swingtacular: The Galactic Open,2015,8,2015-08-01,,,,,,2,San Francisco,California,United States,"San Francisco, CA, United States",107,107,http://dancegeekproductions.art,"San Francisco, CA",
@@ -1402,7 +1402,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 4447,194,Moscow Westie Fest,2014,11,2014-11-01,,,,,,113,Moscow,,Russia,"Moscow, Russia",78,78,http://westiefest.org/,"Moscow, Russia",Registry Event
 3031,31,Mountain Magic,2014,11,2014-11-01,,,,,,28,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV, United States",65,61,http://mountainmagic.dance/,"South Lake Tahoe (near Reno), NV",Registry Event
 3556,79,Sea to Sky,2014,11,2014-11-01,,,,,,30,Seattle,Washington,United States,"Seattle, WA, United States",86,85,http://seatoskywcs.com/,"Seattle, WA",Registry Event
-3371,63,Swingin' New England Dance Festival,2014,11,2014-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton, MA, United States",88,88,,"Newton, MA",
+3371,63,Swingin' New England Dance Festival,2014,11,2014-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",88,88,,"Newton (Boston), MA",
 3979,137,Tampa Bay Classic,2014,11,2014-11-01,,,,,,53,Tampa,Florida,United States,"Tampa, FL, United States",113,112,http://www.tbcwcs.com/,"Tampa, FL",Registry Event
 3444,68,US Open Swing Dance Championships,2014,11,2014-11-01,,,,,,22,Los Angeles,California,United States,"Los Angeles, CA, United States",98,96,http://www.theopenswing.com/,"Los Angeles, CA",Registry Event
 4775,236,Warsaw Halloween Swing,2014,11,2014-11-01,,,,,,155,Warsaw,,Poland,"Warsaw, Poland",75,75,http://www.warsawhalloweenswing.com/,"Warsaw, Poland",Registry Event
@@ -1429,13 +1429,13 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3532,77,Arizona Dance Classic,2014,8,2014-08-01,,,,,,3,Phoenix,Arizona,United States,"Phoenix, AZ, United States",25,25,,"Phoenix, AZ",
 3813,119,Chicagoland Country and Swing Dance Festival,2014,8,2014-08-01,,,,,,34,Chicago,Illinois,United States,"Chicago, IL, United States",69,69,http://www.chicagolanddancefestival.com/,"Chicago, IL",Registry Event
 3832,120,Lone Star Invitational,2014,8,2014-08-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",59,59,,"Austin, TX",
-4166,157,New England Dance Festival,2014,8,2014-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",52,52,http://www.nedancefestival.com,"Boston, MA",
+4166,157,New England Dance Festival,2014,8,2014-08-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",52,52,http://www.nedancefestival.com,"Newton (Boston), MA",
 3210,51,Palm Springs Summer Dance Classic,2014,8,2014-08-01,,,,,,20,Palm Springs,California,United States,"Palm Springs, CA, United States",108,107,,"Palm Springs, CA",
 4315,177,River City Swing,2014,8,2014-08-01,,,,,,98,Jacksonville,Florida,United States,"Jacksonville, FL, United States",110,106,http://www.jaxwestiefest.com/,"Jacksonville, FL",Registry Event
 4725,229,Scandinavian Open,2014,8,2014-08-01,,,,,,199,Stockholm,,Sweden,"Stockholm, Sweden",47,47,http://www.snowcs.se/,"Stockholm, Sweden",Registry Event
 4212,164,Sea Sun and Swing,2014,8,2014-08-01,,,,,,158,La Grande Motte,,France,"La Grande Motte, France",78,78,https://www.seasunswing.fr/,"La Grande Motte, France",
 3177,48,South Bay Dance Fling,2014,8,2014-08-01,,,,,,16,San Jose,California,United States,"San Jose, CA, United States",83,78,https://sbdf.dance/,"San Jose, CA",Registry Event
-3243,53,Summer Hummer,2014,8,2014-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",112,112,http://summerhummerboston.com/,"Boston, MA",Registry Event
+3243,53,Summer Hummer,2014,8,2014-08-01,,,,,,397,Woburn,Massachusetts,United States,"Woburn (Boston), MA, United States",112,112,http://summerhummerboston.com/,"Woburn (Boston), MA",Registry Event
 4723,228,Summer Swing Classic,2014,8,2014-08-01,,,,,,151,St. Petersburg,Florida,United States,"St. Petersburg, FL, United States",63,58,,"St. Petersburg, FL",
 3290,59,Swing Fling,2014,8,2014-08-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA, United States",115,115,http://www.swingfling.com,"Herndon, VA, United States",
 4712,227,Swingtacular: The Galactic Open,2014,8,2014-08-01,,,,,,2,San Francisco,California,United States,"San Francisco, CA, United States",90,90,http://dancegeekproductions.art,"San Francisco, CA",
@@ -1522,7 +1522,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 4446,194,Moscow Westie Fest,2013,11,2013-11-01,,,,,,113,Moscow,,Russia,"Moscow, Russia",74,74,http://westiefest.org/,"Moscow, Russia",Registry Event
 3030,31,Mountain Magic,2013,11,2013-11-01,,,,,,28,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV, United States",62,60,http://mountainmagic.dance/,"South Lake Tahoe (near Reno), NV",Registry Event
 3555,79,Sea to Sky,2013,11,2013-11-01,,,,,,30,Seattle,Washington,United States,"Seattle, WA, United States",92,90,http://seatoskywcs.com/,"Seattle, WA",Registry Event
-3370,63,Swingin' New England Dance Festival,2013,11,2013-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton, MA, United States",85,85,,"Newton, MA",
+3370,63,Swingin' New England Dance Festival,2013,11,2013-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",85,85,,"Newton (Boston), MA",
 3978,137,Tampa Bay Classic,2013,11,2013-11-01,,,,,,53,Tampa,Florida,United States,"Tampa, FL, United States",107,105,http://www.tbcwcs.com/,"Tampa, FL",Registry Event
 4572,211,Atlanta Swing Classic,2013,10,2013-10-01,,,,,,25,Atlanta,Georgia,United States,"Atlanta, GA, United States",86,79,https://www.atlantaswingclassic.com/,"Atlanta, GA, United States",Registry Event
 4351,180,Australian Open Swing Dance Championships,2013,10,2013-10-01,,,,,,174,Melbourne,,Australia,"Melbourne, Australia",56,56,,"Melbourne, Australia",
@@ -1548,10 +1548,10 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3531,77,Arizona Dance Classic,2013,8,2013-08-01,,,,,,3,Phoenix,Arizona,United States,"Phoenix, AZ, United States",23,23,,"Phoenix, AZ",
 3812,119,Chicagoland Country and Swing Dance Festival,2013,8,2013-08-01,,,,,,34,Chicago,Illinois,United States,"Chicago, IL, United States",69,69,http://www.chicagolanddancefestival.com/,"Chicago, IL",Registry Event
 3831,120,Lone Star Invitational,2013,8,2013-08-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",39,39,,"Austin, TX",
-4165,157,New England Dance Festival,2013,8,2013-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",46,46,http://www.nedancefestival.com,"Boston, MA",
+4165,157,New England Dance Festival,2013,8,2013-08-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",46,46,http://www.nedancefestival.com,"Newton (Boston), MA",
 3209,51,Palm Springs Summer Dance Classic,2013,8,2013-08-01,,,,,,20,Palm Springs,California,United States,"Palm Springs, CA, United States",126,125,,"Palm Springs, CA",
 4211,164,Sea Sun and Swing,2013,8,2013-08-01,,,,,,158,La Grande Motte,,France,"La Grande Motte, France",80,80,https://www.seasunswing.fr/,"La Grande Motte, France",
-3242,53,Summer Hummer,2013,8,2013-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",116,116,http://summerhummerboston.com/,"Boston, MA",Registry Event
+3242,53,Summer Hummer,2013,8,2013-08-01,,,,,,397,Woburn,Massachusetts,United States,"Woburn (Boston), MA, United States",116,116,http://summerhummerboston.com/,"Woburn (Boston), MA",Registry Event
 3289,59,Swing Fling,2013,8,2013-08-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA, United States",110,110,http://www.swingfling.com,"Herndon, VA, United States",
 4181,159,World Swing Masters,2013,8,2013-08-01,,,,,,207,Blackpool,,United Kingdom,"Blackpool, United Kingdom",39,39,,"Blackpool, United Kingdom",
 2672,1,4TH of July Convention,2013,7,2013-07-01,,,,,,3,Phoenix,Arizona,United States,"Phoenix, AZ, United States",110,106,http://phoenix4thofjuly.com,"Phoenix, AZ",
@@ -1623,7 +1623,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 4445,194,Moscow Westie Fest,2012,11,2012-11-01,,,,,,113,Moscow,,Russia,"Moscow, Russia",66,66,http://westiefest.org/,"Moscow, Russia",Registry Event
 3029,31,Mountain Magic,2012,11,2012-11-01,,,,,,28,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV, United States",75,70,http://mountainmagic.dance/,"South Lake Tahoe (near Reno), NV",Registry Event
 3554,79,Sea to Sky,2012,11,2012-11-01,,,,,,30,Seattle,Washington,United States,"Seattle, WA, United States",85,85,http://seatoskywcs.com/,"Seattle, WA",Registry Event
-3369,63,Swingin' New England Dance Festival,2012,11,2012-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton, MA, United States",89,89,,"Newton, MA",
+3369,63,Swingin' New England Dance Festival,2012,11,2012-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",89,89,,"Newton (Boston), MA",
 3977,137,Tampa Bay Classic,2012,11,2012-11-01,,,,,,53,Tampa,Florida,United States,"Tampa, FL, United States",90,87,http://www.tbcwcs.com/,"Tampa, FL",Registry Event
 3442,68,US Open Swing Dance Championships,2012,11,2012-11-01,,,,,,22,Los Angeles,California,United States,"Los Angeles, CA, United States",78,78,http://www.theopenswing.com/,"Los Angeles, CA",Registry Event
 4350,180,Australian Open Swing Dance Championships,2012,10,2012-10-01,,,,,,174,Melbourne,,Australia,"Melbourne, Australia",42,42,,"Melbourne, Australia",
@@ -1648,10 +1648,10 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3530,77,Arizona Dance Classic,2012,8,2012-08-01,,,,,,3,Phoenix,Arizona,United States,"Phoenix, AZ, United States",34,34,,"Phoenix, AZ",
 3811,119,Chicagoland Country and Swing Dance Festival,2012,8,2012-08-01,,,,,,34,Chicago,Illinois,United States,"Chicago, IL, United States",47,47,http://www.chicagolanddancefestival.com/,"Chicago, IL",Registry Event
 3830,120,Lone Star Invitational,2012,8,2012-08-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",42,42,,"Austin, TX",
-4164,157,New England Dance Festival,2012,8,2012-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",43,43,http://www.nedancefestival.com,"Boston, MA",
+4164,157,New England Dance Festival,2012,8,2012-08-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",43,43,http://www.nedancefestival.com,"Newton (Boston), MA",
 3208,51,Palm Springs Summer Dance Classic,2012,8,2012-08-01,,,,,,20,Palm Springs,California,United States,"Palm Springs, CA, United States",115,113,,"Palm Springs, CA",
 4210,164,Sea Sun and Swing,2012,8,2012-08-01,,,,,,158,La Grande Motte,,France,"La Grande Motte, France",71,71,https://www.seasunswing.fr/,"La Grande Motte, France",
-3241,53,Summer Hummer,2012,8,2012-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",107,107,http://summerhummerboston.com/,"Boston, MA",Registry Event
+3241,53,Summer Hummer,2012,8,2012-08-01,,,,,,397,Woburn,Massachusetts,United States,"Woburn (Boston), MA, United States",107,107,http://summerhummerboston.com/,"Woburn (Boston), MA",Registry Event
 3288,59,Swing Fling,2012,8,2012-08-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA, United States",110,110,http://www.swingfling.com,"Herndon, VA, United States",
 4180,159,World Swing Masters,2012,8,2012-08-01,,,,,,207,Blackpool,,United Kingdom,"Blackpool, United Kingdom",40,40,,"Blackpool, United Kingdom",
 2671,1,4TH of July Convention,2012,7,2012-07-01,,,,,,3,Phoenix,Arizona,United States,"Phoenix, AZ, United States",107,100,http://phoenix4thofjuly.com,"Phoenix, AZ",
@@ -1713,7 +1713,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 4235,166,London SwingVitational,2011,11,2011-11-01,,,,,,212,Windsor,,United Kingdom,"Windsor, United Kingdom",41,41,,"Windsor, United Kingdom",
 3028,31,Mountain Magic,2011,11,2011-11-01,,,,,,28,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV, United States",79,78,http://mountainmagic.dance/,"South Lake Tahoe (near Reno), NV",Registry Event
 4109,151,Sunshine State Dance Challenge,2011,11,2011-11-01,,,,,,55,Fort Lauderdale,Florida,United States,"Fort Lauderdale, FL, United States",38,36,,"Fort Lauderdale, FL",
-3368,63,Swingin' New England Dance Festival,2011,11,2011-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton, MA, United States",95,95,,"Newton, MA",
+3368,63,Swingin' New England Dance Festival,2011,11,2011-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",95,95,,"Newton (Boston), MA",
 3976,137,Tampa Bay Classic,2011,11,2011-11-01,,,,,,53,Tampa,Florida,United States,"Tampa, FL, United States",98,96,http://www.tbcwcs.com/,"Tampa, FL",Registry Event
 3441,68,US Open Swing Dance Championships,2011,11,2011-11-01,,,,,,22,Los Angeles,California,United States,"Los Angeles, CA, United States",30,30,http://www.theopenswing.com/,"Los Angeles, CA",Registry Event
 4349,180,Australian Open Swing Dance Championships,2011,10,2011-10-01,,,,,,174,Melbourne,,Australia,"Melbourne, Australia",40,40,,"Melbourne, Australia",
@@ -1737,9 +1737,9 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3810,119,Chicagoland Country and Swing Dance Festival,2011,8,2011-08-01,,,,,,34,Chicago,Illinois,United States,"Chicago, IL, United States",48,48,http://www.chicagolanddancefestival.com/,"Chicago, IL",Registry Event
 3697,97,Grand Prix of Swing,2011,8,2011-08-01,,,,,,9,Kansas City,Missouri,United States,"Kansas City, MO, United States",48,48,,"Kansas City, MO",
 3829,120,Lone Star Invitational,2011,8,2011-08-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",36,36,,"Austin, TX",
-4163,157,New England Dance Festival,2011,8,2011-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",49,49,http://www.nedancefestival.com,"Boston, MA",
+4163,157,New England Dance Festival,2011,8,2011-08-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",49,49,http://www.nedancefestival.com,"Newton (Boston), MA",
 4209,164,Sea Sun and Swing,2011,8,2011-08-01,,,,,,158,La Grande Motte,,France,"La Grande Motte, France",47,47,https://www.seasunswing.fr/,"La Grande Motte, France",
-3240,53,Summer Hummer,2011,8,2011-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",105,103,http://summerhummerboston.com/,"Boston, MA",Registry Event
+3240,53,Summer Hummer,2011,8,2011-08-01,,,,,,397,Woburn,Massachusetts,United States,"Woburn (Boston), MA, United States",105,103,http://summerhummerboston.com/,"Woburn (Boston), MA",Registry Event
 3287,59,Swing Fling,2011,8,2011-08-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA, United States",86,86,http://www.swingfling.com,"Herndon, VA, United States",
 4179,159,World Swing Masters,2011,8,2011-08-01,,,,,,207,Blackpool,,United Kingdom,"Blackpool, United Kingdom",44,44,,"Blackpool, United Kingdom",
 2670,1,4TH of July Convention,2011,7,2011-07-01,,,,,,3,Phoenix,Arizona,United States,"Phoenix, AZ, United States",84,83,http://phoenix4thofjuly.com,"Phoenix, AZ",
@@ -1790,14 +1790,14 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3424,67,Americas Classic,2011,1,2011-01-01,,,,,,44,Houston,Texas,United States,"Houston, TX, United States",82,81,,"Houston, TX",
 3072,42,Floorplay Swing Vacation,2011,1,2011-01-01,,,,,,82,Orlando,Florida,United States,"Orlando, FL, United States",49,47,http://www.floorplayswingvacation.com/,"Orlando, FL",Registry Event
 3341,62,Monterey SwingFest,2011,1,2011-01-01,,,,,,1,Monterey,California,United States,"Monterey, CA, United States",117,111,http://www.montereyswing.com/,"Monterey, CA",Registry Event
-3992,139,New Year's Dancin' Eve,2011,1,2011-01-01,,,,,,79,Burlington,Massachusetts,United States,"Burlington, MA, United States",69,69,,"Burlington, MA",
+3992,139,New Year's Dancin' Eve,2011,1,2011-01-01,,,,,,79,Burlington,Massachusetts,United States,"Burlington (Boston), MA, United States",69,69,,"Burlington (Boston), MA",
 4467,195,Palm Springs New Years Swing Dance Classic,2011,1,2011-01-01,,,,,,20,Palm Springs,California,United States,"Palm Springs, CA, United States",98,98,,"Palm Springs, CA",
 3889,126,Chico Dance Sensation,2010,12,2010-12-01,,,,,,101,Chico,California,United States,"Chico, CA, United States",76,76,,"Chico, CA",
 3607,87,CASH Bash,2010,11,2010-11-01,,,,,,96,Cleveland,Ohio,United States,"Cleveland, OH, United States",38,38,https://cashdanceclub.org/cash-bash/,"Cleveland, OH",Registry Event
 4234,166,London SwingVitational,2010,11,2010-11-01,,,,,,212,Windsor,,United Kingdom,"Windsor, United Kingdom",39,39,,"Windsor, United Kingdom",
 3027,31,Mountain Magic,2010,11,2010-11-01,,,,,,28,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV, United States",59,57,http://mountainmagic.dance/,"South Lake Tahoe (near Reno), NV",Registry Event
 4108,151,Sunshine State Dance Challenge,2010,11,2010-11-01,,,,,,55,Fort Lauderdale,Florida,United States,"Fort Lauderdale, FL, United States",19,19,,"Fort Lauderdale, FL",
-3367,63,Swingin' New England Dance Festival,2010,11,2010-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton, MA, United States",89,89,,"Newton, MA",
+3367,63,Swingin' New England Dance Festival,2010,11,2010-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",89,89,,"Newton (Boston), MA",
 3975,137,Tampa Bay Classic,2010,11,2010-11-01,,,,,,53,Tampa,Florida,United States,"Tampa, FL, United States",122,117,http://www.tbcwcs.com/,"Tampa, FL",Registry Event
 3440,68,US Open Swing Dance Championships,2010,11,2010-11-01,,,,,,22,Los Angeles,California,United States,"Los Angeles, CA, United States",28,28,http://www.theopenswing.com/,"Los Angeles, CA",Registry Event
 3471,70,Virginia State Open,2010,11,2010-11-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA, United States",60,60,,"Herndon, VA",
@@ -1818,10 +1818,10 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3528,77,Arizona Dance Classic,2010,8,2010-08-01,,,,,,3,Phoenix,Arizona,United States,"Phoenix, AZ, United States",20,20,,"Phoenix, AZ",
 3809,119,Chicagoland Country and Swing Dance Festival,2010,8,2010-08-01,,,,,,34,Chicago,Illinois,United States,"Chicago, IL, United States",47,47,http://www.chicagolanddancefestival.com/,"Chicago, IL",Registry Event
 3828,120,Lone Star Invitational,2010,8,2010-08-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",20,20,,"Austin, TX",
-4162,157,New England Dance Festival,2010,8,2010-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",28,28,http://www.nedancefestival.com,"Boston, MA",
+4162,157,New England Dance Festival,2010,8,2010-08-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",28,28,http://www.nedancefestival.com,"Newton (Boston), MA",
 4208,164,Sea Sun and Swing,2010,8,2010-08-01,,,,,,158,La Grande Motte,,France,"La Grande Motte, France",50,50,https://www.seasunswing.fr/,"La Grande Motte, France",
 3173,48,South Bay Dance Fling,2010,8,2010-08-01,,,,,,16,San Jose,California,United States,"San Jose, CA, United States",70,69,https://sbdf.dance/,"San Jose, CA",Registry Event
-3239,53,Summer Hummer,2010,8,2010-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",116,116,http://summerhummerboston.com/,"Boston, MA",Registry Event
+3239,53,Summer Hummer,2010,8,2010-08-01,,,,,,397,Woburn,Massachusetts,United States,"Woburn (Boston), MA, United States",116,116,http://summerhummerboston.com/,"Woburn (Boston), MA",Registry Event
 3148,47,Swingtime in the Rockies,2010,8,2010-08-01,,,,,,29,Denver,Colorado,United States,"Denver, CO, United States",89,89,http://www.swingtimewcs.com/,"Denver, CO",Registry Event
 4178,159,World Swing Masters,2010,8,2010-08-01,,,,,,207,Blackpool,,United Kingdom,"Blackpool, United Kingdom",32,32,,"Blackpool, United Kingdom",
 2669,1,4TH of July Convention,2010,7,2010-07-01,,,,,,3,Phoenix,Arizona,United States,"Phoenix, AZ, United States",109,102,http://phoenix4thofjuly.com,"Phoenix, AZ",
@@ -1868,19 +1868,19 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3423,67,Americas Classic,2010,1,2010-01-01,,,,,,44,Houston,Texas,United States,"Houston, TX, United States",72,72,,"Houston, TX",
 3071,42,Floorplay Swing Vacation,2010,1,2010-01-01,,,,,,82,Orlando,Florida,United States,"Orlando, FL, United States",50,44,http://www.floorplayswingvacation.com/,"Orlando, FL",Registry Event
 3340,62,Monterey SwingFest,2010,1,2010-01-01,,,,,,1,Monterey,California,United States,"Monterey, CA, United States",110,102,http://www.montereyswing.com/,"Monterey, CA",Registry Event
-3991,139,New Year's Dancin' Eve,2010,1,2010-01-01,,,,,,79,Burlington,Massachusetts,United States,"Burlington, MA, United States",89,89,,"Burlington, MA",
+3991,139,New Year's Dancin' Eve,2010,1,2010-01-01,,,,,,79,Burlington,Massachusetts,United States,"Burlington (Boston), MA, United States",89,89,,"Burlington (Boston), MA",
 4466,195,Palm Springs New Years Swing Dance Classic,2010,1,2010-01-01,,,,,,20,Palm Springs,California,United States,"Palm Springs, CA, United States",90,88,,"Palm Springs, CA",
 3996,141,Spotlight New Year's Celebration,2010,1,2010-01-01,,,,,,43,Nashville,Tennessee,United States,"Nashville, TN, United States",49,49,http://www.spotlightnewyears.com/,"Nashville, TN",Registry Event
 3493,75,UCWDC Country Dance World Championship,2010,1,2010-01-01,,,,,,21,Dallas,Texas,United States,"Dallas, TX, United States",18,18,http://www.ucwdcworlds.com/,"Dallas, TX",Registry Event
 3070,42,Floorplay Swing Vacation,2009,12,2009-12-01,,,,,,82,Orlando,Florida,United States,"Orlando, FL, United States",50,45,http://www.floorplayswingvacation.com/,"Orlando, FL",Registry Event
-3990,139,New Year's Dancin' Eve,2009,12,2009-12-01,,,,,,79,Burlington,Massachusetts,United States,"Burlington, MA, United States",80,80,,"Burlington, MA",
+3990,139,New Year's Dancin' Eve,2009,12,2009-12-01,,,,,,79,Burlington,Massachusetts,United States,"Burlington (Boston), MA, United States",80,80,,"Burlington (Boston), MA",
 4465,195,Palm Springs New Years Swing Dance Classic,2009,12,2009-12-01,,,,,,20,Palm Springs,California,United States,"Palm Springs, CA, United States",90,88,,"Palm Springs, CA",
 3995,141,Spotlight New Year's Celebration,2009,12,2009-12-01,,,,,,43,Nashville,Tennessee,United States,"Nashville, TN, United States",48,48,http://www.spotlightnewyears.com/,"Nashville, TN",Registry Event
 4110,152,Worlds UCWDC,2009,12,2009-12-01,,,,,,82,Orlando,Florida,United States,"Orlando, FL, United States",29,29,,"Orlando, FL",
 3606,87,CASH Bash,2009,11,2009-11-01,,,,,,96,Cleveland,Ohio,United States,"Cleveland, OH, United States",40,40,https://cashdanceclub.org/cash-bash/,"Cleveland, OH",Registry Event
 3026,31,Mountain Magic,2009,11,2009-11-01,,,,,,28,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV, United States",75,68,http://mountainmagic.dance/,"South Lake Tahoe (near Reno), NV",Registry Event
 4107,151,Sunshine State Dance Challenge,2009,11,2009-11-01,,,,,,55,Fort Lauderdale,Florida,United States,"Fort Lauderdale, FL, United States",20,20,,"Fort Lauderdale, FL",
-3366,63,Swingin' New England Dance Festival,2009,11,2009-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton, MA, United States",70,70,,"Newton, MA",
+3366,63,Swingin' New England Dance Festival,2009,11,2009-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",70,70,,"Newton (Boston), MA",
 3974,137,Tampa Bay Classic,2009,11,2009-11-01,,,,,,53,Tampa,Florida,United States,"Tampa, FL, United States",100,96,http://www.tbcwcs.com/,"Tampa, FL",Registry Event
 3439,68,US Open Swing Dance Championships,2009,11,2009-11-01,,,,,,22,Los Angeles,California,United States,"Los Angeles, CA, United States",20,20,http://www.theopenswing.com/,"Los Angeles, CA",Registry Event
 3898,129,West Coast Dance Challenge,2009,11,2009-11-01,,,,,,97,Redmond,Washington,United States,"Redmond, WA, United States",38,38,,"Redmond, WA",
@@ -1900,9 +1900,9 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3470,70,Virginia State Open,2009,9,2009-09-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA, United States",67,67,,"Herndon, VA",
 3808,119,Chicagoland Country and Swing Dance Festival,2009,8,2009-08-01,,,,,,34,Chicago,Illinois,United States,"Chicago, IL, United States",40,40,http://www.chicagolanddancefestival.com/,"Chicago, IL",Registry Event
 3827,120,Lone Star Invitational,2009,8,2009-08-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",20,19,,"Austin, TX",
-4161,157,New England Dance Festival,2009,8,2009-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",37,37,http://www.nedancefestival.com,"Boston, MA",
+4161,157,New England Dance Festival,2009,8,2009-08-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",37,37,http://www.nedancefestival.com,"Newton (Boston), MA",
 3172,48,South Bay Dance Fling,2009,8,2009-08-01,,,,,,16,San Jose,California,United States,"San Jose, CA, United States",60,59,https://sbdf.dance/,"San Jose, CA",Registry Event
-3238,53,Summer Hummer,2009,8,2009-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",108,108,http://summerhummerboston.com/,"Boston, MA",Registry Event
+3238,53,Summer Hummer,2009,8,2009-08-01,,,,,,397,Woburn,Massachusetts,United States,"Woburn (Boston), MA, United States",108,108,http://summerhummerboston.com/,"Woburn (Boston), MA",Registry Event
 3147,47,Swingtime in the Rockies,2009,8,2009-08-01,,,,,,29,Denver,Colorado,United States,"Denver, CO, United States",103,103,http://www.swingtimewcs.com/,"Denver, CO",Registry Event
 4177,159,World Swing Masters,2009,8,2009-08-01,,,,,,207,Blackpool,,United Kingdom,"Blackpool, United Kingdom",40,40,,"Blackpool, United Kingdom",
 2668,1,4TH of July Convention,2009,7,2009-07-01,,,,,,3,Phoenix,Arizona,United States,"Phoenix, AZ, United States",120,120,http://phoenix4thofjuly.com,"Phoenix, AZ",
@@ -1951,7 +1951,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3025,31,Mountain Magic,2008,11,2008-11-01,,,,,,28,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV, United States",60,58,http://mountainmagic.dance/,"South Lake Tahoe (near Reno), NV",Registry Event
 3988,138,Music City Swing Dance Championships,2008,11,2008-11-01,,,,,,43,Nashville,Tennessee,United States,"Nashville, TN, United States",29,27,,"Nashville, TN",
 4106,151,Sunshine State Dance Challenge,2008,11,2008-11-01,,,,,,55,Fort Lauderdale,Florida,United States,"Fort Lauderdale, FL, United States",10,10,,"Fort Lauderdale, FL",
-3365,63,Swingin' New England Dance Festival,2008,11,2008-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton, MA, United States",78,78,,"Newton, MA",
+3365,63,Swingin' New England Dance Festival,2008,11,2008-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",78,78,,"Newton (Boston), MA",
 3973,137,Tampa Bay Classic,2008,11,2008-11-01,,,,,,53,Tampa,Florida,United States,"Tampa, FL, United States",80,77,http://www.tbcwcs.com/,"Tampa, FL",Registry Event
 3438,68,US Open Swing Dance Championships,2008,11,2008-11-01,,,,,,22,Los Angeles,California,United States,"Los Angeles, CA, United States",20,20,http://www.theopenswing.com/,"Los Angeles, CA",Registry Event
 3897,129,West Coast Dance Challenge,2008,11,2008-11-01,,,,,,97,Redmond,Washington,United States,"Redmond, WA, United States",38,38,,"Redmond, WA",
@@ -1976,7 +1976,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3807,119,Chicagoland Country and Swing Dance Festival,2008,8,2008-08-01,,,,,,34,Chicago,Illinois,United States,"Chicago, IL, United States",38,37,http://www.chicagolanddancefestival.com/,"Chicago, IL",Registry Event
 3826,120,Lone Star Invitational,2008,8,2008-08-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",19,19,,"Austin, TX",
 3171,48,South Bay Dance Fling,2008,8,2008-08-01,,,,,,16,San Jose,California,United States,"San Jose, CA, United States",59,55,https://sbdf.dance/,"San Jose, CA",Registry Event
-3237,53,Summer Hummer,2008,8,2008-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",114,114,http://summerhummerboston.com/,"Boston, MA",Registry Event
+3237,53,Summer Hummer,2008,8,2008-08-01,,,,,,397,Woburn,Massachusetts,United States,"Woburn (Boston), MA, United States",114,114,http://summerhummerboston.com/,"Woburn (Boston), MA",Registry Event
 3146,47,Swingtime in the Rockies,2008,8,2008-08-01,,,,,,29,Denver,Colorado,United States,"Denver, CO, United States",78,78,http://www.swingtimewcs.com/,"Denver, CO",Registry Event
 2667,1,4TH of July Convention,2008,7,2008-07-01,,,,,,3,Phoenix,Arizona,United States,"Phoenix, AZ, United States",110,110,http://phoenix4thofjuly.com,"Phoenix, AZ",
 4057,146,Boston Dance Challenge,2008,7,2008-07-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",38,38,,"Boston, MA",
@@ -2018,14 +2018,14 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3312,61,SwingDiego,2008,1,2008-01-01,,,,,,10,San Diego,California,United States,"San Diego, CA, United States",112,112,,"San Diego, CA",
 3069,42,Floorplay Swing Vacation,2007,12,2007-12-01,,,,,,82,Orlando,Florida,United States,"Orlando, FL, United States",50,42,http://www.floorplayswingvacation.com/,"Orlando, FL",Registry Event
 3993,140,Hawaii Dance Sensation,2007,12,2007-12-01,,,,,,176,Honolulu,Hawaii,United States,"Honolulu, HI, United States",20,20,,"Honolulu, HI",
-3989,139,New Year's Dancin' Eve,2007,12,2007-12-01,,,,,,79,Burlington,Massachusetts,United States,"Burlington, MA, United States",69,69,,"Burlington, MA",
+3989,139,New Year's Dancin' Eve,2007,12,2007-12-01,,,,,,79,Burlington,Massachusetts,United States,"Burlington (Boston), MA, United States",69,69,,"Burlington (Boston), MA",
 4464,195,Palm Springs New Years Swing Dance Classic,2007,12,2007-12-01,,,,,,20,Palm Springs,California,United States,"Palm Springs, CA, United States",92,90,,"Palm Springs, CA",
 3994,141,Spotlight New Year's Celebration,2007,12,2007-12-01,,,,,,43,Nashville,Tennessee,United States,"Nashville, TN, United States",50,50,http://www.spotlightnewyears.com/,"Nashville, TN",Registry Event
 3491,75,UCWDC Country Dance World Championship,2007,12,2007-12-01,,,,,,21,Dallas,Texas,United States,"Dallas, TX, United States",28,28,http://www.ucwdcworlds.com/,"Dallas, TX",Registry Event
 3604,87,CASH Bash,2007,11,2007-11-01,,,,,,96,Cleveland,Ohio,United States,"Cleveland, OH, United States",39,39,https://cashdanceclub.org/cash-bash/,"Cleveland, OH",Registry Event
 3024,31,Mountain Magic,2007,11,2007-11-01,,,,,,28,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV, United States",58,58,http://mountainmagic.dance/,"South Lake Tahoe (near Reno), NV",Registry Event
 3987,138,Music City Swing Dance Championships,2007,11,2007-11-01,,,,,,43,Nashville,Tennessee,United States,"Nashville, TN, United States",35,35,,"Nashville, TN",
-3364,63,Swingin' New England Dance Festival,2007,11,2007-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton, MA, United States",80,80,,"Newton, MA",
+3364,63,Swingin' New England Dance Festival,2007,11,2007-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",80,80,,"Newton (Boston), MA",
 3972,137,Tampa Bay Classic,2007,11,2007-11-01,,,,,,53,Tampa,Florida,United States,"Tampa, FL, United States",51,50,http://www.tbcwcs.com/,"Tampa, FL",Registry Event
 3569,80,Twin City Swing Challenge,2007,11,2007-11-01,,,,,,75,Minneapolis,Minnesota,United States,"Minneapolis, MN, United States",29,29,,"Minneapolis, MN",
 3437,68,US Open Swing Dance Championships,2007,11,2007-11-01,,,,,,22,Los Angeles,California,United States,"Los Angeles, CA, United States",20,20,http://www.theopenswing.com/,"Los Angeles, CA",Registry Event
@@ -2048,7 +2048,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3806,119,Chicagoland Country and Swing Dance Festival,2007,8,2007-08-01,,,,,,34,Chicago,Illinois,United States,"Chicago, IL, United States",36,36,http://www.chicagolanddancefestival.com/,"Chicago, IL",Registry Event
 3825,120,Lone Star Invitational,2007,8,2007-08-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",19,19,,"Austin, TX",
 3170,48,South Bay Dance Fling,2007,8,2007-08-01,,,,,,16,San Jose,California,United States,"San Jose, CA, United States",60,56,https://sbdf.dance/,"San Jose, CA",Registry Event
-3236,53,Summer Hummer,2007,8,2007-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",92,92,http://summerhummerboston.com/,"Boston, MA",Registry Event
+3236,53,Summer Hummer,2007,8,2007-08-01,,,,,,397,Woburn,Massachusetts,United States,"Woburn (Boston), MA, United States",92,92,http://summerhummerboston.com/,"Woburn (Boston), MA",Registry Event
 3145,47,Swingtime in the Rockies,2007,8,2007-08-01,,,,,,29,Denver,Colorado,United States,"Denver, CO, United States",85,81,http://www.swingtimewcs.com/,"Denver, CO",Registry Event
 2666,1,4TH of July Convention,2007,7,2007-07-01,,,,,,3,Phoenix,Arizona,United States,"Phoenix, AZ, United States",114,114,http://phoenix4thofjuly.com,"Phoenix, AZ",
 3762,110,Brandin' Iron Dance Festival,2007,7,2007-07-01,,,,,,14,San Bernardino,California,United States,"San Bernardino, CA, United States",20,18,,"San Bernardino, CA",
@@ -2090,7 +2090,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3603,87,CASH Bash,2006,11,2006-11-01,,,,,,96,Cleveland,Ohio,United States,"Cleveland, OH, United States",36,36,https://cashdanceclub.org/cash-bash/,"Cleveland, OH",Registry Event
 3768,113,Dallas Dance Festival,2006,11,2006-11-01,,,,,,21,Dallas,Texas,United States,"Dallas, TX, United States",20,20,,"Dallas, TX",
 3023,31,Mountain Magic,2006,11,2006-11-01,,,,,,28,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV, United States",46,46,http://mountainmagic.dance/,"South Lake Tahoe (near Reno), NV",Registry Event
-3363,63,Swingin' New England Dance Festival,2006,11,2006-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton, MA, United States",98,98,,"Newton, MA",
+3363,63,Swingin' New England Dance Festival,2006,11,2006-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",98,98,,"Newton (Boston), MA",
 3568,80,Twin City Swing Challenge,2006,11,2006-11-01,,,,,,75,Minneapolis,Minnesota,United States,"Minneapolis, MN, United States",60,54,,"Minneapolis, MN",
 3436,68,US Open Swing Dance Championships,2006,11,2006-11-01,,,,,,22,Los Angeles,California,United States,"Los Angeles, CA, United States",20,20,http://www.theopenswing.com/,"Los Angeles, CA",Registry Event
 3896,129,West Coast Dance Challenge,2006,11,2006-11-01,,,,,,97,Redmond,Washington,United States,"Redmond, WA, United States",40,40,,"Redmond, WA",
@@ -2115,7 +2115,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3824,120,Lone Star Invitational,2006,8,2006-08-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",38,38,,"Austin, TX",
 3764,111,MadMAC,2006,8,2006-08-01,,,,,,115,Madison,Wisconsin,United States,"Madison, WI, United States",52,51,,"Madison, WI",
 3169,48,South Bay Dance Fling,2006,8,2006-08-01,,,,,,16,San Jose,California,United States,"San Jose, CA, United States",50,50,https://sbdf.dance/,"San Jose, CA",Registry Event
-3235,53,Summer Hummer,2006,8,2006-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",100,94,http://summerhummerboston.com/,"Boston, MA",Registry Event
+3235,53,Summer Hummer,2006,8,2006-08-01,,,,,,397,Woburn,Massachusetts,United States,"Woburn (Boston), MA, United States",100,94,http://summerhummerboston.com/,"Woburn (Boston), MA",Registry Event
 3144,47,Swingtime in the Rockies,2006,8,2006-08-01,,,,,,29,Denver,Colorado,United States,"Denver, CO, United States",104,101,http://www.swingtimewcs.com/,"Denver, CO",Registry Event
 2665,1,4TH of July Convention,2006,7,2006-07-01,,,,,,3,Phoenix,Arizona,United States,"Phoenix, AZ, United States",108,108,http://phoenix4thofjuly.com,"Phoenix, AZ",
 3761,110,Brandin' Iron Dance Festival,2006,7,2006-07-01,,,,,,14,San Bernardino,California,United States,"San Bernardino, CA, United States",43,43,,"San Bernardino, CA",
@@ -2159,7 +2159,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3602,87,CASH Bash,2005,11,2005-11-01,,,,,,96,Cleveland,Ohio,United States,"Cleveland, OH, United States",42,42,https://cashdanceclub.org/cash-bash/,"Cleveland, OH",Registry Event
 3767,113,Dallas Dance Festival,2005,11,2005-11-01,,,,,,21,Dallas,Texas,United States,"Dallas, TX, United States",29,29,,"Dallas, TX",
 3022,31,Mountain Magic,2005,11,2005-11-01,,,,,,28,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV, United States",56,56,http://mountainmagic.dance/,"South Lake Tahoe (near Reno), NV",Registry Event
-3362,63,Swingin' New England Dance Festival,2005,11,2005-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton, MA, United States",139,131,,"Newton, MA",
+3362,63,Swingin' New England Dance Festival,2005,11,2005-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",139,131,,"Newton (Boston), MA",
 3567,80,Twin City Swing Challenge,2005,11,2005-11-01,,,,,,75,Minneapolis,Minnesota,United States,"Minneapolis, MN, United States",63,58,,"Minneapolis, MN",
 3435,68,US Open Swing Dance Championships,2005,11,2005-11-01,,,,,,22,Los Angeles,California,United States,"Los Angeles, CA, United States",24,24,http://www.theopenswing.com/,"Los Angeles, CA",Registry Event
 2719,8,Boogie By The Bay,2005,10,2005-10-01,,,,,,2,San Francisco,California,United States,"San Francisco, CA, United States",130,125,https://boogiebythebay.com/,"San Francisco, CA",Registry Event
@@ -2177,7 +2177,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3804,119,Chicagoland Country and Swing Dance Festival,2005,8,2005-08-01,,,,,,34,Chicago,Illinois,United States,"Chicago, IL, United States",30,30,http://www.chicagolanddancefestival.com/,"Chicago, IL",Registry Event
 3763,111,MadMAC,2005,8,2005-08-01,,,,,,115,Madison,Wisconsin,United States,"Madison, WI, United States",50,50,,"Madison, WI",
 3168,48,South Bay Dance Fling,2005,8,2005-08-01,,,,,,16,San Jose,California,United States,"San Jose, CA, United States",56,56,https://sbdf.dance/,"San Jose, CA",Registry Event
-3234,53,Summer Hummer,2005,8,2005-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",88,88,http://summerhummerboston.com/,"Boston, MA",Registry Event
+3234,53,Summer Hummer,2005,8,2005-08-01,,,,,,397,Woburn,Massachusetts,United States,"Woburn (Boston), MA, United States",88,88,http://summerhummerboston.com/,"Woburn (Boston), MA",Registry Event
 3143,47,Swingtime in the Rockies,2005,8,2005-08-01,,,,,,29,Denver,Colorado,United States,"Denver, CO, United States",90,86,http://www.swingtimewcs.com/,"Denver, CO",Registry Event
 2664,1,4TH of July Convention,2005,7,2005-07-01,,,,,,3,Phoenix,Arizona,United States,"Phoenix, AZ, United States",110,110,http://phoenix4thofjuly.com,"Phoenix, AZ",
 3760,110,Brandin' Iron Dance Festival,2005,7,2005-07-01,,,,,,14,San Bernardino,California,United States,"San Bernardino, CA, United States",20,20,,"San Bernardino, CA",
@@ -2218,7 +2218,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3489,75,UCWDC Country Dance World Championship,2004,12,2004-12-01,,,,,,21,Dallas,Texas,United States,"Dallas, TX, United States",79,73,http://www.ucwdcworlds.com/,"Dallas, TX",Registry Event
 3601,87,CASH Bash,2004,11,2004-11-01,,,,,,96,Cleveland,Ohio,United States,"Cleveland, OH, United States",39,39,https://cashdanceclub.org/cash-bash/,"Cleveland, OH",Registry Event
 3021,31,Mountain Magic,2004,11,2004-11-01,,,,,,28,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV, United States",58,58,http://mountainmagic.dance/,"South Lake Tahoe (near Reno), NV",Registry Event
-3361,63,Swingin' New England Dance Festival,2004,11,2004-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton, MA, United States",115,111,,"Newton, MA",
+3361,63,Swingin' New England Dance Festival,2004,11,2004-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",115,111,,"Newton (Boston), MA",
 3566,80,Twin City Swing Challenge,2004,11,2004-11-01,,,,,,75,Minneapolis,Minnesota,United States,"Minneapolis, MN, United States",53,53,,"Minneapolis, MN",
 2718,8,Boogie By The Bay,2004,10,2004-10-01,,,,,,2,San Francisco,California,United States,"San Francisco, CA, United States",128,122,https://boogiebythebay.com/,"San Francisco, CA",Registry Event
 3389,65,Halloween SwingThing,2004,10,2004-10-01,,,,,,24,Costa Mesa,California,United States,"Costa Mesa, CA, United States",75,72,http://hstswing.com/,"Costa Mesa, CA",Registry Event
@@ -2233,7 +2233,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3803,119,Chicagoland Country and Swing Dance Festival,2004,8,2004-08-01,,,,,,34,Chicago,Illinois,United States,"Chicago, IL, United States",28,28,http://www.chicagolanddancefestival.com/,"Chicago, IL",Registry Event
 3698,98,Pacific Rim Dance Classic,2004,8,2004-08-01,,,,,,30,Seattle,Washington,United States,"Seattle, WA, United States",28,28,,"Seattle, WA",
 3167,48,South Bay Dance Fling,2004,8,2004-08-01,,,,,,16,San Jose,California,United States,"San Jose, CA, United States",40,40,https://sbdf.dance/,"San Jose, CA",Registry Event
-3233,53,Summer Hummer,2004,8,2004-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",54,54,http://summerhummerboston.com/,"Boston, MA",Registry Event
+3233,53,Summer Hummer,2004,8,2004-08-01,,,,,,397,Woburn,Massachusetts,United States,"Woburn (Boston), MA, United States",54,54,http://summerhummerboston.com/,"Woburn (Boston), MA",Registry Event
 3142,47,Swingtime in the Rockies,2004,8,2004-08-01,,,,,,29,Denver,Colorado,United States,"Denver, CO, United States",67,67,http://www.swingtimewcs.com/,"Denver, CO",Registry Event
 2663,1,4TH of July Convention,2004,7,2004-07-01,,,,,,3,Phoenix,Arizona,United States,"Phoenix, AZ, United States",109,109,http://phoenix4thofjuly.com,"Phoenix, AZ",
 3690,97,Grand Prix of Swing,2004,7,2004-07-01,,,,,,9,Kansas City,Missouri,United States,"Kansas City, MO, United States",20,20,,"Kansas City, MO",
@@ -2269,7 +2269,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3600,87,CASH Bash,2003,11,2003-11-01,,,,,,96,Cleveland,Ohio,United States,"Cleveland, OH, United States",40,40,https://cashdanceclub.org/cash-bash/,"Cleveland, OH",Registry Event
 3621,88,KC Swing Challenge and Heartland Dance Festival,2003,11,2003-11-01,,,,,,9,Kansas City,Missouri,United States,"Kansas City, MO, United States",54,51,,"Kansas City, MO",
 3020,31,Mountain Magic,2003,11,2003-11-01,,,,,,28,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV, United States",60,60,http://mountainmagic.dance/,"South Lake Tahoe (near Reno), NV",Registry Event
-3360,63,Swingin' New England Dance Festival,2003,11,2003-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton, MA, United States",62,58,,"Newton, MA",
+3360,63,Swingin' New England Dance Festival,2003,11,2003-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",62,58,,"Newton (Boston), MA",
 3565,80,Twin City Swing Challenge,2003,11,2003-11-01,,,,,,75,Minneapolis,Minnesota,United States,"Minneapolis, MN, United States",38,38,,"Minneapolis, MN",
 2687,3,American Lindy Hop Championships,2003,10,2003-10-01,,,,,,142,Stamford,Connecticut,United States,"Stamford, CT, United States",49,49,,"Stamford, CT",
 2706,7,Boogie & Blues,2003,10,2003-10-01,,,,,,31,Long Beach,California,United States,"Long Beach, CA, United States",76,67,,"Long Beach, CA",
@@ -2285,7 +2285,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3465,70,Virginia State Open,2003,9,2003-09-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA, United States",63,50,,"Herndon, VA",
 3013,29,Michigan Swing Dance Champs,2003,8,2003-08-01,,,,,,12,Michigan,Michigan,United States,"Michigan, MI, United States",16,16,,"Michigan, MI",
 3166,48,South Bay Dance Fling,2003,8,2003-08-01,,,,,,16,San Jose,California,United States,"San Jose, CA, United States",40,40,https://sbdf.dance/,"San Jose, CA",Registry Event
-3232,53,Summer Hummer,2003,8,2003-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",75,75,http://summerhummerboston.com/,"Boston, MA",Registry Event
+3232,53,Summer Hummer,2003,8,2003-08-01,,,,,,397,Woburn,Massachusetts,United States,"Woburn (Boston), MA, United States",75,75,http://summerhummerboston.com/,"Woburn (Boston), MA",Registry Event
 3141,47,Swingtime in the Rockies,2003,8,2003-08-01,,,,,,29,Denver,Colorado,United States,"Denver, CO, United States",77,76,http://www.swingtimewcs.com/,"Denver, CO",Registry Event
 2662,1,4TH of July Convention,2003,7,2003-07-01,,,,,,3,Phoenix,Arizona,United States,"Phoenix, AZ, United States",110,110,http://phoenix4thofjuly.com,"Phoenix, AZ",
 3043,32,National Jitterbug Championships,2003,7,2003-07-01,,,,,,31,Long Beach,California,United States,"Long Beach, CA, United States",20,20,,"Long Beach, CA",
@@ -2315,7 +2315,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3307,61,SwingDiego,2003,1,2003-01-01,,,,,,10,San Diego,California,United States,"San Diego, CA, United States",80,80,,"San Diego, CA",
 4459,195,Palm Springs New Years Swing Dance Classic,2002,12,2002-12-01,,,,,,20,Palm Springs,California,United States,"Palm Springs, CA, United States",70,70,,"Palm Springs, CA",
 3019,31,Mountain Magic,2002,11,2002-11-01,,,,,,28,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV, United States",65,65,http://mountainmagic.dance/,"South Lake Tahoe (near Reno), NV",Registry Event
-3359,63,Swingin' New England Dance Festival,2002,11,2002-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton, MA, United States",96,88,,"Newton, MA",
+3359,63,Swingin' New England Dance Festival,2002,11,2002-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",96,88,,"Newton (Boston), MA",
 3564,80,Twin City Swing Challenge,2002,11,2002-11-01,,,,,,75,Minneapolis,Minnesota,United States,"Minneapolis, MN, United States",30,30,,"Minneapolis, MN",
 2705,7,Boogie & Blues,2002,10,2002-10-01,,,,,,31,Long Beach,California,United States,"Long Beach, CA, United States",47,47,,"Long Beach, CA",
 2716,8,Boogie By The Bay,2002,10,2002-10-01,,,,,,2,San Francisco,California,United States,"San Francisco, CA, United States",80,80,https://boogiebythebay.com/,"San Francisco, CA",Registry Event
@@ -2331,7 +2331,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3464,70,Virginia State Open,2002,9,2002-09-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA, United States",54,53,,"Herndon, VA",
 3524,77,Arizona Dance Classic,2002,8,2002-08-01,,,,,,3,Phoenix,Arizona,United States,"Phoenix, AZ, United States",16,16,,"Phoenix, AZ",
 3165,48,South Bay Dance Fling,2002,8,2002-08-01,,,,,,16,San Jose,California,United States,"San Jose, CA, United States",52,52,https://sbdf.dance/,"San Jose, CA",Registry Event
-3231,53,Summer Hummer,2002,8,2002-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",175,117,http://summerhummerboston.com/,"Boston, MA",Registry Event
+3231,53,Summer Hummer,2002,8,2002-08-01,,,,,,397,Woburn,Massachusetts,United States,"Woburn (Boston), MA, United States",175,117,http://summerhummerboston.com/,"Woburn (Boston), MA",Registry Event
 3140,47,Swingtime in the Rockies,2002,8,2002-08-01,,,,,,29,Denver,Colorado,United States,"Denver, CO, United States",89,84,http://www.swingtimewcs.com/,"Denver, CO",Registry Event
 2661,1,4TH of July Convention,2002,7,2002-07-01,,,,,,3,Phoenix,Arizona,United States,"Phoenix, AZ, United States",126,125,http://phoenix4thofjuly.com,"Phoenix, AZ",
 3506,76,Michigan Dance Classic,2002,7,2002-07-01,,,,,,51,Detroit,Michigan,United States,"Detroit, MI, United States",31,31,http://michiganclassicswing.com/,"Detroit, MI",Registry Event
@@ -2357,7 +2357,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3067,42,Floorplay Swing Vacation,2001,12,2001-12-01,,,,,,82,Orlando,Florida,United States,"Orlando, FL, United States",40,35,http://www.floorplayswingvacation.com/,"Orlando, FL",Registry Event
 4458,195,Palm Springs New Years Swing Dance Classic,2001,12,2001-12-01,,,,,,20,Palm Springs,California,United States,"Palm Springs, CA, United States",81,79,,"Palm Springs, CA",
 3018,31,Mountain Magic,2001,11,2001-11-01,,,,,,28,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV, United States",60,59,http://mountainmagic.dance/,"South Lake Tahoe (near Reno), NV",Registry Event
-3358,63,Swingin' New England Dance Festival,2001,11,2001-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton, MA, United States",99,71,,"Newton, MA",
+3358,63,Swingin' New England Dance Festival,2001,11,2001-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",99,71,,"Newton (Boston), MA",
 2686,3,American Lindy Hop Championships,2001,10,2001-10-01,,,,,,142,Stamford,Connecticut,United States,"Stamford, CT, United States",11,11,,"Stamford, CT",
 2704,7,Boogie & Blues,2001,10,2001-10-01,,,,,,31,Long Beach,California,United States,"Long Beach, CA, United States",62,62,,"Long Beach, CA",
 2715,8,Boogie By The Bay,2001,10,2001-10-01,,,,,,2,San Francisco,California,United States,"San Francisco, CA, United States",86,86,https://boogiebythebay.com/,"San Francisco, CA",Registry Event
@@ -2369,7 +2369,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3463,70,Virginia State Open,2001,9,2001-09-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA, United States",44,38,,"Herndon, VA",
 3012,29,Michigan Swing Dance Champs,2001,8,2001-08-01,,,,,,12,Michigan,Michigan,United States,"Michigan, MI, United States",28,28,,"Michigan, MI",
 3164,48,South Bay Dance Fling,2001,8,2001-08-01,,,,,,16,San Jose,California,United States,"San Jose, CA, United States",54,54,https://sbdf.dance/,"San Jose, CA",Registry Event
-3230,53,Summer Hummer,2001,8,2001-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",94,90,http://summerhummerboston.com/,"Boston, MA",Registry Event
+3230,53,Summer Hummer,2001,8,2001-08-01,,,,,,397,Woburn,Massachusetts,United States,"Woburn (Boston), MA, United States",94,90,http://summerhummerboston.com/,"Woburn (Boston), MA",Registry Event
 3139,47,Swingtime in the Rockies,2001,8,2001-08-01,,,,,,29,Denver,Colorado,United States,"Denver, CO, United States",78,72,http://www.swingtimewcs.com/,"Denver, CO",Registry Event
 2660,1,4TH of July Convention,2001,7,2001-07-01,,,,,,3,Phoenix,Arizona,United States,"Phoenix, AZ, United States",110,110,http://phoenix4thofjuly.com,"Phoenix, AZ",
 3041,32,National Jitterbug Championships,2001,7,2001-07-01,,,,,,31,Long Beach,California,United States,"Long Beach, CA, United States",36,36,,"Long Beach, CA",
@@ -2390,7 +2390,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3267,58,Swing Expo,2001,1,2001-01-01,,,,,,27,Las Vegas,Nevada,United States,"Las Vegas, NV, United States",64,60,,"Las Vegas, NV",
 3055,36,New Years Dance Camp,2000,12,2000-12-01,,,,,,42,Bakersfield,California,United States,"Bakersfield, CA, United States",63,61,,"Bakersfield, CA",
 3017,31,Mountain Magic,2000,11,2000-11-01,,,,,,28,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV, United States",28,27,http://mountainmagic.dance/,"South Lake Tahoe (near Reno), NV",Registry Event
-3357,63,Swingin' New England Dance Festival,2000,11,2000-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton, MA, United States",60,57,,"Newton, MA",
+3357,63,Swingin' New England Dance Festival,2000,11,2000-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",60,57,,"Newton (Boston), MA",
 3434,68,US Open Swing Dance Championships,2000,11,2000-11-01,,,,,,22,Los Angeles,California,United States,"Los Angeles, CA, United States",20,20,http://www.theopenswing.com/,"Los Angeles, CA",Registry Event
 2685,3,American Lindy Hop Championships,2000,10,2000-10-01,,,,,,142,Stamford,Connecticut,United States,"Stamford, CT, United States",41,39,,"Stamford, CT",
 2703,7,Boogie & Blues,2000,10,2000-10-01,,,,,,31,Long Beach,California,United States,"Long Beach, CA, United States",65,64,,"Long Beach, CA",
@@ -2401,7 +2401,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 2838,15,Dallas D.A.N.C.E.,2000,9,2000-09-01,,,,,,21,Dallas,Texas,United States,"Dallas, TX, United States",52,52,,"Dallas, TX",
 3462,70,Virginia State Open,2000,9,2000-09-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA, United States",20,16,,"Herndon, VA",
 3011,29,Michigan Swing Dance Champs,2000,8,2000-08-01,,,,,,12,Michigan,Michigan,United States,"Michigan, MI, United States",20,20,,"Michigan, MI",
-3229,53,Summer Hummer,2000,8,2000-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",80,80,http://summerhummerboston.com/,"Boston, MA",Registry Event
+3229,53,Summer Hummer,2000,8,2000-08-01,,,,,,397,Woburn,Massachusetts,United States,"Woburn (Boston), MA, United States",80,80,http://summerhummerboston.com/,"Woburn (Boston), MA",Registry Event
 3138,47,Swingtime in the Rockies,2000,8,2000-08-01,,,,,,29,Denver,Colorado,United States,"Denver, CO, United States",68,64,http://www.swingtimewcs.com/,"Denver, CO",Registry Event
 2659,1,4TH of July Convention,2000,7,2000-07-01,,,,,,3,Phoenix,Arizona,United States,"Phoenix, AZ, United States",102,102,http://phoenix4thofjuly.com,"Phoenix, AZ",
 3222,52,Summer Dance Festival,2000,7,2000-07-01,,,,,,20,Palm Springs,California,United States,"Palm Springs, CA, United States",62,62,,"Palm Springs, CA",
@@ -2424,7 +2424,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3266,58,Swing Expo,2000,1,2000-01-01,,,,,,27,Las Vegas,Nevada,United States,"Las Vegas, NV, United States",64,60,,"Las Vegas, NV",
 3054,36,New Years Dance Camp,1999,12,1999-12-01,,,,,,42,Bakersfield,California,United States,"Bakersfield, CA, United States",41,39,,"Bakersfield, CA",
 3016,31,Mountain Magic,1999,11,1999-11-01,,,,,,28,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV, United States",28,27,http://mountainmagic.dance/,"South Lake Tahoe (near Reno), NV",Registry Event
-3356,63,Swingin' New England Dance Festival,1999,11,1999-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton, MA, United States",64,62,,"Newton, MA",
+3356,63,Swingin' New England Dance Festival,1999,11,1999-11-01,,,,,,70,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",64,62,,"Newton (Boston), MA",
 2702,7,Boogie & Blues,1999,10,1999-10-01,,,,,,31,Long Beach,California,United States,"Long Beach, CA, United States",40,40,,"Long Beach, CA",
 2713,8,Boogie By The Bay,1999,10,1999-10-01,,,,,,2,San Francisco,California,United States,"San Francisco, CA, United States",54,54,https://boogiebythebay.com/,"San Francisco, CA",Registry Event
 3384,65,Halloween SwingThing,1999,10,1999-10-01,,,,,,24,Costa Mesa,California,United States,"Costa Mesa, CA, United States",43,39,http://hstswing.com/,"Costa Mesa, CA",Registry Event
@@ -2436,7 +2436,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3461,70,Virginia State Open,1999,9,1999-09-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA, United States",12,12,,"Herndon, VA",
 2957,23,HustleMania,1999,8,1999-08-01,,,,,,5,Fresno,California,United States,"Fresno, CA, United States",38,38,,"Fresno, CA",
 3010,29,Michigan Swing Dance Champs,1999,8,1999-08-01,,,,,,12,Michigan,Michigan,United States,"Michigan, MI, United States",20,20,,"Michigan, MI",
-3228,53,Summer Hummer,1999,8,1999-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",71,71,http://summerhummerboston.com/,"Boston, MA",Registry Event
+3228,53,Summer Hummer,1999,8,1999-08-01,,,,,,397,Woburn,Massachusetts,United States,"Woburn (Boston), MA, United States",71,71,http://summerhummerboston.com/,"Woburn (Boston), MA",Registry Event
 3137,47,Swingtime in the Rockies,1999,8,1999-08-01,,,,,,29,Denver,Colorado,United States,"Denver, CO, United States",65,63,http://www.swingtimewcs.com/,"Denver, CO",Registry Event
 2658,1,4TH of July Convention,1999,7,1999-07-01,,,,,,3,Phoenix,Arizona,United States,"Phoenix, AZ, United States",102,102,http://phoenix4thofjuly.com,"Phoenix, AZ",
 3221,52,Summer Dance Festival,1999,7,1999-07-01,,,,,,20,Palm Springs,California,United States,"Palm Springs, CA, United States",24,24,,"Palm Springs, CA",
@@ -2474,7 +2474,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 2693,5,Bakersfield Swing Bash,1998,8,1998-08-01,,,,,,42,Bakersfield,California,United States,"Bakersfield, CA, United States",40,38,,"Bakersfield, CA",
 3009,29,Michigan Swing Dance Champs,1998,8,1998-08-01,,,,,,12,Michigan,Michigan,United States,"Michigan, MI, United States",16,16,,"Michigan, MI",
 3163,48,South Bay Dance Fling,1998,8,1998-08-01,,,,,,16,San Jose,California,United States,"San Jose, CA, United States",18,18,https://sbdf.dance/,"San Jose, CA",Registry Event
-3227,53,Summer Hummer,1998,8,1998-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",62,62,http://summerhummerboston.com/,"Boston, MA",Registry Event
+3227,53,Summer Hummer,1998,8,1998-08-01,,,,,,397,Woburn,Massachusetts,United States,"Woburn (Boston), MA, United States",62,62,http://summerhummerboston.com/,"Woburn (Boston), MA",Registry Event
 3258,57,Swing Challenge,1998,8,1998-08-01,,,,,,9,Kansas City,Missouri,United States,"Kansas City, MO, United States",12,12,,"Kansas City, MO",
 3136,47,Swingtime in the Rockies,1998,8,1998-08-01,,,,,,29,Denver,Colorado,United States,"Denver, CO, United States",74,70,http://www.swingtimewcs.com/,"Denver, CO",Registry Event
 2657,1,4TH of July Convention,1998,7,1998-07-01,,,,,,3,Phoenix,Arizona,United States,"Phoenix, AZ, United States",96,96,http://phoenix4thofjuly.com,"Phoenix, AZ",
@@ -2511,7 +2511,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3459,70,Virginia State Open,1997,9,1997-09-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA, United States",41,30,,"Herndon, VA",
 3008,29,Michigan Swing Dance Champs,1997,8,1997-08-01,,,,,,12,Michigan,Michigan,United States,"Michigan, MI, United States",20,20,,"Michigan, MI",
 3162,48,South Bay Dance Fling,1997,8,1997-08-01,,,,,,16,San Jose,California,United States,"San Jose, CA, United States",24,24,https://sbdf.dance/,"San Jose, CA",Registry Event
-3226,53,Summer Hummer,1997,8,1997-08-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",48,48,http://summerhummerboston.com/,"Boston, MA",Registry Event
+3226,53,Summer Hummer,1997,8,1997-08-01,,,,,,397,Woburn,Massachusetts,United States,"Woburn (Boston), MA, United States",48,48,http://summerhummerboston.com/,"Woburn (Boston), MA",Registry Event
 3257,57,Swing Challenge,1997,8,1997-08-01,,,,,,9,Kansas City,Missouri,United States,"Kansas City, MO, United States",12,12,,"Kansas City, MO",
 3135,47,Swingtime in the Rockies,1997,8,1997-08-01,,,,,,29,Denver,Colorado,United States,"Denver, CO, United States",56,54,http://www.swingtimewcs.com/,"Denver, CO",Registry Event
 2656,1,4TH of July Convention,1997,7,1997-07-01,,,,,,3,Phoenix,Arizona,United States,"Phoenix, AZ, United States",100,95,http://phoenix4thofjuly.com,"Phoenix, AZ",

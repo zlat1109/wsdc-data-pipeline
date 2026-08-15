@@ -99,8 +99,14 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'Bavarian Open': 'Munich, Germany',  # was Jeju (213) / Venray (227)
     'Bavarian Open WCS': 'Munich, Germany',
     'Bavarian Open West Coast Swing Championships': 'Munich, Germany',
-    # Metro move Framingham → Boston for recent editions; unify on Boston (8).
+    # Greater Boston suburbs (venue cities), labeled as metro for Tableau.
+    # Countdown: Envision Mansfield from 2025+ (year override); pre-2025 stays Boston.
+    # Summer Hummer / NEDF / Swingin': current suburb venues for all editions.
     'Countdown Swing Boston': 'Boston, MA, United States',
+    'Summer Hummer': 'Woburn (Boston), MA, United States',
+    'New England Dance Festival': 'Newton (Boston), MA, United States',
+    "Swingin' New England Dance Festival": 'Newton (Boston), MA, United States',
+    "New Year's Dancin' Eve": 'Burlington (Boston), MA, United States',
     # Sunny Side Crimea→Spain: year ranges in EVENT_NAME_YEAR_LOCATION_OVERRIDES
     # (flat Torrevieja override collapsed KEEP_SEPARATE ids 191/230 → CI fail).
     'King Swing': 'Kraków, Poland',  # was Wailea (124)
@@ -153,6 +159,8 @@ EVENT_NAME_YEAR_LOCATION_OVERRIDES: dict[tuple[str, int, int], str] = {
     ("Global Grand Prix - West Coast Swing Reunion", 2026, 2099): "Paris, France",
     ("Global Grand Prix -- West Coast Swing Championships", 2026, 2099): "Paris, France",
     ("Global Grand Prix", 2026, 2099): "Paris, France",
+    # Countdown: Envision Hotel Mansfield-Foxboro from 2025 editions onward.
+    ("Countdown Swing Boston", 2025, 2099): "Mansfield (Boston), MA, United States",
 }
 
 EVENT_LOCATION_EXACT_CORRECTIONS = {
@@ -888,6 +896,66 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_country': 'Germany',
             'event_location': 'Ludwigsburg, Germany',
             'event_location_standardized': 'Ludwigsburg, Germany',
+        },
+    },
+    334: {
+        'name': 'Countdown Swing Boston',
+        'url': 'http://countdownswingboston.com/',
+        'typical_location': 'Mansfield (Boston), MA, United States',
+        'location': {
+            'event_city': 'Mansfield',
+            'event_state': 'Massachusetts',
+            'event_country': 'United States',
+            'event_location': 'Mansfield (Boston), MA, United States',
+            'event_location_standardized': 'Mansfield (Boston), MA',
+        },
+    },
+    53: {
+        'name': 'Summer Hummer',
+        'url': 'https://summerhummerboston.com/',
+        'typical_location': 'Woburn (Boston), MA, United States',
+        'location': {
+            'event_city': 'Woburn',
+            'event_state': 'Massachusetts',
+            'event_country': 'United States',
+            'event_location': 'Woburn (Boston), MA, United States',
+            'event_location_standardized': 'Woburn (Boston), MA',
+        },
+    },
+    157: {
+        'name': 'New England Dance Festival',
+        'url': 'http://www.nedancefestival.com',
+        'typical_location': 'Newton (Boston), MA, United States',
+        'location': {
+            'event_city': 'Newton',
+            'event_state': 'Massachusetts',
+            'event_country': 'United States',
+            'event_location': 'Newton (Boston), MA, United States',
+            'event_location_standardized': 'Newton (Boston), MA',
+        },
+    },
+    63: {
+        'name': "Swingin' New England Dance Festival",
+        'url': '',
+        'typical_location': 'Newton (Boston), MA, United States',
+        'location': {
+            'event_city': 'Newton',
+            'event_state': 'Massachusetts',
+            'event_country': 'United States',
+            'event_location': 'Newton (Boston), MA, United States',
+            'event_location_standardized': 'Newton (Boston), MA',
+        },
+    },
+    139: {
+        'name': "New Year's Dancin' Eve",
+        'url': '',
+        'typical_location': 'Burlington (Boston), MA, United States',
+        'location': {
+            'event_city': 'Burlington',
+            'event_state': 'Massachusetts',
+            'event_country': 'United States',
+            'event_location': 'Burlington (Boston), MA, United States',
+            'event_location_standardized': 'Burlington (Boston), MA',
         },
     },
 }

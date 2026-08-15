@@ -33,9 +33,9 @@ Used for merge gate in `scripts/merge_event_ids.py` and quality audit split chec
 
 | Cluster id | Cities | Display label |
 |------------|--------|---------------|
-| `greater_boston_ma` | Boston, Framingham (MA, US) | Boston / Framingham, MA |
+| `greater_boston_ma` | Boston, Framingham, Mansfield, Woburn, Newton, Burlington (MA, US) | Greater Boston, MA |
 
-Both cities count as one geo for duplicate `event_id` merge (Countdown Swing Boston).
+Suburb venues use display labels `City (Boston), MA, United States` (separate `location_id`, same metro for merge).
 
 ## Location ID corrections
 
@@ -107,8 +107,9 @@ Preprocess quality audit emits:
 | `CATALOG_TYPICAL_UPCOMING_CONFLICT` | Catalog typical ≠ upcoming country |
 
 `EVENT_NAME_LOCATION_ID_COLLISION` is the Slovenian Open / Best of the Best /
-NZ Open pattern. Not every hit is a bug: metro moves (Countdown Framingham→Boston)
-and true series relocates (Sunny Side Crimea→Spain) also appear — triage by year.
+NZ Open pattern. Not every hit is a bug: metro suburb venues (Countdown Mansfield /
+Summer Hummer Woburn) and true series relocates (Sunny Side Crimea→Spain) also
+appear — triage by year.
 
 **`EVENT_ID_CANONICAL_LOCATION_MISMATCH`** compares results/editions mode country
 to a curated canon keyed by **`event_id`** (not event name):

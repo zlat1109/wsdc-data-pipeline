@@ -51,7 +51,7 @@ Requires preprocess to populate ISO `event_year` / `event_month` (cloud parse wr
 Defined in `transform/geography/geo_event.py` and `export.geo_events` (migration 019).
 
 - `geo_key(city, state, country)` — normalized location fingerprint
-- **Metro clusters:** Boston + Framingham, MA → `metro:greater_boston_ma` (one geo for merge)
+- **Metro clusters:** Greater Boston MA (Boston, Framingham, Mansfield, Woburn, Newton, Burlington) → `metro:greater_boston_ma` (one geo for merge)
 - **Keep separate** (hardcoded): Worlds UCWDC 75/152, Sunny Side 191/230, Spring Swing 83/204, Go West 306/367
 
 Export views:

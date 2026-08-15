@@ -16,11 +16,21 @@ def test_geo_key_us_city_state_country():
 def test_geo_key_metro_boston_framingham():
     assert metro_cluster_for("Boston", "Massachusetts", "United States") == "greater_boston_ma"
     assert metro_cluster_for("Framingham", "Massachusetts", "United States") == "greater_boston_ma"
+    assert metro_cluster_for("Mansfield", "Massachusetts", "United States") == "greater_boston_ma"
+    assert metro_cluster_for("Woburn", "Massachusetts", "United States") == "greater_boston_ma"
+    assert metro_cluster_for("Newton", "Massachusetts", "United States") == "greater_boston_ma"
+    assert metro_cluster_for("Burlington", "Massachusetts", "United States") == "greater_boston_ma"
+    assert metro_cluster_for("Burlington", "Vermont", "United States") is None
     assert geo_key("Boston", "Massachusetts", "United States") == "metro:greater_boston_ma"
     assert geo_key("Framingham", "Massachusetts", "United States") == "metro:greater_boston_ma"
+    assert geo_key("Mansfield", "Massachusetts", "United States") == "metro:greater_boston_ma"
     assert geo_keys_mergeable(
         geo_key("Boston", "Massachusetts", "United States"),
         geo_key("Framingham", "Massachusetts", "United States"),
+    )
+    assert geo_keys_mergeable(
+        geo_key("Boston", "Massachusetts", "United States"),
+        geo_key("Mansfield", "Massachusetts", "United States"),
     )
 
 
