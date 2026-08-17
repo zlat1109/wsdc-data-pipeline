@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from pathlib import Path
 from typing import TYPE_CHECKING, Optional
 
 import pandas as pd
@@ -176,6 +177,19 @@ def _apply_id_corrections(
                         )
                 df.loc[mask, col] = coerced if coerced != '' else ''
     return df
+
+
+def apply_location_id_corrections_csv(path: Path) -> int:
+    """Re-apply LOCATION_ID_CORRECTIONS onto an exported location_info.csv."""
+    if not path.exists():
+        return 0
+    df = pd.read_csv(path, dtype=str)
+    before = df.copy()
+    out = _apply_id_corrections(df, None)
+    changed = int((out.fillna("") != before.fillna("")).any(axis=1).sum())
+    if changed:
+        out.to_csv(path, index=False)
+    return changed
 
 
 def _apply_city_corrections(

@@ -292,6 +292,42 @@ LOCATION_ID_CORRECTIONS: dict[int, LocationPatch] = {
         'longitude': '-77.026088',
         'coordinates_valid': 't',
     },
+    # Greater Boston suburb display labels (city stays the venue city).
+    70: {
+        'event_city': 'Newton',
+        'event_state': 'Massachusetts',
+        'event_country': 'United States',
+        'event_location': 'Newton (Boston), MA, United States',
+        'event_location_standardized': 'Newton (Boston), MA',
+    },
+    71: {
+        'event_city': 'Framingham',
+        'event_state': 'Massachusetts',
+        'event_country': 'United States',
+        'event_location': 'Framingham (Boston), MA, United States',
+        'event_location_standardized': 'Framingham (Boston), MA',
+    },
+    79: {
+        'event_city': 'Burlington',
+        'event_state': 'Massachusetts',
+        'event_country': 'United States',
+        'event_location': 'Burlington (Boston), MA, United States',
+        'event_location_standardized': 'Burlington (Boston), MA',
+    },
+    396: {
+        'event_city': 'Mansfield',
+        'event_state': 'Massachusetts',
+        'event_country': 'United States',
+        'event_location': 'Mansfield (Boston), MA, United States',
+        'event_location_standardized': 'Mansfield (Boston), MA',
+    },
+    397: {
+        'event_city': 'Woburn',
+        'event_state': 'Massachusetts',
+        'event_country': 'United States',
+        'event_location': 'Woburn (Boston), MA, United States',
+        'event_location_standardized': 'Woburn (Boston), MA',
+    },
 }
 
 LOCATION_INFO_CITY_CORRECTIONS = {

@@ -139,6 +139,13 @@ def main() -> None:
             out_path = args.output_dir / filename
             print(f"  {filename}: {rows} rows -> {out_path}")
 
+    from transform.geography.normalize import apply_location_id_corrections_csv
+
+    loc_csv = args.output_dir / "location_info.csv"
+    loc_fixed = apply_location_id_corrections_csv(loc_csv)
+    if loc_fixed:
+        print(f"\nRe-applied LOCATION_ID_CORRECTIONS: {loc_fixed} location_info row(s)")
+
     from transform.geography.sync_export import sync_export_city_columns
 
     sync_updates = sync_export_city_columns(args.output_dir)
