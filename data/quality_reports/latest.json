@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-08-14T15:58:05.673763+00:00",
+  "generated_at": "2026-08-17T19:49:27.557285+00:00",
   "source": "github-actions",
   "run_id": null,
   "summary": {
-    "before_findings_count": 11,
-    "applied_rules_count": 236,
-    "applied_rows_touched": 191263,
-    "manual_review_count": 11,
-    "manual_review_new_count": 6
+    "before_findings_count": 10,
+    "applied_rules_count": 238,
+    "applied_rows_touched": 193598,
+    "manual_review_count": 10,
+    "manual_review_new_count": 5
   },
   "before_processing": {
     "description": "Issues detected in raw CSV before any normalization",
@@ -189,26 +189,6 @@
         "count": 35,
         "examples": [
           {
-            "base_key": "monterey swingfest",
-            "variants": [
-              "Monterey SwingFest",
-              "Monterey Swingfest"
-            ],
-            "geo_keys": [
-              "monterey|ca|usa"
-            ]
-          },
-          {
-            "base_key": "boogie by the bay",
-            "variants": [
-              "Boogie By The Bay",
-              "Boogie by the Bay"
-            ],
-            "geo_keys": [
-              "san_francisco|ca|usa"
-            ]
-          },
-          {
             "base_key": "swing fling",
             "variants": [
               "Swing Fling",
@@ -219,6 +199,16 @@
             ]
           },
           {
+            "base_key": "monterey swingfest",
+            "variants": [
+              "Monterey SwingFest",
+              "Monterey Swingfest"
+            ],
+            "geo_keys": [
+              "monterey|ca|usa"
+            ]
+          },
+          {
             "base_key": "paradise dance festival",
             "variants": [
               "Paradise Dance Festival",
@@ -226,6 +216,16 @@
             ],
             "geo_keys": [
               "irvine|ca|usa"
+            ]
+          },
+          {
+            "base_key": "boogie by the bay",
+            "variants": [
+              "Boogie By The Bay",
+              "Boogie by the Bay"
+            ],
+            "geo_keys": [
+              "san_francisco|ca|usa"
             ]
           },
           {
@@ -340,20 +340,6 @@
         "count": 37,
         "examples": [
           {
-            "base_key": "monterey swingfest",
-            "variants": [
-              "Monterey SwingFest",
-              "Monterey Swingfest"
-            ]
-          },
-          {
-            "base_key": "boogie by the bay",
-            "variants": [
-              "Boogie By The Bay",
-              "Boogie by the Bay"
-            ]
-          },
-          {
             "base_key": "swing fling",
             "variants": [
               "Swing Fling",
@@ -361,10 +347,24 @@
             ]
           },
           {
+            "base_key": "monterey swingfest",
+            "variants": [
+              "Monterey SwingFest",
+              "Monterey Swingfest"
+            ]
+          },
+          {
             "base_key": "paradise dance festival",
             "variants": [
               "Paradise Dance Festival",
               "Paradise dance festival"
+            ]
+          },
+          {
+            "base_key": "boogie by the bay",
+            "variants": [
+              "Boogie By The Bay",
+              "Boogie by the Bay"
             ]
           },
           {
@@ -590,53 +590,20 @@
       },
       {
         "category": "location",
-        "code": "CATALOG_TYPICAL_UPCOMING_CONFLICT",
-        "severity": "medium",
-        "message": "event_catalog typical_location country differs from upcoming_location (stuck wrong typical OR real series move — research before remap)",
-        "count": 3,
-        "examples": [
-          {
-            "canonical_name": "Korea Westival",
-            "typical_location": "Jeju, Republic of Korea",
-            "upcoming_location": "Jeju, Jeju, Republic of Republic of Korea"
-          },
-          {
-            "canonical_name": "Korean Open WCS Championships",
-            "typical_location": "Incheon, Republic of Korea",
-            "upcoming_location": "Incheon, Incheon, Republic of Republic of Korea"
-          },
-          {
-            "canonical_name": "Shakedown Swing",
-            "typical_location": "Perth, Australia",
-            "upcoming_location": "Christchurch, Canterbury, New Zealand"
-          }
-        ],
-        "suggested_fix": "If venue is stuck: EVENT_NAME_LOCATION_OVERRIDES + apply script. If the series moved: add to KNOWN_SERIES_MOVES in event_location_guard.py",
-        "fingerprint": "9788b91651b07f4b",
-        "is_new": true
-      },
-      {
-        "category": "location",
         "code": "TRIAL_SCHEDULE_GEO_GAP",
         "severity": "medium",
-        "message": "2 Trial Event(s) on the WSDC list lack location_id or coordinates (list geo ensure_location / Google geocode)",
-        "count": 2,
+        "message": "1 Trial Event(s) on the WSDC list lack location_id or coordinates (list geo ensure_location / Google geocode)",
+        "count": 1,
         "examples": [
           {
             "event_name": "Cologne Calling WCS",
             "start_date": "2027-01-14",
             "location_raw": "Köln, NRW, Germany",
             "reason": "missing_location_id"
-          },
-          {
-            "event_name": "Westie Joy",
-            "start_date": "2026-08-21",
-            "location_raw": "Bucharest, Romania",
-            "reason": "missing_location_id"
           }
         ],
         "suggested_fix": "Re-run sync_events_list with GOOGLE_MAPS_API_KEY; or add city to location_info / CITY_CANONICAL_COORDINATES",
-        "fingerprint": "c0bec6e3baf44f9c",
+        "fingerprint": "0418b515841d8c3b",
         "is_new": true
       },
       {
@@ -665,16 +632,16 @@
         "examples": [
           {
             "detail": [
+              "39",
+              "279",
               "37",
               "321",
               "198",
+              "325",
+              "99",
               "202",
               "66",
-              "39",
-              "325",
-              "307",
-              "193",
-              "99"
+              "307"
             ]
           }
         ],
@@ -1033,9 +1000,9 @@
         "rule_id": "EVENT_NAME_YEAR_SPLIT",
         "table": "events_wsdc",
         "column": "name",
-        "from_value": "Swedish Swing Summer Camp",
-        "to_value": "UpTown Swing",
-        "rows_affected": 5,
+        "from_value": "UpTown Swing",
+        "to_value": "Swedish Swing Summer Camp",
+        "rows_affected": 3,
         "source": "known_map"
       },
       {
@@ -1045,6 +1012,15 @@
         "from_value": "Show Me Showdown",
         "to_value": "Gateway Swing Classic",
         "rows_affected": 1,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "EVENT_NAME_LOCATION_OVERRIDE",
+        "table": "events_wsdc",
+        "column": "location",
+        "from_value": "wrong shared location string (event_name match)",
+        "to_value": "from EVENT_NAME_LOCATION_OVERRIDES",
+        "rows_affected": 4,
         "source": "known_map"
       },
       {
@@ -2142,7 +2118,7 @@
         "column": "event_competition",
         "from_value": "Masters",
         "to_value": "Master",
-        "rows_affected": 16698,
+        "rows_affected": 16719,
         "source": "known_map"
       },
       {
@@ -2151,7 +2127,7 @@
         "column": "event_competition",
         "from_value": "All-Stars",
         "to_value": "All-Star",
-        "rows_affected": 16017,
+        "rows_affected": 16033,
         "source": "known_map"
       },
       {
@@ -2308,6 +2284,15 @@
         "source": "known_map"
       },
       {
+        "rule_id": "EVENT_LOCATION_EXACT",
+        "table": "dancers_results_info",
+        "column": "event_location",
+        "from_value": "Framingham, MA",
+        "to_value": "Framingham (Boston), MA, United States",
+        "rows_affected": 1268,
+        "source": "known_map"
+      },
+      {
         "rule_id": "EVENT_LOCATION_SUBSTRING",
         "table": "dancers_results_info",
         "column": "event_location",
@@ -2394,7 +2379,7 @@
         "column": "event_location + location_id",
         "from_value": "wrong shared location_id (event_name match)",
         "to_value": "from EVENT_NAME_LOCATION_OVERRIDES",
-        "rows_affected": 66,
+        "rows_affected": 282,
         "source": "known_map"
       },
       {
@@ -2403,7 +2388,7 @@
         "column": "location_id",
         "from_value": "duplicate Singapore ids",
         "to_value": "→ 159",
-        "rows_affected": 1033,
+        "rows_affected": 1775,
         "source": "location_id_fix"
       },
       {
@@ -2412,7 +2397,7 @@
         "column": "location_id",
         "from_value": "duplicate canonical place",
         "to_value": "lowest location_id per city",
-        "rows_affected": 28,
+        "rows_affected": 26,
         "source": "location_id_fix"
       },
       {
@@ -2626,27 +2611,18 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_required",
-        "from_value": "NEW",
-        "to_value": "Newcomer",
-        "rows_affected": 1444,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_required",
-        "from_value": "INT",
-        "to_value": "Intermediate",
-        "rows_affected": 4502,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_required",
         "from_value": "ADV",
         "to_value": "Advanced",
         "rows_affected": 2731,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_required",
+        "from_value": "NEW",
+        "to_value": "Newcomer",
+        "rows_affected": 1447,
         "source": "known_map"
       },
       {
@@ -2662,9 +2638,18 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_required",
+        "from_value": "INT",
+        "to_value": "Intermediate",
+        "rows_affected": 4507,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_required",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 17636,
+        "rows_affected": 17651,
         "source": "known_map"
       },
       {
@@ -2673,25 +2658,7 @@
         "column": "dominate_required",
         "from_value": "ALS",
         "to_value": "All-Star",
-        "rows_affected": 1102,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_allowed",
-        "from_value": "NOV",
-        "to_value": "Novice",
-        "rows_affected": 17087,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_allowed",
-        "from_value": "INT",
-        "to_value": "Intermediate",
-        "rows_affected": 5945,
+        "rows_affected": 1103,
         "source": "known_map"
       },
       {
@@ -2707,6 +2674,15 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_allowed",
+        "from_value": "NOV",
+        "to_value": "Novice",
+        "rows_affected": 17100,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_allowed",
         "from_value": "CHMP",
         "to_value": "Champion",
         "rows_affected": 392,
@@ -2716,9 +2692,18 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_allowed",
+        "from_value": "INT",
+        "to_value": "Intermediate",
+        "rows_affected": 5954,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_allowed",
         "from_value": "ALS",
         "to_value": "All-Star",
-        "rows_affected": 1017,
+        "rows_affected": 1019,
         "source": "known_map"
       },
       {
@@ -2727,7 +2712,7 @@
         "column": "non_dominate_required",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 4450,
+        "rows_affected": 4454,
         "source": "known_map"
       },
       {
@@ -2736,7 +2721,7 @@
         "column": "non_dominate_required",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 14934,
+        "rows_affected": 14941,
         "source": "known_map"
       },
       {
@@ -2745,7 +2730,7 @@
         "column": "non_dominate_required",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 208,
+        "rows_affected": 209,
         "source": "known_map"
       },
       {
@@ -2772,7 +2757,7 @@
         "column": "non_dominate_allowed",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 6954,
+        "rows_affected": 6957,
         "source": "known_map"
       },
       {
@@ -2790,7 +2775,7 @@
         "column": "non_dominate_allowed",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 14934,
+        "rows_affected": 14941,
         "source": "known_map"
       },
       {
@@ -2799,7 +2784,7 @@
         "column": "non_dominate_allowed",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 1066,
+        "rows_affected": 1068,
         "source": "known_map"
       },
       {
@@ -2926,7 +2911,7 @@
         ],
         "suggested_fix": "Add explicit mapping to EVENT_NAME_NORMALIZATION",
         "fingerprint": "3b2ed5019a17efbc",
-        "is_new": true,
+        "is_new": false,
         "requires_manual_review": true
       },
       {
@@ -3134,18 +3119,24 @@
         "requires_manual_review": true
       },
       {
-        "category": "event_naming",
-        "code": "EVENT_NAME_NEW_SINCE_LAST_RUN",
-        "severity": "info",
-        "message": "New event names appeared since last quality report (review naming)",
-        "count": 1,
+        "category": "location",
+        "code": "EVENT_NAME_LOCATION_COUNTRY_CONFLICT",
+        "severity": "high",
+        "message": "Event name implies a different country than results.location_id (often a shared/wrong location_id collision)",
+        "count": 34,
         "examples": [
           {
-            "event_name": "German Open WCS"
+            "event_name": "The New Zealand Open",
+            "location_id": "3",
+            "location_country": "United States",
+            "name_hints": [
+              "New Zealand"
+            ],
+            "rows": 34
           }
         ],
-        "suggested_fix": "Check if variant of existing event; add normalization rule if needed",
-        "fingerprint": "913e6080ac4d9ba8",
+        "suggested_fix": "Add EVENT_NAME_LOCATION_OVERRIDES + force_result_locations_from_event_name_overrides; see scripts/audit_event_location_mismatches.py",
+        "fingerprint": "5c081e2998ff6e27",
         "is_new": true,
         "requires_manual_review": true
       },
@@ -3153,8 +3144,8 @@
         "category": "location",
         "code": "EVENT_NAME_LOCATION_ID_COLLISION",
         "severity": "high",
-        "message": "5 event name(s) map to multiple location_ids (shared or misassigned id — likely wrong country in some rows)",
-        "count": 5,
+        "message": "6 event name(s) map to multiple location_ids (shared or misassigned id — likely wrong country in some rows)",
+        "count": 6,
         "examples": [
           {
             "event_name": "World Swing Dance Championships",
@@ -3179,6 +3170,18 @@
               "United States"
             ],
             "row_count": 609
+          },
+          {
+            "event_name": "Countdown Swing Boston",
+            "location_ids": [
+              "8",
+              "396"
+            ],
+            "countries": [
+              "United States",
+              "United States"
+            ],
+            "row_count": 585
           },
           {
             "event_name": "Sunny Side Dance Camp",
@@ -3218,8 +3221,8 @@
           }
         ],
         "suggested_fix": "Add to EVENT_NAME_LOCATION_OVERRIDES in transform/knowledge/events.py and run force_result_locations_from_event_name_overrides",
-        "fingerprint": "4de0870cf6fceadc",
-        "is_new": false,
+        "fingerprint": "235f3a5dfd02bc9c",
+        "is_new": true,
         "requires_manual_review": true
       },
       {
@@ -3227,19 +3230,27 @@
         "code": "SCHEDULED_VS_RESULTS_COUNTRY_CONFLICT",
         "severity": "high",
         "message": "WSDC calendar country differs from results location country (shared/wrong location_id — Sea Dance / Med in Swing pattern)",
-        "count": 118,
+        "count": 781,
         "examples": [
           {
-            "event_name": "WCS Party",
-            "location_id": "3",
-            "results_country": "united states",
-            "scheduled_country": "austria",
-            "scheduled_location": "Vienna, Vienna, Austria",
-            "rows": 118
+            "event_name": "Milan Modern Swing",
+            "location_id": "222",
+            "results_country": "russia",
+            "scheduled_country": "italy",
+            "scheduled_location": "Milan, Milan, Italy",
+            "rows": 589
+          },
+          {
+            "event_name": "Arousa Westie Fest",
+            "location_id": "253",
+            "results_country": "australia",
+            "scheduled_country": "spain",
+            "scheduled_location": "Sanxenxo, Galicia/Pontevedra, Spain",
+            "rows": 192
           }
         ],
         "suggested_fix": "Verify venue, then add EVENT_NAME_LOCATION_OVERRIDES (or KNOWN_SERIES_MOVES if the event really moved); scripts/audit_event_location_mismatches.py",
-        "fingerprint": "a2b113cf797f9151",
+        "fingerprint": "47eaacd93bd5fda8",
         "is_new": true,
         "requires_manual_review": true
       },
@@ -3248,52 +3259,37 @@
         "code": "EVENT_ID_CANONICAL_LOCATION_MISMATCH",
         "severity": "high",
         "message": "Results/editions location country differs from curated event_id canonical location (KNOWN / name override / upcoming)",
-        "count": 118,
+        "count": 781,
         "examples": [
           {
-            "event_id": "357",
-            "event_name": "WCS Party",
+            "event_id": "322",
+            "event_name": "Milan Modern Swing",
             "canonical_source": "upcoming",
-            "canonical_location": "Vienna, Vienna, Austria",
-            "canonical_country": "austria",
-            "results_location_id": "3",
-            "results_country": "united states",
-            "results_rows": 118,
+            "canonical_location": "Milan, Milan, Italy",
+            "canonical_country": "italy",
+            "results_location_id": "222",
+            "results_country": "russia",
+            "results_rows": 589,
+            "editions_location_id": "",
+            "editions_country": "",
+            "mismatch_side": "results"
+          },
+          {
+            "event_id": "344",
+            "event_name": "Arousa Westie Fest",
+            "canonical_source": "upcoming",
+            "canonical_location": "Sanxenxo, Galicia/Pontevedra, Spain",
+            "canonical_country": "spain",
+            "results_location_id": "253",
+            "results_country": "australia",
+            "results_rows": 192,
             "editions_location_id": "",
             "editions_country": "",
             "mismatch_side": "results"
           }
         ],
         "suggested_fix": "Confirm venue, then add/update KNOWN_EVENT_METADATA[event_id] or EVENT_NAME_LOCATION_OVERRIDES + force_result_locations; see scripts/audit_event_location_mismatches.py section D",
-        "fingerprint": "adc5050b23390eb8",
-        "is_new": true,
-        "requires_manual_review": true
-      },
-      {
-        "category": "location",
-        "code": "CATALOG_TYPICAL_UPCOMING_CONFLICT",
-        "severity": "medium",
-        "message": "event_catalog typical_location country differs from upcoming_location (stuck wrong typical OR real series move — research before remap)",
-        "count": 3,
-        "examples": [
-          {
-            "canonical_name": "Korea Westival",
-            "typical_location": "Jeju, Republic of Korea",
-            "upcoming_location": "Jeju, Jeju, Republic of Republic of Korea"
-          },
-          {
-            "canonical_name": "Korean Open WCS Championships",
-            "typical_location": "Incheon, Republic of Korea",
-            "upcoming_location": "Incheon, Incheon, Republic of Republic of Korea"
-          },
-          {
-            "canonical_name": "Shakedown Swing",
-            "typical_location": "Perth, Australia",
-            "upcoming_location": "Christchurch, Canterbury, New Zealand"
-          }
-        ],
-        "suggested_fix": "If venue is stuck: EVENT_NAME_LOCATION_OVERRIDES + apply script. If the series moved: add to KNOWN_SERIES_MOVES in event_location_guard.py",
-        "fingerprint": "9788b91651b07f4b",
+        "fingerprint": "aebe11d1cacc5584",
         "is_new": true,
         "requires_manual_review": true
       },
@@ -3301,24 +3297,18 @@
         "category": "location",
         "code": "TRIAL_SCHEDULE_GEO_GAP",
         "severity": "medium",
-        "message": "2 Trial Event(s) on the WSDC list lack location_id or coordinates (list geo ensure_location / Google geocode)",
-        "count": 2,
+        "message": "1 Trial Event(s) on the WSDC list lack location_id or coordinates (list geo ensure_location / Google geocode)",
+        "count": 1,
         "examples": [
           {
             "event_name": "Cologne Calling WCS",
             "start_date": "2027-01-14",
             "location_raw": "Köln, NRW, Germany",
             "reason": "missing_location_id"
-          },
-          {
-            "event_name": "Westie Joy",
-            "start_date": "2026-08-21",
-            "location_raw": "Bucharest, Romania",
-            "reason": "missing_location_id"
           }
         ],
         "suggested_fix": "Re-run sync_events_list with GOOGLE_MAPS_API_KEY; or add city to location_info / CITY_CANONICAL_COORDINATES",
-        "fingerprint": "c0bec6e3baf44f9c",
+        "fingerprint": "0418b515841d8c3b",
         "is_new": true,
         "requires_manual_review": true
       }
