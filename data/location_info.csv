@@ -1,4 +1,14 @@
 location_id,event_city,event_state,event_country,latitude,longitude,event_location,event_location_standardized,coordinates_valid
+190,Nantes,,France,47.218371,-1.553621,"Nantes, France","Nantes, France",t
+192,Nimes,,France,43.8338727,4.359999699999999,"Nimes, France","Nimes, France",t
+194,Berlin,,Germany,52.52000659999999,13.404954,"Berlin, Germany","Berlin, Germany",t
+195,Augsburg,,Germany,48.3705449,10.89779,"Augsburg, Germany","Augsburg, Germany",t
+197,Wels,,Austria,48.1664268,14.0388714,"Wels, Austria","Wels, Austria",t
+199,Stockholm,,Sweden,59.3251172,18.0710935,"Stockholm, Sweden","Stockholm, Sweden",t
+203,Riga,,Latvia,56.9676941,24.1056221,"Riga, Latvia","Riga, Latvia",t
+204,Helsinki,,Finland,60.16985569999999,24.938379,"Helsinki, Finland","Helsinki, Finland",t
+396,Mansfield,Massachusetts,United States,42.0285490,-71.2507759,"Mansfield (Boston), MA, United States","Mansfield (Boston), MA",t
+397,Woburn,Massachusetts,United States,42.4792649,-71.1522765,"Woburn (Boston), MA, United States","Woburn (Boston), MA",t
 1,Monterey,California,United States,36.5972925,-121.8977688,"Monterey, CA, United States","Monterey, CA",t
 2,San Francisco,California,United States,37.7749295,-122.4194155,"San Francisco, CA, United States","San Francisco, CA",t
 3,Phoenix,Arizona,United States,33.4482948,-112.0725488,"Phoenix, AZ, United States","Phoenix, AZ",t
@@ -10,6 +20,16 @@ location_id,event_city,event_state,event_country,latitude,longitude,event_locati
 9,Kansas City,Missouri,United States,39.0997265,-94.5785667,"Kansas City, MO, United States","Kansas City, MO",t
 10,San Diego,California,United States,32.715738,-117.1610838,"San Diego, CA, United States","San Diego, CA",t
 12,Michigan,Michigan,United States,44.3148443,-85.60236429999999,"Michigan, MI, United States","Michigan, MI",t
+25,Atlanta,Georgia,United States,33.7501275,-84.3885209,"Atlanta, GA, United States","Atlanta, GA, United States",t
+159,Singapore,,Singapore,1.352083,103.819836,"Singapore, Singapore","Singapore, Singapore",t
+213,Jeju,,Republic of Korea,33.5042779,126.519838,"Jeju, Republic of Korea","Jeju, Republic of Korea",t
+139,Albany,New York,United States,42.6518095,-73.75447070000001,"Albany, NY, United States","Albany, NY",t
+191,Amsterdam,,Netherlands,52.3675734,4.9041389,"Amsterdam, Netherlands","Amsterdam, Netherlands",t
+227,Venray,,Netherlands,51.5256257,5.9736992,"Venray, Netherlands","Venray, Netherlands",t
+107,London,,United Kingdom,51.5072178,-0.1275862,"London, United Kingdom","London, United Kingdom",t
+234,Bristol,,United Kingdom,51.454513,-2.58791,"Bristol, United Kingdom","Bristol, United Kingdom",t
+226,Glasgow,,United Kingdom,55.86167039999999,-4.2583345,"Glasgow, United Kingdom","Glasgow, United Kingdom",t
+86,Montreal,,Canada,45.5018869,-73.56739189999999,"Montreal, Canada","Montreal, Canada",t
 13,Washington,District of Columbia,United States,38.9072873,-77.0369274,"Washington, DC, United States","Washington, DC",t
 14,San Bernardino,California,United States,34.1045589,-117.291869,"San Bernardino, CA, United States","San Bernardino, CA",t
 15,Buena Park,California,United States,33.8674044,-117.9981387,"Buena Park, CA, United States","Buena Park, CA",t
@@ -49,14 +69,14 @@ location_id,event_city,event_state,event_country,latitude,longitude,event_locati
 64,Indianapolis,Indiana,United States,39.76909,-86.158018,"Indianapolis, IN, United States","Indianapolis, IN",t
 65,Cape Cod,Massachusetts,United States,41.8111143,-70.1455805,"Cape Cod, MA, United States","Cape Cod, MA",t
 66,Wilmington,Delaware,United States,39.744655,-75.5483909,"Wilmington, DE, United States","Wilmington, DE",t
-70,Newton,Massachusetts,United States,42.3370413,-71.20922139999999,"Newton, MA, United States","Newton, MA",t
-71,Framingham,Massachusetts,United States,42.279286,-71.4161565,"Framingham, MA, United States","Framingham, MA",t
+70,Newton,Massachusetts,United States,42.3370413,-71.20922139999999,"Newton (Boston), MA, United States","Newton (Boston), MA",t
+71,Framingham,Massachusetts,United States,42.279286,-71.4161565,"Framingham (Boston), MA, United States","Framingham (Boston), MA",t
 72,Santa Clara,California,United States,37.3541079,-121.9552356,"Santa Clara, CA, United States","Santa Clara, CA",t
 73,Orange County,California,United States,33.7174708,-117.8311428,"Orange County, CA, United States","Orange County, CA",t
 74,Vancouver,Washington,United States,45.6280277,-122.673865,"Vancouver, WA, United States","Vancouver, WA",t
 75,Minneapolis,Minnesota,United States,44.977753,-93.2650108,"Minneapolis, MN, United States","Minneapolis, MN",t
 77,Reno,Nevada,United States,39.529919,-119.8142691,"Reno, NV, United States","Reno, NV",t
-79,Burlington,Massachusetts,United States,42.5047161,-71.1956205,"Burlington, MA, United States","Burlington, MA",t
+79,Burlington,Massachusetts,United States,42.5047161,-71.1956205,"Burlington (Boston), MA, United States","Burlington (Boston), MA",t
 80,Buffalo,New York,United States,42.88690039999999,-78.8788896,"Buffalo, NY, United States","Buffalo, NY",t
 81,Spokane,Washington,United States,47.6579711,-117.4235319,"Spokane, WA, United States","Spokane, WA",t
 82,Orlando,Florida,United States,28.5383832,-81.3789269,"Orlando, FL, United States","Orlando, FL",t
@@ -125,14 +145,6 @@ location_id,event_city,event_state,event_country,latitude,longitude,event_locati
 186,Gdańsk,,Poland,54.35202520000001,18.6466384,"Gdańsk, Poland","Gdańsk, Poland",t
 188,Annecy,,France,45.899247,6.129384,"Annecy, France","Annecy, France",t
 189,Bonn,,Germany,50.73743,7.0982068,"Bonn, Germany","Bonn, Germany",t
-190,Nantes,,France,47.218371,-1.553621,"Nantes, France","Nantes, France",t
-192,Nimes,,France,43.8338727,4.359999699999999,"Nimes, France","Nimes, France",t
-194,Berlin,,Germany,52.52000659999999,13.404954,"Berlin, Germany","Berlin, Germany",t
-195,Augsburg,,Germany,48.3705449,10.89779,"Augsburg, Germany","Augsburg, Germany",t
-197,Wels,,Austria,48.1664268,14.0388714,"Wels, Austria","Wels, Austria",t
-199,Stockholm,,Sweden,59.3251172,18.0710935,"Stockholm, Sweden","Stockholm, Sweden",t
-203,Riga,,Latvia,56.9676941,24.1056221,"Riga, Latvia","Riga, Latvia",t
-204,Helsinki,,Finland,60.16985569999999,24.938379,"Helsinki, Finland","Helsinki, Finland",t
 206,Bathgate,,United Kingdom,55.9024,-3.643118,"Bathgate, United Kingdom","Bathgate, United Kingdom",t
 207,Blackpool,,United Kingdom,53.81674229999999,-3.0370485,"Blackpool, United Kingdom","Blackpool, United Kingdom",t
 208,Toulouse,,France,43.6048462,1.442848,"Toulouse, France","Toulouse, France",t
@@ -186,18 +198,6 @@ location_id,event_city,event_state,event_country,latitude,longitude,event_locati
 392,Nürnberg,,Germany,49.45428810000001,11.0745641,"Nürnberg, Germany","Nürnberg, Germany",t
 393,Bad Hofgastein,,Austria,47.1725556,13.0987448,"Bad Hofgastein, Austria","Bad Hofgastein, Austria",t
 394,Bucharest,,Romania,44.4267674,26.1025384,"Bucharest, Romania","Bucharest, Romania",t
-396,Mansfield,Massachusetts,United States,42.0285490,-71.2507759,"Mansfield, MA, United States","Mansfield, MA",t
-397,Woburn,Massachusetts,United States,42.4792649,-71.1522765,"Woburn, MA, United States","Woburn, MA",t
-25,Atlanta,Georgia,United States,33.7501275,-84.3885209,"Atlanta, GA, United States","Atlanta, GA, United States",t
-159,Singapore,,Singapore,1.352083,103.819836,"Singapore, Singapore","Singapore, Singapore",t
-213,Jeju,,Republic of Korea,33.5042779,126.519838,"Jeju, Republic of Korea","Jeju, Republic of Korea",t
-139,Albany,New York,United States,42.6518095,-73.75447070000001,"Albany, NY, United States","Albany, NY",t
-191,Amsterdam,,Netherlands,52.3675734,4.9041389,"Amsterdam, Netherlands","Amsterdam, Netherlands",t
-227,Venray,,Netherlands,51.5256257,5.9736992,"Venray, Netherlands","Venray, Netherlands",t
-107,London,,United Kingdom,51.5072178,-0.1275862,"London, United Kingdom","London, United Kingdom",t
-234,Bristol,,United Kingdom,51.454513,-2.58791,"Bristol, United Kingdom","Bristol, United Kingdom",t
-226,Glasgow,,United Kingdom,55.86167039999999,-4.2583345,"Glasgow, United Kingdom","Glasgow, United Kingdom",t
-86,Montreal,,Canada,45.5018869,-73.56739189999999,"Montreal, Canada","Montreal, Canada",t
 105,Toronto,,Canada,43.653226,-79.3831843,"Toronto, Canada","Toronto, Canada",t
 128,Richmond,,Canada,49.1665898,-123.133569,"Richmond, Canada","Richmond, Canada",t
 148,Calgary,,Canada,51.04473309999999,-114.0718831,"Calgary, Canada","Calgary, Canada",t

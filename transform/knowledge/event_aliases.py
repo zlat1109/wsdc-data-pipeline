@@ -170,6 +170,7 @@ MERGE_EVENT_ID_MAP: dict[int, int] = {
     571: 179,  # NZ WCS Open inactive → New Zealand Open Swing Dance Championships
     412: 374,  # BaroqueSwing ghost → Barock Swing Ludwigsburg
     493: 264,  # UpTown Swing catalog ghost → Swedish/UpTown series (results on 264)
+    477: 264,  # UpTown Swing registry split (2019+) → same series; results stay on 264
     480: 75,   # UCWDC Championships inactive ghost → Dallas Championship series
     551: 221,  # Show Me Showdown inactive → id reused by Gateway (results on 221)
     552: 221,  # Show-Me Showdown spelling ghost → 221
@@ -232,11 +233,11 @@ def apply_event_name_year_splits(df: pd.DataFrame) -> pd.DataFrame:
     out = df.copy()
     years = pd.to_numeric(out["event_year"], errors="coerce")
     names = out[name_col].astype(str).str.strip()
-    id_col = (
-        "event_name_id"
-        if "event_name_id" in out.columns
-        else ("id" if "id" in out.columns else None)
-    )
+    id_cols = [
+        col
+        for col in ("event_name_id", "id", "event_id")
+        if col in out.columns
+    ]
 
     for rule in EVENT_NAME_YEAR_SPLITS:
         sources = {str(s).strip() for s in rule["sources"]}  # type: ignore[arg-type]
@@ -253,9 +254,9 @@ def apply_event_name_year_splits(df: pd.DataFrame) -> pd.DataFrame:
         out.loc[early, name_col] = early_name
         out.loc[late, name_col] = late_name
 
-        if id_col is not None:
-            early_id = rule.get("early_event_id")
-            late_id = rule.get("late_event_id")
+        early_id = rule.get("early_event_id")
+        late_id = rule.get("late_event_id")
+        for id_col in id_cols:
             if early_id is not None:
                 assign_column_values(out, id_col, early, int(early_id))
             if late_id is not None:

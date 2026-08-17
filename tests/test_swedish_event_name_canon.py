@@ -79,6 +79,13 @@ def test_westie_gala_metadata_and_stockholm_override():
     assert EVENT_NAME_LOCATION_OVERRIDES["WCS Party in Vienna"] == "Vienna, Austria"
     assert KNOWN_EVENT_METADATA[357]["typical_location"] == "Vienna, Austria"
     assert EVENT_NAME_LOCATION_OVERRIDES["Southern Lights Swing"] == "Hobart, Australia"
+    assert EVENT_NAME_LOCATION_OVERRIDES["Arousa Westie Fest"] == "Sanxenxo, Spain"
+    assert EVENT_NAME_LOCATION_OVERRIDES["German Open"] == "Freiburg, Germany"
+    assert EVENT_NAME_LOCATION_OVERRIDES["Milan Modern Swing"] == "Milan, Italy"
+    assert KNOWN_EVENT_METADATA[344]["typical_location"] == "Sanxenxo, Spain"
+    assert KNOWN_EVENT_METADATA[282]["typical_location"] == "Freiburg, Germany"
+    assert KNOWN_EVENT_METADATA[322]["typical_location"] == "Milan, Italy"
+    assert KNOWN_EVENT_METADATA[264]["name"] == "UpTown Swing"
     assert EVENT_NAME_LOCATION_OVERRIDES["Countdown Swing Boston"] == "Boston, MA, United States"
     assert EVENT_NAME_LOCATION_OVERRIDES["Summer Hummer"] == "Woburn (Boston), MA, United States"
     assert (
@@ -116,6 +123,20 @@ def test_year_split_sssc_vs_uptown_results():
     assert out.loc[1, "event_name"] == "UpTown Swing"
     assert out.loc[2, "event_name"] == "Swedish Swing Summer Camp"
     assert out.loc[3, "event_name"] == "UpTown Swing"
+
+
+def test_year_split_event_editions_ids():
+    df = pd.DataFrame(
+        [
+            {"event_id": "477", "event_name": "UpTown Swing", "event_year": "2024"},
+            {"event_id": "264", "event_name": "Swedish Swing Summer Camp", "event_year": "2017"},
+        ]
+    ).astype("str")
+    out = apply_event_name_year_splits(df)
+    assert out.loc[0, "event_id"] == "264"
+    assert out.loc[0, "event_name"] == "UpTown Swing"
+    assert out.loc[1, "event_id"] == "264"
+    assert out.loc[1, "event_name"] == "Swedish Swing Summer Camp"
 
 
 def test_year_split_events_wsdc_ids():
@@ -168,6 +189,7 @@ def test_uptown_and_show_me_ghosts_merge_to_results_ids():
     from transform.knowledge.event_aliases import MERGE_EVENT_ID_MAP
 
     assert MERGE_EVENT_ID_MAP[493] == 264
+    assert MERGE_EVENT_ID_MAP[477] == 264
     assert MERGE_EVENT_ID_MAP[551] == 221
     assert MERGE_EVENT_ID_MAP[552] == 221
     assert MERGE_EVENT_ID_MAP[467] == 221
