@@ -2263,7 +2263,7 @@ update_date,division,role,type_options,count_dancer
 2026-08-17,Novice,Follower,required,29
 2026-08-17,Novice,Leader,allowed,22
 2026-08-17,Novice,Leader,required,23
-2026-08-17,nan,Follower,allowed,8
-2026-08-17,nan,Follower,required,10
-2026-08-17,nan,Leader,allowed,19
-2026-08-17,nan,Leader,required,21
+2026-08-17,,Follower,allowed,8
+2026-08-17,,Follower,required,10
+2026-08-17,,Leader,allowed,19
+2026-08-17,,Leader,required,21

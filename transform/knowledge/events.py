@@ -139,6 +139,12 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     # WSDC venue label "Boston Club" is in Düsseldorf (not a city name).
     'D-Town Swing': 'Düsseldorf, Germany',
     'WCS Festival': 'Düsseldorf, Germany',
+    # Fresh 2026-08-17 parse: shared-wrong location_id collisions.
+    'Arousa Westie Fest': 'Sanxenxo, Spain',  # was Perth (253)
+    'German Open': 'Freiburg, Germany',  # was Brno (266)
+    'German Open WCS': 'Freiburg, Germany',
+    'German Open West Coast Swing': 'Freiburg, Germany',
+    'Milan Modern Swing': 'Milan, Italy',  # was St. Petersburg (222)
 }
 
 # (event_name, year_from, year_to_inclusive) → location text.
@@ -614,7 +620,9 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
         },
     },
     264: {
-        'name': 'Swedish Swing Summer Camp',
+        # Current series title (2019+). Years 2016–2018 stay Swedish Swing
+        # Summer Camp via EVENT_NAME_YEAR_SPLITS.
+        'name': 'UpTown Swing',
         'url': 'http://www.uptownswing.se/',
         'typical_location': 'Stockholm, Sweden',
         'location': {
@@ -626,6 +634,18 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
         },
     },
     493: {
+        'name': 'UpTown Swing',
+        'url': 'http://www.uptownswing.se/',
+        'typical_location': 'Stockholm, Sweden',
+        'location': {
+            'event_city': 'Stockholm',
+            'event_state': '',
+            'event_country': 'Sweden',
+            'event_location': 'Stockholm, Sweden',
+            'event_location_standardized': 'Stockholm, Sweden',
+        },
+    },
+    477: {
         'name': 'UpTown Swing',
         'url': 'http://www.uptownswing.se/',
         'typical_location': 'Stockholm, Sweden',
@@ -800,6 +820,42 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_country': 'Germany',
             'event_location': 'Freiburg, Germany',
             'event_location_standardized': 'Freiburg, Germany',
+        },
+    },
+    282: {
+        'name': 'German Open',
+        'url': 'http://www.go-wcs.com',
+        'typical_location': 'Freiburg, Germany',
+        'location': {
+            'event_city': 'Freiburg',
+            'event_state': '',
+            'event_country': 'Germany',
+            'event_location': 'Freiburg, Germany',
+            'event_location_standardized': 'Freiburg, Germany',
+        },
+    },
+    322: {
+        'name': 'Milan Modern Swing',
+        'url': 'https://www.westcoastswingmilan.com/',
+        'typical_location': 'Milan, Italy',
+        'location': {
+            'event_city': 'Milan',
+            'event_state': '',
+            'event_country': 'Italy',
+            'event_location': 'Milan, Italy',
+            'event_location_standardized': 'Milan, Italy',
+        },
+    },
+    344: {
+        'name': 'Arousa Westie Fest',
+        'url': 'https://www.arousawestiefest.com/',
+        'typical_location': 'Sanxenxo, Spain',
+        'location': {
+            'event_city': 'Sanxenxo',
+            'event_state': '',
+            'event_country': 'Spain',
+            'event_location': 'Sanxenxo, Spain',
+            'event_location_standardized': 'Sanxenxo, Spain',
         },
     },
     304: {

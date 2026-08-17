@@ -44,6 +44,9 @@ NAME_COUNTRY_HINTS: list[tuple[str, str]] = [
     (r"\bnew zealand open\b|\bnew zealand west coast swing\b", "New Zealand"),
     # D-Town / WCS Festival at Boston Club venue → Germany (city fixed via merge/override).
     (r"\bd-town swing\b", "Germany"),
+    (r"\bgerman open\b", "Germany"),
+    (r"\bmilan modern swing\b", "Italy"),
+    (r"\barousa westie fest\b", "Spain"),
     (r"\bvalentine swing\b|\bwestie gala\b|\bsweden westie gala\b|\buptown swing\b|\bswedish swing summer camp\b", "Sweden"),
 ]
 

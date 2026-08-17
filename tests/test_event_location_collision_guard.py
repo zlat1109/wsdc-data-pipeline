@@ -430,6 +430,65 @@ def test_event_id_canonical_from_name_override_via_catalog():
     assert mismatches[0].results_location_id == "7"
 
 
+def test_guard_detects_arousa_german_open_milan_collisions():
+    location_info = pd.DataFrame(
+        [
+            {
+                "location_id": "253",
+                "event_city": "Perth",
+                "event_country": "Australia",
+                "event_location": "Perth, Australia",
+            },
+            {
+                "location_id": "258",
+                "event_city": "Sanxenxo",
+                "event_country": "Spain",
+                "event_location": "Sanxenxo, Spain",
+            },
+            {
+                "location_id": "266",
+                "event_city": "Brno",
+                "event_country": "Czech Republic",
+                "event_location": "Brno, Czech Republic",
+            },
+            {
+                "location_id": "143",
+                "event_city": "Freiburg",
+                "event_country": "Germany",
+                "event_location": "Freiburg, Germany",
+            },
+            {
+                "location_id": "222",
+                "event_city": "St. Petersburg",
+                "event_country": "Russia",
+                "event_location": "St. Petersburg, Russia",
+            },
+            {
+                "location_id": "132",
+                "event_city": "Milan",
+                "event_country": "Italy",
+                "event_location": "Milan, Italy",
+            },
+        ]
+    )
+    results = pd.DataFrame(
+        [
+            {"event_name": "Arousa Westie Fest", "location_id": "253"},
+            {"event_name": "German Open", "location_id": "266"},
+            {"event_name": "Milan Modern Swing", "location_id": "222"},
+        ]
+    )
+    names = {c.event_name for c in find_name_location_country_conflicts(results, location_info)}
+    assert names == {"Arousa Westie Fest", "German Open", "Milan Modern Swing"}
+
+    fixed, changed = force_result_locations_from_event_name_overrides(results, location_info)
+    assert changed == 3
+    assert find_name_location_country_conflicts(fixed, location_info) == []
+    assert str(fixed.loc[fixed["event_name"] == "Arousa Westie Fest", "location_id"].iloc[0]) == "258"
+    assert str(fixed.loc[fixed["event_name"] == "German Open", "location_id"].iloc[0]) == "143"
+    assert str(fixed.loc[fixed["event_name"] == "Milan Modern Swing", "location_id"].iloc[0]) == "132"
+
+
 def test_event_id_canonical_ignores_series_moves():
     from transform.geography.event_location_guard import (
         KNOWN_SERIES_MOVES,
