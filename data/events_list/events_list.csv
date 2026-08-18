@@ -1,6 +1,4 @@
 source_fingerprint,event_name,original_date,start_date,end_date,results_year,results_month,location_raw,country,country_flag,url,status_event,location_id,location_source,confirmed,canceled,on_hiatus,is_active
-082f42a7e47044412f8f7362,Grand Party Sofia (GPS),"Aug 14 - 17, 2026",2026-08-14,2026-08-17,2026,8,"Sofia, Bulgaria",Bulgaria,BGR,https://wcs-gps.com/,Registry Event,,,True,False,False,True
-5bc8004ec3ef52e3227c452b,UpTown Swing,"Aug 14 - 17, 2026",2026-08-14,2026-08-17,2026,8,"Stockholm, Stockholm, Sweden",Sweden,SWE,http://www.uptownswing.se/,Registry Event,,,True,False,False,True
 646321624c37f590d56e85aa,Shakedown Swing,"Aug 20 - 23, 2026",2026-08-20,2026-08-23,2026,8,"Christchurch, Canterbury, New Zealand",New Zealand,NZL,http://www.code03swing.com/shakedown,Registry Event,,,True,False,False,True
 72481c1fcb3d03e9e2a2b6e5,Summer Hummer,"Aug 20 - 23, 2026",2026-08-20,2026-08-23,2026,8,"Boston, Massachusetts, United States",United States,USA,http://summerhummerboston.com/,Registry Event,,,True,False,False,True
 3957a219c71bf0e9eeea75bc,Swing Creation Hamburg,"Aug 20 - 23, 2026",2026-08-20,2026-08-23,2026,8,"Hamburg, Germany",Germany,DEU,http://hamburgswing.dance/,Trial Event,221,location_info,True,False,False,True
@@ -90,6 +88,7 @@ fd4820df09caec60306ecb5c,Derby City Swing,"Jan 21 - 24, 2027",2027-01-21,2027-01
 348e923e061ad80ae931705c,SWING RESOLUTION,"Jan 21 - 25, 2027",2027-01-21,2027-01-25,2027,1,"Edinburgh, Scotland, Scotland, United Kingdom",United Kingdom,GBR,http://www.swingresolution.com/,Registry Event,,,True,False,False,True
 885bf306df9d2904e6719f8b,Freedom Swing Dance Challenge,"Jan 22 - 24, 2027",2027-01-22,2027-01-24,2027,1,"WILMINGTON DEL, Delaware, United States",United States,USA,https://freedomswingdance.com/,Registry Event,,,True,False,False,True
 85b951311b00be3a4ee3d5ae,Swing In Paris,"Jan 22 - 25, 2027",2027-01-22,2027-01-25,2027,1,"PARIS, IDF, France",France,FRA,http://swing-in-paris.com/,Trial Event,109,location_info,True,False,False,True
+818eabcda7891c0954bc3bfe,ULTRA Westie Fest,"Jan 29 - 31, 2027",2027-01-29,2027-01-31,2027,1,"San Diego, CA, United States",United States,USA,http://www.ultrawestiefest.com/,Trial Event,10,location_info,True,False,False,True
 456e9587ab408a61ee8fb8dd,Charlotte WestieFest,"Feb 4 - 7, 2027",2027-02-04,2027-02-07,2027,2,"Charlotte, NC, United States",United States,USA,https://charlottewestiefest.com/,Registry Event,,,True,False,False,True
 d7984f99b7b4eb2801ee886d,Swing & Snow,"Feb 4 - 7, 2027",2027-02-04,2027-02-07,2027,2,"St. Petersburg, Russia",Russia,RUS,http://swingandsnow.ru/,Registry Event,,,True,False,False,True
 a62ad73a60b0e6e6f9fa2e10,Swingtzerland,"Feb 4 - 7, 2027",2027-02-04,2027-02-07,2027,2,"Zürich, Switzerland",Switzerland,CHE,https://swingtzerland.com/,Registry Event,,,True,False,False,True
@@ -131,6 +130,7 @@ ee85219d85cfa5e99b61ddc5,HONEY FEST,"Apr 22 - 25, 2027",2027-04-22,2027-04-25,20
 2b18442eca2b6a3d1356183f,Swing in Bloom,"Apr 22 - 25, 2027",2027-04-22,2027-04-25,2027,4,"Ottawa, Ontario, Canada",Canada,CAN,http://www.swinginbloom.ca/,Registry Event,,,True,False,False,True
 ed28cf4dab1b3dfc9b062ec2,SwingIn Festival,"Apr 22 - 25, 2027",2027-04-22,2027-04-25,2027,4,"Bonn, NRW, Germany",Germany,DEU,http://www.swinginfestival.de/,Registry Event,,,True,False,False,True
 6c46998cf8a8dec506bd7952,Swingover 2027,"Apr 22 - 25, 2027",2027-04-22,2027-04-25,2027,4,"Orlando, Florida, United States",United States,USA,http://swingoverevent.com/,Registry Event,,,True,False,False,True
+88ce00726072a81eb1b67d11,SGI - Swing de Garotos Invitational,"Apr 23 - 25, 2027",2027-04-23,2027-04-25,2027,4,"São Paulo, São Paulo, Brazil",Brazil,BRA,https://sginvitational.com.br/,Trial Event,398,google_maps,True,False,False,True
 d1667c2ae99fb9bc30249db0,BeeMAD,"Apr 29 - May 2, 2027",2027-04-29,2027-05-02,2027,5,"Madrid, Madrid, Spain",Spain,ESP,https://beemadwcs.com/,Registry Event,,,True,False,False,True
 f0e8aab92071237f14b7b6cc,Calgary Dance Stampede,"Apr 29 - May 2, 2027",2027-04-29,2027-05-02,2027,5,"Calgary, AB, Canada",Canada,CAN,http://www.calgarydancestampede.com/,Registry Event,,,True,False,False,True
 dbfc1fe3a5123bc308791fa9,City of Angels WCS,"Apr 29 - May 2, 2027",2027-04-29,2027-05-02,2027,5,"Burbank, California, California, United States",United States,USA,https://cityofangelswcs.com/,Registry Event,,,True,False,False,True
@@ -138,7 +138,9 @@ dbfc1fe3a5123bc308791fa9,City of Angels WCS,"Apr 29 - May 2, 2027",2027-04-29,20
 42e5533ac3e6733ad67540c9,Westie Weekend,"May 7 - 9, 2027",2027-05-07,2027-05-09,2027,5,"Washington DC, MD, United States",United States,USA,https://dancejamproductions.com/westieweekend/,Registry Event,,,True,False,False,True
 dec2d01cf6c276393794e498,SOswing,"May 13 - 16, 2027",2027-05-13,2027-05-16,2027,5,"Ashland, OR, United States",United States,USA,http://wwww.soswingdance.com/,Registry Event,,,True,False,False,True
 806f183da786d88a1b7652c3,Swingsation,"May 13 - 17, 2027",2027-05-13,2027-05-17,2027,5,"Gold Coast, Queensland, Australia",Australia,AUS,https://rawconnection.com.au/swingsation/,Registry Event,,,True,False,False,True
+285f974da18393fa79363f92,SOM-Swing of Music,"May 14 - 17, 2027",2027-05-14,2027-05-17,2027,5,"Wels, Oberösterreich, Austria",Austria,AUT,https://www.swingofmusic.com/,Registry Event,,,True,False,False,True
 207bdba1fc6a2efeb08174f8,Gateway Swing Classic,"May 20 - 23, 2027",2027-05-20,2027-05-23,2027,5,"St. Louis, MO, United States",United States,USA,http://gatewayswing.com/,Registry Event,,,True,False,False,True
+6a2fa76491a42cb1136df4e9,Spring Time Swing,"May 20 - 24, 2027",2027-05-20,2027-05-24,2027,5,"Freiburg im Breisgau, Baden Wuerttemberg, Germany",Germany,DEU,https://springtimeswing.com/,Registry Event,,,True,False,False,True
 0386fcb6ca19dc85b5bc1691,Nanaimo Dance Fusion,"May 21 - 23, 2027",2027-05-21,2027-05-23,2027,5,"Nanaimo, BC, Canada",Canada,CAN,http://www.nanaimodancefusion.ca/,Registry Event,,,True,False,False,True
 5bf826dc40b0b2ef68b8a310,USA Grand National Dance Championships,"May 27 - 31, 2027",2027-05-27,2027-05-31,2027,5,"Atlanta, GA United States",United States,USA,http://www.usagrandnationals.com/,Registry Event,,,True,False,False,True
 0c55437ea3471cb9627e5409,Festival City Swing,"Jun 3 - 7, 2027",2027-06-03,2027-06-07,2027,6,"Newcastle, United Kingdom",United Kingdom,GBR,https://www.fcswing.co.uk/,Registry Event,,,True,False,False,True
@@ -153,6 +155,12 @@ e40360124b6b4c268e2ca3f2,NeverlandSwing Dutch Swing Championships 2027,"Jun 24 -
 1f06a91c88431dcc10688671,Swing Valley,"Jul 1 - 4, 2027",2027-07-01,2027-07-04,2027,7,"Bad Hofgastein, Salzburg, Austria",Austria,AUT,http://swing-valley.com/,Trial Event,393,google_maps,True,False,False,True
 f8eacdcd9ba7b9ecdb78b844,Carolina Summer Swing,"Jul 8 - 11, 2027",2027-07-08,2027-07-11,2027,7,"Charlotte, North Carolina, United States",United States,USA,https://carolinasummerswing.com/,Registry Event,,,True,False,False,True
 f96eb07ff9da4d802b4a4c70,Midwest Westie Fest,"Jul 15 - 18, 2027",2027-07-15,2027-07-18,2027,7,"Overland Park, Kansas, United States",United States,USA,http://www.midwestwestiefest.com/,Registry Event,,,True,False,False,True
+50944902a4ccc6154f80a5a1,Revitalise WCS,"Jul 15 - 18, 2027",2027-07-15,2027-07-18,2027,7,"Melbourne, Victoria, Australia",Australia,AUS,https://revitalisewcs.melbourne/,Registry Event,,,True,False,False,True
+b18c3d43e05f3b8b02ac0cfa,Florida Dance Magic,"Jul 22 - 25, 2027",2027-07-22,2027-07-25,2027,7,"Fort Lauderdale, FL, United States",United States,USA,https://floridadancemagic.com/,Registry Event,,,True,False,False,True
+3898eb5b6894d9b354ba6164,St. Petersburg WCS Nights,"Jul 22 - 25, 2027",2027-07-22,2027-07-25,2027,7,"St. Petersburg, St. Petersburg, Russia",Russia,RUS,http://wcsnights.ru/,Registry Event,,,True,False,False,True
+ef5a59ebf837315c45c3b46f,Lisbon Westie Fest,"Jul 30 - Aug 1, 2027",2027-07-30,2027-08-01,2027,8,"Lisbon, Lisbon, Portugal",Portugal,PRT,https://lisbonwestiefest.com/,Registry Event,,,True,False,False,True
+f1d0c5cafe205706ae173038,Swingtacular: The Galactic Open,"Aug 5 - 8, 2027",2027-08-05,2027-08-08,2027,8,"San Francisco, CA, United States",United States,USA,http://www.swingtacular.art/,Registry Event,,,True,False,False,True
+35cfc9dda4da8643050b8489,Arizona Dance Classic,"Aug 6 - 8, 2027",2027-08-06,2027-08-08,2027,8,"Phoenix, AZ, United States",United States,USA,https://arizonadanceclassic.com/,Registry Event,,,True,False,False,True
 2ce85c3ac33355f90225e4be,Atlanta Swing Classic,"Oct 7 - 10, 2027",2027-10-07,2027-10-10,2027,10,"Atlanta, Georgia, United States",United States,USA,https://www.atlantaswingclassic.com/,Registry Event,,,True,False,False,True
 aeff0eaade1babe15052fa48,WCS Festival,"Oct 15 - 17, 2027",2027-10-15,2027-10-17,2027,10,"Düsseldorf, Germany",Germany,DEU,http://www.wcsfestival.com/,Registry Event,,,True,False,False,True
 0e485aa8568c6408b8ff891a,Euro Dance Festival,"Feb 29 - Mar 5, 2028",2028-02-29,2028-03-05,2028,3,"Rust, Baden-Württemberg, Germany",Germany,DEU,https://www.euro-dance-festival.com/,Registry Event,,,True,False,False,True
