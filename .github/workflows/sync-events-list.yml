@@ -9,6 +9,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: wsdc-sync-events-list
+  cancel-in-progress: false
+
 jobs:
   sync-events-list:
     runs-on: ubuntu-22.04
@@ -92,3 +96,15 @@ jobs:
           CHAMPION_NEWS_REPORT: data/quality_reports/champion_news_last.json
           YEAR_CAL_REPORT: data/quality_reports/year_event_calendar_last.json
         run: bash scripts/sync_analytics_site.sh
+
+      - name: Notify Telegram (weekly sync failed)
+        if: failure()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GITHUB_WORKFLOW: ${{ github.workflow }}
+          GITHUB_JOB: ${{ github.job }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          GITHUB_SERVER_URL: ${{ github.server_url }}
+        run: python scripts/telegram_notify.py pipeline-failed
