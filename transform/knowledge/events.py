@@ -79,6 +79,7 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'Dance Jam Jack & Jill Weekend': 'Silver Spring, MD, United States',
     # Catalog/scheduled say Calgary; results pointed at Perth (253 / WesterOz).
     'BTO Open': 'Calgary, Canada',
+    'Calgary Town Open': 'Calgary, Canada',
     # Shared Jeju (213) wrongly applied to The Aloha Open (Wailea / Hawaii).
     'The Aloha Open': 'Wailea, HI, United States',
     # Shared Düsseldorf (127) wrongly applied to Sea Dance Fest (Moscow).
@@ -766,7 +767,9 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
         },
     },
     324: {
-        'name': 'BTO Open',
+        # Current series title (2026+). Years ≤2025 stay BTO Open via
+        # EVENT_NAME_YEAR_SPLITS.
+        'name': 'Calgary Town Open',
         'url': 'https://ctodance.ca/',
         'typical_location': 'Calgary, Canada',
         'location': {

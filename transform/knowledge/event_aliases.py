@@ -104,9 +104,12 @@ EVENT_NAME_VARIANT_TO_CATALOG: dict[str, str] = {
     'WESTY NANTES': 'Westy Nantes',
     'BALTIC SWING': 'Baltic Swing',
     'Halloween Swingthing': 'Halloween SwingThing',
-    'By-Town Open (BTO)': 'BTO Open',
-    # Marketing rename (same series / ctodance.ca); WSDC catalog still "BTO Open".
-    'Calgary Town Open': 'BTO Open',
+    # Marketing / spelling variants → current catalog name (id 324).
+    # Do NOT map BTO Open → Calgary Town Open (year split owns early years).
+    # Do NOT map Calgary Town Open → BTO Open (that collapses the series).
+    'By-Town Open (BTO)': 'Calgary Town Open',
+    'By-Town Open': 'Calgary Town Open',
+    'CTO Open': 'Calgary Town Open',
     'Monterey Swingfest': 'Monterey SwingFest',
     'Monterey Swing Fest 2024': 'Monterey SwingFest',
     'Swing Fling 2024': 'Swing Fling',
@@ -211,6 +214,22 @@ EVENT_NAME_YEAR_SPLITS: list[dict[str, object]] = [
         # WSDC reused registry id 221 (Show Me history → Gateway from 2026).
         "early_event_id": 221,
         "late_event_id": 221,
+    },
+    {
+        "sources": (
+            "BTO Open",
+            "By-Town Open (BTO)",
+            "By-Town Open",
+            "Calgary Town Open",
+            "CTO Open",
+        ),
+        "early_name": "BTO Open",
+        "early_year_max": 2025,
+        "late_name": "Calgary Town Open",
+        "late_year_min": 2026,
+        # Same Calgary series (ctodance.ca); registry id 324 kept across rebrand.
+        "early_event_id": 324,
+        "late_event_id": 324,
     },
 ]
 
