@@ -21,6 +21,7 @@ from transform.knowledge.events import (
     EVENT_NAME_YEAR_LOCATION_OVERRIDES,
     KNOWN_EVENT_METADATA,
 )
+from transform.knowledge.event_aliases import apply_event_name_year_splits
 from transform.knowledge.locations import LocationPatch
 
 if TYPE_CHECKING:
@@ -325,6 +326,9 @@ def apply_event_corrections(df: pd.DataFrame) -> pd.DataFrame:
 
     if 'event_name' in df.columns:
         df['event_name'] = df['event_name'].replace(EVENT_NAME_NORMALIZATION)
+        # Year-aware rebrands (BTO/Calgary, Swedish/UpTown, Show Me/Gateway).
+        # Must run after flat normalization; no-op when event_year is missing.
+        df = apply_event_name_year_splits(df)
         if 'event_location' in df.columns:
             for name, location in EVENT_NAME_LOCATION_OVERRIDES.items():
                 mask = df['event_name'] == name

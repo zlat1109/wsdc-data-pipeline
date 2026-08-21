@@ -185,6 +185,51 @@ def test_year_split_show_me_vs_gateway():
     assert int(out.loc[3, "event_name_id"]) == 221
 
 
+def test_year_split_bto_vs_calgary_town_open():
+    df = pd.DataFrame(
+        [
+            {"event_name": "BTO Open", "event_year": 2025, "event_name_id": 324},
+            {"event_name": "Calgary Town Open", "event_year": 2025, "event_name_id": 324},
+            {"event_name": "BTO Open", "event_year": 2026, "event_name_id": 324},
+            {"event_name": "Calgary Town Open", "event_year": 2026, "event_name_id": 324},
+        ]
+    )
+    out = apply_event_name_year_splits(df)
+    assert out.loc[0, "event_name"] == "BTO Open"
+    assert out.loc[1, "event_name"] == "BTO Open"
+    assert out.loc[2, "event_name"] == "Calgary Town Open"
+    assert out.loc[3, "event_name"] == "Calgary Town Open"
+    assert int(out.loc[0, "event_name_id"]) == 324
+    assert int(out.loc[3, "event_name_id"]) == 324
+
+
+def test_calgary_town_open_metadata():
+    assert KNOWN_EVENT_METADATA[324]["name"] == "Calgary Town Open"
+    assert KNOWN_EVENT_METADATA[324]["typical_location"] == "Calgary, Canada"
+    assert EVENT_NAME_LOCATION_OVERRIDES["Calgary Town Open"] == "Calgary, Canada"
+    # Flat map must not collapse either direction (year split owns the series).
+    assert "BTO Open" not in EVENT_NAME_NORMALIZATION
+    assert EVENT_NAME_NORMALIZATION.get("Calgary Town Open") != "BTO Open"
+
+
+def test_apply_event_corrections_keeps_bto_year_split():
+    from transform.knowledge.apply import apply_event_corrections
+
+    df = pd.DataFrame(
+        [
+            {"event_name": "BTO Open", "event_year": 2025},
+            {"event_name": "By-Town Open (BTO)", "event_year": 2025},
+            {"event_name": "By-Town Open (BTO)", "event_year": 2026},
+            {"event_name": "BTO Open", "event_year": 2026},
+        ]
+    )
+    out = apply_event_corrections(df)
+    assert out.loc[0, "event_name"] == "BTO Open"
+    assert out.loc[1, "event_name"] == "BTO Open"
+    assert out.loc[2, "event_name"] == "Calgary Town Open"
+    assert out.loc[3, "event_name"] == "Calgary Town Open"
+
+
 def test_uptown_and_show_me_ghosts_merge_to_results_ids():
     from transform.knowledge.event_aliases import MERGE_EVENT_ID_MAP
 

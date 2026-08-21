@@ -198,11 +198,11 @@ def test_scandinavian_open_maps_by_url_when_catalog_supplemented():
     assert result.canonical_name == "Scandinavian Open"
 
 
-def test_calgary_town_open_maps_to_bto_open():
+def test_calgary_town_open_maps_to_catalog():
     catalog = [
         CatalogEvent(
             event_id=324,
-            name="BTO Open",
+            name="Calgary Town Open",
             url="https://ctodance.ca/",
             url_norm="ctodance.ca",
             typical_location="Calgary, Alberta, Canada",
@@ -220,7 +220,32 @@ def test_calgary_town_open_maps_to_bto_open():
     result = map_scheduled_event(row, catalog, build_url_index(catalog), [c.name for c in catalog])
     assert result.match_status == "confirmed"
     assert result.canonical_event_id == 324
-    assert result.canonical_name == "BTO Open"
+    assert result.canonical_name == "Calgary Town Open"
+
+
+def test_bto_open_alias_maps_to_calgary_town_open():
+    catalog = [
+        CatalogEvent(
+            event_id=324,
+            name="Calgary Town Open",
+            url="https://ctodance.ca/",
+            url_norm="ctodance.ca",
+            typical_location="Calgary, Alberta, Canada",
+        ),
+    ]
+    row = {
+        "source_fingerprint": "bto",
+        "event_name": "BTO Open",
+        "start_date": "2025-03-27",
+        "location_raw": "Calgary, Alberta, Canada",
+        "url": "https://ctodance.ca/",
+        "status_event": "Registry Event",
+        "is_active": True,
+    }
+    result = map_scheduled_event(row, catalog, build_url_index(catalog), [c.name for c in catalog])
+    assert result.match_status == "confirmed"
+    assert result.canonical_event_id == 324
+    assert result.canonical_name == "Calgary Town Open"
 
 
 def test_rocket_city_maps_to_westies_on_the_water_rebrand():

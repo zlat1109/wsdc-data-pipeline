@@ -73,16 +73,18 @@ Report: `data/events_list/mapping/latest.json`
 
 ## Event renames (schedule vs points catalog)
 
-WSDC **results** keep the historical event title in `core.events` long after the **events list** shows a new brand name. Without an alias, mapping falls back to fuzzy match or `new`.
+WSDC **results** often keep a historical title in exports long after the **events list** shows a new brand.
 
-**When you see `Suggested` / wrong `New` for a known registry event:**
+**Same series, year-aware rebrand** (preferred when one registry id is reused): use `EVENT_NAME_YEAR_SPLITS` in `transform/knowledge/event_aliases.py` — e.g. BTO Open ≤2025 / Calgary Town Open ≥2026 on id `324`. Set `KNOWN_EVENT_METADATA[event_id].name` to the **current** brand; historical years keep the early name via the split. Add schedule aliases in `EVENT_NAME_MAPPINGS` only for *legacy* list titles → current catalog name.
+
+**Flat schedule → catalog alias** (full cutover, no year split needed):
 
 1. Confirm rebrand (event site, Facebook, same city/organizer).
 2. Add schedule → catalog alias in `parser/event_name_matcher.py` → `EVENT_NAME_MAPPINGS`:
    ```python
    "Rocket City Swing": "Westies on the Water",
    ```
-3. If URL changed, patch `transform/event_knowledge.py` → `KNOWN_EVENT_METADATA[event_id]` (`url`, `typical_location`). Do **not** rename `core.events.name` until WSDC points export uses the new title (keeps result history joinable).
+3. If URL changed, patch `KNOWN_EVENT_METADATA[event_id]` (`url`, `typical_location`).
 4. Add a test in `tests/test_events_list_mapping.py` (explicit alias + location).
 5. Re-run `python scripts/sync_events_list.py` or wait for Tuesday sync; check `mapping/latest.json` → `confirmed`.
 
