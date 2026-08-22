@@ -47,6 +47,8 @@ Legacy audit-only: `scripts/data_quality_audit.py` (prefer preprocess).
 
 `scripts/monitor_data_quality.py` — run after load (also in CI `full-parse.yml`):
 
+**Completed-edition directory (Supabase):** `export.completed_event_editions` (materialized view, migration 032). Pre-flight location/id audits: `db/sql/audit_completed_event_location_links.sql`. Refresh after load: `SELECT export.refresh_completed_event_editions();`
+
 <!-- docs-sync:core-quality-checks -->
 | Check | Target | Meaning |
 |-------|--------|---------|
