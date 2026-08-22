@@ -22,6 +22,8 @@
 
 ## export.edition_division_tiers
 
+## export.edition_location_baseline
+
 ## export.event_catalog
 
 ## export.event_editions

@@ -26,6 +26,7 @@ See [../transform/index.md](../transform/index.md) and [../transform/geography.m
 | `EVENT_NAME_LOCATION_COUNTRY_CONFLICT` | high | Name implies country ≠ results location country |
 | `SCHEDULED_VS_RESULTS_COUNTRY_CONFLICT` | high | WSDC calendar country ≠ results location country |
 | `EVENT_ID_CANONICAL_LOCATION_MISMATCH` | high | Results/editions country ≠ curated `event_id` canon (KNOWN / name override / upcoming). Catches uniform shared-wrong ids |
+| `EDITION_LOCATION_BASELINE_DRIFT` | high | Results `location_id` for a known `(event_id, year, month)` differs from `edition_location_baseline.csv` (cross-load drift). Does not block load |
 | `CATALOG_TYPICAL_UPCOMING_CONFLICT` | medium | Catalog typical ≠ upcoming (stuck typical or real move) |
 
 Quick offline scan (no full preprocess):
@@ -48,6 +49,8 @@ Legacy audit-only: `scripts/data_quality_audit.py` (prefer preprocess).
 `scripts/monitor_data_quality.py` — run after load (also in CI `full-parse.yml`):
 
 **Completed-edition directory (Supabase):** `export.completed_event_editions` (materialized view, migration 032). Pre-flight location/id audits: `db/sql/audit_completed_event_location_links.sql`. Refresh after load: `SELECT export.refresh_completed_event_editions();`
+
+**Edition location baseline (Supabase):** `core.edition_location_baseline` (migration 033) stores frozen `(event_id, event_year, event_month) → location_id`. Export: `export.edition_location_baseline` → `data/edition_location_baseline.csv`. After each load, `load.py` compares `core.event_editions` to baseline, auto-adds new edition keys, always refreshes `data/quality_reports/edition_location_baseline_drift.json` (`drift_count: 0` on clean runs). **First cycle after deploy:** migration 033 + export must run before preprocess CSV check is active; until then only post-load drift applies. Legitimate venue changes: `UPDATE core.edition_location_baseline SET location_id = …, source = 'manual', updated_at = now() WHERE …` in Supabase UI.
 
 <!-- docs-sync:core-quality-checks -->
 | Check | Target | Meaning |
@@ -97,6 +100,7 @@ Check definitions live in `db/quality_checks.py` (single source of truth for mon
 | `location_id_multiple_strings` | One location_id must not have conflicting event_location strings. |
 | `events_wsdc_edition_location_drift` | event_editions.location_raw disagrees with joined core.locations text. |
 | `source_vs_results_location_conflicts_recent` | Source-derived edition location differs from results majority location_id (recent years). |
+| `edition_location_baseline_drift` | Known edition key location_id differs from core.edition_location_baseline (cross-load drift — manual review) |
 | `city_equals_country` | city=country usually geocode bug; city-states (Singapore) allowed. |
 | `double_space_event_location` | Double spaces in location strings (Moscow,  Russia). |
 | `catalog_duplicate_city_token` | Duplicated city in typical_location (Madrid, Madrid, Spain). |

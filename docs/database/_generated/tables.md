@@ -96,6 +96,21 @@ Inferred Tier + competitor range per edition/division/role/dance from Chart 5 ve
 | range_conflict | text/PK/FK | — |
 | updated_at | text/PK/FK | — |
 
+## core.edition_location_baseline
+
+Golden edition→location_id map. Compared on each load; drifts → manual review. 
+
+| Column | Migration parse | Live type |
+|--------|-----------------|-----------|
+| event_id | text/PK/FK | — |
+| event_year | text/PK/FK | — |
+| event_month | text/PK/FK | — |
+| location_id | text/PK/FK | — |
+| event_name | text/PK/FK | — |
+| source | text/PK/FK | — |
+| seeded_at | text/PK/FK | — |
+| updated_at | text/PK/FK | — |
+
 ## core.event_aliases
 | Column | Migration parse | Live type |
 |--------|-----------------|-----------|
