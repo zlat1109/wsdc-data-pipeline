@@ -74,6 +74,7 @@ def load_csv_bundle(data_dir: Path) -> dict[str, pd.DataFrame]:
         "dancers_points_info": "dancers_points_info.csv",
         "scheduled_events": "scheduled_events.csv",
         "event_catalog": "event_catalog.csv",
+        "edition_location_baseline": "edition_location_baseline.csv",
     }
     data: dict[str, pd.DataFrame] = {}
     for key, filename in files.items():
@@ -534,6 +535,55 @@ def check_event_id_canonical_location_mismatch(
     )
 
 
+def check_edition_location_baseline_drift(
+    results: pd.DataFrame,
+    baseline: pd.DataFrame | None,
+) -> QualityFinding | None:
+    """Results mode location_id differs from frozen edition baseline CSV."""
+    from transform.geography.edition_location_baseline import find_csv_baseline_drifts
+
+    if baseline is None or baseline.empty:
+        return None
+    drifts = find_csv_baseline_drifts(results, baseline)
+    if not drifts:
+        return None
+    examples = [
+        {
+            "event_id": d.event_id,
+            "event_year": d.event_year,
+            "event_month": d.event_month,
+            "event_name": d.event_name,
+            "baseline_location_id": d.baseline_location_id,
+            "current_location_id": d.current_location_id,
+            "result_rows": d.result_rows,
+        }
+        for d in drifts[:20]
+    ]
+    return QualityFinding(
+        category="location",
+        code="EDITION_LOCATION_BASELINE_DRIFT",
+        severity="high",
+        message=(
+            "Results location_id for a known edition key differs from "
+            "edition_location_baseline.csv (cross-load drift)"
+        ),
+        count=len(drifts),
+        examples=examples,
+        suggested_fix=(
+            "Investigate shared wrong location_id; fix overrides/repair_locations. "
+            "If venue change is legitimate, UPDATE core.edition_location_baseline in Supabase."
+        ),
+        fingerprint=_fingerprint(
+            "location",
+            "EDITION_LOCATION_BASELINE_DRIFT",
+            "|".join(
+                f"{d.event_id}:{d.event_year}-{d.event_month}:{d.current_location_id}"
+                for d in drifts[:15]
+            ),
+        ),
+    )
+
+
 def check_catalog_typical_vs_upcoming(
     catalog: pd.DataFrame | None,
 ) -> QualityFinding | None:
@@ -848,6 +898,12 @@ def run_audit(
             location_info,
             data.get("event_catalog"),
             data.get("event_editions"),
+        )
+        if item:
+            findings.append(item)
+        item = check_edition_location_baseline_drift(
+            results,
+            data.get("edition_location_baseline"),
         )
         if item:
             findings.append(item)

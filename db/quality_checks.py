@@ -386,6 +386,31 @@ EXTENDED_CHECKS: tuple[QualityCheck, ...] = (
         fix_hint="Audit event mapping/source location; if needed fix results location_id or add override.",
     ),
     QualityCheck(
+        name="edition_location_baseline_drift",
+        sql="""
+        SELECT count(*)
+        FROM core.edition_location_baseline b
+        JOIN core.event_editions ed
+          ON ed.event_id = b.event_id
+         AND ed.event_year = b.event_year
+         AND ed.event_month = b.event_month
+        WHERE ed.result_rows > 0
+          AND ed.location_id IS NOT NULL
+          AND ed.location_id <> b.location_id
+        """,
+        max_value=0,
+        severity="warn",
+        category="location",
+        description=(
+            "Known edition key location_id differs from core.edition_location_baseline "
+            "(cross-load drift — manual review)"
+        ),
+        fix_hint=(
+            "See data/quality_reports/edition_location_baseline_drift.json; "
+            "fix location pipeline or UPDATE baseline in Supabase after approve"
+        ),
+    ),
+    QualityCheck(
         name="city_equals_country",
         sql=f"""
         SELECT count(*) FROM core.locations

@@ -420,12 +420,39 @@ def _format_preprocess_quality_attention(q: dict) -> list[str]:
     return lines
 
 
+def _format_baseline_drift_attention() -> list[str]:
+    report = _load_json(
+        PROJECT_ROOT / "data" / "quality_reports" / "edition_location_baseline_drift.json"
+    )
+    if not report:
+        return []
+    drift_count = int(report.get("drift_count", 0) or 0)
+    if drift_count <= 0:
+        return []
+    lines = [
+        "<b>Edition location baseline drift</b>",
+        f"Drifts: <code>{_esc(drift_count)}</code> · "
+        f"auto-added: <code>{_esc(report.get('auto_added', 0))}</code>",
+    ]
+    for item in (report.get("drifts") or [])[:6]:
+        lines.append(
+            f"• id <code>{_esc(item.get('event_id'))}</code> "
+            f"{_esc(item.get('event_year'))}-{_esc(item.get('event_month'))} "
+            f"<code>{_esc(item.get('event_name', '')[:40])}</code>: "
+            f"<code>{_esc(item.get('baseline_location_id'))}</code> → "
+            f"<code>{_esc(item.get('current_location_id'))}</code>"
+        )
+    lines.append("Log: <code>data/quality_reports/edition_location_baseline_drift.json</code>")
+    return lines
+
+
 def _format_attention_sections() -> list[str]:
     supabase = _load_json(PROJECT_ROOT / "data" / "quality_reports" / "supabase_latest.json")
     preprocess = _load_json(PROJECT_ROOT / "data" / "quality_reports" / "latest.json")
     supabase_lines = _format_supabase_quality_attention(supabase) if supabase else []
     preprocess_lines = _format_preprocess_quality_attention(preprocess) if preprocess else []
-    if not supabase_lines and not preprocess_lines:
+    baseline_lines = _format_baseline_drift_attention()
+    if not supabase_lines and not preprocess_lines and not baseline_lines:
         return []
     sections_flat: list[str] = []
     if supabase_lines:
@@ -434,6 +461,10 @@ def _format_attention_sections() -> list[str]:
         if sections_flat:
             sections_flat.append("")
         sections_flat.extend(preprocess_lines)
+    if baseline_lines:
+        if sections_flat:
+            sections_flat.append("")
+        sections_flat.extend(baseline_lines)
     return sections_flat
 
 
