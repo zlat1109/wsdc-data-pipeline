@@ -294,7 +294,7 @@
       "name": "tier_unmatched_groups",
       "category": "tier",
       "severity": "warn",
-      "value": 1,
+      "value": 0,
       "max_value": 50,
       "ok": true,
       "description": "Post-2007 scored groups with \u22653 placements should resolve to a Chart 5 Tier.",
@@ -337,6 +337,6 @@
     "errors": 0,
     "warnings": 2
   },
-  "generated_at": "2026-08-24T19:08:02.438379+00:00",
+  "generated_at": "2026-08-24T20:32:52.480330+00:00",
   "scope": "full"
 }
