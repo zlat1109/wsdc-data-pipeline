@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-08-17T19:49:27.557285+00:00",
+  "generated_at": "2026-08-24T19:03:14.179296+00:00",
   "source": "github-actions",
   "run_id": null,
   "summary": {
     "before_findings_count": 10,
-    "applied_rules_count": 238,
-    "applied_rows_touched": 193598,
-    "manual_review_count": 10,
-    "manual_review_new_count": 5
+    "applied_rules_count": 246,
+    "applied_rows_touched": 193205,
+    "manual_review_count": 11,
+    "manual_review_new_count": 6
   },
   "before_processing": {
     "description": "Issues detected in raw CSV before any normalization",
@@ -189,16 +189,6 @@
         "count": 35,
         "examples": [
           {
-            "base_key": "swing fling",
-            "variants": [
-              "Swing Fling",
-              "Swing Fling 2024"
-            ],
-            "geo_keys": [
-              "washington_dc|usa"
-            ]
-          },
-          {
             "base_key": "monterey swingfest",
             "variants": [
               "Monterey SwingFest",
@@ -206,6 +196,16 @@
             ],
             "geo_keys": [
               "monterey|ca|usa"
+            ]
+          },
+          {
+            "base_key": "swing fling",
+            "variants": [
+              "Swing Fling",
+              "Swing Fling 2024"
+            ],
+            "geo_keys": [
+              "washington_dc|usa"
             ]
           },
           {
@@ -340,17 +340,17 @@
         "count": 37,
         "examples": [
           {
-            "base_key": "swing fling",
-            "variants": [
-              "Swing Fling",
-              "Swing Fling 2024"
-            ]
-          },
-          {
             "base_key": "monterey swingfest",
             "variants": [
               "Monterey SwingFest",
               "Monterey Swingfest"
+            ]
+          },
+          {
+            "base_key": "swing fling",
+            "variants": [
+              "Swing Fling",
+              "Swing Fling 2024"
             ]
           },
           {
@@ -434,7 +434,7 @@
         "code": "EVENT_NAME_UNRESOLVED_TO_CATALOG",
         "severity": "high",
         "message": "Result event names still absent from events_wsdc after normalization (will orphan in load)",
-        "count": 84,
+        "count": 85,
         "examples": [
           {
             "event_name": "Asia WCS Open - 10th Anniversary"
@@ -456,6 +456,9 @@
           },
           {
             "event_name": "C.A.S.H. Bash"
+          },
+          {
+            "event_name": "Calgary Town Open"
           },
           {
             "event_name": "Canadian Swing Championships (CSC)"
@@ -503,9 +506,6 @@
             "event_name": "Florida Dance Magic (Unconfirmed)"
           },
           {
-            "event_name": "Gateway Swing Classic"
-          },
-          {
             "event_name": "German Open Championships"
           },
           {
@@ -513,7 +513,7 @@
           }
         ],
         "suggested_fix": "Add to RESULT_TO_CATALOG_EVENT_NAME in transform/knowledge/event_aliases.py",
-        "fingerprint": "4d782d3b78962720",
+        "fingerprint": "0f8d508c094cbb87",
         "is_new": true
       },
       {
@@ -599,7 +599,8 @@
             "event_name": "Cologne Calling WCS",
             "start_date": "2027-01-14",
             "location_raw": "Köln, NRW, Germany",
-            "reason": "missing_location_id"
+            "location_id": "395",
+            "reason": "missing_coordinates"
           }
         ],
         "suggested_fix": "Re-run sync_events_list with GOOGLE_MAPS_API_KEY; or add city to location_info / CITY_CANONICAL_COORDINATES",
@@ -627,26 +628,26 @@
         "category": "relationships",
         "code": "LEGACY_EVENT_NAME_ID",
         "severity": "high",
-        "message": "11 event_name_id в results без записи в events_wsdc",
+        "message": "16 event_name_id в results без записи в events_wsdc",
         "count": 1,
         "examples": [
           {
             "detail": [
               "39",
               "279",
-              "37",
-              "321",
-              "198",
+              "367",
+              "66",
               "325",
               "99",
-              "202",
-              "66",
-              "307"
+              "307",
+              "198",
+              "401",
+              "407"
             ]
           }
         ],
         "suggested_fix": "See transform/data_preprocessing.py validate_* functions",
-        "fingerprint": "e4a6931dfe788c73",
+        "fingerprint": "dd924180473d804a",
         "is_new": true
       }
     ]
@@ -997,24 +998,6 @@
         "source": "known_map"
       },
       {
-        "rule_id": "EVENT_NAME_YEAR_SPLIT",
-        "table": "events_wsdc",
-        "column": "name",
-        "from_value": "UpTown Swing",
-        "to_value": "Swedish Swing Summer Camp",
-        "rows_affected": 3,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_NAME_YEAR_SPLIT",
-        "table": "events_wsdc",
-        "column": "name",
-        "from_value": "Show Me Showdown",
-        "to_value": "Gateway Swing Classic",
-        "rows_affected": 1,
-        "source": "known_map"
-      },
-      {
         "rule_id": "EVENT_NAME_LOCATION_OVERRIDE",
         "table": "events_wsdc",
         "column": "location",
@@ -1271,7 +1254,7 @@
         "table": "dancers_results_info",
         "column": "event_name",
         "from_value": "By-Town Open (BTO)",
-        "to_value": "BTO Open",
+        "to_value": "Calgary Town Open",
         "rows_affected": 93,
         "source": "known_map"
       },
@@ -2109,16 +2092,7 @@
         "column": "event_competition",
         "from_value": "Champions",
         "to_value": "Champion",
-        "rows_affected": 5089,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "DIVISION_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_competition",
-        "from_value": "Masters",
-        "to_value": "Master",
-        "rows_affected": 16719,
+        "rows_affected": 5099,
         "source": "known_map"
       },
       {
@@ -2127,7 +2101,16 @@
         "column": "event_competition",
         "from_value": "All-Stars",
         "to_value": "All-Star",
-        "rows_affected": 16033,
+        "rows_affected": 16063,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "DIVISION_NORMALIZATION",
+        "table": "dancers_results_info",
+        "column": "event_competition",
+        "from_value": "Masters",
+        "to_value": "Master",
+        "rows_affected": 16738,
         "source": "known_map"
       },
       {
@@ -2388,7 +2371,7 @@
         "column": "location_id",
         "from_value": "duplicate Singapore ids",
         "to_value": "→ 159",
-        "rows_affected": 1775,
+        "rows_affected": 1144,
         "source": "location_id_fix"
       },
       {
@@ -2397,7 +2380,7 @@
         "column": "location_id",
         "from_value": "duplicate canonical place",
         "to_value": "lowest location_id per city",
-        "rows_affected": 26,
+        "rows_affected": 25,
         "source": "location_id_fix"
       },
       {
@@ -2415,6 +2398,96 @@
         "column": "coordinates_valid",
         "from_value": "location_id=353 was True",
         "to_value": "t",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "event_location",
+        "from_value": "location_id=70 was Newton, MA, United States",
+        "to_value": "Newton (Boston), MA, United States",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "event_location_standardized",
+        "from_value": "location_id=70 was Newton, MA",
+        "to_value": "Newton (Boston), MA",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "event_location",
+        "from_value": "location_id=71 was Framingham, MA, United States",
+        "to_value": "Framingham (Boston), MA, United States",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "event_location_standardized",
+        "from_value": "location_id=71 was Framingham, MA",
+        "to_value": "Framingham (Boston), MA",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "event_location",
+        "from_value": "location_id=79 was Burlington, MA, United States",
+        "to_value": "Burlington (Boston), MA, United States",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "event_location_standardized",
+        "from_value": "location_id=79 was Burlington, MA",
+        "to_value": "Burlington (Boston), MA",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "event_location",
+        "from_value": "location_id=396 was Mansfield, MA, United States",
+        "to_value": "Mansfield (Boston), MA, United States",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "event_location_standardized",
+        "from_value": "location_id=396 was Mansfield, MA",
+        "to_value": "Mansfield (Boston), MA",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "event_location",
+        "from_value": "location_id=397 was Woburn, MA, United States",
+        "to_value": "Woburn (Boston), MA, United States",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "event_location_standardized",
+        "from_value": "location_id=397 was Woburn, MA",
+        "to_value": "Woburn (Boston), MA",
         "rows_affected": 1,
         "source": "location_id_fix"
       },
@@ -2613,16 +2686,7 @@
         "column": "dominate_required",
         "from_value": "ADV",
         "to_value": "Advanced",
-        "rows_affected": 2731,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_required",
-        "from_value": "NEW",
-        "to_value": "Newcomer",
-        "rows_affected": 1447,
+        "rows_affected": 2739,
         "source": "known_map"
       },
       {
@@ -2638,9 +2702,18 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_required",
+        "from_value": "NEW",
+        "to_value": "Newcomer",
+        "rows_affected": 1447,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_required",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 4507,
+        "rows_affected": 4519,
         "source": "known_map"
       },
       {
@@ -2649,7 +2722,7 @@
         "column": "dominate_required",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 17651,
+        "rows_affected": 17662,
         "source": "known_map"
       },
       {
@@ -2667,16 +2740,7 @@
         "column": "dominate_allowed",
         "from_value": "ADV",
         "to_value": "Advanced",
-        "rows_affected": 3161,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_allowed",
-        "from_value": "NOV",
-        "to_value": "Novice",
-        "rows_affected": 17100,
+        "rows_affected": 3164,
         "source": "known_map"
       },
       {
@@ -2692,9 +2756,18 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_allowed",
+        "from_value": "NOV",
+        "to_value": "Novice",
+        "rows_affected": 17117,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_allowed",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 5954,
+        "rows_affected": 5965,
         "source": "known_map"
       },
       {
@@ -2712,7 +2785,7 @@
         "column": "non_dominate_required",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 4454,
+        "rows_affected": 4467,
         "source": "known_map"
       },
       {
@@ -2721,7 +2794,7 @@
         "column": "non_dominate_required",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 14941,
+        "rows_affected": 14952,
         "source": "known_map"
       },
       {
@@ -2730,7 +2803,7 @@
         "column": "non_dominate_required",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 209,
+        "rows_affected": 251,
         "source": "known_map"
       },
       {
@@ -2739,7 +2812,7 @@
         "column": "non_dominate_required",
         "from_value": "ADV",
         "to_value": "Advanced",
-        "rows_affected": 225,
+        "rows_affected": 234,
         "source": "known_map"
       },
       {
@@ -2757,7 +2830,7 @@
         "column": "non_dominate_allowed",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 6957,
+        "rows_affected": 6939,
         "source": "known_map"
       },
       {
@@ -2766,7 +2839,7 @@
         "column": "non_dominate_allowed",
         "from_value": "ADV",
         "to_value": "Advanced",
-        "rows_affected": 402,
+        "rows_affected": 411,
         "source": "known_map"
       },
       {
@@ -2775,7 +2848,7 @@
         "column": "non_dominate_allowed",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 14941,
+        "rows_affected": 14952,
         "source": "known_map"
       },
       {
@@ -2784,7 +2857,7 @@
         "column": "non_dominate_allowed",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 1068,
+        "rows_affected": 1103,
         "source": "known_map"
       },
       {
@@ -2962,7 +3035,7 @@
         "code": "EVENT_NAME_UNRESOLVED_TO_CATALOG",
         "severity": "high",
         "message": "Result event names still absent from events_wsdc after normalization (will orphan in load)",
-        "count": 73,
+        "count": 76,
         "examples": [
           {
             "event_name": "Asia WCS Open - 10th Anniversary"
@@ -2984,6 +3057,9 @@
           },
           {
             "event_name": "C.A.S.H. Bash"
+          },
+          {
+            "event_name": "Calgary Town Open"
           },
           {
             "event_name": "Canadian Swing Championships (CSC)"
@@ -3035,14 +3111,11 @@
           },
           {
             "event_name": "German Open WCS"
-          },
-          {
-            "event_name": "German Open WCS Championships"
           }
         ],
         "suggested_fix": "Add to RESULT_TO_CATALOG_EVENT_NAME in transform/knowledge/event_aliases.py",
-        "fingerprint": "4d782d3b78962720",
-        "is_new": false,
+        "fingerprint": "0f8d508c094cbb87",
+        "is_new": true,
         "requires_manual_review": true
       },
       {
@@ -3050,7 +3123,7 @@
         "code": "EVENT_NAME_NOT_IN_CATALOG",
         "severity": "low",
         "message": "Result event_name values absent from events_wsdc.csv (may be OK if resolved by name in load)",
-        "count": 73,
+        "count": 76,
         "examples": [
           {
             "event_name": "Asia WCS Open - 10th Anniversary"
@@ -3072,6 +3145,9 @@
           },
           {
             "event_name": "C.A.S.H. Bash"
+          },
+          {
+            "event_name": "Calgary Town Open"
           },
           {
             "event_name": "Canadian Swing Championships (CSC)"
@@ -3108,35 +3184,32 @@
           },
           {
             "event_name": "Dutch open West Coast swing"
-          },
-          {
-            "event_name": "Floor Play Swing Vacation"
           }
         ],
         "suggested_fix": "Verify events_wsdc export or add event instance after parse",
-        "fingerprint": "6b2b58d82b35e32b",
-        "is_new": false,
+        "fingerprint": "c29d817289bb913d",
+        "is_new": true,
         "requires_manual_review": true
       },
       {
-        "category": "location",
-        "code": "EVENT_NAME_LOCATION_COUNTRY_CONFLICT",
-        "severity": "high",
-        "message": "Event name implies a different country than results.location_id (often a shared/wrong location_id collision)",
-        "count": 34,
+        "category": "event_naming",
+        "code": "EVENT_NAME_NEW_SINCE_LAST_RUN",
+        "severity": "info",
+        "message": "New event names appeared since last quality report (review naming)",
+        "count": 3,
         "examples": [
           {
-            "event_name": "The New Zealand Open",
-            "location_id": "3",
-            "location_country": "United States",
-            "name_hints": [
-              "New Zealand"
-            ],
-            "rows": 34
+            "event_name": "Calgary Town Open"
+          },
+          {
+            "event_name": "Swing Creation Hamburg"
+          },
+          {
+            "event_name": "Westie Joy"
           }
         ],
-        "suggested_fix": "Add EVENT_NAME_LOCATION_OVERRIDES + force_result_locations_from_event_name_overrides; see scripts/audit_event_location_mismatches.py",
-        "fingerprint": "5c081e2998ff6e27",
+        "suggested_fix": "Check if variant of existing event; add normalization rule if needed",
+        "fingerprint": "34286296047e723d",
         "is_new": true,
         "requires_manual_review": true
       },
@@ -3222,7 +3295,7 @@
         ],
         "suggested_fix": "Add to EVENT_NAME_LOCATION_OVERRIDES in transform/knowledge/events.py and run force_result_locations_from_event_name_overrides",
         "fingerprint": "235f3a5dfd02bc9c",
-        "is_new": true,
+        "is_new": false,
         "requires_manual_review": true
       },
       {
@@ -3230,27 +3303,27 @@
         "code": "SCHEDULED_VS_RESULTS_COUNTRY_CONFLICT",
         "severity": "high",
         "message": "WSDC calendar country differs from results location country (shared/wrong location_id — Sea Dance / Med in Swing pattern)",
-        "count": 781,
+        "count": 414,
         "examples": [
           {
-            "event_name": "Milan Modern Swing",
-            "location_id": "222",
-            "results_country": "russia",
-            "scheduled_country": "italy",
-            "scheduled_location": "Milan, Milan, Italy",
-            "rows": 589
-          },
-          {
-            "event_name": "Arousa Westie Fest",
+            "event_name": "St. Petersburg WCS Nights",
             "location_id": "253",
             "results_country": "australia",
-            "scheduled_country": "spain",
-            "scheduled_location": "Sanxenxo, Galicia/Pontevedra, Spain",
-            "rows": 192
+            "scheduled_country": "russia",
+            "scheduled_location": "St. Petersburg, St. Petersburg, Russia",
+            "rows": 224
+          },
+          {
+            "event_name": "Augsburg Westie Station",
+            "location_id": "266",
+            "results_country": "czech republic",
+            "scheduled_country": "germany",
+            "scheduled_location": "Augsburg, Bavaria, Germany",
+            "rows": 190
           }
         ],
         "suggested_fix": "Verify venue, then add EVENT_NAME_LOCATION_OVERRIDES (or KNOWN_SERIES_MOVES if the event really moved); scripts/audit_event_location_mismatches.py",
-        "fingerprint": "47eaacd93bd5fda8",
+        "fingerprint": "e0bd99d3deeeaa4b",
         "is_new": true,
         "requires_manual_review": true
       },
@@ -3259,37 +3332,24 @@
         "code": "EVENT_ID_CANONICAL_LOCATION_MISMATCH",
         "severity": "high",
         "message": "Results/editions location country differs from curated event_id canonical location (KNOWN / name override / upcoming)",
-        "count": 781,
+        "count": 190,
         "examples": [
           {
-            "event_id": "322",
-            "event_name": "Milan Modern Swing",
+            "event_id": "350",
+            "event_name": "Augsburg Westie Station",
             "canonical_source": "upcoming",
-            "canonical_location": "Milan, Milan, Italy",
-            "canonical_country": "italy",
-            "results_location_id": "222",
-            "results_country": "russia",
-            "results_rows": 589,
-            "editions_location_id": "",
-            "editions_country": "",
-            "mismatch_side": "results"
-          },
-          {
-            "event_id": "344",
-            "event_name": "Arousa Westie Fest",
-            "canonical_source": "upcoming",
-            "canonical_location": "Sanxenxo, Galicia/Pontevedra, Spain",
-            "canonical_country": "spain",
-            "results_location_id": "253",
-            "results_country": "australia",
-            "results_rows": 192,
+            "canonical_location": "Augsburg, Bavaria, Germany",
+            "canonical_country": "germany",
+            "results_location_id": "266",
+            "results_country": "czech republic",
+            "results_rows": 190,
             "editions_location_id": "",
             "editions_country": "",
             "mismatch_side": "results"
           }
         ],
         "suggested_fix": "Confirm venue, then add/update KNOWN_EVENT_METADATA[event_id] or EVENT_NAME_LOCATION_OVERRIDES + force_result_locations; see scripts/audit_event_location_mismatches.py section D",
-        "fingerprint": "aebe11d1cacc5584",
+        "fingerprint": "67cd1c868382e73c",
         "is_new": true,
         "requires_manual_review": true
       },
@@ -3304,11 +3364,34 @@
             "event_name": "Cologne Calling WCS",
             "start_date": "2027-01-14",
             "location_raw": "Köln, NRW, Germany",
-            "reason": "missing_location_id"
+            "location_id": "395",
+            "reason": "missing_coordinates"
           }
         ],
         "suggested_fix": "Re-run sync_events_list with GOOGLE_MAPS_API_KEY; or add city to location_info / CITY_CANONICAL_COORDINATES",
         "fingerprint": "0418b515841d8c3b",
+        "is_new": false,
+        "requires_manual_review": true
+      },
+      {
+        "category": "relationships",
+        "code": "LEGACY_EVENT_NAME_ID",
+        "severity": "high",
+        "message": "5 event_name_id в results без записи в events_wsdc",
+        "count": 1,
+        "examples": [
+          {
+            "detail": [
+              "367",
+              "407",
+              "401",
+              "230",
+              "204"
+            ]
+          }
+        ],
+        "suggested_fix": "See transform/data_preprocessing.py validate_* functions",
+        "fingerprint": "1415cd02d50d3fde",
         "is_new": true,
         "requires_manual_review": true
       }
@@ -3368,6 +3451,7 @@
     "C.A.S.H. Bash",
     "CASH Bash",
     "Calgary Dance Stampede",
+    "Calgary Town Open",
     "California State Championships",
     "Canadian Swing Championships",
     "Canadian Swing Championships (CSC)",
@@ -3625,6 +3709,7 @@
     "Swing Break",
     "Swing Challenge",
     "Swing City Chicago",
+    "Swing Creation Hamburg",
     "Swing Crush",
     "Swing Dance America",
     "Swing Dance America (SDA)",
@@ -3720,6 +3805,7 @@
     "Westcoast Swing Dance Championships",
     "WesterOz Swing",
     "Westie Gala",
+    "Westie Joy",
     "Westie Pink City",
     "Westie Spring Thing",
     "Westie's Angels",
