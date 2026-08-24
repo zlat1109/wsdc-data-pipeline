@@ -22,13 +22,17 @@ SKILL_ALIASES = {
     "Champions": "Champions",
 }
 
-# Divisions used for approximate competitive headcount (role×tier ranges).
+# Skill ladder shown in L2 tier table and used for Dancers estimate (Chart 5 midpoints).
 # Age tracks (Master / Sophisticated / Juniors) omitted — same dancers often also dance skill.
-DANCERS_ESTIMATE_ORDER = ("Newcomer",) + SKILL_ORDER
-DANCERS_ESTIMATE_ALIASES = {
+TIER_TABLE_ORDER = ("Newcomer",) + SKILL_ORDER
+TIER_TABLE_ALIASES = {
     **SKILL_ALIASES,
     "Newcomer": "Newcomer",
 }
+
+# Back-compat aliases for callers/tests that referenced the old estimate-only names.
+DANCERS_ESTIMATE_ORDER = TIER_TABLE_ORDER
+DANCERS_ESTIMATE_ALIASES = TIER_TABLE_ALIASES
 
 # Skill Level Jack & Jill points scope (same as event portraits Skill JJ).
 SKILL_LEVEL_ALIASES = DANCERS_ESTIMATE_ALIASES
@@ -404,7 +408,7 @@ def _tier_table_for_edition(
         return {}
     by_div: dict[str, dict[str, int]] = {}
     for rec in sub.to_dict(orient="records"):
-        canon = SKILL_ALIASES.get(str(rec.get("division") or "").strip())
+        canon = TIER_TABLE_ALIASES.get(str(rec.get("division") or "").strip())
         if not canon:
             continue
         role = _normalize_role(rec.get("role"))
@@ -422,7 +426,7 @@ def _tier_table_for_edition(
         by_div.setdefault(canon, {})[role] = tier_i
 
     out: dict[str, dict[str, int]] = {}
-    for div in SKILL_ORDER:
+    for div in TIER_TABLE_ORDER:
         roles = by_div.get(div)
         if not roles:
             continue

@@ -197,6 +197,57 @@ def test_tier_table_keeps_skill_rows_with_both_roles(tmp_path: Path):
     assert table["Champions"] == {"Leader": 1, "Follower": 1}
 
 
+def test_tier_table_includes_newcomer_when_both_roles_present():
+    tiers = pd.DataFrame(
+        [
+            {
+                "event_id": 1,
+                "event_year": 2025,
+                "event_month": 6,
+                "division": "Newcomer",
+                "role": "Leader",
+                "tier": 1,
+                "status": "matched",
+                "dance": "West Coast Swing",
+            },
+            {
+                "event_id": 1,
+                "event_year": 2025,
+                "event_month": 6,
+                "division": "Newcomer",
+                "role": "Follower",
+                "tier": 1,
+                "status": "matched",
+                "dance": "West Coast Swing",
+            },
+            {
+                "event_id": 1,
+                "event_year": 2025,
+                "event_month": 6,
+                "division": "Novice",
+                "role": "Leader",
+                "tier": 2,
+                "status": "matched",
+                "dance": "West Coast Swing",
+            },
+            {
+                "event_id": 1,
+                "event_year": 2025,
+                "event_month": 6,
+                "division": "Novice",
+                "role": "Follower",
+                "tier": 2,
+                "status": "matched",
+                "dance": "West Coast Swing",
+            },
+        ]
+    )
+    table = _tier_table_for_edition(tiers, 1, 2025, 6)
+    assert list(table.keys()) == ["Newcomer", "Novice"]
+    assert table["Newcomer"] == {"Leader": 1, "Follower": 1}
+    assert table["Novice"] == {"Leader": 2, "Follower": 2}
+
+
 def test_build_event_l2_cards_picks_last_with_results(tmp_path: Path):
     data_dir = tmp_path
     pd.DataFrame(
