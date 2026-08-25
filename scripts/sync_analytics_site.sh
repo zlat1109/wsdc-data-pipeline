@@ -108,6 +108,7 @@ AS_OF="$(date -u +%Y-%m-%d)"
 CACHE_V="$(date -u +%Y%m%d)-sync"
 DASHBOARD_HTML="${WORKDIR}/secondary_role_distribution_dashboard_en.html"
 BUBBLE_HTML="${WORKDIR}/interactive_secondary_country_bubble.html"
+CALENDAR_HTML="${WORKDIR}/events-calendar.html"
 if [[ -f "${DASHBOARD_HTML}" ]]; then
   sed -i \
     -e "s|(as of [0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\})|(as of ${AS_OF})|g" \
@@ -120,7 +121,13 @@ if [[ -f "${BUBBLE_HTML}" ]]; then
     -e "s|secondary_country_unified.json?v=[^\"]*|secondary_country_unified.json?v=${CACHE_V}|g" \
     "${BUBBLE_HTML}"
 fi
-echo "Stamped secondary dashboard as_of=${AS_OF} cache_v=${CACHE_V}"
+if [[ -f "${CALENDAR_HTML}" ]]; then
+  sed -i \
+    -e "s|events_year_calendar.json?v=[^\"]*|events_year_calendar.json?v=${CACHE_V}|g" \
+    -e "s|event_l2_cards.json?v=[^\"]*|event_l2_cards.json?v=${CACHE_V}|g" \
+    "${CALENDAR_HTML}"
+fi
+echo "Stamped secondary dashboard + calendar as_of=${AS_OF} cache_v=${CACHE_V}"
 
 cd "${WORKDIR}"
 git config user.name "github-actions[bot]"
@@ -144,6 +151,9 @@ if [[ -f static/data/events_year_calendar.json ]]; then
 fi
 if [[ -f static/data/event_l2_cards.json ]]; then
   git add static/data/event_l2_cards.json
+fi
+if [[ -f events-calendar.html ]]; then
+  git add events-calendar.html
 fi
 
 if git diff --staged --quiet; then
