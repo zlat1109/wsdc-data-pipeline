@@ -28,6 +28,7 @@ from transform.knowledge.geo_flags import continent_for_country
 from transform.year_event_calendar.expected import (
     EXPECTED_STALE_GRACE_DAYS,
     EXPECTED_WINDOW_DAYS,
+    UNLINKED_ENDED_RETENTION_DAYS,
     UNLINKED_PRIOR_LOOKBACK_YEARS,
     is_stale_expected,
     iter_expected_candidates,
@@ -814,6 +815,174 @@ def _rows_from_events_list_current(data_dir: Path) -> list[dict]:
     return rows
 
 
+def _list_geo_by_fingerprint(data_dir: Path) -> dict[str, dict]:
+    """City/country/kind/location_id keyed by list ``source_fingerprint``.
+
+    Used to restore geo for unmatched calendar rows after WSDC drops them from
+    the live events list (changelog ``removed`` still carries the last scrape).
+    """
+    out: dict[str, dict] = {}
+
+    def _ingest(rec: dict) -> None:
+        fp = str(rec.get("source_fingerprint") or "").strip()
+        if not fp:
+            return
+        status_flags = rec.get("status_event") or rec.get("registry_trial_status")
+        name = _clean_name(rec.get("event_name")) or _clean_name(rec.get("canonical_name"))
+        loc_raw = rec.get("location_id")
+        try:
+            loc_i = int(loc_raw) if loc_raw is not None and not pd.isna(loc_raw) else None
+        except (TypeError, ValueError):
+            loc_i = None
+        payload = {
+            "city": _city_from_location_raw(rec.get("location_raw")),
+            "country": _clean_name(rec.get("country")),
+            "location_id": loc_i,
+            "kind": _kind_from_status_event(status_flags, name or ""),
+            "kind_from_schedule": _status_flags_say_trial(status_flags),
+            "url": _clean_name(rec.get("url")),
+            "name": name,
+        }
+        prev = out.get(fp)
+        if prev is None or (payload.get("city") and not prev.get("city")):
+            out[fp] = payload
+
+    # Live list first, then changelog removed/added (last known geo for dropouts).
+    list_path = data_dir / "events_list" / "current.json"
+    if list_path.exists():
+        try:
+            payload = json.loads(list_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            payload = None
+        if isinstance(payload, dict):
+            for rec in payload.get("events") or []:
+                if isinstance(rec, dict):
+                    _ingest(rec)
+    for path in (
+        data_dir / "events_list" / "changelog" / "latest.json",
+        *(sorted((data_dir / "events_list" / "changelog").glob("run_*.json"))[-5:]),
+    ):
+        if not path.exists():
+            continue
+        try:
+            report = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        if not isinstance(report, dict):
+            continue
+        for key in ("removed", "added"):
+            for rec in report.get(key) or []:
+                if isinstance(rec, dict):
+                    _ingest(rec)
+    sched_path = data_dir / "scheduled_events.csv"
+    if sched_path.exists():
+        df = pd.read_csv(sched_path, low_memory=False)
+        for rec in df.to_dict(orient="records"):
+            _ingest(rec)
+    return out
+
+
+def _within_unlinked_ended_retention(
+    *,
+    start: date,
+    end: date | None,
+    as_of: date,
+    retention_days: int = UNLINKED_ENDED_RETENTION_DAYS,
+) -> bool:
+    """True while the edition is upcoming or within retention after it ended."""
+    last = end if isinstance(end, date) else start
+    return as_of <= last + timedelta(days=retention_days)
+
+
+def _rows_from_unmatched_calendar_retention(
+    data_dir: Path,
+    *,
+    as_of: date,
+    retention_days: int = UNLINKED_ENDED_RETENTION_DAYS,
+) -> list[dict]:
+    """Keep unmatched WSDC calendar editions briefly after the list drops them.
+
+    Trial / new series often leave the live events list right after the weekend
+    and only get a catalog ``event_id`` once points land. Without this bridge the
+    year calendar loses the pin (Belgium → only Swingside; Manneken disappears).
+
+    Source of truth: ``edition_date_matches.csv`` rows with ``match_status=unmatched``.
+    Keep while ``as_of <= end_date + retention_days``. Do **not** assign a numeric
+    provisional ``event_id`` (that would YoY-project one-off trials). Stable public
+    ``id`` remains the existing ``t-<slug>`` token; ``provisional_unlinked`` marks
+    the row for the site/debug.
+    """
+    path = data_dir / "events_calendar" / "edition_date_matches.csv"
+    if not path.exists():
+        # Fall back to events_calendar.csv with no match columns.
+        path = data_dir / "events_calendar" / "events_calendar.csv"
+        if not path.exists():
+            return []
+    df = pd.read_csv(path, low_memory=False)
+    if df.empty:
+        return []
+    geo_by_fp = _list_geo_by_fingerprint(data_dir)
+    rows: list[dict] = []
+    for rec in df.to_dict(orient="records"):
+        match_status = str(rec.get("match_status") or "").strip().lower()
+        matched_eid = rec.get("matched_event_id")
+        has_match = False
+        if match_status == "matched":
+            has_match = True
+        elif matched_eid is not None and not (isinstance(matched_eid, float) and pd.isna(matched_eid)):
+            try:
+                has_match = int(matched_eid) > 0
+            except (TypeError, ValueError):
+                has_match = bool(matched_eid)
+        if has_match:
+            continue
+        # When reading plain events_calendar.csv there is no match_status — treat
+        # every row as a candidate; callers still filter by retention window and
+        # later dedupe against catalog-backed rows.
+        if "match_status" in df.columns and match_status and match_status != "unmatched":
+            continue
+        start = _parse_date(rec.get("start_date"))
+        if start is None:
+            continue
+        end = _parse_date(rec.get("end_date"))
+        if not _within_unlinked_ended_retention(
+            start=start, end=end, as_of=as_of, retention_days=retention_days
+        ):
+            continue
+        name = _clean_name(rec.get("calendar_title")) or _clean_name(rec.get("event_name"))
+        if not name:
+            continue
+        fp = str(rec.get("source_fingerprint") or "").strip() or None
+        geo = geo_by_fp.get(fp or "") if fp else {}
+        year_raw = rec.get("results_year")
+        try:
+            year_i = int(year_raw) if year_raw is not None and not pd.isna(year_raw) else start.year
+        except (TypeError, ValueError):
+            year_i = start.year
+        status_flags = "Trial Event" if geo.get("kind_from_schedule") else ""
+        kind = geo.get("kind") or _kind_from_status_event(status_flags, name)
+        rows.append(
+            {
+                "event_id": None,
+                "name": geo.get("name") or name,
+                "start_date": start,
+                "end_date": end,
+                "status": STATUS_CONFIRMED,
+                "kind": kind,
+                "kind_from_schedule": bool(geo.get("kind_from_schedule")),
+                "url": geo.get("url") or _clean_name(rec.get("url")),
+                "city": geo.get("city"),
+                "country": geo.get("country"),
+                "location_id": geo.get("location_id"),
+                "source": "events_calendar_retention",
+                "year": year_i,
+                "provisional_unlinked": True,
+                "source_fingerprint": fp,
+            }
+        )
+    return rows
+
+
 def _inactive_event_ids(catalog: pd.DataFrame) -> set[int]:
     if catalog.empty or "registry_status" not in catalog.columns:
         return set()
@@ -842,6 +1011,7 @@ def _prefer_row(existing: dict, new: dict) -> dict:
         "events_list_current": 4,
         "edition_calendar_dates": 3,
         "operator_override": 3,
+        "events_calendar_retention": 2,
         "event_editions": 2,
         "event_editions_month_only": 1,
         "expected_yoy": 0,
@@ -1671,11 +1841,14 @@ def build_year_event_calendar(
     if not scheduled_rows:
         scheduled_rows = _rows_from_events_list_current(data_dir)
 
+    retention_rows = _rows_from_unmatched_calendar_retention(data_dir, as_of=as_of)
+
     base_rows = (
         _rows_from_edition_calendar_dates(data_dir)
         + _rows_from_operator_overrides()
         + _rows_from_editions(data_dir)
         + scheduled_rows
+        + retention_rows
     )
     _coerce_cancelled_to_hiatus(base_rows)
     _canonicalize_calendar_rows(base_rows, catalog)
