@@ -584,6 +584,58 @@ def check_edition_location_baseline_drift(
     )
 
 
+def check_baseline_vs_location_overrides(
+    baseline: pd.DataFrame | None,
+    location_info: pd.DataFrame | None,
+) -> QualityFinding | None:
+    """Baseline location_id disagrees with EVENT_NAME_LOCATION_OVERRIDES (poison seed)."""
+    from transform.geography.edition_location_baseline import (
+        find_baseline_override_conflicts,
+    )
+
+    if baseline is None or baseline.empty or location_info is None or location_info.empty:
+        return None
+    conflicts = find_baseline_override_conflicts(baseline, location_info)
+    if not conflicts:
+        return None
+    examples = [
+        {
+            "event_id": c.event_id,
+            "event_year": c.event_year,
+            "event_month": c.event_month,
+            "event_name": c.event_name,
+            "baseline_location_id": c.baseline_location_id,
+            "override_location_id": c.override_location_id,
+            "override_location": c.override_location,
+        }
+        for c in conflicts[:20]
+    ]
+    return QualityFinding(
+        category="location",
+        code="BASELINE_VS_LOCATION_OVERRIDE",
+        severity="high",
+        message=(
+            "edition_location_baseline location_id disagrees with "
+            "EVENT_NAME_LOCATION_OVERRIDES (seed/auto-add froze a shared wrong lid)"
+        ),
+        count=len(conflicts),
+        examples=examples,
+        suggested_fix=(
+            "Apply overrides + repair results/editions, then UPDATE "
+            "core.edition_location_baseline to the override location_id "
+            "(source='manual'). Cross-load drift alone cannot see poison seeds."
+        ),
+        fingerprint=_fingerprint(
+            "location",
+            "BASELINE_VS_LOCATION_OVERRIDE",
+            "|".join(
+                f"{c.event_id}:{c.baseline_location_id}->{c.override_location_id}"
+                for c in conflicts[:15]
+            ),
+        ),
+    )
+
+
 def check_catalog_typical_vs_upcoming(
     catalog: pd.DataFrame | None,
 ) -> QualityFinding | None:
@@ -904,6 +956,12 @@ def run_audit(
         item = check_edition_location_baseline_drift(
             results,
             data.get("edition_location_baseline"),
+        )
+        if item:
+            findings.append(item)
+        item = check_baseline_vs_location_overrides(
+            data.get("edition_location_baseline"),
+            location_info,
         )
         if item:
             findings.append(item)

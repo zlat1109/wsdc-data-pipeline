@@ -71,6 +71,54 @@ def test_quality_audit_edition_location_baseline_drift():
     assert finding.count == 1
 
 
+def test_baseline_override_conflict_flags_poison_seed():
+    from transform.geography.edition_location_baseline import (
+        find_baseline_override_conflicts,
+    )
+    from transform.quality_audit import check_baseline_vs_location_overrides
+
+    baseline = pd.DataFrame(
+        [
+            {
+                "event_id": "280",
+                "event_year": "2026",
+                "event_month": "7",
+                "location_id": "253",
+                "event_name": "Saint Petersburg WCS Nights",
+            },
+        ]
+    )
+    locations = pd.DataFrame(
+        [
+            {
+                "location_id": "253",
+                "event_country": "Australia",
+                "event_location": "Perth, Australia",
+                "event_location_standardized": "Perth, Australia",
+            },
+            {
+                "location_id": "222",
+                "event_country": "Russia",
+                "event_location": "St. Petersburg, Russia",
+                "event_location_standardized": "St. Petersburg, Russia",
+            },
+        ]
+    )
+    overrides = {"Saint Petersburg WCS Nights": "St. Petersburg, Russia"}
+    conflicts = find_baseline_override_conflicts(
+        baseline, locations, name_overrides=overrides
+    )
+    assert len(conflicts) == 1
+    assert conflicts[0].baseline_location_id == "253"
+    assert conflicts[0].override_location_id == "222"
+
+    # No conflict when results==baseline but both wrong — drift silent; override check fires.
+    finding = check_baseline_vs_location_overrides(baseline, locations)
+    assert finding is not None
+    assert finding.code == "BASELINE_VS_LOCATION_OVERRIDE"
+    assert finding.count >= 1
+
+
 def test_sync_edition_location_baseline_uses_fetchall_count():
     """auto_added must count RETURNING rows, not rely on rowcount."""
     from db.edition_location_baseline import sync_edition_location_baseline_after_load

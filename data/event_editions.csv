@@ -26,7 +26,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 7920,362,MY Swing,2026,7,2026-07-01,2026-07-09,2026-07-12,wsdc_calendar,scheduled,t,271,Kuala Lumpur,,Malaysia,"Kuala Lumpur, Malaysia",97,94,https://www.myswingopen.com/,"Kuala Lumpur, Malaysia",
 7957,385,Revitalise WCS,2026,7,2026-07-01,2026-07-16,2026-07-19,wsdc_calendar,scheduled,t,174,Melbourne,,Australia,"Melbourne, Australia",76,72,https://revitalisewcs.melbourne/,"Melbourne, Australia",Registry Event
 7546,256,Rock the Barn,2026,7,2026-07-01,2026-07-17,2026-07-19,wsdc_calendar,scheduled,t,215,Umeå,,Sweden,"Umeå, Sweden",98,90,https://rockthebarn.se/,"Umeå, Sweden",
-7688,280,Saint Petersburg WCS Nights,2026,7,2026-07-01,2026-07-22,2026-07-26,wsdc_calendar,scheduled,t,253,Perth,,Australia,"Perth, Australia",102,91,http://wcsnights.ru,"Perth, Australia",
+7688,280,Saint Petersburg WCS Nights,2026,7,2026-07-01,2026-07-22,2026-07-26,wsdc_calendar,scheduled,t,222,St. Petersburg,nan,Russia,"St. Petersburg, Russia",102,91,http://wcsnights.ru,"St. Petersburg, Russia",
 7917,360,SaunaSwing,2026,7,2026-07-01,2026-07-02,2026-07-04,wsdc_calendar,scheduled,t,268,Ikaalinen,,Finland,"Ikaalinen, Finland",92,81,https://ekarolas.com/saunaswing/,"Ikaalinen, Finland",
 7961,389,SwingLab Berlin,2026,7,2026-07-01,2026-07-10,2026-07-12,wsdc_calendar,scheduled,t,194,Berlin,,Germany,"Berlin, Germany",118,106,http://www.swinglab-berlin.com,"Berlin, Germany",
 7370,225,Wild Wild Westie,2026,7,2026-07-01,2026-07-02,2026-07-05,wsdc_calendar,scheduled,t,21,Dallas,Texas,United States,"Dallas, TX, United States",150,146,http://www.WildWildWestie.com,"Dallas, TX",
@@ -140,7 +140,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 7631,270,Westie's Angels,2025,11,2025-11-01,2025-11-07,2025-11-10,wsdc_calendar,scheduled,t,156,Lyon,,France,"Lyon, France",114,100,http://www.frenchywesty.com/,"Lyon, France",Registry Event
 7841,323,Westies on the Water,2025,11,2025-11-01,2025-10-31,2025-11-02,wsdc_calendar,scheduled,t,137,Huntsville,Alabama,United States,"Huntsville, AL, United States",72,66,http://rocketcityswing.com/,"Huntsville, Alabama, United States",Registry Event
 7247,211,Atlanta Swing Classic,2025,10,2025-10-01,2025-10-02,2025-10-05,wsdc_calendar,scheduled,t,25,Atlanta,Georgia,United States,"Atlanta, GA, United States",145,138,https://www.atlantaswingclassic.com/,"Atlanta, GA, United States",Registry Event
-7906,350,Augsburg Westie Station,2025,10,2025-10-01,2025-10-22,2025-10-25,wsdc_calendar,scheduled,t,266,Brno,,Czech Republic,"Brno, Czech Republic",102,96,https://www.augsburgwestiestation.com/,"Brno, Czech Republic",Registry Event
+7906,350,Augsburg Westie Station,2025,10,2025-10-01,2025-10-22,2025-10-25,wsdc_calendar,scheduled,t,195,Augsburg,nan,Germany,"Augsburg, Germany",102,96,https://www.augsburgwestiestation.com/,"Augsburg, Germany",Registry Event
 5400,8,Boogie By The Bay,2025,10,2025-10-01,2025-10-16,2025-10-20,wsdc_calendar,scheduled,t,2,San Francisco,California,United States,"San Francisco, CA, United States",162,158,https://boogiebythebay.com/,"San Francisco, CA",Registry Event
 7927,367,Go West SwingFest,2025,10,2025-10-01,2025-10-10,2025-10-12,wsdc_calendar,scheduled,t,253,Perth,,Australia,"Perth, Australia",41,30,,"Perth, Australia",
 6072,65,Halloween SwingThing,2025,10,2025-10-01,2025-10-23,2025-10-26,wsdc_calendar,scheduled,t,24,Costa Mesa,California,United States,"Costa Mesa, CA, United States",108,104,http://hstswing.com/,"Costa Mesa, CA",Registry Event
@@ -200,7 +200,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 7919,362,MY Swing,2025,7,2025-07-01,2025-07-10,2025-07-13,wsdc_calendar,scheduled,t,271,Kuala Lumpur,,Malaysia,"Kuala Lumpur, Malaysia",92,90,https://www.myswingopen.com/,"Kuala Lumpur, Malaysia",
 7956,385,Revitalise WCS,2025,7,2025-07-01,2025-07-18,2025-07-20,wsdc_calendar,scheduled,t,174,Melbourne,,Australia,"Melbourne, Australia",52,51,https://revitalisewcs.melbourne/,"Melbourne, Australia",Registry Event
 7545,256,Rock the Barn,2025,7,2025-07-01,2025-07-18,2025-07-20,wsdc_calendar,scheduled,t,215,Umeå,,Sweden,"Umeå, Sweden",79,76,https://rockthebarn.se/,"Umeå, Sweden",
-7687,280,Saint Petersburg WCS Nights,2025,7,2025-07-01,2025-07-17,2025-07-20,wsdc_calendar,scheduled,t,253,Perth,,Australia,"Perth, Australia",122,109,http://wcsnights.ru,"Perth, Australia",
+7687,280,Saint Petersburg WCS Nights,2025,7,2025-07-01,2025-07-17,2025-07-20,wsdc_calendar,scheduled,t,222,St. Petersburg,nan,Russia,"St. Petersburg, Russia",122,109,http://wcsnights.ru,"St. Petersburg, Russia",
 7916,360,SaunaSwing,2025,7,2025-07-01,2025-07-03,2025-07-06,wsdc_calendar,scheduled,t,268,Ikaalinen,,Finland,"Ikaalinen, Finland",94,76,https://ekarolas.com/saunaswing/,"Ikaalinen, Finland",
 6738,147,Toronto Open Swing & Hustle Championships,2025,7,2025-07-01,2025-07-17,2025-07-20,wsdc_calendar,scheduled,t,105,Toronto,,Canada,"Toronto, Canada",94,78,http://www.TOSHC.com,"Toronto, Canada",
 7369,225,Wild Wild Westie,2025,7,2025-07-01,2025-07-03,2025-07-06,wsdc_calendar,scheduled,t,21,Dallas,Texas,United States,"Dallas, TX, United States",146,144,http://www.WildWildWestie.com,"Dallas, TX",
@@ -308,7 +308,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 7630,270,Westie's Angels,2024,11,2024-11-01,,,,,,156,Lyon,,France,"Lyon, France",124,111,http://www.frenchywesty.com/,"Lyon, France",Registry Event
 7840,323,Westies on the Water,2024,11,2024-11-01,,,,,,137,Huntsville,Alabama,United States,"Huntsville, AL, United States",66,56,http://rocketcityswing.com/,"Huntsville, Alabama, United States",Registry Event
 7246,211,Atlanta Swing Classic,2024,10,2024-10-01,,,,,,25,Atlanta,Georgia,United States,"Atlanta, GA, United States",152,150,https://www.atlantaswingclassic.com/,"Atlanta, GA, United States",Registry Event
-7905,350,Augsburg Westie Station,2024,10,2024-10-01,,,,,,266,Brno,,Czech Republic,"Brno, Czech Republic",88,83,https://www.augsburgwestiestation.com/,"Brno, Czech Republic",Registry Event
+7905,350,Augsburg Westie Station,2024,10,2024-10-01,,,,,,195,Augsburg,nan,Germany,"Augsburg, Germany",88,83,https://www.augsburgwestiestation.com/,"Augsburg, Germany",Registry Event
 5399,8,Boogie By The Bay,2024,10,2024-10-01,,,,,,2,San Francisco,California,United States,"San Francisco, CA, United States",155,150,https://boogiebythebay.com/,"San Francisco, CA",Registry Event
 7926,367,Go West SwingFest,2024,10,2024-10-01,,,,,,253,Perth,,Australia,"Perth, Australia",25,25,,"Perth, Australia",
 6071,65,Halloween SwingThing,2024,10,2024-10-01,,,,,,24,Costa Mesa,California,United States,"Costa Mesa, CA, United States",128,124,http://hstswing.com/,"Costa Mesa, CA",Registry Event
@@ -357,7 +357,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 7792,303,Odyssey West Coast Swing,2024,7,2024-07-01,,,,,,169,Gold Coast,,Australia,"Gold Coast, Australia",67,52,http://www.odysseywcs.dance,"Gold Coast, Australia",
 7584,263,Riga Summer Swing,2024,7,2024-07-01,,,,,,203,Riga,,Latvia,"Riga, Latvia",83,79,,"Riga, Latvia",
 7544,256,Rock the Barn,2024,7,2024-07-01,,,,,,215,Umeå,,Sweden,"Umeå, Sweden",61,58,https://rockthebarn.se/,"Umeå, Sweden",
-7686,280,Saint Petersburg WCS Nights,2024,7,2024-07-01,,,,,,253,Perth,,Australia,"Perth, Australia",113,101,http://wcsnights.ru,"Perth, Australia",
+7686,280,Saint Petersburg WCS Nights,2024,7,2024-07-01,,,,,,222,St. Petersburg,nan,Russia,"St. Petersburg, Russia",113,101,http://wcsnights.ru,"St. Petersburg, Russia",
 6737,147,Toronto Open Swing & Hustle Championships,2024,7,2024-07-01,,,,,,105,Toronto,,Canada,"Toronto, Canada",85,74,http://www.TOSHC.com,"Toronto, Canada",
 7368,225,Wild Wild Westie,2024,7,2024-07-01,,,,,,21,Dallas,Texas,United States,"Dallas, TX, United States",160,158,http://www.WildWildWestie.com,"Dallas, TX",
 7345,222,Baltic Swing,2024,6,2024-06-01,,,,,,186,Gdańsk,,Poland,"Gdańsk, Poland",125,114,http://www.balticswing.com,"Gdańsk, Poland",Registry Event
@@ -491,7 +491,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 7573,261,Neverland Swing,2023,7,2023-07-01,,,,,,191,Amsterdam,,Netherlands,"Amsterdam, Netherlands",74,65,http://www.neverlandswing.com/,"Amsterdam, Netherlands",Registry Event
 7791,303,Odyssey West Coast Swing,2023,7,2023-07-01,,,,,,169,Gold Coast,,Australia,"Gold Coast, Australia",50,41,http://www.odysseywcs.dance,"Gold Coast, Australia",
 7543,256,Rock the Barn,2023,7,2023-07-01,,,,,,215,Umeå,,Sweden,"Umeå, Sweden",58,57,https://rockthebarn.se/,"Umeå, Sweden",
-7685,280,Saint Petersburg WCS Nights,2023,7,2023-07-01,,,,,,253,Perth,,Australia,"Perth, Australia",74,71,http://wcsnights.ru,"Perth, Australia",
+7685,280,Saint Petersburg WCS Nights,2023,7,2023-07-01,,,,,,222,St. Petersburg,nan,Russia,"St. Petersburg, Russia",74,71,http://wcsnights.ru,"St. Petersburg, Russia",
 7851,331,Swing Fiction,2023,7,2023-07-01,,,,,,266,Brno,,Czech Republic,"Brno, Czech Republic",85,83,https://swingfiction.cz/,"Brno, Czech Republic",
 6736,147,Toronto Open Swing & Hustle Championships,2023,7,2023-07-01,,,,,,105,Toronto,,Canada,"Toronto, Canada",56,52,http://www.TOSHC.com,"Toronto, Canada",
 7367,225,Wild Wild Westie,2023,7,2023-07-01,,,,,,21,Dallas,Texas,United States,"Dallas, TX, United States",175,173,http://www.WildWildWestie.com,"Dallas, TX",
@@ -601,7 +601,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 6749,148,Dance Mardi Gras,2022,7,2022-07-01,,,,,,57,New Orleans,Louisiana,United States,"New Orleans, LA, United States",61,56,http://www.dancemardigras.com,"New Orleans, LA",
 6765,149,Florida Dance Magic,2022,7,2022-07-01,,,,,,55,Fort Lauderdale,Florida,United States,"Fort Lauderdale, FL, United States",28,24,https://floridadancemagic.com/,"Fort Lauderdale, FL",Registry Event
 7572,261,Neverland Swing,2022,7,2022-07-01,,,,,,191,Amsterdam,,Netherlands,"Amsterdam, Netherlands",54,46,http://www.neverlandswing.com/,"Amsterdam, Netherlands",Registry Event
-7684,280,Saint Petersburg WCS Nights,2022,7,2022-07-01,,,,,,253,Perth,,Australia,"Perth, Australia",61,61,http://wcsnights.ru,"Perth, Australia",
+7684,280,Saint Petersburg WCS Nights,2022,7,2022-07-01,,,,,,222,St. Petersburg,nan,Russia,"St. Petersburg, Russia",61,61,http://wcsnights.ru,"St. Petersburg, Russia",
 5821,47,Swingtime in the Rockies,2022,7,2022-07-01,,,,,,29,Denver,Colorado,United States,"Denver, CO, United States",133,127,http://www.swingtimewcs.com,"Denver, CO",
 7366,225,Wild Wild Westie,2022,7,2022-07-01,,,,,,21,Dallas,Texas,United States,"Dallas, TX, United States",163,157,http://www.WildWildWestie.com,"Dallas, TX",
 7343,222,Baltic Swing,2022,6,2022-06-01,,,,,,186,Gdańsk,,Poland,"Gdańsk, Poland",116,113,http://www.balticswing.com,"Gdańsk, Poland",Registry Event
@@ -659,7 +659,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 6502,120,Lone Star Invitational,2021,8,2021-08-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",42,38,,"Austin, TX",
 7674,278,Americano Dance Camp,2021,7,2021-07-01,,,,,,252,Samara,,Russia,"Samara, Russia",50,50,https://t.me/americamodancecamp https://vk.com/americano2025,"Samara, Russia",
 6819,156,Big Apple Dance Festival,2021,7,2021-07-01,,,,,,140,Morristown,New Jersey,United States,"Morristown, NJ, United States",18,17,http://bigapplecountrydance.com/,"Morristown, NJ",
-7683,280,Saint Petersburg WCS Nights,2021,7,2021-07-01,,,,,,253,Perth,,Australia,"Perth, Australia",60,60,http://wcsnights.ru,"Perth, Australia",
+7683,280,Saint Petersburg WCS Nights,2021,7,2021-07-01,,,,,,222,St. Petersburg,nan,Russia,"St. Petersburg, Russia",60,60,http://wcsnights.ru,"St. Petersburg, Russia",
 7365,225,Wild Wild Westie,2021,7,2021-07-01,,,,,,21,Dallas,Texas,United States,"Dallas, TX, United States",170,164,http://www.WildWildWestie.com,"Dallas, TX",
 6461,117,Orange Blossom Dance Festival,2021,6,2021-06-01,,,,,,82,Orlando,Florida,United States,"Orlando, FL, United States",67,64,http://www.orangeblossomdance.net,"Orlando, FL",
 6957,174,Swingsation,2021,6,2021-06-01,,,,,,169,Gold Coast,,Australia,"Gold Coast, Australia",33,30,https://rawconnection.com.au/swingsation/,"Gold Coast, Australia",Registry Event
@@ -766,7 +766,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 7790,303,Odyssey West Coast Swing,2019,7,2019-07-01,,,,,,169,Gold Coast,,Australia,"Gold Coast, Australia",26,26,http://www.odysseywcs.dance,"Gold Coast, Australia",
 5788,44,Portland Dance Festival,2019,7,2019-07-01,,,,,,4,Portland,Oregon,United States,"Portland, OR, United States",70,69,,"Portland, OR",
 7541,256,Rock the Barn,2019,7,2019-07-01,,,,,,215,Umeå,,Sweden,"Umeå, Sweden",63,63,https://rockthebarn.se/,"Umeå, Sweden",
-7682,280,Saint Petersburg WCS Nights,2019,7,2019-07-01,,,,,,253,Perth,,Australia,"Perth, Australia",62,62,http://wcsnights.ru,"Perth, Australia",
+7682,280,Saint Petersburg WCS Nights,2019,7,2019-07-01,,,,,,222,St. Petersburg,nan,Russia,"St. Petersburg, Russia",62,62,http://wcsnights.ru,"St. Petersburg, Russia",
 6879,164,Sea Sun and Swing,2019,7,2019-07-01,,,,,,158,La Grande Motte,,France,"La Grande Motte, France",73,73,https://www.seasunswing.fr/,"La Grande Motte, France",
 5820,47,Swingtime in the Rockies,2019,7,2019-07-01,,,,,,29,Denver,Colorado,United States,"Denver, CO, United States",87,87,http://www.swingtimewcs.com,"Denver, CO",
 6735,147,Toronto Open Swing & Hustle Championships,2019,7,2019-07-01,,,,,,105,Toronto,,Canada,"Toronto, Canada",62,62,http://www.TOSHC.com,"Toronto, Canada",
@@ -923,7 +923,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 7789,303,Odyssey West Coast Swing,2018,7,2018-07-01,,,,,,169,Gold Coast,,Australia,"Gold Coast, Australia",29,29,http://www.odysseywcs.dance,"Gold Coast, Australia",
 5787,44,Portland Dance Festival,2018,7,2018-07-01,,,,,,4,Portland,Oregon,United States,"Portland, OR, United States",61,59,,"Portland, OR",
 7540,256,Rock the Barn,2018,7,2018-07-01,,,,,,215,Umeå,,Sweden,"Umeå, Sweden",49,49,https://rockthebarn.se/,"Umeå, Sweden",
-7681,280,Saint Petersburg WCS Nights,2018,7,2018-07-01,,,,,,253,Perth,,Australia,"Perth, Australia",51,51,http://wcsnights.ru,"Perth, Australia",
+7681,280,Saint Petersburg WCS Nights,2018,7,2018-07-01,,,,,,222,St. Petersburg,nan,Russia,"St. Petersburg, Russia",51,51,http://wcsnights.ru,"St. Petersburg, Russia",
 7579,262,Swing It Like It's Hot,2018,7,2018-07-01,,,,,,147,Tel Aviv,,Israel,"Tel Aviv, Israel",43,43,,"Tel Aviv, Israel",
 5819,47,Swingtime in the Rockies,2018,7,2018-07-01,,,,,,29,Denver,Colorado,United States,"Denver, CO, United States",103,101,http://www.swingtimewcs.com,"Denver, CO",
 6734,147,Toronto Open Swing & Hustle Championships,2018,7,2018-07-01,,,,,,105,Toronto,,Canada,"Toronto, Canada",82,79,http://www.TOSHC.com,"Toronto, Canada",
@@ -1068,7 +1068,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 5786,44,Portland Dance Festival,2017,7,2017-07-01,,,,,,4,Portland,Oregon,United States,"Portland, OR, United States",60,57,,"Portland, OR",
 7539,256,Rock the Barn,2017,7,2017-07-01,,,,,,215,Umeå,,Sweden,"Umeå, Sweden",73,73,https://rockthebarn.se/,"Umeå, Sweden",
 7689,281,Sacramento All Swing,2017,7,2017-07-01,,,,,,6,Sacramento,California,United States,"Sacramento, CA, United States",79,77,,"Sacramento, CA",
-7680,280,Saint Petersburg WCS Nights,2017,7,2017-07-01,,,,,,253,Perth,,Australia,"Perth, Australia",67,67,http://wcsnights.ru,"Perth, Australia",
+7680,280,Saint Petersburg WCS Nights,2017,7,2017-07-01,,,,,,222,St. Petersburg,nan,Russia,"St. Petersburg, Russia",67,67,http://wcsnights.ru,"St. Petersburg, Russia",
 6878,164,Sea Sun and Swing,2017,7,2017-07-01,,,,,,158,La Grande Motte,,France,"La Grande Motte, France",85,85,https://www.seasunswing.fr/,"La Grande Motte, France",
 7578,262,Swing It Like It's Hot,2017,7,2017-07-01,,,,,,147,Tel Aviv,,Israel,"Tel Aviv, Israel",70,70,,"Tel Aviv, Israel",
 5818,47,Swingtime in the Rockies,2017,7,2017-07-01,,,,,,29,Denver,Colorado,United States,"Denver, CO, United States",78,75,http://www.swingtimewcs.com,"Denver, CO",

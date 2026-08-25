@@ -27,6 +27,7 @@ See [../transform/index.md](../transform/index.md) and [../transform/geography.m
 | `SCHEDULED_VS_RESULTS_COUNTRY_CONFLICT` | high | WSDC calendar country ≠ results location country |
 | `EVENT_ID_CANONICAL_LOCATION_MISMATCH` | high | Results/editions country ≠ curated `event_id` canon (KNOWN / name override / upcoming). Catches uniform shared-wrong ids |
 | `EDITION_LOCATION_BASELINE_DRIFT` | high | Results `location_id` for a known `(event_id, year, month)` differs from `edition_location_baseline.csv` (cross-load drift). Does not block load |
+| `BASELINE_VS_LOCATION_OVERRIDE` | high | Baseline `location_id` disagrees with `EVENT_NAME_LOCATION_OVERRIDES` (poison seed / shared wrong lid frozen at seed). Does not block load |
 | `CATALOG_TYPICAL_UPCOMING_CONFLICT` | medium | Catalog typical ≠ upcoming (stuck typical or real move) |
 
 Quick offline scan (no full preprocess):
@@ -51,6 +52,8 @@ Legacy audit-only: `scripts/data_quality_audit.py` (prefer preprocess).
 **Completed-edition directory (Supabase):** `export.completed_event_editions` (materialized view, migration 032). Pre-flight location/id audits: `db/sql/audit_completed_event_location_links.sql`. Refresh after load: `SELECT export.refresh_completed_event_editions();`
 
 **Edition location baseline (Supabase):** `core.edition_location_baseline` (migration 033) stores frozen `(event_id, event_year, event_month) → location_id`. Export: `export.edition_location_baseline` → `data/edition_location_baseline.csv`. After each load, `load.py` compares `core.event_editions` to baseline, auto-adds new edition keys, always refreshes `data/quality_reports/edition_location_baseline_drift.json` (`drift_count: 0` on clean runs). **First cycle after deploy:** migration 033 + export must run before preprocess CSV check is active; until then only post-load drift applies. Legitimate venue changes: `UPDATE core.edition_location_baseline SET location_id = …, source = 'manual', updated_at = now() WHERE …` in Supabase UI.
+
+**Limitation (poison seed):** cross-load drift only fires when *current* ≠ baseline. If seed/auto-add froze an already-wrong shared `location_id` (e.g. St. Pete stuck on Perth), both stay equal and drift stays silent. Preprocess emits `BASELINE_VS_LOCATION_OVERRIDE` when baseline disagrees with `EVENT_NAME_LOCATION_OVERRIDES`. Schedule-vs-results (`SCHEDULED_VS_RESULTS_COUNTRY_CONFLICT`) is the other early signal for those cases.
 
 <!-- docs-sync:core-quality-checks -->
 | Check | Target | Meaning |

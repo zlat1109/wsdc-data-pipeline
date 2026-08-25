@@ -80,6 +80,15 @@ def test_westie_gala_metadata_and_stockholm_override():
     assert KNOWN_EVENT_METADATA[357]["typical_location"] == "Vienna, Austria"
     assert EVENT_NAME_LOCATION_OVERRIDES["Southern Lights Swing"] == "Hobart, Australia"
     assert EVENT_NAME_LOCATION_OVERRIDES["Arousa Westie Fest"] == "Sanxenxo, Spain"
+    assert (
+        EVENT_NAME_LOCATION_OVERRIDES["Saint Petersburg WCS Nights"]
+        == "St. Petersburg, Russia"
+    )
+    assert (
+        EVENT_NAME_LOCATION_OVERRIDES["St. Petersburg WCS Nights"]
+        == "St. Petersburg, Russia"
+    )
+    assert EVENT_NAME_LOCATION_OVERRIDES["Augsburg Westie Station"] == "Augsburg, Germany"
     assert EVENT_NAME_LOCATION_OVERRIDES["German Open"] == "Freiburg, Germany"
     assert EVENT_NAME_LOCATION_OVERRIDES["Milan Modern Swing"] == "Milan, Italy"
     assert KNOWN_EVENT_METADATA[344]["typical_location"] == "Sanxenxo, Spain"
