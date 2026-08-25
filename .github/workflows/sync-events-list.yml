@@ -9,13 +9,17 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: wsdc-sync-events-list
+  cancel-in-progress: false
+
 jobs:
   sync-events-list:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
@@ -50,15 +54,57 @@ jobs:
           GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
         run: python scripts/sync_events_list.py --source github-actions
 
-      - name: Commit events list + calendar data
+      - name: Export CSV from Supabase (weekly list sync)
+        env:
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_SSLMODE: require
+          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+        run: python export.py --output-dir data
+
+      - name: Commit weekly events sync data
+        id: commit_data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/events_list/ data/events_calendar/ data/location_info.csv
-          if git diff --staged --quiet; then
-            echo "No events list/calendar/location changes to commit"
-          else
-            git commit -m "Update WSDC events list, calendar, and trial location geo."
-            git pull --rebase origin main
-            git push
+          if [ "${GITHUB_REF_NAME}" != "main" ]; then
+            echo "::warning::Skipping data commit (ref=${GITHUB_REF_NAME}; only main publishes data)."
+            echo "committed=false" >> "$GITHUB_OUTPUT"
+            exit 0
           fi
+          git add data/events_list/ data/events_calendar/ data/*.csv data/event_aliases.json data/quality_reports/
+          if git diff --staged --quiet; then
+            echo "No weekly events-sync changes to commit"
+            echo "committed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "chore(data): weekly events list/calendar sync + export [skip ci]"
+            git pull --rebase origin main
+            git push origin HEAD:main
+            echo "committed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Sync analytics site after weekly events sync
+        if: success() && steps.commit_data.outputs.committed == 'true'
+        env:
+          WSDC_ANALYTICS_DEPLOY_TOKEN: ${{ secrets.WSDC_ANALYTICS_DEPLOY_TOKEN }}
+          POINT_SUMMARY_CUTOFF: "2026-07-28"
+          POINT_SUMMARY_REPORT: data/quality_reports/point_summary_last.json
+          CHAMPION_NEWS_CUTOFF: "2026-07-25"
+          CHAMPION_NEWS_REPORT: data/quality_reports/champion_news_last.json
+          YEAR_CAL_REPORT: data/quality_reports/year_event_calendar_last.json
+        run: bash scripts/sync_analytics_site.sh
+
+      - name: Notify Telegram (weekly sync failed)
+        if: failure()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GITHUB_WORKFLOW: ${{ github.workflow }}
+          GITHUB_JOB: ${{ github.job }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          GITHUB_SERVER_URL: ${{ github.server_url }}
+        run: python scripts/telegram_notify.py pipeline-failed

@@ -114,7 +114,7 @@
       "name": "edition_calendar_orphan_event_ids",
       "category": "event_naming",
       "severity": "warn",
-      "value": 6,
+      "value": 5,
       "max_value": 0,
       "ok": false,
       "description": "Calendar date rows must point at a current catalog event_id.",
@@ -134,9 +134,9 @@
       "name": "schedule_orphan_location_id",
       "category": "location",
       "severity": "warn",
-      "value": 0,
+      "value": 1,
       "max_value": 0,
-      "ok": true,
+      "ok": false,
       "description": "events_list_current.location_id must exist in core.locations (no FK).",
       "fix_hint": "sync_events_list ensure_location; null invalid lids on restore"
     },
@@ -144,7 +144,7 @@
       "name": "recent_editions_missing_day_dates",
       "category": "event_naming",
       "severity": "warn",
-      "value": 1,
+      "value": 3,
       "max_value": 50,
       "ok": true,
       "description": "Most 2025+ editions with results should have calendar day dates.",
@@ -199,6 +199,16 @@
       "ok": true,
       "description": "Source-derived edition location differs from results majority location_id (recent years).",
       "fix_hint": "Audit event mapping/source location; if needed fix results location_id or add override."
+    },
+    {
+      "name": "edition_location_baseline_drift",
+      "category": "location",
+      "severity": "warn",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "Known edition key location_id differs from core.edition_location_baseline (cross-load drift \u2014 manual review)",
+      "fix_hint": "See data/quality_reports/edition_location_baseline_drift.json; fix location pipeline or UPDATE baseline in Supabase after approve"
     },
     {
       "name": "city_equals_country",
@@ -322,11 +332,11 @@
     }
   ],
   "summary": {
-    "total": 32,
+    "total": 33,
     "passed": 31,
     "errors": 0,
-    "warnings": 1
+    "warnings": 2
   },
-  "generated_at": "2026-08-14T18:17:04.848925+00:00",
+  "generated_at": "2026-08-24T20:32:52.480330+00:00",
   "scope": "full"
 }

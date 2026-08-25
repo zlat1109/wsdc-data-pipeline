@@ -8,6 +8,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -104,6 +105,33 @@ def main() -> None:
                     f"legacy={tier_status.get('legacy_chart', 0):,}, "
                     f"unmatched={tier_status.get('unmatched', 0):,})"
                 )
+
+                from edition_location_baseline import (
+                    refresh_completed_event_editions_mv,
+                    sync_edition_location_baseline_after_load,
+                )
+
+                baseline_report = sync_edition_location_baseline_after_load(conn)
+                refresh_completed_event_editions_mv(conn)
+                drift_n = int(baseline_report.get("drift_count", 0))
+                added_n = int(baseline_report.get("auto_added", 0))
+                print(
+                    f"Edition location baseline: drifts={drift_n}, auto_added={added_n}"
+                )
+                report_path = PROJECT_ROOT / "data" / "quality_reports"
+                report_path.mkdir(parents=True, exist_ok=True)
+                out = report_path / "edition_location_baseline_drift.json"
+                payload = {
+                    "generated_at": datetime.now(timezone.utc).isoformat(),
+                    "run_id": run_id,
+                    "drift_count": drift_n,
+                    "auto_added": added_n,
+                    "drifts": baseline_report.get("drifts", []),
+                }
+                out.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+                if drift_n:
+                    print(f"Baseline drift report: {out}")
+
                 cur.execute("ANALYZE core.results, core.event_editions, core.event_catalog")
 
                 cur.execute(

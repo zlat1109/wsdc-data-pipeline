@@ -50,6 +50,8 @@ CI and `scripts/run_pipeline.py` call `db/apply.py` before load.
 | `029_tier_finalist_points.sql` | Tier points placement 0 = finalist award; finalist_max_place; status rollup fix |
 | `030_scheduled_events_location.sql` | Trial / list geo: attach location_id (+ provenance) to schedule rows. Additive only — does not rewrite existing core.locations coverage. Source priority (app-enforced): event_website > events_list > points. |
 | `031_schedule_location_no_fk.sql` | Drop schedule location_id FKs so promote CASCADE cannot wipe the calendar |
+| `032_completed_event_editions_mv.sql` | MV export.completed_event_editions + refresh helper |
+| `033_edition_location_baseline.sql` | Edition location baseline table + export view + seed |
 <!-- /docs-sync:migration-index -->
 
 ## Adding a migration

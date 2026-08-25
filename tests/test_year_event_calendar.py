@@ -832,8 +832,8 @@ def test_calendar_listing_keeps_place_suffix_marketing_title():
     assert not _calendar_listing_matches_event("WCS Party", "Soul Flow in Vienna")
 
 
-def test_canonicalize_calgary_town_open_to_bto_open():
-    """Calgary Town Open is a marketing rename of catalog BTO Open (event_id 324)."""
+def test_canonicalize_calgary_town_open_keeps_current_catalog_name():
+    """Calgary Town Open is the current catalog title for event_id 324."""
     import pandas as pd
 
     from transform.year_event_calendar.build import _canonicalize_calendar_rows
@@ -842,7 +842,7 @@ def test_canonicalize_calgary_town_open_to_bto_open():
         [
             {
                 "event_id": 324,
-                "canonical_name": "BTO Open",
+                "canonical_name": "Calgary Town Open",
                 "registry_status": "Registry Event",
                 "edition_count": 3,
             }
@@ -860,7 +860,39 @@ def test_canonicalize_calgary_town_open_to_bto_open():
         }
     ]
     _canonicalize_calendar_rows(rows, catalog)
-    assert rows[0]["name"] == "BTO Open"
+    assert rows[0]["name"] == "Calgary Town Open"
+    assert rows[0]["event_id"] == 324
+
+
+def test_canonicalize_bto_open_alias_to_calgary_town_open():
+    """Historical BTO titles resolve onto catalog id 324 (Calgary Town Open)."""
+    import pandas as pd
+
+    from transform.year_event_calendar.build import _canonicalize_calendar_rows
+
+    catalog = pd.DataFrame(
+        [
+            {
+                "event_id": 324,
+                "canonical_name": "Calgary Town Open",
+                "registry_status": "Registry Event",
+                "edition_count": 3,
+            }
+        ]
+    )
+    rows = [
+        {
+            "event_id": None,
+            "name": "By-Town Open (BTO)",
+            "start_date": date(2025, 3, 27),
+            "status": "confirmed",
+            "kind": "registry",
+            "source": "events_calendar",
+            "year": 2025,
+        }
+    ]
+    _canonicalize_calendar_rows(rows, catalog)
+    assert rows[0]["name"] == "Calgary Town Open"
     assert rows[0]["event_id"] == 324
 
 
@@ -1355,6 +1387,20 @@ def test_apply_year_aware_series_names_uptown_and_show_me():
             "start_date": date(2026, 5, 14),
             "status": "confirmed",
         },
+        {
+            "event_id": 324,
+            "name": "BTO Open",
+            "year": 2026,
+            "start_date": date(2026, 9, 24),
+            "status": "confirmed",
+        },
+        {
+            "event_id": 324,
+            "name": "Calgary Town Open",
+            "year": 2025,
+            "start_date": date(2025, 3, 27),
+            "status": "confirmed",
+        },
     ]
     _apply_year_aware_series_names(rows)
     assert rows[0]["name"] == "UpTown Swing"
@@ -1366,6 +1412,10 @@ def test_apply_year_aware_series_names_uptown_and_show_me():
     assert rows[2]["event_id"] == 221
     assert rows[3]["name"] == "Gateway Swing Classic"
     assert rows[3]["event_id"] == 221
+    assert rows[4]["name"] == "Calgary Town Open"
+    assert rows[4]["event_id"] == 324
+    assert rows[5]["name"] == "BTO Open"
+    assert rows[5]["event_id"] == 324
 
 
 def test_ids_blocked_by_terminal_expands_series_links():

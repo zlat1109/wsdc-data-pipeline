@@ -1,9 +1,9 @@
 {
-  "scraped_at": "2026-08-11T08:44:33.573420+00:00",
+  "scraped_at": "2026-08-25T08:31:39.611965+00:00",
   "source": "https://worldsdc.com/events/calendar/",
   "min_start": "2025-01-01",
-  "raw_count": 627,
-  "event_count": 460,
+  "raw_count": 640,
+  "event_count": 472,
   "events": [
     {
       "event_name": "Floorplay Swing Vacation",
@@ -910,8 +910,8 @@
     {
       "event_name": "By-Town Open (BTO)",
       "calendar_title": "By-Town Open (BTO)",
-      "catalog_name": "BTO Open",
-      "name_key": "btoopen",
+      "catalog_name": "Calgary Town Open",
+      "name_key": "calgarytownopen",
       "start_date": "2025-03-27",
       "end_date": "2025-03-30",
       "url": "http://Btoopen.ca",
@@ -7202,8 +7202,8 @@
     {
       "event_name": "Calgary Town Open",
       "calendar_title": "Calgary Town Open",
-      "catalog_name": "BTO Open",
-      "name_key": "btoopen",
+      "catalog_name": "Calgary Town Open",
+      "name_key": "calgarytownopen",
       "start_date": "2026-09-24",
       "end_date": "2026-09-27",
       "url": "https://ctodance.ca",
@@ -8648,6 +8648,28 @@
       "raw_end": "2027-01-26"
     },
     {
+      "event_name": "ULTRA Westie Fest",
+      "calendar_title": "ULTRA Westie Fest",
+      "catalog_name": "ULTRA Westie Fest",
+      "name_key": "ultrawestiefest",
+      "start_date": "2027-01-29",
+      "end_date": "2027-01-31",
+      "url": "http://www.ultrawestiefest.com",
+      "url_key": "ultrawestiefest.com",
+      "results_year": 2027,
+      "results_month": 1,
+      "edition_ym_candidates": [
+        "2027-01"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "818eabcda7891c0954bc3bfe",
+      "raw_start": "2027-01-29",
+      "raw_end": "2027-02-01"
+    },
+    {
       "event_name": "Charlotte WestieFest",
       "calendar_title": "Charlotte WestieFest",
       "catalog_name": "Charlotte WestieFest",
@@ -9553,6 +9575,28 @@
       "raw_end": "2027-04-26"
     },
     {
+      "event_name": "SGI - Swing de Garotos Invitational",
+      "calendar_title": "SGI - Swing de Garotos Invitational",
+      "catalog_name": "SGI - Swing de Garotos Invitational",
+      "name_key": "sgiswingdegarotosinvitational",
+      "start_date": "2027-04-23",
+      "end_date": "2027-04-25",
+      "url": "https://sginvitational.com.br/",
+      "url_key": "sginvitational.com.br",
+      "results_year": 2027,
+      "results_month": 4,
+      "edition_ym_candidates": [
+        "2027-04"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "88ce00726072a81eb1b67d11",
+      "raw_start": "2027-04-23",
+      "raw_end": "2027-04-26"
+    },
+    {
       "event_name": "BeeMAD",
       "calendar_title": "BeeMAD",
       "catalog_name": "BeeMAD",
@@ -9735,6 +9779,28 @@
       "raw_end": "2026-05-20"
     },
     {
+      "event_name": "SOM-Swing of Music",
+      "calendar_title": "SOM-Swing of Music",
+      "catalog_name": "SOM - Swing of Music",
+      "name_key": "somswingofmusic",
+      "start_date": "2027-05-14",
+      "end_date": "2027-05-17",
+      "url": "https://www.swingofmusic.com/",
+      "url_key": "swingofmusic.com",
+      "results_year": 2027,
+      "results_month": 5,
+      "edition_ym_candidates": [
+        "2027-05"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "285f974da18393fa79363f92",
+      "raw_start": "2027-05-14",
+      "raw_end": "2027-05-18"
+    },
+    {
       "event_name": "Gateway Swing Classic",
       "calendar_title": "Gateway Swing Classic",
       "catalog_name": "Gateway Swing Classic",
@@ -9755,6 +9821,28 @@
       "source_fingerprint": "207bdba1fc6a2efeb08174f8",
       "raw_start": "2027-05-20",
       "raw_end": "2027-05-24"
+    },
+    {
+      "event_name": "Spring Time Swing",
+      "calendar_title": "Spring Time Swing",
+      "catalog_name": "Spring Time Swing",
+      "name_key": "springtimeswing",
+      "start_date": "2027-05-20",
+      "end_date": "2027-05-24",
+      "url": "https://springtimeswing.com/",
+      "url_key": "springtimeswing.com",
+      "results_year": 2027,
+      "results_month": 5,
+      "edition_ym_candidates": [
+        "2027-05"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "6a2fa76491a42cb1136df4e9",
+      "raw_start": "2027-05-20",
+      "raw_end": "2027-05-25"
     },
     {
       "event_name": "Nanaimo Dance Fusion",
@@ -10113,6 +10201,162 @@
       "raw_end": "2027-07-19"
     },
     {
+      "event_name": "Revitalise WCS",
+      "calendar_title": "Revitalise WCS",
+      "catalog_name": "Revitalise WCS",
+      "name_key": "revitalisewcs",
+      "start_date": "2027-07-15",
+      "end_date": "2027-07-18",
+      "url": "https://revitalisewcs.melbourne/",
+      "url_key": "revitalisewcs.melbourne",
+      "results_year": 2027,
+      "results_month": 7,
+      "edition_ym_candidates": [
+        "2027-07"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "50944902a4ccc6154f80a5a1",
+      "raw_start": "2027-07-15",
+      "raw_end": "2027-07-19"
+    },
+    {
+      "event_name": "Florida Dance Magic",
+      "calendar_title": "Florida Dance Magic",
+      "catalog_name": "Florida Dance Magic",
+      "name_key": "floridadancemagic",
+      "start_date": "2027-07-22",
+      "end_date": "2027-07-25",
+      "url": "https://floridadancemagic.com",
+      "url_key": "floridadancemagic.com",
+      "results_year": 2027,
+      "results_month": 7,
+      "edition_ym_candidates": [
+        "2027-07"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "b18c3d43e05f3b8b02ac0cfa",
+      "raw_start": "2027-07-22",
+      "raw_end": "2027-07-26"
+    },
+    {
+      "event_name": "St. Petersburg WCS Nights",
+      "calendar_title": "St. Petersburg WCS Nights",
+      "catalog_name": "St. Petersburg WCS Nights",
+      "name_key": "stpetersburgwcsnights",
+      "start_date": "2027-07-22",
+      "end_date": "2027-07-25",
+      "url": "http://wcsnights.ru",
+      "url_key": "wcsnights.ru",
+      "results_year": 2027,
+      "results_month": 7,
+      "edition_ym_candidates": [
+        "2027-07"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "3898eb5b6894d9b354ba6164",
+      "raw_start": "2027-07-22",
+      "raw_end": "2027-07-26"
+    },
+    {
+      "event_name": "Infinite Swing",
+      "calendar_title": "Infinite Swing",
+      "catalog_name": "Infinite Swing",
+      "name_key": "infiniteswing",
+      "start_date": "2027-07-29",
+      "end_date": "2027-08-01",
+      "url": "https://www.infinite-swing.com/",
+      "url_key": "infinite-swing.com",
+      "results_year": 2027,
+      "results_month": 8,
+      "edition_ym_candidates": [
+        "2027-08",
+        "2027-07"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "e0e29164988662ec78f7e3ee",
+      "raw_start": "2027-07-29",
+      "raw_end": "2027-08-02"
+    },
+    {
+      "event_name": "Lisbon Westie Fest",
+      "calendar_title": "Lisbon Westie Fest",
+      "catalog_name": "Lisbon Westie Fest",
+      "name_key": "lisbonwestiefest",
+      "start_date": "2027-07-30",
+      "end_date": "2027-08-01",
+      "url": "https://lisbonwestiefest.com/",
+      "url_key": "lisbonwestiefest.com",
+      "results_year": 2027,
+      "results_month": 8,
+      "edition_ym_candidates": [
+        "2027-08",
+        "2027-07"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "ef5a59ebf837315c45c3b46f",
+      "raw_start": "2027-07-30",
+      "raw_end": "2027-08-02"
+    },
+    {
+      "event_name": "Swingtacular: The Galactic Open",
+      "calendar_title": "Swingtacular: The Galactic Open",
+      "catalog_name": "Swingtacular: The Galactic Open",
+      "name_key": "swingtacularthegalacticopen",
+      "start_date": "2027-08-05",
+      "end_date": "2027-08-08",
+      "url": "http://www.Swingtacular.art",
+      "url_key": "swingtacular.art",
+      "results_year": 2027,
+      "results_month": 8,
+      "edition_ym_candidates": [
+        "2027-08"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "f1d0c5cafe205706ae173038",
+      "raw_start": "2027-08-05",
+      "raw_end": "2027-08-09"
+    },
+    {
+      "event_name": "Arizona Dance Classic",
+      "calendar_title": "Arizona Dance Classic",
+      "catalog_name": "Arizona Dance Classic",
+      "name_key": "arizonadanceclassic",
+      "start_date": "2027-08-06",
+      "end_date": "2027-08-08",
+      "url": "https://arizonadanceclassic.com/",
+      "url_key": "arizonadanceclassic.com",
+      "results_year": 2027,
+      "results_month": 8,
+      "edition_ym_candidates": [
+        "2027-08"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "35cfc9dda4da8643050b8489",
+      "raw_start": "2027-08-06",
+      "raw_end": "2027-08-09"
+    },
+    {
       "event_name": "Atlanta Swing Classic",
       "calendar_title": "Atlanta Swing Classic",
       "catalog_name": "Atlanta Swing Classic",
@@ -10178,6 +10422,28 @@
       "source_fingerprint": "0e485aa8568c6408b8ff891a",
       "raw_start": "2028-02-29",
       "raw_end": "2028-03-06"
+    },
+    {
+      "event_name": "Spring Time Swing",
+      "calendar_title": "Spring Time Swing",
+      "catalog_name": "Spring Time Swing",
+      "name_key": "springtimeswing",
+      "start_date": "2028-05-04",
+      "end_date": "2028-05-07",
+      "url": "https://springtimeswing.com/",
+      "url_key": "springtimeswing.com",
+      "results_year": 2028,
+      "results_month": 5,
+      "edition_ym_candidates": [
+        "2028-05"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "2d2d797fa9694535f75d75e2",
+      "raw_start": "2028-05-04",
+      "raw_end": "2028-05-08"
     },
     {
       "event_name": "Atlanta Swing Classic",

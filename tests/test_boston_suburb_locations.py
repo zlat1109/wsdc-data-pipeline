@@ -16,6 +16,7 @@ from transform.knowledge.events import (
     EVENT_NAME_LOCATION_OVERRIDES,
     EVENT_NAME_YEAR_LOCATION_OVERRIDES,
 )
+from transform.knowledge.locations import LOCATION_ID_CORRECTIONS
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 
@@ -37,6 +38,12 @@ def test_boston_suburb_location_registry_rows_exist():
     assert by_id["70"].event_location == "Newton (Boston), MA, United States"
     assert by_id["79"].event_location == "Burlington (Boston), MA, United States"
     assert by_id["71"].event_location == "Framingham (Boston), MA, United States"
+    assert LOCATION_ID_CORRECTIONS[396]["event_location"] == (
+        "Mansfield (Boston), MA, United States"
+    )
+    assert LOCATION_ID_CORRECTIONS[397]["event_location"] == (
+        "Woburn (Boston), MA, United States"
+    )
 
 
 def test_boston_suburb_overrides_resolve_to_expected_ids():

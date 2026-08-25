@@ -9,6 +9,8 @@ from typing import Any
 
 import pandas as pd
 
+from transform.knowledge.event_aliases import EVENT_NAME_YEAR_SPLITS
+
 SKILL_ORDER = ("Novice", "Intermediate", "Advanced", "All-Star", "Champions")
 SKILL_ALIASES = {
     "Novice": "Novice",
@@ -20,13 +22,17 @@ SKILL_ALIASES = {
     "Champions": "Champions",
 }
 
-# Divisions used for approximate competitive headcount (role×tier ranges).
+# Skill ladder shown in L2 tier table and used for Dancers estimate (Chart 5 midpoints).
 # Age tracks (Master / Sophisticated / Juniors) omitted — same dancers often also dance skill.
-DANCERS_ESTIMATE_ORDER = ("Newcomer",) + SKILL_ORDER
-DANCERS_ESTIMATE_ALIASES = {
+TIER_TABLE_ORDER = ("Newcomer",) + SKILL_ORDER
+TIER_TABLE_ALIASES = {
     **SKILL_ALIASES,
     "Newcomer": "Newcomer",
 }
+
+# Back-compat aliases for callers/tests that referenced the old estimate-only names.
+DANCERS_ESTIMATE_ORDER = TIER_TABLE_ORDER
+DANCERS_ESTIMATE_ALIASES = TIER_TABLE_ALIASES
 
 # Skill Level Jack & Jill points scope (same as event portraits Skill JJ).
 SKILL_LEVEL_ALIASES = DANCERS_ESTIMATE_ALIASES
@@ -152,6 +158,104 @@ def _skill_level_mask(res: pd.DataFrame) -> pd.Series:
     if wcs.any():
         return is_skill & (wcs | dance.eq("") | res["event_dance"].isna())
     return is_skill
+
+
+def _result_names_for_edition(
+    event_name: str,
+    year: int,
+    *,
+    event_id: int | None = None,
+    extra_names: set[str] | None = None,
+) -> list[str]:
+    """Candidate ``dancers_results_info.event_name`` values for an edition.
+
+    Editions often keep the catalog title (e.g. Swedish Swing Summer Camp) while
+    results use the rebranded WSDC title (UpTown Swing). Prefer the edition name,
+    then year-split aliases, then any titles seen for the same ``event_id``.
+    """
+    names: list[str] = []
+    seen: set[str] = set()
+
+    def add(raw: object) -> None:
+        text = str(raw or "").strip()
+        if not text or text in seen:
+            return
+        seen.add(text)
+        names.append(text)
+
+    add(event_name)
+    for rule in EVENT_NAME_YEAR_SPLITS:
+        sources = {str(s).strip() for s in rule["sources"]}  # type: ignore[arg-type]
+        early_id = rule.get("early_event_id")
+        late_id = rule.get("late_event_id")
+        ids = {int(x) for x in (early_id, late_id) if x is not None}
+        id_match = event_id is not None and int(event_id) in ids
+        name_match = str(event_name or "").strip() in sources
+        if not (id_match or name_match):
+            continue
+        early_max = int(rule["early_year_max"])  # type: ignore[arg-type]
+        late_min = int(rule["late_year_min"])  # type: ignore[arg-type]
+        if year <= early_max:
+            add(rule["early_name"])
+        if year >= late_min:
+            add(rule["late_name"])
+        for src in sources:
+            add(src)
+    if extra_names:
+        for src in sorted(extra_names):
+            add(src)
+    return names
+
+
+def _wsdc_names_by_event_id(data_dir: Path) -> dict[int, set[str]]:
+    """Titles recorded under each WSDC registry id (results-facing names)."""
+    path = data_dir / "events_wsdc.csv"
+    if not path.exists():
+        return {}
+    header = pd.read_csv(path, nrows=0).columns.tolist()
+    id_col = "event_id" if "event_id" in header else ("id" if "id" in header else None)
+    name_col = (
+        "event_name" if "event_name" in header else ("name" if "name" in header else None)
+    )
+    if not id_col or not name_col:
+        return {}
+    frame = _read_csv(path, usecols=[id_col, name_col])
+    if frame.empty:
+        return {}
+    frame[id_col] = pd.to_numeric(frame[id_col], errors="coerce")
+    frame = frame.dropna(subset=[id_col])
+    out: dict[int, set[str]] = {}
+    for rec in frame.to_dict(orient="records"):
+        eid = int(rec[id_col])
+        name = str(rec.get(name_col) or "").strip()
+        if not name:
+            continue
+        out.setdefault(eid, set()).add(name)
+    return out
+
+
+def _results_slice_for_edition(
+    res: pd.DataFrame,
+    event_name: str,
+    year: int,
+    month: int,
+    *,
+    event_id: int | None = None,
+    extra_names: set[str] | None = None,
+) -> pd.DataFrame:
+    if res.empty:
+        return res
+    for name in _result_names_for_edition(
+        event_name, year, event_id=event_id, extra_names=extra_names
+    ):
+        sub = res[
+            (res["event_name"] == name)
+            & (res["event_year"] == year)
+            & (res["event_month"] == month)
+        ]
+        if not sub.empty:
+            return sub
+    return res.iloc[0:0].copy()
 
 
 def _tiers_frame(data_dir: Path) -> pd.DataFrame:
@@ -304,7 +408,7 @@ def _tier_table_for_edition(
         return {}
     by_div: dict[str, dict[str, int]] = {}
     for rec in sub.to_dict(orient="records"):
-        canon = SKILL_ALIASES.get(str(rec.get("division") or "").strip())
+        canon = TIER_TABLE_ALIASES.get(str(rec.get("division") or "").strip())
         if not canon:
             continue
         role = _normalize_role(rec.get("role"))
@@ -322,7 +426,7 @@ def _tier_table_for_edition(
         by_div.setdefault(canon, {})[role] = tier_i
 
     out: dict[str, dict[str, int]] = {}
-    for div in SKILL_ORDER:
+    for div in TIER_TABLE_ORDER:
         roles = by_div.get(div)
         if not roles:
             continue
@@ -341,13 +445,17 @@ def _edition_metrics(
     *,
     tiers: pd.DataFrame | None = None,
     event_id: int | None = None,
+    extra_names: set[str] | None = None,
 ) -> dict[str, int]:
     ym = year * 100 + month
-    sub = res[
-        (res["event_name"] == event_name)
-        & (res["event_year"] == year)
-        & (res["event_month"] == month)
-    ]
+    sub = _results_slice_for_edition(
+        res,
+        event_name,
+        year,
+        month,
+        event_id=event_id,
+        extra_names=extra_names,
+    )
     points = 0
     new_count = 0
     scored_unique = 0
@@ -404,6 +512,7 @@ def build_event_l2_cards(
     editions = _editions_with_results(data_dir)
     res = _results_frame(data_dir)
     tiers = _tiers_frame(data_dir)
+    wsdc_names = _wsdc_names_by_event_id(data_dir)
 
     first_ym = (
         res.groupby("dancer_id")["ym"].min() if not res.empty else pd.Series(dtype="int64")
@@ -428,6 +537,7 @@ def build_event_l2_cards(
             past = group
         past_sorted = past.sort_values(["ym", "edition_id"], ascending=[False, False])
         last = past_sorted.iloc[0]
+        extra_names = wsdc_names.get(int(event_id))
 
         metrics = _edition_metrics(
             res,
@@ -438,6 +548,7 @@ def build_event_l2_cards(
             last.get("unique_dancers"),
             tiers=tiers,
             event_id=int(event_id),
+            extra_names=extra_names,
         )
         tier_table = _tier_table_for_edition(
             tiers, int(event_id), int(last["event_year"]), int(last["event_month"])
@@ -456,6 +567,7 @@ def build_event_l2_cards(
                 rec.get("unique_dancers"),
                 tiers=tiers,
                 event_id=int(event_id),
+                extra_names=extra_names,
             )
             hist_tiers = _tier_table_for_edition(
                 tiers, int(event_id), int(rec["event_year"]), int(rec["event_month"])

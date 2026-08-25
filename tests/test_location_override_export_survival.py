@@ -156,3 +156,39 @@ def test_year_overrides_resolve_in_location_info():
         if not _resolve_lid(location_df, target):
             missing.append(f"{name} [{y0}-{y1}] → {target}")
     assert not missing, "unresolvable year location overrides:\n" + "\n".join(missing)
+
+
+@pytest.mark.skipif(not (DATA / "dancers_results_info.csv").exists(), reason="no export data")
+def test_uptown_year_split_survives_in_results_export():
+    """2016–2018 stay SSSC; 2019+ must be UpTown (not collapsed catalog name)."""
+    years_sssc: set[int] = set()
+    years_uptown: set[int] = set()
+    with (DATA / "dancers_results_info.csv").open(encoding="utf-8-sig", newline="") as f:
+        for row in csv.DictReader(f):
+            name = (row.get("event_name") or "").strip()
+            if name not in {"Swedish Swing Summer Camp", "UpTown Swing"}:
+                continue
+            try:
+                year = int(row.get("event_year") or "")
+            except ValueError:
+                continue
+            if name == "Swedish Swing Summer Camp":
+                years_sssc.add(year)
+            else:
+                years_uptown.add(year)
+    assert years_sssc and max(years_sssc) <= 2018
+    assert years_uptown and min(years_uptown) >= 2019
+    assert 2026 in years_uptown
+
+
+@pytest.mark.skipif(not (DATA / "event_editions.csv").exists(), reason="no export data")
+def test_uptown_series_keeps_stable_event_id_264():
+    """Year-split names must not fork the series onto a new registry id."""
+    ids: set[str] = set()
+    with (DATA / "event_editions.csv").open(encoding="utf-8-sig", newline="") as f:
+        for row in csv.DictReader(f):
+            name = (row.get("event_name") or "").strip()
+            if name not in {"Swedish Swing Summer Camp", "UpTown Swing"}:
+                continue
+            ids.add(str(row.get("event_id") or "").strip())
+    assert ids == {"264"}

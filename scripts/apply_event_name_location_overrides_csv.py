@@ -33,6 +33,8 @@ from transform.knowledge.apply import (  # noqa: E402
     force_events_wsdc_locations_from_event_name_overrides,
     force_result_locations_from_event_name_overrides,
 )
+from transform.knowledge.event_aliases import apply_event_name_year_splits  # noqa: E402
+from transform.knowledge.merge_map import apply_merge_event_id_map  # noqa: E402
 from transform.knowledge.events import (  # noqa: E402
     EVENT_NAME_LOCATION_OVERRIDES,
     EVENT_NAME_YEAR_LOCATION_OVERRIDES,
@@ -216,8 +218,88 @@ def _update_catalog(path: Path, dry_run: bool) -> int:
     return changed
 
 
+_YEAR_SPLIT_FILES: tuple[tuple[str, str], ...] = (
+    ("dancers_results_info.csv", "event_name"),
+    ("events_wsdc.csv", "name"),
+    ("event_editions.csv", "event_name"),
+    ("edition_division_tiers.csv", "event_name"),
+    ("edition_division_entries.csv", "event_name"),
+)
+_MERGE_ID_FILES: tuple[tuple[str, str], ...] = (
+    ("events_wsdc.csv", "id"),
+    ("event_editions.csv", "event_id"),
+    ("edition_division_tiers.csv", "event_id"),
+    ("edition_division_entries.csv", "event_id"),
+)
+
+
+_ID_COLS = ("event_name_id", "id", "event_id")
+
+
+def _count_year_split_changes(before: pd.DataFrame, after: pd.DataFrame, name_col: str) -> int:
+    changed = after[name_col].astype(str) != before[name_col].astype(str)
+    for col in _ID_COLS:
+        if col in before.columns and col in after.columns:
+            changed = changed | (after[col].astype(str) != before[col].astype(str))
+    return int(changed.sum())
+
+
+def _apply_year_splits(path: Path, name_col: str, dry_run: bool) -> int:
+    """Re-apply EVENT_NAME_YEAR_SPLITS so export views (one name per event_id) do not collapse rebrands."""
+    if not path.exists():
+        return 0
+    df = pd.read_csv(path, dtype=str)
+    if name_col not in df.columns or "event_year" not in df.columns:
+        return 0
+    out = apply_event_name_year_splits(df)
+    changed = _count_year_split_changes(df, out, name_col)
+    if dry_run or not changed:
+        return changed
+    out.to_csv(path, index=False)
+    return changed
+
+
+def _apply_merge_ids(path: Path, id_col: str, dry_run: bool) -> int:
+    """Collapse catalog ghosts (MERGE_EVENT_ID_MAP) on export id columns."""
+    if not path.exists():
+        return 0
+    df = pd.read_csv(path, dtype=str)
+    if id_col not in df.columns:
+        return 0
+    out = apply_merge_event_id_map(df, column=id_col, table=path.name)
+    changed = int((out[id_col].astype(str) != df[id_col].astype(str)).sum())
+    if dry_run or not changed:
+        return changed
+    out.to_csv(path, index=False)
+    return changed
+
+
 def apply_overrides(data_dir: Path, *, dry_run: bool = False) -> int:
     """Remap export CSVs from name/year location overrides. Returns forced result rows."""
+    split_counts: dict[str, int] = {}
+    for filename, name_col in _YEAR_SPLIT_FILES:
+        split_counts[filename] = _apply_year_splits(
+            data_dir / filename, name_col, dry_run=True
+        )
+    print("year-split rows to update:")
+    for filename, n in split_counts.items():
+        print(f"  {filename}: {n}")
+    if not dry_run:
+        for filename, name_col in _YEAR_SPLIT_FILES:
+            _apply_year_splits(data_dir / filename, name_col, dry_run=False)
+
+    merge_counts: dict[str, int] = {}
+    for filename, id_col in _MERGE_ID_FILES:
+        merge_counts[filename] = _apply_merge_ids(
+            data_dir / filename, id_col, dry_run=True
+        )
+    print("merge-id rows to update:")
+    for filename, n in merge_counts.items():
+        print(f"  {filename}: {n}")
+    if not dry_run:
+        for filename, id_col in _MERGE_ID_FILES:
+            _apply_merge_ids(data_dir / filename, id_col, dry_run=False)
+
     location_df = pd.read_csv(data_dir / "location_info.csv", dtype=str)
     results_df = pd.read_csv(data_dir / "dancers_results_info.csv", dtype=str)
     name_to_lid = _resolve_target_ids(location_df)

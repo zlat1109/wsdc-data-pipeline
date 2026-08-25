@@ -34,6 +34,7 @@ EVENT_CATALOG_EXPORTS: dict[str, str] = {
     "export.tier_rules": "tier_rules.csv",
     "export.edition_division_tiers": "edition_division_tiers.csv",
     "export.edition_division_entries": "edition_division_entries.csv",
+    "export.edition_location_baseline": "edition_location_baseline.csv",
 }
 
 # SCD2 history as drop-in changed_*.csv (same contract as old-laptop workflow)
@@ -138,6 +139,13 @@ def main() -> None:
         for filename, rows in build_derived_analytics_exports(args.output_dir).items():
             out_path = args.output_dir / filename
             print(f"  {filename}: {rows} rows -> {out_path}")
+
+    from transform.geography.normalize import apply_location_id_corrections_csv
+
+    loc_csv = args.output_dir / "location_info.csv"
+    loc_fixed = apply_location_id_corrections_csv(loc_csv)
+    if loc_fixed:
+        print(f"\nRe-applied LOCATION_ID_CORRECTIONS: {loc_fixed} location_info row(s)")
 
     from transform.geography.sync_export import sync_export_city_columns
 

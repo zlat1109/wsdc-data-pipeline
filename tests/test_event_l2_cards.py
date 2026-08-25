@@ -197,6 +197,57 @@ def test_tier_table_keeps_skill_rows_with_both_roles(tmp_path: Path):
     assert table["Champions"] == {"Leader": 1, "Follower": 1}
 
 
+def test_tier_table_includes_newcomer_when_both_roles_present():
+    tiers = pd.DataFrame(
+        [
+            {
+                "event_id": 1,
+                "event_year": 2025,
+                "event_month": 6,
+                "division": "Newcomer",
+                "role": "Leader",
+                "tier": 1,
+                "status": "matched",
+                "dance": "West Coast Swing",
+            },
+            {
+                "event_id": 1,
+                "event_year": 2025,
+                "event_month": 6,
+                "division": "Newcomer",
+                "role": "Follower",
+                "tier": 1,
+                "status": "matched",
+                "dance": "West Coast Swing",
+            },
+            {
+                "event_id": 1,
+                "event_year": 2025,
+                "event_month": 6,
+                "division": "Novice",
+                "role": "Leader",
+                "tier": 2,
+                "status": "matched",
+                "dance": "West Coast Swing",
+            },
+            {
+                "event_id": 1,
+                "event_year": 2025,
+                "event_month": 6,
+                "division": "Novice",
+                "role": "Follower",
+                "tier": 2,
+                "status": "matched",
+                "dance": "West Coast Swing",
+            },
+        ]
+    )
+    table = _tier_table_for_edition(tiers, 1, 2025, 6)
+    assert list(table.keys()) == ["Newcomer", "Novice"]
+    assert table["Newcomer"] == {"Leader": 1, "Follower": 1}
+    assert table["Novice"] == {"Leader": 2, "Follower": 2}
+
+
 def test_build_event_l2_cards_picks_last_with_results(tmp_path: Path):
     data_dir = tmp_path
     pd.DataFrame(
@@ -390,3 +441,90 @@ def test_history_caps_at_history_limit(tmp_path: Path):
     assert len(history) == HISTORY_LIMIT
     assert history[0]["year"] == 2025 - HISTORY_LIMIT + 1
     assert history[-1]["year"] == 2025
+
+
+def test_result_names_for_edition_year_split_aliases():
+    from transform.year_event_calendar.event_cards import _result_names_for_edition
+
+    names = _result_names_for_edition(
+        "Swedish Swing Summer Camp", 2025, event_id=264
+    )
+    assert names[0] == "Swedish Swing Summer Camp"
+    assert "UpTown Swing" in names
+
+
+def test_build_event_l2_cards_resolves_rebranded_result_title(tmp_path: Path):
+    """Catalog/edition title ≠ results title (Swedish vs UpTown)."""
+    data_dir = tmp_path
+    pd.DataFrame(
+        [
+            {
+                "edition_id": 10226,
+                "event_id": 264,
+                "event_name": "Swedish Swing Summer Camp",
+                "event_year": 2025,
+                "event_month": 8,
+                "result_rows": 114,
+                "unique_dancers": 102,
+            }
+        ]
+    ).to_csv(data_dir / "event_editions.csv", index=False)
+    pd.DataFrame(
+        [
+            {
+                "dancer_id": 1,
+                "event_points": 10,
+                "event_name": "UpTown Swing",
+                "event_year": 2025,
+                "event_month": 8,
+                "event_competition": "Novice",
+                "event_dance": "West Coast Swing",
+            },
+            {
+                "dancer_id": 2,
+                "event_points": 5,
+                "event_name": "UpTown Swing",
+                "event_year": 2025,
+                "event_month": 8,
+                "event_competition": "Intermediate",
+                "event_dance": "West Coast Swing",
+            },
+            {
+                "dancer_id": 3,
+                "event_points": 0,
+                "event_name": "UpTown Swing",
+                "event_year": 2025,
+                "event_month": 8,
+                "event_competition": "Novice",
+                "event_dance": "West Coast Swing",
+            },
+        ]
+    ).to_csv(data_dir / "dancers_results_info.csv", index=False)
+    pd.DataFrame(
+        [
+            {
+                "id": 264,
+                "name": "UpTown Swing",
+                "event_year": 2025,
+                "event_month": 8,
+            }
+        ]
+    ).to_csv(data_dir / "events_wsdc.csv", index=False)
+    pd.DataFrame(
+        columns=[
+            "event_id",
+            "event_year",
+            "event_month",
+            "division",
+            "role",
+            "tier",
+            "status",
+            "dance",
+        ]
+    ).to_csv(data_dir / "edition_division_tiers.csv", index=False)
+
+    payload = build_event_l2_cards(data_dir, as_of=date(2026, 8, 15))
+    last = payload["cards"]["264"]["last_edition"]
+    assert last["points"] == 15
+    assert last["new_dancers"] == 3
+    assert last["unique_dancers"] == 3

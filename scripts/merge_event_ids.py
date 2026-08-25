@@ -79,6 +79,9 @@ def main() -> None:
                     (source_id,),
                 )
                 row_count = int(cur.fetchone()[0])
+                if row_count == 0:
+                    # Catalog/schedule ghosts already remapped in results.
+                    continue
                 plans.append(
                     {
                         "source_id": source_id,

@@ -277,6 +277,38 @@ def test_format_pipeline_attention_preprocess(tmp_path, monkeypatch):
     assert "Canadian Swing" in text
 
 
+def test_format_pipeline_attention_baseline_drift(tmp_path, monkeypatch):
+    import telegram_notify as tn
+
+    reports = tmp_path / "data" / "quality_reports"
+    reports.mkdir(parents=True)
+    (reports / "edition_location_baseline_drift.json").write_text(
+        json.dumps(
+            {
+                "drift_count": 1,
+                "auto_added": 0,
+                "drifts": [
+                    {
+                        "event_id": 324,
+                        "event_year": 2025,
+                        "event_month": 3,
+                        "event_name": "BTO Open",
+                        "baseline_location_id": 148,
+                        "current_location_id": 253,
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(tn, "PROJECT_ROOT", tmp_path)
+
+    text = tn.format_pipeline_message({"run_id": 1, "max_dancer_id": 100, "finished_at": "2026-06-15"})
+    assert "Edition location baseline drift" in text
+    assert "148" in text
+    assert "253" in text
+
+
 def test_format_events_list_inactive_and_mapping(tmp_path, monkeypatch):
     import telegram_notify as tn
 
