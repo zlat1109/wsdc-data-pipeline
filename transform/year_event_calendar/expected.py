@@ -228,6 +228,10 @@ def _project_expected_stub(
     stub["start_date"] = projected
     stub["end_date"] = end
     stub["status"] = "expected"
+    # Remember whether the prior pin came from the live WSDC list so geo enrich
+    # can keep a relocated schedule city instead of re-applying flat overrides.
+    prior_source = row.get("source")
+    stub["projected_from_source"] = prior_source
     stub["source"] = "expected_yoy"
     stub["kind"] = kind
     stub["year"] = target_year

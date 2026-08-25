@@ -251,28 +251,28 @@ def test_enrich_geo_inherits_location_id_from_editions_map():
     assert rows[0]["city"] == "Denver"
 
 
-def test_enrich_geo_overwrites_scraped_brno_with_inherited_wels():
-    """Schedule city from location_raw must not stick after lid remap (SwingVester)."""
+def test_enrich_geo_keeps_schedule_city_on_real_relocation():
+    """Live list city that differs from the last edition must not inherit the old lid.
+
+    Example: a registry series moves city on the WSDC list while editions still
+    point at the previous venue — calendar pins must follow the list.
+    """
     locations = pd.DataFrame(
         [
             {
-                "location_id": 197,
-                "event_city": "Wels",
-                "event_country": "Austria",
-                "event_location": "Wels, Austria",
-                "event_location_standardized": "Wels, Austria",
-                "latitude": 48.1664268,
-                "longitude": 14.0388714,
+                "location_id": 38,
+                "event_city": "Oldtown",
+                "event_country": "United States",
+                "latitude": 38.9695545,
+                "longitude": -77.3860976,
                 "coordinates_valid": True,
             },
             {
-                "location_id": 266,
-                "event_city": "Brno",
-                "event_country": "Czech Republic",
-                "event_location": "Brno, Czech Republic",
-                "event_location_standardized": "Brno, Czech Republic",
-                "latitude": 49.1950602,
-                "longitude": 16.6068371,
+                "location_id": 99,
+                "event_city": "Newtown",
+                "event_country": "United States",
+                "latitude": 38.9072,
+                "longitude": -77.0369,
                 "coordinates_valid": True,
             },
         ]
@@ -280,30 +280,325 @@ def test_enrich_geo_overwrites_scraped_brno_with_inherited_wels():
     catalog = pd.DataFrame(
         [
             {
-                "event_id": 289,
-                "canonical_name": "SwingVester",
-                "url": "https://www.swingvester.com/",
-                "typical_city": "Wels",
-                "typical_country": "Austria",
+                "event_id": 9001,
+                "canonical_name": "Relocated Swing Fest",
+                "url": None,
+                "typical_city": "Oldtown",
+                "typical_country": "United States",
             }
         ]
     )
     rows = [
         {
-            "event_id": 289,
-            "name": "SwingVester",
-            "city": "Brno",
-            "country": "Czech Republic",
+            "event_id": 9001,
+            "name": "Relocated Swing Fest",
+            "city": "Newtown",
+            "country": "United States",
             "location_id": None,
-            "url": "https://www.swingvester.com/",
+            "url": None,
+            "source": "scheduled_events",
+            "year": 2027,
+            "start_date": date(2027, 5, 7),
         }
     ]
-    _enrich_geo(rows, locations, catalog, location_id_by_event={289: 197})
-    assert rows[0]["location_id"] == 197
-    assert rows[0]["city"] == "Wels"
-    assert rows[0]["country"] == "Austria"
-    assert rows[0]["lat"] == 48.1664268
-    assert rows[0]["lon"] == 14.0388714
+    _enrich_geo(rows, locations, catalog, location_id_by_event={9001: 38})
+    assert rows[0].get("location_id") is None
+    assert rows[0]["city"] == "Newtown"
+    assert rows[0]["country"] == "United States"
+    assert rows[0]["lat"] == 38.9072
+    assert rows[0]["lon"] == -77.0369
+
+
+def test_cities_compatible_st_vs_saint_and_rejects_substring_traps():
+    from transform.year_event_calendar.build import _cities_compatible
+
+    assert _cities_compatible("St. Petersburg", "Saint Petersburg")
+    assert _cities_compatible("Washington DC", "Washington")
+    assert _cities_compatible("Tampa Bay", "Tampa")
+    assert not _cities_compatible("York", "New York")
+    assert not _cities_compatible("Washington", "Herndon")
+
+
+def test_enrich_geo_clears_stale_schedule_lid_when_city_relocated():
+    """Schedule row with old location_id + new city must not keep the old pin."""
+    locations = pd.DataFrame(
+        [
+            {
+                "location_id": 38,
+                "event_city": "Herndon",
+                "event_country": "United States",
+                "event_location": "Herndon, VA, United States",
+                "event_location_standardized": "Herndon, VA, United States",
+                "latitude": 38.9695545,
+                "longitude": -77.3860976,
+                "coordinates_valid": True,
+            },
+            {
+                "location_id": 13,
+                "event_city": "Washington",
+                "event_country": "United States",
+                "event_location": "Washington, DC, United States",
+                "event_location_standardized": "Washington, DC, United States",
+                "latitude": 38.9072,
+                "longitude": -77.0369,
+                "coordinates_valid": True,
+            },
+        ]
+    )
+    catalog = pd.DataFrame(columns=["event_id", "canonical_name", "url"])
+    rows = [
+        {
+            "event_id": 181,
+            "name": "Relocated Metro Swing",
+            "city": "Washington",
+            "country": "United States",
+            "location_id": 38,
+            "url": None,
+            "source": "scheduled_events",
+            "year": 2026,
+            "start_date": date(2026, 11, 19),
+        }
+    ]
+    _enrich_geo(rows, locations, catalog, location_id_by_event={})
+    assert rows[0].get("location_id") is None
+    assert rows[0]["city"] == "Washington"
+    assert rows[0]["lat"] == 38.9072
+
+
+def test_enrich_geo_flat_override_yields_to_incompatible_schedule_city():
+    """Flat name overrides must not pin an old suburb when the live list moved.
+
+    DCSX knowledge override is Herndon; WSDC list now publishes Washington —
+    calendar pins follow the list and resolve Washington coords.
+    """
+    locations = pd.DataFrame(
+        [
+            {
+                "location_id": 38,
+                "event_city": "Herndon",
+                "event_country": "United States",
+                "event_location": "Herndon, VA, United States",
+                "event_location_standardized": "Herndon, VA, United States",
+                "latitude": 38.9695545,
+                "longitude": -77.3860976,
+                "coordinates_valid": True,
+            },
+            {
+                "location_id": 13,
+                "event_city": "Washington",
+                "event_country": "United States",
+                "event_location": "Washington, DC, United States",
+                "event_location_standardized": "Washington, DC, United States",
+                "latitude": 38.9072,
+                "longitude": -77.0369,
+                "coordinates_valid": True,
+            },
+        ]
+    )
+    catalog = pd.DataFrame(
+        [
+            {
+                "event_id": 181,
+                "canonical_name": "DC Swing eXperience (DCSX)",
+                "url": None,
+                "typical_city": "Herndon",
+                "typical_country": "United States",
+            }
+        ]
+    )
+    rows = [
+        {
+            "event_id": 181,
+            "name": "DC Swing eXperience (DCSX)",
+            "city": "Washington",
+            "country": "United States",
+            "location_id": None,
+            "url": None,
+            "source": "scheduled_events",
+            "year": 2026,
+            "start_date": date(2026, 11, 19),
+        }
+    ]
+    _enrich_geo(rows, locations, catalog, location_id_by_event={181: 38})
+    assert rows[0].get("location_id") is None
+    assert rows[0]["city"] == "Washington"
+    assert rows[0]["lat"] == 38.9072
+    assert rows[0]["lon"] == -77.0369
+
+
+def test_enrich_geo_expected_from_schedule_keeps_relocated_city():
+    """YoY stubs projected from a relocated schedule row must not revert to override."""
+    locations = pd.DataFrame(
+        [
+            {
+                "location_id": 38,
+                "event_city": "Herndon",
+                "event_country": "United States",
+                "event_location": "Herndon, VA, United States",
+                "event_location_standardized": "Herndon, VA, United States",
+                "latitude": 38.9695545,
+                "longitude": -77.3860976,
+                "coordinates_valid": True,
+            },
+            {
+                "location_id": 13,
+                "event_city": "Washington",
+                "event_country": "United States",
+                "event_location": "Washington, DC, United States",
+                "event_location_standardized": "Washington, DC, United States",
+                "latitude": 38.9072,
+                "longitude": -77.0369,
+                "coordinates_valid": True,
+            },
+        ]
+    )
+    catalog = pd.DataFrame(columns=["event_id", "canonical_name", "url"])
+    rows = [
+        {
+            "event_id": 181,
+            "name": "DC Swing eXperience (DCSX)",
+            "city": "Washington",
+            "country": "United States",
+            "location_id": None,
+            "url": None,
+            "source": "expected_yoy",
+            "projected_from_source": "scheduled_events",
+            "year": 2027,
+            "start_date": date(2027, 11, 18),
+        }
+    ]
+    _enrich_geo(rows, locations, catalog, location_id_by_event={181: 38})
+    assert rows[0]["city"] == "Washington"
+    assert rows[0]["lat"] == 38.9072
+
+
+def test_enrich_geo_year_scoped_override_beats_metro_schedule_label():
+    """Year-scoped venue pins (Countdown→Mansfield) still apply over metro labels."""
+    locations = pd.DataFrame(
+        [
+            {
+                "location_id": 396,
+                "event_city": "Mansfield",
+                "event_country": "United States",
+                "event_location": "Mansfield (Boston), MA, United States",
+                "event_location_standardized": "Mansfield (Boston), MA, United States",
+                "latitude": 42.0334,
+                "longitude": -71.2189,
+                "coordinates_valid": True,
+            },
+            {
+                "location_id": 10,
+                "event_city": "Boston",
+                "event_country": "United States",
+                "event_location": "Boston, MA, United States",
+                "event_location_standardized": "Boston, MA, United States",
+                "latitude": 42.3601,
+                "longitude": -71.0589,
+                "coordinates_valid": True,
+            },
+        ]
+    )
+    catalog = pd.DataFrame(
+        [
+            {
+                "event_id": 39,
+                "canonical_name": "Countdown Swing Boston",
+                "url": None,
+                "typical_city": "Boston",
+                "typical_country": "United States",
+            }
+        ]
+    )
+    rows = [
+        {
+            "event_id": 39,
+            "name": "Countdown Swing Boston",
+            "city": "Boston",
+            "country": "United States",
+            "location_id": None,
+            "url": None,
+            "source": "scheduled_events",
+            "year": 2026,
+            "start_date": date(2026, 12, 31),
+        }
+    ]
+    _enrich_geo(rows, locations, catalog, location_id_by_event={})
+    assert rows[0]["location_id"] == 396
+    assert rows[0]["city"] == "Mansfield"
+    assert rows[0]["lat"] == 42.0334
+
+
+def test_enrich_geo_inherits_when_schedule_city_aliases_edition():
+    """Soft aliases (Tampa Bay ↔ Tampa) may still inherit the edition location_id."""
+    locations = pd.DataFrame(
+        [
+            {
+                "location_id": 53,
+                "event_city": "Tampa",
+                "event_country": "United States",
+                "latitude": 27.9516896,
+                "longitude": -82.4587744,
+                "coordinates_valid": True,
+            }
+        ]
+    )
+    catalog = pd.DataFrame(
+        [
+            {
+                "event_id": 137,
+                "canonical_name": "Tampa Bay Classic",
+                "url": None,
+                "typical_city": "Tampa",
+                "typical_country": "United States",
+            }
+        ]
+    )
+    rows = [
+        {
+            "event_id": 137,
+            "name": "Tampa Bay Classic",
+            "city": "Tampa Bay",
+            "country": "United States",
+            "location_id": None,
+            "url": None,
+            "source": "scheduled_events",
+            "year": 2026,
+            "start_date": date(2026, 11, 5),
+        }
+    ]
+    _enrich_geo(rows, locations, catalog, location_id_by_event={137: 53})
+    assert rows[0]["location_id"] == 53
+    assert rows[0]["city"] == "Tampa"
+    assert rows[0]["lat"] == 27.9516896
+
+
+def test_enrich_geo_city_fallback_matches_accented_labels():
+    locations = pd.DataFrame(
+        [
+            {
+                "location_id": 186,
+                "event_city": "Gdańsk",
+                "event_country": "Poland",
+                "latitude": 54.3520252,
+                "longitude": 18.6466384,
+                "coordinates_valid": True,
+            }
+        ]
+    )
+    catalog = pd.DataFrame(columns=["event_id", "canonical_name", "url"])
+    rows = [
+        {
+            "event_id": 222,
+            "name": "Baltic Swing",
+            "city": "Gdansk",
+            "country": "Poland",
+            "location_id": None,
+            "url": None,
+        }
+    ]
+    _enrich_geo(rows, locations, catalog, location_id_by_event={})
+    assert rows[0]["lat"] == 54.3520252
+    assert rows[0]["lon"] == 18.6466384
 
 
 def test_enrich_geo_name_override_forces_wels_without_event_id():
