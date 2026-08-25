@@ -2190,3 +2190,174 @@ def test_latest_unlinked_priors_respects_lookback():
         "Current Upcoming",
         "Published Future",
     }
+
+
+def test_within_unlinked_ended_retention_window():
+    from transform.year_event_calendar.build import _within_unlinked_ended_retention
+
+    start, end = date(2026, 8, 21), date(2026, 8, 23)
+    assert _within_unlinked_ended_retention(start=start, end=end, as_of=date(2026, 8, 25))
+    assert _within_unlinked_ended_retention(start=start, end=end, as_of=date(2026, 8, 30))
+    assert not _within_unlinked_ended_retention(start=start, end=end, as_of=date(2026, 8, 31))
+    # Upcoming unmatched still within window
+    assert _within_unlinked_ended_retention(
+        start=date(2026, 10, 1), end=date(2026, 10, 5), as_of=date(2026, 8, 25)
+    )
+
+
+def test_rows_from_unmatched_calendar_retention_keeps_manneken_style(tmp_path):
+    import json
+
+    from transform.year_event_calendar.build import _rows_from_unmatched_calendar_retention
+
+    cal_dir = tmp_path / "events_calendar"
+    cal_dir.mkdir()
+    pd.DataFrame(
+        [
+            {
+                "event_name": "Manneken Swing",
+                "calendar_title": "Manneken Swing",
+                "start_date": "2026-08-21",
+                "end_date": "2026-08-23",
+                "url": "https://www.mannekenswing.com",
+                "results_year": 2026,
+                "source_fingerprint": "fp-manneken",
+                "matched_event_id": None,
+                "match_status": "unmatched",
+            },
+            {
+                "event_name": "Already Matched Fest",
+                "calendar_title": "Already Matched Fest",
+                "start_date": "2026-08-20",
+                "end_date": "2026-08-23",
+                "url": "https://example.com",
+                "results_year": 2026,
+                "source_fingerprint": "fp-matched",
+                "matched_event_id": 53,
+                "match_status": "matched",
+            },
+            {
+                "event_name": "Ancient Unmatched",
+                "calendar_title": "Ancient Unmatched",
+                "start_date": "2026-07-01",
+                "end_date": "2026-07-04",
+                "url": "https://old.example",
+                "results_year": 2026,
+                "source_fingerprint": "fp-old",
+                "matched_event_id": None,
+                "match_status": "unmatched",
+            },
+        ]
+    ).to_csv(cal_dir / "edition_date_matches.csv", index=False)
+
+    changelog_dir = tmp_path / "events_list" / "changelog"
+    changelog_dir.mkdir(parents=True)
+    (changelog_dir / "latest.json").write_text(
+        json.dumps(
+            {
+                "removed": [
+                    {
+                        "source_fingerprint": "fp-manneken",
+                        "event_name": "Manneken Swing",
+                        "location_raw": "Bruxelles, Bruxelles, Belgium",
+                        "country": "Belgium",
+                        "url": "https://www.mannekenswing.com/",
+                        "status_event": "Trial Event",
+                        "location_id": 387,
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    rows = _rows_from_unmatched_calendar_retention(tmp_path, as_of=date(2026, 8, 25))
+    names = {r["name"] for r in rows}
+    assert names == {"Manneken Swing"}
+    man = rows[0]
+    assert man["event_id"] is None
+    assert man["provisional_unlinked"] is True
+    assert man["source"] == "events_calendar_retention"
+    assert man["city"] == "Bruxelles"
+    assert man["country"] == "Belgium"
+    assert man["kind"] == "trial"
+    assert man["location_id"] == 387
+
+    gone = _rows_from_unmatched_calendar_retention(tmp_path, as_of=date(2026, 8, 31))
+    assert gone == []
+
+
+def test_build_year_event_calendar_retains_unmatched_after_list_drop(tmp_path):
+    """Smoke: Manneken-style unmatched row survives rebuild within the 7-day grace."""
+    import json
+    from transform.year_event_calendar.build import build_year_event_calendar
+
+    # Minimal empty CSVs the builder expects
+    for name, cols in [
+        ("edition_calendar_dates.csv", ["event_id", "event_name", "planned_start_date"]),
+        ("event_editions.csv", ["event_id", "event_name", "event_year", "start_date", "result_rows"]),
+        ("scheduled_events.csv", ["event_name", "start_date", "confirmed"]),
+        ("event_catalog.csv", ["event_id", "canonical_name"]),
+        ("location_info.csv", ["location_id", "event_city", "event_country", "latitude", "longitude", "coordinates_valid"]),
+    ]:
+        pd.DataFrame(columns=cols).to_csv(tmp_path / name, index=False)
+
+    cal_dir = tmp_path / "events_calendar"
+    cal_dir.mkdir()
+    pd.DataFrame(
+        [
+            {
+                "event_name": "Manneken Swing",
+                "calendar_title": "Manneken Swing",
+                "start_date": "2026-08-21",
+                "end_date": "2026-08-23",
+                "url": "https://www.mannekenswing.com",
+                "results_year": 2026,
+                "source_fingerprint": "fp-manneken",
+                "matched_event_id": None,
+                "match_status": "unmatched",
+            }
+        ]
+    ).to_csv(cal_dir / "edition_date_matches.csv", index=False)
+
+    changelog_dir = tmp_path / "events_list" / "changelog"
+    changelog_dir.mkdir(parents=True)
+    (changelog_dir / "latest.json").write_text(
+        json.dumps(
+            {
+                "removed": [
+                    {
+                        "source_fingerprint": "fp-manneken",
+                        "event_name": "Manneken Swing",
+                        "location_raw": "Bruxelles, Belgique, Belgium",
+                        "country": "Belgium",
+                        "status_event": "Trial Event",
+                        "location_id": None,
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+    # location fallback by city
+    pd.DataFrame(
+        [
+            {
+                "location_id": 387,
+                "event_city": "Bruxelles",
+                "event_country": "Belgium",
+                "latitude": 50.8503,
+                "longitude": 4.3517,
+                "coordinates_valid": True,
+            }
+        ]
+    ).to_csv(tmp_path / "location_info.csv", index=False)
+
+    payload = build_year_event_calendar(tmp_path, as_of=date(2026, 8, 25), year_radius=2)
+    hits = [e for e in payload["events"] if "Manneken" in (e.get("name") or "")]
+    assert len(hits) == 1
+    assert hits[0]["status"] == "confirmed"
+    assert hits[0]["country"] == "Belgium"
+    assert hits[0].get("provisional_unlinked") is True
+    assert hits[0]["city"] == "Bruxelles"
+
