@@ -142,6 +142,13 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'WCS Festival': 'Düsseldorf, Germany',
     # Fresh 2026-08-17 parse: shared-wrong location_id collisions.
     'Arousa Westie Fest': 'Sanxenxo, Spain',  # was Perth (253)
+    # Shared Perth (253 / WesterOz) wrongly applied; series is St. Petersburg RU (wcsnights.ru).
+    # Catalog/editions/events_wsdc stuck on Perth; Swing & Snow correctly uses lid 222.
+    'Saint Petersburg WCS Nights': 'St. Petersburg, Russia',
+    'St. Petersburg WCS Nights': 'St. Petersburg, Russia',
+    'St.Petersburg WCS Nights': 'St. Petersburg, Russia',
+    # Shared Brno (266 / Swing Fiction) wrongly applied; schedule/site are Augsburg DE (lid 195).
+    'Augsburg Westie Station': 'Augsburg, Germany',
     'German Open': 'Freiburg, Germany',  # was Brno (266)
     'German Open WCS': 'Freiburg, Germany',
     'German Open West Coast Swing': 'Freiburg, Germany',
@@ -859,6 +866,30 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_country': 'Spain',
             'event_location': 'Sanxenxo, Spain',
             'event_location_standardized': 'Sanxenxo, Spain',
+        },
+    },
+    280: {
+        'name': 'Saint Petersburg WCS Nights',
+        'url': 'http://wcsnights.ru',
+        'typical_location': 'St. Petersburg, Russia',
+        'location': {
+            'event_city': 'St. Petersburg',
+            'event_state': '',
+            'event_country': 'Russia',
+            'event_location': 'St. Petersburg, Russia',
+            'event_location_standardized': 'St. Petersburg, Russia',
+        },
+    },
+    350: {
+        'name': 'Augsburg Westie Station',
+        'url': '',
+        'typical_location': 'Augsburg, Germany',
+        'location': {
+            'event_city': 'Augsburg',
+            'event_state': '',
+            'event_country': 'Germany',
+            'event_location': 'Augsburg, Germany',
+            'event_location_standardized': 'Augsburg, Germany',
         },
     },
     304: {

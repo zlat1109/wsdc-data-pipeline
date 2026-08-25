@@ -52,6 +52,7 @@ RESULT_TO_CATALOG_EVENT_NAME: dict[str, str] = {
     'Westigala': 'Westie Gala',
     'Best of the Best': 'Best of the Best WCS',
     'St.Petersburg WCS Nights': 'Saint Petersburg WCS Nights',
+    'St. Petersburg WCS Nights': 'Saint Petersburg WCS Nights',
     'Russian Open': 'Russian Open WCS Championships',
     # UpTown Swing is the post-2018 name; year split applied separately.
     # Do NOT map UpTown → Swedish Swing Summer Camp (that collapses the series).
@@ -178,6 +179,7 @@ MERGE_EVENT_ID_MAP: dict[int, int] = {
     551: 221,  # Show Me Showdown inactive → id reused by Gateway (results on 221)
     552: 221,  # Show-Me Showdown spelling ghost → 221
     467: 221,  # Orphan calendar match for Show Me Showdown → 221
+    463: 280,  # St. Petersburg WCS Nights schedule ghost → Saint Petersburg WCS Nights
     # NOTE: id 443 was once a LoneStar ghost; WSDC reused it for MADjam phantom
     # (see PHANTOM_ALIAS_TO_CANONICAL 443→92). Do not map 443→120.
 }

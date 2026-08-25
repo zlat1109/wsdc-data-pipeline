@@ -47,6 +47,9 @@ NAME_COUNTRY_HINTS: list[tuple[str, str]] = [
     (r"\bgerman open\b", "Germany"),
     (r"\bmilan modern swing\b", "Italy"),
     (r"\barousa westie fest\b", "Spain"),
+    # Must not stay on Perth AU (253) or Brno CZ (266) shared lids.
+    (r"\bst\.?\s*petersburg wcs nights\b|\bsaint petersburg wcs nights\b", "Russia"),
+    (r"\baugsburg westie station\b", "Germany"),
     (r"\bvalentine swing\b|\bwestie gala\b|\bsweden westie gala\b|\buptown swing\b|\bswedish swing summer camp\b", "Sweden"),
 ]
 
