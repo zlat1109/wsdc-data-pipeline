@@ -310,7 +310,13 @@ def _load_catalog(data_dir: Path) -> pd.DataFrame:
 
 def _norm_place(value: Any) -> str | None:
     text = _clean_name(value)
-    return text.lower() if text else None
+    if not text:
+        return None
+    # Fold accents so Gdansk↔Gdańsk and similar schedule/catalog labels match.
+    folded = "".join(
+        ch for ch in unicodedata.normalize("NFKD", text) if not unicodedata.combining(ch)
+    )
+    return folded.lower()
 
 
 def _location_id_by_event(data_dir: Path) -> dict[int, int]:
@@ -364,6 +370,88 @@ def _coords_by_city_country(locations: pd.DataFrame) -> dict[tuple[str, str], tu
             continue
         out[(city, country)] = (lat, lon)
     return out
+
+
+# Live WSDC list sources — published city wins over flat location overrides /
+# stale edition lids when the labels are incompatible.
+_LIVE_LIST_SOURCES = frozenset({"scheduled_events", "events_list_current"})
+
+
+def _city_compare_key(value: Any) -> str | None:
+    """Normalize city labels for soft equality (accents + common abbreviations)."""
+    text = _norm_place(value)
+    if not text:
+        return None
+    # St. Petersburg ↔ Saint Petersburg; Mt. View ↔ Mount View.
+    # Use lookahead (not \\b) after the optional period — '.' is non-word so
+    # \\bst\\.?\\b fails on "st. petersburg".
+    text = re.sub(r"\bst\.?(?=\s|$)", "saint", text)
+    text = re.sub(r"\bmt\.?(?=\s|$)", "mount", text)
+    text = re.sub(r"\s+", " ", text).strip()
+    return text or None
+
+
+def _cities_compatible(schedule_city: Any, known_city: Any) -> bool:
+    """True when live-list city matches (or soft-aliases) a known location city.
+
+    Used before inheriting an old edition ``location_id``: keep Tampa Bay↔Tampa,
+    but do not treat Washington↔Herndon as the same place (real relocations).
+    """
+    a = _city_compare_key(schedule_city)
+    b = _city_compare_key(known_city)
+    if not a or not b:
+        return True
+    if a == b:
+        return True
+    ta, tb = a.split(), b.split()
+    if not ta or not tb:
+        return False
+    # Contiguous token prefix: "washington" ↔ "washington dc", "tampa" ↔ "tampa bay".
+    shorter, longer = (ta, tb) if len(ta) <= len(tb) else (tb, ta)
+    if longer[: len(shorter)] == shorter and len(shorter[0]) >= 4:
+        return True
+    # First significant token match only (avoids York⊂New York via bare substring).
+    return bool(ta[0] == tb[0] and len(ta[0]) >= 4 and (len(ta) == 1 or len(tb) == 1))
+
+
+def _lookup_coords_for_place(
+    city: Any,
+    country: Any,
+    coords_by_place: dict[tuple[str, str], tuple[float, float]],
+) -> tuple[float, float] | None:
+    """Resolve lat/lon from location_info using exact then soft-compatible city keys."""
+    nc = _norm_place(city)
+    nco = _norm_place(country)
+    if not nc or not nco:
+        return None
+    exact = coords_by_place.get((nc, nco))
+    if exact is not None:
+        return exact
+    # Accent-/abbrev-folded exact key (Gdansk↔Gdańsk already folded in _norm_place).
+    for (c, co), latlon in coords_by_place.items():
+        if co != nco and co not in nco and nco not in co:
+            continue
+        if _city_compare_key(c) == _city_compare_key(nc):
+            return latlon
+    for (c, co), latlon in coords_by_place.items():
+        if not co:
+            continue
+        if co != nco and co not in nco and nco not in co:
+            continue
+        if _cities_compatible(nc, c):
+            return latlon
+    return None
+
+
+def _row_from_live_list(row: dict) -> bool:
+    """True for live WSDC list rows and YoY stubs projected from them."""
+    source = row.get("source")
+    if source in _LIVE_LIST_SOURCES:
+        return True
+    return (
+        source == "expected_yoy"
+        and row.get("projected_from_source") in _LIVE_LIST_SOURCES
+    )
 
 
 def _calendar_listing_matches_event(event_name: Any, calendar_title: Any) -> bool:
@@ -1159,15 +1247,22 @@ def _override_lid_for_calendar_row(
     year: int | None,
     override_lid_by_name: dict[str, int],
     year_override_lids: list[tuple[str, int, int, int]],
-) -> int | None:
-    """Year-scoped location overrides beat flat EVENT_NAME_LOCATION_OVERRIDES."""
+) -> tuple[int | None, bool]:
+    """Resolve location override for a calendar row.
+
+    Returns ``(location_id, year_scoped)``. Year-scoped overrides document
+    intentional venue moves (GGP→Paris, Countdown→Mansfield) and always apply.
+    Flat overrides fix wrong shared lids but must not block a live-list city
+    that is incompatible with the override place.
+    """
     if not name:
-        return None
+        return None, False
     if year is not None:
         for oname, y0, y1, lid in year_override_lids:
             if name == oname and y0 <= year <= y1:
-                return lid
-    return override_lid_by_name.get(name)
+                return lid, True
+    lid = override_lid_by_name.get(name)
+    return lid, False
 
 
 def _enrich_geo(
@@ -1216,23 +1311,54 @@ def _enrich_geo(
                 row["city"] = _clean_name(cat.get("typical_city"))
             if not row.get("country"):
                 row["country"] = _clean_name(cat.get("typical_country"))
-        # Name overrides beat scrape/catalog city (e.g. SwingVester → Wels, not Brno).
-        # Year-scoped overrides beat flat ones (GGP Toulouse → Paris from 2026).
+        # Name overrides: year-scoped always apply (documented venue moves).
+        # Flat overrides always fix non-schedule rows (wrong shared lids on
+        # editions/results). For live list rows, an incompatible published city
+        # wins — overrides must not block real list relocations
+        # (DCSX Washington vs Herndon; Westie Weekend Washington DC vs Silver Spring).
         name = _clean_name(row.get("name"))
-        override_lid = _override_lid_for_calendar_row(
+        override_lid, year_scoped = _override_lid_for_calendar_row(
             name, _row_year(row), override_lid_by_name, year_override_lids
         )
+        from_live_list = _row_from_live_list(row)
+        year_scoped_applied = False
         if override_lid is not None:
-            row["location_id"] = override_lid
+            known = loc_by_id.get(override_lid)
+            known_city = known.get("event_city") if known else None
+            if (
+                year_scoped
+                or not from_live_list
+                or not row.get("city")
+                or _cities_compatible(row.get("city"), known_city)
+            ):
+                row["location_id"] = override_lid
+                year_scoped_applied = year_scoped
+        # Inherit edition location_id only when the live schedule has no city, or
+        # the published city still matches that place. Real list relocations
+        # (Herndon → Washington DC) must keep the schedule city, not the old lid.
         if row.get("location_id") is None and eid is not None:
             inherited = loc_by_event.get(int(eid))
             if inherited is not None:
-                row["location_id"] = inherited
+                known = loc_by_id.get(inherited)
+                known_city = known.get("event_city") if known else None
+                if not row.get("city") or _cities_compatible(row.get("city"), known_city):
+                    row["location_id"] = inherited
+        # Live list may already carry a stale location_id that disagrees with the
+        # published city — drop it unless a year-scoped venue pin just won.
+        if (
+            from_live_list
+            and not year_scoped_applied
+            and row.get("city")
+            and row.get("location_id") is not None
+        ):
+            known = loc_by_id.get(int(row["location_id"]))
+            known_city = known.get("event_city") if known else None
+            if known_city and not _cities_compatible(row.get("city"), known_city):
+                row["location_id"] = None
         lid = row.get("location_id")
         if lid is not None and lid in loc_by_id:
             loc = loc_by_id[lid]
-            # location_id is authoritative: overwrite scraped city/country (Brno
-            # left on a schedule row after a lid remap must not stick).
+            # Explicit / override / matching inherited location_id is authoritative.
             row["city"] = _clean_name(loc.get("event_city")) or row.get("city")
             row["country"] = _clean_name(loc.get("event_country")) or row.get("country")
             if _truthy(loc.get("coordinates_valid")):
@@ -1251,9 +1377,9 @@ def _enrich_geo(
             row.setdefault("lon", None)
         # City/country fallback when location_id is missing or coords invalid
         if row.get("lat") is None or row.get("lon") is None:
-            place = (_norm_place(row.get("city")), _norm_place(row.get("country")))
-            if place[0] and place[1] and place in coords_by_place:
-                row["lat"], row["lon"] = coords_by_place[place]
+            hit = _lookup_coords_for_place(row.get("city"), row.get("country"), coords_by_place)
+            if hit is not None:
+                row["lat"], row["lon"] = hit
         # Normalize name after enrichment
         row["name"] = _clean_name(row.get("name"))
 
