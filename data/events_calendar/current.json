@@ -1,9 +1,9 @@
 {
-  "scraped_at": "2026-08-18T08:59:19.735759+00:00",
+  "scraped_at": "2026-08-25T08:31:39.611965+00:00",
   "source": "https://worldsdc.com/events/calendar/",
   "min_start": "2025-01-01",
-  "raw_count": 638,
-  "event_count": 470,
+  "raw_count": 640,
+  "event_count": 472,
   "events": [
     {
       "event_name": "Floorplay Swing Vacation",
@@ -911,7 +911,7 @@
       "event_name": "By-Town Open (BTO)",
       "calendar_title": "By-Town Open (BTO)",
       "catalog_name": "Calgary Town Open",
-      "name_key": "btoopen",
+      "name_key": "calgarytownopen",
       "start_date": "2025-03-27",
       "end_date": "2025-03-30",
       "url": "http://Btoopen.ca",
@@ -7203,7 +7203,7 @@
       "event_name": "Calgary Town Open",
       "calendar_title": "Calgary Town Open",
       "catalog_name": "Calgary Town Open",
-      "name_key": "btoopen",
+      "name_key": "calgarytownopen",
       "start_date": "2026-09-24",
       "end_date": "2026-09-27",
       "url": "https://ctodance.ca",
@@ -10267,6 +10267,29 @@
       "raw_end": "2027-07-26"
     },
     {
+      "event_name": "Infinite Swing",
+      "calendar_title": "Infinite Swing",
+      "catalog_name": "Infinite Swing",
+      "name_key": "infiniteswing",
+      "start_date": "2027-07-29",
+      "end_date": "2027-08-01",
+      "url": "https://www.infinite-swing.com/",
+      "url_key": "infinite-swing.com",
+      "results_year": 2027,
+      "results_month": 8,
+      "edition_ym_candidates": [
+        "2027-08",
+        "2027-07"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "e0e29164988662ec78f7e3ee",
+      "raw_start": "2027-07-29",
+      "raw_end": "2027-08-02"
+    },
+    {
       "event_name": "Lisbon Westie Fest",
       "calendar_title": "Lisbon Westie Fest",
       "catalog_name": "Lisbon Westie Fest",
@@ -10399,6 +10422,28 @@
       "source_fingerprint": "0e485aa8568c6408b8ff891a",
       "raw_start": "2028-02-29",
       "raw_end": "2028-03-06"
+    },
+    {
+      "event_name": "Spring Time Swing",
+      "calendar_title": "Spring Time Swing",
+      "catalog_name": "Spring Time Swing",
+      "name_key": "springtimeswing",
+      "start_date": "2028-05-04",
+      "end_date": "2028-05-07",
+      "url": "https://springtimeswing.com/",
+      "url_key": "springtimeswing.com",
+      "results_year": 2028,
+      "results_month": 5,
+      "edition_ym_candidates": [
+        "2028-05"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "2d2d797fa9694535f75d75e2",
+      "raw_start": "2028-05-04",
+      "raw_end": "2028-05-08"
     },
     {
       "event_name": "Atlanta Swing Classic",
