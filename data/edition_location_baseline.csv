@@ -26,7 +26,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 362,2026,7,271,MY Swing,auto,Kuala Lumpur,,Malaysia,"Kuala Lumpur, Malaysia","Kuala Lumpur, Malaysia",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 385,2026,7,174,Revitalise WCS,auto,Melbourne,,Australia,"Melbourne, Australia","Melbourne, Australia",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 256,2026,7,215,Rock the Barn,auto,Umeå,,Sweden,"Umeå, Sweden","Umeå, Sweden",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
-280,2026,7,222,Saint Petersburg WCS Nights,manual,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
+280,2026,7,222,Saint Petersburg WCS Nights,manual,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-08-24 20:28:29.661359+00,2026-08-25 13:49:08.44074+00
 360,2026,7,268,SaunaSwing,auto,Ikaalinen,,Finland,"Ikaalinen, Finland","Ikaalinen, Finland",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 389,2026,7,194,SwingLab Berlin,auto,Berlin,,Germany,"Berlin, Germany","Berlin, Germany",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 225,2026,7,21,Wild Wild Westie,auto,Dallas,Texas,United States,"Dallas, TX, United States","Dallas, TX",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
@@ -140,7 +140,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 270,2025,11,156,Westie's Angels,auto,Lyon,,France,"Lyon, France","Lyon, France",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 323,2025,11,137,Westies on the Water,auto,Huntsville,Alabama,United States,"Huntsville, AL, United States","Huntsville, AL",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 211,2025,10,25,Atlanta Swing Classic,auto,Atlanta,Georgia,United States,"Atlanta, GA, United States","Atlanta, GA, United States",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
-350,2025,10,195,Augsburg Westie Station,manual,Augsburg,,Germany,"Augsburg, Germany","Augsburg, Germany",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
+350,2025,10,195,Augsburg Westie Station,manual,Augsburg,,Germany,"Augsburg, Germany","Augsburg, Germany",2026-08-24 20:28:29.661359+00,2026-08-25 13:49:08.44074+00
 8,2025,10,2,Boogie By The Bay,auto,San Francisco,California,United States,"San Francisco, CA, United States","San Francisco, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 367,2025,10,253,Go West SwingFest,auto,Perth,,Australia,"Perth, Australia","Perth, Australia",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 65,2025,10,24,Halloween SwingThing,auto,Costa Mesa,California,United States,"Costa Mesa, CA, United States","Costa Mesa, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
@@ -200,7 +200,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 362,2025,7,271,MY Swing,auto,Kuala Lumpur,,Malaysia,"Kuala Lumpur, Malaysia","Kuala Lumpur, Malaysia",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 385,2025,7,174,Revitalise WCS,auto,Melbourne,,Australia,"Melbourne, Australia","Melbourne, Australia",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 256,2025,7,215,Rock the Barn,auto,Umeå,,Sweden,"Umeå, Sweden","Umeå, Sweden",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
-280,2025,7,222,Saint Petersburg WCS Nights,manual,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
+280,2025,7,222,Saint Petersburg WCS Nights,manual,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-08-24 20:28:29.661359+00,2026-08-25 13:49:08.44074+00
 360,2025,7,268,SaunaSwing,auto,Ikaalinen,,Finland,"Ikaalinen, Finland","Ikaalinen, Finland",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 147,2025,7,105,Toronto Open Swing & Hustle Championships,auto,Toronto,,Canada,"Toronto, Canada","Toronto, Canada",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 225,2025,7,21,Wild Wild Westie,auto,Dallas,Texas,United States,"Dallas, TX, United States","Dallas, TX",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
@@ -308,7 +308,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 270,2024,11,156,Westie's Angels,auto,Lyon,,France,"Lyon, France","Lyon, France",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 323,2024,11,137,Westies on the Water,auto,Huntsville,Alabama,United States,"Huntsville, AL, United States","Huntsville, AL",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 211,2024,10,25,Atlanta Swing Classic,auto,Atlanta,Georgia,United States,"Atlanta, GA, United States","Atlanta, GA, United States",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
-350,2024,10,195,Augsburg Westie Station,manual,Augsburg,,Germany,"Augsburg, Germany","Augsburg, Germany",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
+350,2024,10,195,Augsburg Westie Station,manual,Augsburg,,Germany,"Augsburg, Germany","Augsburg, Germany",2026-08-24 20:28:29.661359+00,2026-08-25 13:49:08.44074+00
 8,2024,10,2,Boogie By The Bay,auto,San Francisco,California,United States,"San Francisco, CA, United States","San Francisco, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 367,2024,10,253,Go West SwingFest,auto,Perth,,Australia,"Perth, Australia","Perth, Australia",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 65,2024,10,24,Halloween SwingThing,auto,Costa Mesa,California,United States,"Costa Mesa, CA, United States","Costa Mesa, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
@@ -357,7 +357,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 303,2024,7,169,Odyssey West Coast Swing,auto,Gold Coast,,Australia,"Gold Coast, Australia","Gold Coast, Australia",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 263,2024,7,203,Riga Summer Swing,auto,Riga,,Latvia,"Riga, Latvia","Riga, Latvia",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 256,2024,7,215,Rock the Barn,auto,Umeå,,Sweden,"Umeå, Sweden","Umeå, Sweden",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
-280,2024,7,222,Saint Petersburg WCS Nights,manual,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
+280,2024,7,222,Saint Petersburg WCS Nights,manual,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-08-24 20:28:29.661359+00,2026-08-25 13:49:08.44074+00
 147,2024,7,105,Toronto Open Swing & Hustle Championships,auto,Toronto,,Canada,"Toronto, Canada","Toronto, Canada",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 225,2024,7,21,Wild Wild Westie,auto,Dallas,Texas,United States,"Dallas, TX, United States","Dallas, TX",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 222,2024,6,186,Baltic Swing,auto,Gdańsk,,Poland,"Gdańsk, Poland","Gdańsk, Poland",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
@@ -434,7 +434,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 238,2023,12,223,Winter White,auto,Oslo,,Norway,"Oslo, Norway","Oslo, Norway",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 269,2023,11,110,Autumn Swing Challenge,auto,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 87,2023,11,96,CASH Bash,auto,Cleveland,Ohio,United States,"Cleveland, OH, United States","Cleveland, OH",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
-181,2023,11,38,DC Swing eXperience (DCSX),manual,Herndon,Virginia,United States,"Herndon, VA, United States","Herndon, VA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
+181,2023,11,38,DC Swing eXperience (DCSX),manual,Herndon,Virginia,United States,"Herndon, VA, United States","Herndon, VA",2026-08-24 20:28:29.661359+00,2026-08-25 13:51:22.622348+00
 288,2023,11,21,Midnight Madness,auto,Dallas,Texas,United States,"Dallas, TX, United States","Dallas, TX",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 194,2023,11,113,Moscow Westie Fest,auto,Moscow,,Russia,"Moscow, Russia","Moscow, Russia",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 31,2023,11,28,Mountain Magic,auto,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV, United States","South Lake Tahoe (near Reno), NV",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
@@ -491,7 +491,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 261,2023,7,191,Neverland Swing,auto,Amsterdam,,Netherlands,"Amsterdam, Netherlands","Amsterdam, Netherlands",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 303,2023,7,169,Odyssey West Coast Swing,auto,Gold Coast,,Australia,"Gold Coast, Australia","Gold Coast, Australia",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 256,2023,7,215,Rock the Barn,auto,Umeå,,Sweden,"Umeå, Sweden","Umeå, Sweden",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
-280,2023,7,222,Saint Petersburg WCS Nights,manual,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
+280,2023,7,222,Saint Petersburg WCS Nights,manual,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-08-24 20:28:29.661359+00,2026-08-25 13:49:08.44074+00
 331,2023,7,266,Swing Fiction,auto,Brno,,Czech Republic,"Brno, Czech Republic","Brno, Czech Republic",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 147,2023,7,105,Toronto Open Swing & Hustle Championships,auto,Toronto,,Canada,"Toronto, Canada","Toronto, Canada",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 225,2023,7,21,Wild Wild Westie,auto,Dallas,Texas,United States,"Dallas, TX, United States","Dallas, TX",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
@@ -569,7 +569,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 65,2022,10,24,Halloween SwingThing,auto,Costa Mesa,California,United States,"Costa Mesa, CA, United States","Costa Mesa, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 165,2022,10,107,Midland Swing Open,auto,London,,United Kingdom,"London, United Kingdom","London, United Kingdom",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 322,2022,10,132,Milan Modern Swing,auto,Milan,,Italy,"Milan, Italy","Milan, Italy",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
-179,2022,10,168,New Zealand Open Swing Dance Championships,manual,Auckland,,New Zealand,"Auckland, New Zealand","Auckland, New Zealand",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
+179,2022,10,168,New Zealand Open Swing Dance Championships,manual,Auckland,,New Zealand,"Auckland, New Zealand","Auckland, New Zealand",2026-08-24 20:28:29.661359+00,2026-08-25 13:51:22.622348+00
 43,2022,10,19,Paradise Dance Festival,auto,Irvine,California,United States,"Irvine, CA, United States","Irvine, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 125,2022,10,34,Swing City Chicago,auto,Chicago,Illinois,United States,"Chicago, IL, United States","Chicago, IL",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 267,2022,10,149,Swustlicious,auto,Philadelphia,Pennsylvania,United States,"Philadelphia, PA, United States","Philadelphia, PA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
@@ -601,7 +601,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 148,2022,7,57,Dance Mardi Gras,auto,New Orleans,Louisiana,United States,"New Orleans, LA, United States","New Orleans, LA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 149,2022,7,55,Florida Dance Magic,auto,Fort Lauderdale,Florida,United States,"Fort Lauderdale, FL, United States","Fort Lauderdale, FL",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 261,2022,7,191,Neverland Swing,auto,Amsterdam,,Netherlands,"Amsterdam, Netherlands","Amsterdam, Netherlands",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
-280,2022,7,222,Saint Petersburg WCS Nights,manual,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
+280,2022,7,222,Saint Petersburg WCS Nights,manual,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-08-24 20:28:29.661359+00,2026-08-25 13:49:08.44074+00
 47,2022,7,29,Swingtime in the Rockies,auto,Denver,Colorado,United States,"Denver, CO, United States","Denver, CO",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 225,2022,7,21,Wild Wild Westie,auto,Dallas,Texas,United States,"Dallas, TX, United States","Dallas, TX",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 222,2022,6,186,Baltic Swing,auto,Gdańsk,,Poland,"Gdańsk, Poland","Gdańsk, Poland",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
@@ -659,7 +659,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 120,2021,8,39,Lone Star Invitational,auto,Austin,Texas,United States,"Austin, TX, United States","Austin, TX",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 278,2021,7,252,Americano Dance Camp,auto,Samara,,Russia,"Samara, Russia","Samara, Russia",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 156,2021,7,140,Big Apple Dance Festival,auto,Morristown,New Jersey,United States,"Morristown, NJ, United States","Morristown, NJ",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
-280,2021,7,222,Saint Petersburg WCS Nights,manual,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
+280,2021,7,222,Saint Petersburg WCS Nights,manual,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-08-24 20:28:29.661359+00,2026-08-25 13:49:08.44074+00
 225,2021,7,21,Wild Wild Westie,auto,Dallas,Texas,United States,"Dallas, TX, United States","Dallas, TX",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 117,2021,6,82,Orange Blossom Dance Festival,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 174,2021,6,169,Swingsation,auto,Gold Coast,,Australia,"Gold Coast, Australia","Gold Coast, Australia",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
@@ -766,7 +766,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 303,2019,7,169,Odyssey West Coast Swing,auto,Gold Coast,,Australia,"Gold Coast, Australia","Gold Coast, Australia",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 44,2019,7,4,Portland Dance Festival,auto,Portland,Oregon,United States,"Portland, OR, United States","Portland, OR",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 256,2019,7,215,Rock the Barn,auto,Umeå,,Sweden,"Umeå, Sweden","Umeå, Sweden",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
-280,2019,7,222,Saint Petersburg WCS Nights,manual,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
+280,2019,7,222,Saint Petersburg WCS Nights,manual,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-08-24 20:28:29.661359+00,2026-08-25 13:49:08.44074+00
 164,2019,7,158,Sea Sun and Swing,auto,La Grande Motte,,France,"La Grande Motte, France","La Grande Motte, France",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 47,2019,7,29,Swingtime in the Rockies,auto,Denver,Colorado,United States,"Denver, CO, United States","Denver, CO",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 147,2019,7,105,Toronto Open Swing & Hustle Championships,auto,Toronto,,Canada,"Toronto, Canada","Toronto, Canada",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
@@ -835,7 +835,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 297,2019,2,269,Winter Coast Swing,auto,Kuopio,,Finland,"Kuopio, Finland","Kuopio, Finland",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 200,2019,1,39,Austin Swing Dance Championships,auto,Austin,Texas,United States,"Austin, TX, United States","Austin, TX",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 184,2019,1,110,BudaFest Open WCS Championships,auto,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
-334,2019,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
+334,2019,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-25 13:51:49.851229+00
 242,2019,1,116,Derby City Swing,auto,Louisville,Kentucky,United States,"Louisville, KY, United States","Louisville, KY",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 42,2019,1,82,Floorplay Swing Vacation,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 183,2019,1,66,Freedom Swing Dance Challenge,auto,Wilmington,Delaware,United States,"Wilmington, DE, United States","Wilmington, DE",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
@@ -923,7 +923,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 303,2018,7,169,Odyssey West Coast Swing,auto,Gold Coast,,Australia,"Gold Coast, Australia","Gold Coast, Australia",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 44,2018,7,4,Portland Dance Festival,auto,Portland,Oregon,United States,"Portland, OR, United States","Portland, OR",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 256,2018,7,215,Rock the Barn,auto,Umeå,,Sweden,"Umeå, Sweden","Umeå, Sweden",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
-280,2018,7,222,Saint Petersburg WCS Nights,manual,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
+280,2018,7,222,Saint Petersburg WCS Nights,manual,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-08-24 20:28:29.661359+00,2026-08-25 13:49:08.44074+00
 262,2018,7,147,Swing It Like It's Hot,auto,Tel Aviv,,Israel,"Tel Aviv, Israel","Tel Aviv, Israel",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 47,2018,7,29,Swingtime in the Rockies,auto,Denver,Colorado,United States,"Denver, CO, United States","Denver, CO",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 147,2018,7,105,Toronto Open Swing & Hustle Championships,auto,Toronto,,Canada,"Toronto, Canada","Toronto, Canada",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
@@ -983,7 +983,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 258,2018,2,173,Swingtzerland,auto,Zürich,,Switzerland,"Zürich, Switzerland","Zürich, Switzerland",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 200,2018,1,39,Austin Swing Dance Championships,auto,Austin,Texas,United States,"Austin, TX, United States","Austin, TX",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 184,2018,1,110,BudaFest Open WCS Championships,auto,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
-334,2018,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
+334,2018,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-25 13:51:49.851229+00
 242,2018,1,116,Derby City Swing,auto,Louisville,Kentucky,United States,"Louisville, KY, United States","Louisville, KY",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 183,2018,1,66,Freedom Swing Dance Challenge,auto,Wilmington,Delaware,United States,"Wilmington, DE, United States","Wilmington, DE",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 62,2018,1,1,Monterey SwingFest,auto,Monterey,California,United States,"Monterey, CA, United States","Monterey, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
@@ -1068,7 +1068,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 44,2017,7,4,Portland Dance Festival,auto,Portland,Oregon,United States,"Portland, OR, United States","Portland, OR",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 256,2017,7,215,Rock the Barn,auto,Umeå,,Sweden,"Umeå, Sweden","Umeå, Sweden",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 281,2017,7,6,Sacramento All Swing,auto,Sacramento,California,United States,"Sacramento, CA, United States","Sacramento, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
-280,2017,7,222,Saint Petersburg WCS Nights,manual,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
+280,2017,7,222,Saint Petersburg WCS Nights,manual,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-08-24 20:28:29.661359+00,2026-08-25 13:49:08.44074+00
 164,2017,7,158,Sea Sun and Swing,auto,La Grande Motte,,France,"La Grande Motte, France","La Grande Motte, France",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 262,2017,7,147,Swing It Like It's Hot,auto,Tel Aviv,,Israel,"Tel Aviv, Israel","Tel Aviv, Israel",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 47,2017,7,29,Swingtime in the Rockies,auto,Denver,Colorado,United States,"Denver, CO, United States","Denver, CO",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
@@ -1130,7 +1130,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 258,2017,2,173,Swingtzerland,auto,Zürich,,Switzerland,"Zürich, Switzerland","Zürich, Switzerland",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 200,2017,1,39,Austin Swing Dance Championships,auto,Austin,Texas,United States,"Austin, TX, United States","Austin, TX",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 184,2017,1,110,BudaFest Open WCS Championships,auto,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
-334,2017,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
+334,2017,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-25 13:51:49.851229+00
 242,2017,1,116,Derby City Swing,auto,Louisville,Kentucky,United States,"Louisville, KY, United States","Louisville, KY",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 42,2017,1,82,Floorplay Swing Vacation,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 183,2017,1,66,Freedom Swing Dance Challenge,auto,Wilmington,Delaware,United States,"Wilmington, DE, United States","Wilmington, DE",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
@@ -1205,7 +1205,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 255,2016,7,138,Indy Dance Explosion,auto,Fort Wayne,Indiana,United States,"Fort Wayne, IN, United States","Fort Wayne, IN",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 44,2016,7,4,Portland Dance Festival,auto,Portland,Oregon,United States,"Portland, OR, United States","Portland, OR",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 256,2016,7,215,Rock the Barn,auto,Umeå,,Sweden,"Umeå, Sweden","Umeå, Sweden",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
-260,2016,7,243,Sao Paulo Swing Dance Championships,auto,Sao Paulo,,Brazil,"Sao Paulo, Brazil","Sao Paulo, Brazil",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
+260,2016,7,243,Sao Paulo Swing Dance Championships,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 262,2016,7,147,Swing It Like It's Hot,auto,Tel Aviv,,Israel,"Tel Aviv, Israel","Tel Aviv, Israel",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 47,2016,7,29,Swingtime in the Rockies,auto,Denver,Colorado,United States,"Denver, CO, United States","Denver, CO",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 147,2016,7,105,Toronto Open Swing & Hustle Championships,auto,Toronto,,Canada,"Toronto, Canada","Toronto, Canada",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
@@ -1266,7 +1266,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 258,2016,2,173,Swingtzerland,auto,Zürich,,Switzerland,"Zürich, Switzerland","Zürich, Switzerland",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 200,2016,1,39,Austin Swing Dance Championships,auto,Austin,Texas,United States,"Austin, TX, United States","Austin, TX",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 184,2016,1,110,BudaFest Open WCS Championships,auto,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
-334,2016,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
+334,2016,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-25 13:51:49.851229+00
 242,2016,1,116,Derby City Swing,auto,Louisville,Kentucky,United States,"Louisville, KY, United States","Louisville, KY",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 42,2016,1,82,Floorplay Swing Vacation,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 183,2016,1,66,Freedom Swing Dance Challenge,auto,Wilmington,Delaware,United States,"Wilmington, DE, United States","Wilmington, DE",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
@@ -1389,7 +1389,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 215,2015,2,222,Swing & Snow,auto,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 200,2015,1,39,Austin Swing Dance Championships,auto,Austin,Texas,United States,"Austin, TX, United States","Austin, TX",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 184,2015,1,110,BudaFest Open WCS Championships,auto,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
-334,2015,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
+334,2015,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-25 13:51:49.851229+00
 42,2015,1,82,Floorplay Swing Vacation,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 183,2015,1,66,Freedom Swing Dance Challenge,auto,Wilmington,Delaware,United States,"Wilmington, DE, United States","Wilmington, DE",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 62,2015,1,1,Monterey SwingFest,auto,Monterey,California,United States,"Monterey, CA, United States","Monterey, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
@@ -1518,7 +1518,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 196,2014,1,4,SwingCouver,auto,Portland,Oregon,United States,"Portland, OR, United States","Portland, OR",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 75,2014,1,21,UCWDC Country Dance World Championship,auto,Dallas,Texas,United States,"Dallas, TX, United States","Dallas, TX",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 87,2013,12,96,CASH Bash,auto,Cleveland,Ohio,United States,"Cleveland, OH, United States","Cleveland, OH",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
-334,2013,12,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
+334,2013,12,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-25 13:51:49.851229+00
 42,2013,12,82,Floorplay Swing Vacation,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 141,2013,12,43,Spotlight New Year's Celebration,auto,Nashville,Tennessee,United States,"Nashville, TN, United States","Nashville, TN",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 213,2013,12,169,Swingtimate,auto,Gold Coast,,Australia,"Gold Coast, Australia","Gold Coast, Australia",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
@@ -1615,7 +1615,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 67,2013,1,44,Americas Classic,auto,Houston,Texas,United States,"Houston, TX, United States","Houston, TX",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 167,2013,1,117,Best of the Best WCS,auto,Sydney,,Australia,"Sydney, Australia","Sydney, Australia",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 184,2013,1,110,BudaFest Open WCS Championships,auto,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
-334,2013,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
+334,2013,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-25 13:51:49.851229+00
 42,2013,1,82,Floorplay Swing Vacation,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 183,2013,1,66,Freedom Swing Dance Challenge,auto,Wilmington,Delaware,United States,"Wilmington, DE, United States","Wilmington, DE",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 62,2013,1,1,Monterey SwingFest,auto,Monterey,California,United States,"Monterey, CA, United States","Monterey, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
@@ -1707,7 +1707,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 67,2012,1,44,Americas Classic,auto,Houston,Texas,United States,"Houston, TX, United States","Houston, TX",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 167,2012,1,117,Best of the Best WCS,auto,Sydney,,Australia,"Sydney, Australia","Sydney, Australia",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 184,2012,1,110,BudaFest Open WCS Championships,auto,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
-334,2012,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
+334,2012,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-25 13:51:49.851229+00
 42,2012,1,82,Floorplay Swing Vacation,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 183,2012,1,66,Freedom Swing Dance Challenge,auto,Wilmington,Delaware,United States,"Wilmington, DE, United States","Wilmington, DE",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 62,2012,1,1,Monterey SwingFest,auto,Monterey,California,United States,"Monterey, CA, United States","Monterey, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
@@ -2158,7 +2158,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 12,2006,2,6,Capital Swing Dance Convention,auto,Sacramento,California,United States,"Sacramento, CA, United States","Sacramento, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 115,2006,2,34,Da Dance Camp,auto,Chicago,Illinois,United States,"Chicago, IL, United States","Chicago, IL",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 82,2006,2,12,Motor City Jam,auto,Michigan,Michigan,United States,"Michigan, MI, United States","Michigan, MI",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
-334,2006,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
+334,2006,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-25 13:51:49.851229+00
 62,2006,1,1,Monterey SwingFest,auto,Monterey,California,United States,"Monterey, CA, United States","Monterey, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 61,2006,1,10,SwingDiego,auto,San Diego,California,United States,"San Diego, CA, United States","San Diego, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 195,2005,12,20,Palm Springs New Years Swing Dance Classic,auto,Palm Springs,California,United States,"Palm Springs, CA, United States","Palm Springs, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
@@ -2217,7 +2217,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 12,2005,2,6,Capital Swing Dance Convention,auto,Sacramento,California,United States,"Sacramento, CA, United States","Sacramento, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 82,2005,2,12,Motor City Jam,auto,Michigan,Michigan,United States,"Michigan, MI, United States","Michigan, MI",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 103,2005,2,4,Xanadu - Midwinter Dance Celebration,auto,Portland,Oregon,United States,"Portland, OR, United States","Portland, OR",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
-334,2005,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
+334,2005,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-25 13:51:49.851229+00
 102,2005,1,30,Dance America Seattle,auto,Seattle,Washington,United States,"Seattle, WA, United States","Seattle, WA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 62,2005,1,1,Monterey SwingFest,auto,Monterey,California,United States,"Monterey, CA, United States","Monterey, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 61,2005,1,10,SwingDiego,auto,San Diego,California,United States,"San Diego, CA, United States","San Diego, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
@@ -2267,7 +2267,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 91,2004,3,77,Reno Dance Sensation,auto,Reno,Nevada,United States,"Reno, NV, United States","Reno, NV",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 12,2004,2,6,Capital Swing Dance Convention,auto,Sacramento,California,United States,"Sacramento, CA, United States","Sacramento, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 82,2004,2,12,Motor City Jam,auto,Michigan,Michigan,United States,"Michigan, MI, United States","Michigan, MI",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
-334,2004,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
+334,2004,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-25 13:51:49.851229+00
 28,2004,1,27,Las Vegas Swing Expo,auto,Las Vegas,Nevada,United States,"Las Vegas, NV, United States","Las Vegas, NV",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 62,2004,1,1,Monterey SwingFest,auto,Monterey,California,United States,"Monterey, CA, United States","Monterey, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 101,2004,1,20,New Years Swing & Salsa Ball,auto,Palm Springs,California,United States,"Palm Springs, CA, United States","Palm Springs, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
@@ -2316,7 +2316,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 50,2003,3,100,St. Patrick's Day Swing,auto,Woodland Hills,California,United States,"Woodland Hills, CA, United States","Woodland Hills, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 12,2003,2,6,Capital Swing Dance Convention,auto,Sacramento,California,United States,"Sacramento, CA, United States","Sacramento, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 82,2003,2,12,Motor City Jam,auto,Michigan,Michigan,United States,"Michigan, MI, United States","Michigan, MI",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
-334,2003,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
+334,2003,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-25 13:51:49.851229+00
 62,2003,1,1,Monterey SwingFest,auto,Monterey,California,United States,"Monterey, CA, United States","Monterey, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 58,2003,1,27,Swing Expo,auto,Las Vegas,Nevada,United States,"Las Vegas, NV, United States","Las Vegas, NV",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 61,2003,1,10,SwingDiego,auto,San Diego,California,United States,"San Diego, CA, United States","San Diego, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
@@ -2357,7 +2357,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 30,2002,3,12,Mid USA Jack & Jill,auto,Michigan,Michigan,United States,"Michigan, MI, United States","Michigan, MI",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 50,2002,3,100,St. Patrick's Day Swing,auto,Woodland Hills,California,United States,"Woodland Hills, CA, United States","Woodland Hills, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 12,2002,2,6,Capital Swing Dance Convention,auto,Sacramento,California,United States,"Sacramento, CA, United States","Sacramento, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
-334,2002,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
+334,2002,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-25 13:51:49.851229+00
 62,2002,1,1,Monterey SwingFest,auto,Monterey,California,United States,"Monterey, CA, United States","Monterey, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 58,2002,1,27,Swing Expo,auto,Las Vegas,Nevada,United States,"Las Vegas, NV, United States","Las Vegas, NV",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 61,2002,1,10,SwingDiego,auto,San Diego,California,United States,"San Diego, CA, United States","San Diego, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
@@ -2392,7 +2392,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 9,2001,3,8,Boston Tea Party,auto,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 16,2001,3,27,Dancers Fund/Moover & Groover/SwingExpo,auto,Las Vegas,Nevada,United States,"Las Vegas, NV, United States","Las Vegas, NV",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 12,2001,2,6,Capital Swing Dance Convention,auto,Sacramento,California,United States,"Sacramento, CA, United States","Sacramento, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
-334,2001,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
+334,2001,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-25 13:51:49.851229+00
 62,2001,1,1,Monterey SwingFest,auto,Monterey,California,United States,"Monterey, CA, United States","Monterey, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 58,2001,1,27,Swing Expo,auto,Las Vegas,Nevada,United States,"Las Vegas, NV, United States","Las Vegas, NV",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 36,2000,12,42,New Years Dance Camp,auto,Bakersfield,California,United States,"Bakersfield, CA, United States","Bakersfield, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
@@ -2424,7 +2424,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 56,2000,4,72,Swing Break,auto,Santa Clara,California,United States,"Santa Clara, CA, United States","Santa Clara, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 9,2000,3,8,Boston Tea Party,auto,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 12,2000,2,6,Capital Swing Dance Convention,auto,Sacramento,California,United States,"Sacramento, CA, United States","Sacramento, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
-334,2000,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
+334,2000,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-25 13:51:49.851229+00
 28,2000,1,27,Las Vegas Swing Expo,auto,Las Vegas,Nevada,United States,"Las Vegas, NV, United States","Las Vegas, NV",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 62,2000,1,1,Monterey SwingFest,auto,Monterey,California,United States,"Monterey, CA, United States","Monterey, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 38,2000,1,5,New Year's Dance Championships,auto,Fresno,California,United States,"Fresno, CA, United States","Fresno, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
@@ -2462,7 +2462,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 12,1999,2,6,Capital Swing Dance Convention,auto,Sacramento,California,United States,"Sacramento, CA, United States","Sacramento, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 14,1999,2,15,Country Boogie,auto,Buena Park,California,United States,"Buena Park, CA, United States","Buena Park, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 26,1999,2,153,Jitterbug Jam,auto,Thousand Oaks,California,United States,"Thousand Oaks, CA, United States","Thousand Oaks, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
-334,1999,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
+334,1999,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-25 13:51:49.851229+00
 28,1999,1,27,Las Vegas Swing Expo,auto,Las Vegas,Nevada,United States,"Las Vegas, NV, United States","Las Vegas, NV",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 62,1999,1,1,Monterey SwingFest,auto,Monterey,California,United States,"Monterey, CA, United States","Monterey, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 38,1999,1,5,New Year's Dance Championships,auto,Fresno,California,United States,"Fresno, CA, United States","Fresno, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
@@ -2602,7 +2602,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 6,1995,2,2,Bay Swingers,auto,San Francisco,California,United States,"San Francisco, CA, United States","San Francisco, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 12,1995,2,6,Capital Swing Dance Convention,auto,Sacramento,California,United States,"Sacramento, CA, United States","Sacramento, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 14,1995,2,15,Country Boogie,auto,Buena Park,California,United States,"Buena Park, CA, United States","Buena Park, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
-334,1995,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
+334,1995,1,8,Countdown Swing Boston,manual,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-08-24 20:28:29.661359+00,2026-08-25 13:51:49.851229+00
 28,1995,1,27,Las Vegas Swing Expo,auto,Las Vegas,Nevada,United States,"Las Vegas, NV, United States","Las Vegas, NV",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 62,1995,1,1,Monterey SwingFest,auto,Monterey,California,United States,"Monterey, CA, United States","Monterey, CA",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00
 58,1995,1,27,Swing Expo,auto,Las Vegas,Nevada,United States,"Las Vegas, NV, United States","Las Vegas, NV",2026-08-24 20:28:29.661359+00,2026-08-24 20:28:29.661359+00

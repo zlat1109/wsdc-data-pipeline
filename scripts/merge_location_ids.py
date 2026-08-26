@@ -28,6 +28,9 @@ FK_TABLES = (
     ("core.results", "location_id"),
     ("core.event_editions", "location_id"),
     ("core.event_instances", "location_id"),
+    ("core.edition_location_baseline", "location_id"),
+    ("core.scheduled_events", "location_id"),
+    ("core.events_list_current", "location_id"),
 )
 
 _NUMERIC_COLUMNS = frozenset({"latitude", "longitude"})
