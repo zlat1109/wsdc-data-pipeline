@@ -678,3 +678,79 @@ def test_force_southern_lights_off_perth_to_hobart():
     assert lights["event_location"] == "Hobart, Australia"
     westerly = out.loc[out["event_name"] == "Westerly Winds"].iloc[0]
     assert str(westerly["location_id"]) == "253"
+
+
+def test_force_calgary_stampede_and_som_off_poison_lids():
+    location_info = pd.DataFrame(
+        [
+            {
+                "location_id": "222",
+                "event_city": "St. Petersburg",
+                "event_state": "",
+                "event_country": "Russia",
+                "event_location": "St. Petersburg, Russia",
+            },
+            {
+                "location_id": "148",
+                "event_city": "Calgary",
+                "event_state": "",
+                "event_country": "Canada",
+                "event_location": "Calgary, Canada",
+            },
+            {
+                "location_id": "253",
+                "event_city": "Perth",
+                "event_state": "",
+                "event_country": "Australia",
+                "event_location": "Perth, Australia",
+            },
+            {
+                "location_id": "197",
+                "event_city": "Wels",
+                "event_state": "",
+                "event_country": "Austria",
+                "event_location": "Wels, Austria",
+            },
+        ]
+    )
+    results = pd.DataFrame(
+        [
+            {
+                "event_name": "Calgary Dance Stampede",
+                "location_id": "222",
+                "event_location": "St. Petersburg, Russia",
+            },
+            {
+                "event_name": "SOM - Swing of Music",
+                "location_id": "253",
+                "event_location": "Perth, Australia",
+            },
+            {
+                "event_name": "Swing & Snow",
+                "location_id": "222",
+                "event_location": "St. Petersburg, Russia",
+            },
+            {
+                "event_name": "WesterOz",
+                "location_id": "253",
+                "event_location": "Perth, Australia",
+            },
+        ]
+    )
+
+    out, changed = force_result_locations_from_event_name_overrides(results, location_info)
+
+    assert changed == 2
+    calgary = out.loc[out["event_name"] == "Calgary Dance Stampede"].iloc[0]
+    assert str(calgary["location_id"]) == "148"
+    assert calgary["event_location"] == "Calgary, Canada"
+
+    som = out.loc[out["event_name"] == "SOM - Swing of Music"].iloc[0]
+    assert str(som["location_id"]) == "197"
+    assert som["event_location"] == "Wels, Austria"
+
+    # Shared poison lids must keep their true owners.
+    snow = out.loc[out["event_name"] == "Swing & Snow"].iloc[0]
+    assert str(snow["location_id"]) == "222"
+    woz = out.loc[out["event_name"] == "WesterOz"].iloc[0]
+    assert str(woz["location_id"]) == "253"

@@ -54,7 +54,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 364,2026,5,217,Nanaimo Dance Fusion,auto,Nanaimo,,Canada,"Nanaimo, Canada","Nanaimo, Canada",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 253,2026,5,199,Nordic WCS Championships,auto,Stockholm,,Sweden,"Stockholm, Sweden","Stockholm, Sweden",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 221,2026,5,49,Show Me Showdown,auto,St. Louis,Missouri,United States,"St. Louis, MO, United States","St. Louis, MO",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
-336,2026,5,253,SOM - Swing of Music,auto,Perth,,Australia,"Perth, Australia","Perth, Australia",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
+336,2026,5,197,SOM - Swing of Music,manual,Wels,,Austria,"Wels, Austria","Wels, Austria",2026-08-26 20:10:13.151042+00,2026-08-26T20:26:10.777083+00:00
 205,2026,5,88,SOswing,auto,Ashland,Oregon,United States,"Ashland, OR, United States","Ashland, OR",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 354,2026,5,143,Spring Time Swing,auto,Freiburg,,Germany,"Freiburg, Germany","Freiburg, Germany",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 144,2026,5,131,Swingin' Into Spring,auto,Hartford,Connecticut,United States,"Hartford, CT, United States","Hartford, CT",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
@@ -62,7 +62,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 121,2026,5,39,The Texas Classic,auto,Austin,Texas,United States,"Austin, TX, United States","Austin, TX",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 22,2026,5,25,USA Grand Nationals,auto,Atlanta,Georgia,United States,"Atlanta, GA, United States","Atlanta, GA, United States",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 218,2026,4,159,Asia West Coast Swing Open,auto,Singapore,,Singapore,"Singapore, Singapore","Singapore, Singapore",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
-116,2026,4,222,Calgary Dance Stampede,auto,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
+116,2026,4,148,Calgary Dance Stampede,manual,Calgary,,Canada,"Calgary, Canada","Calgary, Canada",2026-08-26 20:10:13.151042+00,2026-08-26T20:26:10.777083+00:00
 187,2026,4,54,City of Angels WCS,auto,Burbank,California,United States,"Burbank, CA, United States","Burbank, CA",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 203,2026,4,166,Detonation Dance,auto,Manchester,,United Kingdom,"Manchester, United Kingdom","Manchester, United Kingdom",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 18,2026,4,30,Easter Swing,auto,Seattle,Washington,United States,"Seattle, WA, United States","Seattle, WA",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
@@ -231,7 +231,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 364,2025,5,217,Nanaimo Dance Fusion,auto,Nanaimo,,Canada,"Nanaimo, Canada","Nanaimo, Canada",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 253,2025,5,199,Nordic WCS Championships,auto,Stockholm,,Sweden,"Stockholm, Sweden","Stockholm, Sweden",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 221,2025,5,49,Show Me Showdown,auto,St. Louis,Missouri,United States,"St. Louis, MO, United States","St. Louis, MO",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
-336,2025,5,253,SOM - Swing of Music,auto,Perth,,Australia,"Perth, Australia","Perth, Australia",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
+336,2025,5,197,SOM - Swing of Music,manual,Wels,,Austria,"Wels, Austria","Wels, Austria",2026-08-26 20:10:13.151042+00,2026-08-26T20:26:10.777083+00:00
 205,2025,5,88,SOswing,auto,Ashland,Oregon,United States,"Ashland, OR, United States","Ashland, OR",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 354,2025,5,143,Spring Time Swing,auto,Freiburg,,Germany,"Freiburg, Germany","Freiburg, Germany",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 144,2025,5,131,Swingin' Into Spring,auto,Hartford,Connecticut,United States,"Hartford, CT, United States","Hartford, CT",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
@@ -239,7 +239,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 121,2025,5,39,The Texas Classic,auto,Austin,Texas,United States,"Austin, TX, United States","Austin, TX",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 22,2025,5,25,USA Grand Nationals,auto,Atlanta,Georgia,United States,"Atlanta, GA, United States","Atlanta, GA, United States",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 218,2025,4,159,Asia West Coast Swing Open,auto,Singapore,,Singapore,"Singapore, Singapore","Singapore, Singapore",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
-116,2025,4,222,Calgary Dance Stampede,auto,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
+116,2025,4,148,Calgary Dance Stampede,manual,Calgary,,Canada,"Calgary, Canada","Calgary, Canada",2026-08-26 20:10:13.151042+00,2026-08-26T20:26:10.777083+00:00
 187,2025,4,54,City of Angels WCS,auto,Burbank,California,United States,"Burbank, CA, United States","Burbank, CA",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 203,2025,4,166,Detonation Dance,auto,Manchester,,United Kingdom,"Manchester, United Kingdom","Manchester, United Kingdom",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 18,2025,4,30,Easter Swing,auto,Seattle,Washington,United States,"Seattle, WA, United States","Seattle, WA",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
@@ -383,7 +383,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 121,2024,5,39,The Texas Classic,auto,Austin,Texas,United States,"Austin, TX, United States","Austin, TX",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 22,2024,5,25,USA Grand Nationals,auto,Atlanta,Georgia,United States,"Atlanta, GA, United States","Atlanta, GA, United States",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 218,2024,4,159,Asia West Coast Swing Open,auto,Singapore,,Singapore,"Singapore, Singapore","Singapore, Singapore",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
-116,2024,4,222,Calgary Dance Stampede,auto,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
+116,2024,4,148,Calgary Dance Stampede,manual,Calgary,,Canada,"Calgary, Canada","Calgary, Canada",2026-08-26 20:10:13.151042+00,2026-08-26T20:26:10.777083+00:00
 187,2024,4,54,City of Angels WCS,auto,Burbank,California,United States,"Burbank, CA, United States","Burbank, CA",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 203,2024,4,166,Detonation Dance,auto,Manchester,,United Kingdom,"Manchester, United Kingdom","Manchester, United Kingdom",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 275,2024,4,227,Dutch Open West Coast Swing,auto,Venray,,Netherlands,"Venray, Netherlands","Venray, Netherlands",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
@@ -1859,7 +1859,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 121,2010,5,39,The Texas Classic,auto,Austin,Texas,United States,"Austin, TX, United States","Austin, TX",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 22,2010,5,25,USA Grand Nationals,auto,Atlanta,Georgia,United States,"Atlanta, GA, United States","Atlanta, GA, United States",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 73,2010,5,14,World Swing Dance Championships,auto,San Bernardino,California,United States,"San Bernardino, CA, United States","San Bernardino, CA",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
-116,2010,4,222,Calgary Dance Stampede,auto,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
+116,2010,4,148,Calgary Dance Stampede,manual,Calgary,,Canada,"Calgary, Canada","Calgary, Canada",2026-08-26 20:10:13.151042+00,2026-08-26T20:26:10.777083+00:00
 18,2010,4,30,Easter Swing,auto,Seattle,Washington,United States,"Seattle, WA, United States","Seattle, WA",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 104,2010,4,22,Los Angeles Premiere Dance Classic,auto,Los Angeles,California,United States,"Los Angeles, CA, United States","Los Angeles, CA",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 134,2010,4,89,Swing Dance America,auto,Lake Geneva,Illinois,United States,"Lake Geneva, IL, United States","Lake Geneva, IL",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
@@ -1940,7 +1940,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 144,2009,5,131,Swingin' Into Spring,auto,Hartford,Connecticut,United States,"Hartford, CT, United States","Hartford, CT",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 121,2009,5,39,The Texas Classic,auto,Austin,Texas,United States,"Austin, TX, United States","Austin, TX",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 22,2009,5,25,USA Grand Nationals,auto,Atlanta,Georgia,United States,"Atlanta, GA, United States","Atlanta, GA, United States",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
-116,2009,4,222,Calgary Dance Stampede,auto,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
+116,2009,4,148,Calgary Dance Stampede,manual,Calgary,,Canada,"Calgary, Canada","Calgary, Canada",2026-08-26 20:10:13.151042+00,2026-08-26T20:26:10.777083+00:00
 18,2009,4,30,Easter Swing,auto,Seattle,Washington,United States,"Seattle, WA, United States","Seattle, WA",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 104,2009,4,22,Los Angeles Premiere Dance Classic,auto,Los Angeles,California,United States,"Los Angeles, CA, United States","Los Angeles, CA",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 134,2009,4,89,Swing Dance America,auto,Lake Geneva,Illinois,United States,"Lake Geneva, IL, United States","Lake Geneva, IL",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
@@ -2011,7 +2011,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 121,2008,5,39,The Texas Classic,auto,Austin,Texas,United States,"Austin, TX, United States","Austin, TX",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 22,2008,5,25,USA Grand Nationals,auto,Atlanta,Georgia,United States,"Atlanta, GA, United States","Atlanta, GA, United States",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 73,2008,5,14,World Swing Dance Championships,auto,San Bernardino,California,United States,"San Bernardino, CA, United States","San Bernardino, CA",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
-116,2008,4,222,Calgary Dance Stampede,auto,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
+116,2008,4,148,Calgary Dance Stampede,manual,Calgary,,Canada,"Calgary, Canada","Calgary, Canada",2026-08-26 20:10:13.151042+00,2026-08-26T20:26:10.777083+00:00
 18,2008,4,30,Easter Swing,auto,Seattle,Washington,United States,"Seattle, WA, United States","Seattle, WA",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 104,2008,4,22,Los Angeles Premiere Dance Classic,auto,Los Angeles,California,United States,"Los Angeles, CA, United States","Los Angeles, CA",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 134,2008,4,89,Swing Dance America,auto,Lake Geneva,Illinois,United States,"Lake Geneva, IL, United States","Lake Geneva, IL",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
@@ -2079,7 +2079,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 121,2007,5,39,The Texas Classic,auto,Austin,Texas,United States,"Austin, TX, United States","Austin, TX",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 22,2007,5,25,USA Grand Nationals,auto,Atlanta,Georgia,United States,"Atlanta, GA, United States","Atlanta, GA, United States",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 73,2007,5,14,World Swing Dance Championships,auto,San Bernardino,California,United States,"San Bernardino, CA, United States","San Bernardino, CA",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
-116,2007,4,222,Calgary Dance Stampede,auto,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
+116,2007,4,148,Calgary Dance Stampede,manual,Calgary,,Canada,"Calgary, Canada","Calgary, Canada",2026-08-26 20:10:13.151042+00,2026-08-26T20:26:10.777083+00:00
 18,2007,4,30,Easter Swing,auto,Seattle,Washington,United States,"Seattle, WA, United States","Seattle, WA",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 104,2007,4,22,Los Angeles Premiere Dance Classic,auto,Los Angeles,California,United States,"Los Angeles, CA, United States","Los Angeles, CA",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 107,2007,4,51,Motown Dance Championships,auto,Detroit,Michigan,United States,"Detroit, MI, United States","Detroit, MI",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
@@ -2148,7 +2148,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 121,2006,5,39,The Texas Classic,auto,Austin,Texas,United States,"Austin, TX, United States","Austin, TX",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 22,2006,5,25,USA Grand Nationals,auto,Atlanta,Georgia,United States,"Atlanta, GA, United States","Atlanta, GA, United States",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 108,2006,5,154,Vancouver Vibrations,auto,Vancouver,,Canada,"Vancouver, Canada","Vancouver, Canada",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
-116,2006,4,222,Calgary Dance Stampede,auto,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
+116,2006,4,148,Calgary Dance Stampede,manual,Calgary,,Canada,"Calgary, Canada","Calgary, Canada",2026-08-26 20:10:13.151042+00,2026-08-26T20:26:10.777083+00:00
 18,2006,4,30,Easter Swing,auto,Seattle,Washington,United States,"Seattle, WA, United States","Seattle, WA",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 104,2006,4,22,Los Angeles Premiere Dance Classic,auto,Los Angeles,California,United States,"Los Angeles, CA, United States","Los Angeles, CA",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
 107,2006,4,51,Motown Dance Championships,auto,Detroit,Michigan,United States,"Detroit, MI, United States","Detroit, MI",2026-08-26 20:10:13.151042+00,2026-08-26 20:10:13.151042+00
