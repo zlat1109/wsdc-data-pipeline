@@ -134,9 +134,9 @@
       "name": "schedule_orphan_location_id",
       "category": "location",
       "severity": "warn",
-      "value": 1,
+      "value": 0,
       "max_value": 0,
-      "ok": false,
+      "ok": true,
       "description": "events_list_current.location_id must exist in core.locations (no FK).",
       "fix_hint": "sync_events_list ensure_location; null invalid lids on restore"
     },
@@ -144,7 +144,7 @@
       "name": "recent_editions_missing_day_dates",
       "category": "event_naming",
       "severity": "warn",
-      "value": 3,
+      "value": 2,
       "max_value": 50,
       "ok": true,
       "description": "Most 2025+ editions with results should have calendar day dates.",
@@ -333,10 +333,10 @@
   ],
   "summary": {
     "total": 33,
-    "passed": 31,
+    "passed": 32,
     "errors": 0,
-    "warnings": 2
+    "warnings": 1
   },
-  "generated_at": "2026-08-24T20:34:31.452506+00:00",
+  "generated_at": "2026-08-26T20:16:30.562561+00:00",
   "scope": "full"
 }
