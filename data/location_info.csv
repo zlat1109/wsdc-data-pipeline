@@ -1,5 +1,14 @@
 location_id,event_city,event_state,event_country,latitude,longitude,event_location,event_location_standardized,coordinates_valid
-398,São Paulo,,Brazil,-23.5557714,-46.6395571,"São Paulo, Brazil","São Paulo, Brazil",t
+204,Helsinki,,Finland,60.16985569999999,24.938379,"Helsinki, Finland","Helsinki, Finland",t
+182,Greenville,South Carolina,United States,34.8484984,-82.40001579999999,"Greenville, SC, United States","Greenville, SC",t
+183,Cincinnati,Ohio,United States,39.1031182,-84.5120196,"Cincinnati, OH, United States","Cincinnati, OH",t
+184,Sofia,,Bulgaria,42.6977082,23.3218675,"Sofia, Bulgaria","Sofia, Bulgaria",t
+186,Gdańsk,,Poland,54.35202520000001,18.6466384,"Gdańsk, Poland","Gdańsk, Poland",t
+188,Annecy,,France,45.899247,6.129384,"Annecy, France","Annecy, France",t
+189,Bonn,,Germany,50.73743,7.0982068,"Bonn, Germany","Bonn, Germany",t
+206,Bathgate,,United Kingdom,55.9024,-3.643118,"Bathgate, United Kingdom","Bathgate, United Kingdom",t
+207,Blackpool,,United Kingdom,53.81674229999999,-3.0370485,"Blackpool, United Kingdom","Blackpool, United Kingdom",t
+215,Umeå,,Sweden,63.5391027,19.4528047,"Umeå, Sweden","Umeå, Sweden",t
 190,Nantes,,France,47.218371,-1.553621,"Nantes, France","Nantes, France",t
 192,Nimes,,France,43.8338727,4.359999699999999,"Nimes, France","Nimes, France",t
 194,Berlin,,Germany,52.52000659999999,13.404954,"Berlin, Germany","Berlin, Germany",t
@@ -7,7 +16,12 @@ location_id,event_city,event_state,event_country,latitude,longitude,event_locati
 197,Wels,,Austria,48.1664268,14.0388714,"Wels, Austria","Wels, Austria",t
 199,Stockholm,,Sweden,59.3251172,18.0710935,"Stockholm, Sweden","Stockholm, Sweden",t
 203,Riga,,Latvia,56.9676941,24.1056221,"Riga, Latvia","Riga, Latvia",t
-204,Helsinki,,Finland,60.16985569999999,24.938379,"Helsinki, Finland","Helsinki, Finland",t
+25,Atlanta,Georgia,United States,33.7501275,-84.3885209,"Atlanta, GA, United States","Atlanta, GA, United States",t
+159,Singapore,,Singapore,1.352083,103.819836,"Singapore, Singapore","Singapore, Singapore",t
+213,Jeju,,Republic of Korea,33.5042779,126.519838,"Jeju, Republic of Korea","Jeju, Republic of Korea",t
+139,Albany,New York,United States,42.6518095,-73.75447070000001,"Albany, NY, United States","Albany, NY",t
+191,Amsterdam,,Netherlands,52.3675734,4.9041389,"Amsterdam, Netherlands","Amsterdam, Netherlands",t
+227,Venray,,Netherlands,51.5256257,5.9736992,"Venray, Netherlands","Venray, Netherlands",t
 1,Monterey,California,United States,36.5972925,-121.8977688,"Monterey, CA, United States","Monterey, CA",t
 2,San Francisco,California,United States,37.7749295,-122.4194155,"San Francisco, CA, United States","San Francisco, CA",t
 3,Phoenix,Arizona,United States,33.4482948,-112.0725488,"Phoenix, AZ, United States","Phoenix, AZ",t
@@ -125,18 +139,9 @@ location_id,event_city,event_state,event_country,latitude,longitude,event_locati
 177,Edinburgh,,United Kingdom,55.953252,-3.188267,"Edinburgh, United Kingdom","Edinburgh, United Kingdom",t
 180,Waterloo,,Canada,43.4819752,-80.5261203,"Waterloo, Canada","Waterloo, Canada",t
 181,Trondheim,,Norway,63.4305149,10.3950528,"Trondheim, Norway","Trondheim, Norway",t
-182,Greenville,South Carolina,United States,34.8484984,-82.40001579999999,"Greenville, SC, United States","Greenville, SC",t
-183,Cincinnati,Ohio,United States,39.1031182,-84.5120196,"Cincinnati, OH, United States","Cincinnati, OH",t
-184,Sofia,,Bulgaria,42.6977082,23.3218675,"Sofia, Bulgaria","Sofia, Bulgaria",t
-186,Gdańsk,,Poland,54.35202520000001,18.6466384,"Gdańsk, Poland","Gdańsk, Poland",t
-188,Annecy,,France,45.899247,6.129384,"Annecy, France","Annecy, France",t
-189,Bonn,,Germany,50.73743,7.0982068,"Bonn, Germany","Bonn, Germany",t
-206,Bathgate,,United Kingdom,55.9024,-3.643118,"Bathgate, United Kingdom","Bathgate, United Kingdom",t
-207,Blackpool,,United Kingdom,53.81674229999999,-3.0370485,"Blackpool, United Kingdom","Blackpool, United Kingdom",t
 208,Toulouse,,France,43.6048462,1.442848,"Toulouse, France","Toulouse, France",t
 209,Hunter Valley,,Australia,-32.1932173,151.700565,"Hunter Valley, Australia","Hunter Valley, Australia",t
 212,Windsor,,United Kingdom,51.48034209999999,-0.6157136999999999,"Windsor, United Kingdom","Windsor, United Kingdom",t
-215,Umeå,,Sweden,63.5391027,19.4528047,"Umeå, Sweden","Umeå, Sweden",t
 216,Fortaleza,,Brazil,-3.7327203,-38.5270134,"Fortaleza, Brazil","Fortaleza, Brazil",t
 217,Nanaimo,,Canada,49.1658836,-123.9400647,"Nanaimo, Canada","Nanaimo, Canada",t
 218,Toulon,,France,43.1256814,5.9284944,"Toulon, France","Toulon, France",t
@@ -151,7 +156,6 @@ location_id,event_city,event_state,event_country,latitude,longitude,event_locati
 238,Tallinn,,Estonia,59.43696079999999,24.7535746,"Tallinn, Estonia","Tallinn, Estonia",t
 240,Fremantle,,Australia,-32.0517901,115.755096,"Fremantle, Australia","Fremantle, Australia",t
 242,Wellington,,New Zealand,-41.2923814,174.7787463,"Wellington, New Zealand","Wellington, New Zealand",t
-243,Sao Paulo,,Brazil,-23.5557714,-46.6395571,"Sao Paulo, Brazil","Sao Paulo, Brazil",t
 248,Torrevieja,,Spain,37.9848806,-0.6804336999999999,"Torrevieja, Spain","Torrevieja, Spain",t
 249,Crimea,,Ukraine,44.952117,34.102417,"Crimea, Ukraine","Crimea, Ukraine",t
 250,Vienna,,Austria,48.20806959999999,16.3713095,"Vienna, Austria","Vienna, Austria",t
@@ -184,12 +188,6 @@ location_id,event_city,event_state,event_country,latitude,longitude,event_locati
 392,Nürnberg,,Germany,49.45428810000001,11.0745641,"Nürnberg, Germany","Nürnberg, Germany",t
 393,Bad Hofgastein,,Austria,47.1725556,13.0987448,"Bad Hofgastein, Austria","Bad Hofgastein, Austria",t
 394,Bucharest,,Romania,44.4267674,26.1025384,"Bucharest, Romania","Bucharest, Romania",t
-25,Atlanta,Georgia,United States,33.7501275,-84.3885209,"Atlanta, GA, United States","Atlanta, GA, United States",t
-159,Singapore,,Singapore,1.352083,103.819836,"Singapore, Singapore","Singapore, Singapore",t
-213,Jeju,,Republic of Korea,33.5042779,126.519838,"Jeju, Republic of Korea","Jeju, Republic of Korea",t
-139,Albany,New York,United States,42.6518095,-73.75447070000001,"Albany, NY, United States","Albany, NY",t
-191,Amsterdam,,Netherlands,52.3675734,4.9041389,"Amsterdam, Netherlands","Amsterdam, Netherlands",t
-227,Venray,,Netherlands,51.5256257,5.9736992,"Venray, Netherlands","Venray, Netherlands",t
 107,London,,United Kingdom,51.5072178,-0.1275862,"London, United Kingdom","London, United Kingdom",t
 234,Bristol,,United Kingdom,51.454513,-2.58791,"Bristol, United Kingdom","Bristol, United Kingdom",t
 226,Glasgow,,United Kingdom,55.86167039999999,-4.2583345,"Glasgow, United Kingdom","Glasgow, United Kingdom",t
@@ -208,3 +206,4 @@ location_id,event_city,event_state,event_country,latitude,longitude,event_locati
 79,Burlington,Massachusetts,United States,42.5047161,-71.1956205,"Burlington (Boston), MA, United States","Burlington (Boston), MA",t
 396,Mansfield,Massachusetts,United States,42.0285490,-71.2507759,"Mansfield (Boston), MA, United States","Mansfield (Boston), MA",t
 397,Woburn,Massachusetts,United States,42.4792649,-71.1522765,"Woburn (Boston), MA, United States","Woburn (Boston), MA",t
+243,São Paulo,,Brazil,-23.5557714,-46.6395571,"São Paulo, Brazil","São Paulo, Brazil",t
