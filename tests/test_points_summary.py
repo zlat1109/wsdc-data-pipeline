@@ -416,3 +416,29 @@ def test_florida_dance_magic_jaden_not_current_snapshot():
     assert "Jaden Pfeiffer (+4) [147]" in second["leader"]
     assert "🟡" not in second["leader"]
 
+
+
+def test_resolve_podium_roles_does_not_copy_first_into_missing_second():
+    """WSDC sometimes omits a role on place 2; do not duplicate 1st-place dancers."""
+    from transform.points_summary.report import resolve_podium_roles
+
+    division_results = {
+        "1": {
+            "leaders": [{"id": "L1", "points": "10"}],
+            "followers": [{"id": "F1", "points": "10"}],
+        },
+        "2": {
+            "leaders": [{"id": "L2", "points": "8"}],
+            "followers": [],
+        },
+    }
+    leaders, followers = resolve_podium_roles(
+        "Chicagoland Country and Swing Dance Festival",
+        "Intermediate",
+        "2",
+        division_results["2"]["leaders"],
+        division_results["2"]["followers"],
+        division_results,
+    )
+    assert [x["id"] for x in leaders] == ["L2"]
+    assert followers == []
