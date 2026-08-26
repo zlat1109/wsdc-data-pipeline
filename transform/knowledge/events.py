@@ -80,6 +80,11 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     # Catalog/scheduled say Calgary; results pointed at Perth (253 / WesterOz).
     'BTO Open': 'Calgary, Canada',
     'Calgary Town Open': 'Calgary, Canada',
+    # Shared St. Petersburg (222 / Swing & Snow) wrongly applied; schedule is Calgary AB.
+    'Calgary Dance Stampede': 'Calgary, Canada',
+    # Shared Perth (253 / WesterOz) wrongly applied; schedule is Wels AT (event 336).
+    'SOM - Swing of Music': 'Wels, Austria',
+    'Swing of Music': 'Wels, Austria',
     # Shared Jeju (213) wrongly applied to The Aloha Open (Wailea / Hawaii).
     'The Aloha Open': 'Wailea, HI, United States',
     # Shared Düsseldorf (127) wrongly applied to Sea Dance Fest (Moscow).
@@ -785,6 +790,32 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_country': 'Canada',
             'event_location': 'Calgary, Canada',
             'event_location_standardized': 'Calgary, Canada',
+        },
+    },
+    116: {
+        # Results were stuck on shared St. Petersburg (222); schedule is Calgary AB.
+        'name': 'Calgary Dance Stampede',
+        'url': '',
+        'typical_location': 'Calgary, Canada',
+        'location': {
+            'event_city': 'Calgary',
+            'event_state': '',
+            'event_country': 'Canada',
+            'event_location': 'Calgary, Canada',
+            'event_location_standardized': 'Calgary, Canada',
+        },
+    },
+    336: {
+        # Results were stuck on shared Perth (253 / WesterOz); schedule is Wels AT.
+        'name': 'SOM - Swing of Music',
+        'url': '',
+        'typical_location': 'Wels, Austria',
+        'location': {
+            'event_city': 'Wels',
+            'event_state': '',
+            'event_country': 'Austria',
+            'event_location': 'Wels, Austria',
+            'event_location_standardized': 'Wels, Austria',
         },
     },
     380: {
