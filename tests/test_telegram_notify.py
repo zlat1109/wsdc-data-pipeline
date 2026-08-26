@@ -118,6 +118,7 @@ def test_format_probe_parse_in_flight():
         "ready_reason": "parse_in_flight",
         "parse_in_flight": True,
         "parse_in_flight_run_id": 456,
+        "parse_in_flight_age_minutes": 75,
         "watermark": 28367,
         "live_max_id": 28400,
         "approx_new_ids": 33,
@@ -127,6 +128,81 @@ def test_format_probe_parse_in_flight():
     text = format_probe_message(report)
     assert "уже выполняется" in text
     assert "456" in text
+    assert "75" in text
+    assert "close_parse_runs.py" in text
+
+
+def test_format_probe_zombie_auto_closed():
+    report = {
+        "checked_at": "2026-06-12",
+        "ready": True,
+        "watermark": 1,
+        "live_max_id": 2,
+        "approx_new_ids": 1,
+        "zombie_parse_close": {
+            "closed_count": 1,
+            "min_age_minutes": 240,
+            "stuck": [{"run_id": 99, "age_minutes": 300, "source": "github-actions"}],
+        },
+    }
+    text = format_probe_message(report)
+    assert "Auto-closed stuck parse_runs" in text
+    assert "99" in text
+    assert "240" in text
+
+
+def test_format_pipeline_attention_scd2_command(tmp_path, monkeypatch):
+    import telegram_notify as tn
+
+    reports = tmp_path / "data" / "quality_reports"
+    reports.mkdir(parents=True)
+    (reports / "supabase_latest.json").write_text(
+        json.dumps(
+            {
+                "summary": {"total": 3, "passed": 2, "errors": 1, "warnings": 0},
+                "checks": [
+                    {
+                        "name": "points_history_drift",
+                        "severity": "error",
+                        "value": 4,
+                        "max_value": 0,
+                        "ok": False,
+                        "fix_hint": "scripts/reconcile_points_history.py",
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(tn, "PROJECT_ROOT", tmp_path)
+    text = tn.format_pipeline_message({"run_id": 1, "max_dancer_id": 1, "finished_at": "2026-06-15"})
+    assert "SCD2 history drift" in text
+    assert "reconcile_points_history.py --dry-run" in text
+    assert "--apply" in text
+
+
+def test_format_pipeline_ps_cn_failed(tmp_path, monkeypatch):
+    import telegram_notify as tn
+
+    reports = tmp_path / "data" / "quality_reports"
+    reports.mkdir(parents=True)
+    (reports / "point_summary_last.json").write_text(
+        json.dumps({"ok": False, "error": "build_points_summary.py failed"}),
+        encoding="utf-8",
+    )
+    (reports / "champion_news_last.json").write_text(
+        json.dumps({"ok": False, "error": "build_champion_news.py failed"}),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(tn, "PROJECT_ROOT", tmp_path)
+    monkeypatch.setenv("POINT_SUMMARY_REPORT", str(reports / "point_summary_last.json"))
+    monkeypatch.setenv("CHAMPION_NEWS_REPORT", str(reports / "champion_news_last.json"))
+    text = tn.format_pipeline_message(
+        {"run_id": 1, "max_dancer_id": 1, "finished_at": "2026-06-15", "csv_committed": True}
+    )
+    assert "Point Summary FAILED" in text
+    assert "Champion News FAILED" in text
+    assert "Tableau Public" in text
 
 
 def test_format_probe_ready():

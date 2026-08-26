@@ -136,8 +136,18 @@ Target: `points_history_drift = 0` in monitor.
 
 ## close_parse_runs.py
 
-- GitHub Actions runs with `finished_at` → `success`
-- Ancient backfill runs 1, 2 → `failed`
+Close `history.parse_runs` stuck in `status='running'` longer than
+`--min-age-minutes` (default **90** for manual; probe auto-close uses **240**
+via `AUTO_CLOSE_STUCK_PARSE_MIN_AGE_MINUTES` so a live full-parse is not killed).
+
+```bash
+python scripts/close_parse_runs.py --dry-run
+python scripts/close_parse_runs.py --apply
+python scripts/close_parse_runs.py --apply --min-age-minutes 0   # all running
+```
+
+`check-updates` auto-closes when `AUTO_CLOSE_STUCK_PARSE_RUNS=1` (default) at the
+**240m** threshold and reports it on the probe Telegram message.
 
 Valid statuses: `running`, `success`, `failed`, `skipped`.
 

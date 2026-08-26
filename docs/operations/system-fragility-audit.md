@@ -218,3 +218,11 @@ Effort: **S** &lt; 0.5d · **M** 0.5–2d · **L** &gt; 2d.
 | P0-4 | Verified clean | Live CSVs: 0 `SCHEDULED_VS_RESULTS` / 0 canonical mismatches; St Pete→222, Augsburg→195 |
 | P0-5 | Done | Auto-add writes `poison_seed_suspects` into baseline drift JSON + Telegram |
 | P1-1 | Done | List sync always runs site sync (not only when CSV commit) |
+| P1-2 | Done | Auto-close stuck `parse_runs` ≥**240m** on probe + Telegram age/close hint at ≥60m |
+| P1-3 | Done | SCD2 drift cards with `python scripts/reconcile_*_history.py --dry-run && --apply` |
+| P1-4 | Done | `REQUIRE_DEPLOY_TOKEN=1` on full-parse / force-rebuild |
+| P1-5 | Done | `analytics-site-sync.md` updated |
+| P2-1 | Done | PS/CN failure stubs → Telegram FAILED lines |
+| P2-2 | Done | ChampNews editorial note on complete message |
+| P2-3 | Done | Tableau refresh reminder when CSV committed |
+| P2-4 | Deferred | Bot/newsbot inventory lives in `zlat1109/wsdc-telegram-bot` — out of pipeline scope |

@@ -32,6 +32,8 @@ class ProbeReport:
     trigger_events: list[str] = field(default_factory=list)
     parse_in_flight: bool = False
     parse_in_flight_run_id: int | None = None
+    parse_in_flight_age_minutes: int | None = None
+    zombie_parse_close: dict[str, Any] | None = None
     no_pending: bool = False
     cooldown_active: bool = False
     cooldown_until: str | None = None
@@ -59,6 +61,8 @@ def build_probe_report(
     trigger_events: list[str] | None = None,
     parse_in_flight: bool = False,
     parse_in_flight_run_id: int | None = None,
+    parse_in_flight_age_minutes: int | None = None,
+    zombie_parse_close: dict[str, Any] | None = None,
     no_pending: bool = False,
     snapshot_name: str | None = None,
     weekend_start: date | None = None,
@@ -91,6 +95,8 @@ def build_probe_report(
         trigger_events=list(trigger_events or []),
         parse_in_flight=parse_in_flight,
         parse_in_flight_run_id=parse_in_flight_run_id,
+        parse_in_flight_age_minutes=parse_in_flight_age_minutes,
+        zombie_parse_close=zombie_parse_close,
         no_pending=no_pending or gate_status == "no_concluded_events",
         cooldown_active=cooldown_active,
         cooldown_until=cooldown_until,

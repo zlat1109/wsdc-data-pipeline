@@ -78,6 +78,9 @@ then
   echo "Point Summary build OK"
 else
   echo "::warning::Point Summary build failed — continuing without updating points_summaries.json"
+  mkdir -p "$(dirname "${POINT_SUMMARY_REPORT}")"
+  printf '%s\n' '{"ok":false,"error":"build_points_summary.py failed","created_count":0,"updated_count":0}' \
+    > "${POINT_SUMMARY_REPORT}"
 fi
 
 CHAMPION_NEWS_CUTOFF="${CHAMPION_NEWS_CUTOFF:-2026-07-25}"
@@ -92,6 +95,9 @@ then
   echo "Champion News build OK"
 else
   echo "::warning::Champion News build failed — continuing without updating champion_news.json"
+  mkdir -p "$(dirname "${CHAMPION_NEWS_REPORT}")"
+  printf '%s\n' '{"ok":false,"error":"build_champion_news.py failed","created_count":0,"updated_count":0}' \
+    > "${CHAMPION_NEWS_REPORT}"
 fi
 
 YEAR_CAL_REPORT="${YEAR_CAL_REPORT:-${PIPELINE_DATA_ABS}/quality_reports/year_event_calendar_last.json}"

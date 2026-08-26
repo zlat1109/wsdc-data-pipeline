@@ -155,13 +155,42 @@ def format_probe_message(report: dict) -> str:
             dancer_id = dancer.get("wscid", "?")
             lines.append(f"• {_esc(label)} (<code>{_esc(dancer_id)}</code>)")
 
+    if report.get("zombie_parse_close") and int(
+        (report.get("zombie_parse_close") or {}).get("closed_count") or 0
+    ) > 0:
+        z = report["zombie_parse_close"]
+        lines.append("")
+        lines.append(
+            f"🧹 Auto-closed stuck parse_runs: <code>{_esc(z.get('closed_count'))}</code> "
+            f"(age ≥ <code>{_esc(z.get('min_age_minutes'))}</code>m)"
+        )
+        for item in (z.get("stuck") or [])[:4]:
+            lines.append(
+                f"• run_id <code>{_esc(item.get('run_id'))}</code> "
+                f"age <code>{_esc(item.get('age_minutes'))}</code>m "
+                f"source <code>{_esc(item.get('source'))}</code>"
+            )
+
     if report.get("parse_in_flight"):
+        age = report.get("parse_in_flight_age_minutes")
         lines.append("")
         lines.append(
             "⏳ Full-parse уже выполняется "
-            f"(run_id <code>{_esc(report.get('parse_in_flight_run_id', '?'))}</code>) — "
-            "повторный запуск отложен."
+            f"(run_id <code>{_esc(report.get('parse_in_flight_run_id', '?'))}</code>"
+            + (
+                f", ~<code>{_esc(age)}</code>m"
+                if age is not None
+                else ""
+            )
+            + ") — повторный запуск отложен."
         )
+        # Warn before auto-close window; still give one-liner for manual close.
+        if age is not None and int(age) >= 60:
+            lines.append(
+                "⚠ Похоже на zombie parse_run — если workflow уже упал: "
+                "<code>python scripts/close_parse_runs.py --dry-run</code> "
+                "затем <code>--apply</code>"
+            )
 
     if cooldown_blocks:
         lines.append("")
@@ -287,6 +316,10 @@ def format_pipeline_message(stats: dict) -> str:
     if cn:
         lines.extend(["", *cn])
 
+    ops = _format_ops_reminders(stats)
+    if ops:
+        lines.extend(["", *ops])
+
     attention = _format_attention_sections()
     if attention:
         lines.extend(["", "⚠️ <b>Требует внимания</b>", ""] + attention)
@@ -295,6 +328,15 @@ def format_pipeline_message(stats: dict) -> str:
         lines.append(f"Repo: {_esc(stats['repo'])}")
 
     return "\n".join(lines)
+
+
+def _load_json(path: Path) -> dict | None:
+    if not path.exists():
+        return None
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return None
 
 
 def _format_point_summary_section() -> list[str]:
@@ -308,6 +350,9 @@ def _format_point_summary_section() -> list[str]:
     data = _load_json(report_path)
     if not data:
         return []
+    if data.get("ok") is False or data.get("error") or data.get("failed"):
+        err = data.get("error") or data.get("failed") or "build failed"
+        return [f"⚠️ Point Summary FAILED: {_esc(err)}"]
     created = int(data.get("created_count") or 0)
     updated = int(data.get("updated_count") or 0)
     names = []
@@ -340,6 +385,9 @@ def _format_champion_news_section() -> list[str]:
     data = _load_json(report_path)
     if not data:
         return []
+    if data.get("ok") is False or data.get("error") or data.get("failed"):
+        err = data.get("error") or data.get("failed") or "build failed"
+        return [f"⚠️ Champion News FAILED: {_esc(err)}"]
     created = int(data.get("created_count") or 0)
     updated = int(data.get("updated_count") or 0)
     lines = [
@@ -352,16 +400,34 @@ def _format_champion_news_section() -> list[str]:
         lines.append(f"• {_esc(slug)}")
     if created > 8:
         lines.append(f"• … +{created - 8} more")
+    if created > 0:
+        lines.append(
+            "Editorial Telegram: manual — see docs/operations/champion-news.md"
+        )
     return lines
 
 
-def _load_json(path: Path) -> dict | None:
-    if not path.exists():
+def _format_ops_reminders(stats: dict) -> list[str]:
+    """Optional hands-off reminders (Tableau / force rebuild)."""
+    if not stats.get("csv_committed"):
+        return []
+    return [
+        "🖥 Tableau Public: refresh extracts after CSV commit (manual)",
+        "Force calendar/site after DB-only location fix: Actions → "
+        "<b>Force rebuild calendar/site</b>",
+    ]
+
+
+def _scd2_reconcile_command(check_name: str) -> str | None:
+    mapping = {
+        "points_history_drift": "scripts/reconcile_points_history.py",
+        "roles_history_drift": "scripts/reconcile_roles_history.py",
+        "names_history_drift": "scripts/reconcile_names_history.py",
+    }
+    script = mapping.get(check_name)
+    if not script:
         return None
-    try:
-        return json.loads(path.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, OSError):
-        return None
+    return f"python {script} --dry-run && python {script} --apply"
 
 
 def _format_supabase_quality_attention(report: dict) -> list[str]:
@@ -378,7 +444,22 @@ def _format_supabase_quality_attention(report: dict) -> list[str]:
         f"errors <code>{_esc(errors)}</code> · warnings <code>{_esc(warnings)}</code>",
     ]
     failed = [c for c in report.get("checks") or [] if not c.get("ok")]
-    for check in failed[:8]:
+    scd2 = [c for c in failed if str(c.get("name") or "").endswith("_history_drift")]
+    other = [c for c in failed if c not in scd2]
+    if scd2:
+        lines.append("<b>SCD2 history drift</b>")
+        for check in scd2[:6]:
+            lines.append(
+                f"• <code>{_esc(check.get('name'))}</code>: "
+                f"<code>{_esc(check.get('value'))}</code> "
+                f"(≤ <code>{_esc(check.get('max_value'))}</code>)"
+            )
+            cmd = _scd2_reconcile_command(str(check.get("name") or ""))
+            if cmd:
+                lines.append(f"  ↳ <code>{_esc(cmd)}</code>")
+            elif check.get("fix_hint"):
+                lines.append(f"  ↳ {_esc(check.get('fix_hint'))}")
+    for check in other[:8]:
         sev = str(check.get("severity", "error")).upper()
         lines.append(
             f"• [{_esc(sev)}] <code>{_esc(check.get('name'))}</code>: "
@@ -388,8 +469,8 @@ def _format_supabase_quality_attention(report: dict) -> list[str]:
         hint = check.get("fix_hint")
         if hint:
             lines.append(f"  ↳ {_esc(hint)}")
-    if len(failed) > 8:
-        lines.append(f"… +{len(failed) - 8} ещё")
+    if len(other) > 8:
+        lines.append(f"… +{len(other) - 8} ещё")
     lines.append("Log: <code>data/quality_reports/supabase_latest.json</code>")
     return lines
 
@@ -530,7 +611,9 @@ def _format_location_mismatch_cards(manual_items: list) -> list[str]:
             cards_shown += 1
         if cards_shown >= max_cards:
             break
-    remaining_ex = sum(len(f.get("examples") or []) for f in loc_items) - cards_shown
+    remaining_ex = max(
+        0, sum(len(f.get("examples") or []) for f in loc_items) - cards_shown
+    )
     if remaining_ex > 0:
         lines.append(f"… +{remaining_ex} more examples in quality report")
     fix = next(
