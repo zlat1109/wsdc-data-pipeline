@@ -213,12 +213,14 @@ def resolve_podium_roles(
     if not place.isdigit() or int(place) > 3:
         return leaders, followers
 
+    # Only explicit MANUAL_MISSING_ROLE_PLACE_OVERRIDES may fill a hole.
+    # Do NOT auto-copy place-1 into place-2: that duplicates a 1st-place dancer
+    # with +0 pts when WSDC simply omitted a role (e.g. Chicagoland 2026
+    # Intermediate Follow has no 2nd). Leave the gap until real results arrive.
     if not leaders:
         src_place = _manual_missing_role_source_place(
             event_name, division, place, "leader"
         )
-        if not src_place and place == "2" and division_results.get("1", {}).get("leaders"):
-            src_place = "1"
         if (
             src_place
             and src_place in division_results
@@ -230,12 +232,6 @@ def resolve_podium_roles(
         src_place = _manual_missing_role_source_place(
             event_name, division, place, "follower"
         )
-        if (
-            not src_place
-            and place == "2"
-            and division_results.get("1", {}).get("followers")
-        ):
-            src_place = "1"
         if (
             src_place
             and src_place in division_results
