@@ -17,6 +17,10 @@ EXPECTED_WEEKDAY_SNAP_DAYS = 3
 # ``as_of.year - UNLINKED_PRIOR_LOOKBACK_YEARS`` (0 = current year and later
 # published list years only).
 UNLINKED_PRIOR_LOOKBACK_YEARS = 0
+# After WSDC drops a finished list/calendar edition that never got a catalog
+# event_id, keep the confirmed pin this many days past end_date so the map
+# still shows the weekend until results/catalog catch up (e.g. Manneken Swing).
+UNLINKED_ENDED_RETENTION_DAYS = 7
 
 # Light stopwords for provisional unlinked series keys (avoid importing build).
 _UNLINKED_KEY_STOPWORDS = frozenset(
@@ -228,6 +232,10 @@ def _project_expected_stub(
     stub["start_date"] = projected
     stub["end_date"] = end
     stub["status"] = "expected"
+    # Remember whether the prior pin came from the live WSDC list so geo enrich
+    # can keep a relocated schedule city instead of re-applying flat overrides.
+    prior_source = row.get("source")
+    stub["projected_from_source"] = prior_source
     stub["source"] = "expected_yoy"
     stub["kind"] = kind
     stub["year"] = target_year

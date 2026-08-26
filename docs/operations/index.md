@@ -13,6 +13,7 @@ Runbooks for pipeline execution, CI, data sync, repairs, and monitoring.
 | [point-summary.md](point-summary.md) | Point Summary entity build + cutoff rules |
 | [champion-news.md](champion-news.md) | Champion News Allowed/Required cards + cutoff |
 | [year-event-calendar.md](year-event-calendar.md) | Year calendar → weekend map → event card |
+| [system-fragility-audit.md](system-fragility-audit.md) | Locations / automation / calendar sync gaps + P0–P2 backlog |
 
 ## Quick commands
 

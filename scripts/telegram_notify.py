@@ -155,13 +155,42 @@ def format_probe_message(report: dict) -> str:
             dancer_id = dancer.get("wscid", "?")
             lines.append(f"• {_esc(label)} (<code>{_esc(dancer_id)}</code>)")
 
+    if report.get("zombie_parse_close") and int(
+        (report.get("zombie_parse_close") or {}).get("closed_count") or 0
+    ) > 0:
+        z = report["zombie_parse_close"]
+        lines.append("")
+        lines.append(
+            f"🧹 Auto-closed stuck parse_runs: <code>{_esc(z.get('closed_count'))}</code> "
+            f"(age ≥ <code>{_esc(z.get('min_age_minutes'))}</code>m)"
+        )
+        for item in (z.get("stuck") or [])[:4]:
+            lines.append(
+                f"• run_id <code>{_esc(item.get('run_id'))}</code> "
+                f"age <code>{_esc(item.get('age_minutes'))}</code>m "
+                f"source <code>{_esc(item.get('source'))}</code>"
+            )
+
     if report.get("parse_in_flight"):
+        age = report.get("parse_in_flight_age_minutes")
         lines.append("")
         lines.append(
             "⏳ Full-parse уже выполняется "
-            f"(run_id <code>{_esc(report.get('parse_in_flight_run_id', '?'))}</code>) — "
-            "повторный запуск отложен."
+            f"(run_id <code>{_esc(report.get('parse_in_flight_run_id', '?'))}</code>"
+            + (
+                f", ~<code>{_esc(age)}</code>m"
+                if age is not None
+                else ""
+            )
+            + ") — повторный запуск отложен."
         )
+        # Warn before auto-close window; still give one-liner for manual close.
+        if age is not None and int(age) >= 60:
+            lines.append(
+                "⚠ Похоже на zombie parse_run — если workflow уже упал: "
+                "<code>python scripts/close_parse_runs.py --dry-run</code> "
+                "затем <code>--apply</code>"
+            )
 
     if cooldown_blocks:
         lines.append("")
@@ -287,6 +316,10 @@ def format_pipeline_message(stats: dict) -> str:
     if cn:
         lines.extend(["", *cn])
 
+    ops = _format_ops_reminders(stats)
+    if ops:
+        lines.extend(["", *ops])
+
     attention = _format_attention_sections()
     if attention:
         lines.extend(["", "⚠️ <b>Требует внимания</b>", ""] + attention)
@@ -295,6 +328,15 @@ def format_pipeline_message(stats: dict) -> str:
         lines.append(f"Repo: {_esc(stats['repo'])}")
 
     return "\n".join(lines)
+
+
+def _load_json(path: Path) -> dict | None:
+    if not path.exists():
+        return None
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return None
 
 
 def _format_point_summary_section() -> list[str]:
@@ -308,6 +350,9 @@ def _format_point_summary_section() -> list[str]:
     data = _load_json(report_path)
     if not data:
         return []
+    if data.get("ok") is False or data.get("error") or data.get("failed"):
+        err = data.get("error") or data.get("failed") or "build failed"
+        return [f"⚠️ Point Summary FAILED: {_esc(err)}"]
     created = int(data.get("created_count") or 0)
     updated = int(data.get("updated_count") or 0)
     names = []
@@ -340,6 +385,9 @@ def _format_champion_news_section() -> list[str]:
     data = _load_json(report_path)
     if not data:
         return []
+    if data.get("ok") is False or data.get("error") or data.get("failed"):
+        err = data.get("error") or data.get("failed") or "build failed"
+        return [f"⚠️ Champion News FAILED: {_esc(err)}"]
     created = int(data.get("created_count") or 0)
     updated = int(data.get("updated_count") or 0)
     lines = [
@@ -352,16 +400,34 @@ def _format_champion_news_section() -> list[str]:
         lines.append(f"• {_esc(slug)}")
     if created > 8:
         lines.append(f"• … +{created - 8} more")
+    if created > 0:
+        lines.append(
+            "Editorial Telegram: manual — see docs/operations/champion-news.md"
+        )
     return lines
 
 
-def _load_json(path: Path) -> dict | None:
-    if not path.exists():
+def _format_ops_reminders(stats: dict) -> list[str]:
+    """Optional hands-off reminders (Tableau / force rebuild)."""
+    if not stats.get("csv_committed"):
+        return []
+    return [
+        "🖥 Tableau Public: refresh extracts after CSV commit (manual)",
+        "Force calendar/site after DB-only location fix: Actions → "
+        "<b>Force rebuild calendar/site</b>",
+    ]
+
+
+def _scd2_reconcile_command(check_name: str) -> str | None:
+    mapping = {
+        "points_history_drift": "scripts/reconcile_points_history.py",
+        "roles_history_drift": "scripts/reconcile_roles_history.py",
+        "names_history_drift": "scripts/reconcile_names_history.py",
+    }
+    script = mapping.get(check_name)
+    if not script:
         return None
-    try:
-        return json.loads(path.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, OSError):
-        return None
+    return f"python {script} --dry-run && python {script} --apply"
 
 
 def _format_supabase_quality_attention(report: dict) -> list[str]:
@@ -378,7 +444,22 @@ def _format_supabase_quality_attention(report: dict) -> list[str]:
         f"errors <code>{_esc(errors)}</code> · warnings <code>{_esc(warnings)}</code>",
     ]
     failed = [c for c in report.get("checks") or [] if not c.get("ok")]
-    for check in failed[:8]:
+    scd2 = [c for c in failed if str(c.get("name") or "").endswith("_history_drift")]
+    other = [c for c in failed if c not in scd2]
+    if scd2:
+        lines.append("<b>SCD2 history drift</b>")
+        for check in scd2[:6]:
+            lines.append(
+                f"• <code>{_esc(check.get('name'))}</code>: "
+                f"<code>{_esc(check.get('value'))}</code> "
+                f"(≤ <code>{_esc(check.get('max_value'))}</code>)"
+            )
+            cmd = _scd2_reconcile_command(str(check.get("name") or ""))
+            if cmd:
+                lines.append(f"  ↳ <code>{_esc(cmd)}</code>")
+            elif check.get("fix_hint"):
+                lines.append(f"  ↳ {_esc(check.get('fix_hint'))}")
+    for check in other[:8]:
         sev = str(check.get("severity", "error")).upper()
         lines.append(
             f"• [{_esc(sev)}] <code>{_esc(check.get('name'))}</code>: "
@@ -388,9 +469,160 @@ def _format_supabase_quality_attention(report: dict) -> list[str]:
         hint = check.get("fix_hint")
         if hint:
             lines.append(f"  ↳ {_esc(hint)}")
-    if len(failed) > 8:
-        lines.append(f"… +{len(failed) - 8} ещё")
+    if len(other) > 8:
+        lines.append(f"… +{len(other) - 8} ещё")
     lines.append("Log: <code>data/quality_reports/supabase_latest.json</code>")
+    return lines
+
+
+# Location / venue mismatch codes — prioritize + render rich Telegram cards.
+_LOCATION_ATTENTION_CODES = frozenset(
+    {
+        "SCHEDULED_VS_RESULTS_COUNTRY_CONFLICT",
+        "EVENT_ID_CANONICAL_LOCATION_MISMATCH",
+        "BASELINE_VS_LOCATION_OVERRIDE",
+        "EDITION_LOCATION_BASELINE_DRIFT",
+        "EVENT_NAME_LOCATION_COUNTRY_CONFLICT",
+        "EVENT_NAME_LOCATION_ID_COLLISION",
+        "CATALOG_TYPICAL_UPCOMING_CONFLICT",
+    }
+)
+
+
+def _location_example_card(code: str, ex: dict) -> list[str]:
+    """One Telegram card for a location mismatch example."""
+    name = str(ex.get("event_name") or ex.get("canonical_name") or "?")[:55]
+    eid = ex.get("event_id")
+    year = ex.get("event_year")
+    month = ex.get("event_month")
+    edition = ""
+    if year is not None and str(year) and month is not None and str(month):
+        edition = f"{year}-{month}"
+    header_bits = [f"<b>{_esc(name)}</b>"]
+    if eid not in (None, ""):
+        header_bits.append(f"id <code>{_esc(eid)}</code>")
+    if edition:
+        header_bits.append(f"<code>{_esc(edition)}</code>")
+    lines = ["• " + " · ".join(header_bits)]
+
+    if code == "SCHEDULED_VS_RESULTS_COUNTRY_CONFLICT":
+        lines.append(
+            f"  results <code>{_esc(ex.get('results_country'))}</code> "
+            f"(lid <code>{_esc(ex.get('location_id'))}</code>) → "
+            f"schedule <code>{_esc(ex.get('scheduled_country'))}</code> "
+            f"({_esc(str(ex.get('scheduled_location') or '')[:40])})"
+        )
+        lines.append("  ↳ add EVENT_NAME_LOCATION_OVERRIDES or confirm new event_id")
+    elif code == "EVENT_ID_CANONICAL_LOCATION_MISMATCH":
+        lines.append(
+            f"  canonical <code>{_esc(ex.get('canonical_country'))}</code> "
+            f"({_esc(str(ex.get('canonical_location') or '')[:40])}) vs "
+            f"results <code>{_esc(ex.get('results_country'))}</code> "
+            f"(lid <code>{_esc(ex.get('results_location_id'))}</code>)"
+        )
+        lines.append("  ↳ update KNOWN_EVENT_METADATA / EVENT_NAME_LOCATION_OVERRIDES")
+    elif code == "BASELINE_VS_LOCATION_OVERRIDE":
+        lines.append(
+            f"  baseline lid <code>{_esc(ex.get('baseline_location_id'))}</code> → "
+            f"override lid <code>{_esc(ex.get('override_location_id'))}</code> "
+            f"({_esc(str(ex.get('override_location') or '')[:40])})"
+        )
+        lines.append("  ↳ UPDATE edition_location_baseline source=manual after remap")
+    elif code == "EDITION_LOCATION_BASELINE_DRIFT":
+        lines.append(
+            f"  baseline lid <code>{_esc(ex.get('baseline_location_id'))}</code> → "
+            f"current <code>{_esc(ex.get('current_location_id'))}</code>"
+        )
+        lines.append("  ↳ confirm venue move (manual) or fix shared wrong lid")
+    elif code == "EVENT_NAME_LOCATION_COUNTRY_CONFLICT":
+        lines.append(
+            f"  lid <code>{_esc(ex.get('location_id'))}</code> "
+            f"<code>{_esc(ex.get('location_country'))}</code> vs name hints "
+            f"{_esc(ex.get('name_hints') or '')}"
+        )
+        lines.append("  ↳ verify lid or add override")
+    elif code == "EVENT_NAME_LOCATION_ID_COLLISION":
+        lines.append(
+            f"  lids <code>{_esc(ex.get('location_ids'))}</code> "
+            f"countries <code>{_esc(ex.get('countries'))}</code>"
+        )
+        lines.append("  ↳ split series or force one lid via overrides")
+    elif code == "CATALOG_TYPICAL_UPCOMING_CONFLICT":
+        lines.append(
+            f"  typical {_esc(str(ex.get('typical_location') or '')[:40])} vs "
+            f"upcoming {_esc(str(ex.get('upcoming_location') or '')[:40])}"
+        )
+        lines.append("  ↳ update catalog typical or confirm series move")
+    else:
+        # Fallback: dump a few useful keys
+        bits = []
+        for key in (
+            "location_id",
+            "results_country",
+            "scheduled_country",
+            "baseline_location_id",
+            "override_location_id",
+            "current_location_id",
+        ):
+            if ex.get(key) not in (None, ""):
+                bits.append(f"{key}={ex.get(key)}")
+        if bits:
+            lines.append("  " + _esc(" · ".join(bits)[:120]))
+    return lines
+
+
+def _format_location_mismatch_cards(manual_items: list) -> list[str]:
+    """Rich cards for location findings (priority section)."""
+    # Cross-country / poison-seed first — collision lists are noisy and ate the old top-6.
+    _code_priority = {
+        "SCHEDULED_VS_RESULTS_COUNTRY_CONFLICT": 0,
+        "EVENT_ID_CANONICAL_LOCATION_MISMATCH": 1,
+        "BASELINE_VS_LOCATION_OVERRIDE": 2,
+        "EDITION_LOCATION_BASELINE_DRIFT": 3,
+        "EVENT_NAME_LOCATION_COUNTRY_CONFLICT": 4,
+        "CATALOG_TYPICAL_UPCOMING_CONFLICT": 5,
+        "EVENT_NAME_LOCATION_ID_COLLISION": 6,
+    }
+    loc_items = [f for f in manual_items if f.get("code") in _LOCATION_ATTENTION_CODES]
+    loc_items.sort(key=lambda f: _code_priority.get(str(f.get("code") or ""), 99))
+    if not loc_items:
+        return []
+    lines = [
+        "<b>Location mismatches</b>",
+        f"Findings: <code>{_esc(len(loc_items))}</code> "
+        "(load continues — fix lids / baseline / overrides)",
+    ]
+    cards_shown = 0
+    max_cards = 10
+    for item in loc_items:
+        code = str(item.get("code") or "")
+        examples = [e for e in (item.get("examples") or []) if isinstance(e, dict)]
+        # Collision findings: at most 2 examples so cross-country cards stay visible.
+        if code == "EVENT_NAME_LOCATION_ID_COLLISION":
+            examples = examples[:2]
+        if not examples:
+            lines.append(f"• [{_esc(item.get('severity'))}] <code>{_esc(code)}</code>")
+            cards_shown += 1
+            continue
+        for ex in examples:
+            if cards_shown >= max_cards:
+                break
+            lines.extend(_location_example_card(code, ex))
+            cards_shown += 1
+        if cards_shown >= max_cards:
+            break
+    remaining_ex = max(
+        0, sum(len(f.get("examples") or []) for f in loc_items) - cards_shown
+    )
+    if remaining_ex > 0:
+        lines.append(f"… +{remaining_ex} more examples in quality report")
+    fix = next(
+        (str(f.get("suggested_fix") or "").strip() for f in loc_items if f.get("suggested_fix")),
+        "",
+    )
+    if fix:
+        lines.append(f"Hint: {_esc(fix[:160])}")
+    lines.append("Log: <code>data/quality_reports/latest.json</code>")
     return lines
 
 
@@ -402,21 +634,36 @@ def _format_preprocess_quality_attention(q: dict) -> list[str]:
     if manual_total == 0 and not manual_items:
         return []
 
-    lines = [
-        "<b>Preprocess manual review</b>",
-        f"New: <code>{_esc(manual_new)}</code> · total open: <code>{_esc(manual_total)}</code>",
-    ]
-    show_items = [f for f in manual_items if f.get("is_new")] if manual_new else manual_items
-    for item in show_items[:6]:
-        examples = item.get("examples") or []
-        example = ""
-        if examples and isinstance(examples[0], dict):
-            example = str(examples[0].get("event_name") or examples[0].get("location_id") or "")[:50]
-        lines.append(
-            f"• [{_esc(item.get('severity'))}] <code>{_esc(item.get('code'))}</code>"
-            + (f": {_esc(example)}" if example else "")
+    loc_lines = _format_location_mismatch_cards(manual_items)
+    other_items = [f for f in manual_items if f.get("code") not in _LOCATION_ATTENTION_CODES]
+    show_items = [f for f in other_items if f.get("is_new")] if manual_new else other_items
+
+    lines: list[str] = []
+    if loc_lines:
+        lines.extend(loc_lines)
+    if show_items:
+        if lines:
+            lines.append("")
+        lines.extend(
+            [
+                "<b>Preprocess manual review</b>",
+                f"New: <code>{_esc(manual_new)}</code> · total open: <code>{_esc(manual_total)}</code>",
+            ]
         )
-    lines.append("Log: <code>data/quality_reports/latest.json</code>")
+        for item in show_items[:6]:
+            examples = item.get("examples") or []
+            example = ""
+            if examples and isinstance(examples[0], dict):
+                example = str(
+                    examples[0].get("event_name") or examples[0].get("location_id") or ""
+                )[:50]
+            lines.append(
+                f"• [{_esc(item.get('severity'))}] <code>{_esc(item.get('code'))}</code>"
+                + (f": {_esc(example)}" if example else "")
+            )
+        lines.append("Log: <code>data/quality_reports/latest.json</code>")
+    elif not loc_lines:
+        return []
     return lines
 
 
@@ -427,21 +674,42 @@ def _format_baseline_drift_attention() -> list[str]:
     if not report:
         return []
     drift_count = int(report.get("drift_count", 0) or 0)
-    if drift_count <= 0:
+    poison = report.get("poison_seed_suspects") or []
+    if drift_count <= 0 and not poison:
         return []
     lines = [
-        "<b>Edition location baseline drift</b>",
+        "<b>Edition location baseline</b>",
         f"Drifts: <code>{_esc(drift_count)}</code> · "
-        f"auto-added: <code>{_esc(report.get('auto_added', 0))}</code>",
+        f"auto-added: <code>{_esc(report.get('auto_added', 0))}</code>"
+        + (
+            f" · poison suspects: <code>{_esc(len(poison))}</code>"
+            if poison
+            else ""
+        ),
     ]
     for item in (report.get("drifts") or [])[:6]:
+        base_loc = str(item.get("baseline_location") or "")[:35]
+        cur_loc = str(item.get("current_location") or "")[:35]
+        geo = ""
+        if base_loc or cur_loc:
+            geo = f" ({_esc(base_loc)} → {_esc(cur_loc)})"
         lines.append(
             f"• id <code>{_esc(item.get('event_id'))}</code> "
             f"{_esc(item.get('event_year'))}-{_esc(item.get('event_month'))} "
-            f"<code>{_esc(item.get('event_name', '')[:40])}</code>: "
-            f"<code>{_esc(item.get('baseline_location_id'))}</code> → "
-            f"<code>{_esc(item.get('current_location_id'))}</code>"
+            f"<code>{_esc(str(item.get('event_name', '')[:40]))}</code>: "
+            f"lid <code>{_esc(item.get('baseline_location_id'))}</code> → "
+            f"<code>{_esc(item.get('current_location_id'))}</code>{geo}"
         )
+        lines.append("  ↳ confirm venue move (manual) or fix shared wrong lid")
+    for item in poison[:4]:
+        lines.append(
+            f"• ⚠ poison-seed auto-add id <code>{_esc(item.get('event_id'))}</code> "
+            f"{_esc(item.get('event_year'))}-{_esc(item.get('event_month'))} "
+            f"<code>{_esc(str(item.get('event_name', '')[:35]))}</code>: "
+            f"lid <code>{_esc(item.get('location_id'))}</code> "
+            f"vs override <code>{_esc(item.get('override_location_id'))}</code>"
+        )
+        lines.append("  ↳ do not trust auto baseline; UPDATE source=manual after remap")
     lines.append("Log: <code>data/quality_reports/edition_location_baseline_drift.json</code>")
     return lines
 

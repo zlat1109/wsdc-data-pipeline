@@ -51,6 +51,12 @@ MADRID_TZ = ZoneInfo("Europe/Madrid")
 PARSE_IN_FLIGHT_WINDOW_MINUTES = int(
     os.getenv("PARSE_IN_FLIGHT_WINDOW_MINUTES", "90")
 )
+STUCK_PARSE_MIN_AGE_MINUTES = int(os.getenv("STUCK_PARSE_MIN_AGE_MINUTES", "90"))
+# Must exceed typical full-parse duration (~2–3h). 90m would kill live loads.
+AUTO_CLOSE_STUCK_PARSE_MIN_AGE_MINUTES = int(
+    os.getenv("AUTO_CLOSE_STUCK_PARSE_MIN_AGE_MINUTES", "240")
+)
+AUTO_CLOSE_STUCK_PARSE_RUNS = os.getenv("AUTO_CLOSE_STUCK_PARSE_RUNS", "1") == "1"
 
 
 def get_watermark(conn, anchor_override: int | None) -> int:
@@ -83,18 +89,28 @@ def get_parse_in_flight(
     conn,
     *,
     window_minutes: int | None = None,
-) -> tuple[bool, int | None]:
-    """Return whether a full-parse pipeline run is in progress.
+) -> tuple[bool, int | None, int | None]:
+    """Return (in_flight, run_id, age_minutes).
 
     Covers load.py ``running`` rows and probe triggers awaiting success
     (cloud_parse phase before load inserts its run).
     """
     window = window_minutes or PARSE_IN_FLIGHT_WINDOW_MINUTES
     cutoff = datetime.now(timezone.utc) - timedelta(minutes=window)
+    now = datetime.now(timezone.utc)
+
+    def _age(started_at) -> int | None:
+        if started_at is None:
+            return None
+        started = started_at
+        if started.tzinfo is None:
+            started = started.replace(tzinfo=timezone.utc)
+        return int((now - started).total_seconds() // 60)
+
     with conn.cursor() as cur:
         cur.execute(
             """
-            SELECT run_id
+            SELECT run_id, started_at
             FROM history.parse_runs
             WHERE status = 'running'
               AND rows_results IS NULL
@@ -107,11 +123,11 @@ def get_parse_in_flight(
         )
         row = cur.fetchone()
         if row:
-            return True, int(row[0])
+            return True, int(row[0]), _age(row[1])
 
         cur.execute(
             """
-            SELECT pr.run_id
+            SELECT pr.run_id, pr.started_at
             FROM history.parse_runs pr
             WHERE pr.status = 'running'
               AND pr.finished_at IS NOT NULL
@@ -131,8 +147,8 @@ def get_parse_in_flight(
         )
         row = cur.fetchone()
     if not row:
-        return False, None
-    return True, int(row[0])
+        return False, None, None
+    return True, int(row[0]), _age(row[1])
 
 
 def record_probe(
@@ -250,6 +266,8 @@ def print_report(
     trigger_events: list[str] | None = None,
     parse_in_flight: bool = False,
     parse_in_flight_run_id: int | None = None,
+    parse_in_flight_age_minutes: int | None = None,
+    zombie_parse_close: dict | None = None,
     cooldown_active: bool = False,
     cooldown_until: str | None = None,
     last_success_run_id: int | None = None,
@@ -273,7 +291,18 @@ def print_report(
         print(f"trigger_events={trigger_events}", flush=True)
     if parse_in_flight:
         print(
-            f"parse_in_flight=true (run_id={parse_in_flight_run_id})",
+            f"parse_in_flight=true (run_id={parse_in_flight_run_id}"
+            + (
+                f", age_minutes={parse_in_flight_age_minutes}"
+                if parse_in_flight_age_minutes is not None
+                else ""
+            )
+            + ")",
+            flush=True,
+        )
+    if zombie_parse_close and zombie_parse_close.get("closed_count"):
+        print(
+            f"zombie_parse_closed={zombie_parse_close['closed_count']}",
             flush=True,
         )
     if ready_reason:
@@ -350,8 +379,28 @@ def main() -> None:
         last_success_finished_at: str | None = None
         parse_in_flight = False
         parse_in_flight_run_id: int | None = None
+        parse_in_flight_age_minutes: int | None = None
+        zombie_parse_close: dict | None = None
 
-        parse_in_flight, parse_in_flight_run_id = get_parse_in_flight(conn)
+        if AUTO_CLOSE_STUCK_PARSE_RUNS:
+            from close_parse_runs import close_stuck_running_parse_runs
+
+            zombie_parse_close = close_stuck_running_parse_runs(
+                conn,
+                min_age_minutes=AUTO_CLOSE_STUCK_PARSE_MIN_AGE_MINUTES,
+                dry_run=False,
+            )
+            if zombie_parse_close.get("closed_count"):
+                print(
+                    f"auto-closed stuck parse_runs: "
+                    f"{zombie_parse_close['closed_count']} "
+                    f"(age>={AUTO_CLOSE_STUCK_PARSE_MIN_AGE_MINUTES}m)",
+                    flush=True,
+                )
+
+        parse_in_flight, parse_in_flight_run_id, parse_in_flight_age_minutes = (
+            get_parse_in_flight(conn)
+        )
 
         if not args.ignore_weekly_cooldown:
             cooldown_active, last_success_run_id, last_success_finished_at, cooldown_until_local = (
@@ -418,6 +467,8 @@ def main() -> None:
             trigger_events=trigger_events,
             parse_in_flight=parse_in_flight,
             parse_in_flight_run_id=parse_in_flight_run_id,
+            parse_in_flight_age_minutes=parse_in_flight_age_minutes,
+            zombie_parse_close=zombie_parse_close,
             snapshot_name=snapshot_name,
             weekend_start=weekend_start,
             weekend_end=weekend_end,
@@ -447,6 +498,8 @@ def main() -> None:
             trigger_events=trigger_events,
             parse_in_flight=parse_in_flight,
             parse_in_flight_run_id=parse_in_flight_run_id,
+            parse_in_flight_age_minutes=parse_in_flight_age_minutes,
+            zombie_parse_close=zombie_parse_close,
             cooldown_active=cooldown_active,
             cooldown_until=cooldown_until,
             last_success_run_id=last_success_run_id,

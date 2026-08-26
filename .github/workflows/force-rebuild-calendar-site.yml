@@ -1,0 +1,72 @@
+# After manual Supabase location/DB repairs: export CSVs → rebuild calendar/site → push Pages.
+# Does not run cloud parse or load.
+name: Force rebuild calendar/site
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit_csv:
+        description: "Commit exported data/*.csv to main"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Export Supabase → CSV
+        env:
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_SSLMODE: require
+        run: python scripts/run_pipeline.py --export-only --source github-actions
+
+      - name: Commit exported CSV files
+        id: commit_csv
+        if: ${{ inputs.commit_csv }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ "${GITHUB_REF_NAME}" != "main" ]; then
+            echo "::warning::Skipping CSV commit (ref=${GITHUB_REF_NAME}; only main publishes data)."
+            echo "committed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git add data/*.csv data/event_aliases.json data/quality_reports/ || true
+          if git diff --staged --quiet; then
+            echo "No CSV changes to commit."
+            echo "committed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "chore(data): export after manual DB repair [skip ci]"
+            git pull --rebase origin main
+            git push origin HEAD:main
+            echo "committed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Sync analytics site (calendar + L2 + cache stamp)
+        env:
+          WSDC_ANALYTICS_DEPLOY_TOKEN: ${{ secrets.WSDC_ANALYTICS_DEPLOY_TOKEN }}
+          REQUIRE_DEPLOY_TOKEN: "1"
+          REQUIRE_YEAR_CALENDAR: "1"
+          POINT_SUMMARY_CUTOFF: "2026-07-28"
+          POINT_SUMMARY_REPORT: data/quality_reports/point_summary_last.json
+          CHAMPION_NEWS_CUTOFF: "2026-07-25"
+          CHAMPION_NEWS_REPORT: data/quality_reports/champion_news_last.json
+          YEAR_CAL_REPORT: data/quality_reports/year_event_calendar_last.json
+        run: bash scripts/sync_analytics_site.sh

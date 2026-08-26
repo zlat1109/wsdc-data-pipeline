@@ -126,6 +126,7 @@ def test_sync_edition_location_baseline_uses_fetchall_count():
     class FakeCursor:
         def __init__(self, rows):
             self._rows = rows
+            self._sql = ""
 
         def __enter__(self):
             return self
@@ -133,11 +134,14 @@ def test_sync_edition_location_baseline_uses_fetchall_count():
         def __exit__(self, *args):
             return False
 
-        def execute(self, sql):
-            pass
+        def execute(self, sql, params=None):
+            self._sql = sql
 
         def fetchall(self):
             return self._rows
+
+        def fetchone(self):
+            return self._rows[0] if self._rows else None
 
     class FakeConn:
         def __init__(self):
@@ -146,12 +150,69 @@ def test_sync_edition_location_baseline_uses_fetchall_count():
         def cursor(self):
             self._call += 1
             if self._call == 1:
-                return FakeCursor([])
-            return FakeCursor([(1, 2026, 3, 148), (2, 2026, 4, 99)])
+                return FakeCursor([])  # drift
+            if self._call == 2:
+                return FakeCursor(
+                    [
+                        (1, 2026, 3, 148, "Event A"),
+                        (2, 2026, 4, 99, "Event B"),
+                    ]
+                )  # auto-add
+            # poison-seed country / resolve lookups — empty → no suspects
+            return FakeCursor([])
 
     report = sync_edition_location_baseline_after_load(FakeConn())
     assert report["auto_added"] == 2
     assert report["drift_count"] == 0
+    assert report["poison_seed_suspects"] == []
+
+
+def test_find_poison_seed_auto_adds_flags_cross_country():
+    from db.edition_location_baseline import find_poison_seed_auto_adds
+
+    class FakeCursor:
+        def __init__(self, conn):
+            self.conn = conn
+            self._rows = []
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            return False
+
+        def execute(self, sql, params=None):
+            sql_l = sql.lower()
+            if "from core.locations" in sql_l and "location_id = any" in sql_l:
+                # country lookup
+                lids = list(params[0]) if params else []
+                self._rows = [(lid, self.conn.countries.get(lid, "")) for lid in lids]
+            elif "from core.locations" in sql_l:
+                target = (params[0] if params else "").strip().lower()
+                lid = self.conn.resolve.get(target)
+                self._rows = [(lid,)] if lid else []
+            else:
+                self._rows = []
+
+        def fetchall(self):
+            return self._rows
+
+        def fetchone(self):
+            return self._rows[0] if self._rows else None
+
+    class FakeConn:
+        def __init__(self):
+            self.countries = {253: "australia", 222: "russia"}
+            self.resolve = {"st. petersburg, russia": 222}
+
+        def cursor(self):
+            return FakeCursor(self)
+
+    auto_rows = [(280, 2026, 3, 253, "Saint Petersburg WCS Nights")]
+    suspects = find_poison_seed_auto_adds(FakeConn(), auto_rows)
+    assert len(suspects) == 1
+    assert suspects[0]["location_id"] == 253
+    assert suspects[0]["override_location_id"] == 222
 
 
 def test_edition_location_baseline_drift_sql_shape():
