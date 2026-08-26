@@ -295,6 +295,8 @@ def test_format_pipeline_attention_baseline_drift(tmp_path, monkeypatch):
                         "event_name": "BTO Open",
                         "baseline_location_id": 148,
                         "current_location_id": 253,
+                        "baseline_location": "Calgary, Canada",
+                        "current_location": "Perth, Australia",
                     }
                 ],
             }
@@ -304,9 +306,106 @@ def test_format_pipeline_attention_baseline_drift(tmp_path, monkeypatch):
     monkeypatch.setattr(tn, "PROJECT_ROOT", tmp_path)
 
     text = tn.format_pipeline_message({"run_id": 1, "max_dancer_id": 100, "finished_at": "2026-06-15"})
-    assert "Edition location baseline drift" in text
+    assert "Edition location baseline" in text
     assert "148" in text
     assert "253" in text
+    assert "Perth" in text
+
+
+def test_format_pipeline_attention_location_cards(tmp_path, monkeypatch):
+    import telegram_notify as tn
+
+    reports = tmp_path / "data" / "quality_reports"
+    reports.mkdir(parents=True)
+    (reports / "latest.json").write_text(
+        json.dumps(
+            {
+                "summary": {"manual_review_count": 3, "manual_review_new_count": 0},
+                "manual_review_required": {
+                    "findings": [
+                        {
+                            "severity": "high",
+                            "code": "EVENT_NAME_UNRESOLVED_TO_CATALOG",
+                            "examples": [{"event_name": "Some New Event"}],
+                        },
+                        {
+                            "severity": "high",
+                            "code": "EVENT_NAME_LOCATION_ID_COLLISION",
+                            "examples": [
+                                {
+                                    "event_name": "Noisy Collision",
+                                    "location_ids": ["1", "2"],
+                                    "countries": ["United States", "United States"],
+                                }
+                            ],
+                        },
+                        {
+                            "severity": "high",
+                            "code": "SCHEDULED_VS_RESULTS_COUNTRY_CONFLICT",
+                            "suggested_fix": "Add EVENT_NAME_LOCATION_OVERRIDES",
+                            "examples": [
+                                {
+                                    "event_name": "St. Petersburg WCS Nights",
+                                    "location_id": "253",
+                                    "results_country": "australia",
+                                    "scheduled_country": "russia",
+                                    "scheduled_location": "St. Petersburg, Russia",
+                                    "rows": 224,
+                                }
+                            ],
+                        },
+                    ]
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(tn, "PROJECT_ROOT", tmp_path)
+
+    text = tn.format_pipeline_message({"run_id": 1, "max_dancer_id": 100, "finished_at": "2026-06-15"})
+    assert "Location mismatches" in text
+    assert "St. Petersburg WCS Nights" in text
+    assert "australia" in text
+    assert "russia" in text
+    assert "↳" in text
+    # Cross-country card must appear before noisy collision flood.
+    assert text.index("St. Petersburg") < text.index("Noisy Collision")
+    assert "Preprocess manual review" in text
+    assert "Some New Event" in text
+
+
+def test_format_pipeline_attention_poison_seed(tmp_path, monkeypatch):
+    import telegram_notify as tn
+
+    reports = tmp_path / "data" / "quality_reports"
+    reports.mkdir(parents=True)
+    (reports / "edition_location_baseline_drift.json").write_text(
+        json.dumps(
+            {
+                "drift_count": 0,
+                "auto_added": 1,
+                "drifts": [],
+                "poison_seed_suspects": [
+                    {
+                        "event_id": 280,
+                        "event_year": 2026,
+                        "event_month": 3,
+                        "event_name": "Saint Petersburg WCS Nights",
+                        "location_id": 253,
+                        "override_location_id": 222,
+                        "override_location": "St. Petersburg, Russia",
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(tn, "PROJECT_ROOT", tmp_path)
+
+    text = tn.format_pipeline_message({"run_id": 1, "max_dancer_id": 100, "finished_at": "2026-06-15"})
+    assert "poison-seed" in text
+    assert "253" in text
+    assert "222" in text
 
 
 def test_format_events_list_inactive_and_mapping(tmp_path, monkeypatch):

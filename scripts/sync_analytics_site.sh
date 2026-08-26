@@ -11,6 +11,8 @@
 #   ANALYTICS_REPO   default wsdc-analytics/wsdc-analytics.github.io
 #   PIPELINE_DATA    default data  (relative to cwd = pipeline repo root)
 #   SITE_YEARS       space-separated years for secondary dashboard (default: 2023..current UTC year)
+#   REQUIRE_DEPLOY_TOKEN  if 1, missing WSDC_ANALYTICS_DEPLOY_TOKEN fails the job (full-parse / force-rebuild)
+#   REQUIRE_YEAR_CALENDAR if 1 (default), year-calendar build failure exits non-zero
 
 set -euo pipefail
 
@@ -19,8 +21,14 @@ PIPELINE_DATA="${PIPELINE_DATA:-data}"
 WORKDIR="${RUNNER_TEMP:-/tmp}/wsdc-analytics-site-sync"
 CURRENT_YEAR="$(date -u +%Y)"
 SITE_YEARS="${SITE_YEARS:-$(seq 2023 "${CURRENT_YEAR}" | tr '\n' ' ')}"
+REQUIRE_DEPLOY_TOKEN="${REQUIRE_DEPLOY_TOKEN:-0}"
+REQUIRE_YEAR_CALENDAR="${REQUIRE_YEAR_CALENDAR:-1}"
 
 if [[ -z "${WSDC_ANALYTICS_DEPLOY_TOKEN:-}" ]]; then
+  if [[ "${REQUIRE_DEPLOY_TOKEN}" == "1" ]]; then
+    echo "::error::WSDC_ANALYTICS_DEPLOY_TOKEN not set — cannot sync analytics site"
+    exit 1
+  fi
   echo "::warning::WSDC_ANALYTICS_DEPLOY_TOKEN not set — skipping analytics site sync"
   exit 0
 fi
@@ -95,6 +103,10 @@ if python3 "${PIPELINE_ROOT}/scripts/build_year_event_calendar.py" \
 then
   echo "Year Event Calendar build OK"
 else
+  if [[ "${REQUIRE_YEAR_CALENDAR}" == "1" ]]; then
+    echo "::error::Year Event Calendar build failed — refusing to leave stale calendar on a successful sync"
+    exit 1
+  fi
   echo "::warning::Year Event Calendar build failed — continuing without updating events_year_calendar.json"
 fi
 

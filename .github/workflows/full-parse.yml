@@ -231,6 +231,8 @@ jobs:
         if: success()
         env:
           WSDC_ANALYTICS_DEPLOY_TOKEN: ${{ secrets.WSDC_ANALYTICS_DEPLOY_TOKEN }}
+          REQUIRE_DEPLOY_TOKEN: "1"
+          REQUIRE_YEAR_CALENDAR: "1"
           POINT_SUMMARY_CUTOFF: "2026-07-28"
           POINT_SUMMARY_REPORT: data/quality_reports/point_summary_last.json
           CHAMPION_NEWS_CUTOFF: "2026-07-25"

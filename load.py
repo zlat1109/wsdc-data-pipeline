@@ -127,10 +127,12 @@ def main() -> None:
                     "drift_count": drift_n,
                     "auto_added": added_n,
                     "drifts": baseline_report.get("drifts", []),
+                    "poison_seed_suspects": baseline_report.get("poison_seed_suspects", []),
                 }
                 out.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
-                if drift_n:
-                    print(f"Baseline drift report: {out}")
+                poison_n = len(payload["poison_seed_suspects"])
+                if drift_n or poison_n:
+                    print(f"Baseline drift report: {out} (poison_suspects={poison_n})")
 
                 cur.execute("ANALYZE core.results, core.event_editions, core.event_catalog")
 
