@@ -109,6 +109,8 @@ LOCATION_ID_MERGE_MAP: dict[str, str] = {
     "310": "13",
     # DCSX — country-only label
     "428": "13",
+    # São Paulo accented Trial geocode duplicate → historical Sao Paulo (results)
+    "398": "243",
 }
 
 # Extra lookup keys → canonical location_id (lowercase event_location text).
@@ -149,6 +151,12 @@ LOCATION_STRING_ALIASES: dict[str, str] = {
     "london, england, united kingdom": "107",
     "north myrtle beach, sc, united states": "325",
     "n. myrtle beach, sc, united states": "325",
+    "sao paulo, brazil": "243",
+    "são paulo, brazil": "243",
+    "sao paulo, sao paulo, brazil": "243",
+    "são paulo, são paulo, brazil": "243",
+    "sao paulo, são paulo, brazil": "243",
+    "são paulo, sao paulo, brazil": "243",
 }
 
 LOCATION_ID_CORRECTIONS: dict[int, LocationPatch] = {
@@ -327,6 +335,14 @@ LOCATION_ID_CORRECTIONS: dict[int, LocationPatch] = {
         'event_country': 'United States',
         'event_location': 'Woburn (Boston), MA, United States',
         'event_location_standardized': 'Woburn (Boston), MA',
+    },
+    # Canonical São Paulo (ASCII duplicate 398 merged here); accent matches Maps/Trial.
+    243: {
+        'event_city': 'São Paulo',
+        'event_state': '',
+        'event_country': 'Brazil',
+        'event_location': 'São Paulo, Brazil',
+        'event_location_standardized': 'São Paulo, Brazil',
     },
 }
 
