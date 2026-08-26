@@ -118,6 +118,7 @@ def test_format_probe_parse_in_flight():
         "ready_reason": "parse_in_flight",
         "parse_in_flight": True,
         "parse_in_flight_run_id": 456,
+        "parse_in_flight_age_minutes": 75,
         "watermark": 28367,
         "live_max_id": 28400,
         "approx_new_ids": 33,
@@ -127,6 +128,81 @@ def test_format_probe_parse_in_flight():
     text = format_probe_message(report)
     assert "уже выполняется" in text
     assert "456" in text
+    assert "75" in text
+    assert "close_parse_runs.py" in text
+
+
+def test_format_probe_zombie_auto_closed():
+    report = {
+        "checked_at": "2026-06-12",
+        "ready": True,
+        "watermark": 1,
+        "live_max_id": 2,
+        "approx_new_ids": 1,
+        "zombie_parse_close": {
+            "closed_count": 1,
+            "min_age_minutes": 240,
+            "stuck": [{"run_id": 99, "age_minutes": 300, "source": "github-actions"}],
+        },
+    }
+    text = format_probe_message(report)
+    assert "Auto-closed stuck parse_runs" in text
+    assert "99" in text
+    assert "240" in text
+
+
+def test_format_pipeline_attention_scd2_command(tmp_path, monkeypatch):
+    import telegram_notify as tn
+
+    reports = tmp_path / "data" / "quality_reports"
+    reports.mkdir(parents=True)
+    (reports / "supabase_latest.json").write_text(
+        json.dumps(
+            {
+                "summary": {"total": 3, "passed": 2, "errors": 1, "warnings": 0},
+                "checks": [
+                    {
+                        "name": "points_history_drift",
+                        "severity": "error",
+                        "value": 4,
+                        "max_value": 0,
+                        "ok": False,
+                        "fix_hint": "scripts/reconcile_points_history.py",
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(tn, "PROJECT_ROOT", tmp_path)
+    text = tn.format_pipeline_message({"run_id": 1, "max_dancer_id": 1, "finished_at": "2026-06-15"})
+    assert "SCD2 history drift" in text
+    assert "reconcile_points_history.py --dry-run" in text
+    assert "--apply" in text
+
+
+def test_format_pipeline_ps_cn_failed(tmp_path, monkeypatch):
+    import telegram_notify as tn
+
+    reports = tmp_path / "data" / "quality_reports"
+    reports.mkdir(parents=True)
+    (reports / "point_summary_last.json").write_text(
+        json.dumps({"ok": False, "error": "build_points_summary.py failed"}),
+        encoding="utf-8",
+    )
+    (reports / "champion_news_last.json").write_text(
+        json.dumps({"ok": False, "error": "build_champion_news.py failed"}),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(tn, "PROJECT_ROOT", tmp_path)
+    monkeypatch.setenv("POINT_SUMMARY_REPORT", str(reports / "point_summary_last.json"))
+    monkeypatch.setenv("CHAMPION_NEWS_REPORT", str(reports / "champion_news_last.json"))
+    text = tn.format_pipeline_message(
+        {"run_id": 1, "max_dancer_id": 1, "finished_at": "2026-06-15", "csv_committed": True}
+    )
+    assert "Point Summary FAILED" in text
+    assert "Champion News FAILED" in text
+    assert "Tableau Public" in text
 
 
 def test_format_probe_ready():
@@ -295,6 +371,8 @@ def test_format_pipeline_attention_baseline_drift(tmp_path, monkeypatch):
                         "event_name": "BTO Open",
                         "baseline_location_id": 148,
                         "current_location_id": 253,
+                        "baseline_location": "Calgary, Canada",
+                        "current_location": "Perth, Australia",
                     }
                 ],
             }
@@ -304,9 +382,106 @@ def test_format_pipeline_attention_baseline_drift(tmp_path, monkeypatch):
     monkeypatch.setattr(tn, "PROJECT_ROOT", tmp_path)
 
     text = tn.format_pipeline_message({"run_id": 1, "max_dancer_id": 100, "finished_at": "2026-06-15"})
-    assert "Edition location baseline drift" in text
+    assert "Edition location baseline" in text
     assert "148" in text
     assert "253" in text
+    assert "Perth" in text
+
+
+def test_format_pipeline_attention_location_cards(tmp_path, monkeypatch):
+    import telegram_notify as tn
+
+    reports = tmp_path / "data" / "quality_reports"
+    reports.mkdir(parents=True)
+    (reports / "latest.json").write_text(
+        json.dumps(
+            {
+                "summary": {"manual_review_count": 3, "manual_review_new_count": 0},
+                "manual_review_required": {
+                    "findings": [
+                        {
+                            "severity": "high",
+                            "code": "EVENT_NAME_UNRESOLVED_TO_CATALOG",
+                            "examples": [{"event_name": "Some New Event"}],
+                        },
+                        {
+                            "severity": "high",
+                            "code": "EVENT_NAME_LOCATION_ID_COLLISION",
+                            "examples": [
+                                {
+                                    "event_name": "Noisy Collision",
+                                    "location_ids": ["1", "2"],
+                                    "countries": ["United States", "United States"],
+                                }
+                            ],
+                        },
+                        {
+                            "severity": "high",
+                            "code": "SCHEDULED_VS_RESULTS_COUNTRY_CONFLICT",
+                            "suggested_fix": "Add EVENT_NAME_LOCATION_OVERRIDES",
+                            "examples": [
+                                {
+                                    "event_name": "St. Petersburg WCS Nights",
+                                    "location_id": "253",
+                                    "results_country": "australia",
+                                    "scheduled_country": "russia",
+                                    "scheduled_location": "St. Petersburg, Russia",
+                                    "rows": 224,
+                                }
+                            ],
+                        },
+                    ]
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(tn, "PROJECT_ROOT", tmp_path)
+
+    text = tn.format_pipeline_message({"run_id": 1, "max_dancer_id": 100, "finished_at": "2026-06-15"})
+    assert "Location mismatches" in text
+    assert "St. Petersburg WCS Nights" in text
+    assert "australia" in text
+    assert "russia" in text
+    assert "↳" in text
+    # Cross-country card must appear before noisy collision flood.
+    assert text.index("St. Petersburg") < text.index("Noisy Collision")
+    assert "Preprocess manual review" in text
+    assert "Some New Event" in text
+
+
+def test_format_pipeline_attention_poison_seed(tmp_path, monkeypatch):
+    import telegram_notify as tn
+
+    reports = tmp_path / "data" / "quality_reports"
+    reports.mkdir(parents=True)
+    (reports / "edition_location_baseline_drift.json").write_text(
+        json.dumps(
+            {
+                "drift_count": 0,
+                "auto_added": 1,
+                "drifts": [],
+                "poison_seed_suspects": [
+                    {
+                        "event_id": 280,
+                        "event_year": 2026,
+                        "event_month": 3,
+                        "event_name": "Saint Petersburg WCS Nights",
+                        "location_id": 253,
+                        "override_location_id": 222,
+                        "override_location": "St. Petersburg, Russia",
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(tn, "PROJECT_ROOT", tmp_path)
+
+    text = tn.format_pipeline_message({"run_id": 1, "max_dancer_id": 100, "finished_at": "2026-06-15"})
+    assert "poison-seed" in text
+    assert "253" in text
+    assert "222" in text
 
 
 def test_format_events_list_inactive_and_mapping(tmp_path, monkeypatch):

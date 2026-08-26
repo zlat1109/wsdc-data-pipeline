@@ -33,17 +33,32 @@ Same token family as the bot's analytics deploy secret is fine if it can write t
 ## Flow
 
 ```
-full-parse.yml
-  → export.py (data/*.csv)
-  → commit CSV (optional)
+full-parse.yml / sync-events-list.yml / force-rebuild-calendar-site.yml
+  → export.py (data/*.csv)   [force-rebuild: export-only]
+  → commit CSV (optional; list-sync may skip if no diff)
   → sync_analytics_site.sh
        clone analytics site
        build homepage_kpis.json + secondary_country_unified.json from data/
        build/merge points_summaries.json (cutoff + 30d window; warn-on-fail)
+       build champion_news.json (warn-on-fail)
+       build events_year_calendar.json + event_l2_cards.json
+         (REQUIRE_YEAR_CALENDAR=1 → hard fail; no silent stale calendar)
+       stamp calendar/dashboard ?v= cache buster
        validate_site_data.py
        commit + push → GitHub Pages
-  → Telegram #WSDC_Pipeline_Complete (+ Point Summary line)
+  → Telegram #WSDC_Pipeline_Complete (+ location mismatch cards when findings exist)
 ```
+
+**Force rebuild after manual DB location repair:** Actions → **Force rebuild calendar/site**
+(`force-rebuild-calendar-site.yml`). Sets `REQUIRE_DEPLOY_TOKEN=1` and
+`REQUIRE_YEAR_CALENDAR=1`.
+
+Env flags for `sync_analytics_site.sh`:
+
+| Env | Default | Meaning |
+|-----|---------|---------|
+| `REQUIRE_DEPLOY_TOKEN` | `0` | `1` → missing PAT fails the job (full-parse / force-rebuild) |
+| `REQUIRE_YEAR_CALENDAR` | `1` | `1` → calendar build failure exits non-zero |
 
 ## Local paths
 
