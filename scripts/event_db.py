@@ -240,6 +240,34 @@ def fetch_event_names_for_edition(conn, year: int, month: int) -> list[str]:
         return [row[0] for row in cur.fetchall() if row[0]]
 
 
+def _year_split_family_names(name: str) -> list[str]:
+    """Early/late titles that share one WSDC id across a rebrand year.
+
+    Weekend gate joins ``core.events.name``; that row stays one brand (often the
+    old one until enrich runs). Snapshot calendars use the current brand, so
+    fuzzy match alone fails (UpTown ↔ Swedish score 0). Treat the family as
+    interchangeable for edition presence checks.
+    """
+    from transform.knowledge.event_aliases import EVENT_NAME_YEAR_SPLITS
+
+    needle = (name or "").strip()
+    if not needle:
+        return []
+    needle_l = needle.lower()
+    out: list[str] = []
+    for rule in EVENT_NAME_YEAR_SPLITS:
+        sources = {str(s).strip() for s in rule["sources"]}  # type: ignore[arg-type]
+        early = str(rule["early_name"]).strip()
+        late = str(rule["late_name"]).strip()
+        family = {n for n in (sources | {early, late}) if n}
+        if not any(needle_l == n.lower() for n in family):
+            continue
+        for n in (early, late, *sorted(sources)):
+            if n and n not in out:
+                out.append(n)
+    return out
+
+
 def _match_names_for_edition(
     raw_name: str,
     db_names: list[str],
@@ -247,16 +275,24 @@ def _match_names_for_edition(
     aliases: dict[str, str],
     threshold: float,
 ) -> tuple[str | None, float]:
-    """Try raw snapshot name first (EVENT_NAME_MAPPINGS), then JSON-normalized."""
+    """Try raw snapshot name first (EVENT_NAME_MAPPINGS), then JSON-normalized.
+
+    Also tries year-split sibling titles (Swedish↔UpTown, BTO↔Calgary, …).
+    """
     candidates: list[str] = []
     seen: set[str] = set()
-    for candidate in (
+    seed = (
         (raw_name or "").strip(),
         normalize_expected_event_name(raw_name, aliases=aliases),
-    ):
+    )
+    for candidate in seed:
         if candidate and candidate not in seen:
             seen.add(candidate)
             candidates.append(candidate)
+        for sibling in _year_split_family_names(candidate):
+            if sibling not in seen:
+                seen.add(sibling)
+                candidates.append(sibling)
     best_match: str | None = None
     best_score = 0.0
     for candidate in candidates:

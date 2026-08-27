@@ -111,13 +111,17 @@ def enrich_core_known_events(conn: psycopg.Connection) -> None:
                     (url, event_id),
                 )
             if name:
+                # Force KNOWN title (e.g. UpTown Swing over stale Swedish Swing
+                # Summer Camp on shared event_id 264). Empty-only COALESCE left
+                # rebrands stuck and weekend probe pending forever.
                 cur.execute(
                     """
                     UPDATE core.events
-                    SET name = COALESCE(NULLIF(TRIM(name), ''), %s)
+                    SET name = %s
                     WHERE event_id = %s
+                      AND COALESCE(NULLIF(TRIM(name), ''), '') IS DISTINCT FROM %s
                     """,
-                    (name, event_id),
+                    (name, event_id, name),
                 )
 
         for event_id, fixes in event_location_patches().items():
