@@ -116,6 +116,27 @@ def test_split_pending_matches_neverland_long_snapshot_name():
     assert already == ["NeverlandSwing Dutch Swing Championships 2026"]
 
 
+def test_split_pending_uptown_matches_stale_swedish_core_events_name():
+    """Year-split rebrand: calendar says UpTown; core.events still Swedish."""
+    conn = MagicMock()
+    conn.cursor.return_value.__enter__.return_value.fetchall.return_value = [
+        ("Swedish Swing Summer Camp",),
+    ]
+
+    events = [
+        {
+            "name": "UpTown Swing",
+            "start_date": "2026-08-14",
+            "end_date": "2026-08-17",
+            "results_year": 2026,
+            "results_month": 8,
+        },
+    ]
+    pending, already = split_pending_events(conn, events, today=date(2026, 8, 27))
+    assert pending == []
+    assert already == ["UpTown Swing"]
+
+
 def test_split_pending_lisbon_not_confused_with_midwest_july():
     """Lisbon must stay pending; Sea Sun in August results counts as already loaded."""
     conn = MagicMock()
