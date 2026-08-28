@@ -2,6 +2,7 @@
 -- @docs-summary: export.completed_event_editions as regular VIEW (was MV 032)
 
 DROP FUNCTION IF EXISTS export.refresh_completed_event_editions();
+DROP VIEW IF EXISTS export.completed_event_editions;
 DROP MATERIALIZED VIEW IF EXISTS export.completed_event_editions;
 
 CREATE VIEW export.completed_event_editions AS
