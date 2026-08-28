@@ -49,7 +49,7 @@ Legacy audit-only: `scripts/data_quality_audit.py` (prefer preprocess).
 
 `scripts/monitor_data_quality.py` — run after load (also in CI `full-parse.yml`):
 
-**Completed-edition directory (Supabase):** `export.completed_event_editions` (materialized view, migration 032). Pre-flight location/id audits: `db/sql/audit_completed_event_location_links.sql`. Refresh after load: `SELECT export.refresh_completed_event_editions();`
+**Completed-edition directory (Supabase):** `export.completed_event_editions` (live view, migrations 032→034). Pre-flight location/id audits: `db/sql/audit_completed_event_location_links.sql`. No refresh step — each SELECT runs on current `core.*` data.
 
 **Edition location baseline (Supabase):** `core.edition_location_baseline` (migration 033) stores frozen `(event_id, event_year, event_month) → location_id`. Export: `export.edition_location_baseline` → `data/edition_location_baseline.csv`. After each load, `load.py` compares `core.event_editions` to baseline, auto-adds new edition keys, always refreshes `data/quality_reports/edition_location_baseline_drift.json` (`drift_count: 0` on clean runs). **First cycle after deploy:** migration 033 + export must run before preprocess CSV check is active; until then only post-load drift applies. Legitimate venue changes: `UPDATE core.edition_location_baseline SET location_id = …, source = 'manual', updated_at = now() WHERE …` in Supabase UI.
 

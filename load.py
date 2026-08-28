@@ -106,13 +106,9 @@ def main() -> None:
                     f"unmatched={tier_status.get('unmatched', 0):,})"
                 )
 
-                from edition_location_baseline import (
-                    refresh_completed_event_editions_mv,
-                    sync_edition_location_baseline_after_load,
-                )
+                from edition_location_baseline import sync_edition_location_baseline_after_load
 
                 baseline_report = sync_edition_location_baseline_after_load(conn)
-                refresh_completed_event_editions_mv(conn)
                 drift_n = int(baseline_report.get("drift_count", 0))
                 added_n = int(baseline_report.get("auto_added", 0))
                 print(

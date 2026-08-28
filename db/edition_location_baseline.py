@@ -207,9 +207,3 @@ def sync_edition_location_baseline_after_load(conn) -> dict[str, Any]:
         "drifts": [d.to_dict() for d in drifts[:100]],
         "poison_seed_suspects": poison,
     }
-
-
-def refresh_completed_event_editions_mv(conn) -> None:
-    """Keep completed-editions directory MV in sync after load."""
-    with conn.cursor() as cur:
-        cur.execute("SELECT export.refresh_completed_event_editions()")

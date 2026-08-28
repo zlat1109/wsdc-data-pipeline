@@ -1,4 +1,4 @@
--- Audit event_id ↔ location_id links for completed editions (run before/after MV refresh).
+-- Audit event_id ↔ location_id links for completed editions (live view uses same rules).
 -- Paste into Supabase SQL Editor. Each block is independent.
 
 -- ---------------------------------------------------------------------------
