@@ -161,6 +161,9 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'German Open': 'Freiburg, Germany',  # was Brno (266)
     'German Open WCS': 'Freiburg, Germany',
     'German Open West Coast Swing': 'Freiburg, Germany',
+    # Shared Brno (266 / Swing Fiction) wrongly applied; series is Stockholm
+    # (Scandic Infra City) — scoring.dance / nordicwcschamps.com Scandinavia.
+    'Nordic WCS Championships': 'Stockholm, Sweden',
     'Milan Modern Swing': 'Milan, Italy',  # was St. Petersburg (222)
 }
 

@@ -552,6 +552,47 @@ def test_force_raw_wsdc_titles_via_alias_normalization():
     assert str(out.loc[3, "location_id"]) == "38"
 
 
+def test_force_nordic_off_brno_to_stockholm():
+    location_info = pd.DataFrame(
+        [
+            {
+                "location_id": "266",
+                "event_city": "Brno",
+                "event_state": "",
+                "event_country": "Czech Republic",
+                "event_location": "Brno, Czech Republic",
+            },
+            {
+                "location_id": "199",
+                "event_city": "Stockholm",
+                "event_state": "",
+                "event_country": "Sweden",
+                "event_location": "Stockholm, Sweden",
+            },
+        ]
+    )
+    results = pd.DataFrame(
+        [
+            {
+                "event_name": "Nordic WCS Championships",
+                "location_id": "266",
+                "event_location": "Brno, Czech Republic",
+            },
+            {
+                "event_name": "Swing Fiction",
+                "location_id": "266",
+                "event_location": "Brno, Czech Republic",
+            },
+        ]
+    )
+    out, changed = force_result_locations_from_event_name_overrides(results, location_info)
+    assert changed == 1
+    assert str(out.loc[0, "location_id"]) == "199"
+    assert out.loc[0, "event_location"] == "Stockholm, Sweden"
+    # Swing Fiction keeps Brno.
+    assert str(out.loc[1, "location_id"]) == "266"
+
+
 def test_force_swingsation_off_st_petersburg_to_gold_coast():
     location_info = pd.DataFrame(
         [
