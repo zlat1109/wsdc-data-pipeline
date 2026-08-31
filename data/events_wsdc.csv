@@ -31,6 +31,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 2022,2022-07-01,2022,7,2022-07
 1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 2023,2023-07-01,2023,7,2023-07
 1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 2024,2024-07-01,2024,7,2024-07
+234,Philly Swing Classic,"Wilmington, DE, United States",http://www.phillyswing.com,September 2025,2025-09-01,2025,9,2025-09
 2,4TH of July Swing Bash,"Fort Lauderdale, FL, United States",,July 1997,1997-07-01,1997,7,1997-07
 3,American Lindy Hop Championships,"Stamford, CT, United States",,October 2000,2000-10-01,2000,10,2000-10
 3,American Lindy Hop Championships,"Stamford, CT, United States",,October 2001,2001-10-01,2001,10,2001-10
@@ -84,6 +85,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 8,Boogie By The Bay,"San Francisco, CA, United States",https://boogiebythebay.com,October 2022,2022-10-01,2022,10,2022-10
 8,Boogie By The Bay,"San Francisco, CA, United States",https://boogiebythebay.com,October 2023,2023-10-01,2023,10,2023-10
 8,Boogie By The Bay,"San Francisco, CA, United States",https://boogiebythebay.com,October 2024,2024-10-01,2024,10,2024-10
+178,Montreal Westie Fest,"Montreal, Canada",http://www.montrealwestiefest.com,October 2017,2017-10-01,2017,10,2017-10
 9,Boston Tea Party,"Boston, MA, United States",http://teapartyswings.com,March 1997,1997-03-01,1997,3,1997-03
 9,Boston Tea Party,"Boston, MA, United States",http://teapartyswings.com,March 1998,1998-03-01,1998,3,1998-03
 9,Boston Tea Party,"Boston, MA, United States",http://teapartyswings.com,March 1999,1999-03-01,1999,3,1999-03
@@ -108,6 +110,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 9,Boston Tea Party,"Boston, MA, United States",http://teapartyswings.com,March 2018,2018-03-01,2018,3,2018-03
 9,Boston Tea Party,"Boston, MA, United States",http://teapartyswings.com,March 2019,2019-03-01,2019,3,2019-03
 9,Boston Tea Party,"Boston, MA, United States",http://teapartyswings.com,March 2024,2024-03-01,2024,3,2024-03
+181,DC Swing eXperience (DCSX),"Herndon, VA, United States",http://www.dcswingexperience.com,November 2023,2023-11-01,2023,11,2023-11
 10,Bridgetown Swing Boogie,"Vancouver, WA, United States",,September 2001,2001-09-01,2001,9,2001-09
 10,Bridgetown Swing Boogie,"Vancouver, WA, United States",,September 2002,2002-09-01,2002,9,2002-09
 10,Bridgetown Swing Boogie,"Vancouver, WA, United States",,September 2003,2003-09-01,2003,9,2003-09
@@ -1578,6 +1581,8 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 175,French Open West Coast Swing,"Paris, France",http://www.fowcs.com,May 2017,2017-05-01,2017,5,2017-05
 175,French Open West Coast Swing,"Paris, France",http://www.fowcs.com,May 2018,2018-05-01,2018,5,2018-05
 175,French Open West Coast Swing,"Paris, France",http://www.fowcs.com,June 2019,2019-06-01,2019,6,2019-06
+179,New Zealand Open Swing Dance Championships,"Auckland, New Zealand",https://www.streetswing.co.nz/the-new-zealand-open,October 2022,2022-10-01,2022,10,2022-10
+178,Montreal Westie Fest,"Montreal, Canada",http://www.montrealwestiefest.com,October 2011,2011-10-01,2011,10,2011-10
 177,River City Swing,"Jacksonville, FL, United States",http://www.floridadanceevents.com,September 2011,2011-09-01,2011,9,2011-09
 177,River City Swing,"Jacksonville, FL, United States",http://www.floridadanceevents.com,September 2012,2012-09-01,2012,9,2012-09
 177,River City Swing,"Jacksonville, FL, United States",http://www.floridadanceevents.com,September 2013,2013-09-01,2013,9,2013-09
@@ -1589,16 +1594,12 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 177,River City Swing,"Jacksonville, FL, United States",http://www.floridadanceevents.com,September 2019,2019-09-01,2019,9,2019-09
 177,River City Swing,"Jacksonville, FL, United States",http://www.floridadanceevents.com,September 2023,2023-09-01,2023,9,2023-09
 177,River City Swing,"Jacksonville, FL, United States",http://www.floridadanceevents.com,September 2024,2024-09-01,2024,9,2024-09
-178,Montreal Westie Fest,"Montreal, Canada",http://www.montrealwestiefest.com,October 2011,2011-10-01,2011,10,2011-10
 178,Montreal Westie Fest,"Montreal, Canada",http://www.montrealwestiefest.com,October 2012,2012-10-01,2012,10,2012-10
-178,Montreal Westie Fest,"Montreal, Canada",http://www.montrealwestiefest.com,October 2013,2013-10-01,2013,10,2013-10
-178,Montreal Westie Fest,"Montreal, Canada",http://www.montrealwestiefest.com,October 2015,2015-10-01,2015,10,2015-10
-178,Montreal Westie Fest,"Montreal, Canada",http://www.montrealwestiefest.com,October 2016,2016-10-01,2016,10,2016-10
-178,Montreal Westie Fest,"Montreal, Canada",http://www.montrealwestiefest.com,October 2017,2017-10-01,2017,10,2017-10
 178,Montreal Westie Fest,"Montreal, Canada",http://www.montrealwestiefest.com,October 2018,2018-10-01,2018,10,2018-10
 178,Montreal Westie Fest,"Montreal, Canada",http://www.montrealwestiefest.com,October 2019,2019-10-01,2019,10,2019-10
 178,Montreal Westie Fest,"Montreal, Canada",http://www.montrealwestiefest.com,October 2023,2023-10-01,2023,10,2023-10
 178,Montreal Westie Fest,"Montreal, Canada",http://www.montrealwestiefest.com,October 2024,2024-10-01,2024,10,2024-10
+178,Montreal Westie Fest,"Montreal, Canada",http://www.montrealwestiefest.com,October 2013,2013-10-01,2013,10,2013-10
 179,New Zealand Open Swing Dance Championships,"Auckland, New Zealand",https://www.streetswing.co.nz/the-new-zealand-open,October 2011,2011-10-01,2011,10,2011-10
 179,New Zealand Open Swing Dance Championships,"Auckland, New Zealand",https://www.streetswing.co.nz/the-new-zealand-open,October 2012,2012-10-01,2012,10,2012-10
 179,New Zealand Open Swing Dance Championships,"Auckland, New Zealand",https://www.streetswing.co.nz/the-new-zealand-open,October 2013,2013-10-01,2013,10,2013-10
@@ -1609,9 +1610,9 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 179,New Zealand Open Swing Dance Championships,"Auckland, New Zealand",https://www.streetswing.co.nz/the-new-zealand-open,June 2018,2018-06-01,2018,6,2018-06
 179,New Zealand Open Swing Dance Championships,"Auckland, New Zealand",https://www.streetswing.co.nz/the-new-zealand-open,October 2019,2019-10-01,2019,10,2019-10
 179,New Zealand Open Swing Dance Championships,"Auckland, New Zealand",https://www.streetswing.co.nz/the-new-zealand-open,October 2020,2020-10-01,2020,10,2020-10
-179,New Zealand Open Swing Dance Championships,"Auckland, New Zealand",https://www.streetswing.co.nz/the-new-zealand-open,October 2022,2022-10-01,2022,10,2022-10
 179,New Zealand Open Swing Dance Championships,"Auckland, New Zealand",https://www.streetswing.co.nz/the-new-zealand-open,October 2023,2023-10-01,2023,10,2023-10
 179,New Zealand Open Swing Dance Championships,"Auckland, New Zealand",https://www.streetswing.co.nz/the-new-zealand-open,November 2024,2024-11-01,2024,11,2024-11
+178,Montreal Westie Fest,"Montreal, Canada",http://www.montrealwestiefest.com,October 2015,2015-10-01,2015,10,2015-10
 180,Australian Open Swing Dance Championships,"Melbourne, Australia",,October 2011,2011-10-01,2011,10,2011-10
 180,Australian Open Swing Dance Championships,"Melbourne, Australia",,October 2012,2012-10-01,2012,10,2012-10
 180,Australian Open Swing Dance Championships,"Melbourne, Australia",,October 2013,2013-10-01,2013,10,2013-10
@@ -1627,8 +1628,8 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 181,DC Swing eXperience (DCSX),"Herndon, VA, United States",http://www.dcswingexperience.com,November 2018,2018-11-01,2018,11,2018-11
 181,DC Swing eXperience (DCSX),"Herndon, VA, United States",http://www.dcswingexperience.com,November 2019,2019-11-01,2019,11,2019-11
 181,DC Swing eXperience (DCSX),"Herndon, VA, United States",http://www.dcswingexperience.com,November 2022,2022-11-01,2022,11,2022-11
-181,DC Swing eXperience (DCSX),"Herndon, VA, United States",http://www.dcswingexperience.com,November 2023,2023-11-01,2023,11,2023-11
 181,DC Swing eXperience (DCSX),"Herndon, VA, United States",http://www.dcswingexperience.com,November 2024,2024-11-01,2024,11,2024-11
+178,Montreal Westie Fest,"Montreal, Canada",http://www.montrealwestiefest.com,October 2016,2016-10-01,2016,10,2016-10
 183,Freedom Swing Dance Challenge,"Wilmington, DE, United States",https://freedomswingdance.com/,January 2012,2012-01-01,2012,1,2012-01
 183,Freedom Swing Dance Challenge,"Wilmington, DE, United States",https://freedomswingdance.com/,January 2013,2013-01-01,2013,1,2013-01
 183,Freedom Swing Dance Challenge,"Wilmington, DE, United States",https://freedomswingdance.com/,January 2014,2014-01-01,2014,1,2014-01
@@ -1944,6 +1945,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 227,Swingtacular: The Galactic Open,"San Francisco, CA, United States",http://dancegeekproductions.art,August 2022,2022-08-01,2022,8,2022-08
 227,Swingtacular: The Galactic Open,"San Francisco, CA, United States",http://dancegeekproductions.art,August 2023,2023-08-01,2023,8,2023-08
 227,Swingtacular: The Galactic Open,"San Francisco, CA, United States",http://dancegeekproductions.art,August 2024,2024-08-01,2024,8,2024-08
+234,Philly Swing Classic,"Wilmington, DE, United States",http://www.phillyswing.com,September 2024,2024-09-01,2024,9,2024-09
 228,Summer Swing Classic,"St. Petersburg, FL, United States",,August 2014,2014-08-01,2014,8,2014-08
 228,Summer Swing Classic,"St. Petersburg, FL, United States",,August 2015,2015-08-01,2015,8,2015-08
 229,Scandinavian Open,"Stockholm, Sweden",http://www.snowcs.se/,August 2014,2014-08-01,2014,8,2014-08
@@ -1989,7 +1991,6 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 234,Philly Swing Classic,"Wilmington, DE, United States",http://www.phillyswing.com,September 2019,2019-09-01,2019,9,2019-09
 234,Philly Swing Classic,"Wilmington, DE, United States",http://www.phillyswing.com,September 2021,2021-09-01,2021,9,2021-09
 234,Philly Swing Classic,"Wilmington, DE, United States",http://www.phillyswing.com,September 2022,2022-09-01,2022,9,2022-09
-234,Philly Swing Classic,"Wilmington, DE, United States",http://www.phillyswing.com,September 2024,2024-09-01,2024,9,2024-09
 236,Warsaw Halloween Swing,"Warsaw, Poland",http://www.warsawhalloweenswing.com,October 2012,2012-10-01,2012,10,2012-10
 236,Warsaw Halloween Swing,"Warsaw, Poland",http://www.warsawhalloweenswing.com,October 2013,2013-10-01,2013,10,2013-10
 236,Warsaw Halloween Swing,"Warsaw, Poland",http://www.warsawhalloweenswing.com,November 2014,2014-11-01,2014,11,2014-11
@@ -2502,7 +2503,6 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 229,Scandinavian Open,"Stockholm, Sweden",http://www.snowcs.se/,November 2025,2025-11-01,2025,11,2025-11
 231,Trilogy Swing,"Raleigh, NC, United States",http://www.trilogywcs.com,September 2025,2025-09-01,2025,9,2025-09
 233,Bavarian Open,"Munich, Germany",https://bavarianopen.com/,September 2025,2025-09-01,2025,9,2025-09
-234,Philly Swing Classic,"Wilmington, DE, United States",http://www.phillyswing.com,September 2025,2025-09-01,2025,9,2025-09
 236,Warsaw Halloween Swing,"Warsaw, Poland",http://www.warsawhalloweenswing.com,November 2025,2025-11-01,2025,11,2025-11
 238,Winter White,"Oslo, Norway",http://www.winterwhite.no,December 2025,2025-12-01,2025,12,2025-12
 240,Westie Gala,"Stockholm, Sweden",http://www.westiegala.com/,January 2025,2025-01-01,2025,1,2025-01

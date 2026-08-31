@@ -168,7 +168,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 131,2025,9,49,Meet Me In St Louis,auto,St. Louis,Missouri,United States,"St. Louis, MO, United States","St. Louis, MO",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 165,2025,9,107,Midland Swing Open,auto,London,,United Kingdom,"London, United Kingdom","London, United Kingdom",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 361,2025,9,270,Mooseland Swing,auto,Östersund,,Sweden,"Östersund, Sweden","Östersund, Sweden",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
-234,2025,9,222,Philly Swing Classic,auto,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
+234,2025,9,66,Philly Swing Classic,manual,Wilmington,Delaware,United States,"Wilmington, DE, United States","Wilmington, DE",2026-08-31 19:09:37.787927+00,2026-08-31 19:56:14.959886+00
 359,2025,9,30,Retaliation Swing,auto,Seattle,Washington,United States,"Seattle, WA, United States","Seattle, WA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 313,2025,9,156,Rolling Swing,auto,Lyon,,France,"Lyon, France","Lyon, France",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 338,2025,9,113,Sea Dance Fest,auto,Moscow,,Russia,"Moscow, Russia","Moscow, Russia",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
@@ -332,7 +332,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 268,2024,9,213,Korea Westival,auto,Jeju,,Republic of Korea,"Jeju, Republic of Korea","Jeju, Republic of Korea",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 131,2024,9,49,Meet Me In St Louis,auto,St. Louis,Missouri,United States,"St. Louis, MO, United States","St. Louis, MO",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 165,2024,9,107,Midland Swing Open,auto,London,,United Kingdom,"London, United Kingdom","London, United Kingdom",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
-234,2024,9,222,Philly Swing Classic,auto,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
+234,2024,9,66,Philly Swing Classic,manual,Wilmington,Delaware,United States,"Wilmington, DE, United States","Wilmington, DE",2026-08-31 19:09:37.787927+00,2026-08-31 19:56:14.959886+00
 177,2024,9,98,River City Swing,auto,Jacksonville,Florida,United States,"Jacksonville, FL, United States","Jacksonville, FL",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 313,2024,9,156,Rolling Swing,auto,Lyon,,France,"Lyon, France","Lyon, France",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 338,2024,9,113,Sea Dance Fest,auto,Moscow,,Russia,"Moscow, Russia","Moscow, Russia",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
@@ -438,7 +438,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 238,2023,12,223,Winter White,auto,Oslo,,Norway,"Oslo, Norway","Oslo, Norway",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 269,2023,11,110,Autumn Swing Challenge,auto,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 87,2023,11,96,CASH Bash,auto,Cleveland,Ohio,United States,"Cleveland, OH, United States","Cleveland, OH",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
-181,2023,11,13,DC Swing eXperience (DCSX),auto,Washington,District of Columbia,United States,"Washington, DC, United States","Washington, DC",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
+181,2023,11,38,DC Swing eXperience (DCSX),manual,Herndon,Virginia,United States,"Herndon, VA, United States","Herndon, VA",2026-08-31 19:09:37.787927+00,2026-08-31 19:56:14.959886+00
 288,2023,11,21,Midnight Madness,auto,Dallas,Texas,United States,"Dallas, TX, United States","Dallas, TX",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 194,2023,11,113,Moscow Westie Fest,auto,Moscow,,Russia,"Moscow, Russia","Moscow, Russia",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 31,2023,11,28,Mountain Magic,auto,South Lake Tahoe (near Reno),Nevada,United States,"South Lake Tahoe (near Reno), NV, United States","South Lake Tahoe (near Reno), NV",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
@@ -573,7 +573,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 65,2022,10,24,Halloween SwingThing,auto,Costa Mesa,California,United States,"Costa Mesa, CA, United States","Costa Mesa, CA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 165,2022,10,107,Midland Swing Open,auto,London,,United Kingdom,"London, United Kingdom","London, United Kingdom",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 322,2022,10,132,Milan Modern Swing,auto,Milan,,Italy,"Milan, Italy","Milan, Italy",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
-179,2022,10,253,New Zealand Open Swing Dance Championships,auto,Perth,,Australia,"Perth, Australia","Perth, Australia",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
+179,2022,10,168,New Zealand Open Swing Dance Championships,manual,Auckland,,New Zealand,"Auckland, New Zealand","Auckland, New Zealand",2026-08-31 19:09:37.787927+00,2026-08-31 19:56:14.959886+00
 43,2022,10,19,Paradise Dance Festival,auto,Irvine,California,United States,"Irvine, CA, United States","Irvine, CA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 125,2022,10,34,Swing City Chicago,auto,Chicago,Illinois,United States,"Chicago, IL, United States","Chicago, IL",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 267,2022,10,149,Swustlicious,auto,Philadelphia,Pennsylvania,United States,"Philadelphia, PA, United States","Philadelphia, PA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
@@ -1026,7 +1026,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 65,2017,10,24,Halloween SwingThing,auto,Costa Mesa,California,United States,"Costa Mesa, CA, United States","Costa Mesa, CA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 257,2017,10,132,Italian Open,auto,Milan,,Italy,"Milan, Italy","Milan, Italy",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 165,2017,10,107,Midland Swing Open,auto,London,,United Kingdom,"London, United Kingdom","London, United Kingdom",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
-178,2017,10,243,Montreal Westie Fest,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
+178,2017,10,86,Montreal Westie Fest,manual,Montreal,,Canada,"Montreal, Canada","Montreal, Canada",2026-08-31 19:09:37.787927+00,2026-08-31 19:56:14.959886+00
 285,2017,10,238,Old Town Swing,auto,Tallinn,,Estonia,"Tallinn, Estonia","Tallinn, Estonia",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 43,2017,10,19,Paradise Dance Festival,auto,Irvine,California,United States,"Irvine, CA, United States","Irvine, CA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 125,2017,10,34,Swing City Chicago,auto,Chicago,Illinois,United States,"Chicago, IL, United States","Chicago, IL",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
@@ -1169,7 +1169,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 257,2016,10,132,Italian Open,auto,Milan,,Italy,"Milan, Italy","Milan, Italy",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 268,2016,10,213,Korea Westival,auto,Jeju,,Republic of Korea,"Jeju, Republic of Korea","Jeju, Republic of Korea",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 165,2016,10,107,Midland Swing Open,auto,London,,United Kingdom,"London, United Kingdom","London, United Kingdom",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
-178,2016,10,243,Montreal Westie Fest,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
+178,2016,10,86,Montreal Westie Fest,manual,Montreal,,Canada,"Montreal, Canada","Montreal, Canada",2026-08-31 19:09:37.787927+00,2026-08-31 19:56:14.959886+00
 179,2016,10,168,New Zealand Open Swing Dance Championships,auto,Auckland,,New Zealand,"Auckland, New Zealand","Auckland, New Zealand",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 43,2016,10,19,Paradise Dance Festival,auto,Irvine,California,United States,"Irvine, CA, United States","Irvine, CA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 125,2016,10,34,Swing City Chicago,auto,Chicago,Illinois,United States,"Chicago, IL, United States","Chicago, IL",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
@@ -1300,7 +1300,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 180,2015,10,174,Australian Open Swing Dance Championships,auto,Melbourne,,Australia,"Melbourne, Australia","Melbourne, Australia",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 8,2015,10,2,Boogie By The Bay,auto,San Francisco,California,United States,"San Francisco, CA, United States","San Francisco, CA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 257,2015,10,132,Italian Open,auto,Milan,,Italy,"Milan, Italy","Milan, Italy",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
-178,2015,10,243,Montreal Westie Fest,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
+178,2015,10,86,Montreal Westie Fest,manual,Montreal,,Canada,"Montreal, Canada","Montreal, Canada",2026-08-31 19:09:37.787927+00,2026-08-31 19:56:14.959886+00
 179,2015,10,168,New Zealand Open Swing Dance Championships,auto,Auckland,,New Zealand,"Auckland, New Zealand","Auckland, New Zealand",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 43,2015,10,19,Paradise Dance Festival,auto,Irvine,California,United States,"Irvine, CA, United States","Irvine, CA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 234,2015,10,66,Philly Swing Classic,auto,Wilmington,Delaware,United States,"Wilmington, DE, United States","Wilmington, DE",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
@@ -1540,7 +1540,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 8,2013,10,2,Boogie By The Bay,auto,San Francisco,California,United States,"San Francisco, CA, United States","San Francisco, CA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 65,2013,10,24,Halloween SwingThing,auto,Costa Mesa,California,United States,"Costa Mesa, CA, United States","Costa Mesa, CA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 210,2013,10,172,Korean Open WCS Championships,auto,Incheon,,Republic of Korea,"Incheon, Republic of Korea","Incheon, Republic of Korea",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
-178,2013,10,243,Montreal Westie Fest,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
+178,2013,10,86,Montreal Westie Fest,manual,Montreal,,Canada,"Montreal, Canada","Montreal, Canada",2026-08-31 19:09:37.787927+00,2026-08-31 19:56:14.959886+00
 179,2013,10,168,New Zealand Open Swing Dance Championships,auto,Auckland,,New Zealand,"Auckland, New Zealand","Auckland, New Zealand",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 43,2013,10,19,Paradise Dance Festival,auto,Irvine,California,United States,"Irvine, CA, United States","Irvine, CA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 125,2013,10,34,Swing City Chicago,auto,Chicago,Illinois,United States,"Chicago, IL, United States","Chicago, IL",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
@@ -1640,7 +1640,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 180,2012,10,174,Australian Open Swing Dance Championships,auto,Melbourne,,Australia,"Melbourne, Australia","Melbourne, Australia",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 8,2012,10,2,Boogie By The Bay,auto,San Francisco,California,United States,"San Francisco, CA, United States","San Francisco, CA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 65,2012,10,24,Halloween SwingThing,auto,Costa Mesa,California,United States,"Costa Mesa, CA, United States","Costa Mesa, CA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
-178,2012,10,243,Montreal Westie Fest,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
+178,2012,10,86,Montreal Westie Fest,manual,Montreal,,Canada,"Montreal, Canada","Montreal, Canada",2026-08-31 19:09:37.787927+00,2026-08-31 19:56:14.959886+00
 179,2012,10,168,New Zealand Open Swing Dance Championships,auto,Auckland,,New Zealand,"Auckland, New Zealand","Auckland, New Zealand",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 43,2012,10,19,Paradise Dance Festival,auto,Irvine,California,United States,"Irvine, CA, United States","Irvine, CA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 125,2012,10,34,Swing City Chicago,auto,Chicago,Illinois,United States,"Chicago, IL, United States","Chicago, IL",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
@@ -1731,7 +1731,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 8,2011,10,2,Boogie By The Bay,auto,San Francisco,California,United States,"San Francisco, CA, United States","San Francisco, CA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 65,2011,10,24,Halloween SwingThing,auto,Costa Mesa,California,United States,"Costa Mesa, CA, United States","Costa Mesa, CA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 165,2011,10,107,Midland Swing Open,auto,London,,United Kingdom,"London, United Kingdom","London, United Kingdom",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
-178,2011,10,243,Montreal Westie Fest,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
+178,2011,10,86,Montreal Westie Fest,manual,Montreal,,Canada,"Montreal, Canada","Montreal, Canada",2026-08-31 19:09:37.787927+00,2026-08-31 19:56:14.959886+00
 179,2011,10,168,New Zealand Open Swing Dance Championships,auto,Auckland,,New Zealand,"Auckland, New Zealand","Auckland, New Zealand",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 43,2011,10,19,Paradise Dance Festival,auto,Irvine,California,United States,"Irvine, CA, United States","Irvine, CA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 79,2011,10,30,Sea to Sky,auto,Seattle,Washington,United States,"Seattle, WA, United States","Seattle, WA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00

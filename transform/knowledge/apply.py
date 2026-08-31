@@ -192,8 +192,22 @@ def force_result_locations_from_event_name_overrides(
     lookup = build_location_lookup(location_df)
     changed = 0
 
+    # Match override keys against whitespace-collapsed + alias-normalized names so
+    # raw WSDC titles ("The New Zealand Open", "Philly Swing Dance Classic",
+    # "DC Swing eXperience  (DCSX)") still remap wrong shared location_ids.
+    from transform.knowledge.event_aliases import build_event_name_normalization
+
+    name_norm = build_event_name_normalization()
+    match_names = (
+        df["event_name"]
+        .astype(str)
+        .str.strip()
+        .str.replace(r"\s+", " ", regex=True)
+        .replace(name_norm)
+    )
+
     for event_name, target_location in EVENT_NAME_LOCATION_OVERRIDES.items():
-        mask = df["event_name"].astype(str).str.strip() == event_name
+        mask = match_names == event_name
         if not mask.any():
             continue
         changed += _apply_location_target(
@@ -203,7 +217,7 @@ def force_result_locations_from_event_name_overrides(
     years = _result_event_years(df)
     year_names = {name for name, _y0, _y1 in EVENT_NAME_YEAR_LOCATION_OVERRIDES}
     for event_name in sorted(year_names):
-        name_mask = df["event_name"].astype(str).str.strip() == event_name
+        name_mask = match_names == event_name
         missing_year = name_mask & years.isna()
         n_missing = int(missing_year.sum())
         if n_missing:
@@ -216,7 +230,7 @@ def force_result_locations_from_event_name_overrides(
 
     for (event_name, y0, y1), target_location in EVENT_NAME_YEAR_LOCATION_OVERRIDES.items():
         mask = (
-            (df["event_name"].astype(str).str.strip() == event_name)
+            (match_names == event_name)
             & years.notna()
             & (years >= y0)
             & (years <= y1)
