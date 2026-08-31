@@ -35,6 +35,7 @@ RESULT_TO_CATALOG_EVENT_NAME: dict[str, str] = {
     'Palm Springs Swing Dance Classic': 'Palm Springs Summer Dance Classic',
     'French Open WCS': 'French Open West Coast Swing',
     'DC Swing eXperience': 'DC Swing eXperience (DCSX)',
+    'DC Swing eXperience  (DCSX)': 'DC Swing eXperience (DCSX)',  # double space from WSDC
     'BridgeTown Swing': 'Bridgetown Swing Boogie',
     'City of Angels': 'City of Angels WCS',
     'Spotlight Dance Challenge': "Spotlight New Year's Celebration",
@@ -143,6 +144,9 @@ EVENT_NAME_VARIANT_TO_CATALOG: dict[str, str] = {
     'WCS Party in Vienna': 'WCS Party',
     'Capital Swing Convention': 'Capital Swing Dance Convention',
     'The New Zealand West Coast Swing Open': 'New Zealand Open Swing Dance Championships',
+    'The New Zealand Open': 'New Zealand Open Swing Dance Championships',
+    'Philly Swing Dance Classic': 'Philly Swing Classic',
+    'Montreal WCS Fest': 'Montreal Westie Fest',
     'BaroqueSwing': 'Barock Swing Ludwigsburg',
     'Go West Swing Fest': 'Go West SwingFest',
     'Bavarian Open WCS': 'Bavarian Open',
