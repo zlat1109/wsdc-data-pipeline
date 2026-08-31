@@ -33,8 +33,9 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'Toronto Open Swing & Hustle Championships': 'Toronto, Canada',
     # Shared St. Petersburg (222) wrongly applied to Revitalise WCS (Melbourne).
     'Revitalise WCS': 'Melbourne, Australia',
-    # Calendar/site Montreal; results/editions stuck on shared Jeju (213).
+    # Calendar/site Montreal; results/editions stuck on shared Jeju (213) / São Paulo (243).
     'Montreal Westie Fest': 'Montreal, Canada',
+    'Montreal WCS Fest': 'Montreal, Canada',
     # Catalog upcoming + 2026 schedule Jeju; results stuck on shared Brno (266).
     # Flat override (not year-aware): historical Korean cities may differ, but Brno is wrong.
     'Korea Westival': 'Jeju, Republic of Korea',
@@ -62,8 +63,9 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     # Shared Venray (227 / Dutch Open) wrongly applied to Freedom Swing (Wilmington DE).
     # Catalog upcoming already says WILMINGTON DEL; typical was stuck on Venray.
     'Freedom Swing Dance Challenge': 'Wilmington, DE, United States',
-    # Philly Swing Classic is held in Wilmington, Delaware.
+    # Philly Swing Classic is held in Wilmington, Delaware (not St. Pete 222).
     'Philly Swing Classic': 'Wilmington, DE, United States',
+    'Philly Swing Dance Classic': 'Wilmington, DE, United States',
     # Shared St. Petersburg (222) wrongly applied to West in Lyon (name + calendar = Lyon).
     'West in Lyon': 'Lyon, France',
     # Registry/site venue is Rome; legacy results were mapped to St. Petersburg (222).
@@ -128,7 +130,9 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'Winter Coast Swing': 'Kuopio, Finland',  # was Düsseldorf (127)
     # Shared St. Petersburg (222 / Swing & Snow) wrongly applied to NZ Open.
     # Site/URL streetswing.co.nz; calendar sibling in Auckland.
+    # Raw WSDC title "The New Zealand Open" (2022) was stuck on Perth (253).
     'New Zealand Open Swing Dance Championships': 'Auckland, New Zealand',
+    'The New Zealand Open': 'Auckland, New Zealand',
     # Shared St. Petersburg (222) wrongly applied to Swingsation (AU / Raw Connection).
     # Calendar + site: Gold Coast, Queensland; URL rawconnection.com.au/swingsation.
     'Swingsation': 'Gold Coast, Australia',

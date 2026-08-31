@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-08-26T20:09:53.955139+00:00",
+  "generated_at": "2026-08-31T19:09:13.811408+00:00",
   "source": "github-actions",
   "run_id": null,
   "summary": {
     "before_findings_count": 9,
-    "applied_rules_count": 248,
-    "applied_rows_touched": 193991,
-    "manual_review_count": 12,
-    "manual_review_new_count": 6
+    "applied_rules_count": 247,
+    "applied_rows_touched": 193280,
+    "manual_review_count": 10,
+    "manual_review_new_count": 10
   },
   "before_processing": {
     "description": "Issues detected in raw CSV before any normalization",
@@ -184,16 +184,6 @@
         "count": 35,
         "examples": [
           {
-            "base_key": "paradise dance festival",
-            "variants": [
-              "Paradise Dance Festival",
-              "Paradise dance festival"
-            ],
-            "geo_keys": [
-              "irvine|ca|usa"
-            ]
-          },
-          {
             "base_key": "monterey swingfest",
             "variants": [
               "Monterey SwingFest",
@@ -221,6 +211,16 @@
             ],
             "geo_keys": [
               "san_francisco|ca|usa"
+            ]
+          },
+          {
+            "base_key": "paradise dance festival",
+            "variants": [
+              "Paradise Dance Festival",
+              "Paradise dance festival"
+            ],
+            "geo_keys": [
+              "irvine|ca|usa"
             ]
           },
           {
@@ -335,13 +335,6 @@
         "count": 37,
         "examples": [
           {
-            "base_key": "paradise dance festival",
-            "variants": [
-              "Paradise Dance Festival",
-              "Paradise dance festival"
-            ]
-          },
-          {
             "base_key": "monterey swingfest",
             "variants": [
               "Monterey SwingFest",
@@ -360,6 +353,13 @@
             "variants": [
               "Boogie By The Bay",
               "Boogie by the Bay"
+            ]
+          },
+          {
+            "base_key": "paradise dance festival",
+            "variants": [
+              "Paradise Dance Festival",
+              "Paradise dance festival"
             ]
           },
           {
@@ -429,7 +429,7 @@
         "code": "EVENT_NAME_UNRESOLVED_TO_CATALOG",
         "severity": "high",
         "message": "Result event names still absent from events_wsdc after normalization (will orphan in load)",
-        "count": 83,
+        "count": 82,
         "examples": [
           {
             "event_name": "Asia WCS Open - 10th Anniversary"
@@ -516,7 +516,7 @@
         "code": "EVENT_NAME_NOT_IN_CATALOG",
         "severity": "low",
         "message": "Result event_name values absent from events_wsdc.csv (may be OK if resolved by name in load)",
-        "count": 181,
+        "count": 180,
         "examples": [
           {
             "event_name": "5280 Swing Dance Championships"
@@ -604,26 +604,26 @@
         "category": "relationships",
         "code": "LEGACY_EVENT_NAME_ID",
         "severity": "high",
-        "message": "15 event_name_id в results без записи в events_wsdc",
+        "message": "14 event_name_id в results без записи в events_wsdc",
         "count": 1,
         "examples": [
           {
             "detail": [
-              "39",
-              "400",
-              "230",
-              "325",
+              "367",
               "321",
+              "204",
               "193",
-              "279",
+              "325",
               "198",
-              "66",
-              "367"
+              "307",
+              "37",
+              "202",
+              "99"
             ]
           }
         ],
         "suggested_fix": "See transform/data_preprocessing.py validate_* functions",
-        "fingerprint": "e6fc22b9dcb88131",
+        "fingerprint": "a26562ac4a44c753",
         "is_new": true
       }
     ]
@@ -2084,18 +2084,18 @@
         "rule_id": "DIVISION_NORMALIZATION",
         "table": "dancers_results_info",
         "column": "event_competition",
-        "from_value": "Champions",
-        "to_value": "Champion",
-        "rows_affected": 5099,
+        "from_value": "Masters",
+        "to_value": "Master",
+        "rows_affected": 16781,
         "source": "known_map"
       },
       {
         "rule_id": "DIVISION_NORMALIZATION",
         "table": "dancers_results_info",
         "column": "event_competition",
-        "from_value": "Masters",
-        "to_value": "Master",
-        "rows_affected": 16761,
+        "from_value": "Champions",
+        "to_value": "Champion",
+        "rows_affected": 5109,
         "source": "known_map"
       },
       {
@@ -2104,7 +2104,7 @@
         "column": "event_competition",
         "from_value": "All-Stars",
         "to_value": "All-Star",
-        "rows_affected": 16082,
+        "rows_affected": 16112,
         "source": "known_map"
       },
       {
@@ -2222,15 +2222,6 @@
         "from_value": "Moscow,  Russia",
         "to_value": "Moscow, Russia",
         "rows_affected": 965,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_LOCATION_EXACT",
-        "table": "dancers_results_info",
-        "column": "event_location",
-        "from_value": "Stockholm,  Sweden",
-        "to_value": "Stockholm, Sweden",
-        "rows_affected": 1066,
         "source": "known_map"
       },
       {
@@ -2365,7 +2356,7 @@
         "column": "location_id",
         "from_value": "duplicate Singapore ids",
         "to_value": "→ 159",
-        "rows_affected": 1400,
+        "rows_affected": 1640,
         "source": "location_id_fix"
       },
       {
@@ -2374,7 +2365,7 @@
         "column": "location_id",
         "from_value": "duplicate canonical place",
         "to_value": "lowest location_id per city",
-        "rows_affected": 24,
+        "rows_affected": 23,
         "source": "location_id_fix"
       },
       {
@@ -2678,6 +2669,24 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_required",
+        "from_value": "ADV",
+        "to_value": "Advanced",
+        "rows_affected": 2742,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_required",
+        "from_value": "INT",
+        "to_value": "Intermediate",
+        "rows_affected": 4526,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_required",
         "from_value": "NEW",
         "to_value": "Newcomer",
         "rows_affected": 1449,
@@ -2689,25 +2698,7 @@
         "column": "dominate_required",
         "from_value": "CHMP",
         "to_value": "Champion",
-        "rows_affected": 187,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_required",
-        "from_value": "ADV",
-        "to_value": "Advanced",
-        "rows_affected": 2740,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_required",
-        "from_value": "INT",
-        "to_value": "Intermediate",
-        "rows_affected": 4522,
+        "rows_affected": 188,
         "source": "known_map"
       },
       {
@@ -2716,7 +2707,7 @@
         "column": "dominate_required",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 17725,
+        "rows_affected": 17738,
         "source": "known_map"
       },
       {
@@ -2725,25 +2716,7 @@
         "column": "dominate_required",
         "from_value": "ALS",
         "to_value": "All-Star",
-        "rows_affected": 1105,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_allowed",
-        "from_value": "NOV",
-        "to_value": "Novice",
-        "rows_affected": 17178,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_allowed",
-        "from_value": "CHMP",
-        "to_value": "Champion",
-        "rows_affected": 392,
+        "rows_affected": 1104,
         "source": "known_map"
       },
       {
@@ -2752,7 +2725,7 @@
         "column": "dominate_allowed",
         "from_value": "ADV",
         "to_value": "Advanced",
-        "rows_affected": 3168,
+        "rows_affected": 3173,
         "source": "known_map"
       },
       {
@@ -2761,7 +2734,25 @@
         "column": "dominate_allowed",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 5970,
+        "rows_affected": 5980,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_allowed",
+        "from_value": "NOV",
+        "to_value": "Novice",
+        "rows_affected": 17181,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_allowed",
+        "from_value": "CHMP",
+        "to_value": "Champion",
+        "rows_affected": 393,
         "source": "known_map"
       },
       {
@@ -2779,7 +2770,7 @@
         "column": "non_dominate_required",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 4470,
+        "rows_affected": 4474,
         "source": "known_map"
       },
       {
@@ -2788,7 +2779,7 @@
         "column": "non_dominate_required",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 15009,
+        "rows_affected": 15013,
         "source": "known_map"
       },
       {
@@ -2797,7 +2788,7 @@
         "column": "non_dominate_required",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 250,
+        "rows_affected": 251,
         "source": "known_map"
       },
       {
@@ -2806,7 +2797,7 @@
         "column": "non_dominate_required",
         "from_value": "ADV",
         "to_value": "Advanced",
-        "rows_affected": 234,
+        "rows_affected": 233,
         "source": "known_map"
       },
       {
@@ -2822,6 +2813,15 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "non_dominate_allowed",
+        "from_value": "NOV",
+        "to_value": "Novice",
+        "rows_affected": 6949,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "non_dominate_allowed",
         "from_value": "ADV",
         "to_value": "Advanced",
         "rows_affected": 411,
@@ -2831,18 +2831,9 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "non_dominate_allowed",
-        "from_value": "NOV",
-        "to_value": "Novice",
-        "rows_affected": 6944,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "non_dominate_allowed",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 15009,
+        "rows_affected": 15013,
         "source": "known_map"
       },
       {
@@ -2851,7 +2842,7 @@
         "column": "non_dominate_allowed",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 1104,
+        "rows_affected": 1105,
         "source": "known_map"
       },
       {
@@ -2973,7 +2964,7 @@
         ],
         "suggested_fix": "Add explicit mapping to EVENT_NAME_NORMALIZATION",
         "fingerprint": "3b2ed5019a17efbc",
-        "is_new": false,
+        "is_new": true,
         "requires_manual_review": true
       },
       {
@@ -2996,7 +2987,7 @@
         ],
         "suggested_fix": "Unify via MERGE_EVENT_ID_MAP / EVENT_NAME_NORMALIZATION",
         "fingerprint": "8cd16e60fb207035",
-        "is_new": false,
+        "is_new": true,
         "requires_manual_review": true
       },
       {
@@ -3016,7 +3007,7 @@
         ],
         "suggested_fix": "Unify via EVENT_NAME_NORMALIZATION or core.event_aliases",
         "fingerprint": "d6097c65b17270d3",
-        "is_new": false,
+        "is_new": true,
         "requires_manual_review": true
       },
       {
@@ -3024,7 +3015,7 @@
         "code": "EVENT_NAME_UNRESOLVED_TO_CATALOG",
         "severity": "high",
         "message": "Result event names still absent from events_wsdc after normalization (will orphan in load)",
-        "count": 74,
+        "count": 73,
         "examples": [
           {
             "event_name": "Asia WCS Open - 10th Anniversary"
@@ -3104,7 +3095,7 @@
         ],
         "suggested_fix": "Add to RESULT_TO_CATALOG_EVENT_NAME in transform/knowledge/event_aliases.py",
         "fingerprint": "0f8d508c094cbb87",
-        "is_new": false,
+        "is_new": true,
         "requires_manual_review": true
       },
       {
@@ -3112,7 +3103,7 @@
         "code": "EVENT_NAME_NOT_IN_CATALOG",
         "severity": "low",
         "message": "Result event_name values absent from events_wsdc.csv (may be OK if resolved by name in load)",
-        "count": 74,
+        "count": 73,
         "examples": [
           {
             "event_name": "Asia WCS Open - 10th Anniversary"
@@ -3177,7 +3168,7 @@
         ],
         "suggested_fix": "Verify events_wsdc export or add event instance after parse",
         "fingerprint": "c29d817289bb913d",
-        "is_new": false,
+        "is_new": true,
         "requires_manual_review": true
       },
       {
@@ -3185,14 +3176,86 @@
         "code": "EVENT_NAME_NEW_SINCE_LAST_RUN",
         "severity": "info",
         "message": "New event names appeared since last quality report (review naming)",
-        "count": 1,
+        "count": 73,
         "examples": [
           {
-            "event_name": "Manneken Swing"
+            "event_name": "Asia WCS Open - 10th Anniversary"
+          },
+          {
+            "event_name": "Asia WCS Open XI"
+          },
+          {
+            "event_name": "Asia WCS Open XIII"
+          },
+          {
+            "event_name": "Asian WCS Open Swingvitation"
+          },
+          {
+            "event_name": "Austin Swing Dance Championships (ASDC)"
+          },
+          {
+            "event_name": "Big Apple Dance Festival/World Hustle Championships"
+          },
+          {
+            "event_name": "C.A.S.H. Bash"
+          },
+          {
+            "event_name": "Calgary Town Open"
+          },
+          {
+            "event_name": "Canadian Swing Championships (CSC)"
+          },
+          {
+            "event_name": "Capital Swing Dancers' President's Day"
+          },
+          {
+            "event_name": "Capital Swing Presidents' Day Convention"
+          },
+          {
+            "event_name": "Charlotte WestieFest"
+          },
+          {
+            "event_name": "Chicagoland"
+          },
+          {
+            "event_name": "Chicagoland Country & Swing Dance Festival"
+          },
+          {
+            "event_name": "City of Angels Swing Event"
+          },
+          {
+            "event_name": "Country Dance World Championships"
+          },
+          {
+            "event_name": "DC Swing eXperience  (DCSX)"
+          },
+          {
+            "event_name": "DOWCS"
+          },
+          {
+            "event_name": "Desert City Swing Dance Championships"
+          },
+          {
+            "event_name": "Dutch open West Coast swing"
+          },
+          {
+            "event_name": "Floor Play Swing Vacation"
+          },
+          {
+            "event_name": "FloorPlay New Years Swing Vacation"
+          },
+          {
+            "event_name": "Florida Dance Magic (Unconfirmed)"
+          },
+          {
+            "event_name": "German Open Championships"
+          },
+          {
+            "event_name": "German Open WCS"
           }
         ],
         "suggested_fix": "Check if variant of existing event; add normalization rule if needed",
-        "fingerprint": "f02ba74b29aabfcc",
+        "fingerprint": "d784991455b364ae",
         "is_new": true,
         "requires_manual_review": true
       },
@@ -3201,38 +3264,20 @@
         "code": "EVENT_NAME_LOCATION_COUNTRY_CONFLICT",
         "severity": "high",
         "message": "Event name implies a different country than results.location_id (often a shared/wrong location_id collision)",
-        "count": 573,
+        "count": 34,
         "examples": [
           {
-            "event_name": "German Open Championships",
-            "location_id": "266",
-            "location_country": "Czech Republic",
+            "event_name": "The New Zealand Open",
+            "location_id": "253",
+            "location_country": "Australia",
             "name_hints": [
-              "Germany"
+              "New Zealand"
             ],
-            "rows": 235
-          },
-          {
-            "event_name": "The German Open WCS Championships",
-            "location_id": "266",
-            "location_country": "Czech Republic",
-            "name_hints": [
-              "Germany"
-            ],
-            "rows": 170
-          },
-          {
-            "event_name": "German Open WCS Championships",
-            "location_id": "266",
-            "location_country": "Czech Republic",
-            "name_hints": [
-              "Germany"
-            ],
-            "rows": 168
+            "rows": 34
           }
         ],
         "suggested_fix": "Add EVENT_NAME_LOCATION_OVERRIDES + force_result_locations_from_event_name_overrides; see scripts/audit_event_location_mismatches.py",
-        "fingerprint": "4d6b4f9be8ad15ae",
+        "fingerprint": "10a4c652108f4762",
         "is_new": true,
         "requires_manual_review": true
       },
@@ -3318,87 +3363,6 @@
         ],
         "suggested_fix": "Add to EVENT_NAME_LOCATION_OVERRIDES in transform/knowledge/events.py and run force_result_locations_from_event_name_overrides",
         "fingerprint": "235f3a5dfd02bc9c",
-        "is_new": false,
-        "requires_manual_review": true
-      },
-      {
-        "category": "location",
-        "code": "SCHEDULED_VS_RESULTS_COUNTRY_CONFLICT",
-        "severity": "high",
-        "message": "WSDC calendar country differs from results location country (shared/wrong location_id — Sea Dance / Med in Swing pattern)",
-        "count": 437,
-        "examples": [
-          {
-            "event_name": "Calgary Dance Stampede",
-            "location_id": "222",
-            "results_country": "russia",
-            "scheduled_country": "canada",
-            "scheduled_location": "Calgary, AB, Canada",
-            "rows": 258
-          },
-          {
-            "event_name": "SOM - Swing of Music",
-            "location_id": "253",
-            "results_country": "australia",
-            "scheduled_country": "austria",
-            "scheduled_location": "Wels, Oberösterreich, Austria",
-            "rows": 179
-          }
-        ],
-        "suggested_fix": "Verify venue, then add EVENT_NAME_LOCATION_OVERRIDES (or KNOWN_SERIES_MOVES if the event really moved); scripts/audit_event_location_mismatches.py",
-        "fingerprint": "4f97a25a4c2742f2",
-        "is_new": true,
-        "requires_manual_review": true
-      },
-      {
-        "category": "location",
-        "code": "EVENT_ID_CANONICAL_LOCATION_MISMATCH",
-        "severity": "high",
-        "message": "Results/editions location country differs from curated event_id canonical location (KNOWN / name override / upcoming)",
-        "count": 1010,
-        "examples": [
-          {
-            "event_id": "282",
-            "event_name": "German Open",
-            "canonical_source": "known",
-            "canonical_location": "Freiburg, Germany",
-            "canonical_country": "germany",
-            "results_location_id": "266",
-            "results_country": "czech republic",
-            "results_rows": 573,
-            "editions_location_id": "",
-            "editions_country": "",
-            "mismatch_side": "results"
-          },
-          {
-            "event_id": "116",
-            "event_name": "Calgary Dance Stampede",
-            "canonical_source": "upcoming",
-            "canonical_location": "Calgary, AB, Canada",
-            "canonical_country": "canada",
-            "results_location_id": "222",
-            "results_country": "russia",
-            "results_rows": 258,
-            "editions_location_id": "",
-            "editions_country": "",
-            "mismatch_side": "results"
-          },
-          {
-            "event_id": "336",
-            "event_name": "SOM - Swing of Music",
-            "canonical_source": "upcoming",
-            "canonical_location": "Wels, Oberösterreich, Austria",
-            "canonical_country": "austria",
-            "results_location_id": "253",
-            "results_country": "australia",
-            "results_rows": 179,
-            "editions_location_id": "",
-            "editions_country": "",
-            "mismatch_side": "results"
-          }
-        ],
-        "suggested_fix": "Confirm venue, then add/update KNOWN_EVENT_METADATA[event_id] or EVENT_NAME_LOCATION_OVERRIDES + force_result_locations; see scripts/audit_event_location_mismatches.py section D",
-        "fingerprint": "6079cfc5b875c80d",
         "is_new": true,
         "requires_manual_review": true
       },
@@ -3407,70 +3371,61 @@
         "code": "EDITION_LOCATION_BASELINE_DRIFT",
         "severity": "high",
         "message": "Results location_id for a known edition key differs from edition_location_baseline.csv (cross-load drift)",
-        "count": 39,
+        "count": 37,
         "examples": [
           {
-            "event_id": "336",
+            "event_id": "253",
             "event_year": "2026",
             "event_month": "5",
-            "event_name": "SOM - Swing of Music",
-            "baseline_location_id": "197",
-            "current_location_id": "253",
-            "result_rows": 96
+            "event_name": "Nordic WCS Championships",
+            "baseline_location_id": "199",
+            "current_location_id": "266",
+            "result_rows": 150
           },
           {
-            "event_id": "116",
-            "event_year": "2026",
-            "event_month": "4",
-            "event_name": "Calgary Dance Stampede",
-            "baseline_location_id": "148",
-            "current_location_id": "222",
-            "result_rows": 72
-          },
-          {
-            "event_id": "336",
+            "event_id": "234",
             "event_year": "2025",
-            "event_month": "5",
-            "event_name": "SOM - Swing of Music",
-            "baseline_location_id": "197",
-            "current_location_id": "253",
-            "result_rows": 83
-          },
-          {
-            "event_id": "116",
-            "event_year": "2025",
-            "event_month": "4",
-            "event_name": "Calgary Dance Stampede",
-            "baseline_location_id": "148",
+            "event_month": "9",
+            "event_name": "Philly Swing Dance Classic",
+            "baseline_location_id": "66",
             "current_location_id": "222",
             "result_rows": 66
           },
           {
-            "event_id": "282",
-            "event_year": "2024",
-            "event_month": "8",
-            "event_name": "The German Open WCS Championships",
-            "baseline_location_id": "143",
+            "event_id": "253",
+            "event_year": "2025",
+            "event_month": "5",
+            "event_name": "Nordic WCS Championships",
+            "baseline_location_id": "199",
             "current_location_id": "266",
-            "result_rows": 170
+            "result_rows": 142
           },
           {
-            "event_id": "116",
+            "event_id": "234",
+            "event_year": "2024",
+            "event_month": "9",
+            "event_name": "Philly Swing Dance Classic",
+            "baseline_location_id": "66",
+            "current_location_id": "222",
+            "result_rows": 84
+          },
+          {
+            "event_id": "253",
             "event_year": "2024",
             "event_month": "4",
-            "event_name": "Calgary Dance Stampede",
-            "baseline_location_id": "148",
-            "current_location_id": "222",
-            "result_rows": 50
+            "event_name": "Nordic WCS Championships",
+            "baseline_location_id": "199",
+            "current_location_id": "266",
+            "result_rows": 125
           },
           {
-            "event_id": "282",
+            "event_id": "253",
             "event_year": "2023",
-            "event_month": "8",
-            "event_name": "German Open Championships",
-            "baseline_location_id": "143",
+            "event_month": "5",
+            "event_name": "Nordic WCS Championships",
+            "baseline_location_id": "199",
             "current_location_id": "266",
-            "result_rows": 145
+            "result_rows": 100
           },
           {
             "event_id": "181",
@@ -3482,22 +3437,31 @@
             "result_rows": 168
           },
           {
-            "event_id": "282",
+            "event_id": "253",
             "event_year": "2022",
-            "event_month": "8",
-            "event_name": "German Open Championships",
-            "baseline_location_id": "143",
+            "event_month": "5",
+            "event_name": "Nordic WCS Championships",
+            "baseline_location_id": "199",
             "current_location_id": "266",
-            "result_rows": 90
+            "result_rows": 97
           },
           {
-            "event_id": "282",
+            "event_id": "179",
+            "event_year": "2022",
+            "event_month": "10",
+            "event_name": "The New Zealand Open",
+            "baseline_location_id": "168",
+            "current_location_id": "253",
+            "result_rows": 34
+          },
+          {
+            "event_id": "253",
             "event_year": "2019",
-            "event_month": "8",
-            "event_name": "German Open WCS Championships",
-            "baseline_location_id": "143",
+            "event_month": "4",
+            "event_name": "Nordic WCS Championships",
+            "baseline_location_id": "199",
             "current_location_id": "266",
-            "result_rows": 105
+            "result_rows": 81
           },
           {
             "event_id": "334",
@@ -3509,13 +3473,13 @@
             "result_rows": 63
           },
           {
-            "event_id": "282",
+            "event_id": "253",
             "event_year": "2018",
-            "event_month": "8",
-            "event_name": "German Open WCS Championships",
-            "baseline_location_id": "143",
+            "event_month": "4",
+            "event_name": "Nordic WCS Championships",
+            "baseline_location_id": "199",
             "current_location_id": "266",
-            "result_rows": 63
+            "result_rows": 98
           },
           {
             "event_id": "334",
@@ -3525,6 +3489,15 @@
             "baseline_location_id": "8",
             "current_location_id": "71",
             "result_rows": 90
+          },
+          {
+            "event_id": "253",
+            "event_year": "2017",
+            "event_month": "4",
+            "event_name": "Nordic WCS Championships",
+            "baseline_location_id": "199",
+            "current_location_id": "266",
+            "result_rows": 98
           },
           {
             "event_id": "178",
@@ -3545,6 +3518,15 @@
             "result_rows": 76
           },
           {
+            "event_id": "253",
+            "event_year": "2016",
+            "event_month": "5",
+            "event_name": "Nordic WCS Championships",
+            "baseline_location_id": "199",
+            "current_location_id": "266",
+            "result_rows": 105
+          },
+          {
             "event_id": "178",
             "event_year": "2016",
             "event_month": "10",
@@ -3563,35 +3545,17 @@
             "result_rows": 79
           },
           {
-            "event_id": "178",
+            "event_id": "253",
             "event_year": "2015",
-            "event_month": "10",
-            "event_name": "Montreal WCS Fest",
-            "baseline_location_id": "86",
-            "current_location_id": "243",
-            "result_rows": 69
-          },
-          {
-            "event_id": "334",
-            "event_year": "2015",
-            "event_month": "1",
-            "event_name": "New Year's Dance Extravaganza",
-            "baseline_location_id": "8",
-            "current_location_id": "71",
-            "result_rows": 75
-          },
-          {
-            "event_id": "334",
-            "event_year": "2013",
-            "event_month": "12",
-            "event_name": "New Year's Dance Extravaganza",
-            "baseline_location_id": "8",
-            "current_location_id": "71",
-            "result_rows": 58
+            "event_month": "5",
+            "event_name": "Nordic WCS Championships",
+            "baseline_location_id": "199",
+            "current_location_id": "266",
+            "result_rows": 70
           }
         ],
         "suggested_fix": "Investigate shared wrong location_id; fix overrides/repair_locations. If venue change is legitimate, UPDATE core.edition_location_baseline in Supabase.",
-        "fingerprint": "70ec3f885f431563",
+        "fingerprint": "0126c6ffd759cc4d",
         "is_new": true,
         "requires_manual_review": true
       },
@@ -3599,20 +3563,19 @@
         "category": "relationships",
         "code": "LEGACY_EVENT_NAME_ID",
         "severity": "high",
-        "message": "4 event_name_id в results без записи в events_wsdc",
+        "message": "3 event_name_id в results без записи в events_wsdc",
         "count": 1,
         "examples": [
           {
             "detail": [
               "367",
               "204",
-              "400",
               "230"
             ]
           }
         ],
         "suggested_fix": "See transform/data_preprocessing.py validate_* functions",
-        "fingerprint": "b470c234edd01968",
+        "fingerprint": "4b998b5a3e348b96",
         "is_new": true,
         "requires_manual_review": true
       }

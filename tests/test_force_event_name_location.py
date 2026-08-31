@@ -458,6 +458,100 @@ def test_force_philly_swing_classic_to_wilmington():
     assert str(nyc["location_id"]) == "7"
 
 
+def test_force_raw_wsdc_titles_via_alias_normalization():
+    """Raw WSDC titles must remap even when override keys use catalog names."""
+    location_info = pd.DataFrame(
+        [
+            {
+                "location_id": "253",
+                "event_city": "Perth",
+                "event_state": "",
+                "event_country": "Australia",
+                "event_location": "Perth, Australia",
+            },
+            {
+                "location_id": "168",
+                "event_city": "Auckland",
+                "event_state": "",
+                "event_country": "New Zealand",
+                "event_location": "Auckland, New Zealand",
+            },
+            {
+                "location_id": "222",
+                "event_city": "St. Petersburg",
+                "event_state": "",
+                "event_country": "Russia",
+                "event_location": "St. Petersburg, Russia",
+            },
+            {
+                "location_id": "66",
+                "event_city": "Wilmington",
+                "event_state": "Delaware",
+                "event_country": "United States",
+                "event_location": "Wilmington, DE, United States",
+            },
+            {
+                "location_id": "243",
+                "event_city": "São Paulo",
+                "event_state": "",
+                "event_country": "Brazil",
+                "event_location": "São Paulo, Brazil",
+            },
+            {
+                "location_id": "86",
+                "event_city": "Montreal",
+                "event_state": "",
+                "event_country": "Canada",
+                "event_location": "Montreal, Canada",
+            },
+            {
+                "location_id": "13",
+                "event_city": "Washington",
+                "event_state": "District of Columbia",
+                "event_country": "United States",
+                "event_location": "Washington, DC, United States",
+            },
+            {
+                "location_id": "38",
+                "event_city": "Herndon",
+                "event_state": "Virginia",
+                "event_country": "United States",
+                "event_location": "Herndon, VA, United States",
+            },
+        ]
+    )
+    results = pd.DataFrame(
+        [
+            {
+                "event_name": "The New Zealand Open",
+                "location_id": "253",
+                "event_location": "Perth, Australia",
+            },
+            {
+                "event_name": "Philly Swing Dance Classic",
+                "location_id": "222",
+                "event_location": "St. Petersburg, Russia",
+            },
+            {
+                "event_name": "Montreal WCS Fest",
+                "location_id": "243",
+                "event_location": "São Paulo, Brazil",
+            },
+            {
+                "event_name": "DC Swing eXperience  (DCSX)",
+                "location_id": "13",
+                "event_location": "Washington, DC, United States",
+            },
+        ]
+    )
+    out, changed = force_result_locations_from_event_name_overrides(results, location_info)
+    assert changed == 4
+    assert str(out.loc[0, "location_id"]) == "168"
+    assert str(out.loc[1, "location_id"]) == "66"
+    assert str(out.loc[2, "location_id"]) == "86"
+    assert str(out.loc[3, "location_id"]) == "38"
+
+
 def test_force_swingsation_off_st_petersburg_to_gold_coast():
     location_info = pd.DataFrame(
         [
