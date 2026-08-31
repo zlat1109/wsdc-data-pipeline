@@ -2312,7 +2312,7 @@ update_date,division,role,type_options,count_dancer
 2026-08-26,Novice,Follower,required,27
 2026-08-26,Novice,Leader,allowed,24
 2026-08-26,Novice,Leader,required,26
-2026-08-26,nan,Follower,allowed,5
-2026-08-26,nan,Follower,required,6
-2026-08-26,nan,Leader,allowed,9
-2026-08-26,nan,Leader,required,12
+2026-08-26,,Follower,allowed,5
+2026-08-26,,Follower,required,6
+2026-08-26,,Leader,allowed,9
+2026-08-26,,Leader,required,12

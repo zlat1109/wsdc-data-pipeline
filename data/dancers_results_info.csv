@@ -637,6 +637,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 87,West Coast Swing,Professional,follower,F,1,Swing Fling,38,2002,7,2002-07-01,Final,"Herndon, VA, United States"
 87,West Coast Swing,Professional,follower,2,6,4TH of July Convention,3,2002,7,2002-07-01,2,
 87,West Coast Swing,Professional,follower,F,1,Americas Classic,44,2002,5,2002-05-01,Final,
+103,West Coast Swing,Professional,leader,4,3,Swing Break,72,1999,4,1999-04-01,4,
 87,West Coast Swing,Professional,follower,3,4,North Atlantic Swing Dance Championships,65,2002,4,2002-04-01,3,
 87,West Coast Swing,Professional,follower,4,0,Capital Swing Dance Convention,6,2002,2,2002-02-01,4,
 87,West Coast Swing,Professional,follower,4,0,Swingtime in the Rockies,29,2001,8,2001-08-01,4,
@@ -823,7 +824,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 103,West Coast Swing,Professional,leader,1,10,Easter Swing,30,2000,4,2000-04-01,1,
 103,West Coast Swing,Professional,leader,2,6,New Year's Dance Championships,5,2000,1,2000-01-01,2,
 103,West Coast Swing,Professional,leader,2,6,Easter Swing,30,1999,4,1999-04-01,2,
-103,West Coast Swing,Professional,leader,4,3,Swing Break,72,1999,4,1999-04-01,4,
 103,West Coast Swing,Professional,leader,3,0,Capital Swing Dance Convention,6,1999,2,1999-02-01,3,
 103,West Coast Swing,Professional,leader,1,10,New Year's Dance Championships,5,1999,1,1999-01-01,1,
 103,West Coast Swing,Professional,leader,2,0,Boogie & Blues,31,1998,10,1998-10-01,2,
@@ -1482,6 +1482,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 172,West Coast Swing,Advanced,leader,2,6,J&J National Championships,27,1996,8,1996-08-01,2,
 172,West Coast Swing,Advanced,leader,4,3,Monterey SwingFest,1,1996,1,1996-01-01,4,
 172,West Coast Swing,Advanced,leader,1,10,4TH of July Convention,3,1995,7,1995-07-01,1,
+173,West Coast Swing,Master,follower,5,1,Paradise Dance Festival,19,2014,10,2014-10-01,5,
 172,West Coast Swing,Advanced,leader,1,10,Capital Swing Dance Convention,6,1995,2,1995-02-01,1,
 172,West Coast Swing,Advanced,leader,2,6,Monterey SwingFest,1,1995,1,1995-01-01,2,
 172,West Coast Swing,Advanced,leader,1,0,Capital Swing Dance Convention,6,1994,2,1994-02-01,1,
@@ -1544,7 +1545,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 173,West Coast Swing,Master,follower,5,2,San Diego Dance Festival,10,2016,3,2016-03-01,5,
 173,West Coast Swing,Master,follower,F,1,SwingDiego,10,2015,5,2015-05-01,Final,
 173,West Coast Swing,Master,follower,5,2,City of Angels WCS,54,2015,4,2015-04-01,5,
-173,West Coast Swing,Master,follower,5,1,Paradise Dance Festival,19,2014,10,2014-10-01,5,
 173,West Coast Swing,Master,follower,3,8,South Bay Dance Fling,16,2014,8,2014-08-01,3,
 173,West Coast Swing,Master,follower,F,1,City of Angels WCS,54,2014,4,2014-04-01,Final,
 173,West Coast Swing,Master,follower,1,5,Paradise Dance Festival,19,2013,10,2013-10-01,1,
@@ -3101,6 +3101,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 253,West Coast Swing,Professional,leader,2,6,Rising Star - Chicago,34,1997,10,1997-10-01,2,
 253,West Coast Swing,Professional,leader,2,6,UCWDC Country Dance World Championship,21,1995,12,1995-12-01,2,
 253,West Coast Swing,Professional,leader,4,3,National New Year,21,1994,12,1994-12-01,4,
+255,West Coast Swing,Professional,follower,4,0,Bakersfield Swing Bash,42,1998,8,1998-08-01,4,
 252,West Coast Swing,Newcomer,follower,1,10,Capital Swing Dance Convention,6,1995,2,1995-02-01,1,
 254,West Coast Swing,Advanced,follower,4,2,Paradise Dance Festival,19,2025,10,2025-10-01,4,
 254,West Coast Swing,Advanced,follower,3,4,Dallas D.A.N.C.E.,21,1995,9,1995-09-01,3,
@@ -3164,7 +3165,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 255,West Coast Swing,Master,follower,4,4,Monterey SwingFest,1,2011,1,2011-01-01,4,
 255,West Coast Swing,Professional,follower,F,1,J&J O'Rama,23,2002,6,2002-06-01,Final,
 255,West Coast Swing,Professional,follower,F,1,Palm Springs Summer Dance Classic,20,1998,9,1998-09-01,Final,
-255,West Coast Swing,Professional,follower,4,0,Bakersfield Swing Bash,42,1998,8,1998-08-01,4,
 256,West Coast Swing,Master,follower,1,10,Capital Swing Dance Convention,6,1995,2,1995-02-01,1,
 257,West Coast Swing,Novice,follower,3,4,Swingtime in the Rockies,29,1995,8,1995-08-01,3,
 258,West Coast Swing,Newcomer,follower,4,3,4TH of July Convention,3,1993,7,1993-07-01,4,
@@ -11992,6 +11992,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 1153,West Coast Swing,Master,follower,4,2,UCWDC Country Dance World Championship,21,2019,1,2019-01-01,4,
 1153,West Coast Swing,Master,follower,F,1,Meet Me In St Louis,49,2018,9,2018-09-01,Final,
 1153,West Coast Swing,Master,follower,F,1,Swingapalooza,40,2018,6,2018-06-01,Final,
+1169,West Coast Swing,Novice,follower,1,10,Virginia State Open,38,1998,9,1998-09-01,1,
 1153,West Coast Swing,Master,follower,5,1,Ft. Lauderdale Swing & Shag Beach Bash,55,2017,7,2017-07-01,5,
 1153,West Coast Swing,Master,follower,F,1,Tulsa Spring Swing,58,2017,4,2017-04-01,Final,
 1153,West Coast Swing,Master,follower,F,1,Austin Swing Dance Championships,39,2017,1,2017-01-01,Final,
@@ -12053,7 +12054,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 1169,West Coast Swing,Intermediate,follower,4,3,4TH of July Convention,3,1999,7,1999-07-01,4,
 1169,West Coast Swing,Intermediate,follower,3,0,North Atlantic Swing Dance Championships,65,1999,4,1999-04-01,3,
 1169,West Coast Swing,Intermediate,follower,3,4,USA Grand Nationals,25,1998,5,1998-05-01,3,
-1169,West Coast Swing,Novice,follower,1,10,Virginia State Open,38,1998,9,1998-09-01,1,
 1169,West Coast Swing,Novice,follower,2,6,4TH of July Convention,3,1998,7,1998-07-01,2,
 1169,West Coast Swing,Novice,follower,F,1,North Atlantic Swing Dance Championships,65,1998,4,1998-04-01,Final,
 1169,West Coast Swing,Novice,follower,3,4,Summer Hummer,397,1997,8,1997-08-01,3,"Woburn (Boston), MA, United States"
@@ -12177,6 +12177,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 1185,West Coast Swing,Intermediate,leader,5,2,4TH of July Convention,3,2001,7,2001-07-01,5,
 1185,West Coast Swing,Intermediate,leader,4,3,Swing Fling,38,2001,7,2001-07-01,4,"Herndon, VA, United States"
 1185,West Coast Swing,Intermediate,leader,F,1,USA Grand Nationals,25,1998,5,1998-05-01,Final,
+1195,West Coast Swing,Advanced,leader,F,1,USA Grand Nationals,25,2000,5,2000-05-01,Final,
 1185,West Coast Swing,Intermediate,leader,2,6,North Atlantic Swing Dance Championships,65,1998,4,1998-04-01,2,
 1185,West Coast Swing,Intermediate,leader,F,1,Summer Hummer,397,1997,8,1997-08-01,Final,"Woburn (Boston), MA, United States"
 1186,West Coast Swing,Intermediate,follower,F,1,Summer Hummer,397,1997,8,1997-08-01,Final,"Woburn (Boston), MA, United States"
@@ -12238,7 +12239,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 1194,West Coast Swing,Advanced,leader,4,3,Swing Expo,27,1999,1,1999-01-01,4,
 1194,West Coast Swing,Advanced,leader,F,1,Swingtime in the Rockies,29,1998,8,1998-08-01,Final,
 1194,West Coast Swing,Intermediate,leader,5,2,Swingtime in the Rockies,29,1997,8,1997-08-01,5,
-1195,West Coast Swing,Advanced,leader,F,1,USA Grand Nationals,25,2000,5,2000-05-01,Final,
 1195,West Coast Swing,Intermediate,leader,5,2,Mountain Magic,28,2003,11,2003-11-01,5,
 1195,West Coast Swing,Intermediate,leader,2,0,Swingtime in the Rockies,29,2001,8,2001-08-01,2,
 1195,West Coast Swing,Intermediate,leader,3,4,4TH of July Convention,3,2001,7,2001-07-01,3,
@@ -12512,6 +12512,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 1234,West Coast Swing,Intermediate,leader,1,0,FreZno Dance Classic,5,1998,5,1998-05-01,1,
 1234,West Coast Swing,Intermediate,leader,1,10,FreZno Dance Classic,5,1997,5,1997-05-01,1,
 1233,West Coast Swing,Intermediate,follower,F,1,Summer Dance Festival,20,1998,7,1998-07-01,Final,
+1240,West Coast Swing,Master,leader,3,4,Halloween SwingThing,24,2006,10,2006-10-01,3,
 1233,West Coast Swing,Intermediate,follower,F,1,California State Championships,15,1998,5,1998-05-01,Final,
 1233,West Coast Swing,Intermediate,follower,3,4,Country Boogie,15,1998,2,1998-02-01,3,
 1233,West Coast Swing,Novice,follower,3,0,FreZno Dance Classic,5,1998,5,1998-05-01,3,
@@ -12576,7 +12577,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 1240,West Coast Swing,Master,leader,5,2,SwingDiego,10,2008,1,2008-01-01,5,
 1240,West Coast Swing,Master,leader,5,2,J&J O'Rama,23,2007,6,2007-06-01,5,
 1240,West Coast Swing,Master,leader,3,4,FreZno Dance Classic,5,2007,5,2007-05-01,3,
-1240,West Coast Swing,Master,leader,3,4,Halloween SwingThing,24,2006,10,2006-10-01,3,
 1240,West Coast Swing,Master,leader,4,3,FreZno Dance Classic,5,2006,5,2006-05-01,4,
 1240,West Coast Swing,Master,leader,2,6,SwingDiego,10,2006,1,2006-01-01,2,
 1240,West Coast Swing,Master,leader,5,2,Palm Springs New Years Swing Dance Classic,20,2005,12,2005-12-01,5,
@@ -12790,6 +12790,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 1277,West Coast Swing,Advanced,follower,F,1,Michigan Dance Classic,51,2004,7,2004-07-01,Final,
 1277,West Coast Swing,Advanced,follower,F,1,Capital Swing Dance Convention,6,2004,2,2004-02-01,Final,
 1277,West Coast Swing,Advanced,follower,5,2,Twin City Swing Challenge,75,2003,11,2003-11-01,5,
+1284,West Coast Swing,Advanced,follower,5,2,Michigan Swing Dance Champs,12,1997,8,1997-08-01,5,
 1277,West Coast Swing,Advanced,follower,3,4,Wisconsin Dance Challenge/Midwest Area Swing Dance Challenge,61,2003,7,2003-07-01,3,
 1277,West Coast Swing,Advanced,follower,F,1,Summer Hummer,397,2002,8,2002-08-01,Final,"Woburn (Boston), MA, United States"
 1277,West Coast Swing,Advanced,follower,F,1,4TH of July Convention,3,2002,7,2002-07-01,Final,
@@ -12850,7 +12851,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 1283,West Coast Swing,Sophisticated,leader,F,1,Nashville Swing & Shag Dance Classic,43,2003,10,2003-10-01,Final,
 1284,West Coast Swing,Advanced,follower,4,3,Rising Star - Chicago,34,1999,10,1999-10-01,4,
 1284,West Coast Swing,Advanced,follower,5,2,Chicago Classic,34,1998,3,1998-03-01,5,
-1284,West Coast Swing,Advanced,follower,5,2,Michigan Swing Dance Champs,12,1997,8,1997-08-01,5,
 1284,West Coast Swing,Intermediate,follower,2,6,USA Grand Nationals,25,1998,5,1998-05-01,2,
 1284,West Coast Swing,Novice,follower,3,6,Chicagoland Country and Swing Dance Festival,34,2007,8,2007-08-01,3,
 1285,West Coast Swing,Advanced,follower,2,6,Michigan Swing Dance Champs,12,1997,8,1997-08-01,2,
@@ -14386,6 +14386,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 1493,West Coast Swing,Advanced,leader,4,3,Rising Star - Chicago,34,2000,10,2000-10-01,4,
 1493,West Coast Swing,Advanced,leader,3,4,Dallas D.A.N.C.E.,21,2000,9,2000-09-01,3,
 1493,West Coast Swing,Advanced,leader,5,2,Summer Hummer,397,2000,8,2000-08-01,5,"Woburn (Boston), MA, United States"
+1498,Lindy,Advanced,leader,2,0,Virginia State Open,38,1997,9,1997-09-01,2,
 1493,West Coast Swing,Advanced,leader,2,6,Eastern/Washington Dance Challenge,13,2000,5,2000-05-01,2,
 1493,West Coast Swing,Advanced,leader,F,1,North Atlantic Swing Dance Championships,65,2000,4,2000-04-01,Final,
 1493,West Coast Swing,Advanced,leader,1,10,Boston Tea Party,8,2000,3,2000-03-01,1,
@@ -14448,7 +14449,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 1496,Lindy,Advanced,follower,4,3,American Swing Dance Championships,7,1998,10,1998-10-01,4,
 1497,Lindy,Advanced,leader,4,3,American Swing Dance Championships,7,1998,10,1998-10-01,4,
 1498,Lindy,Advanced,leader,5,2,American Swing Dance Championships,7,1998,10,1998-10-01,5,
-1498,Lindy,Advanced,leader,2,0,Virginia State Open,38,1997,9,1997-09-01,2,
 1498,Lindy,Advanced,leader,2,6,Virginia State Open,38,1997,9,1997-09-01,2,
 1499,Lindy,Advanced,follower,5,2,American Swing Dance Championships,7,1998,10,1998-10-01,5,
 1500,Lindy,Advanced,leader,3,4,American Swing Dance Championships,7,1998,10,1998-10-01,3,
@@ -15951,6 +15951,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 1679,West Coast Swing,Champion,follower,3,6,City of Angels WCS,54,2017,4,2017-04-01,3,
 1679,West Coast Swing,Champion,follower,1,5,Palm Springs New Years Swing Dance Classic,20,2017,1,2017-01-01,1,
 1679,West Coast Swing,Champion,follower,2,8,The After Party (TAP),73,2016,12,2016-12-01,2,
+1679,West Coast Swing,Novice,follower,1,10,Easter Swing,30,1999,4,1999-04-01,1,
 1679,West Coast Swing,Champion,follower,1,5,Palm Springs Summer Dance Classic,20,2016,8,2016-08-01,1,
 1679,West Coast Swing,Champion,follower,2,8,J&J O'Rama,23,2016,6,2016-06-01,2,
 1679,West Coast Swing,Champion,follower,4,4,Monterey SwingFest,1,2016,1,2016-01-01,4,
@@ -16013,7 +16014,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 1679,West Coast Swing,Advanced,follower,1,10,Halloween SwingThing,24,2000,10,2000-10-01,1,
 1679,West Coast Swing,Advanced,follower,F,1,4TH of July Convention,3,2000,7,2000-07-01,Final,
 1679,West Coast Swing,Advanced,follower,F,1,Rising Star - Chicago,34,1999,10,1999-10-01,Final,
-1679,West Coast Swing,Novice,follower,1,10,Easter Swing,30,1999,4,1999-04-01,1,
 1679,West Coast Swing,Novice,follower,5,2,Summer Dance Festival,20,1998,7,1998-07-01,5,
 1679,West Coast Swing,Sophisticated,follower,3,6,USA Grand Nationals,25,2024,5,2024-05-01,3,
 1681,West Coast Swing,Intermediate,leader,2,6,Paradise Dance Festival,19,2005,10,2005-10-01,2,
@@ -17073,6 +17073,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 1822,West Coast Swing,Advanced,leader,4,3,USA Grand Nationals,25,2001,5,2001-05-01,4,
 1822,West Coast Swing,Advanced,leader,2,6,Countdown Swing Boston,8,2001,1,2001-01-01,2,"Boston, MA, United States"
 1822,West Coast Swing,Advanced,leader,3,4,USA Grand Nationals,25,2000,5,2000-05-01,3,
+1844,West Coast Swing,Intermediate,leader,1,10,Paradise Dance Festival,19,2005,10,2005-10-01,1,
 1822,West Coast Swing,Advanced,leader,4,3,Eastern/Washington Dance Challenge,13,2000,5,2000-05-01,4,
 1822,West Coast Swing,Advanced,leader,1,10,North Atlantic Swing Dance Championships,65,2000,4,2000-04-01,1,
 1822,West Coast Swing,Advanced,leader,F,1,Boston Tea Party,8,2000,3,2000-03-01,Final,
@@ -17134,7 +17135,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 1844,West Coast Swing,Intermediate,leader,5,1,South Bay Dance Fling,16,2008,8,2008-08-01,5,
 1844,West Coast Swing,Intermediate,leader,4,2,South Bay Dance Fling,16,2007,8,2007-08-01,4,
 1844,West Coast Swing,Intermediate,leader,1,10,New Mexico Dance Fiesta,94,2006,9,2006-09-01,1,
-1844,West Coast Swing,Intermediate,leader,1,10,Paradise Dance Festival,19,2005,10,2005-10-01,1,
 1844,West Coast Swing,Intermediate,leader,3,4,South Bay Dance Fling,16,2005,8,2005-08-01,3,
 1844,West Coast Swing,Intermediate,leader,F,1,Los Angeles Premiere Dance Classic,22,2005,4,2005-04-01,Final,
 1844,West Coast Swing,Intermediate,leader,F,1,UCWDC Country Dance World Championship,21,2004,12,2004-12-01,Final,
@@ -17530,6 +17530,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 1909,West Coast Swing,Novice,leader,F,1,Capital Swing Dance Convention,6,1999,2,1999-02-01,Final,
 1909,West Coast Swing,Newcomer,leader,4,2,Lone Star Invitational,39,2014,8,2014-08-01,4,
 1910,West Coast Swing,Novice,follower,3,4,Portland Dance Festival,4,1999,6,1999-06-01,3,
+1932,West Coast Swing,Professional,leader,1,10,Jitterbug Jam,153,1999,2,1999-02-01,1,
 1910,West Coast Swing,Novice,follower,F,1,Capital Swing Dance Convention,6,1999,2,1999-02-01,Final,
 1911,West Coast Swing,Advanced,follower,4,2,Meet Me In St Louis,49,2007,9,2007-09-01,4,
 1911,West Coast Swing,Advanced,follower,4,3,Bridgetown Swing Boogie,74,2006,9,2006-09-01,4,
@@ -17653,7 +17654,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 1929,West Coast Swing,Novice,leader,1,10,Country Boogie,15,1999,2,1999-02-01,1,
 1930,West Coast Swing,Novice,leader,2,6,Country Boogie,15,1999,2,1999-02-01,2,
 1931,West Coast Swing,Novice,follower,2,6,Country Boogie,15,1999,2,1999-02-01,2,
-1932,West Coast Swing,Professional,leader,1,10,Jitterbug Jam,153,1999,2,1999-02-01,1,
 1933,West Coast Swing,Professional,follower,1,10,Jitterbug Jam,153,1999,2,1999-02-01,1,
 1934,West Coast Swing,Professional,leader,2,6,Jitterbug Jam,153,1999,2,1999-02-01,2,
 1934,Lindy,Advanced,leader,2,6,North Atlantic Swing Dance Championships,65,1999,4,1999-04-01,2,
@@ -18024,6 +18024,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 1989,Lindy,Advanced,follower,2,6,North Atlantic Swing Dance Championships,65,1999,4,1999-04-01,2,
 1990,Lindy,Champion,follower,4,3,American Lindy Hop Championships,142,2003,10,2003-10-01,4,
 1990,Lindy,Advanced,follower,3,4,Countdown Swing Boston,8,2001,1,2001-01-01,3,"Boston, MA, United States"
+2001,West Coast Swing,Advanced,follower,2,6,Portland Dance Festival,4,1999,6,1999-06-01,2,
 1990,Lindy,Advanced,follower,F,1,North Atlantic Swing Dance Championships,65,2000,4,2000-04-01,Final,
 1990,Lindy,Advanced,follower,4,0,North Atlantic Swing Dance Championships,65,1999,4,1999-04-01,4,
 1990,Lindy,Advanced,follower,4,3,North Atlantic Swing Dance Championships,65,1999,4,1999-04-01,4,
@@ -18085,7 +18086,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 2002,West Coast Swing,Novice,follower,F,1,Rising Star - Chicago,34,1999,10,1999-10-01,Final,
 2001,West Coast Swing,Advanced,follower,5,2,FreZno Dance Classic,5,2000,5,2000-05-01,5,
 2001,West Coast Swing,Advanced,follower,2,0,Mountain Magic,28,1999,11,1999-11-01,2,
-2001,West Coast Swing,Advanced,follower,2,6,Portland Dance Festival,4,1999,6,1999-06-01,2,
 2001,West Coast Swing,Intermediate,follower,2,6,Boogie By The Bay,2,1999,10,1999-10-01,2,
 2001,West Coast Swing,Intermediate,follower,2,6,Paradise Dance Festival,19,1999,10,1999-10-01,2,
 2001,West Coast Swing,Intermediate,follower,1,0,Valley DanceFest,95,1999,9,1999-09-01,1,
@@ -23633,6 +23633,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 2670,West Coast Swing,Master,leader,3,0,Palm Springs New Years Swing Dance Classic,20,2006,12,2006-12-01,3,
 2670,West Coast Swing,Master,leader,2,6,Boogie By The Bay,2,2006,10,2006-10-01,2,
 2670,West Coast Swing,Master,leader,F,1,Halloween SwingThing,24,2006,10,2006-10-01,Final,
+2672,West Coast Swing,Master,follower,F,1,4TH of July Convention,3,2015,7,2015-07-01,Final,
 2670,West Coast Swing,Master,leader,5,0,Palm Springs Summer Dance Classic,20,2006,9,2006-09-01,5,
 2670,West Coast Swing,Master,leader,F,1,4TH of July Convention,3,2006,7,2006-07-01,Final,
 2670,West Coast Swing,Master,leader,F,1,J&J O'Rama,23,2006,6,2006-06-01,Final,
@@ -23695,7 +23696,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 2672,West Coast Swing,Master,follower,F,1,Easter Swing,30,2016,3,2016-03-01,Final,
 2672,West Coast Swing,Master,follower,F,1,The Chicago Classic,34,2016,3,2016-03-01,Final,
 2672,West Coast Swing,Master,follower,F,1,Swingtime in the Rockies,29,2015,7,2015-07-01,Final,
-2672,West Coast Swing,Master,follower,F,1,4TH of July Convention,3,2015,7,2015-07-01,Final,
 2672,West Coast Swing,Master,follower,5,2,USA Grand Nationals,25,2015,5,2015-05-01,5,
 2672,West Coast Swing,Master,follower,F,1,Swing Dance America,89,2015,4,2015-04-01,Final,
 2672,West Coast Swing,Master,follower,F,1,Easter Swing,30,2015,4,2015-04-01,Final,
@@ -28402,6 +28402,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 3121,West Coast Swing,Advanced,leader,F,1,Wisconsin Dance Challenge/Midwest Area Swing Dance Challenge,61,2005,7,2005-07-01,Final,
 3121,West Coast Swing,Advanced,leader,3,4,Indy Swing Classic,64,2005,6,2005-06-01,3,
 3121,West Coast Swing,Advanced,leader,5,2,Liberty Swing Dance Championships,41,2005,6,2005-06-01,5,
+3125,West Coast Swing,Champion,leader,1,6,City of Angels WCS,54,2023,4,2023-04-01,1,
 3121,West Coast Swing,Advanced,leader,F,1,Swing Niagara Dance Championships,80,2005,6,2005-06-01,Final,
 3121,West Coast Swing,Advanced,leader,F,1,Twin City Swing Challenge,75,2004,11,2004-11-01,Final,
 3121,West Coast Swing,Advanced,leader,4,3,CASH Bash,96,2004,11,2004-11-01,4,
@@ -28464,7 +28465,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 3125,West Coast Swing,Champion,leader,1,10,Boogie By The Bay,2,2023,10,2023-10-01,1,
 3125,West Coast Swing,Champion,leader,2,2,Bavarian Open,129,2023,9,2023-09-01,2,"Munich, Germany"
 3125,West Coast Swing,Champion,leader,2,4,Easter Swing,30,2023,4,2023-04-01,2,
-3125,West Coast Swing,Champion,leader,1,6,City of Angels WCS,54,2023,4,2023-04-01,1,
 3125,West Coast Swing,Champion,leader,2,4,MADjam,13,2023,3,2023-03-01,2,
 3125,West Coast Swing,Champion,leader,3,3,Capital Swing Dance Convention,6,2023,2,2023-02-01,3,
 3125,West Coast Swing,Champion,leader,1,10,Boogie By The Bay,2,2022,10,2022-10-01,1,
@@ -31505,6 +31505,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 3368,West Coast Swing,Master,follower,F,1,Swing City Chicago,34,2025,10,2025-10-01,Final,
 3368,West Coast Swing,Master,follower,F,1,Meet Me In St Louis,49,2025,9,2025-09-01,Final,
 3368,West Coast Swing,Master,follower,2,4,Philly Swing Classic,66,2025,9,2025-09-01,2,"Wilmington, DE, United States"
+3370,West Coast Swing,Master,leader,3,3,Chicago Classic,34,2010,3,2010-03-01,3,
 3368,West Coast Swing,Master,follower,F,1,Liberty Swing Dance Championships,41,2025,6,2025-06-01,Final,
 3368,West Coast Swing,Master,follower,2,4,Freedom Swing Dance Challenge,66,2025,1,2025-01-01,2,"Wilmington, DE, United States"
 3368,West Coast Swing,Master,follower,F,1,Swing Fling,38,2024,8,2024-08-01,Final,"Herndon, VA, United States"
@@ -31568,7 +31569,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 3370,West Coast Swing,Master,leader,4,4,Capital Swing Dance Convention,6,2011,2,2011-02-01,4,
 3370,West Coast Swing,Master,leader,1,10,SwingDiego,10,2010,5,2010-05-01,1,
 3370,West Coast Swing,Master,leader,F,1,Swing Dance America,89,2010,4,2010-04-01,Final,
-3370,West Coast Swing,Master,leader,3,3,Chicago Classic,34,2010,3,2010-03-01,3,
 3370,West Coast Swing,Master,leader,1,5,Liberty Swing Dance Championships,41,2009,6,2009-06-01,1,
 3370,West Coast Swing,Master,leader,4,2,Swing Dance America,89,2009,4,2009-04-01,4,
 3370,West Coast Swing,Master,leader,4,2,The Chicago Classic,34,2009,3,2009-03-01,4,
@@ -35086,6 +35086,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 3771,West Coast Swing,Intermediate,leader,1,10,Reno Dance Sensation,77,2004,3,2004-03-01,1,
 3771,West Coast Swing,Intermediate,leader,2,6,Motor City Jam,12,2004,2,2004-02-01,2,
 3771,West Coast Swing,Intermediate,leader,4,3,CASH Bash,96,2003,11,2003-11-01,4,
+3778,West Coast Swing,Advanced,follower,F,1,Tampa Bay Classic,53,2009,11,2009-11-01,Final,
 3771,West Coast Swing,Intermediate,leader,F,1,KC Swing Challenge and Heartland Dance Festival,9,2003,11,2003-11-01,Final,
 3771,West Coast Swing,Intermediate,leader,2,6,Nashville Swing & Shag Dance Classic,43,2003,10,2003-10-01,2,
 3771,West Coast Swing,Novice,leader,1,10,Twin City Swing Challenge,75,2003,11,2003-11-01,1,
@@ -35148,7 +35149,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 3778,West Coast Swing,Advanced,follower,1,5,4TH of July Convention,3,2011,7,2011-07-01,1,
 3778,West Coast Swing,Advanced,follower,1,5,Michigan Dance Classic,51,2011,6,2011-06-01,1,
 3778,West Coast Swing,Advanced,follower,4,2,Toronto Open Swing & Hustle Championships,105,2010,7,2010-07-01,4,"Toronto, Canada"
-3778,West Coast Swing,Advanced,follower,F,1,Tampa Bay Classic,53,2009,11,2009-11-01,Final,
 3778,West Coast Swing,Advanced,follower,F,1,The Chicago Classic,34,2008,3,2008-03-01,Final,
 3778,West Coast Swing,Advanced,follower,F,1,Dallas D.A.N.C.E.,21,2007,9,2007-09-01,Final,
 3778,West Coast Swing,Advanced,follower,3,4,Swing Niagara Dance Championships,80,2007,6,2007-06-01,3,
@@ -35574,6 +35574,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 3818,West Coast Swing,Novice,leader,3,4,MadMAC,115,2005,8,2005-08-01,3,
 3818,West Coast Swing,Novice,leader,1,10,Wisconsin Dance Challenge/Midwest Area Swing Dance Challenge,61,2005,7,2005-07-01,1,
 3818,West Coast Swing,Novice,leader,F,1,Twin City Swing Challenge,75,2004,11,2004-11-01,Final,
+3827,West Coast Swing,Invitational,follower,2,4,Swingapalooza,40,2016,6,2016-06-01,2,
 3818,West Coast Swing,Novice,leader,F,1,Wisconsin Dance Challenge/Midwest Area Swing Dance Challenge,61,2003,7,2003-07-01,Final,
 3819,West Coast Swing,Advanced,follower,5,1,Swing Dance America,89,2011,5,2011-05-01,5,
 3819,West Coast Swing,Advanced,follower,4,2,Swing Dance America,89,2008,4,2008-04-01,4,
@@ -35632,7 +35633,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 3827,West Coast Swing,Champion,follower,2,8,Dallas D.A.N.C.E.,21,2009,9,2009-09-01,2,
 3827,West Coast Swing,Invitational,follower,1,5,Meet Me In St Louis,49,2016,9,2016-09-01,1,
 3827,West Coast Swing,Invitational,follower,3,3,Florida Dance Magic,55,2016,7,2016-07-01,3,
-3827,West Coast Swing,Invitational,follower,2,4,Swingapalooza,40,2016,6,2016-06-01,2,
 3827,West Coast Swing,Invitational,follower,3,3,Montreal Westie Fest,86,2015,10,2015-10-01,3,"Montreal, Canada"
 3827,West Coast Swing,Invitational,follower,5,1,Michigan Dance Classic,51,2014,6,2014-06-01,5,
 3827,West Coast Swing,Invitational,follower,1,5,5280 Westival,29,2014,2,2014-02-01,1,
@@ -36734,6 +36734,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 3941,West Coast Swing,All-Star,leader,2,4,Swing Dance America,89,2014,4,2014-04-01,2,
 3941,West Coast Swing,All-Star,leader,3,6,The Chicago Classic,34,2014,3,2014-03-01,3,
 3941,West Coast Swing,All-Star,leader,3,3,Swing City Chicago,34,2013,10,2013-10-01,3,
+3945,West Coast Swing,Advanced,follower,F,1,Americas Classic,44,2008,5,2008-05-01,Final,
 3941,West Coast Swing,All-Star,leader,1,5,Chicagoland Country and Swing Dance Festival,34,2013,8,2013-08-01,1,
 3941,West Coast Swing,All-Star,leader,F,1,The Chicago Classic,34,2013,3,2013-03-01,Final,
 3941,West Coast Swing,All-Star,leader,F,1,Chicago Classic,34,2012,3,2012-03-01,Final,
@@ -36795,7 +36796,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 3945,West Coast Swing,Advanced,follower,2,4,CASH Bash,96,2009,11,2009-11-01,2,
 3945,West Coast Swing,Advanced,follower,5,1,CASH Bash,96,2008,11,2008-11-01,5,
 3945,West Coast Swing,Advanced,follower,1,8,Swing Niagara Dance Championships,80,2008,6,2008-06-01,1,
-3945,West Coast Swing,Advanced,follower,F,1,Americas Classic,44,2008,5,2008-05-01,Final,
 3945,West Coast Swing,Advanced,follower,4,2,CASH Bash,96,2007,11,2007-11-01,4,
 3945,West Coast Swing,Advanced,follower,4,2,Motown Dance Championships,51,2007,4,2007-04-01,4,
 3945,West Coast Swing,Advanced,follower,2,6,CASH Bash,96,2006,11,2006-11-01,2,
@@ -37475,6 +37475,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 3989,West Coast Swing,All-Star,leader,F,1,Bridgetown Swing Boogie,74,2013,9,2013-09-01,Final,
 3989,West Coast Swing,All-Star,leader,1,5,Easter Swing,30,2013,3,2013-03-01,1,
 3989,West Coast Swing,All-Star,leader,1,5,5280 Westival,29,2013,3,2013-03-01,1,
+4017,Lindy,Novice,leader,F,1,American Lindy Hop Championships,142,2003,10,2003-10-01,Final,
 3989,West Coast Swing,All-Star,leader,1,5,Chicagoland Country and Swing Dance Festival,34,2012,8,2012-08-01,1,
 3989,West Coast Swing,All-Star,leader,F,1,Chicago Classic,34,2012,3,2012-03-01,Final,
 3989,West Coast Swing,All-Star,leader,4,2,Swing Dance America,89,2010,4,2010-04-01,4,
@@ -37598,7 +37599,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 4015,Lindy,Novice,leader,F,1,American Lindy Hop Championships,142,2003,10,2003-10-01,Final,
 4016,Lindy,Novice,follower,F,1,American Lindy Hop Championships,142,2003,10,2003-10-01,Final,
 4017,Lindy,Novice,leader,3,4,Boston Tea Party,8,2004,3,2004-03-01,3,
-4017,Lindy,Novice,leader,F,1,American Lindy Hop Championships,142,2003,10,2003-10-01,Final,
 4018,Lindy,Advanced,follower,F,1,Reno Dance Sensation,77,2005,3,2005-03-01,Final,
 4018,Lindy,Advanced,follower,1,10,Reno Dance Sensation,77,2004,3,2004-03-01,1,
 4018,Lindy,Novice,follower,F,1,American Lindy Hop Championships,142,2003,10,2003-10-01,Final,
@@ -38763,6 +38763,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 4207,West Coast Swing,Newcomer,leader,4,3,Capital Swing Dance Convention,6,2004,2,2004-02-01,4,
 4207,West Coast Swing,Master,leader,F,1,Capital Swing Dance Convention,6,2013,2,2013-02-01,Final,
 4207,West Coast Swing,Master,leader,F,1,South Bay Dance Fling,16,2012,9,2012-09-01,Final,
+4230,West Coast Swing,Advanced,follower,F,1,Easter Swing,30,2006,4,2006-04-01,Final,
 4209,West Coast Swing,Newcomer,leader,5,2,Capital Swing Dance Convention,6,2004,2,2004-02-01,5,
 4210,West Coast Swing,Newcomer,leader,F,1,Capital Swing Dance Convention,6,2004,2,2004-02-01,Final,
 4208,West Coast Swing,Novice,follower,4,4,The Texas Classic,39,2012,5,2012-05-01,4,
@@ -38824,7 +38825,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 4229,West Coast Swing,Novice,follower,1,10,Swing Niagara Dance Championships,80,2007,6,2007-06-01,1,
 4229,West Coast Swing,Novice,follower,4,3,Michigan Dance Classic,51,2004,7,2004-07-01,4,
 4229,West Coast Swing,Novice,follower,5,2,Swingin' New England Dance Festival,70,2003,11,2003-11-01,5,"Newton (Boston), MA, United States"
-4230,West Coast Swing,Advanced,follower,F,1,Easter Swing,30,2006,4,2006-04-01,Final,
 4230,West Coast Swing,Advanced,follower,2,6,Monster Mash,81,2005,10,2005-10-01,2,
 4230,West Coast Swing,Advanced,follower,F,1,Reno Dance Sensation,77,2005,3,2005-03-01,Final,
 4230,West Coast Swing,Intermediate,follower,1,10,Easter Swing,30,2005,4,2005-04-01,1,
@@ -39847,6 +39847,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 4351,West Coast Swing,Novice,leader,F,1,J&J O'Rama,23,2004,6,2004-06-01,Final,
 4351,West Coast Swing,Juniors,leader,4,3,J&J O'Rama,23,2004,6,2004-06-01,4,
 4352,West Coast Swing,Advanced,leader,2,6,World Swing Dance Championships,14,2007,5,2007-05-01,2,
+4357,West Coast Swing,Sophisticated,leader,F,1,Trilogy Swing,63,2025,9,2025-09-01,Final,
 4352,West Coast Swing,Advanced,leader,1,0,Palm Springs Summer Dance Classic,20,2006,9,2006-09-01,1,
 4352,West Coast Swing,Intermediate,leader,1,10,4TH of July Convention,3,2006,7,2006-07-01,1,
 4352,West Coast Swing,Intermediate,leader,F,1,Los Angeles Premiere Dance Classic,22,2006,4,2006-04-01,Final,
@@ -39932,6 +39933,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 4353,West Coast Swing,Novice,follower,1,10,Halloween SwingThing,24,2004,10,2004-10-01,1,
 4353,West Coast Swing,Novice,follower,2,6,Palm Springs Summer Dance Classic,20,2004,9,2004-09-01,2,
 4353,West Coast Swing,Novice,follower,F,1,J&J O'Rama,23,2004,6,2004-06-01,Final,
+4359,West Coast Swing,Intermediate,follower,4,3,Bridgetown Swing Boogie,74,2004,9,2004-09-01,4,
 4353,West Coast Swing,Juniors,follower,4,3,Capital Swing Dance Convention,6,2005,2,2005-02-01,4,
 4354,West Coast Swing,Novice,follower,F,1,J&J O'Rama,23,2004,6,2004-06-01,Final,
 4355,West Coast Swing,Intermediate,leader,3,4,UCWDC Country Dance World Championship,21,2007,12,2007-12-01,3,
@@ -39971,7 +39973,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 4357,West Coast Swing,Master,leader,2,4,Swustlicious,149,2025,10,2025-10-01,2,
 4357,West Coast Swing,Master,leader,F,1,Trilogy Swing,63,2025,9,2025-09-01,Final,
 4357,West Coast Swing,Sophisticated,leader,3,1,Orange Blossom Dance Festival,82,2026,6,2026-06-01,3,
-4357,West Coast Swing,Sophisticated,leader,F,1,Trilogy Swing,63,2025,9,2025-09-01,Final,
 4360,West Coast Swing,Advanced,follower,F,1,Capital Swing Dance Convention,6,2011,2,2011-02-01,Final,
 4360,West Coast Swing,Advanced,follower,F,1,Monterey SwingFest,1,2011,1,2011-01-01,Final,
 4360,West Coast Swing,Advanced,follower,F,1,Boogie By The Bay,2,2010,10,2010-10-01,Final,
@@ -39995,7 +39996,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 4359,West Coast Swing,Intermediate,follower,F,1,Monterey SwingFest,1,2007,1,2007-01-01,Final,
 4359,West Coast Swing,Intermediate,follower,F,1,Bridgetown Swing Boogie,74,2006,9,2006-09-01,Final,
 4359,West Coast Swing,Intermediate,follower,F,1,Monterey SwingFest,1,2005,1,2005-01-01,Final,
-4359,West Coast Swing,Intermediate,follower,4,3,Bridgetown Swing Boogie,74,2004,9,2004-09-01,4,
 4359,West Coast Swing,Novice,follower,F,1,Swingtime in the Rockies,29,2004,8,2004-08-01,Final,
 4359,West Coast Swing,Novice,follower,1,10,FreZno Dance Classic,5,2004,5,2004-05-01,1,
 4358,West Coast Swing,Intermediate,follower,3,4,J&J O'Rama,23,2005,6,2005-06-01,3,
@@ -40407,6 +40407,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 4441,West Coast Swing,All-Star,leader,4,2,Colorado Country Classic,29,2014,6,2014-06-01,4,
 4441,West Coast Swing,All-Star,leader,2,4,Midwest Westie Fest,48,2014,6,2014-06-01,2,
 4441,West Coast Swing,All-Star,leader,F,1,Swingtime in the Rockies,29,2013,7,2013-07-01,Final,
+4470,West Coast Swing,Newcomer,leader,F,1,Meet Me In St Louis,49,2011,9,2011-09-01,Final,
 4441,West Coast Swing,All-Star,leader,4,2,Palm Springs New Years Swing Dance Classic,20,2013,1,2013-01-01,4,
 4441,West Coast Swing,All-Star,leader,1,5,Montreal Westie Fest,86,2012,10,2012-10-01,1,"Montreal, Canada"
 4441,West Coast Swing,All-Star,leader,3,6,Desert City Swing,3,2012,9,2012-09-01,3,
@@ -40469,6 +40470,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 4445,West Coast Swing,Novice,leader,F,1,Upstate Dance Challenge,139,2018,12,2018-12-01,Final,
 4445,West Coast Swing,Novice,leader,2,6,Easter Swing,30,2006,4,2006-04-01,2,
 4445,West Coast Swing,Novice,leader,F,1,British Columbia Dance Challenge,128,2006,3,2006-03-01,Final,
+4470,West Coast Swing,Newcomer,leader,1,5,Grand Prix of Swing,9,2011,8,2011-08-01,1,
 4445,West Coast Swing,Novice,leader,4,3,Palm Springs New Years Swing Dance Classic,20,2005,12,2005-12-01,4,
 4445,West Coast Swing,Novice,leader,F,1,Boogie By The Bay,2,2005,10,2005-10-01,Final,
 4445,West Coast Swing,Novice,leader,5,0,Bridgetown Swing Boogie,74,2005,9,2005-09-01,5,
@@ -40530,6 +40532,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 4453,West Coast Swing,Intermediate,follower,F,1,Swingtime in the Rockies,29,2006,8,2006-08-01,Final,
 4453,West Coast Swing,Intermediate,follower,F,1,Easter Swing,30,2006,4,2006-04-01,Final,
 4453,West Coast Swing,Intermediate,follower,F,1,Reno Dance Sensation,77,2006,3,2006-03-01,Final,
+4470,West Coast Swing,Newcomer,leader,F,1,Meet Me In St Louis,49,2010,9,2010-09-01,Final,
 4453,West Coast Swing,Novice,follower,F,1,Palm Springs New Years Swing Dance Classic,20,2005,12,2005-12-01,Final,
 4453,West Coast Swing,Novice,follower,4,0,Bridgetown Swing Boogie,74,2005,9,2005-09-01,4,
 4453,West Coast Swing,Novice,follower,1,10,Swingtime in the Rockies,29,2005,8,2005-08-01,1,
@@ -40591,9 +40594,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 4470,West Coast Swing,Novice,leader,1,5,Show Me Showdown,49,2017,5,2017-05-01,1,
 4470,West Coast Swing,Novice,leader,4,2,Show Me Showdown,49,2016,5,2016-05-01,4,
 4470,West Coast Swing,Novice,leader,3,4,Chicagoland Country and Swing Dance Festival,34,2004,8,2004-08-01,3,
-4470,West Coast Swing,Newcomer,leader,F,1,Meet Me In St Louis,49,2011,9,2011-09-01,Final,
-4470,West Coast Swing,Newcomer,leader,1,5,Grand Prix of Swing,9,2011,8,2011-08-01,1,
-4470,West Coast Swing,Newcomer,leader,F,1,Meet Me In St Louis,49,2010,9,2010-09-01,Final,
 4470,West Coast Swing,Newcomer,leader,F,0,Meet Me In St Louis,49,2010,9,2010-09-01,Final,
 4470,West Coast Swing,Master,leader,3,3,Indy Dance Explosion,138,2016,7,2016-07-01,3,
 4470,West Coast Swing,Master,leader,4,2,Show Me Showdown,49,2016,5,2016-05-01,4,
@@ -42904,6 +42904,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 4830,West Coast Swing,Intermediate,follower,2,8,J&J O'Rama,23,2008,6,2008-06-01,2,
 4830,West Coast Swing,Intermediate,follower,4,2,Portland Dance Festival,4,2008,6,2008-06-01,4,
 4830,West Coast Swing,Intermediate,follower,4,4,FreZno Dance Classic,5,2008,5,2008-05-01,4,
+4832,West Coast Swing,All-Star,follower,1,6,South Bay Dance Fling,16,2018,9,2018-09-01,1,
 4830,West Coast Swing,Intermediate,follower,4,4,Palm Springs New Years Swing Dance Classic,20,2007,12,2007-12-01,4,
 4830,West Coast Swing,Intermediate,follower,4,2,Chico Dance Sensation,101,2007,10,2007-10-01,4,
 4830,West Coast Swing,Intermediate,follower,F,1,Los Angeles Premiere Dance Classic,22,2007,4,2007-04-01,Final,
@@ -42966,7 +42967,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 4832,West Coast Swing,All-Star,follower,F,1,Monterey SwingFest,1,2020,1,2020-01-01,Final,
 4832,West Coast Swing,All-Star,follower,F,1,FreZno Dance Classic,5,2019,5,2019-05-01,Final,
 4832,West Coast Swing,All-Star,follower,3,6,Monterey SwingFest,1,2019,1,2019-01-01,3,
-4832,West Coast Swing,All-Star,follower,1,6,South Bay Dance Fling,16,2018,9,2018-09-01,1,
 4832,West Coast Swing,All-Star,follower,F,1,Swingtacular: The Galactic Open,2,2018,8,2018-08-01,Final,
 4832,West Coast Swing,All-Star,follower,1,10,Monterey SwingFest,1,2018,1,2018-01-01,1,
 4832,West Coast Swing,All-Star,follower,3,6,South Bay Dance Fling,16,2017,9,2017-09-01,3,
@@ -43989,6 +43989,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 4927,West Coast Swing,Intermediate,follower,F,1,Palm Springs Summer Dance Classic,20,2007,9,2007-09-01,Final,
 4927,West Coast Swing,Intermediate,follower,F,1,4TH of July Convention,3,2007,7,2007-07-01,Final,
 4927,West Coast Swing,Intermediate,follower,F,1,J&J O'Rama,23,2007,6,2007-06-01,Final,
+4943,West Coast Swing,Novice,leader,F,1,Swingtime in the Rockies,29,2005,8,2005-08-01,Final,
 4927,West Coast Swing,Intermediate,follower,F,1,Los Angeles Premiere Dance Classic,22,2007,4,2007-04-01,Final,
 4927,West Coast Swing,Intermediate,follower,F,1,SwingDiego,10,2007,1,2007-01-01,Final,
 4927,West Coast Swing,Intermediate,follower,F,1,Palm Springs New Years Swing Dance Classic,20,2006,12,2006-12-01,Final,
@@ -44109,7 +44110,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 4943,West Coast Swing,Novice,leader,1,10,Swingtime in the Rockies,29,2007,8,2007-08-01,1,
 4943,West Coast Swing,Novice,leader,5,2,Swingtime in the Rockies,29,2006,8,2006-08-01,5,
 4943,West Coast Swing,Novice,leader,5,2,4TH of July Convention,3,2006,7,2006-07-01,5,
-4943,West Coast Swing,Novice,leader,F,1,Swingtime in the Rockies,29,2005,8,2005-08-01,Final,
 4944,West Coast Swing,Advanced,leader,F,1,Swing City Chicago,34,2011,10,2011-10-01,Final,
 4944,West Coast Swing,Intermediate,leader,3,6,4TH of July Convention,3,2010,7,2010-07-01,3,
 4944,West Coast Swing,Intermediate,leader,4,2,Colorado Country Classic,29,2010,6,2010-06-01,4,
@@ -50233,6 +50233,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 5539,West Coast Swing,Advanced,leader,3,1,Dance Mardi Gras,57,2022,7,2022-07-01,3,
 5539,West Coast Swing,Advanced,leader,F,1,The Chicago Classic,34,2022,3,2022-03-01,Final,
 5539,West Coast Swing,Advanced,leader,F,1,Floorplay Swing Vacation,82,2022,1,2022-01-01,Final,
+5543,West Coast Swing,Intermediate,leader,5,2,USA Grand Nationals,25,2009,5,2009-05-01,5,
 5539,West Coast Swing,Advanced,leader,1,6,Chicagoland Country and Swing Dance Festival,34,2021,8,2021-08-01,1,
 5539,West Coast Swing,Advanced,leader,5,1,Spotlight New Year's Celebration,43,2009,12,2009-12-01,5,
 5539,West Coast Swing,Advanced,leader,1,5,Florida Dance Magic,55,2009,7,2009-07-01,1,
@@ -50296,7 +50297,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 5543,West Coast Swing,Intermediate,leader,1,5,Grand Prix of Swing,9,2011,8,2011-08-01,1,
 5543,West Coast Swing,Intermediate,leader,3,6,Novice Invitational,44,2011,3,2011-03-01,3,
 5543,West Coast Swing,Intermediate,leader,F,1,Grand Prix of Swing,9,2010,7,2010-07-01,Final,
-5543,West Coast Swing,Intermediate,leader,5,2,USA Grand Nationals,25,2009,5,2009-05-01,5,
 5543,West Coast Swing,Novice,leader,2,10,Swingtime in the Rockies,29,2008,8,2008-08-01,2,
 5543,West Coast Swing,Novice,leader,F,1,Americas Classic,44,2008,5,2008-05-01,Final,
 5543,West Coast Swing,Novice,leader,1,10,Tulsa Spring Swing,58,2008,3,2008-03-01,1,
@@ -50486,6 +50486,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 5566,West Coast Swing,Novice,leader,2,4,UCWDC Country Dance World Championship,21,2013,1,2013-01-01,2,
 5566,West Coast Swing,Novice,leader,3,10,USA Grand Nationals,25,2012,5,2012-05-01,3,
 5568,West Coast Swing,Novice,leader,F,1,Sea to Sky,30,2009,9,2009-09-01,Final,
+5581,West Coast Swing,Intermediate,leader,F,1,Countdown Swing Boston,8,2024,1,2024-01-01,Final,"Boston, MA, United States"
 5568,West Coast Swing,Novice,leader,5,1,British Columbia Dance Challenge,128,2007,3,2007-03-01,5,
 5567,West Coast Swing,All-Star,follower,1,5,USA Jack & Jill Championships,43,2010,4,2010-04-01,1,
 5567,West Coast Swing,Advanced,follower,4,2,Orange Blossom Dance Festival,82,2015,6,2015-06-01,4,
@@ -50548,7 +50549,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 5581,West Coast Swing,Intermediate,leader,F,1,Novice Invitational,44,2024,3,2024-03-01,Final,
 5581,West Coast Swing,Intermediate,leader,F,1,Charlotte Westie Fest,62,2024,2,2024-02-01,Final,
 5581,West Coast Swing,Intermediate,leader,F,1,Freedom Swing Dance Challenge,66,2024,1,2024-01-01,Final,"Wilmington, DE, United States"
-5581,West Coast Swing,Intermediate,leader,F,1,Countdown Swing Boston,8,2024,1,2024-01-01,Final,"Boston, MA, United States"
 5581,West Coast Swing,Intermediate,leader,F,1,DC Swing eXperience (DCSX),38,2023,11,2023-11-01,Final,"Herndon, VA, United States"
 5581,West Coast Swing,Intermediate,leader,F,1,Austin Rocks,39,2018,9,2018-09-01,Final,
 5581,West Coast Swing,Intermediate,leader,4,8,Wild Wild Westie,21,2018,7,2018-07-01,4,
@@ -52207,6 +52207,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 5748,West Coast Swing,Champion,follower,1,10,The Chicago Classic,34,2016,3,2016-03-01,1,
 5748,West Coast Swing,Champion,follower,2,8,MADjam,13,2016,3,2016-03-01,2,
 5748,West Coast Swing,Champion,follower,3,3,Capital Swing Dance Convention,6,2016,2,2016-02-01,3,
+5748,West Coast Swing,All-Star,follower,5,1,Colorado Country Classic,29,2012,6,2012-06-01,5,
 5748,West Coast Swing,Champion,follower,1,5,Palm Springs New Years Swing Dance Classic,20,2016,1,2016-01-01,1,
 5748,West Coast Swing,Champion,follower,5,1,Swingin' New England Dance Festival,70,2015,11,2015-11-01,5,"Newton (Boston), MA, United States"
 5748,West Coast Swing,Champion,follower,4,2,Halloween SwingThing,24,2015,11,2015-11-01,4,
@@ -52269,7 +52270,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 5748,West Coast Swing,All-Star,follower,1,5,DFW Pro Am Jam,21,2013,5,2013-05-01,1,
 5748,West Coast Swing,All-Star,follower,2,8,Boogie By The Bay,2,2012,10,2012-10-01,2,
 5748,West Coast Swing,All-Star,follower,F,1,Palm Springs Summer Dance Classic,20,2012,8,2012-08-01,Final,
-5748,West Coast Swing,All-Star,follower,5,1,Colorado Country Classic,29,2012,6,2012-06-01,5,
 5748,West Coast Swing,All-Star,follower,2,4,Easter Swing,30,2012,4,2012-04-01,2,
 5748,West Coast Swing,All-Star,follower,1,10,City of Angels WCS,54,2012,4,2012-04-01,1,
 5748,West Coast Swing,All-Star,follower,3,6,MADjam,13,2012,3,2012-03-01,3,
@@ -57701,6 +57701,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 6377,West Coast Swing,All-Star,leader,5,1,Paradise Dance Festival,19,2015,10,2015-10-01,5,
 6377,West Coast Swing,All-Star,leader,5,1,FreZno Dance Classic,5,2015,5,2015-05-01,5,
 6377,West Coast Swing,All-Star,leader,1,5,High Desert Dance Classic,18,2015,3,2015-03-01,1,
+6375,West Coast Swing,Master,follower,F,1,Swingover,82,2023,4,2023-04-01,Final,
 6377,West Coast Swing,All-Star,leader,F,1,Swingtacular: The Galactic Open,2,2014,8,2014-08-01,Final,
 6377,West Coast Swing,All-Star,leader,F,1,Halloween SwingThing,24,2013,10,2013-10-01,Final,
 6377,West Coast Swing,All-Star,leader,3,3,Paradise Dance Festival,19,2013,10,2013-10-01,3,
@@ -57763,7 +57764,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 6375,West Coast Swing,Master,follower,F,1,River City Swing,98,2024,9,2024-09-01,Final,
 6375,West Coast Swing,Master,follower,F,1,Swingover,82,2024,4,2024-04-01,Final,
 6375,West Coast Swing,Master,follower,F,1,Floorplay Swing Vacation,82,2024,1,2024-01-01,Final,
-6375,West Coast Swing,Master,follower,F,1,Swingover,82,2023,4,2023-04-01,Final,
 6375,West Coast Swing,Master,follower,2,8,Floorplay Swing Vacation,82,2023,1,2023-01-01,2,
 6375,West Coast Swing,Master,follower,F,1,Swing City Chicago,34,2022,10,2022-10-01,Final,
 6375,West Coast Swing,Master,follower,F,1,Trilogy Swing,63,2022,9,2022-09-01,Final,
@@ -61298,6 +61298,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 6697,West Coast Swing,Novice,follower,2,8,South Bay Dance Fling,16,2009,8,2009-08-01,2,
 6697,West Coast Swing,Novice,follower,F,1,Monterey SwingFest,1,2009,1,2009-01-01,Final,
 6697,West Coast Swing,Juniors,follower,1,5,Los Angeles Premiere Dance Classic,22,2010,4,2010-04-01,1,
+6704,West Coast Swing,All-Star,follower,1,5,Tampa Bay Classic,53,2014,11,2014-11-01,1,
 6697,West Coast Swing,Juniors,follower,2,8,Capital Swing Dance Convention,6,2010,2,2010-02-01,2,
 6697,West Coast Swing,Juniors,follower,1,5,Halloween SwingThing,24,2009,10,2009-10-01,1,
 6697,West Coast Swing,Juniors,follower,1,5,J&J O'Rama,23,2009,6,2009-06-01,1,
@@ -61361,7 +61362,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 6704,West Coast Swing,All-Star,follower,4,2,5280 Westival,29,2015,3,2015-03-01,4,
 6704,West Coast Swing,All-Star,follower,F,1,MADjam,13,2015,3,2015-03-01,Final,
 6704,West Coast Swing,All-Star,follower,1,4,Austin Swing Dance Championships,39,2015,1,2015-01-01,1,
-6704,West Coast Swing,All-Star,follower,1,5,Tampa Bay Classic,53,2014,11,2014-11-01,1,
 6704,West Coast Swing,All-Star,follower,2,4,Swing City Chicago,34,2014,10,2014-10-01,2,
 6704,West Coast Swing,All-Star,follower,4,4,Desert City Swing,3,2014,9,2014-09-01,4,
 6704,West Coast Swing,All-Star,follower,2,4,Dallas D.A.N.C.E.,21,2014,9,2014-09-01,2,
@@ -61549,6 +61549,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 6717,West Coast Swing,Intermediate,leader,1,5,WCS@IDB,163,2013,7,2013-07-01,1,
 6717,West Coast Swing,Intermediate,leader,F,1,Freedom Swing Dance Challenge,66,2013,1,2013-01-01,Final,"Wilmington, DE, United States"
 6717,West Coast Swing,Intermediate,leader,F,1,Countdown Swing Boston,8,2013,1,2013-01-01,Final,"Boston, MA, United States"
+6727,West Coast Swing,Master,follower,3,3,Upstate Dance Challenge,139,2018,12,2018-12-01,3,
 6717,West Coast Swing,Intermediate,leader,F,1,DC Swing eXperience (DCSX),38,2012,11,2012-11-01,Final,"Herndon, VA, United States"
 6717,West Coast Swing,Novice,leader,2,12,Summer Hummer,397,2012,8,2012-08-01,2,"Woburn (Boston), MA, United States"
 6717,West Coast Swing,Novice,leader,F,1,Swing Fling,38,2012,8,2012-08-01,Final,"Herndon, VA, United States"
@@ -61610,7 +61611,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 6727,West Coast Swing,Newcomer,follower,2,8,Swingin' New England Dance Festival,70,2009,11,2009-11-01,2,"Newton (Boston), MA, United States"
 6727,West Coast Swing,Newcomer,follower,5,2,Swingin' Into Spring,131,2009,5,2009-05-01,5,
 6727,West Coast Swing,Newcomer,follower,F,1,MADjam,13,2009,3,2009-03-01,Final,
-6727,West Coast Swing,Master,follower,3,3,Upstate Dance Challenge,139,2018,12,2018-12-01,3,
 6727,West Coast Swing,Master,follower,3,1,Freedom Swing Dance Challenge,66,2018,1,2018-01-01,3,"Wilmington, DE, United States"
 6727,West Coast Swing,Master,follower,1,5,Philly Swing Classic,66,2017,9,2017-09-01,1,"Wilmington, DE, United States"
 6727,West Coast Swing,Master,follower,F,1,Liberty Swing Dance Championships,41,2017,7,2017-07-01,Final,
@@ -61982,6 +61982,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 6761,West Coast Swing,Champion,follower,4,2,Wild Wild Westie,21,2018,7,2018-07-01,4,
 6761,West Coast Swing,Champion,follower,1,6,J&J O'Rama,23,2018,6,2018-06-01,1,
 6761,West Coast Swing,Champion,follower,4,2,City of Angels WCS,54,2018,4,2018-04-01,4,
+6761,West Coast Swing,Intermediate,follower,3,10,Desert City Swing,3,2012,9,2012-09-01,3,
 6761,West Coast Swing,Champion,follower,4,4,Capital Swing Dance Convention,6,2018,2,2018-02-01,4,
 6761,West Coast Swing,Champion,follower,2,8,Boogie By The Bay,2,2017,10,2017-10-01,2,
 6761,West Coast Swing,Champion,follower,2,4,Desert City Swing,3,2017,9,2017-09-01,2,
@@ -62045,7 +62046,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 6761,West Coast Swing,Advanced,follower,F,1,Monterey SwingFest,1,2013,1,2013-01-01,Final,
 6761,West Coast Swing,Intermediate,follower,1,5,Paradise Dance Festival,19,2012,10,2012-10-01,1,
 6761,West Coast Swing,Intermediate,follower,F,1,Boogie By The Bay,2,2012,10,2012-10-01,Final,
-6761,West Coast Swing,Intermediate,follower,3,10,Desert City Swing,3,2012,9,2012-09-01,3,
 6761,West Coast Swing,Intermediate,follower,F,1,4TH of July Convention,3,2012,7,2012-07-01,Final,
 6761,West Coast Swing,Intermediate,follower,5,2,J&J O'Rama,23,2012,6,2012-06-01,5,
 6761,West Coast Swing,Intermediate,follower,2,8,Monterey SwingFest,1,2012,1,2012-01-01,2,
@@ -62909,6 +62909,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 6849,West Coast Swing,Newcomer,leader,4,4,Swingin' Into Spring,131,2009,5,2009-05-01,4,
 6852,West Coast Swing,Newcomer,leader,3,3,New Year's Dancin' Eve,79,2011,1,2011-01-01,3,"Burlington (Boston), MA, United States"
 6852,West Coast Swing,Newcomer,leader,F,1,Swingin' Into Spring,131,2009,5,2009-05-01,Final,
+6861,West Coast Swing,Advanced,leader,1,10,Trilogy Swing,63,2018,9,2018-09-01,1,
 6851,West Coast Swing,Invitational,leader,3,3,Freedom Swing Dance Challenge,66,2017,1,2017-01-01,3,"Wilmington, DE, United States"
 6851,West Coast Swing,All-Star,leader,F,1,Swing Fling,38,2026,8,2026-08-01,Final,"Herndon, VA, United States"
 6851,West Coast Swing,All-Star,leader,1,3,Dance Jam Jack & Jill Weekend,353,2026,5,2026-05-01,1,"Silver Spring, MD, United States"
@@ -63032,7 +63033,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 6860,West Coast Swing,Novice,follower,1,10,Swing Dance America,89,2009,4,2009-04-01,1,
 6861,West Coast Swing,All-Star,leader,4,2,Philly Swing Classic,66,2018,9,2018-09-01,4,"Wilmington, DE, United States"
 6861,West Coast Swing,Advanced,leader,F,1,Charlotte Westie Fest,62,2020,2,2020-02-01,Final,
-6861,West Coast Swing,Advanced,leader,1,10,Trilogy Swing,63,2018,9,2018-09-01,1,
 6861,West Coast Swing,Advanced,leader,3,6,Swing Fling,38,2018,8,2018-08-01,3,"Herndon, VA, United States"
 6861,West Coast Swing,Advanced,leader,F,1,Wild Wild Westie,21,2018,7,2018-07-01,Final,
 6861,West Coast Swing,Advanced,leader,F,1,Liberty Swing Dance Championships,41,2018,7,2018-07-01,Final,
@@ -63523,6 +63523,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 6916,West Coast Swing,All-Star,follower,2,4,Palm Springs Summer Dance Classic,20,2018,8,2018-08-01,2,
 6916,West Coast Swing,All-Star,follower,2,8,Swing Dance America,89,2018,4,2018-04-01,2,
 6916,West Coast Swing,All-Star,follower,5,2,The Chicago Classic,34,2018,3,2018-03-01,5,
+6921,West Coast Swing,Novice,follower,2,8,South Bay Dance Fling,16,2010,8,2010-08-01,2,
 6916,West Coast Swing,All-Star,follower,2,8,Capital Swing Dance Convention,6,2018,2,2018-02-01,2,
 6916,West Coast Swing,All-Star,follower,5,1,Palm Springs New Years Swing Dance Classic,20,2018,1,2018-01-01,5,
 6916,West Coast Swing,All-Star,follower,2,4,Mountain Magic,28,2017,11,2017-11-01,2,
@@ -63584,7 +63585,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 6921,West Coast Swing,Intermediate,follower,2,8,Paradise Dance Festival,19,2013,10,2013-10-01,2,
 6921,West Coast Swing,Intermediate,follower,4,4,Mountain Magic,28,2010,11,2010-11-01,4,
 6921,West Coast Swing,Novice,follower,F,1,Boogie By The Bay,2,2010,10,2010-10-01,Final,
-6921,West Coast Swing,Novice,follower,2,8,South Bay Dance Fling,16,2010,8,2010-08-01,2,
 6921,West Coast Swing,Novice,follower,F,1,Monterey SwingFest,1,2010,1,2010-01-01,Final,
 6921,West Coast Swing,Novice,follower,3,6,Mountain Magic,28,2009,11,2009-11-01,3,
 6921,West Coast Swing,Novice,follower,5,2,South Bay Dance Fling,16,2009,8,2009-08-01,5,
@@ -65629,6 +65629,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 7201,West Coast Swing,Advanced,leader,5,2,Monterey SwingFest,1,2011,1,2011-01-01,5,
 7201,West Coast Swing,Advanced,leader,4,8,US Open Swing Dance Championships,22,2010,11,2010-11-01,4,
 7201,West Coast Swing,Advanced,leader,F,1,Halloween SwingThing,24,2010,10,2010-10-01,Final,
+7202,West Coast Swing,All-Star,follower,F,1,The After Party (TAP),73,2025,12,2025-12-01,Final,
 7201,West Coast Swing,Intermediate,leader,1,5,World Swing Dance Championships,14,2011,7,2011-07-01,1,
 7201,West Coast Swing,Intermediate,leader,1,10,Desert City Swing,3,2010,9,2010-09-01,1,
 7201,West Coast Swing,Intermediate,leader,F,1,South Bay Dance Fling,16,2010,8,2010-08-01,Final,
@@ -65693,7 +65694,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 7202,West Coast Swing,Champion,follower,F,1,SwingDiego,10,2016,5,2016-05-01,Final,
 7202,West Coast Swing,Invitational,follower,1,5,Rose City Swing,4,2015,3,2015-03-01,1,
 7202,West Coast Swing,Invitational,follower,4,2,SwingCouver,4,2015,1,2015-01-01,4,
-7202,West Coast Swing,All-Star,follower,F,1,The After Party (TAP),73,2025,12,2025-12-01,Final,
 7202,West Coast Swing,All-Star,follower,3,1,Mountain Magic,28,2025,11,2025-11-01,3,
 7202,West Coast Swing,All-Star,follower,2,2,The Aloha Open,124,2025,10,2025-10-01,2,"Wailea, HI, United States"
 7202,West Coast Swing,All-Star,follower,1,15,Swingtacular: The Galactic Open,2,2025,8,2025-08-01,1,
@@ -68282,6 +68282,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 7388,West Coast Swing,Intermediate,follower,F,1,SOswing,88,2019,5,2019-05-01,Final,
 7388,West Coast Swing,Intermediate,follower,4,4,South Bay Dance Fling,16,2018,9,2018-09-01,4,
 7388,West Coast Swing,Intermediate,follower,F,1,South Bay Dance Fling,16,2017,9,2017-09-01,Final,
+7388,West Coast Swing,Master,follower,4,4,South Bay Dance Fling,16,2014,8,2014-08-01,4,
 7388,West Coast Swing,Intermediate,follower,4,8,Capital Swing Dance Convention,6,2016,2,2016-02-01,4,
 7388,West Coast Swing,Intermediate,follower,4,4,FreZno Dance Classic,5,2015,5,2015-05-01,4,
 7388,West Coast Swing,Intermediate,follower,F,1,Capital Swing Dance Convention,6,2015,2,2015-02-01,Final,
@@ -68344,7 +68345,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 7388,West Coast Swing,Master,follower,5,2,FreZno Dance Classic,5,2015,5,2015-05-01,5,
 7388,West Coast Swing,Master,follower,F,1,Capital Swing Dance Convention,6,2015,2,2015-02-01,Final,
 7388,West Coast Swing,Master,follower,F,1,Monterey SwingFest,1,2015,1,2015-01-01,Final,
-7388,West Coast Swing,Master,follower,4,4,South Bay Dance Fling,16,2014,8,2014-08-01,4,
 7388,West Coast Swing,Master,follower,5,1,Swingtacular: The Galactic Open,2,2014,8,2014-08-01,5,
 7388,West Coast Swing,Master,follower,4,4,FreZno Dance Classic,5,2014,5,2014-05-01,4,
 7388,West Coast Swing,Master,follower,2,8,Capital Swing Dance Convention,6,2014,2,2014-02-01,2,
@@ -68653,6 +68653,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 7407,West Coast Swing,Intermediate,leader,F,1,5280 Westival,29,2016,2,2016-02-01,Final,
 7407,West Coast Swing,Intermediate,leader,F,1,Atlanta Swing Classic,25,2015,10,2015-10-01,Final,
 7407,West Coast Swing,Intermediate,leader,F,1,Chicagoland Country and Swing Dance Festival,34,2015,8,2015-08-01,Final,
+7407,West Coast Swing,Master,leader,2,4,Swing Dance America,89,2022,5,2022-05-01,2,
 7407,West Coast Swing,Intermediate,leader,3,6,Swingtime in the Rockies,29,2015,7,2015-07-01,3,
 7407,West Coast Swing,Intermediate,leader,F,1,Swingin' Into Spring,131,2015,5,2015-05-01,Final,
 7407,West Coast Swing,Intermediate,leader,F,1,Swingin' New England Dance Festival,70,2014,11,2014-11-01,Final,"Newton (Boston), MA, United States"
@@ -68716,7 +68717,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 7407,West Coast Swing,Master,leader,3,3,CASH Bash,96,2022,11,2022-11-01,3,
 7407,West Coast Swing,Master,leader,4,2,Midnight Madness,21,2022,11,2022-11-01,4,
 7407,West Coast Swing,Master,leader,2,2,Chicagoland Country and Swing Dance Festival,34,2022,8,2022-08-01,2,
-7407,West Coast Swing,Master,leader,2,4,Swing Dance America,89,2022,5,2022-05-01,2,
 7407,West Coast Swing,Master,leader,2,4,Novice Invitational,44,2022,3,2022-03-01,2,
 7407,West Coast Swing,Master,leader,2,2,Countdown Swing Boston,8,2022,1,2022-01-01,2,"Boston, MA, United States"
 7407,West Coast Swing,Master,leader,1,6,Atlanta Swing Classic,25,2021,10,2021-10-01,1,
@@ -69961,6 +69961,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 7516,West Coast Swing,Novice,leader,F,1,MADjam,13,2010,3,2010-03-01,Final,
 7516,West Coast Swing,Novice,follower,F,1,Toronto Open Swing & Hustle Championships,105,2023,7,2023-07-01,Final,"Toronto, Canada"
 7520,West Coast Swing,Novice,follower,F,1,Austin Swing Dance Championships,39,2013,4,2013-04-01,Final,
+7535,West Coast Swing,Novice,leader,3,6,World Swing Masters,207,2010,8,2010-08-01,3,
 7520,West Coast Swing,Novice,follower,F,1,Wisconsin Dance Challenge/Midwest Area Swing Dance Challenge,61,2010,7,2010-07-01,Final,
 7520,West Coast Swing,Novice,follower,5,2,Grand Prix of Swing,9,2010,7,2010-07-01,5,
 7520,West Coast Swing,Novice,follower,3,6,Michigan Dance Classic,51,2010,7,2010-07-01,3,
@@ -70022,7 +70023,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 7531,West Coast Swing,Newcomer,follower,5,1,UK WCS Championships,107,2010,4,2010-04-01,5,
 7535,West Coast Swing,Novice,leader,F,1,World Swing Masters,207,2011,8,2011-08-01,Final,
 7535,West Coast Swing,Novice,leader,F,1,London SwingVitational,212,2010,11,2010-11-01,Final,
-7535,West Coast Swing,Novice,leader,3,6,World Swing Masters,207,2010,8,2010-08-01,3,
 7535,West Coast Swing,Novice,leader,4,8,UK WCS Championships,107,2010,4,2010-04-01,4,
 7533,West Coast Swing,All-Star,leader,3,3,Moscow Westie Fest,113,2017,11,2017-11-01,3,
 7533,West Coast Swing,All-Star,leader,2,4,Swedish Swing Summer Camp,199,2017,8,2017-08-01,2,"Stockholm, Sweden"
@@ -73107,6 +73107,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 7766,West Coast Swing,Intermediate,follower,5,2,Montreal Westie Fest,86,2013,10,2013-10-01,5,"Montreal, Canada"
 7766,West Coast Swing,Intermediate,follower,4,2,Toronto Open Swing & Hustle Championships,105,2012,7,2012-07-01,4,"Toronto, Canada"
 7766,West Coast Swing,Novice,follower,2,12,The Chicago Classic,34,2011,3,2011-03-01,2,
+7778,West Coast Swing,Advanced,follower,F,1,Swing City Chicago,34,2019,10,2019-10-01,Final,
 7766,West Coast Swing,Novice,follower,1,10,Toronto International Swing Dance,105,2011,2,2011-02-01,1,
 7766,West Coast Swing,Newcomer,follower,1,5,Toronto Open Swing & Hustle Championships,105,2010,7,2010-07-01,1,"Toronto, Canada"
 7764,West Coast Swing,Novice,leader,F,1,Canadian Swing Championships,86,2026,5,2026-05-01,Final,
@@ -73170,7 +73171,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 7778,West Coast Swing,Advanced,follower,2,8,SwingCouver,4,2020,1,2020-01-01,2,
 7778,West Coast Swing,Advanced,follower,4,4,Floorplay Swing Vacation,82,2019,12,2019-12-01,4,
 7778,West Coast Swing,Advanced,follower,5,2,US Open Swing Dance Championships,22,2019,12,2019-12-01,5,
-7778,West Coast Swing,Advanced,follower,F,1,Swing City Chicago,34,2019,10,2019-10-01,Final,
 7778,West Coast Swing,Advanced,follower,F,1,Wild Wild Westie,21,2019,7,2019-07-01,Final,
 7778,West Coast Swing,Advanced,follower,F,1,Liberty Swing Dance Championships,41,2019,6,2019-06-01,Final,
 7778,West Coast Swing,Advanced,follower,2,4,Dance Camp Chicago,114,2019,2,2019-02-01,2,
@@ -73668,6 +73668,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 7821,West Coast Swing,Advanced,leader,4,4,Warsaw Halloween Swing,155,2015,11,2015-11-01,4,
 7821,West Coast Swing,Advanced,leader,1,10,Italian Open,132,2015,10,2015-10-01,1,
 7821,West Coast Swing,Advanced,leader,1,5,Bavarian Open,129,2015,9,2015-09-01,1,"Munich, Germany"
+7835,West Coast Swing,Advanced,leader,5,1,Spooky Westie Weekend,159,2025,11,2025-11-01,5,
 7821,West Coast Swing,Advanced,leader,1,10,French Open West Coast Swing,109,2015,5,2015-05-01,1,
 7821,West Coast Swing,Advanced,leader,4,4,UK WCS Championships,107,2015,4,2015-04-01,4,
 7821,West Coast Swing,Advanced,leader,3,3,West in Lyon,156,2015,3,2015-03-01,3,"Lyon, France"
@@ -73791,7 +73792,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 7833,West Coast Swing,Novice,leader,F,1,Boogie By The Bay,2,2010,10,2010-10-01,Final,
 7833,West Coast Swing,Novice,leader,4,8,Palm Springs Summer Dance Classic,20,2010,9,2010-09-01,4,
 7833,West Coast Swing,Novice,leader,F,1,South Bay Dance Fling,16,2010,8,2010-08-01,Final,
-7835,West Coast Swing,Advanced,leader,5,1,Spooky Westie Weekend,159,2025,11,2025-11-01,5,
 7835,West Coast Swing,Intermediate,leader,1,15,Asia West Coast Swing Open,159,2025,4,2025-04-01,1,
 7835,West Coast Swing,Intermediate,leader,1,15,Korean Open WCS Championships,172,2025,4,2025-04-01,1,
 7835,West Coast Swing,Intermediate,leader,F,1,Korea Westival,213,2024,9,2024-09-01,Final,"Jeju, Republic of Korea"
@@ -75403,6 +75403,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 7917,West Coast Swing,Intermediate,follower,5,1,UCWDC Country Dance World Championship,21,2013,1,2013-01-01,5,
 7917,West Coast Swing,Novice,follower,2,8,Toronto Open Swing & Hustle Championships,105,2011,7,2011-07-01,2,"Toronto, Canada"
 7917,West Coast Swing,Novice,follower,2,12,Michigan Dance Classic,51,2011,6,2011-06-01,2,
+7918,West Coast Swing,All-Star,leader,F,1,Swing Fling,38,2023,8,2023-08-01,Final,"Herndon, VA, United States"
 7917,West Coast Swing,Novice,follower,F,1,Toronto International Swing Dance,105,2011,2,2011-02-01,Final,
 7917,West Coast Swing,Novice,follower,F,1,Swing Niagara Dance Championships,80,2010,9,2010-09-01,Final,
 7919,West Coast Swing,Intermediate,leader,5,6,Floorplay Swing Vacation,82,2023,1,2023-01-01,5,
@@ -75426,6 +75427,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 7920,West Coast Swing,Intermediate,leader,2,8,Swingin' New England Dance Festival,70,2012,11,2012-11-01,2,"Newton (Boston), MA, United States"
 7920,West Coast Swing,Intermediate,leader,2,8,Swing Niagara Dance Championships,80,2012,9,2012-09-01,2,
 7920,West Coast Swing,Intermediate,leader,4,2,Toronto Open Swing & Hustle Championships,105,2012,7,2012-07-01,4,"Toronto, Canada"
+7944,West Coast Swing,Intermediate,leader,4,2,Swingover,82,2018,3,2018-03-01,4,
 7920,West Coast Swing,Intermediate,leader,3,3,International Hustle & Salsa Congress,82,2012,4,2012-04-01,3,
 7920,West Coast Swing,Novice,leader,2,8,Montreal Westie Fest,86,2011,10,2011-10-01,2,"Montreal, Canada"
 7920,West Coast Swing,Novice,leader,3,3,Swing Niagara Dance Championships,80,2011,9,2011-09-01,3,
@@ -75462,7 +75464,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 7918,West Coast Swing,All-Star,leader,F,1,DC Swing eXperience (DCSX),38,2023,11,2023-11-01,Final,"Herndon, VA, United States"
 7918,West Coast Swing,All-Star,leader,F,1,Warsaw Halloween Swing,155,2023,10,2023-10-01,Final,
 7918,West Coast Swing,All-Star,leader,2,2,Montreal Westie Fest,86,2023,10,2023-10-01,2,"Montreal, Canada"
-7918,West Coast Swing,All-Star,leader,F,1,Swing Fling,38,2023,8,2023-08-01,Final,"Herndon, VA, United States"
 7918,West Coast Swing,All-Star,leader,3,1,Toronto Open Swing & Hustle Championships,105,2023,7,2023-07-01,3,"Toronto, Canada"
 7918,West Coast Swing,All-Star,leader,F,1,Liberty Swing Dance Championships,41,2023,7,2023-07-01,Final,
 7918,West Coast Swing,All-Star,leader,F,1,J&J O'Rama,23,2023,6,2023-06-01,Final,
@@ -75614,6 +75615,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 7925,West Coast Swing,Intermediate,follower,3,6,Swingin' New England Dance Festival,70,2012,11,2012-11-01,3,"Newton (Boston), MA, United States"
 7925,West Coast Swing,Novice,follower,3,3,Toronto Open Swing & Hustle Championships,105,2012,7,2012-07-01,3,"Toronto, Canada"
 7925,West Coast Swing,Novice,follower,F,1,Boston Dance Challenge,8,2012,7,2012-07-01,Final,
+7942,West Coast Swing,Master,leader,2,2,Indy Dance Explosion,138,2025,6,2025-06-01,2,
 7925,West Coast Swing,Novice,follower,5,6,Liberty Swing Dance Championships,41,2012,6,2012-06-01,5,
 7925,West Coast Swing,Novice,follower,F,1,MADjam,13,2012,3,2012-03-01,Final,
 7925,West Coast Swing,Novice,follower,F,1,Swingin' New England Dance Festival,70,2011,11,2011-11-01,Final,"Newton (Boston), MA, United States"
@@ -75677,7 +75679,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 7944,West Coast Swing,Intermediate,leader,F,1,Swingover,82,2019,3,2019-03-01,Final,
 7944,West Coast Swing,Intermediate,leader,F,1,Floorplay Swing Vacation,82,2019,1,2019-01-01,Final,
 7944,West Coast Swing,Intermediate,leader,1,6,Florida Dance Magic,55,2018,7,2018-07-01,1,
-7944,West Coast Swing,Intermediate,leader,4,2,Swingover,82,2018,3,2018-03-01,4,
 7944,West Coast Swing,Intermediate,leader,F,1,Sweetheart Swing Classic,53,2018,2,2018-02-01,Final,
 7944,West Coast Swing,Intermediate,leader,4,4,Derby City Swing,116,2018,1,2018-01-01,4,
 7944,West Coast Swing,Intermediate,leader,1,5,Florida Westie Fest,53,2017,11,2017-11-01,1,
@@ -75741,7 +75742,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 7942,West Coast Swing,Novice,leader,F,1,USA Jack & Jill Championships,43,2011,4,2011-04-01,Final,
 7942,West Coast Swing,Newcomer,leader,2,8,Tampa Bay Classic,53,2010,11,2010-11-01,2,
 7942,West Coast Swing,Master,leader,5,2,Meet Me In St Louis,49,2025,9,2025-09-01,5,
-7942,West Coast Swing,Master,leader,2,2,Indy Dance Explosion,138,2025,6,2025-06-01,2,
 7942,West Coast Swing,Master,leader,2,2,Chicagoland Country and Swing Dance Festival,34,2024,8,2024-08-01,2,
 7942,West Coast Swing,Master,leader,3,1,Derby City Swing,116,2024,1,2024-01-01,3,
 7942,West Coast Swing,Master,leader,1,3,CASH Bash,96,2023,11,2023-11-01,1,
@@ -77230,6 +77230,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 8077,West Coast Swing,Intermediate,leader,5,2,Swingtimate,169,2014,12,2014-12-01,5,
 8077,West Coast Swing,Intermediate,leader,F,1,Swingsation,169,2014,5,2014-05-01,Final,"Gold Coast, Australia"
 8077,West Coast Swing,Intermediate,leader,2,4,Best of the Best WCS,117,2014,2,2014-02-01,2,"Sydney, Australia"
+8099,West Coast Swing,All-Star,follower,2,8,5280 Westival,29,2021,11,2021-11-01,2,
 8077,West Coast Swing,Intermediate,leader,F,1,Australian Open Swing Dance Championships,174,2013,10,2013-10-01,Final,
 8077,West Coast Swing,Intermediate,leader,3,6,Swingsation,169,2013,5,2013-05-01,3,"Gold Coast, Australia"
 8077,West Coast Swing,Intermediate,leader,3,3,Best of the Best WCS,117,2013,1,2013-01-01,3,"Sydney, Australia"
@@ -77290,7 +77291,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 8099,West Coast Swing,All-Star,follower,F,1,Monterey SwingFest,1,2022,1,2022-01-01,Final,
 8099,West Coast Swing,All-Star,follower,F,1,BudaFest Open WCS Championships,110,2022,1,2022-01-01,Final,
 8099,West Coast Swing,All-Star,follower,1,10,The After Party (TAP),73,2021,12,2021-12-01,1,
-8099,West Coast Swing,All-Star,follower,2,8,5280 Westival,29,2021,11,2021-11-01,2,
 8099,West Coast Swing,All-Star,follower,5,2,Atlanta Swing Classic,25,2021,10,2021-10-01,5,
 8099,West Coast Swing,All-Star,follower,4,4,Wild Wild Westie,21,2021,7,2021-07-01,4,
 8099,West Coast Swing,All-Star,follower,F,1,Rose City Swing,4,2020,2,2020-02-01,Final,
@@ -77554,6 +77554,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 8109,West Coast Swing,Master,leader,4,2,UCWDC Country Dance World Championship,21,2026,1,2026-01-01,4,
 8109,West Coast Swing,Master,leader,1,6,Mountain Magic,28,2024,11,2024-11-01,1,
 8109,West Coast Swing,Master,leader,F,1,Desert City Swing,3,2024,9,2024-09-01,Final,
+8109,West Coast Swing,Master,leader,F,1,FreZno Dance Classic,5,2012,5,2012-05-01,Final,
 8109,West Coast Swing,Master,leader,4,2,Spotlight New Year's Celebration,43,2024,1,2024-01-01,4,
 8109,West Coast Swing,Master,leader,F,1,US Open Swing Dance Championships,22,2023,11,2023-11-01,Final,
 8109,West Coast Swing,Master,leader,4,4,Paradise Dance Festival,19,2023,10,2023-10-01,4,
@@ -77617,7 +77618,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 8109,West Coast Swing,Master,leader,3,3,Colorado Country Classic,29,2013,6,2013-06-01,3,
 8109,West Coast Swing,Master,leader,2,4,5280 Westival,29,2013,3,2013-03-01,2,
 8109,West Coast Swing,Master,leader,5,1,Colorado Country Classic,29,2012,6,2012-06-01,5,
-8109,West Coast Swing,Master,leader,F,1,FreZno Dance Classic,5,2012,5,2012-05-01,Final,
 8109,West Coast Swing,Sophisticated,leader,2,2,South Bay Dance Fling,16,2023,9,2023-09-01,2,
 8111,West Coast Swing,Intermediate,follower,1,15,Capital Swing Dance Convention,6,2014,2,2014-02-01,1,
 8111,West Coast Swing,Intermediate,follower,3,6,The After Party (TAP),73,2013,12,2013-12-01,3,
@@ -80106,6 +80106,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 8344,West Coast Swing,Advanced,leader,5,1,Swing Escape,209,2018,3,2018-03-01,5,
 8344,West Coast Swing,Advanced,leader,1,5,Swingtimate,169,2017,12,2017-12-01,1,
 8344,West Coast Swing,Advanced,leader,2,4,New Zealand Open Swing Dance Championships,168,2017,7,2017-07-01,2,"Auckland, New Zealand"
+8346,West Coast Swing,Novice,follower,1,15,Swingsation,169,2013,5,2013-05-01,1,"Gold Coast, Australia"
 8344,West Coast Swing,Advanced,leader,1,5,NSW West Coast Swing Dance Championships,117,2017,6,2017-06-01,1,
 8344,West Coast Swing,Advanced,leader,2,4,Swingsation,169,2017,5,2017-05-01,2,"Gold Coast, Australia"
 8344,West Coast Swing,Advanced,leader,1,10,Asia West Coast Swing Open,159,2017,4,2017-04-01,1,
@@ -80167,7 +80168,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 8346,West Coast Swing,Intermediate,follower,4,2,Australian Open Swing Dance Championships,174,2013,10,2013-10-01,4,
 8346,West Coast Swing,Intermediate,follower,F,1,4TH of July Convention,3,2013,7,2013-07-01,Final,
 8346,West Coast Swing,Intermediate,follower,2,4,NSW West Coast Swing Dance Championships,117,2013,6,2013-06-01,2,
-8346,West Coast Swing,Novice,follower,1,15,Swingsation,169,2013,5,2013-05-01,1,"Gold Coast, Australia"
 8346,West Coast Swing,Novice,follower,F,1,Best of the Best WCS,117,2013,1,2013-01-01,Final,"Sydney, Australia"
 8346,West Coast Swing,Novice,follower,F,1,Australian Open Swing Dance Championships,174,2012,10,2012-10-01,Final,
 8346,West Coast Swing,Novice,follower,2,8,NSW West Coast Swing Dance Championships,117,2012,6,2012-06-01,2,
@@ -80413,6 +80413,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 8374,West Coast Swing,Advanced,follower,2,4,Westy Nantes,190,2019,4,2019-04-01,2,"Nantes, France"
 8374,West Coast Swing,Advanced,follower,2,4,Italian Open,132,2017,10,2017-10-01,2,
 8374,West Coast Swing,Advanced,follower,5,1,Dutch Open West Coast Swing,227,2017,3,2017-03-01,5,"Venray, Netherlands"
+8381,West Coast Swing,Intermediate,follower,5,6,Boogie By The Bay,2,2012,10,2012-10-01,5,
 8374,West Coast Swing,Intermediate,follower,3,10,BudaFest Open WCS Championships,110,2017,1,2017-01-01,3,
 8374,West Coast Swing,Intermediate,follower,3,6,New Year's Swing Fling,107,2017,1,2017-01-01,3,
 8374,West Coast Swing,Intermediate,follower,F,1,Berlin Swing Revolution,194,2016,12,2016-12-01,Final,"Berlin, Germany"
@@ -80473,7 +80474,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 8381,West Coast Swing,Intermediate,follower,F,1,SwingDiego,10,2013,5,2013-05-01,Final,
 8381,West Coast Swing,Intermediate,follower,5,6,City of Angels WCS,54,2013,4,2013-04-01,5,
 8381,West Coast Swing,Intermediate,follower,F,1,Chico Dance Sensation,101,2012,12,2012-12-01,Final,
-8381,West Coast Swing,Intermediate,follower,5,6,Boogie By The Bay,2,2012,10,2012-10-01,5,
 8381,West Coast Swing,Intermediate,follower,F,1,South Bay Dance Fling,16,2012,9,2012-09-01,Final,
 8381,West Coast Swing,Intermediate,follower,F,1,Easter Swing,30,2012,4,2012-04-01,Final,
 8381,West Coast Swing,Novice,follower,4,8,City of Angels WCS,54,2012,4,2012-04-01,4,
@@ -81020,6 +81020,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 8436,West Coast Swing,Newcomer,leader,F,1,Boston Tea Party,8,2012,3,2012-03-01,Final,
 8436,West Coast Swing,Newcomer,leader,F,1,Freedom Swing Dance Challenge,66,2012,1,2012-01-01,Final,"Wilmington, DE, United States"
 8436,West Coast Swing,Newcomer,leader,F,1,Swingin' New England Dance Festival,70,2011,11,2011-11-01,Final,"Newton (Boston), MA, United States"
+8442,West Coast Swing,Master,follower,5,2,Paradise Dance Festival,19,2025,10,2025-10-01,5,
 8436,West Coast Swing,Newcomer,leader,F,1,Liberty Swing Dance Championships,41,2011,6,2011-06-01,Final,
 8437,West Coast Swing,Newcomer,follower,F,1,Freedom Swing Dance Challenge,66,2012,1,2012-01-01,Final,"Wilmington, DE, United States"
 8437,West Coast Swing,Newcomer,follower,F,1,Liberty Swing Dance Championships,41,2011,6,2011-06-01,Final,
@@ -81080,7 +81081,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 8442,West Coast Swing,Master,follower,F,1,Monterey SwingFest,1,2026,1,2026-01-01,Final,
 8442,West Coast Swing,Master,follower,2,2,SwingCouver,4,2026,1,2026-01-01,2,
 8442,West Coast Swing,Master,follower,5,1,Halloween SwingThing,24,2025,10,2025-10-01,5,
-8442,West Coast Swing,Master,follower,5,2,Paradise Dance Festival,19,2025,10,2025-10-01,5,
 8442,West Coast Swing,Master,follower,F,1,Desert City Swing,3,2025,9,2025-09-01,Final,
 8442,West Coast Swing,Master,follower,1,10,SOswing,88,2025,5,2025-05-01,1,
 8442,West Coast Swing,Master,follower,F,1,High Desert Dance Classic,18,2025,3,2025-03-01,Final,
@@ -81536,6 +81536,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 8484,West Coast Swing,Novice,follower,5,6,Meet Me In St Louis,49,2014,9,2014-09-01,5,
 8484,West Coast Swing,Novice,follower,F,1,Chicagoland Country and Swing Dance Festival,34,2014,8,2014-08-01,Final,
 8484,West Coast Swing,Newcomer,follower,3,6,Meet Me In St Louis,49,2011,9,2011-09-01,3,
+8502,West Coast Swing,Novice,follower,F,1,Swingtime in the Rockies,29,2011,7,2011-07-01,Final,
 8484,West Coast Swing,Newcomer,follower,4,2,Wisconsin Dance Challenge/Midwest Area Swing Dance Challenge,61,2011,7,2011-07-01,4,
 8486,West Coast Swing,Newcomer,follower,5,1,Wisconsin Dance Challenge/Midwest Area Swing Dance Challenge,61,2011,7,2011-07-01,5,
 8487,West Coast Swing,Advanced,follower,F,1,Michigan Dance Classic,51,2014,6,2014-06-01,Final,
@@ -81656,7 +81657,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 8499,West Coast Swing,Novice,follower,F,1,Colorado Country Classic,29,2012,6,2012-06-01,Final,
 8499,West Coast Swing,Novice,follower,2,12,Swingtime in the Rockies,29,2011,7,2011-07-01,2,
 8499,West Coast Swing,Sophisticated,follower,2,8,5280 Westival,29,2024,3,2024-03-01,2,
-8502,West Coast Swing,Novice,follower,F,1,Swingtime in the Rockies,29,2011,7,2011-07-01,Final,
 8503,West Coast Swing,Novice,leader,2,12,Desert City Swing,3,2014,9,2014-09-01,2,
 8503,West Coast Swing,Novice,leader,F,1,Desert City Swing,3,2012,9,2012-09-01,Final,
 8503,West Coast Swing,Novice,leader,F,1,Swingtime in the Rockies,29,2012,7,2012-07-01,Final,
@@ -81815,6 +81815,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 8511,West Coast Swing,Advanced,leader,F,1,MADjam,13,2017,3,2017-03-01,Final,
 8511,West Coast Swing,Advanced,leader,3,6,Countdown Swing Boston,8,2017,1,2017-01-01,3,"Boston, MA, United States"
 8511,West Coast Swing,Advanced,leader,2,8,DC Swing eXperience (DCSX),38,2016,11,2016-11-01,2,"Herndon, VA, United States"
+8522,West Coast Swing,Advanced,leader,F,1,SwingDiego,10,2014,5,2014-05-01,Final,
 8511,West Coast Swing,Advanced,leader,F,1,Swingin' New England Dance Festival,70,2016,11,2016-11-01,Final,"Newton (Boston), MA, United States"
 8511,West Coast Swing,Advanced,leader,1,5,Philly Swing Classic,66,2016,9,2016-09-01,1,"Wilmington, DE, United States"
 8511,West Coast Swing,Advanced,leader,F,1,Summer Hummer,397,2016,8,2016-08-01,Final,"Woburn (Boston), MA, United States"
@@ -81939,7 +81940,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 8522,West Coast Swing,All-Star,leader,1,5,Michigan Dance Classic,51,2014,6,2014-06-01,1,
 8522,West Coast Swing,All-Star,leader,2,4,Austin Swing Dance Championships,39,2014,4,2014-04-01,2,
 8522,West Coast Swing,Advanced,leader,1,10,The Challenge,21,2014,12,2014-12-01,1,
-8522,West Coast Swing,Advanced,leader,F,1,SwingDiego,10,2014,5,2014-05-01,Final,
 8522,West Coast Swing,Advanced,leader,F,1,MADjam,13,2014,3,2014-03-01,Final,
 8522,West Coast Swing,Advanced,leader,3,6,Americas Classic,44,2014,1,2014-01-01,3,
 8522,West Coast Swing,Advanced,leader,5,2,US Open Swing Dance Championships,22,2013,12,2013-12-01,5,
@@ -82746,6 +82746,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 8598,West Coast Swing,Novice,follower,F,1,Meet Me In St Louis,49,2011,9,2011-09-01,Final,
 8598,West Coast Swing,Novice,follower,3,6,Chicagoland Country and Swing Dance Festival,34,2011,8,2011-08-01,3,
 8598,West Coast Swing,Novice,follower,F,1,CASH Bash,96,2007,11,2007-11-01,Final,
+8599,West Coast Swing,Master,leader,1,10,4TH of July Convention,3,2025,7,2025-07-01,1,
 8598,West Coast Swing,Novice,follower,5,2,Chicagoland Country and Swing Dance Festival,34,2007,8,2007-08-01,5,
 8598,West Coast Swing,Novice,follower,F,1,Motown Dance Championships,51,2007,4,2007-04-01,Final,
 8601,West Coast Swing,Intermediate,follower,F,1,Novice Invitational,44,2015,3,2015-03-01,Final,
@@ -82808,7 +82809,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 8599,West Coast Swing,Master,leader,1,10,Trilogy Swing,63,2025,9,2025-09-01,1,
 8599,West Coast Swing,Master,leader,5,2,Desert City Swing,3,2025,9,2025-09-01,5,
 8599,West Coast Swing,Master,leader,4,2,Swingtime in the Rockies,29,2025,8,2025-08-01,4,
-8599,West Coast Swing,Master,leader,1,10,4TH of July Convention,3,2025,7,2025-07-01,1,
 8599,West Coast Swing,Master,leader,2,2,Colorado Country Classic,29,2025,6,2025-06-01,2,
 8599,West Coast Swing,Master,leader,1,6,USA Grand Nationals,25,2025,5,2025-05-01,1,
 8599,West Coast Swing,Master,leader,1,3,5280 Westival,29,2025,3,2025-03-01,1,
@@ -84355,6 +84355,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 8724,West Coast Swing,Intermediate,follower,F,1,Palm Springs Summer Dance Classic,20,2015,8,2015-08-01,Final,
 8724,West Coast Swing,Intermediate,follower,5,2,FreZno Dance Classic,5,2015,5,2015-05-01,5,
 8724,West Coast Swing,Intermediate,follower,F,1,High Desert Dance Classic,18,2015,3,2015-03-01,Final,
+8724,West Coast Swing,Master,follower,5,2,City of Angels WCS,54,2018,4,2018-04-01,5,
 8724,West Coast Swing,Intermediate,follower,F,1,Paradise Dance Festival,19,2014,10,2014-10-01,Final,
 8724,West Coast Swing,Intermediate,follower,F,1,FreZno Dance Classic,5,2014,5,2014-05-01,Final,
 8724,West Coast Swing,Intermediate,follower,4,4,Paradise Dance Festival,19,2013,10,2013-10-01,4,
@@ -84419,7 +84420,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 8724,West Coast Swing,Master,follower,4,2,4TH of July Convention,3,2018,7,2018-07-01,4,
 8724,West Coast Swing,Master,follower,4,4,J&J O'Rama,23,2018,6,2018-06-01,4,
 8724,West Coast Swing,Master,follower,3,6,FreZno Dance Classic,5,2018,5,2018-05-01,3,
-8724,West Coast Swing,Master,follower,5,2,City of Angels WCS,54,2018,4,2018-04-01,5,
 8724,West Coast Swing,Master,follower,3,6,Easter Swing,30,2018,4,2018-04-01,3,
 8724,West Coast Swing,Master,follower,4,2,Palm Springs New Years Swing Dance Classic,20,2018,1,2018-01-01,4,
 8724,West Coast Swing,Master,follower,F,1,Halloween SwingThing,24,2017,10,2017-10-01,Final,
@@ -86073,6 +86073,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 8888,West Coast Swing,Intermediate,leader,F,1,Palm Springs Summer Dance Classic,20,2012,8,2012-08-01,Final,
 8888,West Coast Swing,Intermediate,leader,4,4,Florida Dance Magic,55,2012,7,2012-07-01,4,
 8888,West Coast Swing,Novice,leader,1,10,Boston Dance Challenge,8,2012,7,2012-07-01,1,
+8902,West Coast Swing,Intermediate,follower,F,1,MADjam,13,2013,3,2013-03-01,Final,
 8888,West Coast Swing,Novice,leader,F,1,Liberty Swing Dance Championships,41,2012,6,2012-06-01,Final,
 8888,West Coast Swing,Novice,leader,F,1,Russian Open WCS Championships,113,2012,3,2012-03-01,Final,
 8888,West Coast Swing,Novice,leader,3,10,London SwingVitational,212,2011,11,2011-11-01,3,
@@ -86152,6 +86153,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 8893,West Coast Swing,Advanced,follower,2,4,Swing Dance America,89,2015,4,2015-04-01,2,
 8893,West Coast Swing,Intermediate,follower,1,15,Easter Swing,30,2015,4,2015-04-01,1,
 8893,West Coast Swing,Intermediate,follower,F,1,Dance Camp Chicago,114,2015,3,2015-03-01,Final,
+8899,West Coast Swing,Intermediate,leader,3,3,Swingapalooza,40,2015,6,2015-06-01,3,
 8893,West Coast Swing,Intermediate,follower,2,12,Austin Swing Dance Championships,39,2015,1,2015-01-01,2,
 8893,West Coast Swing,Intermediate,follower,1,5,Florida Dance Magic,55,2014,7,2014-07-01,1,
 8893,West Coast Swing,Intermediate,follower,F,1,Dance Mardi Gras,57,2014,7,2014-07-01,Final,
@@ -86194,6 +86196,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 8897,West Coast Swing,Novice,leader,F,1,French Open West Coast Swing,109,2013,5,2013-05-01,Final,
 8897,West Coast Swing,Novice,leader,F,1,BudaFest Open WCS Championships,110,2013,1,2013-01-01,Final,
 8897,West Coast Swing,Novice,leader,F,1,US Open Swing Dance Championships,22,2012,11,2012-11-01,Final,
+8902,West Coast Swing,Novice,follower,1,10,Floorplay Swing Vacation,82,2013,1,2013-01-01,1,
 8897,West Coast Swing,Novice,leader,F,1,French Open West Coast Swing,109,2012,5,2012-05-01,Final,
 8897,West Coast Swing,Novice,leader,F,1,Americas Classic,44,2012,1,2012-01-01,Final,
 8898,West Coast Swing,Novice,leader,F,1,Novice Invitational,44,2012,3,2012-03-01,Final,
@@ -86215,7 +86218,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 8899,West Coast Swing,Advanced,leader,3,3,Novice Invitational,44,2016,3,2016-03-01,3,
 8899,West Coast Swing,Advanced,leader,F,1,5280 Westival,29,2016,2,2016-02-01,Final,
 8899,West Coast Swing,Advanced,leader,F,1,Desert City Swing,3,2015,9,2015-09-01,Final,
-8899,West Coast Swing,Intermediate,leader,3,3,Swingapalooza,40,2015,6,2015-06-01,3,
 8899,West Coast Swing,Intermediate,leader,3,3,The Texas Classic,39,2015,5,2015-05-01,3,
 8899,West Coast Swing,Intermediate,leader,4,8,City of Angels WCS,54,2015,4,2015-04-01,4,
 8899,West Coast Swing,Intermediate,leader,2,4,Novice Invitational,44,2015,3,2015-03-01,2,
@@ -86257,8 +86259,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 8902,West Coast Swing,Intermediate,follower,F,1,Atlanta Swing Classic,25,2013,10,2013-10-01,Final,
 8902,West Coast Swing,Intermediate,follower,F,1,Swing Fling,38,2013,8,2013-08-01,Final,"Herndon, VA, United States"
 8902,West Coast Swing,Intermediate,follower,4,4,USA Grand Nationals,25,2013,5,2013-05-01,4,
-8902,West Coast Swing,Intermediate,follower,F,1,MADjam,13,2013,3,2013-03-01,Final,
-8902,West Coast Swing,Novice,follower,1,10,Floorplay Swing Vacation,82,2013,1,2013-01-01,1,
 8902,West Coast Swing,Novice,follower,F,1,DC Swing eXperience (DCSX),38,2012,11,2012-11-01,Final,"Herndon, VA, United States"
 8902,West Coast Swing,Novice,follower,F,1,River City Swing,98,2012,9,2012-09-01,Final,
 8902,West Coast Swing,Novice,follower,F,1,Swing Fling,38,2012,8,2012-08-01,Final,"Herndon, VA, United States"
@@ -87060,6 +87060,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 9002,West Coast Swing,Advanced,follower,4,2,UCWDC Country Dance World Championship,21,2017,1,2017-01-01,4,
 9002,West Coast Swing,Advanced,follower,3,3,CASH Bash,96,2016,11,2016-11-01,3,
 9002,West Coast Swing,Advanced,follower,F,1,Meet Me In St Louis,49,2016,9,2016-09-01,Final,
+9003,West Coast Swing,Advanced,follower,1,5,West in Lyon,156,2015,3,2015-03-01,1,"Lyon, France"
 9002,West Coast Swing,Advanced,follower,2,4,Chicagoland Country and Swing Dance Festival,34,2016,8,2016-08-01,2,
 9002,West Coast Swing,Advanced,follower,3,3,Florida Dance Magic,55,2016,7,2016-07-01,3,
 9002,West Coast Swing,Advanced,follower,4,2,Orange Blossom Dance Festival,82,2016,6,2016-06-01,4,
@@ -87121,7 +87122,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 9003,West Coast Swing,Advanced,follower,1,5,Midland Swing Open,107,2015,9,2015-09-01,1,
 9003,West Coast Swing,Advanced,follower,1,10,French Open West Coast Swing,109,2015,5,2015-05-01,1,
 9003,West Coast Swing,Advanced,follower,2,8,UK WCS Championships,107,2015,4,2015-04-01,2,
-9003,West Coast Swing,Advanced,follower,1,5,West in Lyon,156,2015,3,2015-03-01,1,"Lyon, France"
 9003,West Coast Swing,Advanced,follower,F,1,BudaFest Open WCS Championships,110,2015,1,2015-01-01,Final,
 9003,West Coast Swing,Advanced,follower,1,5,New Year's Swing Fling,107,2015,1,2015-01-01,1,
 9003,West Coast Swing,Advanced,follower,2,4,Halloween SwingThing,24,2014,10,2014-10-01,2,
@@ -89171,6 +89171,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 9149,West Coast Swing,Intermediate,leader,5,2,New Zealand Open Swing Dance Championships,168,2024,11,2024-11-01,5,"Auckland, New Zealand"
 9149,West Coast Swing,Intermediate,leader,F,1,Asia West Coast Swing Open,159,2024,4,2024-04-01,Final,
 9149,West Coast Swing,Intermediate,leader,F,1,Simply Adelaide West Coast Swing,236,2023,10,2023-10-01,Final,
+9155,West Coast Swing,Novice,leader,F,1,Swingtime in the Rockies,29,2015,7,2015-07-01,Final,
 9149,West Coast Swing,Intermediate,leader,F,1,New Zealand Open Swing Dance Championships,168,2023,10,2023-10-01,Final,"Auckland, New Zealand"
 9149,West Coast Swing,Intermediate,leader,4,2,Best of the Best WCS,117,2023,9,2023-09-01,4,"Sydney, Australia"
 9149,West Coast Swing,Intermediate,leader,1,10,Korean Open WCS Championships,172,2023,4,2023-04-01,1,
@@ -89231,7 +89232,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 9153,West Coast Swing,Newcomer,leader,3,3,Swingsation,169,2012,5,2012-05-01,3,"Gold Coast, Australia"
 9153,West Coast Swing,Sophisticated,leader,4,4,Odyssey West Coast Swing,169,2024,7,2024-07-01,4,
 9153,West Coast Swing,Sophisticated,leader,1,6,Odyssey West Coast Swing,169,2023,7,2023-07-01,1,
-9155,West Coast Swing,Novice,leader,F,1,Swingtime in the Rockies,29,2015,7,2015-07-01,Final,
 9155,West Coast Swing,Novice,leader,F,1,NSW West Coast Swing Dance Championships,117,2015,6,2015-06-01,Final,
 9155,West Coast Swing,Newcomer,leader,3,3,Australian Open Swing Dance Championships,174,2012,10,2012-10-01,3,
 9155,West Coast Swing,Newcomer,leader,4,2,Swingsation,169,2012,5,2012-05-01,4,"Gold Coast, Australia"
@@ -90455,6 +90455,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 9288,West Coast Swing,Novice,follower,2,8,Detonation Dance,166,2014,4,2014-04-01,2,
 9288,West Coast Swing,Novice,follower,F,1,UK WCS Championships,107,2014,4,2014-04-01,Final,
 9288,West Coast Swing,Novice,follower,F,1,Summer Hummer,397,2013,8,2013-08-01,Final,"Woburn (Boston), MA, United States"
+9303,West Coast Swing,Novice,follower,F,1,City of Angels WCS,54,2013,4,2013-04-01,Final,
 9288,West Coast Swing,Novice,follower,2,8,New Zealand Open Swing Dance Championships,168,2012,10,2012-10-01,2,"Auckland, New Zealand"
 9288,West Coast Swing,Novice,follower,4,4,Swingin in the Valley,117,2012,7,2012-07-01,4,
 9289,West Coast Swing,Intermediate,leader,4,4,US Open Swing Dance Championships,22,2019,12,2019-12-01,4,
@@ -90577,7 +90578,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 9303,West Coast Swing,Intermediate,follower,F,1,Palm Springs New Years Swing Dance Classic,20,2014,1,2014-01-01,Final,
 9303,West Coast Swing,Novice,follower,4,8,Boogie By The Bay,2,2013,10,2013-10-01,4,
 9303,West Coast Swing,Novice,follower,F,1,Palm Springs Summer Dance Classic,20,2013,8,2013-08-01,Final,
-9303,West Coast Swing,Novice,follower,F,1,City of Angels WCS,54,2013,4,2013-04-01,Final,
 9303,West Coast Swing,Novice,follower,F,1,Capital Swing Dance Convention,6,2013,2,2013-02-01,Final,
 9303,West Coast Swing,Novice,follower,F,1,Palm Springs New Years Swing Dance Classic,20,2013,1,2013-01-01,Final,
 9303,West Coast Swing,Novice,follower,5,2,US Open Swing Dance Championships,22,2012,11,2012-11-01,5,
@@ -91938,6 +91938,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 9416,West Coast Swing,Novice,follower,F,1,Austin Swing Dance Championships,39,2014,4,2014-04-01,Final,
 9416,West Coast Swing,Novice,follower,3,10,Novice Invitational,44,2014,3,2014-03-01,3,
 9416,West Coast Swing,Newcomer,follower,5,2,Lone Star Invitational,39,2012,8,2012-08-01,5,
+9424,West Coast Swing,Novice,leader,F,1,UK WCS Championships,107,2013,4,2013-04-01,Final,
 9416,West Coast Swing,Master,follower,F,1,Floorplay Swing Vacation,82,2025,1,2025-01-01,Final,
 9416,West Coast Swing,Master,follower,F,1,River City Swing,98,2024,9,2024-09-01,Final,
 9416,West Coast Swing,Master,follower,F,1,Swingover,82,2024,4,2024-04-01,Final,
@@ -92000,7 +92001,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 9424,West Coast Swing,Intermediate,leader,3,6,Austin Swing Dance Championships,39,2014,4,2014-04-01,3,
 9424,West Coast Swing,Novice,leader,3,6,Lone Star Invitational,39,2013,8,2013-08-01,3,
 9424,West Coast Swing,Novice,leader,F,1,Swingtime in the Rockies,29,2013,7,2013-07-01,Final,
-9424,West Coast Swing,Novice,leader,F,1,UK WCS Championships,107,2013,4,2013-04-01,Final,
 9424,West Coast Swing,Novice,leader,5,2,Scottish WCS Dance Championships,206,2013,2,2013-02-01,5,
 9424,West Coast Swing,Novice,leader,5,6,Americas Classic,44,2013,1,2013-01-01,5,
 9424,West Coast Swing,Novice,leader,F,1,Lone Star Invitational,39,2012,8,2012-08-01,Final,
@@ -92303,6 +92303,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 9467,West Coast Swing,Intermediate,leader,5,1,Show Me Showdown,49,2014,5,2014-05-01,5,
 9467,West Coast Swing,Intermediate,leader,1,5,Lone Star Invitational,39,2013,8,2013-08-01,1,
 9467,West Coast Swing,Intermediate,leader,4,2,The Texas Classic,39,2013,5,2013-05-01,4,
+9470,West Coast Swing,All-Star,leader,F,1,4TH of July Convention,3,2016,7,2016-07-01,Final,
 9467,West Coast Swing,Intermediate,leader,3,6,Austin Swing Dance Championships,39,2013,4,2013-04-01,3,
 9467,West Coast Swing,Novice,leader,1,10,Tulsa Spring Swing,58,2013,3,2013-03-01,1,
 9467,West Coast Swing,Novice,leader,2,12,Dallas D.A.N.C.E.,21,2012,9,2012-09-01,2,
@@ -92366,7 +92367,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 9470,West Coast Swing,All-Star,leader,5,2,Bridgetown Swing Boogie,74,2016,10,2016-10-01,5,
 9470,West Coast Swing,All-Star,leader,F,1,Boogie By The Bay,2,2016,10,2016-10-01,Final,
 9470,West Coast Swing,All-Star,leader,3,3,River City Swing,98,2016,9,2016-09-01,3,
-9470,West Coast Swing,All-Star,leader,F,1,4TH of July Convention,3,2016,7,2016-07-01,Final,
 9470,West Coast Swing,All-Star,leader,F,1,Easter Swing,30,2016,3,2016-03-01,Final,
 9470,West Coast Swing,All-Star,leader,1,10,Austin Swing Dance Championships,39,2016,1,2016-01-01,1,
 9470,West Coast Swing,All-Star,leader,4,2,Palm Springs New Years Swing Dance Classic,20,2016,1,2016-01-01,4,
@@ -92631,6 +92631,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 9494,West Coast Swing,Novice,follower,4,4,Detonation Dance,166,2013,4,2013-04-01,4,
 9494,West Coast Swing,Novice,follower,F,1,Scottish WCS Dance Championships,206,2013,2,2013-02-01,Final,
 9494,West Coast Swing,Novice,follower,2,8,World Swing Masters,207,2012,8,2012-08-01,2,
+9501,West Coast Swing,Advanced,follower,2,2,Neverland Swing,191,2019,7,2019-07-01,2,
 9494,West Coast Swing,Sophisticated,follower,F,1,Global Grand Prix - West Coast Swing Reunion,208,2023,12,2023-12-01,Final,
 9495,West Coast Swing,Novice,leader,F,1,Warsaw Summer Nights Westival,155,2025,8,2025-08-01,Final,"Warsaw, Poland"
 9495,West Coast Swing,Intermediate,follower,5,6,SwingVester,197,2026,1,2026-01-01,5,"Wels, Austria"
@@ -92694,7 +92695,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 9499,West Coast Swing,Novice,follower,F,1,World Swing Masters,207,2012,8,2012-08-01,Final,
 9501,West Coast Swing,Novice,leader,2,8,Rock the Barn,215,2015,7,2015-07-01,2,"Umeå, Sweden"
 9501,West Coast Swing,Advanced,follower,2,4,Finnfest,204,2022,9,2022-09-01,2,
-9501,West Coast Swing,Advanced,follower,2,2,Neverland Swing,191,2019,7,2019-07-01,2,
 9501,West Coast Swing,Advanced,follower,2,2,Winter Coast Swing,269,2019,2,2019-02-01,2,"Kuopio, Finland"
 9501,West Coast Swing,Advanced,follower,1,3,Swing Resolution,177,2019,1,2019-01-01,1,
 9501,West Coast Swing,Advanced,follower,1,3,Swedish Swing Summer Camp,199,2018,8,2018-08-01,1,"Stockholm, Sweden"
@@ -94104,6 +94104,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 9633,West Coast Swing,Advanced,leader,1,6,Swing Dance America,89,2023,5,2023-05-01,1,
 9633,West Coast Swing,Advanced,leader,3,1,5280 Westival,29,2023,3,2023-03-01,3,
 9633,West Coast Swing,Advanced,leader,2,8,The Chicago Classic,34,2023,3,2023-03-01,2,
+9633,West Coast Swing,Master,leader,1,15,Desert City Swing,3,2022,9,2022-09-01,1,
 9633,West Coast Swing,Advanced,leader,1,3,UCWDC Country Dance World Championship,21,2023,1,2023-01-01,1,
 9633,West Coast Swing,Advanced,leader,3,3,Mountain Magic,28,2022,11,2022-11-01,3,
 9633,West Coast Swing,Intermediate,leader,4,4,US Open Swing Dance Championships,22,2018,11,2018-11-01,4,
@@ -94167,7 +94168,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 9633,West Coast Swing,Master,leader,5,2,Halloween SwingThing,24,2022,10,2022-10-01,5,
 9633,West Coast Swing,Master,leader,2,4,Paradise Dance Festival,19,2022,10,2022-10-01,2,
 9633,West Coast Swing,Master,leader,F,1,Boogie By The Bay,2,2022,10,2022-10-01,Final,
-9633,West Coast Swing,Master,leader,1,15,Desert City Swing,3,2022,9,2022-09-01,1,
 9633,West Coast Swing,Master,leader,1,6,Swingtacular: The Galactic Open,2,2022,8,2022-08-01,1,
 9633,West Coast Swing,Master,leader,4,2,Easter Swing,30,2022,4,2022-04-01,4,
 9633,West Coast Swing,Master,leader,4,2,The After Party (TAP),73,2021,12,2021-12-01,4,
@@ -94974,6 +94974,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 9731,West Coast Swing,Intermediate,leader,F,1,Swing & Snow,222,2020,2,2020-02-01,Final,
 9731,West Coast Swing,Intermediate,leader,F,1,Shooba Dooba Swing,113,2019,12,2019-12-01,Final,
 9731,West Coast Swing,Intermediate,leader,F,1,Russian Open WCS Championships,113,2019,3,2019-03-01,Final,
+9742,West Coast Swing,Newcomer,follower,2,8,DC Swing eXperience (DCSX),38,2012,11,2012-11-01,2,"Herndon, VA, United States"
 9731,West Coast Swing,Intermediate,leader,2,4,Saint Petersburg WCS Nights,222,2018,7,2018-07-01,2,"St. Petersburg, Russia"
 9731,West Coast Swing,Intermediate,leader,F,1,Russian Open WCS Championships,113,2018,3,2018-03-01,Final,
 9731,West Coast Swing,Intermediate,leader,1,5,Saint Petersburg WCS Nights,222,2017,7,2017-07-01,1,"St. Petersburg, Russia"
@@ -95036,7 +95037,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 9742,West Coast Swing,Novice,follower,1,10,MidAtlantic Dance Classic,38,2014,5,2014-05-01,1,
 9742,West Coast Swing,Novice,follower,3,10,MADjam,13,2014,3,2014-03-01,3,
 9742,West Coast Swing,Newcomer,follower,3,6,Swing Fling,38,2013,8,2013-08-01,3,"Herndon, VA, United States"
-9742,West Coast Swing,Newcomer,follower,2,8,DC Swing eXperience (DCSX),38,2012,11,2012-11-01,2,"Herndon, VA, United States"
 9743,West Coast Swing,Novice,leader,F,1,New England Dance Festival,70,2026,8,2026-08-01,Final,"Newton (Boston), MA, United States"
 9743,West Coast Swing,Novice,leader,F,1,Charlotte Westie Fest,62,2019,2,2019-02-01,Final,
 9743,West Coast Swing,Novice,leader,3,3,Rocky Mountain 5 Dance,29,2016,9,2016-09-01,3,
@@ -97063,6 +97063,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 9949,West Coast Swing,Intermediate,leader,1,10,Spotlight New Year's Celebration,43,2015,1,2015-01-01,1,
 9949,West Coast Swing,Intermediate,leader,F,1,Swing City Chicago,34,2014,10,2014-10-01,Final,
 9949,West Coast Swing,Intermediate,leader,4,4,Meet Me In St Louis,49,2014,9,2014-09-01,4,
+9956,West Coast Swing,All-Star,follower,F,1,Swing Dance America,89,2018,4,2018-04-01,Final,
 9949,West Coast Swing,Intermediate,leader,F,1,Chicagoland Country and Swing Dance Festival,34,2014,8,2014-08-01,Final,
 9949,West Coast Swing,Novice,leader,3,6,Dance Camp Chicago,114,2014,3,2014-03-01,3,
 9949,West Coast Swing,Novice,leader,1,10,CASH Bash,96,2013,12,2013-12-01,1,
@@ -97125,7 +97126,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 9956,West Coast Swing,All-Star,follower,2,2,Chicagoland Country and Swing Dance Festival,34,2025,8,2025-08-01,2,
 9956,West Coast Swing,All-Star,follower,5,1,Swing City Chicago,34,2019,10,2019-10-01,5,
 9956,West Coast Swing,All-Star,follower,3,1,Chicagoland Country and Swing Dance Festival,34,2018,8,2018-08-01,3,
-9956,West Coast Swing,All-Star,follower,F,1,Swing Dance America,89,2018,4,2018-04-01,Final,
 9956,West Coast Swing,All-Star,follower,5,1,CASH Bash,96,2017,11,2017-11-01,5,
 9956,West Coast Swing,All-Star,follower,4,4,Swing Dance America,89,2017,4,2017-04-01,4,
 9956,West Coast Swing,All-Star,follower,3,3,Meet Me In St Louis,49,2016,9,2016-09-01,3,
@@ -97627,6 +97627,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 10006,West Coast Swing,Novice,follower,3,10,The Chicago Classic,34,2013,3,2013-03-01,3,
 10007,West Coast Swing,Novice,follower,3,10,Colorado Country Classic,29,2013,6,2013-06-01,3,
 10007,West Coast Swing,Novice,follower,2,12,5280 Westival,29,2013,3,2013-03-01,2,
+10014,West Coast Swing,Novice,leader,2,8,Novice Invitational,44,2013,3,2013-03-01,2,
 10008,West Coast Swing,Novice,leader,4,2,UCWDC Country Dance World Championship,21,2018,1,2018-01-01,4,
 10008,West Coast Swing,Novice,leader,1,5,Colorado Country Classic,29,2017,6,2017-06-01,1,
 10008,West Coast Swing,Novice,leader,5,1,Colorado Country Classic,29,2016,6,2016-06-01,5,
@@ -97691,7 +97692,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 10014,West Coast Swing,Novice,leader,F,1,Novice Invitational,44,2017,3,2017-03-01,Final,
 10014,West Coast Swing,Novice,leader,F,1,Novice Invitational,44,2015,3,2015-03-01,Final,
 10014,West Coast Swing,Novice,leader,2,8,Novice Invitational,44,2014,3,2014-03-01,2,
-10014,West Coast Swing,Novice,leader,2,8,Novice Invitational,44,2013,3,2013-03-01,2,
 10011,West Coast Swing,Master,leader,3,1,Rocky Mountain 5 Dance,29,2018,9,2018-09-01,3,
 10011,West Coast Swing,Master,leader,4,2,5280 Westival,29,2013,3,2013-03-01,4,
 10015,West Coast Swing,All-Star,follower,5,1,Austin Swing Dance Championships,39,2020,1,2020-01-01,5,
@@ -99931,6 +99931,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 10258,West Coast Swing,Advanced,follower,F,1,Tampa Bay Classic,53,2017,8,2017-08-01,Final,
 10258,West Coast Swing,Advanced,follower,5,1,Florida Dance Magic,55,2017,7,2017-07-01,5,
 10258,West Coast Swing,Intermediate,follower,F,1,Charlotte Westie Fest,62,2017,2,2017-02-01,Final,
+10260,West Coast Swing,Master,follower,4,4,Sweetheart Swing Classic,53,2018,2,2018-02-01,4,
 10255,West Coast Swing,Novice,leader,F,1,Palm Springs New Years Swing Dance Classic,20,2015,1,2015-01-01,Final,
 10255,West Coast Swing,Novice,leader,F,1,SOswing,88,2013,5,2013-05-01,Final,
 10259,West Coast Swing,Novice,follower,F,1,Sweetheart Swing Classic,53,2013,5,2013-05-01,Final,
@@ -99993,7 +99994,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 10260,West Coast Swing,Master,follower,1,6,Orange Blossom Dance Festival,82,2018,6,2018-06-01,1,
 10260,West Coast Swing,Master,follower,5,2,USA Grand Nationals,25,2018,5,2018-05-01,5,
 10260,West Coast Swing,Master,follower,5,1,Swingover,82,2018,3,2018-03-01,5,
-10260,West Coast Swing,Master,follower,4,4,Sweetheart Swing Classic,53,2018,2,2018-02-01,4,
 10260,West Coast Swing,Master,follower,2,8,Floorplay Swing Vacation,82,2017,12,2017-12-01,2,
 10260,West Coast Swing,Master,follower,1,5,Florida Westie Fest,53,2017,11,2017-11-01,1,
 10260,West Coast Swing,Master,follower,3,6,Swing City Chicago,34,2017,10,2017-10-01,3,
@@ -100988,6 +100988,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 10340,West Coast Swing,Intermediate,leader,1,5,Indy Dance Explosion,138,2015,7,2015-07-01,1,
 10340,West Coast Swing,Intermediate,leader,F,1,4TH of July Convention,3,2014,7,2014-07-01,Final,
 10340,West Coast Swing,Novice,leader,3,10,The Chicago Classic,34,2014,3,2014-03-01,3,
+10361,West Coast Swing,Advanced,follower,F,1,Rose City Swing,4,2016,2,2016-02-01,Final,
 10340,West Coast Swing,Novice,leader,F,1,Spotlight New Year's Celebration,43,2013,12,2013-12-01,Final,
 10340,West Coast Swing,Novice,leader,1,5,Arizona Dance Classic,3,2013,8,2013-08-01,1,
 10340,West Coast Swing,Novice,leader,4,4,Swingtime in the Rockies,29,2013,7,2013-07-01,4,
@@ -101047,6 +101048,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 10355,West Coast Swing,Novice,follower,F,1,Montreal Westie Fest,86,2019,10,2019-10-01,Final,"Montreal, Canada"
 10355,West Coast Swing,Novice,follower,2,12,Boston Tea Party,8,2015,3,2015-03-01,2,
 10355,West Coast Swing,Novice,follower,3,6,Vermont Swing Dance Championships,144,2014,9,2014-09-01,3,
+10361,West Coast Swing,Advanced,follower,5,2,Halloween SwingThing,24,2015,11,2015-11-01,5,
 10355,West Coast Swing,Novice,follower,5,2,Canadian Swing Championships,86,2013,5,2013-05-01,5,
 10356,West Coast Swing,Novice,leader,F,1,Canadian Swing Championships,86,2013,5,2013-05-01,Final,
 10351,West Coast Swing,Novice,follower,F,1,Swingsation,169,2023,5,2023-05-01,Final,"Gold Coast, Australia"
@@ -101109,8 +101111,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 10361,West Coast Swing,Advanced,follower,5,6,Swingtacular: The Galactic Open,2,2016,8,2016-08-01,5,
 10361,West Coast Swing,Advanced,follower,F,1,4TH of July Convention,3,2016,7,2016-07-01,Final,
 10361,West Coast Swing,Advanced,follower,F,1,City of Angels WCS,54,2016,4,2016-04-01,Final,
-10361,West Coast Swing,Advanced,follower,F,1,Rose City Swing,4,2016,2,2016-02-01,Final,
-10361,West Coast Swing,Advanced,follower,5,2,Halloween SwingThing,24,2015,11,2015-11-01,5,
 10361,West Coast Swing,Advanced,follower,F,1,Desert City Swing,3,2015,9,2015-09-01,Final,
 10361,West Coast Swing,Advanced,follower,F,1,City of Angels WCS,54,2015,4,2015-04-01,Final,
 10361,West Coast Swing,Advanced,follower,2,4,San Diego Dance Festival,10,2015,4,2015-04-01,2,
@@ -101248,6 +101248,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 10371,West Coast Swing,Advanced,leader,4,4,Boston Tea Party,8,2017,3,2017-03-01,4,
 10371,West Coast Swing,Intermediate,leader,1,10,Swingin' New England Dance Festival,70,2016,11,2016-11-01,1,"Newton (Boston), MA, United States"
 10371,West Coast Swing,Intermediate,leader,1,10,Philly Swing Classic,66,2016,9,2016-09-01,1,"Wilmington, DE, United States"
+10379,West Coast Swing,Master,follower,3,1,Dutch Open West Coast Swing,227,2019,3,2019-03-01,3,"Venray, Netherlands"
 10371,West Coast Swing,Intermediate,leader,F,1,Liberty Swing Dance Championships,41,2016,6,2016-06-01,Final,
 10371,West Coast Swing,Intermediate,leader,1,10,Boston Tea Party,8,2016,3,2016-03-01,1,
 10371,West Coast Swing,Novice,leader,3,10,Liberty Swing Dance Championships,41,2015,6,2015-06-01,3,
@@ -101309,7 +101310,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 10379,West Coast Swing,Newcomer,follower,F,1,Liberty Swing Dance Championships,41,2013,6,2013-06-01,Final,
 10379,West Coast Swing,Master,follower,F,1,Korean Open WCS Championships,172,2024,4,2024-04-01,Final,
 10379,West Coast Swing,Master,follower,F,1,Liberty Swing Dance Championships,41,2023,7,2023-07-01,Final,
-10379,West Coast Swing,Master,follower,3,1,Dutch Open West Coast Swing,227,2019,3,2019-03-01,3,"Venray, Netherlands"
 10380,West Coast Swing,Newcomer,leader,F,1,Liberty Swing Dance Championships,41,2014,6,2014-06-01,Final,
 10380,West Coast Swing,Newcomer,leader,F,1,MADjam,13,2014,3,2014-03-01,Final,
 10380,West Coast Swing,Newcomer,leader,F,1,Freedom Swing Dance Challenge,66,2014,1,2014-01-01,Final,"Wilmington, DE, United States"
@@ -102228,6 +102228,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 10493,West Coast Swing,Novice,leader,1,10,Swingtime in the Rockies,29,2013,7,2013-07-01,1,
 10495,West Coast Swing,Advanced,leader,F,1,The Chicago Classic,34,2018,3,2018-03-01,Final,
 10495,West Coast Swing,Intermediate,leader,1,20,MADjam,13,2018,3,2018-03-01,1,
+10520,West Coast Swing,Novice,leader,2,4,MidAtlantic Dance Classic,38,2015,5,2015-05-01,2,
 10495,West Coast Swing,Intermediate,leader,F,1,Autumn Swing Challenge,110,2017,11,2017-11-01,Final,
 10495,West Coast Swing,Intermediate,leader,F,1,Swedish Swing Summer Camp,199,2017,8,2017-08-01,Final,"Stockholm, Sweden"
 10495,West Coast Swing,Intermediate,leader,1,10,Michigan Dance Classic,51,2017,6,2017-06-01,1,
@@ -102347,6 +102348,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 10504,West Coast Swing,Novice,leader,4,8,Swing Dance America,89,2015,4,2015-04-01,4,
 10504,West Coast Swing,Novice,leader,4,8,Spotlight New Year's Celebration,43,2015,1,2015-01-01,4,
 10504,West Coast Swing,Novice,leader,F,1,Swing City Chicago,34,2014,10,2014-10-01,Final,
+10520,West Coast Swing,Novice,leader,F,1,Desert City Swing,3,2014,9,2014-09-01,Final,
 10504,West Coast Swing,Novice,leader,F,1,Chicagoland Country and Swing Dance Festival,34,2014,8,2014-08-01,Final,
 10504,West Coast Swing,Newcomer,leader,3,3,Chicagoland Country and Swing Dance Festival,34,2013,8,2013-08-01,3,
 10506,West Coast Swing,Newcomer,leader,F,1,Swing City Chicago,34,2013,10,2013-10-01,Final,
@@ -102468,8 +102470,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 10520,West Coast Swing,Intermediate,leader,F,1,4TH of July Convention,3,2017,7,2017-07-01,Final,
 10520,West Coast Swing,Novice,leader,4,8,Desert City Swing,3,2015,9,2015-09-01,4,
 10520,West Coast Swing,Novice,leader,F,1,4TH of July Convention,3,2015,7,2015-07-01,Final,
-10520,West Coast Swing,Novice,leader,2,4,MidAtlantic Dance Classic,38,2015,5,2015-05-01,2,
-10520,West Coast Swing,Novice,leader,F,1,Desert City Swing,3,2014,9,2014-09-01,Final,
 10520,West Coast Swing,Novice,leader,F,1,Palm Springs Summer Dance Classic,20,2014,8,2014-08-01,Final,
 10520,West Coast Swing,Novice,leader,F,1,4TH of July Convention,3,2014,7,2014-07-01,Final,
 10520,West Coast Swing,Newcomer,leader,3,3,Palm Springs Summer Dance Classic,20,2013,8,2013-08-01,3,
@@ -103104,6 +103104,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 10570,West Coast Swing,Intermediate,follower,1,10,Russian Open WCS Championships,113,2015,3,2015-03-01,1,
 10570,West Coast Swing,Intermediate,follower,4,2,Holy Land Open,175,2015,3,2015-03-01,4,
 10570,West Coast Swing,Intermediate,follower,1,10,Swing & Snow,222,2015,2,2015-02-01,1,
+10596,West Coast Swing,Sophisticated,leader,5,1,Carolina Summer Swing,62,2026,7,2026-07-01,5,
 10570,West Coast Swing,Intermediate,follower,F,1,BudaFest Open WCS Championships,110,2015,1,2015-01-01,Final,
 10570,West Coast Swing,Intermediate,follower,5,2,Moscow Westie Fest,113,2014,11,2014-11-01,5,
 10570,West Coast Swing,Intermediate,follower,4,4,Russian Open WCS Championships,113,2014,3,2014-03-01,4,
@@ -103227,6 +103228,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 10587,West Coast Swing,Novice,leader,4,4,River City Swing,98,2015,9,2015-09-01,4,
 10587,West Coast Swing,Novice,leader,F,1,USA Grand Nationals,25,2015,5,2015-05-01,Final,
 10587,West Coast Swing,Novice,leader,F,1,Floorplay Swing Vacation,82,2015,1,2015-01-01,Final,
+10596,West Coast Swing,Sophisticated,leader,4,4,Charlotte Westie Fest,62,2026,2,2026-02-01,4,
 10587,West Coast Swing,Novice,leader,F,1,Orange Blossom Dance Festival,82,2014,6,2014-06-01,Final,
 10587,West Coast Swing,Novice,leader,4,4,Tampa Bay Classic,53,2013,11,2013-11-01,4,
 10587,West Coast Swing,Novice,leader,F,1,Atlanta Swing Classic,25,2013,10,2013-10-01,Final,
@@ -103290,8 +103292,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 10596,West Coast Swing,Novice,leader,F,1,Tampa Bay Classic,53,2013,11,2013-11-01,Final,
 10596,West Coast Swing,Novice,leader,F,1,Atlanta Swing Classic,25,2013,10,2013-10-01,Final,
 10596,West Coast Swing,Novice,leader,2,8,River City Swing,98,2013,9,2013-09-01,2,
-10596,West Coast Swing,Sophisticated,leader,5,1,Carolina Summer Swing,62,2026,7,2026-07-01,5,
-10596,West Coast Swing,Sophisticated,leader,4,4,Charlotte Westie Fest,62,2026,2,2026-02-01,4,
 10596,West Coast Swing,Sophisticated,leader,2,8,Trilogy Swing,63,2025,9,2025-09-01,2,
 10596,West Coast Swing,Sophisticated,leader,3,3,Michigan Dance Classic,51,2025,6,2025-06-01,3,
 10596,West Coast Swing,Sophisticated,leader,F,1,Swing Fling,38,2024,8,2024-08-01,Final,"Herndon, VA, United States"
@@ -105843,6 +105843,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 10869,West Coast Swing,Novice,leader,F,1,Capital Swing Dance Convention,6,2015,2,2015-02-01,Final,
 10869,West Coast Swing,Novice,leader,F,1,SwingCouver,4,2015,1,2015-01-01,Final,
 10869,West Coast Swing,Novice,leader,F,1,US Open Swing Dance Championships,22,2014,11,2014-11-01,Final,
+10881,West Coast Swing,Novice,follower,1,15,River City Swing,98,2014,8,2014-08-01,1,
 10869,West Coast Swing,Novice,leader,F,1,US Open Swing Dance Championships,22,2013,12,2013-12-01,Final,
 10870,West Coast Swing,Novice,follower,F,1,US Open Swing Dance Championships,22,2013,12,2013-12-01,Final,
 10871,West Coast Swing,Novice,leader,F,2,West in Lyon,156,2025,3,2025-03-01,Final,"Lyon, France"
@@ -105967,7 +105968,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 10880,West Coast Swing,Novice,follower,F,1,Dance Mardi Gras,57,2014,7,2014-07-01,Final,
 10880,West Coast Swing,Novice,follower,2,8,Floorplay Swing Vacation,82,2013,12,2013-12-01,2,
 10881,West Coast Swing,Intermediate,follower,F,1,Moscow Westie Fest,113,2014,11,2014-11-01,Final,
-10881,West Coast Swing,Novice,follower,1,15,River City Swing,98,2014,8,2014-08-01,1,
 10881,West Coast Swing,Novice,follower,F,1,SwingDiego,10,2014,5,2014-05-01,Final,
 10881,West Coast Swing,Novice,follower,3,6,Floorplay Swing Vacation,82,2013,12,2013-12-01,3,
 10883,West Coast Swing,Novice,leader,F,1,Indy Dance Explosion,138,2016,7,2016-07-01,Final,
@@ -108169,6 +108169,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 11134,West Coast Swing,Novice,follower,F,1,The Brazilian Open,216,2015,3,2015-03-01,Final,
 11134,West Coast Swing,Novice,follower,F,1,The Chicago Classic,34,2014,3,2014-03-01,Final,
 11135,West Coast Swing,All-Star,follower,1,3,Chicagoland Country and Swing Dance Festival,34,2025,8,2025-08-01,1,
+11143,West Coast Swing,Novice,leader,F,1,Sea Sun and Swing,158,2014,8,2014-08-01,Final,"La Grande Motte, France"
 11135,West Coast Swing,All-Star,follower,1,3,Chicagoland Country and Swing Dance Festival,34,2024,8,2024-08-01,1,
 11135,West Coast Swing,All-Star,follower,4,2,Swing City Chicago,34,2023,10,2023-10-01,4,
 11135,West Coast Swing,All-Star,follower,2,4,Chicagoland Country and Swing Dance Festival,34,2023,8,2023-08-01,2,
@@ -108294,7 +108295,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 11143,West Coast Swing,Novice,leader,F,1,Warsaw Halloween Swing,155,2015,11,2015-11-01,Final,
 11143,West Coast Swing,Novice,leader,F,1,Warsaw Halloween Swing,155,2014,11,2014-11-01,Final,
 11143,West Coast Swing,Novice,leader,F,1,Midland Swing Open,107,2014,9,2014-09-01,Final,
-11143,West Coast Swing,Novice,leader,F,1,Sea Sun and Swing,158,2014,8,2014-08-01,Final,"La Grande Motte, France"
 11143,West Coast Swing,Newcomer,leader,4,4,West in Lyon,156,2014,3,2014-03-01,4,"Lyon, France"
 11144,West Coast Swing,Newcomer,follower,4,4,West in Lyon,156,2014,3,2014-03-01,4,"Lyon, France"
 11148,West Coast Swing,Newcomer,follower,F,1,West in Lyon,156,2014,3,2014-03-01,Final,"Lyon, France"
@@ -109351,6 +109351,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 11252,West Coast Swing,Novice,follower,F,1,Detonation Dance,166,2016,4,2016-04-01,Final,
 11252,West Coast Swing,Novice,follower,F,1,London SwingVitational,212,2015,11,2015-11-01,Final,
 11252,West Coast Swing,Newcomer,follower,F,1,UK WCS Championships,107,2014,4,2014-04-01,Final,
+11263,West Coast Swing,Advanced,leader,5,1,Dance N Play,133,2016,6,2016-06-01,5,
 11255,West Coast Swing,Advanced,leader,F,1,French Open West Coast Swing,109,2026,5,2026-05-01,Final,
 11255,West Coast Swing,Advanced,leader,F,1,UK WCS Championships,107,2026,3,2026-03-01,Final,
 11255,West Coast Swing,Advanced,leader,F,1,Warsaw Halloween Swing,155,2024,10,2024-10-01,Final,
@@ -109476,7 +109477,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 11263,West Coast Swing,Advanced,leader,F,1,Rose City Swing,4,2017,2,2017-02-01,Final,
 11263,West Coast Swing,Advanced,leader,1,10,Sea to Sky,30,2016,11,2016-11-01,1,
 11263,West Coast Swing,Advanced,leader,1,10,Bridgetown Swing Boogie,74,2016,10,2016-10-01,1,
-11263,West Coast Swing,Advanced,leader,5,1,Dance N Play,133,2016,6,2016-06-01,5,
 11263,West Coast Swing,Advanced,leader,F,1,J&J O'Rama,23,2016,6,2016-06-01,Final,
 11263,West Coast Swing,Advanced,leader,4,4,Monterey SwingFest,1,2016,1,2016-01-01,4,
 11263,West Coast Swing,Intermediate,leader,1,10,Bridgetown Swing Boogie,74,2015,9,2015-09-01,1,
@@ -112527,6 +112527,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 11629,West Coast Swing,Advanced,leader,1,15,Liberty Swing Dance Championships,41,2018,7,2018-07-01,1,
 11629,West Coast Swing,Advanced,leader,4,8,BudaFest Open WCS Championships,110,2018,1,2018-01-01,4,
 11629,West Coast Swing,Advanced,leader,3,6,New Year's Swing Fling,107,2017,12,2017-12-01,3,
+11645,West Coast Swing,Newcomer,follower,1,10,Swing Fling,38,2014,8,2014-08-01,1,"Herndon, VA, United States"
 11629,West Coast Swing,Advanced,leader,F,1,US Open Swing Dance Championships,22,2017,11,2017-11-01,Final,
 11629,West Coast Swing,Advanced,leader,1,10,DC Swing eXperience (DCSX),38,2017,11,2017-11-01,1,"Herndon, VA, United States"
 11629,West Coast Swing,Advanced,leader,F,1,French Open West Coast Swing,109,2017,5,2017-05-01,Final,
@@ -112649,7 +112650,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 11645,West Coast Swing,Intermediate,follower,2,8,Freedom Swing Dance Challenge,66,2015,1,2015-01-01,2,"Wilmington, DE, United States"
 11645,West Coast Swing,Novice,follower,1,10,Philly Swing Classic,66,2014,9,2014-09-01,1,"Wilmington, DE, United States"
 11645,West Coast Swing,Novice,follower,2,12,Summer Hummer,397,2014,8,2014-08-01,2,"Woburn (Boston), MA, United States"
-11645,West Coast Swing,Newcomer,follower,1,10,Swing Fling,38,2014,8,2014-08-01,1,"Herndon, VA, United States"
 11645,West Coast Swing,Newcomer,follower,F,1,Liberty Swing Dance Championships,41,2014,6,2014-06-01,Final,
 11646,West Coast Swing,Advanced,leader,5,1,Austin Rocks,39,2018,9,2018-09-01,5,
 11646,West Coast Swing,Advanced,leader,F,1,Swing Fling,38,2018,8,2018-08-01,Final,"Herndon, VA, United States"
@@ -115766,6 +115766,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 12057,West Coast Swing,Intermediate,follower,F,1,Atlanta Swing Classic,25,2018,10,2018-10-01,Final,
 12057,West Coast Swing,Intermediate,follower,5,1,Lone Star Invitational,39,2018,8,2018-08-01,5,
 12057,West Coast Swing,Intermediate,follower,F,1,Tampa Bay Classic,53,2018,8,2018-08-01,Final,
+12070,West Coast Swing,Advanced,follower,F,1,Bridgetown Swing Boogie,74,2018,9,2018-09-01,Final,
 12057,West Coast Swing,Intermediate,follower,F,1,4TH of July Convention,3,2018,7,2018-07-01,Final,
 12057,West Coast Swing,Intermediate,follower,F,1,Swing Dance America,89,2018,4,2018-04-01,Final,
 12057,West Coast Swing,Intermediate,follower,F,1,Easter Swing,30,2018,4,2018-04-01,Final,
@@ -115829,7 +115830,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 12070,West Coast Swing,All-Star,follower,1,6,Bridgetown Swing Boogie,74,2019,9,2019-09-01,1,
 12070,West Coast Swing,Advanced,follower,4,4,SwingCouver,4,2019,1,2019-01-01,4,
 12070,West Coast Swing,Advanced,follower,1,10,Swing City Chicago,34,2018,10,2018-10-01,1,
-12070,West Coast Swing,Advanced,follower,F,1,Bridgetown Swing Boogie,74,2018,9,2018-09-01,Final,
 12070,West Coast Swing,Advanced,follower,F,1,Swingtacular: The Galactic Open,2,2018,8,2018-08-01,Final,
 12070,West Coast Swing,Advanced,follower,5,2,Easter Swing,30,2018,4,2018-04-01,5,
 12070,West Coast Swing,Advanced,follower,2,4,High Desert Dance Classic,18,2018,3,2018-03-01,2,
@@ -126424,6 +126424,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 13474,West Coast Swing,Novice,follower,5,2,Winter White,223,2016,12,2016-12-01,5,
 13474,West Coast Swing,Novice,follower,F,1,Sea Sun and Swing,158,2016,8,2016-08-01,Final,"La Grande Motte, France"
 13474,West Coast Swing,Novice,follower,1,10,Big Apple Dance Festival,140,2016,7,2016-07-01,1,
+13497,West Coast Swing,Novice,follower,F,1,Sunny Side Dance Camp,248,2016,9,2016-09-01,Final,"Torrevieja, Spain"
 13474,West Coast Swing,Master,follower,2,4,French Open West Coast Swing,109,2015,5,2015-05-01,2,
 13475,West Coast Swing,Master,leader,F,1,French Open West Coast Swing,109,2015,5,2015-05-01,Final,
 13476,West Coast Swing,Intermediate,leader,3,10,Liberty Swing Dance Championships,41,2023,7,2023-07-01,3,
@@ -126546,7 +126547,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 13497,West Coast Swing,Novice,follower,1,15,Dutch Open West Coast Swing,227,2017,3,2017-03-01,1,"Venray, Netherlands"
 13497,West Coast Swing,Novice,follower,F,1,Swing & Snow,222,2017,2,2017-02-01,Final,
 13497,West Coast Swing,Novice,follower,F,1,Warsaw Halloween Swing,155,2016,10,2016-10-01,Final,
-13497,West Coast Swing,Novice,follower,F,1,Sunny Side Dance Camp,248,2016,9,2016-09-01,Final,"Torrevieja, Spain"
 13497,West Coast Swing,Newcomer,follower,1,5,Warsaw Halloween Swing,155,2015,11,2015-11-01,1,
 13498,West Coast Swing,Novice,leader,3,6,Berlin Swing Revolution,194,2022,12,2022-12-01,3,"Berlin, Germany"
 13498,West Coast Swing,Novice,leader,F,1,Municorn Swing,129,2020,1,2020-01-01,Final,
@@ -127482,6 +127482,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 13608,West Coast Swing,Intermediate,follower,F,1,Moscow Westie Fest,113,2019,11,2019-11-01,Final,
 13608,West Coast Swing,Intermediate,follower,5,2,Citadel Swing,257,2019,9,2019-09-01,5,
 13608,West Coast Swing,Intermediate,follower,F,1,Riga Summer Swing,203,2019,8,2019-08-01,Final,
+13620,West Coast Swing,Intermediate,leader,F,1,Moscow Westie Fest,113,2018,11,2018-11-01,Final,
 13608,West Coast Swing,Intermediate,follower,1,10,Saint Petersburg WCS Nights,222,2019,7,2019-07-01,1,"St. Petersburg, Russia"
 13608,West Coast Swing,Intermediate,follower,3,10,King Swing,267,2019,3,2019-03-01,3,"Kraków, Poland"
 13608,West Coast Swing,Novice,follower,4,8,Shooba Dooba Swing,113,2018,1,2018-01-01,4,
@@ -127544,7 +127545,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 13620,West Coast Swing,Intermediate,leader,3,3,Americano Dance Camp,252,2019,7,2019-07-01,3,
 13620,West Coast Swing,Intermediate,leader,2,8,Russian Open WCS Championships,113,2019,3,2019-03-01,2,
 13620,West Coast Swing,Intermediate,leader,F,1,Swing & Snow,222,2019,2,2019-02-01,Final,
-13620,West Coast Swing,Intermediate,leader,F,1,Moscow Westie Fest,113,2018,11,2018-11-01,Final,
 13620,West Coast Swing,Intermediate,leader,5,2,Russian Open WCS Championships,113,2018,3,2018-03-01,5,
 13620,West Coast Swing,Intermediate,leader,1,10,Swing & Snow,222,2018,2,2018-02-01,1,
 13620,West Coast Swing,Intermediate,leader,F,1,Moscow Westie Fest,113,2017,11,2017-11-01,Final,
@@ -128261,6 +128261,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 13697,West Coast Swing,Intermediate,leader,1,10,Bavarian Open,129,2017,9,2017-09-01,1,"Munich, Germany"
 13697,West Coast Swing,Intermediate,leader,F,1,Sea Sun and Swing,158,2017,7,2017-07-01,Final,"La Grande Motte, France"
 13697,West Coast Swing,Intermediate,leader,5,6,Liberty Swing Dance Championships,41,2017,7,2017-07-01,5,
+13706,West Coast Swing,Advanced,leader,3,3,UpTown Swing,199,2026,8,2026-08-01,3,"Stockholm, Sweden"
 13697,West Coast Swing,Intermediate,leader,5,2,French Open West Coast Swing,109,2017,5,2017-05-01,5,
 13697,West Coast Swing,Intermediate,leader,F,1,West in Lyon,156,2017,3,2017-03-01,Final,"Lyon, France"
 13697,West Coast Swing,Intermediate,leader,4,4,Swingtzerland,173,2017,2,2017-02-01,4,
@@ -128323,7 +128324,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 13704,West Coast Swing,Novice,leader,F,1,Swedish Swing Summer Camp,199,2016,8,2016-08-01,Final,"Stockholm, Sweden"
 13704,West Coast Swing,Newcomer,leader,3,6,Westie Gala,199,2016,1,2016-01-01,3,"Stockholm, Sweden"
 13703,West Coast Swing,Newcomer,follower,2,8,Westie Gala,199,2016,1,2016-01-01,2,"Stockholm, Sweden"
-13706,West Coast Swing,Advanced,leader,3,3,UpTown Swing,199,2026,8,2026-08-01,3,"Stockholm, Sweden"
 13706,West Coast Swing,Advanced,leader,5,1,Rock the Barn,215,2026,7,2026-07-01,5,"Umeå, Sweden"
 13706,West Coast Swing,Advanced,leader,F,1,French Open West Coast Swing,109,2026,5,2026-05-01,Final,
 13706,West Coast Swing,Advanced,leader,4,8,UK WCS Championships,107,2026,3,2026-03-01,4,
@@ -134659,6 +134659,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 14507,West Coast Swing,Novice,leader,5,1,Ft. Lauderdale Swing & Shag Beach Bash,55,2016,7,2016-07-01,5,
 14508,West Coast Swing,Novice,follower,F,1,Ft. Lauderdale Swing & Shag Beach Bash,55,2017,7,2017-07-01,Final,
 14508,West Coast Swing,Novice,follower,F,1,Ft. Lauderdale Swing & Shag Beach Bash,55,2016,7,2016-07-01,Final,
+14527,West Coast Swing,Novice,follower,F,1,WesterOz Swing,253,2023,2,2023-02-01,Final,
 14508,West Coast Swing,Master,follower,F,1,Austin Swing Dance Championships,39,2018,1,2018-01-01,Final,
 14508,West Coast Swing,Master,follower,3,3,Ft. Lauderdale Swing & Shag Beach Bash,55,2017,7,2017-07-01,3,
 14509,West Coast Swing,Invitational,leader,3,3,Swingapalooza,40,2017,6,2017-06-01,3,
@@ -134721,7 +134722,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 14527,West Coast Swing,Novice,follower,2,12,Best of the Best WCS,117,2025,9,2025-09-01,2,"Sydney, Australia"
 14527,West Coast Swing,Novice,follower,F,1,WesterOz Swing,253,2025,2,2025-02-01,Final,
 14527,West Coast Swing,Novice,follower,2,8,Odyssey West Coast Swing,169,2023,7,2023-07-01,2,
-14527,West Coast Swing,Novice,follower,F,1,WesterOz Swing,253,2023,2,2023-02-01,Final,
 14527,West Coast Swing,Novice,follower,2,8,Best of the Best WCS,117,2019,9,2019-09-01,2,"Sydney, Australia"
 14527,West Coast Swing,Newcomer,follower,4,2,Neverland Swing,191,2016,6,2016-06-01,4,
 14527,West Coast Swing,Sophisticated,follower,F,1,Best of the Best WCS,117,2024,9,2024-09-01,Final,"Sydney, Australia"
@@ -137720,6 +137720,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 14942,West Coast Swing,Intermediate,follower,2,8,Swing Escape,209,2017,3,2017-03-01,2,
 14942,West Coast Swing,Novice,follower,3,6,Australasian WCS & Zouk Champs,261,2017,2,2017-02-01,3,
 14942,West Coast Swing,Novice,follower,F,1,Swingtimate,169,2016,12,2016-12-01,Final,
+14982,West Coast Swing,Intermediate,leader,F,1,Swing & Snow,222,2019,2,2019-02-01,Final,
 14942,West Coast Swing,Novice,follower,1,10,New Zealand Open Swing Dance Championships,168,2016,10,2016-10-01,1,"Auckland, New Zealand"
 14944,West Coast Swing,Intermediate,follower,2,8,SwingCouver,4,2019,1,2019-01-01,2,
 14944,West Coast Swing,Novice,follower,2,12,Swingtimate,169,2016,12,2016-12-01,2,
@@ -137779,6 +137780,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 14949,West Coast Swing,Novice,follower,5,6,New Zealand Open Swing Dance Championships,168,2022,10,2022-10-01,5,"Auckland, New Zealand"
 14949,West Coast Swing,Novice,follower,1,10,New Zealand Open Swing Dance Championships,168,2017,7,2017-07-01,1,"Auckland, New Zealand"
 14949,West Coast Swing,Novice,follower,F,1,New Zealand Open Swing Dance Championships,168,2016,10,2016-10-01,Final,"Auckland, New Zealand"
+14982,West Coast Swing,Intermediate,leader,1,6,Korea Westival,213,2018,6,2018-06-01,1,"Jeju, Republic of Korea"
 14950,West Coast Swing,Novice,leader,F,1,New Zealand Open Swing Dance Championships,168,2016,10,2016-10-01,Final,"Auckland, New Zealand"
 14951,West Coast Swing,Novice,follower,F,1,Swingsation,169,2017,5,2017-05-01,Final,"Gold Coast, Australia"
 14951,West Coast Swing,Novice,follower,F,1,New Zealand Open Swing Dance Championships,168,2016,10,2016-10-01,Final,"Auckland, New Zealand"
@@ -137905,8 +137907,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 14982,West Coast Swing,Advanced,leader,F,1,Asia West Coast Swing Open,159,2023,4,2023-04-01,Final,
 14982,West Coast Swing,Advanced,leader,F,1,Boogie By The Bay,2,2019,10,2019-10-01,Final,
 14982,West Coast Swing,Intermediate,leader,2,8,City of Angels WCS,54,2019,4,2019-04-01,2,
-14982,West Coast Swing,Intermediate,leader,F,1,Swing & Snow,222,2019,2,2019-02-01,Final,
-14982,West Coast Swing,Intermediate,leader,1,6,Korea Westival,213,2018,6,2018-06-01,1,"Jeju, Republic of Korea"
 14982,West Coast Swing,Intermediate,leader,5,2,Asia West Coast Swing Open,159,2018,4,2018-04-01,5,
 14982,West Coast Swing,Intermediate,leader,F,1,Capital Swing Dance Convention,6,2018,2,2018-02-01,Final,
 14982,West Coast Swing,Intermediate,leader,3,10,Boogie By The Bay,2,2017,10,2017-10-01,3,
@@ -138093,6 +138093,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 15007,West Coast Swing,Newcomer,leader,2,8,Swing City Chicago,34,2017,10,2017-10-01,2,
 15007,West Coast Swing,Newcomer,leader,4,4,Swing City Chicago,34,2016,10,2016-10-01,4,
 15007,West Coast Swing,Master,leader,3,3,Chicagoland Country and Swing Dance Festival,34,2026,8,2026-08-01,3,
+15019,West Coast Swing,Advanced,follower,5,2,Swing City Chicago,34,2018,10,2018-10-01,5,
 15007,West Coast Swing,Master,leader,2,2,Chicagoland Country and Swing Dance Festival,34,2025,8,2025-08-01,2,
 15007,West Coast Swing,Master,leader,2,4,Dance Mardi Gras,57,2025,7,2025-07-01,2,
 15007,West Coast Swing,Master,leader,1,3,Dance Mardi Gras,57,2024,7,2024-07-01,1,
@@ -138156,7 +138157,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 15019,West Coast Swing,Advanced,follower,F,1,BudaFest Open WCS Championships,110,2020,1,2020-01-01,Final,
 15019,West Coast Swing,Advanced,follower,F,1,MADjam,13,2019,3,2019-03-01,Final,
 15019,West Coast Swing,Advanced,follower,1,10,Spotlight New Year's Celebration,43,2019,1,2019-01-01,1,
-15019,West Coast Swing,Advanced,follower,5,2,Swing City Chicago,34,2018,10,2018-10-01,5,
 15019,West Coast Swing,Advanced,follower,1,6,Montreal Westie Fest,86,2018,10,2018-10-01,1,"Montreal, Canada"
 15019,West Coast Swing,Advanced,follower,1,15,Wild Wild Westie,21,2018,7,2018-07-01,1,
 15019,West Coast Swing,Advanced,follower,F,1,The Chicago Classic,34,2018,3,2018-03-01,Final,
@@ -144216,6 +144216,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 15870,West Coast Swing,Newcomer,follower,5,2,Montreal Westie Fest,86,2016,10,2016-10-01,5,"Montreal, Canada"
 15870,West Coast Swing,Newcomer,follower,2,4,Upstate Dance Challenge,139,2016,9,2016-09-01,2,
 15873,West Coast Swing,Newcomer,leader,3,3,Canadian Swing Championships,86,2017,5,2017-05-01,3,
+15891,West Coast Swing,Novice,follower,1,15,The Chicago Classic,34,2019,3,2019-03-01,1,
 15875,West Coast Swing,Newcomer,leader,4,2,Canadian Swing Championships,86,2017,5,2017-05-01,4,
 15874,West Coast Swing,Newcomer,leader,F,1,Liberty Swing Dance Championships,41,2019,6,2019-06-01,Final,
 15874,West Coast Swing,Newcomer,follower,3,6,Canadian Swing Championships,86,2017,5,2017-05-01,3,
@@ -144277,7 +144278,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 15891,West Coast Swing,Intermediate,follower,3,3,CASH Bash,96,2022,11,2022-11-01,3,
 15891,West Coast Swing,Intermediate,follower,F,1,CASH Bash,96,2019,12,2019-12-01,Final,
 15891,West Coast Swing,Intermediate,follower,5,2,4TH of July Convention,3,2019,7,2019-07-01,5,
-15891,West Coast Swing,Novice,follower,1,15,The Chicago Classic,34,2019,3,2019-03-01,1,
 15891,West Coast Swing,Novice,follower,F,2,Austin Swing Dance Championships,39,2019,1,2019-01-01,Final,
 15891,West Coast Swing,Novice,follower,F,1,Spotlight New Year's Celebration,43,2019,1,2019-01-01,Final,
 15891,West Coast Swing,Novice,follower,F,1,CASH Bash,96,2018,11,2018-11-01,Final,
@@ -145666,6 +145666,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 16072,West Coast Swing,Intermediate,leader,F,1,Wild Wild Westie,21,2019,7,2019-07-01,Final,
 16072,West Coast Swing,Intermediate,leader,F,1,J&J O'Rama,23,2019,6,2019-06-01,Final,
 16072,West Coast Swing,Intermediate,leader,2,4,The Texas Classic,39,2019,5,2019-05-01,2,
+16073,West Coast Swing,Advanced,leader,2,12,Wild Wild Westie,21,2021,7,2021-07-01,2,
 16072,West Coast Swing,Intermediate,leader,F,1,Austin Swing Dance Championships,39,2019,1,2019-01-01,Final,
 16072,West Coast Swing,Intermediate,leader,F,1,The After Party (TAP),73,2018,12,2018-12-01,Final,
 16072,West Coast Swing,Intermediate,leader,F,1,Austin Rocks,39,2018,9,2018-09-01,Final,
@@ -145728,7 +145729,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 16073,West Coast Swing,All-Star,leader,1,3,Novice Invitational,44,2022,3,2022-03-01,1,
 16073,West Coast Swing,Advanced,leader,1,10,5280 Westival,29,2021,11,2021-11-01,1,
 16073,West Coast Swing,Advanced,leader,2,8,Atlanta Swing Classic,25,2021,10,2021-10-01,2,
-16073,West Coast Swing,Advanced,leader,2,12,Wild Wild Westie,21,2021,7,2021-07-01,2,
 16073,West Coast Swing,Advanced,leader,1,10,Austin Swing Dance Championships,39,2020,1,2020-01-01,1,
 16073,West Coast Swing,Advanced,leader,F,1,Swing City Chicago,34,2019,10,2019-10-01,Final,
 16073,West Coast Swing,Advanced,leader,2,12,Wild Wild Westie,21,2019,7,2019-07-01,2,
@@ -147744,6 +147744,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 16352,West Coast Swing,Novice,leader,F,1,Swing Dance America,89,2018,4,2018-04-01,Final,
 16352,West Coast Swing,Newcomer,leader,2,4,Chicagoland Country and Swing Dance Festival,34,2017,8,2017-08-01,2,
 16354,West Coast Swing,Newcomer,leader,3,1,Chicagoland Country and Swing Dance Festival,34,2025,8,2025-08-01,3,
+16359,West Coast Swing,Intermediate,follower,F,1,Swing Dance America,89,2019,4,2019-04-01,Final,
 16354,West Coast Swing,Newcomer,follower,4,2,Chicagoland Country and Swing Dance Festival,34,2017,8,2017-08-01,4,
 16355,West Coast Swing,Novice,follower,F,1,Indy Dance Explosion,138,2022,6,2022-06-01,Final,
 16355,West Coast Swing,Novice,follower,F,1,Swing Dance America,89,2022,5,2022-05-01,Final,
@@ -147804,7 +147805,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 16359,West Coast Swing,Intermediate,follower,F,1,Liberty Swing Dance Championships,41,2019,6,2019-06-01,Final,
 16359,West Coast Swing,Intermediate,follower,3,6,Michigan Dance Classic,51,2019,6,2019-06-01,3,
 16359,West Coast Swing,Intermediate,follower,F,1,USA Grand Nationals,25,2019,5,2019-05-01,Final,
-16359,West Coast Swing,Intermediate,follower,F,1,Swing Dance America,89,2019,4,2019-04-01,Final,
 16359,West Coast Swing,Intermediate,follower,3,6,5280 Westival,29,2019,3,2019-03-01,3,
 16359,West Coast Swing,Intermediate,follower,F,1,MADjam,13,2019,3,2019-03-01,Final,
 16359,West Coast Swing,Intermediate,follower,F,1,Derby City Swing,116,2019,1,2019-01-01,Final,
@@ -148536,6 +148536,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 16480,West Coast Swing,Novice,follower,F,1,UCWDC Country Dance World Championship,21,2022,1,2022-01-01,Final,
 16480,West Coast Swing,Novice,follower,4,4,Orange Blossom Dance Festival,82,2021,6,2021-06-01,4,
 16480,West Coast Swing,Newcomer,follower,2,8,Atlanta Swing Classic,25,2017,10,2017-10-01,2,
+16485,West Coast Swing,All-Star,leader,3,6,City of Angels WCS,54,2023,4,2023-04-01,3,
 16480,West Coast Swing,Master,follower,3,1,Chicagoland Country and Swing Dance Festival,34,2025,8,2025-08-01,3,
 16479,West Coast Swing,Novice,leader,4,8,Floorplay Swing Vacation,82,2023,1,2023-01-01,4,
 16479,West Coast Swing,Novice,leader,F,1,MADjam,13,2022,3,2022-03-01,Final,
@@ -148598,7 +148599,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 16485,West Coast Swing,All-Star,leader,F,1,4TH of July Convention,3,2023,7,2023-07-01,Final,
 16485,West Coast Swing,All-Star,leader,F,1,J&J O'Rama,23,2023,6,2023-06-01,Final,
 16485,West Coast Swing,All-Star,leader,4,2,Swingover,82,2023,4,2023-04-01,4,
-16485,West Coast Swing,All-Star,leader,3,6,City of Angels WCS,54,2023,4,2023-04-01,3,
 16485,West Coast Swing,All-Star,leader,F,1,All Star SwingJam,2,2023,3,2023-03-01,Final,
 16485,West Coast Swing,All-Star,leader,3,3,Floorplay Swing Vacation,82,2023,1,2023-01-01,3,
 16485,West Coast Swing,All-Star,leader,4,2,Swing City Chicago,34,2022,10,2022-10-01,4,
@@ -150251,6 +150251,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 16785,West Coast Swing,Intermediate,follower,3,6,Palm Springs Summer Dance Classic,20,2018,8,2018-08-01,3,
 16785,West Coast Swing,Novice,follower,4,8,SwingDiego,10,2018,5,2018-05-01,4,
 16785,West Coast Swing,Novice,follower,4,8,City of Angels WCS,54,2018,4,2018-04-01,4,
+16795,West Coast Swing,Novice,leader,F,1,D-Town Swing,127,2023,6,2023-06-01,Final,"Düsseldorf, Germany"
 16785,West Coast Swing,Novice,follower,F,1,Palm Springs New Years Swing Dance Classic,20,2018,1,2018-01-01,Final,
 16785,West Coast Swing,Novice,follower,F,1,The After Party (TAP),73,2017,12,2017-12-01,Final,
 16786,West Coast Swing,Intermediate,leader,F,1,Hungarian Open,110,2025,6,2025-06-01,Final,
@@ -150314,7 +150315,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 16795,West Coast Swing,Intermediate,leader,3,3,Dutch Open West Coast Swing,227,2025,3,2025-03-01,3,"Venray, Netherlands"
 16795,West Coast Swing,Novice,leader,2,16,German Open,143,2023,8,2023-08-01,2,"Freiburg, Germany"
 16795,West Coast Swing,Novice,leader,3,6,Neverland Swing,191,2023,7,2023-07-01,3,
-16795,West Coast Swing,Novice,leader,F,1,D-Town Swing,127,2023,6,2023-06-01,Final,"Düsseldorf, Germany"
 16795,West Coast Swing,Novice,leader,3,14,French Open West Coast Swing,109,2023,5,2023-05-01,3,
 16795,West Coast Swing,Novice,leader,F,1,Detonation Dance,166,2023,4,2023-04-01,Final,
 16795,West Coast Swing,Novice,leader,3,6,Dutch Open West Coast Swing,227,2023,3,2023-03-01,3,"Venray, Netherlands"
@@ -155351,6 +155351,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 17550,West Coast Swing,Master,follower,4,2,Swingtacular: The Galactic Open,2,2026,8,2026-08-01,4,
 17550,West Coast Swing,Master,follower,2,8,J&J O'Rama,23,2026,6,2026-06-01,2,
 17550,West Coast Swing,Master,follower,3,3,City of Angels WCS,54,2026,4,2026-04-01,3,
+17561,West Coast Swing,Master,leader,4,2,Detonation Dance,166,2025,4,2025-04-01,4,
 17550,West Coast Swing,Master,follower,F,1,Capital Swing Dance Convention,6,2026,2,2026-02-01,Final,
 17550,West Coast Swing,Master,follower,2,4,The After Party (TAP),73,2025,12,2025-12-01,2,
 17550,West Coast Swing,Master,follower,3,6,Boogie By The Bay,2,2025,10,2025-10-01,3,
@@ -155475,7 +155476,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 17561,West Coast Swing,Novice,leader,F,1,Neverland Swing,191,2019,7,2019-07-01,Final,
 17561,West Coast Swing,Newcomer,leader,2,2,Neverland Swing,191,2018,7,2018-07-01,2,
 17561,West Coast Swing,Master,leader,3,1,Trinity Swing,230,2026,2,2026-02-01,3,"Dundalk, Ireland"
-17561,West Coast Swing,Master,leader,4,2,Detonation Dance,166,2025,4,2025-04-01,4,
 17561,West Coast Swing,Master,leader,3,1,Neverland Swing,191,2023,7,2023-07-01,3,
 17562,West Coast Swing,Newcomer,follower,2,2,Neverland Swing,191,2018,7,2018-07-01,2,
 17563,West Coast Swing,Newcomer,follower,3,1,Neverland Swing,191,2018,7,2018-07-01,3,
@@ -155567,6 +155567,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 17566,West Coast Swing,Sophisticated,follower,2,8,Paris Westie Fest,109,2026,1,2026-01-01,2,"Paris, France"
 17566,West Coast Swing,Sophisticated,follower,3,6,Westie Pink City,208,2025,11,2025-11-01,3,"Toulouse, France"
 17566,West Coast Swing,Sophisticated,follower,5,2,Warsaw Halloween Swing,155,2024,10,2024-10-01,5,
+17572,West Coast Swing,Novice,leader,5,2,Americano Dance Camp,252,2026,7,2026-07-01,5,
 17566,West Coast Swing,Sophisticated,follower,F,1,Midland Swing Open,107,2024,9,2024-09-01,Final,
 17566,West Coast Swing,Sophisticated,follower,F,1,Bavarian Open,129,2024,9,2024-09-01,Final,"Munich, Germany"
 17566,West Coast Swing,Sophisticated,follower,1,15,Nordic WCS Championships,199,2024,4,2024-04-01,1,
@@ -155628,7 +155629,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 17570,West Coast Swing,Sophisticated,follower,F,1,Shooba Dooba Swing,113,2025,12,2025-12-01,Final,
 17570,West Coast Swing,Sophisticated,follower,4,8,Moscow Westie Fest,113,2025,11,2025-11-01,4,
 17572,West Coast Swing,Novice,leader,F,1,Saint Petersburg WCS Nights,222,2026,7,2026-07-01,Final,"St. Petersburg, Russia"
-17572,West Coast Swing,Novice,leader,5,2,Americano Dance Camp,252,2026,7,2026-07-01,5,
 17572,West Coast Swing,Novice,leader,F,1,Saint Petersburg WCS Nights,222,2023,7,2023-07-01,Final,"St. Petersburg, Russia"
 17572,West Coast Swing,Novice,leader,F,1,Kazan EL Fest,263,2022,8,2022-08-01,Final,
 17572,West Coast Swing,Intermediate,follower,1,10,Saint Petersburg WCS Nights,222,2026,7,2026-07-01,1,"St. Petersburg, Russia"
@@ -155787,6 +155787,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 17606,West Coast Swing,Intermediate,follower,3,3,Big Apple Dance Festival,140,2019,7,2019-07-01,3,
 17606,West Coast Swing,Intermediate,follower,F,1,4TH of July Convention,3,2019,7,2019-07-01,Final,
 17606,West Coast Swing,Intermediate,follower,F,1,Scotland Swing Classic,226,2019,5,2019-05-01,Final,
+17625,West Coast Swing,Advanced,follower,F,1,Rolling Swing,156,2023,9,2023-09-01,Final,"Lyon, France"
 17606,West Coast Swing,Novice,follower,3,6,US Open Swing Dance Championships,22,2018,11,2018-11-01,3,
 17606,West Coast Swing,Novice,follower,3,6,Florida Dance Magic,55,2018,7,2018-07-01,3,
 17606,West Coast Swing,Novice,follower,5,6,Toronto Open Swing & Hustle Championships,105,2018,7,2018-07-01,5,"Toronto, Canada"
@@ -155850,7 +155851,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 17625,West Coast Swing,Advanced,follower,F,1,West in Lyon,156,2024,3,2024-03-01,Final,"Lyon, France"
 17625,West Coast Swing,Advanced,follower,1,6,Avignon City Swing,192,2024,1,2024-01-01,1,
 17625,West Coast Swing,Advanced,follower,2,8,Westie Pink City,208,2023,11,2023-11-01,2,"Toulouse, France"
-17625,West Coast Swing,Advanced,follower,F,1,Rolling Swing,156,2023,9,2023-09-01,Final,"Lyon, France"
 17625,West Coast Swing,Advanced,follower,2,4,Sea Sun and Swing,158,2023,8,2023-08-01,2,"La Grande Motte, France"
 17625,West Coast Swing,Advanced,follower,F,1,West in Lyon,156,2023,3,2023-03-01,Final,"Lyon, France"
 17625,West Coast Swing,Advanced,follower,F,1,Paris Westie Fest,109,2023,2,2023-02-01,Final,"Paris, France"
@@ -156162,6 +156162,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 17656,West Coast Swing,Intermediate,leader,3,6,Swing & Snow,222,2024,2,2024-02-01,3,
 17656,West Coast Swing,Intermediate,leader,4,4,Moscow Westie Fest,113,2023,11,2023-11-01,4,
 17656,West Coast Swing,Intermediate,leader,F,1,Saint Petersburg WCS Nights,222,2023,7,2023-07-01,Final,"St. Petersburg, Russia"
+17666,West Coast Swing,Newcomer,follower,2,8,German Open,143,2018,8,2018-08-01,2,"Freiburg, Germany"
 17656,West Coast Swing,Intermediate,leader,F,1,Americano Dance Camp,252,2023,7,2023-07-01,Final,
 17656,West Coast Swing,Intermediate,leader,F,1,Moscow Westie Fest,113,2022,11,2022-11-01,Final,
 17656,West Coast Swing,Intermediate,leader,F,1,Saint Petersburg WCS Nights,222,2022,7,2022-07-01,Final,"St. Petersburg, Russia"
@@ -156288,7 +156289,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 17666,West Coast Swing,Novice,follower,F,1,Swingtzerland,173,2020,2,2020-02-01,Final,
 17666,West Coast Swing,Novice,follower,F,1,German Open,143,2019,8,2019-08-01,Final,"Freiburg, Germany"
 17666,West Coast Swing,Novice,follower,F,1,Anchor Festival,221,2019,3,2019-03-01,Final,
-17666,West Coast Swing,Newcomer,follower,2,8,German Open,143,2018,8,2018-08-01,2,"Freiburg, Germany"
 17668,West Coast Swing,Newcomer,leader,4,2,German Open,143,2018,8,2018-08-01,4,"Freiburg, Germany"
 17667,West Coast Swing,Newcomer,follower,3,6,German Open,143,2018,8,2018-08-01,3,"Freiburg, Germany"
 17669,West Coast Swing,Newcomer,follower,4,4,German Open,143,2018,8,2018-08-01,4,"Freiburg, Germany"
@@ -160694,6 +160694,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 18384,West Coast Swing,Intermediate,follower,F,1,Derby City Swing,116,2026,1,2026-01-01,Final,
 18384,West Coast Swing,Intermediate,follower,F,1,CASH Bash,96,2025,11,2025-11-01,Final,
 18384,West Coast Swing,Intermediate,follower,5,2,Swing Dance Mania,183,2025,8,2025-08-01,5,
+18398,West Coast Swing,Novice,leader,F,1,Paris Westie Fest,109,2023,2,2023-02-01,Final,"Paris, France"
 18384,West Coast Swing,Intermediate,follower,F,1,Chicagoland Country and Swing Dance Festival,34,2025,8,2025-08-01,Final,
 18384,West Coast Swing,Intermediate,follower,3,1,Indy Dance Explosion,138,2025,6,2025-06-01,3,
 18384,West Coast Swing,Intermediate,follower,3,6,CASH Bash,96,2024,12,2024-12-01,3,
@@ -160756,7 +160757,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 18397,West Coast Swing,Novice,follower,2,12,Westie Pink City,208,2024,11,2024-11-01,2,"Toulouse, France"
 18397,West Coast Swing,Novice,follower,3,10,Westie Pink City,208,2022,11,2022-11-01,3,"Toulouse, France"
 18397,West Coast Swing,Newcomer,follower,1,6,Paris Westie Fest,109,2019,2,2019-02-01,1,"Paris, France"
-18398,West Coast Swing,Novice,leader,F,1,Paris Westie Fest,109,2023,2,2023-02-01,Final,"Paris, France"
 18398,West Coast Swing,Novice,leader,F,1,West in Lyon,156,2022,3,2022-03-01,Final,"Lyon, France"
 18398,West Coast Swing,Newcomer,leader,2,2,Paris Westie Fest,109,2019,2,2019-02-01,2,"Paris, France"
 18399,West Coast Swing,Newcomer,leader,F,1,French Open West Coast Swing,109,2023,5,2023-05-01,Final,
@@ -160853,6 +160853,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 18421,West Coast Swing,Novice,leader,F,1,Moscow Westie Fest,113,2019,11,2019-11-01,Final,
 18421,West Coast Swing,Novice,leader,F,1,Swing & Snow,222,2019,2,2019-02-01,Final,
 18422,West Coast Swing,Advanced,leader,F,1,Carolina Summer Swing,62,2026,7,2026-07-01,Final,
+18436,West Coast Swing,Newcomer,leader,F,1,Charlotte Westie Fest,62,2019,2,2019-02-01,Final,
 18422,West Coast Swing,Intermediate,leader,5,6,Spotlight New Year's Celebration,43,2026,1,2026-01-01,5,
 18422,West Coast Swing,Intermediate,leader,4,4,Carolina Summer Swing,62,2025,7,2025-07-01,4,
 18422,West Coast Swing,Intermediate,leader,3,3,Westies on the Water,137,2024,11,2024-11-01,3,
@@ -160915,7 +160916,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 18438,West Coast Swing,Novice,leader,F,1,Gateway Swing Classic,49,2026,5,2026-05-01,Final,
 18438,West Coast Swing,Newcomer,leader,F,1,Charlotte Westie Fest,62,2019,2,2019-02-01,Final,
 18438,West Coast Swing,Newcomer,follower,2,8,Swing City Chicago,34,2025,10,2025-10-01,2,
-18436,West Coast Swing,Newcomer,leader,F,1,Charlotte Westie Fest,62,2019,2,2019-02-01,Final,
 18439,West Coast Swing,Novice,leader,F,1,Carolina Summer Swing,62,2026,7,2026-07-01,Final,
 18439,West Coast Swing,Novice,leader,F,1,USA Grand Nationals,25,2026,5,2026-05-01,Final,
 18439,West Coast Swing,Novice,leader,3,10,Boston Tea Party,8,2026,3,2026-03-01,3,
@@ -161354,6 +161354,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 18509,West Coast Swing,Advanced,leader,F,1,Swingover,82,2024,4,2024-04-01,Final,
 18509,West Coast Swing,Advanced,leader,5,2,Novice Invitational,44,2024,3,2024-03-01,5,
 18509,West Coast Swing,Advanced,leader,5,6,MADjam,13,2024,3,2024-03-01,5,
+18516,West Coast Swing,Advanced,leader,F,1,Wild Wild Westie,21,2021,7,2021-07-01,Final,
 18509,West Coast Swing,Advanced,leader,F,1,Capital Swing Dance Convention,6,2024,2,2024-02-01,Final,
 18509,West Coast Swing,Advanced,leader,F,1,Spotlight New Year's Celebration,43,2024,1,2024-01-01,Final,
 18509,West Coast Swing,Advanced,leader,3,3,Midnight Madness,21,2023,11,2023-11-01,3,
@@ -161478,7 +161479,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 18516,West Coast Swing,Advanced,leader,F,1,5280 Westival,29,2021,11,2021-11-01,Final,
 18516,West Coast Swing,Advanced,leader,1,10,Atlanta Swing Classic,25,2021,10,2021-10-01,1,
 18516,West Coast Swing,Advanced,leader,3,3,Philly Swing Classic,66,2021,9,2021-09-01,3,"Wilmington, DE, United States"
-18516,West Coast Swing,Advanced,leader,F,1,Wild Wild Westie,21,2021,7,2021-07-01,Final,
 18516,West Coast Swing,Advanced,leader,5,6,MADjam,13,2020,3,2020-03-01,5,
 18516,West Coast Swing,Advanced,leader,2,8,Charlotte Westie Fest,62,2020,2,2020-02-01,2,
 18516,West Coast Swing,Advanced,leader,3,3,Freedom Swing Dance Challenge,66,2020,1,2020-01-01,3,"Wilmington, DE, United States"
@@ -161577,6 +161577,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 18539,West Coast Swing,Novice,leader,F,1,Revitalise WCS,174,2026,7,2026-07-01,Final,"Melbourne, Australia"
 18539,West Coast Swing,Novice,leader,F,1,Best of the Best WCS,117,2025,9,2025-09-01,Final,"Sydney, Australia"
 18539,West Coast Swing,Novice,leader,F,1,Revitalise WCS,174,2025,7,2025-07-01,Final,"Melbourne, Australia"
+18535,West Coast Swing,Sophisticated,follower,3,6,Midnight Madness,21,2025,11,2025-11-01,3,
 18539,West Coast Swing,Novice,leader,4,2,The Australian Classic West Coast Swing Dance Championships (Trial Event),117,2025,1,2025-01-01,4,
 18539,West Coast Swing,Novice,leader,F,1,Best of the Best WCS,117,2024,9,2024-09-01,Final,"Sydney, Australia"
 18539,West Coast Swing,Novice,leader,F,1,Swing Escape,209,2019,3,2019-03-01,Final,
@@ -161639,7 +161640,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 18535,West Coast Swing,Sophisticated,follower,3,3,City of Angels WCS,54,2026,4,2026-04-01,3,
 18535,West Coast Swing,Sophisticated,follower,4,4,Rose City Swing,4,2026,3,2026-03-01,4,
 18535,West Coast Swing,Sophisticated,follower,2,4,Derby City Swing,116,2026,1,2026-01-01,2,
-18535,West Coast Swing,Sophisticated,follower,3,6,Midnight Madness,21,2025,11,2025-11-01,3,
 18535,West Coast Swing,Sophisticated,follower,2,8,Liberty Swing Dance Championships,41,2025,6,2025-06-01,2,
 18535,West Coast Swing,Sophisticated,follower,4,4,USA Grand Nationals,25,2025,5,2025-05-01,4,
 18535,West Coast Swing,Sophisticated,follower,F,1,City of Angels WCS,54,2025,4,2025-04-01,Final,
@@ -163654,6 +163654,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 18908,West Coast Swing,Newcomer,follower,1,20,MADjam,13,2023,3,2023-03-01,1,
 18908,West Coast Swing,Newcomer,follower,4,4,Canadian Swing Championships,86,2019,5,2019-05-01,4,
 18909,West Coast Swing,Newcomer,follower,F,1,Canadian Swing Championships,86,2019,5,2019-05-01,Final,
+18932,West Coast Swing,All-Star,leader,5,2,Westie Spring Thing,110,2026,3,2026-03-01,5,
 18910,West Coast Swing,Newcomer,follower,F,1,Canadian Swing Championships,86,2019,5,2019-05-01,Final,
 18911,West Coast Swing,Newcomer,follower,F,1,Canadian Swing Championships,86,2019,5,2019-05-01,Final,
 18913,West Coast Swing,Newcomer,leader,2,4,USA Grand Nationals,25,2019,5,2019-05-01,2,
@@ -163718,7 +163719,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 18932,West Coast Swing,All-Star,leader,3,1,Slovenian Open,256,2026,4,2026-04-01,3,"Ljubljana, Slovenia"
 18932,West Coast Swing,All-Star,leader,F,1,UK WCS Championships,107,2026,3,2026-03-01,Final,
 18932,West Coast Swing,All-Star,leader,3,3,King Swing,267,2026,3,2026-03-01,3,"Kraków, Poland"
-18932,West Coast Swing,All-Star,leader,5,2,Westie Spring Thing,110,2026,3,2026-03-01,5,
 18932,West Coast Swing,All-Star,leader,2,2,Valentine Swing,199,2026,2,2026-02-01,2,"Stockholm, Sweden"
 18932,West Coast Swing,All-Star,leader,F,1,BudaFest Open WCS Championships,110,2026,1,2026-01-01,Final,
 18932,West Coast Swing,All-Star,leader,4,4,SwingVester,197,2026,1,2026-01-01,4,"Wels, Austria"
@@ -165103,6 +165103,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 19195,West Coast Swing,Intermediate,follower,3,3,Revitalise WCS,174,2025,7,2025-07-01,3,"Melbourne, Australia"
 19195,West Coast Swing,Intermediate,follower,F,1,Swingsation,169,2025,5,2025-05-01,Final,"Gold Coast, Australia"
 19195,West Coast Swing,Intermediate,follower,F,1,Best of the Best WCS,117,2024,9,2024-09-01,Final,"Sydney, Australia"
+19214,West Coast Swing,Newcomer,follower,F,1,German Open,143,2019,8,2019-08-01,Final,"Freiburg, Germany"
 19195,West Coast Swing,Intermediate,follower,5,1,New Zealand Open Swing Dance Championships,168,2023,10,2023-10-01,5,"Auckland, New Zealand"
 19195,West Coast Swing,Intermediate,follower,3,3,Odyssey West Coast Swing,169,2023,7,2023-07-01,3,
 19195,West Coast Swing,Novice,follower,1,10,Swingsation,169,2021,6,2021-06-01,1,"Gold Coast, Australia"
@@ -165168,7 +165169,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 19211,West Coast Swing,Newcomer,leader,F,1,German Open,143,2019,8,2019-08-01,Final,"Freiburg, Germany"
 19212,West Coast Swing,Newcomer,follower,F,1,German Open,143,2019,8,2019-08-01,Final,"Freiburg, Germany"
 19213,West Coast Swing,Newcomer,leader,F,1,German Open,143,2019,8,2019-08-01,Final,"Freiburg, Germany"
-19214,West Coast Swing,Newcomer,follower,F,1,German Open,143,2019,8,2019-08-01,Final,"Freiburg, Germany"
 19216,West Coast Swing,Newcomer,follower,F,1,German Open,143,2019,8,2019-08-01,Final,"Freiburg, Germany"
 19215,West Coast Swing,Novice,leader,F,1,Neverland Swing,191,2024,7,2024-07-01,Final,
 19215,West Coast Swing,Novice,leader,F,1,Neverland Swing,191,2022,7,2022-07-01,Final,
@@ -166440,6 +166440,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 19443,West Coast Swing,Novice,leader,1,6,Trinity Swing,230,2025,2,2025-02-01,1,"Dundalk, Ireland"
 19443,West Coast Swing,Advanced,follower,4,8,Spotlight New Year's Celebration,43,2026,1,2026-01-01,4,
 19443,West Coast Swing,Advanced,follower,3,10,US Open Swing Dance Championships,22,2025,11,2025-11-01,3,
+19448,West Coast Swing,Intermediate,follower,4,4,SOswing,88,2024,5,2024-05-01,4,
 19443,West Coast Swing,Advanced,follower,2,4,Flowstate | West Coast Swing & Zouk Festival,107,2025,11,2025-11-01,2,
 19443,West Coast Swing,Advanced,follower,5,2,Milan Modern Swing,132,2025,10,2025-10-01,5,"Milan, Italy"
 19443,West Coast Swing,Advanced,follower,3,6,Midland Swing Open,107,2025,9,2025-09-01,3,
@@ -166503,7 +166504,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 19448,West Coast Swing,Intermediate,follower,3,3,Swingvasion,242,2025,3,2025-03-01,3,
 19448,West Coast Swing,Intermediate,follower,4,8,Capital Swing Dance Convention,6,2025,2,2025-02-01,4,
 19448,West Coast Swing,Intermediate,follower,F,1,Sea to Sky,30,2024,11,2024-11-01,Final,
-19448,West Coast Swing,Intermediate,follower,4,4,SOswing,88,2024,5,2024-05-01,4,
 19448,West Coast Swing,Intermediate,follower,F,1,Monterey SwingFest,1,2024,1,2024-01-01,Final,
 19448,West Coast Swing,Intermediate,follower,F,1,Capital Swing Dance Convention,6,2023,2,2023-02-01,Final,
 19448,West Coast Swing,Intermediate,follower,F,1,Monterey SwingFest,1,2023,1,2023-01-01,Final,
@@ -167939,6 +167939,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 19817,West Coast Swing,Novice,follower,F,2,Warsaw Halloween Swing,155,2023,10,2023-10-01,Final,
 19817,West Coast Swing,Novice,follower,F,1,Baltic Swing,186,2023,6,2023-06-01,Final,"Gdańsk, Poland"
 19819,West Coast Swing,Intermediate,follower,5,6,Westie Spring Thing,110,2026,3,2026-03-01,5,
+19831,West Coast Swing,Newcomer,leader,1,6,Derby City Swing,116,2020,1,2020-01-01,1,
 19819,West Coast Swing,Intermediate,follower,F,1,Autumn Swing Challenge,110,2024,11,2024-11-01,Final,
 19819,West Coast Swing,Novice,follower,F,2,Warsaw Halloween Swing,155,2023,10,2023-10-01,Final,
 19819,West Coast Swing,Novice,follower,F,1,Bavarian Open,129,2023,9,2023-09-01,Final,"Munich, Germany"
@@ -168003,7 +168004,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 19826,West Coast Swing,Novice,follower,F,1,Municorn Swing,129,2020,1,2020-01-01,Final,
 19826,West Coast Swing,Sophisticated,follower,F,1,D-Town Swing,127,2026,6,2026-06-01,Final,"Düsseldorf, Germany"
 19826,West Coast Swing,Sophisticated,follower,F,1,Euro Dance Festival,232,2026,2,2026-02-01,Final,"Rust, Germany"
-19831,West Coast Swing,Newcomer,leader,1,6,Derby City Swing,116,2020,1,2020-01-01,1,
 19832,West Coast Swing,Newcomer,follower,1,6,Derby City Swing,116,2020,1,2020-01-01,1,
 19833,West Coast Swing,Newcomer,leader,2,4,Derby City Swing,116,2020,1,2020-01-01,2,
 19834,West Coast Swing,Novice,leader,F,1,Austin Swing Dance Championships,39,2024,1,2024-01-01,Final,
@@ -168552,6 +168552,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 19974,West Coast Swing,Intermediate,follower,F,1,Asia West Coast Swing Open,159,2024,4,2024-04-01,Final,
 19974,West Coast Swing,Intermediate,follower,4,2,Swingvasion,242,2024,3,2024-03-01,4,
 19974,West Coast Swing,Novice,follower,1,15,New Zealand Open Swing Dance Championships,168,2022,10,2022-10-01,1,"Auckland, New Zealand"
+19986,West Coast Swing,Novice,leader,F,1,Shooba Dooba Swing,113,2020,12,2020-12-01,Final,
 19974,West Coast Swing,Novice,follower,4,4,New Zealand Open Swing Dance Championships,168,2020,10,2020-10-01,4,"Auckland, New Zealand"
 19975,West Coast Swing,Novice,leader,F,1,New Zealand Open Swing Dance Championships,168,2020,10,2020-10-01,Final,"Auckland, New Zealand"
 19976,West Coast Swing,Novice,leader,2,12,New Zealand Open Swing Dance Championships,168,2025,10,2025-10-01,2,"Auckland, New Zealand"
@@ -168613,7 +168614,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 19986,West Coast Swing,Intermediate,leader,F,1,Saint Petersburg WCS Nights,222,2021,7,2021-07-01,Final,"St. Petersburg, Russia"
 19986,West Coast Swing,Novice,leader,1,10,Americano Dance Camp,252,2021,7,2021-07-01,1,
 19986,West Coast Swing,Novice,leader,4,4,Russian Open WCS Championships,113,2021,4,2021-04-01,4,
-19986,West Coast Swing,Novice,leader,F,1,Shooba Dooba Swing,113,2020,12,2020-12-01,Final,
 19986,West Coast Swing,Novice,leader,F,1,Moscow Westie Fest,113,2020,11,2020-11-01,Final,
 19986,West Coast Swing,Sophisticated,leader,F,1,Swing & Snow,222,2025,2,2025-02-01,Final,
 19986,West Coast Swing,Sophisticated,leader,F,1,Americano Dance Camp,252,2024,7,2024-07-01,Final,
@@ -169681,6 +169681,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 20118,West Coast Swing,Advanced,follower,3,3,Swingside Invitational,272,2024,10,2024-10-01,3,"Liège, Belgium"
 20118,West Coast Swing,Advanced,follower,3,6,Finnfest,204,2024,9,2024-09-01,3,
 20118,West Coast Swing,Advanced,follower,5,2,Rolling Swing,156,2024,9,2024-09-01,5,"Lyon, France"
+20124,West Coast Swing,Intermediate,follower,F,1,Swing Fling,38,2022,8,2022-08-01,Final,"Herndon, VA, United States"
 20118,West Coast Swing,Intermediate,follower,1,15,French Open West Coast Swing,109,2024,5,2024-05-01,1,
 20118,West Coast Swing,Intermediate,follower,F,2,BudaFest Open WCS Championships,110,2024,1,2024-01-01,Final,
 20118,West Coast Swing,Intermediate,follower,4,4,Global Grand Prix - West Coast Swing Reunion,208,2023,12,2023-12-01,4,
@@ -169743,7 +169744,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 20124,West Coast Swing,Advanced,follower,F,1,Easter Swing,30,2023,4,2023-04-01,Final,
 20124,West Coast Swing,Intermediate,follower,3,10,DC Swing eXperience (DCSX),38,2022,11,2022-11-01,3,"Herndon, VA, United States"
 20124,West Coast Swing,Intermediate,follower,4,8,Atlanta Swing Classic,25,2022,10,2022-10-01,4,
-20124,West Coast Swing,Intermediate,follower,F,1,Swing Fling,38,2022,8,2022-08-01,Final,"Herndon, VA, United States"
 20124,West Coast Swing,Intermediate,follower,2,16,Wild Wild Westie,21,2022,7,2022-07-01,2,
 20124,West Coast Swing,Intermediate,follower,F,1,Liberty Swing Dance Championships,41,2022,6,2022-06-01,Final,
 20124,West Coast Swing,Intermediate,follower,F,1,Easter Swing,30,2022,4,2022-04-01,Final,
@@ -170418,6 +170418,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 20185,West Coast Swing,Sophisticated,follower,3,3,UCWDC Country Dance World Championship,21,2024,1,2024-01-01,3,
 20188,West Coast Swing,All-Star,leader,F,1,Swing Crush,167,2026,2,2026-02-01,Final,
 20188,West Coast Swing,All-Star,leader,F,1,Austin Swing Dance Championships,39,2026,1,2026-01-01,Final,
+20189,West Coast Swing,Intermediate,follower,F,2,Wild Wild Westie,21,2023,7,2023-07-01,Final,
 20188,West Coast Swing,All-Star,leader,2,8,Spotlight New Year's Celebration,43,2026,1,2026-01-01,2,
 20188,West Coast Swing,Advanced,leader,1,15,Austin Rocks,39,2025,9,2025-09-01,1,
 20188,West Coast Swing,Advanced,leader,2,12,Wild Wild Westie,21,2025,7,2025-07-01,2,
@@ -170481,7 +170482,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 20186,West Coast Swing,Sophisticated,leader,F,1,Trilogy Swing,63,2023,9,2023-09-01,Final,
 20189,West Coast Swing,Intermediate,follower,F,1,Midnight Madness,21,2024,11,2024-11-01,Final,
 20189,West Coast Swing,Intermediate,follower,4,4,Austin Rocks,39,2024,9,2024-09-01,4,
-20189,West Coast Swing,Intermediate,follower,F,2,Wild Wild Westie,21,2023,7,2023-07-01,Final,
 20189,West Coast Swing,Intermediate,follower,F,1,US Open Swing Dance Championships,22,2022,11,2022-11-01,Final,
 20189,West Coast Swing,Intermediate,follower,F,1,Swingapalooza,40,2022,6,2022-06-01,Final,
 20189,West Coast Swing,Novice,follower,3,10,The Texas Classic,39,2022,5,2022-05-01,3,
@@ -175628,6 +175628,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 20974,West Coast Swing,All-Star,leader,F,1,Wild Wild Westie,21,2026,7,2026-07-01,Final,
 20974,West Coast Swing,All-Star,leader,2,8,Liberty Swing Dance Championships,41,2026,6,2026-06-01,2,
 20974,West Coast Swing,All-Star,leader,F,1,J&J O'Rama,23,2026,6,2026-06-01,Final,
+20979,West Coast Swing,Newcomer,leader,3,1,Milan Modern Swing,132,2022,10,2022-10-01,3,"Milan, Italy"
 20974,West Coast Swing,All-Star,leader,2,2,Dance Jam Jack & Jill Weekend,353,2026,5,2026-05-01,2,"Silver Spring, MD, United States"
 20974,West Coast Swing,All-Star,leader,1,10,Swingover,82,2026,4,2026-04-01,1,
 20974,West Coast Swing,All-Star,leader,2,8,The Chicago Classic,34,2026,3,2026-03-01,2,
@@ -175691,7 +175692,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 20978,West Coast Swing,Newcomer,leader,1,3,Milan Modern Swing,132,2022,10,2022-10-01,1,"Milan, Italy"
 20978,West Coast Swing,Newcomer,follower,F,1,UpTown Swing,199,2024,8,2024-08-01,Final,"Stockholm, Sweden"
 20979,West Coast Swing,Novice,leader,1,15,Swingtzerland,173,2026,2,2026-02-01,1,
-20979,West Coast Swing,Newcomer,leader,3,1,Milan Modern Swing,132,2022,10,2022-10-01,3,"Milan, Italy"
 20980,West Coast Swing,Novice,leader,3,10,Detonation Dance,166,2024,4,2024-04-01,3,
 20980,West Coast Swing,Advanced,follower,2,8,Westie Joy,394,2026,8,2026-08-01,2,
 20980,West Coast Swing,Advanced,follower,1,10,UpTown Swing,199,2026,8,2026-08-01,1,"Stockholm, Sweden"
@@ -178634,6 +178634,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 21515,West Coast Swing,Advanced,follower,4,2,Swingtzerland,173,2025,2,2025-02-01,4,
 21515,West Coast Swing,Advanced,follower,F,1,Paris Westie Fest,109,2025,2,2025-02-01,Final,"Paris, France"
 21515,West Coast Swing,Advanced,follower,3,3,Avignon City Swing,192,2025,1,2025-01-01,3,
+21527,West Coast Swing,Novice,leader,F,2,West in Lyon,156,2025,3,2025-03-01,Final,"Lyon, France"
 21515,West Coast Swing,Advanced,follower,F,1,Global Grand Prix - West Coast Swing Reunion,208,2024,12,2024-12-01,Final,
 21515,West Coast Swing,Advanced,follower,F,1,Winter White,223,2024,12,2024-12-01,Final,
 21515,West Coast Swing,Advanced,follower,1,6,Westie Pink City,208,2024,11,2024-11-01,1,"Toulouse, France"
@@ -178697,7 +178698,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 21527,West Coast Swing,Novice,leader,5,6,US Open Swing Dance Championships,22,2025,11,2025-11-01,5,
 21527,West Coast Swing,Novice,leader,5,6,Rolling Swing,156,2025,9,2025-09-01,5,"Lyon, France"
 21527,West Coast Swing,Novice,leader,5,6,French Open West Coast Swing,109,2025,6,2025-06-01,5,
-21527,West Coast Swing,Novice,leader,F,2,West in Lyon,156,2025,3,2025-03-01,Final,"Lyon, France"
 21527,West Coast Swing,Novice,leader,F,1,Global Grand Prix - West Coast Swing Reunion,208,2024,12,2024-12-01,Final,
 21527,West Coast Swing,Novice,leader,F,1,West in Lyon,156,2024,3,2024-03-01,Final,"Lyon, France"
 21527,West Coast Swing,Newcomer,leader,4,4,Westy Nantes,190,2023,4,2023-04-01,4,"Nantes, France"
@@ -179012,6 +179012,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 21587,West Coast Swing,Intermediate,follower,5,6,Novice Invitational,44,2025,3,2025-03-01,5,
 21587,West Coast Swing,Intermediate,follower,1,10,Swing Crush,167,2025,2,2025-02-01,1,
 21587,West Coast Swing,Intermediate,follower,F,1,Novice Invitational,44,2024,3,2024-03-01,Final,
+21601,West Coast Swing,Intermediate,leader,F,1,German Open,143,2024,8,2024-08-01,Final,"Freiburg, Germany"
 21587,West Coast Swing,Intermediate,follower,F,1,Austin Swing Dance Championships,39,2024,1,2024-01-01,Final,
 21587,West Coast Swing,Intermediate,follower,F,1,Lone Star Invitational,39,2023,8,2023-08-01,Final,
 21587,West Coast Swing,Intermediate,follower,5,1,Dance Mardi Gras,57,2023,7,2023-07-01,5,
@@ -179075,7 +179076,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 21601,West Coast Swing,Intermediate,leader,F,1,Westie Spring Thing,110,2025,3,2025-03-01,Final,
 21601,West Coast Swing,Intermediate,leader,F,1,SwingVester,197,2025,1,2025-01-01,Final,"Wels, Austria"
 21601,West Coast Swing,Intermediate,leader,4,4,Autumn Swing Challenge,110,2024,11,2024-11-01,4,
-21601,West Coast Swing,Intermediate,leader,F,1,German Open,143,2024,8,2024-08-01,Final,"Freiburg, Germany"
 21601,West Coast Swing,Intermediate,leader,F,1,SwingVester,197,2024,1,2024-01-01,Final,"Wels, Austria"
 21601,West Coast Swing,Novice,leader,1,15,Warsaw Halloween Swing,155,2023,10,2023-10-01,1,
 21601,West Coast Swing,Novice,leader,F,1,WCS Festival,127,2023,10,2023-10-01,Final,"Düsseldorf, Germany"
@@ -180202,6 +180202,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 21837,West Coast Swing,Intermediate,follower,F,1,US Open Swing Dance Championships,22,2024,12,2024-12-01,Final,
 21837,West Coast Swing,Intermediate,follower,1,10,Paradise Dance Festival,19,2024,10,2024-10-01,1,
 21837,West Coast Swing,Intermediate,follower,F,1,Boogie By The Bay,2,2024,10,2024-10-01,Final,
+21851,West Coast Swing,Newcomer,leader,2,4,Baltic Swing,186,2023,6,2023-06-01,2,"Gdańsk, Poland"
 21837,West Coast Swing,Intermediate,follower,4,12,Swingtacular: The Galactic Open,2,2024,8,2024-08-01,4,
 21837,West Coast Swing,Intermediate,follower,F,2,J&J O'Rama,23,2024,6,2024-06-01,Final,
 21837,West Coast Swing,Intermediate,follower,F,1,City of Angels WCS,54,2024,4,2024-04-01,Final,
@@ -180265,7 +180266,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 21852,West Coast Swing,Novice,leader,F,1,Baltic Swing,186,2026,6,2026-06-01,Final,"Gdańsk, Poland"
 21852,West Coast Swing,Novice,leader,F,2,Warsaw Halloween Swing,155,2025,11,2025-11-01,Final,
 21852,West Coast Swing,Newcomer,leader,3,3,Baltic Swing,186,2023,6,2023-06-01,3,"Gdańsk, Poland"
-21851,West Coast Swing,Newcomer,leader,2,4,Baltic Swing,186,2023,6,2023-06-01,2,"Gdańsk, Poland"
 21853,West Coast Swing,Newcomer,leader,4,2,Baltic Swing,186,2023,6,2023-06-01,4,"Gdańsk, Poland"
 21854,West Coast Swing,Newcomer,leader,5,1,Baltic Swing,186,2023,6,2023-06-01,5,"Gdańsk, Poland"
 21855,West Coast Swing,Novice,follower,2,16,Finnfest,204,2025,9,2025-09-01,2,
@@ -180522,6 +180522,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 21896,West Coast Swing,Novice,leader,5,2,Neverland Swing,191,2026,6,2026-06-01,5,
 21896,West Coast Swing,Novice,leader,F,1,Swing City Chicago,34,2025,10,2025-10-01,Final,
 21896,West Coast Swing,Novice,leader,F,1,SOM - Swing of Music,197,2025,5,2025-05-01,Final,"Wels, Austria"
+21911,West Coast Swing,Sophisticated,follower,5,2,Winter Coast Swing,269,2026,2,2026-02-01,5,"Kuopio, Finland"
 21896,West Coast Swing,Novice,leader,F,1,Dutch Open West Coast Swing,227,2025,3,2025-03-01,Final,"Venray, Netherlands"
 21896,West Coast Swing,Novice,leader,F,1,Arousa Westie Fest,258,2025,2,2025-02-01,Final,"Sanxenxo, Spain"
 21896,West Coast Swing,Novice,leader,F,1,Neverland Swing,191,2024,7,2024-07-01,Final,
@@ -180585,7 +180586,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 21911,West Coast Swing,Novice,follower,F,1,Rock the Barn,215,2024,7,2024-07-01,Final,"Umeå, Sweden"
 21911,West Coast Swing,Novice,follower,2,8,Winter Coast Swing,269,2024,2,2024-02-01,2,"Kuopio, Finland"
 21911,West Coast Swing,Novice,follower,3,6,Neverland Swing,191,2023,7,2023-07-01,3,
-21911,West Coast Swing,Sophisticated,follower,5,2,Winter Coast Swing,269,2026,2,2026-02-01,5,"Kuopio, Finland"
 21911,West Coast Swing,Sophisticated,follower,F,1,Slovenian Open,256,2025,4,2025-04-01,Final,"Ljubljana, Slovenia"
 21913,West Coast Swing,Newcomer,leader,1,10,Swing Fiction,266,2023,7,2023-07-01,1,
 21914,West Coast Swing,Newcomer,leader,2,8,Swing Fiction,266,2023,7,2023-07-01,2,
@@ -183530,6 +183530,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 22575,West Coast Swing,Sophisticated,leader,F,1,Valentine Swing,199,2026,2,2026-02-01,Final,"Stockholm, Sweden"
 22576,West Coast Swing,Novice,leader,F,2,BudaFest Open WCS Championships,110,2026,1,2026-01-01,Final,
 22576,West Coast Swing,Novice,leader,2,12,Santa Swing,267,2025,12,2025-12-01,2,"Kraków, Poland"
+22595,West Coast Swing,Advanced,leader,3,6,City of Angels WCS,54,2026,4,2026-04-01,3,
 22576,West Coast Swing,Novice,leader,F,2,BudaFest Open WCS Championships,110,2025,1,2025-01-01,Final,
 22576,West Coast Swing,Newcomer,leader,4,4,Scandinavian Open,199,2023,11,2023-11-01,4,
 22578,West Coast Swing,Intermediate,leader,1,10,Dance Jam Jack & Jill Weekend,353,2026,5,2026-05-01,1,"Silver Spring, MD, United States"
@@ -183594,7 +183595,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 22594,West Coast Swing,Novice,leader,F,1,Midnight Madness,21,2024,11,2024-11-01,Final,
 22594,West Coast Swing,Novice,leader,F,1,The Texas Classic,39,2024,5,2024-05-01,Final,
 22594,West Coast Swing,Newcomer,leader,1,6,Midnight Madness,21,2023,11,2023-11-01,1,
-22595,West Coast Swing,Advanced,leader,3,6,City of Angels WCS,54,2026,4,2026-04-01,3,
 22595,West Coast Swing,Advanced,leader,F,1,Swing Crush,167,2026,2,2026-02-01,Final,
 22595,West Coast Swing,Advanced,leader,3,6,Midnight Madness,21,2025,11,2025-11-01,3,
 22595,West Coast Swing,Advanced,leader,F,1,Austin Rocks,39,2025,9,2025-09-01,Final,
@@ -184148,6 +184148,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 22743,West Coast Swing,Novice,follower,5,10,French Open West Coast Swing,109,2025,6,2025-06-01,5,
 22743,West Coast Swing,Newcomer,follower,1,6,Global Grand Prix - West Coast Swing Reunion,208,2023,12,2023-12-01,1,
 22743,West Coast Swing,Juniors,follower,5,1,West in Lyon,156,2026,3,2026-03-01,5,"Lyon, France"
+22757,West Coast Swing,Newcomer,leader,F,1,Countdown Swing Boston,8,2024,1,2024-01-01,Final,"Boston, MA, United States"
 22744,West Coast Swing,Newcomer,follower,3,3,Global Grand Prix - West Coast Swing Reunion,208,2023,12,2023-12-01,3,
 22746,West Coast Swing,Newcomer,follower,5,1,Global Grand Prix - West Coast Swing Reunion,208,2023,12,2023-12-01,5,
 22745,West Coast Swing,Newcomer,follower,4,2,Global Grand Prix - West Coast Swing Reunion,208,2023,12,2023-12-01,4,
@@ -184209,7 +184210,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 22757,West Coast Swing,Novice,leader,1,10,Canadian Swing Championships,86,2025,5,2025-05-01,1,
 22757,West Coast Swing,Novice,leader,2,8,Swingin' Into Spring,131,2025,5,2025-05-01,2,
 22757,West Coast Swing,Novice,leader,F,1,Summer Hummer,397,2024,8,2024-08-01,Final,"Woburn (Boston), MA, United States"
-22757,West Coast Swing,Newcomer,leader,F,1,Countdown Swing Boston,8,2024,1,2024-01-01,Final,"Boston, MA, United States"
 22757,West Coast Swing,Sophisticated,leader,4,2,Swingin' Into Spring,131,2026,5,2026-05-01,4,
 22757,West Coast Swing,Sophisticated,leader,2,2,New England Dance Festival,70,2025,8,2025-08-01,2,"Newton (Boston), MA, United States"
 22757,West Coast Swing,Newcomer,follower,4,4,Summer Hummer,397,2024,8,2024-08-01,4,"Woburn (Boston), MA, United States"
@@ -184709,6 +184709,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 22879,West Coast Swing,Novice,leader,F,1,Monterey SwingFest,1,2024,1,2024-01-01,Final,
 22879,West Coast Swing,Sophisticated,leader,F,1,Korea Westival,213,2024,9,2024-09-01,Final,"Jeju, Republic of Korea"
 22879,West Coast Swing,Newcomer,follower,4,4,SOswing,88,2024,5,2024-05-01,4,
+22890,West Coast Swing,Intermediate,leader,1,10,Derby City Swing,116,2025,1,2025-01-01,1,
 22880,West Coast Swing,Intermediate,leader,4,8,Liberty Swing Dance Championships,41,2025,6,2025-06-01,4,
 22880,West Coast Swing,Intermediate,leader,1,15,SOswing,88,2025,5,2025-05-01,1,
 22880,West Coast Swing,Intermediate,leader,3,10,Monterey SwingFest,1,2025,1,2025-01-01,3,
@@ -184832,7 +184833,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 22890,West Coast Swing,Advanced,leader,3,6,City of Angels WCS,54,2025,4,2025-04-01,3,
 22890,West Coast Swing,Intermediate,leader,1,15,Novice Invitational,44,2025,3,2025-03-01,1,
 22890,West Coast Swing,Intermediate,leader,F,1,Swing Crush,167,2025,2,2025-02-01,Final,
-22890,West Coast Swing,Intermediate,leader,1,10,Derby City Swing,116,2025,1,2025-01-01,1,
 22890,West Coast Swing,Intermediate,leader,F,1,Midnight Madness,21,2024,11,2024-11-01,Final,
 22890,West Coast Swing,Intermediate,leader,F,1,Austin Rocks,39,2024,9,2024-09-01,Final,
 22890,West Coast Swing,Intermediate,leader,3,6,Meet Me In St Louis,49,2024,9,2024-09-01,3,
@@ -187046,6 +187046,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 23512,West Coast Swing,Master,follower,4,2,Westie's Angels,156,2025,11,2025-11-01,4,"Lyon, France"
 23512,West Coast Swing,Master,follower,5,1,Rolling Swing,156,2025,9,2025-09-01,5,"Lyon, France"
 23512,West Coast Swing,Master,follower,F,1,French Open West Coast Swing,109,2024,5,2024-05-01,Final,
+23535,West Coast Swing,Novice,follower,2,12,Dance N Play,133,2024,6,2024-06-01,2,
 23510,West Coast Swing,Newcomer,follower,F,1,French Open West Coast Swing,109,2024,5,2024-05-01,Final,
 23513,West Coast Swing,Newcomer,leader,2,4,Canadian Swing Championships,86,2024,5,2024-05-01,2,
 23514,West Coast Swing,Novice,leader,F,1,Summer Hummer,397,2026,8,2026-08-01,Final,"Woburn (Boston), MA, United States"
@@ -187110,7 +187111,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 23535,West Coast Swing,Intermediate,follower,F,1,SOswing,88,2025,5,2025-05-01,Final,
 23535,West Coast Swing,Intermediate,follower,5,6,SwingCouver,4,2025,1,2025-01-01,5,
 23535,West Coast Swing,Novice,follower,5,10,Sea to Sky,30,2024,11,2024-11-01,5,
-23535,West Coast Swing,Novice,follower,2,12,Dance N Play,133,2024,6,2024-06-01,2,
 23535,West Coast Swing,Novice,follower,F,1,SOswing,88,2024,5,2024-05-01,Final,
 23540,West Coast Swing,Newcomer,follower,1,3,The Texas Classic,39,2024,5,2024-05-01,1,
 23541,West Coast Swing,Newcomer,follower,2,2,The Texas Classic,39,2024,5,2024-05-01,2,
@@ -189697,6 +189697,7 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 24397,West Coast Swing,Intermediate,follower,F,1,Saint Petersburg WCS Nights,222,2026,7,2026-07-01,Final,"St. Petersburg, Russia"
 24397,West Coast Swing,Intermediate,follower,F,1,Arousa Westie Fest,258,2026,2,2026-02-01,Final,"Sanxenxo, Spain"
 24397,West Coast Swing,Intermediate,follower,F,1,Swing & Snow,222,2026,2,2026-02-01,Final,
+24419,West Coast Swing,Newcomer,follower,5,2,Swingside Invitational,272,2024,10,2024-10-01,5,"Liège, Belgium"
 24397,West Coast Swing,Intermediate,follower,F,1,Shooba Dooba Swing,113,2025,12,2025-12-01,Final,
 24397,West Coast Swing,Intermediate,follower,F,1,Saint Petersburg WCS Nights,222,2025,7,2025-07-01,Final,"St. Petersburg, Russia"
 24397,West Coast Swing,Novice,follower,3,10,HONEY FEST,255,2025,4,2025-04-01,3,
@@ -189759,7 +189760,6 @@ dancer_id,event_dance,event_competition,event_role,event_result,event_points,eve
 24419,West Coast Swing,Novice,follower,3,10,Manneken Swing,387,2026,8,2026-08-01,3,
 24419,West Coast Swing,Novice,follower,F,1,Neverland Swing,191,2026,6,2026-06-01,Final,
 24419,West Coast Swing,Novice,follower,F,1,SwingIN Festival,189,2026,4,2026-04-01,Final,
-24419,West Coast Swing,Newcomer,follower,5,2,Swingside Invitational,272,2024,10,2024-10-01,5,"Liège, Belgium"
 24419,West Coast Swing,Sophisticated,follower,F,1,Neverland Swing,191,2026,6,2026-06-01,Final,
 24420,West Coast Swing,Newcomer,follower,F,1,Swingside Invitational,272,2024,10,2024-10-01,Final,"Liège, Belgium"
 24421,West Coast Swing,Novice,follower,F,1,Manneken Swing,387,2026,8,2026-08-01,Final,
