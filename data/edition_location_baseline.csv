@@ -55,7 +55,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 379,2026,5,386,Med in Swing,auto,La Londe-les-Maures,,France,"La Londe-les-Maures, France","La Londe-les-Maures, France",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 76,2026,5,51,Michigan Dance Classic,auto,Detroit,Michigan,United States,"Detroit, MI, United States","Detroit, MI",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 364,2026,5,217,Nanaimo Dance Fusion,auto,Nanaimo,,Canada,"Nanaimo, Canada","Nanaimo, Canada",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
-253,2026,5,266,Nordic WCS Championships,auto,Brno,,Czech Republic,"Brno, Czech Republic","Brno, Czech Republic",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
+253,2026,5,199,Nordic WCS Championships,manual,Stockholm,,Sweden,"Stockholm, Sweden","Stockholm, Sweden",2026-08-31 19:09:37.787927+00,2026-08-31 20:20:42.616264+00
 336,2026,5,197,SOM - Swing of Music,auto,Wels,,Austria,"Wels, Austria","Wels, Austria",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 205,2026,5,88,SOswing,auto,Ashland,Oregon,United States,"Ashland, OR, United States","Ashland, OR",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 354,2026,5,143,Spring Time Swing,auto,Freiburg,,Germany,"Freiburg, Germany","Freiburg, Germany",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
@@ -232,7 +232,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 221,2025,5,49,Gateway Swing Classic,auto,St. Louis,Missouri,United States,"St. Louis, MO, United States","St. Louis, MO",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 379,2025,5,386,Med in Swing,auto,La Londe-les-Maures,,France,"La Londe-les-Maures, France","La Londe-les-Maures, France",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 364,2025,5,217,Nanaimo Dance Fusion,auto,Nanaimo,,Canada,"Nanaimo, Canada","Nanaimo, Canada",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
-253,2025,5,266,Nordic WCS Championships,auto,Brno,,Czech Republic,"Brno, Czech Republic","Brno, Czech Republic",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
+253,2025,5,199,Nordic WCS Championships,manual,Stockholm,,Sweden,"Stockholm, Sweden","Stockholm, Sweden",2026-08-31 19:09:37.787927+00,2026-08-31 20:20:42.616264+00
 336,2025,5,197,SOM - Swing of Music,auto,Wels,,Austria,"Wels, Austria","Wels, Austria",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 205,2025,5,88,SOswing,auto,Ashland,Oregon,United States,"Ashland, OR, United States","Ashland, OR",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 354,2025,5,143,Spring Time Swing,auto,Freiburg,,Germany,"Freiburg, Germany","Freiburg, Germany",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
@@ -392,7 +392,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 18,2024,4,30,Easter Swing,auto,Seattle,Washington,United States,"Seattle, WA, United States","Seattle, WA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 345,2024,4,255,HONEY FEST,auto,Ufa,,Russia,"Ufa, Russia","Ufa, Russia",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 210,2024,4,172,Korean Open WCS Championships,auto,Incheon,,Republic of Korea,"Incheon, Republic of Korea","Incheon, Republic of Korea",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
-253,2024,4,266,Nordic WCS Championships,auto,Brno,,Czech Republic,"Brno, Czech Republic","Brno, Czech Republic",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
+253,2024,4,199,Nordic WCS Championships,manual,Stockholm,,Sweden,"Stockholm, Sweden","Stockholm, Sweden",2026-08-31 19:09:37.787927+00,2026-08-31 20:20:42.616264+00
 259,2024,4,82,Swingover,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 293,2024,4,190,Westy Nantes,auto,Nantes,,France,"Nantes, France","Nantes, France",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 197,2024,3,29,5280 Westival,auto,Denver,Colorado,United States,"Denver, CO, United States","Denver, CO",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
@@ -507,7 +507,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 162,2023,6,40,Swingapalooza,auto,Baton Rouge,Louisiana,United States,"Baton Rouge, LA, United States","Baton Rouge, LA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 105,2023,5,86,Canadian Swing Championships,auto,Montreal,,Canada,"Montreal, Canada","Montreal, Canada",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 175,2023,5,109,French Open West Coast Swing,auto,Paris,,France,"Paris, France","Paris, France",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
-253,2023,5,266,Nordic WCS Championships,auto,Brno,,Czech Republic,"Brno, Czech Republic","Brno, Czech Republic",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
+253,2023,5,199,Nordic WCS Championships,manual,Stockholm,,Sweden,"Stockholm, Sweden","Stockholm, Sweden",2026-08-31 19:09:37.787927+00,2026-08-31 20:20:42.616264+00
 205,2023,5,88,SOswing,auto,Ashland,Oregon,United States,"Ashland, OR, United States","Ashland, OR",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 134,2023,5,89,Swing Dance America,auto,Lake Geneva,Illinois,United States,"Lake Geneva, IL, United States","Lake Geneva, IL",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 174,2023,5,169,Swingsation,auto,Gold Coast,,Australia,"Gold Coast, Australia","Gold Coast, Australia",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
@@ -616,7 +616,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 117,2022,6,82,Orange Blossom Dance Festival,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 162,2022,6,40,Swingapalooza,auto,Baton Rouge,Louisiana,United States,"Baton Rouge, LA, United States","Baton Rouge, LA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 175,2022,5,109,French Open West Coast Swing,auto,Paris,,France,"Paris, France","Paris, France",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
-253,2022,5,266,Nordic WCS Championships,auto,Brno,,Czech Republic,"Brno, Czech Republic","Brno, Czech Republic",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
+253,2022,5,199,Nordic WCS Championships,manual,Stockholm,,Sweden,"Stockholm, Sweden","Stockholm, Sweden",2026-08-31 19:09:37.787927+00,2026-08-31 20:20:42.616264+00
 205,2022,5,88,SOswing,auto,Ashland,Oregon,United States,"Ashland, OR, United States","Ashland, OR",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 134,2022,5,89,Swing Dance America,auto,Lake Geneva,Illinois,United States,"Lake Geneva, IL, United States","Lake Geneva, IL",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 144,2022,5,131,Swingin' Into Spring,auto,Hartford,Connecticut,United States,"Hartford, CT, United States","Hartford, CT",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
@@ -806,7 +806,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 203,2019,4,166,Detonation Dance,auto,Manchester,,United Kingdom,"Manchester, United Kingdom","Manchester, United Kingdom",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 18,2019,4,30,Easter Swing,auto,Seattle,Washington,United States,"Seattle, WA, United States","Seattle, WA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 306,2019,4,240,Go West SwingFest,auto,Fremantle,,Australia,"Fremantle, Australia","Fremantle, Australia",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
-253,2019,4,266,Nordic WCS Championships,auto,Brno,,Czech Republic,"Brno, Czech Republic","Brno, Czech Republic",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
+253,2019,4,199,Nordic WCS Championships,manual,Stockholm,,Sweden,"Stockholm, Sweden","Stockholm, Sweden",2026-08-31 19:09:37.787927+00,2026-08-31 20:20:42.616264+00
 217,2019,4,10,San Diego Dance Festival,auto,San Diego,California,United States,"San Diego, CA, United States","San Diego, CA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 134,2019,4,89,Swing Dance America,auto,Lake Geneva,Illinois,United States,"Lake Geneva, IL, United States","Lake Geneva, IL",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 304,2019,4,171,Swing In Capital,auto,Rome,,Italy,"Rome, Italy","Rome, Italy",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
@@ -960,7 +960,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 187,2018,4,54,City of Angels WCS,auto,Burbank,California,United States,"Burbank, CA, United States","Burbank, CA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 203,2018,4,166,Detonation Dance,auto,Manchester,,United Kingdom,"Manchester, United Kingdom","Manchester, United Kingdom",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 18,2018,4,30,Easter Swing,auto,Seattle,Washington,United States,"Seattle, WA, United States","Seattle, WA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
-253,2018,4,266,Nordic WCS Championships,auto,Brno,,Czech Republic,"Brno, Czech Republic","Brno, Czech Republic",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
+253,2018,4,199,Nordic WCS Championships,manual,Stockholm,,Sweden,"Stockholm, Sweden","Stockholm, Sweden",2026-08-31 19:09:37.787927+00,2026-08-31 20:20:42.616264+00
 217,2018,4,10,San Diego Dance Festival,auto,San Diego,California,United States,"San Diego, CA, United States","San Diego, CA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 205,2018,4,88,SOswing,auto,Ashland,Oregon,United States,"Ashland, OR, United States","Ashland, OR",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 134,2018,4,89,Swing Dance America,auto,Lake Geneva,Illinois,United States,"Lake Geneva, IL, United States","Lake Geneva, IL",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
@@ -1108,7 +1108,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 187,2017,4,54,City of Angels WCS,auto,Burbank,California,United States,"Burbank, CA, United States","Burbank, CA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 203,2017,4,166,Detonation Dance,auto,Manchester,,United Kingdom,"Manchester, United Kingdom","Manchester, United Kingdom",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 18,2017,4,30,Easter Swing,auto,Seattle,Washington,United States,"Seattle, WA, United States","Seattle, WA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
-253,2017,4,266,Nordic WCS Championships,auto,Brno,,Czech Republic,"Brno, Czech Republic","Brno, Czech Republic",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
+253,2017,4,199,Nordic WCS Championships,manual,Stockholm,,Sweden,"Stockholm, Sweden","Stockholm, Sweden",2026-08-31 19:09:37.787927+00,2026-08-31 20:20:42.616264+00
 170,2017,4,113,Russian Open WCS Championships,auto,Moscow,,Russia,"Moscow, Russia","Moscow, Russia",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 217,2017,4,10,San Diego Dance Festival,auto,San Diego,California,United States,"San Diego, CA, United States","San Diego, CA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 134,2017,4,89,Swing Dance America,auto,Lake Geneva,Illinois,United States,"Lake Geneva, IL, United States","Lake Geneva, IL",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
@@ -1234,7 +1234,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 206,2016,5,110,Hungarian Open,auto,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 219,2016,5,125,KIWI Fest,auto,Kiev,,Ukraine,"Kiev, Ukraine","Kiev, Ukraine",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 201,2016,5,38,MidAtlantic Dance Classic,auto,Herndon,Virginia,United States,"Herndon, VA, United States","Herndon, VA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
-253,2016,5,266,Nordic WCS Championships,auto,Brno,,Czech Republic,"Brno, Czech Republic","Brno, Czech Republic",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
+253,2016,5,199,Nordic WCS Championships,manual,Stockholm,,Sweden,"Stockholm, Sweden","Stockholm, Sweden",2026-08-31 19:09:37.787927+00,2026-08-31 20:20:42.616264+00
 205,2016,5,88,SOswing,auto,Ashland,Oregon,United States,"Ashland, OR, United States","Ashland, OR",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 134,2016,5,89,Swing Dance America,auto,Lake Geneva,Illinois,United States,"Lake Geneva, IL, United States","Lake Geneva, IL",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 61,2016,5,10,SwingDiego,auto,San Diego,California,United States,"San Diego, CA, United States","San Diego, CA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
@@ -1358,7 +1358,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 219,2015,5,125,KIWI Fest,auto,Kiev,,Ukraine,"Kiev, Ukraine","Kiev, Ukraine",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 76,2015,5,51,Michigan Dance Classic,auto,Detroit,Michigan,United States,"Detroit, MI, United States","Detroit, MI",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 201,2015,5,38,MidAtlantic Dance Classic,auto,Herndon,Virginia,United States,"Herndon, VA, United States","Herndon, VA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
-253,2015,5,266,Nordic WCS Championships,auto,Brno,,Czech Republic,"Brno, Czech Republic","Brno, Czech Republic",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
+253,2015,5,199,Nordic WCS Championships,manual,Stockholm,,Sweden,"Stockholm, Sweden","Stockholm, Sweden",2026-08-31 19:09:37.787927+00,2026-08-31 20:20:42.616264+00
 61,2015,5,10,SwingDiego,auto,San Diego,California,United States,"San Diego, CA, United States","San Diego, CA",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 144,2015,5,131,Swingin' Into Spring,auto,Hartford,Connecticut,United States,"Hartford, CT, United States","Hartford, CT",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00
 174,2015,5,169,Swingsation,auto,Gold Coast,,Australia,"Gold Coast, Australia","Gold Coast, Australia",2026-08-31 19:09:37.787927+00,2026-08-31 19:09:37.787927+00

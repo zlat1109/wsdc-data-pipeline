@@ -55,7 +55,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 5298,379,Med in Swing,2026,5,2026-05-01,2026-05-07,2026-05-11,wsdc_calendar,scheduled,t,386,La Londe-les-Maures,,France,"La Londe-les-Maures, France",143,128,http://www.medinswing.rocks,"La Londe-les-Maures, France",
 3535,76,Michigan Dance Classic,2026,5,2026-05-01,2026-05-28,2026-05-31,wsdc_calendar,scheduled,t,51,Detroit,Michigan,United States,"Detroit, MI, United States",103,88,http://michiganclassicswing.com/,"Detroit, MI",Registry Event
 5275,364,Nanaimo Dance Fusion,2026,5,2026-05-01,2026-05-29,2026-05-31,wsdc_calendar,scheduled,t,217,Nanaimo,,Canada,"Nanaimo, Canada",61,54,http://www.nanaimodancefusion.ca/,"Nanaimo, Canada",Registry Event
-4869,253,Nordic WCS Championships,2026,5,2026-05-01,2026-04-30,2026-05-04,wsdc_calendar,scheduled,t,266,Brno,,Czech Republic,"Brno, Czech Republic",150,134,http://www.nordicwcschamps.com,"Brno, Czech Republic",
+4869,253,Nordic WCS Championships,2026,5,2026-05-01,2026-04-30,2026-05-04,wsdc_calendar,scheduled,t,199,Stockholm,,Sweden,"Stockholm, Sweden",150,134,http://www.nordicwcschamps.com,"Stockholm, Sweden",
 5232,336,SOM - Swing of Music,2026,5,2026-05-01,2026-05-07,2026-05-11,wsdc_calendar,scheduled,t,197,Wels,,Austria,"Wels, Austria",96,86,https://www.swingofmusic.com/,"Wels, Austria",Registry Event
 4556,205,SOswing,2026,5,2026-05-01,2026-05-14,2026-05-17,wsdc_calendar,scheduled,t,88,Ashland,Oregon,United States,"Ashland, OR, United States",106,98,http://wwww.soswingdance.com/,"Ashland, OR",Registry Event
 5261,354,Spring Time Swing,2026,5,2026-05-01,2026-04-30,2026-05-04,wsdc_calendar,scheduled,t,143,Freiburg,,Germany,"Freiburg, Germany",128,116,https://springtimeswing.com/,"Freiburg, Germany",Registry Event
@@ -232,7 +232,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 4685,221,Show Me Showdown,2025,5,2025-05-01,2025-05-15,2025-05-18,wsdc_calendar,scheduled,t,49,St. Louis,Missouri,United States,"St. Louis, MO, United States",65,61,http://gatewayswing.com/,"St. Louis, MO",Registry Event
 5297,379,Med in Swing,2025,5,2025-05-01,2025-05-08,2025-05-11,wsdc_calendar,scheduled,t,386,La Londe-les-Maures,,France,"La Londe-les-Maures, France",107,89,http://www.medinswing.rocks,"La Londe-les-Maures, France",
 5274,364,Nanaimo Dance Fusion,2025,5,2025-05-01,2025-05-23,2025-05-25,wsdc_calendar,scheduled,t,217,Nanaimo,,Canada,"Nanaimo, Canada",59,54,http://www.nanaimodancefusion.ca/,"Nanaimo, Canada",Registry Event
-4868,253,Nordic WCS Championships,2025,5,2025-05-01,2025-05-01,2025-05-05,wsdc_calendar,scheduled,t,266,Brno,,Czech Republic,"Brno, Czech Republic",142,133,http://www.nordicwcschamps.com,"Brno, Czech Republic",
+4868,253,Nordic WCS Championships,2025,5,2025-05-01,2025-05-01,2025-05-05,wsdc_calendar,scheduled,t,199,Stockholm,,Sweden,"Stockholm, Sweden",142,133,http://www.nordicwcschamps.com,"Stockholm, Sweden",
 5231,336,SOM - Swing of Music,2025,5,2025-05-01,2025-05-08,2025-05-12,wsdc_calendar,scheduled,t,197,Wels,,Austria,"Wels, Austria",83,75,https://www.swingofmusic.com/,"Wels, Austria",Registry Event
 4555,205,SOswing,2025,5,2025-05-01,2025-05-15,2025-05-18,wsdc_calendar,scheduled,t,88,Ashland,Oregon,United States,"Ashland, OR, United States",113,109,http://wwww.soswingdance.com/,"Ashland, OR",Registry Event
 5260,354,Spring Time Swing,2025,5,2025-05-01,2025-04-30,2025-05-04,wsdc_calendar,scheduled,t,143,Freiburg,,Germany,"Freiburg, Germany",136,125,https://springtimeswing.com/,"Freiburg, Germany",Registry Event
@@ -392,7 +392,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 2898,18,Easter Swing,2024,4,2024-04-01,,,,,,30,Seattle,Washington,United States,"Seattle, WA, United States",150,144,https://easterswing.org/,"Seattle, WA, United States",Registry Event
 5247,345,HONEY FEST,2024,4,2024-04-01,,,,,,255,Ufa,,Russia,"Ufa, Russia",86,78,https://t.me/honeyfest,"Ufa, Russia",Registry Event
 4583,210,Korean Open WCS Championships,2024,4,2024-04-01,,,,,,172,Incheon,,Republic of Korea,"Incheon, Republic of Korea",143,133,https://www.kopenwcs.com/,"Incheon, Republic of Korea",Registry Event
-4867,253,Nordic WCS Championships,2024,4,2024-04-01,,,,,,266,Brno,,Czech Republic,"Brno, Czech Republic",125,112,http://www.nordicwcschamps.com,"Brno, Czech Republic",
+4867,253,Nordic WCS Championships,2024,4,2024-04-01,,,,,,199,Stockholm,,Sweden,"Stockholm, Sweden",125,112,http://www.nordicwcschamps.com,"Stockholm, Sweden",
 4914,259,Swingover,2024,4,2024-04-01,,,,,,82,Orlando,Florida,United States,"Orlando, FL, United States",120,114,http://swingoverevent.com/,"Orlando, FL",Registry Event
 5105,293,Westy Nantes,2024,4,2024-04-01,,,,,,190,Nantes,,France,"Nantes, France",132,117,https://www.westynantes.com/,"Nantes, France",Registry Event
 4513,197,5280 Westival,2024,3,2024-03-01,,,,,,29,Denver,Colorado,United States,"Denver, CO, United States",71,57,http://www.5280westival.com/,"Denver, CO",Registry Event
@@ -507,7 +507,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 4213,162,Swingapalooza,2023,6,2023-06-01,,,,,,40,Baton Rouge,Louisiana,United States,"Baton Rouge, LA, United States",91,86,http://www.swingapaloozaevent.com/,"Baton Rouge, LA",Registry Event
 3743,105,Canadian Swing Championships,2023,5,2023-05-01,,,,,,86,Montreal,,Canada,"Montreal, Canada",57,54,http://www.canadianswingchampionships.com,"Montreal, Canada",
 4322,175,French Open West Coast Swing,2023,5,2023-05-01,,,,,,109,Paris,,France,"Paris, France",169,156,http://www.fowcs.com,"Paris, France",
-4866,253,Nordic WCS Championships,2023,5,2023-05-01,,,,,,266,Brno,,Czech Republic,"Brno, Czech Republic",100,97,http://www.nordicwcschamps.com,"Brno, Czech Republic",
+4866,253,Nordic WCS Championships,2023,5,2023-05-01,,,,,,199,Stockholm,,Sweden,"Stockholm, Sweden",100,97,http://www.nordicwcschamps.com,"Stockholm, Sweden",
 4553,205,SOswing,2023,5,2023-05-01,,,,,,88,Ashland,Oregon,United States,"Ashland, OR, United States",105,98,http://wwww.soswingdance.com/,"Ashland, OR",Registry Event
 3963,134,Swing Dance America,2023,5,2023-05-01,,,,,,89,Lake Geneva,Illinois,United States,"Lake Geneva, IL, United States",58,55,,"Lake Geneva, IL",
 4308,174,Swingsation,2023,5,2023-05-01,,,,,,169,Gold Coast,,Australia,"Gold Coast, Australia",46,44,https://rawconnection.com.au/swingsation/,"Gold Coast, Australia",Registry Event
@@ -616,7 +616,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3810,117,Orange Blossom Dance Festival,2022,6,2022-06-01,,,,,,82,Orlando,Florida,United States,"Orlando, FL, United States",44,39,http://www.orangeblossomdance.net,"Orlando, FL",
 4212,162,Swingapalooza,2022,6,2022-06-01,,,,,,40,Baton Rouge,Louisiana,United States,"Baton Rouge, LA, United States",107,100,http://www.swingapaloozaevent.com/,"Baton Rouge, LA",Registry Event
 4321,175,French Open West Coast Swing,2022,5,2022-05-01,,,,,,109,Paris,,France,"Paris, France",135,129,http://www.fowcs.com,"Paris, France",
-4865,253,Nordic WCS Championships,2022,5,2022-05-01,,,,,,266,Brno,,Czech Republic,"Brno, Czech Republic",97,92,http://www.nordicwcschamps.com,"Brno, Czech Republic",
+4865,253,Nordic WCS Championships,2022,5,2022-05-01,,,,,,199,Stockholm,,Sweden,"Stockholm, Sweden",97,92,http://www.nordicwcschamps.com,"Stockholm, Sweden",
 4552,205,SOswing,2022,5,2022-05-01,,,,,,88,Ashland,Oregon,United States,"Ashland, OR, United States",86,72,http://wwww.soswingdance.com/,"Ashland, OR",Registry Event
 3962,134,Swing Dance America,2022,5,2022-05-01,,,,,,89,Lake Geneva,Illinois,United States,"Lake Geneva, IL, United States",56,51,,"Lake Geneva, IL",
 4064,144,Swingin' Into Spring,2022,5,2022-05-01,,,,,,131,Hartford,Connecticut,United States,"Hartford, CT, United States",34,34,http://www.sis.djkenm.com/,"Hartford, CT",Registry Event
@@ -806,7 +806,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 4538,203,Detonation Dance,2019,4,2019-04-01,,,,,,166,Manchester,,United Kingdom,"Manchester, United Kingdom",53,51,http://www.detonationdance.com/,"Manchester, United Kingdom",Registry Event
 2895,18,Easter Swing,2019,4,2019-04-01,,,,,,30,Seattle,Washington,United States,"Seattle, WA, United States",131,129,https://easterswing.org/,"Seattle, WA, United States",Registry Event
 5145,306,Go West SwingFest,2019,4,2019-04-01,,,,,,240,Fremantle,,Australia,"Fremantle, Australia",32,31,http://www.gowestswingfest.com,"Fremantle, Australia",
-4864,253,Nordic WCS Championships,2019,4,2019-04-01,,,,,,266,Brno,,Czech Republic,"Brno, Czech Republic",81,81,http://www.nordicwcschamps.com,"Brno, Czech Republic",
+4864,253,Nordic WCS Championships,2019,4,2019-04-01,,,,,,199,Stockholm,,Sweden,"Stockholm, Sweden",81,81,http://www.nordicwcschamps.com,"Stockholm, Sweden",
 4648,217,San Diego Dance Festival,2019,4,2019-04-01,,,,,,10,San Diego,California,United States,"San Diego, CA, United States",36,34,,"San Diego, CA",
 3961,134,Swing Dance America,2019,4,2019-04-01,,,,,,89,Lake Geneva,Illinois,United States,"Lake Geneva, IL, United States",73,64,,"Lake Geneva, IL",
 5143,304,Swing In Capital,2019,4,2019-04-01,,,,,,171,Rome,,Italy,"Rome, Italy",50,50,https://www.westcoastswingroma.it/swing-in-capital/,"Rome, Italy",
@@ -960,7 +960,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 4435,187,City of Angels WCS,2018,4,2018-04-01,,,,,,54,Burbank,California,United States,"Burbank, CA, United States",122,120,https://cityofangelswcs.com/,"Burbank, CA",Registry Event
 4537,203,Detonation Dance,2018,4,2018-04-01,,,,,,166,Manchester,,United Kingdom,"Manchester, United Kingdom",37,36,http://www.detonationdance.com/,"Manchester, United Kingdom",Registry Event
 2894,18,Easter Swing,2018,4,2018-04-01,,,,,,30,Seattle,Washington,United States,"Seattle, WA, United States",136,132,https://easterswing.org/,"Seattle, WA, United States",Registry Event
-4863,253,Nordic WCS Championships,2018,4,2018-04-01,,,,,,266,Brno,,Czech Republic,"Brno, Czech Republic",98,98,http://www.nordicwcschamps.com,"Brno, Czech Republic",
+4863,253,Nordic WCS Championships,2018,4,2018-04-01,,,,,,199,Stockholm,,Sweden,"Stockholm, Sweden",98,98,http://www.nordicwcschamps.com,"Stockholm, Sweden",
 4647,217,San Diego Dance Festival,2018,4,2018-04-01,,,,,,10,San Diego,California,United States,"San Diego, CA, United States",42,42,,"San Diego, CA",
 4550,205,SOswing,2018,4,2018-04-01,,,,,,88,Ashland,Oregon,United States,"Ashland, OR, United States",77,75,http://wwww.soswingdance.com/,"Ashland, OR",Registry Event
 3960,134,Swing Dance America,2018,4,2018-04-01,,,,,,89,Lake Geneva,Illinois,United States,"Lake Geneva, IL, United States",84,84,,"Lake Geneva, IL",
@@ -1108,7 +1108,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 4434,187,City of Angels WCS,2017,4,2017-04-01,,,,,,54,Burbank,California,United States,"Burbank, CA, United States",126,125,https://cityofangelswcs.com/,"Burbank, CA",Registry Event
 4536,203,Detonation Dance,2017,4,2017-04-01,,,,,,166,Manchester,,United Kingdom,"Manchester, United Kingdom",53,53,http://www.detonationdance.com/,"Manchester, United Kingdom",Registry Event
 2893,18,Easter Swing,2017,4,2017-04-01,,,,,,30,Seattle,Washington,United States,"Seattle, WA, United States",141,140,https://easterswing.org/,"Seattle, WA, United States",Registry Event
-4862,253,Nordic WCS Championships,2017,4,2017-04-01,,,,,,266,Brno,,Czech Republic,"Brno, Czech Republic",98,98,http://www.nordicwcschamps.com,"Brno, Czech Republic",
+4862,253,Nordic WCS Championships,2017,4,2017-04-01,,,,,,199,Stockholm,,Sweden,"Stockholm, Sweden",98,98,http://www.nordicwcschamps.com,"Stockholm, Sweden",
 4288,170,Russian Open WCS Championships,2017,4,2017-04-01,,,,,,113,Moscow,,Russia,"Moscow, Russia",55,55,,"Moscow, Russia",
 4646,217,San Diego Dance Festival,2017,4,2017-04-01,,,,,,10,San Diego,California,United States,"San Diego, CA, United States",65,61,,"San Diego, CA",
 3959,134,Swing Dance America,2017,4,2017-04-01,,,,,,89,Lake Geneva,Illinois,United States,"Lake Geneva, IL, United States",101,96,,"Lake Geneva, IL",
@@ -1234,7 +1234,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 4560,206,Hungarian Open,2016,5,2016-05-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",68,68,http://wcs-ho.com/,"Budapest, Hungary",
 4663,219,KIWI Fest,2016,5,2016-05-01,,,,,,125,Kiev,,Ukraine,"Kiev, Ukraine",80,80,,"Kiev, Ukraine",
 4531,201,MidAtlantic Dance Classic,2016,5,2016-05-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA, United States",30,30,,"Herndon, VA",
-4861,253,Nordic WCS Championships,2016,5,2016-05-01,,,,,,266,Brno,,Czech Republic,"Brno, Czech Republic",105,105,http://www.nordicwcschamps.com,"Brno, Czech Republic",
+4861,253,Nordic WCS Championships,2016,5,2016-05-01,,,,,,199,Stockholm,,Sweden,"Stockholm, Sweden",105,105,http://www.nordicwcschamps.com,"Stockholm, Sweden",
 4548,205,SOswing,2016,5,2016-05-01,,,,,,88,Ashland,Oregon,United States,"Ashland, OR, United States",89,87,http://wwww.soswingdance.com/,"Ashland, OR",Registry Event
 3958,134,Swing Dance America,2016,5,2016-05-01,,,,,,89,Lake Geneva,Illinois,United States,"Lake Geneva, IL, United States",85,78,,"Lake Geneva, IL",
 3332,61,SwingDiego,2016,5,2016-05-01,,,,,,10,San Diego,California,United States,"San Diego, CA, United States",128,126,,"San Diego, CA",
@@ -1358,7 +1358,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 4662,219,KIWI Fest,2015,5,2015-05-01,,,,,,125,Kiev,,Ukraine,"Kiev, Ukraine",49,49,,"Kiev, Ukraine",
 3528,76,Michigan Dance Classic,2015,5,2015-05-01,,,,,,51,Detroit,Michigan,United States,"Detroit, MI, United States",109,108,http://michiganclassicswing.com/,"Detroit, MI",Registry Event
 4530,201,MidAtlantic Dance Classic,2015,5,2015-05-01,,,,,,38,Herndon,Virginia,United States,"Herndon, VA, United States",58,55,,"Herndon, VA",
-4860,253,Nordic WCS Championships,2015,5,2015-05-01,,,,,,266,Brno,,Czech Republic,"Brno, Czech Republic",70,70,http://www.nordicwcschamps.com,"Brno, Czech Republic",
+4860,253,Nordic WCS Championships,2015,5,2015-05-01,,,,,,199,Stockholm,,Sweden,"Stockholm, Sweden",70,70,http://www.nordicwcschamps.com,"Stockholm, Sweden",
 3331,61,SwingDiego,2015,5,2015-05-01,,,,,,10,San Diego,California,United States,"San Diego, CA, United States",104,104,,"San Diego, CA",
 4059,144,Swingin' Into Spring,2015,5,2015-05-01,,,,,,131,Hartford,Connecticut,United States,"Hartford, CT, United States",61,61,http://www.sis.djkenm.com/,"Hartford, CT",Registry Event
 4302,174,Swingsation,2015,5,2015-05-01,,,,,,169,Gold Coast,,Australia,"Gold Coast, Australia",58,58,https://rawconnection.com.au/swingsation/,"Gold Coast, Australia",Registry Event

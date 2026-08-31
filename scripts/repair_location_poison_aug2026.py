@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-"""Remap shared-wrong location_ids for NZ / Philly / Montreal / DCSX; fix Nordic baseline.
+"""Remap shared-wrong location_ids for NZ / Philly / Montreal / DCSX / Nordic.
 
 Live DB kept poison lids on raw WSDC titles that missed EVENT_NAME_LOCATION_OVERRIDES
-exact-name match. Knowledge aliases + normalized force fix the next load; this script
-repairs already-loaded core rows and edition_location_baseline.
+exact-name match, and Nordic sat on Swing Fiction Brno (266) instead of Stockholm.
 
 Usage:
     python scripts/repair_location_poison_aug2026.py --dry-run
@@ -26,6 +25,8 @@ RESULT_REMAPS: list[tuple[int, int, int, str]] = [
     (234, 222, 66, "Philly: St. Pete → Wilmington"),
     (178, 243, 86, "Montreal: São Paulo → Montreal"),
     (181, 13, 38, "DCSX: Washington → Herndon"),
+    # Brno 266 is Swing Fiction; Nordic is Stockholm (Scandic Infra City).
+    (253, 266, 199, "Nordic: Brno → Stockholm"),
 ]
 
 
@@ -100,17 +101,18 @@ def main() -> int:
                 )
                 print(f"  baseline {label}: {cur.rowcount}")
 
-            # Nordic results already Brno (266); baseline still Stockholm (199).
+            # Nordic: shared Swing Fiction Brno (266) → Stockholm (199).
+            # Earlier mistaken "confirm Brno" path is inverted here.
             cur.execute(
                 """
                 UPDATE core.edition_location_baseline
-                SET location_id = 266,
+                SET location_id = 199,
                     source = 'manual',
                     updated_at = now()
-                WHERE event_id = 253 AND location_id IS DISTINCT FROM 266
+                WHERE event_id = 253 AND location_id IS DISTINCT FROM 199
                 """
             )
-            print(f"  Nordic baseline → Brno 266: {cur.rowcount}")
+            print(f"  Nordic baseline → Stockholm 199: {cur.rowcount}")
 
             # Keep catalog typicals aligned for remapped series.
             cur.execute(
@@ -152,9 +154,9 @@ def main() -> int:
             cur.execute(
                 """
                 UPDATE core.event_catalog
-                SET typical_city = 'Brno', typical_state = NULL,
-                    typical_country = 'Czech Republic',
-                    typical_location = 'Brno, Czech Republic'
+                SET typical_city = 'Stockholm', typical_state = NULL,
+                    typical_country = 'Sweden',
+                    typical_location = 'Stockholm, Sweden'
                 WHERE event_id = 253
                 """
             )
