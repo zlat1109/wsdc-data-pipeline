@@ -47,11 +47,11 @@ event_id,canonical_name,url,registry_status,typical_city,typical_state,typical_c
 10,Bridgetown Swing Boogie,,,Vancouver,Washington,United States,"Vancouver, WA",2001,2023,21,1672,878,,,2026-09-01 17:36:33.109222+00
 339,Bristol Swing Fiesta,https://www.bristolcityswing.com/bsf,,Bristol,,United Kingdom,"Bristol, United Kingdom",2024,2026,3,264,180,,,2026-09-01 17:36:33.109222+00
 114,British Columbia Dance Challenge,,,Richmond,,Canada,"Richmond, Canada",2006,2007,2,83,64,,,2026-09-01 17:36:33.109222+00
-184,BudaFest Open WCS Championships,http://wcs-budafest.com/,Registry Event,São Paulo,,Brazil,"São Paulo, Brazil",2012,2026,14,1779,1151,2027-01-05,"Budapest, Budapest, Hungary",2026-09-01 17:36:33.109222+00
+184,BudaFest Open WCS Championships,http://wcs-budafest.com/,Registry Event,Budapest,,Hungary,"Budapest, Hungary",2012,2026,14,1779,1151,2027-01-05,"Budapest, Budapest, Hungary",2026-09-01 17:36:33.109222+00
 414,C.A.S.H. Bash,,inactive,,,,,,,0,0,0,,,2026-09-01 17:36:33.109222+00
 116,Calgary Dance Stampede,http://www.calgarydancestampede.com/,Registry Event,Calgary,,Canada,"Calgary, Canada",2006,2026,8,258,177,2027-04-29,"Calgary, AB, Canada",2026-09-01 17:36:33.109222+00
-324,Calgary Town Open,https://ctodance.ca/,,Calgary,,Canada,"Calgary, Canada",2023,2025,3,230,162,,,2026-09-01 17:36:33.109222+00
 415,Calgary Town Open,https://ctodance.ca/,inactive,,,,,,,0,0,0,2026-09-24,"Calgary, Alberta, Canada",2026-09-01 17:36:33.109222+00
+324,Calgary Town Open,https://ctodance.ca/,,Calgary,,Canada,"Calgary, Canada",2023,2025,3,230,162,,,2026-09-01 17:36:33.109222+00
 11,California State Championships,,,Buena Park,California,United States,"Buena Park, CA",1997,1999,3,134,107,,,2026-09-01 17:36:33.109222+00
 105,Canadian Swing Championships,http://www.canadianswingchampionships.com,,Montreal,,Canada,"Montreal, Canada",2005,2026,18,638,399,,,2026-09-01 17:36:33.109222+00
 416,Canadian Swing Championships (CSC),,inactive,,,,,,,0,0,0,,,2026-09-01 17:36:33.109222+00
@@ -127,8 +127,8 @@ event_id,canonical_name,url,registry_status,typical_city,typical_state,typical_c
 435,Global Grand Prix - West Coast Swing,,inactive,,,,,,,0,0,0,,,2026-09-01 17:36:33.109222+00
 436,Global Grand Prix - West Coast Swing Championships,,inactive,,,,,,,0,0,0,,,2026-09-01 17:36:33.109222+00
 342,Global Grand Prix - West Coast Swing Reunion,https://www.globalgrandprixwcs.com/,Trial Event,Toulouse,,France,"Toulouse, France",2023,2025,3,363,260,2026-09-18,"Paris, N/A, France",2026-09-01 17:36:33.109222+00
-306,Go West SwingFest,http://www.gowestswingfest.com,,Fremantle,,Australia,"Fremantle, Australia",2019,2019,1,32,31,,,2026-09-01 17:36:33.109222+00
 367,Go West SwingFest,,,Perth,,Australia,"Perth, Australia",2024,2025,2,66,45,,,2026-09-01 17:36:33.109222+00
+306,Go West SwingFest,http://www.gowestswingfest.com,,Fremantle,,Australia,"Fremantle, Australia",2019,2019,1,32,31,,,2026-09-01 17:36:33.109222+00
 21,Golden State Classic,,,Buena Park,California,United States,"Buena Park, CA",1996,1998,3,110,87,,,2026-09-01 17:36:33.109222+00
 384,Grand Party Sofia (GPS),https://wcs-gps.com/,Registry Event,Sofia,,Bulgaria,"Sofia, Bulgaria",2025,2026,2,178,139,2027-08-12,"Sofia, Sofia, Bulgaria",2026-09-01 17:36:33.109222+00
 97,Grand Prix of Swing,,,Kansas City,Missouri,United States,"Kansas City, MO",2004,2011,8,407,252,,,2026-09-01 17:36:33.109222+00
@@ -301,8 +301,8 @@ event_id,canonical_name,url,registry_status,typical_city,typical_state,typical_c
 228,Summer Swing Classic,,,St. Petersburg,Florida,United States,"St. Petersburg, FL",2014,2015,2,132,108,,,2026-09-01 17:36:33.109222+00
 54,Summer Swing Jam,,,Atlanta,Georgia,United States,"Atlanta, GA, United States",2001,2002,2,54,43,,,2026-09-01 17:36:33.109222+00
 55,Sundance Labor Day Swing Dance Festival,,,Long Beach,California,United States,"Long Beach, CA",1998,1998,1,62,62,,,2026-09-01 17:36:33.109222+00
-191,Sunny Side Dance Camp,,,Crimea,,Ukraine,"Crimea, Ukraine",2012,2013,2,84,69,,,2026-09-01 17:36:33.109222+00
 230,Sunny Side Dance Camp,,,Torrevieja,,Spain,"Torrevieja, Spain",2014,2016,3,116,101,,,2026-09-01 17:36:33.109222+00
+191,Sunny Side Dance Camp,,,Crimea,,Ukraine,"Crimea, Ukraine",2012,2013,2,84,69,,,2026-09-01 17:36:33.109222+00
 151,Sunshine State Dance Challenge,,,Fort Lauderdale,Florida,United States,"Fort Lauderdale, FL",2008,2011,4,87,73,,,2026-09-01 17:36:33.109222+00
 460,Swedish Swing Summer Camp,,inactive,,,,,,,0,0,0,,,2026-09-01 17:36:33.109222+00
 185,Sweetheart Swing Classic,,,Tampa,Florida,United States,"Tampa, FL",2012,2018,7,481,300,,,2026-09-01 17:36:33.109222+00
@@ -408,7 +408,7 @@ event_id,canonical_name,url,registry_status,typical_city,typical_state,typical_c
 240,Westie Gala,http://www.westiegala.com/,Registry Event,Stockholm,,Sweden,"Stockholm, Sweden",2015,2026,9,723,472,2026-12-31,"Stockholm, Stockholm, Sweden",2026-09-01 17:36:33.109222+00
 407,Westie Joy,,,Bucharest,,Romania,"Bucharest, Romania",2026,2026,1,106,95,,,2026-09-01 17:36:33.109222+00
 312,Westie Pink City,http://www.westiepinkcity.fr/,Registry Event,Toulouse,,France,"Toulouse, France",2018,2025,7,607,370,2026-11-06,"TOULOUSE, Occitanie, France",2026-09-01 17:36:33.109222+00
-314,Westie Spring Thing,https://westiespringthing.com/,Registry Event,São Paulo,,Brazil,"São Paulo, Brazil",2019,2026,6,646,402,2027-03-11,"Budapest, Budapest, Hungary",2026-09-01 17:36:33.109222+00
+314,Westie Spring Thing,https://westiespringthing.com/,Registry Event,Budapest,,Hungary,"Budapest, Hungary",2019,2026,6,646,402,2027-03-11,"Budapest, Budapest, Hungary",2026-09-01 17:36:33.109222+00
 270,Westie's Angels,http://www.frenchywesty.com/,Registry Event,Lyon,,France,"Lyon, France",2016,2025,9,859,492,2026-11-12,"LYON, rhones, FRANCE",2026-09-01 17:36:33.109222+00
 323,Westies on the Water,http://rocketcityswing.com/,Registry Event,Huntsville,Alabama,United States,"Huntsville, Alabama, United States",2021,2025,5,297,204,2026-11-19,"Huntsville, Alabama, United States",2026-09-01 17:36:33.109222+00
 293,Westy Nantes,https://www.westynantes.com/,Registry Event,Nantes,,France,"Nantes, France",2018,2026,7,762,457,2027-04-16,"Nantes, Loire-Atlantique, France",2026-09-01 17:36:33.109222+00

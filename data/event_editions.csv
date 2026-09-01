@@ -93,7 +93,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 6698,142,The Chicago Classic,2026,3,2026-03-01,2026-03-19,,wsdc_calendar,scheduled,t,34,Chicago,Illinois,United States,"Chicago, IL, United States",165,154,https://thechicagoclassic.com/,"Chicago, IL",Registry Event
 6817,154,UK WCS Championships,2026,3,2026-03-01,2026-03-26,2026-03-30,wsdc_calendar,scheduled,t,107,London,,United Kingdom,"London, United Kingdom",167,154,http://www.ukwcschamps.com/,"London, United Kingdom",Registry Event
 7090,186,West in Lyon,2026,3,2026-03-01,2026-03-12,2026-03-15,wsdc_calendar,scheduled,t,156,Lyon,,France,"Lyon, France",147,133,http://www.west-in-lyon.fr/,"Lyon, France",Registry Event
-7840,314,Westie Spring Thing,2026,3,2026-03-01,2026-03-11,2026-03-11,wsdc_calendar,scheduled,t,110,Budapest,nan,Hungary,"Budapest, Hungary",130,122,https://westiespringthing.com/,"Budapest, Hungary",Registry Event
+7840,314,Westie Spring Thing,2026,3,2026-03-01,2026-03-11,2026-03-11,wsdc_calendar,scheduled,t,110,Budapest,,Hungary,"Budapest, Hungary",130,122,https://westiespringthing.com/,"Budapest, Hungary",Registry Event
 7909,344,Arousa Westie Fest,2026,2,2026-02-01,2026-02-19,2026-02-22,wsdc_calendar,scheduled,t,258,Sanxenxo,,Spain,"Sanxenxo, Spain",98,75,https://www.arousawestiefest.com/,"Sanxenxo, Spain",Registry Event
 5492,12,Capital Swing Dance Convention,2026,2,2026-02-01,2026-02-12,2026-02-15,wsdc_calendar,scheduled,t,6,Sacramento,California,United States,"Sacramento, CA, United States",124,121,http://www.capitalswingconvention.com/,"Sacramento, CA",Registry Event
 7668,273,Charlotte Westie Fest,2026,2,2026-02-01,2026-01-29,2026-02-02,wsdc_calendar,scheduled,t,62,Charlotte,North Carolina,United States,"Charlotte, NC, United States",144,128,https://charlottewestiefest.com/,"Charlotte, NC",Registry Event
@@ -108,7 +108,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 7778,297,Winter Coast Swing,2026,2,2026-02-01,2026-02-19,2026-02-22,wsdc_calendar,scheduled,t,269,Kuopio,,Finland,"Kuopio, Finland",91,79,https://www.wintercoastswing.com/,"Kuopio, Finland",Registry Event
 7189,200,Austin Swing Dance Championships,2026,1,2026-01-01,2026-01-15,2026-01-19,wsdc_calendar,scheduled,t,39,Austin,Texas,United States,"Austin, TX, United States",106,100,https://austinswingdance.com/,"Austin, TX",Registry Event
 7812,309,Avignon City Swing,2026,1,2026-01-01,2026-01-16,2026-01-18,wsdc_calendar,scheduled,t,192,Nimes,,France,"Nimes, France",108,99,https://www.avignoncityswing.com/,"Nimes, France",Registry Event
-7070,184,BudaFest Open WCS Championships,2026,1,2026-01-01,2026-01-06,2026-01-11,wsdc_calendar,scheduled,t,110,Budapest,nan,Hungary,"Budapest, Hungary",166,161,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
+7070,184,BudaFest Open WCS Championships,2026,1,2026-01-01,2026-01-06,2026-01-11,wsdc_calendar,scheduled,t,110,Budapest,,Hungary,"Budapest, Hungary",166,161,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
 7893,334,Countdown Swing Boston,2026,1,2026-01-01,2025-12-31,2026-01-04,wsdc_calendar,scheduled,t,396,Mansfield,Massachusetts,United States,"Mansfield (Boston), MA, United States",102,87,http://countdownswingboston.com/,"Mansfield (Boston), MA, United States",Registry Event
 7499,242,Derby City Swing,2026,1,2026-01-01,2026-01-22,2026-01-25,wsdc_calendar,scheduled,t,116,Louisville,Kentucky,United States,"Louisville, KY, United States",82,72,https://derbycityswing.com/,"Louisville, KY",Registry Event
 5759,42,Floorplay Swing Vacation,2026,1,2026-01-01,2025-12-30,2026-01-04,wsdc_calendar,scheduled,t,82,Orlando,Florida,United States,"Orlando, FL, United States",95,92,http://www.floorplayswingvacation.com/,"Orlando, FL",Registry Event
@@ -265,7 +265,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 6697,142,The Chicago Classic,2025,3,2025-03-01,2025-03-13,2025-03-16,wsdc_calendar,scheduled,t,34,Chicago,Illinois,United States,"Chicago, IL, United States",170,160,https://thechicagoclassic.com/,"Chicago, IL",Registry Event
 6816,154,UK WCS Championships,2025,3,2025-03-01,2025-03-27,2025-03-31,wsdc_calendar,scheduled,t,107,London,,United Kingdom,"London, United Kingdom",154,138,http://www.ukwcschamps.com/,"London, United Kingdom",Registry Event
 7089,186,West in Lyon,2025,3,2025-03-01,2025-03-13,2025-03-16,wsdc_calendar,scheduled,t,156,Lyon,,France,"Lyon, France",159,144,http://www.west-in-lyon.fr/,"Lyon, France",Registry Event
-7839,314,Westie Spring Thing,2025,3,2025-03-01,2025-03-13,2025-03-16,wsdc_calendar,scheduled,t,110,Budapest,nan,Hungary,"Budapest, Hungary",125,116,https://westiespringthing.com/,"Budapest, Hungary",Registry Event
+7839,314,Westie Spring Thing,2025,3,2025-03-01,2025-03-13,2025-03-16,wsdc_calendar,scheduled,t,110,Budapest,,Hungary,"Budapest, Hungary",125,116,https://westiespringthing.com/,"Budapest, Hungary",Registry Event
 7908,344,Arousa Westie Fest,2025,2,2025-02-01,2025-02-20,2025-02-23,wsdc_calendar,scheduled,t,258,Sanxenxo,,Spain,"Sanxenxo, Spain",94,73,https://www.arousawestiefest.com/,"Sanxenxo, Spain",Registry Event
 5491,12,Capital Swing Dance Convention,2025,2,2025-02-01,2025-02-13,2025-02-16,wsdc_calendar,scheduled,t,6,Sacramento,California,United States,"Sacramento, CA, United States",122,118,http://www.capitalswingconvention.com/,"Sacramento, CA",Registry Event
 7667,273,Charlotte Westie Fest,2025,2,2025-02-01,2025-01-30,2025-02-03,wsdc_calendar,scheduled,t,62,Charlotte,North Carolina,United States,"Charlotte, NC, United States",156,140,https://charlottewestiefest.com/,"Charlotte, NC",Registry Event
@@ -280,7 +280,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 7777,297,Winter Coast Swing,2025,2,2025-02-01,2025-02-20,2025-02-23,wsdc_calendar,scheduled,t,269,Kuopio,,Finland,"Kuopio, Finland",93,79,https://www.wintercoastswing.com/,"Kuopio, Finland",Registry Event
 7188,200,Austin Swing Dance Championships,2025,1,2025-01-01,2025-01-16,2025-01-19,wsdc_calendar,scheduled,t,39,Austin,Texas,United States,"Austin, TX, United States",106,104,https://austinswingdance.com/,"Austin, TX",Registry Event
 7811,309,Avignon City Swing,2025,1,2025-01-01,2025-01-17,2025-01-20,wsdc_calendar,scheduled,t,192,Nimes,,France,"Nimes, France",124,105,https://www.avignoncityswing.com/,"Nimes, France",Registry Event
-7069,184,BudaFest Open WCS Championships,2025,1,2025-01-01,2025-01-07,2025-01-12,wsdc_calendar,scheduled,t,110,Budapest,nan,Hungary,"Budapest, Hungary",169,163,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
+7069,184,BudaFest Open WCS Championships,2025,1,2025-01-01,2025-01-07,2025-01-12,wsdc_calendar,scheduled,t,110,Budapest,,Hungary,"Budapest, Hungary",169,163,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
 7892,334,Countdown Swing Boston,2025,1,2025-01-01,2024-12-31,2025-01-05,wsdc_calendar,scheduled,t,396,Mansfield,Massachusetts,United States,"Mansfield (Boston), MA, United States",114,106,http://countdownswingboston.com/,"Mansfield (Boston), MA, United States",Registry Event
 7498,242,Derby City Swing,2025,1,2025-01-01,2025-01-23,2025-01-26,wsdc_calendar,scheduled,t,116,Louisville,Kentucky,United States,"Louisville, KY, United States",106,91,https://derbycityswing.com/,"Louisville, KY",Registry Event
 5758,42,Floorplay Swing Vacation,2025,1,2025-01-01,2024-12-27,2025-01-01,wsdc_calendar,scheduled,t,82,Orlando,Florida,United States,"Orlando, FL, United States",115,112,http://www.floorplayswingvacation.com/,"Orlando, FL",Registry Event
@@ -409,7 +409,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 6696,142,The Chicago Classic,2024,3,2024-03-01,,,,,,34,Chicago,Illinois,United States,"Chicago, IL, United States",145,131,https://thechicagoclassic.com/,"Chicago, IL",Registry Event
 6608,132,Tulsa Spring Swing,2024,3,2024-03-01,,,,,,58,Tulsa,Oklahoma,United States,"Tulsa, OK, United States",65,61,http://www.tulsaspringswing.com/,"Tulsa, OK",Registry Event
 7088,186,West in Lyon,2024,3,2024-03-01,,,,,,156,Lyon,,France,"Lyon, France",175,163,http://www.west-in-lyon.fr/,"Lyon, France",Registry Event
-7838,314,Westie Spring Thing,2024,3,2024-03-01,,,,,,110,Budapest,nan,Hungary,"Budapest, Hungary",128,119,https://westiespringthing.com/,"Budapest, Hungary",Registry Event
+7838,314,Westie Spring Thing,2024,3,2024-03-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",128,119,https://westiespringthing.com/,"Budapest, Hungary",Registry Event
 5490,12,Capital Swing Dance Convention,2024,2,2024-02-01,,,,,,6,Sacramento,California,United States,"Sacramento, CA, United States",125,123,http://www.capitalswingconvention.com/,"Sacramento, CA",Registry Event
 7666,273,Charlotte Westie Fest,2024,2,2024-02-01,,,,,,62,Charlotte,North Carolina,United States,"Charlotte, NC, United States",170,157,https://charlottewestiefest.com/,"Charlotte, NC",Registry Event
 7657,272,Paris Westie Fest,2024,2,2024-02-01,,,,,,109,Paris,,France,"Paris, France",135,125,http://https//parisswingclassic.com,"Paris, France",Registry Event
@@ -420,7 +420,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 7776,297,Winter Coast Swing,2024,2,2024-02-01,,,,,,269,Kuopio,,Finland,"Kuopio, Finland",57,54,https://www.wintercoastswing.com/,"Kuopio, Finland",Registry Event
 7187,200,Austin Swing Dance Championships,2024,1,2024-01-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",114,113,https://austinswingdance.com/,"Austin, TX",Registry Event
 7810,309,Avignon City Swing,2024,1,2024-01-01,,,,,,192,Nimes,,France,"Nimes, France",84,70,https://www.avignoncityswing.com/,"Nimes, France",Registry Event
-7068,184,BudaFest Open WCS Championships,2024,1,2024-01-01,,,,,,110,Budapest,nan,Hungary,"Budapest, Hungary",180,173,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
+7068,184,BudaFest Open WCS Championships,2024,1,2024-01-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",180,173,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
 7891,334,Countdown Swing Boston,2024,1,2024-01-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",121,112,http://countdownswingboston.com/,"Mansfield (Boston), MA, United States",Registry Event
 7497,242,Derby City Swing,2024,1,2024-01-01,,,,,,116,Louisville,Kentucky,United States,"Louisville, KY, United States",87,72,https://derbycityswing.com/,"Louisville, KY",Registry Event
 5757,42,Floorplay Swing Vacation,2024,1,2024-01-01,,,,,,82,Orlando,Florida,United States,"Orlando, FL, United States",99,96,http://www.floorplayswingvacation.com/,"Orlando, FL",Registry Event
@@ -531,7 +531,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 6801,153,Novice Invitational,2023,3,2023-03-01,,,,,,44,Houston,Texas,United States,"Houston, TX, United States",96,93,http://www.htownthrowdownwcs.com/,"Houston, TX",Registry Event
 6695,142,The Chicago Classic,2023,3,2023-03-01,,,,,,34,Chicago,Illinois,United States,"Chicago, IL, United States",134,123,https://thechicagoclassic.com/,"Chicago, IL",Registry Event
 7087,186,West in Lyon,2023,3,2023-03-01,,,,,,156,Lyon,,France,"Lyon, France",153,141,http://www.west-in-lyon.fr/,"Lyon, France",Registry Event
-7837,314,Westie Spring Thing,2023,3,2023-03-01,,,,,,110,Budapest,nan,Hungary,"Budapest, Hungary",113,103,https://westiespringthing.com/,"Budapest, Hungary",Registry Event
+7837,314,Westie Spring Thing,2023,3,2023-03-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",113,103,https://westiespringthing.com/,"Budapest, Hungary",Registry Event
 5489,12,Capital Swing Dance Convention,2023,2,2023-02-01,,,,,,6,Sacramento,California,United States,"Sacramento, CA, United States",120,118,http://www.capitalswingconvention.com/,"Sacramento, CA",Registry Event
 7665,273,Charlotte Westie Fest,2023,2,2023-02-01,,,,,,62,Charlotte,North Carolina,United States,"Charlotte, NC, United States",140,136,https://charlottewestiefest.com/,"Charlotte, NC",Registry Event
 7656,272,Paris Westie Fest,2023,2,2023-02-01,,,,,,109,Paris,,France,"Paris, France",120,118,http://https//parisswingclassic.com,"Paris, France",Registry Event
@@ -541,7 +541,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 7799,302,WesterOz Swing,2023,2,2023-02-01,,,,,,253,Perth,,Australia,"Perth, Australia",26,24,http://magneticdance.com.au/westeroz,"Perth, Australia",
 7775,297,Winter Coast Swing,2023,2,2023-02-01,,,,,,269,Kuopio,,Finland,"Kuopio, Finland",42,41,https://www.wintercoastswing.com/,"Kuopio, Finland",Registry Event
 7809,309,Avignon City Swing,2023,1,2023-01-01,,,,,,192,Nimes,,France,"Nimes, France",82,74,https://www.avignoncityswing.com/,"Nimes, France",Registry Event
-7067,184,BudaFest Open WCS Championships,2023,1,2023-01-01,,,,,,110,Budapest,nan,Hungary,"Budapest, Hungary",172,165,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
+7067,184,BudaFest Open WCS Championships,2023,1,2023-01-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",172,165,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
 7890,334,Countdown Swing Boston,2023,1,2023-01-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",125,117,http://countdownswingboston.com/,"Mansfield (Boston), MA, United States",Registry Event
 7496,242,Derby City Swing,2023,1,2023-01-01,,,,,,116,Louisville,Kentucky,United States,"Louisville, KY, United States",106,97,https://derbycityswing.com/,"Louisville, KY",Registry Event
 5756,42,Floorplay Swing Vacation,2023,1,2023-01-01,,,,,,82,Orlando,Florida,United States,"Orlando, FL, United States",131,122,http://www.floorplayswingvacation.com/,"Orlando, FL",Registry Event
@@ -634,11 +634,11 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 6800,153,Novice Invitational,2022,3,2022-03-01,,,,,,44,Houston,Texas,United States,"Houston, TX, United States",83,77,http://www.htownthrowdownwcs.com/,"Houston, TX",Registry Event
 6694,142,The Chicago Classic,2022,3,2022-03-01,,,,,,34,Chicago,Illinois,United States,"Chicago, IL, United States",119,110,https://thechicagoclassic.com/,"Chicago, IL",Registry Event
 7086,186,West in Lyon,2022,3,2022-03-01,,,,,,156,Lyon,,France,"Lyon, France",115,113,http://www.west-in-lyon.fr/,"Lyon, France",Registry Event
-7836,314,Westie Spring Thing,2022,3,2022-03-01,,,,,,110,Budapest,nan,Hungary,"Budapest, Hungary",74,69,https://westiespringthing.com/,"Budapest, Hungary",Registry Event
+7836,314,Westie Spring Thing,2022,3,2022-03-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",74,69,https://westiespringthing.com/,"Budapest, Hungary",Registry Event
 7664,273,Charlotte Westie Fest,2022,2,2022-02-01,,,,,,62,Charlotte,North Carolina,United States,"Charlotte, NC, United States",112,107,https://charlottewestiefest.com/,"Charlotte, NC",Registry Event
 7507,244,Rose City Swing,2022,2,2022-02-01,,,,,,4,Portland,Oregon,United States,"Portland, OR, United States",106,102,https://rosecityswing.com/,"Portland, OR",Registry Event
 7295,215,Swing & Snow,2022,2,2022-02-01,,,,,,222,St. Petersburg,,Russia,"St. Petersburg, Russia",76,76,http://swingandsnow.ru/,"St. Petersburg, Russia",Registry Event
-7066,184,BudaFest Open WCS Championships,2022,1,2022-01-01,,,,,,110,Budapest,nan,Hungary,"Budapest, Hungary",135,135,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
+7066,184,BudaFest Open WCS Championships,2022,1,2022-01-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",135,135,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
 7889,334,Countdown Swing Boston,2022,1,2022-01-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",61,61,http://countdownswingboston.com/,"Mansfield (Boston), MA, United States",Registry Event
 5755,42,Floorplay Swing Vacation,2022,1,2022-01-01,,,,,,82,Orlando,Florida,United States,"Orlando, FL, United States",122,115,http://www.floorplayswingvacation.com/,"Orlando, FL",Registry Event
 7052,183,Freedom Swing Dance Challenge,2022,1,2022-01-01,,,,,,66,Wilmington,Delaware,United States,"Wilmington, DE, United States",72,68,https://freedomswingdance.com/,"Wilmington, DE, United States",Registry Event
@@ -687,7 +687,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 7774,297,Winter Coast Swing,2020,2,2020-02-01,,,,,,269,Kuopio,,Finland,"Kuopio, Finland",37,37,https://www.wintercoastswing.com/,"Kuopio, Finland",Registry Event
 7186,200,Austin Swing Dance Championships,2020,1,2020-01-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",102,98,https://austinswingdance.com/,"Austin, TX",Registry Event
 7808,309,Avignon City Swing,2020,1,2020-01-01,,,,,,192,Nimes,,France,"Nimes, France",73,73,https://www.avignoncityswing.com/,"Nimes, France",Registry Event
-7065,184,BudaFest Open WCS Championships,2020,1,2020-01-01,,,,,,110,Budapest,nan,Hungary,"Budapest, Hungary",130,130,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
+7065,184,BudaFest Open WCS Championships,2020,1,2020-01-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",130,130,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
 7888,334,Countdown Swing Boston,2020,1,2020-01-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",62,62,http://countdownswingboston.com/,"Mansfield (Boston), MA, United States",Registry Event
 7495,242,Derby City Swing,2020,1,2020-01-01,,,,,,116,Louisville,Kentucky,United States,"Louisville, KY, United States",85,80,https://derbycityswing.com/,"Louisville, KY",Registry Event
 7051,183,Freedom Swing Dance Challenge,2020,1,2020-01-01,,,,,,66,Wilmington,Delaware,United States,"Wilmington, DE, United States",74,70,https://freedomswingdance.com/,"Wilmington, DE, United States",Registry Event
@@ -827,7 +827,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 7573,259,Swingover,2019,3,2019-03-01,,,,,,82,Orlando,Florida,United States,"Orlando, FL, United States",92,83,http://swingoverevent.com/,"Orlando, FL",Registry Event
 6693,142,The Chicago Classic,2019,3,2019-03-01,,,,,,34,Chicago,Illinois,United States,"Chicago, IL, United States",136,135,https://thechicagoclassic.com/,"Chicago, IL",Registry Event
 7085,186,West in Lyon,2019,3,2019-03-01,,,,,,156,Lyon,,France,"Lyon, France",111,106,http://www.west-in-lyon.fr/,"Lyon, France",Registry Event
-7835,314,Westie Spring Thing,2019,3,2019-03-01,,,,,,110,Budapest,nan,Hungary,"Budapest, Hungary",76,76,https://westiespringthing.com/,"Budapest, Hungary",Registry Event
+7835,314,Westie Spring Thing,2019,3,2019-03-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",76,76,https://westiespringthing.com/,"Budapest, Hungary",Registry Event
 5487,12,Capital Swing Dance Convention,2019,2,2019-02-01,,,,,,6,Sacramento,California,United States,"Sacramento, CA, United States",146,136,http://www.capitalswingconvention.com/,"Sacramento, CA",Registry Event
 7662,273,Charlotte Westie Fest,2019,2,2019-02-01,,,,,,62,Charlotte,North Carolina,United States,"Charlotte, NC, United States",135,134,https://charlottewestiefest.com/,"Charlotte, NC",Registry Event
 6943,169,Dance Camp Chicago,2019,2,2019-02-01,,,,,,114,Elmhurst,Illinois,United States,"Elmhurst, IL, United States",63,63,,"Elmhurst, IL",
@@ -839,7 +839,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 7797,302,WesterOz Swing,2019,2,2019-02-01,,,,,,253,Perth,,Australia,"Perth, Australia",38,38,http://magneticdance.com.au/westeroz,"Perth, Australia",
 7773,297,Winter Coast Swing,2019,2,2019-02-01,,,,,,269,Kuopio,,Finland,"Kuopio, Finland",44,44,https://www.wintercoastswing.com/,"Kuopio, Finland",Registry Event
 7185,200,Austin Swing Dance Championships,2019,1,2019-01-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",108,106,https://austinswingdance.com/,"Austin, TX",Registry Event
-7064,184,BudaFest Open WCS Championships,2019,1,2019-01-01,,,,,,110,Budapest,nan,Hungary,"Budapest, Hungary",138,138,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
+7064,184,BudaFest Open WCS Championships,2019,1,2019-01-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",138,138,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
 7887,334,Countdown Swing Boston,2019,1,2019-01-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",63,63,http://countdownswingboston.com/,"Boston, MA",Registry Event
 7494,242,Derby City Swing,2019,1,2019-01-01,,,,,,116,Louisville,Kentucky,United States,"Louisville, KY, United States",93,90,https://derbycityswing.com/,"Louisville, KY",Registry Event
 5753,42,Floorplay Swing Vacation,2019,1,2019-01-01,,,,,,82,Orlando,Florida,United States,"Orlando, FL, United States",93,89,http://www.floorplayswingvacation.com/,"Orlando, FL",Registry Event
@@ -987,7 +987,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 7291,215,Swing & Snow,2018,2,2018-02-01,,,,,,222,St. Petersburg,,Russia,"St. Petersburg, Russia",84,84,http://swingandsnow.ru/,"St. Petersburg, Russia",Registry Event
 7564,258,Swingtzerland,2018,2,2018-02-01,,,,,,173,Zürich,,Switzerland,"Zürich, Switzerland",70,70,https://swingtzerland.com/,"Zürich, Switzerland",Registry Event
 7184,200,Austin Swing Dance Championships,2018,1,2018-01-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",109,107,https://austinswingdance.com/,"Austin, TX",Registry Event
-7063,184,BudaFest Open WCS Championships,2018,1,2018-01-01,,,,,,110,Budapest,nan,Hungary,"Budapest, Hungary",131,131,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
+7063,184,BudaFest Open WCS Championships,2018,1,2018-01-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",131,131,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
 7886,334,Countdown Swing Boston,2018,1,2018-01-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",90,90,http://countdownswingboston.com/,"Boston, MA",Registry Event
 7493,242,Derby City Swing,2018,1,2018-01-01,,,,,,116,Louisville,Kentucky,United States,"Louisville, KY, United States",92,87,https://derbycityswing.com/,"Louisville, KY",Registry Event
 7049,183,Freedom Swing Dance Challenge,2018,1,2018-01-01,,,,,,66,Wilmington,Delaware,United States,"Wilmington, DE, United States",101,99,https://freedomswingdance.com/,"Wilmington, DE, United States",Registry Event
@@ -1134,7 +1134,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 7290,215,Swing & Snow,2017,2,2017-02-01,,,,,,222,St. Petersburg,,Russia,"St. Petersburg, Russia",99,99,http://swingandsnow.ru/,"St. Petersburg, Russia",Registry Event
 7563,258,Swingtzerland,2017,2,2017-02-01,,,,,,173,Zürich,,Switzerland,"Zürich, Switzerland",75,75,https://swingtzerland.com/,"Zürich, Switzerland",Registry Event
 7183,200,Austin Swing Dance Championships,2017,1,2017-01-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",110,105,https://austinswingdance.com/,"Austin, TX",Registry Event
-7062,184,BudaFest Open WCS Championships,2017,1,2017-01-01,,,,,,110,Budapest,nan,Hungary,"Budapest, Hungary",115,115,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
+7062,184,BudaFest Open WCS Championships,2017,1,2017-01-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",115,115,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
 7885,334,Countdown Swing Boston,2017,1,2017-01-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",76,76,http://countdownswingboston.com/,"Boston, MA",Registry Event
 7492,242,Derby City Swing,2017,1,2017-01-01,,,,,,116,Louisville,Kentucky,United States,"Louisville, KY, United States",105,101,https://derbycityswing.com/,"Louisville, KY",Registry Event
 5751,42,Floorplay Swing Vacation,2017,1,2017-01-01,,,,,,82,Orlando,Florida,United States,"Orlando, FL, United States",80,73,http://www.floorplayswingvacation.com/,"Orlando, FL",Registry Event
@@ -1270,7 +1270,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 7289,215,Swing & Snow,2016,2,2016-02-01,,,,,,222,St. Petersburg,,Russia,"St. Petersburg, Russia",84,84,http://swingandsnow.ru/,"St. Petersburg, Russia",Registry Event
 7562,258,Swingtzerland,2016,2,2016-02-01,,,,,,173,Zürich,,Switzerland,"Zürich, Switzerland",52,52,https://swingtzerland.com/,"Zürich, Switzerland",Registry Event
 7182,200,Austin Swing Dance Championships,2016,1,2016-01-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",99,98,https://austinswingdance.com/,"Austin, TX",Registry Event
-7061,184,BudaFest Open WCS Championships,2016,1,2016-01-01,,,,,,110,Budapest,nan,Hungary,"Budapest, Hungary",106,106,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
+7061,184,BudaFest Open WCS Championships,2016,1,2016-01-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",106,106,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
 7884,334,Countdown Swing Boston,2016,1,2016-01-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",79,79,http://countdownswingboston.com/,"Boston, MA",Registry Event
 7491,242,Derby City Swing,2016,1,2016-01-01,,,,,,116,Louisville,Kentucky,United States,"Louisville, KY, United States",87,81,https://derbycityswing.com/,"Louisville, KY",Registry Event
 5750,42,Floorplay Swing Vacation,2016,1,2016-01-01,,,,,,82,Orlando,Florida,United States,"Orlando, FL, United States",70,65,http://www.floorplayswingvacation.com/,"Orlando, FL",Registry Event
@@ -1393,7 +1393,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 7074,185,Sweetheart Swing Classic,2015,2,2015-02-01,,,,,,53,Tampa,Florida,United States,"Tampa, FL, United States",74,70,,"Tampa, FL",
 7288,215,Swing & Snow,2015,2,2015-02-01,,,,,,222,St. Petersburg,,Russia,"St. Petersburg, Russia",71,71,http://swingandsnow.ru/,"St. Petersburg, Russia",Registry Event
 7181,200,Austin Swing Dance Championships,2015,1,2015-01-01,,,,,,39,Austin,Texas,United States,"Austin, TX, United States",105,103,https://austinswingdance.com/,"Austin, TX",Registry Event
-7060,184,BudaFest Open WCS Championships,2015,1,2015-01-01,,,,,,110,Budapest,nan,Hungary,"Budapest, Hungary",116,116,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
+7060,184,BudaFest Open WCS Championships,2015,1,2015-01-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",116,116,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
 7883,334,Countdown Swing Boston,2015,1,2015-01-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",75,75,http://countdownswingboston.com/,"Boston, MA",Registry Event
 5749,42,Floorplay Swing Vacation,2015,1,2015-01-01,,,,,,82,Orlando,Florida,United States,"Orlando, FL, United States",65,57,http://www.floorplayswingvacation.com/,"Orlando, FL",Registry Event
 7046,183,Freedom Swing Dance Challenge,2015,1,2015-01-01,,,,,,66,Wilmington,Delaware,United States,"Wilmington, DE, United States",122,116,https://freedomswingdance.com/,"Wilmington, DE, United States",Registry Event
@@ -1515,7 +1515,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 7073,185,Sweetheart Swing Classic,2014,2,2014-02-01,,,,,,53,Tampa,Florida,United States,"Tampa, FL, United States",64,60,,"Tampa, FL",
 7287,215,Swing & Snow,2014,2,2014-02-01,,,,,,222,St. Petersburg,,Russia,"St. Petersburg, Russia",62,62,http://swingandsnow.ru/,"St. Petersburg, Russia",Registry Event
 6101,67,Americas Classic,2014,1,2014-01-01,,,,,,44,Houston,Texas,United States,"Houston, TX, United States",91,91,,"Houston, TX",
-7059,184,BudaFest Open WCS Championships,2014,1,2014-01-01,,,,,,110,Budapest,nan,Hungary,"Budapest, Hungary",82,82,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
+7059,184,BudaFest Open WCS Championships,2014,1,2014-01-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",82,82,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
 7045,183,Freedom Swing Dance Challenge,2014,1,2014-01-01,,,,,,66,Wilmington,Delaware,United States,"Wilmington, DE, United States",107,100,https://freedomswingdance.com/,"Wilmington, DE, United States",Registry Event
 6018,62,Monterey SwingFest,2014,1,2014-01-01,,,,,,1,Monterey,California,United States,"Monterey, CA, United States",113,109,http://www.montereyswing.com/,"Monterey, CA",Registry Event
 7280,214,New Year's Swing Fling,2014,1,2014-01-01,,,,,,107,London,,United Kingdom,"London, United Kingdom",80,80,http://nysf.uk/,"London, United Kingdom",Registry Event
@@ -1619,7 +1619,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 6933,168,Scottish WCS Dance Championships,2013,2,2013-02-01,,,,,,206,Bathgate,,United Kingdom,"Bathgate, United Kingdom",30,30,,"Bathgate, United Kingdom",
 6100,67,Americas Classic,2013,1,2013-01-01,,,,,,44,Houston,Texas,United States,"Houston, TX, United States",102,97,,"Houston, TX",
 6920,167,Best of the Best WCS,2013,1,2013-01-01,,,,,,117,Sydney,,Australia,"Sydney, Australia",47,47,https://www.bestofthebestwcs.com/,"Sydney, Australia",Registry Event
-7058,184,BudaFest Open WCS Championships,2013,1,2013-01-01,,,,,,110,Budapest,nan,Hungary,"Budapest, Hungary",89,89,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
+7058,184,BudaFest Open WCS Championships,2013,1,2013-01-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",89,89,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
 7881,334,Countdown Swing Boston,2013,1,2013-01-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",69,69,http://countdownswingboston.com/,"Boston, MA",Registry Event
 5747,42,Floorplay Swing Vacation,2013,1,2013-01-01,,,,,,82,Orlando,Florida,United States,"Orlando, FL, United States",60,56,http://www.floorplayswingvacation.com/,"Orlando, FL",Registry Event
 7044,183,Freedom Swing Dance Challenge,2013,1,2013-01-01,,,,,,66,Wilmington,Delaware,United States,"Wilmington, DE, United States",82,82,https://freedomswingdance.com/,"Wilmington, DE, United States",Registry Event
@@ -1711,7 +1711,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 7071,185,Sweetheart Swing Classic,2012,2,2012-02-01,,,,,,53,Tampa,Florida,United States,"Tampa, FL, United States",39,36,,"Tampa, FL",
 6099,67,Americas Classic,2012,1,2012-01-01,,,,,,44,Houston,Texas,United States,"Houston, TX, United States",115,113,,"Houston, TX",
 6919,167,Best of the Best WCS,2012,1,2012-01-01,,,,,,117,Sydney,,Australia,"Sydney, Australia",40,40,https://www.bestofthebestwcs.com/,"Sydney, Australia",Registry Event
-7057,184,BudaFest Open WCS Championships,2012,1,2012-01-01,,,,,,110,Budapest,nan,Hungary,"Budapest, Hungary",50,50,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
+7057,184,BudaFest Open WCS Championships,2012,1,2012-01-01,,,,,,110,Budapest,,Hungary,"Budapest, Hungary",50,50,http://wcs-budafest.com/,"Budapest, Hungary",Registry Event
 7880,334,Countdown Swing Boston,2012,1,2012-01-01,,,,,,8,Boston,Massachusetts,United States,"Boston, MA, United States",69,69,http://countdownswingboston.com/,"Boston, MA",Registry Event
 5746,42,Floorplay Swing Vacation,2012,1,2012-01-01,,,,,,82,Orlando,Florida,United States,"Orlando, FL, United States",58,57,http://www.floorplayswingvacation.com/,"Orlando, FL",Registry Event
 7043,183,Freedom Swing Dance Challenge,2012,1,2012-01-01,,,,,,66,Wilmington,Delaware,United States,"Wilmington, DE, United States",70,70,https://freedomswingdance.com/,"Wilmington, DE, United States",Registry Event

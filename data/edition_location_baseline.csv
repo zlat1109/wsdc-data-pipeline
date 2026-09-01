@@ -93,7 +93,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 142,2026,3,34,The Chicago Classic,auto,Chicago,Illinois,United States,"Chicago, IL, United States","Chicago, IL",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 154,2026,3,107,UK WCS Championships,auto,London,,United Kingdom,"London, United Kingdom","London, United Kingdom",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 186,2026,3,156,West in Lyon,auto,Lyon,,France,"Lyon, France","Lyon, France",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
-314,2026,3,243,Westie Spring Thing,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
+314,2026,3,110,Westie Spring Thing,manual,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-09-01 17:33:24.279954+00,2026-09-01 17:46:33.218365+00
 344,2026,2,258,Arousa Westie Fest,auto,Sanxenxo,,Spain,"Sanxenxo, Spain","Sanxenxo, Spain",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 12,2026,2,6,Capital Swing Dance Convention,auto,Sacramento,California,United States,"Sacramento, CA, United States","Sacramento, CA",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 273,2026,2,62,Charlotte Westie Fest,auto,Charlotte,North Carolina,United States,"Charlotte, NC, United States","Charlotte, NC",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
@@ -108,7 +108,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 297,2026,2,269,Winter Coast Swing,auto,Kuopio,,Finland,"Kuopio, Finland","Kuopio, Finland",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 200,2026,1,39,Austin Swing Dance Championships,auto,Austin,Texas,United States,"Austin, TX, United States","Austin, TX",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 309,2026,1,192,Avignon City Swing,auto,Nimes,,France,"Nimes, France","Nimes, France",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
-184,2026,1,243,BudaFest Open WCS Championships,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
+184,2026,1,110,BudaFest Open WCS Championships,manual,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-09-01 17:33:24.279954+00,2026-09-01 17:46:33.218365+00
 334,2026,1,396,Countdown Swing Boston,auto,Mansfield,Massachusetts,United States,"Mansfield (Boston), MA, United States","Mansfield (Boston), MA",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 242,2026,1,116,Derby City Swing,auto,Louisville,Kentucky,United States,"Louisville, KY, United States","Louisville, KY",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 42,2026,1,82,Floorplay Swing Vacation,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
@@ -265,7 +265,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 142,2025,3,34,The Chicago Classic,auto,Chicago,Illinois,United States,"Chicago, IL, United States","Chicago, IL",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 154,2025,3,107,UK WCS Championships,auto,London,,United Kingdom,"London, United Kingdom","London, United Kingdom",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 186,2025,3,156,West in Lyon,auto,Lyon,,France,"Lyon, France","Lyon, France",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
-314,2025,3,243,Westie Spring Thing,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
+314,2025,3,110,Westie Spring Thing,manual,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-09-01 17:33:24.279954+00,2026-09-01 17:46:33.218365+00
 344,2025,2,258,Arousa Westie Fest,auto,Sanxenxo,,Spain,"Sanxenxo, Spain","Sanxenxo, Spain",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 12,2025,2,6,Capital Swing Dance Convention,auto,Sacramento,California,United States,"Sacramento, CA, United States","Sacramento, CA",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 273,2025,2,62,Charlotte Westie Fest,auto,Charlotte,North Carolina,United States,"Charlotte, NC, United States","Charlotte, NC",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
@@ -280,7 +280,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 297,2025,2,269,Winter Coast Swing,auto,Kuopio,,Finland,"Kuopio, Finland","Kuopio, Finland",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 200,2025,1,39,Austin Swing Dance Championships,auto,Austin,Texas,United States,"Austin, TX, United States","Austin, TX",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 309,2025,1,192,Avignon City Swing,auto,Nimes,,France,"Nimes, France","Nimes, France",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
-184,2025,1,243,BudaFest Open WCS Championships,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
+184,2025,1,110,BudaFest Open WCS Championships,manual,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-09-01 17:33:24.279954+00,2026-09-01 17:46:33.218365+00
 334,2025,1,396,Countdown Swing Boston,auto,Mansfield,Massachusetts,United States,"Mansfield (Boston), MA, United States","Mansfield (Boston), MA",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 242,2025,1,116,Derby City Swing,auto,Louisville,Kentucky,United States,"Louisville, KY, United States","Louisville, KY",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 42,2025,1,82,Floorplay Swing Vacation,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
@@ -409,7 +409,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 142,2024,3,34,The Chicago Classic,auto,Chicago,Illinois,United States,"Chicago, IL, United States","Chicago, IL",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 132,2024,3,58,Tulsa Spring Swing,auto,Tulsa,Oklahoma,United States,"Tulsa, OK, United States","Tulsa, OK",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 186,2024,3,156,West in Lyon,auto,Lyon,,France,"Lyon, France","Lyon, France",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
-314,2024,3,243,Westie Spring Thing,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
+314,2024,3,110,Westie Spring Thing,manual,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-09-01 17:33:24.279954+00,2026-09-01 17:46:33.218365+00
 12,2024,2,6,Capital Swing Dance Convention,auto,Sacramento,California,United States,"Sacramento, CA, United States","Sacramento, CA",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 273,2024,2,62,Charlotte Westie Fest,auto,Charlotte,North Carolina,United States,"Charlotte, NC, United States","Charlotte, NC",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 272,2024,2,109,Paris Westie Fest,auto,Paris,,France,"Paris, France","Paris, France",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
@@ -420,7 +420,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 297,2024,2,269,Winter Coast Swing,auto,Kuopio,,Finland,"Kuopio, Finland","Kuopio, Finland",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 200,2024,1,39,Austin Swing Dance Championships,auto,Austin,Texas,United States,"Austin, TX, United States","Austin, TX",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 309,2024,1,192,Avignon City Swing,auto,Nimes,,France,"Nimes, France","Nimes, France",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
-184,2024,1,243,BudaFest Open WCS Championships,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
+184,2024,1,110,BudaFest Open WCS Championships,manual,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-09-01 17:33:24.279954+00,2026-09-01 17:46:33.218365+00
 334,2024,1,8,Countdown Swing Boston,auto,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 242,2024,1,116,Derby City Swing,auto,Louisville,Kentucky,United States,"Louisville, KY, United States","Louisville, KY",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 42,2024,1,82,Floorplay Swing Vacation,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
@@ -531,7 +531,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 153,2023,3,44,Novice Invitational,auto,Houston,Texas,United States,"Houston, TX, United States","Houston, TX",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 142,2023,3,34,The Chicago Classic,auto,Chicago,Illinois,United States,"Chicago, IL, United States","Chicago, IL",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 186,2023,3,156,West in Lyon,auto,Lyon,,France,"Lyon, France","Lyon, France",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
-314,2023,3,243,Westie Spring Thing,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
+314,2023,3,110,Westie Spring Thing,manual,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-09-01 17:33:24.279954+00,2026-09-01 17:46:33.218365+00
 12,2023,2,6,Capital Swing Dance Convention,auto,Sacramento,California,United States,"Sacramento, CA, United States","Sacramento, CA",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 273,2023,2,62,Charlotte Westie Fest,auto,Charlotte,North Carolina,United States,"Charlotte, NC, United States","Charlotte, NC",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 272,2023,2,109,Paris Westie Fest,auto,Paris,,France,"Paris, France","Paris, France",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
@@ -541,7 +541,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 302,2023,2,253,WesterOz Swing,auto,Perth,,Australia,"Perth, Australia","Perth, Australia",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 297,2023,2,269,Winter Coast Swing,auto,Kuopio,,Finland,"Kuopio, Finland","Kuopio, Finland",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 309,2023,1,192,Avignon City Swing,auto,Nimes,,France,"Nimes, France","Nimes, France",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
-184,2023,1,243,BudaFest Open WCS Championships,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
+184,2023,1,110,BudaFest Open WCS Championships,manual,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-09-01 17:33:24.279954+00,2026-09-01 17:46:33.218365+00
 334,2023,1,8,Countdown Swing Boston,auto,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 242,2023,1,116,Derby City Swing,auto,Louisville,Kentucky,United States,"Louisville, KY, United States","Louisville, KY",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 42,2023,1,82,Floorplay Swing Vacation,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
@@ -634,11 +634,11 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 153,2022,3,44,Novice Invitational,auto,Houston,Texas,United States,"Houston, TX, United States","Houston, TX",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 142,2022,3,34,The Chicago Classic,auto,Chicago,Illinois,United States,"Chicago, IL, United States","Chicago, IL",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 186,2022,3,156,West in Lyon,auto,Lyon,,France,"Lyon, France","Lyon, France",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
-314,2022,3,243,Westie Spring Thing,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
+314,2022,3,110,Westie Spring Thing,manual,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-09-01 17:33:24.279954+00,2026-09-01 17:46:33.218365+00
 273,2022,2,62,Charlotte Westie Fest,auto,Charlotte,North Carolina,United States,"Charlotte, NC, United States","Charlotte, NC",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 244,2022,2,4,Rose City Swing,auto,Portland,Oregon,United States,"Portland, OR, United States","Portland, OR",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 215,2022,2,222,Swing & Snow,auto,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
-184,2022,1,243,BudaFest Open WCS Championships,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
+184,2022,1,110,BudaFest Open WCS Championships,manual,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-09-01 17:33:24.279954+00,2026-09-01 17:46:33.218365+00
 334,2022,1,8,Countdown Swing Boston,auto,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 42,2022,1,82,Floorplay Swing Vacation,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 183,2022,1,66,Freedom Swing Dance Challenge,auto,Wilmington,Delaware,United States,"Wilmington, DE, United States","Wilmington, DE",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
@@ -687,7 +687,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 297,2020,2,269,Winter Coast Swing,auto,Kuopio,,Finland,"Kuopio, Finland","Kuopio, Finland",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 200,2020,1,39,Austin Swing Dance Championships,auto,Austin,Texas,United States,"Austin, TX, United States","Austin, TX",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 309,2020,1,192,Avignon City Swing,auto,Nimes,,France,"Nimes, France","Nimes, France",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
-184,2020,1,243,BudaFest Open WCS Championships,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
+184,2020,1,110,BudaFest Open WCS Championships,manual,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-09-01 17:33:24.279954+00,2026-09-01 17:46:33.218365+00
 334,2020,1,8,Countdown Swing Boston,auto,Boston,Massachusetts,United States,"Boston, MA, United States","Boston, MA",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 242,2020,1,116,Derby City Swing,auto,Louisville,Kentucky,United States,"Louisville, KY, United States","Louisville, KY",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 183,2020,1,66,Freedom Swing Dance Challenge,auto,Wilmington,Delaware,United States,"Wilmington, DE, United States","Wilmington, DE",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
@@ -827,7 +827,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 259,2019,3,82,Swingover,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 142,2019,3,34,The Chicago Classic,auto,Chicago,Illinois,United States,"Chicago, IL, United States","Chicago, IL",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 186,2019,3,156,West in Lyon,auto,Lyon,,France,"Lyon, France","Lyon, France",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
-314,2019,3,243,Westie Spring Thing,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
+314,2019,3,110,Westie Spring Thing,manual,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-09-01 17:33:24.279954+00,2026-09-01 17:46:33.218365+00
 12,2019,2,6,Capital Swing Dance Convention,auto,Sacramento,California,United States,"Sacramento, CA, United States","Sacramento, CA",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 273,2019,2,62,Charlotte Westie Fest,auto,Charlotte,North Carolina,United States,"Charlotte, NC, United States","Charlotte, NC",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 169,2019,2,114,Dance Camp Chicago,auto,Elmhurst,Illinois,United States,"Elmhurst, IL, United States","Elmhurst, IL",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
@@ -839,7 +839,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 302,2019,2,253,WesterOz Swing,auto,Perth,,Australia,"Perth, Australia","Perth, Australia",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 297,2019,2,269,Winter Coast Swing,auto,Kuopio,,Finland,"Kuopio, Finland","Kuopio, Finland",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 200,2019,1,39,Austin Swing Dance Championships,auto,Austin,Texas,United States,"Austin, TX, United States","Austin, TX",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
-184,2019,1,243,BudaFest Open WCS Championships,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
+184,2019,1,110,BudaFest Open WCS Championships,manual,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-09-01 17:33:24.279954+00,2026-09-01 17:46:33.218365+00
 334,2019,1,71,Countdown Swing Boston,auto,Framingham,Massachusetts,United States,"Framingham (Boston), MA, United States","Framingham (Boston), MA",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 242,2019,1,116,Derby City Swing,auto,Louisville,Kentucky,United States,"Louisville, KY, United States","Louisville, KY",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 42,2019,1,82,Floorplay Swing Vacation,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
@@ -987,7 +987,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 215,2018,2,222,Swing & Snow,auto,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 258,2018,2,173,Swingtzerland,auto,Zürich,,Switzerland,"Zürich, Switzerland","Zürich, Switzerland",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 200,2018,1,39,Austin Swing Dance Championships,auto,Austin,Texas,United States,"Austin, TX, United States","Austin, TX",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
-184,2018,1,243,BudaFest Open WCS Championships,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
+184,2018,1,110,BudaFest Open WCS Championships,manual,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-09-01 17:33:24.279954+00,2026-09-01 17:46:33.218365+00
 334,2018,1,71,Countdown Swing Boston,auto,Framingham,Massachusetts,United States,"Framingham (Boston), MA, United States","Framingham (Boston), MA",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 242,2018,1,116,Derby City Swing,auto,Louisville,Kentucky,United States,"Louisville, KY, United States","Louisville, KY",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 183,2018,1,66,Freedom Swing Dance Challenge,auto,Wilmington,Delaware,United States,"Wilmington, DE, United States","Wilmington, DE",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
@@ -1134,7 +1134,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 215,2017,2,222,Swing & Snow,auto,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 258,2017,2,173,Swingtzerland,auto,Zürich,,Switzerland,"Zürich, Switzerland","Zürich, Switzerland",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 200,2017,1,39,Austin Swing Dance Championships,auto,Austin,Texas,United States,"Austin, TX, United States","Austin, TX",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
-184,2017,1,243,BudaFest Open WCS Championships,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
+184,2017,1,110,BudaFest Open WCS Championships,manual,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-09-01 17:33:24.279954+00,2026-09-01 17:46:33.218365+00
 334,2017,1,71,Countdown Swing Boston,auto,Framingham,Massachusetts,United States,"Framingham (Boston), MA, United States","Framingham (Boston), MA",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 242,2017,1,116,Derby City Swing,auto,Louisville,Kentucky,United States,"Louisville, KY, United States","Louisville, KY",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 42,2017,1,82,Floorplay Swing Vacation,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
@@ -1270,7 +1270,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 215,2016,2,222,Swing & Snow,auto,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 258,2016,2,173,Swingtzerland,auto,Zürich,,Switzerland,"Zürich, Switzerland","Zürich, Switzerland",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 200,2016,1,39,Austin Swing Dance Championships,auto,Austin,Texas,United States,"Austin, TX, United States","Austin, TX",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
-184,2016,1,243,BudaFest Open WCS Championships,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
+184,2016,1,110,BudaFest Open WCS Championships,manual,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-09-01 17:33:24.279954+00,2026-09-01 17:46:33.218365+00
 334,2016,1,71,Countdown Swing Boston,auto,Framingham,Massachusetts,United States,"Framingham (Boston), MA, United States","Framingham (Boston), MA",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 242,2016,1,116,Derby City Swing,auto,Louisville,Kentucky,United States,"Louisville, KY, United States","Louisville, KY",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 42,2016,1,82,Floorplay Swing Vacation,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
@@ -1393,7 +1393,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 185,2015,2,53,Sweetheart Swing Classic,auto,Tampa,Florida,United States,"Tampa, FL, United States","Tampa, FL",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 215,2015,2,222,Swing & Snow,auto,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 200,2015,1,39,Austin Swing Dance Championships,auto,Austin,Texas,United States,"Austin, TX, United States","Austin, TX",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
-184,2015,1,243,BudaFest Open WCS Championships,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
+184,2015,1,110,BudaFest Open WCS Championships,manual,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-09-01 17:33:24.279954+00,2026-09-01 17:46:33.218365+00
 334,2015,1,71,Countdown Swing Boston,auto,Framingham,Massachusetts,United States,"Framingham (Boston), MA, United States","Framingham (Boston), MA",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 42,2015,1,82,Floorplay Swing Vacation,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 183,2015,1,66,Freedom Swing Dance Challenge,auto,Wilmington,Delaware,United States,"Wilmington, DE, United States","Wilmington, DE",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
@@ -1515,7 +1515,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 185,2014,2,53,Sweetheart Swing Classic,auto,Tampa,Florida,United States,"Tampa, FL, United States","Tampa, FL",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 215,2014,2,222,Swing & Snow,auto,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 67,2014,1,44,Americas Classic,auto,Houston,Texas,United States,"Houston, TX, United States","Houston, TX",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
-184,2014,1,243,BudaFest Open WCS Championships,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
+184,2014,1,110,BudaFest Open WCS Championships,manual,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-09-01 17:33:24.279954+00,2026-09-01 17:46:33.218365+00
 183,2014,1,66,Freedom Swing Dance Challenge,auto,Wilmington,Delaware,United States,"Wilmington, DE, United States","Wilmington, DE",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 62,2014,1,1,Monterey SwingFest,auto,Monterey,California,United States,"Monterey, CA, United States","Monterey, CA",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 214,2014,1,107,New Year's Swing Fling,auto,London,,United Kingdom,"London, United Kingdom","London, United Kingdom",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
@@ -1619,7 +1619,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 168,2013,2,206,Scottish WCS Dance Championships,auto,Bathgate,,United Kingdom,"Bathgate, United Kingdom","Bathgate, United Kingdom",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 67,2013,1,44,Americas Classic,auto,Houston,Texas,United States,"Houston, TX, United States","Houston, TX",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 167,2013,1,117,Best of the Best WCS,auto,Sydney,,Australia,"Sydney, Australia","Sydney, Australia",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
-184,2013,1,243,BudaFest Open WCS Championships,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
+184,2013,1,110,BudaFest Open WCS Championships,manual,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-09-01 17:33:24.279954+00,2026-09-01 17:46:33.218365+00
 334,2013,1,71,Countdown Swing Boston,auto,Framingham,Massachusetts,United States,"Framingham (Boston), MA, United States","Framingham (Boston), MA",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 42,2013,1,82,Floorplay Swing Vacation,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 183,2013,1,66,Freedom Swing Dance Challenge,auto,Wilmington,Delaware,United States,"Wilmington, DE, United States","Wilmington, DE",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
@@ -1711,7 +1711,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 185,2012,2,53,Sweetheart Swing Classic,auto,Tampa,Florida,United States,"Tampa, FL, United States","Tampa, FL",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 67,2012,1,44,Americas Classic,auto,Houston,Texas,United States,"Houston, TX, United States","Houston, TX",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 167,2012,1,117,Best of the Best WCS,auto,Sydney,,Australia,"Sydney, Australia","Sydney, Australia",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
-184,2012,1,243,BudaFest Open WCS Championships,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
+184,2012,1,110,BudaFest Open WCS Championships,manual,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-09-01 17:33:24.279954+00,2026-09-01 17:46:33.218365+00
 334,2012,1,71,Countdown Swing Boston,auto,Framingham,Massachusetts,United States,"Framingham (Boston), MA, United States","Framingham (Boston), MA",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 42,2012,1,82,Floorplay Swing Vacation,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
 183,2012,1,66,Freedom Swing Dance Challenge,auto,Wilmington,Delaware,United States,"Wilmington, DE, United States","Wilmington, DE",2026-09-01 17:33:24.279954+00,2026-09-01 17:33:24.279954+00
