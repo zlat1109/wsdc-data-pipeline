@@ -1,9 +1,9 @@
 {
-  "scraped_at": "2026-08-25T08:31:39.611965+00:00",
+  "scraped_at": "2026-09-01T12:53:45.305971+00:00",
   "source": "https://worldsdc.com/events/calendar/",
   "min_start": "2025-01-01",
-  "raw_count": 640,
-  "event_count": 472,
+  "raw_count": 649,
+  "event_count": 482,
   "events": [
     {
       "event_name": "Floorplay Swing Vacation",
@@ -2178,8 +2178,8 @@
     {
       "event_name": "St. Petersburg WCS Nights",
       "calendar_title": "St. Petersburg WCS Nights",
-      "catalog_name": "St. Petersburg WCS Nights",
-      "name_key": "stpetersburgwcsnights",
+      "catalog_name": "Saint Petersburg WCS Nights",
+      "name_key": "saintpetersburgwcsnights",
       "start_date": "2025-07-17",
       "end_date": "2025-07-20",
       "url": "http://wcsnights.ru",
@@ -3029,8 +3029,8 @@
     {
       "event_name": "Philly Swing Dance Classic",
       "calendar_title": "Philly Swing Dance Classic",
-      "catalog_name": "Philly Swing Dance Classic",
-      "name_key": "phillyswingdanceclassic",
+      "catalog_name": "Philly Swing Classic",
+      "name_key": "phillyswingclassic",
       "start_date": "2025-09-19",
       "end_date": "2025-09-21",
       "url": "https://phillyswing.com/",
@@ -6362,8 +6362,8 @@
     {
       "event_name": "St. Petersburg WCS Nights",
       "calendar_title": "St. Petersburg WCS Nights",
-      "catalog_name": "St. Petersburg WCS Nights",
-      "name_key": "stpetersburgwcsnights",
+      "catalog_name": "Saint Petersburg WCS Nights",
+      "name_key": "saintpetersburgwcsnights",
       "start_date": "2026-07-22",
       "end_date": "2026-07-26",
       "url": "http://wcsnights.ru",
@@ -8604,6 +8604,28 @@
       "raw_end": "2027-01-26"
     },
     {
+      "event_name": "Cosmic Connection",
+      "calendar_title": "Cosmic Connection",
+      "catalog_name": "Cosmic Connection",
+      "name_key": "cosmicconnection",
+      "start_date": "2027-01-22",
+      "end_date": "2027-01-25",
+      "url": "http://www.thecosmic.dance",
+      "url_key": "thecosmic.dance",
+      "results_year": 2027,
+      "results_month": 1,
+      "edition_ym_candidates": [
+        "2027-01"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "3e25f3589ac29ba721105bdf",
+      "raw_start": "2027-01-22",
+      "raw_end": "2027-01-26"
+    },
+    {
       "event_name": "Freedom Swing Dance Challenge",
       "calendar_title": "Freedom Swing Dance Challenge",
       "catalog_name": "Freedom Swing Dance Challenge",
@@ -9666,6 +9688,29 @@
       "raw_end": "2027-05-03"
     },
     {
+      "event_name": "Nordic WCS Championships",
+      "calendar_title": "Nordic WCS Championships",
+      "catalog_name": "Nordic WCS Championships",
+      "name_key": "nordicwcschampionships",
+      "start_date": "2027-04-29",
+      "end_date": "2027-05-03",
+      "url": "http://www.nordicwcschamps.com",
+      "url_key": "nordicwcschamps.com",
+      "results_year": 2027,
+      "results_month": 5,
+      "edition_ym_candidates": [
+        "2027-05",
+        "2027-04"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "8c447af66793f24eef18e99d",
+      "raw_start": "2027-04-29",
+      "raw_end": "2027-05-04"
+    },
+    {
       "event_name": "Swingin' Into Spring",
       "calendar_title": "Swingin' Into Spring",
       "catalog_name": "Swingin' Into Spring",
@@ -9760,23 +9805,21 @@
       "catalog_name": "Med in Swing",
       "name_key": "medinswing",
       "start_date": "2027-05-14",
-      "end_date": "",
-      "url": "http://www.medinswing.rocks",
+      "end_date": "2027-05-17",
+      "url": "https://www.medinswing.rocks",
       "url_key": "medinswing.rocks",
       "results_year": 2027,
       "results_month": 5,
       "edition_ym_candidates": [
         "2027-05"
       ],
-      "date_precision": "day_start_only",
+      "date_precision": "day",
       "date_source": "wsdc_calendar",
-      "flags": [
-        "invalid_end"
-      ],
+      "flags": [],
       "status_tags": [],
       "source_fingerprint": "42a1cb63d5cfb5dbe43b3ad3",
       "raw_start": "2027-05-14",
-      "raw_end": "2026-05-20"
+      "raw_end": "2027-05-18"
     },
     {
       "event_name": "SOM-Swing of Music",
@@ -10247,8 +10290,8 @@
     {
       "event_name": "St. Petersburg WCS Nights",
       "calendar_title": "St. Petersburg WCS Nights",
-      "catalog_name": "St. Petersburg WCS Nights",
-      "name_key": "stpetersburgwcsnights",
+      "catalog_name": "Saint Petersburg WCS Nights",
+      "name_key": "saintpetersburgwcsnights",
       "start_date": "2027-07-22",
       "end_date": "2027-07-25",
       "url": "http://wcsnights.ru",
@@ -10288,6 +10331,29 @@
       "source_fingerprint": "e0e29164988662ec78f7e3ee",
       "raw_start": "2027-07-29",
       "raw_end": "2027-08-02"
+    },
+    {
+      "event_name": "Warsaw Summer Nights Westival",
+      "calendar_title": "Warsaw Summer Nights Westival",
+      "catalog_name": "Warsaw Summer Nights Westival",
+      "name_key": "warsawsummernightswestival",
+      "start_date": "2027-07-29",
+      "end_date": "2027-08-02",
+      "url": "https://www.summernightswestival.com",
+      "url_key": "summernightswestival.com",
+      "results_year": 2027,
+      "results_month": 8,
+      "edition_ym_candidates": [
+        "2027-08",
+        "2027-07"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "8c25a58f8fd7ea0b7c86a039",
+      "raw_start": "2027-07-29",
+      "raw_end": "2027-08-03"
     },
     {
       "event_name": "Lisbon Westie Fest",
@@ -10357,6 +10423,138 @@
       "raw_end": "2027-08-09"
     },
     {
+      "event_name": "Grand Party Sofia (GPS)",
+      "calendar_title": "Grand Party Sofia (GPS)",
+      "catalog_name": "Grand Party Sofia",
+      "name_key": "grandpartysofia",
+      "start_date": "2027-08-12",
+      "end_date": "2027-08-16",
+      "url": "https://wcs-gps.com/",
+      "url_key": "wcs-gps.com",
+      "results_year": 2027,
+      "results_month": 8,
+      "edition_ym_candidates": [
+        "2027-08"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "925801deb9e5c97b2ae4adce",
+      "raw_start": "2027-08-12",
+      "raw_end": "2027-08-17"
+    },
+    {
+      "event_name": "Summer Hummer",
+      "calendar_title": "Summer Hummer",
+      "catalog_name": "Summer Hummer",
+      "name_key": "summerhummer",
+      "start_date": "2027-08-19",
+      "end_date": "2027-08-22",
+      "url": "https://summerhummerboston.com/",
+      "url_key": "summerhummerboston.com",
+      "results_year": 2027,
+      "results_month": 8,
+      "edition_ym_candidates": [
+        "2027-08"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "824671c16208cfafa959cd66",
+      "raw_start": "2027-08-19",
+      "raw_end": "2027-08-23"
+    },
+    {
+      "event_name": "The Bend Connection",
+      "calendar_title": "The Bend Connection",
+      "catalog_name": "The Bend Connection",
+      "name_key": "thebendconnection",
+      "start_date": "2027-08-19",
+      "end_date": "2027-08-22",
+      "url": "https://thebendconnection.com",
+      "url_key": "thebendconnection.com",
+      "results_year": 2027,
+      "results_month": 8,
+      "edition_ym_candidates": [
+        "2027-08"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "e93edd6912a733570e729f01",
+      "raw_start": "2027-08-19",
+      "raw_end": "2027-08-23"
+    },
+    {
+      "event_name": "Chicagoland Country and Swing Dance Festival",
+      "calendar_title": "Chicagoland Country and Swing Dance Festival",
+      "catalog_name": "Chicagoland Country and Swing Dance Festival",
+      "name_key": "chicagolandcountryandswingdancefestival",
+      "start_date": "2027-08-20",
+      "end_date": "2027-08-22",
+      "url": "https://chicagolanddancefestival.com",
+      "url_key": "chicagolanddancefestival.com",
+      "results_year": 2027,
+      "results_month": 8,
+      "edition_ym_candidates": [
+        "2027-08"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "94c76665fb7ce6eb4a072ea3",
+      "raw_start": "2027-08-20",
+      "raw_end": "2027-08-23"
+    },
+    {
+      "event_name": "Best of the Best WCS",
+      "calendar_title": "Best of the Best WCS",
+      "catalog_name": "Best of the Best WCS",
+      "name_key": "bestofthebestwcs",
+      "start_date": "2027-09-16",
+      "end_date": "2027-09-19",
+      "url": "https://www.bestofthebestwcs.com/",
+      "url_key": "bestofthebestwcs.com",
+      "results_year": 2027,
+      "results_month": 9,
+      "edition_ym_candidates": [
+        "2027-09"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "515b5fc82ee6d05b73394c2b",
+      "raw_start": "2027-09-16",
+      "raw_end": "2027-09-20"
+    },
+    {
+      "event_name": "Finnfest",
+      "calendar_title": "Finnfest",
+      "catalog_name": "Finnfest",
+      "name_key": "finnfest",
+      "start_date": "2027-09-17",
+      "end_date": "2027-09-20",
+      "url": "https://finnfest.fi/",
+      "url_key": "finnfest.fi",
+      "results_year": 2027,
+      "results_month": 9,
+      "edition_ym_candidates": [
+        "2027-09"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "a3b5d2f4e273b2edf3df1b8a",
+      "raw_start": "2027-09-17",
+      "raw_end": "2027-09-21"
+    },
+    {
       "event_name": "Atlanta Swing Classic",
       "calendar_title": "Atlanta Swing Classic",
       "catalog_name": "Atlanta Swing Classic",
@@ -10399,6 +10597,28 @@
       "source_fingerprint": "aeff0eaade1babe15052fa48",
       "raw_start": "2027-10-15",
       "raw_end": "2027-10-18"
+    },
+    {
+      "event_name": "Swingside Invitational",
+      "calendar_title": "Swingside Invitational",
+      "catalog_name": "Swingside Invitational",
+      "name_key": "swingsideinvitational",
+      "start_date": "2027-10-22",
+      "end_date": "2027-10-24",
+      "url": "http://www.swingside-invitational.com",
+      "url_key": "swingside-invitational.com",
+      "results_year": 2027,
+      "results_month": 10,
+      "edition_ym_candidates": [
+        "2027-10"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "5fe9a6614c422ab66dd34ae8",
+      "raw_start": "2027-10-22",
+      "raw_end": "2027-10-25"
     },
     {
       "event_name": "Euro Dance Festival",

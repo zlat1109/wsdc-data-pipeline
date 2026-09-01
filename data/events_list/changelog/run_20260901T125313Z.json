@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-09-01T12:55:11.918666+00:00",
+  "scraped_at": "2026-09-01T12:53:13.177849+00:00",
   "source": "github-actions",
   "summary": {
     "total": 171,
@@ -8,8 +8,7 @@
     "added": 11,
     "removed": 3,
     "unchanged": 160,
-    "parse_errors": 0,
-    "geo_review_count": 0
+    "parse_errors": 0
   },
   "added": [
     {
@@ -282,13 +281,5 @@
       "on_hiatus": false,
       "is_active": true
     }
-  ],
-  "paths": {
-    "current": "/home/runner/work/wsdc-data-pipeline/wsdc-data-pipeline/data/events_list/current.json",
-    "csv": "/home/runner/work/wsdc-data-pipeline/wsdc-data-pipeline/data/events_list/events_list.csv",
-    "changelog": "/home/runner/work/wsdc-data-pipeline/wsdc-data-pipeline/data/events_list/changelog/run_20260901T125511Z.json"
-  },
-  "geo_review": [],
-  "run_id": 26,
-  "current_events": 158
+  ]
 }
