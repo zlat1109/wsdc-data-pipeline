@@ -889,3 +889,91 @@ def test_force_calgary_stampede_and_som_off_poison_lids():
     assert str(snow["location_id"]) == "222"
     woz = out.loc[out["event_name"] == "WesterOz"].iloc[0]
     assert str(woz["location_id"]) == "253"
+
+
+def test_force_budapest_events_off_sao_paulo():
+    location_info = pd.DataFrame(
+        [
+            {
+                "location_id": "243",
+                "event_city": "São Paulo",
+                "event_state": "",
+                "event_country": "Brazil",
+                "event_location": "São Paulo, Brazil",
+            },
+            {
+                "location_id": "110",
+                "event_city": "Budapest",
+                "event_state": "",
+                "event_country": "Hungary",
+                "event_location": "Budapest, Hungary",
+            },
+        ]
+    )
+    results = pd.DataFrame(
+        [
+            {
+                "event_name": "BudaFest Open WCS Championships",
+                "location_id": "243",
+                "event_location": "São Paulo, Brazil",
+            },
+            {
+                "event_name": "Westie Spring Thing",
+                "location_id": "243",
+                "event_location": "São Paulo, Brazil",
+            },
+            {
+                "event_name": "Montreal WCS Fest",
+                "location_id": "243",
+                "event_location": "São Paulo, Brazil",
+            },
+        ]
+    )
+
+    out, changed = force_result_locations_from_event_name_overrides(results, location_info)
+
+    assert changed == 2
+    buda = out.loc[out["event_name"] == "BudaFest Open WCS Championships"].iloc[0]
+    assert str(buda["location_id"]) == "110"
+    assert buda["event_location"] == "Budapest, Hungary"
+    westie = out.loc[out["event_name"] == "Westie Spring Thing"].iloc[0]
+    assert str(westie["location_id"]) == "110"
+    montreal = out.loc[out["event_name"] == "Montreal WCS Fest"].iloc[0]
+    assert str(montreal["location_id"]) == "243"
+
+
+def test_force_toronto_and_variant_via_alias():
+    location_info = pd.DataFrame(
+        [
+            {
+                "location_id": "222",
+                "event_city": "St. Petersburg",
+                "event_state": "",
+                "event_country": "Russia",
+                "event_location": "St. Petersburg, Russia",
+            },
+            {
+                "location_id": "105",
+                "event_city": "Toronto",
+                "event_state": "",
+                "event_country": "Canada",
+                "event_location": "Toronto, Canada",
+            },
+        ]
+    )
+    results = pd.DataFrame(
+        [
+            {
+                "event_name": "Toronto Open Swing and Hustle Championships",
+                "location_id": "222",
+                "event_location": "St. Petersburg, Russia",
+            },
+        ]
+    )
+
+    out, changed = force_result_locations_from_event_name_overrides(results, location_info)
+
+    assert changed == 1
+    row = out.iloc[0]
+    assert str(row["location_id"]) == "105"
+    assert row["event_location"] == "Toronto, Canada"

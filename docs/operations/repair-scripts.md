@@ -72,8 +72,23 @@ fixes). `export.py` does this automatically.
 | `close_parse_runs.py` | Close stuck `running` parse_runs | Yes |
 | `apply_event_name_location_overrides_csv.py` | Remap local export CSV `location_id` from `EVENT_NAME_LOCATION_OVERRIDES` | No (CSV only) |
 | `audit_event_location_mismatches.py` | Find shared wrong location_id / calendar mismatches | No |
+| `repair_location_poison_aug2026.py` | One-off remap of shared-wrong `location_id` on known series (NZ, Philly, Montreal, DCSX, Nordic, BudaFest, Westie Spring) | Yes |
 
-## dedupe_core_data.py
+## repair_location_poison_aug2026.py
+
+Remaps poisoned `location_id` values on `core.results`, `core.event_editions`, and
+`core.edition_location_baseline` for series where WSDC reused a foreign city's id.
+Also refreshes `core.event_catalog.typical_*` for affected `event_id`s.
+
+```bash
+python scripts/repair_location_poison_aug2026.py --dry-run
+python scripts/repair_location_poison_aug2026.py --apply
+python export.py --output-dir data
+```
+
+After `--apply`, run **Force rebuild calendar/site** (or wait for the next export
+sync) so analytics Pages reflect the repaired locations.
+
 
 In-place cleanup for **already loaded** Supabase data — same rules as preprocess (`dedupe_result_rows` + `dedupe_location_info` from PR #14). Does **not** re-fetch dancers from WSDC.
 

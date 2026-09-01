@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Remap shared-wrong location_ids for NZ / Philly / Montreal / DCSX / Nordic.
+"""Remap shared-wrong location_ids for NZ / Philly / Montreal / DCSX / Nordic / Budapest.
 
 Live DB kept poison lids on raw WSDC titles that missed EVENT_NAME_LOCATION_OVERRIDES
 exact-name match, and Nordic sat on Swing Fiction Brno (266) instead of Stockholm.
@@ -27,6 +27,9 @@ RESULT_REMAPS: list[tuple[int, int, int, str]] = [
     (181, 13, 38, "DCSX: Washington → Herndon"),
     # Brno 266 is Swing Fiction; Nordic is Stockholm (Scandic Infra City).
     (253, 266, 199, "Nordic: Brno → Stockholm"),
+    # Shared São Paulo (243) wrongly applied to Budapest events.
+    (184, 243, 110, "BudaFest: São Paulo → Budapest"),
+    (314, 243, 110, "Westie Spring: São Paulo → Budapest"),
 ]
 
 
@@ -160,7 +163,16 @@ def main() -> int:
                 WHERE event_id = 253
                 """
             )
-            print("  catalog typicals refreshed for 179/234/178/181/253")
+            cur.execute(
+                """
+                UPDATE core.event_catalog
+                SET typical_city = 'Budapest', typical_state = NULL,
+                    typical_country = 'Hungary',
+                    typical_location = 'Budapest, Hungary'
+                WHERE event_id IN (184, 314)
+                """
+            )
+            print("  catalog typicals refreshed for 179/234/178/181/253/184/314")
 
         conn.commit()
         print("OK — committed")

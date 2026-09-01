@@ -31,11 +31,15 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'DC Swing eXperience (DCSX)': 'Herndon, VA, United States',
     # Shared St. Petersburg (222) wrongly applied to Toronto Open.
     'Toronto Open Swing & Hustle Championships': 'Toronto, Canada',
+    'Toronto Open Swing and Hustle Championships': 'Toronto, Canada',
     # Shared St. Petersburg (222) wrongly applied to Revitalise WCS (Melbourne).
     'Revitalise WCS': 'Melbourne, Australia',
     # Calendar/site Montreal; results/editions stuck on shared Jeju (213) / São Paulo (243).
     'Montreal Westie Fest': 'Montreal, Canada',
     'Montreal WCS Fest': 'Montreal, Canada',
+    # Shared São Paulo (243) wrongly applied to Budapest registry events.
+    'BudaFest Open WCS Championships': 'Budapest, Hungary',
+    'Westie Spring Thing': 'Budapest, Hungary',
     # Catalog upcoming + 2026 schedule Jeju; results stuck on shared Brno (266).
     # Flat override (not year-aware): historical Korean cities may differ, but Brno is wrong.
     'Korea Westival': 'Jeju, Republic of Korea',
