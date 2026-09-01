@@ -24,6 +24,7 @@ from transform.knowledge.events import (
     EVENT_NAME_LOCATION_OVERRIDES,
     EVENT_NAME_YEAR_LOCATION_OVERRIDES,
 )
+from transform.geography.normalize import parse_us_state_from_location_text
 from transform.knowledge.geo_flags import continent_for_country
 from transform.year_event_calendar.expected import (
     EXPECTED_STALE_GRACE_DAYS,
@@ -352,9 +353,11 @@ def _location_id_by_event(data_dir: Path) -> dict[int, int]:
     return out
 
 
-def _coords_by_city_country(locations: pd.DataFrame) -> dict[tuple[str, str], tuple[float, float]]:
-    """Fallback lat/lon keyed by normalized (city, country) from location_info."""
-    out: dict[tuple[str, str], tuple[float, float]] = {}
+def _place_attrs_by_city_country(
+    locations: pd.DataFrame,
+) -> dict[tuple[str, str], dict[str, Any]]:
+    """City/country → lat/lon/state from location_info (valid coords only)."""
+    out: dict[tuple[str, str], dict[str, Any]] = {}
     if locations.empty:
         return out
     for rec in locations.to_dict(orient="records"):
@@ -369,7 +372,12 @@ def _coords_by_city_country(locations: pd.DataFrame) -> dict[tuple[str, str], tu
             lon = float(rec["longitude"])
         except (TypeError, ValueError, KeyError):
             continue
-        out[(city, country)] = (lat, lon)
+        state = _clean_name(rec.get("event_state"))
+        out[(city, country)] = {
+            "lat": lat,
+            "lon": lon,
+            "state": state or None,
+        }
     return out
 
 
@@ -415,32 +423,33 @@ def _cities_compatible(schedule_city: Any, known_city: Any) -> bool:
     return bool(ta[0] == tb[0] and len(ta[0]) >= 4 and (len(ta) == 1 or len(tb) == 1))
 
 
-def _lookup_coords_for_place(
+def _lookup_place_attrs_for_city(
     city: Any,
     country: Any,
-    coords_by_place: dict[tuple[str, str], tuple[float, float]],
-) -> tuple[float, float] | None:
-    """Resolve lat/lon from location_info using exact then soft-compatible city keys."""
+    place_by: dict[tuple[str, str], dict[str, Any]],
+) -> dict[str, Any] | None:
+    """Resolve lat/lon/state from location_info using exact then soft-compatible city keys."""
+    if not place_by:
+        return None
     nc = _norm_place(city)
     nco = _norm_place(country)
     if not nc or not nco:
         return None
-    exact = coords_by_place.get((nc, nco))
+    exact = place_by.get((nc, nco))
     if exact is not None:
         return exact
-    # Accent-/abbrev-folded exact key (Gdansk↔Gdańsk already folded in _norm_place).
-    for (c, co), latlon in coords_by_place.items():
+    for (c, co), attrs in place_by.items():
         if co != nco and co not in nco and nco not in co:
             continue
         if _city_compare_key(c) == _city_compare_key(nc):
-            return latlon
-    for (c, co), latlon in coords_by_place.items():
+            return attrs
+    for (c, co), attrs in place_by.items():
         if not co:
             continue
         if co != nco and co not in nco and nco not in co:
             continue
         if _cities_compatible(nc, c):
-            return latlon
+            return attrs
     return None
 
 
@@ -648,6 +657,7 @@ def _rows_from_editions(data_dir: Path) -> list[dict]:
                 "url": _clean_name(rec.get("url")),
                 "city": _clean_name(rec.get("place_city")),
                 "country": _clean_name(rec.get("place_country")),
+                "state": _clean_name(rec.get("place_state")),
                 "location_id": loc_i,
                 "source": "event_editions_month_only" if stats_only else "event_editions",
                 "year": year_i,
@@ -664,6 +674,23 @@ def _city_from_location_raw(raw: Any) -> str | None:
     if not text:
         return None
     return text.split(",")[0].strip() or None
+
+
+def _state_from_location_raw(raw: Any) -> str | None:
+    """US state from schedule location_raw when country is United States."""
+    text = _clean_name(raw)
+    if not text:
+        return None
+    parsed = parse_us_state_from_location_text(text)
+    if parsed:
+        return _clean_name(parsed) or None
+    # WSDC list typo: "Washington, DC., VA, United States" (DC + VA glued).
+    parts = [part.strip().rstrip(".") for part in text.split(",") if part.strip()]
+    for part in parts[1:]:
+        token = part.upper()
+        if token in {"DC", "D C"}:
+            return "District of Columbia"
+    return None
 
 
 def _is_ucwdc_dallas_worlds_title(name: str | None) -> bool:
@@ -742,6 +769,7 @@ def _rows_from_scheduled(data_dir: Path) -> list[dict]:
                 "url": _clean_name(rec.get("url")),
                 "city": _city_from_location_raw(rec.get("location_raw")),
                 "country": _clean_name(rec.get("country")),
+                "state": _state_from_location_raw(rec.get("location_raw")),
                 "location_id": loc_i,
                 "source": "scheduled_events",
                 "year": year_i,
@@ -807,6 +835,7 @@ def _rows_from_events_list_current(data_dir: Path) -> list[dict]:
                 "url": _clean_name(rec.get("url")),
                 "city": _city_from_location_raw(rec.get("location_raw")),
                 "country": _clean_name(rec.get("country")),
+                "state": _state_from_location_raw(rec.get("location_raw")),
                 "location_id": loc_i,
                 "source": "events_list_current",
                 "year": year_i,
@@ -1457,7 +1486,7 @@ def _enrich_geo(
                 continue
             cat_by_id[int(eid)] = rec
     loc_by_event = location_id_by_event or {}
-    coords_by_place = _coords_by_city_country(locations)
+    place_by_city_country = _place_attrs_by_city_country(locations)
     override_lid_by_name = {
         name: lid
         for name, text in EVENT_NAME_LOCATION_OVERRIDES.items()
@@ -1531,6 +1560,9 @@ def _enrich_geo(
             # Explicit / override / matching inherited location_id is authoritative.
             row["city"] = _clean_name(loc.get("event_city")) or row.get("city")
             row["country"] = _clean_name(loc.get("event_country")) or row.get("country")
+            loc_state = _clean_name(loc.get("event_state"))
+            if loc_state:
+                row["state"] = loc_state
             if _truthy(loc.get("coordinates_valid")):
                 try:
                     lat = float(loc["latitude"])
@@ -1545,11 +1577,16 @@ def _enrich_geo(
         else:
             row.setdefault("lat", None)
             row.setdefault("lon", None)
-        # City/country fallback when location_id is missing or coords invalid
+        # City/country/state fallback when location_id is missing or coords invalid
+        place_hit = _lookup_place_attrs_for_city(
+            row.get("city"), row.get("country"), place_by_city_country
+        )
         if row.get("lat") is None or row.get("lon") is None:
-            hit = _lookup_coords_for_place(row.get("city"), row.get("country"), coords_by_place)
-            if hit is not None:
-                row["lat"], row["lon"] = hit
+            if place_hit is not None:
+                row["lat"] = place_hit["lat"]
+                row["lon"] = place_hit["lon"]
+        if not row.get("state") and place_hit and place_hit.get("state"):
+            row["state"] = place_hit["state"]
         # Normalize name after enrichment
         row["name"] = _clean_name(row.get("name"))
 
@@ -1754,6 +1791,7 @@ def _serialize_event(row: dict) -> dict:
         "kind": row.get("kind") or KIND_REGISTRY,
         "city": row.get("city"),
         "country": country,
+        "state": row.get("state") if country == "United States" and row.get("state") else None,
         "continent": _calendar_continent(country),
         "lat": row.get("lat"),
         "lon": row.get("lon"),
