@@ -977,3 +977,70 @@ def test_force_toronto_and_variant_via_alias():
     row = out.iloc[0]
     assert str(row["location_id"]) == "105"
     assert row["event_location"] == "Toronto, Canada"
+
+
+def test_force_french_open_and_swing_in_bloom_off_poison_lids():
+    location_info = pd.DataFrame(
+        [
+            {
+                "location_id": "243",
+                "event_city": "São Paulo",
+                "event_state": "",
+                "event_country": "Brazil",
+                "event_location": "São Paulo, Brazil",
+            },
+            {
+                "location_id": "109",
+                "event_city": "Paris",
+                "event_state": "",
+                "event_country": "France",
+                "event_location": "Paris, France",
+            },
+            {
+                "location_id": "222",
+                "event_city": "St. Petersburg",
+                "event_state": "",
+                "event_country": "Russia",
+                "event_location": "St. Petersburg, Russia",
+            },
+            {
+                "location_id": "179",
+                "event_city": "Ottawa",
+                "event_state": "",
+                "event_country": "Canada",
+                "event_location": "Ottawa, Canada",
+            },
+        ]
+    )
+    results = pd.DataFrame(
+        [
+            {
+                "event_name": "French Open West Coast Swing",
+                "location_id": "243",
+                "event_location": "São Paulo, Brazil",
+            },
+            {
+                "event_name": "Swing in Bloom",
+                "location_id": "222",
+                "event_location": "St. Petersburg, Russia",
+            },
+            {
+                "event_name": "Saint Petersburg WCS Nights",
+                "location_id": "222",
+                "event_location": "St. Petersburg, Russia",
+            },
+        ]
+    )
+
+    out, changed = force_result_locations_from_event_name_overrides(results, location_info)
+
+    assert changed == 2
+    french = out.loc[out["event_name"] == "French Open West Coast Swing"].iloc[0]
+    assert str(french["location_id"]) == "109"
+    assert french["event_location"] == "Paris, France"
+    bloom = out.loc[out["event_name"] == "Swing in Bloom"].iloc[0]
+    assert str(bloom["location_id"]) == "179"
+    assert bloom["event_location"] == "Ottawa, Canada"
+    # Shared poison lid must keep its true owner.
+    spb = out.loc[out["event_name"] == "Saint Petersburg WCS Nights"].iloc[0]
+    assert str(spb["location_id"]) == "222"
