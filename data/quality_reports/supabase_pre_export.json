@@ -184,9 +184,9 @@
       "name": "events_wsdc_edition_location_drift",
       "category": "location",
       "severity": "warn",
-      "value": 20,
+      "value": 0,
       "max_value": 0,
-      "ok": false,
+      "ok": true,
       "description": "event_editions.location_raw disagrees with joined core.locations text.",
       "fix_hint": "LOCATION_ID_CORRECTIONS / rebuild editions from results mode location"
     },
@@ -333,10 +333,10 @@
   ],
   "summary": {
     "total": 33,
-    "passed": 31,
+    "passed": 32,
     "errors": 0,
-    "warnings": 2
+    "warnings": 1
   },
-  "generated_at": "2026-09-01T18:00:13.953873+00:00",
+  "generated_at": "2026-09-08T21:15:33.620280+00:00",
   "scope": "full"
 }

@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-09-01T17:33:02.495565+00:00",
+  "generated_at": "2026-09-08T21:11:19.593926+00:00",
   "source": "github-actions",
   "run_id": null,
   "summary": {
-    "before_findings_count": 10,
+    "before_findings_count": 11,
     "applied_rules_count": 251,
-    "applied_rows_touched": 195059,
-    "manual_review_count": 11,
-    "manual_review_new_count": 6
+    "applied_rows_touched": 193131,
+    "manual_review_count": 12,
+    "manual_review_new_count": 5
   },
   "before_processing": {
     "description": "Issues detected in raw CSV before any normalization",
@@ -74,7 +74,7 @@
         "code": "EVENT_NAME_SIMILAR_UNMAPPED",
         "severity": "medium",
         "message": "Event names similar to known canonical names but not in EVENT_NAME_NORMALIZATION",
-        "count": 18,
+        "count": 17,
         "examples": [
           {
             "event_name": "Austin Swing Dance Championships",
@@ -160,11 +160,6 @@
             "event_name": "The After Party “TAP”",
             "similar_to": "The After Party (TAP)",
             "score": 0.905
-          },
-          {
-            "event_name": "Toronto Open Swing and Hustle Championships",
-            "similar_to": "Toronto Open Swing & Hustle Championships",
-            "score": 0.952
           }
         ],
         "suggested_fix": "Add explicit mapping to EVENT_NAME_NORMALIZATION",
@@ -179,13 +174,13 @@
         "count": 35,
         "examples": [
           {
-            "base_key": "swing fling",
+            "base_key": "monterey swingfest",
             "variants": [
-              "Swing Fling",
-              "Swing Fling 2024"
+              "Monterey SwingFest",
+              "Monterey Swingfest"
             ],
             "geo_keys": [
-              "washington_dc|usa"
+              "monterey|ca|usa"
             ]
           },
           {
@@ -199,16 +194,6 @@
             ]
           },
           {
-            "base_key": "monterey swingfest",
-            "variants": [
-              "Monterey SwingFest",
-              "Monterey Swingfest"
-            ],
-            "geo_keys": [
-              "monterey|ca|usa"
-            ]
-          },
-          {
             "base_key": "boogie by the bay",
             "variants": [
               "Boogie By The Bay",
@@ -216,6 +201,16 @@
             ],
             "geo_keys": [
               "san_francisco|ca|usa"
+            ]
+          },
+          {
+            "base_key": "swing fling",
+            "variants": [
+              "Swing Fling",
+              "Swing Fling 2024"
+            ],
+            "geo_keys": [
+              "washington_dc|usa"
             ]
           },
           {
@@ -330,10 +325,10 @@
         "count": 37,
         "examples": [
           {
-            "base_key": "swing fling",
+            "base_key": "monterey swingfest",
             "variants": [
-              "Swing Fling",
-              "Swing Fling 2024"
+              "Monterey SwingFest",
+              "Monterey Swingfest"
             ]
           },
           {
@@ -344,17 +339,17 @@
             ]
           },
           {
-            "base_key": "monterey swingfest",
-            "variants": [
-              "Monterey SwingFest",
-              "Monterey Swingfest"
-            ]
-          },
-          {
             "base_key": "boogie by the bay",
             "variants": [
               "Boogie By The Bay",
               "Boogie by the Bay"
+            ]
+          },
+          {
+            "base_key": "swing fling",
+            "variants": [
+              "Swing Fling",
+              "Swing Fling 2024"
             ]
           },
           {
@@ -424,7 +419,7 @@
         "code": "EVENT_NAME_UNRESOLVED_TO_CATALOG",
         "severity": "high",
         "message": "Result event names still absent from events_wsdc after normalization (will orphan in load)",
-        "count": 78,
+        "count": 77,
         "examples": [
           {
             "event_name": "Asia WCS Open - 10th Anniversary"
@@ -580,6 +575,36 @@
       },
       {
         "category": "location",
+        "code": "BASELINE_VS_LOCATION_OVERRIDE",
+        "severity": "high",
+        "message": "edition_location_baseline location_id disagrees with EVENT_NAME_LOCATION_OVERRIDES (seed/auto-add froze a shared wrong lid)",
+        "count": 2,
+        "examples": [
+          {
+            "event_id": "147",
+            "event_year": "2024",
+            "event_month": "7",
+            "event_name": "Toronto Open Swing & Hustle Championships",
+            "baseline_location_id": "222",
+            "override_location_id": "105",
+            "override_location": "Toronto, Canada"
+          },
+          {
+            "event_id": "147",
+            "event_year": "2023",
+            "event_month": "7",
+            "event_name": "Toronto Open Swing & Hustle Championships",
+            "baseline_location_id": "222",
+            "override_location_id": "105",
+            "override_location": "Toronto, Canada"
+          }
+        ],
+        "suggested_fix": "Apply overrides + repair results/editions, then UPDATE core.edition_location_baseline to the override location_id (source='manual'). Cross-load drift alone cannot see poison seeds.",
+        "fingerprint": "05520c7f0f974d1d",
+        "is_new": true
+      },
+      {
+        "category": "location",
         "code": "TRIAL_SCHEDULE_GEO_GAP",
         "severity": "medium",
         "message": "2 Trial Event(s) on the WSDC list lack location_id or coordinates (list geo ensure_location / Google geocode)",
@@ -630,16 +655,16 @@
         "examples": [
           {
             "detail": [
-              "198",
-              "321",
-              "307",
-              "37",
-              "279",
-              "99",
               "325",
-              "66",
+              "193",
+              "279",
+              "321",
+              "99",
               "39",
-              "202"
+              "66",
+              "37",
+              "307",
+              "198"
             ]
           }
         ],
@@ -1889,6 +1914,15 @@
         "rule_id": "EVENT_NAME_NORMALIZATION",
         "table": "dancers_results_info",
         "column": "event_name",
+        "from_value": "Toronto Open Swing and Hustle Championships",
+        "to_value": "Toronto Open Swing & Hustle Championships",
+        "rows_affected": 141,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "EVENT_NAME_NORMALIZATION",
+        "table": "dancers_results_info",
+        "column": "event_name",
         "from_value": "Sweden Westie Gala",
         "to_value": "Westie Gala",
         "rows_affected": 238,
@@ -1954,7 +1988,7 @@
         "column": "event_name",
         "from_value": "Jax Westie Fest",
         "to_value": "River City Swing",
-        "rows_affected": 151,
+        "rows_affected": 243,
         "source": "known_map"
       },
       {
@@ -2143,7 +2177,7 @@
         "column": "event_competition",
         "from_value": "Champions",
         "to_value": "Champion",
-        "rows_affected": 5114,
+        "rows_affected": 5120,
         "source": "known_map"
       },
       {
@@ -2152,7 +2186,7 @@
         "column": "event_competition",
         "from_value": "Masters",
         "to_value": "Master",
-        "rows_affected": 16796,
+        "rows_affected": 16816,
         "source": "known_map"
       },
       {
@@ -2161,7 +2195,7 @@
         "column": "event_competition",
         "from_value": "All-Stars",
         "to_value": "All-Star",
-        "rows_affected": 16132,
+        "rows_affected": 16148,
         "source": "known_map"
       },
       {
@@ -2261,15 +2295,6 @@
         "from_value": "St. Louis, Mo, USA",
         "to_value": "St. Louis, MO, USA",
         "rows_affected": 1528,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_LOCATION_EXACT",
-        "table": "dancers_results_info",
-        "column": "event_location",
-        "from_value": "PARIS, France",
-        "to_value": "Paris, France",
-        "rows_affected": 1697,
         "source": "known_map"
       },
       {
@@ -2413,7 +2438,7 @@
         "column": "location_id",
         "from_value": "duplicate Singapore ids",
         "to_value": "→ 159",
-        "rows_affected": 2616,
+        "rows_affected": 2077,
         "source": "location_id_fix"
       },
       {
@@ -2422,7 +2447,7 @@
         "column": "location_id",
         "from_value": "duplicate canonical place",
         "to_value": "lowest location_id per city",
-        "rows_affected": 19,
+        "rows_affected": 18,
         "source": "location_id_fix"
       },
       {
@@ -2726,6 +2751,24 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_required",
+        "from_value": "ADV",
+        "to_value": "Advanced",
+        "rows_affected": 2744,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_required",
+        "from_value": "CHMP",
+        "to_value": "Champion",
+        "rows_affected": 190,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_required",
         "from_value": "NEW",
         "to_value": "Newcomer",
         "rows_affected": 1449,
@@ -2735,27 +2778,9 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_required",
-        "from_value": "ADV",
-        "to_value": "Advanced",
-        "rows_affected": 2742,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_required",
-        "from_value": "CHMP",
-        "to_value": "Champion",
-        "rows_affected": 189,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_required",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 4529,
+        "rows_affected": 4531,
         "source": "known_map"
       },
       {
@@ -2764,7 +2789,7 @@
         "column": "dominate_required",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 17744,
+        "rows_affected": 17751,
         "source": "known_map"
       },
       {
@@ -2780,18 +2805,9 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_allowed",
-        "from_value": "NOV",
-        "to_value": "Novice",
-        "rows_affected": 17181,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_allowed",
         "from_value": "ADV",
         "to_value": "Advanced",
-        "rows_affected": 3174,
+        "rows_affected": 3175,
         "source": "known_map"
       },
       {
@@ -2807,9 +2823,18 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_allowed",
+        "from_value": "NOV",
+        "to_value": "Novice",
+        "rows_affected": 17185,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_allowed",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 5989,
+        "rows_affected": 5996,
         "source": "known_map"
       },
       {
@@ -2827,7 +2852,7 @@
         "column": "non_dominate_required",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 4477,
+        "rows_affected": 4479,
         "source": "known_map"
       },
       {
@@ -2836,7 +2861,7 @@
         "column": "non_dominate_required",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 15013,
+        "rows_affected": 15015,
         "source": "known_map"
       },
       {
@@ -2845,7 +2870,7 @@
         "column": "non_dominate_required",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 250,
+        "rows_affected": 249,
         "source": "known_map"
       },
       {
@@ -2854,7 +2879,7 @@
         "column": "non_dominate_required",
         "from_value": "ADV",
         "to_value": "Advanced",
-        "rows_affected": 232,
+        "rows_affected": 231,
         "source": "known_map"
       },
       {
@@ -2863,7 +2888,7 @@
         "column": "non_dominate_required",
         "from_value": "ALS",
         "to_value": "All-Star",
-        "rows_affected": 10,
+        "rows_affected": 11,
         "source": "known_map"
       },
       {
@@ -2872,7 +2897,7 @@
         "column": "non_dominate_allowed",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 6953,
+        "rows_affected": 6958,
         "source": "known_map"
       },
       {
@@ -2881,7 +2906,7 @@
         "column": "non_dominate_allowed",
         "from_value": "ADV",
         "to_value": "Advanced",
-        "rows_affected": 411,
+        "rows_affected": 410,
         "source": "known_map"
       },
       {
@@ -2890,7 +2915,7 @@
         "column": "non_dominate_allowed",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 15013,
+        "rows_affected": 15015,
         "source": "known_map"
       },
       {
@@ -2908,7 +2933,7 @@
         "column": "non_dominate_allowed",
         "from_value": "ALS",
         "to_value": "All-Star",
-        "rows_affected": 10,
+        "rows_affected": 11,
         "source": "known_map"
       }
     ]
@@ -2921,7 +2946,7 @@
         "code": "EVENT_NAME_SIMILAR_UNMAPPED",
         "severity": "medium",
         "message": "Event names similar to known canonical names but not in EVENT_NAME_NORMALIZATION",
-        "count": 18,
+        "count": 17,
         "examples": [
           {
             "event_name": "Austin Swing Dance Championships",
@@ -3007,16 +3032,11 @@
             "event_name": "The After Party “TAP”",
             "similar_to": "The After Party (TAP)",
             "score": 0.905
-          },
-          {
-            "event_name": "Toronto Open Swing and Hustle Championships",
-            "similar_to": "Toronto Open Swing & Hustle Championships",
-            "score": 0.952
           }
         ],
         "suggested_fix": "Add explicit mapping to EVENT_NAME_NORMALIZATION",
         "fingerprint": "e9e55f3b7e272aae",
-        "is_new": true,
+        "is_new": false,
         "requires_manual_review": true
       },
       {
@@ -3067,7 +3087,7 @@
         "code": "EVENT_NAME_UNRESOLVED_TO_CATALOG",
         "severity": "high",
         "message": "Result event names still absent from events_wsdc after normalization (will orphan in load)",
-        "count": 69,
+        "count": 68,
         "examples": [
           {
             "event_name": "Asia WCS Open - 10th Anniversary"
@@ -3155,7 +3175,7 @@
         "code": "EVENT_NAME_NOT_IN_CATALOG",
         "severity": "low",
         "message": "Result event_name values absent from events_wsdc.csv (may be OK if resolved by name in load)",
-        "count": 69,
+        "count": 68,
         "examples": [
           {
             "event_name": "Asia WCS Open - 10th Anniversary"
@@ -3228,20 +3248,20 @@
         "code": "EVENT_NAME_LOCATION_COUNTRY_CONFLICT",
         "severity": "high",
         "message": "Event name implies a different country than results.location_id (often a shared/wrong location_id collision)",
-        "count": 141,
+        "count": 1697,
         "examples": [
           {
-            "event_name": "Toronto Open Swing and Hustle Championships",
-            "location_id": "222",
-            "location_country": "Russia",
+            "event_name": "French Open West Coast Swing",
+            "location_id": "243",
+            "location_country": "Brazil",
             "name_hints": [
-              "Canada"
+              "France"
             ],
-            "rows": 141
+            "rows": 1697
           }
         ],
         "suggested_fix": "Add EVENT_NAME_LOCATION_OVERRIDES + force_result_locations_from_event_name_overrides; see scripts/audit_event_location_mismatches.py",
-        "fingerprint": "d7038924e5606a33",
+        "fingerprint": "8c9482ffa44dd9d0",
         "is_new": true,
         "requires_manual_review": true
       },
@@ -3335,27 +3355,27 @@
         "code": "SCHEDULED_VS_RESULTS_COUNTRY_CONFLICT",
         "severity": "high",
         "message": "WSDC calendar country differs from results location country (shared/wrong location_id — Sea Dance / Med in Swing pattern)",
-        "count": 2425,
+        "count": 1791,
         "examples": [
           {
-            "event_name": "BudaFest Open WCS Championships",
+            "event_name": "French Open West Coast Swing",
             "location_id": "243",
             "results_country": "brazil",
-            "scheduled_country": "hungary",
-            "scheduled_location": "Budapest, Budapest, Hungary",
-            "rows": 1779
+            "scheduled_country": "france",
+            "scheduled_location": "Paris, paris, france",
+            "rows": 1697
           },
           {
-            "event_name": "Westie Spring Thing",
-            "location_id": "243",
-            "results_country": "brazil",
-            "scheduled_country": "hungary",
-            "scheduled_location": "Budapest, Budapest, Hungary",
-            "rows": 646
+            "event_name": "Swing in Bloom",
+            "location_id": "222",
+            "results_country": "russia",
+            "scheduled_country": "canada",
+            "scheduled_location": "Ottawa, Ontario, Canada",
+            "rows": 94
           }
         ],
         "suggested_fix": "Verify venue, then add EVENT_NAME_LOCATION_OVERRIDES (or KNOWN_SERIES_MOVES if the event really moved); scripts/audit_event_location_mismatches.py",
-        "fingerprint": "e8b91e8902883dc6",
+        "fingerprint": "f57d868b8d5117ba",
         "is_new": true,
         "requires_manual_review": true
       },
@@ -3364,37 +3384,37 @@
         "code": "EVENT_ID_CANONICAL_LOCATION_MISMATCH",
         "severity": "high",
         "message": "Results/editions location country differs from curated event_id canonical location (KNOWN / name override / upcoming)",
-        "count": 2425,
+        "count": 1791,
         "examples": [
           {
-            "event_id": "184",
-            "event_name": "BudaFest Open WCS Championships",
+            "event_id": "175",
+            "event_name": "French Open West Coast Swing",
             "canonical_source": "upcoming",
-            "canonical_location": "Budapest, Budapest, Hungary",
-            "canonical_country": "hungary",
+            "canonical_location": "Paris, paris, france",
+            "canonical_country": "france",
             "results_location_id": "243",
             "results_country": "brazil",
-            "results_rows": 1779,
+            "results_rows": 1697,
             "editions_location_id": "",
             "editions_country": "",
             "mismatch_side": "results"
           },
           {
-            "event_id": "314",
-            "event_name": "Westie Spring Thing",
+            "event_id": "393",
+            "event_name": "Swing in Bloom",
             "canonical_source": "upcoming",
-            "canonical_location": "Budapest, Budapest, Hungary",
-            "canonical_country": "hungary",
-            "results_location_id": "243",
-            "results_country": "brazil",
-            "results_rows": 646,
+            "canonical_location": "Ottawa, Ontario, Canada",
+            "canonical_country": "canada",
+            "results_location_id": "222",
+            "results_country": "russia",
+            "results_rows": 94,
             "editions_location_id": "",
             "editions_country": "",
             "mismatch_side": "results"
           }
         ],
         "suggested_fix": "Confirm venue, then add/update KNOWN_EVENT_METADATA[event_id] or EVENT_NAME_LOCATION_OVERRIDES + force_result_locations; see scripts/audit_event_location_mismatches.py section D",
-        "fingerprint": "e2bc7e2b4045541c",
+        "fingerprint": "85eff2c1142a012e",
         "is_new": true,
         "requires_manual_review": true
       },
@@ -3403,191 +3423,222 @@
         "code": "EDITION_LOCATION_BASELINE_DRIFT",
         "severity": "high",
         "message": "Results location_id for a known edition key differs from edition_location_baseline.csv (cross-load drift)",
-        "count": 23,
+        "count": 21,
         "examples": [
           {
-            "event_id": "314",
+            "event_id": "175",
             "event_year": "2026",
-            "event_month": "3",
-            "event_name": "Westie Spring Thing",
-            "baseline_location_id": "110",
+            "event_month": "5",
+            "event_name": "French Open West Coast Swing",
+            "baseline_location_id": "109",
             "current_location_id": "243",
-            "result_rows": 130
+            "result_rows": 157
           },
           {
-            "event_id": "184",
+            "event_id": "393",
             "event_year": "2026",
-            "event_month": "1",
-            "event_name": "BudaFest Open WCS Championships",
-            "baseline_location_id": "110",
-            "current_location_id": "243",
-            "result_rows": 166
+            "event_month": "4",
+            "event_name": "Swing in Bloom",
+            "baseline_location_id": "179",
+            "current_location_id": "222",
+            "result_rows": 94
           },
           {
-            "event_id": "314",
+            "event_id": "175",
             "event_year": "2025",
-            "event_month": "3",
-            "event_name": "Westie Spring Thing",
-            "baseline_location_id": "110",
+            "event_month": "6",
+            "event_name": "French Open West Coast Swing",
+            "baseline_location_id": "109",
             "current_location_id": "243",
-            "result_rows": 125
+            "result_rows": 155
           },
           {
             "event_id": "381",
             "event_year": "2025",
             "event_month": "1",
             "event_name": "The Australian Classic West Coast Swing Dance Championships (Trial Event)",
-            "baseline_location_id": "117",
-            "current_location_id": "266",
+            "baseline_location_id": "266",
+            "current_location_id": "117",
             "result_rows": 50
           },
           {
-            "event_id": "184",
-            "event_year": "2025",
-            "event_month": "1",
-            "event_name": "BudaFest Open WCS Championships",
-            "baseline_location_id": "110",
+            "event_id": "164",
+            "event_year": "2024",
+            "event_month": "8",
+            "event_name": "Sea Sun & Swing Camp",
+            "baseline_location_id": "158",
+            "current_location_id": "266",
+            "result_rows": 130
+          },
+          {
+            "event_id": "147",
+            "event_year": "2024",
+            "event_month": "7",
+            "event_name": "Toronto Open Swing & Hustle Championships",
+            "baseline_location_id": "222",
+            "current_location_id": "105",
+            "result_rows": 85
+          },
+          {
+            "event_id": "175",
+            "event_year": "2024",
+            "event_month": "5",
+            "event_name": "French Open West Coast Swing",
+            "baseline_location_id": "109",
+            "current_location_id": "243",
+            "result_rows": 200
+          },
+          {
+            "event_id": "164",
+            "event_year": "2023",
+            "event_month": "8",
+            "event_name": "Sea Sun & Swing Camp",
+            "baseline_location_id": "158",
+            "current_location_id": "266",
+            "result_rows": 83
+          },
+          {
+            "event_id": "147",
+            "event_year": "2023",
+            "event_month": "7",
+            "event_name": "Toronto Open Swing & Hustle Championships",
+            "baseline_location_id": "222",
+            "current_location_id": "105",
+            "result_rows": 56
+          },
+          {
+            "event_id": "175",
+            "event_year": "2023",
+            "event_month": "5",
+            "event_name": "French Open West Coast Swing",
+            "baseline_location_id": "109",
             "current_location_id": "243",
             "result_rows": 169
           },
           {
-            "event_id": "147",
-            "event_year": "2024",
-            "event_month": "7",
-            "event_name": "Toronto Open Swing and Hustle Championships",
-            "baseline_location_id": "105",
-            "current_location_id": "222",
-            "result_rows": 85
-          },
-          {
-            "event_id": "314",
-            "event_year": "2024",
-            "event_month": "3",
-            "event_name": "Westie Spring Thing",
-            "baseline_location_id": "110",
-            "current_location_id": "243",
-            "result_rows": 128
-          },
-          {
-            "event_id": "184",
-            "event_year": "2024",
-            "event_month": "1",
-            "event_name": "BudaFest Open WCS Championships",
-            "baseline_location_id": "110",
-            "current_location_id": "243",
-            "result_rows": 180
-          },
-          {
-            "event_id": "147",
-            "event_year": "2023",
-            "event_month": "7",
-            "event_name": "Toronto Open Swing and Hustle Championships",
-            "baseline_location_id": "105",
-            "current_location_id": "222",
-            "result_rows": 56
-          },
-          {
-            "event_id": "314",
-            "event_year": "2023",
-            "event_month": "3",
-            "event_name": "Westie Spring Thing",
-            "baseline_location_id": "110",
-            "current_location_id": "243",
-            "result_rows": 113
-          },
-          {
-            "event_id": "184",
-            "event_year": "2023",
-            "event_month": "1",
-            "event_name": "BudaFest Open WCS Championships",
-            "baseline_location_id": "110",
-            "current_location_id": "243",
-            "result_rows": 172
-          },
-          {
-            "event_id": "314",
+            "event_id": "175",
             "event_year": "2022",
-            "event_month": "3",
-            "event_name": "Westie Spring Thing",
-            "baseline_location_id": "110",
-            "current_location_id": "243",
-            "result_rows": 74
-          },
-          {
-            "event_id": "184",
-            "event_year": "2022",
-            "event_month": "1",
-            "event_name": "BudaFest Open WCS Championships",
-            "baseline_location_id": "110",
+            "event_month": "5",
+            "event_name": "French Open West Coast Swing",
+            "baseline_location_id": "109",
             "current_location_id": "243",
             "result_rows": 135
           },
           {
-            "event_id": "184",
-            "event_year": "2020",
-            "event_month": "1",
-            "event_name": "BudaFest Open WCS Championships",
-            "baseline_location_id": "110",
-            "current_location_id": "243",
-            "result_rows": 130
-          },
-          {
-            "event_id": "314",
+            "event_id": "164",
             "event_year": "2019",
-            "event_month": "3",
-            "event_name": "Westie Spring Thing",
-            "baseline_location_id": "110",
-            "current_location_id": "243",
-            "result_rows": 76
+            "event_month": "7",
+            "event_name": "Sea Sun & Swing Camp",
+            "baseline_location_id": "158",
+            "current_location_id": "266",
+            "result_rows": 73
           },
           {
-            "event_id": "184",
+            "event_id": "175",
             "event_year": "2019",
-            "event_month": "1",
-            "event_name": "BudaFest Open WCS Championships",
-            "baseline_location_id": "110",
+            "event_month": "6",
+            "event_name": "French Open West Coast Swing",
+            "baseline_location_id": "109",
             "current_location_id": "243",
-            "result_rows": 138
+            "result_rows": 120
           },
           {
-            "event_id": "184",
+            "event_id": "175",
             "event_year": "2018",
-            "event_month": "1",
-            "event_name": "BudaFest Open WCS Championships",
-            "baseline_location_id": "110",
+            "event_month": "5",
+            "event_name": "French Open West Coast Swing",
+            "baseline_location_id": "109",
             "current_location_id": "243",
-            "result_rows": 131
+            "result_rows": 110
           },
           {
-            "event_id": "184",
+            "event_id": "175",
             "event_year": "2017",
-            "event_month": "1",
-            "event_name": "BudaFest Open WCS Championships",
-            "baseline_location_id": "110",
+            "event_month": "5",
+            "event_name": "French Open West Coast Swing",
+            "baseline_location_id": "109",
             "current_location_id": "243",
-            "result_rows": 115
+            "result_rows": 103
           },
           {
-            "event_id": "184",
+            "event_id": "175",
             "event_year": "2016",
-            "event_month": "1",
-            "event_name": "BudaFest Open WCS Championships",
-            "baseline_location_id": "110",
+            "event_month": "5",
+            "event_name": "French Open West Coast Swing",
+            "baseline_location_id": "109",
             "current_location_id": "243",
-            "result_rows": 106
+            "result_rows": 79
           },
           {
-            "event_id": "184",
+            "event_id": "175",
             "event_year": "2015",
-            "event_month": "1",
-            "event_name": "BudaFest Open WCS Championships",
-            "baseline_location_id": "110",
+            "event_month": "5",
+            "event_name": "French Open West Coast Swing",
+            "baseline_location_id": "109",
             "current_location_id": "243",
-            "result_rows": 116
+            "result_rows": 114
+          },
+          {
+            "event_id": "175",
+            "event_year": "2014",
+            "event_month": "6",
+            "event_name": "French Open West Coast Swing",
+            "baseline_location_id": "109",
+            "current_location_id": "243",
+            "result_rows": 103
+          },
+          {
+            "event_id": "175",
+            "event_year": "2013",
+            "event_month": "5",
+            "event_name": "French Open West Coast Swing",
+            "baseline_location_id": "109",
+            "current_location_id": "243",
+            "result_rows": 101
+          },
+          {
+            "event_id": "175",
+            "event_year": "2012",
+            "event_month": "5",
+            "event_name": "French Open West Coast Swing",
+            "baseline_location_id": "109",
+            "current_location_id": "243",
+            "result_rows": 74
           }
         ],
         "suggested_fix": "Investigate shared wrong location_id; fix overrides/repair_locations. If venue change is legitimate, UPDATE core.edition_location_baseline in Supabase.",
-        "fingerprint": "a7bfd15572a8ec95",
+        "fingerprint": "1fe2c3e727380f32",
+        "is_new": true,
+        "requires_manual_review": true
+      },
+      {
+        "category": "location",
+        "code": "BASELINE_VS_LOCATION_OVERRIDE",
+        "severity": "high",
+        "message": "edition_location_baseline location_id disagrees with EVENT_NAME_LOCATION_OVERRIDES (seed/auto-add froze a shared wrong lid)",
+        "count": 2,
+        "examples": [
+          {
+            "event_id": "147",
+            "event_year": "2024",
+            "event_month": "7",
+            "event_name": "Toronto Open Swing & Hustle Championships",
+            "baseline_location_id": "222",
+            "override_location_id": "105",
+            "override_location": "Toronto, Canada"
+          },
+          {
+            "event_id": "147",
+            "event_year": "2023",
+            "event_month": "7",
+            "event_name": "Toronto Open Swing & Hustle Championships",
+            "baseline_location_id": "222",
+            "override_location_id": "105",
+            "override_location": "Toronto, Canada"
+          }
+        ],
+        "suggested_fix": "Apply overrides + repair results/editions, then UPDATE core.edition_location_baseline to the override location_id (source='manual'). Cross-load drift alone cannot see poison seeds.",
+        "fingerprint": "05520c7f0f974d1d",
         "is_new": true,
         "requires_manual_review": true
       },
@@ -3615,7 +3666,7 @@
         ],
         "suggested_fix": "Re-run sync_events_list with GOOGLE_MAPS_API_KEY; or add city to location_info / CITY_CANONICAL_COORDINATES",
         "fingerprint": "74a1f0e4d1681096",
-        "is_new": true,
+        "is_new": false,
         "requires_manual_review": true
       }
     ]
@@ -3990,7 +4041,6 @@
     "The Texas Classic",
     "Toronto International Swing Dance",
     "Toronto Open Swing & Hustle Championships",
-    "Toronto Open Swing and Hustle Championships",
     "Trilogy Swing",
     "Trinity Swing",
     "Tulsa Fall Fling",
