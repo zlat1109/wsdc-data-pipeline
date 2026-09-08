@@ -1,7 +1,4 @@
 source_fingerprint,event_name,original_date,start_date,end_date,results_year,results_month,location_raw,country,country_flag,url,status_event,location_id,location_source,confirmed,canceled,on_hiatus,is_active
-fcb94a4342efedf86c0f9a4c,Korea Westival,"Sep 3 - 6, 2026",2026-09-03,2026-09-06,2026,9,"Jeju, Jeju, Republic of Korea",Republic of Korea,KOR,http://koreawestival.com/,Registry Event,,,True,False,False,True
-817d46b7445e6cc97c4c9dc5,South Bay Dance Fling,"Sep 3 - 7, 2026",2026-09-03,2026-09-07,2026,9,"San Jose, California, United States",United States,USA,https://sbdf.dance/,Registry Event,,,True,False,False,True
-83d85055ab0a9ddcf83a4e0a,Jax Westie Fest,"Sep 4 - 7, 2026",2026-09-04,2026-09-07,2026,9,"Jacksonville, FL, United States",United States,USA,http://www.jaxwestiefest.com/,Registry Event,,,True,False,False,True
 59e55b8dbf3b1581e88fd4b7,Bavarian Open West Coast Swing Championships,"Sep 10 - 14, 2026",2026-09-10,2026-09-14,2026,9,"Munich, Bavaria, Germany",Germany,DEU,https://bavarianopen.com/,Registry Event,,,True,False,False,True
 2af17daff7234bfc1226e5f5,SwingTime Denver,"Sep 10 - 13, 2026",2026-09-10,2026-09-13,2026,9,"Denver, CO, United States",United States,USA,http://www.swingtimewcs.com/,Registry Event,,,True,False,False,True
 ab0c1d2ca2096352d46ad7c5,Trilogy Swing,"Sep 10 - 13, 2026",2026-09-10,2026-09-13,2026,9,"Raleigh, NC, United States",United States,USA,https://trilogywcs.com/,Registry Event,,,True,False,False,True
@@ -111,6 +108,7 @@ c0545522b66295dbe663f22b,The Boston Tea Party,"Mar 19 - 22, 2027",2027-03-19,202
 aa533072fad248f8c14e2bfa,Easter Swing,"Mar 25 - 28, 2027",2027-03-25,2027-03-28,2027,3,"Seattle, WA, United States",United States,USA,https://easterswing.org/,Registry Event,,,True,False,False,True
 242d95ad21d0060d7ca2609a,TULSA SPRING SWING,"Mar 25 - 28, 2027",2027-03-25,2027-03-28,2027,3,"Tulsa, OK, United States",United States,USA,http://www.tulsaspringswing.com/,Registry Event,,,True,False,False,True
 29a5754366eff0b24ddda947,UK West Coast Swing Championships,"Mar 25 - 29, 2027",2027-03-25,2027-03-29,2027,3,"London, West Drayton, United Kingdom",United Kingdom,GBR,http://www.ukwcschamps.com/,Registry Event,,,True,False,False,True
+23321d869097a09168899c9b,Swing In Capital,"Apr 1 - 4, 2027",2027-04-01,2027-04-04,2027,4,"Rome, rome, italy",Italy,ITA,https://swingincapital.com/,Registry Event,,,True,False,False,True
 f0946489d01ea007f2e64d27,Franconian Swing Project,"Apr 8 - 11, 2027",2027-04-08,2027-04-11,2027,4,"Nürnberg, Bavaria, Germany",Germany,DEU,https://franconian-swing-project.de/,Trial Event,392,google_maps,True,False,False,True
 4387e59e411ddba91259cfa1,KOREAN OPEN WCS CHAMPIONSHIPS,"Apr 8 - 11, 2027",2027-04-08,2027-04-11,2027,4,"Incheon, Incheon, Republic of Korea",Republic of Korea,KOR,https://www.kopenwcs.com/,Registry Event,,,True,False,False,True
 57fd268088f41cacf7ecb9a8,Slovenian Open,"Apr 14 - 19, 2027",2027-04-14,2027-04-19,2027,4,"Ljubljana, -, Slovenia",Slovenia,SVN,https://slovenianopen.dance/,Registry Event,,,True,False,False,True
@@ -127,6 +125,7 @@ f0e8aab92071237f14b7b6cc,Calgary Dance Stampede,"Apr 29 - May 2, 2027",2027-04-2
 dbfc1fe3a5123bc308791fa9,City of Angels WCS,"Apr 29 - May 2, 2027",2027-04-29,2027-05-02,2027,5,"Burbank, California, California, United States",United States,USA,https://cityofangelswcs.com/,Registry Event,,,True,False,False,True
 8c447af66793f24eef18e99d,Nordic WCS Championships,"Apr 29 - May 3, 2027",2027-04-29,2027-05-03,2027,5,"Stockholm, Stockholm, Sweden",Sweden,SWE,http://www.nordicwcschamps.com/,Registry Event,,,True,False,False,True
 1cd8866ac523c42ccdc69640,Swingin' Into Spring,"Apr 29 - May 2, 2027",2027-04-29,2027-05-02,2027,5,"Hartford, CT, United States",United States,USA,http://www.sis.djkenm.com/,Registry Event,,,True,False,False,True
+c9ef58edc9380effd615c275,French Open WCS,"May 5 - 10, 2027",2027-05-05,2027-05-10,2027,5,"Paris, paris, france",France,FRA,http://www.fowcs.com/,Registry Event,,,True,False,False,True
 42e5533ac3e6733ad67540c9,Westie Weekend,"May 7 - 9, 2027",2027-05-07,2027-05-09,2027,5,"Washington DC, MD, United States",United States,USA,https://dancejamproductions.com/westieweekend/,Registry Event,,,True,False,False,True
 dec2d01cf6c276393794e498,SOswing,"May 13 - 16, 2027",2027-05-13,2027-05-16,2027,5,"Ashland, OR, United States",United States,USA,http://wwww.soswingdance.com/,Registry Event,,,True,False,False,True
 806f183da786d88a1b7652c3,Swingsation,"May 13 - 17, 2027",2027-05-13,2027-05-17,2027,5,"Gold Coast, Queensland, Australia",Australia,AUS,https://rawconnection.com.au/swingsation/,Registry Event,,,True,False,False,True
@@ -160,6 +159,7 @@ f1d0c5cafe205706ae173038,Swingtacular: The Galactic Open,"Aug 5 - 8, 2027",2027-
 824671c16208cfafa959cd66,Summer Hummer,"Aug 19 - 22, 2027",2027-08-19,2027-08-22,2027,8,"Boston, MA, United States",United States,USA,https://summerhummerboston.com/,Registry Event,,,True,False,False,True
 e93edd6912a733570e729f01,The Bend Connection,"Aug 19 - 22, 2027",2027-08-19,2027-08-22,2027,8,"Bend, Oregon, Oregon, United States",United States,USA,https://thebendconnection.com/,Registry Event,,,True,False,False,True
 94c76665fb7ce6eb4a072ea3,Chicagoland Country and Swing Dance Festival,"Aug 20 - 22, 2027",2027-08-20,2027-08-22,2027,8,"Chicago, Illinois, United States",United States,USA,https://chicagolanddancefestival.com/,Registry Event,,,True,False,False,True
+40003e88c037e75bd7c2dc0c,Desert City Swing,"Sep 2 - 6, 2027",2027-09-02,2027-09-06,2027,9,"Phoenix, AZ, United States",United States,USA,https://www.desertcityswing.com/,Registry Event,,,True,False,False,True
 515b5fc82ee6d05b73394c2b,Best of the Best WCS,"Sep 16 - 19, 2027",2027-09-16,2027-09-19,2027,9,"Ashfield, NSW, Australia",Australia,AUS,https://www.bestofthebestwcs.com/,Registry Event,,,True,False,False,True
 a3b5d2f4e273b2edf3df1b8a,Finnfest,"Sep 17 - 20, 2027",2027-09-17,2027-09-20,2027,9,"Helsinki, Uusimaa, Finland",Finland,FIN,https://finnfest.fi/,Registry Event,,,True,False,False,True
 2ce85c3ac33355f90225e4be,Atlanta Swing Classic,"Oct 7 - 10, 2027",2027-10-07,2027-10-10,2027,10,"Atlanta, Georgia, United States",United States,USA,https://www.atlantaswingclassic.com/,Registry Event,,,True,False,False,True

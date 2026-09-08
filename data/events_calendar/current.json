@@ -1,9 +1,9 @@
 {
-  "scraped_at": "2026-09-01T12:53:45.305971+00:00",
+  "scraped_at": "2026-09-08T12:23:53.335507+00:00",
   "source": "https://worldsdc.com/events/calendar/",
   "min_start": "2025-01-01",
-  "raw_count": 649,
-  "event_count": 482,
+  "raw_count": 651,
+  "event_count": 484,
   "events": [
     {
       "event_name": "Floorplay Swing Vacation",
@@ -7008,28 +7008,6 @@
       "name_key": "seadancefest",
       "start_date": "2026-09-11",
       "end_date": "2026-09-13",
-      "url": "",
-      "url_key": "",
-      "results_year": 2026,
-      "results_month": 9,
-      "edition_ym_candidates": [
-        "2026-09"
-      ],
-      "date_precision": "day",
-      "date_source": "wsdc_calendar",
-      "flags": [],
-      "status_tags": [],
-      "source_fingerprint": "29ceeabf1e9b32ae823c5ac6",
-      "raw_start": "2026-09-11",
-      "raw_end": "2026-09-14"
-    },
-    {
-      "event_name": "Sea Dance Fest",
-      "calendar_title": "Sea Dance Fest",
-      "catalog_name": "Sea Dance Fest",
-      "name_key": "seadancefest",
-      "start_date": "2026-09-11",
-      "end_date": "2026-09-13",
       "url": "https://vk.com/seadancefest",
       "url_key": "vk.com/seadancefest",
       "results_year": 2026,
@@ -9377,6 +9355,28 @@
       "raw_end": "2027-03-30"
     },
     {
+      "event_name": "Swing In Capital",
+      "calendar_title": "Swing In Capital",
+      "catalog_name": "Swing In Capital",
+      "name_key": "swingincapital",
+      "start_date": "2027-04-01",
+      "end_date": "2027-04-04",
+      "url": "https://swingincapital.com",
+      "url_key": "swingincapital.com",
+      "results_year": 2027,
+      "results_month": 4,
+      "edition_ym_candidates": [
+        "2027-04"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "23321d869097a09168899c9b",
+      "raw_start": "2027-04-01",
+      "raw_end": "2027-04-05"
+    },
+    {
       "event_name": "Franconian Swing Project",
       "calendar_title": "Franconian Swing Project",
       "catalog_name": "Franconian Swing Project",
@@ -9732,6 +9732,28 @@
       "source_fingerprint": "1cd8866ac523c42ccdc69640",
       "raw_start": "2027-04-29",
       "raw_end": "2027-05-03"
+    },
+    {
+      "event_name": "French Open WCS",
+      "calendar_title": "French Open WCS",
+      "catalog_name": "French Open West Coast Swing",
+      "name_key": "frenchopenwestcoastswing",
+      "start_date": "2027-05-05",
+      "end_date": "2027-05-10",
+      "url": "http://www.fowcs.com",
+      "url_key": "fowcs.com",
+      "results_year": 2027,
+      "results_month": 5,
+      "edition_ym_candidates": [
+        "2027-05"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "c9ef58edc9380effd615c275",
+      "raw_start": "2027-05-05",
+      "raw_end": "2027-05-11"
     },
     {
       "event_name": "Westie Weekend",
@@ -10509,6 +10531,28 @@
       "source_fingerprint": "94c76665fb7ce6eb4a072ea3",
       "raw_start": "2027-08-20",
       "raw_end": "2027-08-23"
+    },
+    {
+      "event_name": "Desert City Swing",
+      "calendar_title": "Desert City Swing",
+      "catalog_name": "Desert City Swing",
+      "name_key": "desertcityswing",
+      "start_date": "2027-09-02",
+      "end_date": "2027-09-06",
+      "url": "https://www.desertcityswing.com",
+      "url_key": "desertcityswing.com",
+      "results_year": 2027,
+      "results_month": 9,
+      "edition_ym_candidates": [
+        "2027-09"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "40003e88c037e75bd7c2dc0c",
+      "raw_start": "2027-09-02",
+      "raw_end": "2027-09-07"
     },
     {
       "event_name": "Best of the Best WCS",
