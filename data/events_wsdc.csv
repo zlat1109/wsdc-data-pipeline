@@ -31,6 +31,8 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 2022,2022-07-01,2022,7,2022-07
 1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 2023,2023-07-01,2023,7,2023-07
 1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 2024,2024-07-01,2024,7,2024-07
+175,French Open West Coast Swing,"Paris, France",http://www.fowcs.com,June 2014,2014-06-01,2014,6,2014-06
+175,French Open West Coast Swing,"Paris, France",http://www.fowcs.com,May 2015,2015-05-01,2015,5,2015-05
 2,4TH of July Swing Bash,"Fort Lauderdale, FL, United States",,July 1997,1997-07-01,1997,7,1997-07
 3,American Lindy Hop Championships,"Stamford, CT, United States",,October 2000,2000-10-01,2000,10,2000-10
 3,American Lindy Hop Championships,"Stamford, CT, United States",,October 2001,2001-10-01,2001,10,2001-10
@@ -84,6 +86,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 8,Boogie By The Bay,"San Francisco, CA, United States",https://boogiebythebay.com,October 2022,2022-10-01,2022,10,2022-10
 8,Boogie By The Bay,"San Francisco, CA, United States",https://boogiebythebay.com,October 2023,2023-10-01,2023,10,2023-10
 8,Boogie By The Bay,"San Francisco, CA, United States",https://boogiebythebay.com,October 2024,2024-10-01,2024,10,2024-10
+175,French Open West Coast Swing,"Paris, France",http://www.fowcs.com,May 2016,2016-05-01,2016,5,2016-05
 9,Boston Tea Party,"Boston, MA, United States",http://teapartyswings.com,March 1997,1997-03-01,1997,3,1997-03
 9,Boston Tea Party,"Boston, MA, United States",http://teapartyswings.com,March 1998,1998-03-01,1998,3,1998-03
 9,Boston Tea Party,"Boston, MA, United States",http://teapartyswings.com,March 1999,1999-03-01,1999,3,1999-03
@@ -108,6 +111,8 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 9,Boston Tea Party,"Boston, MA, United States",http://teapartyswings.com,March 2018,2018-03-01,2018,3,2018-03
 9,Boston Tea Party,"Boston, MA, United States",http://teapartyswings.com,March 2019,2019-03-01,2019,3,2019-03
 9,Boston Tea Party,"Boston, MA, United States",http://teapartyswings.com,March 2024,2024-03-01,2024,3,2024-03
+175,French Open West Coast Swing,"Paris, France",http://www.fowcs.com,June 2025,2025-06-01,2025,6,2025-06
+175,French Open West Coast Swing,"Paris, France",http://www.fowcs.com,May 2026,2026-05-01,2026,5,2026-05
 10,Bridgetown Swing Boogie,"Vancouver, WA, United States",,September 2001,2001-09-01,2001,9,2001-09
 10,Bridgetown Swing Boogie,"Vancouver, WA, United States",,September 2002,2002-09-01,2002,9,2002-09
 10,Bridgetown Swing Boogie,"Vancouver, WA, United States",,September 2003,2003-09-01,2003,9,2003-09
@@ -1528,6 +1533,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 167,Best of the Best WCS,"Sydney, Australia",https://www.bestofthebestwcs.com/,September 2022,2022-09-01,2022,9,2022-09
 167,Best of the Best WCS,"Sydney, Australia",https://www.bestofthebestwcs.com/,September 2023,2023-09-01,2023,9,2023-09
 167,Best of the Best WCS,"Sydney, Australia",https://www.bestofthebestwcs.com/,September 2024,2024-09-01,2024,9,2024-09
+175,French Open West Coast Swing,"Paris, France",http://www.fowcs.com,June 2011,2011-06-01,2011,6,2011-06
 168,Scottish WCS Dance Championships,"Bathgate, United Kingdom",,February 2011,2011-02-01,2011,2,2011-02
 168,Scottish WCS Dance Championships,"Bathgate, United Kingdom",,February 2012,2012-02-01,2012,2,2012-02
 168,Scottish WCS Dance Championships,"Bathgate, United Kingdom",,February 2013,2013-02-01,2013,2,2013-02
@@ -1569,18 +1575,10 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 174,Swingsation,"Gold Coast, Australia",https://rawconnection.com.au/swingsation/,June 2021,2021-06-01,2021,6,2021-06
 174,Swingsation,"Gold Coast, Australia",https://rawconnection.com.au/swingsation/,May 2023,2023-05-01,2023,5,2023-05
 174,Swingsation,"Gold Coast, Australia",https://rawconnection.com.au/swingsation/,May 2024,2024-05-01,2024,5,2024-05
-175,French Open West Coast Swing,"Paris, France",http://www.fowcs.com,June 2011,2011-06-01,2011,6,2011-06
 175,French Open West Coast Swing,"Paris, France",http://www.fowcs.com,May 2012,2012-05-01,2012,5,2012-05
 175,French Open West Coast Swing,"Paris, France",http://www.fowcs.com,May 2013,2013-05-01,2013,5,2013-05
-175,French Open West Coast Swing,"Paris, France",http://www.fowcs.com,June 2014,2014-06-01,2014,6,2014-06
-175,French Open West Coast Swing,"Paris, France",http://www.fowcs.com,May 2015,2015-05-01,2015,5,2015-05
-175,French Open West Coast Swing,"Paris, France",http://www.fowcs.com,May 2016,2016-05-01,2016,5,2016-05
 175,French Open West Coast Swing,"Paris, France",http://www.fowcs.com,May 2017,2017-05-01,2017,5,2017-05
 175,French Open West Coast Swing,"Paris, France",http://www.fowcs.com,May 2018,2018-05-01,2018,5,2018-05
-175,French Open West Coast Swing,"Paris, France",http://www.fowcs.com,June 2019,2019-06-01,2019,6,2019-06
-175,French Open West Coast Swing,"Paris, France",http://www.fowcs.com,May 2022,2022-05-01,2022,5,2022-05
-175,French Open West Coast Swing,"Paris, France",http://www.fowcs.com,May 2023,2023-05-01,2023,5,2023-05
-175,French Open West Coast Swing,"Paris, France",http://www.fowcs.com,May 2024,2024-05-01,2024,5,2024-05
 177,River City Swing,"Jacksonville, FL, United States",http://www.floridadanceevents.com,September 2011,2011-09-01,2011,9,2011-09
 177,River City Swing,"Jacksonville, FL, United States",http://www.floridadanceevents.com,September 2012,2012-09-01,2012,9,2012-09
 177,River City Swing,"Jacksonville, FL, United States",http://www.floridadanceevents.com,September 2013,2013-09-01,2013,9,2013-09
@@ -1592,6 +1590,8 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 177,River City Swing,"Jacksonville, FL, United States",http://www.floridadanceevents.com,September 2019,2019-09-01,2019,9,2019-09
 177,River City Swing,"Jacksonville, FL, United States",http://www.floridadanceevents.com,September 2023,2023-09-01,2023,9,2023-09
 177,River City Swing,"Jacksonville, FL, United States",http://www.floridadanceevents.com,September 2024,2024-09-01,2024,9,2024-09
+175,French Open West Coast Swing,"Paris, France",http://www.fowcs.com,June 2019,2019-06-01,2019,6,2019-06
+175,French Open West Coast Swing,"Paris, France",http://www.fowcs.com,May 2022,2022-05-01,2022,5,2022-05
 178,Montreal Westie Fest,"Montreal, Canada",http://www.montrealwestiefest.com,October 2011,2011-10-01,2011,10,2011-10
 178,Montreal Westie Fest,"Montreal, Canada",http://www.montrealwestiefest.com,October 2012,2012-10-01,2012,10,2012-10
 178,Montreal Westie Fest,"Montreal, Canada",http://www.montrealwestiefest.com,October 2013,2013-10-01,2013,10,2013-10
@@ -1602,6 +1602,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 178,Montreal Westie Fest,"Montreal, Canada",http://www.montrealwestiefest.com,October 2019,2019-10-01,2019,10,2019-10
 178,Montreal Westie Fest,"Montreal, Canada",http://www.montrealwestiefest.com,October 2023,2023-10-01,2023,10,2023-10
 178,Montreal Westie Fest,"Montreal, Canada",http://www.montrealwestiefest.com,October 2024,2024-10-01,2024,10,2024-10
+175,French Open West Coast Swing,"Paris, France",http://www.fowcs.com,May 2023,2023-05-01,2023,5,2023-05
 179,New Zealand Open Swing Dance Championships,"Auckland, New Zealand",https://www.streetswing.co.nz/the-new-zealand-open,October 2011,2011-10-01,2011,10,2011-10
 179,New Zealand Open Swing Dance Championships,"Auckland, New Zealand",https://www.streetswing.co.nz/the-new-zealand-open,October 2012,2012-10-01,2012,10,2012-10
 179,New Zealand Open Swing Dance Championships,"Auckland, New Zealand",https://www.streetswing.co.nz/the-new-zealand-open,October 2013,2013-10-01,2013,10,2013-10
@@ -1615,6 +1616,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 179,New Zealand Open Swing Dance Championships,"Auckland, New Zealand",https://www.streetswing.co.nz/the-new-zealand-open,October 2022,2022-10-01,2022,10,2022-10
 179,New Zealand Open Swing Dance Championships,"Auckland, New Zealand",https://www.streetswing.co.nz/the-new-zealand-open,October 2023,2023-10-01,2023,10,2023-10
 179,New Zealand Open Swing Dance Championships,"Auckland, New Zealand",https://www.streetswing.co.nz/the-new-zealand-open,November 2024,2024-11-01,2024,11,2024-11
+175,French Open West Coast Swing,"Paris, France",http://www.fowcs.com,May 2024,2024-05-01,2024,5,2024-05
 180,Australian Open Swing Dance Championships,"Melbourne, Australia",,October 2011,2011-10-01,2011,10,2011-10
 180,Australian Open Swing Dance Championships,"Melbourne, Australia",,October 2012,2012-10-01,2012,10,2012-10
 180,Australian Open Swing Dance Championships,"Melbourne, Australia",,October 2013,2013-10-01,2013,10,2013-10
@@ -2452,8 +2454,6 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 167,Best of the Best WCS,"Sydney, Australia",https://www.bestofthebestwcs.com/,September 2025,2025-09-01,2025,9,2025-09
 174,Swingsation,"Gold Coast, Australia",https://rawconnection.com.au/swingsation/,May 2025,2025-05-01,2025,5,2025-05
 174,Swingsation,"Gold Coast, Australia",https://rawconnection.com.au/swingsation/,May 2026,2026-05-01,2026,5,2026-05
-175,French Open West Coast Swing,"Paris, France",http://www.fowcs.com,June 2025,2025-06-01,2025,6,2025-06
-175,French Open West Coast Swing,"Paris, France",http://www.fowcs.com,May 2026,2026-05-01,2026,5,2026-05
 177,River City Swing,"Jacksonville, FL, United States",http://www.floridadanceevents.com,August 2025,2025-08-01,2025,8,2025-08
 177,River City Swing,"Jacksonville, FL, United States",http://www.floridadanceevents.com,September 2026,2026-09-01,2026,9,2026-09
 178,Montreal Westie Fest,"Montreal, Canada",http://www.montrealwestiefest.com,October 2025,2025-10-01,2025,10,2025-10
@@ -2655,10 +2655,10 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 388,Norwegian Open WCS,"Hamar, Norway",https://norwegianopen.no/,October 2025,2025-10-01,2025,10,2025-10
 389,SwingLab Berlin,"Berlin, Germany",http://www.swinglab-berlin.com,July 2026,2026-07-01,2026,7,2026-07
 391,Swing Dance Mania,"Cincinnati, OH, United States",http://swingdancemania.com,August 2025,2025-08-01,2025,8,2025-08
-393,Swing in Bloom,"Ottawa, Canada",http://www.swinginbloom.ca,April 2026,2026-04-01,2026,4,2026-04
 394,Southern Lights Swing,"Hobart, Australia",https://www.southernlightsswing.com.au/,March 2026,2026-03-01,2026,3,2026-03
 400,Manneken Swing,"Bruxelles, Belgium",,August 2026,2026-08-01,2026,8,2026-08
 401,Swing Creation Hamburg,"Hamburg, Germany",,August 2026,2026-08-01,2026,8,2026-08
 404,Infinite Swing,"Munich, Germany",http://infinite-swing.com,July 2026,2026-07-01,2026,7,2026-07
 405,Milan Swing Vibes,"Milan, Italy",,June 2026,2026-06-01,2026,6,2026-06
 407,Westie Joy,"Bucharest, Romania",,August 2026,2026-08-01,2026,8,2026-08
+393,Swing in Bloom,"Ottawa, Canada",http://www.swinginbloom.ca,April 2026,2026-04-01,2026,4,2026-04

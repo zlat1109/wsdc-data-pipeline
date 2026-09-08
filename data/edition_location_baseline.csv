@@ -52,7 +52,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 347,2026,5,170,BeeMAD,auto,Madrid,,Spain,"Madrid, Spain","Madrid, Spain",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 105,2026,5,86,Canadian Swing Championships,auto,Montreal,,Canada,"Montreal, Canada","Montreal, Canada",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 372,2026,5,353,Dance Jam Jack & Jill Weekend,auto,Silver Spring,Maryland,United States,"Silver Spring, MD, United States","Silver Spring, MD",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
-175,2026,5,243,French Open West Coast Swing,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
+175,2026,5,109,French Open West Coast Swing,manual,Paris,,France,"Paris, France","Paris, France",2026-09-08 21:11:40.017407+00,2026-09-08 21:27:33.639462+00
 206,2026,5,110,Hungarian Open,auto,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 379,2026,5,386,Med in Swing,auto,La Londe-les-Maures,,France,"La Londe-les-Maures, France","La Londe-les-Maures, France",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 76,2026,5,51,Michigan Dance Classic,auto,Detroit,Michigan,United States,"Detroit, MI, United States","Detroit, MI",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
@@ -74,7 +74,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 345,2026,4,255,HONEY FEST,auto,Ufa,,Russia,"Ufa, Russia","Ufa, Russia",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 210,2026,4,172,Korean Open WCS Championships,auto,Incheon,,Republic of Korea,"Incheon, Republic of Korea","Incheon, Republic of Korea",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 352,2026,4,256,Slovenian Open,auto,Ljubljana,,Slovenia,"Ljubljana, Slovenia","Ljubljana, Slovenia",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
-393,2026,4,222,Swing in Bloom,auto,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
+393,2026,4,179,Swing in Bloom,manual,Ottawa,,Canada,"Ottawa, Canada","Ottawa, Canada",2026-09-08 21:11:40.017407+00,2026-09-08 21:27:33.639462+00
 304,2026,4,171,Swing In Capital,auto,Rome,,Italy,"Rome, Italy","Rome, Italy",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 370,2026,4,189,SwingIN Festival,auto,Bonn,,Germany,"Bonn, Germany","Bonn, Germany",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 259,2026,4,82,Swingover,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
@@ -218,7 +218,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 207,2025,6,133,Dance N Play,auto,Bend,Oregon,United States,"Bend, OR, United States","Bend, OR",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 371,2025,6,229,Festival City Swing,auto,Newcastle,,United Kingdom,"Newcastle, United Kingdom","Newcastle, United Kingdom",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 369,2025,6,188,FRENCH CONNECTION WCS,auto,Annecy,,France,"Annecy, France","Annecy, France",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
-175,2025,6,243,French Open West Coast Swing,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
+175,2025,6,109,French Open West Coast Swing,manual,Paris,,France,"Paris, France","Paris, France",2026-09-08 21:11:40.017407+00,2026-09-08 21:27:33.639462+00
 206,2025,6,110,Hungarian Open,auto,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 255,2025,6,138,Indy Dance Explosion,auto,Fort Wayne,Indiana,United States,"Fort Wayne, IN, United States","Fort Wayne, IN",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 25,2025,6,23,J&J O'Rama,auto,Anaheim,California,United States,"Anaheim, CA, United States","Anaheim, CA",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
@@ -379,7 +379,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 331,2024,6,266,Swing Fiction,auto,Brno,,Czech Republic,"Brno, Czech Republic","Brno, Czech Republic",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 162,2024,6,40,Swingapalooza,auto,Baton Rouge,Louisiana,United States,"Baton Rouge, LA, United States","Baton Rouge, LA",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 105,2024,5,86,Canadian Swing Championships,auto,Montreal,,Canada,"Montreal, Canada","Montreal, Canada",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
-175,2024,5,243,French Open West Coast Swing,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
+175,2024,5,109,French Open West Coast Swing,manual,Paris,,France,"Paris, France","Paris, France",2026-09-08 21:11:40.017407+00,2026-09-08 21:27:33.639462+00
 221,2024,5,49,Show Me Showdown,auto,St. Louis,Missouri,United States,"St. Louis, MO, United States","St. Louis, MO",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 205,2024,5,88,SOswing,auto,Ashland,Oregon,United States,"Ashland, OR, United States","Ashland, OR",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 134,2024,5,89,Swing Dance America,auto,Lake Geneva,Illinois,United States,"Lake Geneva, IL, United States","Lake Geneva, IL",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
@@ -509,7 +509,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 117,2023,6,82,Orange Blossom Dance Festival,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 162,2023,6,40,Swingapalooza,auto,Baton Rouge,Louisiana,United States,"Baton Rouge, LA, United States","Baton Rouge, LA",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 105,2023,5,86,Canadian Swing Championships,auto,Montreal,,Canada,"Montreal, Canada","Montreal, Canada",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
-175,2023,5,243,French Open West Coast Swing,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
+175,2023,5,109,French Open West Coast Swing,manual,Paris,,France,"Paris, France","Paris, France",2026-09-08 21:11:40.017407+00,2026-09-08 21:27:33.639462+00
 253,2023,5,199,Nordic WCS Championships,auto,Stockholm,,Sweden,"Stockholm, Sweden","Stockholm, Sweden",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 205,2023,5,88,SOswing,auto,Ashland,Oregon,United States,"Ashland, OR, United States","Ashland, OR",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 134,2023,5,89,Swing Dance America,auto,Lake Geneva,Illinois,United States,"Lake Geneva, IL, United States","Lake Geneva, IL",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
@@ -618,7 +618,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 96,2022,6,41,Liberty Swing Dance Championships,auto,New Brunswick,New Jersey,United States,"New Brunswick, NJ, United States","New Brunswick, NJ",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 117,2022,6,82,Orange Blossom Dance Festival,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 162,2022,6,40,Swingapalooza,auto,Baton Rouge,Louisiana,United States,"Baton Rouge, LA, United States","Baton Rouge, LA",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
-175,2022,5,243,French Open West Coast Swing,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
+175,2022,5,109,French Open West Coast Swing,manual,Paris,,France,"Paris, France","Paris, France",2026-09-08 21:11:40.017407+00,2026-09-08 21:27:33.639462+00
 253,2022,5,199,Nordic WCS Championships,auto,Stockholm,,Sweden,"Stockholm, Sweden","Stockholm, Sweden",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 205,2022,5,88,SOswing,auto,Ashland,Oregon,United States,"Ashland, OR, United States","Ashland, OR",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 134,2022,5,89,Swing Dance America,auto,Lake Geneva,Illinois,United States,"Lake Geneva, IL, United States","Lake Geneva, IL",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
@@ -782,7 +782,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 220,2019,6,127,D-Town Swing,auto,Düsseldorf,,Germany,"Düsseldorf, Germany","Düsseldorf, Germany",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 207,2019,6,133,Dance N Play,auto,Bend,Oregon,United States,"Bend, OR, United States","Bend, OR",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 254,2019,6,204,Finnfest,auto,Helsinki,,Finland,"Helsinki, Finland","Helsinki, Finland",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
-175,2019,6,243,French Open West Coast Swing,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
+175,2019,6,109,French Open West Coast Swing,manual,Paris,,France,"Paris, France","Paris, France",2026-09-08 21:11:40.017407+00,2026-09-08 21:27:33.639462+00
 255,2019,6,138,Indy Dance Explosion,auto,Fort Wayne,Indiana,United States,"Fort Wayne, IN, United States","Fort Wayne, IN",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 25,2019,6,23,J&J O'Rama,auto,Anaheim,California,United States,"Anaheim, CA, United States","Anaheim, CA",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 268,2019,6,213,Korea Westival,auto,Jeju,,Republic of Korea,"Jeju, Republic of Korea","Jeju, Republic of Korea",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
@@ -947,7 +947,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 117,2018,6,82,Orange Blossom Dance Festival,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 162,2018,6,40,Swingapalooza,auto,Baton Rouge,Louisiana,United States,"Baton Rouge, LA, United States","Baton Rouge, LA",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 105,2018,5,86,Canadian Swing Championships,auto,Montreal,,Canada,"Montreal, Canada","Montreal, Canada",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
-175,2018,5,243,French Open West Coast Swing,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
+175,2018,5,109,French Open West Coast Swing,manual,Paris,,France,"Paris, France","Paris, France",2026-09-08 21:11:40.017407+00,2026-09-08 21:27:33.639462+00
 20,2018,5,5,FreZno Dance Classic,auto,Fresno,California,United States,"Fresno, CA, United States","Fresno, CA",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 206,2018,5,110,Hungarian Open,auto,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 219,2018,5,125,KIWI Fest,auto,Kiev,,Ukraine,"Kiev, Ukraine","Kiev, Ukraine",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
@@ -1094,7 +1094,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 117,2017,6,82,Orange Blossom Dance Festival,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 162,2017,6,40,Swingapalooza,auto,Baton Rouge,Louisiana,United States,"Baton Rouge, LA, United States","Baton Rouge, LA",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 105,2017,5,86,Canadian Swing Championships,auto,Montreal,,Canada,"Montreal, Canada","Montreal, Canada",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
-175,2017,5,243,French Open West Coast Swing,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
+175,2017,5,109,French Open West Coast Swing,manual,Paris,,France,"Paris, France","Paris, France",2026-09-08 21:11:40.017407+00,2026-09-08 21:27:33.639462+00
 20,2017,5,5,FreZno Dance Classic,auto,Fresno,California,United States,"Fresno, CA, United States","Fresno, CA",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 206,2017,5,110,Hungarian Open,auto,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 219,2017,5,125,KIWI Fest,auto,Kiev,,Ukraine,"Kiev, Ukraine","Kiev, Ukraine",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
@@ -1231,7 +1231,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 223,2016,6,223,Slingshot Swing,auto,Oslo,,Norway,"Oslo, Norway","Oslo, Norway",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 162,2016,6,40,Swingapalooza,auto,Baton Rouge,Louisiana,United States,"Baton Rouge, LA, United States","Baton Rouge, LA",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 105,2016,5,86,Canadian Swing Championships,auto,Montreal,,Canada,"Montreal, Canada","Montreal, Canada",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
-175,2016,5,243,French Open West Coast Swing,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
+175,2016,5,109,French Open West Coast Swing,manual,Paris,,France,"Paris, France","Paris, France",2026-09-08 21:11:40.017407+00,2026-09-08 21:27:33.639462+00
 20,2016,5,5,FreZno Dance Classic,auto,Fresno,California,United States,"Fresno, CA, United States","Fresno, CA",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 206,2016,5,110,Hungarian Open,auto,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 219,2016,5,125,KIWI Fest,auto,Kiev,,Ukraine,"Kiev, Ukraine","Kiev, Ukraine",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
@@ -1354,7 +1354,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 117,2015,6,82,Orange Blossom Dance Festival,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 162,2015,6,40,Swingapalooza,auto,Baton Rouge,Louisiana,United States,"Baton Rouge, LA, United States","Baton Rouge, LA",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 105,2015,5,86,Canadian Swing Championships,auto,Montreal,,Canada,"Montreal, Canada","Montreal, Canada",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
-175,2015,5,243,French Open West Coast Swing,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
+175,2015,5,109,French Open West Coast Swing,manual,Paris,,France,"Paris, France","Paris, France",2026-09-08 21:11:40.017407+00,2026-09-08 21:27:33.639462+00
 20,2015,5,5,FreZno Dance Classic,auto,Fresno,California,United States,"Fresno, CA, United States","Fresno, CA",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 206,2015,5,110,Hungarian Open,auto,Budapest,,Hungary,"Budapest, Hungary","Budapest, Hungary",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 219,2015,5,125,KIWI Fest,auto,Kiev,,Ukraine,"Kiev, Ukraine","Kiev, Ukraine",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
@@ -1467,7 +1467,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 222,2014,6,186,Baltic Swing,auto,Gdańsk,,Poland,"Gdańsk, Poland","Gdańsk, Poland",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 109,2014,6,29,Colorado Country Classic,auto,Denver,Colorado,United States,"Denver, CO, United States","Denver, CO",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 207,2014,6,133,Dance N Play,auto,Bend,Oregon,United States,"Bend, OR, United States","Bend, OR",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
-175,2014,6,243,French Open West Coast Swing,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
+175,2014,6,109,French Open West Coast Swing,manual,Paris,,France,"Paris, France","Paris, France",2026-09-08 21:11:40.017407+00,2026-09-08 21:27:33.639462+00
 25,2014,6,23,J&J O'Rama,auto,Anaheim,California,United States,"Anaheim, CA, United States","Anaheim, CA",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 96,2014,6,41,Liberty Swing Dance Championships,auto,New Brunswick,New Jersey,United States,"New Brunswick, NJ, United States","New Brunswick, NJ",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 76,2014,6,51,Michigan Dance Classic,auto,Detroit,Michigan,United States,"Detroit, MI, United States","Detroit, MI",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
@@ -1586,7 +1586,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 117,2013,6,82,Orange Blossom Dance Festival,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 105,2013,5,86,Canadian Swing Championships,auto,Montreal,,Canada,"Montreal, Canada","Montreal, Canada",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 163,2013,5,21,DFW Pro Am Jam,auto,Dallas,Texas,United States,"Dallas, TX, United States","Dallas, TX",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
-175,2013,5,243,French Open West Coast Swing,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
+175,2013,5,109,French Open West Coast Swing,manual,Paris,,France,"Paris, France","Paris, France",2026-09-08 21:11:40.017407+00,2026-09-08 21:27:33.639462+00
 20,2013,5,5,FreZno Dance Classic,auto,Fresno,California,United States,"Fresno, CA, United States","Fresno, CA",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 205,2013,5,88,SOswing,auto,Ashland,Oregon,United States,"Ashland, OR, United States","Ashland, OR",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 204,2013,5,199,Spring Swing,auto,Stockholm,,Sweden,"Stockholm, Sweden","Stockholm, Sweden",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
@@ -1686,7 +1686,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 117,2012,6,82,Orange Blossom Dance Festival,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 105,2012,5,86,Canadian Swing Championships,auto,Montreal,,Canada,"Montreal, Canada","Montreal, Canada",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 163,2012,5,21,DFW Pro Am Jam,auto,Dallas,Texas,United States,"Dallas, TX, United States","Dallas, TX",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
-175,2012,5,243,French Open West Coast Swing,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
+175,2012,5,109,French Open West Coast Swing,manual,Paris,,France,"Paris, France","Paris, France",2026-09-08 21:11:40.017407+00,2026-09-08 21:27:33.639462+00
 20,2012,5,5,FreZno Dance Classic,auto,Fresno,California,United States,"Fresno, CA, United States","Fresno, CA",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 162,2012,5,40,Swingapalooza,auto,Baton Rouge,Louisiana,United States,"Baton Rouge, LA, United States","Baton Rouge, LA",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 61,2012,5,10,SwingDiego,auto,San Diego,California,United States,"San Diego, CA, United States","San Diego, CA",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
@@ -1768,7 +1768,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 84,2011,7,61,Wisconsin Dance Challenge/Midwest Area Swing Dance Challenge,auto,Green Bay,Wisconsin,United States,"Green Bay, WI, United States","Green Bay, WI",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 73,2011,7,14,World Swing Dance Championships,auto,San Bernardino,California,United States,"San Bernardino, CA, United States","San Bernardino, CA",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 109,2011,6,29,Colorado Country Classic,auto,Denver,Colorado,United States,"Denver, CO, United States","Denver, CO",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
-175,2011,6,243,French Open West Coast Swing,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
+175,2011,6,109,French Open West Coast Swing,manual,Paris,,France,"Paris, France","Paris, France",2026-09-08 21:11:40.017407+00,2026-09-08 21:27:33.639462+00
 25,2011,6,23,J&J O'Rama,auto,Anaheim,California,United States,"Anaheim, CA, United States","Anaheim, CA",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 96,2011,6,41,Liberty Swing Dance Championships,auto,New Brunswick,New Jersey,United States,"New Brunswick, NJ, United States","New Brunswick, NJ",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
 76,2011,6,51,Michigan Dance Classic,auto,Detroit,Michigan,United States,"Detroit, MI, United States","Detroit, MI",2026-09-08 21:11:40.017407+00,2026-09-08 21:11:40.017407+00
