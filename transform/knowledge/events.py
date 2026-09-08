@@ -40,6 +40,10 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     # Shared São Paulo (243) wrongly applied to Budapest registry events.
     'BudaFest Open WCS Championships': 'Budapest, Hungary',
     'Westie Spring Thing': 'Budapest, Hungary',
+    # Shared São Paulo (243) wrongly applied to French Open (Paris).
+    'French Open West Coast Swing': 'Paris, France',
+    # Shared St. Petersburg (222) wrongly applied to Swing in Bloom (Ottawa).
+    'Swing in Bloom': 'Ottawa, Canada',
     # Catalog upcoming + 2026 schedule Jeju; results stuck on shared Brno (266).
     # Flat override (not year-aware): historical Korean cities may differ, but Brno is wrong.
     'Korea Westival': 'Jeju, Republic of Korea',
