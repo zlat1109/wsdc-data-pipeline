@@ -93,6 +93,33 @@ def location_lookup_key_from_text(raw: str) -> str:
     return formatted
 
 
+def city_country_fallback_key(raw: str) -> str:
+    """Lookup key with the region dropped for 3-part non-US strings.
+
+    "Helsinki, Uusimaa, Finland" → "helsinki, finland". Returns "" for US rows
+    (state is part of the canonical key there) and for 1–2 part strings.
+    """
+    raw = _canonical_location_raw(raw)
+    parts = [p.strip() for p in raw.split(",") if p.strip()]
+    if len(parts) < 3:
+        return ""
+    country = standardize_country(parts[-1]) or parts[-1]
+    if country in {"United States", "USA", "US"}:
+        return ""
+    return location_lookup_key_from_text(f"{parts[0]}, {country}")
+
+
+def retired_location_ids() -> frozenset[int]:
+    """location_ids that were merged away and must never be minted again."""
+    out: set[int] = set()
+    for key in LOCATION_ID_MERGE_MAP:
+        try:
+            out.add(int(str(key).strip()))
+        except ValueError:
+            continue
+    return frozenset(out)
+
+
 def location_lookup_key_from_row(row: pd.Series) -> str:
     """Canonical lookup key for a location_info row."""
     city = _norm(row.get("event_city"))
@@ -231,6 +258,19 @@ def resolve_result_location_ids(
     max_from_loc = int(existing_ids.max()) if existing_ids.notna().any() else 0
     max_from_res = int(result_ids.max()) if result_ids.notna().any() else 0
     next_id = max(max_from_loc, max_from_res, 0) + 1
+    # Retired ids (LOCATION_ID_MERGE_MAP keys) must never be re-minted: the map
+    # is applied later in preprocess and would silently remap a fresh city onto
+    # the merge target (398 → São Paulo, 401 → St. Petersburg, 412 → Brno …).
+    # This was the real source of every "shared wrong location_id" incident.
+    reserved_ids = retired_location_ids()
+
+    def _alloc_id() -> str:
+        nonlocal next_id
+        while next_id in reserved_ids:
+            next_id += 1
+        new_id = str(next_id)
+        next_id += 1
+        return new_id
 
     loc_raw = results_df["event_location"].map(_norm)
     cur_id = results_df["location_id"].map(_norm)
@@ -270,8 +310,14 @@ def resolve_result_location_ids(
         if raw_lower in lookup:
             resolved.at[idx] = lookup[raw_lower]
             continue
-        new_id = str(next_id)
-        next_id += 1
+        # WSDC now emits "City, Region, Country" (e.g. "Incheon, Incheon, South
+        # Korea"); the registry stores "Incheon, Republic of Korea". Fall back to a
+        # city+country key for non-US strings before inventing a new row.
+        fallback_key = city_country_fallback_key(raw)
+        if fallback_key and fallback_key in lookup:
+            resolved.at[idx] = lookup[fallback_key]
+            continue
+        new_id = _alloc_id()
         logger.debug("resolve_result_location_ids: new location_id=%s for %r", new_id, raw)
         if key:
             lookup[key] = new_id
