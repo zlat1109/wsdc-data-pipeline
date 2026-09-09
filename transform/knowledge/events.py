@@ -44,6 +44,12 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'French Open West Coast Swing': 'Paris, France',
     # Shared St. Petersburg (222) wrongly applied to Swing in Bloom (Ottawa).
     'Swing in Bloom': 'Ottawa, Canada',
+    # Shared Brno (266 / Swing Fiction) wrongly applied to Finnfest (Helsinki).
+    'Finnfest': 'Helsinki, Finland',
+    # Shared St. Petersburg (222) wrongly applied to Neverland Swing (Amsterdam).
+    'Neverland Swing': 'Amsterdam, Netherlands',
+    # Shared São Paulo (243) wrongly applied to Korean Open (Incheon).
+    'Korean Open WCS Championships': 'Incheon, Republic of Korea',
     # Catalog upcoming + 2026 schedule Jeju; results stuck on shared Brno (266).
     # Flat override (not year-aware): historical Korean cities may differ, but Brno is wrong.
     'Korea Westival': 'Jeju, Republic of Korea',

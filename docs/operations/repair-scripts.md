@@ -72,7 +72,7 @@ fixes). `export.py` does this automatically.
 | `close_parse_runs.py` | Close stuck `running` parse_runs | Yes |
 | `apply_event_name_location_overrides_csv.py` | Remap local export CSV `location_id` from `EVENT_NAME_LOCATION_OVERRIDES` | No (CSV only) |
 | `audit_event_location_mismatches.py` | Find shared wrong location_id / calendar mismatches | No |
-| `repair_location_poison_aug2026.py` | One-off remap of shared-wrong `location_id` on known series (NZ, Philly, Montreal, DCSX, Nordic, BudaFest, Westie Spring, French Open, Swing in Bloom) | Yes |
+| `repair_location_poison_aug2026.py` | One-off remap of shared-wrong `location_id` on known series (NZ, Philly, Montreal, DCSX, Nordic, BudaFest, Westie Spring, French Open, Swing in Bloom, Finnfest, Neverland, Korean Open) | Yes |
 
 ## repair_location_poison_aug2026.py
 
