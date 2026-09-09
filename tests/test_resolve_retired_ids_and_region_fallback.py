@@ -8,7 +8,10 @@ that id through a *retired* merge-map key (398 → 243, 401 → 222, 412 → 266
 
 from __future__ import annotations
 
+from pathlib import Path
+
 import pandas as pd
+import pytest
 
 from transform.geography.resolve import (
     LOCATION_COLUMNS,
@@ -18,7 +21,9 @@ from transform.geography.resolve import (
     resolve_result_location_ids,
     retired_location_ids,
 )
-from transform.knowledge.locations import LOCATION_ID_MERGE_MAP
+from transform.knowledge.locations import LOCATION_ID_CORRECTIONS, LOCATION_ID_MERGE_MAP
+
+REGISTRY_CSV = Path(__file__).resolve().parents[1] / "data" / "location_info.csv"
 
 
 def _loc(location_id: str, city: str, country: str, state: str = "") -> dict[str, str]:
@@ -48,8 +53,32 @@ def _registry_below_retired_ids() -> pd.DataFrame:
     return pd.DataFrame(rows).reindex(columns=LOCATION_COLUMNS, fill_value="")
 
 
-def test_retired_ids_cover_every_merge_map_key():
-    assert retired_location_ids() == frozenset(int(k) for k in LOCATION_ID_MERGE_MAP)
+def test_retired_ids_cover_merge_map_and_corrections_keys():
+    expected = {int(k) for k in LOCATION_ID_MERGE_MAP} | {int(k) for k in LOCATION_ID_CORRECTIONS}
+    assert retired_location_ids() == frozenset(expected)
+
+
+@pytest.mark.skipif(not REGISTRY_CSV.exists(), reason="committed registry not available")
+def test_every_corrections_key_exists_in_committed_registry():
+    """A CORRECTIONS key without a registry row is a dangling id-keyed patch.
+
+    If such a row is ever merged/deduped away, the patch must be deleted (or the id
+    added to LOCATION_ID_MERGE_MAP) — otherwise export.py would paint a future
+    city with the old coordinates.
+    """
+    registry = pd.read_csv(REGISTRY_CSV, dtype=str, usecols=["location_id"])
+    present = {int(v) for v in registry["location_id"].dropna()}
+    dangling = sorted(int(k) for k in LOCATION_ID_CORRECTIONS if int(k) not in present)
+    assert not dangling, f"LOCATION_ID_CORRECTIONS keys missing from location_info.csv: {dangling}"
+
+
+@pytest.mark.skipif(not REGISTRY_CSV.exists(), reason="committed registry not available")
+def test_no_merge_map_key_survives_in_committed_registry():
+    """Merge keys are retired ids; a live row on one means the merge never ran."""
+    registry = pd.read_csv(REGISTRY_CSV, dtype=str, usecols=["location_id"])
+    present = {str(v).strip() for v in registry["location_id"].dropna()}
+    alive = sorted(k for k in LOCATION_ID_MERGE_MAP if k in present)
+    assert not alive, f"LOCATION_ID_MERGE_MAP keys still present in location_info.csv: {alive}"
 
 
 def test_fresh_location_id_never_reuses_a_retired_merge_key():
@@ -78,8 +107,12 @@ def test_consolidate_after_resolve_cannot_hijack_a_fresh_city():
     final, _, _ = dedupe_location_info(merged, merged_locs)
 
     lid = str(final.loc[0, "location_id"])
-    assert lid not in set(LOCATION_ID_MERGE_MAP.values()), f"fresh city hijacked onto {lid}"
-    assert lid not in LOCATION_ID_MERGE_MAP
+    first_retired = min(retired_location_ids())
+    expected = first_retired + 1
+    while expected in retired_location_ids():
+        expected += 1
+    assert lid == str(expected), f"fresh city expected id {expected}, got {lid} (hijacked?)"
+    assert lid not in set(LOCATION_ID_MERGE_MAP.values())
 
 
 def test_three_part_wsdc_string_matches_two_part_registry_row():
