@@ -50,8 +50,8 @@ event_id,canonical_name,url,registry_status,typical_city,typical_state,typical_c
 184,BudaFest Open WCS Championships,http://wcs-budafest.com/,Registry Event,Budapest,,Hungary,"Budapest, Hungary",2012,2026,14,1779,1151,2027-01-05,"Budapest, Budapest, Hungary",2026-09-09 18:16:11.885028+00
 414,C.A.S.H. Bash,,inactive,,,,,,,0,0,0,,,2026-09-09 18:16:11.885028+00
 116,Calgary Dance Stampede,http://www.calgarydancestampede.com/,Registry Event,Calgary,,Canada,"Calgary, Canada",2006,2026,8,258,177,2027-04-29,"Calgary, AB, Canada",2026-09-09 18:16:11.885028+00
-324,Calgary Town Open,https://ctodance.ca/,Registry Event,Calgary,,Canada,"Calgary, Canada",2023,2025,3,230,162,2026-09-24,"Calgary, Alberta, Canada",2026-09-09 18:16:11.885028+00
 415,Calgary Town Open,,inactive,,,,,,,0,0,0,,,2026-09-09 18:16:11.885028+00
+324,Calgary Town Open,https://ctodance.ca/,Registry Event,Calgary,,Canada,"Calgary, Canada",2023,2025,3,230,162,2026-09-24,"Calgary, Alberta, Canada",2026-09-09 18:16:11.885028+00
 11,California State Championships,,,Buena Park,California,United States,"Buena Park, CA",1997,1999,3,134,107,,,2026-09-09 18:16:11.885028+00
 105,Canadian Swing Championships,http://www.canadianswingchampionships.com,,Montreal,,Canada,"Montreal, Canada",2005,2026,18,638,399,,,2026-09-09 18:16:11.885028+00
 416,Canadian Swing Championships (CSC),,inactive,,,,,,,0,0,0,,,2026-09-09 18:16:11.885028+00
@@ -105,7 +105,7 @@ event_id,canonical_name,url,registry_status,typical_city,typical_state,typical_c
 294,European Swing Challenge,https://www.jiveaddiction.com/,,Windsor,,United Kingdom,"Windsor, United Kingdom",2018,2019,2,79,69,,,2026-09-09 18:16:11.885028+00
 296,Fall Fall in Swing,https://www.wcskorea.com/ffs,,Seoul,,Republic of Korea,"Seoul, Republic of Korea",2018,2018,1,37,37,,,2026-09-09 18:16:11.885028+00
 371,Festival City Swing,https://www.fcswing.co.uk/,Registry Event,Newcastle,,United Kingdom,"Newcastle, United Kingdom",2025,2026,2,127,83,2027-06-03,"Newcastle, United Kingdom",2026-09-09 18:16:11.885028+00
-254,Finnfest,http://www.finnfest.fi/,Registry Event,Brno,,Czech Republic,"Brno, Czech Republic",2015,2025,9,725,451,2026-09-18,"Helsinki, Uusimaa, Finalnd",2026-09-09 18:16:11.885028+00
+254,Finnfest,http://www.finnfest.fi/,Registry Event,Helsinki,,Finland,"Helsinki, Finland",2015,2025,9,725,451,2026-09-18,"Helsinki, Uusimaa, Finalnd",2026-09-09 18:16:11.885028+00
 427,Floor Play Swing Vacation,,inactive,,,,,,,0,0,0,,,2026-09-09 18:16:11.885028+00
 428,FloorPlay New Years Swing Vacation,,inactive,,,,,,,0,0,0,,,2026-09-09 18:16:11.885028+00
 42,Floorplay Swing Vacation,http://www.floorplayswingvacation.com/,Registry Event,Orlando,Florida,United States,"Orlando, FL",2001,2026,20,1508,810,2026-12-30,"Orlando, Florida, United States",2026-09-09 18:16:11.885028+00
@@ -127,8 +127,8 @@ event_id,canonical_name,url,registry_status,typical_city,typical_state,typical_c
 435,Global Grand Prix - West Coast Swing,,inactive,,,,,,,0,0,0,,,2026-09-09 18:16:11.885028+00
 436,Global Grand Prix - West Coast Swing Championships,,inactive,,,,,,,0,0,0,,,2026-09-09 18:16:11.885028+00
 342,Global Grand Prix - West Coast Swing Reunion,https://www.globalgrandprixwcs.com/,Trial Event,Toulouse,,France,"Toulouse, France",2023,2025,3,363,260,2026-09-18,"Paris, N/A, France",2026-09-09 18:16:11.885028+00
-367,Go West SwingFest,,,Perth,,Australia,"Perth, Australia",2024,2025,2,66,45,,,2026-09-09 18:16:11.885028+00
 306,Go West SwingFest,http://www.gowestswingfest.com,,Fremantle,,Australia,"Fremantle, Australia",2019,2019,1,32,31,,,2026-09-09 18:16:11.885028+00
+367,Go West SwingFest,,,Perth,,Australia,"Perth, Australia",2024,2025,2,66,45,,,2026-09-09 18:16:11.885028+00
 21,Golden State Classic,,,Buena Park,California,United States,"Buena Park, CA",1996,1998,3,110,87,,,2026-09-09 18:16:11.885028+00
 384,Grand Party Sofia (GPS),https://wcs-gps.com/,Registry Event,Sofia,,Bulgaria,"Sofia, Bulgaria",2025,2026,2,178,139,2027-08-12,"Sofia, Sofia, Bulgaria",2026-09-09 18:16:11.885028+00
 97,Grand Prix of Swing,,,Kansas City,Missouri,United States,"Kansas City, MO",2004,2011,8,407,252,,,2026-09-09 18:16:11.885028+00
@@ -156,7 +156,7 @@ event_id,canonical_name,url,registry_status,typical_city,typical_state,typical_c
 219,KIWI Fest,,,Kiev,,Ukraine,"Kiev, Ukraine",2014,2019,6,377,288,,,2026-09-09 18:16:11.885028+00
 268,Korea Westival,http://koreawestival.com,,Jeju,,Republic of Korea,"Jeju, Republic of Korea",2016,2026,8,482,246,,,2026-09-09 18:16:11.885028+00
 438,Korean Open Swing Dance Championships,,inactive,,,,,,,0,0,0,,,2026-09-09 18:16:11.885028+00
-210,Korean Open WCS Championships,https://www.kopenwcs.com/,Registry Event,São Paulo,,Brazil,"São Paulo, Brazil",2013,2026,5,499,349,2027-04-08,"Incheon, Incheon, Republic of Korea",2026-09-09 18:16:11.885028+00
+210,Korean Open WCS Championships,https://www.kopenwcs.com/,Registry Event,Incheon,,Republic of Korea,"Incheon, Republic of Korea",2013,2026,5,499,349,2027-04-08,"Incheon, Incheon, Republic of Korea",2026-09-09 18:16:11.885028+00
 439,Korean Open WCS Championsips,,inactive,,,,,,,0,0,0,,,2026-09-09 18:16:11.885028+00
 27,Labor Day Swing Dance Festival,,,Buena Park,California,United States,"Buena Park, CA",1994,1997,4,141,109,,,2026-09-09 18:16:11.885028+00
 28,Las Vegas Swing Expo,,,Las Vegas,Nevada,United States,"Las Vegas, NV",1992,2004,10,211,136,,,2026-09-09 18:16:11.885028+00
@@ -201,7 +201,7 @@ event_id,canonical_name,url,registry_status,typical_city,typical_state,typical_c
 81,Nashville Swing & Shag Dance Classic,,,Nashville,Tennessee,United States,"Nashville, TN",2002,2006,5,382,274,,,2026-09-09 18:16:11.885028+00
 32,National Jitterbug Championships,,,Long Beach,California,United States,"Long Beach, CA",2001,2007,5,166,116,,,2026-09-09 18:16:11.885028+00
 33,National New Year,,,Dallas,Texas,United States,"Dallas, TX",1994,1995,2,21,19,,,2026-09-09 18:16:11.885028+00
-261,Neverland Swing,http://www.neverlandswing.com/,Registry Event,St. Petersburg,,Russia,"St. Petersburg, Russia",2016,2026,9,623,412,2027-06-24,"Amsterdam, Noord Holland, Nederland",2026-09-09 18:16:11.885028+00
+261,Neverland Swing,http://www.neverlandswing.com/,Registry Event,Amsterdam,,Netherlands,"Amsterdam, Netherlands",2016,2026,9,623,412,2027-06-24,"Amsterdam, Noord Holland, Nederland",2026-09-09 18:16:11.885028+00
 444,NeverlandSwing,,merged,,,,,,,0,0,0,,,2026-09-09 18:16:11.885028+00
 157,New England Dance Festival,http://www.nedancefestival.com,,Newton,Massachusetts,United States,"Newton (Boston), MA, United States",2009,2026,16,764,456,,,2026-09-09 18:16:11.885028+00
 34,New England Swing Dance Championships,,,Boston,Massachusetts,United States,"Boston, MA",1998,2001,2,120,93,,,2026-09-09 18:16:11.885028+00
@@ -301,8 +301,8 @@ event_id,canonical_name,url,registry_status,typical_city,typical_state,typical_c
 228,Summer Swing Classic,,,St. Petersburg,Florida,United States,"St. Petersburg, FL",2014,2015,2,132,108,,,2026-09-09 18:16:11.885028+00
 54,Summer Swing Jam,,,Atlanta,Georgia,United States,"Atlanta, GA, United States",2001,2002,2,54,43,,,2026-09-09 18:16:11.885028+00
 55,Sundance Labor Day Swing Dance Festival,,,Long Beach,California,United States,"Long Beach, CA",1998,1998,1,62,62,,,2026-09-09 18:16:11.885028+00
-191,Sunny Side Dance Camp,,,Crimea,,Ukraine,"Crimea, Ukraine",2012,2013,2,84,69,,,2026-09-09 18:16:11.885028+00
 230,Sunny Side Dance Camp,,,Torrevieja,,Spain,"Torrevieja, Spain",2014,2016,3,116,101,,,2026-09-09 18:16:11.885028+00
+191,Sunny Side Dance Camp,,,Crimea,,Ukraine,"Crimea, Ukraine",2012,2013,2,84,69,,,2026-09-09 18:16:11.885028+00
 151,Sunshine State Dance Challenge,,,Fort Lauderdale,Florida,United States,"Fort Lauderdale, FL",2008,2011,4,87,73,,,2026-09-09 18:16:11.885028+00
 460,Swedish Swing Summer Camp,,inactive,,,,,,,0,0,0,,,2026-09-09 18:16:11.885028+00
 185,Sweetheart Swing Classic,,,Tampa,Florida,United States,"Tampa, FL",2012,2018,7,481,300,,,2026-09-09 18:16:11.885028+00

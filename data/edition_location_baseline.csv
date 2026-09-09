@@ -46,7 +46,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 25,2026,6,23,J&J O'Rama,auto,Anaheim,California,United States,"Anaheim, CA, United States","Anaheim, CA",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 96,2026,6,41,Liberty Swing Dance Championships,auto,New Brunswick,New Jersey,United States,"New Brunswick, NJ, United States","New Brunswick, NJ",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 405,2026,6,132,Milan Swing Vibes,auto,Milan,,Italy,"Milan, Italy","Milan, Italy",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
-261,2026,6,222,Neverland Swing,auto,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
+261,2026,6,191,Neverland Swing,manual,Amsterdam,,Netherlands,"Amsterdam, Netherlands","Amsterdam, Netherlands",2026-09-09 18:13:30.976198+00,2026-09-09 18:30:27.049975+00
 117,2026,6,82,Orange Blossom Dance Festival,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 331,2026,6,266,Swing Fiction,auto,Brno,,Czech Republic,"Brno, Czech Republic","Brno, Czech Republic",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 162,2026,6,40,Swingapalooza,auto,Baton Rouge,Louisiana,United States,"Baton Rouge, LA, United States","Baton Rouge, LA",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
@@ -73,7 +73,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 203,2026,4,166,Detonation Dance,auto,Manchester,,United Kingdom,"Manchester, United Kingdom","Manchester, United Kingdom",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 18,2026,4,30,Easter Swing,auto,Seattle,Washington,United States,"Seattle, WA, United States","Seattle, WA",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 345,2026,4,255,HONEY FEST,auto,Ufa,,Russia,"Ufa, Russia","Ufa, Russia",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
-210,2026,4,243,Korean Open WCS Championships,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
+210,2026,4,172,Korean Open WCS Championships,manual,Incheon,,Republic of Korea,"Incheon, Republic of Korea","Incheon, Republic of Korea",2026-09-09 18:13:30.976198+00,2026-09-09 18:30:27.049975+00
 352,2026,4,256,Slovenian Open,auto,Ljubljana,,Slovenia,"Ljubljana, Slovenia","Ljubljana, Slovenia",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 393,2026,4,179,Swing in Bloom,auto,Ottawa,,Canada,"Ottawa, Canada","Ottawa, Canada",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 304,2026,4,171,Swing In Capital,auto,Rome,,Italy,"Rome, Italy","Rome, Italy",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
@@ -167,7 +167,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 233,2025,9,129,Bavarian Open,auto,Munich,,Germany,"Munich, Germany","Munich, Germany",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 167,2025,9,117,Best of the Best WCS,auto,Sydney,,Australia,"Sydney, Australia","Sydney, Australia",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 135,2025,9,3,Desert City Swing,auto,Phoenix,Arizona,United States,"Phoenix, AZ, United States","Phoenix, AZ",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
-254,2025,9,266,Finnfest,auto,Brno,,Czech Republic,"Brno, Czech Republic","Brno, Czech Republic",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
+254,2025,9,204,Finnfest,manual,Helsinki,,Finland,"Helsinki, Finland","Helsinki, Finland",2026-09-09 18:13:30.976198+00,2026-09-09 18:30:27.049975+00
 268,2025,9,213,Korea Westival,auto,Jeju,,Republic of Korea,"Jeju, Republic of Korea","Jeju, Republic of Korea",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 131,2025,9,49,Meet Me In St Louis,auto,St. Louis,Missouri,United States,"St. Louis, MO, United States","St. Louis, MO",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 165,2025,9,107,Midland Swing Open,auto,London,,United Kingdom,"London, United Kingdom","London, United Kingdom",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
@@ -225,7 +225,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 25,2025,6,23,J&J O'Rama,auto,Anaheim,California,United States,"Anaheim, CA, United States","Anaheim, CA",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 96,2025,6,41,Liberty Swing Dance Championships,auto,New Brunswick,New Jersey,United States,"New Brunswick, NJ, United States","New Brunswick, NJ",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 76,2025,6,51,Michigan Dance Classic,auto,Detroit,Michigan,United States,"Detroit, MI, United States","Detroit, MI",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
-261,2025,6,222,Neverland Swing,auto,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
+261,2025,6,191,Neverland Swing,manual,Amsterdam,,Netherlands,"Amsterdam, Netherlands","Amsterdam, Netherlands",2026-09-09 18:13:30.976198+00,2026-09-09 18:30:27.049975+00
 368,2025,6,280,Next Level Swing,auto,Gothenburg,,Sweden,"Gothenburg, Sweden","Gothenburg, Sweden",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 117,2025,6,82,Orange Blossom Dance Festival,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 331,2025,6,266,Swing Fiction,auto,Brno,,Czech Republic,"Brno, Czech Republic","Brno, Czech Republic",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
@@ -250,7 +250,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 203,2025,4,166,Detonation Dance,auto,Manchester,,United Kingdom,"Manchester, United Kingdom","Manchester, United Kingdom",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 18,2025,4,30,Easter Swing,auto,Seattle,Washington,United States,"Seattle, WA, United States","Seattle, WA",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 345,2025,4,255,HONEY FEST,auto,Ufa,,Russia,"Ufa, Russia","Ufa, Russia",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
-210,2025,4,243,Korean Open WCS Championships,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
+210,2025,4,172,Korean Open WCS Championships,manual,Incheon,,Republic of Korea,"Incheon, Republic of Korea","Incheon, Republic of Korea",2026-09-09 18:13:30.976198+00,2026-09-09 18:30:27.049975+00
 352,2025,4,256,Slovenian Open,auto,Ljubljana,,Slovenia,"Ljubljana, Slovenia","Ljubljana, Slovenia",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 370,2025,4,189,SwingIN Festival,auto,Bonn,,Germany,"Bonn, Germany","Bonn, Germany",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 259,2025,4,82,Swingover,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
@@ -332,7 +332,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 233,2024,9,129,Bavarian Open,auto,Munich,,Germany,"Munich, Germany","Munich, Germany",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 167,2024,9,117,Best of the Best WCS,auto,Sydney,,Australia,"Sydney, Australia","Sydney, Australia",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 135,2024,9,3,Desert City Swing,auto,Phoenix,Arizona,United States,"Phoenix, AZ, United States","Phoenix, AZ",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
-254,2024,9,266,Finnfest,auto,Brno,,Czech Republic,"Brno, Czech Republic","Brno, Czech Republic",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
+254,2024,9,204,Finnfest,manual,Helsinki,,Finland,"Helsinki, Finland","Helsinki, Finland",2026-09-09 18:13:30.976198+00,2026-09-09 18:30:27.049975+00
 268,2024,9,213,Korea Westival,auto,Jeju,,Republic of Korea,"Jeju, Republic of Korea","Jeju, Republic of Korea",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 131,2024,9,49,Meet Me In St Louis,auto,St. Louis,Missouri,United States,"St. Louis, MO, United States","St. Louis, MO",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 165,2024,9,107,Midland Swing Open,auto,London,,United Kingdom,"London, United Kingdom","London, United Kingdom",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
@@ -361,7 +361,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 148,2024,7,57,Dance Mardi Gras,auto,New Orleans,Louisiana,United States,"New Orleans, LA, United States","New Orleans, LA",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 149,2024,7,55,Florida Dance Magic,auto,Fort Lauderdale,Florida,United States,"Fort Lauderdale, FL, United States","Fort Lauderdale, FL",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 224,2024,7,48,Midwest Westie Fest,auto,Overland Park,Kansas,United States,"Overland Park, KS, United States","Overland Park, KS",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
-261,2024,7,222,Neverland Swing,auto,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
+261,2024,7,191,Neverland Swing,manual,Amsterdam,,Netherlands,"Amsterdam, Netherlands","Amsterdam, Netherlands",2026-09-09 18:13:30.976198+00,2026-09-09 18:30:27.049975+00
 303,2024,7,169,Odyssey West Coast Swing,auto,Gold Coast,,Australia,"Gold Coast, Australia","Gold Coast, Australia",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 263,2024,7,203,Riga Summer Swing,auto,Riga,,Latvia,"Riga, Latvia","Riga, Latvia",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 256,2024,7,215,Rock the Barn,auto,Umeå,,Sweden,"Umeå, Sweden","Umeå, Sweden",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
@@ -395,7 +395,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 275,2024,4,227,Dutch Open West Coast Swing,auto,Venray,,Netherlands,"Venray, Netherlands","Venray, Netherlands",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 18,2024,4,30,Easter Swing,auto,Seattle,Washington,United States,"Seattle, WA, United States","Seattle, WA",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 345,2024,4,255,HONEY FEST,auto,Ufa,,Russia,"Ufa, Russia","Ufa, Russia",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
-210,2024,4,243,Korean Open WCS Championships,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
+210,2024,4,172,Korean Open WCS Championships,manual,Incheon,,Republic of Korea,"Incheon, Republic of Korea","Incheon, Republic of Korea",2026-09-09 18:13:30.976198+00,2026-09-09 18:30:27.049975+00
 253,2024,4,199,Nordic WCS Championships,auto,Stockholm,,Sweden,"Stockholm, Sweden","Stockholm, Sweden",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 259,2024,4,82,Swingover,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 293,2024,4,190,Westy Nantes,auto,Nantes,,France,"Nantes, France","Nantes, France",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
@@ -469,7 +469,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 167,2023,9,117,Best of the Best WCS,auto,Sydney,,Australia,"Sydney, Australia","Sydney, Australia",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 10,2023,9,74,Bridgetown Swing Boogie,auto,Vancouver,Washington,United States,"Vancouver, WA, United States","Vancouver, WA",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 135,2023,9,3,Desert City Swing,auto,Phoenix,Arizona,United States,"Phoenix, AZ, United States","Phoenix, AZ",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
-254,2023,9,266,Finnfest,auto,Brno,,Czech Republic,"Brno, Czech Republic","Brno, Czech Republic",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
+254,2023,9,204,Finnfest,manual,Helsinki,,Finland,"Helsinki, Finland","Helsinki, Finland",2026-09-09 18:13:30.976198+00,2026-09-09 18:30:27.049975+00
 268,2023,9,213,Korea Westival,auto,Jeju,,Republic of Korea,"Jeju, Republic of Korea","Jeju, Republic of Korea",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 131,2023,9,49,Meet Me In St Louis,auto,St. Louis,Missouri,United States,"St. Louis, MO, United States","St. Louis, MO",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 165,2023,9,107,Midland Swing Open,auto,London,,United Kingdom,"London, United Kingdom","London, United Kingdom",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
@@ -496,7 +496,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 255,2023,7,138,Indy Dance Explosion,auto,Fort Wayne,Indiana,United States,"Fort Wayne, IN, United States","Fort Wayne, IN",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 96,2023,7,41,Liberty Swing Dance Championships,auto,New Brunswick,New Jersey,United States,"New Brunswick, NJ, United States","New Brunswick, NJ",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 224,2023,7,48,Midwest Westie Fest,auto,Overland Park,Kansas,United States,"Overland Park, KS, United States","Overland Park, KS",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
-261,2023,7,222,Neverland Swing,auto,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
+261,2023,7,191,Neverland Swing,manual,Amsterdam,,Netherlands,"Amsterdam, Netherlands","Amsterdam, Netherlands",2026-09-09 18:13:30.976198+00,2026-09-09 18:30:27.049975+00
 303,2023,7,169,Odyssey West Coast Swing,auto,Gold Coast,,Australia,"Gold Coast, Australia","Gold Coast, Australia",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 256,2023,7,215,Rock the Barn,auto,Umeå,,Sweden,"Umeå, Sweden","Umeå, Sweden",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 280,2023,7,222,Saint Petersburg WCS Nights,auto,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
@@ -523,7 +523,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 187,2023,4,54,City of Angels WCS,auto,Burbank,California,United States,"Burbank, CA, United States","Burbank, CA",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 203,2023,4,166,Detonation Dance,auto,Manchester,,United Kingdom,"Manchester, United Kingdom","Manchester, United Kingdom",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 18,2023,4,30,Easter Swing,auto,Seattle,Washington,United States,"Seattle, WA, United States","Seattle, WA",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
-210,2023,4,243,Korean Open WCS Championships,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
+210,2023,4,172,Korean Open WCS Championships,manual,Incheon,,Republic of Korea,"Incheon, Republic of Korea","Incheon, Republic of Korea",2026-09-09 18:13:30.976198+00,2026-09-09 18:30:27.049975+00
 259,2023,4,82,Swingover,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 293,2023,4,190,Westy Nantes,auto,Nantes,,France,"Nantes, France","Nantes, France",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 197,2023,3,29,5280 Westival,auto,Denver,Colorado,United States,"Denver, CO, United States","Denver, CO",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
@@ -587,7 +587,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 167,2022,9,117,Best of the Best WCS,auto,Sydney,,Australia,"Sydney, Australia","Sydney, Australia",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 10,2022,9,74,Bridgetown Swing Boogie,auto,Vancouver,Washington,United States,"Vancouver, WA, United States","Vancouver, WA",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 135,2022,9,3,Desert City Swing,auto,Phoenix,Arizona,United States,"Phoenix, AZ, United States","Phoenix, AZ",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
-254,2022,9,266,Finnfest,auto,Brno,,Czech Republic,"Brno, Czech Republic","Brno, Czech Republic",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
+254,2022,9,204,Finnfest,manual,Helsinki,,Finland,"Helsinki, Finland","Helsinki, Finland",2026-09-09 18:13:30.976198+00,2026-09-09 18:30:27.049975+00
 131,2022,9,49,Meet Me In St Louis,auto,St. Louis,Missouri,United States,"St. Louis, MO, United States","St. Louis, MO",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 234,2022,9,66,Philly Swing Classic,auto,Wilmington,Delaware,United States,"Wilmington, DE, United States","Wilmington, DE",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 313,2022,9,156,Rolling Swing,auto,Lyon,,France,"Lyon, France","Lyon, France",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
@@ -608,7 +608,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 156,2022,7,140,Big Apple Dance Festival,auto,Morristown,New Jersey,United States,"Morristown, NJ, United States","Morristown, NJ",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 148,2022,7,57,Dance Mardi Gras,auto,New Orleans,Louisiana,United States,"New Orleans, LA, United States","New Orleans, LA",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 149,2022,7,55,Florida Dance Magic,auto,Fort Lauderdale,Florida,United States,"Fort Lauderdale, FL, United States","Fort Lauderdale, FL",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
-261,2022,7,222,Neverland Swing,auto,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
+261,2022,7,191,Neverland Swing,manual,Amsterdam,,Netherlands,"Amsterdam, Netherlands","Amsterdam, Netherlands",2026-09-09 18:13:30.976198+00,2026-09-09 18:30:27.049975+00
 280,2022,7,222,Saint Petersburg WCS Nights,auto,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 47,2022,7,29,Swingtime in the Rockies,auto,Denver,Colorado,United States,"Denver, CO, United States","Denver, CO",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 225,2022,7,21,Wild Wild Westie,auto,Dallas,Texas,United States,"Dallas, TX, United States","Dallas, TX",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
@@ -770,7 +770,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 109,2019,7,29,Colorado Country Classic,auto,Denver,Colorado,United States,"Denver, CO, United States","Denver, CO",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 149,2019,7,55,Florida Dance Magic,auto,Fort Lauderdale,Florida,United States,"Fort Lauderdale, FL, United States","Fort Lauderdale, FL",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 224,2019,7,48,Midwest Westie Fest,auto,Overland Park,Kansas,United States,"Overland Park, KS, United States","Overland Park, KS",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
-261,2019,7,222,Neverland Swing,auto,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
+261,2019,7,191,Neverland Swing,manual,Amsterdam,,Netherlands,"Amsterdam, Netherlands","Amsterdam, Netherlands",2026-09-09 18:13:30.976198+00,2026-09-09 18:30:27.049975+00
 303,2019,7,169,Odyssey West Coast Swing,auto,Gold Coast,,Australia,"Gold Coast, Australia","Gold Coast, Australia",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 44,2019,7,4,Portland Dance Festival,auto,Portland,Oregon,United States,"Portland, OR, United States","Portland, OR",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 256,2019,7,215,Rock the Barn,auto,Umeå,,Sweden,"Umeå, Sweden","Umeå, Sweden",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
@@ -782,7 +782,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 222,2019,6,186,Baltic Swing,auto,Gdańsk,,Poland,"Gdańsk, Poland","Gdańsk, Poland",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 220,2019,6,127,D-Town Swing,auto,Düsseldorf,,Germany,"Düsseldorf, Germany","Düsseldorf, Germany",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 207,2019,6,133,Dance N Play,auto,Bend,Oregon,United States,"Bend, OR, United States","Bend, OR",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
-254,2019,6,266,Finnfest,auto,Brno,,Czech Republic,"Brno, Czech Republic","Brno, Czech Republic",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
+254,2019,6,204,Finnfest,manual,Helsinki,,Finland,"Helsinki, Finland","Helsinki, Finland",2026-09-09 18:13:30.976198+00,2026-09-09 18:30:27.049975+00
 175,2019,6,109,French Open West Coast Swing,auto,Paris,,France,"Paris, France","Paris, France",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 255,2019,6,138,Indy Dance Explosion,auto,Fort Wayne,Indiana,United States,"Fort Wayne, IN, United States","Fort Wayne, IN",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 25,2019,6,23,J&J O'Rama,auto,Anaheim,California,United States,"Anaheim, CA, United States","Anaheim, CA",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
@@ -927,7 +927,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 226,2018,7,55,Ft. Lauderdale Swing & Shag Beach Bash,auto,Fort Lauderdale,Florida,United States,"Fort Lauderdale, FL, United States","Fort Lauderdale, FL",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 255,2018,7,138,Indy Dance Explosion,auto,Fort Wayne,Indiana,United States,"Fort Wayne, IN, United States","Fort Wayne, IN",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 96,2018,7,41,Liberty Swing Dance Championships,auto,New Brunswick,New Jersey,United States,"New Brunswick, NJ, United States","New Brunswick, NJ",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
-261,2018,7,222,Neverland Swing,auto,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
+261,2018,7,191,Neverland Swing,manual,Amsterdam,,Netherlands,"Amsterdam, Netherlands","Amsterdam, Netherlands",2026-09-09 18:13:30.976198+00,2026-09-09 18:30:27.049975+00
 303,2018,7,169,Odyssey West Coast Swing,auto,Gold Coast,,Australia,"Gold Coast, Australia","Gold Coast, Australia",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 44,2018,7,4,Portland Dance Festival,auto,Portland,Oregon,United States,"Portland, OR, United States","Portland, OR",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 256,2018,7,215,Rock the Barn,auto,Umeå,,Sweden,"Umeå, Sweden","Umeå, Sweden",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
@@ -939,7 +939,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 222,2018,6,186,Baltic Swing,auto,Gdańsk,,Poland,"Gdańsk, Poland","Gdańsk, Poland",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 220,2018,6,127,D-Town Swing,auto,Düsseldorf,,Germany,"Düsseldorf, Germany","Düsseldorf, Germany",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 207,2018,6,133,Dance N Play,auto,Bend,Oregon,United States,"Bend, OR, United States","Bend, OR",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
-254,2018,6,266,Finnfest,auto,Brno,,Czech Republic,"Brno, Czech Republic","Brno, Czech Republic",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
+254,2018,6,204,Finnfest,manual,Helsinki,,Finland,"Helsinki, Finland","Helsinki, Finland",2026-09-09 18:13:30.976198+00,2026-09-09 18:30:27.049975+00
 25,2018,6,23,J&J O'Rama,auto,Anaheim,California,United States,"Anaheim, CA, United States","Anaheim, CA",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 268,2018,6,213,Korea Westival,auto,Jeju,,Republic of Korea,"Jeju, Republic of Korea","Jeju, Republic of Korea",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 76,2018,6,51,Michigan Dance Classic,auto,Detroit,Michigan,United States,"Detroit, MI, United States","Detroit, MI",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
@@ -1070,7 +1070,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 226,2017,7,55,Ft. Lauderdale Swing & Shag Beach Bash,auto,Fort Lauderdale,Florida,United States,"Fort Lauderdale, FL, United States","Fort Lauderdale, FL",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 255,2017,7,138,Indy Dance Explosion,auto,Fort Wayne,Indiana,United States,"Fort Wayne, IN, United States","Fort Wayne, IN",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 96,2017,7,41,Liberty Swing Dance Championships,auto,New Brunswick,New Jersey,United States,"New Brunswick, NJ, United States","New Brunswick, NJ",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
-261,2017,7,222,Neverland Swing,auto,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
+261,2017,7,191,Neverland Swing,manual,Amsterdam,,Netherlands,"Amsterdam, Netherlands","Amsterdam, Netherlands",2026-09-09 18:13:30.976198+00,2026-09-09 18:30:27.049975+00
 179,2017,7,168,New Zealand Open Swing Dance Championships,auto,Auckland,,New Zealand,"Auckland, New Zealand","Auckland, New Zealand",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 51,2017,7,20,Palm Springs Summer Dance Classic,auto,Palm Springs,California,United States,"Palm Springs, CA, United States","Palm Springs, CA",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 44,2017,7,4,Portland Dance Festival,auto,Portland,Oregon,United States,"Portland, OR, United States","Portland, OR",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
@@ -1086,7 +1086,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 109,2017,6,29,Colorado Country Classic,auto,Denver,Colorado,United States,"Denver, CO, United States","Denver, CO",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 220,2017,6,127,D-Town Swing,auto,Düsseldorf,,Germany,"Düsseldorf, Germany","Düsseldorf, Germany",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 207,2017,6,133,Dance N Play,auto,Bend,Oregon,United States,"Bend, OR, United States","Bend, OR",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
-254,2017,6,266,Finnfest,auto,Brno,,Czech Republic,"Brno, Czech Republic","Brno, Czech Republic",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
+254,2017,6,204,Finnfest,manual,Helsinki,,Finland,"Helsinki, Finland","Helsinki, Finland",2026-09-09 18:13:30.976198+00,2026-09-09 18:30:27.049975+00
 25,2017,6,23,J&J O'Rama,auto,Anaheim,California,United States,"Anaheim, CA, United States","Anaheim, CA",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 283,2017,6,263,Kazan EL Fest,auto,Kazan,,Russia,"Kazan, Russia","Kazan, Russia",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 268,2017,6,213,Korea Westival,auto,Jeju,,Republic of Korea,"Jeju, Republic of Korea","Jeju, Republic of Korea",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
@@ -1222,11 +1222,11 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 109,2016,6,29,Colorado Country Classic,auto,Denver,Colorado,United States,"Denver, CO, United States","Denver, CO",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 220,2016,6,127,D-Town Swing,auto,Düsseldorf,,Germany,"Düsseldorf, Germany","Düsseldorf, Germany",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 207,2016,6,133,Dance N Play,auto,Bend,Oregon,United States,"Bend, OR, United States","Bend, OR",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
-254,2016,6,266,Finnfest,auto,Brno,,Czech Republic,"Brno, Czech Republic","Brno, Czech Republic",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
+254,2016,6,204,Finnfest,manual,Helsinki,,Finland,"Helsinki, Finland","Helsinki, Finland",2026-09-09 18:13:30.976198+00,2026-09-09 18:30:27.049975+00
 25,2016,6,23,J&J O'Rama,auto,Anaheim,California,United States,"Anaheim, CA, United States","Anaheim, CA",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 96,2016,6,41,Liberty Swing Dance Championships,auto,New Brunswick,New Jersey,United States,"New Brunswick, NJ, United States","New Brunswick, NJ",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 76,2016,6,51,Michigan Dance Classic,auto,Detroit,Michigan,United States,"Detroit, MI, United States","Detroit, MI",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
-261,2016,6,222,Neverland Swing,auto,St. Petersburg,,Russia,"St. Petersburg, Russia","St. Petersburg, Russia",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
+261,2016,6,191,Neverland Swing,manual,Amsterdam,,Netherlands,"Amsterdam, Netherlands","Amsterdam, Netherlands",2026-09-09 18:13:30.976198+00,2026-09-09 18:30:27.049975+00
 188,2016,6,117,NSW West Coast Swing Dance Championships,auto,Sydney,,Australia,"Sydney, Australia","Sydney, Australia",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 117,2016,6,82,Orange Blossom Dance Festival,auto,Orlando,Florida,United States,"Orlando, FL, United States","Orlando, FL",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 223,2016,6,223,Slingshot Swing,auto,Oslo,,Norway,"Oslo, Norway","Oslo, Norway",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
@@ -1348,7 +1348,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 109,2015,6,29,Colorado Country Classic,auto,Denver,Colorado,United States,"Denver, CO, United States","Denver, CO",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 220,2015,6,127,D-Town Swing,auto,Düsseldorf,,Germany,"Düsseldorf, Germany","Düsseldorf, Germany",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 207,2015,6,133,Dance N Play,auto,Bend,Oregon,United States,"Bend, OR, United States","Bend, OR",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
-254,2015,6,266,Finnfest,auto,Brno,,Czech Republic,"Brno, Czech Republic","Brno, Czech Republic",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
+254,2015,6,204,Finnfest,manual,Helsinki,,Finland,"Helsinki, Finland","Helsinki, Finland",2026-09-09 18:13:30.976198+00,2026-09-09 18:30:27.049975+00
 25,2015,6,23,J&J O'Rama,auto,Anaheim,California,United States,"Anaheim, CA, United States","Anaheim, CA",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 96,2015,6,41,Liberty Swing Dance Championships,auto,New Brunswick,New Jersey,United States,"New Brunswick, NJ, United States","New Brunswick, NJ",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 188,2015,6,117,NSW West Coast Swing Dance Championships,auto,Sydney,,Australia,"Sydney, Australia","Sydney, Australia",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
@@ -1543,7 +1543,7 @@ event_id,event_year,event_month,location_id,event_name,source,event_city,event_s
 180,2013,10,174,Australian Open Swing Dance Championships,auto,Melbourne,,Australia,"Melbourne, Australia","Melbourne, Australia",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 8,2013,10,2,Boogie By The Bay,auto,San Francisco,California,United States,"San Francisco, CA, United States","San Francisco, CA",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 65,2013,10,24,Halloween SwingThing,auto,Costa Mesa,California,United States,"Costa Mesa, CA, United States","Costa Mesa, CA",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
-210,2013,10,243,Korean Open WCS Championships,auto,São Paulo,,Brazil,"São Paulo, Brazil","São Paulo, Brazil",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
+210,2013,10,172,Korean Open WCS Championships,manual,Incheon,,Republic of Korea,"Incheon, Republic of Korea","Incheon, Republic of Korea",2026-09-09 18:13:30.976198+00,2026-09-09 18:30:27.049975+00
 178,2013,10,86,Montreal Westie Fest,auto,Montreal,,Canada,"Montreal, Canada","Montreal, Canada",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 179,2013,10,168,New Zealand Open Swing Dance Championships,auto,Auckland,,New Zealand,"Auckland, New Zealand","Auckland, New Zealand",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
 43,2013,10,19,Paradise Dance Festival,auto,Irvine,California,United States,"Irvine, CA, United States","Irvine, CA",2026-09-09 18:13:30.976198+00,2026-09-09 18:13:30.976198+00
