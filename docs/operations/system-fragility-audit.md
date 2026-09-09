@@ -78,7 +78,8 @@ flowchart TD
 
 | Failure | Why | Where |
 |---------|-----|--------|
-| Shared wrong lid | `resolve_result_location_ids` fills **empty** ids only; non-empty wrong lids need overrides | `transform/geography/resolve.py` (~200+); `transform/knowledge/apply.py` |
+| Shared wrong lid (root cause, fixed) | Fresh ids started at `max(registry)+1`, landing on **retired** `LOCATION_ID_MERGE_MAP` keys; `consolidate_location_ids` then remapped the new city onto the merge target (398→243 São Paulo, 401→222 St. Pete, 412→266 Brno). Fresh ids now skip retired keys; 3-part WSDC strings match 2-part registry rows | `transform/geography/resolve.py` (`retired_location_ids`, `city_country_fallback_key`); guard: `tests/test_resolve_retired_ids_and_region_fallback.py` |
+| Shared wrong lid (residual) | `resolve_result_location_ids` fills **empty** ids only; non-empty wrong lids already in DB need overrides / repair | `transform/geography/resolve.py`; `transform/knowledge/apply.py` |
 | Override miss | New collision until name added to `EVENT_NAME_LOCATION_OVERRIDES` | `transform/knowledge/events.py` |
 | Poison-seed baseline | `AUTO_ADD_SQL` inserts current edition lid as golden; if already wrong, drift stays 0 | `db/edition_location_baseline.py` |
 | Cross-load drift blind spot | Drift = `current ≠ baseline` only | Documented in `docs/operations/quality-monitoring.md` |
