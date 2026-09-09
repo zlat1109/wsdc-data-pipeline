@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Remap shared-wrong location_ids for NZ / Philly / Montreal / DCSX / Nordic / Budapest / French Open / Swing in Bloom.
+"""Remap shared-wrong location_ids (NZ/Philly/Montreal/DCSX/Nordic/Budapest/French Open/Swing in Bloom/Finnfest/Neverland/Korean Open).
 
 Live DB kept poison lids on raw WSDC titles that missed EVENT_NAME_LOCATION_OVERRIDES
 exact-name match, and Nordic sat on Swing Fiction Brno (266) instead of Stockholm.
@@ -34,6 +34,12 @@ RESULT_REMAPS: list[tuple[int, int, int, str]] = [
     (175, 243, 109, "French Open: São Paulo → Paris"),
     # Shared St. Petersburg (222) wrongly applied to Swing in Bloom (Ottawa).
     (393, 222, 179, "Swing in Bloom: St. Pete → Ottawa"),
+    # Shared Brno (266) wrongly applied to Finnfest (Helsinki).
+    (254, 266, 204, "Finnfest: Brno → Helsinki"),
+    # Shared St. Petersburg (222) wrongly applied to Neverland Swing (Amsterdam).
+    (261, 222, 191, "Neverland Swing: St. Pete → Amsterdam"),
+    # Shared São Paulo (243) wrongly applied to Korean Open (Incheon).
+    (210, 243, 172, "Korean Open: São Paulo → Incheon"),
 ]
 
 
@@ -194,7 +200,37 @@ def main() -> int:
                 WHERE event_id = 393
                 """
             )
-            print("  catalog typicals refreshed for 179/234/178/181/253/184/314/175/393")
+            cur.execute(
+                """
+                UPDATE core.event_catalog
+                SET typical_city = 'Helsinki', typical_state = NULL,
+                    typical_country = 'Finland',
+                    typical_location = 'Helsinki, Finland'
+                WHERE event_id = 254
+                """
+            )
+            cur.execute(
+                """
+                UPDATE core.event_catalog
+                SET typical_city = 'Amsterdam', typical_state = NULL,
+                    typical_country = 'Netherlands',
+                    typical_location = 'Amsterdam, Netherlands'
+                WHERE event_id = 261
+                """
+            )
+            cur.execute(
+                """
+                UPDATE core.event_catalog
+                SET typical_city = 'Incheon', typical_state = NULL,
+                    typical_country = 'Republic of Korea',
+                    typical_location = 'Incheon, Republic of Korea'
+                WHERE event_id = 210
+                """
+            )
+            print(
+                "  catalog typicals refreshed for "
+                "179/234/178/181/253/184/314/175/393/254/261/210"
+            )
 
         conn.commit()
         print("OK — committed")
