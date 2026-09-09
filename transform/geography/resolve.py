@@ -22,6 +22,7 @@ from transform.geography.normalize import (
 )
 from transform.geography.utils import norm_value
 from transform.knowledge.locations import (
+    LOCATION_ID_CORRECTIONS,
     LOCATION_ID_MERGE_MAP,
     LOCATION_RAW_ALIASES,
     LOCATION_STRING_ALIASES,
@@ -110,9 +111,15 @@ def city_country_fallback_key(raw: str) -> str:
 
 
 def retired_location_ids() -> frozenset[int]:
-    """location_ids that were merged away and must never be minted again."""
+    """location_ids a fresh registry row must never receive.
+
+    * ``LOCATION_ID_MERGE_MAP`` keys — merged away; ``consolidate_location_ids``
+      would remap a new city onto the merge target.
+    * ``LOCATION_ID_CORRECTIONS`` keys — field patches keyed by id; ``export.py``
+      re-applies them, so a re-minted key would get another city's coordinates.
+    """
     out: set[int] = set()
-    for key in LOCATION_ID_MERGE_MAP:
+    for key in (*LOCATION_ID_MERGE_MAP, *LOCATION_ID_CORRECTIONS):
         try:
             out.add(int(str(key).strip()))
         except ValueError:
