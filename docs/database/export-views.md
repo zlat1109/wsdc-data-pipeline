@@ -38,6 +38,7 @@ Not wired in `export.py` (document manually when added):
 |------|----------|-------|
 | `export.geo_events` | — | Query in Supabase or extend `export.py` |
 | `export.results_by_geo_event` | — | Optional large export |
+| `export.completed_event_editions` | — | Live VIEW (034); completed editions for analytics / site |
 | `export.scheduled_event_editions` | — | Not in default export |
 | `export.scheduled_events_legacy` | — | Deprecated; query manually if needed |
 
@@ -200,6 +201,12 @@ Not Supabase views. Built by `transform/divisional_exports.py` after view export
 | `dancer_transitions.csv` | current vs previous **full** parse; only division **A→B** (both sides set) | append new dates; never re-emit same transition identity |
 
 Skip with `python export.py --skip-derived-exports`. Column contract: [../tableau/csv-contract.md](../tableau/csv-contract.md).
+
+## export.completed_event_editions (migration 034)
+
+**Source:** `core.event_editions` + catalog + locations + calendar dates (and baseline when present).
+
+Live **VIEW** (replaced the materialized view from 032). One row per completed edition with resolved city/country and effective start date. Not in the default `export.py` map — query in Supabase or consume from analytics builders.
 
 ## export.geo_events (migration 019)
 

@@ -7,12 +7,18 @@ Supabase Postgres hosts four logical schemas plus migration tracking.
 | Schema | Purpose | Mutability |
 |--------|---------|------------|
 | `staging` | Parser CSV landing (all text columns) | Truncated each load |
-| `core` | Normalized current state | Refreshed each load; catalog rebuilt |
+| `core` | Normalized current state | Points tables refreshed each load; catalog / schedule / baseline / tiers rebuilt or upserted |
 | `history` | SCD2 change log + run journal | Append / close intervals |
 | `export` | Read-only views for Tableau CSV export | Defined in migrations |
 | `public.schema_migrations` | Applied migration filenames | One row per migration |
 
-## Core entity relationships
+## ER diagrams
+
+Full domain diagrams (points, catalog/baseline/tiers, schedule, history, staging→core, export):
+
+→ **[Entity-relationship diagrams](erd.md)**
+
+### Core entity relationships (summary)
 
 ```mermaid
 erDiagram
@@ -22,6 +28,10 @@ erDiagram
   events ||--o{ event_editions : has
   events ||--|| event_catalog : summarizes
   event_editions }o--o| locations : held_at
+  events ||--o{ edition_location_baseline : golden_lid
+  locations ||--o{ edition_location_baseline : baseline_place
+  events ||--o{ edition_calendar_dates : planned
+  event_editions ||--o{ edition_division_tiers : inferred_tier
   dancers ||--o{ dancer_points : earns
   dancers ||--|| dancer_roles : role_summary
   events ||--o{ event_aliases : known_as
@@ -33,7 +43,7 @@ erDiagram
   dancers ||--o{ dancer_aliases : known_as
 ```
 
-## Schedule domain (independent from points load)
+### Schedule domain (independent from points load)
 
 ```mermaid
 erDiagram
@@ -43,17 +53,19 @@ erDiagram
   events ||--o{ events_list_current : canonical_event_id
 ```
 
-Points load (`promote_core.sql`) does **not** truncate schedule tables.
+Points load (`promote_core.sql`) does **not** truncate schedule tables, `edition_calendar_dates`, `edition_location_baseline`, or tier reference tables.
 
 ## Documentation index
 
 | Doc | Contents |
 |-----|----------|
+| [erd.md](erd.md) | Mermaid ERDs for the current warehouse |
 | [staging.md](staging.md) | `staging.*` tables |
 | [core.md](core.md) | `core.*` tables |
 | [history.md](history.md) | `history.*` tables |
 | [export-views.md](export-views.md) | `export.*` views |
 | [migrations.md](migrations.md) | Migration list and apply workflow |
+| [_generated/](_generated/tables.md) | Auto-generated column lists |
 
 ## Connection
 
@@ -69,4 +81,4 @@ Each table doc lists:
 - **Keys** — PK, unique, FK
 - **Columns** — name, type, nullable, description
 
-Generated fragments (optional refresh): `docs/database/_generated/` via `scripts/generate_schema_docs.py`.
+Generated fragments (optional refresh): `docs/database/_generated/` via `scripts/generate_schema_docs.py` / `scripts/sync_docs.py`.

@@ -80,6 +80,7 @@ nav:
     - SCD2 history: architecture/scd2-history.md
   - Database:
     - database/index.md
+    - ER diagrams: database/erd.md
     - Staging: database/staging.md
     - Core: database/core.md
     - History: database/history.md
@@ -102,6 +103,12 @@ nav:
     - GitHub Actions: operations/github-actions.md
     - Repair scripts: operations/repair-scripts.md
     - Quality monitoring: operations/quality-monitoring.md
+    - Analytics site sync: operations/analytics-site-sync.md
+    - Point Summary: operations/point-summary.md
+    - Champion News: operations/champion-news.md
+    - Year event calendar: operations/year-event-calendar.md
+    - Trial list geo: operations/trial-list-geo.md
+    - System fragility audit: operations/system-fragility-audit.md
   - Rules:
     - Tier chart (Chart 5): rules/tier-chart.md
   - Policies:
