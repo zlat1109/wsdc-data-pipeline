@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WSDC warehouse ERD — interactive</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
+  <style>
+    :root {
+      --bg: #0f1419;
+      --panel: #1a2332;
+      --border: #2d3a4d;
+      --text: #e7ecf3;
+      --muted: #9aa8bc;
+      --accent: #5b8def;
+      --accent-2: #e8b84a;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    }
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1rem;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.65rem 1rem;
+      background: var(--panel);
+      border-bottom: 1px solid var(--border);
+      z-index: 2;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    header .meta {
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      align-items: center;
+    }
+    button, a.btn {
+      appearance: none;
+      border: 1px solid var(--border);
+      background: #243044;
+      color: var(--text);
+      border-radius: 6px;
+      padding: 0.35rem 0.7rem;
+      font-size: 0.82rem;
+      cursor: pointer;
+      text-decoration: none;
+      line-height: 1.2;
+    }
+    button:hover, a.btn:hover { border-color: var(--accent); color: #fff; }
+    button:active { transform: translateY(1px); }
+    button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    #hint {
+      color: var(--muted);
+      font-size: 0.75rem;
+      margin-right: 0.5rem;
+    }
+    #stage {
+      position: relative;
+      height: calc(100% - 52px);
+      overflow: hidden;
+      background:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px) 0 0 / 24px 24px,
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px) 0 0 / 24px 24px,
+        var(--bg);
+      cursor: grab;
+    }
+    #stage.is-panning { cursor: grabbing; }
+    #diagram {
+      width: 100%;
+      height: 100%;
+    }
+    #diagram .mermaid {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #diagram svg {
+      max-width: none !important;
+      height: auto;
+    }
+    #status {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      background: rgba(26, 35, 50, 0.92);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.35rem 0.6rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      pointer-events: none;
+    }
+    #legend {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      background: rgba(26, 35, 50, 0.92);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.5rem 0.7rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      max-width: 280px;
+      line-height: 1.35;
+    }
+    #legend strong { color: var(--accent-2); }
+    a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>WSDC warehouse ERD</h1>
+      <div class="meta">core + history · migrations 001–034 · pan / zoom like a model editor</div>
+    </div>
+    <div class="toolbar">
+      <span id="hint">scroll = zoom · drag = pan · shift+drag = pan</span>
+      <button type="button" id="btn-zoom-out" title="Zoom out">−</button>
+      <button type="button" id="btn-zoom-in" title="Zoom in">+</button>
+      <button type="button" id="btn-fit" class="primary" title="Fit to screen">Fit</button>
+      <button type="button" id="btn-reset" title="Reset view">100%</button>
+      <a class="btn" href="../database/erd/" title="Docs: recipes &amp; SQL">Docs</a>
+      <a class="btn" href="./wsdc_warehouse.dbml" download title="Open in dbdiagram.io">DBML</a>
+    </div>
+  </header>
+
+  <div id="stage">
+    <div id="diagram"></div>
+    <div id="legend">
+      <strong>Hubs:</strong> dancers · events · locations<br />
+      Edition key: <code>(event_id, year, month)</code><br />
+      Soft links (no FK): calendar dates, schedule ↔ locations
+    </div>
+    <div id="status">Rendering…</div>
+  </div>
+
+  <script>
+    const ERD = `
+erDiagram
+  dancers ||--o{ results : "dancer_id"
+  events ||--o{ results : "event_id"
+  locations ||--o{ results : "location_id"
+  dancers ||--|| dancer_roles : "dancer_id"
+  dancers ||--o{ dancer_points : "dancer_id"
+  dancers ||--o{ dancer_aliases : "dancer_id"
+  levels ||--o{ dancer_points : "level"
+  events ||--o{ event_aliases : "event_id"
+  events ||--o{ event_instances : "event_id"
+  locations ||--o{ event_instances : "location_id"
+  events ||--|| event_catalog : "event_id"
+  events ||--o{ event_editions : "event_id"
+  locations ||--o{ event_editions : "location_id"
+  events ||--o{ edition_location_baseline : "event_id"
+  locations ||--o{ edition_location_baseline : "location_id"
+  events ||--o{ edition_calendar_dates : "event_id soft"
+  event_editions ||--o{ edition_division_tiers : "edition key"
+  rules_editions ||--o{ tier_definitions : "rules_version"
+  rules_editions ||--o{ tier_points : "rules_version"
+  rules_editions ||--o{ edition_division_tiers : "rules_version"
+  events ||--o{ events_list_current : "canonical_event_id soft"
+  locations ||--o{ events_list_current : "location_id soft"
+  locations ||--o{ scheduled_events : "location_id soft"
+  events_list_runs ||--o{ events_list_current : "last_run_id"
+  events_list_runs ||--o{ scheduled_events : "last_run_id"
+  events_list_runs ||--o{ events_list_changes : "run_id"
+  parse_runs ||--o{ dancer_points_history : "run_id"
+  parse_runs ||--o{ dancer_roles_history : "run_id"
+  parse_runs ||--o{ dancer_names_history : "run_id"
+  dancers ||--o{ dancer_points_history : "dancer_id"
+  dancers ||--o{ dancer_roles_history : "dancer_id"
+  dancers ||--o{ dancer_names_history : "dancer_id"
+  dancers {
+    int dancer_id PK
+    text dancer_name
+  }
+  dancer_aliases {
+    text alias PK
+    int dancer_id FK
+  }
+  dancer_roles {
+    int dancer_id PK_FK
+  }
+  dancer_points {
+    int dancer_id PK_FK
+    text role PK
+    text dance PK
+    text level PK_FK
+  }
+  levels {
+    text level PK
+  }
+  locations {
+    int location_id PK
+    text event_city
+    text event_country
+  }
+  events {
+    int event_id PK
+    text name
+  }
+  event_aliases {
+    text alias PK
+    int event_id FK
+  }
+  event_instances {
+    int event_instance_id PK
+    int event_id FK
+    int location_id FK
+  }
+  event_catalog {
+    int event_id PK_FK
+    text canonical_name
+    text typical_location
+    text upcoming_location
+  }
+  results {
+    bigint result_id PK
+    int dancer_id FK
+    int event_id FK
+    int location_id FK
+    int event_year
+    int event_month
+    text division
+    text role
+  }
+  event_editions {
+    bigint edition_id PK
+    int event_id FK
+    int event_year UK
+    int event_month UK
+    int location_id FK
+    int result_rows
+  }
+  edition_location_baseline {
+    int event_id PK_FK
+    int event_year PK
+    int event_month PK
+    int location_id FK
+    text source
+  }
+  edition_calendar_dates {
+    int event_id PK
+    int event_year PK
+    int event_month PK
+    date planned_start_date
+    text calendar_status
+  }
+  edition_division_tiers {
+    int event_id PK
+    int event_year PK
+    int event_month PK
+    text division PK
+    text role PK
+    text dance PK
+    int tier
+  }
+  rules_editions {
+    text rules_version PK
+  }
+  tier_definitions {
+    text rules_version PK_FK
+    int tier PK
+  }
+  tier_points {
+    text rules_version PK_FK
+    int tier PK
+    int placement PK
+  }
+  scheduled_events {
+    text source_fingerprint PK
+    text event_name
+    int location_id
+    int last_run_id FK
+  }
+  events_list_current {
+    text schedule_event_key PK
+    int canonical_event_id
+    int location_id
+    int last_run_id FK
+  }
+  events_list_runs {
+    int run_id PK
+  }
+  events_list_changes {
+    int change_id PK
+    int run_id FK
+  }
+  parse_runs {
+    bigint run_id PK
+  }
+  dancer_points_history {
+    int dancer_id PK
+    date valid_from PK
+    date valid_to
+    bigint run_id FK
+  }
+  dancer_roles_history {
+    int dancer_id PK
+    date valid_from PK
+    bigint run_id FK
+  }
+  dancer_names_history {
+    int dancer_id PK
+    date valid_from PK
+    bigint run_id FK
+  }
+`.trim();
+
+    const statusEl = document.getElementById("status");
+    const stage = document.getElementById("stage");
+    let panZoom = null;
+
+    function setStatus(text) {
+      statusEl.textContent = text;
+    }
+
+    function bindToolbar() {
+      document.getElementById("btn-zoom-in").onclick = () => panZoom && panZoom.zoomIn();
+      document.getElementById("btn-zoom-out").onclick = () => panZoom && panZoom.zoomOut();
+      document.getElementById("btn-fit").onclick = () => {
+        if (!panZoom) return;
+        panZoom.fit();
+        panZoom.center();
+      };
+      document.getElementById("btn-reset").onclick = () => {
+        if (!panZoom) return;
+        panZoom.resetZoom();
+        panZoom.center();
+      };
+    }
+
+    function attachPanZoom(svg) {
+      if (panZoom) {
+        panZoom.destroy();
+        panZoom = null;
+      }
+      svg.style.width = "100%";
+      svg.style.height = "100%";
+      panZoom = svgPanZoom(svg, {
+        zoomEnabled: true,
+        controlIconsEnabled: false,
+        fit: true,
+        center: true,
+        minZoom: 0.15,
+        maxZoom: 8,
+        zoomScaleSensitivity: 0.35,
+        mouseWheelZoomEnabled: true,
+        preventMouseEventsDefault: true,
+        onZoom: (level) => setStatus(`Zoom ${Math.round(level * 100)}% · drag to pan`),
+        onPan: () => {
+          if (!panZoom) return;
+          setStatus(`Zoom ${Math.round(panZoom.getZoom() * 100)}% · drag to pan`);
+        },
+      });
+      stage.addEventListener("mousedown", () => stage.classList.add("is-panning"));
+      window.addEventListener("mouseup", () => stage.classList.remove("is-panning"));
+      panZoom.fit();
+      panZoom.center();
+      setStatus(`Zoom ${Math.round(panZoom.getZoom() * 100)}% · scroll to zoom · drag to pan`);
+    }
+
+    async function render() {
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: "dark",
+        securityLevel: "loose",
+        er: {
+          layoutDirection: "TB",
+          minEntityWidth: 100,
+          minEntityHeight: 50,
+          entityPadding: 12,
+          useMaxWidth: false,
+        },
+      });
+
+      const host = document.getElementById("diagram");
+      const id = "erd-" + Date.now();
+      try {
+        const { svg } = await mermaid.render(id, ERD);
+        host.innerHTML = svg;
+        const svgEl = host.querySelector("svg");
+        if (!svgEl) {
+          setStatus("Render failed: no SVG");
+          return;
+        }
+        // Ensure viewBox exists for pan-zoom
+        if (!svgEl.getAttribute("viewBox") && svgEl.width && svgEl.height) {
+          const w = svgEl.width.baseVal.value || svgEl.clientWidth;
+          const h = svgEl.height.baseVal.value || svgEl.clientHeight;
+          svgEl.setAttribute("viewBox", `0 0 ${w} ${h}`);
+        }
+        attachPanZoom(svgEl);
+        bindToolbar();
+      } catch (err) {
+        console.error(err);
+        setStatus("Render error — see console");
+        host.innerHTML = "<pre style='padding:1rem;color:#f88'>" + String(err) + "</pre>";
+      }
+    }
+
+    render();
+  </script>
+</body>
+</html>
