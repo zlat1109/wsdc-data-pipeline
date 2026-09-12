@@ -1,8 +1,8 @@
 # System fragility audit (locations, automation, calendar sync)
 
-**Date:** 2026-08-26  
+**Date:** 2026-08-26 (updated 2026-09-12)  
 **Scope:** `wsdc-data-pipeline`, analytics site (`wsdc-analytics.github.io`), Telegram notify + bot CSV sync, Point Summary / Champion News touchpoints.  
-**Wave:** read-only findings + ranked fix backlog. **No production code changes in this wave.**
+**Wave:** living audit — findings + ranked backlog. Code fixes land in separate PRs.
 
 Policy locked in planning (grill-me):
 
@@ -13,6 +13,14 @@ Policy locked in planning (grill-me):
 | On country mismatch | **Do not block load**; loud Telegram alert with event + old/new location |
 | Autonomy target | Hands-off except allowlist alerts |
 | Dual-write shape | Every successful **full-parse** and **events-list sync** rebuilds calendar/site; plus a dedicated **force rebuild** workflow for manual DB repairs |
+
+### Status since original audit
+
+| Item | Status |
+|------|--------|
+| Shared wrong lid from retired `LOCATION_ID_MERGE_MAP` keys | **Fixed** — PRs [#158](https://github.com/zlat1109/wsdc-data-pipeline/pull/158), [#159](https://github.com/zlat1109/wsdc-data-pipeline/pull/159) (`retired_location_ids`, city+country fallback, CORRECTIONS key reserve) |
+| Force rebuild calendar/site workflow | **Done** — `.github/workflows/force-rebuild-calendar-site.yml` |
+| Residual: non-empty wrong lids / name not in overrides | Still needs detect + override / repair (see below) |
 
 ---
 
@@ -38,7 +46,7 @@ Policy locked in planning (grill-me):
 | SCD2 reconcile | `scripts/reconcile_*_history.py` | **Manual** when drift > 0 |
 | Zombie `parse_runs` | `scripts/close_parse_runs.py` | **Manual** |
 | Legitimate venue baseline update | Supabase `UPDATE … source='manual'` | **Manual** |
-| Force calendar/site after DB-only location repair | — | **Missing** (gap) |
+| Force calendar/site after DB-only location repair | `.github/workflows/force-rebuild-calendar-site.yml` | Yes (`workflow_dispatch`) |
 
 ### Happy path (automated)
 
@@ -102,7 +110,7 @@ flowchart TD
 | Gap | Behavior | Impact |
 |-----|----------|--------|
 | Site builds from **exported CSVs**, not live Supabase | `sync_analytics_site.sh` reads `PIPELINE_DATA` | DB-only repair invisible on Pages |
-| No force-rebuild workflow | Manual repair needs local `export.py` + sync or next full-parse | Today's “fixed DB, calendar still wrong” class |
+| No force-rebuild workflow | ~~Missing~~ **Done** — `force-rebuild-calendar-site.yml` | Use after DB-only repairs |
 | Year calendar **warn-on-fail** | Failed build keeps previous `events_year_calendar.json` | Stale pins / expected ghosts |
 | Point Summary / Champion News warn-on-fail | Same pattern | Stale summaries while KPIs may update |
 | List sync site step | Only if `committed=true` on main | Scrape with no CSV diff → no site refresh |
@@ -110,10 +118,10 @@ flowchart TD
 | Cache bust | Calendar `?v=` stamped since PR #142 | Older Pages tabs still need hard refresh; secondary dashboard stamped separately |
 | Soft inheritance of bad edition lid | Calendar map can show poisoned geo until city mismatch clears it | Wrong map pin after shared-lid bug |
 
-### Intended dual-write (target, not yet fully met)
+### Intended dual-write (target)
 
-1. Every successful **full-parse** and **events-list** path: export → calendar + L2 cards → cache stamp → push (harden soft-fails).
-2. New **`workflow_dispatch` force-rebuild-calendar-site**: export from Supabase → build calendar/site → push (for manual DB repairs).
+1. Every successful **full-parse** and **events-list** path: export → calendar + L2 cards → cache stamp → push (harden soft-fails still open).
+2. **`workflow_dispatch` force-rebuild-calendar-site** — **shipped**: export from Supabase → build calendar/site → push (for manual DB repairs).
 
 ---
 
@@ -156,7 +164,7 @@ Effort: **S** &lt; 0.5d · **M** 0.5–2d · **L** &gt; 2d.
 | ID | Ticket | Surface | Effort | Acceptance |
 |----|--------|---------|--------|------------|
 | P0-1 | **Rich Telegram location mismatch cards** — for `SCHEDULED_VS_RESULTS_COUNTRY_CONFLICT`, `EVENT_ID_CANONICAL_LOCATION_MISMATCH`, `BASELINE_VS_LOCATION_OVERRIDE`, baseline drift: event_id, name, edition Y-M, old/new city+country+lid, one-line suggested action | pipeline `telegram_notify.py` | M | Complete message shows per-event cards without opening JSON for top N |
-| P0-2 | **Force rebuild calendar/site workflow** — `workflow_dispatch`: export → build year calendar + L2 + stamp cache → push Pages | pipeline CI + `sync_analytics_site.sh` | M | After DB-only location repair, one dispatch updates live calendar within Pages publish lag |
+| P0-2 | ~~**Force rebuild calendar/site workflow**~~ **Done** (`force-rebuild-calendar-site.yml`) | pipeline CI + `sync_analytics_site.sh` | — | After DB-only location repair, one dispatch updates live calendar within Pages publish lag |
 | P0-3 | **Harden year-calendar soft-fail** — fail site-sync step (or retry once + hard error) when calendar build fails; never leave silent stale calendar on “success” | `sync_analytics_site.sh` | S | Failed calendar build fails the job or emits hard Telegram error + non-zero exit |
 | P0-4 | **Override coverage pass** — audit remaining open collisions / schedule-vs-results from latest quality report; add missing `EVENT_NAME_LOCATION_OVERRIDES` + tests | `events.py` + tests | M | Known Perth/Brno-class open conflicts reduced; preprocess no longer lists fixed names |
 | P0-5 | **Poison-seed auto-add guard** — when auto-adding baseline rows, if schedule/override country conflicts with edition lid, still auto-add but force attention Telegram (or skip auto-add and warn) | `edition_location_baseline.py` / load | M | New wrong lid cannot freeze silently without an attention line |

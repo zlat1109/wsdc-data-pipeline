@@ -24,7 +24,8 @@ English reference for the World Swing Dance Championships data pipeline: parser 
 
 ### Database (Supabase / Postgres)
 
-- [Schema overview](database/index.md) — ER diagrams
+- [Schema overview](database/index.md) — schemas + summary ERDs
+- [ER diagrams](database/erd.md) — full warehouse Mermaid ERDs (points, catalog/baseline/tiers, schedule, history, export)
 - [Staging](database/staging.md) — Parser CSV landing zone
 - [Core](database/core.md) — Normalized current state
 - [History](database/history.md) — Run journal and SCD2 tables
@@ -54,6 +55,12 @@ English reference for the World Swing Dance Championships data pipeline: parser 
 - [GitHub Actions](operations/github-actions.md)
 - [Repair scripts](operations/repair-scripts.md)
 - [Quality monitoring](operations/quality-monitoring.md)
+- [Analytics site sync](operations/analytics-site-sync.md)
+- [Point Summary](operations/point-summary.md)
+- [Champion News](operations/champion-news.md)
+- [Year event calendar](operations/year-event-calendar.md)
+- [Trial list geo](operations/trial-list-geo.md)
+- [System fragility audit](operations/system-fragility-audit.md)
 
 ### Policies
 

@@ -51,13 +51,13 @@ Seeded via `scripts/seed_dancer_aliases.py` from `transform/knowledge/dancer_ali
 
 ## core.locations
 
-**Grain:** one WSDC location registry entry.
+**Grain:** one place in the pipeline location registry (ids minted in preprocess; not a WSDC numeric API field).
 
 **Primary key:** `location_id`
 
 | Column | Type | Nullable | Description |
 |--------|------|----------|-------------|
-| location_id | int | NO | WSDC location id |
+| location_id | int | NO | Pipeline location id |
 | event_city | text | YES | City |
 | event_state | text | YES | State / region |
 | event_country | text | YES | Country |
@@ -258,6 +258,29 @@ Inferred Tier and competitor-size range from observed placement points vs Chart 
 | est_min/max_competitors | int | YES | Tightened by scored dancers |
 | range_conflict | boolean | NO | scored > rule_max |
 
+## core.edition_location_baseline
+
+**Grain:** one frozen `(event_id, event_year, event_month) → location_id` pair for drift detection.
+
+**Primary key:** `(event_id, event_year, event_month)`
+
+**FK:** `event_id` → `core.events`, `location_id` → `core.locations`
+
+Seeded in migration 033; after each load `db/edition_location_baseline.py` reports drifts and **auto-adds** missing edition keys (`source='auto'`). Legitimate venue changes need a manual `UPDATE … source='manual'` in Supabase.
+
+| Column | Type | Nullable | Description |
+|--------|------|----------|-------------|
+| event_id | int | NO | FK → `core.events` |
+| event_year | int | NO | Edition year |
+| event_month | int | NO | Edition month |
+| location_id | int | NO | FK → `core.locations` (golden lid) |
+| event_name | text | YES | Snapshot of catalog name at write |
+| source | text | NO | `seed` / `seed_mv` / `auto` / `manual` |
+| seeded_at | timestamptz | NO | First insert |
+| updated_at | timestamptz | NO | Last change |
+
+Powers `export.edition_location_baseline`. See [../operations/quality-monitoring.md](../operations/quality-monitoring.md) and [../transform/geography.md](../transform/geography.md).
+
 ## core.edition_calendar_dates
 
 **Grain:** planned dates for an event year/month (from WSDC calendar; list may backfill).
@@ -270,7 +293,7 @@ Survives points-load `TRUNCATE` of `event_editions`. Re-applied in `rebuild_even
 
 | Column | Type | Nullable | Description |
 |--------|------|----------|-------------|
-| event_id | int | NO | FK → `core.events` |
+| event_id | int | NO | Event id (no physical FK — survives TRUNCATE CASCADE) |
 | event_year | int | NO | Results year |
 | event_month | int | NO | Results month |
 | planned_start_date | date | YES | Inclusive start from calendar |
@@ -315,6 +338,8 @@ migration 031).
 | first_seen_at | timestamptz | NO | First scrape |
 | last_seen_at | timestamptz | NO | Last scrape |
 | last_run_id | int | YES | FK → `history.events_list_runs` |
+| location_id | int | YES | Soft ref → `core.locations` (no FK after 031) |
+| location_source | text | YES | Provenance for `location_id` |
 
 ## core.events_list_current
 
@@ -351,6 +376,8 @@ points `TRUNCATE … CASCADE` cannot wipe this snapshot.
 | upcoming_editions | int | NO | Count of future editions |
 | updated_at | timestamptz | NO | Last sync |
 | last_run_id | int | YES | FK → `history.events_list_runs` |
+| location_id | int | YES | Soft ref → `core.locations` (no FK after 031) |
+| location_source | text | YES | Provenance for `location_id` |
 
 Powers `export.scheduled_events`.
 
