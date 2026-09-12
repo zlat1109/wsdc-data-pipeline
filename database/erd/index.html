@@ -1,0 +1,3151 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for the WSDC points pipeline — Supabase, CSV export, Tableau Public">
+      
+      
+      
+        <link rel="canonical" href="https://zlat1109.github.io/wsdc-data-pipeline/database/erd/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../../assets/erd-explorer.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>ER diagrams - WSDC Data Pipeline</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#entity-relationship-diagrams" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WSDC Data Pipeline" class="md-header__button md-logo" aria-label="WSDC Data Pipeline" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WSDC Data Pipeline
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ER diagrams
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/zlat1109/wsdc-data-pipeline" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zlat1109/wsdc-data-pipeline
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tableau/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Tableau
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../architecture/overview/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Architecture
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Database
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../transform/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Transform
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../operations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Operations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../rules/tier-chart/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Rules
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../policies/event-geo-dedup/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Policies
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WSDC Data Pipeline" class="md-nav__button md-logo" aria-label="WSDC Data Pipeline" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WSDC Data Pipeline
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/zlat1109/wsdc-data-pipeline" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zlat1109/wsdc-data-pipeline
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../tableau/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tableau
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tableau
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tableau/csv-contract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CSV contract
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tableau/joins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Joins
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tableau/dashboards-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schedule migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/identity-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Event identity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/scd2-history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SCD2 history
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Database
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ER diagrams
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ER diagrams
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#full-warehouse-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full warehouse map
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Full warehouse map">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hub-keys-remember-these-three" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hub keys (remember these three)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enrichment-map-how-to-join-for-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enrichment map (how to join for analytics)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Enrichment map (how to join for analytics)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recipe-table-common-enrichments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recipe table — common enrichments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-sketch-results-enriched-edition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SQL sketch (results → enriched edition)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schema-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schema layers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#soft-vs-hard-fk-important-for-enrichment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Soft vs hard FK (important for enrichment)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#domain-zooms-optional-detail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Domain zooms (optional detail)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Domain zooms (optional detail)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#points-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Points &amp; results
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#catalog-editions-baseline-tiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Catalog, editions, baseline, tiers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schedule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schedule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#history-scd2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        History / SCD2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#staging-core-promote" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Staging → core promote
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-docs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related docs
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assets/erd-explorer.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interactive ERD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../staging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Staging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../core/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    History
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../export-views/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Export views
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migrations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migrations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_9" id="__nav_4_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generated schema
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Generated schema
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../_generated/tables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generated tables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../_generated/views/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generated views
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../_generated/export_map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generated export map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../transform/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Transform
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Transform
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../transform/divisions-levels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Divisions & levels
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../transform/geography/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Geography
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../transform/event-names/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Event names
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../transform/events-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Events list
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../operations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/pipeline-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/data-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/github-actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GitHub Actions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/repair-scripts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Repair scripts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/quality-monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quality monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/analytics-site-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analytics site sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/point-summary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Point Summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/champion-news/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champion News
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/year-event-calendar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Year event calendar
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/trial-list-geo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Trial list geo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/system-fragility-audit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System fragility audit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rules
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Rules
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rules/tier-chart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tier chart (Chart 5)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Policies
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Policies
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../policies/event-geo-dedup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Geo dedup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../policies/event-rename-aliases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Event renames
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#full-warehouse-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full warehouse map
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Full warehouse map">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hub-keys-remember-these-three" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hub keys (remember these three)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enrichment-map-how-to-join-for-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enrichment map (how to join for analytics)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Enrichment map (how to join for analytics)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recipe-table-common-enrichments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recipe table — common enrichments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-sketch-results-enriched-edition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SQL sketch (results → enriched edition)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schema-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schema layers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#soft-vs-hard-fk-important-for-enrichment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Soft vs hard FK (important for enrichment)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#domain-zooms-optional-detail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Domain zooms (optional detail)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Domain zooms (optional detail)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#points-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Points &amp; results
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#catalog-editions-baseline-tiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Catalog, editions, baseline, tiers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schedule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schedule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#history-scd2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        History / SCD2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#staging-core-promote" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Staging → core promote
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-docs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related docs
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/zlat1109/wsdc-data-pipeline/edit/main/docs/database/erd.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="entity-relationship-diagrams">Entity-relationship diagrams<a class="headerlink" href="#entity-relationship-diagrams" title="Permanent link">&para;</a></h1>
+<p>Current Supabase warehouse as of migrations <strong>001–034</strong>. Source of truth: <code>db/migrations/*.sql</code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Interactive ERD (pan / zoom)</p>
+<p>Open the <strong>fullscreen model explorer</strong> — scroll to zoom, drag to pan, Fit / Reset controls:</p>
+<p><strong><a href="../../assets/erd-explorer.html" target="_blank">→ Open interactive ERD explorer</a></strong></p>
+<p>Same model as below, in a DBeaver-style canvas. Also download <a href="../../assets/wsdc_warehouse.dbml"><code>wsdc_warehouse.dbml</code></a> and paste into <a href="https://dbdiagram.io/d">dbdiagram.io</a> for another pan/zoom editor.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Live schema in DBeaver</p>
+<p>Connect to Supabase (same creds as <code>.env</code>) → expand schemas <code>core</code> / <code>history</code> → select tables → right-click → <strong>View diagram</strong> / ERD. That is the closest UX to a desktop model editor with live columns.</p>
+</div>
+<p><strong>Solid lines</strong> = physical FK. <strong>Soft links</strong> (dashed in the enrichment map) = join keys without FK — schedule / calendar must survive points-load <code>TRUNCATE … CASCADE</code> (migrations 025, 031).</p>
+<hr />
+<h2 id="full-warehouse-map">Full warehouse map<a class="headerlink" href="#full-warehouse-map" title="Permanent link">&para;</a></h2>
+<p>One diagram of <strong>all core + history tables</strong> and how they connect. For pan/zoom use the <a href="../../assets/erd-explorer.html">interactive explorer</a>. Static version:</p>
+<pre class="mermaid"><code>erDiagram
+  %% ===== hubs =====
+  dancers ||--o{ results : "dancer_id"
+  events ||--o{ results : "event_id"
+  locations ||--o{ results : "location_id"
+
+  dancers ||--|| dancer_roles : "dancer_id"
+  dancers ||--o{ dancer_points : "dancer_id"
+  dancers ||--o{ dancer_aliases : "dancer_id"
+  levels ||--o{ dancer_points : "level"
+
+  events ||--o{ event_aliases : "event_id"
+  events ||--o{ event_instances : "event_id"
+  locations ||--o{ event_instances : "location_id"
+  events ||--|| event_catalog : "event_id"
+
+  events ||--o{ event_editions : "event_id"
+  locations ||--o{ event_editions : "location_id"
+
+  events ||--o{ edition_location_baseline : "event_id"
+  locations ||--o{ edition_location_baseline : "location_id"
+
+  events ||--o{ edition_calendar_dates : "event_id soft"
+  event_editions ||--o{ edition_division_tiers : "edition key"
+  rules_editions ||--o{ tier_definitions : "rules_version"
+  rules_editions ||--o{ tier_points : "rules_version"
+  rules_editions ||--o{ edition_division_tiers : "rules_version"
+
+  events ||--o{ events_list_current : "canonical_event_id soft"
+  locations ||--o{ events_list_current : "location_id soft"
+  locations ||--o{ scheduled_events : "location_id soft"
+  events_list_runs ||--o{ events_list_current : "last_run_id"
+  events_list_runs ||--o{ scheduled_events : "last_run_id"
+  events_list_runs ||--o{ events_list_changes : "run_id"
+
+  parse_runs ||--o{ dancer_points_history : "run_id"
+  parse_runs ||--o{ dancer_roles_history : "run_id"
+  parse_runs ||--o{ dancer_names_history : "run_id"
+  dancers ||--o{ dancer_points_history : "dancer_id"
+  dancers ||--o{ dancer_roles_history : "dancer_id"
+  dancers ||--o{ dancer_names_history : "dancer_id"
+
+  %% ===== key columns (compact) =====
+  dancers {
+    int dancer_id PK
+    text dancer_name
+  }
+  dancer_aliases {
+    text alias PK
+    int dancer_id FK
+  }
+  dancer_roles {
+    int dancer_id PK, FK
+  }
+  dancer_points {
+    int dancer_id PK, FK
+    text role PK
+    text dance PK
+    text level PK, FK
+  }
+  levels {
+    text level PK
+  }
+  locations {
+    int location_id PK
+    text event_city
+    text event_country
+  }
+  events {
+    int event_id PK
+    text name
+  }
+  event_aliases {
+    text alias PK
+    int event_id FK
+  }
+  event_instances {
+    int event_instance_id PK
+    int event_id FK
+    int location_id FK
+  }
+  event_catalog {
+    int event_id PK, FK
+    text canonical_name
+    text typical_location
+    text upcoming_location
+  }
+  results {
+    bigint result_id PK
+    int dancer_id FK
+    int event_id FK
+    int location_id FK
+    int event_year
+    int event_month
+    text division
+    text role
+  }
+  event_editions {
+    bigint edition_id PK
+    int event_id FK
+    int event_year
+    int event_month
+    int location_id FK
+    int result_rows
+  }
+  edition_location_baseline {
+    int event_id PK, FK
+    int event_year PK
+    int event_month PK
+    int location_id FK
+    text source
+  }
+  edition_calendar_dates {
+    int event_id PK
+    int event_year PK
+    int event_month PK
+    date planned_start_date
+    text calendar_status
+  }
+  edition_division_tiers {
+    int event_id PK
+    int event_year PK
+    int event_month PK
+    text division PK
+    text role PK
+    text dance PK
+    int tier
+  }
+  rules_editions {
+    text rules_version PK
+  }
+  tier_definitions {
+    text rules_version PK, FK
+    int tier PK
+  }
+  tier_points {
+    text rules_version PK, FK
+    int tier PK
+    int placement PK
+  }
+  scheduled_events {
+    text source_fingerprint PK
+    text event_name
+    int location_id
+    int last_run_id FK
+  }
+  events_list_current {
+    text schedule_event_key PK
+    int canonical_event_id
+    int location_id
+    int last_run_id FK
+  }
+  events_list_runs {
+    int run_id PK
+  }
+  events_list_changes {
+    int change_id PK
+    int run_id FK
+  }
+  parse_runs {
+    bigint run_id PK
+  }
+  dancer_points_history {
+    int dancer_id PK
+    date valid_from PK
+    date valid_to
+    bigint run_id FK
+  }
+  dancer_roles_history {
+    int dancer_id PK
+    date valid_from PK
+    bigint run_id FK
+  }
+  dancer_names_history {
+    int dancer_id PK
+    date valid_from PK
+    bigint run_id FK
+  }</code></pre>
+<h3 id="hub-keys-remember-these-three">Hub keys (remember these three)<a class="headerlink" href="#hub-keys-remember-these-three" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Hub</th>
+<th>Key</th>
+<th>Almost everything joins through</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Dancer</strong></td>
+<td><code>dancer_id</code></td>
+<td>results, points, roles, aliases, SCD2 history</td>
+</tr>
+<tr>
+<td><strong>Event (brand)</strong></td>
+<td><code>event_id</code></td>
+<td>results, catalog, editions, aliases, baseline, schedule match</td>
+</tr>
+<tr>
+<td><strong>Place</strong></td>
+<td><code>location_id</code></td>
+<td>results, editions, baseline, schedule geo</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Edition grain</strong> (fourth join key, composite):<br />
+<code>(event_id, event_year, event_month)</code> — links <code>results</code> ↔ <code>event_editions</code> ↔ <code>edition_location_baseline</code> ↔ <code>edition_calendar_dates</code> ↔ <code>edition_division_tiers</code>.</p>
+<hr />
+<h2 id="enrichment-map-how-to-join-for-analytics">Enrichment map (how to join for analytics)<a class="headerlink" href="#enrichment-map-how-to-join-for-analytics" title="Permanent link">&para;</a></h2>
+<p>Start from a <strong>fact</strong> row and pull dimensions. Dashed = soft join (no FK).</p>
+<pre class="mermaid"><code>flowchart TB
+  subgraph fact [Fact]
+    R["core.results&lt;br/&gt;dancer × event × place × division × role"]
+  end
+
+  subgraph dancer_dim [Dancer dimensions]
+    DN["dancers.dancer_name"]
+    DR["dancer_roles"]
+    DP["dancer_points"]
+    DA["dancer_aliases"]
+    DH["*_history SCD2&lt;br/&gt;as-of name / points / roles"]
+  end
+
+  subgraph event_dim [Event / edition dimensions]
+    EC["event_catalog&lt;br/&gt;canonical_name, typical/upcoming"]
+    EE["event_editions&lt;br/&gt;result_rows, calendar_status, dates"]
+    EB["edition_location_baseline&lt;br/&gt;golden location_id"]
+    ECD["edition_calendar_dates&lt;br/&gt;planned start/end"]
+    EDT["edition_division_tiers&lt;br/&gt;inferred Chart 5 tier"]
+    EA["event_aliases"]
+  end
+
+  subgraph place_dim [Place]
+    L["locations&lt;br/&gt;city / country / lat-lon"]
+  end
+
+  subgraph schedule_dim [Schedule / upcoming]
+    ELC["events_list_current&lt;br/&gt;nearest upcoming"]
+    SE["scheduled_events&lt;br/&gt;edition archive"]
+  end
+
+  R --&gt;|"dancer_id"| DN
+  R --&gt;|"dancer_id"| DR
+  R --&gt;|"dancer_id"| DP
+  R --&gt;|"dancer_id"| DA
+  R --&gt;|"dancer_id + as_of date"| DH
+
+  R --&gt;|"event_id"| EC
+  R --&gt;|"event_id"| EA
+  R --&gt;|"event_id, year, month"| EE
+  R --&gt;|"event_id, year, month"| EB
+  R -.-&gt;|"event_id, year, month"| ECD
+  R --&gt;|"event_id, year, month, division, role, dance"| EDT
+
+  R --&gt;|"location_id"| L
+  EE --&gt;|"location_id"| L
+  EB --&gt;|"location_id"| L
+
+  EC -.-&gt;|"event_id = canonical_event_id"| ELC
+  ELC --&gt;|"location_id soft"| L
+  ELC --&gt;|"source_fingerprint"| SE
+  SE --&gt;|"location_id soft"| L</code></pre>
+<h3 id="recipe-table-common-enrichments">Recipe table — common enrichments<a class="headerlink" href="#recipe-table-common-enrichments" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>I have…</th>
+<th>I want…</th>
+<th>Join</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>results</code></td>
+<td>Dancer display name (current)</td>
+<td><code>dancers</code> ON <code>dancer_id</code></td>
+</tr>
+<tr>
+<td><code>results</code></td>
+<td>Name <strong>as of</strong> competition date</td>
+<td><code>dancer_name_at(dancer_id, event_date)</code> or <code>export.dancers_results_with_name</code></td>
+</tr>
+<tr>
+<td><code>results</code></td>
+<td>City / country / coords</td>
+<td><code>locations</code> ON <code>location_id</code></td>
+</tr>
+<tr>
+<td><code>results</code></td>
+<td>Catalog title + typical place</td>
+<td><code>event_catalog</code> ON <code>event_id</code></td>
+</tr>
+<tr>
+<td><code>results</code></td>
+<td>Edition stats / calendar status</td>
+<td><code>event_editions</code> ON <code>(event_id, event_year, event_month)</code></td>
+</tr>
+<tr>
+<td><code>results</code></td>
+<td>Planned calendar dates</td>
+<td><code>edition_calendar_dates</code> ON same edition key <em>(soft)</em></td>
+</tr>
+<tr>
+<td><code>results</code> / <code>event_editions</code></td>
+<td>Golden place vs current</td>
+<td><code>edition_location_baseline</code> ON edition key; compare <code>location_id</code></td>
+</tr>
+<tr>
+<td><code>results</code></td>
+<td>Inferred Tier / competitor band</td>
+<td><code>edition_division_tiers</code> ON edition key + <code>division</code> + <code>role</code> + <code>dance</code></td>
+</tr>
+<tr>
+<td><code>event_id</code></td>
+<td>Upcoming edition on WSDC list</td>
+<td><code>events_list_current</code> ON <code>canonical_event_id = event_id</code> <em>(soft)</em></td>
+</tr>
+<tr>
+<td><code>events_list_current</code></td>
+<td>Geo for map pin</td>
+<td><code>locations</code> ON <code>location_id</code> <em>(soft)</em></td>
+</tr>
+<tr>
+<td><code>event_name</code> string</td>
+<td>Stable <code>event_id</code></td>
+<td><code>event_aliases</code> / <code>events.name</code></td>
+</tr>
+<tr>
+<td><code>dancer_id</code></td>
+<td>Current points ladder</td>
+<td><code>dancer_points</code> ON <code>dancer_id</code> (+ role/dance/level)</td>
+</tr>
+<tr>
+<td>Any SCD2 question</td>
+<td>Version at date</td>
+<td><code>*_history</code> WHERE <code>valid_from ≤ d</code> AND (<code>valid_to</code> IS NULL OR <code>valid_to &gt; d</code>)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sql-sketch-results-enriched-edition">SQL sketch (results → enriched edition)<a class="headerlink" href="#sql-sketch-results-enriched-edition" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">SELECT</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">r</span><span class="p">.</span><span class="n">result_id</span><span class="p">,</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">r</span><span class="p">.</span><span class="n">dancer_id</span><span class="p">,</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">d</span><span class="p">.</span><span class="n">dancer_name</span><span class="p">,</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">r</span><span class="p">.</span><span class="n">event_id</span><span class="p">,</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="k">c</span><span class="p">.</span><span class="n">canonical_name</span><span class="p">,</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="n">r</span><span class="p">.</span><span class="n">event_year</span><span class="p">,</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="n">r</span><span class="p">.</span><span class="n">event_month</span><span class="p">,</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="n">r</span><span class="p">.</span><span class="n">location_id</span><span class="w">          </span><span class="k">AS</span><span class="w"> </span><span class="n">results_location_id</span><span class="p">,</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="n">l</span><span class="p">.</span><span class="n">event_city</span><span class="p">,</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="n">l</span><span class="p">.</span><span class="n">event_country</span><span class="p">,</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="n">b</span><span class="p">.</span><span class="n">location_id</span><span class="w">          </span><span class="k">AS</span><span class="w"> </span><span class="n">baseline_location_id</span><span class="p">,</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="n">ed</span><span class="p">.</span><span class="n">calendar_status</span><span class="p">,</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="n">ed</span><span class="p">.</span><span class="n">start_date</span><span class="p">,</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="n">edt</span><span class="p">.</span><span class="n">tier</span><span class="p">,</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="n">edt</span><span class="p">.</span><span class="n">status</span><span class="w">             </span><span class="k">AS</span><span class="w"> </span><span class="n">tier_status</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="k">FROM</span><span class="w"> </span><span class="n">core</span><span class="p">.</span><span class="n">results</span><span class="w"> </span><span class="n">r</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="k">JOIN</span><span class="w"> </span><span class="n">core</span><span class="p">.</span><span class="n">dancers</span><span class="w"> </span><span class="n">d</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">  </span><span class="k">ON</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">dancer_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">dancer_id</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">core</span><span class="p">.</span><span class="n">event_catalog</span><span class="w"> </span><span class="k">c</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">  </span><span class="k">ON</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">event_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">event_id</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">core</span><span class="p">.</span><span class="n">locations</span><span class="w"> </span><span class="n">l</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">  </span><span class="k">ON</span><span class="w"> </span><span class="n">l</span><span class="p">.</span><span class="n">location_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">location_id</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">core</span><span class="p">.</span><span class="n">event_editions</span><span class="w"> </span><span class="n">ed</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">  </span><span class="k">ON</span><span class="w"> </span><span class="n">ed</span><span class="p">.</span><span class="n">event_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">event_id</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">ed</span><span class="p">.</span><span class="n">event_year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">event_year</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">ed</span><span class="p">.</span><span class="n">event_month</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">event_month</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">core</span><span class="p">.</span><span class="n">edition_location_baseline</span><span class="w"> </span><span class="n">b</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">  </span><span class="k">ON</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">event_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">event_id</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">event_year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">event_year</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">event_month</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">event_month</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">core</span><span class="p">.</span><span class="n">edition_division_tiers</span><span class="w"> </span><span class="n">edt</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">  </span><span class="k">ON</span><span class="w"> </span><span class="n">edt</span><span class="p">.</span><span class="n">event_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">event_id</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">edt</span><span class="p">.</span><span class="n">event_year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">event_year</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">edt</span><span class="p">.</span><span class="n">event_month</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">event_month</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">edt</span><span class="p">.</span><span class="n">division</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">division</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">edt</span><span class="p">.</span><span class="k">role</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="k">role</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">edt</span><span class="p">.</span><span class="n">dance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">dance</span><span class="p">;</span>
+</code></pre></div>
+<p>Ready-made denormalized views (when you prefer not to hand-join):<br />
+<code>export.results_by_event</code>, <code>export.completed_event_editions</code>, <code>export.geo_events</code> / <code>results_by_geo_event</code> — see <a href="../export-views/">export-views.md</a>.</p>
+<hr />
+<h2 id="schema-layers">Schema layers<a class="headerlink" href="#schema-layers" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart LR
+  subgraph staging_s [staging]
+    S[Parser CSV text tables]
+  end
+  subgraph core_s [core]
+    C[Normalized current state]
+  end
+  subgraph history_s [history]
+    H[SCD2 + run journals]
+  end
+  subgraph export_s [export]
+    E[Read-only views → CSV]
+  end
+  S --&gt;|"promote_core.sql"| C
+  S --&gt;|"record_*_history.sql"| H
+  C --&gt; E
+  H --&gt; E</code></pre>
+<table>
+<thead>
+<tr>
+<th>Schema</th>
+<th>Mutability</th>
+<th>Truncated by points load?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>staging</code></td>
+<td>Reload each load</td>
+<td>Yes (full replace)</td>
+</tr>
+<tr>
+<td><code>core</code> (points tables)</td>
+<td>Refresh each load</td>
+<td>Yes (<code>TRUNCATE</code> dancers/results/…)</td>
+</tr>
+<tr>
+<td><code>core</code> (schedule / calendar / baseline / tiers)</td>
+<td>Upsert / rebuild</td>
+<td><strong>No</strong></td>
+</tr>
+<tr>
+<td><code>history</code></td>
+<td>Append / close intervals</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>export</code></td>
+<td>Views only</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="soft-vs-hard-fk-important-for-enrichment">Soft vs hard FK (important for enrichment)<a class="headerlink" href="#soft-vs-hard-fk-important-for-enrichment" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Relationship</th>
+<th>Physical FK?</th>
+<th>Join anyway?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>results</code> → dancers / events / locations</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>event_editions</code> → events / locations</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>edition_location_baseline</code> → events / locations</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>edition_calendar_dates</code> → events</td>
+<td><strong>No</strong> (025)</td>
+<td>Yes on <code>(event_id, year, month)</code></td>
+</tr>
+<tr>
+<td><code>events_list_current.canonical_event_id</code> → events</td>
+<td><strong>No</strong></td>
+<td>Yes when matched</td>
+</tr>
+<tr>
+<td><code>scheduled_events</code> / <code>events_list_current</code> → locations</td>
+<td><strong>No</strong> (031)</td>
+<td>Yes when <code>location_id</code> set</td>
+</tr>
+<tr>
+<td><code>edition_division_tiers</code> → editions</td>
+<td>Logical only</td>
+<td>Yes on edition key</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="domain-zooms-optional-detail">Domain zooms (optional detail)<a class="headerlink" href="#domain-zooms-optional-detail" title="Permanent link">&para;</a></h2>
+<p>Same warehouse, smaller slices — use when the full map is too dense.</p>
+<h3 id="points-results">Points &amp; results<a class="headerlink" href="#points-results" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>erDiagram
+  levels ||--o{ dancer_points : level
+  dancers ||--o{ dancer_points : earns
+  dancers ||--|| dancer_roles : role_summary
+  dancers ||--o{ dancer_aliases : aka
+  dancers ||--o{ results : competes
+  events ||--o{ results : hosts
+  locations ||--o{ results : at
+  events ||--o{ event_aliases : aka
+  events ||--o{ event_instances : registry_rows</code></pre>
+<h3 id="catalog-editions-baseline-tiers">Catalog, editions, baseline, tiers<a class="headerlink" href="#catalog-editions-baseline-tiers" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>erDiagram
+  events ||--|| event_catalog : summarizes
+  events ||--o{ event_editions : has
+  locations ||--o{ event_editions : held_at
+  events ||--o{ edition_calendar_dates : planned
+  events ||--o{ edition_location_baseline : golden_lid
+  locations ||--o{ edition_location_baseline : baseline_place
+  event_editions ||--o{ edition_division_tiers : inferred_tier
+  rules_editions ||--o{ tier_definitions : defines
+  rules_editions ||--o{ tier_points : Chart5
+  rules_editions ||--o{ edition_division_tiers : rules_version</code></pre>
+<h3 id="schedule">Schedule<a class="headerlink" href="#schedule" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>erDiagram
+  events_list_runs ||--o{ events_list_changes : logs
+  events_list_runs ||--o{ scheduled_events : last_run
+  events_list_runs ||--o{ events_list_current : last_run
+  events ||--o{ events_list_current : canonical_event_id
+  locations ||--o{ scheduled_events : location_id_soft
+  locations ||--o{ events_list_current : location_id_soft</code></pre>
+<h3 id="history-scd2">History / SCD2<a class="headerlink" href="#history-scd2" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>erDiagram
+  parse_runs ||--o{ dancer_points_history : records
+  parse_runs ||--o{ dancer_roles_history : records
+  parse_runs ||--o{ dancer_names_history : records
+  dancers ||--o{ dancer_points_history : versions
+  dancers ||--o{ dancer_roles_history : versions
+  dancers ||--o{ dancer_names_history : versions</code></pre>
+<h3 id="staging-core-promote">Staging → core promote<a class="headerlink" href="#staging-core-promote" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TB
+  subgraph staging [staging]
+    sp[dancers_points_info]
+    sr[dancer_role_info]
+    sres[dancers_results_info]
+    sl[location_info]
+    se[events_wsdc]
+  end
+  subgraph core [core]
+    dp[dancer_points]
+    droles[dancer_roles]
+    res[results]
+    loc[locations]
+    ev[events + event_instances]
+    dancers[dancers]
+  end
+  sp --&gt; dp
+  sr --&gt; droles
+  sr --&gt; dancers
+  sres --&gt; res
+  sres --&gt; dancers
+  sl --&gt; loc
+  se --&gt; ev</code></pre>
+<hr />
+<h2 id="related-docs">Related docs<a class="headerlink" href="#related-docs" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../">Schema overview</a></li>
+<li><a href="../core/">Core tables</a> — column catalogs</li>
+<li><a href="../export-views/">Export views</a> — ready-made denormalized surfaces</li>
+<li><a href="../../architecture/identity-model/">Event identity</a></li>
+<li><a href="../../transform/geography/">Geography</a> — how <code>location_id</code> is minted / corrected</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/zlat1109/wsdc-data-pipeline" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.action.edit", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
