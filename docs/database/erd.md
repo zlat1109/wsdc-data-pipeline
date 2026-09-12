@@ -73,13 +73,13 @@ erDiagram
     int dancer_id FK
   }
   dancer_roles {
-    int dancer_id PK_FK
+    int dancer_id PK, FK
   }
   dancer_points {
-    int dancer_id PK_FK
+    int dancer_id PK, FK
     text role PK
     text dance PK
-    text level PK_FK
+    text level PK, FK
   }
   levels {
     text level PK
@@ -103,7 +103,7 @@ erDiagram
     int location_id FK
   }
   event_catalog {
-    int event_id PK_FK
+    int event_id PK, FK
     text canonical_name
     text typical_location
     text upcoming_location
@@ -121,13 +121,13 @@ erDiagram
   event_editions {
     bigint edition_id PK
     int event_id FK
-    int event_year UK
-    int event_month UK
+    int event_year
+    int event_month
     int location_id FK
     int result_rows
   }
   edition_location_baseline {
-    int event_id PK_FK
+    int event_id PK, FK
     int event_year PK
     int event_month PK
     int location_id FK
@@ -153,11 +153,11 @@ erDiagram
     text rules_version PK
   }
   tier_definitions {
-    text rules_version PK_FK
+    text rules_version PK, FK
     int tier PK
   }
   tier_points {
-    text rules_version PK_FK
+    text rules_version PK, FK
     int tier PK
     int placement PK
   }
