@@ -14,9 +14,9 @@ Supabase Postgres hosts four logical schemas plus migration tracking.
 
 ## ER diagrams
 
-→ **[Full warehouse map + enrichment joins](erd.md)** — one ERD of all tables, hub keys, and recipes to enrich `results` / schedule rows.
+→ **[Interactive ERD explorer (pan / zoom)](../assets/erd-explorer.html)**{ target=_blank } · [Full map + enrichment recipes](erd.md) · [DBML](../assets/wsdc_warehouse.dbml)
 
-Summary ERDs below; domain zooms live on the same page.
+Summary ERDs below; domain zooms live on the recipes page.
 
 ### Core entity relationships (summary)
 

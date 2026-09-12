@@ -2,13 +2,23 @@
 
 Current Supabase warehouse as of migrations **001–034**. Source of truth: `db/migrations/*.sql`.
 
+!!! tip "Interactive ERD (pan / zoom)"
+    Open the **fullscreen model explorer** — scroll to zoom, drag to pan, Fit / Reset controls:
+
+    **[→ Open interactive ERD explorer](../assets/erd-explorer.html){ target=_blank }**
+
+    Same model as below, in a DBeaver-style canvas. Also download [`wsdc_warehouse.dbml`](../assets/wsdc_warehouse.dbml) and paste into [dbdiagram.io](https://dbdiagram.io/d) for another pan/zoom editor.
+
+!!! info "Live schema in DBeaver"
+    Connect to Supabase (same creds as `.env`) → expand schemas `core` / `history` → select tables → right-click → **View diagram** / ERD. That is the closest UX to a desktop model editor with live columns.
+
 **Solid lines** = physical FK. **Soft links** (dashed in the enrichment map) = join keys without FK — schedule / calendar must survive points-load `TRUNCATE … CASCADE` (migrations 025, 031).
 
 ---
 
 ## Full warehouse map
 
-One diagram of **all core + history tables** and how they connect. Use this to see enrichment paths at a glance.
+One diagram of **all core + history tables** and how they connect. For pan/zoom use the [interactive explorer](../assets/erd-explorer.html). Static version:
 
 ```mermaid
 erDiagram

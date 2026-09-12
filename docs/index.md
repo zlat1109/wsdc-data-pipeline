@@ -25,7 +25,8 @@ English reference for the World Swing Dance Championships data pipeline: parser 
 ### Database (Supabase / Postgres)
 
 - [Schema overview](database/index.md) — schemas + summary ERDs
-- [ER diagrams](database/erd.md) — **full warehouse map** + enrichment join recipes (points, catalog/baseline/tiers, schedule, history)
+- [ER diagrams](database/erd.md) — full map + enrichment join recipes
+- [Interactive ERD explorer](assets/erd-explorer.html) — **pan / zoom** model canvas
 - [Staging](database/staging.md) — Parser CSV landing zone
 - [Core](database/core.md) — Normalized current state
 - [History](database/history.md) — Run journal and SCD2 tables
