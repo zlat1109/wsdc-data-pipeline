@@ -85,10 +85,10 @@ Regenerate: `python scripts/generate_erd_full.py`.
 
 | Column | Type | Keys |
 |--------|------|------|
-| `dancer_id` | `int` | PK FK |
+| `dancer_id` | `int` | PK, FK |
 | `role` | `text` | PK |
 | `dance` | `text` | PK |
-| `level` | `text` | PK FK |
+| `level` | `text` | PK, FK |
 | `total_points` | `int` | — |
 | `update_date` | `date` | — |
 
@@ -96,7 +96,7 @@ Regenerate: `python scripts/generate_erd_full.py`.
 
 | Column | Type | Keys |
 |--------|------|------|
-| `dancer_id` | `int` | PK FK |
+| `dancer_id` | `int` | PK, FK |
 | `dominate_role` | `text` | — |
 | `dominate_required` | `text` | — |
 | `dominate_allowed` | `text` | — |
@@ -123,6 +123,8 @@ Regenerate: `python scripts/generate_erd_full.py`.
 | `dancers_added` | `int` | — |
 | `status` | `text` | — |
 | `max_dancer_id_watermark` | `int` | — |
+| `new_dancer_ids` | `jsonb` | — |
+| `probe_details` | `jsonb` | — |
 
 ## `history.dancer_points_history`
 
@@ -192,6 +194,7 @@ Regenerate: `python scripts/generate_erd_full.py`.
 | `last_seen_at` | `timestamptz` | — |
 | `last_run_id` | `int` | FK |
 | `location_id` | `int` | — |
+| `location_source` | `text` | — |
 
 ## `history.events_list_changes`
 
@@ -237,12 +240,13 @@ Regenerate: `python scripts/generate_erd_full.py`.
 | `updated_at` | `timestamptz` | — |
 | `last_run_id` | `int` | FK |
 | `location_id` | `int` | — |
+| `location_source` | `text` | — |
 
 ## `core.event_catalog`
 
 | Column | Type | Keys |
 |--------|------|------|
-| `event_id` | `int` | PK FK |
+| `event_id` | `int` | PK, FK |
 | `canonical_name` | `text` | — |
 | `url` | `text` | — |
 | `registry_status` | `text` | — |
@@ -274,6 +278,10 @@ Regenerate: `python scripts/generate_erd_full.py`.
 | `location_raw` | `text` | — |
 | `result_rows` | `int` | — |
 | `start_date` | `date` | — |
+| `end_date` | `date` | — |
+| `date_source` | `text` | — |
+| `calendar_status` | `text` | — |
+| `event_occurred` | `bool` | — |
 
 ## `history.dancer_names_history`
 
@@ -332,7 +340,7 @@ Regenerate: `python scripts/generate_erd_full.py`.
 
 | Column | Type | Keys |
 |--------|------|------|
-| `rules_version` | `text` | PK FK |
+| `rules_version` | `text` | PK, FK |
 | `tier` | `int` | PK |
 | `min_competitors` | `int` | — |
 | `max_competitors` | `int` | — |
@@ -386,7 +394,7 @@ Regenerate: `python scripts/generate_erd_full.py`.
 
 | Column | Type | Keys |
 |--------|------|------|
-| `event_id` | `int` | PK FK |
+| `event_id` | `int` | PK, FK |
 | `event_year` | `int` | PK |
 | `event_month` | `int` | PK |
 | `location_id` | `int` | FK |

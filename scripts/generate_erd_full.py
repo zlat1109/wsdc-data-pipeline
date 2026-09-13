@@ -105,8 +105,13 @@ def parse_migrations() -> tuple[
         r"CREATE TABLE(?:\s+IF NOT EXISTS)?\s+(core|history)\.(\w+)\s*\((.*?)\);",
         re.I | re.S,
     )
-    alter_add_re = re.compile(
-        r"ALTER TABLE\s+(core|history)\.(\w+)\s+ADD COLUMN(?:\s+IF NOT EXISTS)?\s+(\w+)\s+(\S+)",
+    # One ALTER can list several ADD COLUMN clauses (comma-separated).
+    alter_block_re = re.compile(
+        r"ALTER TABLE\s+(core|history)\.(\w+)\s+(.*?);",
+        re.I | re.S,
+    )
+    add_col_re = re.compile(
+        r"ADD COLUMN(?:\s+IF NOT EXISTS)?\s+(\w+)\s+(\S+)",
         re.I,
     )
     inline_fk_re = re.compile(
@@ -114,10 +119,13 @@ def parse_migrations() -> tuple[
         re.I,
     )
     table_pk_re = re.compile(r"PRIMARY KEY\s*\(([^)]+)\)", re.I)
-    extra_alter = re.compile(
-        r"ALTER TABLE\s+(?:core|history)\.(\w+)[\s\S]{0,400}?ADD COLUMN(?:\s+IF NOT EXISTS)?\s+(\w+)\s+(\w+)",
-        re.I,
-    )
+
+    def ensure_col(tname: str, col: str, typ: str) -> None:
+        tables.setdefault(tname, [])
+        pks.setdefault(tname, set())
+        existing = {c for c, _ in tables[tname]}
+        if col not in existing:
+            tables[tname].append((col, norm_type(typ)))
 
     for path in sorted(MIG.glob("*.sql")):
         text = path.read_text(encoding="utf-8")
@@ -168,23 +176,18 @@ def parse_migrations() -> tuple[
                         tables[tname].append((c, t))
                 pks[tname] |= pk_set
 
-        for m in alter_add_re.finditer(text):
-            tname, col, typ = m.group(2), m.group(3), m.group(4)
-            tables.setdefault(tname, [])
-            pks.setdefault(tname, set())
-            existing = {c for c, _ in tables[tname]}
-            if col not in existing:
-                tables[tname].append((col, norm_type(typ)))
-            for fk in inline_fk_re.finditer(m.group(0)):
-                ccol, pt, pcol = fk.group(1), fk.group(2), fk.group(3)
-                fks.append((tname, ccol, pt, pcol or default_parent_col(pt, ccol)))
-
-        for m in extra_alter.finditer(text):
-            tname, col, typ = m.group(1), m.group(2), m.group(3)
-            tables.setdefault(tname, [])
-            existing = {c for c, _ in tables[tname]}
-            if col not in existing:
-                tables[tname].append((col, norm_type(typ)))
+        for m in alter_block_re.finditer(text):
+            tname, body = m.group(2), m.group(3)
+            for add in add_col_re.finditer(body):
+                col, typ = add.group(1), add.group(2).rstrip(",")
+                ensure_col(tname, col, typ)
+                # FK may be on the same ADD COLUMN fragment
+                frag = body[add.start() : add.end() + 120]
+                for fk in inline_fk_re.finditer(frag):
+                    ccol, pt, pcol = fk.group(1), fk.group(2), fk.group(3)
+                    fks.append(
+                        (tname, ccol, pt, pcol or default_parent_col(pt, ccol))
+                    )
 
     return tables, pks, fks
 
@@ -250,7 +253,7 @@ def write_inventory(
                 flags.append("PK")
             if (tname, col) in fk_col_set:
                 flags.append("FK")
-            inv.append(f"| `{col}` | `{typ}` | {' '.join(flags) or '—'} |")
+            inv.append(f"| `{col}` | `{typ}` | {', '.join(flags) or '—'} |")
         inv.append("")
     (DOCS_DB / "erd-columns.md").write_text("\n".join(inv), encoding="utf-8")
 
@@ -291,6 +294,28 @@ def write_explorer(erd: str) -> None:
 
 def main() -> int:
     tables, pks, fks = parse_migrations()
+    # Smoke: multi-ADD COLUMN ALTERs must not drop trailing columns.
+    required = {
+        "event_editions": {
+            "start_date",
+            "end_date",
+            "date_source",
+            "calendar_status",
+            "event_occurred",
+        },
+        "parse_runs": {"max_dancer_id_watermark", "new_dancer_ids", "probe_details"},
+        "scheduled_events": {"location_id", "location_source"},
+        "events_list_current": {"location_id", "location_source"},
+        "tier_definitions": {"finalist_max_place"},
+    }
+    missing: list[str] = []
+    for tname, cols in required.items():
+        have = {c for c, _ in tables.get(tname, [])}
+        for col in sorted(cols - have):
+            missing.append(f"{tname}.{col}")
+    if missing:
+        raise SystemExit("Missing expected columns from migrations: " + ", ".join(missing))
+
     erd, fk_col_set = build_erd(tables, pks, fks)
     ASSETS.mkdir(parents=True, exist_ok=True)
     (ASSETS / "wsdc_warehouse_full.mmd").write_text(erd, encoding="utf-8")

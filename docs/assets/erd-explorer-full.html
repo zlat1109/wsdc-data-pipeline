@@ -181,6 +181,8 @@ erDiagram
   dancers ||--o{ dancer_aliases : "dancer_id"
   rules_editions ||--o{ rules_editions : "inherits_from"
   rules_editions ||--o{ tier_definitions : "rules_version"
+  locations ||--o{ scheduled_events : "ADD"
+  locations ||--o{ events_list_current : "ADD"
   events ||--o{ edition_location_baseline : "event_id"
   locations ||--o{ edition_location_baseline : "location_id"
   events ||--o{ edition_calendar_dates : "event_id soft"
@@ -278,6 +280,8 @@ erDiagram
     int dancers_added
     text status
     int max_dancer_id_watermark
+    jsonb new_dancer_ids
+    jsonb probe_details
   }
   dancer_points_history {
     int dancer_id PK
@@ -335,6 +339,7 @@ erDiagram
     timestamptz last_seen_at
     int last_run_id FK
     int location_id
+    text location_source
   }
   events_list_changes {
     bigint change_id PK
@@ -374,6 +379,7 @@ erDiagram
     timestamptz updated_at
     int last_run_id FK
     int location_id
+    text location_source
   }
   event_catalog {
     int event_id PK, FK
@@ -405,6 +411,10 @@ erDiagram
     text location_raw
     int result_rows
     date start_date
+    date end_date
+    text date_source
+    text calendar_status
+    bool event_occurred
   }
   dancer_names_history {
     int dancer_id PK
