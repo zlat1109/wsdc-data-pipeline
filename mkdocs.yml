@@ -81,7 +81,9 @@ nav:
   - Database:
     - database/index.md
     - ER diagrams: database/erd.md
-    - Interactive ERD: assets/erd-explorer.html
+    - Interactive ERD (compact): assets/erd-explorer.html
+    - Interactive ERD (full columns): assets/erd-explorer-full.html
+    - Column inventory: database/erd-columns.md
     - Staging: database/staging.md
     - Core: database/core.md
     - History: database/history.md
