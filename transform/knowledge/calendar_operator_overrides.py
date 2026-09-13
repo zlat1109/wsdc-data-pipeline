@@ -21,6 +21,24 @@ SOUL_FLOW_PROVISIONAL_EVENT_ID = 990001
 # Provisional assumptions — review when the WSDC calendar/list catches up.
 CALENDAR_OPERATOR_OVERRIDES: list[dict[str, Any]] = [
     {
+        "event_id": 255,
+        "event_year": 2025,
+        "event_month": 6,
+        "planned_start_date": date(2025, 6, 26),
+        "planned_end_date": date(2025, 6, 29),
+        "calendar_status": "scheduled",
+        "calendar_title": "Indy Dance Explosion",
+        "url": "http://www.indydancex.com",
+        "city": "Fort Wayne",
+        "country": "United States",
+        "match_via": "operator_assumption",
+        "source_fingerprint": "operator:indy-dance-explosion-2025-dates",
+        "notes": (
+            "Results exist for June 2025 (month-only edition stub). "
+            "Official site: Grand Wayne Center, Fort Wayne IN, June 26–29, 2025."
+        ),
+    },
+    {
         "event_id": 148,
         "event_year": 2026,
         "event_month": 7,

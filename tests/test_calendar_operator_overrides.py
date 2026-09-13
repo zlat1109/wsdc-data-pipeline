@@ -9,6 +9,29 @@ from transform.knowledge.calendar_operator_overrides import (
 )
 
 
+def test_indy_dance_explosion_2025_dates_from_site():
+    hits = [
+        r
+        for r in CALENDAR_OPERATOR_OVERRIDES
+        if int(r["event_id"]) == 255 and int(r["event_year"]) == 2025
+    ]
+    assert len(hits) == 1
+    assert hits[0]["planned_start_date"].isoformat() == "2025-06-26"
+    assert hits[0]["planned_end_date"].isoformat() == "2025-06-29"
+    assert hits[0]["calendar_status"] == "scheduled"
+    assert hits[0]["city"] == "Fort Wayne"
+    assert hits[0]["source_fingerprint"] == "operator:indy-dance-explosion-2025-dates"
+
+    upsert = next(
+        r
+        for r in operator_override_upsert_rows()
+        if r["event_id"] == 255 and r["event_year"] == 2025
+    )
+    assert upsert["date_source"] == "operator"
+    assert upsert["planned_start_date"].isoformat() == "2025-06-26"
+    assert upsert["planned_end_date"].isoformat() == "2025-06-29"
+
+
 def test_dmg_2026_hiatus_override_present():
     hits = [
         r

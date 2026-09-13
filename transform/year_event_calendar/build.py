@@ -539,7 +539,7 @@ def _rows_from_edition_calendar_dates(data_dir: Path) -> list[dict]:
 
 
 def _rows_from_operator_overrides() -> list[dict]:
-    """Curated hiatus/expected stubs (provisional ids allowed; no WSDC match yet)."""
+    """Curated calendar rows (hiatus/expected stubs, or day-dates missing from WSDC)."""
     rows: list[dict] = []
     for rec in CALENDAR_OPERATOR_OVERRIDES:
         start = rec.get("planned_start_date")
