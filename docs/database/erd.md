@@ -3,11 +3,13 @@
 Current Supabase warehouse as of migrations **001–034**. Source of truth: `db/migrations/*.sql`.
 
 !!! tip "Interactive ERD (pan / zoom)"
-    Open the **fullscreen model explorer** — scroll to zoom, drag to pan, Fit / Reset controls:
+    Two explorers:
 
-    **[→ Open interactive ERD explorer](../assets/erd-explorer.html){ target=_blank }**
+    - **[Compact (keys / hubs)](../assets/erd-explorer.html){ target=_blank }** — легко читать связи
+    - **[Full columns](../assets/erd-explorer-full.html){ target=_blank }** — все поля таблиц `core` + `history` (тяжёлая диаграмма; жми **Fit**)
 
-    Same model as below, in a DBeaver-style canvas. Also download [`wsdc_warehouse.dbml`](../assets/wsdc_warehouse.dbml) and paste into [dbdiagram.io](https://dbdiagram.io/d) for another pan/zoom editor.
+    Column list as tables: [erd-columns.md](erd-columns.md).  
+    Also: [`wsdc_warehouse.dbml`](../assets/wsdc_warehouse.dbml) / [`wsdc_warehouse_full.mmd`](../assets/wsdc_warehouse_full.mmd) for external editors.
 
 !!! info "Live schema in DBeaver"
     Connect to Supabase (same creds as `.env`) → expand schemas `core` / `history` → select tables → right-click → **View diagram** / ERD. That is the closest UX to a desktop model editor with live columns.

@@ -1,0 +1,343 @@
+erDiagram
+  events ||--o{ event_aliases : "event_id"
+  events ||--o{ event_instances : "event_id"
+  locations ||--o{ event_instances : "location_id"
+  dancers ||--o{ results : "dancer_id"
+  events ||--o{ results : "event_id"
+  locations ||--o{ results : "location_id"
+  dancers ||--o{ dancer_points : "dancer_id"
+  levels ||--o{ dancer_points : "level"
+  dancers ||--o{ dancer_roles : "dancer_id"
+  parse_runs ||--o{ dancer_points_history : "run_id"
+  parse_runs ||--o{ dancer_roles_history : "run_id"
+  events_list_runs ||--o{ scheduled_events : "last_run_id"
+  events_list_runs ||--o{ events_list_changes : "run_id"
+  events_list_runs ||--o{ events_list_current : "last_run_id"
+  events ||--o{ event_catalog : "event_id"
+  events ||--o{ event_editions : "event_id"
+  locations ||--o{ event_editions : "location_id"
+  parse_runs ||--o{ dancer_names_history : "run_id"
+  dancers ||--o{ dancer_aliases : "dancer_id"
+  rules_editions ||--o{ rules_editions : "inherits_from"
+  rules_editions ||--o{ tier_definitions : "rules_version"
+  events ||--o{ edition_location_baseline : "event_id"
+  locations ||--o{ edition_location_baseline : "location_id"
+  events ||--o{ edition_calendar_dates : "event_id soft"
+  events ||--o{ events_list_current : "canonical_event_id soft"
+  locations ||--o{ events_list_current : "location_id soft"
+  locations ||--o{ scheduled_events : "location_id soft"
+  event_editions ||--o{ results : "edition grain"
+  event_editions ||--o{ edition_division_tiers : "edition grain"
+  event_editions ||--o{ edition_location_baseline : "edition grain"
+  levels {
+    text level PK
+    text level_abbr
+    int sort_order
+  }
+  dancers {
+    int dancer_id PK
+    text dancer_name
+  }
+  locations {
+    int location_id PK
+    text event_city
+    text event_state
+    text event_country
+    numeric latitude
+    numeric longitude
+    text event_location
+    text event_location_standardized
+    bool coordinates_valid
+  }
+  events {
+    int event_id PK
+    text name
+    text url
+  }
+  event_aliases {
+    text alias PK
+    int event_id FK
+  }
+  event_instances {
+    int event_instance_id PK
+    int event_id FK
+    int location_id FK
+    text location_raw
+    text date_raw
+    date event_date
+    int event_year
+    int event_month
+  }
+  results {
+    bigint result_id PK
+    int dancer_id FK
+    int event_id FK
+    int location_id FK
+    text dance
+    text division
+    text role
+    int event_year
+    int event_month
+    date event_date
+    text result_raw
+    text result_standardized
+    int points
+    text event_name_raw
+  }
+  dancer_points {
+    int dancer_id PK, FK
+    text role PK
+    text dance PK
+    text level PK, FK
+    int total_points
+    date update_date
+  }
+  dancer_roles {
+    int dancer_id PK, FK
+    text dominate_role
+    text dominate_required
+    text dominate_allowed
+    text non_dominate_role
+    text non_dominate_required
+    text non_dominate_allowed
+    text non_dominate_recommended
+    text non_dominate_role_highest_level_points
+    text non_dominate_role_highest_level
+    date update_date
+  }
+  parse_runs {
+    bigint run_id PK
+    timestamptz started_at
+    timestamptz finished_at
+    text source
+    text probe_hash
+    int rows_results
+    int rows_points
+    int points_changed
+    int dancers_added
+    text status
+    int max_dancer_id_watermark
+  }
+  dancer_points_history {
+    int dancer_id PK
+    text role PK
+    text dance PK
+    text level PK
+    int total_points
+    date valid_from PK
+    date valid_to
+    bigint run_id FK
+  }
+  dancer_roles_history {
+    int dancer_id PK
+    text dancer_name
+    text dominate_role
+    text dominate_required
+    text dominate_allowed
+    text non_dominate_role
+    text non_dominate_required
+    text non_dominate_allowed
+    text non_dominate_recommended
+    text non_dominate_role_highest_level_points
+    text non_dominate_role_highest_level
+    date valid_from PK
+    date valid_to
+    bigint run_id FK
+  }
+  events_list_runs {
+    int run_id PK
+    timestamptz scraped_at
+    text source
+    int total_events
+    int added_count
+    int removed_count
+    int unchanged_count
+  }
+  scheduled_events {
+    text source_fingerprint PK
+    text event_name
+    text original_date
+    date start_date
+    date end_date
+    int results_year
+    int results_month
+    text location_raw
+    text country
+    text country_flag
+    text url
+    text status_event
+    bool confirmed
+    bool canceled
+    bool on_hiatus
+    bool is_active
+    timestamptz first_seen_at
+    timestamptz last_seen_at
+    int last_run_id FK
+    int location_id
+  }
+  events_list_changes {
+    bigint change_id PK
+    int run_id FK
+    text change_type
+    text source_fingerprint
+    text event_name
+    date start_date
+    date end_date
+    text location_raw
+    text url
+    jsonb snapshot
+  }
+  events_list_current {
+    text schedule_event_key PK
+    text source_fingerprint
+    int canonical_event_id
+    text event_name
+    text canonical_name
+    text original_date
+    date start_date
+    date end_date
+    int results_year
+    int results_month
+    text location_raw
+    text country
+    text country_flag
+    text url
+    text status_event
+    bool confirmed
+    bool canceled
+    bool on_hiatus
+    text match_status
+    text match_method
+    float match_confidence
+    int upcoming_editions
+    timestamptz updated_at
+    int last_run_id FK
+    int location_id
+  }
+  event_catalog {
+    int event_id PK, FK
+    text canonical_name
+    text url
+    text registry_status
+    text typical_city
+    text typical_state
+    text typical_country
+    text typical_location
+    int first_edition_year
+    int last_edition_year
+    int edition_count
+    bigint total_result_rows
+    date upcoming_start_date
+    text upcoming_location
+    timestamptz updated_at
+  }
+  event_editions {
+    bigint edition_id PK
+    int event_id FK
+    int event_year
+    int event_month
+    date edition_date
+    int location_id FK
+    text place_city
+    text place_state
+    text place_country
+    text location_raw
+    int result_rows
+    date start_date
+  }
+  dancer_names_history {
+    int dancer_id PK
+    text dancer_name
+    date valid_from PK
+    date valid_to
+    bigint run_id FK
+  }
+  dancer_aliases {
+    text alias PK
+    int dancer_id FK
+    text source
+    text notes
+  }
+  edition_calendar_dates {
+    int event_id PK
+    int event_year PK
+    int event_month PK
+    date planned_start_date
+    date planned_end_date
+    text calendar_status
+    text date_source
+    text source_fingerprint
+    text calendar_title
+    text url
+    text match_via
+    timestamptz scraped_at
+    timestamptz updated_at
+  }
+  rules_editions {
+    text rules_version PK
+    date valid_from
+    date valid_to
+    text tier_basis
+    int min_role_competitors
+    int points_depth
+    text inherits_from FK
+    text source_url
+    text source
+    text notes
+    timestamptz updated_at
+  }
+  tier_definitions {
+    text rules_version PK, FK
+    int tier PK
+    int min_competitors
+    int max_competitors
+    int prelim_rounds
+    int finalist_points
+    text source
+    int finalist_max_place
+  }
+  tier_points {
+    text rules_version PK
+    int tier PK
+    int placement PK
+    int points
+    text source
+    core REFERENCES
+  }
+  edition_division_tiers {
+    int event_id PK
+    int event_year PK
+    int event_month PK
+    text division PK
+    text role PK
+    text dance PK
+    bigint edition_id
+    text rules_version
+    int observed_points_1
+    int observed_points_2
+    int observed_points_3
+    int observed_points_4
+    int observed_points_5
+    int finalists
+    int scored_dancers
+    int tier
+    text status
+    int vector_distance
+    text range_basis
+    int rule_min_competitors
+    int rule_max_competitors
+    int est_min_competitors
+    int est_max_competitors
+    bool range_conflict
+    timestamptz updated_at
+  }
+  edition_location_baseline {
+    int event_id PK, FK
+    int event_year PK
+    int event_month PK
+    int location_id FK
+    text event_name
+    text source
+    timestamptz seeded_at
+    timestamptz updated_at
+  }
