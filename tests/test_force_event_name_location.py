@@ -889,3 +889,247 @@ def test_force_calgary_stampede_and_som_off_poison_lids():
     assert str(snow["location_id"]) == "222"
     woz = out.loc[out["event_name"] == "WesterOz"].iloc[0]
     assert str(woz["location_id"]) == "253"
+
+
+def test_force_budapest_events_off_sao_paulo():
+    location_info = pd.DataFrame(
+        [
+            {
+                "location_id": "243",
+                "event_city": "São Paulo",
+                "event_state": "",
+                "event_country": "Brazil",
+                "event_location": "São Paulo, Brazil",
+            },
+            {
+                "location_id": "110",
+                "event_city": "Budapest",
+                "event_state": "",
+                "event_country": "Hungary",
+                "event_location": "Budapest, Hungary",
+            },
+        ]
+    )
+    results = pd.DataFrame(
+        [
+            {
+                "event_name": "BudaFest Open WCS Championships",
+                "location_id": "243",
+                "event_location": "São Paulo, Brazil",
+            },
+            {
+                "event_name": "Westie Spring Thing",
+                "location_id": "243",
+                "event_location": "São Paulo, Brazil",
+            },
+            {
+                "event_name": "Montreal WCS Fest",
+                "location_id": "243",
+                "event_location": "São Paulo, Brazil",
+            },
+        ]
+    )
+
+    out, changed = force_result_locations_from_event_name_overrides(results, location_info)
+
+    assert changed == 2
+    buda = out.loc[out["event_name"] == "BudaFest Open WCS Championships"].iloc[0]
+    assert str(buda["location_id"]) == "110"
+    assert buda["event_location"] == "Budapest, Hungary"
+    westie = out.loc[out["event_name"] == "Westie Spring Thing"].iloc[0]
+    assert str(westie["location_id"]) == "110"
+    montreal = out.loc[out["event_name"] == "Montreal WCS Fest"].iloc[0]
+    assert str(montreal["location_id"]) == "243"
+
+
+def test_force_toronto_and_variant_via_alias():
+    location_info = pd.DataFrame(
+        [
+            {
+                "location_id": "222",
+                "event_city": "St. Petersburg",
+                "event_state": "",
+                "event_country": "Russia",
+                "event_location": "St. Petersburg, Russia",
+            },
+            {
+                "location_id": "105",
+                "event_city": "Toronto",
+                "event_state": "",
+                "event_country": "Canada",
+                "event_location": "Toronto, Canada",
+            },
+        ]
+    )
+    results = pd.DataFrame(
+        [
+            {
+                "event_name": "Toronto Open Swing and Hustle Championships",
+                "location_id": "222",
+                "event_location": "St. Petersburg, Russia",
+            },
+        ]
+    )
+
+    out, changed = force_result_locations_from_event_name_overrides(results, location_info)
+
+    assert changed == 1
+    row = out.iloc[0]
+    assert str(row["location_id"]) == "105"
+    assert row["event_location"] == "Toronto, Canada"
+
+
+def test_force_french_open_and_swing_in_bloom_off_poison_lids():
+    location_info = pd.DataFrame(
+        [
+            {
+                "location_id": "243",
+                "event_city": "São Paulo",
+                "event_state": "",
+                "event_country": "Brazil",
+                "event_location": "São Paulo, Brazil",
+            },
+            {
+                "location_id": "109",
+                "event_city": "Paris",
+                "event_state": "",
+                "event_country": "France",
+                "event_location": "Paris, France",
+            },
+            {
+                "location_id": "222",
+                "event_city": "St. Petersburg",
+                "event_state": "",
+                "event_country": "Russia",
+                "event_location": "St. Petersburg, Russia",
+            },
+            {
+                "location_id": "179",
+                "event_city": "Ottawa",
+                "event_state": "",
+                "event_country": "Canada",
+                "event_location": "Ottawa, Canada",
+            },
+        ]
+    )
+    results = pd.DataFrame(
+        [
+            {
+                "event_name": "French Open West Coast Swing",
+                "location_id": "243",
+                "event_location": "São Paulo, Brazil",
+            },
+            {
+                "event_name": "Swing in Bloom",
+                "location_id": "222",
+                "event_location": "St. Petersburg, Russia",
+            },
+            {
+                "event_name": "Saint Petersburg WCS Nights",
+                "location_id": "222",
+                "event_location": "St. Petersburg, Russia",
+            },
+        ]
+    )
+
+    out, changed = force_result_locations_from_event_name_overrides(results, location_info)
+
+    assert changed == 2
+    french = out.loc[out["event_name"] == "French Open West Coast Swing"].iloc[0]
+    assert str(french["location_id"]) == "109"
+    assert french["event_location"] == "Paris, France"
+    bloom = out.loc[out["event_name"] == "Swing in Bloom"].iloc[0]
+    assert str(bloom["location_id"]) == "179"
+    assert bloom["event_location"] == "Ottawa, Canada"
+    # Shared poison lid must keep its true owner.
+    spb = out.loc[out["event_name"] == "Saint Petersburg WCS Nights"].iloc[0]
+    assert str(spb["location_id"]) == "222"
+
+
+def test_force_finnfest_neverland_korean_off_poison_lids():
+    location_info = pd.DataFrame(
+        [
+            {
+                "location_id": "266",
+                "event_city": "Brno",
+                "event_state": "",
+                "event_country": "Czech Republic",
+                "event_location": "Brno, Czech Republic",
+            },
+            {
+                "location_id": "204",
+                "event_city": "Helsinki",
+                "event_state": "",
+                "event_country": "Finland",
+                "event_location": "Helsinki, Finland",
+            },
+            {
+                "location_id": "222",
+                "event_city": "St. Petersburg",
+                "event_state": "",
+                "event_country": "Russia",
+                "event_location": "St. Petersburg, Russia",
+            },
+            {
+                "location_id": "191",
+                "event_city": "Amsterdam",
+                "event_state": "",
+                "event_country": "Netherlands",
+                "event_location": "Amsterdam, Netherlands",
+            },
+            {
+                "location_id": "243",
+                "event_city": "São Paulo",
+                "event_state": "",
+                "event_country": "Brazil",
+                "event_location": "São Paulo, Brazil",
+            },
+            {
+                "location_id": "172",
+                "event_city": "Incheon",
+                "event_state": "",
+                "event_country": "Republic of Korea",
+                "event_location": "Incheon, Republic of Korea",
+            },
+        ]
+    )
+    results = pd.DataFrame(
+        [
+            {
+                "event_name": "Finnfest",
+                "location_id": "266",
+                "event_location": "Brno, Czech Republic",
+            },
+            {
+                "event_name": "Neverland Swing",
+                "location_id": "222",
+                "event_location": "St. Petersburg, Russia",
+            },
+            {
+                "event_name": "Korean Open WCS Championships",
+                "location_id": "243",
+                "event_location": "São Paulo, Brazil",
+            },
+            {
+                "event_name": "Swing Fiction",
+                "location_id": "266",
+                "event_location": "Brno, Czech Republic",
+            },
+        ]
+    )
+
+    out, changed = force_result_locations_from_event_name_overrides(results, location_info)
+
+    assert changed == 3
+    finn = out.loc[out["event_name"] == "Finnfest"].iloc[0]
+    assert str(finn["location_id"]) == "204"
+    assert finn["event_location"] == "Helsinki, Finland"
+    neverland = out.loc[out["event_name"] == "Neverland Swing"].iloc[0]
+    assert str(neverland["location_id"]) == "191"
+    assert neverland["event_location"] == "Amsterdam, Netherlands"
+    korean = out.loc[out["event_name"] == "Korean Open WCS Championships"].iloc[0]
+    assert str(korean["location_id"]) == "172"
+    assert korean["event_location"] == "Incheon, Republic of Korea"
+    # Shared Brno poison lid must keep its true owner.
+    fiction = out.loc[out["event_name"] == "Swing Fiction"].iloc[0]
+    assert str(fiction["location_id"]) == "266"

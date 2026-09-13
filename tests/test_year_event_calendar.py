@@ -336,6 +336,7 @@ def test_enrich_geo_clears_stale_schedule_lid_when_city_relocated():
             {
                 "location_id": 13,
                 "event_city": "Washington",
+                "event_state": "District of Columbia",
                 "event_country": "United States",
                 "event_location": "Washington, DC, United States",
                 "event_location_standardized": "Washington, DC, United States",
@@ -386,6 +387,7 @@ def test_enrich_geo_flat_override_yields_to_incompatible_schedule_city():
             {
                 "location_id": 13,
                 "event_city": "Washington",
+                "event_state": "District of Columbia",
                 "event_country": "United States",
                 "event_location": "Washington, DC, United States",
                 "event_location_standardized": "Washington, DC, United States",
@@ -424,6 +426,7 @@ def test_enrich_geo_flat_override_yields_to_incompatible_schedule_city():
     assert rows[0]["city"] == "Washington"
     assert rows[0]["lat"] == 38.9072
     assert rows[0]["lon"] == -77.0369
+    assert rows[0]["state"] == "District of Columbia"
 
 
 def test_enrich_geo_expected_from_schedule_keeps_relocated_city():
@@ -443,6 +446,7 @@ def test_enrich_geo_expected_from_schedule_keeps_relocated_city():
             {
                 "location_id": 13,
                 "event_city": "Washington",
+                "event_state": "District of Columbia",
                 "event_country": "United States",
                 "event_location": "Washington, DC, United States",
                 "event_location_standardized": "Washington, DC, United States",
@@ -1849,6 +1853,56 @@ def test_serialize_event_unique_ids_for_unlinked_rows_same_start():
     )
     assert numeric_name["id"] == "confirmed:t-135:2026-08-21"
     assert numeric_name["id"] != linked["id"]
+
+
+def test_state_from_location_raw_parses_dcsx_wsdc_typo():
+    from transform.year_event_calendar.build import _state_from_location_raw
+
+    assert _state_from_location_raw("Washington, DC., VA, United States") == "District of Columbia"
+    assert _state_from_location_raw("Washington, DC, United States") == "District of Columbia"
+    assert _state_from_location_raw("Herndon, VA, United States") == "Virginia"
+
+
+def test_serialize_event_emits_us_state_only_for_united_states():
+    from transform.year_event_calendar.build import _serialize_event
+
+    us = _serialize_event(
+        {
+            "start_date": date(2026, 3, 1),
+            "end_date": date(2026, 3, 3),
+            "event_id": 1,
+            "status": "confirmed",
+            "kind": "registry",
+            "year": 2026,
+            "name": "Test",
+            "city": "Denver",
+            "country": "United States",
+            "state": "Colorado",
+            "url": None,
+            "lat": None,
+            "lon": None,
+        }
+    )
+    assert us["state"] == "Colorado"
+
+    de = _serialize_event(
+        {
+            "start_date": date(2026, 3, 1),
+            "end_date": date(2026, 3, 3),
+            "event_id": 2,
+            "status": "confirmed",
+            "kind": "registry",
+            "year": 2026,
+            "name": "Test",
+            "city": "Berlin",
+            "country": "Germany",
+            "state": "Berlin",
+            "url": None,
+            "lat": None,
+            "lon": None,
+        }
+    )
+    assert "state" not in de or de.get("state") is None
 
 
 def test_serialize_event_emits_provisional_unlinked_flag():

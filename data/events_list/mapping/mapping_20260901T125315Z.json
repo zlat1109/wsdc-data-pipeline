@@ -10,6 +10,63 @@
   },
   "confirmed": [
     {
+      "source_fingerprint": "817d46b7445e6cc97c4c9dc5",
+      "list_name": "South Bay Dance Fling",
+      "start_date": "2026-09-03",
+      "location_raw": "San Jose, California, United States",
+      "list_url": "https://sbdf.dance/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 48,
+      "canonical_name": "South Bay Dance Fling",
+      "catalog_url": "http://www.SBDF.dance",
+      "typical_location": "San Jose, CA, United States",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": []
+    },
+    {
+      "source_fingerprint": "fcb94a4342efedf86c0f9a4c",
+      "list_name": "Korea Westival",
+      "start_date": "2026-09-03",
+      "location_raw": "Jeju, Jeju, Republic of Korea",
+      "list_url": "http://koreawestival.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 268,
+      "canonical_name": "Korea Westival",
+      "catalog_url": "http://koreawestival.com",
+      "typical_location": "Jeju, Republic of Korea",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": []
+    },
+    {
+      "source_fingerprint": "83d85055ab0a9ddcf83a4e0a",
+      "list_name": "Jax Westie Fest",
+      "start_date": "2026-09-04",
+      "location_raw": "Jacksonville, FL, United States",
+      "list_url": "http://www.jaxwestiefest.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 177,
+      "canonical_name": "River City Swing",
+      "catalog_url": "http://www.floridadanceevents.com",
+      "typical_location": "Jacksonville, FL, United States",
+      "location_score": 1.0,
+      "location_flag": "ok",
+      "notes": [
+        "List URL 'http://www.jaxwestiefest.com/' differs from catalog URL 'http://www.floridadanceevents.com' — using event name",
+        "Name differs: list='Jax Westie Fest' catalog='River City Swing'"
+      ]
+    },
+    {
       "source_fingerprint": "ab0c1d2ca2096352d46ad7c5",
       "list_name": "Trilogy Swing",
       "start_date": "2026-09-10",
@@ -57,7 +114,7 @@
       "match_status": "confirmed",
       "match_method": "exact_name",
       "confidence": 1.0,
-      "canonical_event_id": 466,
+      "canonical_event_id": 468,
       "canonical_name": "SwingTime Denver",
       "catalog_url": "",
       "typical_location": null,
@@ -208,13 +265,15 @@
       "match_status": "confirmed",
       "match_method": "exact_name",
       "confidence": 1.0,
-      "canonical_event_id": 324,
+      "canonical_event_id": 415,
       "canonical_name": "Calgary Town Open",
-      "catalog_url": "https://ctodance.ca/",
-      "typical_location": "Calgary, Canada",
-      "location_score": 0.92,
-      "location_flag": "ok",
-      "notes": []
+      "catalog_url": "",
+      "typical_location": null,
+      "location_score": 0.0,
+      "location_flag": "unknown",
+      "notes": [
+        "No historical location in catalog for comparison"
+      ]
     },
     {
       "source_fingerprint": "33c49f10e0fa752d3de8b00b",
@@ -708,7 +767,7 @@
       "match_status": "confirmed",
       "match_method": "exact_name",
       "confidence": 1.0,
-      "canonical_event_id": 443,
+      "canonical_event_id": 444,
       "canonical_name": "Mountain Magic Dance Convention",
       "catalog_url": "",
       "typical_location": null,
@@ -728,7 +787,7 @@
       "match_status": "confirmed",
       "match_method": "exact_name",
       "confidence": 1.0,
-      "canonical_event_id": 456,
+      "canonical_event_id": 458,
       "canonical_name": "Sea to Sky Seattle",
       "catalog_url": "",
       "typical_location": null,
@@ -1868,26 +1927,6 @@
       ]
     },
     {
-      "source_fingerprint": "23321d869097a09168899c9b",
-      "list_name": "Swing In Capital",
-      "start_date": "2027-04-01",
-      "location_raw": "Rome, rome, italy",
-      "list_url": "https://swingincapital.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 304,
-      "canonical_name": "Swing In Capital",
-      "catalog_url": "https://www.westcoastswingroma.it/swing-in-capital/",
-      "typical_location": "Rome, Italy",
-      "location_score": 0.92,
-      "location_flag": "ok",
-      "notes": [
-        "List URL 'https://swingincapital.com/' differs from catalog URL 'https://www.westcoastswingroma.it/swing-in-capital/' — using event name"
-      ]
-    },
-    {
       "source_fingerprint": "4387e59e411ddba91259cfa1",
       "list_name": "KOREAN OPEN WCS CHAMPIONSHIPS",
       "start_date": "2027-04-08",
@@ -2152,26 +2191,6 @@
       "notes": []
     },
     {
-      "source_fingerprint": "c9ef58edc9380effd615c275",
-      "list_name": "French Open WCS",
-      "start_date": "2027-05-05",
-      "location_raw": "Paris, paris, france",
-      "list_url": "http://www.fowcs.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "url",
-      "confidence": 0.99,
-      "canonical_event_id": 175,
-      "canonical_name": "French Open West Coast Swing",
-      "catalog_url": "http://www.fowcs.com",
-      "typical_location": "Paris, France",
-      "location_score": 0.92,
-      "location_flag": "ok",
-      "notes": [
-        "Name differs: list='French Open WCS' catalog='French Open West Coast Swing'"
-      ]
-    },
-    {
       "source_fingerprint": "42e5533ac3e6733ad67540c9",
       "list_name": "Westie Weekend",
       "start_date": "2027-05-07",
@@ -2280,15 +2299,13 @@
       "match_status": "confirmed",
       "match_method": "exact_name",
       "confidence": 1.0,
-      "canonical_event_id": 430,
+      "canonical_event_id": 221,
       "canonical_name": "Gateway Swing Classic",
       "catalog_url": "",
-      "typical_location": null,
-      "location_score": 0.0,
-      "location_flag": "unknown",
-      "notes": [
-        "No historical location in catalog for comparison"
-      ]
+      "typical_location": "St. Louis, MO, United States",
+      "location_score": 1.0,
+      "location_flag": "ok",
+      "notes": []
     },
     {
       "source_fingerprint": "6a2fa76491a42cb1136df4e9",
@@ -2781,24 +2798,6 @@
       "catalog_url": "http://www.chicagolanddancefestival.com",
       "typical_location": "Chicago, IL, United States",
       "location_score": 0.92,
-      "location_flag": "ok",
-      "notes": []
-    },
-    {
-      "source_fingerprint": "40003e88c037e75bd7c2dc0c",
-      "list_name": "Desert City Swing",
-      "start_date": "2027-09-02",
-      "location_raw": "Phoenix, AZ, United States",
-      "list_url": "https://www.desertcityswing.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 135,
-      "canonical_name": "Desert City Swing",
-      "catalog_url": "http://www.desertcityswing.com",
-      "typical_location": "Phoenix, AZ, United States",
-      "location_score": 1.0,
       "location_flag": "ok",
       "notes": []
     },
@@ -3388,6 +3387,27 @@
     }
   ],
   "name_variants": [
+    {
+      "source_fingerprint": "83d85055ab0a9ddcf83a4e0a",
+      "list_name": "Jax Westie Fest",
+      "start_date": "2026-09-04",
+      "location_raw": "Jacksonville, FL, United States",
+      "list_url": "http://www.jaxwestiefest.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 177,
+      "canonical_name": "River City Swing",
+      "catalog_url": "http://www.floridadanceevents.com",
+      "typical_location": "Jacksonville, FL, United States",
+      "location_score": 1.0,
+      "location_flag": "ok",
+      "notes": [
+        "List URL 'http://www.jaxwestiefest.com/' differs from catalog URL 'http://www.floridadanceevents.com' — using event name",
+        "Name differs: list='Jax Westie Fest' catalog='River City Swing'"
+      ]
+    },
     {
       "source_fingerprint": "59e55b8dbf3b1581e88fd4b7",
       "list_name": "Bavarian Open West Coast Swing Championships",
@@ -4033,26 +4053,6 @@
       ]
     },
     {
-      "source_fingerprint": "c9ef58edc9380effd615c275",
-      "list_name": "French Open WCS",
-      "start_date": "2027-05-05",
-      "location_raw": "Paris, paris, france",
-      "list_url": "http://www.fowcs.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "url",
-      "confidence": 0.99,
-      "canonical_event_id": 175,
-      "canonical_name": "French Open West Coast Swing",
-      "catalog_url": "http://www.fowcs.com",
-      "typical_location": "Paris, France",
-      "location_score": 0.92,
-      "location_flag": "ok",
-      "notes": [
-        "Name differs: list='French Open WCS' catalog='French Open West Coast Swing'"
-      ]
-    },
-    {
       "source_fingerprint": "42e5533ac3e6733ad67540c9",
       "list_name": "Westie Weekend",
       "start_date": "2027-05-07",
@@ -4254,6 +4254,6 @@
       ]
     }
   ],
-  "generated_at": "2026-09-08T12:23:26.822218+00:00",
-  "catalog_events": 425
+  "generated_at": "2026-09-01T12:53:15.041039+00:00",
+  "catalog_events": 429
 }

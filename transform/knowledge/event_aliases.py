@@ -48,6 +48,7 @@ RESULT_TO_CATALOG_EVENT_NAME: dict[str, str] = {
     'Swing Over': 'Swingover',
     'Asia WCS Open': 'Asia West Coast Swing Open',
     'Toronto Open': 'Toronto Open Swing & Hustle Championships',
+    'Toronto Open Swing and Hustle Championships': 'Toronto Open Swing & Hustle Championships',
     'Sweden Westie Gala': 'Westie Gala',
     'Vestigala': 'Westie Gala',
     'Westigala': 'Westie Gala',

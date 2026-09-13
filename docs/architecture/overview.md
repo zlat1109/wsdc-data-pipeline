@@ -72,24 +72,28 @@ load_staging_from_dir
   → promote_core_results.sql
   → enrich_core_known_events
   → rebuild_event_catalog
+  → ensure_edition_calendar_after_load
+  → rebuild_edition_tiers
+  → sync_edition_location_baseline_after_load   # drift report + auto-add
   → ANALYZE core.results, core.event_editions, core.event_catalog
   → UPDATE parse_runs (success) + COMMIT
   → refresh_watermark                  # probe max dancer_id for check-updates
 ```
 
-Staging tables are truncated and reloaded each run. History is recorded **before** core refresh (compares incoming staging to current core). Core points/roles are full snapshots; results are merged via promote SQL.
+Staging tables are truncated and reloaded each run. History is recorded **before** core refresh (compares incoming staging to current core). Core points/roles are full snapshots; results are merged via promote SQL. Schedule / calendar / baseline tables are **not** truncated by points load.
 
 ### 4. Export
 
-`export.py` copies `export.*` views to `data/*.csv` via Postgres `COPY`. Default export: **11** DB views (legacy 5 + catalog 3 + history 3) plus **3** derived analytics CSVs → **14** files total.
+`export.py` copies `export.*` views to `data/*.csv` via Postgres `COPY`. Default export: **16** DB views + **3** derived analytics CSVs → **19** files (see [export map](../database/export-views.md)).
 
 ### 5. CI automation
 
 | Workflow | Role |
 |----------|------|
 | `check-updates.yml` | Probe new dancer IDs; trigger full-parse when gate passes |
-| `full-parse.yml` | Parse (optional) → migrations → preprocess → load → export → commit CSV |
-| `sync-events-list.yml` | Tuesday scrape of worldsdc.com/events/ |
+| `full-parse.yml` | Parse (optional) → migrations → preprocess → load → export → commit CSV → analytics site sync |
+| `sync-events-list.yml` | Tuesday scrape of worldsdc.com/events/ (+ calendar); export; optional site sync |
+| `force-rebuild-calendar-site.yml` | Manual: export from Supabase → rebuild year calendar / site → push Pages (after DB-only repairs) |
 
 See [operations/github-actions.md](../operations/github-actions.md).
 

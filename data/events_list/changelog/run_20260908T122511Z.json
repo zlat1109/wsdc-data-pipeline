@@ -8,8 +8,7 @@
     "added": 3,
     "removed": 3,
     "unchanged": 168,
-    "parse_errors": 0,
-    "geo_review_count": 0
+    "parse_errors": 0
   },
   "added": [
     {
@@ -128,13 +127,5 @@
       "on_hiatus": false,
       "is_active": true
     }
-  ],
-  "paths": {
-    "current": "/home/runner/work/wsdc-data-pipeline/wsdc-data-pipeline/data/events_list/current.json",
-    "csv": "/home/runner/work/wsdc-data-pipeline/wsdc-data-pipeline/data/events_list/events_list.csv",
-    "changelog": "/home/runner/work/wsdc-data-pipeline/wsdc-data-pipeline/data/events_list/changelog/run_20260908T122511Z.json"
-  },
-  "geo_review": [],
-  "run_id": 27,
-  "current_events": 158
+  ]
 }
