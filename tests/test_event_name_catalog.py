@@ -16,6 +16,15 @@ def test_result_to_catalog_targets_exist_in_events_wsdc():
     catalog = set(
         pd.read_csv(data_dir / "events_wsdc.csv", dtype=str)["name"].dropna().str.strip()
     )
+    from transform.knowledge.events import KNOWN_EVENT_METADATA
+
+    # Forced registry titles (enrich_known_events) are valid even when points
+    # export still carries the historical WSDC string.
+    catalog |= {
+        str(meta["name"]).strip()
+        for meta in KNOWN_EVENT_METADATA.values()
+        if meta.get("name")
+    }
     missing = [
         (alias, canonical)
         for alias, canonical in RESULT_TO_CATALOG_EVENT_NAME.items()

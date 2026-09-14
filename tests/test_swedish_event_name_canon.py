@@ -22,6 +22,19 @@ def test_westie_gala_is_canonical_alias_target():
     assert "UpTown Swing" not in norm  # must not collapse into SSSC
 
 
+def test_swingtime_denver_is_canonical_alias_target():
+    from transform.knowledge.event_aliases import MERGE_EVENT_ID_MAP
+
+    norm = build_event_name_normalization()
+    assert norm["SwingTime"] == "SwingTime Denver"
+    assert norm["Swingtime in the Rockies"] == "SwingTime Denver"
+    assert norm["SwingTime Denver"] == "SwingTime Denver"
+    assert MERGE_EVENT_ID_MAP[66] == 47
+    assert MERGE_EVENT_ID_MAP[466] == 47
+    assert KNOWN_EVENT_METADATA[47]["name"] == "SwingTime Denver"
+    assert EVENT_NAME_LOCATION_OVERRIDES["SwingTime Denver"] == "Denver, CO, United States"
+
+
 def test_westie_gala_metadata_and_stockholm_override():
     assert KNOWN_EVENT_METADATA[240]["name"] == "Westie Gala"
     assert EVENT_NAME_LOCATION_OVERRIDES["Westie Gala"] == "Stockholm, Sweden"

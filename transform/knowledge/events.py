@@ -19,6 +19,10 @@ EVENT_NAME_NORMALIZATION = build_event_name_normalization()
 EVENT_NAME_LOCATION_OVERRIDES = {
     # Go West: year ranges below (Fest alias collapses into SwingFest).
     'BeeMAD': 'Madrid, Spain',
+    # Current WSDC registry title (id 47); points still emit Swingtime in the Rockies.
+    'SwingTime Denver': 'Denver, CO, United States',
+    'Swingtime in the Rockies': 'Denver, CO, United States',
+    'SwingTime': 'Denver, CO, United States',
     # Shared Wailea (124 / Aloha Open) wrongly applied to Swedish events.
     'Sweden Westie Gala': 'Stockholm, Sweden',
     'Westie Gala': 'Stockholm, Sweden',
@@ -256,6 +260,20 @@ EVENT_LOCATION_SUBSTRING_CORRECTIONS = [
 ]
 
 KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
+    47: {
+        # Current WSDC list/registry title. Points export still uses
+        # "Swingtime in the Rockies" on the same event_id.
+        'name': 'SwingTime Denver',
+        'url': 'http://www.swingtimewcs.com/',
+        'typical_location': 'Denver, CO, United States',
+        'location': {
+            'event_city': 'Denver',
+            'event_state': 'Colorado',
+            'event_country': 'United States',
+            'event_location': 'Denver, CO, United States',
+            'event_location_standardized': 'Denver, CO',
+        },
+    },
     229: {
         'name': 'Scandinavian Open',
         'url': 'http://www.snowcs.se/',
