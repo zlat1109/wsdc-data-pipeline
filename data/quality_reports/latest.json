@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-09-09T18:13:05.854063+00:00",
+  "generated_at": "2026-09-14T09:07:13.826610+00:00",
   "source": "github-actions",
   "run_id": null,
   "summary": {
-    "before_findings_count": 10,
-    "applied_rules_count": 251,
-    "applied_rows_touched": 192970,
-    "manual_review_count": 10,
-    "manual_review_new_count": 4
+    "before_findings_count": 9,
+    "applied_rules_count": 248,
+    "applied_rows_touched": 191304,
+    "manual_review_count": 6,
+    "manual_review_new_count": 0
   },
   "before_processing": {
     "description": "Issues detected in raw CSV before any normalization",
@@ -103,8 +103,8 @@
           },
           {
             "event_name": "German Open WCS Championships",
-            "similar_to": "Russian Open WCS Championships",
-            "score": 0.881
+            "similar_to": "Korean Open WCS Championships",
+            "score": 0.897
           },
           {
             "event_name": "Global Grand Prix - West Coast Swing",
@@ -194,16 +194,6 @@
             ]
           },
           {
-            "base_key": "paradise dance festival",
-            "variants": [
-              "Paradise Dance Festival",
-              "Paradise dance festival"
-            ],
-            "geo_keys": [
-              "irvine|ca|usa"
-            ]
-          },
-          {
             "base_key": "swing fling",
             "variants": [
               "Swing Fling",
@@ -211,6 +201,16 @@
             ],
             "geo_keys": [
               "washington_dc|usa"
+            ]
+          },
+          {
+            "base_key": "paradise dance festival",
+            "variants": [
+              "Paradise Dance Festival",
+              "Paradise dance festival"
+            ],
+            "geo_keys": [
+              "irvine|ca|usa"
             ]
           },
           {
@@ -339,17 +339,17 @@
             ]
           },
           {
-            "base_key": "paradise dance festival",
-            "variants": [
-              "Paradise Dance Festival",
-              "Paradise dance festival"
-            ]
-          },
-          {
             "base_key": "swing fling",
             "variants": [
               "Swing Fling",
               "Swing Fling 2024"
+            ]
+          },
+          {
+            "base_key": "paradise dance festival",
+            "variants": [
+              "Paradise Dance Festival",
+              "Paradise dance festival"
             ]
           },
           {
@@ -574,45 +574,6 @@
         "is_new": true
       },
       {
-        "category": "location",
-        "code": "BASELINE_VS_LOCATION_OVERRIDE",
-        "severity": "high",
-        "message": "edition_location_baseline location_id disagrees with EVENT_NAME_LOCATION_OVERRIDES (seed/auto-add froze a shared wrong lid)",
-        "count": 3,
-        "examples": [
-          {
-            "event_id": "164",
-            "event_year": "2024",
-            "event_month": "8",
-            "event_name": "Sea Sun and Swing",
-            "baseline_location_id": "266",
-            "override_location_id": "158",
-            "override_location": "La Grande Motte, France"
-          },
-          {
-            "event_id": "164",
-            "event_year": "2023",
-            "event_month": "8",
-            "event_name": "Sea Sun and Swing",
-            "baseline_location_id": "266",
-            "override_location_id": "158",
-            "override_location": "La Grande Motte, France"
-          },
-          {
-            "event_id": "164",
-            "event_year": "2019",
-            "event_month": "7",
-            "event_name": "Sea Sun and Swing",
-            "baseline_location_id": "266",
-            "override_location_id": "158",
-            "override_location": "La Grande Motte, France"
-          }
-        ],
-        "suggested_fix": "Apply overrides + repair results/editions, then UPDATE core.edition_location_baseline to the override location_id (source='manual'). Cross-load drift alone cannot see poison seeds.",
-        "fingerprint": "556a554a17360272",
-        "is_new": true
-      },
-      {
         "category": "relationships",
         "code": "LEGACY_LOCATION_ID",
         "severity": "high",
@@ -638,16 +599,16 @@
         "examples": [
           {
             "detail": [
-              "279",
-              "325",
-              "66",
-              "198",
-              "202",
-              "307",
-              "321",
+              "39",
               "193",
+              "321",
+              "279",
+              "202",
+              "66",
+              "325",
               "99",
-              "39"
+              "307",
+              "198"
             ]
           }
         ],
@@ -2160,7 +2121,7 @@
         "column": "event_competition",
         "from_value": "Masters",
         "to_value": "Master",
-        "rows_affected": 16816,
+        "rows_affected": 16844,
         "source": "known_map"
       },
       {
@@ -2169,7 +2130,7 @@
         "column": "event_competition",
         "from_value": "Champions",
         "to_value": "Champion",
-        "rows_affected": 5120,
+        "rows_affected": 5138,
         "source": "known_map"
       },
       {
@@ -2178,7 +2139,7 @@
         "column": "event_competition",
         "from_value": "All-Stars",
         "to_value": "All-Star",
-        "rows_affected": 16154,
+        "rows_affected": 16177,
         "source": "known_map"
       },
       {
@@ -2416,38 +2377,11 @@
         "source": "known_map"
       },
       {
-        "rule_id": "CONSOLIDATE_LOCATION_ID",
-        "table": "dancers_results_info",
-        "column": "location_id",
-        "from_value": "duplicate Singapore ids",
-        "to_value": "→ 159",
-        "rows_affected": 1847,
-        "source": "location_id_fix"
-      },
-      {
-        "rule_id": "DEDUPE_LOCATION_INFO",
-        "table": "location_info",
-        "column": "location_id",
-        "from_value": "duplicate canonical place",
-        "to_value": "lowest location_id per city",
-        "rows_affected": 16,
-        "source": "location_id_fix"
-      },
-      {
         "rule_id": "LOCATION_INFO_ID_CORRECTION",
         "table": "location_info",
         "column": "event_location_standardized",
         "from_value": "location_id=25 was Atlanta, GA",
         "to_value": "Atlanta, GA, United States",
-        "rows_affected": 1,
-        "source": "location_id_fix"
-      },
-      {
-        "rule_id": "LOCATION_INFO_ID_CORRECTION",
-        "table": "location_info",
-        "column": "coordinates_valid",
-        "from_value": "location_id=353 was True",
-        "to_value": "t",
         "rows_affected": 1,
         "source": "location_id_fix"
       },
@@ -2736,7 +2670,7 @@
         "column": "dominate_required",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 1449,
+        "rows_affected": 1450,
         "source": "known_map"
       },
       {
@@ -2745,7 +2679,7 @@
         "column": "dominate_required",
         "from_value": "ADV",
         "to_value": "Advanced",
-        "rows_affected": 2744,
+        "rows_affected": 2748,
         "source": "known_map"
       },
       {
@@ -2754,7 +2688,7 @@
         "column": "dominate_required",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 4534,
+        "rows_affected": 4536,
         "source": "known_map"
       },
       {
@@ -2772,7 +2706,7 @@
         "column": "dominate_required",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 17763,
+        "rows_affected": 17791,
         "source": "known_map"
       },
       {
@@ -2790,7 +2724,7 @@
         "column": "dominate_allowed",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 17196,
+        "rows_affected": 17224,
         "source": "known_map"
       },
       {
@@ -2799,7 +2733,7 @@
         "column": "dominate_allowed",
         "from_value": "ADV",
         "to_value": "Advanced",
-        "rows_affected": 3176,
+        "rows_affected": 3181,
         "source": "known_map"
       },
       {
@@ -2808,7 +2742,7 @@
         "column": "dominate_allowed",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 6000,
+        "rows_affected": 6002,
         "source": "known_map"
       },
       {
@@ -2835,7 +2769,7 @@
         "column": "non_dominate_required",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 4482,
+        "rows_affected": 4484,
         "source": "known_map"
       },
       {
@@ -2844,7 +2778,7 @@
         "column": "non_dominate_required",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 15028,
+        "rows_affected": 15053,
         "source": "known_map"
       },
       {
@@ -2862,7 +2796,7 @@
         "column": "non_dominate_required",
         "from_value": "ADV",
         "to_value": "Advanced",
-        "rows_affected": 231,
+        "rows_affected": 232,
         "source": "known_map"
       },
       {
@@ -2880,7 +2814,7 @@
         "column": "non_dominate_allowed",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 6961,
+        "rows_affected": 6967,
         "source": "known_map"
       },
       {
@@ -2889,7 +2823,7 @@
         "column": "non_dominate_allowed",
         "from_value": "ADV",
         "to_value": "Advanced",
-        "rows_affected": 411,
+        "rows_affected": 412,
         "source": "known_map"
       },
       {
@@ -2898,7 +2832,7 @@
         "column": "non_dominate_allowed",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 15028,
+        "rows_affected": 15053,
         "source": "known_map"
       },
       {
@@ -2907,7 +2841,7 @@
         "column": "non_dominate_allowed",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 1105,
+        "rows_affected": 1104,
         "source": "known_map"
       },
       {
@@ -2958,8 +2892,8 @@
           },
           {
             "event_name": "German Open WCS Championships",
-            "similar_to": "Russian Open WCS Championships",
-            "score": 0.881
+            "similar_to": "Korean Open WCS Championships",
+            "score": 0.897
           },
           {
             "event_name": "Global Grand Prix - West Coast Swing",
@@ -3309,328 +3243,6 @@
         "suggested_fix": "Add to EVENT_NAME_LOCATION_OVERRIDES in transform/knowledge/events.py and run force_result_locations_from_event_name_overrides",
         "fingerprint": "235f3a5dfd02bc9c",
         "is_new": false,
-        "requires_manual_review": true
-      },
-      {
-        "category": "location",
-        "code": "SCHEDULED_VS_RESULTS_COUNTRY_CONFLICT",
-        "severity": "high",
-        "message": "WSDC calendar country differs from results location country (shared/wrong location_id — Sea Dance / Med in Swing pattern)",
-        "count": 1381,
-        "examples": [
-          {
-            "event_name": "Finnfest",
-            "location_id": "266",
-            "results_country": "czech republic",
-            "scheduled_country": "finland",
-            "scheduled_location": "Helsinki, Uusimaa, Finalnd",
-            "rows": 725
-          },
-          {
-            "event_name": "Neverland Swing",
-            "location_id": "222",
-            "results_country": "russia",
-            "scheduled_country": "netherlands",
-            "scheduled_location": "Amsterdam, Noord Holland, Nederland",
-            "rows": 412
-          },
-          {
-            "event_name": "Korean Open WCS Championships",
-            "location_id": "243",
-            "results_country": "brazil",
-            "scheduled_country": "republic of korea",
-            "scheduled_location": "Incheon, Incheon, Republic of Korea",
-            "rows": 244
-          }
-        ],
-        "suggested_fix": "Verify venue, then add EVENT_NAME_LOCATION_OVERRIDES (or KNOWN_SERIES_MOVES if the event really moved); scripts/audit_event_location_mismatches.py",
-        "fingerprint": "7c4712bde9084188",
-        "is_new": true,
-        "requires_manual_review": true
-      },
-      {
-        "category": "location",
-        "code": "EVENT_ID_CANONICAL_LOCATION_MISMATCH",
-        "severity": "high",
-        "message": "Results/editions location country differs from curated event_id canonical location (KNOWN / name override / upcoming)",
-        "count": 1847,
-        "examples": [
-          {
-            "event_id": "254",
-            "event_name": "Finnfest",
-            "canonical_source": "upcoming",
-            "canonical_location": "Helsinki, Uusimaa, Finalnd",
-            "canonical_country": "finland",
-            "results_location_id": "266",
-            "results_country": "czech republic",
-            "results_rows": 725,
-            "editions_location_id": "",
-            "editions_country": "",
-            "mismatch_side": "results"
-          },
-          {
-            "event_id": "261",
-            "event_name": "Neverland Swing",
-            "canonical_source": "upcoming",
-            "canonical_location": "Amsterdam, Noord Holland, Nederland",
-            "canonical_country": "netherlands",
-            "results_location_id": "222",
-            "results_country": "russia",
-            "results_rows": 623,
-            "editions_location_id": "",
-            "editions_country": "",
-            "mismatch_side": "results"
-          },
-          {
-            "event_id": "210",
-            "event_name": "Korean Open WCS Championships",
-            "canonical_source": "upcoming",
-            "canonical_location": "Incheon, Incheon, Republic of Korea",
-            "canonical_country": "republic of korea",
-            "results_location_id": "243",
-            "results_country": "brazil",
-            "results_rows": 499,
-            "editions_location_id": "",
-            "editions_country": "",
-            "mismatch_side": "results"
-          }
-        ],
-        "suggested_fix": "Confirm venue, then add/update KNOWN_EVENT_METADATA[event_id] or EVENT_NAME_LOCATION_OVERRIDES + force_result_locations; see scripts/audit_event_location_mismatches.py section D",
-        "fingerprint": "5f1d7453d399aeb5",
-        "is_new": true,
-        "requires_manual_review": true
-      },
-      {
-        "category": "location",
-        "code": "EDITION_LOCATION_BASELINE_DRIFT",
-        "severity": "high",
-        "message": "Results location_id for a known edition key differs from edition_location_baseline.csv (cross-load drift)",
-        "count": 26,
-        "examples": [
-          {
-            "event_id": "261",
-            "event_year": "2026",
-            "event_month": "6",
-            "event_name": "Neverland Swing",
-            "baseline_location_id": "191",
-            "current_location_id": "222",
-            "result_rows": 88
-          },
-          {
-            "event_id": "210",
-            "event_year": "2026",
-            "event_month": "4",
-            "event_name": "Korean Open WCS Championships",
-            "baseline_location_id": "172",
-            "current_location_id": "243",
-            "result_rows": 124
-          },
-          {
-            "event_id": "254",
-            "event_year": "2025",
-            "event_month": "9",
-            "event_name": "Finnfest",
-            "baseline_location_id": "204",
-            "current_location_id": "266",
-            "result_rows": 135
-          },
-          {
-            "event_id": "261",
-            "event_year": "2025",
-            "event_month": "6",
-            "event_name": "NeverlandSwing",
-            "baseline_location_id": "191",
-            "current_location_id": "222",
-            "result_rows": 115
-          },
-          {
-            "event_id": "210",
-            "event_year": "2025",
-            "event_month": "4",
-            "event_name": "Korean Open WCS Championships",
-            "baseline_location_id": "172",
-            "current_location_id": "243",
-            "result_rows": 120
-          },
-          {
-            "event_id": "254",
-            "event_year": "2024",
-            "event_month": "9",
-            "event_name": "Finnfest",
-            "baseline_location_id": "204",
-            "current_location_id": "266",
-            "result_rows": 140
-          },
-          {
-            "event_id": "164",
-            "event_year": "2024",
-            "event_month": "8",
-            "event_name": "Sea Sun & Swing Camp",
-            "baseline_location_id": "266",
-            "current_location_id": "158",
-            "result_rows": 130
-          },
-          {
-            "event_id": "261",
-            "event_year": "2024",
-            "event_month": "7",
-            "event_name": "NeverlandSwing",
-            "baseline_location_id": "191",
-            "current_location_id": "222",
-            "result_rows": 96
-          },
-          {
-            "event_id": "210",
-            "event_year": "2024",
-            "event_month": "4",
-            "event_name": "Korean Open WCS Championsips",
-            "baseline_location_id": "172",
-            "current_location_id": "243",
-            "result_rows": 143
-          },
-          {
-            "event_id": "254",
-            "event_year": "2023",
-            "event_month": "9",
-            "event_name": "Finnfest",
-            "baseline_location_id": "204",
-            "current_location_id": "266",
-            "result_rows": 101
-          },
-          {
-            "event_id": "164",
-            "event_year": "2023",
-            "event_month": "8",
-            "event_name": "Sea Sun & Swing Camp",
-            "baseline_location_id": "266",
-            "current_location_id": "158",
-            "result_rows": 83
-          },
-          {
-            "event_id": "261",
-            "event_year": "2023",
-            "event_month": "7",
-            "event_name": "Neverland Swing",
-            "baseline_location_id": "191",
-            "current_location_id": "222",
-            "result_rows": 74
-          },
-          {
-            "event_id": "210",
-            "event_year": "2023",
-            "event_month": "4",
-            "event_name": "Korean Open WCS Championsips",
-            "baseline_location_id": "172",
-            "current_location_id": "243",
-            "result_rows": 72
-          },
-          {
-            "event_id": "254",
-            "event_year": "2022",
-            "event_month": "9",
-            "event_name": "Finnfest",
-            "baseline_location_id": "204",
-            "current_location_id": "266",
-            "result_rows": 66
-          },
-          {
-            "event_id": "261",
-            "event_year": "2022",
-            "event_month": "7",
-            "event_name": "Neverland Swing",
-            "baseline_location_id": "191",
-            "current_location_id": "222",
-            "result_rows": 54
-          },
-          {
-            "event_id": "164",
-            "event_year": "2019",
-            "event_month": "7",
-            "event_name": "Sea Sun & Swing Camp",
-            "baseline_location_id": "266",
-            "current_location_id": "158",
-            "result_rows": 73
-          },
-          {
-            "event_id": "261",
-            "event_year": "2019",
-            "event_month": "7",
-            "event_name": "Neverland Swing",
-            "baseline_location_id": "191",
-            "current_location_id": "222",
-            "result_rows": 44
-          },
-          {
-            "event_id": "254",
-            "event_year": "2019",
-            "event_month": "6",
-            "event_name": "Finnfest",
-            "baseline_location_id": "204",
-            "current_location_id": "266",
-            "result_rows": 65
-          },
-          {
-            "event_id": "261",
-            "event_year": "2018",
-            "event_month": "7",
-            "event_name": "Neverland Swing",
-            "baseline_location_id": "191",
-            "current_location_id": "222",
-            "result_rows": 46
-          },
-          {
-            "event_id": "254",
-            "event_year": "2018",
-            "event_month": "6",
-            "event_name": "Finnfest",
-            "baseline_location_id": "204",
-            "current_location_id": "266",
-            "result_rows": 64
-          }
-        ],
-        "suggested_fix": "Investigate shared wrong location_id; fix overrides/repair_locations. If venue change is legitimate, UPDATE core.edition_location_baseline in Supabase.",
-        "fingerprint": "7288eee3c9014f10",
-        "is_new": true,
-        "requires_manual_review": true
-      },
-      {
-        "category": "location",
-        "code": "BASELINE_VS_LOCATION_OVERRIDE",
-        "severity": "high",
-        "message": "edition_location_baseline location_id disagrees with EVENT_NAME_LOCATION_OVERRIDES (seed/auto-add froze a shared wrong lid)",
-        "count": 3,
-        "examples": [
-          {
-            "event_id": "164",
-            "event_year": "2024",
-            "event_month": "8",
-            "event_name": "Sea Sun and Swing",
-            "baseline_location_id": "266",
-            "override_location_id": "158",
-            "override_location": "La Grande Motte, France"
-          },
-          {
-            "event_id": "164",
-            "event_year": "2023",
-            "event_month": "8",
-            "event_name": "Sea Sun and Swing",
-            "baseline_location_id": "266",
-            "override_location_id": "158",
-            "override_location": "La Grande Motte, France"
-          },
-          {
-            "event_id": "164",
-            "event_year": "2019",
-            "event_month": "7",
-            "event_name": "Sea Sun and Swing",
-            "baseline_location_id": "266",
-            "override_location_id": "158",
-            "override_location": "La Grande Motte, France"
-          }
-        ],
-        "suggested_fix": "Apply overrides + repair results/editions, then UPDATE core.edition_location_baseline to the override location_id (source='manual'). Cross-load drift alone cannot see poison seeds.",
-        "fingerprint": "556a554a17360272",
-        "is_new": true,
         "requires_manual_review": true
       }
     ]
