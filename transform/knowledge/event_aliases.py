@@ -29,7 +29,11 @@ RESULT_TO_CATALOG_EVENT_NAME: dict[str, str] = {
     'USA Grand Nationals Dance Championship': 'USA Grand Nationals',
     'USA Grand Nationals Dance Championships': 'USA Grand Nationals',
     'Monterey Swing Fest': 'Monterey SwingFest',
-    'SwingTime': 'Swingtime in the Rockies',
+    # WSDC registry / list title (id 47). Points export still uses the old Rockies name.
+    'SwingTime': 'SwingTime Denver',
+    'SwingTime Denver': 'SwingTime Denver',
+    'Swingtime in the Rockies': 'SwingTime Denver',
+    'Swingtime': 'SwingTime Denver',
     "Swingin' New England": "Swingin' New England Dance Festival",
     'Palm Springs New Year': 'Palm Springs New Years Swing Dance Classic',
     'Palm Springs Swing Dance Classic': 'Palm Springs Summer Dance Classic',
@@ -159,7 +163,8 @@ EVENT_NAME_VARIANT_TO_CATALOG: dict[str, str] = {
 # Duplicate WSDC registry ids → canonical id (same geo; see event-geo-dedup rule).
 # Source id rows are remapped in core.results; sources are not deleted.
 MERGE_EVENT_ID_MAP: dict[int, int] = {
-    66: 47,    # SwingTime — Denver
+    66: 47,    # SwingTime — Denver (legacy id)
+    466: 47,   # SwingTime Denver inactive/list ghost → points id 47
     37: 195,   # Palm Springs New Year — Palm Springs
     193: 236,  # Warsaw Halloween Swing — Warsaw
     99: 119,   # Chicagoland Dance Festival — Chicago

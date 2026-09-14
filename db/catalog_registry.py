@@ -23,6 +23,8 @@ PHANTOM_ALIAS_TO_CANONICAL: dict[int, int] = {
     488: 22,
     489: 22,
     490: 22,
+    # SwingTime Denver list/registry ghost → Swingtime points id (Denver)
+    466: 47,
 }
 
 
