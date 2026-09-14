@@ -2442,7 +2442,7 @@ update_date,division,role,type_options,count_dancer
 2026-09-14,Novice,Follower,required,35
 2026-09-14,Novice,Leader,allowed,23
 2026-09-14,Novice,Leader,required,26
-2026-09-14,nan,Follower,allowed,6
-2026-09-14,nan,Follower,required,10
-2026-09-14,nan,Leader,allowed,7
-2026-09-14,nan,Leader,required,8
+2026-09-14,,Follower,allowed,6
+2026-09-14,,Follower,required,10
+2026-09-14,,Leader,allowed,7
+2026-09-14,,Leader,required,8

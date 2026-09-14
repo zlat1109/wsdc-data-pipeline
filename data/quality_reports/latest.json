@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-14T09:07:13.826610+00:00",
+  "generated_at": "2026-09-14T21:56:21.325093+00:00",
   "source": "github-actions",
   "run_id": null,
   "summary": {
     "before_findings_count": 9,
-    "applied_rules_count": 248,
-    "applied_rows_touched": 191304,
+    "applied_rules_count": 251,
+    "applied_rows_touched": 194152,
     "manual_review_count": 6,
     "manual_review_new_count": 0
   },
@@ -103,8 +103,8 @@
           },
           {
             "event_name": "German Open WCS Championships",
-            "similar_to": "Korean Open WCS Championships",
-            "score": 0.897
+            "similar_to": "Russian Open WCS Championships",
+            "score": 0.881
           },
           {
             "event_name": "Global Grand Prix - West Coast Swing",
@@ -174,6 +174,16 @@
         "count": 35,
         "examples": [
           {
+            "base_key": "paradise dance festival",
+            "variants": [
+              "Paradise Dance Festival",
+              "Paradise dance festival"
+            ],
+            "geo_keys": [
+              "irvine|ca|usa"
+            ]
+          },
+          {
             "base_key": "monterey swingfest",
             "variants": [
               "Monterey SwingFest",
@@ -201,16 +211,6 @@
             ],
             "geo_keys": [
               "washington_dc|usa"
-            ]
-          },
-          {
-            "base_key": "paradise dance festival",
-            "variants": [
-              "Paradise Dance Festival",
-              "Paradise dance festival"
-            ],
-            "geo_keys": [
-              "irvine|ca|usa"
             ]
           },
           {
@@ -325,6 +325,13 @@
         "count": 37,
         "examples": [
           {
+            "base_key": "paradise dance festival",
+            "variants": [
+              "Paradise Dance Festival",
+              "Paradise dance festival"
+            ]
+          },
+          {
             "base_key": "monterey swingfest",
             "variants": [
               "Monterey SwingFest",
@@ -343,13 +350,6 @@
             "variants": [
               "Swing Fling",
               "Swing Fling 2024"
-            ]
-          },
-          {
-            "base_key": "paradise dance festival",
-            "variants": [
-              "Paradise Dance Festival",
-              "Paradise dance festival"
             ]
           },
           {
@@ -599,16 +599,16 @@
         "examples": [
           {
             "detail": [
-              "39",
-              "193",
-              "321",
-              "279",
-              "202",
               "66",
-              "325",
               "99",
+              "279",
+              "325",
+              "39",
+              "198",
+              "37",
+              "321",
               "307",
-              "198"
+              "202"
             ]
           }
         ],
@@ -970,6 +970,15 @@
         "from_value": "MADjam",
         "to_value": "MADjam",
         "rows_affected": 21,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "EVENT_NAME_NORMALIZATION",
+        "table": "events_wsdc",
+        "column": "name",
+        "from_value": "Swingtime in the Rockies",
+        "to_value": "SwingTime Denver",
+        "rows_affected": 33,
         "source": "known_map"
       },
       {
@@ -1554,7 +1563,7 @@
         "column": "event_name",
         "from_value": "Bavarian Open West Coast Swing Championships",
         "to_value": "Bavarian Open",
-        "rows_affected": 438,
+        "rows_affected": 582,
         "source": "known_map"
       },
       {
@@ -1697,8 +1706,26 @@
         "table": "dancers_results_info",
         "column": "event_name",
         "from_value": "SwingTime",
-        "to_value": "Swingtime in the Rockies",
+        "to_value": "SwingTime Denver",
         "rows_affected": 220,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "EVENT_NAME_NORMALIZATION",
+        "table": "dancers_results_info",
+        "column": "event_name",
+        "from_value": "SwingTime Denver",
+        "to_value": "SwingTime Denver",
+        "rows_affected": 554,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "EVENT_NAME_NORMALIZATION",
+        "table": "dancers_results_info",
+        "column": "event_name",
+        "from_value": "Swingtime in the Rockies",
+        "to_value": "SwingTime Denver",
+        "rows_affected": 1990,
         "source": "known_map"
       },
       {
@@ -2119,18 +2146,18 @@
         "rule_id": "DIVISION_NORMALIZATION",
         "table": "dancers_results_info",
         "column": "event_competition",
-        "from_value": "Masters",
-        "to_value": "Master",
-        "rows_affected": 16844,
+        "from_value": "Champions",
+        "to_value": "Champion",
+        "rows_affected": 5146,
         "source": "known_map"
       },
       {
         "rule_id": "DIVISION_NORMALIZATION",
         "table": "dancers_results_info",
         "column": "event_competition",
-        "from_value": "Champions",
-        "to_value": "Champion",
-        "rows_affected": 5138,
+        "from_value": "Masters",
+        "to_value": "Master",
+        "rows_affected": 16850,
         "source": "known_map"
       },
       {
@@ -2139,7 +2166,7 @@
         "column": "event_competition",
         "from_value": "All-Stars",
         "to_value": "All-Star",
-        "rows_affected": 16177,
+        "rows_affected": 16205,
         "source": "known_map"
       },
       {
@@ -2677,24 +2704,6 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_required",
-        "from_value": "ADV",
-        "to_value": "Advanced",
-        "rows_affected": 2748,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_required",
-        "from_value": "INT",
-        "to_value": "Intermediate",
-        "rows_affected": 4536,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_required",
         "from_value": "CHMP",
         "to_value": "Champion",
         "rows_affected": 191,
@@ -2704,9 +2713,27 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_required",
+        "from_value": "INT",
+        "to_value": "Intermediate",
+        "rows_affected": 4540,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_required",
+        "from_value": "ADV",
+        "to_value": "Advanced",
+        "rows_affected": 2747,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_required",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 17791,
+        "rows_affected": 17815,
         "source": "known_map"
       },
       {
@@ -2715,7 +2742,7 @@
         "column": "dominate_required",
         "from_value": "ALS",
         "to_value": "All-Star",
-        "rows_affected": 1104,
+        "rows_affected": 1106,
         "source": "known_map"
       },
       {
@@ -2724,25 +2751,7 @@
         "column": "dominate_allowed",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 17224,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_allowed",
-        "from_value": "ADV",
-        "to_value": "Advanced",
-        "rows_affected": 3181,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_allowed",
-        "from_value": "INT",
-        "to_value": "Intermediate",
-        "rows_affected": 6002,
+        "rows_affected": 17243,
         "source": "known_map"
       },
       {
@@ -2758,9 +2767,27 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_allowed",
+        "from_value": "INT",
+        "to_value": "Intermediate",
+        "rows_affected": 6009,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_allowed",
+        "from_value": "ADV",
+        "to_value": "Advanced",
+        "rows_affected": 3181,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_allowed",
         "from_value": "ALS",
         "to_value": "All-Star",
-        "rows_affected": 1020,
+        "rows_affected": 1023,
         "source": "known_map"
       },
       {
@@ -2769,7 +2796,7 @@
         "column": "non_dominate_required",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 4484,
+        "rows_affected": 4488,
         "source": "known_map"
       },
       {
@@ -2778,7 +2805,7 @@
         "column": "non_dominate_required",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 15053,
+        "rows_affected": 15068,
         "source": "known_map"
       },
       {
@@ -2787,7 +2814,7 @@
         "column": "non_dominate_required",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 249,
+        "rows_affected": 250,
         "source": "known_map"
       },
       {
@@ -2796,7 +2823,7 @@
         "column": "non_dominate_required",
         "from_value": "ADV",
         "to_value": "Advanced",
-        "rows_affected": 232,
+        "rows_affected": 233,
         "source": "known_map"
       },
       {
@@ -2812,18 +2839,18 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "non_dominate_allowed",
-        "from_value": "NOV",
-        "to_value": "Novice",
-        "rows_affected": 6967,
+        "from_value": "ADV",
+        "to_value": "Advanced",
+        "rows_affected": 413,
         "source": "known_map"
       },
       {
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "non_dominate_allowed",
-        "from_value": "ADV",
-        "to_value": "Advanced",
-        "rows_affected": 412,
+        "from_value": "NOV",
+        "to_value": "Novice",
+        "rows_affected": 6970,
         "source": "known_map"
       },
       {
@@ -2832,7 +2859,7 @@
         "column": "non_dominate_allowed",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 15053,
+        "rows_affected": 15068,
         "source": "known_map"
       },
       {
@@ -2841,7 +2868,7 @@
         "column": "non_dominate_allowed",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 1104,
+        "rows_affected": 1091,
         "source": "known_map"
       },
       {
@@ -2892,8 +2919,8 @@
           },
           {
             "event_name": "German Open WCS Championships",
-            "similar_to": "Korean Open WCS Championships",
-            "score": 0.897
+            "similar_to": "Russian Open WCS Championships",
+            "score": 0.881
           },
           {
             "event_name": "Global Grand Prix - West Coast Swing",
@@ -3004,7 +3031,7 @@
         "code": "EVENT_NAME_UNRESOLVED_TO_CATALOG",
         "severity": "high",
         "message": "Result event names still absent from events_wsdc after normalization (will orphan in load)",
-        "count": 68,
+        "count": 67,
         "examples": [
           {
             "event_name": "Asia WCS Open - 10th Anniversary"
@@ -3092,7 +3119,7 @@
         "code": "EVENT_NAME_NOT_IN_CATALOG",
         "severity": "low",
         "message": "Result event_name values absent from events_wsdc.csv (may be OK if resolved by name in load)",
-        "count": 68,
+        "count": 67,
         "examples": [
           {
             "event_name": "Asia WCS Open - 10th Anniversary"
@@ -3592,7 +3619,6 @@
     "Swingside Invitational",
     "Swingtacular: The Galactic Open",
     "Swingtimate",
-    "Swingtime in the Rockies",
     "Swingtzerland",
     "Swingvasion",
     "Swustlicious",

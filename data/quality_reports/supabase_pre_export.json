@@ -114,7 +114,7 @@
       "name": "edition_calendar_orphan_event_ids",
       "category": "event_naming",
       "severity": "warn",
-      "value": 5,
+      "value": 4,
       "max_value": 0,
       "ok": false,
       "description": "Calendar date rows must point at a current catalog event_id.",
@@ -337,6 +337,6 @@
     "errors": 0,
     "warnings": 1
   },
-  "generated_at": "2026-09-14T09:13:41.314274+00:00",
+  "generated_at": "2026-09-14T22:02:13.318142+00:00",
   "scope": "full"
 }
