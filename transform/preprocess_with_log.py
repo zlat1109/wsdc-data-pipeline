@@ -479,6 +479,33 @@ def preprocess_with_log(data: dict[str, pd.DataFrame]) -> tuple[dict[str, pd.Dat
         if key not in result:
             result[key] = df.copy()
 
+    # Temporary WSDC All-Star role swap (Bavarian Open 2026) — durable until upstream fix.
+    from transform.result_role_corrections import (  # noqa: WPS433
+        correct_bavarian_allstar_roles_2026,
+    )
+
+    result, role_stats = correct_bavarian_allstar_roles_2026(result)
+    if role_stats.get("results_flipped"):
+        tracker.record(
+            "BAVARIAN_ALLSTAR_ROLE_SWAP_2026",
+            "dancers_results_info",
+            "event_role",
+            "WSDC swapped leader/follower",
+            "flip to dominate_role",
+            int(role_stats["results_flipped"]),
+            "known_map",
+        )
+    if role_stats.get("points_buckets_touched"):
+        tracker.record(
+            "BAVARIAN_ALLSTAR_ROLE_SWAP_2026",
+            "dancers_points_info",
+            "total_points",
+            "points on wrong role bucket",
+            "move to dominate_role bucket",
+            int(role_stats["points_buckets_touched"]),
+            "known_map",
+        )
+
     return result, tracker
 
 
