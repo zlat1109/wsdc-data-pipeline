@@ -14,10 +14,18 @@ from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 
 from transform.knowledge.geo_flags import resolve_flag_and_continent
+from transform.knowledge.event_aliases import build_event_name_normalization
 from transform.points_summary.advancement import (
     ensure_event_points_timeline,
     get_advancement_status,
 )
+
+_EVENT_NAME_CANON = build_event_name_normalization()
+
+# Keep first-published Point Summary slug stems when the display title rebrands.
+_EVENT_SUMMARY_SLUG_STEM_ALIASES = {
+    "swingtime-denver": "swingtime-in-the-rockies",
+}
 
 PLACE_EMOJI = {"1": "🥇", "2": "🥈", "3": "🥉"}
 
@@ -85,11 +93,20 @@ def _normalize_division_key(name: str) -> str:
     return norm
 
 
+def canonicalize_event_display_name(name: str) -> str:
+    """Map points/list titles to the current registry display name."""
+    raw = (name or "").strip()
+    if not raw:
+        return raw
+    return _EVENT_NAME_CANON.get(raw, raw)
+
+
 def make_event_slug(event_name: str, start_date: str) -> str:
     """Stable edition slug: YYYY-MM-DD-event-name (start_date based)."""
     date_part = (start_date or "").strip()[:10]
-    slug = re.sub(r"[^a-z0-9]+", "-", (event_name or "").lower()).strip("-")
-    return f"{date_part}-{slug}" if slug else date_part
+    stem = re.sub(r"[^a-z0-9]+", "-", (event_name or "").lower()).strip("-")
+    stem = _EVENT_SUMMARY_SLUG_STEM_ALIASES.get(stem, stem)
+    return f"{date_part}-{stem}" if stem else date_part
 
 
 def format_date_range(start: date | None, end: date | None) -> str:
@@ -243,8 +260,10 @@ def resolve_podium_roles(
 
 
 def _event_name_matches(row_name: str, target: str) -> bool:
-    a = re.sub(r"\s+", " ", (row_name or "").strip().lower())
-    b = re.sub(r"\s+", " ", (target or "").strip().lower())
+    a = canonicalize_event_display_name(row_name)
+    b = canonicalize_event_display_name(target)
+    a = re.sub(r"\s+", " ", a.strip().lower())
+    b = re.sub(r"\s+", " ", b.strip().lower())
     return a == b
 
 
@@ -599,7 +618,7 @@ def edition_meta_from_row(row: dict) -> dict:
     country = (row.get("place_country") or "").strip() or None
     flag, continent = resolve_flag_and_continent(country=country, location=location)
     return {
-        "name": (row.get("event_name") or "").strip(),
+        "name": canonicalize_event_display_name(row.get("event_name") or ""),
         "event_id": row.get("event_id"),
         "edition_id": row.get("edition_id"),
         "event_year": row.get("event_year"),
