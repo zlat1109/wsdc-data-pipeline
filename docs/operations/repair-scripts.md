@@ -73,6 +73,22 @@ fixes). `export.py` does this automatically.
 | `apply_event_name_location_overrides_csv.py` | Remap local export CSV `location_id` from `EVENT_NAME_LOCATION_OVERRIDES` | No (CSV only) |
 | `audit_event_location_mismatches.py` | Find shared wrong location_id / calendar mismatches | No |
 | `repair_location_poison_aug2026.py` | One-off remap of shared-wrong `location_id` on known series (NZ, Philly, Montreal, DCSX, Nordic, BudaFest, Westie Spring, French Open, Swing in Bloom, Finnfest, Neverland, Korean Open) | Yes |
+| `repair_bavarian_allstar_roles_2026.py` | Flip Bavarian Open 2026 All-Star roles that contradict `dominate_role` + move points between Leader/Follower buckets | Yes |
+
+## repair_bavarian_allstar_roles_2026.py
+
+WSDC published Bavarian Open 2026 All-Star with leader/follower roles swapped for
+most rows. This script flips mismatched `core.results.role` values and transfers
+the same points in `core.dancer_points`. The same rule is also applied in
+`preprocess_with_log` so the next full parse does not resurrect the bug — remove
+both once WSDC republishes correct roles.
+
+```bash
+python scripts/repair_bavarian_allstar_roles_2026.py --dry-run
+python scripts/repair_bavarian_allstar_roles_2026.py --apply
+python scripts/reconcile_points_history.py --apply
+python export.py --output-dir data
+```
 
 ## repair_location_poison_aug2026.py
 
