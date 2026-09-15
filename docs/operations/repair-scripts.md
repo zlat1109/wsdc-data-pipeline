@@ -75,6 +75,7 @@ fixes). `export.py` does this automatically.
 | `repair_location_poison_aug2026.py` | One-off remap of shared-wrong `location_id` on known series (NZ, Philly, Montreal, DCSX, Nordic, BudaFest, Westie Spring, French Open, Swing in Bloom, Finnfest, Neverland, Korean Open) | Yes |
 | `repair_bavarian_allstar_roles_2026.py` | Flip Bavarian Open 2026 All-Star roles that contradict `dominate_role` + move points between Leader/Follower buckets | Yes |
 | `purge_bavarian_allstar_phantom_points_history.py` | Delete one-day wrong-role All-Star history so Tableau `changed_*` does not keep showing phantom follower/leader totals | Yes |
+| `repair_ndr_highest_from_points.py` | Recompute `non_dominate_role_highest_*` from `core.dancer_points` (fixes Dancer Profile secondary bar) | Yes |
 
 ## repair_bavarian_allstar_roles_2026.py
 
@@ -89,6 +90,8 @@ python scripts/repair_bavarian_allstar_roles_2026.py --dry-run
 python scripts/repair_bavarian_allstar_roles_2026.py --apply
 python scripts/reconcile_points_history.py --apply
 python scripts/purge_bavarian_allstar_phantom_points_history.py --apply
+python scripts/repair_ndr_highest_from_points.py --apply
+python scripts/reconcile_roles_history.py --apply
 python export.py --output-dir data
 ```
 
@@ -96,6 +99,9 @@ After the role repair, also purge the one-day wrong-role SCD2 intervals so
 `changed_dancer_points_info.csv` does not leave Tableau showing e.g. Joshua
 Schubert Follower All-Star = 8. Newer `reconcile_points_history` writes a 0
 tombstone when a core bucket disappears.
+
+The Dancer Profile secondary bar reads **`dancer_role_info.non_dominate_role_highest_*`**,
+not `dancers_points_info` — recompute those fields from points after the swap.
 
 ## repair_location_poison_aug2026.py
 

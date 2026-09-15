@@ -72,7 +72,15 @@ def test_correct_moves_points_between_role_buckets():
             ]
         ),
         "dancer_role_info": pd.DataFrame(
-            [{"dancer_id": "14614", "dominate_role": "Follower"}]
+            [
+                {
+                    "dancer_id": "14614",
+                    "dominate_role": "Follower",
+                    "non_dominate_role": "Leader",
+                    "non_dominate_role_highest_level": "All Star",
+                    "non_dominate_role_highest_level_points": "10",
+                }
+            ]
         ),
         "dancers_points_info": pd.DataFrame(
             [
@@ -103,3 +111,5 @@ def test_correct_moves_points_between_role_buckets():
     follower = pts[(pts["role"] == "Follower") & (pts["dancer_id"] == "14614")]
     assert leader.empty
     assert int(follower.iloc[0]["total_points"]) == 83
+    roles = out["dancer_role_info"]
+    assert str(roles.iloc[0]["non_dominate_role_highest_level_points"] or "") == ""

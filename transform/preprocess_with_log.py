@@ -505,6 +505,16 @@ def preprocess_with_log(data: dict[str, pd.DataFrame]) -> tuple[dict[str, pd.Dat
             int(role_stats["points_buckets_touched"]),
             "known_map",
         )
+    if role_stats.get("roles_ndr_fixed"):
+        tracker.record(
+            "BAVARIAN_ALLSTAR_ROLE_SWAP_2026",
+            "dancer_role_info",
+            "non_dominate_role_highest_level_points",
+            "WSDC NDR summary still has phantom All-Star",
+            "recompute from dancers_points_info",
+            int(role_stats["roles_ndr_fixed"]),
+            "known_map",
+        )
 
     return result, tracker
 
