@@ -242,12 +242,103 @@ def _adjust_bucket(
     return 1
 
 
+def recompute_ndr_highest_from_points(
+    roles: pd.DataFrame,
+    points: pd.DataFrame,
+    dancer_ids: list[str] | set[str] | None = None,
+) -> int:
+    """Align non_dominate highest level/points with dancers_points_info buckets.
+
+    Returns number of role rows changed.
+    """
+    if roles.empty or points.empty:
+        return 0
+    required_role = {
+        "dancer_id",
+        "non_dominate_role",
+        "non_dominate_role_highest_level",
+        "non_dominate_role_highest_level_points",
+    }
+    required_pts = {"dancer_id", "role", "level", "total_points"}
+    if not required_role.issubset(roles.columns) or not required_pts.issubset(
+        points.columns
+    ):
+        return 0
+
+    skill_rank = {
+        "newcomer": 10,
+        "novice": 20,
+        "intermediate": 30,
+        "advanced": 40,
+        "all-star": 50,
+        "all star": 50,
+        "allstar": 50,
+        "champion": 60,
+        "champions": 60,
+        "master": 70,
+        "masters": 70,
+    }
+
+    target_ids = {str(x).strip() for x in (dancer_ids or [])}
+    changed = 0
+    for idx in roles.index:
+        did = str(roles.at[idx, "dancer_id"] or "").strip()
+        if target_ids and did not in target_ids:
+            continue
+        ndr = _canon_role(roles.at[idx, "non_dominate_role"])
+        if not did or not ndr:
+            continue
+
+        buckets = points[
+            points["dancer_id"].astype(str).str.strip().eq(did)
+            & points["role"].map(_canon_role).eq(ndr)
+        ]
+        best_level = None
+        best_points = None
+        best_rank = -1
+        for _, prow in buckets.iterrows():
+            level_raw = str(prow.get("level") or "").strip()
+            rank = skill_rank.get(level_raw.lower().replace("_", " "))
+            if rank is None:
+                continue
+            try:
+                pts = int(float(prow.get("total_points") or 0))
+            except (TypeError, ValueError):
+                pts = 0
+            if rank > best_rank or (rank == best_rank and pts > int(best_points or 0)):
+                best_rank = rank
+                # Prefer canonical All-Star spelling for Tableau.
+                best_level = "All-Star" if rank == 50 else level_raw
+                best_points = str(pts)
+
+        old_level = str(roles.at[idx, "non_dominate_role_highest_level"] or "").strip()
+        old_points = str(
+            roles.at[idx, "non_dominate_role_highest_level_points"] or ""
+        ).strip()
+        new_level = best_level or ""
+        new_points = best_points or ""
+        # Normalize All Star ↔ All-Star for comparison.
+        old_key = old_level.lower().replace("-", " ")
+        new_key = new_level.lower().replace("-", " ")
+        if old_key == new_key and old_points == new_points:
+            continue
+        roles.at[idx, "non_dominate_role_highest_level"] = new_level
+        roles.at[idx, "non_dominate_role_highest_level_points"] = new_points
+        changed += 1
+    return changed
+
+
 def correct_bavarian_allstar_roles_2026(
     data: dict[str, pd.DataFrame],
 ) -> tuple[dict[str, pd.DataFrame], dict[str, int]]:
     """Apply Bavarian Open 2026 All-Star role swap to a preprocess data dict."""
     result = dict(data)
-    stats = {"results_flipped": 0, "points_buckets_touched": 0, "plans": 0}
+    stats = {
+        "results_flipped": 0,
+        "points_buckets_touched": 0,
+        "plans": 0,
+        "roles_ndr_fixed": 0,
+    }
 
     if "dancers_results_info" not in result:
         return result, stats
@@ -267,5 +358,15 @@ def correct_bavarian_allstar_roles_2026(
         points = result["dancers_points_info"].copy()
         stats["points_buckets_touched"] = apply_points_transfers(points, plans)
         result["dancers_points_info"] = points
+    else:
+        points = None
+
+    if roles is not None and points is not None:
+        roles_df = roles.copy()
+        touched_ids = {p["dancer_id"] for p in plans}
+        stats["roles_ndr_fixed"] = recompute_ndr_highest_from_points(
+            roles_df, points, touched_ids
+        )
+        result["dancer_role_info"] = roles_df
 
     return result, stats
