@@ -74,6 +74,7 @@ fixes). `export.py` does this automatically.
 | `audit_event_location_mismatches.py` | Find shared wrong location_id / calendar mismatches | No |
 | `repair_location_poison_aug2026.py` | One-off remap of shared-wrong `location_id` on known series (NZ, Philly, Montreal, DCSX, Nordic, BudaFest, Westie Spring, French Open, Swing in Bloom, Finnfest, Neverland, Korean Open) | Yes |
 | `repair_bavarian_allstar_roles_2026.py` | Flip Bavarian Open 2026 All-Star roles that contradict `dominate_role` + move points between Leader/Follower buckets | Yes |
+| `purge_bavarian_allstar_phantom_points_history.py` | Delete one-day wrong-role All-Star history so Tableau `changed_*` does not keep showing phantom follower/leader totals | Yes |
 
 ## repair_bavarian_allstar_roles_2026.py
 
@@ -87,8 +88,14 @@ both once WSDC republishes correct roles.
 python scripts/repair_bavarian_allstar_roles_2026.py --dry-run
 python scripts/repair_bavarian_allstar_roles_2026.py --apply
 python scripts/reconcile_points_history.py --apply
+python scripts/purge_bavarian_allstar_phantom_points_history.py --apply
 python export.py --output-dir data
 ```
+
+After the role repair, also purge the one-day wrong-role SCD2 intervals so
+`changed_dancer_points_info.csv` does not leave Tableau showing e.g. Joshua
+Schubert Follower All-Star = 8. Newer `reconcile_points_history` writes a 0
+tombstone when a core bucket disappears.
 
 ## repair_location_poison_aug2026.py
 
