@@ -10,6 +10,14 @@ from typing import Any
 
 from transform.points_summary.report import canonicalize_event_display_name
 
+# Hold Point Summaries until upstream WSDC data is trustworthy enough to publish.
+# Overnight analytics sync must not recreate these after a manual site removal.
+SUPPRESSED_POINT_SUMMARY_SLUGS: frozenset[str] = frozenset(
+    {
+        "2026-09-10-bavarian-open",  # All-Star leader/follower roles swapped on WSDC
+    }
+)
+
 
 def post_date_today(today: date | None = None) -> str:
     d = today or date.today()
@@ -139,6 +147,9 @@ def merge_points_summaries(
         if not slug or not start:
             skipped.append(slug or candidate.get("name") or "?")
             continue
+        if slug in SUPPRESSED_POINT_SUMMARY_SLUGS:
+            skipped.append(slug)
+            continue
 
         # Rebrand safety: if slug is new but same edition already exists under
         # an older stem (e.g. swingtime-in-the-rockies → swingtime-denver),
@@ -151,6 +162,10 @@ def merge_points_summaries(
                 if published and published != slug:
                     retargeted.append(f"{slug}->{published}")
                     slug = published
+
+        if slug in SUPPRESSED_POINT_SUMMARY_SLUGS:
+            skipped.append(slug)
+            continue
 
         if slug in by_slug:
             existing = by_slug[slug]["event"]
@@ -229,6 +244,27 @@ def merge_points_summaries(
             if same_idx != 0:
                 summaries.insert(0, summaries.pop(same_idx))
 
+    # Drop withheld editions that may already be on the site from an earlier sync.
+    purged: list[str] = []
+    cleaned: list[dict] = []
+    for block in summaries:
+        events = [
+            e
+            for e in (block.get("events") or [])
+            if (e.get("slug") or "").strip() not in SUPPRESSED_POINT_SUMMARY_SLUGS
+        ]
+        for e in block.get("events") or []:
+            slug = (e.get("slug") or "").strip()
+            if slug in SUPPRESSED_POINT_SUMMARY_SLUGS:
+                purged.append(slug)
+        if not events:
+            continue
+        next_block = dict(block)
+        next_block["events"] = events
+        next_block["events_count"] = len(events)
+        cleaned.append(next_block)
+    summaries = cleaned
+
     summaries.sort(
         key=lambda s: _post_date_sort_key(s.get("post_date") or ""),
         reverse=True,
@@ -241,6 +277,7 @@ def merge_points_summaries(
         "created": created,
         "updated": updated,
         "skipped": skipped,
+        "purged": purged,
         "retargeted": retargeted,
         "created_count": len(created),
         "updated_count": len(updated),
