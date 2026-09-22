@@ -113,3 +113,46 @@ def test_correct_moves_points_between_role_buckets():
     assert int(follower.iloc[0]["total_points"]) == 83
     roles = out["dancer_role_info"]
     assert str(roles.iloc[0]["non_dominate_role_highest_level_points"] or "") == ""
+
+
+def test_points_transfer_matches_als_abbr_without_duplicate_bucket():
+    """Parser uses ALS; transfer target was All-Star and used to create a 2nd row."""
+    from transform.result_role_corrections import apply_points_transfers
+
+    points = pd.DataFrame(
+        [
+            {
+                "dancer_id": "7821",
+                "role": "leader",
+                "dance": "West Coast Swing",
+                "level": "ALS",
+                "total_points": "151",
+                "update_date": "2026-09-22",
+            },
+            {
+                "dancer_id": "7821",
+                "role": "follower",
+                "dance": "West Coast Swing",
+                "level": "ALS",
+                "total_points": "42",
+                "update_date": "2026-09-22",
+            },
+        ]
+    )
+    plans = [
+        {
+            "dancer_id": "7821",
+            "from_role": "Follower",
+            "to_role": "Leader",
+            "points": 6,
+        }
+    ]
+    touched = apply_points_transfers(points, plans)
+    assert touched == 2
+    als = points[points["level"].astype(str).str.upper().eq("ALS")]
+    assert len(als) == 2
+    leader = als[als["role"].map(str).str.lower().eq("leader")].iloc[0]
+    follower = als[als["role"].map(str).str.lower().eq("follower")].iloc[0]
+    assert int(leader["total_points"]) == 157
+    assert int(follower["total_points"]) == 36
+    assert not (points["level"].astype(str) == "All-Star").any()
