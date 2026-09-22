@@ -256,3 +256,24 @@ def test_seed_respects_event_name_overrides():
     out, n = seed_result_locations_from_schedule(results, scheduled)
     assert n == 0
     assert str(out.loc[0, "location_id"]) == "1"
+
+
+def test_next_location_id_skips_retired_merge_map_keys():
+    """Regression: Cologne Calling was minted as 395 then remapped to Jeju 213."""
+    from transform.geography.ensure_location import _next_location_id
+    from transform.geography.resolve import retired_location_ids
+
+    retired = sorted(retired_location_ids())
+    assert 395 in retired
+    floor = 394
+    locations = _loc_df(
+        {
+            "location_id": str(floor),
+            "event_city": "Placeholder",
+            "event_country": "X",
+            "event_location": "Placeholder, X",
+        }
+    )
+    new_id = int(_next_location_id(locations, id_floor=floor))
+    assert new_id not in retired
+    assert new_id > floor

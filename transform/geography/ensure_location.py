@@ -24,6 +24,7 @@ from transform.geography.resolve import (
     _parse_location_parts,
     build_location_lookup,
     location_lookup_key_from_text,
+    retired_location_ids,
 )
 from transform.geography.utils import norm_value
 
@@ -189,9 +190,18 @@ def csv_max_location_id(location_df: pd.DataFrame | None) -> int:
 
 
 def _next_location_id(location_df: pd.DataFrame, *, id_floor: int = 0) -> str:
-    """Allocate next id above CSV max and optional DB floor."""
+    """Allocate next id above CSV max and optional DB floor.
+
+    Skips ``retired_location_ids()`` (LOCATION_ID_MERGE_MAP / CORRECTIONS keys)
+    so a freshly minted city is not later remapped onto an old merge target
+    (Cologne Calling → Jeju via retired 395→213).
+    """
     max_csv = csv_max_location_id(location_df)
-    return str(max(max_csv, int(id_floor), 0) + 1)
+    next_id = max(max_csv, int(id_floor), 0) + 1
+    reserved = retired_location_ids()
+    while next_id in reserved:
+        next_id += 1
+    return str(next_id)
 
 
 def _row_by_id(location_df: pd.DataFrame, loc_id: str) -> pd.Series | None:
