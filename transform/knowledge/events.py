@@ -123,6 +123,9 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'Barock Swing Ludwigsburg': 'Ludwigsburg, Germany',
     # Fresh main export: more shared-wrong location_id collisions (calendar ≠ results).
     'Bavarian Open': 'Munich, Germany',  # was Jeju (213) / Venray (227)
+    # Trial list minted retired id 395 → remapped to Jeju (213) via MERGE_MAP.
+    'Cologne Calling WCS': 'Cologne, Germany',
+    'Cologne Calling': 'Cologne, Germany',
     'Bavarian Open WCS': 'Munich, Germany',
     'Bavarian Open West Coast Swing Championships': 'Munich, Germany',
     # Greater Boston suburbs (venue cities), labeled as metro for Tableau.
