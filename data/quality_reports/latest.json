@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-09-14T21:56:21.325093+00:00",
+  "generated_at": "2026-09-22T06:46:06.662552+00:00",
   "source": "github-actions",
   "run_id": null,
   "summary": {
-    "before_findings_count": 9,
-    "applied_rules_count": 251,
-    "applied_rows_touched": 194152,
-    "manual_review_count": 6,
-    "manual_review_new_count": 0
+    "before_findings_count": 10,
+    "applied_rules_count": 255,
+    "applied_rows_touched": 194430,
+    "manual_review_count": 7,
+    "manual_review_new_count": 1
   },
   "before_processing": {
     "description": "Issues detected in raw CSV before any normalization",
@@ -174,13 +174,13 @@
         "count": 35,
         "examples": [
           {
-            "base_key": "paradise dance festival",
+            "base_key": "swing fling",
             "variants": [
-              "Paradise Dance Festival",
-              "Paradise dance festival"
+              "Swing Fling",
+              "Swing Fling 2024"
             ],
             "geo_keys": [
-              "irvine|ca|usa"
+              "washington_dc|dc|usa"
             ]
           },
           {
@@ -204,13 +204,13 @@
             ]
           },
           {
-            "base_key": "swing fling",
+            "base_key": "paradise dance festival",
             "variants": [
-              "Swing Fling",
-              "Swing Fling 2024"
+              "Paradise Dance Festival",
+              "Paradise dance festival"
             ],
             "geo_keys": [
-              "washington_dc|usa"
+              "irvine|ca|usa"
             ]
           },
           {
@@ -325,10 +325,10 @@
         "count": 37,
         "examples": [
           {
-            "base_key": "paradise dance festival",
+            "base_key": "swing fling",
             "variants": [
-              "Paradise Dance Festival",
-              "Paradise dance festival"
+              "Swing Fling",
+              "Swing Fling 2024"
             ]
           },
           {
@@ -346,10 +346,10 @@
             ]
           },
           {
-            "base_key": "swing fling",
+            "base_key": "paradise dance festival",
             "variants": [
-              "Swing Fling",
-              "Swing Fling 2024"
+              "Paradise Dance Festival",
+              "Paradise dance festival"
             ]
           },
           {
@@ -419,7 +419,7 @@
         "code": "EVENT_NAME_UNRESOLVED_TO_CATALOG",
         "severity": "high",
         "message": "Result event names still absent from events_wsdc after normalization (will orphan in load)",
-        "count": 77,
+        "count": 76,
         "examples": [
           {
             "event_name": "Asia WCS Open - 10th Anniversary"
@@ -506,7 +506,7 @@
         "code": "EVENT_NAME_NOT_IN_CATALOG",
         "severity": "low",
         "message": "Result event_name values absent from events_wsdc.csv (may be OK if resolved by name in load)",
-        "count": 180,
+        "count": 181,
         "examples": [
           {
             "event_name": "5280 Swing Dance Championships"
@@ -574,6 +574,32 @@
         "is_new": true
       },
       {
+        "category": "location",
+        "code": "TRIAL_SCHEDULE_GEO_GAP",
+        "severity": "medium",
+        "message": "2 Trial Event(s) on the WSDC list lack location_id or coordinates (list geo ensure_location / Google geocode)",
+        "count": 2,
+        "examples": [
+          {
+            "event_name": "Cologne Calling WCS",
+            "start_date": "2027-01-14",
+            "location_raw": "Köln, NRW, Germany",
+            "location_id": "395",
+            "reason": "missing_coordinates"
+          },
+          {
+            "event_name": "SGI - Swing de Garotos Invitational",
+            "start_date": "2027-04-23",
+            "location_raw": "São Paulo, São Paulo, Brazil",
+            "location_id": "398",
+            "reason": "missing_coordinates"
+          }
+        ],
+        "suggested_fix": "Re-run sync_events_list with GOOGLE_MAPS_API_KEY; or add city to location_info / CITY_CANONICAL_COORDINATES",
+        "fingerprint": "74a1f0e4d1681096",
+        "is_new": true
+      },
+      {
         "category": "relationships",
         "code": "LEGACY_LOCATION_ID",
         "severity": "high",
@@ -599,16 +625,16 @@
         "examples": [
           {
             "detail": [
-              "66",
-              "99",
-              "279",
-              "325",
               "39",
-              "198",
+              "193",
+              "325",
               "37",
+              "99",
               "321",
-              "307",
-              "202"
+              "202",
+              "198",
+              "66",
+              "279"
             ]
           }
         ],
@@ -976,7 +1002,7 @@
         "rule_id": "EVENT_NAME_NORMALIZATION",
         "table": "events_wsdc",
         "column": "name",
-        "from_value": "Swingtime in the Rockies",
+        "from_value": "SwingTime Denver",
         "to_value": "SwingTime Denver",
         "rows_affected": 33,
         "source": "known_map"
@@ -1483,6 +1509,15 @@
         "from_value": "The Boston Tea Party",
         "to_value": "Boston Tea Party",
         "rows_affected": 451,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "EVENT_NAME_NORMALIZATION",
+        "table": "dancers_results_info",
+        "column": "event_name",
+        "from_value": "WCS Party in Vienna",
+        "to_value": "WCS Party",
+        "rows_affected": 99,
         "source": "known_map"
       },
       {
@@ -2155,18 +2190,18 @@
         "rule_id": "DIVISION_NORMALIZATION",
         "table": "dancers_results_info",
         "column": "event_competition",
-        "from_value": "Masters",
-        "to_value": "Master",
-        "rows_affected": 16850,
+        "from_value": "All-Stars",
+        "to_value": "All-Star",
+        "rows_affected": 16231,
         "source": "known_map"
       },
       {
         "rule_id": "DIVISION_NORMALIZATION",
         "table": "dancers_results_info",
         "column": "event_competition",
-        "from_value": "All-Stars",
-        "to_value": "All-Star",
-        "rows_affected": 16205,
+        "from_value": "Masters",
+        "to_value": "Master",
+        "rows_affected": 16856,
         "source": "known_map"
       },
       {
@@ -2695,6 +2730,15 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_required",
+        "from_value": "ADV",
+        "to_value": "Advanced",
+        "rows_affected": 2751,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_required",
         "from_value": "NEW",
         "to_value": "Newcomer",
         "rows_affected": 1450,
@@ -2715,16 +2759,7 @@
         "column": "dominate_required",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 4540,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_required",
-        "from_value": "ADV",
-        "to_value": "Advanced",
-        "rows_affected": 2747,
+        "rows_affected": 4551,
         "source": "known_map"
       },
       {
@@ -2733,7 +2768,7 @@
         "column": "dominate_required",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 17815,
+        "rows_affected": 17832,
         "source": "known_map"
       },
       {
@@ -2742,7 +2777,16 @@
         "column": "dominate_required",
         "from_value": "ALS",
         "to_value": "All-Star",
-        "rows_affected": 1106,
+        "rows_affected": 1108,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_allowed",
+        "from_value": "ADV",
+        "to_value": "Advanced",
+        "rows_affected": 3185,
         "source": "known_map"
       },
       {
@@ -2751,7 +2795,7 @@
         "column": "dominate_allowed",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 17243,
+        "rows_affected": 17265,
         "source": "known_map"
       },
       {
@@ -2760,7 +2804,7 @@
         "column": "dominate_allowed",
         "from_value": "CHMP",
         "to_value": "Champion",
-        "rows_affected": 393,
+        "rows_affected": 394,
         "source": "known_map"
       },
       {
@@ -2769,16 +2813,7 @@
         "column": "dominate_allowed",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 6009,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_allowed",
-        "from_value": "ADV",
-        "to_value": "Advanced",
-        "rows_affected": 3181,
+        "rows_affected": 6014,
         "source": "known_map"
       },
       {
@@ -2787,7 +2822,7 @@
         "column": "dominate_allowed",
         "from_value": "ALS",
         "to_value": "All-Star",
-        "rows_affected": 1023,
+        "rows_affected": 1025,
         "source": "known_map"
       },
       {
@@ -2796,7 +2831,7 @@
         "column": "non_dominate_required",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 4488,
+        "rows_affected": 4499,
         "source": "known_map"
       },
       {
@@ -2805,7 +2840,7 @@
         "column": "non_dominate_required",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 15068,
+        "rows_affected": 15082,
         "source": "known_map"
       },
       {
@@ -2823,7 +2858,7 @@
         "column": "non_dominate_required",
         "from_value": "ADV",
         "to_value": "Advanced",
-        "rows_affected": 233,
+        "rows_affected": 234,
         "source": "known_map"
       },
       {
@@ -2839,18 +2874,18 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "non_dominate_allowed",
-        "from_value": "ADV",
-        "to_value": "Advanced",
-        "rows_affected": 413,
+        "from_value": "NOV",
+        "to_value": "Novice",
+        "rows_affected": 6984,
         "source": "known_map"
       },
       {
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "non_dominate_allowed",
-        "from_value": "NOV",
-        "to_value": "Novice",
-        "rows_affected": 6970,
+        "from_value": "ADV",
+        "to_value": "Advanced",
+        "rows_affected": 414,
         "source": "known_map"
       },
       {
@@ -2859,7 +2894,7 @@
         "column": "non_dominate_allowed",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 15068,
+        "rows_affected": 15082,
         "source": "known_map"
       },
       {
@@ -2868,7 +2903,7 @@
         "column": "non_dominate_allowed",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 1091,
+        "rows_affected": 1107,
         "source": "known_map"
       },
       {
@@ -2878,6 +2913,33 @@
         "from_value": "ALS",
         "to_value": "All-Star",
         "rows_affected": 11,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "BAVARIAN_ALLSTAR_ROLE_SWAP_2026",
+        "table": "dancers_results_info",
+        "column": "event_role",
+        "from_value": "WSDC swapped leader/follower",
+        "to_value": "flip to dominate_role",
+        "rows_affected": 2,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "BAVARIAN_ALLSTAR_ROLE_SWAP_2026",
+        "table": "dancers_points_info",
+        "column": "total_points",
+        "from_value": "points on wrong role bucket",
+        "to_value": "move to dominate_role bucket",
+        "rows_affected": 4,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "BAVARIAN_ALLSTAR_ROLE_SWAP_2026",
+        "table": "dancer_role_info",
+        "column": "non_dominate_role_highest_level_points",
+        "from_value": "WSDC NDR summary still has phantom All-Star",
+        "to_value": "recompute from dancers_points_info",
+        "rows_affected": 2,
         "source": "known_map"
       }
     ]
@@ -3270,6 +3332,33 @@
         "suggested_fix": "Add to EVENT_NAME_LOCATION_OVERRIDES in transform/knowledge/events.py and run force_result_locations_from_event_name_overrides",
         "fingerprint": "235f3a5dfd02bc9c",
         "is_new": false,
+        "requires_manual_review": true
+      },
+      {
+        "category": "location",
+        "code": "TRIAL_SCHEDULE_GEO_GAP",
+        "severity": "medium",
+        "message": "2 Trial Event(s) on the WSDC list lack location_id or coordinates (list geo ensure_location / Google geocode)",
+        "count": 2,
+        "examples": [
+          {
+            "event_name": "Cologne Calling WCS",
+            "start_date": "2027-01-14",
+            "location_raw": "Köln, NRW, Germany",
+            "location_id": "395",
+            "reason": "missing_coordinates"
+          },
+          {
+            "event_name": "SGI - Swing de Garotos Invitational",
+            "start_date": "2027-04-23",
+            "location_raw": "São Paulo, São Paulo, Brazil",
+            "location_id": "398",
+            "reason": "missing_coordinates"
+          }
+        ],
+        "suggested_fix": "Re-run sync_events_list with GOOGLE_MAPS_API_KEY; or add city to location_info / CITY_CANONICAL_COORDINATES",
+        "fingerprint": "74a1f0e4d1681096",
+        "is_new": true,
         "requires_manual_review": true
       }
     ]
