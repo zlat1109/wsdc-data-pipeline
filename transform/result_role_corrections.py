@@ -38,6 +38,55 @@ def _canon_role(value: Any) -> str | None:
     return None
 
 
+# Parser CSVs use abbr (ALS); repair/Tableau paths often use full names (All-Star).
+_LEVEL_CANON: dict[str, str] = {
+    "als": "all star",
+    "all-star": "all star",
+    "allstar": "all star",
+    "all-stars": "all star",
+    "allstars": "all star",
+    "all star": "all star",
+    "adv": "advanced",
+    "advanced": "advanced",
+    "chmp": "champion",
+    "champion": "champion",
+    "champions": "champion",
+    "int": "intermediate",
+    "intermediate": "intermediate",
+    "nov": "novice",
+    "novice": "novice",
+    "new": "newcomer",
+    "newcomer": "newcomer",
+}
+
+
+def _canon_level(value: Any) -> str:
+    raw = _norm(value).replace("_", " ")
+    return _LEVEL_CANON.get(raw, raw)
+
+
+def _preferred_level_token(
+    points: pd.DataFrame,
+    dancer_id: str,
+    dance: str,
+    level: str,
+) -> str:
+    """Reuse existing CSV spelling for this bucket (prefer ALS over All-Star)."""
+    target = _canon_level(level)
+    mask = (
+        points["dancer_id"].astype(str).str.strip().eq(dancer_id)
+        & points["dance"].astype(str).str.strip().eq(dance)
+        & points["level"].map(_canon_level).eq(target)
+    )
+    existing = points.loc[mask, "level"].astype(str).str.strip()
+    if not existing.empty:
+        return str(existing.iloc[0])
+    # Parser contract for All-Star buckets.
+    if target == "all star":
+        return "ALS"
+    return level
+
+
 def _opposite_role(value: Any) -> str | None:
     role = _canon_role(value)
     if role == "Leader":
@@ -198,25 +247,26 @@ def _adjust_bucket(
     if not role_norm:
         return 0
 
+    level_canon = _canon_level(level)
     mask = (
         points["dancer_id"].astype(str).str.strip().eq(dancer_id)
         & points["role"].map(_canon_role).eq(role_norm)
         & points["dance"].astype(str).str.strip().eq(dance)
-        & points["level"].astype(str).str.strip().eq(level)
+        & points["level"].map(_canon_level).eq(level_canon)
     )
     idxs = points.index[mask].tolist()
 
     if not idxs:
         if delta < 0:
             return 0
-        # Create missing destination bucket.
+        # Create missing destination bucket (match parser abbr when possible).
         new_row = {col: "" for col in points.columns}
         new_row.update(
             {
                 "dancer_id": dancer_id,
                 "role": role_norm,
                 "dance": dance,
-                "level": level,
+                "level": _preferred_level_token(points, dancer_id, dance, level),
                 "total_points": str(delta),
             }
         )
@@ -226,12 +276,20 @@ def _adjust_bucket(
         points.loc[len(points)] = new_row
         return 1
 
+    # If ALS and All-Star both exist, fold extras into the first row.
     idx = idxs[0]
     try:
         current = int(float(points.at[idx, "total_points"] or 0))
     except (TypeError, ValueError):
         current = 0
+    for extra_idx in idxs[1:]:
+        try:
+            current += int(float(points.at[extra_idx, "total_points"] or 0))
+        except (TypeError, ValueError):
+            pass
     new_total = current + delta
+    if len(idxs) > 1:
+        points.drop(index=idxs[1:], inplace=True)
     if new_total <= 0:
         points.drop(index=idx, inplace=True)
         points.reset_index(drop=True, inplace=True)
@@ -239,6 +297,8 @@ def _adjust_bucket(
         points.at[idx, "total_points"] = str(new_total)
         # Prefer Title-case role for Tableau contract.
         points.at[idx, "role"] = role_norm
+        if len(idxs) > 1:
+            points.reset_index(drop=True, inplace=True)
     return 1
 
 
@@ -273,8 +333,10 @@ def recompute_ndr_highest_from_points(
         "all-star": 50,
         "all star": 50,
         "allstar": 50,
+        "als": 50,
         "champion": 60,
         "champions": 60,
+        "chmp": 60,
         "master": 70,
         "masters": 70,
     }
