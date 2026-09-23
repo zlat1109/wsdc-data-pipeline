@@ -13,6 +13,8 @@
 #   SITE_YEARS       space-separated years for secondary dashboard (default: 2023..current UTC year)
 #   REQUIRE_DEPLOY_TOKEN  if 1, missing WSDC_ANALYTICS_DEPLOY_TOKEN fails the job (full-parse / force-rebuild)
 #   REQUIRE_YEAR_CALENDAR if 1 (default), year-calendar build failure exits non-zero
+#
+# Also rebuilds Time in Division spells JSON (time_in_division_spells.json).
 
 set -euo pipefail
 
@@ -116,6 +118,12 @@ else
   echo "::warning::Year Event Calendar build failed — continuing without updating events_year_calendar.json"
 fi
 
+echo "Building time_in_division_spells.json"
+python3 "${WORKDIR}/scripts/update_time_in_division_spells.py" \
+  --source-dir "${PIPELINE_DATA_ABS}" \
+  --rules "${WORKDIR}/static/data/rules_advancement_thresholds.json" \
+  --output "${WORKDIR}/static/data/time_in_division_spells.json"
+
 python3 "${WORKDIR}/scripts/validate_site_data.py" || {
   echo "::error::Site data validation failed after rebuild"
   exit 1
@@ -127,6 +135,7 @@ CACHE_V="$(date -u +%Y%m%d)-sync"
 DASHBOARD_HTML="${WORKDIR}/secondary_role_distribution_dashboard_en.html"
 BUBBLE_HTML="${WORKDIR}/interactive_secondary_country_bubble.html"
 CALENDAR_HTML="${WORKDIR}/events-calendar.html"
+TID_HTML="${WORKDIR}/time_in_division_dashboard_en.html"
 if [[ -f "${DASHBOARD_HTML}" ]]; then
   sed -i \
     -e "s|(as of [0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\})|(as of ${AS_OF})|g" \
@@ -145,7 +154,12 @@ if [[ -f "${CALENDAR_HTML}" ]]; then
     -e "s|event_l2_cards.json?v=[^\"]*|event_l2_cards.json?v=${CACHE_V}|g" \
     "${CALENDAR_HTML}"
 fi
-echo "Stamped secondary dashboard + calendar as_of=${AS_OF} cache_v=${CACHE_V}"
+if [[ -f "${TID_HTML}" ]]; then
+  sed -i \
+    -e "s|time_in_division_spells.json?v=[^\"]*|time_in_division_spells.json?v=${CACHE_V}|g" \
+    "${TID_HTML}"
+fi
+echo "Stamped secondary dashboard + calendar + time-in-division as_of=${AS_OF} cache_v=${CACHE_V}"
 
 cd "${WORKDIR}"
 git config user.name "github-actions[bot]"
@@ -170,8 +184,14 @@ fi
 if [[ -f static/data/event_l2_cards.json ]]; then
   git add static/data/event_l2_cards.json
 fi
+if [[ -f static/data/time_in_division_spells.json ]]; then
+  git add static/data/time_in_division_spells.json
+fi
 if [[ -f events-calendar.html ]]; then
   git add events-calendar.html
+fi
+if [[ -f time_in_division_dashboard_en.html ]]; then
+  git add time_in_division_dashboard_en.html
 fi
 
 if git diff --staged --quiet; then
@@ -180,7 +200,7 @@ if git diff --staged --quiet; then
 fi
 
 git commit -m "$(cat <<EOF
-chore(data): refresh homepage KPIs, secondary-role dashboard, Point Summary, Champion News, Events Calendar
+chore(data): refresh homepage KPIs, secondary-role, Point Summary, Champion News, Calendar, Time in Division
 
 Automated push from wsdc-data-pipeline after full-parse / export.
 EOF

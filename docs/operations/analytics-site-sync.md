@@ -12,6 +12,7 @@ After each successful `full-parse.yml` export, the pipeline rebuilds JSON for
 | Point Summary catalog | `static/data/points_summaries.json` | pipeline `scripts/build_points_summary.py` |
 | Champion News chronology | `static/data/champion_news.json` | pipeline `scripts/build_champion_news.py` |
 | Year Event Calendar | `static/data/events_year_calendar.json` | pipeline `scripts/build_year_event_calendar.py` |
+| Time in Division dashboard | `static/data/time_in_division_spells.json` | analytics `scripts/update_time_in_division_spells.py` |
 
 Live:
 - https://wsdc-analytics.github.io/index.html?lang=en
@@ -19,6 +20,7 @@ Live:
 - https://wsdc-analytics.github.io/points-summary.html
 - https://wsdc-analytics.github.io/champion-news.html
 - https://wsdc-analytics.github.io/events-calendar.html
+- https://wsdc-analytics.github.io/time_in_division_dashboard_en.html
 
 See also [point-summary.md](point-summary.md), [champion-news.md](champion-news.md), and [year-event-calendar.md](year-event-calendar.md).
 
@@ -43,7 +45,8 @@ full-parse.yml / sync-events-list.yml / force-rebuild-calendar-site.yml
        build champion_news.json (warn-on-fail)
        build events_year_calendar.json + event_l2_cards.json
          (REQUIRE_YEAR_CALENDAR=1 → hard fail; no silent stale calendar)
-       stamp calendar/dashboard ?v= cache buster
+       build time_in_division_spells.json (hard fail if builder errors)
+       stamp calendar / dashboard / Time in Division ?v= cache buster
        validate_site_data.py
        commit + push → GitHub Pages
   → Telegram #WSDC_Pipeline_Complete (+ location mismatch cards when findings exist)
@@ -84,6 +87,11 @@ python3 ~/.cursor/projects/python/wsdc-data-pipeline/scripts/build_points_summar
 
 python3 ~/.cursor/projects/python/wsdc-data-pipeline/scripts/build_champion_news.py \
   --data-dir "$PIPE" --site-repo "$SITE" --cutoff 2026-07-25
+
+python3 "$SITE/scripts/update_time_in_division_spells.py" \
+  --source-dir "$PIPE" \
+  --rules "$SITE/static/data/rules_advancement_thresholds.json" \
+  --output "$SITE/static/data/time_in_division_spells.json"
 
 cd "$SITE" && python3 scripts/validate_site_data.py
 # then commit static/data/*.json and push main → Pages
