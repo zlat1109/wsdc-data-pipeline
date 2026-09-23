@@ -156,7 +156,7 @@ if [[ -f "${CALENDAR_HTML}" ]]; then
 fi
 if [[ -f "${TID_HTML}" ]]; then
   sed -i \
-    -e "s|time_in_division_spells.json?v=[^\"]*|time_in_division_spells.json?v=${CACHE_V}|g" \
+    -e "s|time_in_division_spells.json?v=[^'\"]*|time_in_division_spells.json?v=${CACHE_V}|g" \
     "${TID_HTML}"
 fi
 echo "Stamped secondary dashboard + calendar + time-in-division as_of=${AS_OF} cache_v=${CACHE_V}"
