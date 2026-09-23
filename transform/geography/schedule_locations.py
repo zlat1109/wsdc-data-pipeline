@@ -23,10 +23,50 @@ def is_trial_status(status_event: object) -> bool:
     return "trial" in text
 
 
-def needs_list_geo(row: dict[str, Any]) -> bool:
-    """Only fill gaps for Trial Event rows (do not rework Registry coverage)."""
+def _override_location_text(row: dict[str, Any]) -> str | None:
+    name = str(row.get("event_name") or "").strip()
+    if not name:
+        return None
+    text = EVENT_NAME_LOCATION_OVERRIDES.get(name)
+    return str(text).strip() if text else None
+
+
+def _lid_country_mismatches(
+    row: dict[str, Any], location_df: pd.DataFrame | None
+) -> bool:
+    """True when sticky location_id country disagrees with the event country."""
+    lid = str(row.get("location_id") or "").strip()
+    country = norm_value(row.get("country"))
+    if not lid or not country or location_df is None or location_df.empty:
+        return False
+    if "location_id" not in location_df.columns or "event_country" not in location_df.columns:
+        return False
+    matches = location_df[
+        location_df["location_id"].astype(str).str.strip() == lid
+    ]
+    if matches.empty:
+        return True
+    loc_country = norm_value(matches.iloc[0].get("event_country"))
+    if not loc_country:
+        return False
+    left = loc_country.lower()
+    right = country.lower()
+    if left == right:
+        return False
+    return left not in right and right not in left
+
+
+def needs_list_geo(
+    row: dict[str, Any],
+    location_df: pd.DataFrame | None = None,
+) -> bool:
+    """Fill Trial Event geo gaps; force re-resolve overrides / country poison."""
     if not is_trial_status(row.get("status_event")):
         return False
+    if _override_location_text(row):
+        return True
+    if _lid_country_mismatches(row, location_df):
+        return True
     if str(row.get("location_id") or "").strip():
         return False
     return bool(str(row.get("location_raw") or "").strip())
@@ -44,10 +84,12 @@ def assign_schedule_locations(
     review: list[dict[str, Any]] = []
     out = list(events)
     for ev in out:
-        if not needs_list_geo(ev):
+        if not needs_list_geo(ev, location_df):
             continue
+        override = _override_location_text(ev)
+        raw = override or str(ev.get("location_raw") or "")
         result, location_df = ensure_location(
-            str(ev.get("location_raw") or ""),
+            raw,
             country=str(ev.get("country") or ""),
             location_df=location_df,
             geocode_fn=geocode_fn,

@@ -139,6 +139,81 @@ def test_assign_schedule_locations_only_trials():
     assert review == []
 
 
+def test_assign_forces_override_over_sticky_wrong_lid():
+    """Cologne Calling WCS must leave Jeju (213) for Cologne (399) via override."""
+    locations = _loc_df(
+        {
+            "location_id": "213",
+            "event_city": "Jeju",
+            "event_country": "Republic of Korea",
+            "latitude": "33.5",
+            "longitude": "126.5",
+            "event_location": "Jeju, Republic of Korea",
+            "event_location_standardized": "Jeju, Republic of Korea",
+            "coordinates_valid": "t",
+        },
+        {
+            "location_id": "399",
+            "event_city": "Cologne",
+            "event_country": "Germany",
+            "latitude": "50.94",
+            "longitude": "6.96",
+            "event_location": "Cologne, Germany",
+            "event_location_standardized": "Cologne, Germany",
+            "coordinates_valid": "t",
+        },
+    )
+    events = [
+        {
+            "event_name": "Cologne Calling WCS",
+            "status_event": "Trial Event",
+            "location_raw": "Köln, NRW, Germany",
+            "country": "Germany",
+            "location_id": 213,
+            "location_source": "google_maps",
+        }
+    ]
+    out, _, review = assign_schedule_locations(
+        events, locations, allow_geocode=False
+    )
+    assert out[0]["location_id"] in {399, "399"}
+    assert review == []
+
+
+def test_assign_reresolves_country_mismatch_without_override():
+    locations = _loc_df(
+        {
+            "location_id": "213",
+            "event_city": "Jeju",
+            "event_country": "Republic of Korea",
+            "latitude": "33.5",
+            "longitude": "126.5",
+            "event_location": "Jeju, Republic of Korea",
+            "coordinates_valid": "t",
+        },
+        {
+            "location_id": "129",
+            "event_city": "Munich",
+            "event_country": "Germany",
+            "latitude": "48.13",
+            "longitude": "11.58",
+            "event_location": "Munich, Germany",
+            "coordinates_valid": "t",
+        },
+    )
+    events = [
+        {
+            "event_name": "Some Trial Without Override",
+            "status_event": "Trial Event",
+            "location_raw": "Munich, Bavaria, Germany",
+            "country": "Germany",
+            "location_id": "213",
+        }
+    ]
+    out, _, _ = assign_schedule_locations(events, locations, allow_geocode=False)
+    assert out[0]["location_id"] in {129, "129"}
+
+
 def test_seed_results_fills_empty_and_forces_trial():
     scheduled = pd.DataFrame(
         [
