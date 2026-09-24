@@ -169,7 +169,7 @@ def remap_stale_calendar_event_ids(conn: Any) -> int:
     """Move durable calendar rows onto current edition event_ids when titles match.
 
     Also collapses MERGE_EVENT_ID_MAP ghosts (e.g. Paris Swing 307/543 → 272) and
-    deletes rows whose listing title no longer matches the assigned series
+    deletes URL-matched rows whose listing title is a different brand
     (Soul Flow hiatus stuck on Global Grand Prix via shared URL).
 
     Returns number of source rows remapped or dropped after merge/purge.
