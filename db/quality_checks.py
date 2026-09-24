@@ -285,14 +285,70 @@ EXTENDED_CHECKS: tuple[QualityCheck, ...] = (
         sql="""
         SELECT count(*) FROM core.event_editions
         WHERE event_year >= 2025
-          AND start_date IS NULL
+          AND start_date IS NOT NULL
+          AND end_date IS NOT NULL
+          AND EXTRACT(DAY FROM start_date) = 1
+          AND EXTRACT(DAY FROM end_date) = 1
+          AND start_date = end_date
           AND COALESCE(calendar_status, '') NOT IN ('hiatus', 'cancelled')
+          AND COALESCE(date_source, '') IN ('', 'edition', 'month')
         """,
-        max_value=50,
+        max_value=120,
         severity="warn",
         category="event_naming",
-        description="Most 2025+ editions with results should have calendar day dates.",
-        fix_hint="scripts/sync_events_calendar.py + rebuild_event_catalog",
+        description=(
+            "2025+ editions still on month stubs (edition_date copy) — "
+            "prefer dump/calendar day-precision when available."
+        ),
+        fix_hint="scripts/sync_dump_edition_dates.py; scripts/sync_events_calendar.py",
+    ),
+    QualityCheck(
+        name="edition_month_stub_dates",
+        sql="""
+        SELECT count(*) FROM core.event_editions
+        WHERE start_date IS NOT NULL
+          AND end_date IS NOT NULL
+          AND EXTRACT(DAY FROM start_date) = 1
+          AND EXTRACT(DAY FROM end_date) = 1
+          AND start_date = end_date
+          AND COALESCE(calendar_status, '') NOT IN ('hiatus', 'cancelled')
+          AND event_year >= 2015
+        """,
+        max_value=2000,
+        severity="warn",
+        category="event_naming",
+        description=(
+            "Month-sentinel start/end (YYYY-MM-01..01) after dump backfill; "
+            "regression guard — not every historical edition has day dates."
+        ),
+        fix_hint="scripts/sync_dump_edition_dates.py --dry-run (one-shot; not every parse)",
+    ),
+    QualityCheck(
+        name="editions_missing_start_or_end_date",
+        sql="""
+        SELECT count(*) FROM core.event_editions
+        WHERE start_date IS NULL OR end_date IS NULL
+        """,
+        max_value=0,
+        severity="error",
+        category="event_naming",
+        description=(
+            "Every edition must have start_date and end_date "
+            "(day-precision or month stub from edition_date)."
+        ),
+        fix_hint="db.edition_calendar.fill_edition_month_stub_dates / enrich_event_editions_dates",
+    ),
+    QualityCheck(
+        name="editions_asymmetric_start_end",
+        sql="""
+        SELECT count(*) FROM core.event_editions
+        WHERE (start_date IS NULL) <> (end_date IS NULL)
+        """,
+        max_value=0,
+        severity="error",
+        category="event_naming",
+        description="start_date and end_date must both be set or both null (never one-sided).",
+        fix_hint="fill_edition_month_stub_dates; resolve partial calendar rows",
     ),
     QualityCheck(
         name="editions_null_location_id",

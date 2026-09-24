@@ -28,22 +28,101 @@ ON CONFLICT (event_id, event_year, event_month) DO UPDATE SET
     match_via = EXCLUDED.match_via,
     scraped_at = EXCLUDED.scraped_at,
     updated_at = EXCLUDED.updated_at
-WHERE core.edition_calendar_dates.date_source = 'wsdc_events_list'
-   OR EXCLUDED.date_source = 'wsdc_calendar'
-   OR core.edition_calendar_dates.date_source = EXCLUDED.date_source
+WHERE
+    -- Soft sources always yield.
+    core.edition_calendar_dates.date_source = 'wsdc_events_list'
+    -- Same-source refresh (calendar re-scrape, dump re-run, operator edit).
+    OR core.edition_calendar_dates.date_source = EXCLUDED.date_source
+    -- Dump one-shot may replace month-stub / null planned dates from any source.
+    OR (
+        EXCLUDED.date_source = 'wsdc_dump'
+        AND (
+            core.edition_calendar_dates.planned_start_date IS NULL
+            OR (
+                EXTRACT(DAY FROM core.edition_calendar_dates.planned_start_date) = 1
+                AND core.edition_calendar_dates.planned_start_date
+                    IS NOT DISTINCT FROM COALESCE(
+                        core.edition_calendar_dates.planned_end_date,
+                        core.edition_calendar_dates.planned_start_date
+                    )
+            )
+        )
+    )
+    -- Official calendar may update, but never:
+    --   * overwrite day-precision with a month stub, or
+    --   * change past day-precision editions (end < today).
+    OR (
+        EXCLUDED.date_source = 'wsdc_calendar'
+        AND NOT (
+            core.edition_calendar_dates.planned_start_date IS NOT NULL
+            AND EXTRACT(DAY FROM core.edition_calendar_dates.planned_start_date) > 1
+            AND EXTRACT(DAY FROM EXCLUDED.planned_start_date) = 1
+            AND EXCLUDED.planned_start_date IS NOT DISTINCT FROM COALESCE(
+                EXCLUDED.planned_end_date, EXCLUDED.planned_start_date
+            )
+        )
+        AND NOT (
+            core.edition_calendar_dates.planned_start_date IS NOT NULL
+            AND EXTRACT(DAY FROM core.edition_calendar_dates.planned_start_date) > 1
+            AND COALESCE(
+                core.edition_calendar_dates.planned_end_date,
+                core.edition_calendar_dates.planned_start_date
+            ) < CURRENT_DATE
+        )
+    )
 """
+
+
+def _is_month_stub_pair(start: date | None, end: date | None) -> bool:
+    if start is None:
+        return True
+    end = end if end is not None else start
+    return (
+        start.day == 1
+        and end.day == 1
+        and start == end
+    )
+
+
+def should_apply_calendar_upsert(
+    *,
+    existing_source: str | None,
+    existing_start: date | None,
+    existing_end: date | None,
+    excluded_source: str,
+    excluded_start: date | None,
+    excluded_end: date | None,
+    today: date | None = None,
+) -> bool:
+    """Python mirror of ``_UPSERT_SQL`` ON CONFLICT WHERE (for unit tests)."""
+    as_of = today or date.today()
+    existing_source = (existing_source or "").strip()
+    excluded_source = (excluded_source or "").strip()
+
+    if existing_source == "wsdc_events_list":
+        return True
+    if existing_source == excluded_source:
+        return True
+    if excluded_source == "wsdc_dump":
+        return existing_start is None or _is_month_stub_pair(existing_start, existing_end)
+    if excluded_source == "wsdc_calendar":
+        existing_day = (
+            existing_start is not None and existing_start.day > 1
+        )
+        excluded_stub = _is_month_stub_pair(excluded_start, excluded_end)
+        if existing_day and excluded_stub:
+            return False
+        existing_end_eff = existing_end or existing_start
+        if existing_day and existing_end_eff is not None and existing_end_eff < as_of:
+            return False
+        return True
+    return False
 
 _ENRICH_EDITIONS_FROM_CALENDAR_SQL = """
 UPDATE core.event_editions ed
 SET
-    start_date = CASE
-        WHEN d.calendar_status IN ('hiatus', 'cancelled') THEN NULL
-        ELSE d.planned_start_date
-    END,
-    end_date = CASE
-        WHEN d.calendar_status IN ('hiatus', 'cancelled') THEN NULL
-        ELSE d.planned_end_date
-    END,
+    start_date = d.planned_start_date,
+    end_date = d.planned_end_date,
     date_source = d.date_source,
     calendar_status = d.calendar_status,
     event_occurred = CASE
@@ -54,6 +133,29 @@ FROM core.edition_calendar_dates d
 WHERE d.event_id = ed.event_id
   AND d.event_year = ed.event_year
   AND d.event_month = ed.event_month
+"""
+
+_FILL_MONTH_STUB_DATES_SQL = """
+UPDATE core.event_editions ed
+SET
+    start_date = CASE
+        WHEN ed.start_date IS NULL AND ed.end_date IS NULL THEN ed.edition_date
+        WHEN ed.start_date IS NULL THEN COALESCE(ed.end_date, ed.edition_date)
+        ELSE ed.start_date
+    END,
+    end_date = CASE
+        WHEN ed.start_date IS NULL AND ed.end_date IS NULL THEN ed.edition_date
+        WHEN ed.end_date IS NULL THEN COALESCE(ed.start_date, ed.edition_date)
+        ELSE ed.end_date
+    END,
+    date_source = CASE
+        WHEN ed.start_date IS NULL AND ed.end_date IS NULL
+             AND (ed.date_source IS NULL OR ed.date_source = '')
+            THEN 'edition'
+        ELSE ed.date_source
+    END
+WHERE ed.edition_date IS NOT NULL
+  AND (ed.start_date IS NULL OR ed.end_date IS NULL)
 """
 
 _ENRICH_EDITIONS_FROM_LIST_SQL = """
@@ -328,7 +430,15 @@ def enrich_event_editions_dates(conn: Any) -> tuple[int, int]:
         from_cal = cur.rowcount
         cur.execute(_ENRICH_EDITIONS_FROM_LIST_SQL)
         from_list = cur.rowcount
+        cur.execute(_FILL_MONTH_STUB_DATES_SQL)
     return from_cal, from_list
+
+
+def fill_edition_month_stub_dates(conn: Any) -> int:
+    """Backfill NULL start/end from edition_date (month sentinel). Returns rows touched."""
+    with conn.cursor() as cur:
+        cur.execute(_FILL_MONTH_STUB_DATES_SQL)
+        return cur.rowcount
 
 
 def durable_date_count(conn: Any) -> int:
