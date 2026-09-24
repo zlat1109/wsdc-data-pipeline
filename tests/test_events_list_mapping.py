@@ -407,3 +407,38 @@ def test_ucwdc_championships_maps_to_dallas_75_not_orlando_152():
     assert result.canonical_event_id == 75
     assert result.canonical_name == "UCWDC Country Dance World Championship"
 
+
+def test_swingtime_denver_maps_to_points_id_47():
+    """WSDC list title SwingTime Denver must join results id 47, not ghost 466."""
+    catalog = [
+        CatalogEvent(
+            event_id=466,
+            name="SwingTime Denver",
+            url="http://www.swingtimewcs.com/",
+            url_norm="swingtimewcs.com",
+            typical_location="Denver, CO, United States",
+        ),
+        CatalogEvent(
+            event_id=47,
+            name="SwingTime Denver",
+            url="http://www.swingtimewcs.com",
+            url_norm="swingtimewcs.com",
+            typical_location="Denver, CO, United States",
+        ),
+    ]
+    row = {
+        "source_fingerprint": "swingtime-denver",
+        "event_name": "SwingTime Denver",
+        "start_date": "2026-09-10",
+        "location_raw": "Denver, CO, United States",
+        "url": "http://www.swingtimewcs.com/",
+        "status_event": "Registry Event",
+        "is_active": True,
+    }
+    result = map_scheduled_event(
+        row, catalog, build_url_index(catalog), [c.name for c in catalog]
+    )
+    assert result.match_status == "confirmed"
+    assert result.canonical_event_id == 47
+    assert result.canonical_name == "SwingTime Denver"
+

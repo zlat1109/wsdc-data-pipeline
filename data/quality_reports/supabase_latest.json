@@ -114,7 +114,7 @@
       "name": "edition_calendar_orphan_event_ids",
       "category": "event_naming",
       "severity": "warn",
-      "value": 5,
+      "value": 4,
       "max_value": 0,
       "ok": false,
       "description": "Calendar date rows must point at a current catalog event_id.",
@@ -144,7 +144,7 @@
       "name": "recent_editions_missing_day_dates",
       "category": "event_naming",
       "severity": "warn",
-      "value": 1,
+      "value": 0,
       "max_value": 50,
       "ok": true,
       "description": "Most 2025+ editions with results should have calendar day dates.",
@@ -337,6 +337,6 @@
     "errors": 0,
     "warnings": 1
   },
-  "generated_at": "2026-09-09T18:21:55.568448+00:00",
+  "generated_at": "2026-09-23T21:38:26.600576+00:00",
   "scope": "full"
 }

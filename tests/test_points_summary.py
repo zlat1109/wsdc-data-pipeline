@@ -24,6 +24,7 @@ from transform.points_summary.report import (
     DIVISION_ORDER,
     build_full_event_report,
     canonicalize_division,
+    canonicalize_event_display_name,
     edition_meta_from_row,
     load_dancers_map,
     load_results_rows,
@@ -67,6 +68,28 @@ def test_geo_flags_from_normalized_country():
 def test_make_event_slug_uses_start_date():
     assert make_event_slug("Rock The Barn", "2026-07-17") == "2026-07-17-rock-the-barn"
     assert make_event_slug("MY Swing", "2026-07-10") == "2026-07-10-my-swing"
+
+
+def test_swingtime_denver_display_keeps_published_slug():
+    assert canonicalize_event_display_name("Swingtime in the Rockies") == "SwingTime Denver"
+    assert canonicalize_event_display_name("SwingTime") == "SwingTime Denver"
+    assert (
+        make_event_slug("SwingTime Denver", "2026-09-10")
+        == "2026-09-10-swingtime-in-the-rockies"
+    )
+    meta = edition_meta_from_row(
+        {
+            "event_name": "Swingtime in the Rockies",
+            "event_id": "47",
+            "start_date": "2026-09-10",
+            "end_date": "2026-09-13",
+            "place_city": "Denver",
+            "place_state": "Colorado",
+            "place_country": "United States",
+            "location_raw": "Denver, CO, United States",
+        }
+    )
+    assert meta["name"] == "SwingTime Denver"
 
 
 def test_canonicalize_division_variants():
@@ -171,12 +194,67 @@ def test_merge_preserves_telegraph_url_and_creates_after_cutoff():
         if e["slug"] == "2026-07-17-rock-the-barn"
     )
     assert rock["telegraph_url"] == "https://telegra.ph/existing"
-    assert rock["divisions"][0]["places"][0]["leader"].startswith("A")
-    assert any(
-        e["slug"] == "2026-07-25-new-event"
-        for b in payload["summaries"]
-        for e in b["events"]
+
+
+def test_merge_retargets_rebrand_slug_to_published_identity():
+    """Display rename must not fork a second Point Summary for the same edition."""
+    existing = {
+        "summaries": [
+            {
+                "post_date": "14-09-2026",
+                "events_count": 1,
+                "events": [
+                    {
+                        "slug": "2026-09-10-swingtime-in-the-rockies",
+                        "name": "SwingTime Denver",
+                        "telegraph_url": "https://telegra.ph/swingtime",
+                        "divisions": [{"division": "Advanced", "places": []}],
+                        "start_date": "2026-09-10",
+                        "end_date": "2026-09-13",
+                    }
+                ],
+            }
+        ]
+    }
+    candidates = [
+        {
+            "slug": "2026-09-10-swingtime-denver",
+            "name": "SwingTime Denver",
+            "telegraph_url": None,
+            "divisions": [
+                {
+                    "division": "Advanced",
+                    "places": [
+                        {
+                            "place": "1",
+                            "place_label": "🥇 1 place",
+                            "leader": "A (+3) [1]",
+                            "follower": "B (+3) [1]",
+                        }
+                    ],
+                }
+            ],
+            "start_date": "2026-09-10",
+            "end_date": "2026-09-13",
+        }
+    ]
+    payload, report = merge_points_summaries(
+        existing,
+        candidates,
+        cutoff=date(2026, 7, 28),
+        update_window_days=30,
+        today=date(2026, 9, 15),
     )
+    assert report["created_count"] == 0
+    assert report["updated_count"] == 1
+    assert report["retargeted"] == [
+        "2026-09-10-swingtime-denver->2026-09-10-swingtime-in-the-rockies"
+    ]
+    events = [e for b in payload["summaries"] for e in b["events"]]
+    assert len(events) == 1
+    assert events[0]["slug"] == "2026-09-10-swingtime-in-the-rockies"
+    assert events[0]["telegraph_url"] == "https://telegra.ph/swingtime"
+    assert events[0]["divisions"][0]["places"][0]["leader"].startswith("A")
 
 
 def _find_edition_row(editions: list[dict], event_name: str) -> dict | None:
@@ -190,6 +268,8 @@ def _find_edition_row(editions: list[dict], event_name: str) -> dict | None:
         "baroqueswing": "barock swing ludwigsburg",
         "d-townswing": "d-town swing",
         "midwest westie fest": "midwest westie fest",
+        "swingtime denver": "swingtime in the rockies",
+        "swingtime": "swingtime in the rockies",
     }
     targets = {name, stripped}
     for key, alias in aliases.items():

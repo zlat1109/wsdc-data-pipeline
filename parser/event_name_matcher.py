@@ -39,6 +39,9 @@ EVENT_NAME_MAPPINGS: dict[str, str] = {
     "LoneStar Invitational": "Lone Star Invitational",
     "Lonestar Invitational": "Lone Star Invitational",
     "French Connection WCS": "FRENCH CONNECTION WCS",
+    # Points historical title → current WSDC registry / list name (id 47).
+    "Swingtime in the Rockies": "SwingTime Denver",
+    "SwingTime": "SwingTime Denver",
 }
 
 

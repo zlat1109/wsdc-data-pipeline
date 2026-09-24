@@ -73,6 +73,35 @@ fixes). `export.py` does this automatically.
 | `apply_event_name_location_overrides_csv.py` | Remap local export CSV `location_id` from `EVENT_NAME_LOCATION_OVERRIDES` | No (CSV only) |
 | `audit_event_location_mismatches.py` | Find shared wrong location_id / calendar mismatches | No |
 | `repair_location_poison_aug2026.py` | One-off remap of shared-wrong `location_id` on known series (NZ, Philly, Montreal, DCSX, Nordic, BudaFest, Westie Spring, French Open, Swing in Bloom, Finnfest, Neverland, Korean Open) | Yes |
+| `repair_bavarian_allstar_roles_2026.py` | Flip Bavarian Open 2026 All-Star roles that contradict `dominate_role` + move points between Leader/Follower buckets | Yes |
+| `purge_bavarian_allstar_phantom_points_history.py` | Delete one-day wrong-role All-Star history so Tableau `changed_*` does not keep showing phantom follower/leader totals | Yes |
+| `repair_ndr_highest_from_points.py` | Recompute `non_dominate_role_highest_*` from `core.dancer_points` (fixes Dancer Profile secondary bar) | Yes |
+
+## repair_bavarian_allstar_roles_2026.py
+
+WSDC published Bavarian Open 2026 All-Star with leader/follower roles swapped for
+most rows. This script flips mismatched `core.results.role` values and transfers
+the same points in `core.dancer_points`. The same rule is also applied in
+`preprocess_with_log` so the next full parse does not resurrect the bug — remove
+both once WSDC republishes correct roles.
+
+```bash
+python scripts/repair_bavarian_allstar_roles_2026.py --dry-run
+python scripts/repair_bavarian_allstar_roles_2026.py --apply
+python scripts/reconcile_points_history.py --apply
+python scripts/purge_bavarian_allstar_phantom_points_history.py --apply
+python scripts/repair_ndr_highest_from_points.py --apply
+python scripts/reconcile_roles_history.py --apply
+python export.py --output-dir data
+```
+
+After the role repair, also purge the one-day wrong-role SCD2 intervals so
+`changed_dancer_points_info.csv` does not leave Tableau showing e.g. Joshua
+Schubert Follower All-Star = 8. Newer `reconcile_points_history` writes a 0
+tombstone when a core bucket disappears.
+
+The Dancer Profile secondary bar reads **`dancer_role_info.non_dominate_role_highest_*`**,
+not `dancers_points_info` — recompute those fields from points after the swap.
 
 ## repair_location_poison_aug2026.py
 
@@ -128,6 +157,50 @@ python scripts/merge_location_ids.py --apply
 ```
 
 Updates `core.results`, `core.event_instances`, `core.event_editions`, deletes merged rows, rebuilds event catalog. Use for known duplicate pairs (Amsterdam 373→191, Anaheim 291→23, Boston Club 334→Düsseldorf 127, etc.) — see merge map in `locations.py`.
+
+## sync_dump_edition_dates.py
+
+One-shot backfill of `start_date` / `end_date` from a local WSDC clone
+`competitionevents` extract (not part of every parse).
+
+- Input: `dumps/competitionevents_dates.tsv` (gitignored; series `event_id`, not
+  `competitionevents.id`)
+- Match: series id → `MERGE_EVENT_ID_MAP` → existing `event_editions` only
+- Auto-write: our month stubs (`NULL` or same-month `01`…`01`) when dump has
+  day-precision → `edition_calendar_dates` (`date_source=wsdc_dump`) + enrich
+- Conflicts (day≠day): report only → manual review
+- Upsert guard in `db/edition_calendar.py`: month-stub calendar scrape cannot
+  clobber day-precision; past day-precision locked against calendar overwrite
+
+```bash
+# Export non-PII slice from local MySQL clone, then:
+python scripts/sync_dump_edition_dates.py --dry-run
+python scripts/sync_dump_edition_dates.py --apply --export --build-year-calendar
+```
+
+**After `--apply` (required dependents):**
+
+```bash
+python export.py --output-dir data
+python scripts/build_year_event_calendar.py --data-dir data
+# or use --export --build-year-calendar on the apply command above
+```
+
+Commit refreshed `data/event_editions.csv` + `data/edition_calendar_dates.csv` (and year-calendar JSON if shipping the site) so Tableau / analytics stay in sync with Supabase.
+
+Report: `data/quality_reports/dump_edition_dates_report.json` (+ `.csv`).
+
+**Upsert precedence** (`db/edition_calendar.py`):
+
+| Existing | Incoming | Result |
+|----------|----------|--------|
+| `wsdc_events_list` | any | overwrite |
+| same `date_source` | same | overwrite |
+| any month-stub / null | `wsdc_dump` day-range | overwrite |
+| day-precision | `wsdc_dump` | keep existing |
+| day-precision | `wsdc_calendar` month stub | keep existing |
+| past day-precision | `wsdc_calendar` | keep existing |
+| future day-precision | `wsdc_calendar` day-range | overwrite |
 
 ## merge_event_ids.py
 

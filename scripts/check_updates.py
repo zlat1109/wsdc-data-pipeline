@@ -92,8 +92,12 @@ def get_parse_in_flight(
 ) -> tuple[bool, int | None, int | None]:
     """Return (in_flight, run_id, age_minutes).
 
-    Covers load.py ``running`` rows and probe triggers awaiting success
-    (cloud_parse phase before load inserts its run).
+    Covers load.py ``running`` rows (finished_at NULL) and ready probe rows
+    awaiting a successful load (cloud_parse phase before load inserts its run).
+
+    Ready probes are journaled as ``skipped`` + finished_at + parse_ready=true
+    (never ``running``, which left zombies). Legacy ``running``+finished_at
+    ready probes are still recognized during the transition window.
     """
     window = window_minutes or PARSE_IN_FLIGHT_WINDOW_MINUTES
     cutoff = datetime.now(timezone.utc) - timedelta(minutes=window)
@@ -129,7 +133,7 @@ def get_parse_in_flight(
             """
             SELECT pr.run_id, pr.started_at
             FROM history.parse_runs pr
-            WHERE pr.status = 'running'
+            WHERE pr.status IN ('skipped', 'running')
               AND pr.finished_at IS NOT NULL
               AND pr.probe_details->>'parse_ready' = 'true'
               AND pr.started_at >= %s
@@ -213,7 +217,9 @@ def record_probe(
             VALUES ('github-actions', %s, %s, %s, %s::jsonb, %s::jsonb, %s)
             """,
             (
-                "running" if ready else "skipped",
+                # Probe rows always finish in this statement. Never use status=running
+                # here — that is reserved for load.py and left zombies with finished_at set.
+                "skipped",
                 probe_hash,
                 scan.live_max_id,
                 json.dumps({"live_max_id": scan.live_max_id, "sample": scan.new_ids}),

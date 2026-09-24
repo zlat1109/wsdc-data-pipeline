@@ -8,6 +8,8 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
+from transform.points_summary.report import canonicalize_event_display_name
+
 
 def post_date_today(today: date | None = None) -> str:
     d = today or date.today()
@@ -29,6 +31,16 @@ def _parse_iso(value: str | None) -> date | None:
         return date.fromisoformat(str(value)[:10])
     except ValueError:
         return None
+
+
+def _identity_key(event: dict) -> tuple[str, str] | None:
+    """Edition identity that survives display-name / slug stem rebrands."""
+    start = (event.get("start_date") or "").strip()[:10]
+    name = canonicalize_event_display_name(event.get("name") or "")
+    name_key = " ".join(name.lower().split())
+    if not start or not name_key:
+        return None
+    return start, name_key
 
 
 def load_summaries(path: Path) -> dict:
@@ -58,6 +70,16 @@ def flatten_events_by_slug(payload: dict) -> dict[str, dict]:
                 "block_index": bi,
                 "event_index": ei,
             }
+    return out
+
+
+def flatten_events_by_identity(payload: dict) -> dict[tuple[str, str], dict]:
+    """Map (start_date, canonical name) → first published slug entry."""
+    out: dict[tuple[str, str], dict] = {}
+    for _slug, meta in flatten_events_by_slug(payload).items():
+        key = _identity_key(meta["event"])
+        if key and key not in out:
+            out[key] = meta
     return out
 
 
@@ -101,10 +123,12 @@ def merge_points_summaries(
     payload = deepcopy(existing_payload) if existing_payload else {"summaries": []}
     summaries = list(payload.get("summaries") or [])
     by_slug = flatten_events_by_slug({"summaries": summaries})
+    by_identity = flatten_events_by_identity({"summaries": summaries})
 
     created: list[str] = []
     updated: list[str] = []
     skipped: list[str] = []
+    retargeted: list[str] = []
 
     new_block_events: list[dict] = []
 
@@ -115,6 +139,18 @@ def merge_points_summaries(
         if not slug or not start:
             skipped.append(slug or candidate.get("name") or "?")
             continue
+
+        # Rebrand safety: if slug is new but same edition already exists under
+        # an older stem (e.g. swingtime-in-the-rockies → swingtime-denver),
+        # keep the first-published slug and update in place.
+        if slug not in by_slug:
+            ident = _identity_key(candidate)
+            prior = by_identity.get(ident) if ident else None
+            if prior is not None:
+                published = (prior["event"].get("slug") or "").strip()
+                if published and published != slug:
+                    retargeted.append(f"{slug}->{published}")
+                    slug = published
 
         if slug in by_slug:
             existing = by_slug[slug]["event"]
@@ -131,6 +167,9 @@ def merge_points_summaries(
             summaries[bi]["events_count"] = len(summaries[bi]["events"])
             updated.append(slug)
             by_slug[slug]["event"] = merged_event
+            ident = _identity_key(merged_event)
+            if ident:
+                by_identity[ident] = by_slug[slug]
             continue
 
         # New entity: only after cutoff and with content.
@@ -145,6 +184,17 @@ def merge_points_summaries(
         event["slug"] = slug
         new_block_events.append(event)
         created.append(slug)
+        # Reserve identity so later candidates in the same run do not fork.
+        meta = {
+            "event": event,
+            "post_date": run_post_date,
+            "block_index": -1,
+            "event_index": -1,
+        }
+        by_slug[slug] = meta
+        ident = _identity_key(event)
+        if ident:
+            by_identity[ident] = meta
 
     if new_block_events:
         # Append into today's block, or prepend a new block.
@@ -191,6 +241,7 @@ def merge_points_summaries(
         "created": created,
         "updated": updated,
         "skipped": skipped,
+        "retargeted": retargeted,
         "created_count": len(created),
         "updated_count": len(updated),
         "post_date": run_post_date,

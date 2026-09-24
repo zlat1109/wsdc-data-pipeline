@@ -136,7 +136,9 @@ Do not force-remap those without year-aware edition logic.
 Fremantle, 2019) and `Go West SwingFest` (367, Perth, 2024+) are separate
 registry events. Alias maps Fest→SwingFest; year overrides restore Fremantle
 for 2019 so `split_names_same_geo` stays clean (distinct cities). Pair is also in
-`KEEP_SEPARATE_EVENT_PAIRS` for merge/classify. Do not merge ids without an
+`KEEP_SEPARATE_EVENT_PAIRS` for merge/classify. Relocation allowlist
+`RELOCATION_MERGE_PAIRS` (e.g. Global Grand Prix Toulouse→Paris) may merge across
+cities when organizers kept the series. Do not merge ids without an
 explicit decision.
 
 ## Country aliases

@@ -71,7 +71,7 @@ def main() -> None:
             return
 
         with conn.cursor() as cur:
-            for dancer_id, role, dance, level, _, _ in stale:
+            for dancer_id, role, dance, level, hist_points, core_points in stale:
                 cur.execute(
                     """
                     UPDATE history.dancer_points_history
@@ -81,6 +81,27 @@ def main() -> None:
                     """,
                     (today, dancer_id, role, dance, level),
                 )
+                # Tableau changed_*.csv uses latest update_date per bucket. When a
+                # core bucket disappears, emit a same-day 0 tombstone so exports do
+                # not keep showing the previous non-zero total.
+                if core_points is None:
+                    cur.execute(
+                        """
+                        INSERT INTO history.dancer_points_history (
+                            dancer_id, role, dance, level, total_points,
+                            valid_from, valid_to, run_id
+                        ) VALUES (%s, %s, %s, %s, 0, %s, %s, %s)
+                        """,
+                        (
+                            dancer_id,
+                            role,
+                            dance,
+                            level,
+                            today,
+                            today,
+                            run_id,
+                        ),
+                    )
 
             for dancer_id, role, dance, level, total_points, update_date in missing:
                 valid_from = update_date or today

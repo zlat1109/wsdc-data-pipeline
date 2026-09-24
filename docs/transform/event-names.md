@@ -9,7 +9,7 @@ Two mechanisms link raw result titles to WSDC registry events: **name aliases** 
 Marketing / shortened titles → exact `core.events.name`:
 
 ```python
-'SwingTime': 'Swingtime in the Rockies'
+'SwingTime' / 'Swingtime in the Rockies': 'SwingTime Denver'
 'UK West Coast Swing Championships': 'UK WCS Championships'
 ```
 
@@ -34,7 +34,8 @@ Merges both dicts for preprocess. Load seeds `core.event_aliases` via `prepare_e
 
 | Source | Canonical | Geo / note |
 |--------|-----------|------------|
-| 66 | 47 | Denver — SwingTime |
+| 66 | 47 | Denver — SwingTime (legacy) |
+| 466 | 47 | Denver — SwingTime Denver list/registry ghost |
 | 37 | 195 | Palm Springs New Year |
 | 193 | 236 | Warsaw Halloween Swing |
 | 99 | 119 | Chicago — Chicagoland |

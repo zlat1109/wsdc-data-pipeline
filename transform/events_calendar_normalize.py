@@ -213,3 +213,74 @@ def host_key(url: str) -> str:
     if netloc.startswith("www."):
         netloc = netloc[4:]
     return netloc
+
+
+_LISTING_MATCH_STOPWORDS = frozenset(
+    {
+        "the",
+        "a",
+        "an",
+        "and",
+        "of",
+        "for",
+        "wcs",
+        "west",
+        "coast",
+        "swing",
+        "dance",
+        "championships",
+        "championship",
+        "open",
+        "classic",
+        "festival",
+        "ball",
+        "party",
+        "fest",
+        "weekend",
+        "invitational",
+        "nationals",
+        "national",
+        "convention",
+    }
+)
+
+
+def _listing_name_tokens(name: str) -> set[str]:
+    raw = [
+        tok
+        for tok in "".join(ch if ch.isalnum() else " " for ch in name.lower()).split()
+        if tok
+    ]
+    tokens = {tok for tok in raw if tok not in _LISTING_MATCH_STOPWORDS}
+    if tokens:
+        return tokens
+    light = frozenset({"the", "a", "an", "and", "of", "for"})
+    kept = {tok for tok in raw if tok not in light}
+    return kept or set(raw)
+
+
+def calendar_title_matches_event(event_name: str | None, calendar_title: str | None) -> bool:
+    """True when a calendar listing belongs to the assigned event series.
+
+    Guards shared-URL hijacks (Soul Flow hiatus listed under the old Global
+    Grand Prix site URL must not stick to event_id 342).
+    """
+    title = strip_status_parens(str(calendar_title or ""))[0].strip()
+    ename = str(event_name or "").strip()
+    if not title or not ename:
+        return True
+    t_l, e_l = title.lower(), ename.lower()
+    if t_l == e_l or t_l.startswith(e_l + " ") or e_l.startswith(t_l + " "):
+        return True
+    for sep in (" in ", " - ", " – ", " — ", " @ ", " | "):
+        if sep in t_l:
+            base = t_l.split(sep, 1)[0].strip()
+            if base and (
+                base == e_l or e_l.startswith(base + " ") or base.startswith(e_l + " ")
+            ):
+                return True
+    fp_t = _listing_name_tokens(title)
+    fp_e = _listing_name_tokens(ename)
+    if not fp_t or not fp_e:
+        return True
+    return bool(fp_t & fp_e)

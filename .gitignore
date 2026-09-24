@@ -31,3 +31,7 @@ site/
 
 # Rules PDF binaries (text cache under data/reference/rules_text is committed)
 data/reference/rules_pdfs/
+
+# Local WSDC MySQL clone dumps (PII)
+dumps/*
+!dumps/README.md

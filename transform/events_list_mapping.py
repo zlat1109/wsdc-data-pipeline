@@ -9,6 +9,7 @@ from typing import Any
 
 from parser.event_name_matcher import EVENT_NAME_MAPPINGS, find_best_match, fuzzy_match_score
 from transform.events_list_normalize import normalize_url
+from transform.knowledge.event_aliases import MERGE_EVENT_ID_MAP
 
 AUTO_CONFIRM_SCORE = 0.95
 REVIEW_SCORE = 0.75
@@ -65,6 +66,24 @@ class CatalogEvent:
     typical_location: str = ""
 
 
+def _canonical_event_id(event_id: int) -> int:
+    """Follow MERGE_EVENT_ID_MAP so list ghosts resolve to the results id."""
+    seen: set[int] = set()
+    cur = int(event_id)
+    while cur in MERGE_EVENT_ID_MAP and cur not in seen:
+        seen.add(cur)
+        cur = int(MERGE_EVENT_ID_MAP[cur])
+    return cur
+
+
+def _prefer_catalog_event(hits: list[CatalogEvent]) -> CatalogEvent:
+    """When several catalog rows share a title, prefer the merge canonical."""
+    for ev in hits:
+        if _canonical_event_id(ev.event_id) == ev.event_id:
+            return ev
+    return hits[0]
+
+
 @dataclass
 class MappingResult:
     source_fingerprint: str
@@ -108,11 +127,13 @@ def _resolve_by_catalog_name(list_name: str, catalog: list[CatalogEvent]) -> tup
         if target in seen:
             continue
         seen.add(target)
-        for ev in catalog:
-            if ev.name == target:
-                if list_name in EVENT_NAME_MAPPINGS and EVENT_NAME_MAPPINGS[list_name] == ev.name:
-                    return ev, "explicit"
-                return ev, "exact_name"
+        hits = [ev for ev in catalog if ev.name == target]
+        if not hits:
+            continue
+        ev = _prefer_catalog_event(hits)
+        if list_name in EVENT_NAME_MAPPINGS and EVENT_NAME_MAPPINGS[list_name] == ev.name:
+            return ev, "explicit"
+        return ev, "exact_name"
     return None, "none"
 
 
@@ -199,7 +220,18 @@ def map_scheduled_event(
             base.notes.append("Trial event on schedule")
         return base
 
-    base.canonical_event_id = matched.event_id
+    canon_id = _canonical_event_id(matched.event_id)
+    if canon_id != matched.event_id:
+        for ev in catalog:
+            if ev.event_id == canon_id:
+                matched = ev
+                break
+        else:
+            base.notes.append(
+                f"Merged ghost id {matched.event_id} → {canon_id} (canonical not in catalog snapshot)"
+            )
+
+    base.canonical_event_id = canon_id
     base.canonical_name = matched.name
     base.catalog_url = matched.url
     base.typical_location = matched.typical_location or None

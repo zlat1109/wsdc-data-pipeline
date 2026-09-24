@@ -29,7 +29,11 @@ RESULT_TO_CATALOG_EVENT_NAME: dict[str, str] = {
     'USA Grand Nationals Dance Championship': 'USA Grand Nationals',
     'USA Grand Nationals Dance Championships': 'USA Grand Nationals',
     'Monterey Swing Fest': 'Monterey SwingFest',
-    'SwingTime': 'Swingtime in the Rockies',
+    # WSDC registry / list title (id 47). Points export still uses the old Rockies name.
+    'SwingTime': 'SwingTime Denver',
+    'SwingTime Denver': 'SwingTime Denver',
+    'Swingtime in the Rockies': 'SwingTime Denver',
+    'Swingtime': 'SwingTime Denver',
     "Swingin' New England": "Swingin' New England Dance Festival",
     'Palm Springs New Year': 'Palm Springs New Years Swing Dance Classic',
     'Palm Springs Swing Dance Classic': 'Palm Springs Summer Dance Classic',
@@ -159,7 +163,8 @@ EVENT_NAME_VARIANT_TO_CATALOG: dict[str, str] = {
 # Duplicate WSDC registry ids → canonical id (same geo; see event-geo-dedup rule).
 # Source id rows are remapped in core.results; sources are not deleted.
 MERGE_EVENT_ID_MAP: dict[int, int] = {
-    66: 47,    # SwingTime — Denver
+    66: 47,    # SwingTime — Denver (legacy id)
+    466: 47,   # SwingTime Denver inactive/list ghost → points id 47
     37: 195,   # Palm Springs New Year — Palm Springs
     193: 236,  # Warsaw Halloween Swing — Warsaw
     99: 119,   # Chicagoland Dance Festival — Chicago
@@ -185,6 +190,11 @@ MERGE_EVENT_ID_MAP: dict[int, int] = {
     552: 221,  # Show-Me Showdown spelling ghost → 221
     467: 221,  # Orphan calendar match for Show Me Showdown → 221
     463: 280,  # St. Petersburg WCS Nights schedule ghost → Saint Petersburg WCS Nights
+    # Global Grand Prix relocated Toulouse → Paris (same organizers); keep history on 342.
+    # Soul Flow (provisional 990001) is a separate Toulouse brand — do not merge here.
+    409: 342,  # Championships 2026 Paris → Reunion series id
+    437: 342,  # inactive short-title ghost
+    438: 342,  # inactive Championships ghost (pre-409)
     # NOTE: id 443 was once a LoneStar ghost; WSDC reused it for MADjam phantom
     # (see PHANTOM_ALIAS_TO_CANONICAL 443→92). Do not map 443→120.
 }
@@ -237,6 +247,21 @@ EVENT_NAME_YEAR_SPLITS: list[dict[str, object]] = [
         # Same Calgary series (ctodance.ca); registry id 324 kept across rebrand.
         "early_event_id": 324,
         "late_event_id": 324,
+    },
+    {
+        "sources": (
+            "Global Grand Prix",
+            "Global Grand Prix - West Coast Swing Reunion",
+            "Global Grand Prix -- West Coast Swing Championships",
+            "Global Grand Prix - West Coast Swing Championships",
+        ),
+        "early_name": "Global Grand Prix - West Coast Swing Reunion",
+        "early_year_max": 2025,
+        "late_name": "Global Grand Prix -- West Coast Swing Championships",
+        "late_year_min": 2026,
+        # Toulouse 2023–2025 → Paris 2026+ (MERGE 409→342). Soul Flow stays on 990001.
+        "early_event_id": 342,
+        "late_event_id": 342,
     },
 ]
 

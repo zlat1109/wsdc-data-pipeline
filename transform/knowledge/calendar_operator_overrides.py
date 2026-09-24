@@ -2,8 +2,9 @@
 
 These rows are upserted into ``core.edition_calendar_dates`` with
 ``date_source='operator'``. A later official ``wsdc_calendar`` scrape for the
-same ``(event_id, year, month)`` overwrites them (see upsert WHERE in
-``db/edition_calendar.py``).
+same ``(event_id, year, month)`` overwrites them when it has day-precision and
+the edition is not past (see upsert WHERE in ``db/edition_calendar.py``).
+Month-stub calendar rows never replace existing day-precision dates.
 
 The year-calendar builder also reads this list directly so provisional /
 orphan listings appear even before a DB export.

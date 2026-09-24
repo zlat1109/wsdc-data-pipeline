@@ -19,6 +19,10 @@ EVENT_NAME_NORMALIZATION = build_event_name_normalization()
 EVENT_NAME_LOCATION_OVERRIDES = {
     # Go West: year ranges below (Fest alias collapses into SwingFest).
     'BeeMAD': 'Madrid, Spain',
+    # Current WSDC registry title (id 47); points still emit Swingtime in the Rockies.
+    'SwingTime Denver': 'Denver, CO, United States',
+    'Swingtime in the Rockies': 'Denver, CO, United States',
+    'SwingTime': 'Denver, CO, United States',
     # Shared Wailea (124 / Aloha Open) wrongly applied to Swedish events.
     'Sweden Westie Gala': 'Stockholm, Sweden',
     'Westie Gala': 'Stockholm, Sweden',
@@ -119,6 +123,9 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'Barock Swing Ludwigsburg': 'Ludwigsburg, Germany',
     # Fresh main export: more shared-wrong location_id collisions (calendar ≠ results).
     'Bavarian Open': 'Munich, Germany',  # was Jeju (213) / Venray (227)
+    # Trial list minted retired id 395 → remapped to Jeju (213) via MERGE_MAP.
+    'Cologne Calling WCS': 'Cologne, Germany',
+    'Cologne Calling': 'Cologne, Germany',
     'Bavarian Open WCS': 'Munich, Germany',
     'Bavarian Open West Coast Swing Championships': 'Munich, Germany',
     # Greater Boston suburbs (venue cities), labeled as metro for Tableau.
@@ -256,6 +263,20 @@ EVENT_LOCATION_SUBSTRING_CORRECTIONS = [
 ]
 
 KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
+    47: {
+        # Current WSDC list/registry title. Points export still uses
+        # "Swingtime in the Rockies" on the same event_id.
+        'name': 'SwingTime Denver',
+        'url': 'http://www.swingtimewcs.com/',
+        'typical_location': 'Denver, CO, United States',
+        'location': {
+            'event_city': 'Denver',
+            'event_state': 'Colorado',
+            'event_country': 'United States',
+            'event_location': 'Denver, CO, United States',
+            'event_location_standardized': 'Denver, CO',
+        },
+    },
     229: {
         'name': 'Scandinavian Open',
         'url': 'http://www.snowcs.se/',
@@ -665,6 +686,21 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_country': 'Sweden',
             'event_location': 'Stockholm, Sweden',
             'event_location_standardized': 'Stockholm, Sweden',
+        },
+    },
+    342: {
+        # WSDC renamed registry id 342 to Soul Flow (Toulouse hiatus brand).
+        # Keep GGP continuity on 342 (MERGE 409→342); Soul Flow uses provisional
+        # 990001. enrich_core_known_events forces this title after each load.
+        'name': 'Global Grand Prix - West Coast Swing Reunion',
+        'url': 'https://www.globalgrandprixwcs.com/',
+        'typical_location': 'Toulouse, France',
+        'location': {
+            'event_city': 'Toulouse',
+            'event_state': '',
+            'event_country': 'France',
+            'event_location': 'Toulouse, France',
+            'event_location_standardized': 'Toulouse, France',
         },
     },
     493: {

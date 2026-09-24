@@ -114,9 +114,9 @@
       "name": "edition_calendar_orphan_event_ids",
       "category": "event_naming",
       "severity": "warn",
-      "value": 5,
+      "value": 0,
       "max_value": 0,
-      "ok": false,
+      "ok": true,
       "description": "Calendar date rows must point at a current catalog event_id.",
       "fix_hint": "remap_stale_calendar_event_ids via enrich_event_editions_dates / sync_events_calendar"
     },
@@ -144,7 +144,7 @@
       "name": "recent_editions_missing_day_dates",
       "category": "event_naming",
       "severity": "warn",
-      "value": 1,
+      "value": 0,
       "max_value": 50,
       "ok": true,
       "description": "Most 2025+ editions with results should have calendar day dates.",
@@ -184,9 +184,9 @@
       "name": "events_wsdc_edition_location_drift",
       "category": "location",
       "severity": "warn",
-      "value": 23,
+      "value": 0,
       "max_value": 0,
-      "ok": false,
+      "ok": true,
       "description": "event_editions.location_raw disagrees with joined core.locations text.",
       "fix_hint": "LOCATION_ID_CORRECTIONS / rebuild editions from results mode location"
     },
@@ -333,10 +333,10 @@
   ],
   "summary": {
     "total": 33,
-    "passed": 31,
+    "passed": 33,
     "errors": 0,
-    "warnings": 2
+    "warnings": 0
   },
-  "generated_at": "2026-09-09T18:35:18.325618+00:00",
+  "generated_at": "2026-09-24T10:19:00.955833+00:00",
   "scope": "full"
 }

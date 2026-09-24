@@ -131,7 +131,7 @@ Note: legacy export has no `event_id` column — join via `event_name` + year/mo
 | edition_date | date | YES | Month sentinel from results (`YYYY-MM-01`) |
 | start_date | date | YES | Inclusive first day (calendar/list) |
 | end_date | date | YES | Inclusive last day |
-| date_source | string | YES | `wsdc_calendar` / `wsdc_events_list` |
+| date_source | string | YES | `wsdc_calendar` / `wsdc_events_list` / `wsdc_dump` / `operator` / `edition` (month stub from `edition_date`) |
 | calendar_status | string | YES | `scheduled` / `unconfirmed` / `hiatus` / `cancelled` |
 | event_occurred | boolean | YES | FALSE if hiatus/cancelled |
 | location_id | integer | YES | Location FK |

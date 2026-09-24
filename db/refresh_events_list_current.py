@@ -43,10 +43,10 @@ _UPSERT_SCHEDULED_SQL = """
         url = EXCLUDED.url,
         status_event = EXCLUDED.status_event,
         location_id = COALESCE(
-            core.scheduled_events.location_id, EXCLUDED.location_id
+            EXCLUDED.location_id, core.scheduled_events.location_id
         ),
         location_source = CASE
-            WHEN core.scheduled_events.location_id IS NULL
+            WHEN EXCLUDED.location_id IS NOT NULL
             THEN EXCLUDED.location_source
             ELSE core.scheduled_events.location_source
         END,

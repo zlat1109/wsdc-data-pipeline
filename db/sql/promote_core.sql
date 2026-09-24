@@ -120,25 +120,40 @@ WHERE s.event_name_id ~ '^\d+$'
   )
 GROUP BY s.event_name_id::int;
 
--- Dancer points (current snapshot)
+-- Dancer points (current snapshot).
+-- DISTINCT ON: staging may carry both ALS and All-Star (or other abbr/full pairs)
+-- after role-bucket repairs; PK is (dancer_id, role, dance, level).
 INSERT INTO core.dancer_points (dancer_id, role, dance, level, total_points, update_date)
-SELECT
-    s.dancer_id::int,
-    CASE LOWER(TRIM(s.role))
-        WHEN 'leader' THEN 'Leader'
-        WHEN 'follower' THEN 'Follower'
-        ELSE INITCAP(TRIM(s.role))
-    END,
-    TRIM(s.dance),
-    COALESCE(l.level, TRIM(s.level)),
-    COALESCE(NULLIF(TRIM(s.total_points), '')::int, 0),
-    NULLIF(TRIM(s.update_date), '')::date
-FROM staging.dancers_points_info s
-LEFT JOIN core.levels l
-    ON UPPER(TRIM(s.level)) = l.level_abbr OR TRIM(s.level) = l.level
-WHERE s.dancer_id ~ '^\d+$'
-  AND CASE LOWER(TRIM(s.role)) WHEN 'leader' THEN 'Leader' WHEN 'follower' THEN 'Follower' END IS NOT NULL
-  AND COALESCE(l.level, TRIM(s.level)) IN (SELECT level FROM core.levels);
+SELECT DISTINCT ON (dancer_id, role, dance, level)
+    dancer_id,
+    role,
+    dance,
+    level,
+    total_points,
+    update_date
+FROM (
+    SELECT
+        s.dancer_id::int AS dancer_id,
+        CASE LOWER(TRIM(s.role))
+            WHEN 'leader' THEN 'Leader'
+            WHEN 'follower' THEN 'Follower'
+            ELSE INITCAP(TRIM(s.role))
+        END AS role,
+        TRIM(s.dance) AS dance,
+        COALESCE(l.level, TRIM(s.level)) AS level,
+        COALESCE(NULLIF(TRIM(s.total_points), '')::int, 0) AS total_points,
+        NULLIF(TRIM(s.update_date), '')::date AS update_date
+    FROM staging.dancers_points_info s
+    LEFT JOIN core.levels l
+        ON UPPER(TRIM(s.level)) = l.level_abbr OR TRIM(s.level) = l.level
+    WHERE s.dancer_id ~ '^\d+$'
+      AND CASE LOWER(TRIM(s.role))
+            WHEN 'leader' THEN 'Leader'
+            WHEN 'follower' THEN 'Follower'
+          END IS NOT NULL
+      AND COALESCE(l.level, TRIM(s.level)) IN (SELECT level FROM core.levels)
+) normalized
+ORDER BY dancer_id, role, dance, level, update_date DESC NULLS LAST, total_points DESC;
 
 -- Dancer roles (current snapshot)
 INSERT INTO core.dancer_roles (
