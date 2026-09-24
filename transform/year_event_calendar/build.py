@@ -472,23 +472,12 @@ def _calendar_listing_matches_event(event_name: Any, calendar_title: Any) -> boo
     otherwise fingerprint to a different token set than ``in <city>`` titles and
     drop the real edition row, leaving an unlinked list twin + YoY expected ghost.
     """
-    title = _clean_name(calendar_title)
-    ename = _clean_name(event_name)
-    if not title or not ename:
-        return True
-    t_l, e_l = title.lower(), ename.lower()
-    if t_l == e_l or t_l.startswith(e_l + " ") or e_l.startswith(t_l + " "):
-        return True
-    for sep in (" in ", " - ", " – ", " — ", " @ ", " | "):
-        if sep in t_l:
-            base = t_l.split(sep, 1)[0].strip()
-            if base and (base == e_l or e_l.startswith(base + " ") or base.startswith(e_l + " ")):
-                return True
-    fp_t = set(_fingerprint_event_name(title).split())
-    fp_e = set(_fingerprint_event_name(ename).split())
-    if not fp_t or not fp_e:
-        return True
-    return bool(fp_t & fp_e)
+    from transform.events_calendar_normalize import calendar_title_matches_event
+
+    return calendar_title_matches_event(
+        _clean_name(event_name),
+        _clean_name(calendar_title),
+    )
 
 
 def _rows_from_edition_calendar_dates(data_dir: Path) -> list[dict]:

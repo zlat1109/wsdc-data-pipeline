@@ -129,6 +129,8 @@ def test_westie_gala_metadata_and_stockholm_override():
         ]
         == "Paris, France"
     )
+    assert KNOWN_EVENT_METADATA[342]["name"] == "Global Grand Prix - West Coast Swing Reunion"
+    assert KNOWN_EVENT_METADATA[342]["url"] == "https://www.globalgrandprixwcs.com/"
 
 
 def test_year_split_sssc_vs_uptown_results():
@@ -223,6 +225,35 @@ def test_year_split_bto_vs_calgary_town_open():
     assert out.loc[3, "event_name"] == "Calgary Town Open"
     assert int(out.loc[0, "event_name_id"]) == 324
     assert int(out.loc[3, "event_name_id"]) == 324
+
+
+def test_year_split_ggp_reunion_to_championships_keeps_342():
+    df = pd.DataFrame(
+        [
+            {
+                "event_name": "Global Grand Prix - West Coast Swing Reunion",
+                "event_year": 2024,
+                "event_id": 342,
+            },
+            {
+                "event_name": "Global Grand Prix -- West Coast Swing Championships",
+                "event_year": 2026,
+                "event_id": 409,
+            },
+            {
+                "event_name": "Global Grand Prix - West Coast Swing Championships",
+                "event_year": 2025,
+                "event_id": 342,
+            },
+        ]
+    )
+    out = apply_event_name_year_splits(df)
+    assert out.loc[0, "event_name"] == "Global Grand Prix - West Coast Swing Reunion"
+    assert out.loc[1, "event_name"] == "Global Grand Prix -- West Coast Swing Championships"
+    assert out.loc[2, "event_name"] == "Global Grand Prix - West Coast Swing Reunion"
+    assert int(out.loc[0, "event_id"]) == 342
+    assert int(out.loc[1, "event_id"]) == 342
+    assert int(out.loc[2, "event_id"]) == 342
 
 
 def test_calgary_town_open_metadata():

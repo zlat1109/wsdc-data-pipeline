@@ -6,7 +6,11 @@ from typing import Any
 
 import pandas as pd
 
-from transform.events_calendar_normalize import host_key, name_key
+from transform.events_calendar_normalize import (
+    calendar_title_matches_event,
+    host_key,
+    name_key,
+)
 from transform.events_list_normalize import normalize_url
 from transform.knowledge.event_aliases import (
     EVENT_NAME_VARIANT_TO_CATALOG,
@@ -128,6 +132,19 @@ def match_calendar_to_editions(
 
     url_map = _build_url_to_event_ids(cat)
     name_map = _build_name_to_event_id(cat, ed)
+    catalog_name_by_id: dict[str, str] = {}
+    if not cat.empty and "event_id" in cat.columns:
+        name_col = (
+            "canonical_name"
+            if "canonical_name" in cat.columns
+            else ("event_name" if "event_name" in cat.columns else None)
+        )
+        if name_col:
+            for _, row in cat.iterrows():
+                eid = str(row.get("event_id") or "").strip()
+                cname = str(row.get(name_col) or "").strip()
+                if eid and cname:
+                    catalog_name_by_id[eid] = cname
 
     matched_rows: list[dict[str, Any]] = []
     unmatched: list[dict[str, Any]] = []
@@ -136,6 +153,9 @@ def match_calendar_to_editions(
         event_id = ""
         match_via = ""
         nk = cal.get("name_key") or ""
+        listing_title = str(
+            cal.get("calendar_title") or cal.get("event_name") or ""
+        ).strip()
         ym_pairs: list[tuple[int, int]] = []
         for ym in cal.get("edition_ym_candidates") or []:
             y_s, m_s = ym.split("-")
@@ -162,6 +182,15 @@ def match_calendar_to_editions(
                     name_map=name_map,
                 )
                 match_via = "url_host"
+        # Shared marketing URLs (GGP site still used by Soul Flow) must not pin
+        # a different brand onto the URL owner's event_id.
+        if event_id and listing_title:
+            catalog_name = catalog_name_by_id.get(str(event_id), "")
+            if catalog_name and not calendar_title_matches_event(
+                catalog_name, listing_title
+            ):
+                event_id = ""
+                match_via = ""
         if not event_id and nk and nk in name_map:
             event_id = name_map[nk]
             match_via = "name"

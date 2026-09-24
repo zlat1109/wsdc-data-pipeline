@@ -157,6 +157,83 @@ def test_match_prefers_event_id_that_still_has_editions():
     assert rows[0]["matched_edition_id"] == "7905"
 
 
+def test_match_rejects_soul_flow_url_hijack_onto_ggp():
+    """Shared globalgrandprixwcs.com URL must not assign Soul Flow to event 342."""
+    cal = normalize_calendar_events(
+        [
+            {
+                "title": "Soul Flow - West Coast Swing Festival (Hiatus -- 2026)",
+                "start": "2026-12-11",
+                "end": "2026-12-14",
+                "url": "https://www.globalgrandprixwcs.com/",
+            }
+        ],
+        min_start=None,
+    )
+    editions = pd.DataFrame(
+        [
+            {
+                "edition_id": "e342",
+                "event_id": "342",
+                "event_name": "Global Grand Prix - West Coast Swing Reunion",
+                "event_year": "2025",
+                "event_month": "12",
+            }
+        ]
+    )
+    catalog = pd.DataFrame(
+        [
+            {
+                "event_id": "342",
+                "canonical_name": "Global Grand Prix - West Coast Swing Reunion",
+                "url": "https://www.globalgrandprixwcs.com/",
+            }
+        ]
+    )
+    rows, summary = match_calendar_to_editions(cal, editions, catalog)
+    assert summary["matched"] == 0
+    assert rows[0]["matched_event_id"] == ""
+    assert rows[0]["match_status"] == "unmatched"
+
+
+def test_match_url_still_works_when_title_matches_catalog():
+    cal = normalize_calendar_events(
+        [
+            {
+                "title": "Global Grand Prix -- West Coast Swing Championships",
+                "start": "2026-09-18",
+                "end": "2026-09-22",
+                "url": "https://www.globalgrandprixwcs.com/",
+            }
+        ],
+        min_start=None,
+    )
+    editions = pd.DataFrame(
+        [
+            {
+                "edition_id": "e409",
+                "event_id": "409",
+                "event_name": "Global Grand Prix -- West Coast Swing Championships",
+                "event_year": "2026",
+                "event_month": "9",
+            }
+        ]
+    )
+    catalog = pd.DataFrame(
+        [
+            {
+                "event_id": "409",
+                "canonical_name": "Global Grand Prix -- West Coast Swing Championships",
+                "url": "https://www.globalgrandprixwcs.com/",
+            }
+        ]
+    )
+    rows, summary = match_calendar_to_editions(cal, editions, catalog)
+    assert summary["matched"] == 1
+    assert rows[0]["matched_event_id"] == "409"
+    assert rows[0]["match_via"] == "url"
+
+
 def test_rows_for_upsert_keeps_hiatus_planned_dates():
     rows = rows_for_upsert(
         [

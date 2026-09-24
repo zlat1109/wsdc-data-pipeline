@@ -50,6 +50,21 @@ def test_classify_swingtime_merge_candidate():
     assert classify_event_id_pair(47, 66, denver, denver) == "merge_candidate"
 
 
+def test_classify_ggp_relocation_paris_toulouse_merge_candidate():
+    from transform.geography.geo_event import RELOCATION_MERGE_PAIRS
+
+    toulouse = geo_key("Toulouse", "", "France")
+    paris = geo_key("Paris", "", "France")
+    assert frozenset({342, 409}) in RELOCATION_MERGE_PAIRS
+    assert frozenset({342, 437}) in RELOCATION_MERGE_PAIRS
+    assert frozenset({342, 438}) in RELOCATION_MERGE_PAIRS
+    assert classify_event_id_pair(409, 342, paris, toulouse) == "merge_candidate"
+    assert classify_event_id_pair(437, 342, paris, toulouse) == "merge_candidate"
+    assert classify_event_id_pair(438, 342, "", "") == "merge_candidate"
+    # Without allowlist, different cities stay separate.
+    assert classify_event_id_pair(75, 152, paris, toulouse) == "keep_separate"
+
+
 def test_metro_cluster_case_insensitive():
     assert metro_cluster_for("boston", "Massachusetts", "United States") == "greater_boston_ma"
     assert metro_cluster_for("FRAMINGHAM", "massachusetts", "United States") == "greater_boston_ma"
