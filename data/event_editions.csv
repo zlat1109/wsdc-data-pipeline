@@ -2,7 +2,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 5149,300,Austin Rocks,2026,9,2026-09-01,2026-09-18,2026-09-20,wsdc_calendar,scheduled,t,39,Austin,Texas,United States,"Austin, TX, United States",113,112,http://www.atxrox.com,"Austin, TX",
 4794,233,Bavarian Open,2026,9,2026-09-01,2026-09-10,2026-09-14,wsdc_calendar,scheduled,t,129,Munich,,Germany,"Munich, Germany",144,138,https://bavarianopen.com/,"Munich, Germany",
 4897,254,Finnfest,2026,9,2026-09-01,2026-09-18,2026-09-21,wsdc_calendar,scheduled,t,204,Helsinki,,Finland,"Helsinki, Finland",118,111,https://finnfest.fi/,"Helsinki, Finland",Registry Event
-5346,409,Global Grand Prix -- West Coast Swing Championships,2026,9,2026-09-01,2026-09-18,2026-09-21,wsdc_calendar,scheduled,t,109,Paris,,France,"Paris, France",129,115,,"Paris, France",
+5346,342,Global Grand Prix -- West Coast Swing Championships,2026,9,2026-09-01,2026-09-18,2026-09-21,wsdc_calendar,scheduled,t,109,Paris,,France,"Paris, France",129,115,https://www.globalgrandprixwcs.com/,"Toulouse, France",
 4984,268,Korea Westival,2026,9,2026-09-01,2026-09-03,2026-09-06,wsdc_calendar,scheduled,t,213,Jeju,,Republic of Korea,"Jeju, Republic of Korea",88,80,http://koreawestival.com,"Jeju, Republic of Korea",
 5291,359,Retaliation Swing,2026,9,2026-09-01,2026-09-17,2026-09-20,wsdc_calendar,scheduled,t,30,Seattle,Washington,United States,"Seattle, WA, United States",99,86,https://www.retaliationswing.com,"Seattle, WA",
 4353,177,River City Swing,2026,9,2026-09-01,2026-09-04,2026-09-07,wsdc_calendar,scheduled,t,98,Jacksonville,Florida,United States,"Jacksonville, FL, United States",92,82,http://www.floridadanceevents.com,"Jacksonville, FL",
@@ -134,7 +134,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3532,75,UCWDC Country Dance World Championship,2026,1,2026-01-01,2026-01-01,2026-01-03,wsdc_calendar,scheduled,t,21,Dallas,Texas,United States,"Dallas, TX, United States",78,69,http://www.ucwdcworlds.com/,"Dallas, TX",Registry Event
 4842,240,Westie Gala,2026,1,2026-01-01,2025-12-28,2026-01-01,wsdc_calendar,scheduled,t,199,Stockholm,,Sweden,"Stockholm, Sweden",126,104,http://www.westiegala.com/,"Stockholm, Sweden",Registry Event
 5009,271,Berlin Swing Revolution,2025,12,2025-12-01,2025-12-11,2025-12-14,wsdc_calendar,scheduled,t,194,Berlin,,Germany,"Berlin, Germany",63,60,https://berlinswingrevolution.com/,"Berlin, Germany",Registry Event
-5265,342,Global Grand Prix - West Coast Swing Reunion,2025,12,2025-12-01,2025-12-12,2025-12-15,wsdc_calendar,scheduled,t,208,Toulouse,,France,"Toulouse, France",117,104,http://www.globalgrandprixwcs.com,"Toulouse, France",
+5265,342,Global Grand Prix - West Coast Swing Reunion,2025,12,2025-12-01,2025-12-12,2025-12-15,wsdc_calendar,scheduled,t,208,Toulouse,,France,"Toulouse, France",117,104,https://www.globalgrandprixwcs.com/,"Toulouse, France",
 5320,377,Santa Swing,2025,12,2025-12-01,2025-12-11,2025-12-15,wsdc_calendar,scheduled,t,267,Kraków,,Poland,"Kraków, Poland",99,96,https://www.santaswing.pl/,"Kraków, Poland",Registry Event
 5110,290,Shooba Dooba Swing,2025,12,2025-12-01,2025-12-05,2025-12-08,wsdc_calendar,scheduled,t,113,Moscow,,Russia,"Moscow, Russia",102,92,https://danceconvention.net/eventdirector/ru/eventpage/6023470-shooba-dooba-swing-2020/info,"Moscow, Russia",
 4625,212,The After Party (TAP),2025,12,2025-12-01,2025-12-04,2025-12-07,wsdc_calendar,scheduled,t,73,Orange County,California,United States,"Orange County, CA, United States",115,113,http://www.tapwcs.com/,"Orange County, CA",Registry Event
@@ -307,7 +307,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 4841,240,Westie Gala,2025,1,2025-01-01,2024-12-28,2025-01-01,wsdc_calendar,scheduled,t,199,Stockholm,,Sweden,"Stockholm, Sweden",111,97,http://www.westiegala.com/,"Stockholm, Sweden",Registry Event
 5008,271,Berlin Swing Revolution,2024,12,2024-12-01,,,,,,194,Berlin,,Germany,"Berlin, Germany",61,57,https://berlinswingrevolution.com/,"Berlin, Germany",Registry Event
 3646,87,CASH Bash,2024,12,2024-12-01,,,,,,96,Cleveland,Ohio,United States,"Cleveland, OH, United States",76,70,https://cashdanceclub.org/cash-bash/,"Cleveland, OH",Registry Event
-5264,342,Global Grand Prix - West Coast Swing Reunion,2024,12,2024-12-01,,,,,,208,Toulouse,,France,"Toulouse, France",118,110,http://www.globalgrandprixwcs.com,"Toulouse, France",
+5264,342,Global Grand Prix - West Coast Swing Reunion,2024,12,2024-12-01,,,,,,208,Toulouse,,France,"Toulouse, France",118,110,https://www.globalgrandprixwcs.com/,"Toulouse, France",
 5109,290,Shooba Dooba Swing,2024,12,2024-12-01,,,,,,113,Moscow,,Russia,"Moscow, Russia",103,94,https://danceconvention.net/eventdirector/ru/eventpage/6023470-shooba-dooba-swing-2020/info,"Moscow, Russia",
 4624,212,The After Party (TAP),2024,12,2024-12-01,,,,,,73,Orange County,California,United States,"Orange County, CA, United States",130,130,http://www.tapwcs.com/,"Orange County, CA",Registry Event
 3479,68,US Open Swing Dance Championships,2024,12,2024-12-01,,,,,,22,Los Angeles,California,United States,"Los Angeles, CA, United States",163,151,http://www.theopenswing.com/,"Los Angeles, CA",Registry Event
@@ -445,7 +445,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 3530,75,UCWDC Country Dance World Championship,2024,1,2024-01-01,,,,,,21,Dallas,Texas,United States,"Dallas, TX, United States",78,72,http://www.ucwdcworlds.com/,"Dallas, TX",Registry Event
 4840,240,Westie Gala,2024,1,2024-01-01,,,,,,199,Stockholm,,Sweden,"Stockholm, Sweden",102,92,http://www.westiegala.com/,"Stockholm, Sweden",Registry Event
 5007,271,Berlin Swing Revolution,2023,12,2023-12-01,,,,,,194,Berlin,,Germany,"Berlin, Germany",59,53,https://berlinswingrevolution.com/,"Berlin, Germany",Registry Event
-5263,342,Global Grand Prix - West Coast Swing Reunion,2023,12,2023-12-01,,,,,,208,Toulouse,,France,"Toulouse, France",128,121,http://www.globalgrandprixwcs.com,"Toulouse, France",
+5263,342,Global Grand Prix - West Coast Swing Reunion,2023,12,2023-12-01,,,,,,208,Toulouse,,France,"Toulouse, France",128,121,https://www.globalgrandprixwcs.com/,"Toulouse, France",
 5108,290,Shooba Dooba Swing,2023,12,2023-12-01,,,,,,113,Moscow,,Russia,"Moscow, Russia",67,59,https://danceconvention.net/eventdirector/ru/eventpage/6023470-shooba-dooba-swing-2020/info,"Moscow, Russia",
 4623,212,The After Party (TAP),2023,12,2023-12-01,,,,,,73,Orange County,California,United States,"Orange County, CA, United States",128,126,http://www.tapwcs.com/,"Orange County, CA",Registry Event
 4829,238,Winter White,2023,12,2023-12-01,,,,,,223,Oslo,,Norway,"Oslo, Norway",81,77,http://www.winterwhite.no/,"Oslo, Norway",Registry Event
