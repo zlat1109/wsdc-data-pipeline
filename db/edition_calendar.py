@@ -168,11 +168,16 @@ def upsert_edition_calendar_dates(conn: Any, rows: list[dict[str, Any]]) -> int:
 def remap_stale_calendar_event_ids(conn: Any) -> int:
     """Move durable calendar rows onto current edition event_ids when titles match.
 
+    Also collapses MERGE_EVENT_ID_MAP ghosts (e.g. Paris Swing 307/543 → 272).
+
     Returns number of source rows remapped or dropped after merge.
     """
     import pandas as pd
 
-    from transform.events_calendar_remap import plan_calendar_event_id_remaps
+    from transform.events_calendar_remap import (
+        plan_calendar_event_id_remaps,
+        plan_merge_map_calendar_remaps,
+    )
 
     with conn.cursor() as cur:
         cur.execute(
@@ -205,7 +210,24 @@ def remap_stale_calendar_event_ids(conn: Any) -> int:
             columns=["event_id", "event_name", "event_year", "event_month"],
         )
 
-    remaps = plan_calendar_event_id_remaps(calendar, editions)
+    remaps_by_key: dict[tuple[str, int, int], dict[str, Any]] = {}
+    for remap in plan_calendar_event_id_remaps(calendar, editions):
+        key = (
+            str(remap["old_event_id"]),
+            int(remap["event_year"]),
+            int(remap["event_month"]),
+        )
+        remaps_by_key[key] = remap
+    for remap in plan_merge_map_calendar_remaps(calendar):
+        key = (
+            str(remap["old_event_id"]),
+            int(remap["event_year"]),
+            int(remap["event_month"]),
+        )
+        # Title-based remaps win when both fire for the same row.
+        remaps_by_key.setdefault(key, remap)
+
+    remaps = list(remaps_by_key.values())
     if not remaps:
         return 0
 

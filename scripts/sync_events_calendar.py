@@ -219,6 +219,10 @@ def sync_events_calendar(
             )
             result["operator_overrides"] = upsert_edition_calendar_dates(conn, op_rows)
 
+            from catalog_registry import ensure_operator_provisional_catalog
+
+            result["provisional_catalog"] = ensure_operator_provisional_catalog(conn)
+
             if rebuild_catalog:
                 from build_event_catalog import rebuild_event_catalog
 
