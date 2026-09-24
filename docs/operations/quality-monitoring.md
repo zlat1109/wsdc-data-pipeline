@@ -97,7 +97,10 @@ Check definitions live in `db/quality_checks.py` (single source of truth for mon
 | `edition_calendar_orphan_event_ids` | Calendar date rows must point at a current catalog event_id. |
 | `events_list_current_empty` | Upcoming WSDC list snapshot should not be empty after load. |
 | `schedule_orphan_location_id` | events_list_current.location_id must exist in core.locations (no FK). |
-| `recent_editions_missing_day_dates` | Most 2025+ editions with results should have calendar day dates. |
+| `recent_editions_missing_day_dates` | 2025+ editions still on month stubs (edition_date copy) — prefer dump/calendar day-precision when available. |
+| `edition_month_stub_dates` | Month-sentinel start/end (YYYY-MM-01..01) after dump backfill; regression guard — not every historical edition has day dates. |
+| `editions_missing_start_or_end_date` | Every edition must have start_date and end_date (day-precision or month stub from edition_date). |
+| `editions_asymmetric_start_end` | start_date and end_date must both be set or both null (never one-sided). |
 | `editions_null_location_id` | Event editions derive location from results mode location_id. |
 | `all_caps_cities` | ALL CAPS city names (CHICAGO, TOULOUSE, WILMINGTON DEL). |
 | `location_id_multiple_strings` | One location_id must not have conflicting event_location strings. |

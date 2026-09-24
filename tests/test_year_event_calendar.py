@@ -1561,6 +1561,44 @@ def test_rows_from_editions_stats_only_and_results_year(tmp_path):
     assert ser["year"] == 2025
 
 
+def test_rows_from_editions_filled_month_stub_stays_stats_only(tmp_path):
+    """After edition_date → start/end backfill, month stubs must not vanish."""
+    from transform.year_event_calendar.build import _rows_from_editions
+
+    path = tmp_path / "event_editions.csv"
+    pd.DataFrame(
+        [
+            {
+                "edition_id": 1,
+                "event_id": 221,
+                "event_name": "Gateway",
+                "event_year": 2025,
+                "event_month": 7,
+                "edition_date": "2025-07-01",
+                "start_date": "2025-07-01",
+                "end_date": "2025-07-01",
+                "date_source": "edition",
+                "calendar_status": "",
+                "event_occurred": "",
+                "location_id": "",
+                "place_city": "",
+                "place_state": "",
+                "place_country": "",
+                "location_raw": "",
+                "result_rows": 120,
+                "unique_dancers": 50,
+                "url": "",
+                "typical_location": "",
+                "registry_status": "",
+            },
+        ]
+    ).to_csv(path, index=False)
+    rows = _rows_from_editions(tmp_path)
+    assert len(rows) == 1
+    assert rows[0]["stats_only"] is True
+    assert rows[0]["source"] == "event_editions_month_only"
+
+
 def test_drop_redundant_stats_only_when_day_precision_exists():
     from transform.year_event_calendar.build import _drop_redundant_stats_only
 

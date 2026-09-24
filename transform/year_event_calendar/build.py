@@ -593,9 +593,9 @@ def _rows_from_editions(data_dir: Path) -> list[dict]:
             stats_only = True
             if year_i is None:
                 year_i = edition_date.year
-        # Month-only placeholders (YYYY-MM-01 with no real calendar day) — skip
-        # when date_source is missing and day is 1 and no calendar_status.
-        # Keep rows that have calendar_status or date_source day.
+        # Month-only placeholders (YYYY-MM-01 with no real calendar day).
+        # After dump/edition backfill, start/end may already hold the sentinel with
+        # date_source=edition — keep as stats_only (do not drop the row).
         date_source = str(rec.get("date_source") or "").strip().lower()
         cal_status = _norm_status_calendar(rec.get("calendar_status"))
         if (
@@ -606,14 +606,19 @@ def _rows_from_editions(data_dir: Path) -> list[dict]:
             not in {
                 "wsdc_calendar",
                 "wsdc_events_list",
+                "wsdc_dump",
+                "operator",
                 "day",
             }
         ):
-            # Still allow if explicitly marked scheduled with day source elsewhere;
-            # bare month stubs are not calendar-grade.
             if date_source in {"", "nan", "month", "edition"}:
-                continue
+                if result_rows > 0:
+                    stats_only = True
+                else:
+                    continue
         end = _parse_date(rec.get("end_date"))
+        if stats_only and end is None:
+            end = start
         if cal_status in {STATUS_CANCELLED, STATUS_HIATUS}:
             status = cal_status
         elif _truthy(rec.get("event_occurred")) or cal_status == STATUS_CONFIRMED:

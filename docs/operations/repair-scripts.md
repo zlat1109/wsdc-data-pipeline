@@ -158,6 +158,50 @@ python scripts/merge_location_ids.py --apply
 
 Updates `core.results`, `core.event_instances`, `core.event_editions`, deletes merged rows, rebuilds event catalog. Use for known duplicate pairs (Amsterdam 373→191, Anaheim 291→23, Boston Club 334→Düsseldorf 127, etc.) — see merge map in `locations.py`.
 
+## sync_dump_edition_dates.py
+
+One-shot backfill of `start_date` / `end_date` from a local WSDC clone
+`competitionevents` extract (not part of every parse).
+
+- Input: `dumps/competitionevents_dates.tsv` (gitignored; series `event_id`, not
+  `competitionevents.id`)
+- Match: series id → `MERGE_EVENT_ID_MAP` → existing `event_editions` only
+- Auto-write: our month stubs (`NULL` or same-month `01`…`01`) when dump has
+  day-precision → `edition_calendar_dates` (`date_source=wsdc_dump`) + enrich
+- Conflicts (day≠day): report only → manual review
+- Upsert guard in `db/edition_calendar.py`: month-stub calendar scrape cannot
+  clobber day-precision; past day-precision locked against calendar overwrite
+
+```bash
+# Export non-PII slice from local MySQL clone, then:
+python scripts/sync_dump_edition_dates.py --dry-run
+python scripts/sync_dump_edition_dates.py --apply --export --build-year-calendar
+```
+
+**After `--apply` (required dependents):**
+
+```bash
+python export.py --output-dir data
+python scripts/build_year_event_calendar.py --data-dir data
+# or use --export --build-year-calendar on the apply command above
+```
+
+Commit refreshed `data/event_editions.csv` + `data/edition_calendar_dates.csv` (and year-calendar JSON if shipping the site) so Tableau / analytics stay in sync with Supabase.
+
+Report: `data/quality_reports/dump_edition_dates_report.json` (+ `.csv`).
+
+**Upsert precedence** (`db/edition_calendar.py`):
+
+| Existing | Incoming | Result |
+|----------|----------|--------|
+| `wsdc_events_list` | any | overwrite |
+| same `date_source` | same | overwrite |
+| any month-stub / null | `wsdc_dump` day-range | overwrite |
+| day-precision | `wsdc_dump` | keep existing |
+| day-precision | `wsdc_calendar` month stub | keep existing |
+| past day-precision | `wsdc_calendar` | keep existing |
+| future day-precision | `wsdc_calendar` day-range | overwrite |
+
 ## merge_event_ids.py
 
 Requires geo match per [../policies/event-geo-dedup.md](../policies/event-geo-dedup.md).
