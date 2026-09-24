@@ -163,8 +163,16 @@ def sync_events_calendar(
 
     try:
         if conn is not None and not skip_db:
+            from catalog_registry import ensure_operator_provisional_catalog
+
+            # Provisional ids (Soul Flow 990001) must exist in catalog before URL
+            # matching so shared marketing sites do not pin onto the old series.
+            result_pre: dict[str, Any] = {
+                "provisional_catalog": ensure_operator_provisional_catalog(conn)
+            }
             editions, catalog = _load_match_frames_from_db(conn)
         else:
+            result_pre = {}
             editions, catalog = _load_match_frames_from_csv()
 
         if editions.empty:
@@ -192,6 +200,7 @@ def sync_events_calendar(
             "match": summary,
             "upserted": 0,
             "enriched": (0, 0),
+            **result_pre,
         }
 
         if conn is not None and not skip_db:
@@ -219,14 +228,14 @@ def sync_events_calendar(
             )
             result["operator_overrides"] = upsert_edition_calendar_dates(conn, op_rows)
 
-            from catalog_registry import ensure_operator_provisional_catalog
-
-            result["provisional_catalog"] = ensure_operator_provisional_catalog(conn)
-
             if rebuild_catalog:
                 from build_event_catalog import rebuild_event_catalog
 
                 rebuild_event_catalog(conn)
+                # Re-apply provisional stubs after rebuild wipes synthetic rows.
+                result["provisional_catalog"] = ensure_operator_provisional_catalog(conn)
+                # Remap MERGE ghosts + purge URL hijacks even on rebuild path.
+                result["enriched"] = enrich_event_editions_dates(conn)
             else:
                 result["enriched"] = enrich_event_editions_dates(conn)
 

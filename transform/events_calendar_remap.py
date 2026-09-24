@@ -132,3 +132,57 @@ def plan_merge_map_calendar_remaps(
             }
         )
     return remaps
+
+
+def plan_mismatched_title_calendar_deletes(
+    calendar_rows: list[dict[str, Any]] | pd.DataFrame,
+) -> list[dict[str, Any]]:
+    """Drop durable URL-matched rows whose listing title is a different brand.
+
+    Only ``match_via`` of ``url`` / ``url_host`` (shared marketing sites) are
+    purged — name-based near-matches like ``NeverlandSwing`` stay for the year
+    calendar filter. Typical case: Soul Flow hiatus listed under the old Global
+    Grand Prix URL and stuck on event_id 342.
+    """
+    from transform.events_calendar_normalize import calendar_title_matches_event
+
+    if isinstance(calendar_rows, pd.DataFrame):
+        rows = calendar_rows.to_dict(orient="records")
+    else:
+        rows = list(calendar_rows or [])
+
+    deletes: list[dict[str, Any]] = []
+    seen: set[tuple[str, int, int]] = set()
+    for row in rows:
+        raw_id = str(row.get("event_id") or "").strip()
+        if not raw_id:
+            continue
+        via = str(row.get("match_via") or "").lower()
+        # Remap suffixes like "url+remap_stale_event_id" still count as URL pins.
+        if "url" not in via:
+            continue
+        event_name = str(row.get("event_name") or "").strip()
+        title = str(row.get("calendar_title") or "").strip()
+        if not event_name or not title or event_name.lower() == "nan":
+            continue
+        if calendar_title_matches_event(event_name, title):
+            continue
+        try:
+            year = int(row.get("event_year"))
+            month = int(row.get("event_month"))
+        except (TypeError, ValueError):
+            continue
+        dedupe = (raw_id, year, month)
+        if dedupe in seen:
+            continue
+        seen.add(dedupe)
+        deletes.append(
+            {
+                "event_id": raw_id,
+                "event_year": year,
+                "event_month": month,
+                "calendar_title": title,
+                "event_name": event_name,
+            }
+        )
+    return deletes

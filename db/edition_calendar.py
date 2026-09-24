@@ -168,31 +168,45 @@ def upsert_edition_calendar_dates(conn: Any, rows: list[dict[str, Any]]) -> int:
 def remap_stale_calendar_event_ids(conn: Any) -> int:
     """Move durable calendar rows onto current edition event_ids when titles match.
 
-    Also collapses MERGE_EVENT_ID_MAP ghosts (e.g. Paris Swing 307/543 → 272).
+    Also collapses MERGE_EVENT_ID_MAP ghosts (e.g. Paris Swing 307/543 → 272) and
+    deletes URL-matched rows whose listing title is a different brand
+    (Soul Flow hiatus stuck on Global Grand Prix via shared URL).
 
-    Returns number of source rows remapped or dropped after merge.
+    Returns number of source rows remapped or dropped after merge/purge.
     """
     import pandas as pd
 
     from transform.events_calendar_remap import (
         plan_calendar_event_id_remaps,
         plan_merge_map_calendar_remaps,
+        plan_mismatched_title_calendar_deletes,
     )
 
     with conn.cursor() as cur:
         cur.execute(
             """
             SELECT
-                event_id::text,
-                event_year::text,
-                event_month::text,
-                calendar_title
-            FROM core.edition_calendar_dates
+                d.event_id::text,
+                d.event_year::text,
+                d.event_month::text,
+                d.calendar_title,
+                d.match_via,
+                coalesce(c.canonical_name, e.name, '') AS event_name
+            FROM core.edition_calendar_dates d
+            LEFT JOIN core.event_catalog c ON c.event_id = d.event_id
+            LEFT JOIN core.events e ON e.event_id = d.event_id
             """
         )
         calendar = pd.DataFrame(
             cur.fetchall(),
-            columns=["event_id", "event_year", "event_month", "calendar_title"],
+            columns=[
+                "event_id",
+                "event_year",
+                "event_month",
+                "calendar_title",
+                "match_via",
+                "event_name",
+            ],
         )
         cur.execute(
             """
@@ -228,7 +242,24 @@ def remap_stale_calendar_event_ids(conn: Any) -> int:
         remaps_by_key.setdefault(key, remap)
 
     remaps = list(remaps_by_key.values())
-    if not remaps:
+    deletes = plan_mismatched_title_calendar_deletes(calendar)
+    # Skip deletes that a remap already handles (row moves away).
+    remap_keys = {
+        (
+            str(r["old_event_id"]),
+            int(r["event_year"]),
+            int(r["event_month"]),
+        )
+        for r in remaps
+    }
+    deletes = [
+        d
+        for d in deletes
+        if (str(d["event_id"]), int(d["event_year"]), int(d["event_month"]))
+        not in remap_keys
+    ]
+
+    if not remaps and not deletes:
         return 0
 
     moved = 0
@@ -271,6 +302,20 @@ def remap_stale_calendar_event_ids(conn: Any) -> int:
                     """,
                     (new_id, old_id, year, month),
                 )
+            moved += cur.rowcount
+
+        for doomed in deletes:
+            cur.execute(
+                """
+                DELETE FROM core.edition_calendar_dates
+                WHERE event_id = %s AND event_year = %s AND event_month = %s
+                """,
+                (
+                    int(doomed["event_id"]),
+                    int(doomed["event_year"]),
+                    int(doomed["event_month"]),
+                ),
+            )
             moved += cur.rowcount
     return moved
 

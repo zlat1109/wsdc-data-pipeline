@@ -36,6 +36,19 @@ KEEP_SEPARATE_EVENT_PAIRS: frozenset[frozenset[int]] = frozenset(
     }
 )
 
+# Same series relocated (different cities) — still one results id via MERGE_EVENT_ID_MAP.
+# Distinct from KEEP_SEPARATE (true parallel brands) and from Soul Flow provisional 990001.
+RELOCATION_MERGE_PAIRS: frozenset[frozenset[int]] = frozenset(
+    {
+        # Global Grand Prix: Toulouse Reunion 2023–2025 → Paris Championships 2026+.
+        # Ghosts 437/438 share the series; include so merge_event_ids geo gate
+        # does not abort the whole batch if they ever carry rows.
+        frozenset({342, 409}),
+        frozenset({342, 437}),
+        frozenset({342, 438}),
+    }
+)
+
 KEEP_SEPARATE_EVENT_IDS: frozenset[int] = frozenset().union(*KEEP_SEPARATE_EVENT_PAIRS)
 
 
@@ -120,6 +133,8 @@ def classify_event_id_pair(event_id_a: int, event_id_b: int, geo_key_a: str, geo
     pair = frozenset({event_id_a, event_id_b})
     if pair in KEEP_SEPARATE_EVENT_PAIRS:
         return "keep_separate"
+    if pair in RELOCATION_MERGE_PAIRS:
+        return "merge_candidate"
     if geo_keys_mergeable(geo_key_a, geo_key_b):
         return "merge_candidate"
     if geo_key_a and geo_key_b and geo_key_a != geo_key_b:

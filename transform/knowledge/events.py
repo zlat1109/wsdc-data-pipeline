@@ -688,6 +688,21 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
             'event_location_standardized': 'Stockholm, Sweden',
         },
     },
+    342: {
+        # WSDC renamed registry id 342 to Soul Flow (Toulouse hiatus brand).
+        # Keep GGP continuity on 342 (MERGE 409→342); Soul Flow uses provisional
+        # 990001. enrich_core_known_events forces this title after each load.
+        'name': 'Global Grand Prix - West Coast Swing Reunion',
+        'url': 'https://www.globalgrandprixwcs.com/',
+        'typical_location': 'Toulouse, France',
+        'location': {
+            'event_city': 'Toulouse',
+            'event_state': '',
+            'event_country': 'France',
+            'event_location': 'Toulouse, France',
+            'event_location_standardized': 'Toulouse, France',
+        },
+    },
     493: {
         'name': 'UpTown Swing',
         'url': 'http://www.uptownswing.se/',

@@ -190,6 +190,11 @@ MERGE_EVENT_ID_MAP: dict[int, int] = {
     552: 221,  # Show-Me Showdown spelling ghost → 221
     467: 221,  # Orphan calendar match for Show Me Showdown → 221
     463: 280,  # St. Petersburg WCS Nights schedule ghost → Saint Petersburg WCS Nights
+    # Global Grand Prix relocated Toulouse → Paris (same organizers); keep history on 342.
+    # Soul Flow (provisional 990001) is a separate Toulouse brand — do not merge here.
+    409: 342,  # Championships 2026 Paris → Reunion series id
+    437: 342,  # inactive short-title ghost
+    438: 342,  # inactive Championships ghost (pre-409)
     # NOTE: id 443 was once a LoneStar ghost; WSDC reused it for MADjam phantom
     # (see PHANTOM_ALIAS_TO_CANONICAL 443→92). Do not map 443→120.
 }
@@ -242,6 +247,21 @@ EVENT_NAME_YEAR_SPLITS: list[dict[str, object]] = [
         # Same Calgary series (ctodance.ca); registry id 324 kept across rebrand.
         "early_event_id": 324,
         "late_event_id": 324,
+    },
+    {
+        "sources": (
+            "Global Grand Prix",
+            "Global Grand Prix - West Coast Swing Reunion",
+            "Global Grand Prix -- West Coast Swing Championships",
+            "Global Grand Prix - West Coast Swing Championships",
+        ),
+        "early_name": "Global Grand Prix - West Coast Swing Reunion",
+        "early_year_max": 2025,
+        "late_name": "Global Grand Prix -- West Coast Swing Championships",
+        "late_year_min": 2026,
+        # Toulouse 2023–2025 → Paris 2026+ (MERGE 409→342). Soul Flow stays on 990001.
+        "early_event_id": 342,
+        "late_event_id": 342,
     },
 ]
 
