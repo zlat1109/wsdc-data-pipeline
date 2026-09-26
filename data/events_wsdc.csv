@@ -1,4 +1,8 @@
 id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
+92,MADjam,"Washington, DC, United States",http://www.atlanticdancejam.com,March 2023,2023-03-01,2023,3,2023-03
+194,Moscow Westie Fest,"Moscow, Russia",https://westiefest.org/en/,November 2014,2014-11-01,2014,11,2014-11
+211,Atlanta Swing Classic,"Atlanta, GA, United States",https://www.atlantaswingclassic.com,October 2017,2017-10-01,2017,10,2017-10
+164,Sea Sun and Swing,"La Grande Motte, France",https://www.seasunswing.fr/,August 2016,2016-08-01,2016,8,2016-08
 87,CASH Bash,"Cleveland, OH, United States",http://Cashdanceclub.org,November 2025,2025-11-01,2025,11,2025-11
 289,SwingVester,"Wels, Austria",https://www.swingvester.com/,January 2024,2024-01-01,2024,1,2024-01
 314,Westie Spring Thing,"Budapest, Hungary",http://www.westiespringthing.com,March 2026,2026-03-01,2026,3,2026-03
@@ -481,8 +485,8 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 62,Monterey SwingFest,"Monterey, CA, United States",http://www.montereyswing.com,January 1995,1995-01-01,1995,1,1995-01
 62,Monterey SwingFest,"Monterey, CA, United States",http://www.montereyswing.com,January 1996,1996-01-01,1996,1,1996-01
 130,River City Dance Festival,"Edmonton, Canada",,September 2008,2008-09-01,2008,9,2008-09
-10,Bridgetown Swing Boogie,"Vancouver, WA, United States",,October 2016,2016-10-01,2016,10,2016-10
 10,Bridgetown Swing Boogie,"Vancouver, WA, United States",,September 2017,2017-09-01,2017,9,2017-09
+10,Bridgetown Swing Boogie,"Vancouver, WA, United States",,October 2016,2016-10-01,2016,10,2016-10
 62,Monterey SwingFest,"Monterey, CA, United States",http://www.montereyswing.com,January 1997,1997-01-01,1997,1,1997-01
 62,Monterey SwingFest,"Monterey, CA, United States",http://www.montereyswing.com,January 1998,1998-01-01,1998,1,1998-01
 62,Monterey SwingFest,"Monterey, CA, United States",http://www.montereyswing.com,January 1999,1999-01-01,1999,1,1999-01
@@ -1076,6 +1080,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 62,Monterey SwingFest,"Monterey, CA, United States",http://www.montereyswing.com,January 2014,2014-01-01,2014,1,2014-01
 62,Monterey SwingFest,"Monterey, CA, United States",http://www.montereyswing.com,January 2015,2015-01-01,2015,1,2015-01
 186,West in Lyon,"Lyon, France",http://www.west-in-lyon.fr,March 2017,2017-03-01,2017,3,2017-03
+75,UCWDC Country Dance World Championship,"Dallas, TX, United States",https://ucwdc.org/worlds-home/,January 2016,2016-01-01,2016,1,2016-01
 62,Monterey SwingFest,"Monterey, CA, United States",http://www.montereyswing.com,January 2016,2016-01-01,2016,1,2016-01
 62,Monterey SwingFest,"Monterey, CA, United States",http://www.montereyswing.com,January 2017,2017-01-01,2017,1,2017-01
 62,Monterey SwingFest,"Monterey, CA, United States",http://www.montereyswing.com,January 2018,2018-01-01,2018,1,2018-01
@@ -1127,7 +1132,6 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 75,UCWDC Country Dance World Championship,"Dallas, TX, United States",https://ucwdc.org/worlds-home/,January 2010,2010-01-01,2010,1,2010-01
 75,UCWDC Country Dance World Championship,"Dallas, TX, United States",https://ucwdc.org/worlds-home/,January 2013,2013-01-01,2013,1,2013-01
 75,UCWDC Country Dance World Championship,"Dallas, TX, United States",https://ucwdc.org/worlds-home/,January 2014,2014-01-01,2014,1,2014-01
-75,UCWDC Country Dance World Championship,"Dallas, TX, United States",https://ucwdc.org/worlds-home/,January 2016,2016-01-01,2016,1,2016-01
 342,Global Grand Prix -- West Coast Swing Championships,"Paris, France",https://www.globalgrandprixwcs.com/,September 2026,2026-09-01,2026,9,2026-09
 75,UCWDC Country Dance World Championship,"Dallas, TX, United States",https://ucwdc.org/worlds-home/,January 2017,2017-01-01,2017,1,2017-01
 75,UCWDC Country Dance World Championship,"Dallas, TX, United States",https://ucwdc.org/worlds-home/,January 2018,2018-01-01,2018,1,2018-01
@@ -1195,7 +1199,6 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 92,MADjam,"Washington, DC, United States",http://www.atlanticdancejam.com,March 2019,2019-03-01,2019,3,2019-03
 92,MADjam,"Washington, DC, United States",http://www.atlanticdancejam.com,March 2020,2020-03-01,2020,3,2020-03
 92,MADjam,"Washington, DC, United States",http://www.atlanticdancejam.com,March 2022,2022-03-01,2022,3,2022-03
-92,MADjam,"Washington, DC, United States",http://www.atlanticdancejam.com,March 2023,2023-03-01,2023,3,2023-03
 92,MADjam,"Washington, DC, United States",http://www.atlanticdancejam.com,March 2024,2024-03-01,2024,3,2024-03
 95,Swing Niagara Dance Championships,"Buffalo, NY, United States",,September 2010,2010-09-01,2010,9,2010-09
 95,Swing Niagara Dance Championships,"Buffalo, NY, United States",,September 2011,2011-09-01,2011,9,2011-09
@@ -1516,7 +1519,6 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 164,Sea Sun and Swing,"La Grande Motte, France",https://www.seasunswing.fr/,August 2012,2012-08-01,2012,8,2012-08
 164,Sea Sun and Swing,"La Grande Motte, France",https://www.seasunswing.fr/,August 2013,2013-08-01,2013,8,2013-08
 164,Sea Sun and Swing,"La Grande Motte, France",https://www.seasunswing.fr/,August 2014,2014-08-01,2014,8,2014-08
-164,Sea Sun and Swing,"La Grande Motte, France",https://www.seasunswing.fr/,August 2016,2016-08-01,2016,8,2016-08
 164,Sea Sun and Swing,"La Grande Motte, France",https://www.seasunswing.fr/,July 2017,2017-07-01,2017,7,2017-07
 164,Sea Sun and Swing,"La Grande Motte, France",https://www.seasunswing.fr/,July 2019,2019-07-01,2019,7,2019-07
 164,Sea Sun and Swing,"La Grande Motte, France",https://www.seasunswing.fr/,August 2023,2023-08-01,2023,8,2023-08
@@ -1723,7 +1725,6 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 192,Swing Generation,"Lyon, France",,October 2013,2013-10-01,2013,10,2013-10
 194,Moscow Westie Fest,"Moscow, Russia",https://westiefest.org/en/,November 2012,2012-11-01,2012,11,2012-11
 194,Moscow Westie Fest,"Moscow, Russia",https://westiefest.org/en/,November 2013,2013-11-01,2013,11,2013-11
-194,Moscow Westie Fest,"Moscow, Russia",https://westiefest.org/en/,November 2014,2014-11-01,2014,11,2014-11
 194,Moscow Westie Fest,"Moscow, Russia",https://westiefest.org/en/,November 2015,2015-11-01,2015,11,2015-11
 194,Moscow Westie Fest,"Moscow, Russia",https://westiefest.org/en/,November 2016,2016-11-01,2016,11,2016-11
 194,Moscow Westie Fest,"Moscow, Russia",https://westiefest.org/en/,November 2017,2017-11-01,2017,11,2017-11
@@ -1828,7 +1829,6 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 211,Atlanta Swing Classic,"Atlanta, GA, United States",https://www.atlantaswingclassic.com,October 2014,2014-10-01,2014,10,2014-10
 211,Atlanta Swing Classic,"Atlanta, GA, United States",https://www.atlantaswingclassic.com,October 2015,2015-10-01,2015,10,2015-10
 211,Atlanta Swing Classic,"Atlanta, GA, United States",https://www.atlantaswingclassic.com,October 2016,2016-10-01,2016,10,2016-10
-211,Atlanta Swing Classic,"Atlanta, GA, United States",https://www.atlantaswingclassic.com,October 2017,2017-10-01,2017,10,2017-10
 211,Atlanta Swing Classic,"Atlanta, GA, United States",https://www.atlantaswingclassic.com,October 2018,2018-10-01,2018,10,2018-10
 211,Atlanta Swing Classic,"Atlanta, GA, United States",https://www.atlantaswingclassic.com,October 2019,2019-10-01,2019,10,2019-10
 211,Atlanta Swing Classic,"Atlanta, GA, United States",https://www.atlantaswingclassic.com,October 2021,2021-10-01,2021,10,2021-10
