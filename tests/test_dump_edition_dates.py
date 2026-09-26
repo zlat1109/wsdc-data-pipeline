@@ -109,3 +109,28 @@ def test_prefer_active_over_unconfirmed_and_skip_end_before_start():
     assert by_ce[3273] == "match"
     assert summarize_plans(plans).get("conflict", 0) == 0
     assert summarize_plans(plans).get("skip_duplicate", 0) == 1
+
+
+def test_skip_invalid_span_over_7d_and_year_gap():
+    """Dump bot multi-week / year-typo ranges must not fill editions."""
+    from transform.dump_edition_dates import is_valid_day_range
+
+    assert is_valid_day_range(date(2016, 1, 3), date(2016, 1, 10))
+    assert not is_valid_day_range(date(2016, 1, 3), date(2016, 1, 16))  # 13d
+    assert not is_valid_day_range(date(2016, 9, 15), date(2016, 10, 18))  # 33d
+    assert not is_valid_day_range(date(2023, 3, 2), date(2022, 3, 7))  # end < start
+    assert not is_valid_day_range(date(2020, 1, 1), date(2022, 1, 3))  # year gap > 1
+    # NYE wrap within ±1 year and ≤7d is ok
+    assert is_valid_day_range(date(2023, 12, 31), date(2024, 1, 7))
+
+    dump = [
+        DumpEditionRow(1, 10, "BridgeTown", date(2016, 9, 15), date(2016, 10, 18)),
+        DumpEditionRow(2, 92, "MADjam", date(2023, 3, 2), date(2022, 3, 7)),
+    ]
+    editions = [
+        EditionDateRow(10, 2016, 10, date(2016, 10, 1), date(2016, 10, 1), "BT"),
+        EditionDateRow(92, 2023, 3, date(2023, 3, 1), date(2023, 3, 1), "MAD"),
+    ]
+    plans = plan_dump_edition_dates(dump, editions)
+    assert all(p.action == "skip_invalid" for p in plans)
+    assert fill_rows_for_upsert(plans) == []

@@ -145,10 +145,40 @@
       "category": "event_naming",
       "severity": "warn",
       "value": 0,
-      "max_value": 50,
+      "max_value": 120,
       "ok": true,
-      "description": "Most 2025+ editions with results should have calendar day dates.",
-      "fix_hint": "scripts/sync_events_calendar.py + rebuild_event_catalog"
+      "description": "2025+ editions still on month stubs (edition_date copy) \u2014 prefer dump/calendar day-precision when available.",
+      "fix_hint": "scripts/sync_dump_edition_dates.py; scripts/sync_events_calendar.py"
+    },
+    {
+      "name": "edition_month_stub_dates",
+      "category": "event_naming",
+      "severity": "warn",
+      "value": 1,
+      "max_value": 2000,
+      "ok": true,
+      "description": "Month-sentinel start/end (YYYY-MM-01..01) after dump backfill; regression guard \u2014 not every historical edition has day dates.",
+      "fix_hint": "scripts/sync_dump_edition_dates.py --dry-run (one-shot; not every parse)"
+    },
+    {
+      "name": "editions_missing_start_or_end_date",
+      "category": "event_naming",
+      "severity": "error",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "Every edition must have start_date and end_date (day-precision or month stub from edition_date).",
+      "fix_hint": "db.edition_calendar.fill_edition_month_stub_dates / enrich_event_editions_dates"
+    },
+    {
+      "name": "editions_asymmetric_start_end",
+      "category": "event_naming",
+      "severity": "error",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "start_date and end_date must both be set or both null (never one-sided).",
+      "fix_hint": "fill_edition_month_stub_dates; resolve partial calendar rows"
     },
     {
       "name": "editions_null_location_id",
@@ -332,11 +362,11 @@
     }
   ],
   "summary": {
-    "total": 33,
-    "passed": 33,
+    "total": 36,
+    "passed": 36,
     "errors": 0,
     "warnings": 0
   },
-  "generated_at": "2026-09-24T10:19:00.955833+00:00",
+  "generated_at": "2026-09-24T18:44:01.189369+00:00",
   "scope": "full"
 }

@@ -4,10 +4,15 @@ from __future__ import annotations
 
 from difflib import SequenceMatcher
 
-# Schedule name (worldsdc.com/events/) → canonical name in points (core.events).
-# Use when an event rebrands but WSDC results still use the historical catalog title.
-# See data/events_list/README.md § Event renames.
-EVENT_NAME_MAPPINGS: dict[str, str] = {
+from transform.knowledge.event_aliases import (
+    EVENT_NAME_VARIANT_TO_CATALOG,
+    RESULT_TO_CATALOG_EVENT_NAME,
+)
+
+# Schedule/list extras not yet in transform/knowledge/event_aliases.py.
+# Prefer adding new renames to event_aliases (RESULT_TO_CATALOG / VARIANT) so
+# preprocess, list sync, and matcher share one vocabulary.
+_PARSER_ONLY_MAPPINGS: dict[str, str] = {
     "Rocket City Swing": "Westies on the Water",
     "Paris Swing Classic": "Paris Westie Fest",
     "Charlotte WestieFest": "Charlotte Westie Fest",
@@ -15,7 +20,6 @@ EVENT_NAME_MAPPINGS: dict[str, str] = {
     "Westie Weekend": "Dance Jam Jack & Jill Weekend",
     "BaroqueSwing": "Barock Swing Ludwigsburg",
     'Scandinavian Open WCS "SNOW"': "Scandinavian Open",
-    # Historical schedule/catalog titles → current registry name (id 324).
     "BTO Open": "Calgary Town Open",
     "By-Town Open (BTO)": "Calgary Town Open",
     "By-Town Open": "Calgary Town Open",
@@ -24,7 +28,6 @@ EVENT_NAME_MAPPINGS: dict[str, str] = {
     "Bavarian Open West Coast Swing Championships": "Bavarian Open",
     "5280 Swing Dance Championships": "5280 Westival",
     "H-Town Throw Down 2027": "Novice Invitational",
-    # Dallas Championship series (id 75). Do NOT map to Worlds UCWDC (id 152, Orlando-only).
     "UCWDC Country Dance World Championships": "UCWDC Country Dance World Championship",
     "USA Grand National Dance Championships": "USA Grand Nationals",
     "USA Grand Nationals Dance Championships": "USA Grand Nationals",
@@ -32,16 +35,20 @@ EVENT_NAME_MAPPINGS: dict[str, str] = {
     "USA Grand National Dance Championship": "USA Grand Nationals",
     "Jack & Jill O'Rama": "J&J O'Rama",
     "Moscow Westie Fest Gala Edition": "Moscow Westie Fest",
-    # Results-side aliases (keep in sync with transform/knowledge/event_aliases.py)
-    "Phoenix 4th of July": "4TH of July Convention",
-    # Snapshot title variant (weekly bot) → WSDC catalog name
     "NeverlandSwing Dutch Swing Championships 2026": "Neverland Swing",
     "LoneStar Invitational": "Lone Star Invitational",
     "Lonestar Invitational": "Lone Star Invitational",
     "French Connection WCS": "FRENCH CONNECTION WCS",
-    # Points historical title → current WSDC registry / list name (id 47).
     "Swingtime in the Rockies": "SwingTime Denver",
     "SwingTime": "SwingTime Denver",
+}
+
+# Single lookup used by find_best_match: knowledge aliases win over parser-only
+# when keys collide (knowledge is the preprocess/export source of truth).
+EVENT_NAME_MAPPINGS: dict[str, str] = {
+    **_PARSER_ONLY_MAPPINGS,
+    **EVENT_NAME_VARIANT_TO_CATALOG,
+    **RESULT_TO_CATALOG_EVENT_NAME,
 }
 
 

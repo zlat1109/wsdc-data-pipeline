@@ -197,10 +197,69 @@ def main() -> None:
         )
         sys.exit(1)
 
+    # Absolute ceiling + delta vs previous run (rate alone can hide large jumps).
+    # Full-registry parses routinely see ~1k missing IDs in 1..live_max; the
+    # useful signal is a sudden increase, not the absolute floor.
+    max_failed_abs = int(os.getenv("PARSE_MAX_FAILED_ABS", "5000"))
+    max_failed_delta = int(os.getenv("PARSE_MAX_FAILED_DELTA", "200"))
+    fail_report = Path(args.base_dir) / "quality_reports" / "parse_failed_last.json"
+    prev_failed = None
+    if fail_report.is_file():
+        try:
+            import json
+
+            prev_failed = int(json.loads(fail_report.read_text(encoding="utf-8")).get(
+                "failed_count", 0
+            ))
+        except (json.JSONDecodeError, OSError, TypeError, ValueError):
+            prev_failed = None
+    if replace and len(failed) > max_failed_abs:
+        print(
+            f"ERROR: failed/missing {len(failed)} IDs exceeds "
+            f"PARSE_MAX_FAILED_ABS={max_failed_abs}; "
+            "refusing --full replace.",
+            flush=True,
+        )
+        sys.exit(1)
+    if (
+        replace
+        and prev_failed is not None
+        and len(failed) - prev_failed > max_failed_delta
+    ):
+        print(
+            f"ERROR: failed/missing grew by {len(failed) - prev_failed} "
+            f"(prev={prev_failed}, now={len(failed)}; "
+            f"PARSE_MAX_FAILED_DELTA={max_failed_delta}); "
+            "refusing --full replace.",
+            flush=True,
+        )
+        sys.exit(1)
+
     frames = build_frames(records)
     for filename in OUTPUT_FILES:
         count = write_csv(args.base_dir, filename, frames[filename], replace=replace)
         print(f"Wrote {count} dancer rows -> {filename}", flush=True)
+
+    try:
+        import json
+        from datetime import datetime, timezone
+
+        fail_report.parent.mkdir(parents=True, exist_ok=True)
+        fail_report.write_text(
+            json.dumps(
+                {
+                    "failed_count": len(failed),
+                    "total": total,
+                    "fail_rate": round(fail_rate, 4),
+                    "recorded_at": datetime.now(timezone.utc).isoformat(),
+                },
+                indent=2,
+            )
+            + "\n",
+            encoding="utf-8",
+        )
+    except OSError as exc:
+        print(f"WARN: could not write {fail_report}: {exc}", flush=True)
 
     print(f"Done: fetched={len(records)}, failed={len(failed)}, replace={replace}")
     if failed:

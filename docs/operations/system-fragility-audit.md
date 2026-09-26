@@ -235,3 +235,21 @@ Effort: **S** &lt; 0.5d · **M** 0.5–2d · **L** &gt; 2d.
 | P2-2 | Done | ChampNews editorial note on complete message |
 | P2-3 | Done | Tableau refresh reminder when CSV committed |
 | P2-4 | Deferred | Bot/newsbot inventory lives in `zlat1109/wsdc-telegram-bot` — out of pipeline scope |
+
+## 11. Full system audit wave (2026-09-26)
+
+Grill-me decisions: critical anomalies **block deploy** + Telegram alert; prioritize risks → UX → cleanup; keep GA4 with Consent Mode.
+
+Shipped in `DWH-BI-audit-phase0-gates` / site `DWH-BI-audit-site-hardening`:
+
+| Area | Change |
+|------|--------|
+| Data | Fixed 6 bad `wsdc_dump` edition ranges; `is_valid_day_range` rejects span>7d / year gap>1 |
+| Gates | `editions_end_before_start`, `editions_span_over_7d`, `duplicate_editions`, `phantom_points` (warn); list-sync via `run_pipeline --export-only` |
+| Alerts | `telegram_notify quality-gate-failed` / `force-rebuild-complete`; `REQUIRE_TELEGRAM=1`; cancel/timeout notifies |
+| CI | Shared `wsdc-publish` concurrency; site push retry; ubuntu-24.04; checkout@v5 / setup-python@v6; CodeQL + Dependabot; main branch protection (pytest, sync-check) |
+| DB | `search_path` on core functions; RLS enabled defense-in-depth; `event_instances` marked deprecated |
+| Knowledge | `transform/knowledge/corrections/`; one-off repairs archived; parser name map merges knowledge aliases |
+| Site | analytics.js + Consent Mode; sitemap/404/robots; OG tags; mobile Dashboards; Tableau mobile fallback; calendar L2 deferred; TID division shards; filtered Pages dist |
+
+Residual: promote `phantom_points` to error after calibration; finish YAML→runtime loader for all correction kinds; remove `core.event_instances` after consumer audit; optional cookieless analytics alt.

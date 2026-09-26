@@ -101,6 +101,11 @@ Check definitions live in `db/quality_checks.py` (single source of truth for mon
 | `edition_month_stub_dates` | Month-sentinel start/end (YYYY-MM-01..01) after dump backfill; regression guard — not every historical edition has day dates. |
 | `editions_missing_start_or_end_date` | Every edition must have start_date and end_date (day-precision or month stub from edition_date). |
 | `editions_asymmetric_start_end` | start_date and end_date must both be set or both null (never one-sided). |
+| `editions_end_before_start` | Edition/list end_date must not precede start_date (dump bot year typos). |
+| `editions_span_over_7d` | Competition editions are weekend-scale; spans over 7 days are dump/calendar errors. |
+| `duplicate_editions` | (event_id, event_year, event_month) must be unique in core.event_editions. |
+| `duplicate_edition_start_dates` | Same event_id+start_date on multiple edition keys (NYE wrap is rare/ok; larger counts need review). |
+| `phantom_points` | Points rows with total_points > 0 but no matching results (role+division). Warn-first calibration before promoting to error. |
 | `editions_null_location_id` | Event editions derive location from results mode location_id. |
 | `all_caps_cities` | ALL CAPS city names (CHICAGO, TOULOUSE, WILMINGTON DEL). |
 | `location_id_multiple_strings` | One location_id must not have conflicting event_location strings. |

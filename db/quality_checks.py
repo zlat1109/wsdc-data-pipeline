@@ -351,6 +351,94 @@ EXTENDED_CHECKS: tuple[QualityCheck, ...] = (
         fix_hint="fill_edition_month_stub_dates; resolve partial calendar rows",
     ),
     QualityCheck(
+        name="editions_end_before_start",
+        sql="""
+        SELECT
+            (SELECT count(*) FROM core.event_editions
+             WHERE start_date IS NOT NULL AND end_date IS NOT NULL
+               AND end_date < start_date)
+          + (SELECT count(*) FROM core.events_list_current
+             WHERE start_date IS NOT NULL AND end_date IS NOT NULL
+               AND end_date < start_date)
+        """,
+        max_value=0,
+        severity="error",
+        category="event_naming",
+        description="Edition/list end_date must not precede start_date (dump bot year typos).",
+        fix_hint="scripts/sync_dump_edition_dates.py; fix core.event_editions + edition_calendar_dates",
+    ),
+    QualityCheck(
+        name="editions_span_over_7d",
+        sql="""
+        SELECT count(*) FROM core.event_editions
+        WHERE start_date IS NOT NULL AND end_date IS NOT NULL
+          AND end_date >= start_date
+          AND end_date - start_date > 7
+        """,
+        max_value=0,
+        severity="error",
+        category="event_naming",
+        description="Competition editions are weekend-scale; spans over 7 days are dump/calendar errors.",
+        fix_hint="scripts/sync_dump_edition_dates.py; manual date repair + force-rebuild",
+    ),
+    QualityCheck(
+        name="duplicate_editions",
+        sql="""
+        SELECT count(*) FROM (
+            SELECT event_id, event_year, event_month
+            FROM core.event_editions
+            GROUP BY 1, 2, 3
+            HAVING count(*) > 1
+        ) d
+        """,
+        max_value=0,
+        severity="error",
+        category="event_naming",
+        description="(event_id, event_year, event_month) must be unique in core.event_editions.",
+        fix_hint="scripts/dedupe_core_data.py / merge_event_ids; inspect catalog rebuild",
+    ),
+    QualityCheck(
+        name="duplicate_edition_start_dates",
+        sql="""
+        SELECT count(*) FROM (
+            SELECT event_id, start_date
+            FROM core.event_editions
+            WHERE start_date IS NOT NULL
+            GROUP BY 1, 2
+            HAVING count(*) > 1
+        ) d
+        """,
+        max_value=5,
+        severity="warn",
+        category="event_naming",
+        description=(
+            "Same event_id+start_date on multiple edition keys "
+            "(NYE wrap is rare/ok; larger counts need review)."
+        ),
+        fix_hint="Inspect event_editions for duplicate start_date rows",
+    ),
+    QualityCheck(
+        name="phantom_points",
+        sql="""
+        SELECT count(*) FROM core.dancer_points p
+        WHERE p.total_points > 0
+          AND NOT EXISTS (
+              SELECT 1 FROM core.results r
+              WHERE r.dancer_id = p.dancer_id
+                AND lower(r.role) = lower(p.role)
+                AND r.division = p.level
+          )
+        """,
+        max_value=0,
+        severity="warn",
+        category="points",
+        description=(
+            "Points rows with total_points > 0 but no matching results "
+            "(role+division). Warn-first calibration before promoting to error."
+        ),
+        fix_hint="scripts/purge_bavarian_allstar_phantom_points_history.py; result_role_corrections",
+    ),
+    QualityCheck(
         name="editions_null_location_id",
         sql="SELECT count(*) FROM core.event_editions WHERE location_id IS NULL",
         max_value=0,

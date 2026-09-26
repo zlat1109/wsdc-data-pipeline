@@ -13,13 +13,18 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: wsdc-publish
+  cancel-in-progress: false
+
 jobs:
   rebuild:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
           cache: pip
@@ -28,6 +33,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Export Supabase → CSV
+        id: export
         env:
           DB_HOST: ${{ secrets.DB_HOST }}
           DB_PORT: ${{ secrets.DB_PORT }}
@@ -37,9 +43,22 @@ jobs:
           DB_SSLMODE: require
         run: python scripts/run_pipeline.py --export-only --source github-actions
 
+      - name: Notify Telegram (quality gate / export failed)
+        if: (failure() || cancelled()) && steps.export.outcome == 'failure'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          REQUIRE_TELEGRAM: "1"
+          GITHUB_WORKFLOW: ${{ github.workflow }}
+          GITHUB_JOB: ${{ github.job }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          GITHUB_SERVER_URL: ${{ github.server_url }}
+        run: python scripts/telegram_notify.py quality-gate-failed
+
       - name: Commit exported CSV files
         id: commit_csv
-        if: ${{ inputs.commit_csv }}
+        if: ${{ success() && inputs.commit_csv }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -60,6 +79,7 @@ jobs:
           fi
 
       - name: Sync analytics site (calendar + L2 + cache stamp)
+        if: success()
         env:
           WSDC_ANALYTICS_DEPLOY_TOKEN: ${{ secrets.WSDC_ANALYTICS_DEPLOY_TOKEN }}
           REQUIRE_DEPLOY_TOKEN: "1"
@@ -70,3 +90,29 @@ jobs:
           CHAMPION_NEWS_REPORT: data/quality_reports/champion_news_last.json
           YEAR_CAL_REPORT: data/quality_reports/year_event_calendar_last.json
         run: bash scripts/sync_analytics_site.sh
+
+      - name: Notify Telegram (force-rebuild complete)
+        if: success()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          REQUIRE_TELEGRAM: "1"
+          GITHUB_WORKFLOW: ${{ github.workflow }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          GITHUB_SERVER_URL: ${{ github.server_url }}
+          PIPELINE_CSV_COMMITTED: ${{ steps.commit_csv.outputs.committed }}
+        run: python scripts/telegram_notify.py force-rebuild-complete
+
+      - name: Notify Telegram (force-rebuild failed)
+        if: (failure() || cancelled()) && steps.export.outcome != 'failure'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          REQUIRE_TELEGRAM: "1"
+          GITHUB_WORKFLOW: ${{ github.workflow }}
+          GITHUB_JOB: ${{ github.job }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          GITHUB_SERVER_URL: ${{ github.server_url }}
+        run: python scripts/telegram_notify.py pipeline-failed
