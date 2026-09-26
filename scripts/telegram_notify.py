@@ -27,8 +27,13 @@ def _esc(value: object) -> str:
 def send_telegram(text: str) -> bool:
     token = os.getenv("TELEGRAM_BOT_TOKEN")
     chat_id = os.getenv("TELEGRAM_CHAT_ID")
+    require = os.getenv("REQUIRE_TELEGRAM", "0") == "1"
     if not token or not chat_id:
-        print("Telegram skipped: TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID not set", flush=True)
+        msg = "Telegram skipped: TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID not set"
+        if require:
+            print(f"ERROR: {msg}", flush=True)
+            raise SystemExit(1)
+        print(msg, flush=True)
         return False
 
     response = requests.post(
@@ -849,6 +854,33 @@ def format_pipeline_failed_message(context: dict) -> str:
     return "\n".join(lines)
 
 
+def format_quality_gate_failed_message(report: dict | None, context: dict) -> str:
+    workflow = context.get("workflow", "unknown")
+    run_url = context.get("run_url", "")
+    lines = [
+        "#WSDC_Quality_Gate_Failed",
+        "",
+        "🚫 <b>Quality gate blocked publish</b>",
+        "",
+        f"Workflow: <code>{_esc(workflow)}</code>",
+    ]
+    if run_url:
+        lines.append(f"Logs: <a href=\"{_esc(run_url)}\">GitHub Actions</a>")
+    lines.append("")
+    if report:
+        lines.extend(_format_supabase_quality_attention(report) or [
+            "Quality report present but no failed checks listed "
+            "(gate may have failed earlier — see Actions log)."
+        ])
+    else:
+        lines.append(
+            "No <code>supabase_pre_export.json</code> — gate may have failed "
+            "before writing the report, or another step failed."
+        )
+        lines.append("Log: <code>data/quality_reports/supabase_pre_export.json</code>")
+    return "\n".join(lines)
+
+
 def cmd_pipeline_failed() -> None:
     context = {
         "workflow": os.getenv("GITHUB_WORKFLOW", "unknown"),
@@ -860,6 +892,48 @@ def cmd_pipeline_failed() -> None:
         + os.getenv("GITHUB_RUN_ID", ""),
     }
     send_telegram(format_pipeline_failed_message(context))
+
+
+def cmd_quality_gate_failed() -> None:
+    context = {
+        "workflow": os.getenv("GITHUB_WORKFLOW", "unknown"),
+        "job": os.getenv("GITHUB_JOB", ""),
+        "run_url": os.getenv("GITHUB_SERVER_URL", "https://github.com")
+        + "/"
+        + os.getenv("GITHUB_REPOSITORY", "")
+        + "/actions/runs/"
+        + os.getenv("GITHUB_RUN_ID", ""),
+    }
+    report_path = PROJECT_ROOT / "data" / "quality_reports" / "supabase_pre_export.json"
+    report = None
+    if report_path.is_file():
+        try:
+            report = json.loads(report_path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError) as exc:
+            print(f"WARN: could not read {report_path}: {exc}", flush=True)
+    send_telegram(format_quality_gate_failed_message(report, context))
+
+
+def cmd_force_rebuild_complete() -> None:
+    run_url = (
+        os.getenv("GITHUB_SERVER_URL", "https://github.com")
+        + "/"
+        + os.getenv("GITHUB_REPOSITORY", "")
+        + "/actions/runs/"
+        + os.getenv("GITHUB_RUN_ID", "")
+    )
+    committed = os.getenv("PIPELINE_CSV_COMMITTED", "false")
+    text = "\n".join(
+        [
+            "#WSDC_Force_Rebuild",
+            "",
+            "✅ <b>Force rebuild calendar/site complete</b>",
+            "",
+            f"CSV committed: <code>{_esc(committed)}</code>",
+            f"Logs: <a href=\"{_esc(run_url)}\">GitHub Actions</a>",
+        ]
+    )
+    send_telegram(text)
 
 
 def main() -> None:
@@ -875,6 +949,14 @@ def main() -> None:
     sub.add_parser("parse-start-live", help="Notify parse start using live DB + WSDC scan")
     sub.add_parser("pipeline-complete", help="Notify after full-parse load+export")
     sub.add_parser("pipeline-failed", help="Notify when a pipeline workflow fails")
+    sub.add_parser(
+        "quality-gate-failed",
+        help="Notify when Supabase quality gate blocks export/publish",
+    )
+    sub.add_parser(
+        "force-rebuild-complete",
+        help="Notify after force-rebuild-calendar-site succeeds",
+    )
 
     events_list = sub.add_parser("events-list", help="Notify after weekly events list sync")
     events_list.add_argument("report", type=Path, nargs="?", default=None)
@@ -890,10 +972,12 @@ def main() -> None:
         cmd_pipeline_complete()
     elif args.command == "pipeline-failed":
         cmd_pipeline_failed()
+    elif args.command == "quality-gate-failed":
+        cmd_quality_gate_failed()
+    elif args.command == "force-rebuild-complete":
+        cmd_force_rebuild_complete()
     elif args.command == "events-list":
         cmd_events_list(args.report)
-
-
 def format_events_list_message(report: dict) -> str:
     s = report.get("summary") or {}
     inactive = int(s.get("inactive", 0))

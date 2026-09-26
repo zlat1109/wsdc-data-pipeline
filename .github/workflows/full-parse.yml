@@ -53,8 +53,8 @@ concurrency:
 jobs:
   parse:
     if: ${{ !inputs.export_only && inputs.reuse_parse_artifact_run_id == '' && (inputs.parse_full || inputs.parse_new_only) }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 360
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v5
 
@@ -76,6 +76,7 @@ jobs:
           DB_SSLMODE: require
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          REQUIRE_TELEGRAM: "1"
         run: python scripts/telegram_notify.py parse-start-live
 
       - name: Run HTTP cloud parser (full database)
@@ -101,7 +102,7 @@ jobs:
         run: python scripts/cloud_parse.py --new-only --base-dir data
 
       - name: Upload parser CSVs
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: parser-csvs
           path: |
@@ -112,10 +113,11 @@ jobs:
           retention-days: 30
 
       - name: Notify Telegram (parse failed)
-        if: failure()
+        if: failure() || cancelled()
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          REQUIRE_TELEGRAM: "1"
           GITHUB_WORKFLOW: ${{ github.workflow }}
           GITHUB_JOB: ${{ github.job }}
           GITHUB_REPOSITORY: ${{ github.repository }}
@@ -124,10 +126,13 @@ jobs:
         run: python scripts/telegram_notify.py pipeline-failed
 
   pipeline:
+    concurrency:
+      group: wsdc-publish
+      cancel-in-progress: false
     needs: parse
     if: ${{ !cancelled() && (needs.parse.result == 'success' || needs.parse.result == 'skipped') }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 360
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v5
 
@@ -140,14 +145,14 @@ jobs:
 
       - name: Download parser CSVs
         if: ${{ needs.parse.result == 'success' }}
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: parser-csvs
           path: data
 
       - name: Download parser CSVs from a previous run
         if: ${{ inputs.reuse_parse_artifact_run_id != '' }}
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: parser-csvs
           path: data
@@ -164,6 +169,7 @@ jobs:
           fi
 
       - name: Run pipeline (migrations -> preprocess -> load -> export)
+        id: pipeline
         env:
           DB_HOST: ${{ secrets.DB_HOST }}
           DB_PORT: ${{ secrets.DB_PORT }}
@@ -284,17 +290,32 @@ jobs:
           DB_SSLMODE: require
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          REQUIRE_TELEGRAM: "1"
           PIPELINE_CSV_COMMITTED: ${{ steps.commit_csv.outputs.committed }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           POINT_SUMMARY_REPORT: data/quality_reports/point_summary_last.json
           CHAMPION_NEWS_REPORT: data/quality_reports/champion_news_last.json
         run: python scripts/telegram_notify.py pipeline-complete
 
-      - name: Notify Telegram (pipeline failed)
-        if: failure()
+      - name: Notify Telegram (quality gate failed)
+        if: (failure() || cancelled()) && steps.pipeline.outcome == 'failure'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          REQUIRE_TELEGRAM: "1"
+          GITHUB_WORKFLOW: ${{ github.workflow }}
+          GITHUB_JOB: ${{ github.job }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          GITHUB_SERVER_URL: ${{ github.server_url }}
+        run: python scripts/telegram_notify.py quality-gate-failed
+
+      - name: Notify Telegram (pipeline failed)
+        if: (failure() || cancelled()) && steps.pipeline.outcome != 'failure'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          REQUIRE_TELEGRAM: "1"
           GITHUB_WORKFLOW: ${{ github.workflow }}
           GITHUB_JOB: ${{ github.job }}
           GITHUB_REPOSITORY: ${{ github.repository }}

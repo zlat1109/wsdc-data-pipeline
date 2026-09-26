@@ -129,6 +129,28 @@ def validate_pipeline_inputs(data_dir: Path) -> ValidationReport:
         if bad:
             report.error(f"dancers_points_info: invalid role values: {sorted(bad)[:8]}")
 
+    points_key_cols = ["dancer_id", "role", "dance", "level"]
+    if all(c in points.columns for c in points_key_cols):
+        key_df = points[points_key_cols].fillna("").astype(str).apply(
+            lambda s: s.str.strip()
+        )
+        dup_mask = key_df.duplicated(keep=False)
+        if dup_mask.any():
+            n_rows = int(dup_mask.sum())
+            n_keys = int(key_df[dup_mask].drop_duplicates().shape[0])
+            sample = (
+                key_df[dup_mask]
+                .drop_duplicates()
+                .head(5)
+                .to_dict(orient="records")
+            )
+            report.error(
+                f"dancers_points_info: {n_rows} duplicate rows on "
+                f"(dancer_id, role, dance, level) across {n_keys} keys "
+                f"(sample: {sample}). "
+                "Deduplicate before load to avoid dancer_points_pkey failures."
+            )
+
     if "event_role" in results.columns:
         bad = {
             str(v).strip().lower()

@@ -93,9 +93,26 @@ def is_day_precision(start: date | None, end: date | None) -> bool:
     return start is not None and end is not None and not is_month_stub(start, end)
 
 
+# WSDC events are weekend-scale; dump bot year/day typos often produce multi-week spans.
+MAX_EDITION_SPAN_DAYS = 7
+
+
 def is_valid_day_range(start: date | None, end: date | None) -> bool:
-    """Day-precision with end >= start (rejects dump bot year typos)."""
-    return is_day_precision(start, end) and end >= start  # type: ignore[operator]
+    """Day-precision, end >= start, span ≤7d, end year within start year ±1.
+
+    Rejects dump bot year typos (e.g. end year off by one) and multi-week
+    garbage ranges that are not real competition weekends.
+    """
+    if not is_day_precision(start, end):
+        return False
+    assert start is not None and end is not None
+    if end < start:
+        return False
+    if (end - start).days > MAX_EDITION_SPAN_DAYS:
+        return False
+    if abs(end.year - start.year) > 1:
+        return False
+    return True
 
 
 def _dump_row_rank(row: DumpEditionRow) -> tuple[int, int, int]:
@@ -227,8 +244,11 @@ def plan_dump_edition_dates(
             )
             continue
 
-        # Reject end-before-start (and similar bot typos) up front.
-        if dump.end_date is not None and dump.end_date < dump.start_date:
+        # Reject bot typos: end < start, span > 7d, year gap > 1.
+        # Month stubs (incl. null end) keep the dump_stub / match path below.
+        if not is_month_stub(dump.start_date, dump.end_date) and not is_valid_day_range(
+            dump.start_date, dump.end_date
+        ):
             _append(
                 DatePlanRow(
                     action="skip_invalid",

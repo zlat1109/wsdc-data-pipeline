@@ -206,5 +206,19 @@ Automated push from wsdc-data-pipeline after full-parse / export.
 EOF
 )"
 
-git push origin HEAD
+# Retry push with rebase — bot and pipeline can race on site main.
+push_ok=0
+for attempt in 1 2 3; do
+  if git push origin HEAD; then
+    push_ok=1
+    break
+  fi
+  echo "::warning::git push failed (attempt ${attempt}/3); pulling with rebase…"
+  git pull --rebase origin HEAD || git pull --rebase origin main || true
+  sleep $((attempt * 2))
+done
+if [[ "${push_ok}" -ne 1 ]]; then
+  echo "::error::Failed to push analytics site after 3 attempts"
+  exit 1
+fi
 echo "✅ Synced analytics site JSON to ${ANALYTICS_REPO}"

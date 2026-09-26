@@ -2,6 +2,8 @@
 
 One-off database maintenance scripts. **Always run `--dry-run` first.** Prefer Supabase branch snapshot before `--apply` on production.
 
+**Policy (audit 2026-09):** new repairs go into `transform/knowledge/corrections/*.yaml` + a regression test + quality gate. Historical one-shots live in `archive/repair_scripts/`; `scripts/repair_*.py` wrappers only print a deprecation warning and run the archive copy.
+
 ## Recommended order (audit remediation)
 
 ```bash

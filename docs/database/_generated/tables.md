@@ -158,6 +158,9 @@ One row per event held in a given year/month; join results on (event_id, event_y
 | result_rows | text/PK/FK | — |
 
 ## core.event_instances
+
+DEPRECATED legacy edition table; prefer core.event_editions. location_id is unused (always null). Scheduled for removal after consumer audit.
+
 | Column | Migration parse | Live type |
 |--------|-----------------|-----------|
 | event_instance_id | text/PK/FK | — |

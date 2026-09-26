@@ -53,6 +53,7 @@ CI and `scripts/run_pipeline.py` call `db/apply.py` before load.
 | `032_completed_event_editions_mv.sql` | MV export.completed_event_editions + refresh helper |
 | `033_edition_location_baseline.sql` | Edition location baseline table + export view + seed |
 | `034_completed_event_editions_view.sql` | export.completed_event_editions as regular VIEW (was MV 032) |
+| `035_search_path_rls_event_instances_deprecate.sql` | Harden function search_path (Supabase advisor) and enable RLS defense-in-depth on warehouse tables. service_role bypasses RLS; anon/authenticated already lack schema USAGE on core/staging/history. |
 <!-- /docs-sync:migration-index -->
 
 ## Adding a migration
