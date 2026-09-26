@@ -34,9 +34,13 @@ def test_parser_artifact_matches_cloud_parse_outputs():
 
 
 def test_csv_commit_only_pushes_main():
-    assert "${GITHUB_REF_NAME}" in WORKFLOW
-    assert '!= "main"' in WORKFLOW
-    assert "git push origin HEAD:main" in WORKFLOW
+    script = (ROOT / "scripts" / "commit_data_via_pr.sh").read_text(encoding="utf-8")
+    assert "commit_data_via_pr.sh" in WORKFLOW
+    assert "GITHUB_REF_NAME" in script
+    assert '!= "main"' in script
+    assert "gh pr create" in script
+    assert "gh pr merge" in script
+    assert "git push origin HEAD:main" not in WORKFLOW
     assert re.search(r"^\s+git push\s*$", WORKFLOW, re.M) is None
 
 
