@@ -145,14 +145,14 @@ jobs:
 
       - name: Download parser CSVs
         if: ${{ needs.parse.result == 'success' }}
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v8
         with:
           name: parser-csvs
           path: data
 
       - name: Download parser CSVs from a previous run
         if: ${{ inputs.reuse_parse_artifact_run_id != '' }}
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v8
         with:
           name: parser-csvs
           path: data
