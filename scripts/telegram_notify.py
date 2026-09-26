@@ -978,6 +978,8 @@ def main() -> None:
         cmd_force_rebuild_complete()
     elif args.command == "events-list":
         cmd_events_list(args.report)
+
+
 def format_events_list_message(report: dict) -> str:
     s = report.get("summary") or {}
     inactive = int(s.get("inactive", 0))
