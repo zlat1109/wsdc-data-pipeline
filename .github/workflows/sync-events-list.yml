@@ -10,12 +10,13 @@ permissions:
   contents: write
 
 concurrency:
-  group: wsdc-sync-events-list
+  group: wsdc-publish
   cancel-in-progress: false
 
 jobs:
   sync-events-list:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v5
 
@@ -51,10 +52,12 @@ jobs:
           DB_SSLMODE: require
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          REQUIRE_TELEGRAM: "1"
           GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
         run: python scripts/sync_events_list.py --source github-actions
 
       - name: Export CSV from Supabase (weekly list sync)
+        id: export
         env:
           DB_HOST: ${{ secrets.DB_HOST }}
           DB_PORT: ${{ secrets.DB_PORT }}
@@ -63,10 +66,24 @@ jobs:
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           DB_SSLMODE: require
           GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
-        run: python export.py --output-dir data
+        run: python scripts/run_pipeline.py --export-only --skip-migrations --source github-actions
+
+      - name: Notify Telegram (quality gate / export failed)
+        if: (failure() || cancelled()) && steps.export.outcome == 'failure'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          REQUIRE_TELEGRAM: "1"
+          GITHUB_WORKFLOW: ${{ github.workflow }}
+          GITHUB_JOB: ${{ github.job }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          GITHUB_SERVER_URL: ${{ github.server_url }}
+        run: python scripts/telegram_notify.py quality-gate-failed
 
       - name: Commit weekly events sync data
         id: commit_data
+        if: success()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -100,10 +117,11 @@ jobs:
         run: bash scripts/sync_analytics_site.sh
 
       - name: Notify Telegram (weekly sync failed)
-        if: failure()
+        if: (failure() || cancelled()) && steps.export.outcome != 'failure'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          REQUIRE_TELEGRAM: "1"
           GITHUB_WORKFLOW: ${{ github.workflow }}
           GITHUB_JOB: ${{ github.job }}
           GITHUB_REPOSITORY: ${{ github.repository }}

@@ -1,0 +1,18 @@
+id: dump-edition-date-repairs-2014-2023
+kind: edition_date
+status: active
+created: 2026-09-26
+expires: null
+source: "wsdc_dump competitionevents bot typos / multi-week spans (audit 2026-09-26)"
+notes: >
+  Applied directly in Supabase event_editions + edition_calendar_dates.
+  transform.dump_edition_dates.is_valid_day_range now rejects span>7d and
+  year gap>1 so a re-sync cannot re-poison these rows.
+applies:
+  repairs:
+    - {event_id: 92, event_year: 2023, event_month: 3, start: 2023-03-02, end: 2023-03-06}
+    - {event_id: 194, event_year: 2014, event_month: 11, start: 2014-11-01, end: 2014-11-03}
+    - {event_id: 211, event_year: 2017, event_month: 10, start: 2017-09-29, end: 2017-10-01}
+    - {event_id: 75, event_year: 2016, event_month: 1, start: 2016-01-03, end: 2016-01-10}
+    - {event_id: 164, event_year: 2016, event_month: 8, start: 2016-07-30, end: 2016-08-06}
+    - {event_id: 10, event_year: 2016, event_month: 10, start: 2016-10-15, end: 2016-10-18}

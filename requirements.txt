@@ -26,6 +26,7 @@ psycopg[binary]>=3.1.0
 
 # Config
 python-dotenv>=1.0.0
+PyYAML>=6.0
 
 # Excel export
 openpyxl>=3.0.0

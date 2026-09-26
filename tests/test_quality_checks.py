@@ -37,6 +37,19 @@ def test_extended_checks_cover_known_regression_categories():
     assert "double_space_event_location" in names
     assert "dancers_empty_name" in names
     assert "non_us_event_state" in names
+    assert "editions_end_before_start" in names
+    assert "editions_span_over_7d" in names
+    assert "duplicate_editions" in names
+    assert "phantom_points" in names
+
+
+def test_edition_date_gates_are_errors_except_phantom_points_warn():
+    by_name = {c.name: c for c in EXTENDED_CHECKS}
+    assert by_name["editions_end_before_start"].severity == "error"
+    assert by_name["editions_span_over_7d"].severity == "error"
+    assert by_name["duplicate_editions"].severity == "error"
+    assert by_name["phantom_points"].severity == "warn"
+    assert by_name["phantom_points"].max_value == 0
 
 
 def test_singapore_city_state_allowed_in_city_equals_country():
