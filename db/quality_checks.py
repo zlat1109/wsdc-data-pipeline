@@ -430,11 +430,11 @@ EXTENDED_CHECKS: tuple[QualityCheck, ...] = (
           )
         """,
         max_value=0,
-        severity="warn",
+        severity="error",
         category="points",
         description=(
             "Points rows with total_points > 0 but no matching results "
-            "(role+division). Warn-first calibration before promoting to error."
+            "(role+division). Calibrated at 0 rows (2026-09-27); blocks export."
         ),
         fix_hint="scripts/purge_bavarian_allstar_phantom_points_history.py; result_role_corrections",
     ),

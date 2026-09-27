@@ -263,6 +263,37 @@ def rebuild_event_catalog(conn: Any) -> tuple[int, int]:
         cur.execute("SELECT COUNT(*) FROM core.event_editions")
         edition_count = cur.fetchone()[0]
 
+        # Keep deprecated event_instances aligned with editions for any leftover readers.
+        cur.execute("TRUNCATE core.event_instances")
+        cur.execute(
+            """
+            INSERT INTO core.event_instances (
+                event_instance_id, event_id, location_id, location_raw,
+                date_raw, event_date, event_year, event_month
+            )
+            SELECT
+                ROW_NUMBER() OVER (
+                    ORDER BY ed.event_id, ed.event_year, ed.event_month
+                )::int,
+                ed.event_id,
+                ed.location_id,
+                NULLIF(TRIM(ed.location_raw), ''),
+                CASE
+                    WHEN ed.event_year IS NOT NULL
+                     AND ed.event_month BETWEEN 1 AND 12
+                    THEN to_char(
+                        make_date(ed.event_year, ed.event_month, 1),
+                        'FMMonth YYYY'
+                    )
+                    ELSE NULL
+                END,
+                COALESCE(ed.start_date, ed.edition_date),
+                ed.event_year,
+                ed.event_month
+            FROM core.event_editions ed
+            """
+        )
+
     apply_catalog_registry_cleanup(conn)
 
     return catalog_count, edition_count

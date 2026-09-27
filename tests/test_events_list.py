@@ -257,7 +257,9 @@ def test_load_catalog_uses_passed_conn():
             self._sql = sql
 
         def fetchall(self):
-            if "event_instances" in (self._sql or ""):
+            if "event_editions" in (self._sql or "") or "event_instances" in (
+                self._sql or ""
+            ):
                 return []
             return [(289, "SwingVester", "https://www.swingvester.com/")]
 
