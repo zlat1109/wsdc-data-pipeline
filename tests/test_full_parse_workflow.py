@@ -33,15 +33,41 @@ def test_parser_artifact_matches_cloud_parse_outputs():
     assert set(_artifact_csv_names()) == set(_output_files())
 
 
+PUBLISHING_WORKFLOWS = (
+    "full-parse.yml",
+    "sync-events-list.yml",
+    "force-rebuild-calendar-site.yml",
+    "docs.yml",
+)
+
+
 def test_csv_commit_only_pushes_main():
-    script = (ROOT / "scripts" / "commit_data_via_pr.sh").read_text(encoding="utf-8")
-    assert "commit_data_via_pr.sh" in WORKFLOW
+    script = (ROOT / "scripts" / "commit_data_to_main.sh").read_text(encoding="utf-8")
+    assert "commit_data_to_main.sh" in WORKFLOW
     assert "GITHUB_REF_NAME" in script
     assert '!= "main"' in script
-    assert "gh pr create" in script
-    assert "gh pr merge" in script
     assert "git push origin HEAD:main" not in WORKFLOW
     assert re.search(r"^\s+git push\s*$", WORKFLOW, re.M) is None
+
+
+def test_data_commit_reports_pytest_check_before_push():
+    script = (ROOT / "scripts" / "commit_data_to_main.sh").read_text(encoding="utf-8")
+    assert "gh pr create" not in script
+    assert "-f name=pytest" in script
+    check_at = script.index('gh api "repos/${REPO}/check-runs"')
+    assert script.index("--ignore=tests/test_data_processors.py") < check_at
+    assert check_at < script.index('git push origin "HEAD:main"')
+    tests_yml = (ROOT / ".github" / "workflows" / "tests.yml").read_text(encoding="utf-8")
+    for flag in ("--ignore=tests/test_data_analytics.py", "--ignore=tests/test_data_processors.py"):
+        assert flag in tests_yml
+
+
+def test_publishing_workflows_can_write_check_runs():
+    for name in PUBLISHING_WORKFLOWS:
+        text = (ROOT / ".github" / "workflows" / name).read_text(encoding="utf-8")
+        assert "commit_data_to_main.sh" in text, name
+        assert re.search(r"^  checks: write$", text, re.M), name
+        assert re.search(r"^\s+git push\s*$", text, re.M) is None, name
 
 
 def test_reuse_parse_artifact_skips_wsdc_http():

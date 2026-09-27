@@ -33,6 +33,8 @@ WHERE
     core.edition_calendar_dates.date_source = 'wsdc_events_list'
     -- Same-source refresh (calendar re-scrape, dump re-run, operator edit).
     OR core.edition_calendar_dates.date_source = EXCLUDED.date_source
+    -- Curated YAML repairs (transform/knowledge/corrections) override any source.
+    OR EXCLUDED.date_source = 'knowledge_correction'
     -- Dump one-shot may replace month-stub / null planned dates from any source.
     OR (
         EXCLUDED.date_source = 'wsdc_dump'

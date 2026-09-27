@@ -46,5 +46,24 @@ def test_edition_date_repairs_include_known_keys():
     assert any(f["event_id"] == 92 and f["date_source"] == "knowledge_correction" for f in fills)
 
 
+def test_retired_bavarian_yaml_disables_role_flip(monkeypatch):
+    import pandas as pd
+
+    import transform.knowledge.corrections as corrections
+    from transform import result_role_corrections as rrc
+
+    results = pd.DataFrame(
+        {
+            "event_name": ["Bavarian Open"],
+            "event_year": ["2026"],
+            "event_competition": ["All-Star"],
+        }
+    )
+    assert rrc.select_bavarian_allstar_2026_mask(results).tolist() == [True]
+
+    monkeypatch.setattr(corrections, "result_role_rule", lambda _id: None)
+    assert rrc.select_bavarian_allstar_2026_mask(results).tolist() == [False]
+
+
 def test_stale_corrections_empty_when_expires_null():
     assert stale_corrections(today=date(2099, 1, 1)) == []

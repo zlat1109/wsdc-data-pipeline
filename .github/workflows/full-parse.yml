@@ -45,7 +45,7 @@ on:
 permissions:
   contents: write
   actions: read
-  pull-requests: write
+  checks: write
 
 concurrency:
   group: wsdc-full-parse
@@ -204,7 +204,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          bash scripts/commit_data_via_pr.sh \
+          bash scripts/commit_data_to_main.sh \
             "chore(data): update WSDC CSV export [skip ci]" \
             data/*.csv data/event_aliases.json data/quality_reports/
 

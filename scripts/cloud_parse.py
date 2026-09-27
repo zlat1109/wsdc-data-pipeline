@@ -240,26 +240,28 @@ def main() -> None:
         count = write_csv(args.base_dir, filename, frames[filename], replace=replace)
         print(f"Wrote {count} dancer rows -> {filename}", flush=True)
 
-    try:
-        import json
-        from datetime import datetime, timezone
+    # Only full-replace runs set the baseline; --new-only counts are not comparable.
+    if replace:
+        try:
+            import json
+            from datetime import datetime, timezone
 
-        fail_report.parent.mkdir(parents=True, exist_ok=True)
-        fail_report.write_text(
-            json.dumps(
-                {
-                    "failed_count": len(failed),
-                    "total": total,
-                    "fail_rate": round(fail_rate, 4),
-                    "recorded_at": datetime.now(timezone.utc).isoformat(),
-                },
-                indent=2,
+            fail_report.parent.mkdir(parents=True, exist_ok=True)
+            fail_report.write_text(
+                json.dumps(
+                    {
+                        "failed_count": len(failed),
+                        "total": total,
+                        "fail_rate": round(fail_rate, 4),
+                        "recorded_at": datetime.now(timezone.utc).isoformat(),
+                    },
+                    indent=2,
+                )
+                + "\n",
+                encoding="utf-8",
             )
-            + "\n",
-            encoding="utf-8",
-        )
-    except OSError as exc:
-        print(f"WARN: could not write {fail_report}: {exc}", flush=True)
+        except OSError as exc:
+            print(f"WARN: could not write {fail_report}: {exc}", flush=True)
 
     print(f"Done: fetched={len(records)}, failed={len(failed)}, replace={replace}")
     if failed:

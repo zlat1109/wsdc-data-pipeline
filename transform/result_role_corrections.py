@@ -26,14 +26,20 @@ _BAVARIAN_FALLBACK = {
 }
 
 
-def _bavarian_rule() -> dict[str, Any]:
+def _bavarian_rule() -> dict[str, Any] | None:
+    """Active rule from YAML; ``None`` once the YAML is retired or removed.
+
+    The hardcoded fallback applies only when PyYAML is unavailable.
+    """
     try:
         from transform.knowledge.corrections import result_role_rule
 
         rule = result_role_rule("bavarian-allstar-roles-2026")
-    except Exception:
-        rule = None
-    if rule and rule.get("event_year") and rule.get("division_keys"):
+    except RuntimeError:
+        return dict(_BAVARIAN_FALLBACK)
+    if rule is None:
+        return None
+    if rule.get("event_year") and rule.get("division_keys"):
         return {
             "event_id": rule.get("event_id"),
             "event_year": int(rule["event_year"]),
@@ -45,7 +51,7 @@ def _bavarian_rule() -> dict[str, Any]:
 
 
 # Public constant kept for repair scripts / tests; refreshed from YAML at import.
-BAVARIAN_OPEN_ALLSTAR_ROLE_SWAP_2026 = _bavarian_rule()
+BAVARIAN_OPEN_ALLSTAR_ROLE_SWAP_2026 = _bavarian_rule() or dict(_BAVARIAN_FALLBACK)
 
 
 def _norm(value: Any) -> str:
@@ -143,6 +149,8 @@ def select_bavarian_allstar_2026_mask(results: pd.DataFrame) -> pd.Series:
     if results.empty:
         return pd.Series(dtype=bool)
     rule = _bavarian_rule()
+    if rule is None:
+        return pd.Series(False, index=results.index)
     year = int(rule["event_year"])
     name_ok = results.get("event_name", pd.Series(index=results.index)).map(
         lambda v: any(s in _norm(v) for s in rule["event_name_substrings"])

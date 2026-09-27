@@ -911,6 +911,12 @@ def cmd_quality_gate_failed() -> None:
             report = json.loads(report_path.read_text(encoding="utf-8"))
         except (json.JSONDecodeError, OSError) as exc:
             print(f"WARN: could not read {report_path}: {exc}", flush=True)
+    # The committed report is from the last successful publish (errors == 0);
+    # without fresh errors the failure happened outside the gate.
+    errors = ((report or {}).get("summary") or {}).get("errors") or 0
+    if not errors:
+        send_telegram(format_pipeline_failed_message(context))
+        return
     send_telegram(format_quality_gate_failed_message(report, context))
 
 
