@@ -144,11 +144,11 @@ def validate_pipeline_inputs(data_dir: Path) -> ValidationReport:
                 .head(5)
                 .to_dict(orient="records")
             )
-            report.error(
+            report.warn(
                 f"dancers_points_info: {n_rows} duplicate rows on "
                 f"(dancer_id, role, dance, level) across {n_keys} keys "
                 f"(sample: {sample}). "
-                "Deduplicate before load to avoid dancer_points_pkey failures."
+                "promote_core keeps one row per key (DISTINCT ON)."
             )
 
     if "event_role" in results.columns:

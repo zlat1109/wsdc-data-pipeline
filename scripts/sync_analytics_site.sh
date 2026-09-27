@@ -213,8 +213,11 @@ for attempt in 1 2 3; do
     push_ok=1
     break
   fi
-  echo "::warning::git push failed (attempt ${attempt}/3); pulling with rebase…"
-  git pull --rebase origin HEAD || git pull --rebase origin main || true
+  echo "::warning::git push failed (attempt ${attempt}/3); rebasing onto origin/main…"
+  git rebase --abort >/dev/null 2>&1 || true
+  # Regenerated JSON always conflicts with a racing writer; keep our fresh copy
+  # (during rebase, "theirs" is the commit being replayed).
+  git fetch origin main && git rebase -X theirs origin/main || true
   sleep $((attempt * 2))
 done
 if [[ "${push_ok}" -ne 1 ]]; then

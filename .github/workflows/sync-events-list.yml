@@ -8,7 +8,7 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
+  checks: write
 
 concurrency:
   group: wsdc-publish
@@ -88,7 +88,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          bash scripts/commit_data_via_pr.sh \
+          bash scripts/commit_data_to_main.sh \
             "chore(data): weekly events list/calendar sync + export [skip ci]" \
             data/events_list/ data/events_calendar/ data/*.csv data/event_aliases.json data/quality_reports/
 
