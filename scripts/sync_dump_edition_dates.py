@@ -198,7 +198,17 @@ def main() -> int:
         print(f"report: {args.report}")
 
         fills = fill_rows_for_upsert(plans)
-        print(f"fill upserts: {len(fills)}")
+        from transform.knowledge.corrections import edition_date_repair_fills
+
+        repair_fills = edition_date_repair_fills()
+        # YAML repairs win over dump fills for the same edition key.
+        by_key = {
+            (r["event_id"], r["event_year"], r["event_month"]): r for r in fills
+        }
+        for row in repair_fills:
+            by_key[(row["event_id"], row["event_year"], row["event_month"])] = row
+        fills = list(by_key.values())
+        print(f"fill upserts: {len(fills)} (incl. {len(repair_fills)} knowledge repairs)")
         if args.dry_run:
             print("dry-run only — no writes")
             return 0

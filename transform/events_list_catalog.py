@@ -26,14 +26,25 @@ def _supplement_catalog(events: list[tuple[int, str, str]]) -> list[tuple[int, s
 def _fetch_catalog_rows(cur: Any) -> tuple[list[tuple[int, str, str]], list[Any]]:
     cur.execute("SELECT event_id, name, COALESCE(url, '') FROM core.events ORDER BY name")
     events = _supplement_catalog([(int(r[0]), r[1], r[2] or "") for r in cur.fetchall()])
+    # Prefer event_editions (authoritative); event_instances is deprecated legacy.
     cur.execute(
         """
-        SELECT e.event_id, ei.location_raw, COUNT(*) AS cnt
-        FROM core.event_instances ei
-        JOIN core.events e ON e.event_id = ei.event_id
-        WHERE ei.location_raw IS NOT NULL AND TRIM(ei.location_raw) <> ''
-        GROUP BY e.event_id, ei.location_raw
-        ORDER BY e.event_id, cnt DESC
+        SELECT labeled.event_id, labeled.loc_label, COUNT(*) AS cnt
+        FROM (
+            SELECT
+                ed.event_id,
+                COALESCE(
+                    NULLIF(TRIM(ed.location_raw), ''),
+                    NULLIF(TRIM(l.event_location), ''),
+                    NULLIF(TRIM(l.event_location_standardized), '')
+                ) AS loc_label
+            FROM core.event_editions ed
+            LEFT JOIN core.locations l ON l.location_id = ed.location_id
+        ) labeled
+        JOIN core.events e ON e.event_id = labeled.event_id
+        WHERE labeled.loc_label IS NOT NULL AND TRIM(labeled.loc_label) <> ''
+        GROUP BY labeled.event_id, labeled.loc_label
+        ORDER BY labeled.event_id, cnt DESC
         """
     )
     return events, cur.fetchall()

@@ -1,0 +1,20 @@
+id: bavarian-allstar-roles-2026
+kind: result_role
+status: active
+created: 2026-09-20
+expires: null
+source: "WSDC published inverted Leader/Follower roles for Bavarian Open 2026 All-Star"
+notes: >
+  Remove when WSDC republishes corrected All-Star roles. Preprocess flips
+  mismatched result roles to dominate_role and moves points buckets.
+applies:
+  event_id: 233
+  event_year: 2026
+  event_name_substrings:
+    - bavarian open
+  division_keys:
+    - all-star
+    - all-stars
+    - allstar
+    - allstars
+    - als

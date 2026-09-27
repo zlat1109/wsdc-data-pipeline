@@ -16,13 +16,36 @@ from typing import Any
 
 import pandas as pd
 
-# Temporary hold — remove this rule once WSDC republishes correct All-Star roles.
-BAVARIAN_OPEN_ALLSTAR_ROLE_SWAP_2026 = {
+# Temporary hold — remove YAML + this fallback once WSDC republishes roles.
+# Prefer transform/knowledge/corrections/bavarian_allstar_roles_2026.yaml.
+_BAVARIAN_FALLBACK = {
     "event_id": 233,
     "event_year": 2026,
     "division_keys": frozenset({"all-star", "all-stars", "allstar", "allstars", "als"}),
     "event_name_substrings": ("bavarian open",),
 }
+
+
+def _bavarian_rule() -> dict[str, Any]:
+    try:
+        from transform.knowledge.corrections import result_role_rule
+
+        rule = result_role_rule("bavarian-allstar-roles-2026")
+    except Exception:
+        rule = None
+    if rule and rule.get("event_year") and rule.get("division_keys"):
+        return {
+            "event_id": rule.get("event_id"),
+            "event_year": int(rule["event_year"]),
+            "division_keys": frozenset(rule["division_keys"]),
+            "event_name_substrings": tuple(rule["event_name_substrings"])
+            or _BAVARIAN_FALLBACK["event_name_substrings"],
+        }
+    return dict(_BAVARIAN_FALLBACK)
+
+
+# Public constant kept for repair scripts / tests; refreshed from YAML at import.
+BAVARIAN_OPEN_ALLSTAR_ROLE_SWAP_2026 = _bavarian_rule()
 
 
 def _norm(value: Any) -> str:
@@ -119,15 +142,16 @@ def select_bavarian_allstar_2026_mask(results: pd.DataFrame) -> pd.Series:
     """Rows belonging to Bavarian Open 2026 All-Star."""
     if results.empty:
         return pd.Series(dtype=bool)
-    year = BAVARIAN_OPEN_ALLSTAR_ROLE_SWAP_2026["event_year"]
+    rule = _bavarian_rule()
+    year = int(rule["event_year"])
     name_ok = results.get("event_name", pd.Series(index=results.index)).map(
-        _is_bavarian_open_name
+        lambda v: any(s in _norm(v) for s in rule["event_name_substrings"])
     )
     year_ok = results.get("event_year", pd.Series(index=results.index)).map(
         lambda v: _year_matches(v, year)
     )
     div_ok = results.get("event_competition", pd.Series(index=results.index)).map(
-        _is_all_star_division
+        lambda v: _norm(v) in rule["division_keys"]
     )
     return name_ok & year_ok & div_ok
 

@@ -87,25 +87,9 @@ FROM staging.events_wsdc
 WHERE id ~ '^\d+$'
 ORDER BY id::int, event_instance_id::int;
 
--- Event instances (parser CSV has event_instance_id; export CSV uses synthetic ids)
-INSERT INTO core.event_instances (
-    event_instance_id, event_id, location_id, location_raw,
-    date_raw, event_date, event_year, event_month
-)
-SELECT
-    COALESCE(
-        NULLIF(TRIM(event_instance_id), '')::int,
-        ROW_NUMBER() OVER (ORDER BY id::int, NULLIF(TRIM(date), ''))::int
-    ),
-    id::int,
-    NULL,
-    NULLIF(TRIM(location), ''),
-    NULLIF(TRIM(date), ''),
-    NULLIF(TRIM(parsed_date), '')::date,
-    NULLIF(TRIM(event_year), '')::int,
-    NULLIF(TRIM(event_month), '')::int
-FROM staging.events_wsdc
-WHERE id ~ '^\d+$';
+-- Event instances: legacy table. Prefer core.event_editions.
+-- Staging→instances insert removed; rebuild_event_catalog refreshes
+-- event_instances from event_editions after editions are rebuilt.
 
 -- Events referenced in results but absent from events_wsdc catalog
 INSERT INTO core.events (event_id, name, url)

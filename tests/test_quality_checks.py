@@ -43,12 +43,12 @@ def test_extended_checks_cover_known_regression_categories():
     assert "phantom_points" in names
 
 
-def test_edition_date_gates_are_errors_except_phantom_points_warn():
+def test_edition_date_gates_and_phantom_points_are_errors():
     by_name = {c.name: c for c in EXTENDED_CHECKS}
     assert by_name["editions_end_before_start"].severity == "error"
     assert by_name["editions_span_over_7d"].severity == "error"
     assert by_name["duplicate_editions"].severity == "error"
-    assert by_name["phantom_points"].severity == "warn"
+    assert by_name["phantom_points"].severity == "error"
     assert by_name["phantom_points"].max_value == 0
 
 

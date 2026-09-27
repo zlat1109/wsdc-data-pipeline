@@ -54,6 +54,7 @@ CI and `scripts/run_pipeline.py` call `db/apply.py` before load.
 | `033_edition_location_baseline.sql` | Edition location baseline table + export view + seed |
 | `034_completed_event_editions_view.sql` | export.completed_event_editions as regular VIEW (was MV 032) |
 | `035_search_path_rls_event_instances_deprecate.sql` | Harden function search_path (Supabase advisor) and enable RLS defense-in-depth on warehouse tables. service_role bypasses RLS; anon/authenticated already lack schema USAGE on core/staging/history. |
+| `036_event_instances_rebuild_from_editions.sql` | Rebuild policy for deprecated core.event_instances: promote_core truncates the table; rebuild_event_catalog repopulates it from core.event_editions (location_id + location_raw + dates). Direct consumers should use event_editions; export.events_wsdc already does. |
 <!-- /docs-sync:migration-index -->
 
 ## Adding a migration
