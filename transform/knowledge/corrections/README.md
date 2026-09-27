@@ -26,7 +26,11 @@ notes: "Remove when WSDC republishes corrected roles."
 2. One-shot `scripts/repair_*.py` only as a temporary bridge; then archive it.
 3. `scripts/report_stale_corrections.py` (optional) lists `expires` past today.
 
-Existing Python maps (`result_role_corrections.py`,
-`calendar_operator_overrides.py`, `EVENT_NAME_LOCATION_OVERRIDES`) remain the
-runtime source of truth until a dedicated loader merges these YAML files.
-New corrections should be authored here and mirrored into those modules.
+Existing Python helpers (`result_role_corrections.py`,
+`calendar_operator_overrides.py`, `EVENT_NAME_LOCATION_OVERRIDES`) still host
+imperative logic. Runtime sources of truth for **new** durable fixes:
+
+- `kind: result_role` → loaded by `result_role_rule()` / preprocess Bavarian path
+- `kind: edition_date` → `edition_date_repair_fills()` merged in `sync_dump_edition_dates.py`
+
+Author corrections here first; keep Python maps only as fallbacks or glue.

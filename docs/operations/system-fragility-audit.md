@@ -245,11 +245,11 @@ Shipped in `DWH-BI-audit-phase0-gates` / site `DWH-BI-audit-site-hardening`:
 | Area | Change |
 |------|--------|
 | Data | Fixed 6 bad `wsdc_dump` edition ranges; `is_valid_day_range` rejects span>7d / year gap>1 |
-| Gates | `editions_end_before_start`, `editions_span_over_7d`, `duplicate_editions`, `phantom_points` (warn); list-sync via `run_pipeline --export-only` |
+| Gates | `editions_end_before_start`, `editions_span_over_7d`, `duplicate_editions`, `phantom_points` (**error**, calibrated 0); list-sync via `run_pipeline --export-only` |
 | Alerts | `telegram_notify quality-gate-failed` / `force-rebuild-complete`; `REQUIRE_TELEGRAM=1`; cancel/timeout notifies |
-| CI | Shared `wsdc-publish` concurrency; site push retry; ubuntu-24.04; checkout@v5 / setup-python@v6; CodeQL + Dependabot; main branch protection (pytest, sync-check) |
-| DB | `search_path` on core functions; RLS enabled defense-in-depth; `event_instances` marked deprecated |
-| Knowledge | `transform/knowledge/corrections/`; one-off repairs archived; parser name map merges knowledge aliases |
-| Site | analytics.js + Consent Mode; sitemap/404/robots; OG tags; mobile Dashboards; Tableau mobile fallback; calendar L2 deferred; TID division shards; filtered Pages dist |
+| CI | Shared `wsdc-publish` concurrency; site push retry; ubuntu-24.04; checkout@v5 / setup-python@v6; CodeQL + Dependabot; main branch protection (pytest); CSV bots via PR |
+| DB | `search_path` on core functions; RLS defense-in-depth; `event_instances` rebuilt from `event_editions` after catalog rebuild |
+| Knowledge | YAML corrections drive result_role (Bavarian) + edition_date repairs at runtime; one-off repairs archived |
+| Site | analytics.js + Consent Mode; sitemap/404/robots; OG tags; Tableau mobile fallback; calendar L2 deferred; TID shards; filtered Pages dist |
 
-Residual: promote `phantom_points` to error after calibration; finish YAML→runtime loader for all correction kinds; remove `core.event_instances` after consumer audit; optional cookieless analytics alt.
+Residual: optional cookieless analytics alt; meta-CSP; GA4 admin dimensions; module splits / `sys.path` cleanup; DROP `event_instances` after one release cycle.
