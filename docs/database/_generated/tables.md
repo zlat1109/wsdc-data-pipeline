@@ -2,6 +2,26 @@
 
 [auto] Regenerate with `python scripts/generate_schema_docs.py`
 
+## core.competitions
+
+Exact per-edition division headcounts from WSDC dump competitions (WCS). 
+
+| Column | Migration parse | Live type |
+|--------|-----------------|-----------|
+| competition_id | text/PK/FK | — |
+| competitionevent_id | text/PK/FK | — |
+| edition_id | text/PK/FK | — |
+| level_id | text/PK/FK | — |
+| level | text/PK/FK | — |
+| dance | text/PK/FK | — |
+| leader_count | text/PK/FK | — |
+| follower_count | text/PK/FK | — |
+| finals_count | text/PK/FK | — |
+| match_status | text/PK/FK | — |
+| dump_created_at | text/PK/FK | — |
+| dump_updated_at | text/PK/FK | — |
+| loaded_at | text/PK/FK | — |
+
 ## core.dancer_aliases
 | Column | Migration parse | Live type |
 |--------|-----------------|-----------|
