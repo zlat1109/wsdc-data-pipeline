@@ -292,6 +292,24 @@ def test_edition_metrics_prefers_exact_over_tier_estimate():
     assert metrics["dancers_approx"] == 0
     assert metrics["dancers_min"] == 39
     assert metrics["dancers_max"] == 39
+    assert metrics.get("dancers_unique", 0) == 0
+
+
+def test_edition_metrics_unique_fallback_sets_star_flag():
+    metrics = _edition_metrics(
+        pd.DataFrame(),
+        pd.Series(dtype="int64"),
+        "Test Event",
+        2025,
+        6,
+        42,
+        tiers=pd.DataFrame(),
+        competitions=pd.DataFrame(),
+        event_id=1,
+    )
+    assert metrics["unique_dancers"] == 42
+    assert metrics["dancers_approx"] == 0
+    assert metrics["dancers_unique"] == 1
 
 
 def test_tier_table_keeps_skill_rows_with_both_roles(tmp_path: Path):
