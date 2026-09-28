@@ -27,6 +27,7 @@ from transform.knowledge.events import (
 from transform.geography.normalize import parse_us_state_from_location_text
 from transform.knowledge.geo_flags import continent_for_country
 from transform.year_event_calendar.expected import (
+    CONFIRMED_PRIOR_LOOKBACK_YEARS,
     EXPECTED_STALE_GRACE_DAYS,
     EXPECTED_WINDOW_DAYS,
     UNLINKED_ENDED_RETENTION_DAYS,
@@ -1679,16 +1680,26 @@ def _latest_confirmed_priors(
     confirmed_rows: list[dict],
     *,
     before_year: int,
+    lookback_years: int = CONFIRMED_PRIOR_LOOKBACK_YEARS,
 ) -> list[dict]:
-    """Most recent confirmed edition per event_id with row year < before_year."""
+    """Most recent confirmed/hiatus edition per event_id in the lookback window.
+
+    Window is ``[before_year - lookback_years, before_year)``. Default lookback
+    1 keeps YoY expected tied to the prior calendar year only — older archive
+    day-dates must not flood future expected after dump backfill.
+    """
+    min_year = before_year - max(int(lookback_years), 0)
     best: dict[int, dict] = {}
     for row in confirmed_rows:
         eid = row.get("event_id")
         start = row.get("start_date")
         row_year = _row_year(row)
+        status = row.get("status")
         if eid is None or not isinstance(start, date):
             continue
-        if row_year is None or row_year >= before_year:
+        if row_year is None or row_year >= before_year or row_year < min_year:
+            continue
+        if status not in {STATUS_CONFIRMED, STATUS_HIATUS}:
             continue
         prev = best.get(eid)
         if prev is None or start > prev["start_date"]:
@@ -1701,7 +1712,12 @@ def _ids_blocked_by_terminal(
     *,
     before_year: int,
 ) -> set[int]:
-    """Event ids whose latest confirmed/cancelled/hiatus before ``before_year`` is terminal."""
+    """Event ids whose latest status before ``before_year`` is cancelled.
+
+    Hiatus in the prior year does **not** block: product rule is to expect the
+    series back the following year (YoY from that hiatus weekend). Cancelled
+    remains terminal until a newer confirmed/hiatus appears.
+    """
     latest: dict[int, tuple[date, str]] = {}
     for row in rows:
         eid = row.get("event_id")
@@ -1721,7 +1737,7 @@ def _ids_blocked_by_terminal(
     blocked = {
         eid
         for eid, (_start, status) in latest.items()
-        if status in {STATUS_CANCELLED, STATUS_HIATUS}
+        if status == STATUS_CANCELLED
     }
     out: set[int] = set()
     for eid in blocked:
@@ -1934,13 +1950,13 @@ def build_year_event_calendar(
         if row["status"] == STATUS_CONFIRMED and isinstance(start, date):
             confirmed_unlinked_by_key.setdefault(key, []).append(start)
 
-    # Expected from latest confirmed edition before target year (WSDC ±1 week rule
+    # Expected from prior-year confirmed/hiatus only (WSDC ±1 week rule
     # vs any confirmed start — including year-boundary moves like NYE → early Jan).
     expected_rows: list[dict] = []
     prior_pool = [
         r
         for r in merged
-        if r["status"] == STATUS_CONFIRMED
+        if r["status"] in {STATUS_CONFIRMED, STATUS_HIATUS}
         and not r.get("stats_only")
         and isinstance(r.get("start_date"), date)
         and r.get("event_id") not in inactive_ids

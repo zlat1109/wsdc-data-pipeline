@@ -17,6 +17,11 @@ EXPECTED_WEEKDAY_SNAP_DAYS = 3
 # ``as_of.year - UNLINKED_PRIOR_LOOKBACK_YEARS`` (0 = current year and later
 # published list years only).
 UNLINKED_PRIOR_LOOKBACK_YEARS = 0
+# Catalog YoY expected: only project from editions in
+# ``[target_year - CONFIRMED_PRIOR_LOOKBACK_YEARS, target_year)``.
+# Default 1 = prior calendar year only (confirmed or hiatus). Older archive
+# editions must not resurrect as eternal expected stubs after day-date backfill.
+CONFIRMED_PRIOR_LOOKBACK_YEARS = 1
 # After WSDC drops a finished list/calendar edition that never got a catalog
 # event_id, keep the confirmed pin this many days past end_date so the map
 # still shows the weekend until results/catalog catch up (e.g. Manneken Swing).
