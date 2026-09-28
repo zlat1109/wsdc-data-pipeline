@@ -209,6 +209,10 @@ python scripts/load_competitions_from_dump.py --apply
 
 Report: `data/quality_reports/competitions_load.json` (match rates + tier range crosscheck).
 
+Analytics: use **`export.competitions_best`** (one row per `edition_id`+`level`).
+`core.competitions` keeps full dump lineage — multiple `competitionevents` can
+share a calendar month and must not be summed raw.
+
 **Upsert precedence** (`db/edition_calendar.py`):
 
 | Existing | Incoming | Result |

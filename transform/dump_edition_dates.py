@@ -186,12 +186,13 @@ def edition_index(
     return out
 
 
-def _lookup_edition(
+def lookup_edition(
     index: dict[tuple[int, int, int], EditionDateRow],
     event_id: int,
     start: date,
     end: date | None,
 ) -> tuple[tuple[int, int, int], EditionDateRow] | None:
+    """Resolve ``(event_id, year, month)`` from dump start/end against an edition index."""
     key = (event_id, start.year, start.month)
     hit = index.get(key)
     if hit is not None:
@@ -202,6 +203,10 @@ def _lookup_edition(
         if hit2 is not None:
             return key2, hit2
     return None
+
+
+# Back-compat alias (prefer ``lookup_edition``).
+_lookup_edition = lookup_edition
 
 
 def plan_dump_edition_dates(
@@ -269,7 +274,7 @@ def plan_dump_edition_dates(
             continue
 
         canon = canonical_event_id(dump.series_event_id, dump.event_name)
-        found = _lookup_edition(index, canon, dump.start_date, dump.end_date)
+        found = lookup_edition(index, canon, dump.start_date, dump.end_date)
         if found is None:
             _append(
                 DatePlanRow(

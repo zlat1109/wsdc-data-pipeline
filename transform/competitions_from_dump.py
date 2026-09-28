@@ -12,9 +12,9 @@ from typing import Any, Iterable, Mapping, Sequence
 
 from transform.dump_edition_dates import (
     DumpEditionRow,
-    _lookup_edition,
     canonical_event_id,
     edition_index,
+    lookup_edition,
     parse_date,
 )
 
@@ -149,7 +149,7 @@ def build_ce_to_edition_id(
         if dump.start_date is None:
             continue
         canon = canonical_event_id(dump.series_event_id, dump.event_name)
-        found = _lookup_edition(date_index, canon, dump.start_date, dump.end_date)
+        found = lookup_edition(date_index, canon, dump.start_date, dump.end_date)
         if found is None:
             continue
         key, _ = found
@@ -204,6 +204,28 @@ def count_skipped_divisions(
         if level_for_dump_division(row.division_id) is None:
             n += 1
     return n
+
+
+def competition_row_rank(row: CompetitionLoadRow) -> tuple:
+    """Higher is better — mirrors ``export.competitions_best`` ordering."""
+    both = row.leader_count is not None and row.follower_count is not None
+    updated = row.dump_updated_at or datetime.min
+    return (both, updated, row.competition_id)
+
+
+def best_competition_id_by_edition_level(
+    rows: Sequence[CompetitionLoadRow],
+) -> dict[tuple[int, str], int]:
+    """Pick one competition_id per matched (edition_id, level)."""
+    best: dict[tuple[int, str], CompetitionLoadRow] = {}
+    for row in rows:
+        if row.edition_id is None or row.match_status != "matched":
+            continue
+        key = (row.edition_id, row.level)
+        prev = best.get(key)
+        if prev is None or competition_row_rank(row) > competition_row_rank(prev):
+            best[key] = row
+    return {k: v.competition_id for k, v in best.items()}
 
 
 def summarize_plans(rows: Sequence[CompetitionLoadRow]) -> dict[str, int]:

@@ -33,5 +33,6 @@ python scripts/load_competitions_from_dump.py --apply
 Writes `dumps/competitions_wcs.tsv` (gitignored) and upserts `core.competitions`.
 Match reuses dump edition logic (`competitionevents` → `event_editions`).
 Unmatched rows are kept with `edition_id NULL` for investigation.
+For headcounts in analytics use `export.competitions_best` (deduped).
 
 See [repair-scripts.md](../docs/operations/repair-scripts.md#sync_dump_edition_datespy).

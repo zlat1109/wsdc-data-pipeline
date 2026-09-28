@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """One-shot: load WSDC dump ``competitions`` (WCS) into ``core.competitions``.
 
-Requires local Docker MySQL clone ``wsdc-clone`` (or ``--from-tsv``).
-Does **not** run on every parse.
+Requires local Docker MySQL clone ``wsdc-clone``, or pre-extracted TSVs with
+``--skip-extract``. Does **not** run on every parse.
 
 Usage:
     python scripts/load_competitions_from_dump.py --dry-run
     python scripts/load_competitions_from_dump.py --apply
     python scripts/load_competitions_from_dump.py --extract-only
+    python scripts/load_competitions_from_dump.py --apply --skip-extract
 """
 
 from __future__ import annotations
@@ -127,6 +128,7 @@ def _load_editions(conn) -> list[dict]:
 
 
 def _upsert(conn, rows) -> None:
+    """Replace snapshot: delete missing dump ids, then upsert current batch."""
     sql = """
     INSERT INTO core.competitions (
         competition_id, competitionevent_id, edition_id, level_id, level, dance,
@@ -154,11 +156,20 @@ def _upsert(conn, rows) -> None:
     """
     loaded_at = datetime.now(timezone.utc)
     payload = []
+    ids: list[int] = []
     for row in rows:
         d = asdict(row)
         d["loaded_at"] = loaded_at
         payload.append(d)
+        ids.append(int(row.competition_id))
     with conn.cursor() as cur:
+        if ids:
+            cur.execute(
+                "DELETE FROM core.competitions WHERE competition_id <> ALL(%s)",
+                (ids,),
+            )
+        else:
+            cur.execute("TRUNCATE core.competitions")
         cur.executemany(sql, payload)
     conn.commit()
 
@@ -286,13 +297,43 @@ def main() -> int:
 
         REPORT_DIR.mkdir(parents=True, exist_ok=True)
         report_path = REPORT_DIR / "competitions_load.json"
-        unmatched = [
-            asdict(r) for r in planned if r.match_status == "unmatched"
-        ][:200]
+        ce_by_id = {d.competitionevent_id: d for d in dump_events}
+        unmatched = []
+        for r in planned:
+            if r.match_status != "unmatched":
+                continue
+            ce = ce_by_id.get(r.competitionevent_id)
+            item = asdict(r)
+            if ce is not None:
+                item["dump_event_name"] = ce.event_name
+                item["dump_series_event_id"] = ce.series_event_id
+                item["dump_start_date"] = ce.start_date
+                item["dump_end_date"] = ce.end_date
+            unmatched.append(item)
+            if len(unmatched) >= 200:
+                break
+        # Multi-CE collisions on the same matched edition+level (unsafe to SUM).
+        collision_keys: dict[tuple[int, str], list[int]] = {}
+        for r in planned:
+            if r.edition_id is None:
+                continue
+            key = (r.edition_id, r.level)
+            collision_keys.setdefault(key, []).append(r.competition_id)
+        multi = {
+            f"{ed}:{lvl}": ids
+            for (ed, lvl), ids in collision_keys.items()
+            if len(ids) > 1
+        }
+        summary["edition_level_collision_groups"] = len(multi)
         payload = {
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "summary": summary,
             "unmatched_sample": unmatched,
+            "edition_level_collisions_sample": dict(list(multi.items())[:50]),
+            "note": (
+                "For analytics use export.competitions_best (one row per "
+                "edition_id+level). core.competitions keeps full dump lineage."
+            ),
         }
 
         if args.apply:

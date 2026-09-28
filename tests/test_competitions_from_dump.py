@@ -1,6 +1,6 @@
 """Tests for dump competitions → core.competitions planning."""
 
-from datetime import date
+from datetime import date, datetime
 
 from transform.competitions_from_dump import (
     DUMP_DIVISION_ID_TO_LEVEL,
@@ -91,3 +91,68 @@ def test_plan_marks_unmatched_and_skips_lindy():
     summary = summarize_plans(planned)
     assert summary["matched"] == 1
     assert summary["unmatched"] == 1
+
+
+def test_multi_ce_same_month_collide_on_one_edition():
+    """Two dump competitionevents with same series+month → one edition_id."""
+    dump_events = [
+        DumpEditionRow(
+            competitionevent_id=197,
+            series_event_id=29,
+            event_name="Michigan Swing Dance Champs",
+            start_date=date(1993, 8, 1),
+            end_date=date(1993, 8, 1),
+        ),
+        DumpEditionRow(
+            competitionevent_id=199,
+            series_event_id=29,
+            event_name="Michigan Swing Dance Champs",
+            start_date=date(1993, 8, 1),
+            end_date=date(1993, 8, 1),
+        ),
+    ]
+    editions = [
+        EditionKeyRow(
+            edition_id=3028,
+            event_id=29,
+            event_year=1993,
+            event_month=8,
+            start_date=date(1993, 8, 1),
+            end_date=date(1993, 8, 1),
+            event_name="Michigan Swing Dance Champs",
+        )
+    ]
+    ce_map = build_ce_to_edition_id(dump_events, editions)
+    assert ce_map == {197: 3028, 199: 3028}
+
+    comps = [
+        DumpCompetitionRow(
+            competition_id=232,
+            competitionevent_id=197,
+            dancetype_id=1,
+            division_id=6,
+            leader_count=None,
+            follower_count=None,
+            finals_count=3,
+            created_at=None,
+            updated_at=None,
+        ),
+        DumpCompetitionRow(
+            competition_id=186,
+            competitionevent_id=199,
+            dancetype_id=1,
+            division_id=6,
+            leader_count=10,
+            follower_count=12,
+            finals_count=4,
+            created_at=None,
+            updated_at=datetime(2022, 9, 15, 6, 0, 0),
+        ),
+    ]
+    planned = plan_competition_rows(comps, ce_map)
+    assert {r.edition_id for r in planned} == {3028}
+    from transform.competitions_from_dump import best_competition_id_by_edition_level
+
+    best = best_competition_id_by_edition_level(planned)
+    # Prefer row with both counts
+    assert best[(3028, "Advanced")] == 186
