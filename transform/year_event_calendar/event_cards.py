@@ -601,6 +601,7 @@ def _edition_metrics(
     return {
         "unique_dancers": unique_dancers,
         "dancers_approx": 0,
+        "dancers_unique": 1,
         "points": points,
         "new_dancers": new_count,
     }
@@ -687,6 +688,7 @@ def build_event_l2_cards(
                 "points": hist_metrics["points"],
                 "new_dancers": hist_metrics["new_dancers"],
                 "dancers_approx": hist_metrics.get("dancers_approx", 0),
+                "dancers_unique": hist_metrics.get("dancers_unique", 0),
                 "tiers": hist_tiers,
             }
             if hist_metrics.get("dancers_approx"):
@@ -704,6 +706,7 @@ def build_event_l2_cards(
             "points": metrics["points"],
             "new_dancers": metrics["new_dancers"],
             "dancers_approx": metrics.get("dancers_approx", 0),
+            "dancers_unique": metrics.get("dancers_unique", 0),
             "tiers": tier_table,
         }
         if metrics.get("dancers_approx"):
