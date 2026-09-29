@@ -221,7 +221,20 @@ def _competitions_table_exists(cur: Any) -> bool:
 
 
 def _stash_competition_edition_keys(cur: Any) -> int:
-    """Snapshot (competition_id → event_id/year/month) before editions truncate."""
+    """Snapshot (competition_id → event_id/year/month) before editions truncate.
+
+    ``promote_core`` may already have filled this temp table before
+    ``TRUNCATE … CASCADE`` wiped ``event_editions``. Keep a non-empty
+    pre-promote stash; otherwise rebuild a fresh one.
+    """
+    cur.execute(
+        "SELECT to_regclass('pg_temp._competition_edition_keys') IS NOT NULL"
+    )
+    if cur.fetchone()[0]:
+        cur.execute("SELECT COUNT(*) FROM _competition_edition_keys")
+        existing = int(cur.fetchone()[0])
+        if existing > 0:
+            return existing
     cur.execute("DROP TABLE IF EXISTS _competition_edition_keys")
     cur.execute(
         """
@@ -234,6 +247,27 @@ def _stash_competition_edition_keys(cur: Any) -> int:
     )
     cur.execute("SELECT COUNT(*) FROM _competition_edition_keys")
     return int(cur.fetchone()[0])
+
+
+def _ensure_competitions_edition_fk(cur: Any) -> None:
+    """Restore competitions→event_editions FK dropped before promote TRUNCATE."""
+    cur.execute(
+        """
+        SELECT 1
+        FROM pg_constraint
+        WHERE conname = 'competitions_edition_id_fkey'
+          AND conrelid = 'core.competitions'::regclass
+        """
+    )
+    if cur.fetchone():
+        return
+    cur.execute(
+        """
+        ALTER TABLE core.competitions
+        ADD CONSTRAINT competitions_edition_id_fkey
+        FOREIGN KEY (edition_id) REFERENCES core.event_editions(edition_id)
+        """
+    )
 
 
 def _detach_competitions_from_editions(cur: Any) -> int:
@@ -377,6 +411,7 @@ def rebuild_event_catalog(conn: Any) -> tuple[int, int]:
                     "WARNING: core.competitions is empty — L2 exact Dancers "
                     "unavailable until load_competitions_from_dump.py --apply"
                 )
+            _ensure_competitions_edition_fk(cur)
 
         # Keep deprecated event_instances aligned with editions for any leftover readers.
         cur.execute("TRUNCATE core.event_instances")
