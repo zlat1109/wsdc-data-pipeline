@@ -21,6 +21,9 @@ LOCATION_RAW_ALIASES: dict[str, str] = {
     "Atlanta, GA United States": "Atlanta, GA, United States",
     "Wailea, United States": "Wailea, HI, United States",
     "Gdansk, Poland": "Gdańsk, Poland",
+    # WSDC dump typo for Budapest (Hungarian Open results)
+    "Budaperst, Hungary": "Budapest, Hungary",
+    "Budaperst": "Budapest, Hungary",
     # Venue name used by WSDC for Düsseldorf (D-Town Swing / WCS Festival)
     "Boston Club, Germany": "Düsseldorf, Germany",
     "Boston Club, NRW, Germany": "Düsseldorf, Germany",
@@ -54,6 +57,8 @@ LOCATION_ID_MERGE_MAP: dict[str, str] = {
     "365": "127",  # current export id for Boston Club, Germany (D-Town / WCS Festival)
     # Brno country alias
     "412": "266",
+    # Budaperst typo → Budapest (WSDC dump misspelling; poisoned Hungarian Open)
+    "400": "110",
     # Calgary duplicate
     "345": "148",
     # Dallas Ft. Worth → Dallas
@@ -130,6 +135,9 @@ LOCATION_STRING_ALIASES: dict[str, str] = {
     "duesseldorf, germany": "127",
     "brno, czech republic": "266",
     "brno, czechia": "266",
+    "budapest, hungary": "110",
+    "budaperst, hungary": "110",
+    "budaperst": "110",
     "toulouse-blagnac, france": "208",
     "new york city, ny, united states": "7",
     "tampa bay, fl, united states": "53",
