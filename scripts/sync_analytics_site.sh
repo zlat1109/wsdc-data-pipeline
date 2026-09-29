@@ -155,8 +155,9 @@ if [[ -f "${CALENDAR_HTML}" ]]; then
     "${CALENDAR_HTML}"
 fi
 if [[ -f "${TID_HTML}" ]]; then
+  # Bust monolith + shard/index query params (dashboard prefers shards for Updated stamp).
   sed -i \
-    -e "s|time_in_division_spells.json?v=[^'\"]*|time_in_division_spells.json?v=${CACHE_V}|g" \
+    -e "s|?v=[0-9]\{8\}-[a-z0-9-]*|?v=${CACHE_V}|g" \
     "${TID_HTML}"
 fi
 echo "Stamped secondary dashboard + calendar + time-in-division as_of=${AS_OF} cache_v=${CACHE_V}"
@@ -186,6 +187,9 @@ if [[ -f static/data/event_l2_cards.json ]]; then
 fi
 if [[ -f static/data/time_in_division_spells.json ]]; then
   git add static/data/time_in_division_spells.json
+fi
+if [[ -d static/data/time_in_division ]]; then
+  git add static/data/time_in_division/
 fi
 if [[ -f events-calendar.html ]]; then
   git add events-calendar.html
