@@ -10,6 +10,26 @@ SELECT dancer_id, dancer_name FROM core.dancers;
 -- core.scheduled_events) to tables listed here. TRUNCATE CASCADE follows
 -- those FKs and wipes the WSDC calendar (full-parse runs 31421430091 /
 -- 31525495964). See migrations 025 and 031.
+--
+-- core.competitions FKs event_editions, which FKs events/locations. Without
+-- the steps below, TRUNCATE CASCADE empties competitions before catalog
+-- rematch (run 36579927035). Stash durable edition keys, drop the FK, and
+-- detach so headcounts survive; rebuild_event_catalog rematches + restores FK.
+DROP TABLE IF EXISTS _competition_edition_keys;
+CREATE TEMP TABLE _competition_edition_keys AS
+SELECT c.competition_id, ed.event_id, ed.event_year, ed.event_month
+FROM core.competitions c
+JOIN core.event_editions ed ON ed.edition_id = c.edition_id
+WHERE c.edition_id IS NOT NULL;
+
+ALTER TABLE core.competitions
+    DROP CONSTRAINT IF EXISTS competitions_edition_id_fkey;
+
+UPDATE core.competitions
+SET edition_id = NULL,
+    match_status = 'unmatched'
+WHERE edition_id IS NOT NULL;
+
 TRUNCATE
     core.results,
     core.dancer_points,
