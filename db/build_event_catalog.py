@@ -358,6 +358,25 @@ def rebuild_event_catalog(conn: Any) -> tuple[int, int]:
             print(
                 f"Competitions: rematched {rematched:,}/{keyed:,} after edition rebuild"
             )
+            if keyed > 0 and rematched < keyed:
+                print(
+                    f"WARNING: competitions rematch incomplete "
+                    f"({rematched}/{keyed}); export.competitions_best will drop "
+                    f"unmatched rows and L2 Dancers may fall back to ~tier."
+                )
+            cur.execute("SELECT count(*) FROM core.competitions")
+            comp_total = int(cur.fetchone()[0])
+            if keyed == 0 and comp_total > 0:
+                print(
+                    f"WARNING: {comp_total:,} competitions rows but 0 stashed "
+                    f"edition keys (all unmatched before rebuild?). "
+                    f"Reload dump or re-link editions."
+                )
+            if comp_total == 0:
+                print(
+                    "WARNING: core.competitions is empty — L2 exact Dancers "
+                    "unavailable until load_competitions_from_dump.py --apply"
+                )
 
         # Keep deprecated event_instances aligned with editions for any leftover readers.
         cur.execute("TRUNCATE core.event_instances")

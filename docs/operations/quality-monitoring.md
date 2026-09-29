@@ -64,6 +64,7 @@ Legacy audit-only: `scripts/data_quality_audit.py` (prefer preprocess).
 | `points_history_drift` | 0 | SCD2 open row must match core.dancer_points snapshot. |
 | `roles_history_drift` | 0 | SCD2 open role row must match core.dancer_roles divisions. |
 | `names_history_drift` | 0 | SCD2 open name row must match core.dancers.dancer_name. |
+| `competitions_matched_floor` | 0 | Matched dump competitions must stay loaded (≥10k). Empty/wiped core.competitions makes L2 Dancers fall back to tier estimates (~). |
 <!-- /docs-sync:core-quality-checks -->
 
 Exit code 1 if any check fails.

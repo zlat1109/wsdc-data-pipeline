@@ -32,8 +32,12 @@ EXPORT_CHECKS: tuple[tuple[str, str], ...] = (
     ("export.dancer_role_info", "dancer_role_info.csv"),
     ("export.location_info", "location_info.csv"),
     ("export.events_wsdc", "events_wsdc.csv"),
+    ("export.competitions_best", "competitions_best.csv"),
 )
 _ALLOWED_VIEWS = frozenset(view for view, _ in EXPORT_CHECKS)
+
+# Floor so DB=CSV=0 cannot pass the gate (L2 Dancers would go all-tier-approx).
+COMPETITIONS_BEST_MIN_ROWS = 10_000
 
 
 def _csv_rows(path: Path) -> int:
@@ -69,6 +73,22 @@ def _scheduled_events_health_problem(data_dir: Path) -> str | None:
     return None
 
 
+def _competitions_best_health_problem(data_dir: Path) -> str | None:
+    """Return gate error when competitions_best is missing/empty/too small."""
+    path = data_dir / "competitions_best.csv"
+    rows = _csv_rows(path)
+    if rows < 0:
+        return "competitions_best.csv: missing on disk"
+    if rows < COMPETITIONS_BEST_MIN_ROWS:
+        return (
+            f"competitions_best.csv: {rows} data rows "
+            f"(need ≥ {COMPETITIONS_BEST_MIN_ROWS}). "
+            "Empty/wiped dump headcounts force L2 Dancers onto tier estimates (~). "
+            "Reload: scripts/load_competitions_from_dump.py --apply --skip-extract"
+        )
+    return None
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -91,6 +111,13 @@ def main() -> int:
         print("[FAIL] scheduled_events.csv health-check")
     else:
         print("[OK] scheduled_events.csv health-check")
+
+    comps_problem = _competitions_best_health_problem(args.data_dir)
+    if comps_problem:
+        problems.append(comps_problem)
+        print("[FAIL] competitions_best.csv health-check")
+    else:
+        print("[OK] competitions_best.csv health-check")
 
     with connect() as conn:
         with conn.cursor() as cur:

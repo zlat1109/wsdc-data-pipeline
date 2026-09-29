@@ -87,6 +87,22 @@ def export_view(conn, view: str, out_path: Path) -> int:
             while data := copy.read():
                 chunks.append(bytes(data))
             payload = b"".join(chunks)
+    # Never clobber a healthy competitions_best.csv with an empty DB snapshot —
+    # L2 calendar Dancers then falls back to tier (~) for every edition.
+    if view == "export.competitions_best":
+        new_rows = max(payload.count(b"\n") - 1, 0)
+        if new_rows == 0 and out_path.exists():
+            existing = max(
+                out_path.read_bytes().count(b"\n") - 1,
+                0,
+            )
+            if existing > 0:
+                raise RuntimeError(
+                    f"Refusing to overwrite {out_path.name}: DB export has 0 rows "
+                    f"but on-disk file has {existing:,}. Reload core.competitions "
+                    f"(scripts/load_competitions_from_dump.py --apply --skip-extract) "
+                    f"before exporting."
+                )
     out_path.write_bytes(payload)
     lines = payload.count(b"\n")
     return max(lines - 1, 0)

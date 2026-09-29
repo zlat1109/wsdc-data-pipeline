@@ -165,6 +165,33 @@ CORE_CHECKS: tuple[QualityCheck, ...] = (
         description="SCD2 open name row must match core.dancers.dancer_name.",
         fix_hint="scripts/reconcile_names_history.py",
     ),
+    QualityCheck(
+        name="competitions_matched_floor",
+        sql="""
+        SELECT CASE
+            WHEN NOT EXISTS (
+                SELECT 1 FROM information_schema.tables
+                WHERE table_schema = 'core' AND table_name = 'competitions'
+            ) THEN 0
+            WHEN (
+                SELECT count(*) FROM core.competitions
+                WHERE match_status = 'matched' AND edition_id IS NOT NULL
+            ) >= 10000 THEN 0
+            ELSE 1
+        END
+        """,
+        max_value=0,
+        severity="error",
+        category="competitions",
+        description=(
+            "Matched dump competitions must stay loaded (≥10k). Empty/wiped "
+            "core.competitions makes L2 Dancers fall back to tier estimates (~)."
+        ),
+        fix_hint=(
+            "scripts/load_competitions_from_dump.py --apply --skip-extract "
+            "(needs dumps/competitions_wcs.tsv); do not export empty competitions_best"
+        ),
+    ),
 )
 
 # Extended checks — regressions from knowledge/repair layer.
