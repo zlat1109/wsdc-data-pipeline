@@ -61,6 +61,16 @@
       "fix_hint": "scripts/reconcile_names_history.py"
     },
     {
+      "name": "competitions_matched_floor",
+      "category": "competitions",
+      "severity": "error",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "Matched dump competitions must stay loaded (\u226510k). Empty/wiped core.competitions makes L2 Dancers fall back to tier estimates (~).",
+      "fix_hint": "scripts/load_competitions_from_dump.py --apply --skip-extract (needs dumps/competitions_wcs.tsv); do not export empty competitions_best"
+    },
+    {
       "name": "dancers_empty_name",
       "category": "event_naming",
       "severity": "warn",
@@ -144,7 +154,7 @@
       "name": "recent_editions_missing_day_dates",
       "category": "event_naming",
       "severity": "warn",
-      "value": 8,
+      "value": 2,
       "max_value": 120,
       "ok": true,
       "description": "2025+ editions still on month stubs (edition_date copy) \u2014 prefer dump/calendar day-precision when available.",
@@ -154,7 +164,7 @@
       "name": "edition_month_stub_dates",
       "category": "event_naming",
       "severity": "warn",
-      "value": 9,
+      "value": 3,
       "max_value": 2000,
       "ok": true,
       "description": "Month-sentinel start/end (YYYY-MM-01..01) after dump backfill; regression guard \u2014 not every historical edition has day dates.",
@@ -412,11 +422,11 @@
     }
   ],
   "summary": {
-    "total": 41,
-    "passed": 41,
+    "total": 42,
+    "passed": 42,
     "errors": 0,
     "warnings": 0
   },
-  "generated_at": "2026-09-29T08:20:18.674081+00:00",
+  "generated_at": "2026-09-29T16:05:32.378795+00:00",
   "scope": "full"
 }
