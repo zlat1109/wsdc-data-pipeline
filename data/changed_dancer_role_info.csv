@@ -59856,7 +59856,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 10226,Bruno Lineker,Leader,Advanced,Advanced,Follower,Intermediate,Intermediate,2026-02-09,5.0,Intermediate,Intermediate
 10226,Bruno Lineker,Leader,Advanced,Advanced,Follower,Intermediate,Intermediate,2026-04-28,15.0,Intermediate,Intermediate
 10226,Bruno Lineker,Leader,Advanced,Advanced,Follower,Intermediate,Intermediate,2026-06-28,15,Intermediate,Intermediate
-10226,Bruno Lineker,Leader,Advanced,Advanced,Follower,Intermediate,Intermediate,2026-09-29,23,Intermediate,Intermediate
+10226,Bruno Lineker,Leader,Advanced,Advanced,Follower,Intermediate,Intermediate,2026-09-29,25,Intermediate,Intermediate
 10227,Herbeline Holanda,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2025-04-30,,,
 10227,Herbeline Holanda,Follower,Intermediate,Intermediate,Leader,,,2025-05-08,,,
 10227,Herbeline Holanda,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2025-05-16,,,
@@ -90870,7 +90870,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 15328,Eric Cao,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2025-05-17,,,Novice
 15328,Eric Cao,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-06-23,N/A,N/A,Novice
 15328,Eric Cao,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-06-28,,,Novice
-15328,Eric Cao,Leader,Intermediate,Advanced,Follower,Novice,Novice,2026-09-29,,,Novice
+15328,Eric Cao,Leader,Intermediate,Intermediate,Follower,Novice,Novice,2026-09-29,,,Novice
 15330,Mikael Molsa,Leader,Novice,Intermediate,Follower,Newcomer,Novice,2025-04-30,,,
 15330,Mikael Molsa,Leader,Novice,Intermediate,Follower,,,2025-05-08,,,
 15330,Mikael Molsa,Leader,Novice,Intermediate,Follower,Newcomer,Newcomer,2025-05-16,,,
@@ -145440,6 +145440,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 25382,Dominika Wiatrowska,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2025-09-30,,,Novice
 25382,Dominika Wiatrowska,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-06-23,N/A,N/A,Novice
 25382,Dominika Wiatrowska,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-06-28,,,Novice
+25382,Dominika Wiatrowska,Follower,Intermediate,Advanced,Leader,Novice,Novice,2026-09-29,,,Novice
 25383,Gosia Kwiatkowska,Follower,Novice,Novice,Leader,Newcomer,Novice,2025-04-03,,,
 25383,Gosia Kwiatkowska,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-08,,,
 25383,Gosia Kwiatkowska,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-17,,,Newcomer

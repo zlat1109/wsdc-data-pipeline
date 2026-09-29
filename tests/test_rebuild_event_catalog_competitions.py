@@ -11,6 +11,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "db"))
 from build_event_catalog import (
     _competitions_table_exists,
     _detach_competitions_from_editions,
+    _ensure_competitions_edition_fk,
     _rematch_competitions_to_editions,
     _stash_competition_edition_keys,
 )
@@ -24,9 +25,19 @@ def test_competitions_table_exists_reads_information_schema():
     assert "core" in sql and "competitions" in sql
 
 
-def test_stash_returns_temp_table_count():
+def test_stash_keeps_nonempty_prepromote_temp_table():
     cur = MagicMock()
-    cur.fetchone.return_value = (42,)
+    # to_regclass exists, COUNT=99 → reuse without DROP/CREATE
+    cur.fetchone.side_effect = [(True,), (99,)]
+    assert _stash_competition_edition_keys(cur) == 99
+    executed = [c.args[0] for c in cur.execute.call_args_list]
+    assert not any("DROP TABLE" in s for s in executed)
+    assert not any("CREATE TEMP TABLE" in s for s in executed)
+
+
+def test_stash_rebuilds_when_temp_missing_or_empty():
+    cur = MagicMock()
+    cur.fetchone.side_effect = [(False,), (42,)]
     assert _stash_competition_edition_keys(cur) == 42
     executed = [c.args[0] for c in cur.execute.call_args_list]
     assert any("CREATE TEMP TABLE _competition_edition_keys" in s for s in executed)
@@ -57,3 +68,20 @@ def test_rematch_joins_on_event_year_month():
     assert "ed.event_year = k.event_year" in update_sql
     assert "ed.event_month = k.event_month" in update_sql
     assert "match_status = 'matched'" in update_sql
+
+
+def test_ensure_fk_skips_when_present():
+    cur = MagicMock()
+    cur.fetchone.return_value = (1,)
+    _ensure_competitions_edition_fk(cur)
+    executed = [c.args[0] for c in cur.execute.call_args_list]
+    assert not any("ADD CONSTRAINT" in s for s in executed)
+
+
+def test_ensure_fk_adds_when_missing():
+    cur = MagicMock()
+    cur.fetchone.return_value = None
+    _ensure_competitions_edition_fk(cur)
+    add_sql = cur.execute.call_args_list[-1].args[0]
+    assert "ADD CONSTRAINT competitions_edition_id_fkey" in add_sql
+    assert "REFERENCES core.event_editions(edition_id)" in add_sql

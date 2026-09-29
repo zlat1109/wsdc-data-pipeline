@@ -1,6 +1,10 @@
 -- Record role-summary changes (staging vs current core) before full core refresh.
 -- Closes open history intervals and inserts new versions. Identity: dancer_id.
 -- Tracked attributes: dominate/non-dominate divisions only (name -> dancer_names_history).
+--
+-- Same-day re-entry: PK is (dancer_id, valid_from). Closing an open interval that
+-- already starts on change_date and inserting again collides. Update in place;
+-- only close older opens.
 
 WITH staging_norm AS (
     SELECT
@@ -75,12 +79,34 @@ changed AS (
     LEFT JOIN current_full cf ON cf.dancer_id = sn.dancer_id
     WHERE cf.dancer_id IS NULL OR cf.sig IS DISTINCT FROM sn.sig
 ),
+-- Same calendar day as an existing open interval: overwrite attributes.
+upd_same_day AS (
+    UPDATE history.dancer_roles_history h
+    SET dancer_name = c.dancer_name,
+        dominate_role = c.dominate_role,
+        dominate_required = c.dominate_required,
+        dominate_allowed = c.dominate_allowed,
+        non_dominate_role = c.non_dominate_role,
+        non_dominate_required = c.non_dominate_required,
+        non_dominate_allowed = c.non_dominate_allowed,
+        non_dominate_recommended = c.non_dominate_recommended,
+        non_dominate_role_highest_level_points = c.non_dominate_role_highest_level_points,
+        non_dominate_role_highest_level = c.non_dominate_role_highest_level,
+        run_id = %(run_id)s
+    FROM changed c
+    WHERE h.dancer_id = c.dancer_id
+      AND h.valid_to IS NULL
+      AND h.valid_from = c.change_date
+    RETURNING h.dancer_id
+),
+-- Older open intervals only (same-day opens are handled by upd_same_day).
 close_old AS (
     UPDATE history.dancer_roles_history h
     SET valid_to = c.change_date - INTERVAL '1 day'
     FROM changed c
     WHERE h.dancer_id = c.dancer_id
       AND h.valid_to IS NULL
+      AND h.valid_from < c.change_date
     RETURNING h.dancer_id
 )
 INSERT INTO history.dancer_roles_history (
@@ -90,8 +116,24 @@ INSERT INTO history.dancer_roles_history (
     non_dominate_role_highest_level, valid_from, valid_to, run_id
 )
 SELECT
-    dancer_id, dancer_name, dominate_role, dominate_required, dominate_allowed,
-    non_dominate_role, non_dominate_required, non_dominate_allowed,
-    non_dominate_recommended, non_dominate_role_highest_level_points,
-    non_dominate_role_highest_level, change_date, NULL, %(run_id)s
-FROM changed;
+    c.dancer_id, c.dancer_name, c.dominate_role, c.dominate_required, c.dominate_allowed,
+    c.non_dominate_role, c.non_dominate_required, c.non_dominate_allowed,
+    c.non_dominate_recommended, c.non_dominate_role_highest_level_points,
+    c.non_dominate_role_highest_level, c.change_date, NULL, %(run_id)s
+FROM changed c
+WHERE NOT EXISTS (
+    SELECT 1 FROM upd_same_day u WHERE u.dancer_id = c.dancer_id
+)
+ON CONFLICT (dancer_id, valid_from) DO UPDATE
+SET dancer_name = EXCLUDED.dancer_name,
+    dominate_role = EXCLUDED.dominate_role,
+    dominate_required = EXCLUDED.dominate_required,
+    dominate_allowed = EXCLUDED.dominate_allowed,
+    non_dominate_role = EXCLUDED.non_dominate_role,
+    non_dominate_required = EXCLUDED.non_dominate_required,
+    non_dominate_allowed = EXCLUDED.non_dominate_allowed,
+    non_dominate_recommended = EXCLUDED.non_dominate_recommended,
+    non_dominate_role_highest_level_points = EXCLUDED.non_dominate_role_highest_level_points,
+    non_dominate_role_highest_level = EXCLUDED.non_dominate_role_highest_level,
+    valid_to = NULL,
+    run_id = EXCLUDED.run_id;

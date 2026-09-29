@@ -169,6 +169,14 @@ def _upsert(conn, rows) -> None:
                 (ids,),
             )
         else:
+            cur.execute("SELECT count(*) FROM core.competitions")
+            existing = int(cur.fetchone()[0])
+            if existing > 0:
+                raise RuntimeError(
+                    f"Refusing to TRUNCATE core.competitions: planned dump batch "
+                    f"is empty but table has {existing:,} rows. Fix extract/TSV "
+                    f"before --apply."
+                )
             cur.execute("TRUNCATE core.competitions")
         cur.executemany(sql, payload)
     conn.commit()

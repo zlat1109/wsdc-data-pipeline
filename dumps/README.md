@@ -35,4 +35,10 @@ Match reuses dump edition logic (`competitionevents` → `event_editions`).
 Unmatched rows are kept with `edition_id NULL` for investigation.
 For headcounts in analytics use `export.competitions_best` (deduped).
 
+**Ops note:** full-parse does **not** reload competitions. If `core.competitions`
+is wiped, the next export writes an empty `competitions_best.csv` and calendar
+L2 Dancers falls back to tier estimates (`~`). Guards:
+export refuses to overwrite a non-empty CSV with 0 DB rows; export-vs-DB gate
+requires ≥10k competitions_best rows; quality check `competitions_matched_floor`.
+
 See [repair-scripts.md](../docs/operations/repair-scripts.md#sync_dump_edition_datespy).
