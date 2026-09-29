@@ -1,9 +1,9 @@
 {
-  "scraped_at": "2026-09-22T12:56:41.834502+00:00",
+  "scraped_at": "2026-09-29T14:27:50.691573+00:00",
   "source": "https://worldsdc.com/events/calendar/",
   "min_start": "2025-01-01",
-  "raw_count": 651,
-  "event_count": 484,
+  "raw_count": 658,
+  "event_count": 492,
   "events": [
     {
       "event_name": "Floorplay Swing Vacation",
@@ -9954,6 +9954,28 @@
       "raw_end": "2027-06-01"
     },
     {
+      "event_name": "Hungarian Open",
+      "calendar_title": "Hungarian Open",
+      "catalog_name": "Hungarian Open",
+      "name_key": "hungarianopen",
+      "start_date": "2027-05-28",
+      "end_date": "2027-05-30",
+      "url": "https://wcs-ho.com/",
+      "url_key": "wcs-ho.com",
+      "results_year": 2027,
+      "results_month": 5,
+      "edition_ym_candidates": [
+        "2027-05"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "5dc55d4fa9b02faf5f8f6e0d",
+      "raw_start": "2027-05-28",
+      "raw_end": "2027-05-31"
+    },
+    {
       "event_name": "Festival City Swing",
       "calendar_title": "Festival City Swing",
       "catalog_name": "Festival City Swing",
@@ -10038,6 +10060,28 @@
       "flags": [],
       "status_tags": [],
       "source_fingerprint": "f3e67b27f73d8a0298f1ae4c",
+      "raw_start": "2027-06-10",
+      "raw_end": "2027-06-14"
+    },
+    {
+      "event_name": "Orange Blossom Dance Festival",
+      "calendar_title": "Orange Blossom Dance Festival",
+      "catalog_name": "Orange Blossom Dance Festival",
+      "name_key": "orangeblossomdancefestival",
+      "start_date": "2027-06-10",
+      "end_date": "2027-06-13",
+      "url": "http://www.orangeblossomdance.net",
+      "url_key": "orangeblossomdance.net",
+      "results_year": 2027,
+      "results_month": 6,
+      "edition_ym_candidates": [
+        "2027-06"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "24d1614c0950478002c262b9",
       "raw_start": "2027-06-10",
       "raw_end": "2027-06-14"
     },
@@ -10401,6 +10445,28 @@
       "raw_end": "2027-08-02"
     },
     {
+      "event_name": "New England Dance Festival",
+      "calendar_title": "New England Dance Festival",
+      "catalog_name": "New England Dance Festival",
+      "name_key": "newenglanddancefestival",
+      "start_date": "2027-08-05",
+      "end_date": "2027-08-08",
+      "url": "https://nedancefestival.com/",
+      "url_key": "nedancefestival.com",
+      "results_year": 2027,
+      "results_month": 8,
+      "edition_ym_candidates": [
+        "2027-08"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "03a1b915c07fb05051f0a710",
+      "raw_start": "2027-08-05",
+      "raw_end": "2027-08-09"
+    },
+    {
       "event_name": "Swingtacular: The Galactic Open",
       "calendar_title": "Swingtacular: The Galactic Open",
       "catalog_name": "Swingtacular: The Galactic Open",
@@ -10465,6 +10531,50 @@
       "source_fingerprint": "925801deb9e5c97b2ae4adce",
       "raw_start": "2027-08-12",
       "raw_end": "2027-08-17"
+    },
+    {
+      "event_name": "Swing Fling",
+      "calendar_title": "Swing Fling",
+      "catalog_name": "Swing Fling",
+      "name_key": "swingfling",
+      "start_date": "2027-08-12",
+      "end_date": "2027-08-15",
+      "url": "http://www.swingfling,.com",
+      "url_key": "swingfling,.com",
+      "results_year": 2027,
+      "results_month": 8,
+      "edition_ym_candidates": [
+        "2027-08"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "f2c7f9a7e1734e022d13ae90",
+      "raw_start": "2027-08-12",
+      "raw_end": "2027-08-16"
+    },
+    {
+      "event_name": "UpTown Swing",
+      "calendar_title": "UpTown Swing",
+      "catalog_name": "UpTown Swing",
+      "name_key": "uptownswing",
+      "start_date": "2027-08-12",
+      "end_date": "2027-08-15",
+      "url": "http://www.uptownswing.se",
+      "url_key": "uptownswing.se",
+      "results_year": 2027,
+      "results_month": 8,
+      "edition_ym_candidates": [
+        "2027-08"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "b7e1b18d11494470581dff01",
+      "raw_start": "2027-08-12",
+      "raw_end": "2027-08-16"
     },
     {
       "event_name": "Summer Hummer",
@@ -10533,6 +10643,28 @@
       "raw_end": "2027-08-23"
     },
     {
+      "event_name": "SwingTime",
+      "calendar_title": "SwingTime",
+      "catalog_name": "SwingTime Denver",
+      "name_key": "swingtimedenver",
+      "start_date": "2027-08-26",
+      "end_date": "2027-08-30",
+      "url": "http://swingtimewcs.com/",
+      "url_key": "swingtimewcs.com",
+      "results_year": 2027,
+      "results_month": 8,
+      "edition_ym_candidates": [
+        "2027-08"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "8e2efb89d90aba295c5a5622",
+      "raw_start": "2027-08-26",
+      "raw_end": "2027-08-31"
+    },
+    {
       "event_name": "Desert City Swing",
       "calendar_title": "Desert City Swing",
       "catalog_name": "Desert City Swing",
@@ -10555,6 +10687,28 @@
       "raw_end": "2027-09-07"
     },
     {
+      "event_name": "Bavarian Open WCS Championships",
+      "calendar_title": "Bavarian Open WCS Championships",
+      "catalog_name": "Bavarian Open WCS Championships",
+      "name_key": "bavarianopenwcschampionships",
+      "start_date": "2027-09-09",
+      "end_date": "2027-09-12",
+      "url": "https://bavarianopen.com",
+      "url_key": "bavarianopen.com",
+      "results_year": 2027,
+      "results_month": 9,
+      "edition_ym_candidates": [
+        "2027-09"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "b9493fe618461e3f627531fa",
+      "raw_start": "2027-09-09",
+      "raw_end": "2027-09-13"
+    },
+    {
       "event_name": "Best of the Best WCS",
       "calendar_title": "Best of the Best WCS",
       "catalog_name": "Best of the Best WCS",
@@ -10575,6 +10729,28 @@
       "source_fingerprint": "515b5fc82ee6d05b73394c2b",
       "raw_start": "2027-09-16",
       "raw_end": "2027-09-20"
+    },
+    {
+      "event_name": "Retaliation Swing",
+      "calendar_title": "Retaliation Swing",
+      "catalog_name": "Retaliation Swing",
+      "name_key": "retaliationswing",
+      "start_date": "2027-09-16",
+      "end_date": "2027-09-20",
+      "url": "https://www.retaliationswing.com",
+      "url_key": "retaliationswing.com",
+      "results_year": 2027,
+      "results_month": 9,
+      "edition_ym_candidates": [
+        "2027-09"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "c6c3dcee4d7b6343a6d6d722",
+      "raw_start": "2027-09-16",
+      "raw_end": "2027-09-21"
     },
     {
       "event_name": "Finnfest",
