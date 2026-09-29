@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-09-23T21:32:51.159579+00:00",
+  "generated_at": "2026-09-29T08:12:07.969040+00:00",
   "source": "github-actions",
   "run_id": null,
   "summary": {
     "before_findings_count": 9,
-    "applied_rules_count": 255,
-    "applied_rows_touched": 194725,
-    "manual_review_count": 8,
-    "manual_review_new_count": 2
+    "applied_rules_count": 258,
+    "applied_rows_touched": 195270,
+    "manual_review_count": 7,
+    "manual_review_new_count": 1
   },
   "before_processing": {
     "description": "Issues detected in raw CSV before any normalization",
@@ -17,7 +17,7 @@
         "code": "EVENT_NAME_YEAR_SUFFIX",
         "severity": "medium",
         "message": "Event names with trailing year (should be normalized to base name + event_year column)",
-        "count": 25,
+        "count": 26,
         "examples": [
           {
             "event_name": "Austin Rocks 2024"
@@ -50,6 +50,9 @@
             "event_name": "Mooseland Swing 2025"
           },
           {
+            "event_name": "Mooseland Swing 2026"
+          },
+          {
             "event_name": "NeverlandSwing Dutch Swing Championships 2026"
           },
           {
@@ -60,9 +63,6 @@
           },
           {
             "event_name": "Simply Adelaide West Coast Swing 2022"
-          },
-          {
-            "event_name": "Simply Adelaide West Coast Swing 2023"
           }
         ],
         "suggested_fix": "Add mapping to EVENT_NAME_NORMALIZATION in transform/data_preprocessing.py",
@@ -171,7 +171,7 @@
         "code": "EVENT_NAME_VARIANTS_SAME_GEO",
         "severity": "high",
         "message": "Same event name variants share one geography (merge candidate)",
-        "count": 35,
+        "count": 36,
         "examples": [
           {
             "base_key": "monterey swingfest",
@@ -184,16 +184,6 @@
             ]
           },
           {
-            "base_key": "swing fling",
-            "variants": [
-              "Swing Fling",
-              "Swing Fling 2024"
-            ],
-            "geo_keys": [
-              "washington_dc|dc|usa"
-            ]
-          },
-          {
             "base_key": "boogie by the bay",
             "variants": [
               "Boogie By The Bay",
@@ -201,6 +191,16 @@
             ],
             "geo_keys": [
               "san_francisco|ca|usa"
+            ]
+          },
+          {
+            "base_key": "swing fling",
+            "variants": [
+              "Swing Fling",
+              "Swing Fling 2024"
+            ],
+            "geo_keys": [
+              "washington_dc|dc|usa"
             ]
           },
           {
@@ -322,7 +322,7 @@
         "code": "EVENT_NAME_VARIANTS",
         "severity": "high",
         "message": "Same event appears under multiple name spellings (possible duplicate event identity)",
-        "count": 37,
+        "count": 38,
         "examples": [
           {
             "base_key": "monterey swingfest",
@@ -332,17 +332,17 @@
             ]
           },
           {
-            "base_key": "swing fling",
-            "variants": [
-              "Swing Fling",
-              "Swing Fling 2024"
-            ]
-          },
-          {
             "base_key": "boogie by the bay",
             "variants": [
               "Boogie By The Bay",
               "Boogie by the Bay"
+            ]
+          },
+          {
+            "base_key": "swing fling",
+            "variants": [
+              "Swing Fling",
+              "Swing Fling 2024"
             ]
           },
           {
@@ -599,16 +599,16 @@
         "examples": [
           {
             "detail": [
-              "66",
-              "307",
-              "198",
-              "37",
-              "39",
               "325",
+              "198",
               "193",
               "409",
+              "321",
+              "99",
+              "279",
               "202",
-              "279"
+              "307",
+              "37"
             ]
           }
         ],
@@ -1060,6 +1060,15 @@
         "from_value": "Swingtimate 2020",
         "to_value": "Swingtimate",
         "rows_affected": 20,
+        "source": "auto_pattern"
+      },
+      {
+        "rule_id": "AUTO_STRIP_EVENT_YEAR",
+        "table": "dancers_results_info",
+        "column": "event_name",
+        "from_value": "Mooseland Swing 2026",
+        "to_value": "Mooseland Swing",
+        "rows_affected": 68,
         "source": "auto_pattern"
       },
       {
@@ -2152,12 +2161,21 @@
         "source": "known_map"
       },
       {
+        "rule_id": "MERGE_EVENT_ID_MAP",
+        "table": "dancers_results_info",
+        "column": "event_name_id",
+        "from_value": "409",
+        "to_value": "342",
+        "rows_affected": 129,
+        "source": "known_map"
+      },
+      {
         "rule_id": "DIVISION_NORMALIZATION",
         "table": "dancers_results_info",
         "column": "event_competition",
         "from_value": "Masters",
         "to_value": "Master",
-        "rows_affected": 16872,
+        "rows_affected": 16906,
         "source": "known_map"
       },
       {
@@ -2166,7 +2184,7 @@
         "column": "event_competition",
         "from_value": "Champions",
         "to_value": "Champion",
-        "rows_affected": 5164,
+        "rows_affected": 5176,
         "source": "known_map"
       },
       {
@@ -2175,7 +2193,7 @@
         "column": "event_competition",
         "from_value": "All-Stars",
         "to_value": "All-Star",
-        "rows_affected": 16271,
+        "rows_affected": 16315,
         "source": "known_map"
       },
       {
@@ -2274,7 +2292,7 @@
         "column": "event_location",
         "from_value": "St. Louis, Mo, USA",
         "to_value": "St. Louis, MO, USA",
-        "rows_affected": 1528,
+        "rows_affected": 1610,
         "source": "known_map"
       },
       {
@@ -2364,7 +2382,7 @@
         "column": "event_location",
         "from_value": "Washington Dc",
         "to_value": "Washington",
-        "rows_affected": 471,
+        "rows_affected": 472,
         "source": "substring"
       },
       {
@@ -2418,6 +2436,15 @@
         "column": "event_location_standardized",
         "from_value": "location_id=25 was Atlanta, GA",
         "to_value": "Atlanta, GA, United States",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "coordinates_valid",
+        "from_value": "location_id=353 was True",
+        "to_value": "t",
         "rows_affected": 1,
         "source": "location_id_fix"
       },
@@ -2697,7 +2724,7 @@
         "column": "*",
         "from_value": "duplicate row",
         "to_value": "keep first",
-        "rows_affected": 77,
+        "rows_affected": 97,
         "source": "dedupe"
       },
       {
@@ -2706,16 +2733,7 @@
         "column": "dominate_required",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 1449,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_required",
-        "from_value": "ADV",
-        "to_value": "Advanced",
-        "rows_affected": 2747,
+        "rows_affected": 1447,
         "source": "known_map"
       },
       {
@@ -2724,7 +2742,16 @@
         "column": "dominate_required",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 4556,
+        "rows_affected": 4563,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_required",
+        "from_value": "ADV",
+        "to_value": "Advanced",
+        "rows_affected": 2749,
         "source": "known_map"
       },
       {
@@ -2742,7 +2769,7 @@
         "column": "dominate_required",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 17850,
+        "rows_affected": 17880,
         "source": "known_map"
       },
       {
@@ -2751,7 +2778,7 @@
         "column": "dominate_required",
         "from_value": "ALS",
         "to_value": "All-Star",
-        "rows_affected": 1113,
+        "rows_affected": 1119,
         "source": "known_map"
       },
       {
@@ -2760,16 +2787,7 @@
         "column": "dominate_allowed",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 17282,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_allowed",
-        "from_value": "ADV",
-        "to_value": "Advanced",
-        "rows_affected": 3187,
+        "rows_affected": 17308,
         "source": "known_map"
       },
       {
@@ -2778,7 +2796,16 @@
         "column": "dominate_allowed",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 6015,
+        "rows_affected": 6024,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_allowed",
+        "from_value": "ADV",
+        "to_value": "Advanced",
+        "rows_affected": 3193,
         "source": "known_map"
       },
       {
@@ -2787,7 +2814,7 @@
         "column": "dominate_allowed",
         "from_value": "CHMP",
         "to_value": "Champion",
-        "rows_affected": 394,
+        "rows_affected": 395,
         "source": "known_map"
       },
       {
@@ -2796,7 +2823,7 @@
         "column": "dominate_allowed",
         "from_value": "ALS",
         "to_value": "All-Star",
-        "rows_affected": 1029,
+        "rows_affected": 1030,
         "source": "known_map"
       },
       {
@@ -2805,7 +2832,7 @@
         "column": "non_dominate_required",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 4504,
+        "rows_affected": 4511,
         "source": "known_map"
       },
       {
@@ -2814,7 +2841,7 @@
         "column": "non_dominate_required",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 15097,
+        "rows_affected": 15120,
         "source": "known_map"
       },
       {
@@ -2823,7 +2850,7 @@
         "column": "non_dominate_required",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 249,
+        "rows_affected": 247,
         "source": "known_map"
       },
       {
@@ -2832,7 +2859,7 @@
         "column": "non_dominate_required",
         "from_value": "ADV",
         "to_value": "Advanced",
-        "rows_affected": 234,
+        "rows_affected": 235,
         "source": "known_map"
       },
       {
@@ -2841,7 +2868,7 @@
         "column": "non_dominate_required",
         "from_value": "ALS",
         "to_value": "All-Star",
-        "rows_affected": 12,
+        "rows_affected": 13,
         "source": "known_map"
       },
       {
@@ -2850,7 +2877,7 @@
         "column": "non_dominate_allowed",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 6987,
+        "rows_affected": 6998,
         "source": "known_map"
       },
       {
@@ -2868,7 +2895,7 @@
         "column": "non_dominate_allowed",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 15097,
+        "rows_affected": 15120,
         "source": "known_map"
       },
       {
@@ -2877,7 +2904,7 @@
         "column": "non_dominate_allowed",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 1112,
+        "rows_affected": 1115,
         "source": "known_map"
       },
       {
@@ -2886,7 +2913,7 @@
         "column": "non_dominate_allowed",
         "from_value": "ALS",
         "to_value": "All-Star",
-        "rows_affected": 12,
+        "rows_affected": 13,
         "source": "known_map"
       },
       {
@@ -3067,7 +3094,7 @@
         "code": "EVENT_NAME_UNRESOLVED_TO_CATALOG",
         "severity": "high",
         "message": "Result event names still absent from events_wsdc after normalization (will orphan in load)",
-        "count": 68,
+        "count": 67,
         "examples": [
           {
             "event_name": "Asia WCS Open - 10th Anniversary"
@@ -3155,7 +3182,7 @@
         "code": "EVENT_NAME_NOT_IN_CATALOG",
         "severity": "low",
         "message": "Result event_name values absent from events_wsdc.csv (may be OK if resolved by name in load)",
-        "count": 68,
+        "count": 67,
         "examples": [
           {
             "event_name": "Asia WCS Open - 10th Anniversary"
@@ -3221,22 +3248,6 @@
         "suggested_fix": "Verify events_wsdc export or add event instance after parse",
         "fingerprint": "c29d817289bb913d",
         "is_new": false,
-        "requires_manual_review": true
-      },
-      {
-        "category": "event_naming",
-        "code": "EVENT_NAME_NEW_SINCE_LAST_RUN",
-        "severity": "info",
-        "message": "New event names appeared since last quality report (review naming)",
-        "count": 1,
-        "examples": [
-          {
-            "event_name": "Global Grand Prix -- West Coast Swing Championships"
-          }
-        ],
-        "suggested_fix": "Check if variant of existing event; add normalization rule if needed",
-        "fingerprint": "667fc19c2346d54b",
-        "is_new": true,
         "requires_manual_review": true
       },
       {
@@ -3325,20 +3336,114 @@
         "requires_manual_review": true
       },
       {
-        "category": "relationships",
-        "code": "LEGACY_EVENT_NAME_ID",
+        "category": "location",
+        "code": "EDITION_LOCATION_BASELINE_DRIFT",
         "severity": "high",
-        "message": "1 event_name_id в results без записи в events_wsdc",
-        "count": 1,
+        "message": "Results location_id for a known edition key differs from edition_location_baseline.csv (cross-load drift)",
+        "count": 11,
         "examples": [
           {
-            "detail": [
-              "409"
-            ]
+            "event_id": "206",
+            "event_year": "2026",
+            "event_month": "5",
+            "event_name": "Hungarian Open",
+            "baseline_location_id": "110",
+            "current_location_id": "400",
+            "result_rows": 100
+          },
+          {
+            "event_id": "206",
+            "event_year": "2025",
+            "event_month": "6",
+            "event_name": "Hungarian Open",
+            "baseline_location_id": "110",
+            "current_location_id": "400",
+            "result_rows": 102
+          },
+          {
+            "event_id": "206",
+            "event_year": "2024",
+            "event_month": "6",
+            "event_name": "Hungarian Open",
+            "baseline_location_id": "110",
+            "current_location_id": "400",
+            "result_rows": 116
+          },
+          {
+            "event_id": "206",
+            "event_year": "2023",
+            "event_month": "6",
+            "event_name": "Hungarian Open",
+            "baseline_location_id": "110",
+            "current_location_id": "400",
+            "result_rows": 84
+          },
+          {
+            "event_id": "206",
+            "event_year": "2019",
+            "event_month": "5",
+            "event_name": "Hungarian Open",
+            "baseline_location_id": "110",
+            "current_location_id": "400",
+            "result_rows": 81
+          },
+          {
+            "event_id": "206",
+            "event_year": "2018",
+            "event_month": "5",
+            "event_name": "Hungarian Open",
+            "baseline_location_id": "110",
+            "current_location_id": "400",
+            "result_rows": 74
+          },
+          {
+            "event_id": "206",
+            "event_year": "2017",
+            "event_month": "5",
+            "event_name": "Hungarian Open",
+            "baseline_location_id": "110",
+            "current_location_id": "400",
+            "result_rows": 75
+          },
+          {
+            "event_id": "206",
+            "event_year": "2016",
+            "event_month": "5",
+            "event_name": "Hungarian Open",
+            "baseline_location_id": "110",
+            "current_location_id": "400",
+            "result_rows": 68
+          },
+          {
+            "event_id": "206",
+            "event_year": "2015",
+            "event_month": "5",
+            "event_name": "Hungarian Open",
+            "baseline_location_id": "110",
+            "current_location_id": "400",
+            "result_rows": 73
+          },
+          {
+            "event_id": "206",
+            "event_year": "2014",
+            "event_month": "5",
+            "event_name": "Hungarian Open",
+            "baseline_location_id": "110",
+            "current_location_id": "400",
+            "result_rows": 70
+          },
+          {
+            "event_id": "206",
+            "event_year": "2013",
+            "event_month": "6",
+            "event_name": "Hungarian Open",
+            "baseline_location_id": "110",
+            "current_location_id": "400",
+            "result_rows": 52
           }
         ],
-        "suggested_fix": "See transform/data_preprocessing.py validate_* functions",
-        "fingerprint": "c76261f97351746e",
+        "suggested_fix": "Investigate shared wrong location_id; fix overrides/repair_locations. If venue change is legitimate, UPDATE core.edition_location_baseline in Supabase.",
+        "fingerprint": "e8e6c4fa76e2be18",
         "is_new": true,
         "requires_manual_review": true
       }

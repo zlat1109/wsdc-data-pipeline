@@ -114,9 +114,9 @@
       "name": "edition_calendar_orphan_event_ids",
       "category": "event_naming",
       "severity": "warn",
-      "value": 4,
+      "value": 0,
       "max_value": 0,
-      "ok": false,
+      "ok": true,
       "description": "Calendar date rows must point at a current catalog event_id.",
       "fix_hint": "remap_stale_calendar_event_ids via enrich_event_editions_dates / sync_events_calendar"
     },
@@ -144,11 +144,91 @@
       "name": "recent_editions_missing_day_dates",
       "category": "event_naming",
       "severity": "warn",
-      "value": 0,
-      "max_value": 50,
+      "value": 8,
+      "max_value": 120,
       "ok": true,
-      "description": "Most 2025+ editions with results should have calendar day dates.",
-      "fix_hint": "scripts/sync_events_calendar.py + rebuild_event_catalog"
+      "description": "2025+ editions still on month stubs (edition_date copy) \u2014 prefer dump/calendar day-precision when available.",
+      "fix_hint": "scripts/sync_dump_edition_dates.py; scripts/sync_events_calendar.py"
+    },
+    {
+      "name": "edition_month_stub_dates",
+      "category": "event_naming",
+      "severity": "warn",
+      "value": 9,
+      "max_value": 2000,
+      "ok": true,
+      "description": "Month-sentinel start/end (YYYY-MM-01..01) after dump backfill; regression guard \u2014 not every historical edition has day dates.",
+      "fix_hint": "scripts/sync_dump_edition_dates.py --dry-run (one-shot; not every parse)"
+    },
+    {
+      "name": "editions_missing_start_or_end_date",
+      "category": "event_naming",
+      "severity": "error",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "Every edition must have start_date and end_date (day-precision or month stub from edition_date).",
+      "fix_hint": "db.edition_calendar.fill_edition_month_stub_dates / enrich_event_editions_dates"
+    },
+    {
+      "name": "editions_asymmetric_start_end",
+      "category": "event_naming",
+      "severity": "error",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "start_date and end_date must both be set or both null (never one-sided).",
+      "fix_hint": "fill_edition_month_stub_dates; resolve partial calendar rows"
+    },
+    {
+      "name": "editions_end_before_start",
+      "category": "event_naming",
+      "severity": "error",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "Edition/list end_date must not precede start_date (dump bot year typos).",
+      "fix_hint": "scripts/sync_dump_edition_dates.py; fix core.event_editions + edition_calendar_dates"
+    },
+    {
+      "name": "editions_span_over_7d",
+      "category": "event_naming",
+      "severity": "error",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "Competition editions are weekend-scale; spans over 7 days are dump/calendar errors.",
+      "fix_hint": "scripts/sync_dump_edition_dates.py; manual date repair + force-rebuild"
+    },
+    {
+      "name": "duplicate_editions",
+      "category": "event_naming",
+      "severity": "error",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "(event_id, event_year, event_month) must be unique in core.event_editions.",
+      "fix_hint": "scripts/dedupe_core_data.py / merge_event_ids; inspect catalog rebuild"
+    },
+    {
+      "name": "duplicate_edition_start_dates",
+      "category": "event_naming",
+      "severity": "warn",
+      "value": 1,
+      "max_value": 5,
+      "ok": true,
+      "description": "Same event_id+start_date on multiple edition keys (NYE wrap is rare/ok; larger counts need review).",
+      "fix_hint": "Inspect event_editions for duplicate start_date rows"
+    },
+    {
+      "name": "phantom_points",
+      "category": "points",
+      "severity": "error",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "Points rows with total_points > 0 but no matching results (role+division). Calibrated at 0 rows (2026-09-27); blocks export.",
+      "fix_hint": "scripts/purge_bavarian_allstar_phantom_points_history.py; result_role_corrections"
     },
     {
       "name": "editions_null_location_id",
@@ -332,11 +412,11 @@
     }
   ],
   "summary": {
-    "total": 33,
-    "passed": 32,
+    "total": 41,
+    "passed": 41,
     "errors": 0,
-    "warnings": 1
+    "warnings": 0
   },
-  "generated_at": "2026-09-23T21:38:26.600576+00:00",
+  "generated_at": "2026-09-29T08:20:18.674081+00:00",
   "scope": "full"
 }
