@@ -207,14 +207,104 @@ WHERE c.event_id = %s
 """
 
 
+def _competitions_table_exists(cur: Any) -> bool:
+    cur.execute(
+        """
+        SELECT EXISTS (
+            SELECT 1
+            FROM information_schema.tables
+            WHERE table_schema = 'core' AND table_name = 'competitions'
+        )
+        """
+    )
+    return bool(cur.fetchone()[0])
+
+
+def _stash_competition_edition_keys(cur: Any) -> int:
+    """Snapshot (competition_id → event_id/year/month) before editions truncate."""
+    cur.execute("DROP TABLE IF EXISTS _competition_edition_keys")
+    cur.execute(
+        """
+        CREATE TEMP TABLE _competition_edition_keys AS
+        SELECT c.competition_id, ed.event_id, ed.event_year, ed.event_month
+        FROM core.competitions c
+        JOIN core.event_editions ed ON ed.edition_id = c.edition_id
+        WHERE c.edition_id IS NOT NULL
+        """
+    )
+    cur.execute("SELECT COUNT(*) FROM _competition_edition_keys")
+    return int(cur.fetchone()[0])
+
+
+def _detach_competitions_from_editions(cur: Any) -> int:
+    """Clear FK refs so TRUNCATE core.event_editions can proceed."""
+    cur.execute(
+        """
+        UPDATE core.competitions
+        SET edition_id = NULL,
+            match_status = 'unmatched'
+        WHERE edition_id IS NOT NULL
+        """
+    )
+    return int(cur.rowcount)
+
+
+def _rematch_competitions_to_editions(cur: Any) -> tuple[int, int]:
+    """Re-link competitions to rebuilt editions by durable event/year/month key.
+
+    Returns ``(rematched_rows, stashed_keys)``.
+    """
+    cur.execute(
+        """
+        SELECT to_regclass('pg_temp._competition_edition_keys') IS NOT NULL
+        """
+    )
+    if not cur.fetchone()[0]:
+        return 0, 0
+    cur.execute("SELECT COUNT(*) FROM _competition_edition_keys")
+    keyed = int(cur.fetchone()[0])
+    if keyed == 0:
+        return 0, 0
+    cur.execute(
+        """
+        UPDATE core.competitions c
+        SET edition_id = ed.edition_id,
+            match_status = 'matched'
+        FROM _competition_edition_keys k
+        JOIN core.event_editions ed
+          ON ed.event_id = k.event_id
+         AND ed.event_year = k.event_year
+         AND ed.event_month = k.event_month
+        WHERE c.competition_id = k.competition_id
+        """
+    )
+    return int(cur.rowcount), keyed
+
+
 def rebuild_event_catalog(conn: Any) -> tuple[int, int]:
-    """Truncate and rebuild catalog + editions. Returns (catalog_count, edition_count)."""
+    """Truncate and rebuild catalog + editions. Returns (catalog_count, edition_count).
+
+    ``core.competitions`` FKs ``event_editions``; detach + rematch by durable
+    (event_id, year, month) so weekly loads do not wipe dump headcounts.
+    """
     from transform.knowledge import KNOWN_EVENT_METADATA
 
     now = datetime.now(timezone.utc)
 
     with conn.cursor() as cur:
-        cur.execute("TRUNCATE core.event_editions")
+        competitions_present = _competitions_table_exists(cur)
+        stashed = 0
+        if competitions_present:
+            stashed = _stash_competition_edition_keys(cur)
+            detached = _detach_competitions_from_editions(cur)
+            print(
+                f"Competitions: stashed {stashed:,} edition keys, "
+                f"detached {detached:,} rows for catalog rebuild"
+            )
+
+        # TRUNCATE is blocked while any table FKs event_editions (even with 0
+        # referencing rows). DELETE clears editions; competitions rematch after.
+        cur.execute("DELETE FROM core.event_editions")
         cur.execute("TRUNCATE core.event_catalog")
 
         cur.execute(_REBUILD_EDITIONS_SQL)
@@ -262,6 +352,12 @@ def rebuild_event_catalog(conn: Any) -> tuple[int, int]:
         catalog_count = cur.fetchone()[0]
         cur.execute("SELECT COUNT(*) FROM core.event_editions")
         edition_count = cur.fetchone()[0]
+
+        if competitions_present:
+            rematched, keyed = _rematch_competitions_to_editions(cur)
+            print(
+                f"Competitions: rematched {rematched:,}/{keyed:,} after edition rebuild"
+            )
 
         # Keep deprecated event_instances aligned with editions for any leftover readers.
         cur.execute("TRUNCATE core.event_instances")
