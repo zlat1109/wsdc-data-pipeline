@@ -57,6 +57,11 @@ def test_legacy_coordinate_duplicate_merges_configured():
     assert LOCATION_ID_MERGE_MAP["470"] == "23"
 
 
+def test_budaperst_typo_merges_to_budapest():
+    """WSDC 'Budaperst' dump typo → canonical Budapest (110)."""
+    assert LOCATION_ID_MERGE_MAP["400"] == "110"
+
+
 def test_location_353_is_silver_spring_not_washington_md():
     """WSDC 'Washington, MD' for Dance Jam / Westie Weekend → Silver Spring."""
     assert "353" not in LOCATION_ID_MERGE_MAP

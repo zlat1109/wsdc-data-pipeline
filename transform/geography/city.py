@@ -19,6 +19,7 @@ LOCATION_TOKEN_TYPO_FIXES: dict[str, str] = {
     "FINALND": "Finland",
     "ISREAL": "Israel",
     "HARTFOED": "Hartford",
+    "BUDAPERST": "Budapest",
 }
 
 

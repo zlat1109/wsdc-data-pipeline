@@ -891,6 +891,50 @@ def test_force_calgary_stampede_and_som_off_poison_lids():
     assert str(woz["location_id"]) == "253"
 
 
+def test_force_hungarian_open_off_budaperst_typo():
+    location_info = pd.DataFrame(
+        [
+            {
+                "location_id": "400",
+                "event_city": "Budaperst",
+                "event_state": "",
+                "event_country": "Hungary",
+                "event_location": "Budaperst, Hungary",
+            },
+            {
+                "location_id": "110",
+                "event_city": "Budapest",
+                "event_state": "",
+                "event_country": "Hungary",
+                "event_location": "Budapest, Hungary",
+            },
+        ]
+    )
+    results = pd.DataFrame(
+        [
+            {
+                "event_name": "Hungarian Open",
+                "location_id": "400",
+                "event_location": "Budaperst, Hungary",
+            },
+            {
+                "event_name": "Unrelated Event",
+                "location_id": "400",
+                "event_location": "Budaperst, Hungary",
+            },
+        ]
+    )
+
+    out, changed = force_result_locations_from_event_name_overrides(results, location_info)
+
+    assert changed == 1
+    ho = out.loc[out["event_name"] == "Hungarian Open"].iloc[0]
+    assert str(ho["location_id"]) == "110"
+    assert ho["event_location"] == "Budapest, Hungary"
+    other = out.loc[out["event_name"] == "Unrelated Event"].iloc[0]
+    assert str(other["location_id"]) == "400"
+
+
 def test_force_budapest_events_off_sao_paulo():
     location_info = pd.DataFrame(
         [
