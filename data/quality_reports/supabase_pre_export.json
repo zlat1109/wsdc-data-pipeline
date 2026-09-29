@@ -144,7 +144,7 @@
       "name": "recent_editions_missing_day_dates",
       "category": "event_naming",
       "severity": "warn",
-      "value": 0,
+      "value": 8,
       "max_value": 120,
       "ok": true,
       "description": "2025+ editions still on month stubs (edition_date copy) \u2014 prefer dump/calendar day-precision when available.",
@@ -154,7 +154,7 @@
       "name": "edition_month_stub_dates",
       "category": "event_naming",
       "severity": "warn",
-      "value": 1,
+      "value": 9,
       "max_value": 2000,
       "ok": true,
       "description": "Month-sentinel start/end (YYYY-MM-01..01) after dump backfill; regression guard \u2014 not every historical edition has day dates.",
@@ -223,11 +223,11 @@
     {
       "name": "phantom_points",
       "category": "points",
-      "severity": "warn",
+      "severity": "error",
       "value": 0,
       "max_value": 0,
       "ok": true,
-      "description": "Points rows with total_points > 0 but no matching results (role+division). Warn-first calibration before promoting to error.",
+      "description": "Points rows with total_points > 0 but no matching results (role+division). Calibrated at 0 rows (2026-09-27); blocks export.",
       "fix_hint": "scripts/purge_bavarian_allstar_phantom_points_history.py; result_role_corrections"
     },
     {
@@ -417,6 +417,6 @@
     "errors": 0,
     "warnings": 0
   },
-  "generated_at": "2026-09-26T23:29:50.865838+00:00",
+  "generated_at": "2026-09-29T08:18:06.572180+00:00",
   "scope": "full"
 }

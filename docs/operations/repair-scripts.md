@@ -192,6 +192,27 @@ Commit refreshed `data/event_editions.csv` + `data/edition_calendar_dates.csv` (
 
 Report: `data/quality_reports/dump_edition_dates_report.json` (+ `.csv`).
 
+## load_competitions_from_dump.py
+
+One-shot load of exact WCS headcounts from dump `competitions` into
+`core.competitions` (parallel to estimated `edition_division_tiers`).
+
+- Input: Docker `wsdc-clone` → `dumps/competitions_wcs.tsv` (gitignored)
+- Match: same `competitionevents` → `event_editions` logic as dump dates
+- Keeps unmatched rows (`edition_id NULL`) for investigation
+- Skips Lindy / non-WCS; maps dump division ids onto `core.levels.level_id`
+
+```bash
+python scripts/load_competitions_from_dump.py --dry-run
+python scripts/load_competitions_from_dump.py --apply
+```
+
+Report: `data/quality_reports/competitions_load.json` (match rates + tier range crosscheck).
+
+Analytics: use **`export.competitions_best`** (one row per `edition_id`+`level`).
+`core.competitions` keeps full dump lineage — multiple `competitionevents` can
+share a calendar month and must not be summed raw.
+
 **Upsert precedence** (`db/edition_calendar.py`):
 
 | Existing | Incoming | Result |

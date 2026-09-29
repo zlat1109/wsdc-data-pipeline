@@ -44,6 +44,8 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     # Shared São Paulo (243) wrongly applied to Budapest registry events.
     'BudaFest Open WCS Championships': 'Budapest, Hungary',
     'Westie Spring Thing': 'Budapest, Hungary',
+    # WSDC dump typo "Budaperst" minted location_id 400; keep Hungarian Open on 110.
+    'Hungarian Open': 'Budapest, Hungary',
     # Shared São Paulo (243) wrongly applied to French Open (Paris).
     'French Open West Coast Swing': 'Paris, France',
     # Shared St. Petersburg (222) wrongly applied to Swing in Bloom (Ottawa).
@@ -213,6 +215,8 @@ EVENT_NAME_YEAR_LOCATION_OVERRIDES: dict[tuple[str, int, int], str] = {
 EVENT_LOCATION_EXACT_CORRECTIONS = {
     'Adelaide, South Australia, Australia': 'Adelaide, Australia',
     'Budapest': 'Budapest, Hungary',
+    'Budaperst': 'Budapest, Hungary',
+    'Budaperst, Hungary': 'Budapest, Hungary',
     'Calgar Yy, Alberta': 'Calgary, Canada',
     'Czech Republic': 'Brno, Czech Republic',
     'Dallas, Texas': 'Dallas, TX',

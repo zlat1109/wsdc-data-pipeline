@@ -16,6 +16,8 @@ from transform.year_event_calendar.weekends import weekend_bounds, weekend_key
 from transform.year_event_calendar.build import (
     _clean_name,
     _enrich_geo,
+    _ids_blocked_by_terminal,
+    _latest_confirmed_priors,
     _location_id_by_event,
 )
 
@@ -106,6 +108,61 @@ def test_iter_expected_forces_registry_kind():
     assert stubs[0]["start_date"].weekday() == 3
     assert stubs[0]["end_date"] == date(2026, 5, 10)
     assert stubs[0]["end_date"].weekday() == 6
+
+
+def test_latest_confirmed_priors_lookback_excludes_archive_years():
+    rows = [
+        {
+            "event_id": 10,
+            "name": "Old Archive Fest",
+            "start_date": date(2018, 9, 20),
+            "end_date": date(2018, 9, 23),
+            "year": 2018,
+            "status": "confirmed",
+        },
+        {
+            "event_id": 11,
+            "name": "Recent Fest",
+            "start_date": date(2025, 9, 18),
+            "end_date": date(2025, 9, 21),
+            "year": 2025,
+            "status": "confirmed",
+        },
+        {
+            "event_id": 12,
+            "name": "Hiatus Fest",
+            "start_date": date(2025, 10, 2),
+            "end_date": date(2025, 10, 5),
+            "year": 2025,
+            "status": "hiatus",
+        },
+    ]
+    priors = _latest_confirmed_priors(rows, before_year=2026)
+    ids = {int(r["event_id"]) for r in priors}
+    assert 10 not in ids
+    assert ids == {11, 12}
+
+
+def test_cancelled_blocks_expected_but_hiatus_does_not():
+    rows = [
+        {
+            "event_id": 20,
+            "name": "Cancelled Series",
+            "start_date": date(2025, 6, 5),
+            "year": 2025,
+            "status": "cancelled",
+        },
+        {
+            "event_id": 21,
+            "name": "Hiatus Series",
+            "start_date": date(2025, 7, 10),
+            "year": 2025,
+            "status": "hiatus",
+        },
+    ]
+    blocked = _ids_blocked_by_terminal(rows, before_year=2026)
+    assert 20 in blocked
+    assert 21 not in blocked
 
 
 def test_iter_unlinked_expected_uses_registry_kind():
@@ -870,41 +927,49 @@ def test_latest_confirmed_priors_and_terminal_block():
         {
             "event_id": 1,
             "start_date": date(2024, 5, 10),
+            "year": 2024,
             "status": "confirmed",
             "name": "A",
         },
         {
             "event_id": 1,
             "start_date": date(2025, 5, 12),
+            "year": 2025,
             "status": "confirmed",
             "name": "A",
         },
         {
             "event_id": 2,
             "start_date": date(2025, 6, 1),
+            "year": 2025,
             "status": "hiatus",
             "name": "B",
         },
         {
             "event_id": 2,
             "start_date": date(2024, 6, 1),
+            "year": 2024,
             "status": "confirmed",
             "name": "B",
         },
+        {
+            "event_id": 3,
+            "start_date": date(2025, 7, 1),
+            "year": 2025,
+            "status": "cancelled",
+            "name": "C",
+        },
     ]
-    priors = _latest_confirmed_priors(
-        [r for r in rows if r["status"] == "confirmed"],
-        before_year=2026,
-    )
+    # Prior-year lookback: 2024 archive alone is not enough for 2026 expected.
+    priors = _latest_confirmed_priors(rows, before_year=2026)
     by_id = {r["event_id"]: r["start_date"] for r in priors}
     assert by_id[1] == date(2025, 5, 12)
-    assert by_id[2] == date(2024, 6, 1)  # latest confirmed still 2024
+    assert by_id[2] == date(2025, 6, 1)  # prior-year hiatus projects YoY
+    assert 3 not in by_id  # cancelled is not a prior source
     blocked = _ids_blocked_by_terminal(rows, before_year=2026)
-    assert 2 in blocked
+    assert 3 in blocked
+    assert 2 not in blocked  # hiatus does not permanently block
     assert 1 not in blocked
-    # Production skips blocked ids before emitting expected
-    emit_ids = {eid for eid in by_id if eid not in blocked}
-    assert emit_ids == {1}
 
 
 def test_year_override_beats_cross_year_start_for_prior_logic():
@@ -1763,7 +1828,7 @@ def test_ids_blocked_by_terminal_expands_series_links():
             "event_id": 264,
             "start_date": date(2025, 8, 14),
             "year": 2025,
-            "status": "hiatus",
+            "status": "cancelled",
             "name": "UpTown Swing",
         },
         {

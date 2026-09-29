@@ -8,6 +8,13 @@
 
 ## export.changed_dancer_role_info
 
+## export.competitions
+
+## export.competitions_best
+
+Deduped matched competitions: one row per (edition_id, level). 
+
+
 ## export.completed_event_editions
 
 Completed WSDC editions (results-backed, past). event_seq=1 is oldest; 

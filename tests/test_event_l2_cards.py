@@ -10,7 +10,9 @@ import pandas as pd
 from transform.year_event_calendar.event_cards import (
     HISTORY_LIMIT,
     TIER_TIP,
+    _edition_metrics,
     _estimate_dancers_from_tiers,
+    _exact_entries_from_competitions,
     _tier_competitor_range,
     _tier_table_for_edition,
     build_event_l2_cards,
@@ -124,6 +126,190 @@ def test_estimate_dancers_sums_newcomer_and_skill_roles():
         "dancers_min": 41,
         "dancers_max": 78,
     }
+
+
+def test_exact_entries_sums_skill_when_two_divisions_complete():
+    comps = pd.DataFrame(
+        [
+            {
+                "event_id": 1,
+                "event_year": 2025,
+                "event_month": 6,
+                "level": "Novice",
+                "leader_count": 20,
+                "follower_count": 22,
+                "match_status": "matched",
+            },
+            {
+                "event_id": 1,
+                "event_year": 2025,
+                "event_month": 6,
+                "level": "Intermediate",
+                "leader_count": 15,
+                "follower_count": 18,
+                "match_status": "matched",
+            },
+            {
+                "event_id": 1,
+                "event_year": 2025,
+                "event_month": 6,
+                "level": "Master",
+                "leader_count": 50,
+                "follower_count": 50,
+                "match_status": "matched",
+            },
+        ]
+    )
+    exact = _exact_entries_from_competitions(comps, 1, 2025, 6)
+    assert exact == {
+        "unique_dancers": 20 + 22 + 15 + 18,
+        "dancers_min": 75,
+        "dancers_max": 75,
+        "dancers_approx": 0,
+    }
+
+
+def test_exact_entries_requires_two_skill_divisions():
+    comps = pd.DataFrame(
+        [
+            {
+                "event_id": 1,
+                "event_year": 2025,
+                "event_month": 6,
+                "level": "Novice",
+                "leader_count": 20,
+                "follower_count": 22,
+                "match_status": "matched",
+            },
+            {
+                "event_id": 1,
+                "event_year": 2025,
+                "event_month": 6,
+                "level": "Intermediate",
+                "leader_count": 15,
+                "follower_count": None,
+                "match_status": "matched",
+            },
+        ]
+    )
+    assert _exact_entries_from_competitions(comps, 1, 2025, 6) is None
+
+
+def test_exact_entries_rejects_when_any_skill_row_incomplete():
+    """Two complete skill rows + one incomplete must not claim exact undercount."""
+    comps = pd.DataFrame(
+        [
+            {
+                "event_id": 1,
+                "event_year": 2025,
+                "event_month": 6,
+                "level": "Novice",
+                "leader_count": 20,
+                "follower_count": 22,
+            },
+            {
+                "event_id": 1,
+                "event_year": 2025,
+                "event_month": 6,
+                "level": "Intermediate",
+                "leader_count": 15,
+                "follower_count": 18,
+            },
+            {
+                "event_id": 1,
+                "event_year": 2025,
+                "event_month": 6,
+                "level": "Advanced",
+                "leader_count": 100,
+                "follower_count": None,
+            },
+        ]
+    )
+    assert _exact_entries_from_competitions(comps, 1, 2025, 6) is None
+
+
+def test_edition_metrics_prefers_exact_over_tier_estimate():
+    comps = pd.DataFrame(
+        [
+            {
+                "event_id": 1,
+                "event_year": 2025,
+                "event_month": 6,
+                "level": "Novice",
+                "leader_count": 10,
+                "follower_count": 12,
+            },
+            {
+                "event_id": 1,
+                "event_year": 2025,
+                "event_month": 6,
+                "level": "Advanced",
+                "leader_count": 8,
+                "follower_count": 9,
+            },
+        ]
+    )
+    tiers = pd.DataFrame(
+        [
+            {
+                "event_id": 1,
+                "event_year": 2025,
+                "event_month": 6,
+                "division": "Novice",
+                "role": "Leader",
+                "tier": 2,
+                "status": "matched",
+                "dance": "West Coast Swing",
+                "rule_min_competitors": 11,
+                "rule_max_competitors": 19,
+            },
+            {
+                "event_id": 1,
+                "event_year": 2025,
+                "event_month": 6,
+                "division": "Novice",
+                "role": "Follower",
+                "tier": 2,
+                "status": "matched",
+                "dance": "West Coast Swing",
+                "rule_min_competitors": 11,
+                "rule_max_competitors": 19,
+            },
+        ]
+    )
+    metrics = _edition_metrics(
+        pd.DataFrame(),
+        pd.Series(dtype="int64"),
+        "Test Event",
+        2025,
+        6,
+        None,
+        tiers=tiers,
+        competitions=comps,
+        event_id=1,
+    )
+    assert metrics["unique_dancers"] == 39
+    assert metrics["dancers_approx"] == 0
+    assert metrics["dancers_min"] == 39
+    assert metrics["dancers_max"] == 39
+    assert metrics.get("dancers_unique", 0) == 0
+
+
+def test_edition_metrics_unique_fallback_sets_star_flag():
+    metrics = _edition_metrics(
+        pd.DataFrame(),
+        pd.Series(dtype="int64"),
+        "Test Event",
+        2025,
+        6,
+        42,
+        tiers=pd.DataFrame(),
+        competitions=pd.DataFrame(),
+        event_id=1,
+    )
+    assert metrics["unique_dancers"] == 42
+    assert metrics["dancers_approx"] == 0
+    assert metrics["dancers_unique"] == 1
 
 
 def test_tier_table_keeps_skill_rows_with_both_roles(tmp_path: Path):

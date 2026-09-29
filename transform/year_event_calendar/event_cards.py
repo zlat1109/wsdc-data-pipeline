@@ -37,6 +37,12 @@ DANCERS_ESTIMATE_ALIASES = TIER_TABLE_ALIASES
 # Skill Level Jack & Jill points scope (same as event portraits Skill JJ).
 SKILL_LEVEL_ALIASES = DANCERS_ESTIMATE_ALIASES
 
+# Dump competitions skill ladder (canonical core.levels names).
+COMPETITION_SKILL_LEVELS = frozenset(
+    {"Newcomer", "Novice", "Intermediate", "Advanced", "All-Star", "Champion"}
+)
+MIN_SKILL_DIVISIONS_FOR_EXACT = 2
+
 # Current Chart 5 competitor ranges per role. Tier 6 is open-ended (130+);
 # soft upper 140 is used only for midpoint estimates when rule_max is absent.
 TIER_COMPETITOR_RANGES: dict[int, tuple[int, int]] = {
@@ -300,6 +306,90 @@ def _tiers_frame(data_dir: Path) -> pd.DataFrame:
     return tiers
 
 
+def _competitions_frame(data_dir: Path) -> pd.DataFrame:
+    """Load ``competitions_best.csv`` (exact WCS headcounts from dump)."""
+    path = data_dir / "competitions_best.csv"
+    if not path.exists():
+        return pd.DataFrame()
+    raw = _read_csv(path)
+    if raw.empty:
+        return raw
+    required = (
+        "event_id",
+        "event_year",
+        "event_month",
+        "level",
+        "leader_count",
+        "follower_count",
+    )
+    missing = [c for c in required if c not in raw.columns]
+    if missing:
+        return pd.DataFrame()
+    cols = list(required)
+    if "match_status" in raw.columns:
+        cols.append("match_status")
+    if "dance" in raw.columns:
+        cols.append("dance")
+    comps = raw[cols].copy()
+    for col in ("event_id", "event_year", "event_month", "leader_count", "follower_count"):
+        comps[col] = pd.to_numeric(comps[col], errors="coerce")
+    comps = comps.dropna(subset=["event_id", "event_year", "event_month"])
+    comps["event_id"] = comps["event_id"].astype(int)
+    comps["event_year"] = comps["event_year"].astype(int)
+    comps["event_month"] = comps["event_month"].astype(int)
+    if "match_status" in comps.columns:
+        comps = comps[comps["match_status"].fillna("") == "matched"]
+    if "dance" in comps.columns:
+        wcs = comps["dance"].fillna("").str.contains("West Coast", case=False)
+        if wcs.any():
+            comps = comps[wcs | comps["dance"].isna()]
+    return comps
+
+
+def _exact_entries_from_competitions(
+    comps: pd.DataFrame, event_id: int, year: int, month: int
+) -> dict[str, int] | None:
+    """Sum L+F over skill divisions when ≥2 divisions have both counts.
+
+    Any skill-level row with a missing Leader or Follower count rejects exact
+    (fall back to tier / unique) so a partial dump is not shown as authoritative.
+
+    Not unique dancers — switch roles across divisions are double-counted.
+    """
+    if comps.empty:
+        return None
+    sub = comps[
+        (comps["event_id"] == event_id)
+        & (comps["event_year"] == year)
+        & (comps["event_month"] == month)
+    ]
+    if sub.empty:
+        return None
+
+    total = 0
+    skill_divs = 0
+    for rec in sub.to_dict(orient="records"):
+        level = str(rec.get("level") or "").strip()
+        if level not in COMPETITION_SKILL_LEVELS:
+            continue
+        leader = rec.get("leader_count")
+        follower = rec.get("follower_count")
+        if pd.isna(leader) or pd.isna(follower):
+            # Incomplete skill row → do not claim exact undercount.
+            return None
+        total += int(leader) + int(follower)
+        skill_divs += 1
+
+    if skill_divs < MIN_SKILL_DIVISIONS_FOR_EXACT:
+        return None
+    return {
+        "unique_dancers": int(total),
+        "dancers_min": int(total),
+        "dancers_max": int(total),
+        "dancers_approx": 0,
+    }
+
+
 def _tier_competitor_range(tier: int, rule_min: Any = None, rule_max: Any = None) -> tuple[int, int] | None:
     """Return (min, max) competitors for a role given tier (+ optional rule bounds)."""
     fallback = TIER_COMPETITOR_RANGES.get(int(tier))
@@ -444,6 +534,7 @@ def _edition_metrics(
     unique_dancers_fallback: Any,
     *,
     tiers: pd.DataFrame | None = None,
+    competitions: pd.DataFrame | None = None,
     event_id: int | None = None,
     extra_names: set[str] | None = None,
 ) -> dict[str, int]:
@@ -478,6 +569,20 @@ def _edition_metrics(
     except (TypeError, ValueError):
         ud_fallback = None
 
+    # Priority: exact dump Σ(L+F) → tier estimate (~) → unique from results.
+    exact = None
+    if competitions is not None and event_id is not None:
+        exact = _exact_entries_from_competitions(competitions, int(event_id), year, month)
+    if exact is not None:
+        return {
+            "unique_dancers": exact["unique_dancers"],
+            "dancers_min": exact["dancers_min"],
+            "dancers_max": exact["dancers_max"],
+            "dancers_approx": 0,
+            "points": points,
+            "new_dancers": new_count,
+        }
+
     estimate = None
     if tiers is not None and event_id is not None:
         estimate = _estimate_dancers_from_tiers(tiers, int(event_id), year, month)
@@ -496,6 +601,7 @@ def _edition_metrics(
     return {
         "unique_dancers": unique_dancers,
         "dancers_approx": 0,
+        "dancers_unique": 1,
         "points": points,
         "new_dancers": new_count,
     }
@@ -512,6 +618,7 @@ def build_event_l2_cards(
     editions = _editions_with_results(data_dir)
     res = _results_frame(data_dir)
     tiers = _tiers_frame(data_dir)
+    competitions = _competitions_frame(data_dir)
     wsdc_names = _wsdc_names_by_event_id(data_dir)
 
     first_ym = (
@@ -547,6 +654,7 @@ def build_event_l2_cards(
             int(last["event_month"]),
             last.get("unique_dancers"),
             tiers=tiers,
+            competitions=competitions,
             event_id=int(event_id),
             extra_names=extra_names,
         )
@@ -566,6 +674,7 @@ def build_event_l2_cards(
                 int(rec["event_month"]),
                 rec.get("unique_dancers"),
                 tiers=tiers,
+                competitions=competitions,
                 event_id=int(event_id),
                 extra_names=extra_names,
             )
@@ -579,6 +688,7 @@ def build_event_l2_cards(
                 "points": hist_metrics["points"],
                 "new_dancers": hist_metrics["new_dancers"],
                 "dancers_approx": hist_metrics.get("dancers_approx", 0),
+                "dancers_unique": hist_metrics.get("dancers_unique", 0),
                 "tiers": hist_tiers,
             }
             if hist_metrics.get("dancers_approx"):
@@ -596,6 +706,7 @@ def build_event_l2_cards(
             "points": metrics["points"],
             "new_dancers": metrics["new_dancers"],
             "dancers_approx": metrics.get("dancers_approx", 0),
+            "dancers_unique": metrics.get("dancers_unique", 0),
             "tiers": tier_table,
         }
         if metrics.get("dancers_approx"):
