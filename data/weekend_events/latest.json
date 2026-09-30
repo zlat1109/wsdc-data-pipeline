@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30T08:27:00Z",
+  "generated_at": "2026-09-30T08:56:44Z",
   "weekend_start": "2026-09-28",
   "weekend_end": "2026-10-11",
   "events": [
@@ -46,17 +46,6 @@
       "livestream": null,
       "continent": "Europe",
       "flag": "🇳🇴"
-    },
-    {
-      "name": "Autumn Beat",
-      "location": "Riga, Latvia",
-      "dates": "Oct 2 - 5, 2026",
-      "url": "https://autumnbeat.lv/",
-      "start_date": "2026-10-02",
-      "end_date": "2026-10-05",
-      "livestream": null,
-      "continent": "Europe",
-      "flag": "🇱🇻"
     }
   ]
 }
