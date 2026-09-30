@@ -14,7 +14,8 @@
 #   REQUIRE_DEPLOY_TOKEN  if 1, missing WSDC_ANALYTICS_DEPLOY_TOKEN fails the job (full-parse / force-rebuild)
 #   REQUIRE_YEAR_CALENDAR if 1 (default), year-calendar build failure exits non-zero
 #
-# Also rebuilds Time in Division spells JSON (time_in_division_spells.json).
+# Also rebuilds Time in Division spells JSON (time_in_division_spells.json)
+# and Event tiers by year (event_tiers_by_year.json).
 
 set -euo pipefail
 
@@ -41,7 +42,8 @@ for required in \
   dancers_results_info.csv \
   dancer_role_info.csv \
   location_info.csv \
-  event_editions.csv
+  event_editions.csv \
+  event_catalog.csv
 do
   if [[ ! -f "${PIPELINE_DATA_ABS}/${required}" ]]; then
     echo "::error::Missing ${PIPELINE_DATA_ABS}/${required} — run export before site sync"
@@ -124,6 +126,12 @@ python3 "${WORKDIR}/scripts/update_time_in_division_spells.py" \
   --rules "${WORKDIR}/static/data/rules_advancement_thresholds.json" \
   --output "${WORKDIR}/static/data/time_in_division_spells.json"
 
+echo "Building event_tiers_by_year.json"
+python3 "${WORKDIR}/scripts/build_event_tiers_by_year.py" \
+  --source-dir "${PIPELINE_DATA_ABS}" \
+  --site-repo "${WORKDIR}" \
+  --output "${WORKDIR}/static/data/event_tiers_by_year.json"
+
 python3 "${WORKDIR}/scripts/validate_site_data.py" || {
   echo "::error::Site data validation failed after rebuild"
   exit 1
@@ -136,6 +144,7 @@ DASHBOARD_HTML="${WORKDIR}/secondary_role_distribution_dashboard_en.html"
 BUBBLE_HTML="${WORKDIR}/interactive_secondary_country_bubble.html"
 CALENDAR_HTML="${WORKDIR}/events-calendar.html"
 TID_HTML="${WORKDIR}/time_in_division_dashboard_en.html"
+ETY_HTML="${WORKDIR}/event_tiers_by_year_dashboard_en.html"
 if [[ -f "${DASHBOARD_HTML}" ]]; then
   sed -i \
     -e "s|(as of [0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\})|(as of ${AS_OF})|g" \
@@ -160,7 +169,12 @@ if [[ -f "${TID_HTML}" ]]; then
     -e "s|?v=[0-9]\{8\}-[a-z0-9-]*|?v=${CACHE_V}|g" \
     "${TID_HTML}"
 fi
-echo "Stamped secondary dashboard + calendar + time-in-division as_of=${AS_OF} cache_v=${CACHE_V}"
+if [[ -f "${ETY_HTML}" ]]; then
+  sed -i \
+    -e "s|event_tiers_by_year.json?v=[^\"]*|event_tiers_by_year.json?v=${CACHE_V}|g" \
+    "${ETY_HTML}"
+fi
+echo "Stamped secondary dashboard + calendar + time-in-division + event-tiers as_of=${AS_OF} cache_v=${CACHE_V}"
 
 cd "${WORKDIR}"
 git config user.name "github-actions[bot]"
@@ -191,11 +205,17 @@ fi
 if [[ -d static/data/time_in_division ]]; then
   git add static/data/time_in_division/
 fi
+if [[ -f static/data/event_tiers_by_year.json ]]; then
+  git add static/data/event_tiers_by_year.json
+fi
 if [[ -f events-calendar.html ]]; then
   git add events-calendar.html
 fi
 if [[ -f time_in_division_dashboard_en.html ]]; then
   git add time_in_division_dashboard_en.html
+fi
+if [[ -f event_tiers_by_year_dashboard_en.html ]]; then
+  git add event_tiers_by_year_dashboard_en.html
 fi
 
 if git diff --staged --quiet; then
@@ -204,7 +224,7 @@ if git diff --staged --quiet; then
 fi
 
 git commit -m "$(cat <<EOF
-chore(data): refresh homepage KPIs, secondary-role, Point Summary, Champion News, Calendar, Time in Division
+chore(data): refresh homepage KPIs, secondary-role, Point Summary, Champion News, Calendar, Time in Division, Event tiers
 
 Automated push from wsdc-data-pipeline after full-parse / export.
 EOF
