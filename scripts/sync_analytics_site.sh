@@ -158,9 +158,10 @@ if [[ -f "${BUBBLE_HTML}" ]]; then
     "${BUBBLE_HTML}"
 fi
 if [[ -f "${CALENDAR_HTML}" ]]; then
+  # Only rewrite YYYYMMDD-slug cache tokens (safe with ' or " around the URL).
   sed -i \
-    -e "s|events_year_calendar.json?v=[^\"]*|events_year_calendar.json?v=${CACHE_V}|g" \
-    -e "s|event_l2_cards.json?v=[^\"]*|event_l2_cards.json?v=${CACHE_V}|g" \
+    -e "s|events_year_calendar.json?v=[0-9]\{8\}-[a-z0-9-]*|events_year_calendar.json?v=${CACHE_V}|g" \
+    -e "s|event_l2_cards.json?v=[0-9]\{8\}-[a-z0-9-]*|event_l2_cards.json?v=${CACHE_V}|g" \
     "${CALENDAR_HTML}"
 fi
 if [[ -f "${TID_HTML}" ]]; then
@@ -170,8 +171,10 @@ if [[ -f "${TID_HTML}" ]]; then
     "${TID_HTML}"
 fi
 if [[ -f "${ETY_HTML}" ]]; then
+  # Do NOT use [^"]* here — ETY historically used single-quoted fetch URLs;
+  # that pattern ate the closing quote and broke the dashboard JS (#202 follow-up).
   sed -i \
-    -e "s|event_tiers_by_year.json?v=[^\"]*|event_tiers_by_year.json?v=${CACHE_V}|g" \
+    -e "s|event_tiers_by_year.json?v=[0-9]\{8\}-[a-z0-9-]*|event_tiers_by_year.json?v=${CACHE_V}|g" \
     "${ETY_HTML}"
 fi
 echo "Stamped secondary dashboard + calendar + time-in-division + event-tiers as_of=${AS_OF} cache_v=${CACHE_V}"
