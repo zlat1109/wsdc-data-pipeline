@@ -148,13 +148,13 @@ ETY_HTML="${WORKDIR}/event_tiers_by_year_dashboard_en.html"
 if [[ -f "${DASHBOARD_HTML}" ]]; then
   sed -i \
     -e "s|(as of [0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\})|(as of ${AS_OF})|g" \
-    -e "s|interactive_secondary_country_bubble.html?v=[^\"]*|interactive_secondary_country_bubble.html?v=${CACHE_V}|g" \
+    -e "s|interactive_secondary_country_bubble.html?v=[0-9]\{8\}-[a-z0-9-]*|interactive_secondary_country_bubble.html?v=${CACHE_V}|g" \
     "${DASHBOARD_HTML}"
 fi
 if [[ -f "${BUBBLE_HTML}" ]]; then
   sed -i \
     -e "s|2026 (partial, as of [0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\})|2026 (partial, as of ${AS_OF})|g" \
-    -e "s|secondary_country_unified.json?v=[^\"]*|secondary_country_unified.json?v=${CACHE_V}|g" \
+    -e "s|secondary_country_unified.json?v=[0-9]\{8\}-[a-z0-9-]*|secondary_country_unified.json?v=${CACHE_V}|g" \
     "${BUBBLE_HTML}"
 fi
 if [[ -f "${CALENDAR_HTML}" ]]; then
@@ -171,8 +171,8 @@ if [[ -f "${TID_HTML}" ]]; then
     "${TID_HTML}"
 fi
 if [[ -f "${ETY_HTML}" ]]; then
-  # Do NOT use [^"]* here — ETY historically used single-quoted fetch URLs;
-  # that pattern ate the closing quote and broke the dashboard JS (#202 follow-up).
+  # Do NOT use [^"]* — a single-quoted fetch('...json?v=...') ate the closing
+  # quote and blanked Event tiers after the 2026-10-01 sync.
   sed -i \
     -e "s|event_tiers_by_year.json?v=[0-9]\{8\}-[a-z0-9-]*|event_tiers_by_year.json?v=${CACHE_V}|g" \
     "${ETY_HTML}"
