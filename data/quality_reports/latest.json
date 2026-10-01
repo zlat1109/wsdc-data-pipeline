@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-09-29T15:57:14.724490+00:00",
+  "generated_at": "2026-10-01T07:51:53.525564+00:00",
   "source": "github-actions",
   "run_id": null,
   "summary": {
     "before_findings_count": 9,
-    "applied_rules_count": 257,
-    "applied_rows_touched": 195269,
-    "manual_review_count": 6,
-    "manual_review_new_count": 0
+    "applied_rules_count": 258,
+    "applied_rows_touched": 195330,
+    "manual_review_count": 7,
+    "manual_review_new_count": 1
   },
   "before_processing": {
     "description": "Issues detected in raw CSV before any normalization",
@@ -103,8 +103,8 @@
           },
           {
             "event_name": "German Open WCS Championships",
-            "similar_to": "Korean Open WCS Championships",
-            "score": 0.897
+            "similar_to": "Russian Open WCS Championships",
+            "score": 0.881
           },
           {
             "event_name": "Global Grand Prix - West Coast Swing",
@@ -194,16 +194,6 @@
             ]
           },
           {
-            "base_key": "paradise dance festival",
-            "variants": [
-              "Paradise Dance Festival",
-              "Paradise dance festival"
-            ],
-            "geo_keys": [
-              "irvine|ca|usa"
-            ]
-          },
-          {
             "base_key": "swing fling",
             "variants": [
               "Swing Fling",
@@ -211,6 +201,16 @@
             ],
             "geo_keys": [
               "washington_dc|dc|usa"
+            ]
+          },
+          {
+            "base_key": "paradise dance festival",
+            "variants": [
+              "Paradise Dance Festival",
+              "Paradise dance festival"
+            ],
+            "geo_keys": [
+              "irvine|ca|usa"
             ]
           },
           {
@@ -339,17 +339,17 @@
             ]
           },
           {
-            "base_key": "paradise dance festival",
-            "variants": [
-              "Paradise Dance Festival",
-              "Paradise dance festival"
-            ]
-          },
-          {
             "base_key": "swing fling",
             "variants": [
               "Swing Fling",
               "Swing Fling 2024"
+            ]
+          },
+          {
+            "base_key": "paradise dance festival",
+            "variants": [
+              "Paradise Dance Festival",
+              "Paradise dance festival"
             ]
           },
           {
@@ -506,7 +506,7 @@
         "code": "EVENT_NAME_NOT_IN_CATALOG",
         "severity": "low",
         "message": "Result event_name values absent from events_wsdc.csv (may be OK if resolved by name in load)",
-        "count": 182,
+        "count": 183,
         "examples": [
           {
             "event_name": "5280 Swing Dance Championships"
@@ -599,15 +599,15 @@
         "examples": [
           {
             "detail": [
-              "325",
-              "202",
-              "198",
-              "39",
-              "409",
               "66",
-              "99",
               "279",
               "321",
+              "39",
+              "193",
+              "99",
+              "202",
+              "307",
+              "325",
               "37"
             ]
           }
@@ -2175,7 +2175,7 @@
         "column": "event_competition",
         "from_value": "Masters",
         "to_value": "Master",
-        "rows_affected": 16906,
+        "rows_affected": 16914,
         "source": "known_map"
       },
       {
@@ -2193,7 +2193,7 @@
         "column": "event_competition",
         "from_value": "All-Stars",
         "to_value": "All-Star",
-        "rows_affected": 16315,
+        "rows_affected": 16321,
         "source": "known_map"
       },
       {
@@ -2436,6 +2436,15 @@
         "column": "event_location_standardized",
         "from_value": "location_id=25 was Atlanta, GA",
         "to_value": "Atlanta, GA, United States",
+        "rows_affected": 1,
+        "source": "location_id_fix"
+      },
+      {
+        "rule_id": "LOCATION_INFO_ID_CORRECTION",
+        "table": "location_info",
+        "column": "coordinates_valid",
+        "from_value": "location_id=353 was True",
+        "to_value": "t",
         "rows_affected": 1,
         "source": "location_id_fix"
       },
@@ -2722,6 +2731,15 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_required",
+        "from_value": "ADV",
+        "to_value": "Advanced",
+        "rows_affected": 2751,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_required",
         "from_value": "NEW",
         "to_value": "Newcomer",
         "rows_affected": 1447,
@@ -2733,16 +2751,7 @@
         "column": "dominate_required",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 4563,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_required",
-        "from_value": "ADV",
-        "to_value": "Advanced",
-        "rows_affected": 2749,
+        "rows_affected": 4561,
         "source": "known_map"
       },
       {
@@ -2760,7 +2769,7 @@
         "column": "dominate_required",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 17880,
+        "rows_affected": 17893,
         "source": "known_map"
       },
       {
@@ -2776,9 +2785,18 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_allowed",
+        "from_value": "ADV",
+        "to_value": "Advanced",
+        "rows_affected": 3194,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_allowed",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 17308,
+        "rows_affected": 17320,
         "source": "known_map"
       },
       {
@@ -2788,15 +2806,6 @@
         "from_value": "INT",
         "to_value": "Intermediate",
         "rows_affected": 6024,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_allowed",
-        "from_value": "ADV",
-        "to_value": "Advanced",
-        "rows_affected": 3193,
         "source": "known_map"
       },
       {
@@ -2823,7 +2832,7 @@
         "column": "non_dominate_required",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 4511,
+        "rows_affected": 4509,
         "source": "known_map"
       },
       {
@@ -2832,7 +2841,7 @@
         "column": "non_dominate_required",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 15120,
+        "rows_affected": 15131,
         "source": "known_map"
       },
       {
@@ -2886,7 +2895,7 @@
         "column": "non_dominate_allowed",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 15120,
+        "rows_affected": 15131,
         "source": "known_map"
       },
       {
@@ -2973,8 +2982,8 @@
           },
           {
             "event_name": "German Open WCS Championships",
-            "similar_to": "Korean Open WCS Championships",
-            "score": 0.897
+            "similar_to": "Russian Open WCS Championships",
+            "score": 0.881
           },
           {
             "event_name": "Global Grand Prix - West Coast Swing",
@@ -3324,6 +3333,28 @@
         "suggested_fix": "Add to EVENT_NAME_LOCATION_OVERRIDES in transform/knowledge/events.py and run force_result_locations_from_event_name_overrides",
         "fingerprint": "235f3a5dfd02bc9c",
         "is_new": false,
+        "requires_manual_review": true
+      },
+      {
+        "category": "location",
+        "code": "EDITION_LOCATION_BASELINE_DRIFT",
+        "severity": "high",
+        "message": "Results location_id for a known edition key differs from edition_location_baseline.csv (cross-load drift)",
+        "count": 1,
+        "examples": [
+          {
+            "event_id": "405",
+            "event_year": "2026",
+            "event_month": "6",
+            "event_name": "Milan Swing Vibes",
+            "baseline_location_id": "132",
+            "current_location_id": "402",
+            "result_rows": 92
+          }
+        ],
+        "suggested_fix": "Investigate shared wrong location_id; fix overrides/repair_locations. If venue change is legitimate, UPDATE core.edition_location_baseline in Supabase.",
+        "fingerprint": "c87f0f387c7cd947",
+        "is_new": true,
         "requires_manual_review": true
       }
     ]
