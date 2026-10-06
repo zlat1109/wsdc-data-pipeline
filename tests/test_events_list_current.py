@@ -27,15 +27,19 @@ def _load_current_events() -> list[dict]:
 
 
 def test_atlanta_swing_classic_collapses_to_nearest_edition():
+    """Live fixture: edition count drifts as past weekends drop off WSDC list."""
     events = [e for e in _load_current_events() if e["event_name"] == "Atlanta Swing Classic"]
-    assert len(events) == 3
+    assert len(events) >= 1
+
+    start_dates = sorted(e["start_date"] for e in events if e.get("start_date"))
+    assert start_dates
 
     catalog = _atlanta_catalog()
     current = build_events_list_current(events, catalog)
 
     assert len(current) == 1
-    assert current[0]["start_date"] == "2026-10-01"
-    assert current[0]["upcoming_editions"] == 3
+    assert current[0]["start_date"] == start_dates[0]
+    assert current[0]["upcoming_editions"] == len(events)
     assert current[0]["schedule_event_key"] == "evt:211"
 
 
@@ -66,6 +70,9 @@ def test_current_row_count_less_than_editions_with_synthetic_rows():
     current = build_events_list_current(events, catalog)
     assert len(current) == 1
     assert current[0]["source_fingerprint"] == "fp2026"
+    assert current[0]["start_date"] == "2026-10-01"
+    assert current[0]["upcoming_editions"] == 2
+    assert current[0]["schedule_event_key"] == "evt:211"
 
 
 def test_schedule_event_key_uses_event_id_when_mapped():

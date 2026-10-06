@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-10-06T00:10:47.614920+00:00",
+  "generated_at": "2026-10-06T05:18:14.105857+00:00",
   "source": "github-actions",
   "run_id": null,
   "summary": {
     "before_findings_count": 10,
     "applied_rules_count": 259,
     "applied_rows_touched": 196832,
-    "manual_review_count": 9,
-    "manual_review_new_count": 5
+    "manual_review_count": 7,
+    "manual_review_new_count": 0
   },
   "before_processing": {
     "description": "Issues detected in raw CSV before any normalization",
@@ -419,7 +419,7 @@
         "code": "EVENT_NAME_UNRESOLVED_TO_CATALOG",
         "severity": "high",
         "message": "Result event names still absent from events_wsdc after normalization (will orphan in load)",
-        "count": 77,
+        "count": 76,
         "examples": [
           {
             "event_name": "Asia WCS Open - 10th Anniversary"
@@ -506,7 +506,7 @@
         "code": "EVENT_NAME_NOT_IN_CATALOG",
         "severity": "low",
         "message": "Result event_name values absent from events_wsdc.csv (may be OK if resolved by name in load)",
-        "count": 183,
+        "count": 182,
         "examples": [
           {
             "event_name": "5280 Swing Dance Championships"
@@ -614,26 +614,26 @@
         "category": "relationships",
         "code": "LEGACY_EVENT_NAME_ID",
         "severity": "high",
-        "message": "13 event_name_id в results без записи в events_wsdc",
+        "message": "12 event_name_id в results без записи в events_wsdc",
         "count": 1,
         "examples": [
           {
             "detail": [
-              "202",
+              "99",
               "66",
-              "279",
-              "392",
-              "409",
-              "37",
-              "321",
-              "307",
+              "202",
               "193",
-              "198"
+              "321",
+              "39",
+              "279",
+              "325",
+              "409",
+              "37"
             ]
           }
         ],
         "suggested_fix": "See transform/data_preprocessing.py validate_* functions",
-        "fingerprint": "f8980b201cbf5f3c",
+        "fingerprint": "904e3e35b0792dfe",
         "is_new": true
       }
     ]
@@ -3123,7 +3123,7 @@
         "code": "EVENT_NAME_UNRESOLVED_TO_CATALOG",
         "severity": "high",
         "message": "Result event names still absent from events_wsdc after normalization (will orphan in load)",
-        "count": 67,
+        "count": 66,
         "examples": [
           {
             "event_name": "Asia WCS Open - 10th Anniversary"
@@ -3203,7 +3203,7 @@
         ],
         "suggested_fix": "Add to RESULT_TO_CATALOG_EVENT_NAME in transform/knowledge/event_aliases.py",
         "fingerprint": "4d782d3b78962720",
-        "is_new": true,
+        "is_new": false,
         "requires_manual_review": true
       },
       {
@@ -3211,7 +3211,7 @@
         "code": "EVENT_NAME_NOT_IN_CATALOG",
         "severity": "low",
         "message": "Result event_name values absent from events_wsdc.csv (may be OK if resolved by name in load)",
-        "count": 67,
+        "count": 66,
         "examples": [
           {
             "event_name": "Asia WCS Open - 10th Anniversary"
@@ -3276,23 +3276,7 @@
         ],
         "suggested_fix": "Verify events_wsdc export or add event instance after parse",
         "fingerprint": "6b2b58d82b35e32b",
-        "is_new": true,
-        "requires_manual_review": true
-      },
-      {
-        "category": "event_naming",
-        "code": "EVENT_NAME_NEW_SINCE_LAST_RUN",
-        "severity": "info",
-        "message": "New event names appeared since last quality report (review naming)",
-        "count": 1,
-        "examples": [
-          {
-            "event_name": "Westie Harbor"
-          }
-        ],
-        "suggested_fix": "Check if variant of existing event; add normalization rule if needed",
-        "fingerprint": "f141cb4a376ef7b3",
-        "is_new": true,
+        "is_new": false,
         "requires_manual_review": true
       },
       {
@@ -3398,25 +3382,7 @@
         ],
         "suggested_fix": "See transform/data_preprocessing.py validate_* functions",
         "fingerprint": "d8a18f92087dc0a0",
-        "is_new": true,
-        "requires_manual_review": true
-      },
-      {
-        "category": "relationships",
-        "code": "LEGACY_EVENT_NAME_ID",
-        "severity": "high",
-        "message": "1 event_name_id в results без записи в events_wsdc",
-        "count": 1,
-        "examples": [
-          {
-            "detail": [
-              "392"
-            ]
-          }
-        ],
-        "suggested_fix": "See transform/data_preprocessing.py validate_* functions",
-        "fingerprint": "c76261f97351746e",
-        "is_new": true,
+        "is_new": false,
         "requires_manual_review": true
       }
     ]
