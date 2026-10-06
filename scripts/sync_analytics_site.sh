@@ -148,10 +148,12 @@ ETY_HTML="${WORKDIR}/event_tiers_by_year_dashboard_en.html"
 if [[ -f "${DASHBOARD_HTML}" ]]; then
   sed -i \
     -e "s|(as of [0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\})|(as of ${AS_OF})|g" \
-    -e "s|interactive_secondary_country_bubble.html?v=[0-9]\{8\}-[a-z0-9-]*|interactive_secondary_country_bubble.html?v=${CACHE_V}|g" \
+    -e "s|secondary_country_unified.json?v=[0-9]\{8\}[a-z0-9-]*|secondary_country_unified.json?v=${CACHE_V}|g" \
+    -e "s|secondary-role-points.js?v=[0-9]\{8\}[a-z0-9-]*|secondary-role-points.js?v=${CACHE_V}|g" \
     "${DASHBOARD_HTML}"
 fi
 if [[ -f "${BUBBLE_HTML}" ]]; then
+  # Legacy standalone bubble page (removed from site main in 69d88fc).
   sed -i \
     -e "s|2026 (partial, as of [0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\})|2026 (partial, as of ${AS_OF})|g" \
     -e "s|secondary_country_unified.json?v=[0-9]\{8\}-[a-z0-9-]*|secondary_country_unified.json?v=${CACHE_V}|g" \
@@ -186,8 +188,13 @@ git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 git add \
   static/data/homepage_kpis.json \
   static/data/secondary_country_unified.json \
-  secondary_role_distribution_dashboard_en.html \
-  interactive_secondary_country_bubble.html
+  secondary_role_distribution_dashboard_en.html
+
+# Standalone bubble page was deleted from the analytics site (restyle into the
+# Secondary Role Points dashboard). Only stage it if the clone still has it.
+if [[ -f interactive_secondary_country_bubble.html ]]; then
+  git add interactive_secondary_country_bubble.html
+fi
 
 # Only stage Point Summary when the file exists (build may have failed warn-only).
 if [[ -f static/data/points_summaries.json ]]; then
