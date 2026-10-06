@@ -71,6 +71,7 @@ dancer_id,role,dance,level,total_points,update_date
 50,Leader,West Coast Swing,Champion,133,2026-06-10
 50,Leader,West Coast Swing,Champion,134,2026-07-09
 50,Leader,West Coast Swing,Champion,135,2026-09-14
+50,Leader,West Coast Swing,Champion,137,2026-10-05
 50,Leader,West Coast Swing,Invitational,106,2026-06-10
 50,Leader,West Coast Swing,Professional,43,2026-06-10
 50,Leader,West Coast Swing,Sophisticated,29,2026-06-10
@@ -1593,6 +1594,7 @@ dancer_id,role,dance,level,total_points,update_date
 764,Leader,West Coast Swing,Champion,415,2026-07-09
 764,Leader,West Coast Swing,Champion,418,2026-08-24
 764,Leader,West Coast Swing,Champion,420,2026-09-14
+764,Leader,West Coast Swing,Champion,421,2026-10-05
 764,Leader,West Coast Swing,Invitational,140,2026-06-10
 764,Leader,West Coast Swing,Professional,192,2026-06-10
 765,Follower,West Coast Swing,Intermediate,1,2026-06-10
@@ -4237,6 +4239,7 @@ dancer_id,role,dance,level,total_points,update_date
 2173,Follower,West Coast Swing,Invitational,78,2026-06-10
 2173,Follower,West Coast Swing,Professional,14,2026-06-10
 2173,Leader,West Coast Swing,All-Star,14,2026-06-10
+2173,Leader,West Coast Swing,All-Star,15,2026-10-05
 2174,Follower,West Coast Swing,Intermediate,2,2026-06-10
 2174,Follower,West Coast Swing,Novice,1,2026-06-10
 2175,Follower,West Coast Swing,Advanced,1,2026-06-10
@@ -6177,6 +6180,7 @@ dancer_id,role,dance,level,total_points,update_date
 3041,Follower,West Coast Swing,Champion,124,2026-06-10
 3041,Follower,West Coast Swing,Champion,127,2026-07-09
 3041,Follower,West Coast Swing,Champion,129,2026-09-14
+3041,Follower,West Coast Swing,Champion,132,2026-10-05
 3041,Follower,West Coast Swing,Intermediate,10,2026-06-10
 3041,Follower,West Coast Swing,Invitational,46,2026-06-10
 3041,Follower,West Coast Swing,Novice,10,2026-06-10
@@ -6485,6 +6489,7 @@ dancer_id,role,dance,level,total_points,update_date
 3171,Leader,West Coast Swing,Master,338,2026-07-27
 3171,Leader,West Coast Swing,Master,340,2026-09-14
 3171,Leader,West Coast Swing,Master,341,2026-09-29
+3171,Leader,West Coast Swing,Master,344,2026-10-05
 3171,Leader,West Coast Swing,Novice,20,2026-06-10
 3172,Leader,West Coast Swing,Novice,1,2026-06-10
 3174,Leader,West Coast Swing,Intermediate,4,2026-06-10
@@ -6958,6 +6963,7 @@ dancer_id,role,dance,level,total_points,update_date
 3394,Follower,West Coast Swing,Master,110,2026-06-10
 3394,Follower,West Coast Swing,Master,111,2026-07-15
 3394,Follower,West Coast Swing,Master,117,2026-09-14
+3394,Follower,West Coast Swing,Master,118,2026-10-05
 3394,Follower,West Coast Swing,Novice,15,2026-06-10
 3395,Leader,West Coast Swing,Novice,17,2026-06-10
 3396,Follower,West Coast Swing,Advanced,1,2026-06-10
@@ -7349,6 +7355,7 @@ dancer_id,role,dance,level,total_points,update_date
 3604,Follower,West Coast Swing,Intermediate,22,2026-06-10
 3604,Follower,West Coast Swing,Master,540,2026-06-10
 3604,Follower,West Coast Swing,Master,543,2026-09-29
+3604,Follower,West Coast Swing,Master,547,2026-10-05
 3604,Follower,West Coast Swing,Novice,25,2026-06-10
 3604,Follower,West Coast Swing,Sophisticated,18,2026-06-10
 3605,Leader,West Coast Swing,Novice,3,2026-06-10
@@ -7703,6 +7710,7 @@ dancer_id,role,dance,level,total_points,update_date
 3771,Leader,West Coast Swing,All-Star,16,2026-06-10
 3771,Leader,West Coast Swing,Intermediate,30,2026-06-10
 3771,Leader,West Coast Swing,Master,29,2026-06-10
+3771,Leader,West Coast Swing,Master,30,2026-10-05
 3771,Leader,West Coast Swing,Novice,22,2026-06-10
 3771,Leader,West Coast Swing,Sophisticated,20,2026-06-10
 3772,Follower,West Coast Swing,Intermediate,1,2026-06-10
@@ -8264,6 +8272,7 @@ dancer_id,role,dance,level,total_points,update_date
 4033,Follower,West Coast Swing,All-Star,143,2026-09-08
 4033,Follower,West Coast Swing,All-Star,144,2026-09-14
 4033,Follower,West Coast Swing,All-Star,150,2026-09-29
+4033,Follower,West Coast Swing,All-Star,158,2026-10-05
 4033,Follower,West Coast Swing,Intermediate,21,2026-06-10
 4033,Follower,West Coast Swing,Invitational,4,2026-06-10
 4033,Follower,West Coast Swing,Novice,10,2026-06-10
@@ -8743,6 +8752,7 @@ dancer_id,role,dance,level,total_points,update_date
 4295,Follower,West Coast Swing,Master,141,2026-06-23
 4295,Follower,West Coast Swing,Master,147,2026-07-27
 4295,Follower,West Coast Swing,Master,157,2026-08-31
+4295,Follower,West Coast Swing,Master,159,2026-10-05
 4295,Follower,West Coast Swing,Sophisticated,19,2026-06-10
 4295,Follower,West Coast Swing,Sophisticated,20,2026-06-23
 4296,Leader,West Coast Swing,Intermediate,11,2026-06-10
@@ -9176,6 +9186,7 @@ dancer_id,role,dance,level,total_points,update_date
 4533,Leader,West Coast Swing,Advanced,49,2026-07-09
 4533,Leader,West Coast Swing,Advanced,50,2026-07-15
 4533,Leader,West Coast Swing,Advanced,53,2026-08-26
+4533,Leader,West Coast Swing,Advanced,54,2026-10-05
 4533,Leader,West Coast Swing,Intermediate,34,2026-06-10
 4533,Leader,West Coast Swing,Novice,25,2026-06-10
 4533,Leader,West Coast Swing,Sophisticated,67,2026-06-10
@@ -9185,6 +9196,7 @@ dancer_id,role,dance,level,total_points,update_date
 4533,Leader,West Coast Swing,Sophisticated,84,2026-08-10
 4533,Leader,West Coast Swing,Sophisticated,87,2026-08-26
 4533,Leader,West Coast Swing,Sophisticated,90,2026-09-23
+4533,Leader,West Coast Swing,Sophisticated,91,2026-10-05
 4534,Follower,West Coast Swing,Novice,24,2026-06-10
 4535,Leader,West Coast Swing,Advanced,1,2026-06-10
 4535,Leader,West Coast Swing,Intermediate,17,2026-06-10
@@ -10879,6 +10891,7 @@ dancer_id,role,dance,level,total_points,update_date
 5421,Leader,West Coast Swing,Advanced,37,2026-06-10
 5421,Leader,West Coast Swing,All-Star,146,2026-06-10
 5421,Leader,West Coast Swing,Champion,234,2026-06-10
+5421,Leader,West Coast Swing,Champion,240,2026-10-05
 5421,Leader,West Coast Swing,Intermediate,23,2026-06-10
 5421,Leader,West Coast Swing,Invitational,45,2026-06-10
 5421,Leader,West Coast Swing,Novice,25,2026-06-10
@@ -11472,6 +11485,7 @@ dancer_id,role,dance,level,total_points,update_date
 5706,Follower,West Coast Swing,Novice,17,2026-06-10
 5707,Leader,West Coast Swing,Advanced,46,2026-06-10
 5707,Leader,West Coast Swing,All-Star,84,2026-06-10
+5707,Leader,West Coast Swing,All-Star,92,2026-10-05
 5707,Leader,West Coast Swing,Champion,5,2026-06-10
 5707,Leader,West Coast Swing,Intermediate,22,2026-06-10
 5707,Leader,West Coast Swing,Invitational,12,2026-06-10
@@ -12311,6 +12325,7 @@ dancer_id,role,dance,level,total_points,update_date
 6228,Follower,West Coast Swing,All-Star,38,2026-06-10
 6228,Follower,West Coast Swing,All-Star,42,2026-07-15
 6228,Follower,West Coast Swing,All-Star,43,2026-09-14
+6228,Follower,West Coast Swing,All-Star,44,2026-10-05
 6228,Follower,West Coast Swing,Intermediate,27,2026-06-10
 6228,Follower,West Coast Swing,Novice,8,2026-06-10
 6228,Follower,West Coast Swing,Sophisticated,99,2026-06-10
@@ -12335,6 +12350,7 @@ dancer_id,role,dance,level,total_points,update_date
 6236,Follower,West Coast Swing,All-Star,121,2026-08-24
 6236,Follower,West Coast Swing,All-Star,131,2026-09-14
 6236,Follower,West Coast Swing,All-Star,137,2026-09-23
+6236,Follower,West Coast Swing,All-Star,143,2026-10-05
 6236,Follower,West Coast Swing,Intermediate,32,2026-06-10
 6236,Follower,West Coast Swing,Newcomer,1,2026-06-10
 6236,Follower,West Coast Swing,Novice,20,2026-06-10
@@ -12466,6 +12482,7 @@ dancer_id,role,dance,level,total_points,update_date
 6291,Follower,West Coast Swing,Master,226,2026-06-23
 6291,Follower,West Coast Swing,Master,236,2026-07-15
 6291,Follower,West Coast Swing,Master,237,2026-09-14
+6291,Follower,West Coast Swing,Master,238,2026-10-05
 6291,Follower,West Coast Swing,Novice,25,2026-06-10
 6291,Follower,West Coast Swing,Sophisticated,6,2026-06-10
 6291,Leader,West Coast Swing,Intermediate,10,2026-06-10
@@ -12770,6 +12787,7 @@ dancer_id,role,dance,level,total_points,update_date
 6448,Leader,West Coast Swing,Advanced,20,2026-06-10
 6448,Leader,West Coast Swing,Intermediate,31,2026-06-10
 6448,Leader,West Coast Swing,Master,118,2026-06-10
+6448,Leader,West Coast Swing,Master,124,2026-10-05
 6448,Leader,West Coast Swing,Novice,26,2026-06-10
 6449,Follower,West Coast Swing,Advanced,31,2026-06-10
 6449,Follower,West Coast Swing,All-Star,17,2026-06-10
@@ -13118,6 +13136,7 @@ dancer_id,role,dance,level,total_points,update_date
 6616,Follower,West Coast Swing,Novice,27,2026-06-10
 6616,Follower,West Coast Swing,Sophisticated,74,2026-06-10
 6616,Leader,West Coast Swing,Master,1,2026-06-10
+6616,Leader,West Coast Swing,Master,3,2026-10-05
 6617,Follower,West Coast Swing,Intermediate,45,2026-06-10
 6617,Follower,West Coast Swing,Novice,21,2026-06-10
 6618,Follower,West Coast Swing,Novice,1,2026-06-10
@@ -13741,6 +13760,7 @@ dancer_id,role,dance,level,total_points,update_date
 6913,Leader,West Coast Swing,Novice,1,2026-06-10
 6914,Follower,West Coast Swing,Novice,3,2026-06-10
 6915,Follower,West Coast Swing,Intermediate,22,2026-06-10
+6915,Follower,West Coast Swing,Intermediate,24,2026-10-05
 6915,Follower,West Coast Swing,Novice,21,2026-06-10
 6915,Follower,West Coast Swing,Sophisticated,2,2026-06-10
 6915,Follower,West Coast Swing,Sophisticated,4,2026-07-15
@@ -14854,6 +14874,7 @@ dancer_id,role,dance,level,total_points,update_date
 7446,Leader,West Coast Swing,Sophisticated,19,2026-06-10
 7446,Leader,West Coast Swing,Sophisticated,29,2026-07-04
 7446,Leader,West Coast Swing,Sophisticated,33,2026-07-09
+7446,Leader,West Coast Swing,Sophisticated,35,2026-10-05
 7447,Leader,West Coast Swing,All-Star,4,2026-06-10
 7447,Leader,West Coast Swing,Intermediate,13,2026-06-10
 7447,Leader,West Coast Swing,Novice,15,2026-06-10
@@ -15969,6 +15990,7 @@ dancer_id,role,dance,level,total_points,update_date
 7899,Leader,West Coast Swing,All-Star,73,2026-06-10
 7899,Leader,West Coast Swing,All-Star,74,2026-06-23
 7899,Leader,West Coast Swing,All-Star,78,2026-07-15
+7899,Leader,West Coast Swing,All-Star,79,2026-10-05
 7899,Leader,West Coast Swing,Intermediate,32,2026-06-10
 7899,Leader,West Coast Swing,Novice,27,2026-06-10
 7899,Leader,West Coast Swing,Sophisticated,14,2026-06-10
@@ -16076,6 +16098,7 @@ dancer_id,role,dance,level,total_points,update_date
 7951,Follower,West Coast Swing,Newcomer,4,2026-06-10
 7952,Follower,West Coast Swing,Newcomer,2,2026-06-10
 7953,Follower,West Coast Swing,Intermediate,7,2026-06-10
+7953,Follower,West Coast Swing,Master,1,2026-10-05
 7953,Follower,West Coast Swing,Newcomer,1,2026-06-10
 7953,Follower,West Coast Swing,Novice,19,2026-06-10
 7954,Follower,West Coast Swing,Newcomer,1,2026-06-10
@@ -16433,6 +16456,7 @@ dancer_id,role,dance,level,total_points,update_date
 8123,Follower,West Coast Swing,All-Star,243,2026-06-17
 8123,Follower,West Coast Swing,Champion,1,2026-07-15
 8123,Follower,West Coast Swing,Champion,2,2026-09-14
+8123,Follower,West Coast Swing,Champion,3,2026-10-05
 8123,Follower,West Coast Swing,Intermediate,40,2026-06-10
 8123,Follower,West Coast Swing,Newcomer,15,2026-06-10
 8123,Follower,West Coast Swing,Novice,25,2026-06-10
@@ -17373,11 +17397,13 @@ dancer_id,role,dance,level,total_points,update_date
 8540,Follower,West Coast Swing,Advanced,15,2026-07-20
 8540,Follower,West Coast Swing,Advanced,16,2026-08-17
 8540,Follower,West Coast Swing,Advanced,22,2026-09-29
+8540,Follower,West Coast Swing,Advanced,23,2026-10-05
 8540,Follower,West Coast Swing,Intermediate,35,2026-06-10
 8540,Follower,West Coast Swing,Novice,23,2026-06-10
 8540,Follower,West Coast Swing,Sophisticated,44,2026-06-10
 8540,Follower,West Coast Swing,Sophisticated,50,2026-07-09
 8540,Follower,West Coast Swing,Sophisticated,51,2026-09-22
+8540,Follower,West Coast Swing,Sophisticated,57,2026-10-05
 8540,Leader,West Coast Swing,Intermediate,28,2026-06-10
 8540,Leader,West Coast Swing,Intermediate,29,2026-07-20
 8540,Leader,West Coast Swing,Intermediate,30,2026-08-17
@@ -17901,6 +17927,7 @@ dancer_id,role,dance,level,total_points,update_date
 8774,Follower,West Coast Swing,All-Star,22,2026-06-10
 8774,Follower,West Coast Swing,All-Star,28,2026-09-14
 8774,Follower,West Coast Swing,All-Star,30,2026-09-23
+8774,Follower,West Coast Swing,All-Star,40,2026-10-05
 8774,Follower,West Coast Swing,Intermediate,30,2026-06-10
 8774,Follower,West Coast Swing,Newcomer,10,2026-06-10
 8774,Follower,West Coast Swing,Novice,28,2026-06-10
@@ -18559,6 +18586,7 @@ dancer_id,role,dance,level,total_points,update_date
 9062,Leader,West Coast Swing,All-Star,125,2026-09-01
 9062,Leader,West Coast Swing,All-Star,127,2026-09-15
 9062,Leader,West Coast Swing,All-Star,130,2026-09-29
+9062,Leader,West Coast Swing,All-Star,133,2026-10-05
 9062,Leader,West Coast Swing,Intermediate,35,2026-06-10
 9062,Leader,West Coast Swing,Novice,21,2026-06-10
 9063,Follower,West Coast Swing,Advanced,12,2026-06-10
@@ -19268,6 +19296,7 @@ dancer_id,role,dance,level,total_points,update_date
 9362,Follower,West Coast Swing,Champion,50,2026-08-24
 9362,Follower,West Coast Swing,Champion,53,2026-09-01
 9362,Follower,West Coast Swing,Champion,57,2026-09-23
+9362,Follower,West Coast Swing,Champion,61,2026-10-05
 9362,Follower,West Coast Swing,Intermediate,35,2026-06-10
 9362,Follower,West Coast Swing,Juniors,15,2026-06-10
 9362,Follower,West Coast Swing,Novice,20,2026-06-10
@@ -20437,6 +20466,7 @@ dancer_id,role,dance,level,total_points,update_date
 9891,Leader,West Coast Swing,Sophisticated,131,2026-06-10
 9891,Leader,West Coast Swing,Sophisticated,141,2026-06-23
 9891,Leader,West Coast Swing,Sophisticated,145,2026-09-14
+9891,Leader,West Coast Swing,Sophisticated,153,2026-10-05
 9892,Follower,West Coast Swing,Intermediate,2,2026-06-10
 9892,Follower,West Coast Swing,Novice,23,2026-06-10
 9893,Follower,West Coast Swing,Novice,23,2026-06-10
@@ -20444,6 +20474,7 @@ dancer_id,role,dance,level,total_points,update_date
 9895,Follower,West Coast Swing,Advanced,52,2026-06-10
 9895,Follower,West Coast Swing,Advanced,53,2026-06-23
 9895,Follower,West Coast Swing,Advanced,55,2026-07-04
+9895,Follower,West Coast Swing,Advanced,56,2026-10-05
 9895,Follower,West Coast Swing,Intermediate,31,2026-06-10
 9895,Follower,West Coast Swing,Novice,27,2026-06-10
 9895,Follower,West Coast Swing,Sophisticated,3,2026-06-10
@@ -20760,6 +20791,7 @@ dancer_id,role,dance,level,total_points,update_date
 10028,Follower,West Coast Swing,Newcomer,2,2026-06-10
 10029,Leader,West Coast Swing,Newcomer,1,2026-06-10
 10030,Follower,West Coast Swing,Intermediate,29,2026-06-10
+10030,Follower,West Coast Swing,Intermediate,39,2026-10-05
 10030,Follower,West Coast Swing,Newcomer,1,2026-06-10
 10030,Follower,West Coast Swing,Novice,21,2026-06-10
 10030,Follower,West Coast Swing,Sophisticated,8,2026-06-10
@@ -20864,6 +20896,7 @@ dancer_id,role,dance,level,total_points,update_date
 10073,Follower,West Coast Swing,Novice,2,2026-06-10
 10074,Follower,West Coast Swing,Advanced,56,2026-06-10
 10074,Follower,West Coast Swing,All-Star,64,2026-06-10
+10074,Follower,West Coast Swing,All-Star,70,2026-10-05
 10074,Follower,West Coast Swing,Intermediate,34,2026-06-10
 10075,Follower,West Coast Swing,Intermediate,32,2026-06-10
 10075,Follower,West Coast Swing,Novice,30,2026-06-10
@@ -21093,6 +21126,7 @@ dancer_id,role,dance,level,total_points,update_date
 10184,Leader,West Coast Swing,Sophisticated,79,2026-06-10
 10184,Leader,West Coast Swing,Sophisticated,81,2026-08-24
 10184,Leader,West Coast Swing,Sophisticated,87,2026-09-22
+10184,Leader,West Coast Swing,Sophisticated,93,2026-10-05
 10185,Follower,West Coast Swing,Newcomer,4,2026-06-10
 10185,Follower,West Coast Swing,Novice,16,2026-06-10
 10186,Leader,West Coast Swing,Newcomer,3,2026-06-10
@@ -21345,6 +21379,7 @@ dancer_id,role,dance,level,total_points,update_date
 10297,Leader,West Coast Swing,Advanced,64,2026-06-10
 10297,Leader,West Coast Swing,All-Star,23,2026-06-10
 10297,Leader,West Coast Swing,All-Star,25,2026-07-27
+10297,Leader,West Coast Swing,All-Star,26,2026-10-05
 10297,Leader,West Coast Swing,Intermediate,35,2026-06-10
 10297,Leader,West Coast Swing,Newcomer,2,2026-06-10
 10297,Leader,West Coast Swing,Novice,27,2026-06-10
@@ -22176,11 +22211,13 @@ dancer_id,role,dance,level,total_points,update_date
 10707,Leader,West Coast Swing,Intermediate,27,2026-08-17
 10707,Leader,West Coast Swing,Intermediate,28,2026-09-22
 10707,Leader,West Coast Swing,Intermediate,29,2026-09-29
+10707,Leader,West Coast Swing,Intermediate,30,2026-10-05
 10707,Leader,West Coast Swing,Newcomer,1,2026-06-10
 10707,Leader,West Coast Swing,Novice,19,2026-06-10
 10707,Leader,West Coast Swing,Sophisticated,4,2026-06-10
 10707,Leader,West Coast Swing,Sophisticated,5,2026-07-09
 10707,Leader,West Coast Swing,Sophisticated,6,2026-08-17
+10707,Leader,West Coast Swing,Sophisticated,7,2026-10-05
 10708,Follower,West Coast Swing,Newcomer,1,2026-06-10
 10708,Follower,West Coast Swing,Novice,2,2026-06-10
 10709,Leader,West Coast Swing,Novice,15,2026-06-10
@@ -22198,6 +22235,7 @@ dancer_id,role,dance,level,total_points,update_date
 10713,Follower,West Coast Swing,All-Star,20,2026-08-17
 10713,Follower,West Coast Swing,All-Star,22,2026-08-24
 10713,Follower,West Coast Swing,All-Star,25,2026-09-22
+10713,Follower,West Coast Swing,All-Star,27,2026-10-05
 10713,Follower,West Coast Swing,Intermediate,37,2026-06-10
 10713,Follower,West Coast Swing,Novice,24,2026-06-10
 10714,Leader,West Coast Swing,Advanced,49,2026-06-10
@@ -22682,6 +22720,7 @@ dancer_id,role,dance,level,total_points,update_date
 10916,Leader,West Coast Swing,Newcomer,10,2026-06-10
 10917,Follower,West Coast Swing,Newcomer,10,2026-06-10
 10917,Follower,West Coast Swing,Novice,12,2026-06-10
+10918,Leader,West Coast Swing,Master,6,2026-10-05
 10918,Leader,West Coast Swing,Newcomer,8,2026-06-10
 10918,Leader,West Coast Swing,Novice,18,2026-06-10
 10919,Follower,West Coast Swing,Master,1,2026-06-10
@@ -22734,6 +22773,7 @@ dancer_id,role,dance,level,total_points,update_date
 10941,Follower,West Coast Swing,Novice,17,2026-06-10
 10941,Follower,West Coast Swing,Sophisticated,4,2026-06-10
 10941,Follower,West Coast Swing,Sophisticated,14,2026-06-17
+10941,Follower,West Coast Swing,Sophisticated,20,2026-10-05
 10942,Follower,West Coast Swing,Advanced,5,2026-06-10
 10942,Follower,West Coast Swing,Intermediate,31,2026-06-10
 10942,Follower,West Coast Swing,Novice,22,2026-06-10
@@ -23353,6 +23393,7 @@ dancer_id,role,dance,level,total_points,update_date
 11215,Follower,West Coast Swing,Novice,1,2026-06-10
 11216,Leader,West Coast Swing,Intermediate,22,2026-06-10
 11216,Leader,West Coast Swing,Intermediate,23,2026-07-16
+11216,Leader,West Coast Swing,Intermediate,24,2026-10-05
 11216,Leader,West Coast Swing,Novice,19,2026-06-10
 11216,Leader,West Coast Swing,Sophisticated,1,2026-06-10
 11217,Follower,West Coast Swing,Novice,1,2026-06-10
@@ -23537,6 +23578,7 @@ dancer_id,role,dance,level,total_points,update_date
 11308,Follower,West Coast Swing,Intermediate,37,2026-06-10
 11308,Follower,West Coast Swing,Master,89,2026-06-10
 11308,Follower,West Coast Swing,Master,99,2026-07-09
+11308,Follower,West Coast Swing,Master,109,2026-10-05
 11308,Follower,West Coast Swing,Novice,20,2026-06-10
 11309,Follower,West Coast Swing,Intermediate,13,2026-06-10
 11309,Follower,West Coast Swing,Novice,20,2026-06-10
@@ -23587,6 +23629,7 @@ dancer_id,role,dance,level,total_points,update_date
 11337,Follower,West Coast Swing,All-Star,42,2026-06-23
 11337,Follower,West Coast Swing,All-Star,48,2026-07-04
 11337,Follower,West Coast Swing,All-Star,50,2026-08-05
+11337,Follower,West Coast Swing,All-Star,53,2026-10-05
 11337,Follower,West Coast Swing,Intermediate,32,2026-06-10
 11337,Follower,West Coast Swing,Novice,18,2026-06-10
 11337,Follower,West Coast Swing,Sophisticated,4,2026-06-10
@@ -23929,6 +23972,7 @@ dancer_id,role,dance,level,total_points,update_date
 11491,Follower,West Coast Swing,All-Star,206,2026-06-10
 11491,Follower,West Coast Swing,All-Star,208,2026-07-27
 11491,Follower,West Coast Swing,All-Star,214,2026-09-08
+11491,Follower,West Coast Swing,All-Star,215,2026-10-05
 11491,Follower,West Coast Swing,Intermediate,30,2026-06-10
 11491,Follower,West Coast Swing,Novice,19,2026-06-10
 11491,Leader,West Coast Swing,Advanced,6,2026-07-27
@@ -24431,6 +24475,7 @@ dancer_id,role,dance,level,total_points,update_date
 11759,Leader,West Coast Swing,All-Star,224,2026-06-10
 11759,Leader,West Coast Swing,All-Star,234,2026-06-17
 11759,Leader,West Coast Swing,Champion,6,2026-07-09
+11759,Leader,West Coast Swing,Champion,10,2026-10-05
 11759,Leader,West Coast Swing,Intermediate,32,2026-06-10
 11759,Leader,West Coast Swing,Juniors,7,2026-06-10
 11759,Leader,West Coast Swing,Newcomer,5,2026-06-10
@@ -24681,6 +24726,7 @@ dancer_id,role,dance,level,total_points,update_date
 11876,Follower,West Coast Swing,Advanced,45,2026-06-17
 11876,Follower,West Coast Swing,Advanced,49,2026-08-17
 11876,Follower,West Coast Swing,Advanced,50,2026-09-22
+11876,Follower,West Coast Swing,Advanced,51,2026-10-05
 11876,Follower,West Coast Swing,Intermediate,31,2026-06-10
 11876,Follower,West Coast Swing,Novice,17,2026-06-10
 11877,Follower,West Coast Swing,Advanced,6,2026-06-10
@@ -24873,8 +24919,10 @@ dancer_id,role,dance,level,total_points,update_date
 11974,Follower,West Coast Swing,Novice,12,2026-06-10
 11975,Leader,West Coast Swing,Intermediate,14,2026-06-10
 11975,Leader,West Coast Swing,Master,8,2026-06-10
+11975,Leader,West Coast Swing,Master,9,2026-10-05
 11975,Leader,West Coast Swing,Newcomer,6,2026-06-10
 11975,Leader,West Coast Swing,Novice,15,2026-06-10
+11976,Follower,West Coast Swing,Intermediate,1,2026-10-05
 11976,Follower,West Coast Swing,Newcomer,6,2026-06-10
 11976,Follower,West Coast Swing,Novice,21,2026-06-10
 11977,Follower,West Coast Swing,Novice,24,2026-06-10
@@ -25009,6 +25057,7 @@ dancer_id,role,dance,level,total_points,update_date
 12038,Follower,West Coast Swing,Advanced,11,2026-06-10
 12038,Follower,West Coast Swing,Advanced,12,2026-08-24
 12038,Follower,West Coast Swing,Advanced,13,2026-08-31
+12038,Follower,West Coast Swing,Advanced,14,2026-10-05
 12038,Follower,West Coast Swing,Intermediate,40,2026-06-10
 12038,Follower,West Coast Swing,Novice,15,2026-06-10
 12038,Follower,West Coast Swing,Sophisticated,22,2026-06-10
@@ -25316,6 +25365,7 @@ dancer_id,role,dance,level,total_points,update_date
 12183,Follower,West Coast Swing,All-Star,165,2026-06-23
 12183,Follower,West Coast Swing,All-Star,173,2026-07-09
 12183,Follower,West Coast Swing,All-Star,174,2026-09-23
+12183,Follower,West Coast Swing,All-Star,175,2026-10-05
 12183,Follower,West Coast Swing,Intermediate,35,2026-06-10
 12183,Follower,West Coast Swing,Novice,19,2026-06-10
 12184,Follower,West Coast Swing,Advanced,4,2026-06-10
@@ -25351,6 +25401,7 @@ dancer_id,role,dance,level,total_points,update_date
 12199,Follower,West Coast Swing,Novice,15,2026-06-10
 12199,Leader,West Coast Swing,Intermediate,1,2026-07-09
 12199,Leader,West Coast Swing,Intermediate,5,2026-07-20
+12199,Leader,West Coast Swing,Intermediate,6,2026-10-05
 12200,Leader,West Coast Swing,Intermediate,5,2026-06-10
 12200,Leader,West Coast Swing,Novice,18,2026-06-10
 12201,Follower,West Coast Swing,Advanced,49,2026-06-10
@@ -25368,6 +25419,7 @@ dancer_id,role,dance,level,total_points,update_date
 12202,Follower,West Coast Swing,All-Star,40,2026-06-10
 12202,Follower,West Coast Swing,All-Star,42,2026-08-17
 12202,Follower,West Coast Swing,All-Star,44,2026-09-22
+12202,Follower,West Coast Swing,All-Star,48,2026-10-05
 12202,Follower,West Coast Swing,Intermediate,38,2026-06-10
 12202,Follower,West Coast Swing,Novice,19,2026-06-10
 12202,Follower,West Coast Swing,Sophisticated,28,2026-06-10
@@ -25411,6 +25463,7 @@ dancer_id,role,dance,level,total_points,update_date
 12218,Leader,West Coast Swing,Newcomer,2,2026-06-10
 12218,Leader,West Coast Swing,Novice,16,2026-06-10
 12218,Leader,West Coast Swing,Sophisticated,2,2026-06-10
+12218,Leader,West Coast Swing,Sophisticated,3,2026-10-05
 12219,Follower,West Coast Swing,Newcomer,4,2026-06-10
 12220,Leader,West Coast Swing,Newcomer,6,2026-06-10
 12221,Follower,West Coast Swing,Newcomer,2,2026-06-10
@@ -25505,6 +25558,7 @@ dancer_id,role,dance,level,total_points,update_date
 12273,Leader,West Coast Swing,All-Star,133,2026-07-04
 12273,Leader,West Coast Swing,All-Star,134,2026-07-09
 12273,Leader,West Coast Swing,All-Star,135,2026-08-10
+12273,Leader,West Coast Swing,All-Star,137,2026-10-05
 12273,Leader,West Coast Swing,Intermediate,30,2026-06-10
 12273,Leader,West Coast Swing,Novice,16,2026-06-10
 12274,Follower,West Coast Swing,Novice,2,2026-06-10
@@ -25549,9 +25603,11 @@ dancer_id,role,dance,level,total_points,update_date
 12297,Leader,West Coast Swing,Intermediate,31,2026-06-10
 12297,Leader,West Coast Swing,Newcomer,10,2026-06-10
 12297,Leader,West Coast Swing,Novice,20,2026-06-10
+12298,Follower,West Coast Swing,Advanced,1,2026-10-05
 12298,Follower,West Coast Swing,Intermediate,35,2026-06-10
 12298,Follower,West Coast Swing,Newcomer,10,2026-06-10
 12298,Follower,West Coast Swing,Novice,15,2026-06-10
+12298,Leader,West Coast Swing,Intermediate,1,2026-10-05
 12298,Leader,West Coast Swing,Novice,34,2026-06-10
 12299,Leader,West Coast Swing,Newcomer,8,2026-06-10
 12299,Leader,West Coast Swing,Novice,10,2026-06-10
@@ -25616,6 +25672,7 @@ dancer_id,role,dance,level,total_points,update_date
 12329,Leader,West Coast Swing,Advanced,34,2026-07-09
 12329,Leader,West Coast Swing,Advanced,38,2026-07-27
 12329,Leader,West Coast Swing,Advanced,42,2026-09-14
+12329,Leader,West Coast Swing,Advanced,48,2026-10-05
 12329,Leader,West Coast Swing,Intermediate,30,2026-06-10
 12329,Leader,West Coast Swing,Newcomer,2,2026-06-10
 12329,Leader,West Coast Swing,Novice,17,2026-06-10
@@ -25624,6 +25681,7 @@ dancer_id,role,dance,level,total_points,update_date
 12329,Leader,West Coast Swing,Sophisticated,118,2026-07-27
 12329,Leader,West Coast Swing,Sophisticated,124,2026-08-17
 12329,Leader,West Coast Swing,Sophisticated,128,2026-09-14
+12329,Leader,West Coast Swing,Sophisticated,138,2026-10-05
 12330,Follower,West Coast Swing,Newcomer,2,2026-06-10
 12331,Leader,West Coast Swing,Newcomer,1,2026-06-10
 12332,Follower,West Coast Swing,Newcomer,1,2026-06-10
@@ -25760,6 +25818,7 @@ dancer_id,role,dance,level,total_points,update_date
 12389,Leader,West Coast Swing,Sophisticated,95,2026-08-17
 12389,Leader,West Coast Swing,Sophisticated,99,2026-08-24
 12389,Leader,West Coast Swing,Sophisticated,109,2026-09-22
+12389,Leader,West Coast Swing,Sophisticated,117,2026-10-05
 12390,Follower,West Coast Swing,Newcomer,8,2026-06-10
 12390,Follower,West Coast Swing,Novice,1,2026-06-10
 12391,Leader,West Coast Swing,Advanced,3,2026-06-10
@@ -25856,6 +25915,7 @@ dancer_id,role,dance,level,total_points,update_date
 12424,Follower,West Coast Swing,All-Star,209,2026-07-04
 12424,Follower,West Coast Swing,All-Star,219,2026-08-10
 12424,Follower,West Coast Swing,All-Star,220,2026-09-15
+12424,Follower,West Coast Swing,All-Star,221,2026-10-05
 12424,Follower,West Coast Swing,Champion,3,2026-08-24
 12424,Follower,West Coast Swing,Intermediate,28,2026-06-10
 12424,Follower,West Coast Swing,Newcomer,13,2026-06-10
@@ -26471,6 +26531,7 @@ dancer_id,role,dance,level,total_points,update_date
 12713,Leader,West Coast Swing,All-Star,33,2026-06-10
 12713,Leader,West Coast Swing,Champion,73,2026-06-10
 12713,Leader,West Coast Swing,Champion,75,2026-09-01
+12713,Leader,West Coast Swing,Champion,78,2026-10-05
 12713,Leader,West Coast Swing,Intermediate,31,2026-06-10
 12713,Leader,West Coast Swing,Invitational,4,2026-06-10
 12714,Leader,West Coast Swing,Advanced,12,2026-06-10
@@ -26735,6 +26796,7 @@ dancer_id,role,dance,level,total_points,update_date
 12842,Leader,West Coast Swing,All-Star,153,2026-06-10
 12842,Leader,West Coast Swing,All-Star,154,2026-07-04
 12842,Leader,West Coast Swing,All-Star,156,2026-08-24
+12842,Leader,West Coast Swing,All-Star,166,2026-10-05
 12842,Leader,West Coast Swing,Intermediate,31,2026-06-10
 12842,Leader,West Coast Swing,Novice,15,2026-06-10
 12843,Follower,West Coast Swing,Novice,10,2026-06-10
@@ -26799,12 +26861,14 @@ dancer_id,role,dance,level,total_points,update_date
 12869,Leader,West Coast Swing,Advanced,1,2026-06-10
 12869,Leader,West Coast Swing,Advanced,3,2026-07-16
 12869,Leader,West Coast Swing,Advanced,7,2026-08-04
+12869,Leader,West Coast Swing,Advanced,15,2026-10-05
 12869,Leader,West Coast Swing,Intermediate,35,2026-06-10
 12869,Leader,West Coast Swing,Novice,22,2026-06-10
 12869,Leader,West Coast Swing,Sophisticated,33,2026-06-10
 12869,Leader,West Coast Swing,Sophisticated,41,2026-07-09
 12869,Leader,West Coast Swing,Sophisticated,42,2026-07-16
 12869,Leader,West Coast Swing,Sophisticated,43,2026-08-04
+12869,Leader,West Coast Swing,Sophisticated,45,2026-10-05
 12871,Leader,West Coast Swing,Intermediate,30,2026-06-10
 12871,Leader,West Coast Swing,Novice,17,2026-06-10
 12872,Follower,West Coast Swing,Novice,11,2026-06-10
@@ -26813,6 +26877,7 @@ dancer_id,role,dance,level,total_points,update_date
 12875,Leader,West Coast Swing,Advanced,21,2026-07-09
 12875,Leader,West Coast Swing,Advanced,23,2026-07-20
 12875,Leader,West Coast Swing,Advanced,24,2026-09-22
+12875,Leader,West Coast Swing,Advanced,26,2026-10-05
 12875,Leader,West Coast Swing,Intermediate,29,2026-06-10
 12875,Leader,West Coast Swing,Novice,15,2026-06-10
 12875,Leader,West Coast Swing,Sophisticated,47,2026-06-10
@@ -26905,6 +26970,7 @@ dancer_id,role,dance,level,total_points,update_date
 12916,Follower,West Coast Swing,Sophisticated,25,2026-06-17
 12917,Follower,West Coast Swing,Advanced,67,2026-06-10
 12917,Follower,West Coast Swing,All-Star,0,2026-07-04
+12917,Follower,West Coast Swing,All-Star,2,2026-10-05
 12917,Follower,West Coast Swing,Intermediate,33,2026-06-10
 12917,Follower,West Coast Swing,Novice,24,2026-06-10
 12918,Leader,West Coast Swing,Advanced,16,2026-06-10
@@ -27139,6 +27205,7 @@ dancer_id,role,dance,level,total_points,update_date
 13034,Follower,West Coast Swing,All-Star,12,2026-07-27
 13034,Follower,West Coast Swing,All-Star,16,2026-09-08
 13034,Follower,West Coast Swing,All-Star,20,2026-09-14
+13034,Follower,West Coast Swing,All-Star,21,2026-10-05
 13034,Follower,West Coast Swing,Intermediate,39,2026-06-10
 13034,Follower,West Coast Swing,Novice,15,2026-06-10
 13035,Leader,West Coast Swing,Intermediate,4,2026-06-10
@@ -27519,6 +27586,7 @@ dancer_id,role,dance,level,total_points,update_date
 13253,Follower,West Coast Swing,Novice,13,2026-06-10
 13254,Follower,West Coast Swing,Advanced,9,2026-06-10
 13254,Follower,West Coast Swing,Advanced,11,2026-08-17
+13254,Follower,West Coast Swing,Advanced,12,2026-10-05
 13254,Follower,West Coast Swing,Intermediate,33,2026-06-10
 13254,Follower,West Coast Swing,Newcomer,6,2026-06-10
 13254,Follower,West Coast Swing,Novice,18,2026-06-10
@@ -28038,6 +28106,7 @@ dancer_id,role,dance,level,total_points,update_date
 13528,Follower,West Coast Swing,All-Star,65,2026-06-10
 13528,Follower,West Coast Swing,All-Star,66,2026-07-04
 13528,Follower,West Coast Swing,All-Star,67,2026-08-10
+13528,Follower,West Coast Swing,All-Star,68,2026-10-05
 13528,Follower,West Coast Swing,Intermediate,37,2026-06-10
 13528,Follower,West Coast Swing,Newcomer,6,2026-06-10
 13528,Follower,West Coast Swing,Novice,17,2026-06-10
@@ -28445,6 +28514,7 @@ dancer_id,role,dance,level,total_points,update_date
 13706,Leader,West Coast Swing,Advanced,32,2026-08-17
 13706,Leader,West Coast Swing,Advanced,40,2026-09-14
 13706,Leader,West Coast Swing,Advanced,41,2026-09-22
+13706,Leader,West Coast Swing,Advanced,51,2026-10-05
 13706,Leader,West Coast Swing,Intermediate,31,2026-06-10
 13706,Leader,West Coast Swing,Newcomer,4,2026-06-10
 13706,Leader,West Coast Swing,Novice,16,2026-06-10
@@ -28452,6 +28522,7 @@ dancer_id,role,dance,level,total_points,update_date
 13708,Leader,West Coast Swing,Master,18,2026-06-10
 13708,Leader,West Coast Swing,Master,19,2026-07-20
 13708,Leader,West Coast Swing,Master,22,2026-08-17
+13708,Leader,West Coast Swing,Master,23,2026-10-05
 13708,Leader,West Coast Swing,Newcomer,2,2026-06-10
 13708,Leader,West Coast Swing,Novice,16,2026-06-10
 13709,Follower,West Coast Swing,Newcomer,2,2026-06-10
@@ -28491,6 +28562,7 @@ dancer_id,role,dance,level,total_points,update_date
 13724,Leader,West Coast Swing,Advanced,37,2026-08-17
 13724,Leader,West Coast Swing,Advanced,43,2026-08-24
 13724,Leader,West Coast Swing,Advanced,44,2026-09-22
+13724,Leader,West Coast Swing,Advanced,45,2026-10-05
 13724,Leader,West Coast Swing,Intermediate,33,2026-06-10
 13724,Leader,West Coast Swing,Novice,18,2026-06-10
 13724,Leader,West Coast Swing,Sophisticated,90,2026-06-10
@@ -28500,6 +28572,7 @@ dancer_id,role,dance,level,total_points,update_date
 13724,Leader,West Coast Swing,Sophisticated,109,2026-08-24
 13724,Leader,West Coast Swing,Sophisticated,115,2026-09-14
 13724,Leader,West Coast Swing,Sophisticated,119,2026-09-22
+13724,Leader,West Coast Swing,Sophisticated,120,2026-10-05
 13725,Follower,West Coast Swing,Master,13,2026-06-10
 13725,Follower,West Coast Swing,Novice,16,2026-06-10
 13726,Follower,West Coast Swing,Novice,1,2026-06-10
@@ -28605,6 +28678,7 @@ dancer_id,role,dance,level,total_points,update_date
 13798,Follower,West Coast Swing,Advanced,37,2026-06-10
 13798,Follower,West Coast Swing,Advanced,40,2026-07-15
 13798,Follower,West Coast Swing,Advanced,41,2026-09-14
+13798,Follower,West Coast Swing,Advanced,42,2026-10-05
 13798,Follower,West Coast Swing,Intermediate,40,2026-06-10
 13798,Follower,West Coast Swing,Novice,28,2026-06-10
 13798,Follower,West Coast Swing,Sophisticated,10,2026-06-10
@@ -28612,6 +28686,7 @@ dancer_id,role,dance,level,total_points,update_date
 13798,Follower,West Coast Swing,Sophisticated,18,2026-09-14
 13798,Leader,West Coast Swing,Novice,1,2026-06-10
 13798,Leader,West Coast Swing,Novice,2,2026-07-15
+13798,Leader,West Coast Swing,Novice,18,2026-10-05
 13799,Follower,West Coast Swing,Novice,1,2026-06-10
 13800,Follower,West Coast Swing,Intermediate,35,2026-06-10
 13800,Follower,West Coast Swing,Novice,22,2026-06-10
@@ -29171,6 +29246,7 @@ dancer_id,role,dance,level,total_points,update_date
 14057,Leader,West Coast Swing,Advanced,50,2026-06-10
 14057,Leader,West Coast Swing,All-Star,59,2026-06-10
 14057,Leader,West Coast Swing,All-Star,67,2026-06-17
+14057,Leader,West Coast Swing,All-Star,71,2026-10-05
 14057,Leader,West Coast Swing,Intermediate,38,2026-06-10
 14057,Leader,West Coast Swing,Newcomer,1,2026-06-10
 14057,Leader,West Coast Swing,Novice,15,2026-06-10
@@ -29250,6 +29326,7 @@ dancer_id,role,dance,level,total_points,update_date
 14091,Follower,West Coast Swing,All-Star,290,2026-06-10
 14091,Follower,West Coast Swing,Champion,15,2026-06-10
 14091,Follower,West Coast Swing,Champion,21,2026-09-23
+14091,Follower,West Coast Swing,Champion,27,2026-10-05
 14091,Follower,West Coast Swing,Intermediate,34,2026-06-10
 14091,Follower,West Coast Swing,Novice,18,2026-06-10
 14092,Leader,West Coast Swing,Advanced,49,2026-06-10
@@ -29680,6 +29757,7 @@ dancer_id,role,dance,level,total_points,update_date
 14295,Follower,West Coast Swing,Advanced,12,2026-06-10
 14295,Follower,West Coast Swing,Advanced,16,2026-07-27
 14295,Follower,West Coast Swing,Advanced,17,2026-09-08
+14295,Follower,West Coast Swing,Advanced,18,2026-10-05
 14295,Follower,West Coast Swing,Intermediate,33,2026-06-10
 14295,Follower,West Coast Swing,Newcomer,4,2026-06-10
 14295,Follower,West Coast Swing,Novice,19,2026-06-10
@@ -29718,6 +29796,7 @@ dancer_id,role,dance,level,total_points,update_date
 14305,Follower,West Coast Swing,Sophisticated,100,2026-09-08
 14305,Follower,West Coast Swing,Sophisticated,108,2026-09-14
 14305,Follower,West Coast Swing,Sophisticated,118,2026-09-29
+14305,Follower,West Coast Swing,Sophisticated,119,2026-10-05
 14305,Leader,West Coast Swing,Advanced,2,2026-06-10
 14305,Leader,West Coast Swing,Intermediate,43,2026-06-10
 14305,Leader,West Coast Swing,Novice,3,2026-06-10
@@ -30186,6 +30265,7 @@ dancer_id,role,dance,level,total_points,update_date
 14563,Leader,West Coast Swing,Advanced,50,2026-06-10
 14563,Leader,West Coast Swing,All-Star,208,2026-06-10
 14563,Leader,West Coast Swing,All-Star,210,2026-08-31
+14563,Leader,West Coast Swing,All-Star,216,2026-10-05
 14563,Leader,West Coast Swing,Champion,5,2026-06-10
 14563,Leader,West Coast Swing,Champion,8,2026-09-29
 14563,Leader,West Coast Swing,Intermediate,34,2026-06-10
@@ -30454,6 +30534,7 @@ dancer_id,role,dance,level,total_points,update_date
 14690,Leader,West Coast Swing,Novice,25,2026-06-10
 14691,Follower,West Coast Swing,Intermediate,22,2026-06-10
 14691,Follower,West Coast Swing,Intermediate,23,2026-08-17
+14691,Follower,West Coast Swing,Intermediate,31,2026-10-05
 14691,Follower,West Coast Swing,Newcomer,8,2026-06-10
 14691,Follower,West Coast Swing,Novice,24,2026-06-10
 14691,Leader,West Coast Swing,Newcomer,6,2026-06-10
@@ -30466,6 +30547,7 @@ dancer_id,role,dance,level,total_points,update_date
 14694,Leader,West Coast Swing,Intermediate,30,2026-06-10
 14694,Leader,West Coast Swing,Newcomer,2,2026-06-10
 14694,Leader,West Coast Swing,Novice,23,2026-06-10
+14694,Leader,West Coast Swing,Sophisticated,1,2026-10-05
 14695,Follower,West Coast Swing,Newcomer,4,2026-06-10
 14696,Leader,West Coast Swing,Newcomer,1,2026-06-10
 14696,Leader,West Coast Swing,Novice,20,2026-06-10
@@ -30538,6 +30620,7 @@ dancer_id,role,dance,level,total_points,update_date
 14735,Follower,West Coast Swing,Master,2,2026-06-10
 14735,Follower,West Coast Swing,Master,3,2026-07-20
 14735,Follower,West Coast Swing,Master,9,2026-08-17
+14735,Follower,West Coast Swing,Master,10,2026-10-05
 14735,Follower,West Coast Swing,Newcomer,5,2026-06-10
 14735,Leader,West Coast Swing,Newcomer,6,2026-06-10
 14736,Leader,West Coast Swing,Newcomer,4,2026-06-10
@@ -30625,12 +30708,14 @@ dancer_id,role,dance,level,total_points,update_date
 14770,Follower,West Coast Swing,Champion,32,2026-06-10
 14770,Follower,West Coast Swing,Champion,38,2026-09-14
 14770,Follower,West Coast Swing,Champion,39,2026-09-29
+14770,Follower,West Coast Swing,Champion,41,2026-10-05
 14770,Follower,West Coast Swing,Intermediate,32,2026-06-10
 14770,Follower,West Coast Swing,Juniors,31,2026-06-10
 14770,Follower,West Coast Swing,Novice,19,2026-06-10
 14770,Leader,West Coast Swing,Advanced,61,2026-06-10
 14770,Leader,West Coast Swing,All-Star,2,2026-06-10
 14770,Leader,West Coast Swing,All-Star,4,2026-09-29
+14770,Leader,West Coast Swing,All-Star,5,2026-10-05
 14771,Follower,West Coast Swing,Novice,2,2026-06-10
 14772,Leader,West Coast Swing,Novice,6,2026-06-10
 14773,Follower,West Coast Swing,Novice,3,2026-06-10
@@ -30742,6 +30827,7 @@ dancer_id,role,dance,level,total_points,update_date
 14837,Leader,West Coast Swing,Advanced,45,2026-06-10
 14837,Leader,West Coast Swing,All-Star,29,2026-06-10
 14837,Leader,West Coast Swing,All-Star,32,2026-09-22
+14837,Leader,West Coast Swing,All-Star,33,2026-10-05
 14837,Leader,West Coast Swing,Intermediate,30,2026-06-10
 14837,Leader,West Coast Swing,Novice,15,2026-06-10
 14838,Leader,West Coast Swing,Novice,9,2026-06-10
@@ -30751,6 +30837,7 @@ dancer_id,role,dance,level,total_points,update_date
 14840,Leader,West Coast Swing,Novice,19,2026-06-10
 14841,Follower,West Coast Swing,Advanced,7,2026-06-10
 14841,Follower,West Coast Swing,Advanced,8,2026-07-15
+14841,Follower,West Coast Swing,Advanced,16,2026-10-05
 14841,Follower,West Coast Swing,Intermediate,33,2026-06-10
 14841,Follower,West Coast Swing,Novice,23,2026-06-10
 14842,Follower,West Coast Swing,Intermediate,3,2026-06-10
@@ -30798,6 +30885,7 @@ dancer_id,role,dance,level,total_points,update_date
 14868,Leader,West Coast Swing,Novice,21,2026-06-10
 14869,Follower,West Coast Swing,Novice,1,2026-06-10
 14870,Follower,West Coast Swing,Advanced,15,2026-06-10
+14870,Follower,West Coast Swing,Advanced,21,2026-10-05
 14870,Follower,West Coast Swing,Intermediate,30,2026-06-10
 14870,Follower,West Coast Swing,Newcomer,10,2026-06-10
 14870,Follower,West Coast Swing,Novice,26,2026-06-10
@@ -30915,6 +31003,7 @@ dancer_id,role,dance,level,total_points,update_date
 14922,Leader,West Coast Swing,Novice,16,2026-06-10
 14923,Leader,West Coast Swing,Advanced,61,2026-06-10
 14923,Leader,West Coast Swing,All-Star,3,2026-06-10
+14923,Leader,West Coast Swing,All-Star,4,2026-10-05
 14923,Leader,West Coast Swing,Intermediate,32,2026-06-10
 14923,Leader,West Coast Swing,Novice,17,2026-06-10
 14923,Leader,West Coast Swing,Sophisticated,67,2026-06-10
@@ -30922,6 +31011,7 @@ dancer_id,role,dance,level,total_points,update_date
 14923,Leader,West Coast Swing,Sophisticated,77,2026-08-04
 14923,Leader,West Coast Swing,Sophisticated,85,2026-08-17
 14923,Leader,West Coast Swing,Sophisticated,86,2026-09-01
+14923,Leader,West Coast Swing,Sophisticated,90,2026-10-05
 14924,Follower,West Coast Swing,Intermediate,7,2026-06-10
 14924,Follower,West Coast Swing,Novice,20,2026-06-10
 14924,Follower,West Coast Swing,Sophisticated,2,2026-06-10
@@ -31219,6 +31309,7 @@ dancer_id,role,dance,level,total_points,update_date
 15087,Follower,West Coast Swing,Intermediate,31,2026-06-10
 15087,Follower,West Coast Swing,Novice,20,2026-06-10
 15088,Follower,West Coast Swing,Master,10,2026-08-17
+15088,Follower,West Coast Swing,Master,12,2026-10-05
 15088,Follower,West Coast Swing,Novice,19,2026-06-10
 15089,Follower,West Coast Swing,Newcomer,10,2026-06-10
 15091,Leader,West Coast Swing,Newcomer,9,2026-06-10
@@ -31503,6 +31594,7 @@ dancer_id,role,dance,level,total_points,update_date
 15247,Follower,West Coast Swing,Newcomer,1,2026-06-10
 15250,Follower,West Coast Swing,Advanced,19,2026-06-10
 15250,Follower,West Coast Swing,Advanced,20,2026-08-17
+15250,Follower,West Coast Swing,Advanced,21,2026-10-05
 15250,Follower,West Coast Swing,Intermediate,30,2026-06-10
 15250,Follower,West Coast Swing,Novice,24,2026-06-10
 15252,Follower,West Coast Swing,Novice,16,2026-06-10
@@ -31574,6 +31666,7 @@ dancer_id,role,dance,level,total_points,update_date
 15280,Follower,West Coast Swing,Sophisticated,221,2026-06-23
 15280,Follower,West Coast Swing,Sophisticated,222,2026-08-04
 15280,Follower,West Coast Swing,Sophisticated,223,2026-08-31
+15280,Follower,West Coast Swing,Sophisticated,233,2026-10-05
 15280,Leader,West Coast Swing,Intermediate,1,2026-08-31
 15280,Leader,West Coast Swing,Novice,2,2026-06-10
 15281,Leader,West Coast Swing,Newcomer,3,2026-06-10
@@ -31801,6 +31894,7 @@ dancer_id,role,dance,level,total_points,update_date
 15392,Follower,West Coast Swing,Master,7,2026-07-15
 15392,Follower,West Coast Swing,Master,8,2026-07-27
 15392,Follower,West Coast Swing,Master,12,2026-08-10
+15392,Follower,West Coast Swing,Master,18,2026-10-05
 15392,Follower,West Coast Swing,Newcomer,2,2026-06-10
 15392,Follower,West Coast Swing,Novice,18,2026-06-10
 15392,Follower,West Coast Swing,Sophisticated,1,2026-06-10
@@ -32000,6 +32094,7 @@ dancer_id,role,dance,level,total_points,update_date
 15488,Follower,West Coast Swing,Novice,18,2026-06-10
 15489,Leader,West Coast Swing,Intermediate,1,2026-06-10
 15489,Leader,West Coast Swing,Intermediate,2,2026-09-14
+15489,Leader,West Coast Swing,Intermediate,10,2026-10-05
 15489,Leader,West Coast Swing,Novice,17,2026-06-10
 15490,Leader,West Coast Swing,Novice,8,2026-06-10
 15491,Leader,West Coast Swing,Novice,17,2026-06-10
@@ -32051,6 +32146,7 @@ dancer_id,role,dance,level,total_points,update_date
 15512,Follower,West Coast Swing,Sophisticated,100,2026-06-10
 15512,Follower,West Coast Swing,Sophisticated,101,2026-07-09
 15512,Follower,West Coast Swing,Sophisticated,103,2026-09-01
+15512,Follower,West Coast Swing,Sophisticated,113,2026-10-05
 15512,Leader,West Coast Swing,Novice,23,2026-06-10
 15513,Leader,West Coast Swing,Intermediate,3,2026-06-10
 15513,Leader,West Coast Swing,Newcomer,4,2026-06-10
@@ -32079,6 +32175,7 @@ dancer_id,role,dance,level,total_points,update_date
 15524,Follower,West Coast Swing,Novice,20,2026-06-10
 15525,Leader,West Coast Swing,Intermediate,9,2026-06-10
 15525,Leader,West Coast Swing,Intermediate,10,2026-08-24
+15525,Leader,West Coast Swing,Intermediate,11,2026-10-05
 15525,Leader,West Coast Swing,Newcomer,1,2026-06-10
 15525,Leader,West Coast Swing,Novice,27,2026-06-10
 15525,Leader,West Coast Swing,Sophisticated,1,2026-06-10
@@ -32236,11 +32333,13 @@ dancer_id,role,dance,level,total_points,update_date
 15593,Follower,West Coast Swing,Sophisticated,75,2026-07-09
 15593,Follower,West Coast Swing,Sophisticated,76,2026-09-09
 15594,Follower,West Coast Swing,Novice,12,2026-06-10
+15596,Leader,West Coast Swing,Advanced,3,2026-10-05
 15596,Leader,West Coast Swing,Intermediate,41,2026-06-10
 15596,Leader,West Coast Swing,Juniors,5,2026-06-10
 15596,Leader,West Coast Swing,Novice,23,2026-06-10
 15596,Leader,West Coast Swing,Sophisticated,6,2026-06-10
 15596,Leader,West Coast Swing,Sophisticated,7,2026-09-22
+15596,Leader,West Coast Swing,Sophisticated,8,2026-10-05
 15597,Follower,West Coast Swing,Novice,1,2026-06-10
 15598,Leader,West Coast Swing,Advanced,60,2026-06-10
 15598,Leader,West Coast Swing,All-Star,2,2026-06-10
@@ -32450,6 +32549,7 @@ dancer_id,role,dance,level,total_points,update_date
 15700,Leader,West Coast Swing,Newcomer,3,2026-06-10
 15700,Leader,West Coast Swing,Novice,21,2026-06-10
 15701,Follower,West Coast Swing,Newcomer,6,2026-06-10
+15702,Leader,West Coast Swing,Master,1,2026-10-05
 15702,Leader,West Coast Swing,Newcomer,2,2026-06-10
 15702,Leader,West Coast Swing,Novice,1,2026-06-10
 15703,Follower,West Coast Swing,Intermediate,1,2026-06-10
@@ -32473,6 +32573,7 @@ dancer_id,role,dance,level,total_points,update_date
 15709,Follower,West Coast Swing,Intermediate,4,2026-07-16
 15709,Follower,West Coast Swing,Intermediate,8,2026-07-20
 15709,Follower,West Coast Swing,Intermediate,9,2026-09-29
+15709,Follower,West Coast Swing,Intermediate,10,2026-10-05
 15709,Follower,West Coast Swing,Novice,17,2026-06-10
 15710,Leader,West Coast Swing,Novice,1,2026-06-10
 15712,Follower,West Coast Swing,Novice,17,2026-06-10
@@ -32574,6 +32675,7 @@ dancer_id,role,dance,level,total_points,update_date
 15763,Follower,West Coast Swing,Intermediate,37,2026-06-10
 15763,Follower,West Coast Swing,Novice,26,2026-06-10
 15763,Follower,West Coast Swing,Sophisticated,11,2026-06-10
+15763,Follower,West Coast Swing,Sophisticated,13,2026-10-05
 15764,Leader,West Coast Swing,Intermediate,24,2026-06-10
 15764,Leader,West Coast Swing,Intermediate,25,2026-08-24
 15764,Leader,West Coast Swing,Newcomer,5,2026-06-10
@@ -32914,6 +33016,7 @@ dancer_id,role,dance,level,total_points,update_date
 15923,Follower,West Coast Swing,Sophisticated,37,2026-06-10
 15923,Follower,West Coast Swing,Sophisticated,39,2026-08-24
 15923,Follower,West Coast Swing,Sophisticated,47,2026-09-29
+15923,Follower,West Coast Swing,Sophisticated,48,2026-10-05
 15924,Leader,West Coast Swing,Newcomer,10,2026-06-10
 15925,Follower,West Coast Swing,Newcomer,10,2026-06-10
 15926,Leader,West Coast Swing,Newcomer,8,2026-06-10
@@ -32948,6 +33051,7 @@ dancer_id,role,dance,level,total_points,update_date
 15941,Follower,West Coast Swing,Novice,1,2026-06-10
 15942,Leader,West Coast Swing,Newcomer,3,2026-06-10
 15942,Leader,West Coast Swing,Novice,2,2026-06-10
+15942,Leader,West Coast Swing,Novice,3,2026-10-05
 15943,Follower,West Coast Swing,Newcomer,1,2026-06-10
 15944,Leader,West Coast Swing,Intermediate,1,2026-06-10
 15944,Leader,West Coast Swing,Novice,20,2026-06-10
@@ -32974,6 +33078,7 @@ dancer_id,role,dance,level,total_points,update_date
 15962,Follower,West Coast Swing,Master,114,2026-06-10
 15962,Follower,West Coast Swing,Master,120,2026-06-23
 15962,Follower,West Coast Swing,Master,121,2026-08-31
+15962,Follower,West Coast Swing,Master,122,2026-10-05
 15962,Follower,West Coast Swing,Novice,17,2026-06-10
 15962,Follower,West Coast Swing,Sophisticated,5,2026-06-10
 15963,Leader,West Coast Swing,Intermediate,4,2026-06-10
@@ -33182,6 +33287,7 @@ dancer_id,role,dance,level,total_points,update_date
 16060,Leader,West Coast Swing,Novice,2,2026-06-10
 16061,Follower,West Coast Swing,Intermediate,38,2026-06-10
 16061,Follower,West Coast Swing,Master,187,2026-06-10
+16061,Follower,West Coast Swing,Master,195,2026-10-05
 16061,Follower,West Coast Swing,Newcomer,6,2026-06-10
 16061,Follower,West Coast Swing,Novice,21,2026-06-10
 16061,Follower,West Coast Swing,Sophisticated,4,2026-06-10
@@ -33345,7 +33451,9 @@ dancer_id,role,dance,level,total_points,update_date
 16127,Follower,West Coast Swing,Sophisticated,92,2026-08-17
 16127,Leader,West Coast Swing,Intermediate,28,2026-06-10
 16127,Leader,West Coast Swing,Intermediate,30,2026-08-17
+16127,Leader,West Coast Swing,Intermediate,31,2026-10-05
 16127,Leader,West Coast Swing,Novice,28,2026-06-10
+16127,Leader,West Coast Swing,Sophisticated,1,2026-10-05
 16128,Follower,West Coast Swing,Novice,1,2026-06-10
 16129,Leader,West Coast Swing,Intermediate,1,2026-06-10
 16129,Leader,West Coast Swing,Novice,16,2026-06-10
@@ -33490,6 +33598,7 @@ dancer_id,role,dance,level,total_points,update_date
 16202,Leader,West Coast Swing,Intermediate,29,2026-06-23
 16202,Leader,West Coast Swing,Master,216,2026-06-10
 16202,Leader,West Coast Swing,Master,222,2026-09-08
+16202,Leader,West Coast Swing,Master,226,2026-10-05
 16202,Leader,West Coast Swing,Novice,19,2026-06-10
 16202,Leader,West Coast Swing,Sophisticated,17,2026-06-10
 16202,Leader,West Coast Swing,Sophisticated,18,2026-06-23
@@ -34062,6 +34171,7 @@ dancer_id,role,dance,level,total_points,update_date
 16485,Leader,West Coast Swing,All-Star,93,2026-07-09
 16485,Leader,West Coast Swing,All-Star,103,2026-08-10
 16485,Leader,West Coast Swing,All-Star,109,2026-08-31
+16485,Leader,West Coast Swing,All-Star,115,2026-10-05
 16485,Leader,West Coast Swing,Intermediate,34,2026-06-10
 16485,Leader,West Coast Swing,Newcomer,3,2026-06-10
 16485,Leader,West Coast Swing,Novice,19,2026-06-10
@@ -34228,9 +34338,11 @@ dancer_id,role,dance,level,total_points,update_date
 16583,Follower,West Coast Swing,Newcomer,1,2026-06-10
 16584,Follower,West Coast Swing,Advanced,47,2026-06-10
 16584,Follower,West Coast Swing,All-Star,8,2026-06-10
+16584,Follower,West Coast Swing,All-Star,11,2026-10-05
 16584,Follower,West Coast Swing,Intermediate,35,2026-06-10
 16584,Follower,West Coast Swing,Novice,15,2026-06-10
 16584,Follower,West Coast Swing,Sophisticated,10,2026-07-09
+16584,Follower,West Coast Swing,Sophisticated,12,2026-10-05
 16585,Follower,West Coast Swing,Intermediate,8,2026-06-10
 16585,Follower,West Coast Swing,Novice,27,2026-06-10
 16586,Leader,West Coast Swing,Intermediate,30,2026-06-10
@@ -34576,6 +34688,7 @@ dancer_id,role,dance,level,total_points,update_date
 16771,Leader,West Coast Swing,Sophisticated,7,2026-06-10
 16771,Leader,West Coast Swing,Sophisticated,8,2026-07-16
 16772,Follower,West Coast Swing,Intermediate,1,2026-06-10
+16772,Follower,West Coast Swing,Intermediate,2,2026-10-05
 16772,Follower,West Coast Swing,Newcomer,2,2026-06-10
 16772,Follower,West Coast Swing,Novice,17,2026-06-10
 16773,Leader,West Coast Swing,Newcomer,1,2026-06-10
@@ -34583,11 +34696,13 @@ dancer_id,role,dance,level,total_points,update_date
 16775,Follower,West Coast Swing,Advanced,12,2026-06-10
 16775,Follower,West Coast Swing,Advanced,20,2026-08-17
 16775,Follower,West Coast Swing,Advanced,35,2026-09-14
+16775,Follower,West Coast Swing,Advanced,43,2026-10-05
 16775,Follower,West Coast Swing,Intermediate,30,2026-06-10
 16775,Follower,West Coast Swing,Novice,19,2026-06-10
 16775,Follower,West Coast Swing,Sophisticated,28,2026-06-10
 16775,Follower,West Coast Swing,Sophisticated,29,2026-08-17
 16775,Follower,West Coast Swing,Sophisticated,30,2026-09-14
+16775,Follower,West Coast Swing,Sophisticated,31,2026-10-05
 16775,Leader,West Coast Swing,Intermediate,1,2026-06-10
 16775,Leader,West Coast Swing,Novice,1,2026-06-10
 16776,Follower,West Coast Swing,Advanced,6,2026-08-04
@@ -35398,8 +35513,10 @@ dancer_id,role,dance,level,total_points,update_date
 17175,Leader,West Coast Swing,Newcomer,1,2026-06-10
 17176,Follower,West Coast Swing,Newcomer,1,2026-06-10
 17178,Follower,West Coast Swing,Advanced,8,2026-06-10
+17178,Follower,West Coast Swing,Advanced,12,2026-10-05
 17178,Follower,West Coast Swing,Intermediate,36,2026-06-10
 17178,Follower,West Coast Swing,Novice,26,2026-06-10
+17178,Follower,West Coast Swing,Sophisticated,1,2026-10-05
 17179,Leader,West Coast Swing,Newcomer,3,2026-06-10
 17179,Leader,West Coast Swing,Novice,16,2026-06-10
 17180,Follower,West Coast Swing,Newcomer,6,2026-06-10
@@ -35417,6 +35534,7 @@ dancer_id,role,dance,level,total_points,update_date
 17182,Follower,West Coast Swing,All-Star,153,2026-09-08
 17182,Follower,West Coast Swing,All-Star,161,2026-09-14
 17182,Follower,West Coast Swing,All-Star,164,2026-09-29
+17182,Follower,West Coast Swing,All-Star,179,2026-10-05
 17182,Follower,West Coast Swing,Intermediate,38,2026-06-10
 17182,Follower,West Coast Swing,Newcomer,4,2026-06-10
 17182,Follower,West Coast Swing,Novice,23,2026-06-10
@@ -35763,6 +35881,7 @@ dancer_id,role,dance,level,total_points,update_date
 17340,Follower,West Coast Swing,All-Star,171,2026-08-31
 17340,Follower,West Coast Swing,All-Star,172,2026-09-15
 17340,Follower,West Coast Swing,All-Star,182,2026-09-23
+17340,Follower,West Coast Swing,All-Star,183,2026-10-05
 17340,Follower,West Coast Swing,Intermediate,35,2026-06-10
 17340,Follower,West Coast Swing,Novice,27,2026-06-10
 17341,Leader,West Coast Swing,Novice,12,2026-06-10
@@ -36428,6 +36547,7 @@ dancer_id,role,dance,level,total_points,update_date
 17659,Leader,West Coast Swing,Advanced,10,2026-07-04
 17659,Leader,West Coast Swing,Advanced,11,2026-08-05
 17659,Leader,West Coast Swing,Advanced,15,2026-08-24
+17659,Leader,West Coast Swing,Advanced,19,2026-10-05
 17659,Leader,West Coast Swing,Intermediate,32,2026-06-10
 17659,Leader,West Coast Swing,Novice,19,2026-06-10
 17660,Follower,West Coast Swing,Advanced,12,2026-06-10
@@ -36515,11 +36635,13 @@ dancer_id,role,dance,level,total_points,update_date
 17707,Leader,West Coast Swing,Advanced,57,2026-06-10
 17707,Leader,West Coast Swing,Advanced,63,2026-07-09
 17707,Leader,West Coast Swing,Advanced,67,2026-09-01
+17707,Leader,West Coast Swing,Advanced,68,2026-10-05
 17707,Leader,West Coast Swing,Intermediate,37,2026-06-10
 17707,Leader,West Coast Swing,Novice,21,2026-06-10
 17707,Leader,West Coast Swing,Sophisticated,73,2026-06-10
 17707,Leader,West Coast Swing,Sophisticated,75,2026-07-09
 17707,Leader,West Coast Swing,Sophisticated,76,2026-09-01
+17707,Leader,West Coast Swing,Sophisticated,82,2026-10-05
 17708,Follower,West Coast Swing,Novice,21,2026-06-10
 17711,Follower,West Coast Swing,Newcomer,6,2026-06-10
 17711,Follower,West Coast Swing,Novice,2,2026-06-10
@@ -36578,6 +36700,8 @@ dancer_id,role,dance,level,total_points,update_date
 17745,Follower,West Coast Swing,Newcomer,3,2026-06-10
 17746,Leader,West Coast Swing,Newcomer,2,2026-06-10
 17747,Follower,West Coast Swing,Newcomer,2,2026-06-10
+17747,Leader,West Coast Swing,Master,1,2026-10-05
+17747,Leader,West Coast Swing,Newcomer,2,2026-10-05
 17748,Leader,West Coast Swing,Newcomer,1,2026-06-10
 17749,Follower,West Coast Swing,Newcomer,2,2026-06-10
 17750,Follower,West Coast Swing,Intermediate,6,2026-06-10
@@ -36625,10 +36749,12 @@ dancer_id,role,dance,level,total_points,update_date
 17772,Leader,West Coast Swing,Novice,1,2026-06-10
 17773,Follower,West Coast Swing,Intermediate,12,2026-06-10
 17773,Follower,West Coast Swing,Intermediate,22,2026-09-29
+17773,Follower,West Coast Swing,Intermediate,23,2026-10-05
 17773,Follower,West Coast Swing,Novice,22,2026-06-10
 17773,Follower,West Coast Swing,Sophisticated,18,2026-06-10
 17773,Follower,West Coast Swing,Sophisticated,22,2026-06-23
 17773,Follower,West Coast Swing,Sophisticated,23,2026-08-04
+17773,Follower,West Coast Swing,Sophisticated,24,2026-10-05
 17775,Follower,West Coast Swing,Novice,16,2026-06-10
 17776,Leader,West Coast Swing,Novice,16,2026-06-10
 17777,Follower,West Coast Swing,Novice,1,2026-06-10
@@ -36666,6 +36792,7 @@ dancer_id,role,dance,level,total_points,update_date
 17797,Follower,West Coast Swing,Newcomer,4,2026-06-10
 17797,Follower,West Coast Swing,Novice,32,2026-06-10
 17797,Leader,West Coast Swing,Advanced,12,2026-06-10
+17797,Leader,West Coast Swing,Advanced,13,2026-10-05
 17797,Leader,West Coast Swing,Intermediate,44,2026-06-10
 17797,Leader,West Coast Swing,Newcomer,2,2026-06-10
 17797,Leader,West Coast Swing,Novice,19,2026-06-10
@@ -36768,6 +36895,7 @@ dancer_id,role,dance,level,total_points,update_date
 17846,Leader,West Coast Swing,Sophisticated,58,2026-07-15
 17846,Leader,West Coast Swing,Sophisticated,66,2026-08-17
 17846,Leader,West Coast Swing,Sophisticated,67,2026-09-22
+17846,Leader,West Coast Swing,Sophisticated,77,2026-10-05
 17847,Leader,West Coast Swing,Novice,1,2026-06-10
 17848,Leader,West Coast Swing,Novice,1,2026-06-10
 17849,Leader,West Coast Swing,Novice,1,2026-06-10
@@ -36775,6 +36903,7 @@ dancer_id,role,dance,level,total_points,update_date
 17850,Follower,West Coast Swing,Novice,20,2026-06-10
 17850,Follower,West Coast Swing,Sophisticated,15,2026-06-10
 17850,Follower,West Coast Swing,Sophisticated,17,2026-08-17
+17850,Follower,West Coast Swing,Sophisticated,18,2026-10-05
 17851,Follower,West Coast Swing,Novice,13,2026-06-10
 17852,Follower,West Coast Swing,Intermediate,23,2026-06-10
 17852,Follower,West Coast Swing,Intermediate,24,2026-09-29
@@ -37437,6 +37566,7 @@ dancer_id,role,dance,level,total_points,update_date
 18180,Follower,West Coast Swing,Sophisticated,103,2026-08-17
 18180,Follower,West Coast Swing,Sophisticated,111,2026-08-24
 18180,Follower,West Coast Swing,Sophisticated,113,2026-09-29
+18180,Follower,West Coast Swing,Sophisticated,117,2026-10-05
 18180,Leader,West Coast Swing,Novice,1,2026-08-17
 18181,Leader,West Coast Swing,Novice,26,2026-06-10
 18182,Follower,West Coast Swing,Novice,1,2026-06-10
@@ -37639,6 +37769,7 @@ dancer_id,role,dance,level,total_points,update_date
 18275,Leader,West Coast Swing,Novice,23,2026-06-10
 18275,Leader,West Coast Swing,Sophisticated,1,2026-06-17
 18275,Leader,West Coast Swing,Sophisticated,3,2026-08-17
+18275,Leader,West Coast Swing,Sophisticated,4,2026-10-05
 18276,Follower,West Coast Swing,Intermediate,21,2026-06-10
 18276,Follower,West Coast Swing,Intermediate,22,2026-07-04
 18276,Follower,West Coast Swing,Intermediate,28,2026-07-15
@@ -38068,6 +38199,7 @@ dancer_id,role,dance,level,total_points,update_date
 18499,Follower,West Coast Swing,Newcomer,2,2026-06-10
 18500,Leader,West Coast Swing,Novice,20,2026-06-10
 18501,Follower,West Coast Swing,Intermediate,1,2026-06-10
+18501,Follower,West Coast Swing,Intermediate,3,2026-10-05
 18501,Follower,West Coast Swing,Novice,33,2026-06-10
 18501,Leader,West Coast Swing,Newcomer,3,2026-06-10
 18502,Follower,West Coast Swing,Newcomer,6,2026-06-10
@@ -38256,6 +38388,7 @@ dancer_id,role,dance,level,total_points,update_date
 18580,Leader,West Coast Swing,All-Star,27,2026-07-04
 18580,Leader,West Coast Swing,All-Star,33,2026-08-05
 18580,Leader,West Coast Swing,All-Star,39,2026-09-22
+18580,Leader,West Coast Swing,All-Star,41,2026-10-05
 18580,Leader,West Coast Swing,Intermediate,32,2026-06-10
 18580,Leader,West Coast Swing,Newcomer,2,2026-06-10
 18580,Leader,West Coast Swing,Novice,30,2026-06-10
@@ -39245,6 +39378,7 @@ dancer_id,role,dance,level,total_points,update_date
 19138,Follower,West Coast Swing,Novice,30,2026-06-10
 19139,Follower,West Coast Swing,Advanced,4,2026-06-10
 19139,Follower,West Coast Swing,Advanced,12,2026-09-29
+19139,Follower,West Coast Swing,Advanced,22,2026-10-05
 19139,Follower,West Coast Swing,Intermediate,33,2026-06-10
 19139,Follower,West Coast Swing,Newcomer,3,2026-06-10
 19139,Follower,West Coast Swing,Novice,17,2026-06-10
@@ -39442,6 +39576,7 @@ dancer_id,role,dance,level,total_points,update_date
 19245,Follower,West Coast Swing,Novice,24,2026-06-10
 19245,Leader,West Coast Swing,Intermediate,24,2026-06-10
 19245,Leader,West Coast Swing,Intermediate,28,2026-07-27
+19245,Leader,West Coast Swing,Intermediate,29,2026-10-05
 19245,Leader,West Coast Swing,Novice,6,2026-06-10
 19246,Leader,West Coast Swing,Newcomer,4,2026-06-10
 19247,Follower,West Coast Swing,Newcomer,4,2026-06-10
@@ -39712,6 +39847,7 @@ dancer_id,role,dance,level,total_points,update_date
 19375,Leader,West Coast Swing,Newcomer,1,2026-07-15
 19376,Follower,West Coast Swing,Newcomer,2,2026-06-10
 19376,Follower,West Coast Swing,Novice,4,2026-06-10
+19376,Follower,West Coast Swing,Novice,10,2026-10-05
 19376,Leader,West Coast Swing,Newcomer,12,2026-06-10
 19377,Follower,West Coast Swing,Newcomer,1,2026-06-10
 19378,Leader,West Coast Swing,Juniors,1,2026-06-10
@@ -39747,12 +39883,14 @@ dancer_id,role,dance,level,total_points,update_date
 19394,Follower,West Coast Swing,Newcomer,1,2026-06-10
 19395,Follower,West Coast Swing,Newcomer,1,2026-06-10
 19396,Follower,West Coast Swing,Advanced,2,2026-06-10
+19396,Follower,West Coast Swing,Advanced,8,2026-10-05
 19396,Follower,West Coast Swing,Intermediate,30,2026-06-10
 19396,Follower,West Coast Swing,Newcomer,1,2026-06-10
 19396,Follower,West Coast Swing,Novice,24,2026-06-10
 19396,Leader,West Coast Swing,Novice,4,2026-06-10
 19396,Leader,West Coast Swing,Novice,5,2026-07-04
 19396,Leader,West Coast Swing,Novice,6,2026-09-14
+19396,Leader,West Coast Swing,Novice,12,2026-10-05
 19397,Leader,West Coast Swing,Novice,23,2026-06-10
 19398,Leader,West Coast Swing,Novice,1,2026-06-10
 19399,Follower,West Coast Swing,Advanced,4,2026-06-10
@@ -39842,6 +39980,7 @@ dancer_id,role,dance,level,total_points,update_date
 19435,Follower,West Coast Swing,Novice,1,2026-06-10
 19435,Leader,West Coast Swing,Intermediate,26,2026-06-10
 19435,Leader,West Coast Swing,Intermediate,27,2026-09-29
+19435,Leader,West Coast Swing,Intermediate,28,2026-10-05
 19435,Leader,West Coast Swing,Novice,26,2026-06-10
 19436,Leader,West Coast Swing,Novice,1,2026-06-10
 19437,Leader,West Coast Swing,Newcomer,3,2026-06-10
@@ -40073,6 +40212,7 @@ dancer_id,role,dance,level,total_points,update_date
 19568,Leader,West Coast Swing,Newcomer,1,2026-06-10
 19569,Follower,West Coast Swing,Newcomer,6,2026-06-10
 19569,Follower,West Coast Swing,Novice,1,2026-06-10
+19569,Follower,West Coast Swing,Novice,2,2026-10-05
 19570,Follower,West Coast Swing,Newcomer,9,2026-06-10
 19571,Follower,West Coast Swing,Newcomer,2,2026-06-10
 19572,Follower,West Coast Swing,Newcomer,1,2026-06-10
@@ -40250,6 +40390,7 @@ dancer_id,role,dance,level,total_points,update_date
 19696,Leader,West Coast Swing,Newcomer,2,2026-06-10
 19697,Leader,West Coast Swing,Newcomer,1,2026-06-10
 19698,Follower,West Coast Swing,Intermediate,7,2026-06-10
+19698,Follower,West Coast Swing,Intermediate,17,2026-10-05
 19698,Follower,West Coast Swing,Newcomer,4,2026-06-10
 19698,Follower,West Coast Swing,Novice,24,2026-06-10
 19699,Follower,West Coast Swing,Newcomer,3,2026-06-10
@@ -40393,6 +40534,7 @@ dancer_id,role,dance,level,total_points,update_date
 19783,Follower,West Coast Swing,Newcomer,3,2026-06-10
 19784,Follower,West Coast Swing,Newcomer,2,2026-06-10
 19785,Follower,West Coast Swing,Intermediate,25,2026-06-10
+19785,Follower,West Coast Swing,Intermediate,26,2026-10-05
 19785,Follower,West Coast Swing,Novice,20,2026-06-10
 19785,Leader,West Coast Swing,Novice,16,2026-06-10
 19786,Leader,West Coast Swing,Novice,1,2026-06-10
@@ -40754,6 +40896,7 @@ dancer_id,role,dance,level,total_points,update_date
 19985,Follower,West Coast Swing,Advanced,2,2026-06-10
 19985,Follower,West Coast Swing,Intermediate,30,2026-06-10
 19985,Follower,West Coast Swing,Novice,16,2026-06-10
+19985,Follower,West Coast Swing,Sophisticated,8,2026-10-05
 19985,Leader,West Coast Swing,Novice,2,2026-06-10
 19986,Leader,West Coast Swing,Advanced,1,2026-06-10
 19986,Leader,West Coast Swing,Intermediate,30,2026-06-10
@@ -40886,6 +41029,7 @@ dancer_id,role,dance,level,total_points,update_date
 20050,Follower,West Coast Swing,Advanced,27,2026-07-09
 20050,Follower,West Coast Swing,Advanced,33,2026-07-20
 20050,Follower,West Coast Swing,Advanced,45,2026-08-10
+20050,Follower,West Coast Swing,Advanced,53,2026-10-05
 20050,Follower,West Coast Swing,Intermediate,35,2026-06-10
 20050,Follower,West Coast Swing,Novice,19,2026-06-10
 20051,Follower,West Coast Swing,Advanced,67,2026-06-10
@@ -41504,6 +41648,7 @@ dancer_id,role,dance,level,total_points,update_date
 20288,Follower,West Coast Swing,Novice,22,2026-06-10
 20289,Follower,West Coast Swing,Advanced,1,2026-08-04
 20289,Follower,West Coast Swing,Advanced,2,2026-09-29
+20289,Follower,West Coast Swing,Advanced,3,2026-10-05
 20289,Follower,West Coast Swing,Intermediate,31,2026-06-10
 20289,Follower,West Coast Swing,Newcomer,6,2026-06-10
 20289,Follower,West Coast Swing,Novice,29,2026-06-10
@@ -41556,7 +41701,9 @@ dancer_id,role,dance,level,total_points,update_date
 20304,Follower,West Coast Swing,Novice,23,2026-06-10
 20304,Leader,West Coast Swing,Novice,17,2026-06-10
 20305,Follower,West Coast Swing,Intermediate,4,2026-06-10
+20305,Follower,West Coast Swing,Intermediate,5,2026-10-05
 20305,Follower,West Coast Swing,Novice,24,2026-06-10
+20305,Follower,West Coast Swing,Sophisticated,8,2026-10-05
 20306,Leader,West Coast Swing,Intermediate,1,2026-06-10
 20306,Leader,West Coast Swing,Novice,27,2026-06-10
 20307,Leader,West Coast Swing,Novice,4,2026-06-10
@@ -41816,6 +41963,7 @@ dancer_id,role,dance,level,total_points,update_date
 20426,Leader,West Coast Swing,Newcomer,2,2026-06-10
 20426,Leader,West Coast Swing,Novice,23,2026-06-10
 20427,Leader,West Coast Swing,Intermediate,4,2026-08-24
+20427,Leader,West Coast Swing,Intermediate,6,2026-10-05
 20427,Leader,West Coast Swing,Newcomer,1,2026-06-10
 20427,Leader,West Coast Swing,Novice,23,2026-06-10
 20428,Leader,West Coast Swing,Newcomer,1,2026-06-10
@@ -42060,6 +42208,7 @@ dancer_id,role,dance,level,total_points,update_date
 20539,Leader,West Coast Swing,Newcomer,1,2026-06-10
 20539,Leader,West Coast Swing,Novice,27,2026-06-10
 20540,Follower,West Coast Swing,Master,4,2026-06-10
+20540,Follower,West Coast Swing,Master,12,2026-10-05
 20540,Follower,West Coast Swing,Newcomer,6,2026-06-10
 20540,Follower,West Coast Swing,Novice,1,2026-06-10
 20540,Leader,West Coast Swing,Newcomer,1,2026-06-10
@@ -42076,6 +42225,7 @@ dancer_id,role,dance,level,total_points,update_date
 20544,Leader,West Coast Swing,Novice,25,2026-06-10
 20544,Leader,West Coast Swing,Sophisticated,13,2026-06-10
 20544,Leader,West Coast Swing,Sophisticated,14,2026-08-17
+20544,Leader,West Coast Swing,Sophisticated,15,2026-10-05
 20545,Follower,West Coast Swing,Intermediate,7,2026-06-10
 20545,Follower,West Coast Swing,Novice,17,2026-06-10
 20545,Follower,West Coast Swing,Sophisticated,1,2026-06-10
@@ -42179,6 +42329,7 @@ dancer_id,role,dance,level,total_points,update_date
 20585,Leader,West Coast Swing,All-Star,14,2026-06-10
 20585,Leader,West Coast Swing,All-Star,15,2026-08-24
 20585,Leader,West Coast Swing,All-Star,16,2026-09-15
+20585,Leader,West Coast Swing,All-Star,19,2026-10-05
 20585,Leader,West Coast Swing,Intermediate,33,2026-06-10
 20585,Leader,West Coast Swing,Newcomer,1,2026-06-10
 20585,Leader,West Coast Swing,Novice,20,2026-06-10
@@ -42611,6 +42762,7 @@ dancer_id,role,dance,level,total_points,update_date
 20760,Follower,West Coast Swing,Intermediate,27,2026-06-10
 20760,Follower,West Coast Swing,Intermediate,35,2026-07-09
 20760,Follower,West Coast Swing,Novice,16,2026-06-10
+20760,Leader,West Coast Swing,Intermediate,1,2026-10-05
 20760,Leader,West Coast Swing,Newcomer,3,2026-06-10
 20760,Leader,West Coast Swing,Novice,37,2026-06-10
 20761,Follower,West Coast Swing,Novice,2,2026-06-10
@@ -42641,6 +42793,7 @@ dancer_id,role,dance,level,total_points,update_date
 20773,Follower,West Coast Swing,Novice,6,2026-06-10
 20774,Follower,West Coast Swing,Newcomer,3,2026-06-10
 20775,Leader,West Coast Swing,Advanced,1,2026-09-29
+20775,Leader,West Coast Swing,Advanced,2,2026-10-05
 20775,Leader,West Coast Swing,Intermediate,30,2026-06-10
 20775,Leader,West Coast Swing,Newcomer,1,2026-06-10
 20775,Leader,West Coast Swing,Novice,16,2026-06-10
@@ -42957,6 +43110,7 @@ dancer_id,role,dance,level,total_points,update_date
 20893,Leader,West Coast Swing,Juniors,2,2026-06-10
 20894,Follower,West Coast Swing,Master,7,2026-06-10
 20894,Follower,West Coast Swing,Master,9,2026-07-09
+20894,Follower,West Coast Swing,Master,15,2026-10-05
 20894,Follower,West Coast Swing,Newcomer,6,2026-06-10
 20894,Leader,West Coast Swing,Newcomer,4,2026-06-10
 20895,Leader,West Coast Swing,Newcomer,1,2026-06-10
@@ -43114,6 +43268,7 @@ dancer_id,role,dance,level,total_points,update_date
 20974,Follower,West Coast Swing,Advanced,8,2026-09-08
 20974,Follower,West Coast Swing,Advanced,18,2026-09-14
 20974,Follower,West Coast Swing,Advanced,24,2026-09-29
+20974,Follower,West Coast Swing,Advanced,39,2026-10-05
 20974,Follower,West Coast Swing,Intermediate,20,2026-06-10
 20974,Follower,West Coast Swing,Intermediate,28,2026-07-27
 20974,Follower,West Coast Swing,Intermediate,38,2026-08-24
@@ -43131,6 +43286,7 @@ dancer_id,role,dance,level,total_points,update_date
 20974,Leader,West Coast Swing,All-Star,114,2026-09-08
 20974,Leader,West Coast Swing,All-Star,120,2026-09-14
 20974,Leader,West Coast Swing,All-Star,126,2026-09-29
+20974,Leader,West Coast Swing,All-Star,127,2026-10-05
 20974,Leader,West Coast Swing,Intermediate,41,2026-06-10
 20974,Leader,West Coast Swing,Newcomer,12,2026-06-10
 20974,Leader,West Coast Swing,Novice,25,2026-06-10
@@ -43241,6 +43397,7 @@ dancer_id,role,dance,level,total_points,update_date
 21019,Leader,West Coast Swing,Novice,27,2026-06-10
 21020,Follower,West Coast Swing,Advanced,6,2026-07-04
 21020,Follower,West Coast Swing,Advanced,7,2026-09-22
+21020,Follower,West Coast Swing,Advanced,9,2026-10-05
 21020,Follower,West Coast Swing,Intermediate,33,2026-06-10
 21020,Follower,West Coast Swing,Novice,19,2026-06-10
 21021,Follower,West Coast Swing,Newcomer,1,2026-06-10
@@ -43355,6 +43512,7 @@ dancer_id,role,dance,level,total_points,update_date
 21076,Follower,West Coast Swing,Novice,10,2026-06-10
 21076,Follower,West Coast Swing,Sophisticated,1,2026-06-10
 21076,Leader,West Coast Swing,Newcomer,1,2026-06-10
+21077,Follower,West Coast Swing,Advanced,2,2026-10-05
 21077,Follower,West Coast Swing,Intermediate,30,2026-06-10
 21077,Follower,West Coast Swing,Newcomer,1,2026-06-10
 21077,Follower,West Coast Swing,Novice,17,2026-06-10
@@ -43598,6 +43756,8 @@ dancer_id,role,dance,level,total_points,update_date
 21185,Follower,West Coast Swing,Novice,21,2026-06-10
 21186,Follower,West Coast Swing,Newcomer,4,2026-06-10
 21186,Follower,West Coast Swing,Novice,5,2026-06-10
+21186,Follower,West Coast Swing,Novice,15,2026-10-05
+21186,Follower,West Coast Swing,Sophisticated,1,2026-10-05
 21187,Follower,West Coast Swing,Newcomer,3,2026-06-10
 21188,Follower,West Coast Swing,Newcomer,2,2026-06-10
 21188,Follower,West Coast Swing,Novice,25,2026-06-10
@@ -43804,6 +43964,7 @@ dancer_id,role,dance,level,total_points,update_date
 21275,Follower,West Coast Swing,Intermediate,3,2026-06-10
 21275,Follower,West Coast Swing,Intermediate,9,2026-07-27
 21275,Follower,West Coast Swing,Intermediate,13,2026-09-08
+21275,Follower,West Coast Swing,Intermediate,29,2026-10-05
 21275,Follower,West Coast Swing,Newcomer,6,2026-06-10
 21275,Follower,West Coast Swing,Novice,23,2026-06-10
 21275,Leader,West Coast Swing,Newcomer,1,2026-06-10
@@ -43826,6 +43987,7 @@ dancer_id,role,dance,level,total_points,update_date
 21287,Follower,West Coast Swing,Advanced,71,2026-06-10
 21287,Follower,West Coast Swing,All-Star,28,2026-06-10
 21287,Follower,West Coast Swing,All-Star,29,2026-09-14
+21287,Follower,West Coast Swing,All-Star,41,2026-10-05
 21287,Follower,West Coast Swing,Intermediate,33,2026-06-10
 21287,Follower,West Coast Swing,Novice,20,2026-06-10
 21287,Leader,West Coast Swing,Intermediate,2,2026-06-10
@@ -43926,14 +44088,17 @@ dancer_id,role,dance,level,total_points,update_date
 21319,Follower,West Coast Swing,Intermediate,23,2026-07-16
 21319,Follower,West Coast Swing,Intermediate,24,2026-08-05
 21319,Follower,West Coast Swing,Intermediate,25,2026-08-17
+21319,Follower,West Coast Swing,Intermediate,27,2026-10-05
 21319,Follower,West Coast Swing,Newcomer,1,2026-06-10
 21319,Follower,West Coast Swing,Novice,19,2026-06-10
 21319,Follower,West Coast Swing,Sophisticated,2,2026-06-10
 21319,Follower,West Coast Swing,Sophisticated,3,2026-08-17
 21319,Follower,West Coast Swing,Sophisticated,4,2026-09-14
+21319,Follower,West Coast Swing,Sophisticated,5,2026-10-05
 21320,Follower,West Coast Swing,Newcomer,1,2026-06-10
 21320,Follower,West Coast Swing,Novice,16,2026-06-10
 21321,Follower,West Coast Swing,Newcomer,1,2026-06-10
+21322,Follower,West Coast Swing,Master,1,2026-10-05
 21322,Follower,West Coast Swing,Newcomer,1,2026-06-10
 21323,Follower,West Coast Swing,Newcomer,1,2026-06-10
 21323,Follower,West Coast Swing,Novice,2,2026-06-10
@@ -44142,6 +44307,7 @@ dancer_id,role,dance,level,total_points,update_date
 21438,Follower,West Coast Swing,Novice,3,2026-06-10
 21438,Follower,West Coast Swing,Novice,5,2026-07-20
 21438,Follower,West Coast Swing,Novice,7,2026-08-17
+21438,Follower,West Coast Swing,Novice,15,2026-10-05
 21439,Follower,West Coast Swing,Novice,1,2026-06-10
 21440,Leader,West Coast Swing,Novice,30,2026-06-10
 21441,Leader,West Coast Swing,Novice,1,2026-06-10
@@ -44206,8 +44372,10 @@ dancer_id,role,dance,level,total_points,update_date
 21472,Follower,West Coast Swing,Intermediate,13,2026-06-10
 21472,Follower,West Coast Swing,Intermediate,19,2026-07-09
 21472,Follower,West Coast Swing,Intermediate,20,2026-09-22
+21472,Follower,West Coast Swing,Intermediate,21,2026-10-05
 21472,Follower,West Coast Swing,Novice,28,2026-06-10
 21472,Follower,West Coast Swing,Sophisticated,21,2026-06-10
+21472,Follower,West Coast Swing,Sophisticated,22,2026-10-05
 21473,Leader,West Coast Swing,Newcomer,15,2026-06-10
 21474,Leader,West Coast Swing,Newcomer,12,2026-06-10
 21475,Leader,West Coast Swing,Newcomer,6,2026-06-10
@@ -44258,6 +44426,7 @@ dancer_id,role,dance,level,total_points,update_date
 21498,Leader,West Coast Swing,Newcomer,3,2026-06-10
 21498,Leader,West Coast Swing,Novice,12,2026-06-10
 21498,Leader,West Coast Swing,Novice,13,2026-09-14
+21498,Leader,West Coast Swing,Novice,21,2026-10-05
 21499,Follower,West Coast Swing,Newcomer,6,2026-06-10
 21499,Follower,West Coast Swing,Novice,9,2026-06-10
 21499,Follower,West Coast Swing,Novice,10,2026-08-24
@@ -44304,6 +44473,7 @@ dancer_id,role,dance,level,total_points,update_date
 21513,Leader,West Coast Swing,Newcomer,2,2026-06-10
 21514,Follower,West Coast Swing,Newcomer,6,2026-06-10
 21515,Follower,West Coast Swing,Advanced,67,2026-06-10
+21515,Follower,West Coast Swing,All-Star,1,2026-10-05
 21515,Follower,West Coast Swing,Intermediate,37,2026-06-10
 21515,Follower,West Coast Swing,Newcomer,4,2026-06-10
 21515,Follower,West Coast Swing,Novice,17,2026-06-10
@@ -44312,6 +44482,7 @@ dancer_id,role,dance,level,total_points,update_date
 21515,Follower,West Coast Swing,Sophisticated,15,2026-08-24
 21515,Follower,West Coast Swing,Sophisticated,16,2026-09-01
 21515,Follower,West Coast Swing,Sophisticated,20,2026-09-29
+21515,Follower,West Coast Swing,Sophisticated,21,2026-10-05
 21515,Leader,West Coast Swing,Intermediate,1,2026-06-10
 21515,Leader,West Coast Swing,Newcomer,3,2026-06-10
 21515,Leader,West Coast Swing,Novice,27,2026-06-10
@@ -44397,10 +44568,12 @@ dancer_id,role,dance,level,total_points,update_date
 21554,Follower,West Coast Swing,Intermediate,35,2026-06-10
 21554,Follower,West Coast Swing,Newcomer,4,2026-06-10
 21554,Follower,West Coast Swing,Novice,30,2026-06-10
+21555,Follower,West Coast Swing,Intermediate,1,2026-10-05
 21555,Follower,West Coast Swing,Newcomer,2,2026-06-10
 21555,Follower,West Coast Swing,Novice,1,2026-06-10
 21555,Follower,West Coast Swing,Novice,17,2026-08-05
 21555,Leader,West Coast Swing,Newcomer,2,2026-06-10
+21555,Leader,West Coast Swing,Novice,12,2026-10-05
 21556,Leader,West Coast Swing,Newcomer,1,2026-06-10
 21557,Follower,West Coast Swing,Advanced,4,2026-06-10
 21557,Follower,West Coast Swing,Intermediate,34,2026-06-10
@@ -44675,6 +44848,7 @@ dancer_id,role,dance,level,total_points,update_date
 21685,Follower,West Coast Swing,Advanced,26,2026-08-17
 21685,Follower,West Coast Swing,Advanced,32,2026-09-22
 21685,Follower,West Coast Swing,Advanced,35,2026-09-29
+21685,Follower,West Coast Swing,Advanced,41,2026-10-05
 21685,Follower,West Coast Swing,Intermediate,31,2026-06-10
 21685,Follower,West Coast Swing,Novice,29,2026-06-10
 21685,Leader,West Coast Swing,Intermediate,1,2026-06-10
@@ -44893,6 +45067,7 @@ dancer_id,role,dance,level,total_points,update_date
 21795,Follower,West Coast Swing,Newcomer,4,2026-06-10
 21796,Follower,West Coast Swing,Intermediate,4,2026-06-10
 21796,Follower,West Coast Swing,Intermediate,5,2026-09-14
+21796,Follower,West Coast Swing,Intermediate,7,2026-10-05
 21796,Follower,West Coast Swing,Newcomer,3,2026-06-10
 21796,Follower,West Coast Swing,Novice,30,2026-06-10
 21796,Leader,West Coast Swing,Newcomer,8,2026-06-10
@@ -44941,6 +45116,7 @@ dancer_id,role,dance,level,total_points,update_date
 21819,Follower,West Coast Swing,Novice,16,2026-06-10
 21819,Follower,West Coast Swing,Sophisticated,69,2026-06-10
 21819,Follower,West Coast Swing,Sophisticated,70,2026-08-24
+21819,Follower,West Coast Swing,Sophisticated,74,2026-10-05
 21820,Follower,West Coast Swing,Advanced,6,2026-06-10
 21820,Follower,West Coast Swing,Advanced,7,2026-08-17
 21820,Follower,West Coast Swing,Advanced,8,2026-09-01
@@ -44954,6 +45130,7 @@ dancer_id,role,dance,level,total_points,update_date
 21827,Follower,West Coast Swing,Newcomer,1,2026-06-10
 21829,Leader,West Coast Swing,Advanced,15,2026-06-10
 21829,Leader,West Coast Swing,Advanced,16,2026-07-09
+21829,Leader,West Coast Swing,Advanced,17,2026-10-05
 21829,Leader,West Coast Swing,Intermediate,38,2026-06-10
 21829,Leader,West Coast Swing,Novice,17,2026-06-10
 21829,Leader,West Coast Swing,Sophisticated,8,2026-06-10
@@ -45020,10 +45197,12 @@ dancer_id,role,dance,level,total_points,update_date
 21866,Follower,West Coast Swing,Advanced,2,2026-07-15
 21866,Follower,West Coast Swing,Advanced,3,2026-07-27
 21866,Follower,West Coast Swing,Advanced,4,2026-08-26
+21866,Follower,West Coast Swing,Advanced,14,2026-10-05
 21866,Follower,West Coast Swing,Intermediate,38,2026-06-10
 21866,Follower,West Coast Swing,Novice,21,2026-06-10
 21866,Leader,West Coast Swing,Intermediate,6,2026-08-26
 21866,Leader,West Coast Swing,Intermediate,7,2026-09-29
+21866,Leader,West Coast Swing,Intermediate,8,2026-10-05
 21866,Leader,West Coast Swing,Newcomer,1,2026-06-10
 21866,Leader,West Coast Swing,Novice,27,2026-06-10
 21867,Follower,West Coast Swing,Intermediate,3,2026-06-10
@@ -45073,6 +45252,7 @@ dancer_id,role,dance,level,total_points,update_date
 21879,Follower,West Coast Swing,Advanced,26,2026-08-05
 21879,Follower,West Coast Swing,Advanced,27,2026-09-14
 21879,Follower,West Coast Swing,Advanced,29,2026-09-22
+21879,Follower,West Coast Swing,Advanced,39,2026-10-05
 21879,Follower,West Coast Swing,Intermediate,37,2026-06-10
 21879,Follower,West Coast Swing,Newcomer,1,2026-06-10
 21879,Follower,West Coast Swing,Novice,17,2026-06-10
@@ -45276,6 +45456,7 @@ dancer_id,role,dance,level,total_points,update_date
 21980,Follower,West Coast Swing,Intermediate,13,2026-07-20
 21980,Follower,West Coast Swing,Intermediate,14,2026-09-23
 21980,Follower,West Coast Swing,Intermediate,15,2026-09-29
+21980,Follower,West Coast Swing,Intermediate,27,2026-10-05
 21980,Follower,West Coast Swing,Newcomer,1,2026-06-10
 21980,Follower,West Coast Swing,Novice,21,2026-06-10
 21981,Follower,West Coast Swing,Newcomer,1,2026-06-10
@@ -45423,6 +45604,7 @@ dancer_id,role,dance,level,total_points,update_date
 22047,Follower,West Coast Swing,Intermediate,7,2026-07-09
 22047,Follower,West Coast Swing,Intermediate,13,2026-07-20
 22047,Follower,West Coast Swing,Intermediate,19,2026-09-29
+22047,Follower,West Coast Swing,Intermediate,20,2026-10-05
 22047,Follower,West Coast Swing,Newcomer,6,2026-06-10
 22047,Follower,West Coast Swing,Novice,22,2026-06-10
 22047,Leader,West Coast Swing,Newcomer,6,2026-06-10
@@ -45626,6 +45808,7 @@ dancer_id,role,dance,level,total_points,update_date
 22145,Leader,West Coast Swing,Newcomer,4,2026-06-10
 22145,Leader,West Coast Swing,Novice,1,2026-06-10
 22145,Leader,West Coast Swing,Novice,9,2026-08-17
+22145,Leader,West Coast Swing,Novice,10,2026-10-05
 22146,Leader,West Coast Swing,Newcomer,3,2026-06-10
 22147,Leader,West Coast Swing,Newcomer,2,2026-06-10
 22148,Leader,West Coast Swing,Newcomer,1,2026-06-10
@@ -45793,6 +45976,7 @@ dancer_id,role,dance,level,total_points,update_date
 22227,Leader,West Coast Swing,Advanced,50,2026-08-10
 22227,Leader,West Coast Swing,Advanced,52,2026-08-17
 22227,Leader,West Coast Swing,Advanced,64,2026-09-14
+22227,Leader,West Coast Swing,Advanced,70,2026-10-05
 22227,Leader,West Coast Swing,Intermediate,38,2026-06-10
 22227,Leader,West Coast Swing,Newcomer,8,2026-06-10
 22227,Leader,West Coast Swing,Novice,40,2026-06-10
@@ -45875,8 +46059,10 @@ dancer_id,role,dance,level,total_points,update_date
 22266,Leader,West Coast Swing,Novice,17,2026-06-10
 22267,Leader,West Coast Swing,Newcomer,4,2026-06-10
 22268,Follower,West Coast Swing,Intermediate,1,2026-06-10
+22268,Follower,West Coast Swing,Intermediate,5,2026-10-05
 22268,Follower,West Coast Swing,Newcomer,1,2026-06-10
 22268,Follower,West Coast Swing,Novice,30,2026-06-10
+22268,Leader,West Coast Swing,Advanced,1,2026-10-05
 22268,Leader,West Coast Swing,Intermediate,37,2026-06-10
 22268,Leader,West Coast Swing,Newcomer,3,2026-06-10
 22268,Leader,West Coast Swing,Novice,16,2026-06-10
@@ -46503,6 +46689,7 @@ dancer_id,role,dance,level,total_points,update_date
 22559,Leader,West Coast Swing,Advanced,47,2026-06-10
 22559,Leader,West Coast Swing,Advanced,48,2026-07-27
 22559,Leader,West Coast Swing,Advanced,54,2026-09-08
+22559,Leader,West Coast Swing,Advanced,55,2026-10-05
 22559,Leader,West Coast Swing,Intermediate,33,2026-06-10
 22559,Leader,West Coast Swing,Novice,21,2026-06-10
 22560,Follower,West Coast Swing,Intermediate,4,2026-06-10
@@ -46553,6 +46740,7 @@ dancer_id,role,dance,level,total_points,update_date
 22579,Leader,West Coast Swing,Intermediate,6,2026-06-10
 22579,Leader,West Coast Swing,Intermediate,7,2026-06-17
 22579,Leader,West Coast Swing,Intermediate,11,2026-08-17
+22579,Leader,West Coast Swing,Intermediate,15,2026-10-05
 22579,Leader,West Coast Swing,Newcomer,1,2026-06-10
 22579,Leader,West Coast Swing,Novice,28,2026-06-10
 22580,Leader,West Coast Swing,Newcomer,1,2026-06-10
@@ -46564,6 +46752,7 @@ dancer_id,role,dance,level,total_points,update_date
 22585,Follower,West Coast Swing,Newcomer,6,2026-06-10
 22586,Follower,West Coast Swing,Newcomer,4,2026-06-10
 22586,Follower,West Coast Swing,Novice,2,2026-06-10
+22586,Follower,West Coast Swing,Novice,17,2026-10-05
 22587,Follower,West Coast Swing,Newcomer,2,2026-06-10
 22588,Follower,West Coast Swing,Newcomer,1,2026-06-10
 22589,Follower,West Coast Swing,Intermediate,2,2026-06-10
@@ -46823,6 +47012,7 @@ dancer_id,role,dance,level,total_points,update_date
 22721,Follower,West Coast Swing,Novice,8,2026-06-10
 22722,Follower,West Coast Swing,Novice,16,2026-06-10
 22724,Follower,West Coast Swing,Advanced,1,2026-09-22
+22724,Follower,West Coast Swing,Advanced,5,2026-10-05
 22724,Follower,West Coast Swing,Intermediate,31,2026-06-10
 22724,Follower,West Coast Swing,Novice,17,2026-06-10
 22726,Follower,West Coast Swing,Intermediate,1,2026-07-27
@@ -46947,6 +47137,7 @@ dancer_id,role,dance,level,total_points,update_date
 22784,Follower,West Coast Swing,Newcomer,8,2026-06-10
 22784,Follower,West Coast Swing,Novice,11,2026-06-10
 22784,Follower,West Coast Swing,Novice,13,2026-07-15
+22784,Follower,West Coast Swing,Novice,15,2026-10-05
 22785,Follower,West Coast Swing,Newcomer,6,2026-06-10
 22785,Follower,West Coast Swing,Novice,9,2026-06-10
 22785,Follower,West Coast Swing,Novice,21,2026-06-23
@@ -46961,6 +47152,7 @@ dancer_id,role,dance,level,total_points,update_date
 22791,Follower,West Coast Swing,Novice,13,2026-06-17
 22791,Follower,West Coast Swing,Novice,14,2026-08-11
 22792,Follower,West Coast Swing,Newcomer,1,2026-06-10
+22793,Follower,West Coast Swing,Newcomer,1,2026-10-05
 22793,Leader,West Coast Swing,Novice,16,2026-06-10
 22794,Leader,West Coast Swing,Novice,1,2026-06-10
 22795,Leader,West Coast Swing,Intermediate,1,2026-06-10
@@ -46994,6 +47186,7 @@ dancer_id,role,dance,level,total_points,update_date
 22810,Follower,West Coast Swing,Newcomer,4,2026-06-10
 22811,Follower,West Coast Swing,Newcomer,2,2026-06-10
 22812,Follower,West Coast Swing,Intermediate,2,2026-06-10
+22812,Follower,West Coast Swing,Intermediate,6,2026-10-05
 22812,Follower,West Coast Swing,Newcomer,1,2026-06-10
 22812,Follower,West Coast Swing,Novice,27,2026-06-10
 22812,Follower,West Coast Swing,Sophisticated,2,2026-06-10
@@ -47061,6 +47254,7 @@ dancer_id,role,dance,level,total_points,update_date
 22838,Follower,West Coast Swing,Intermediate,18,2026-06-10
 22838,Follower,West Coast Swing,Intermediate,22,2026-06-23
 22838,Follower,West Coast Swing,Intermediate,28,2026-08-17
+22838,Follower,West Coast Swing,Intermediate,30,2026-10-05
 22838,Follower,West Coast Swing,Novice,19,2026-06-10
 22839,Leader,West Coast Swing,Newcomer,3,2026-06-10
 22840,Follower,West Coast Swing,Newcomer,6,2026-06-10
@@ -47208,6 +47402,7 @@ dancer_id,role,dance,level,total_points,update_date
 22900,Leader,West Coast Swing,Novice,20,2026-06-10
 22901,Leader,West Coast Swing,Novice,21,2026-06-10
 22902,Leader,West Coast Swing,Intermediate,14,2026-06-10
+22902,Leader,West Coast Swing,Intermediate,15,2026-10-05
 22902,Leader,West Coast Swing,Novice,16,2026-06-10
 22903,Follower,West Coast Swing,Novice,3,2026-06-10
 22903,Leader,West Coast Swing,Advanced,66,2026-06-10
@@ -47407,6 +47602,7 @@ dancer_id,role,dance,level,total_points,update_date
 23007,Follower,West Coast Swing,Novice,16,2026-07-15
 23007,Follower,West Coast Swing,Novice,28,2026-09-14
 23008,Follower,West Coast Swing,Newcomer,1,2026-06-10
+23009,Follower,West Coast Swing,Intermediate,20,2026-10-05
 23009,Follower,West Coast Swing,Newcomer,1,2026-06-10
 23009,Follower,West Coast Swing,Novice,21,2026-06-10
 23009,Leader,West Coast Swing,Newcomer,10,2026-06-10
@@ -47443,6 +47639,7 @@ dancer_id,role,dance,level,total_points,update_date
 23021,Follower,West Coast Swing,Novice,1,2026-06-10
 23022,Leader,West Coast Swing,Novice,16,2026-06-10
 23023,Leader,West Coast Swing,Novice,10,2026-06-10
+23023,Leader,West Coast Swing,Novice,25,2026-10-05
 23024,Leader,West Coast Swing,Novice,23,2026-06-10
 23025,Leader,West Coast Swing,Advanced,20,2026-06-10
 23025,Leader,West Coast Swing,Advanced,30,2026-07-09
@@ -47555,6 +47752,7 @@ dancer_id,role,dance,level,total_points,update_date
 23082,Follower,West Coast Swing,Novice,1,2026-06-10
 23083,Follower,West Coast Swing,Newcomer,1,2026-06-10
 23084,Follower,West Coast Swing,Newcomer,1,2026-06-10
+23084,Follower,West Coast Swing,Novice,2,2026-10-05
 23085,Leader,West Coast Swing,Intermediate,8,2026-06-10
 23085,Leader,West Coast Swing,Novice,22,2026-06-10
 23087,Leader,West Coast Swing,Novice,1,2026-06-10
@@ -47701,6 +47899,7 @@ dancer_id,role,dance,level,total_points,update_date
 23165,Follower,West Coast Swing,Novice,27,2026-06-10
 23166,Follower,West Coast Swing,Advanced,8,2026-06-10
 23166,Follower,West Coast Swing,Advanced,10,2026-07-27
+23166,Follower,West Coast Swing,Advanced,11,2026-10-05
 23166,Follower,West Coast Swing,Intermediate,40,2026-06-10
 23166,Follower,West Coast Swing,Novice,32,2026-06-10
 23167,Leader,West Coast Swing,Novice,9,2026-06-10
@@ -47982,6 +48181,7 @@ dancer_id,role,dance,level,total_points,update_date
 23299,Follower,West Coast Swing,Advanced,6,2026-07-09
 23299,Follower,West Coast Swing,Advanced,9,2026-08-26
 23299,Follower,West Coast Swing,Advanced,13,2026-09-22
+23299,Follower,West Coast Swing,Advanced,14,2026-10-05
 23299,Follower,West Coast Swing,Intermediate,26,2026-06-10
 23299,Follower,West Coast Swing,Intermediate,36,2026-06-17
 23299,Follower,West Coast Swing,Newcomer,8,2026-06-10
@@ -48119,6 +48319,7 @@ dancer_id,role,dance,level,total_points,update_date
 23368,Leader,West Coast Swing,Newcomer,2,2026-06-10
 23369,Leader,West Coast Swing,Advanced,7,2026-06-10
 23369,Leader,West Coast Swing,Advanced,9,2026-09-08
+23369,Leader,West Coast Swing,Advanced,10,2026-10-05
 23369,Leader,West Coast Swing,Intermediate,35,2026-06-10
 23369,Leader,West Coast Swing,Novice,17,2026-06-10
 23370,Leader,West Coast Swing,Intermediate,37,2026-06-10
@@ -48248,6 +48449,7 @@ dancer_id,role,dance,level,total_points,update_date
 23435,Leader,West Coast Swing,Advanced,28,2026-08-10
 23435,Leader,West Coast Swing,Advanced,34,2026-09-14
 23435,Leader,West Coast Swing,Advanced,36,2026-09-29
+23435,Leader,West Coast Swing,Advanced,37,2026-10-05
 23435,Leader,West Coast Swing,Intermediate,30,2026-06-10
 23435,Leader,West Coast Swing,Novice,25,2026-06-10
 23436,Follower,West Coast Swing,Advanced,64,2026-06-10
@@ -48296,6 +48498,7 @@ dancer_id,role,dance,level,total_points,update_date
 23458,Follower,West Coast Swing,Newcomer,4,2026-06-10
 23458,Leader,West Coast Swing,Newcomer,1,2026-06-10
 23459,Follower,West Coast Swing,Master,10,2026-06-10
+23459,Follower,West Coast Swing,Master,11,2026-10-05
 23459,Follower,West Coast Swing,Newcomer,6,2026-06-10
 23459,Follower,West Coast Swing,Novice,2,2026-06-10
 23459,Leader,West Coast Swing,Newcomer,10,2026-06-10
@@ -48328,6 +48531,7 @@ dancer_id,role,dance,level,total_points,update_date
 23480,Follower,West Coast Swing,Novice,23,2026-06-10
 23480,Leader,West Coast Swing,Advanced,40,2026-06-10
 23480,Leader,West Coast Swing,Advanced,43,2026-09-08
+23480,Leader,West Coast Swing,Advanced,44,2026-10-05
 23480,Leader,West Coast Swing,Intermediate,36,2026-06-10
 23480,Leader,West Coast Swing,Novice,16,2026-06-10
 23481,Follower,West Coast Swing,Newcomer,3,2026-06-10
@@ -48456,6 +48660,7 @@ dancer_id,role,dance,level,total_points,update_date
 23542,Follower,West Coast Swing,Newcomer,1,2026-06-10
 23543,Leader,West Coast Swing,Advanced,13,2026-06-10
 23543,Leader,West Coast Swing,Advanced,19,2026-07-20
+23543,Leader,West Coast Swing,Advanced,25,2026-10-05
 23543,Leader,West Coast Swing,Intermediate,30,2026-06-10
 23543,Leader,West Coast Swing,Novice,22,2026-06-10
 23544,Leader,West Coast Swing,Novice,4,2026-06-10
@@ -48491,6 +48696,7 @@ dancer_id,role,dance,level,total_points,update_date
 23561,Follower,West Coast Swing,Newcomer,1,2026-06-10
 23562,Leader,West Coast Swing,Intermediate,8,2026-06-10
 23562,Leader,West Coast Swing,Intermediate,9,2026-07-15
+23562,Leader,West Coast Swing,Intermediate,15,2026-10-05
 23562,Leader,West Coast Swing,Novice,16,2026-06-10
 23563,Follower,West Coast Swing,Novice,1,2026-06-10
 23564,Leader,West Coast Swing,Newcomer,6,2026-06-10
@@ -48996,7 +49202,9 @@ dancer_id,role,dance,level,total_points,update_date
 23833,Leader,West Coast Swing,Master,9,2026-06-10
 23833,Leader,West Coast Swing,Master,13,2026-07-20
 23833,Leader,West Coast Swing,Master,14,2026-08-17
+23833,Leader,West Coast Swing,Master,24,2026-10-05
 23833,Leader,West Coast Swing,Novice,4,2026-06-10
+23833,Leader,West Coast Swing,Novice,5,2026-10-05
 23834,Follower,West Coast Swing,Novice,6,2026-06-10
 23835,Follower,West Coast Swing,Novice,19,2026-06-10
 23836,Leader,West Coast Swing,Newcomer,4,2026-06-10
@@ -49061,12 +49269,14 @@ dancer_id,role,dance,level,total_points,update_date
 23873,Leader,West Coast Swing,Newcomer,3,2026-06-10
 23873,Leader,West Coast Swing,Novice,1,2026-06-10
 23873,Leader,West Coast Swing,Novice,3,2026-08-31
+23873,Leader,West Coast Swing,Novice,5,2026-10-05
 23874,Follower,West Coast Swing,Novice,1,2026-06-10
 23875,Follower,West Coast Swing,Novice,14,2026-06-10
 23876,Leader,West Coast Swing,Newcomer,10,2026-06-10
 23877,Follower,West Coast Swing,Intermediate,1,2026-06-10
 23877,Follower,West Coast Swing,Novice,24,2026-06-10
 23877,Leader,West Coast Swing,Intermediate,1,2026-08-05
+23877,Leader,West Coast Swing,Intermediate,2,2026-10-05
 23877,Leader,West Coast Swing,Newcomer,8,2026-06-10
 23877,Leader,West Coast Swing,Novice,26,2026-06-10
 23878,Leader,West Coast Swing,Newcomer,6,2026-06-10
@@ -49274,9 +49484,11 @@ dancer_id,role,dance,level,total_points,update_date
 23974,Follower,West Coast Swing,Advanced,12,2026-08-10
 23974,Follower,West Coast Swing,Advanced,13,2026-08-31
 23974,Follower,West Coast Swing,Advanced,14,2026-09-23
+23974,Follower,West Coast Swing,Advanced,15,2026-10-05
 23974,Follower,West Coast Swing,Intermediate,38,2026-06-10
 23974,Follower,West Coast Swing,Novice,16,2026-06-10
 23974,Leader,West Coast Swing,Novice,13,2026-06-10
+23974,Leader,West Coast Swing,Novice,15,2026-10-05
 23975,Leader,West Coast Swing,Newcomer,10,2026-06-10
 23975,Leader,West Coast Swing,Novice,9,2026-06-10
 23976,Leader,West Coast Swing,Newcomer,8,2026-06-10
@@ -49387,6 +49599,7 @@ dancer_id,role,dance,level,total_points,update_date
 24039,Follower,West Coast Swing,Advanced,8,2026-06-23
 24039,Follower,West Coast Swing,Advanced,10,2026-07-15
 24039,Follower,West Coast Swing,Advanced,11,2026-09-14
+24039,Follower,West Coast Swing,Advanced,12,2026-10-05
 24039,Follower,West Coast Swing,Intermediate,31,2026-06-10
 24039,Follower,West Coast Swing,Novice,22,2026-06-10
 24040,Leader,West Coast Swing,Newcomer,3,2026-06-10
@@ -49435,6 +49648,7 @@ dancer_id,role,dance,level,total_points,update_date
 24063,Follower,West Coast Swing,Newcomer,1,2026-06-10
 24065,Leader,West Coast Swing,Intermediate,7,2026-06-10
 24065,Leader,West Coast Swing,Intermediate,17,2026-07-27
+24065,Leader,West Coast Swing,Intermediate,27,2026-10-05
 24065,Leader,West Coast Swing,Novice,20,2026-06-10
 24065,Leader,West Coast Swing,Sophisticated,10,2026-06-10
 24065,Leader,West Coast Swing,Sophisticated,11,2026-08-10
@@ -49483,6 +49697,7 @@ dancer_id,role,dance,level,total_points,update_date
 24093,Leader,West Coast Swing,Intermediate,16,2026-07-16
 24093,Leader,West Coast Swing,Intermediate,22,2026-08-24
 24093,Leader,West Coast Swing,Intermediate,28,2026-09-29
+24093,Leader,West Coast Swing,Intermediate,29,2026-10-05
 24093,Leader,West Coast Swing,Novice,20,2026-06-10
 24094,Follower,West Coast Swing,Intermediate,1,2026-06-10
 24094,Follower,West Coast Swing,Intermediate,2,2026-08-24
@@ -49501,6 +49716,7 @@ dancer_id,role,dance,level,total_points,update_date
 24100,Leader,West Coast Swing,Novice,12,2026-06-23
 24100,Leader,West Coast Swing,Novice,14,2026-07-09
 24100,Leader,West Coast Swing,Novice,15,2026-09-23
+24100,Leader,West Coast Swing,Novice,17,2026-10-05
 24101,Follower,West Coast Swing,Newcomer,2,2026-06-10
 24102,Follower,West Coast Swing,Newcomer,1,2026-06-10
 24102,Leader,West Coast Swing,Novice,1,2026-06-10
@@ -49510,6 +49726,7 @@ dancer_id,role,dance,level,total_points,update_date
 24103,Leader,West Coast Swing,Advanced,30,2026-08-10
 24103,Leader,West Coast Swing,Advanced,40,2026-08-24
 24103,Leader,West Coast Swing,Advanced,50,2026-09-14
+24103,Leader,West Coast Swing,Advanced,51,2026-10-05
 24103,Leader,West Coast Swing,Intermediate,32,2026-06-10
 24103,Leader,West Coast Swing,Novice,18,2026-06-10
 24104,Leader,West Coast Swing,Intermediate,11,2026-06-10
@@ -49585,6 +49802,7 @@ dancer_id,role,dance,level,total_points,update_date
 24143,Follower,West Coast Swing,Intermediate,25,2026-06-23
 24143,Follower,West Coast Swing,Intermediate,26,2026-07-15
 24143,Follower,West Coast Swing,Intermediate,27,2026-09-14
+24143,Follower,West Coast Swing,Intermediate,41,2026-10-05
 24143,Follower,West Coast Swing,Newcomer,6,2026-06-10
 24143,Follower,West Coast Swing,Novice,20,2026-06-10
 24143,Follower,West Coast Swing,Sophisticated,2,2026-06-10
@@ -49703,6 +49921,7 @@ dancer_id,role,dance,level,total_points,update_date
 24203,Follower,West Coast Swing,Newcomer,4,2026-06-10
 24204,Follower,West Coast Swing,Newcomer,3,2026-06-10
 24204,Follower,West Coast Swing,Novice,25,2026-06-10
+24204,Follower,West Coast Swing,Novice,27,2026-10-05
 24204,Follower,West Coast Swing,Sophisticated,4,2026-06-10
 24205,Follower,West Coast Swing,Newcomer,2,2026-06-10
 24205,Leader,West Coast Swing,Intermediate,4,2026-09-29
@@ -49723,6 +49942,7 @@ dancer_id,role,dance,level,total_points,update_date
 24215,Leader,West Coast Swing,Newcomer,1,2026-06-10
 24216,Follower,West Coast Swing,Intermediate,1,2026-06-10
 24216,Follower,West Coast Swing,Intermediate,2,2026-08-10
+24216,Follower,West Coast Swing,Intermediate,3,2026-10-05
 24216,Follower,West Coast Swing,Newcomer,6,2026-06-10
 24216,Follower,West Coast Swing,Novice,23,2026-06-10
 24217,Follower,West Coast Swing,Newcomer,4,2026-06-10
@@ -49750,6 +49970,7 @@ dancer_id,role,dance,level,total_points,update_date
 24225,Leader,West Coast Swing,Advanced,4,2026-07-20
 24225,Leader,West Coast Swing,Advanced,5,2026-09-22
 24225,Leader,West Coast Swing,Advanced,8,2026-09-29
+24225,Leader,West Coast Swing,Advanced,12,2026-10-05
 24225,Leader,West Coast Swing,Intermediate,40,2026-06-10
 24225,Leader,West Coast Swing,Novice,17,2026-06-10
 24226,Leader,West Coast Swing,Novice,1,2026-06-10
@@ -49802,6 +50023,7 @@ dancer_id,role,dance,level,total_points,update_date
 24255,Follower,West Coast Swing,Novice,10,2026-06-10
 24255,Follower,West Coast Swing,Novice,11,2026-07-04
 24255,Follower,West Coast Swing,Novice,12,2026-08-17
+24255,Follower,West Coast Swing,Novice,27,2026-10-05
 24255,Leader,West Coast Swing,Intermediate,1,2026-07-04
 24255,Leader,West Coast Swing,Intermediate,2,2026-08-31
 24255,Leader,West Coast Swing,Newcomer,2,2026-06-10
@@ -49832,6 +50054,7 @@ dancer_id,role,dance,level,total_points,update_date
 24266,Leader,West Coast Swing,Advanced,25,2026-08-10
 24266,Leader,West Coast Swing,Advanced,26,2026-09-14
 24266,Leader,West Coast Swing,Advanced,30,2026-09-29
+24266,Leader,West Coast Swing,Advanced,31,2026-10-05
 24266,Leader,West Coast Swing,Intermediate,39,2026-06-10
 24266,Leader,West Coast Swing,Newcomer,3,2026-06-10
 24266,Leader,West Coast Swing,Novice,27,2026-06-10
@@ -49895,6 +50118,7 @@ dancer_id,role,dance,level,total_points,update_date
 24295,Leader,West Coast Swing,Newcomer,4,2026-06-10
 24296,Follower,West Coast Swing,Newcomer,1,2026-06-10
 24297,Follower,West Coast Swing,Newcomer,1,2026-06-10
+24297,Leader,West Coast Swing,Newcomer,10,2026-10-05
 24298,Follower,West Coast Swing,Newcomer,1,2026-06-10
 24298,Follower,West Coast Swing,Novice,5,2026-06-10
 24298,Follower,West Coast Swing,Novice,6,2026-07-27
@@ -50044,6 +50268,7 @@ dancer_id,role,dance,level,total_points,update_date
 24379,Leader,West Coast Swing,Advanced,4,2026-06-17
 24379,Leader,West Coast Swing,Advanced,5,2026-06-23
 24379,Leader,West Coast Swing,Advanced,7,2026-07-09
+24379,Leader,West Coast Swing,Advanced,9,2026-10-05
 24379,Leader,West Coast Swing,Intermediate,32,2026-06-10
 24379,Leader,West Coast Swing,Newcomer,6,2026-06-10
 24379,Leader,West Coast Swing,Novice,34,2026-06-10
@@ -50055,6 +50280,7 @@ dancer_id,role,dance,level,total_points,update_date
 24379,Leader,West Coast Swing,Sophisticated,18,2026-07-27
 24379,Leader,West Coast Swing,Sophisticated,19,2026-08-17
 24379,Leader,West Coast Swing,Sophisticated,20,2026-08-24
+24379,Leader,West Coast Swing,Sophisticated,24,2026-10-05
 24380,Leader,West Coast Swing,Newcomer,4,2026-06-10
 24381,Leader,West Coast Swing,Newcomer,2,2026-06-10
 24382,Leader,West Coast Swing,Newcomer,1,2026-06-10
@@ -50360,6 +50586,7 @@ dancer_id,role,dance,level,total_points,update_date
 24541,Follower,West Coast Swing,Newcomer,1,2026-06-10
 24542,Follower,West Coast Swing,Newcomer,1,2026-06-10
 24543,Follower,West Coast Swing,Novice,5,2026-06-10
+24543,Follower,West Coast Swing,Novice,15,2026-10-05
 24544,Leader,West Coast Swing,Newcomer,3,2026-06-10
 24545,Follower,West Coast Swing,Newcomer,3,2026-06-10
 24545,Leader,West Coast Swing,Novice,1,2026-08-10
@@ -50555,11 +50782,13 @@ dancer_id,role,dance,level,total_points,update_date
 24658,Follower,West Coast Swing,Newcomer,2,2026-09-29
 24658,Leader,West Coast Swing,Newcomer,6,2026-06-10
 24658,Leader,West Coast Swing,Novice,1,2026-08-10
+24658,Leader,West Coast Swing,Novice,11,2026-10-05
 24659,Leader,West Coast Swing,Intermediate,6,2026-06-10
 24659,Leader,West Coast Swing,Intermediate,7,2026-07-15
 24659,Leader,West Coast Swing,Intermediate,15,2026-07-27
 24659,Leader,West Coast Swing,Intermediate,27,2026-08-10
 24659,Leader,West Coast Swing,Intermediate,42,2026-09-14
+24659,Leader,West Coast Swing,Intermediate,57,2026-10-05
 24659,Leader,West Coast Swing,Newcomer,4,2026-06-10
 24659,Leader,West Coast Swing,Novice,22,2026-06-10
 24660,Leader,West Coast Swing,Newcomer,2,2026-06-10
@@ -50593,6 +50822,7 @@ dancer_id,role,dance,level,total_points,update_date
 24675,Leader,West Coast Swing,Intermediate,17,2026-07-04
 24675,Leader,West Coast Swing,Intermediate,18,2026-08-10
 24675,Leader,West Coast Swing,Intermediate,26,2026-09-14
+24675,Leader,West Coast Swing,Intermediate,27,2026-10-05
 24675,Leader,West Coast Swing,Novice,22,2026-06-10
 24676,Follower,West Coast Swing,Intermediate,9,2026-06-10
 24676,Follower,West Coast Swing,Intermediate,10,2026-09-29
@@ -50668,6 +50898,7 @@ dancer_id,role,dance,level,total_points,update_date
 24716,Leader,West Coast Swing,Novice,11,2026-08-24
 24717,Leader,West Coast Swing,Newcomer,4,2026-06-10
 24718,Leader,West Coast Swing,Newcomer,2,2026-06-10
+24718,Leader,West Coast Swing,Novice,1,2026-10-05
 24719,Leader,West Coast Swing,Newcomer,1,2026-06-10
 24720,Leader,West Coast Swing,Intermediate,9,2026-06-10
 24720,Leader,West Coast Swing,Newcomer,1,2026-06-10
@@ -50680,6 +50911,7 @@ dancer_id,role,dance,level,total_points,update_date
 24724,Follower,West Coast Swing,Intermediate,29,2026-06-17
 24724,Follower,West Coast Swing,Newcomer,15,2026-06-10
 24724,Follower,West Coast Swing,Novice,23,2026-06-10
+24725,Follower,West Coast Swing,Intermediate,6,2026-10-05
 24725,Follower,West Coast Swing,Newcomer,12,2026-06-10
 24725,Follower,West Coast Swing,Novice,20,2026-06-10
 24725,Leader,West Coast Swing,Newcomer,12,2026-06-10
@@ -50694,6 +50926,7 @@ dancer_id,role,dance,level,total_points,update_date
 24730,Leader,West Coast Swing,Newcomer,1,2026-06-10
 24731,Follower,West Coast Swing,Newcomer,1,2026-06-10
 24731,Follower,West Coast Swing,Novice,2,2026-06-10
+24731,Follower,West Coast Swing,Novice,3,2026-10-05
 24732,Follower,West Coast Swing,Newcomer,1,2026-06-10
 24732,Leader,West Coast Swing,Newcomer,6,2026-06-10
 24733,Follower,West Coast Swing,Newcomer,1,2026-06-10
@@ -50937,6 +51170,7 @@ dancer_id,role,dance,level,total_points,update_date
 24846,Leader,West Coast Swing,Novice,1,2026-06-10
 24846,Leader,West Coast Swing,Novice,16,2026-07-27
 24847,Follower,West Coast Swing,Novice,4,2026-06-10
+24847,Follower,West Coast Swing,Novice,6,2026-10-05
 24849,Follower,West Coast Swing,Novice,1,2026-06-10
 24850,Follower,West Coast Swing,Newcomer,4,2026-06-10
 24850,Leader,West Coast Swing,Newcomer,6,2026-06-10
@@ -51010,6 +51244,7 @@ dancer_id,role,dance,level,total_points,update_date
 24883,Follower,West Coast Swing,Newcomer,15,2026-06-10
 24884,Follower,West Coast Swing,Newcomer,12,2026-06-10
 24884,Follower,West Coast Swing,Novice,9,2026-06-10
+24884,Follower,West Coast Swing,Novice,10,2026-10-05
 24884,Follower,West Coast Swing,Sophisticated,1,2026-06-10
 24884,Leader,West Coast Swing,Newcomer,6,2026-06-10
 24885,Follower,West Coast Swing,Newcomer,10,2026-06-10
@@ -51069,6 +51304,7 @@ dancer_id,role,dance,level,total_points,update_date
 24909,Leader,West Coast Swing,Advanced,40,2026-08-31
 24909,Leader,West Coast Swing,Advanced,41,2026-09-14
 24909,Leader,West Coast Swing,Advanced,42,2026-09-29
+24909,Leader,West Coast Swing,Advanced,57,2026-10-05
 24909,Leader,West Coast Swing,Intermediate,39,2026-06-10
 24909,Leader,West Coast Swing,Novice,31,2026-06-10
 24910,Leader,West Coast Swing,Novice,1,2026-06-10
@@ -51359,6 +51595,7 @@ dancer_id,role,dance,level,total_points,update_date
 25081,Follower,West Coast Swing,Newcomer,3,2026-06-10
 25082,Follower,West Coast Swing,Newcomer,2,2026-06-10
 25082,Follower,West Coast Swing,Novice,8,2026-06-10
+25082,Follower,West Coast Swing,Novice,16,2026-10-05
 25082,Leader,West Coast Swing,Newcomer,1,2026-06-10
 25083,Follower,West Coast Swing,Newcomer,1,2026-06-10
 25084,Leader,West Coast Swing,Newcomer,3,2026-06-10
@@ -51375,6 +51612,7 @@ dancer_id,role,dance,level,total_points,update_date
 25091,Leader,West Coast Swing,Novice,11,2026-06-10
 25091,Leader,West Coast Swing,Novice,13,2026-06-23
 25091,Leader,West Coast Swing,Novice,14,2026-09-29
+25091,Leader,West Coast Swing,Novice,16,2026-10-05
 25092,Follower,West Coast Swing,Intermediate,32,2026-06-10
 25092,Follower,West Coast Swing,Novice,37,2026-06-10
 25093,Follower,West Coast Swing,Intermediate,21,2026-06-10
@@ -51603,6 +51841,7 @@ dancer_id,role,dance,level,total_points,update_date
 25219,Follower,West Coast Swing,Newcomer,1,2026-06-10
 25220,Follower,West Coast Swing,Intermediate,10,2026-06-10
 25220,Follower,West Coast Swing,Master,3,2026-06-10
+25220,Follower,West Coast Swing,Master,4,2026-10-05
 25220,Follower,West Coast Swing,Newcomer,1,2026-06-10
 25220,Follower,West Coast Swing,Novice,30,2026-06-10
 25220,Follower,West Coast Swing,Sophisticated,4,2026-06-10
@@ -51722,6 +51961,7 @@ dancer_id,role,dance,level,total_points,update_date
 25288,Leader,West Coast Swing,Advanced,39,2026-07-27
 25288,Leader,West Coast Swing,Advanced,40,2026-08-31
 25288,Leader,West Coast Swing,Advanced,50,2026-09-23
+25288,Leader,West Coast Swing,Advanced,60,2026-10-05
 25288,Leader,West Coast Swing,Intermediate,33,2026-06-10
 25288,Leader,West Coast Swing,Novice,26,2026-06-10
 25289,Follower,West Coast Swing,Novice,2,2026-06-10
@@ -51741,6 +51981,7 @@ dancer_id,role,dance,level,total_points,update_date
 25299,Leader,West Coast Swing,Intermediate,10,2026-06-10
 25299,Leader,West Coast Swing,Intermediate,11,2026-06-17
 25299,Leader,West Coast Swing,Intermediate,13,2026-07-16
+25299,Leader,West Coast Swing,Intermediate,19,2026-10-05
 25299,Leader,West Coast Swing,Newcomer,1,2026-06-10
 25299,Leader,West Coast Swing,Novice,43,2026-06-10
 25300,Leader,West Coast Swing,Newcomer,1,2026-06-10
@@ -51853,6 +52094,7 @@ dancer_id,role,dance,level,total_points,update_date
 25363,Leader,West Coast Swing,Novice,1,2026-06-10
 25364,Follower,West Coast Swing,Novice,1,2026-06-10
 25365,Follower,West Coast Swing,Novice,4,2026-06-10
+25365,Follower,West Coast Swing,Novice,5,2026-10-05
 25366,Leader,West Coast Swing,Newcomer,6,2026-06-10
 25367,Leader,West Coast Swing,Newcomer,4,2026-06-10
 25367,Leader,West Coast Swing,Novice,8,2026-07-16
@@ -51899,6 +52141,7 @@ dancer_id,role,dance,level,total_points,update_date
 25385,Follower,West Coast Swing,Master,21,2026-07-20
 25385,Follower,West Coast Swing,Master,31,2026-08-04
 25385,Follower,West Coast Swing,Master,35,2026-08-17
+25385,Follower,West Coast Swing,Master,45,2026-10-05
 25385,Follower,West Coast Swing,Novice,2,2026-08-04
 25385,Follower,West Coast Swing,Novice,12,2026-08-17
 25386,Leader,West Coast Swing,Newcomer,8,2026-06-10
@@ -52052,6 +52295,7 @@ dancer_id,role,dance,level,total_points,update_date
 25473,Leader,West Coast Swing,Novice,10,2026-07-09
 25473,Leader,West Coast Swing,Novice,16,2026-07-20
 25474,Follower,West Coast Swing,Intermediate,12,2026-09-23
+25474,Follower,West Coast Swing,Intermediate,22,2026-10-05
 25474,Follower,West Coast Swing,Novice,12,2026-06-10
 25474,Follower,West Coast Swing,Novice,13,2026-06-23
 25474,Follower,West Coast Swing,Novice,15,2026-07-09
@@ -52196,6 +52440,7 @@ dancer_id,role,dance,level,total_points,update_date
 25548,Leader,West Coast Swing,Intermediate,31,2026-06-10
 25548,Leader,West Coast Swing,Novice,19,2026-06-10
 25549,Leader,West Coast Swing,Intermediate,9,2026-06-10
+25549,Leader,West Coast Swing,Intermediate,10,2026-10-05
 25549,Leader,West Coast Swing,Novice,24,2026-06-10
 25550,Leader,West Coast Swing,Intermediate,1,2026-07-27
 25550,Leader,West Coast Swing,Novice,18,2026-06-10
@@ -52282,12 +52527,14 @@ dancer_id,role,dance,level,total_points,update_date
 25595,Leader,West Coast Swing,Novice,14,2026-06-17
 25595,Leader,West Coast Swing,Novice,24,2026-08-05
 25596,Leader,West Coast Swing,Newcomer,4,2026-06-10
+25596,Leader,West Coast Swing,Novice,1,2026-10-05
 25597,Leader,West Coast Swing,Newcomer,2,2026-06-10
 25597,Leader,West Coast Swing,Novice,17,2026-06-10
 25598,Leader,West Coast Swing,Newcomer,1,2026-06-10
 25599,Follower,West Coast Swing,Newcomer,8,2026-08-17
 25599,Leader,West Coast Swing,Newcomer,1,2026-06-10
 25600,Leader,West Coast Swing,Intermediate,1,2026-08-17
+25600,Leader,West Coast Swing,Intermediate,2,2026-10-05
 25600,Leader,West Coast Swing,Newcomer,1,2026-06-10
 25600,Leader,West Coast Swing,Novice,17,2026-06-10
 25601,Leader,West Coast Swing,Newcomer,1,2026-06-10
@@ -52312,9 +52559,12 @@ dancer_id,role,dance,level,total_points,update_date
 25610,Leader,West Coast Swing,Newcomer,1,2026-08-26
 25611,Leader,West Coast Swing,Intermediate,1,2026-06-10
 25611,Leader,West Coast Swing,Intermediate,11,2026-08-17
+25611,Leader,West Coast Swing,Intermediate,21,2026-10-05
 25611,Leader,West Coast Swing,Novice,24,2026-06-10
 25611,Leader,West Coast Swing,Sophisticated,4,2026-06-10
 25611,Leader,West Coast Swing,Sophisticated,5,2026-06-23
+25611,Leader,West Coast Swing,Sophisticated,6,2026-10-05
+25612,Follower,West Coast Swing,Advanced,1,2026-10-05
 25612,Follower,West Coast Swing,Intermediate,10,2026-06-10
 25612,Follower,West Coast Swing,Intermediate,11,2026-07-09
 25612,Follower,West Coast Swing,Intermediate,13,2026-07-20
@@ -52420,6 +52670,7 @@ dancer_id,role,dance,level,total_points,update_date
 25676,Leader,West Coast Swing,Novice,1,2026-06-10
 25677,Follower,West Coast Swing,Intermediate,1,2026-06-10
 25677,Follower,West Coast Swing,Intermediate,2,2026-07-04
+25677,Follower,West Coast Swing,Intermediate,8,2026-10-05
 25677,Follower,West Coast Swing,Novice,16,2026-06-10
 25677,Follower,West Coast Swing,Sophisticated,2,2026-07-04
 25677,Leader,West Coast Swing,Newcomer,2,2026-06-10
@@ -52557,6 +52808,7 @@ dancer_id,role,dance,level,total_points,update_date
 25753,Leader,West Coast Swing,Advanced,36,2026-08-10
 25753,Leader,West Coast Swing,Advanced,44,2026-08-24
 25753,Leader,West Coast Swing,Advanced,52,2026-09-29
+25753,Leader,West Coast Swing,Advanced,60,2026-10-05
 25753,Leader,West Coast Swing,Intermediate,37,2026-06-10
 25753,Leader,West Coast Swing,Novice,25,2026-06-10
 25754,Leader,West Coast Swing,Novice,30,2026-06-10
@@ -52573,6 +52825,7 @@ dancer_id,role,dance,level,total_points,update_date
 25756,Follower,West Coast Swing,Advanced,29,2026-08-24
 25756,Follower,West Coast Swing,Advanced,41,2026-09-14
 25756,Follower,West Coast Swing,Advanced,45,2026-09-29
+25756,Follower,West Coast Swing,Advanced,46,2026-10-05
 25756,Follower,West Coast Swing,Intermediate,35,2026-06-10
 25756,Follower,West Coast Swing,Novice,21,2026-06-10
 25757,Leader,West Coast Swing,Newcomer,6,2026-06-10
@@ -52587,6 +52840,7 @@ dancer_id,role,dance,level,total_points,update_date
 25759,Leader,West Coast Swing,Newcomer,3,2026-06-10
 25759,Leader,West Coast Swing,Novice,3,2026-06-10
 25759,Leader,West Coast Swing,Novice,13,2026-07-15
+25759,Leader,West Coast Swing,Novice,27,2026-10-05
 25760,Leader,West Coast Swing,Newcomer,2,2026-06-10
 25760,Leader,West Coast Swing,Novice,11,2026-06-10
 25760,Leader,West Coast Swing,Novice,26,2026-07-16
@@ -52610,6 +52864,7 @@ dancer_id,role,dance,level,total_points,update_date
 25772,Follower,West Coast Swing,Novice,19,2026-06-10
 25774,Follower,West Coast Swing,Advanced,8,2026-07-09
 25774,Follower,West Coast Swing,Advanced,23,2026-09-14
+25774,Follower,West Coast Swing,Advanced,24,2026-10-05
 25774,Follower,West Coast Swing,Intermediate,33,2026-06-10
 25774,Follower,West Coast Swing,Novice,16,2026-06-10
 25775,Follower,West Coast Swing,Newcomer,1,2026-06-10
@@ -52695,6 +52950,7 @@ dancer_id,role,dance,level,total_points,update_date
 25823,Follower,West Coast Swing,Novice,10,2026-06-10
 25823,Follower,West Coast Swing,Novice,16,2026-08-26
 25823,Leader,West Coast Swing,Advanced,3,2026-09-29
+25823,Leader,West Coast Swing,Advanced,15,2026-10-05
 25823,Leader,West Coast Swing,Intermediate,19,2026-06-10
 25823,Leader,West Coast Swing,Intermediate,20,2026-08-10
 25823,Leader,West Coast Swing,Intermediate,30,2026-08-26
@@ -52703,6 +52959,7 @@ dancer_id,role,dance,level,total_points,update_date
 25826,Leader,West Coast Swing,Intermediate,3,2026-07-09
 25826,Leader,West Coast Swing,Intermediate,11,2026-08-26
 25826,Leader,West Coast Swing,Intermediate,19,2026-09-14
+25826,Leader,West Coast Swing,Intermediate,29,2026-10-05
 25826,Leader,West Coast Swing,Newcomer,6,2026-06-10
 25826,Leader,West Coast Swing,Novice,30,2026-06-10
 25827,Leader,West Coast Swing,Newcomer,3,2026-06-10
@@ -52717,6 +52974,7 @@ dancer_id,role,dance,level,total_points,update_date
 25832,Follower,West Coast Swing,Novice,2,2026-06-10
 25833,Leader,West Coast Swing,Novice,1,2026-06-10
 25834,Leader,West Coast Swing,Newcomer,10,2026-06-10
+25834,Leader,West Coast Swing,Novice,1,2026-10-05
 25835,Leader,West Coast Swing,Master,5,2026-06-10
 25835,Leader,West Coast Swing,Master,6,2026-07-27
 25835,Leader,West Coast Swing,Newcomer,4,2026-06-10
@@ -52725,6 +52983,7 @@ dancer_id,role,dance,level,total_points,update_date
 25837,Leader,West Coast Swing,Novice,15,2026-08-04
 25838,Leader,West Coast Swing,Newcomer,1,2026-06-10
 25839,Leader,West Coast Swing,Newcomer,1,2026-06-10
+25840,Follower,West Coast Swing,Newcomer,12,2026-10-05
 25840,Leader,West Coast Swing,Newcomer,1,2026-06-10
 25841,Follower,West Coast Swing,Newcomer,15,2026-06-10
 25842,Follower,West Coast Swing,Newcomer,12,2026-06-10
@@ -52733,6 +52992,7 @@ dancer_id,role,dance,level,total_points,update_date
 25843,Follower,West Coast Swing,Newcomer,10,2026-06-10
 25843,Leader,West Coast Swing,Newcomer,1,2026-06-10
 25844,Follower,West Coast Swing,Master,1,2026-06-10
+25844,Follower,West Coast Swing,Master,5,2026-10-05
 25844,Follower,West Coast Swing,Newcomer,8,2026-06-10
 25845,Follower,West Coast Swing,Newcomer,6,2026-06-10
 25846,Follower,West Coast Swing,Newcomer,1,2026-06-10
@@ -52779,6 +53039,7 @@ dancer_id,role,dance,level,total_points,update_date
 25871,Leader,West Coast Swing,Intermediate,1,2026-06-17
 25871,Leader,West Coast Swing,Intermediate,3,2026-06-23
 25871,Leader,West Coast Swing,Intermediate,4,2026-07-04
+25871,Leader,West Coast Swing,Intermediate,12,2026-10-05
 25871,Leader,West Coast Swing,Newcomer,10,2026-06-10
 25871,Leader,West Coast Swing,Novice,29,2026-06-10
 25872,Leader,West Coast Swing,Newcomer,8,2026-06-10
@@ -52833,6 +53094,7 @@ dancer_id,role,dance,level,total_points,update_date
 25897,Follower,West Coast Swing,Advanced,18,2026-08-10
 25897,Follower,West Coast Swing,Advanced,28,2026-08-24
 25897,Follower,West Coast Swing,Advanced,38,2026-09-29
+25897,Follower,West Coast Swing,Advanced,50,2026-10-05
 25897,Follower,West Coast Swing,Intermediate,39,2026-06-10
 25897,Follower,West Coast Swing,Novice,27,2026-06-10
 25898,Follower,West Coast Swing,Intermediate,6,2026-06-10
@@ -52869,6 +53131,7 @@ dancer_id,role,dance,level,total_points,update_date
 25915,Follower,West Coast Swing,Newcomer,10,2026-06-10
 25916,Follower,West Coast Swing,Newcomer,8,2026-06-10
 25916,Follower,West Coast Swing,Novice,2,2026-06-10
+25916,Follower,West Coast Swing,Novice,3,2026-10-05
 25917,Follower,West Coast Swing,Newcomer,6,2026-06-10
 25918,Follower,West Coast Swing,Newcomer,1,2026-06-10
 25919,Follower,West Coast Swing,Newcomer,1,2026-06-10
@@ -53056,6 +53319,7 @@ dancer_id,role,dance,level,total_points,update_date
 26041,Follower,West Coast Swing,Intermediate,9,2026-07-09
 26041,Follower,West Coast Swing,Intermediate,10,2026-07-15
 26041,Follower,West Coast Swing,Intermediate,12,2026-07-27
+26041,Follower,West Coast Swing,Intermediate,20,2026-10-05
 26041,Follower,West Coast Swing,Newcomer,6,2026-06-10
 26041,Follower,West Coast Swing,Novice,17,2026-06-10
 26042,Follower,West Coast Swing,Newcomer,4,2026-06-10
@@ -53071,6 +53335,7 @@ dancer_id,role,dance,level,total_points,update_date
 26049,Leader,West Coast Swing,Intermediate,9,2026-06-17
 26049,Leader,West Coast Swing,Intermediate,11,2026-07-09
 26049,Leader,West Coast Swing,Intermediate,21,2026-08-31
+26049,Leader,West Coast Swing,Intermediate,25,2026-10-05
 26049,Leader,West Coast Swing,Novice,34,2026-06-10
 26050,Leader,West Coast Swing,Newcomer,3,2026-06-10
 26051,Leader,West Coast Swing,Newcomer,2,2026-06-10
@@ -53144,6 +53409,7 @@ dancer_id,role,dance,level,total_points,update_date
 26095,Follower,West Coast Swing,Novice,9,2026-07-20
 26095,Follower,West Coast Swing,Novice,11,2026-08-17
 26095,Follower,West Coast Swing,Novice,13,2026-09-22
+26095,Follower,West Coast Swing,Novice,19,2026-10-05
 26095,Leader,West Coast Swing,Newcomer,12,2026-08-10
 26096,Follower,West Coast Swing,Newcomer,4,2026-06-10
 26096,Follower,West Coast Swing,Novice,1,2026-07-09
@@ -53282,6 +53548,7 @@ dancer_id,role,dance,level,total_points,update_date
 26191,Leader,West Coast Swing,Novice,9,2026-07-20
 26191,Leader,West Coast Swing,Novice,24,2026-09-29
 26192,Leader,West Coast Swing,Novice,13,2026-06-10
+26193,Leader,West Coast Swing,Intermediate,2,2026-10-05
 26193,Leader,West Coast Swing,Novice,13,2026-06-10
 26193,Leader,West Coast Swing,Novice,19,2026-08-17
 26194,Leader,West Coast Swing,Novice,1,2026-06-10
@@ -53423,6 +53690,7 @@ dancer_id,role,dance,level,total_points,update_date
 26283,Leader,West Coast Swing,Intermediate,9,2026-07-09
 26283,Leader,West Coast Swing,Intermediate,21,2026-07-15
 26283,Leader,West Coast Swing,Intermediate,22,2026-07-27
+26283,Leader,West Coast Swing,Intermediate,34,2026-10-05
 26283,Leader,West Coast Swing,Newcomer,1,2026-06-10
 26283,Leader,West Coast Swing,Novice,24,2026-06-10
 26284,Follower,West Coast Swing,Newcomer,6,2026-06-10
@@ -53927,6 +54195,7 @@ dancer_id,role,dance,level,total_points,update_date
 26594,Follower,West Coast Swing,Intermediate,9,2026-07-27
 26594,Follower,West Coast Swing,Intermediate,10,2026-08-10
 26594,Follower,West Coast Swing,Intermediate,12,2026-09-29
+26594,Follower,West Coast Swing,Intermediate,14,2026-10-05
 26594,Follower,West Coast Swing,Novice,21,2026-06-10
 26594,Leader,West Coast Swing,Newcomer,1,2026-06-10
 26595,Leader,West Coast Swing,Newcomer,1,2026-06-10
@@ -53946,6 +54215,7 @@ dancer_id,role,dance,level,total_points,update_date
 26606,Follower,West Coast Swing,Novice,16,2026-07-15
 26607,Follower,West Coast Swing,Newcomer,1,2026-06-10
 26607,Follower,West Coast Swing,Novice,2,2026-07-15
+26607,Follower,West Coast Swing,Novice,4,2026-10-05
 26607,Leader,West Coast Swing,Newcomer,1,2026-06-10
 26608,Follower,West Coast Swing,Newcomer,1,2026-06-10
 26610,Follower,West Coast Swing,Intermediate,1,2026-07-15
@@ -53986,6 +54256,7 @@ dancer_id,role,dance,level,total_points,update_date
 26631,Follower,West Coast Swing,Newcomer,4,2026-06-10
 26631,Follower,West Coast Swing,Novice,1,2026-06-10
 26632,Follower,West Coast Swing,Newcomer,2,2026-06-10
+26632,Follower,West Coast Swing,Novice,1,2026-10-05
 26633,Follower,West Coast Swing,Newcomer,1,2026-06-10
 26634,Follower,West Coast Swing,Newcomer,1,2026-06-10
 26634,Follower,West Coast Swing,Novice,10,2026-06-10
@@ -54129,6 +54400,7 @@ dancer_id,role,dance,level,total_points,update_date
 26728,Leader,West Coast Swing,Advanced,1,2026-09-14
 26728,Leader,West Coast Swing,Intermediate,37,2026-06-10
 26728,Leader,West Coast Swing,Novice,25,2026-06-10
+26729,Follower,West Coast Swing,Intermediate,2,2026-10-05
 26729,Follower,West Coast Swing,Novice,16,2026-06-10
 26730,Leader,West Coast Swing,Newcomer,6,2026-06-10
 26730,Leader,West Coast Swing,Novice,4,2026-06-10
@@ -54178,6 +54450,7 @@ dancer_id,role,dance,level,total_points,update_date
 26761,Leader,West Coast Swing,Newcomer,2,2026-06-10
 26762,Follower,West Coast Swing,Newcomer,12,2026-08-24
 26762,Leader,West Coast Swing,Newcomer,1,2026-06-10
+26762,Leader,West Coast Swing,Novice,8,2026-10-05
 26763,Leader,West Coast Swing,Newcomer,1,2026-06-10
 26764,Leader,West Coast Swing,Newcomer,1,2026-06-10
 26765,Leader,West Coast Swing,Newcomer,1,2026-06-10
@@ -54192,16 +54465,19 @@ dancer_id,role,dance,level,total_points,update_date
 26771,Follower,West Coast Swing,Newcomer,2,2026-06-10
 26772,Follower,West Coast Swing,Newcomer,1,2026-06-10
 26772,Follower,West Coast Swing,Novice,4,2026-06-10
+26772,Follower,West Coast Swing,Novice,5,2026-10-05
 26773,Follower,West Coast Swing,Newcomer,1,2026-06-10
 26774,Follower,West Coast Swing,Newcomer,1,2026-06-10
 26775,Follower,West Coast Swing,Newcomer,1,2026-06-10
 26776,Follower,West Coast Swing,Newcomer,1,2026-06-10
 26777,Leader,West Coast Swing,Novice,3,2026-06-10
+26777,Leader,West Coast Swing,Novice,4,2026-10-05
 26778,Leader,West Coast Swing,Novice,1,2026-06-10
 26779,Follower,West Coast Swing,Novice,16,2026-06-10
 26779,Leader,West Coast Swing,Newcomer,10,2026-06-10
 26780,Follower,West Coast Swing,Newcomer,1,2026-06-10
 26780,Leader,West Coast Swing,Intermediate,1,2026-07-15
+26780,Leader,West Coast Swing,Intermediate,2,2026-10-05
 26780,Leader,West Coast Swing,Newcomer,10,2026-06-10
 26780,Leader,West Coast Swing,Novice,22,2026-06-10
 26781,Leader,West Coast Swing,Intermediate,3,2026-06-10
@@ -54214,6 +54490,8 @@ dancer_id,role,dance,level,total_points,update_date
 26782,Leader,West Coast Swing,Newcomer,4,2026-06-10
 26783,Leader,West Coast Swing,Newcomer,2,2026-06-10
 26783,Leader,West Coast Swing,Novice,1,2026-07-15
+26783,Leader,West Coast Swing,Novice,13,2026-10-05
+26784,Follower,West Coast Swing,Newcomer,1,2026-10-05
 26784,Leader,West Coast Swing,Newcomer,1,2026-06-10
 26785,Leader,West Coast Swing,Newcomer,1,2026-06-10
 26786,Leader,West Coast Swing,Newcomer,1,2026-06-10
@@ -54225,10 +54503,12 @@ dancer_id,role,dance,level,total_points,update_date
 26791,Follower,West Coast Swing,Newcomer,8,2026-06-10
 26791,Follower,West Coast Swing,Novice,2,2026-07-15
 26792,Follower,West Coast Swing,Newcomer,6,2026-06-10
+26792,Leader,West Coast Swing,Newcomer,1,2026-10-05
 26793,Follower,West Coast Swing,Newcomer,1,2026-06-10
 26794,Follower,West Coast Swing,Newcomer,1,2026-06-10
 26795,Follower,West Coast Swing,Newcomer,1,2026-06-10
 26796,Follower,West Coast Swing,Novice,2,2026-06-10
+26796,Follower,West Coast Swing,Novice,4,2026-10-05
 26796,Leader,West Coast Swing,Advanced,1,2026-06-10
 26796,Leader,West Coast Swing,Intermediate,42,2026-06-10
 26796,Leader,West Coast Swing,Novice,20,2026-06-10
@@ -54445,6 +54725,7 @@ dancer_id,role,dance,level,total_points,update_date
 26938,Follower,West Coast Swing,Intermediate,14,2026-07-04
 26938,Follower,West Coast Swing,Intermediate,15,2026-07-15
 26938,Follower,West Coast Swing,Intermediate,16,2026-08-10
+26938,Follower,West Coast Swing,Intermediate,18,2026-10-05
 26938,Follower,West Coast Swing,Novice,34,2026-06-10
 26938,Leader,West Coast Swing,Newcomer,4,2026-06-10
 26939,Leader,West Coast Swing,Newcomer,2,2026-06-10
@@ -54498,6 +54779,7 @@ dancer_id,role,dance,level,total_points,update_date
 26978,Leader,West Coast Swing,Novice,1,2026-06-10
 26979,Leader,West Coast Swing,Master,3,2026-06-10
 26979,Leader,West Coast Swing,Master,6,2026-07-09
+26979,Leader,West Coast Swing,Master,10,2026-10-05
 26980,Leader,West Coast Swing,Newcomer,6,2026-06-10
 26981,Follower,West Coast Swing,Newcomer,2,2026-07-27
 26981,Leader,West Coast Swing,Newcomer,2,2026-06-10
@@ -54518,6 +54800,7 @@ dancer_id,role,dance,level,total_points,update_date
 26991,Leader,West Coast Swing,Novice,12,2026-07-09
 26991,Leader,West Coast Swing,Novice,13,2026-08-24
 26992,Leader,West Coast Swing,Newcomer,4,2026-06-10
+26992,Leader,West Coast Swing,Novice,1,2026-10-05
 26993,Leader,West Coast Swing,Newcomer,2,2026-06-10
 26994,Leader,West Coast Swing,Newcomer,1,2026-06-10
 26994,Leader,West Coast Swing,Novice,2,2026-06-10
@@ -54610,6 +54893,7 @@ dancer_id,role,dance,level,total_points,update_date
 27052,Follower,West Coast Swing,Novice,8,2026-07-30
 27053,Follower,West Coast Swing,Newcomer,6,2026-06-10
 27053,Follower,West Coast Swing,Novice,12,2026-06-10
+27053,Follower,West Coast Swing,Novice,13,2026-10-05
 27054,Follower,West Coast Swing,Newcomer,1,2026-06-10
 27055,Follower,West Coast Swing,Newcomer,1,2026-06-10
 27056,Follower,West Coast Swing,Newcomer,1,2026-06-10
@@ -54651,6 +54935,7 @@ dancer_id,role,dance,level,total_points,update_date
 27078,Follower,West Coast Swing,Novice,12,2026-09-22
 27079,Leader,West Coast Swing,Novice,1,2026-06-10
 27080,Follower,West Coast Swing,Novice,2,2026-06-10
+27081,Follower,West Coast Swing,Intermediate,2,2026-10-05
 27081,Follower,West Coast Swing,Novice,13,2026-06-10
 27081,Follower,West Coast Swing,Novice,14,2026-06-23
 27081,Follower,West Coast Swing,Novice,16,2026-07-15
@@ -54664,6 +54949,7 @@ dancer_id,role,dance,level,total_points,update_date
 27084,Follower,West Coast Swing,Novice,3,2026-06-23
 27084,Follower,West Coast Swing,Novice,4,2026-07-27
 27084,Follower,West Coast Swing,Novice,12,2026-09-08
+27084,Follower,West Coast Swing,Novice,14,2026-10-05
 27084,Leader,West Coast Swing,Newcomer,6,2026-06-10
 27085,Follower,West Coast Swing,Intermediate,1,2026-07-27
 27085,Follower,West Coast Swing,Intermediate,2,2026-09-08
@@ -54677,6 +54963,7 @@ dancer_id,role,dance,level,total_points,update_date
 27087,Leader,West Coast Swing,Advanced,65,2026-08-10
 27087,Leader,West Coast Swing,Advanced,80,2026-08-31
 27087,Leader,West Coast Swing,Advanced,86,2026-09-14
+27087,Leader,West Coast Swing,All-Star,4,2026-10-05
 27087,Leader,West Coast Swing,Intermediate,30,2026-06-10
 27087,Leader,West Coast Swing,Novice,25,2026-06-10
 27089,Follower,West Coast Swing,Novice,1,2026-06-10
@@ -54884,6 +55171,7 @@ dancer_id,role,dance,level,total_points,update_date
 27230,Follower,West Coast Swing,Novice,1,2026-06-10
 27230,Follower,West Coast Swing,Novice,2,2026-07-27
 27231,Leader,West Coast Swing,Newcomer,8,2026-06-10
+27231,Leader,West Coast Swing,Novice,1,2026-10-05
 27232,Leader,West Coast Swing,Newcomer,6,2026-06-10
 27233,Leader,West Coast Swing,Newcomer,2,2026-06-10
 27233,Leader,West Coast Swing,Novice,1,2026-06-10
@@ -54892,6 +55180,7 @@ dancer_id,role,dance,level,total_points,update_date
 27235,Leader,West Coast Swing,Newcomer,1,2026-06-10
 27235,Leader,West Coast Swing,Novice,1,2026-09-22
 27235,Leader,West Coast Swing,Novice,2,2026-09-29
+27235,Leader,West Coast Swing,Novice,14,2026-10-05
 27236,Leader,West Coast Swing,Newcomer,1,2026-06-10
 27237,Follower,West Coast Swing,Newcomer,10,2026-06-10
 27238,Follower,West Coast Swing,Newcomer,8,2026-06-10
@@ -54989,6 +55278,7 @@ dancer_id,role,dance,level,total_points,update_date
 27305,Leader,West Coast Swing,Novice,1,2026-06-10
 27305,Leader,West Coast Swing,Novice,2,2026-07-15
 27305,Leader,West Coast Swing,Novice,3,2026-07-27
+27305,Leader,West Coast Swing,Novice,13,2026-10-05
 27306,Leader,West Coast Swing,Newcomer,1,2026-06-10
 27307,Leader,West Coast Swing,Newcomer,1,2026-06-10
 27308,Leader,West Coast Swing,Newcomer,1,2026-06-10
@@ -55019,6 +55309,7 @@ dancer_id,role,dance,level,total_points,update_date
 27329,Follower,West Coast Swing,Newcomer,10,2026-06-10
 27330,Follower,West Coast Swing,Newcomer,8,2026-06-10
 27330,Follower,West Coast Swing,Novice,1,2026-09-14
+27330,Follower,West Coast Swing,Novice,13,2026-10-05
 27331,Follower,West Coast Swing,Newcomer,6,2026-06-10
 27332,Follower,West Coast Swing,Newcomer,4,2026-06-10
 27333,Follower,West Coast Swing,Newcomer,2,2026-06-10
@@ -55048,6 +55339,7 @@ dancer_id,role,dance,level,total_points,update_date
 27349,Follower,West Coast Swing,Newcomer,1,2026-06-10
 27349,Follower,West Coast Swing,Novice,1,2026-06-10
 27349,Follower,West Coast Swing,Novice,15,2026-08-31
+27349,Follower,West Coast Swing,Novice,25,2026-10-05
 27349,Leader,West Coast Swing,Newcomer,4,2026-06-10
 27350,Follower,West Coast Swing,Newcomer,1,2026-06-10
 27351,Follower,West Coast Swing,Newcomer,1,2026-06-10
@@ -55056,8 +55348,10 @@ dancer_id,role,dance,level,total_points,update_date
 27352,Leader,West Coast Swing,Newcomer,6,2026-07-27
 27353,Follower,West Coast Swing,Intermediate,2,2026-07-09
 27353,Follower,West Coast Swing,Intermediate,14,2026-09-14
+27353,Follower,West Coast Swing,Intermediate,16,2026-10-05
 27353,Follower,West Coast Swing,Novice,19,2026-06-10
 27354,Leader,West Coast Swing,Newcomer,8,2026-06-10
+27355,Follower,West Coast Swing,Master,1,2026-10-05
 27355,Follower,West Coast Swing,Newcomer,1,2026-06-10
 27355,Leader,West Coast Swing,Newcomer,6,2026-06-10
 27356,Leader,West Coast Swing,Newcomer,4,2026-06-10
@@ -55068,6 +55362,7 @@ dancer_id,role,dance,level,total_points,update_date
 27361,Follower,West Coast Swing,Newcomer,10,2026-06-10
 27361,Follower,West Coast Swing,Novice,2,2026-07-20
 27361,Follower,West Coast Swing,Novice,18,2026-08-17
+27361,Leader,West Coast Swing,Novice,1,2026-10-05
 27362,Follower,West Coast Swing,Newcomer,6,2026-06-10
 27362,Leader,West Coast Swing,Newcomer,4,2026-06-10
 27363,Follower,West Coast Swing,Newcomer,4,2026-06-10
@@ -55201,6 +55496,7 @@ dancer_id,role,dance,level,total_points,update_date
 27454,Follower,West Coast Swing,Intermediate,22,2026-08-31
 27454,Follower,West Coast Swing,Intermediate,23,2026-09-14
 27454,Follower,West Coast Swing,Intermediate,29,2026-09-23
+27454,Follower,West Coast Swing,Intermediate,31,2026-10-05
 27454,Follower,West Coast Swing,Novice,26,2026-06-10
 27455,Follower,West Coast Swing,Novice,2,2026-06-10
 27455,Follower,West Coast Swing,Novice,17,2026-06-23
@@ -55298,8 +55594,10 @@ dancer_id,role,dance,level,total_points,update_date
 27512,Leader,West Coast Swing,Novice,3,2026-07-04
 27512,Leader,West Coast Swing,Novice,13,2026-07-16
 27512,Leader,West Coast Swing,Novice,14,2026-08-10
+27512,Leader,West Coast Swing,Novice,16,2026-10-05
 27514,Follower,West Coast Swing,Intermediate,1,2026-06-10
 27514,Follower,West Coast Swing,Intermediate,2,2026-09-14
+27514,Follower,West Coast Swing,Intermediate,4,2026-10-05
 27514,Follower,West Coast Swing,Novice,22,2026-06-10
 27515,Follower,West Coast Swing,Novice,8,2026-06-10
 27515,Follower,West Coast Swing,Novice,16,2026-07-16
@@ -55393,8 +55691,10 @@ dancer_id,role,dance,level,total_points,update_date
 27584,Follower,West Coast Swing,Newcomer,1,2026-06-10
 27585,Follower,West Coast Swing,Newcomer,1,2026-06-10
 27586,Follower,West Coast Swing,Newcomer,1,2026-06-10
+27589,Follower,West Coast Swing,Novice,1,2026-10-05
 27589,Leader,West Coast Swing,Intermediate,10,2026-07-20
 27589,Leader,West Coast Swing,Intermediate,18,2026-08-17
+27589,Leader,West Coast Swing,Intermediate,24,2026-10-05
 27589,Leader,West Coast Swing,Newcomer,6,2026-06-10
 27589,Leader,West Coast Swing,Novice,16,2026-06-10
 27590,Leader,West Coast Swing,Newcomer,4,2026-06-10
@@ -55402,10 +55702,12 @@ dancer_id,role,dance,level,total_points,update_date
 27592,Leader,West Coast Swing,Newcomer,1,2026-06-10
 27593,Follower,West Coast Swing,Newcomer,10,2026-06-10
 27594,Follower,West Coast Swing,Newcomer,8,2026-06-10
+27594,Follower,West Coast Swing,Novice,1,2026-10-05
 27595,Follower,West Coast Swing,Newcomer,6,2026-06-10
 27596,Follower,West Coast Swing,Newcomer,4,2026-06-10
 27597,Follower,West Coast Swing,Newcomer,2,2026-06-10
 27598,Follower,West Coast Swing,Newcomer,1,2026-06-10
+27598,Follower,West Coast Swing,Novice,1,2026-10-05
 27599,Follower,West Coast Swing,Newcomer,1,2026-06-10
 27600,Follower,West Coast Swing,Newcomer,1,2026-06-10
 27601,Follower,West Coast Swing,Newcomer,1,2026-06-10
@@ -55727,6 +56029,7 @@ dancer_id,role,dance,level,total_points,update_date
 27828,Leader,West Coast Swing,Novice,2,2026-06-23
 27828,Leader,West Coast Swing,Novice,10,2026-09-08
 27828,Leader,West Coast Swing,Novice,11,2026-09-14
+27828,Leader,West Coast Swing,Novice,31,2026-10-05
 27829,Leader,West Coast Swing,Newcomer,4,2026-06-10
 27830,Leader,West Coast Swing,Newcomer,2,2026-06-10
 27831,Leader,West Coast Swing,Newcomer,1,2026-06-10
@@ -55758,6 +56061,7 @@ dancer_id,role,dance,level,total_points,update_date
 27848,Leader,West Coast Swing,Novice,1,2026-06-10
 27848,Leader,West Coast Swing,Novice,2,2026-07-15
 27848,Leader,West Coast Swing,Novice,10,2026-08-05
+27848,Leader,West Coast Swing,Novice,25,2026-10-05
 27849,Leader,West Coast Swing,Newcomer,8,2026-06-10
 27850,Leader,West Coast Swing,Newcomer,6,2026-06-10
 27851,Follower,West Coast Swing,Newcomer,1,2026-06-23
@@ -55786,6 +56090,7 @@ dancer_id,role,dance,level,total_points,update_date
 27868,Follower,West Coast Swing,Newcomer,1,2026-06-10
 27869,Leader,West Coast Swing,Novice,4,2026-06-10
 27869,Leader,West Coast Swing,Novice,5,2026-08-17
+27869,Leader,West Coast Swing,Novice,6,2026-10-05
 27870,Leader,West Coast Swing,Novice,2,2026-06-10
 27871,Follower,West Coast Swing,Novice,2,2026-06-10
 27872,Leader,West Coast Swing,Newcomer,10,2026-06-10
@@ -55886,6 +56191,7 @@ dancer_id,role,dance,level,total_points,update_date
 27939,Leader,West Coast Swing,Novice,4,2026-07-20
 27939,Leader,West Coast Swing,Novice,6,2026-08-31
 27939,Leader,West Coast Swing,Novice,12,2026-09-29
+27939,Leader,West Coast Swing,Novice,14,2026-10-05
 27940,Leader,West Coast Swing,Newcomer,10,2026-06-10
 27941,Leader,West Coast Swing,Newcomer,6,2026-06-10
 27942,Leader,West Coast Swing,Newcomer,4,2026-06-10
@@ -56058,6 +56364,7 @@ dancer_id,role,dance,level,total_points,update_date
 28086,Follower,West Coast Swing,Newcomer,10,2026-06-10
 28086,Leader,West Coast Swing,Newcomer,4,2026-06-23
 28087,Follower,West Coast Swing,Newcomer,8,2026-06-10
+28087,Follower,West Coast Swing,Novice,20,2026-10-05
 28088,Follower,West Coast Swing,Newcomer,6,2026-06-10
 28088,Leader,West Coast Swing,Newcomer,3,2026-06-10
 28088,Leader,West Coast Swing,Novice,6,2026-06-10
@@ -56175,8 +56482,10 @@ dancer_id,role,dance,level,total_points,update_date
 28186,Follower,West Coast Swing,Newcomer,1,2026-06-10
 28187,Follower,West Coast Swing,Newcomer,1,2026-06-10
 28188,Follower,West Coast Swing,Newcomer,1,2026-06-10
+28189,Follower,West Coast Swing,Novice,12,2026-10-05
 28189,Leader,West Coast Swing,Intermediate,4,2026-07-04
 28189,Leader,West Coast Swing,Intermediate,12,2026-08-10
+28189,Leader,West Coast Swing,Intermediate,20,2026-10-05
 28189,Leader,West Coast Swing,Novice,21,2026-06-10
 28190,Follower,West Coast Swing,Novice,1,2026-06-10
 28190,Follower,West Coast Swing,Novice,2,2026-07-04
@@ -56187,6 +56496,7 @@ dancer_id,role,dance,level,total_points,update_date
 28194,Leader,West Coast Swing,Newcomer,2,2026-06-10
 28195,Leader,West Coast Swing,Newcomer,1,2026-06-10
 28196,Leader,West Coast Swing,Newcomer,1,2026-06-10
+28197,Follower,West Coast Swing,Newcomer,8,2026-10-05
 28197,Leader,West Coast Swing,Newcomer,1,2026-06-10
 28198,Follower,West Coast Swing,Newcomer,10,2026-06-10
 28198,Follower,West Coast Swing,Novice,2,2026-08-17
@@ -56203,6 +56513,7 @@ dancer_id,role,dance,level,total_points,update_date
 28207,Leader,West Coast Swing,Novice,12,2026-06-10
 28208,Leader,West Coast Swing,Novice,2,2026-06-10
 28209,Leader,West Coast Swing,Novice,2,2026-06-10
+28209,Leader,West Coast Swing,Novice,3,2026-10-05
 28210,Follower,West Coast Swing,Novice,2,2026-06-10
 28210,Follower,West Coast Swing,Novice,4,2026-08-04
 28211,Leader,West Coast Swing,Newcomer,6,2026-06-10
@@ -56343,6 +56654,7 @@ dancer_id,role,dance,level,total_points,update_date
 28326,Leader,West Coast Swing,Novice,30,2026-08-10
 28327,Follower,West Coast Swing,Novice,8,2026-06-10
 28327,Follower,West Coast Swing,Novice,9,2026-06-23
+28327,Follower,West Coast Swing,Novice,23,2026-10-05
 28328,Leader,West Coast Swing,Novice,1,2026-06-10
 28329,Leader,West Coast Swing,Newcomer,4,2026-06-10
 28330,Leader,West Coast Swing,Newcomer,3,2026-06-10
@@ -56391,6 +56703,7 @@ dancer_id,role,dance,level,total_points,update_date
 28362,Follower,West Coast Swing,Newcomer,1,2026-07-27
 28362,Leader,West Coast Swing,Newcomer,2,2026-06-10
 28362,Leader,West Coast Swing,Novice,6,2026-09-08
+28362,Leader,West Coast Swing,Novice,8,2026-10-05
 28363,Leader,West Coast Swing,Newcomer,1,2026-06-10
 28364,Follower,West Coast Swing,Newcomer,3,2026-06-10
 28365,Follower,West Coast Swing,Newcomer,2,2026-06-10
@@ -56407,6 +56720,7 @@ dancer_id,role,dance,level,total_points,update_date
 28374,Leader,West Coast Swing,Newcomer,1,2026-06-17
 28375,Leader,West Coast Swing,Newcomer,1,2026-06-17
 28376,Leader,West Coast Swing,Newcomer,1,2026-06-17
+28376,Leader,West Coast Swing,Novice,1,2026-10-05
 28377,Follower,West Coast Swing,Newcomer,10,2026-06-17
 28378,Follower,West Coast Swing,Newcomer,8,2026-06-17
 28380,Follower,West Coast Swing,Newcomer,4,2026-06-17
@@ -56660,6 +56974,7 @@ dancer_id,role,dance,level,total_points,update_date
 28594,Follower,West Coast Swing,Newcomer,4,2026-09-29
 28594,Leader,West Coast Swing,Newcomer,1,2026-07-15
 28594,Leader,West Coast Swing,Novice,2,2026-09-29
+28594,Leader,West Coast Swing,Novice,4,2026-10-05
 28595,Follower,West Coast Swing,Newcomer,6,2026-07-15
 28596,Follower,West Coast Swing,Newcomer,4,2026-07-15
 28597,Follower,West Coast Swing,Newcomer,3,2026-07-15
@@ -56726,7 +57041,9 @@ dancer_id,role,dance,level,total_points,update_date
 28645,Follower,West Coast Swing,Novice,2,2026-07-16
 28646,Follower,West Coast Swing,Novice,2,2026-07-16
 28646,Follower,West Coast Swing,Novice,3,2026-09-29
+28646,Follower,West Coast Swing,Novice,4,2026-10-05
 28647,Follower,West Coast Swing,Novice,1,2026-09-29
+28647,Follower,West Coast Swing,Novice,2,2026-10-05
 28647,Leader,West Coast Swing,Newcomer,2,2026-07-20
 28648,Follower,West Coast Swing,Newcomer,4,2026-08-17
 28648,Leader,West Coast Swing,Newcomer,1,2026-07-20
@@ -56747,7 +57064,9 @@ dancer_id,role,dance,level,total_points,update_date
 28658,Follower,West Coast Swing,Novice,4,2026-08-17
 28659,Follower,West Coast Swing,Master,1,2026-07-20
 28660,Follower,West Coast Swing,Master,1,2026-07-20
+28660,Follower,West Coast Swing,Master,2,2026-10-05
 28661,Leader,West Coast Swing,Master,1,2026-07-20
+28661,Leader,West Coast Swing,Master,9,2026-10-05
 28661,Leader,West Coast Swing,Novice,1,2026-09-23
 28662,Leader,West Coast Swing,Newcomer,6,2026-07-20
 28663,Leader,West Coast Swing,Newcomer,3,2026-07-20
@@ -56797,6 +57116,7 @@ dancer_id,role,dance,level,total_points,update_date
 28703,Follower,West Coast Swing,Newcomer,8,2026-07-27
 28703,Follower,West Coast Swing,Novice,1,2026-08-10
 28703,Follower,West Coast Swing,Novice,2,2026-09-08
+28703,Follower,West Coast Swing,Novice,4,2026-10-05
 28703,Leader,West Coast Swing,Newcomer,2,2026-09-08
 28704,Follower,West Coast Swing,Newcomer,6,2026-07-27
 28705,Follower,West Coast Swing,Newcomer,4,2026-07-27
@@ -56809,6 +57129,7 @@ dancer_id,role,dance,level,total_points,update_date
 28712,Leader,West Coast Swing,Novice,6,2026-07-27
 28712,Leader,West Coast Swing,Novice,21,2026-09-22
 28713,Follower,West Coast Swing,Novice,12,2026-07-27
+28713,Follower,West Coast Swing,Novice,28,2026-10-05
 28714,Leader,West Coast Swing,Newcomer,6,2026-07-27
 28715,Leader,West Coast Swing,Newcomer,4,2026-07-27
 28716,Leader,West Coast Swing,Newcomer,3,2026-07-27
@@ -56909,6 +57230,7 @@ dancer_id,role,dance,level,total_points,update_date
 28804,Follower,West Coast Swing,Newcomer,1,2026-08-10
 28805,Follower,West Coast Swing,Newcomer,1,2026-08-10
 28805,Leader,West Coast Swing,Novice,1,2026-09-29
+28805,Leader,West Coast Swing,Novice,3,2026-10-05
 28806,Follower,West Coast Swing,Newcomer,1,2026-08-10
 28807,Follower,West Coast Swing,Novice,10,2026-08-10
 28808,Follower,West Coast Swing,Novice,1,2026-08-10
@@ -57115,6 +57437,7 @@ dancer_id,role,dance,level,total_points,update_date
 28998,Leader,West Coast Swing,Novice,1,2026-09-01
 28999,Leader,West Coast Swing,Newcomer,3,2026-09-08
 29000,Follower,West Coast Swing,Newcomer,6,2026-09-08
+29000,Follower,West Coast Swing,Novice,2,2026-10-05
 29001,Follower,West Coast Swing,Newcomer,4,2026-09-08
 29002,Follower,West Coast Swing,Newcomer,2,2026-09-08
 29003,Follower,West Coast Swing,Newcomer,1,2026-09-08
@@ -57150,11 +57473,13 @@ dancer_id,role,dance,level,total_points,update_date
 29031,Leader,West Coast Swing,Newcomer,2,2026-09-14
 29032,Leader,West Coast Swing,Newcomer,1,2026-09-14
 29033,Follower,West Coast Swing,Newcomer,10,2026-09-14
+29033,Follower,West Coast Swing,Novice,2,2026-10-05
 29034,Follower,West Coast Swing,Newcomer,8,2026-09-14
 29035,Follower,West Coast Swing,Newcomer,6,2026-09-14
 29036,Follower,West Coast Swing,Newcomer,4,2026-09-14
 29037,Follower,West Coast Swing,Newcomer,2,2026-09-14
 29038,Follower,West Coast Swing,Newcomer,1,2026-09-14
+29038,Leader,West Coast Swing,Novice,2,2026-10-05
 29039,Follower,West Coast Swing,Newcomer,1,2026-09-14
 29040,Follower,West Coast Swing,Newcomer,1,2026-09-14
 29041,Follower,West Coast Swing,Newcomer,1,2026-09-14
@@ -57339,3 +57664,63 @@ dancer_id,role,dance,level,total_points,update_date
 29211,Follower,West Coast Swing,Newcomer,1,2026-10-01
 29212,Follower,West Coast Swing,Newcomer,1,2026-10-01
 29213,Follower,West Coast Swing,Newcomer,1,2026-10-01
+29214,Leader,West Coast Swing,Newcomer,8,2026-10-05
+29215,Leader,West Coast Swing,Newcomer,6,2026-10-05
+29216,Leader,West Coast Swing,Newcomer,4,2026-10-05
+29217,Leader,West Coast Swing,Newcomer,2,2026-10-05
+29218,Leader,West Coast Swing,Newcomer,1,2026-10-05
+29219,Leader,West Coast Swing,Newcomer,1,2026-10-05
+29220,Leader,West Coast Swing,Newcomer,1,2026-10-05
+29221,Follower,West Coast Swing,Newcomer,10,2026-10-05
+29222,Follower,West Coast Swing,Newcomer,8,2026-10-05
+29223,Follower,West Coast Swing,Newcomer,6,2026-10-05
+29224,Follower,West Coast Swing,Newcomer,4,2026-10-05
+29225,Follower,West Coast Swing,Newcomer,2,2026-10-05
+29226,Follower,West Coast Swing,Newcomer,1,2026-10-05
+29227,Follower,West Coast Swing,Newcomer,1,2026-10-05
+29228,Leader,West Coast Swing,Newcomer,10,2026-10-05
+29229,Leader,West Coast Swing,Newcomer,8,2026-10-05
+29230,Follower,West Coast Swing,Novice,12,2026-10-05
+29230,Leader,West Coast Swing,Newcomer,6,2026-10-05
+29231,Leader,West Coast Swing,Newcomer,4,2026-10-05
+29232,Leader,West Coast Swing,Newcomer,2,2026-10-05
+29233,Leader,West Coast Swing,Newcomer,1,2026-10-05
+29234,Leader,West Coast Swing,Newcomer,1,2026-10-05
+29235,Leader,West Coast Swing,Newcomer,1,2026-10-05
+29236,Leader,West Coast Swing,Newcomer,1,2026-10-05
+29237,Leader,West Coast Swing,Newcomer,1,2026-10-05
+29238,Follower,West Coast Swing,Newcomer,10,2026-10-05
+29239,Follower,West Coast Swing,Newcomer,8,2026-10-05
+29240,Follower,West Coast Swing,Newcomer,6,2026-10-05
+29241,Follower,West Coast Swing,Newcomer,4,2026-10-05
+29242,Follower,West Coast Swing,Newcomer,2,2026-10-05
+29243,Follower,West Coast Swing,Newcomer,1,2026-10-05
+29244,Follower,West Coast Swing,Newcomer,1,2026-10-05
+29245,Follower,West Coast Swing,Newcomer,1,2026-10-05
+29246,Follower,West Coast Swing,Newcomer,1,2026-10-05
+29247,Follower,West Coast Swing,Newcomer,1,2026-10-05
+29248,Leader,West Coast Swing,Novice,6,2026-10-05
+29249,Leader,West Coast Swing,Newcomer,10,2026-10-05
+29250,Leader,West Coast Swing,Newcomer,8,2026-10-05
+29251,Leader,West Coast Swing,Newcomer,6,2026-10-05
+29252,Leader,West Coast Swing,Newcomer,4,2026-10-05
+29253,Leader,West Coast Swing,Newcomer,1,2026-10-05
+29254,Leader,West Coast Swing,Newcomer,1,2026-10-05
+29255,Leader,West Coast Swing,Newcomer,1,2026-10-05
+29256,Leader,West Coast Swing,Newcomer,1,2026-10-05
+29257,Leader,West Coast Swing,Newcomer,1,2026-10-05
+29258,Follower,West Coast Swing,Newcomer,15,2026-10-05
+29259,Follower,West Coast Swing,Newcomer,10,2026-10-05
+29260,Follower,West Coast Swing,Newcomer,6,2026-10-05
+29261,Follower,West Coast Swing,Newcomer,1,2026-10-05
+29262,Follower,West Coast Swing,Newcomer,1,2026-10-05
+29263,Follower,West Coast Swing,Newcomer,1,2026-10-05
+29264,Follower,West Coast Swing,Newcomer,1,2026-10-05
+29265,Follower,West Coast Swing,Newcomer,1,2026-10-05
+29266,Follower,West Coast Swing,Newcomer,1,2026-10-05
+29267,Follower,West Coast Swing,Newcomer,1,2026-10-05
+29268,Leader,West Coast Swing,Novice,10,2026-10-05
+29269,Leader,West Coast Swing,Novice,1,2026-10-05
+29270,Follower,West Coast Swing,Novice,1,2026-10-05
+29271,Leader,West Coast Swing,Master,2,2026-10-05
+29272,Leader,West Coast Swing,Master,1,2026-10-05
