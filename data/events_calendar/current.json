@@ -1,9 +1,9 @@
 {
-  "scraped_at": "2026-09-29T14:27:50.691573+00:00",
+  "scraped_at": "2026-10-06T16:01:34.924246+00:00",
   "source": "https://worldsdc.com/events/calendar/",
   "min_start": "2025-01-01",
-  "raw_count": 658,
-  "event_count": 492,
+  "raw_count": 659,
+  "event_count": 493,
   "events": [
     {
       "event_name": "Floorplay Swing Vacation",
@@ -7513,7 +7513,7 @@
       "catalog_name": "WCS Festival",
       "name_key": "wcsfestival",
       "start_date": "2026-10-15",
-      "end_date": "2026-10-17",
+      "end_date": "2026-10-18",
       "url": "http://www.wcsfestival.com",
       "url_key": "wcsfestival.com",
       "results_year": 2026,
@@ -7527,7 +7527,7 @@
       "status_tags": [],
       "source_fingerprint": "3cc38a85b16b4016c389a952",
       "raw_start": "2026-10-15",
-      "raw_end": "2026-10-18"
+      "raw_end": "2026-10-19"
     },
     {
       "event_name": "Swustlicious",
@@ -7548,28 +7548,6 @@
       "flags": [],
       "status_tags": [],
       "source_fingerprint": "5fd0811df39b6befac05a033",
-      "raw_start": "2026-10-16",
-      "raw_end": "2026-10-19"
-    },
-    {
-      "event_name": "WCS Festival",
-      "calendar_title": "WCS Festival",
-      "catalog_name": "WCS Festival",
-      "name_key": "wcsfestival",
-      "start_date": "2026-10-16",
-      "end_date": "2026-10-18",
-      "url": "http://www.wcsfestival.com",
-      "url_key": "wcsfestival.com",
-      "results_year": 2026,
-      "results_month": 10,
-      "edition_ym_candidates": [
-        "2026-10"
-      ],
-      "date_precision": "day",
-      "date_source": "wsdc_calendar",
-      "flags": [],
-      "status_tags": [],
-      "source_fingerprint": "1b6e9eab386ddd5f245628a4",
       "raw_start": "2026-10-16",
       "raw_end": "2026-10-19"
     },
@@ -7660,28 +7638,6 @@
       "source_fingerprint": "4e3a3aefb59eb188b5826016",
       "raw_start": "2026-10-22",
       "raw_end": "2026-10-26"
-    },
-    {
-      "event_name": "Swingside Invitational",
-      "calendar_title": "Swingside Invitational",
-      "catalog_name": "Swingside Invitational",
-      "name_key": "swingsideinvitational",
-      "start_date": "2026-10-22",
-      "end_date": "2026-10-24",
-      "url": "http://www.swingside-invitational.com",
-      "url_key": "swingside-invitational.com",
-      "results_year": 2026,
-      "results_month": 10,
-      "edition_ym_candidates": [
-        "2026-10"
-      ],
-      "date_precision": "day",
-      "date_source": "wsdc_calendar",
-      "flags": [],
-      "status_tags": [],
-      "source_fingerprint": "0a34dbf37538b2155c2a5fc2",
-      "raw_start": "2026-10-22",
-      "raw_end": "2026-10-25"
     },
     {
       "event_name": "Swingside Invitational",
@@ -9493,7 +9449,7 @@
       "name_key": "detonationdance",
       "start_date": "2027-04-22",
       "end_date": "2027-04-26",
-      "url": "http://www.DetonationDance.com",
+      "url": "https://www.DetonationDance.com",
       "url_key": "detonationdance.com",
       "results_year": 2027,
       "results_month": 4,
@@ -10086,6 +10042,50 @@
       "raw_end": "2027-06-14"
     },
     {
+      "event_name": "BaroqueSwing",
+      "calendar_title": "BaroqueSwing",
+      "catalog_name": "Barock Swing Ludwigsburg",
+      "name_key": "barockswingludwigsburg",
+      "start_date": "2027-06-17",
+      "end_date": "2027-06-20",
+      "url": "https://baroqueswing.com/",
+      "url_key": "baroqueswing.com",
+      "results_year": 2027,
+      "results_month": 6,
+      "edition_ym_candidates": [
+        "2027-06"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "be8617928e5489e9cebf2890",
+      "raw_start": "2027-06-17",
+      "raw_end": "2027-06-21"
+    },
+    {
+      "event_name": "Milan Swing Vibes",
+      "calendar_title": "Milan Swing Vibes",
+      "catalog_name": "Milan Swing Vibes",
+      "name_key": "milanswingvibes",
+      "start_date": "2027-06-17",
+      "end_date": "2027-06-20",
+      "url": "https://www.westcoastswingmilan.com/milanswingvibes/",
+      "url_key": "westcoastswingmilan.com/milanswingvibes",
+      "results_year": 2027,
+      "results_month": 6,
+      "edition_ym_candidates": [
+        "2027-06"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "be73223d60cb5c30e25d0098",
+      "raw_start": "2027-06-17",
+      "raw_end": "2027-06-21"
+    },
+    {
       "event_name": "SWINGAPALOOZA",
       "calendar_title": "SWINGAPALOOZA",
       "catalog_name": "Swingapalooza",
@@ -10106,28 +10106,6 @@
       "source_fingerprint": "a6b17d5e6d7a7a85e19b7b47",
       "raw_start": "2027-06-17",
       "raw_end": "2027-06-21"
-    },
-    {
-      "event_name": "BaroqueSwing",
-      "calendar_title": "BaroqueSwing",
-      "catalog_name": "Barock Swing Ludwigsburg",
-      "name_key": "barockswingludwigsburg",
-      "start_date": "2027-06-24",
-      "end_date": "2027-06-27",
-      "url": "https://baroqueswing.com",
-      "url_key": "baroqueswing.com",
-      "results_year": 2027,
-      "results_month": 6,
-      "edition_ym_candidates": [
-        "2027-06"
-      ],
-      "date_precision": "day",
-      "date_source": "wsdc_calendar",
-      "flags": [],
-      "status_tags": [],
-      "source_fingerprint": "6e70e89c639d4ec09dcff0ee",
-      "raw_start": "2027-06-24",
-      "raw_end": "2027-06-28"
     },
     {
       "event_name": "Liberty Swing Dance Championships",
@@ -10709,6 +10687,28 @@
       "raw_end": "2027-09-13"
     },
     {
+      "event_name": "Trilogy Swing",
+      "calendar_title": "Trilogy Swing",
+      "catalog_name": "Trilogy Swing",
+      "name_key": "trilogyswing",
+      "start_date": "2027-09-09",
+      "end_date": "2027-09-12",
+      "url": "https://trilogywcs.com/",
+      "url_key": "trilogywcs.com",
+      "results_year": 2027,
+      "results_month": 9,
+      "edition_ym_candidates": [
+        "2027-09"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "2d0e4fdfbbc93909a6c72a0e",
+      "raw_start": "2027-09-09",
+      "raw_end": "2027-09-13"
+    },
+    {
       "event_name": "Best of the Best WCS",
       "calendar_title": "Best of the Best WCS",
       "catalog_name": "Best of the Best WCS",
@@ -10773,6 +10773,28 @@
       "source_fingerprint": "a3b5d2f4e273b2edf3df1b8a",
       "raw_start": "2027-09-17",
       "raw_end": "2027-09-21"
+    },
+    {
+      "event_name": "Midland Swing Open",
+      "calendar_title": "Midland Swing Open",
+      "catalog_name": "Midland Swing Open",
+      "name_key": "midlandswingopen",
+      "start_date": "2027-09-23",
+      "end_date": "2027-09-26",
+      "url": "https://www.MidlandSwingOpen.com",
+      "url_key": "midlandswingopen.com",
+      "results_year": 2027,
+      "results_month": 9,
+      "edition_ym_candidates": [
+        "2027-09"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "8d6c3f94b5ad67d8ff4fa3a8",
+      "raw_start": "2027-09-23",
+      "raw_end": "2027-09-27"
     },
     {
       "event_name": "Atlanta Swing Classic",
