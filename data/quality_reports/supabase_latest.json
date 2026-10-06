@@ -154,7 +154,7 @@
       "name": "recent_editions_missing_day_dates",
       "category": "event_naming",
       "severity": "warn",
-      "value": 2,
+      "value": 3,
       "max_value": 120,
       "ok": true,
       "description": "2025+ editions still on month stubs (edition_date copy) \u2014 prefer dump/calendar day-precision when available.",
@@ -164,7 +164,7 @@
       "name": "edition_month_stub_dates",
       "category": "event_naming",
       "severity": "warn",
-      "value": 3,
+      "value": 4,
       "max_value": 2000,
       "ok": true,
       "description": "Month-sentinel start/end (YYYY-MM-01..01) after dump backfill; regression guard \u2014 not every historical edition has day dates.",
@@ -427,6 +427,6 @@
     "errors": 0,
     "warnings": 0
   },
-  "generated_at": "2026-10-01T07:59:08.444924+00:00",
+  "generated_at": "2026-10-06T00:19:57.017794+00:00",
   "scope": "full"
 }

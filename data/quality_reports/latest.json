@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-10-01T07:51:53.525564+00:00",
+  "generated_at": "2026-10-06T00:10:47.614920+00:00",
   "source": "github-actions",
   "run_id": null,
   "summary": {
-    "before_findings_count": 9,
-    "applied_rules_count": 258,
-    "applied_rows_touched": 195330,
-    "manual_review_count": 7,
-    "manual_review_new_count": 1
+    "before_findings_count": 10,
+    "applied_rules_count": 259,
+    "applied_rows_touched": 196832,
+    "manual_review_count": 9,
+    "manual_review_new_count": 5
   },
   "before_processing": {
     "description": "Issues detected in raw CSV before any normalization",
@@ -174,6 +174,16 @@
         "count": 36,
         "examples": [
           {
+            "base_key": "swing fling",
+            "variants": [
+              "Swing Fling",
+              "Swing Fling 2024"
+            ],
+            "geo_keys": [
+              "washington_dc|dc|usa"
+            ]
+          },
+          {
             "base_key": "monterey swingfest",
             "variants": [
               "Monterey SwingFest",
@@ -191,16 +201,6 @@
             ],
             "geo_keys": [
               "san_francisco|ca|usa"
-            ]
-          },
-          {
-            "base_key": "swing fling",
-            "variants": [
-              "Swing Fling",
-              "Swing Fling 2024"
-            ],
-            "geo_keys": [
-              "washington_dc|dc|usa"
             ]
           },
           {
@@ -325,6 +325,13 @@
         "count": 38,
         "examples": [
           {
+            "base_key": "swing fling",
+            "variants": [
+              "Swing Fling",
+              "Swing Fling 2024"
+            ]
+          },
+          {
             "base_key": "monterey swingfest",
             "variants": [
               "Monterey SwingFest",
@@ -336,13 +343,6 @@
             "variants": [
               "Boogie By The Bay",
               "Boogie by the Bay"
-            ]
-          },
-          {
-            "base_key": "swing fling",
-            "variants": [
-              "Swing Fling",
-              "Swing Fling 2024"
             ]
           },
           {
@@ -443,9 +443,6 @@
             "event_name": "C.A.S.H. Bash"
           },
           {
-            "event_name": "Calgary Town Open"
-          },
-          {
             "event_name": "Canadian Swing Championships (CSC)"
           },
           {
@@ -495,10 +492,13 @@
           },
           {
             "event_name": "German Open WCS Championships"
+          },
+          {
+            "event_name": "German Open West Coast Swing"
           }
         ],
         "suggested_fix": "Add to RESULT_TO_CATALOG_EVENT_NAME in transform/knowledge/event_aliases.py",
-        "fingerprint": "0f8d508c094cbb87",
+        "fingerprint": "4d782d3b78962720",
         "is_new": true
       },
       {
@@ -574,6 +574,26 @@
         "is_new": true
       },
       {
+        "category": "location_info",
+        "code": "LEGACY_COORDINATES",
+        "severity": "medium",
+        "message": "1 записей без координат",
+        "count": 1,
+        "examples": [
+          {
+            "detail": {
+              "table": "location_info",
+              "field": "coordinates",
+              "issue": "1 записей без координат",
+              "severity": "MEDIUM"
+            }
+          }
+        ],
+        "suggested_fix": "See transform/data_preprocessing.py validate_* functions",
+        "fingerprint": "d8a18f92087dc0a0",
+        "is_new": true
+      },
+      {
         "category": "relationships",
         "code": "LEGACY_LOCATION_ID",
         "severity": "high",
@@ -594,26 +614,26 @@
         "category": "relationships",
         "code": "LEGACY_EVENT_NAME_ID",
         "severity": "high",
-        "message": "12 event_name_id в results без записи в events_wsdc",
+        "message": "13 event_name_id в results без записи в events_wsdc",
         "count": 1,
         "examples": [
           {
             "detail": [
+              "202",
               "66",
               "279",
+              "392",
+              "409",
+              "37",
               "321",
-              "39",
-              "193",
-              "99",
-              "202",
               "307",
-              "325",
-              "37"
+              "193",
+              "198"
             ]
           }
         ],
         "suggested_fix": "See transform/data_preprocessing.py validate_* functions",
-        "fingerprint": "904e3e35b0792dfe",
+        "fingerprint": "f8980b201cbf5f3c",
         "is_new": true
       }
     ]
@@ -944,6 +964,15 @@
         "to_value": "Burbank, CA",
         "rows_affected": 1,
         "source": "city_fix"
+      },
+      {
+        "rule_id": "CITY_CANONICAL_COORDINATES",
+        "table": "location_info",
+        "column": "latitude/longitude",
+        "from_value": "suburb/venue coords",
+        "to_value": "city center",
+        "rows_affected": 1,
+        "source": "canonical_coords"
       },
       {
         "rule_id": "EVENT_NAME_NORMALIZATION",
@@ -2175,7 +2204,7 @@
         "column": "event_competition",
         "from_value": "Masters",
         "to_value": "Master",
-        "rows_affected": 16914,
+        "rows_affected": 16949,
         "source": "known_map"
       },
       {
@@ -2184,7 +2213,7 @@
         "column": "event_competition",
         "from_value": "Champions",
         "to_value": "Champion",
-        "rows_affected": 5176,
+        "rows_affected": 5186,
         "source": "known_map"
       },
       {
@@ -2193,7 +2222,7 @@
         "column": "event_competition",
         "from_value": "All-Stars",
         "to_value": "All-Star",
-        "rows_affected": 16321,
+        "rows_affected": 16357,
         "source": "known_map"
       },
       {
@@ -2364,7 +2393,7 @@
         "column": "event_location",
         "from_value": "UK",
         "to_value": "United Kingdom",
-        "rows_affected": 2066,
+        "rows_affected": 3273,
         "source": "substring"
       },
       {
@@ -2436,15 +2465,6 @@
         "column": "event_location_standardized",
         "from_value": "location_id=25 was Atlanta, GA",
         "to_value": "Atlanta, GA, United States",
-        "rows_affected": 1,
-        "source": "location_id_fix"
-      },
-      {
-        "rule_id": "LOCATION_INFO_ID_CORRECTION",
-        "table": "location_info",
-        "column": "coordinates_valid",
-        "from_value": "location_id=353 was True",
-        "to_value": "t",
         "rows_affected": 1,
         "source": "location_id_fix"
       },
@@ -2719,6 +2739,15 @@
         "source": "city_fix"
       },
       {
+        "rule_id": "CITY_CANONICAL_COORDINATES",
+        "table": "location_info",
+        "column": "latitude/longitude",
+        "from_value": "suburb/venue coords",
+        "to_value": "city center",
+        "rows_affected": 1,
+        "source": "canonical_coords"
+      },
+      {
         "rule_id": "DEDUPE_RESULT_ROWS",
         "table": "dancers_results_info",
         "column": "*",
@@ -2731,18 +2760,18 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_required",
-        "from_value": "ADV",
-        "to_value": "Advanced",
-        "rows_affected": 2751,
+        "from_value": "NEW",
+        "to_value": "Newcomer",
+        "rows_affected": 1449,
         "source": "known_map"
       },
       {
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_required",
-        "from_value": "NEW",
-        "to_value": "Newcomer",
-        "rows_affected": 1447,
+        "from_value": "ADV",
+        "to_value": "Advanced",
+        "rows_affected": 2754,
         "source": "known_map"
       },
       {
@@ -2751,7 +2780,7 @@
         "column": "dominate_required",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 4561,
+        "rows_affected": 4563,
         "source": "known_map"
       },
       {
@@ -2769,7 +2798,7 @@
         "column": "dominate_required",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 17893,
+        "rows_affected": 17942,
         "source": "known_map"
       },
       {
@@ -2778,16 +2807,7 @@
         "column": "dominate_required",
         "from_value": "ALS",
         "to_value": "All-Star",
-        "rows_affected": 1119,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_allowed",
-        "from_value": "ADV",
-        "to_value": "Advanced",
-        "rows_affected": 3194,
+        "rows_affected": 1122,
         "source": "known_map"
       },
       {
@@ -2796,7 +2816,16 @@
         "column": "dominate_allowed",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 17320,
+        "rows_affected": 17364,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_allowed",
+        "from_value": "ADV",
+        "to_value": "Advanced",
+        "rows_affected": 3199,
         "source": "known_map"
       },
       {
@@ -2805,7 +2834,7 @@
         "column": "dominate_allowed",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 6024,
+        "rows_affected": 6032,
         "source": "known_map"
       },
       {
@@ -2823,7 +2852,7 @@
         "column": "dominate_allowed",
         "from_value": "ALS",
         "to_value": "All-Star",
-        "rows_affected": 1030,
+        "rows_affected": 1032,
         "source": "known_map"
       },
       {
@@ -2832,7 +2861,7 @@
         "column": "non_dominate_required",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 4509,
+        "rows_affected": 4514,
         "source": "known_map"
       },
       {
@@ -2841,7 +2870,7 @@
         "column": "non_dominate_required",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 15131,
+        "rows_affected": 15169,
         "source": "known_map"
       },
       {
@@ -2850,7 +2879,7 @@
         "column": "non_dominate_required",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 247,
+        "rows_affected": 250,
         "source": "known_map"
       },
       {
@@ -2877,7 +2906,7 @@
         "column": "non_dominate_allowed",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 6998,
+        "rows_affected": 7003,
         "source": "known_map"
       },
       {
@@ -2895,7 +2924,7 @@
         "column": "non_dominate_allowed",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 15131,
+        "rows_affected": 15169,
         "source": "known_map"
       },
       {
@@ -2904,7 +2933,7 @@
         "column": "non_dominate_allowed",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 1115,
+        "rows_affected": 1121,
         "source": "known_map"
       },
       {
@@ -3118,9 +3147,6 @@
             "event_name": "C.A.S.H. Bash"
           },
           {
-            "event_name": "Calgary Town Open"
-          },
-          {
             "event_name": "Canadian Swing Championships (CSC)"
           },
           {
@@ -3170,11 +3196,14 @@
           },
           {
             "event_name": "German Open WCS Championships"
+          },
+          {
+            "event_name": "German Open West Coast Swing"
           }
         ],
         "suggested_fix": "Add to RESULT_TO_CATALOG_EVENT_NAME in transform/knowledge/event_aliases.py",
-        "fingerprint": "0f8d508c094cbb87",
-        "is_new": false,
+        "fingerprint": "4d782d3b78962720",
+        "is_new": true,
         "requires_manual_review": true
       },
       {
@@ -3204,9 +3233,6 @@
           },
           {
             "event_name": "C.A.S.H. Bash"
-          },
-          {
-            "event_name": "Calgary Town Open"
           },
           {
             "event_name": "Canadian Swing Championships (CSC)"
@@ -3243,11 +3269,30 @@
           },
           {
             "event_name": "Floor Play Swing Vacation"
+          },
+          {
+            "event_name": "FloorPlay New Years Swing Vacation"
           }
         ],
         "suggested_fix": "Verify events_wsdc export or add event instance after parse",
-        "fingerprint": "c29d817289bb913d",
-        "is_new": false,
+        "fingerprint": "6b2b58d82b35e32b",
+        "is_new": true,
+        "requires_manual_review": true
+      },
+      {
+        "category": "event_naming",
+        "code": "EVENT_NAME_NEW_SINCE_LAST_RUN",
+        "severity": "info",
+        "message": "New event names appeared since last quality report (review naming)",
+        "count": 1,
+        "examples": [
+          {
+            "event_name": "Westie Harbor"
+          }
+        ],
+        "suggested_fix": "Check if variant of existing event; add normalization rule if needed",
+        "fingerprint": "f141cb4a376ef7b3",
+        "is_new": true,
         "requires_manual_review": true
       },
       {
@@ -3336,24 +3381,41 @@
         "requires_manual_review": true
       },
       {
-        "category": "location",
-        "code": "EDITION_LOCATION_BASELINE_DRIFT",
-        "severity": "high",
-        "message": "Results location_id for a known edition key differs from edition_location_baseline.csv (cross-load drift)",
+        "category": "location_info",
+        "code": "LEGACY_COORDINATES",
+        "severity": "medium",
+        "message": "1 записей без координат",
         "count": 1,
         "examples": [
           {
-            "event_id": "405",
-            "event_year": "2026",
-            "event_month": "6",
-            "event_name": "Milan Swing Vibes",
-            "baseline_location_id": "132",
-            "current_location_id": "402",
-            "result_rows": 92
+            "detail": {
+              "table": "location_info",
+              "field": "coordinates",
+              "issue": "1 записей без координат",
+              "severity": "MEDIUM"
+            }
           }
         ],
-        "suggested_fix": "Investigate shared wrong location_id; fix overrides/repair_locations. If venue change is legitimate, UPDATE core.edition_location_baseline in Supabase.",
-        "fingerprint": "c87f0f387c7cd947",
+        "suggested_fix": "See transform/data_preprocessing.py validate_* functions",
+        "fingerprint": "d8a18f92087dc0a0",
+        "is_new": true,
+        "requires_manual_review": true
+      },
+      {
+        "category": "relationships",
+        "code": "LEGACY_EVENT_NAME_ID",
+        "severity": "high",
+        "message": "1 event_name_id в results без записи в events_wsdc",
+        "count": 1,
+        "examples": [
+          {
+            "detail": [
+              "392"
+            ]
+          }
+        ],
+        "suggested_fix": "See transform/data_preprocessing.py validate_* functions",
+        "fingerprint": "c76261f97351746e",
         "is_new": true,
         "requires_manual_review": true
       }
@@ -3762,6 +3824,7 @@
     "Westcoast Swing Dance Championships",
     "WesterOz Swing",
     "Westie Gala",
+    "Westie Harbor",
     "Westie Joy",
     "Westie Pink City",
     "Westie Spring Thing",

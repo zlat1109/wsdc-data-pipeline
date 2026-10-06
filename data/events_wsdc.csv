@@ -467,6 +467,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 144,Swingin' Into Spring,"Hartford, CT, United States",http://www.sis.djkenm.com,May 2013,2013-05-01,2013,5,2013-05
 172,International Hustle & Salsa Congress,"Orlando, FL, United States",,April 2013,2013-04-01,2013,4,2013-04
 218,Asia West Coast Swing Open,"Singapore, Singapore",https://www.asiawcsopen.com/,April 2013,2013-04-01,2013,4,2013-04
+78,Mid-American Dance Championships,"Chicago, IL, United States",,September 2004,2004-09-01,2004,9,2004-09
 134,Swing Dance America,"Lake Geneva, IL, United States",,April 2013,2013-04-01,2013,4,2013-04
 203,Detonation Dance,"Manchester, United Kingdom",http://www.DetonationDance.com,April 2013,2013-04-01,2013,4,2013-04
 204,Spring Swing,"Stockholm, Sweden",,May 2013,2013-05-01,2013,5,2013-05
@@ -1835,10 +1836,11 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 167,Best of the Best WCS,"Sydney, Australia",https://www.bestofthebestwcs.com/,September 2026,2026-09-01,2026,9,2026-09
 131,Meet Me In St Louis,"St. Louis, MO, United States",http://Www.mmisl.com,September 2026,2026-09-01,2026,9,2026-09
 165,Midland Swing Open,"London, United Kingdom",http://www.MidlandSwingOpen.com,September 2026,2026-09-01,2026,9,2026-09
-109,Colorado Country Classic,"Denver, CO, United States",https://coloradocountryclassic.net/,June 2010,2010-06-01,2010,6,2010-06
 361,Mooseland Swing,"Östersund, Sweden",https://mooselandswing.com/,September 2026,2026-09-01,2026,9,2026-09
 234,Philly Swing Classic,"Wilmington, DE, United States",http://www.phillyswing.com,September 2026,2026-09-01,2026,9,2026-09
 324,Calgary Town Open,"Calgary, Canada",https://ctodance.ca/,September 2026,2026-09-01,2026,9,2026-09
+211,Atlanta Swing Classic,"Atlanta, GA, United States",https://www.atlantaswingclassic.com,October 2026,2026-10-01,2026,10,2026-10
+388,Norwegian Open WCS,"Hamar, Norway",https://norwegianopen.no/,October 2026,2026-10-01,2026,10,2026-10
 255,Indy Dance Explosion,"Fort Wayne, IN, United States",http://www.indydancex.com,June 2025,2025-06-01,2025,6,2025-06
 1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 1991,1991-07-01,1991,7,1991-07
 1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 1992,1992-07-01,1992,7,1992-07
@@ -1998,7 +2000,6 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 19,Eastern/Washington Dance Challenge,"Washington, DC, United States",,May 2003,2003-05-01,2003,5,2003-05
 19,Eastern/Washington Dance Challenge,"Washington, DC, United States",,May 2004,2004-05-01,2004,5,2004-05
 19,Eastern/Washington Dance Challenge,"Washington, DC, United States",,May 2005,2005-05-01,2005,5,2005-05
-38,New Year's Dance Championships,"Fresno, CA, United States",,January 1999,1999-01-01,1999,1,1999-01
 19,Eastern/Washington Dance Challenge,"Washington, DC, United States",,May 2006,2006-05-01,2006,5,2006-05
 19,Eastern/Washington Dance Challenge,"Washington, DC, United States",,May 2007,2007-05-01,2007,5,2007-05
 19,Eastern/Washington Dance Challenge,"Washington, DC, United States",,May 2008,2008-05-01,2008,5,2008-05
@@ -2056,7 +2057,6 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2007,2007-06-01,2007,6,2007-06
 25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2008,2008-06-01,2008,6,2008-06
 25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2009,2009-06-01,2009,6,2009-06
-38,New Year's Dance Championships,"Fresno, CA, United States",,January 2000,2000-01-01,2000,1,2000-01
 25,J&J O'Rama,"Anaheim, CA, United States",https://jackandjillorama.com/,June 2010,2010-06-01,2010,6,2010-06
 26,Jitterbug Jam,"Thousand Oaks, CA, United States",,February 1999,1999-02-01,1999,2,1999-02
 27,Labor Day Swing Dance Festival,"Buena Park, CA, United States",,September 1994,1994-09-01,1994,9,1994-09
@@ -2112,6 +2112,8 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 36,New Years Dance Camp,"Bakersfield, CA, United States",,December 1998,1998-12-01,1998,12,1998-12
 36,New Years Dance Camp,"Bakersfield, CA, United States",,December 1999,1999-12-01,1999,12,1999-12
 36,New Years Dance Camp,"Bakersfield, CA, United States",,December 2000,2000-12-01,2000,12,2000-12
+38,New Year's Dance Championships,"Fresno, CA, United States",,January 1999,1999-01-01,1999,1,1999-01
+38,New Year's Dance Championships,"Fresno, CA, United States",,January 2000,2000-01-01,2000,1,2000-01
 40,North Atlantic Swing Dance Championships,"Cape Cod, MA, United States",,April 1998,1998-04-01,1998,4,1998-04
 40,North Atlantic Swing Dance Championships,"Cape Cod, MA, United States",,April 1999,1999-04-01,1999,4,1999-04
 40,North Atlantic Swing Dance Championships,"Cape Cod, MA, United States",,April 2000,2000-04-01,2000,4,2000-04
@@ -2396,7 +2398,6 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 77,Arizona Dance Classic,"Phoenix, AZ, United States",,August 2010,2010-08-01,2010,8,2010-08
 78,Mid-American Dance Championships,"Chicago, IL, United States",,September 2002,2002-09-01,2002,9,2002-09
 78,Mid-American Dance Championships,"Chicago, IL, United States",,September 2003,2003-09-01,2003,9,2003-09
-78,Mid-American Dance Championships,"Chicago, IL, United States",,September 2004,2004-09-01,2004,9,2004-09
 79,Sea to Sky,"Seattle, WA, United States",http://Seatoskywcs.com,September 2002,2002-09-01,2002,9,2002-09
 79,Sea to Sky,"Seattle, WA, United States",http://Seatoskywcs.com,September 2003,2003-09-01,2003,9,2003-09
 79,Sea to Sky,"Seattle, WA, United States",http://Seatoskywcs.com,September 2007,2007-09-01,2007,9,2007-09
@@ -2461,7 +2462,6 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 92,MADjam,"Washington, DC, United States",http://www.atlanticdancejam.com,March 2006,2006-03-01,2006,3,2006-03
 92,MADjam,"Washington, DC, United States",http://www.atlanticdancejam.com,March 2007,2007-03-01,2007,3,2007-03
 92,MADjam,"Washington, DC, United States",http://www.atlanticdancejam.com,March 2008,2008-03-01,2008,3,2008-03
-109,Colorado Country Classic,"Denver, CO, United States",https://coloradocountryclassic.net/,June 2009,2009-06-01,2009,6,2009-06
 92,MADjam,"Washington, DC, United States",http://www.atlanticdancejam.com,March 2009,2009-03-01,2009,3,2009-03
 92,MADjam,"Washington, DC, United States",http://www.atlanticdancejam.com,March 2010,2010-03-01,2010,3,2010-03
 93,Champion's Weekend (MD),"College Park, MD, United States",,May 2004,2004-05-01,2004,5,2004-05
@@ -2520,6 +2520,8 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 109,Colorado Country Classic,"Denver, CO, United States",https://coloradocountryclassic.net/,June 2006,2006-06-01,2006,6,2006-06
 109,Colorado Country Classic,"Denver, CO, United States",https://coloradocountryclassic.net/,June 2007,2007-06-01,2007,6,2007-06
 109,Colorado Country Classic,"Denver, CO, United States",https://coloradocountryclassic.net/,June 2008,2008-06-01,2008,6,2008-06
+109,Colorado Country Classic,"Denver, CO, United States",https://coloradocountryclassic.net/,June 2009,2009-06-01,2009,6,2009-06
+109,Colorado Country Classic,"Denver, CO, United States",https://coloradocountryclassic.net/,June 2010,2010-06-01,2010,6,2010-06
 110,Brandin' Iron Dance Festival,"San Bernardino, CA, United States",,July 2005,2005-07-01,2005,7,2005-07
 110,Brandin' Iron Dance Festival,"San Bernardino, CA, United States",,July 2006,2006-07-01,2006,7,2006-07
 110,Brandin' Iron Dance Festival,"San Bernardino, CA, United States",,July 2007,2007-07-01,2007,7,2007-07
@@ -2679,3 +2681,4 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 334,Countdown Swing Boston,"Boston, MA, United States",http://countdownswingboston.com/,January 2004,2004-01-01,2004,1,2004-01
 334,Countdown Swing Boston,"Boston, MA, United States",http://countdownswingboston.com/,January 2005,2005-01-01,2005,1,2005-01
 334,Countdown Swing Boston,"Boston, MA, United States",http://countdownswingboston.com/,January 2006,2006-01-01,2006,1,2006-01
+392,Westie Harbor,"Gothenburg, Sweden",,October 2026,2026-10-01,2026,10,2026-10
