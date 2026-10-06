@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-10-06T05:18:14.105857+00:00",
+  "generated_at": "2026-10-06T22:48:26.128004+00:00",
   "source": "github-actions",
   "run_id": null,
   "summary": {
     "before_findings_count": 10,
     "applied_rules_count": 259,
-    "applied_rows_touched": 196832,
-    "manual_review_count": 7,
-    "manual_review_new_count": 0
+    "applied_rows_touched": 196927,
+    "manual_review_count": 9,
+    "manual_review_new_count": 2
   },
   "before_processing": {
     "description": "Issues detected in raw CSV before any normalization",
@@ -174,16 +174,6 @@
         "count": 36,
         "examples": [
           {
-            "base_key": "swing fling",
-            "variants": [
-              "Swing Fling",
-              "Swing Fling 2024"
-            ],
-            "geo_keys": [
-              "washington_dc|dc|usa"
-            ]
-          },
-          {
             "base_key": "monterey swingfest",
             "variants": [
               "Monterey SwingFest",
@@ -194,16 +184,6 @@
             ]
           },
           {
-            "base_key": "boogie by the bay",
-            "variants": [
-              "Boogie By The Bay",
-              "Boogie by the Bay"
-            ],
-            "geo_keys": [
-              "san_francisco|ca|usa"
-            ]
-          },
-          {
             "base_key": "paradise dance festival",
             "variants": [
               "Paradise Dance Festival",
@@ -211,6 +191,26 @@
             ],
             "geo_keys": [
               "irvine|ca|usa"
+            ]
+          },
+          {
+            "base_key": "swing fling",
+            "variants": [
+              "Swing Fling",
+              "Swing Fling 2024"
+            ],
+            "geo_keys": [
+              "washington_dc|dc|usa"
+            ]
+          },
+          {
+            "base_key": "boogie by the bay",
+            "variants": [
+              "Boogie By The Bay",
+              "Boogie by the Bay"
+            ],
+            "geo_keys": [
+              "san_francisco|ca|usa"
             ]
           },
           {
@@ -325,13 +325,6 @@
         "count": 38,
         "examples": [
           {
-            "base_key": "swing fling",
-            "variants": [
-              "Swing Fling",
-              "Swing Fling 2024"
-            ]
-          },
-          {
             "base_key": "monterey swingfest",
             "variants": [
               "Monterey SwingFest",
@@ -339,17 +332,24 @@
             ]
           },
           {
-            "base_key": "boogie by the bay",
-            "variants": [
-              "Boogie By The Bay",
-              "Boogie by the Bay"
-            ]
-          },
-          {
             "base_key": "paradise dance festival",
             "variants": [
               "Paradise Dance Festival",
               "Paradise dance festival"
+            ]
+          },
+          {
+            "base_key": "swing fling",
+            "variants": [
+              "Swing Fling",
+              "Swing Fling 2024"
+            ]
+          },
+          {
+            "base_key": "boogie by the bay",
+            "variants": [
+              "Boogie By The Bay",
+              "Boogie by the Bay"
             ]
           },
           {
@@ -419,7 +419,7 @@
         "code": "EVENT_NAME_UNRESOLVED_TO_CATALOG",
         "severity": "high",
         "message": "Result event names still absent from events_wsdc after normalization (will orphan in load)",
-        "count": 76,
+        "count": 77,
         "examples": [
           {
             "event_name": "Asia WCS Open - 10th Anniversary"
@@ -506,7 +506,7 @@
         "code": "EVENT_NAME_NOT_IN_CATALOG",
         "severity": "low",
         "message": "Result event_name values absent from events_wsdc.csv (may be OK if resolved by name in load)",
-        "count": 182,
+        "count": 183,
         "examples": [
           {
             "event_name": "5280 Swing Dance Championships"
@@ -614,26 +614,26 @@
         "category": "relationships",
         "code": "LEGACY_EVENT_NAME_ID",
         "severity": "high",
-        "message": "12 event_name_id в results без записи в events_wsdc",
+        "message": "13 event_name_id в results без записи в events_wsdc",
         "count": 1,
         "examples": [
           {
             "detail": [
               "99",
-              "66",
-              "202",
-              "193",
-              "321",
-              "39",
-              "279",
-              "325",
               "409",
-              "37"
+              "395",
+              "198",
+              "37",
+              "307",
+              "325",
+              "202",
+              "39",
+              "66"
             ]
           }
         ],
         "suggested_fix": "See transform/data_preprocessing.py validate_* functions",
-        "fingerprint": "904e3e35b0792dfe",
+        "fingerprint": "f8980b201cbf5f3c",
         "is_new": true
       }
     ]
@@ -2202,15 +2202,6 @@
         "rule_id": "DIVISION_NORMALIZATION",
         "table": "dancers_results_info",
         "column": "event_competition",
-        "from_value": "Masters",
-        "to_value": "Master",
-        "rows_affected": 16949,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "DIVISION_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_competition",
         "from_value": "Champions",
         "to_value": "Champion",
         "rows_affected": 5186,
@@ -2222,7 +2213,16 @@
         "column": "event_competition",
         "from_value": "All-Stars",
         "to_value": "All-Star",
-        "rows_affected": 16357,
+        "rows_affected": 16363,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "DIVISION_NORMALIZATION",
+        "table": "dancers_results_info",
+        "column": "event_competition",
+        "from_value": "Masters",
+        "to_value": "Master",
+        "rows_affected": 16955,
         "source": "known_map"
       },
       {
@@ -2760,27 +2760,9 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_required",
-        "from_value": "NEW",
-        "to_value": "Newcomer",
-        "rows_affected": 1449,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_required",
         "from_value": "ADV",
         "to_value": "Advanced",
         "rows_affected": 2754,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_required",
-        "from_value": "INT",
-        "to_value": "Intermediate",
-        "rows_affected": 4563,
         "source": "known_map"
       },
       {
@@ -2796,9 +2778,27 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_required",
+        "from_value": "NEW",
+        "to_value": "Newcomer",
+        "rows_affected": 1450,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_required",
+        "from_value": "INT",
+        "to_value": "Intermediate",
+        "rows_affected": 4567,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_required",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 17942,
+        "rows_affected": 17958,
         "source": "known_map"
       },
       {
@@ -2814,27 +2814,9 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_allowed",
-        "from_value": "NOV",
-        "to_value": "Novice",
-        "rows_affected": 17364,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_allowed",
         "from_value": "ADV",
         "to_value": "Advanced",
         "rows_affected": 3199,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_allowed",
-        "from_value": "INT",
-        "to_value": "Intermediate",
-        "rows_affected": 6032,
         "source": "known_map"
       },
       {
@@ -2850,9 +2832,27 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_allowed",
+        "from_value": "NOV",
+        "to_value": "Novice",
+        "rows_affected": 17382,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_allowed",
+        "from_value": "INT",
+        "to_value": "Intermediate",
+        "rows_affected": 6034,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_allowed",
         "from_value": "ALS",
         "to_value": "All-Star",
-        "rows_affected": 1032,
+        "rows_affected": 1033,
         "source": "known_map"
       },
       {
@@ -2861,7 +2861,7 @@
         "column": "non_dominate_required",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 4514,
+        "rows_affected": 4517,
         "source": "known_map"
       },
       {
@@ -2870,7 +2870,7 @@
         "column": "non_dominate_required",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 15169,
+        "rows_affected": 15186,
         "source": "known_map"
       },
       {
@@ -2879,7 +2879,7 @@
         "column": "non_dominate_required",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 250,
+        "rows_affected": 251,
         "source": "known_map"
       },
       {
@@ -2906,7 +2906,7 @@
         "column": "non_dominate_allowed",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 7003,
+        "rows_affected": 7005,
         "source": "known_map"
       },
       {
@@ -2924,7 +2924,7 @@
         "column": "non_dominate_allowed",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 15169,
+        "rows_affected": 15186,
         "source": "known_map"
       },
       {
@@ -2933,7 +2933,7 @@
         "column": "non_dominate_allowed",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 1121,
+        "rows_affected": 1122,
         "source": "known_map"
       },
       {
@@ -3123,7 +3123,7 @@
         "code": "EVENT_NAME_UNRESOLVED_TO_CATALOG",
         "severity": "high",
         "message": "Result event names still absent from events_wsdc after normalization (will orphan in load)",
-        "count": 66,
+        "count": 67,
         "examples": [
           {
             "event_name": "Asia WCS Open - 10th Anniversary"
@@ -3211,7 +3211,7 @@
         "code": "EVENT_NAME_NOT_IN_CATALOG",
         "severity": "low",
         "message": "Result event_name values absent from events_wsdc.csv (may be OK if resolved by name in load)",
-        "count": 66,
+        "count": 67,
         "examples": [
           {
             "event_name": "Asia WCS Open - 10th Anniversary"
@@ -3277,6 +3277,22 @@
         "suggested_fix": "Verify events_wsdc export or add event instance after parse",
         "fingerprint": "6b2b58d82b35e32b",
         "is_new": false,
+        "requires_manual_review": true
+      },
+      {
+        "category": "event_naming",
+        "code": "EVENT_NAME_NEW_SINCE_LAST_RUN",
+        "severity": "info",
+        "message": "New event names appeared since last quality report (review naming)",
+        "count": 1,
+        "examples": [
+          {
+            "event_name": "River Swing Nights"
+          }
+        ],
+        "suggested_fix": "Check if variant of existing event; add normalization rule if needed",
+        "fingerprint": "30fe6f00ba29b55f",
+        "is_new": true,
         "requires_manual_review": true
       },
       {
@@ -3383,6 +3399,24 @@
         "suggested_fix": "See transform/data_preprocessing.py validate_* functions",
         "fingerprint": "d8a18f92087dc0a0",
         "is_new": false,
+        "requires_manual_review": true
+      },
+      {
+        "category": "relationships",
+        "code": "LEGACY_EVENT_NAME_ID",
+        "severity": "high",
+        "message": "1 event_name_id в results без записи в events_wsdc",
+        "count": 1,
+        "examples": [
+          {
+            "detail": [
+              "395"
+            ]
+          }
+        ],
+        "suggested_fix": "See transform/data_preprocessing.py validate_* functions",
+        "fingerprint": "c76261f97351746e",
+        "is_new": true,
         "requires_manual_review": true
       }
     ]
@@ -3640,6 +3674,7 @@
     "Rising Star - Dallas",
     "River City Dance Festival",
     "River City Swing",
+    "River Swing Nights",
     "Rock the Barn",
     "Rocky Mountain 5 Dance",
     "Rocky Mountain Five Dance (RM5)",

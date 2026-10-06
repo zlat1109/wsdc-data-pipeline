@@ -78,6 +78,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 15,Dallas D.A.N.C.E.,"Dallas, TX, United States",,September 2015,2015-09-01,2015,9,2015-09
 233,Bavarian Open,"Munich, Germany",https://bavarianopen.com/,September 2015,2015-09-01,2015,9,2015-09
 177,River City Swing,"Jacksonville, FL, United States",http://www.floridadanceevents.com,September 2015,2015-09-01,2015,9,2015-09
+47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 2002,2002-08-01,2002,8,2002-08
 48,South Bay Dance Fling,"San Jose, CA, United States",http://www.SBDF.dance,September 2015,2015-09-01,2015,9,2015-09
 167,Best of the Best WCS,"Sydney, Australia",https://www.bestofthebestwcs.com/,September 2015,2015-09-01,2015,9,2015-09
 10,Bridgetown Swing Boogie,"Vancouver, WA, United States",,September 2015,2015-09-01,2015,9,2015-09
@@ -465,6 +466,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 199,San Francisco Dance Sensation,"Oakland, CA, United States",,April 2013,2013-04-01,2013,4,2013-04
 200,Austin Swing Dance Championships,"Austin, TX, United States",http://www.austinswing.com/,April 2013,2013-04-01,2013,4,2013-04
 201,MidAtlantic Dance Classic,"Herndon, VA, United States",,April 2013,2013-04-01,2013,4,2013-04
+47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 2003,2003-08-01,2003,8,2003-08
 144,Swingin' Into Spring,"Hartford, CT, United States",http://www.sis.djkenm.com,May 2013,2013-05-01,2013,5,2013-05
 172,International Hustle & Salsa Congress,"Orlando, FL, United States",,April 2013,2013-04-01,2013,4,2013-04
 218,Asia West Coast Swing Open,"Singapore, Singapore",https://www.asiawcsopen.com/,April 2013,2013-04-01,2013,4,2013-04
@@ -1021,6 +1023,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 303,Odyssey West Coast Swing,"Gold Coast, Australia",http://www.odysseywcs.dance,July 2018,2018-07-01,2018,7,2018-07
 157,New England Dance Festival,"Newton (Boston), MA, United States",http://www.nedancefestival.com,August 2018,2018-08-01,2018,8,2018-08
 148,Dance Mardi Gras,"New Orleans, LA, United States",http://www.dancemardigras.com,July 2018,2018-07-01,2018,7,2018-07
+47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 2004,2004-08-01,2004,8,2004-08
 149,Florida Dance Magic,"Fort Lauderdale, FL, United States",https://floridadancemagic.com/,July 2018,2018-07-01,2018,7,2018-07
 226,Ft. Lauderdale Swing & Shag Beach Bash,"Fort Lauderdale, FL, United States",,July 2018,2018-07-01,2018,7,2018-07
 77,Arizona Dance Classic,"Phoenix, AZ, United States",,August 2018,2018-08-01,2018,8,2018-08
@@ -1243,6 +1246,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 312,Westie Pink City,"Toulouse, France",http://www.westiepinkcity.fr/,November 2021,2021-11-01,2021,11,2021-11
 174,Swingsation,"Gold Coast, Australia",https://rawconnection.com.au/swingsation/,June 2021,2021-06-01,2021,6,2021-06
 278,Americano Dance Camp,"Samara, Russia",https://t.me/americamodancecamp https://vk.com/americano2025,July 2021,2021-07-01,2021,7,2021-07
+47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 2005,2005-08-01,2005,8,2005-08
 212,The After Party (TAP),"Orange County, CA, United States",http://www.tapwcs.com,December 2021,2021-12-01,2021,12,2021-12
 47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,July 2022,2022-07-01,2022,7,2022-07
 142,The Chicago Classic,"Chicago, IL, United States",www.TheChicagoClassic.com,March 2022,2022-03-01,2022,3,2022-03
@@ -1634,6 +1638,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 221,Show Me Showdown,"St. Louis, MO, United States",,May 2025,2025-05-01,2025,5,2025-05
 205,SOswing,"Ashland, OR, United States",http://soswingdance.com,May 2025,2025-05-01,2025,5,2025-05
 105,Canadian Swing Championships,"Montreal, Canada",http://www.canadianswingchampionships.com,May 2025,2025-05-01,2025,5,2025-05
+47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 2006,2006-08-01,2006,8,2006-08
 372,Dance Jam Jack & Jill Weekend,"Silver Spring, MD, United States",https://dancejamproductions.com/westieweekend/,May 2025,2025-05-01,2025,5,2025-05
 121,The Texas Classic,"Austin, TX, United States",http://Www.thetexasclassic.com,May 2025,2025-05-01,2025,5,2025-05
 22,USA Grand Nationals,"Atlanta, GA, United States",http://www.usagrandnationals.com,May 2025,2025-05-01,2025,5,2025-05
@@ -1840,6 +1845,10 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 361,Mooseland Swing,"Östersund, Sweden",https://mooselandswing.com/,September 2026,2026-09-01,2026,9,2026-09
 234,Philly Swing Classic,"Wilmington, DE, United States",http://www.phillyswing.com,September 2026,2026-09-01,2026,9,2026-09
 211,Atlanta Swing Classic,"Atlanta, GA, United States",https://www.atlantaswingclassic.com,October 2026,2026-10-01,2026,10,2026-10
+47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 2007,2007-08-01,2007,8,2007-08
+47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 2008,2008-08-01,2008,8,2008-08
+47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 2009,2009-08-01,2009,8,2009-08
+47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 2010,2010-08-01,2010,8,2010-08
 388,Norwegian Open WCS,"Hamar, Norway",https://norwegianopen.no/,October 2026,2026-10-01,2026,10,2026-10
 392,Westie Harbor,"Gothenburg, Sweden",,October 2026,2026-10-01,2026,10,2026-10
 1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 1991,1991-07-01,1991,7,1991-07
@@ -2157,15 +2166,6 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 1999,1999-08-01,1999,8,1999-08
 47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 2000,2000-08-01,2000,8,2000-08
 47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 2001,2001-08-01,2001,8,2001-08
-47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 2002,2002-08-01,2002,8,2002-08
-47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 2003,2003-08-01,2003,8,2003-08
-47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 2004,2004-08-01,2004,8,2004-08
-47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 2005,2005-08-01,2005,8,2005-08
-47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 2006,2006-08-01,2006,8,2006-08
-47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 2007,2007-08-01,2007,8,2007-08
-47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 2008,2008-08-01,2008,8,2008-08
-47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 2009,2009-08-01,2009,8,2009-08
-47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 2010,2010-08-01,2010,8,2010-08
 48,South Bay Dance Fling,"San Jose, CA, United States",http://www.SBDF.dance,August 1997,1997-08-01,1997,8,1997-08
 48,South Bay Dance Fling,"San Jose, CA, United States",http://www.SBDF.dance,August 1998,1998-08-01,1998,8,1998-08
 48,South Bay Dance Fling,"San Jose, CA, United States",http://www.SBDF.dance,August 2001,2001-08-01,2001,8,2001-08
@@ -2682,3 +2682,4 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 334,Countdown Swing Boston,"Boston, MA, United States",http://countdownswingboston.com/,January 2004,2004-01-01,2004,1,2004-01
 334,Countdown Swing Boston,"Boston, MA, United States",http://countdownswingboston.com/,January 2005,2005-01-01,2005,1,2005-01
 334,Countdown Swing Boston,"Boston, MA, United States",http://countdownswingboston.com/,January 2006,2006-01-01,2006,1,2006-01
+395,River Swing Nights,"Dresden, Germany",,October 2026,2026-10-01,2026,10,2026-10
