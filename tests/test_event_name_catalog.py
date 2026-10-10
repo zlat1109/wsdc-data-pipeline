@@ -130,9 +130,9 @@ def test_us_open_year_split_to_the_open_from_2024():
         ]
     )
     out = apply_event_name_year_splits(df)
-    assert out.loc[0, "event_name"] == "US Open"
-    assert out.loc[1, "event_name"] == "The Open"
-    assert out.loc[2, "event_name"] == "The Open"
+    assert out.loc[0, "event_name"] == "US Open Swing Dance Championships"
+    assert out.loc[1, "event_name"] == "The Open Swing Dance Championships"
+    assert out.loc[2, "event_name"] == "The Open Swing Dance Championships"
     assert out.loc[3, "event_name"] == "World Swing Dance Championships"
     assert int(out.loc[3, "event_name_id"]) == 73
 

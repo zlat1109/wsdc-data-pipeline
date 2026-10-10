@@ -280,9 +280,9 @@ EVENT_NAME_YEAR_SPLITS: list[dict[str, object]] = [
             # Do NOT include bare "World Swing Dance Championships" — that is the
             # real 2011 San Bernardino series (eid 73), not The Open rebrand.
         ),
-        "early_name": "US Open",
+        "early_name": "US Open Swing Dance Championships",
         "early_year_max": 2023,
-        "late_name": "The Open",
+        "late_name": "The Open Swing Dance Championships",
         "late_year_min": 2024,
         "early_event_id": 68,
         "late_event_id": 68,
