@@ -83,6 +83,60 @@ def test_5280_alias_points_to_westival_not_championships():
     assert MERGE_EVENT_ID_MAP[406] == 197
 
 
+def test_the_open_world_alias_maps_to_us_open_not_world_ghost():
+    """Calendar title The Open World… (theopenswing.com) is US Open, not eid 73."""
+    from transform.knowledge.event_aliases import MERGE_EVENT_ID_MAP
+
+    assert (
+        RESULT_TO_CATALOG_EVENT_NAME["The Open World Swing Dance Championships"]
+        == "US Open Swing Dance Championships"
+    )
+    assert RESULT_TO_CATALOG_EVENT_NAME["The Open Swing Dance Championships"] == (
+        "US Open Swing Dance Championships"
+    )
+    # Keep 2011 World Swing Dance Championships (73) as its own series — do not merge.
+    assert 73 not in MERGE_EVENT_ID_MAP
+
+
+def test_us_open_year_split_to_the_open_from_2024():
+    """Dump calendar_title switches to The Open… in 2024 — display follows that cutover."""
+    import pandas as pd
+
+    from transform.knowledge.event_aliases import apply_event_name_year_splits
+
+    df = pd.DataFrame(
+        [
+            {
+                "event_name": "US Open Swing Dance Championships",
+                "event_year": 2023,
+                "event_name_id": 68,
+            },
+            {
+                "event_name": "US Open Swing Dance Championships",
+                "event_year": 2024,
+                "event_name_id": 68,
+            },
+            {
+                "event_name": "The Open World Swing Dance Championships",
+                "event_year": 2025,
+                "event_name_id": 68,
+            },
+            # Real 2011 San Bernardino series — must not be rewritten to The Open/US Open.
+            {
+                "event_name": "World Swing Dance Championships",
+                "event_year": 2011,
+                "event_name_id": 73,
+            },
+        ]
+    )
+    out = apply_event_name_year_splits(df)
+    assert out.loc[0, "event_name"] == "US Open"
+    assert out.loc[1, "event_name"] == "The Open"
+    assert out.loc[2, "event_name"] == "The Open"
+    assert out.loc[3, "event_name"] == "World Swing Dance Championships"
+    assert int(out.loc[3, "event_name_id"]) == 73
+
+
 def test_merge_map_excludes_geo_split_pairs():
     """Geo-split live ids must not merge into each other.
 

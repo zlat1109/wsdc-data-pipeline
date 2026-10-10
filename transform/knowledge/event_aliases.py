@@ -65,7 +65,9 @@ RESULT_TO_CATALOG_EVENT_NAME: dict[str, str] = {
     'New Zealand Open': 'New Zealand Open Swing Dance Championships',
     'Dutch Open': 'Dutch Open West Coast Swing',
     'Global Grand Prix': 'Global Grand Prix - West Coast Swing Reunion',
-    'The Open World Swing Dance Championships': 'World Swing Dance Championships',
+    # Branding on theopenswing.com — both titles are US Open (68), not the
+    # inactive 2011 "World Swing Dance Championships" catalog ghost (73).
+    'The Open World Swing Dance Championships': 'US Open Swing Dance Championships',
     # WSDC listing title for event_id 68 (catalog still "US Open…")
     'The Open Swing Dance Championships': 'US Open Swing Dance Championships',
     'The Open Swing Dance  Championships': 'US Open Swing Dance Championships',
@@ -262,6 +264,28 @@ EVENT_NAME_YEAR_SPLITS: list[dict[str, object]] = [
         # Toulouse 2023–2025 → Paris 2026+ (MERGE 409→342). Soul Flow stays on 990001.
         "early_event_id": 342,
         "late_event_id": 342,
+    },
+    {
+        # Dump competitionevents calendar_title: "US Open…" through 2023,
+        # "The Open World Swing Dance Championships" from 2024; live calendar
+        # 2025–2026 uses The Open… on theopenswing.com. Registry results still
+        # say US Open — display follows the public rebrand year.
+        "sources": (
+            "US Open",
+            "US Open Swing Dance Championships",
+            "The Open",
+            "The Open Swing Dance Championships",
+            "The Open Swing Dance  Championships",
+            "The Open World Swing Dance Championships",
+            # Do NOT include bare "World Swing Dance Championships" — that is the
+            # real 2011 San Bernardino series (eid 73), not The Open rebrand.
+        ),
+        "early_name": "US Open",
+        "early_year_max": 2023,
+        "late_name": "The Open",
+        "late_year_min": 2024,
+        "early_event_id": 68,
+        "late_event_id": 68,
     },
 ]
 
