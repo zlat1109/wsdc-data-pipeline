@@ -1054,6 +1054,7 @@ def test_correct_cross_year_results_years_nye():
 
 def test_fingerprint_and_weekend_dedupe_collapses_title_variants():
     from transform.year_event_calendar.build import (
+        _collision_name_key,
         _dedupe_weekend_name_collisions,
         _fingerprint_event_name,
         _resolve_merge_event_id,
@@ -1063,6 +1064,10 @@ def test_fingerprint_and_weekend_dedupe_collapses_title_variants():
         "Boston Tea Party"
     )
     assert _fingerprint_event_name("Paris Swing Classic") == "paris westie"
+    assert _collision_name_key("River Swing Nights") == _collision_name_key(
+        "RiverSwingNights"
+    )
+    assert _fingerprint_event_name("RiverSwingNights") == "river nights"
     assert _resolve_merge_event_id(307) == 272
     assert _resolve_merge_event_id(543) == 272
     assert _resolve_merge_event_id(566) == 9
@@ -1701,6 +1706,85 @@ def test_drop_redundant_stats_only_when_day_precision_exists():
     assert len(out) == 2
     assert {r["event_id"] for r in out} == {221, 99}
     assert not any(r.get("stats_only") and r["event_id"] == 221 for r in out)
+
+
+def test_weekend_dedupe_collapses_glued_title_and_stats_only_ghost():
+    """RiverSwingNights (calendar) + River Swing Nights stats_only → one confirmed row."""
+    from transform.year_event_calendar.build import (
+        _dedupe_rows,
+        _dedupe_weekend_name_collisions,
+        _drop_redundant_stats_only,
+    )
+
+    rows = [
+        {
+            "event_id": 395,
+            "name": "River Swing Nights",
+            "start_date": date(2026, 10, 1),
+            "end_date": date(2026, 10, 1),
+            "year": 2026,
+            "status": "confirmed",
+            "source": "event_editions_month_only",
+            "stats_only": True,
+            "has_results": True,
+            "city": "Dresden",
+            "country": "Germany",
+        },
+        {
+            "event_id": None,
+            "name": "RiverSwingNights",
+            "start_date": date(2026, 10, 1),
+            "end_date": date(2026, 10, 5),
+            "year": 2026,
+            "status": "confirmed",
+            "source": "events_calendar_retention",
+            "provisional_unlinked": True,
+            "city": "Dresden",
+            "country": "Germany",
+            "url": "http://www.riverswingnights.com/",
+        },
+    ]
+    merged = _dedupe_weekend_name_collisions(_dedupe_rows(rows))
+    merged = _drop_redundant_stats_only(merged)
+    assert len(merged) == 1
+    row = merged[0]
+    assert row.get("stats_only") is not True
+    assert row.get("provisional_unlinked") is not True
+    assert row.get("event_id") == 395
+    assert row.get("has_results") is True
+    assert row.get("end_date") == date(2026, 10, 5)
+    assert row.get("url") == "http://www.riverswingnights.com/"
+
+
+def test_drop_redundant_stats_only_does_not_cross_cities():
+    """Same collision name in different cities must not wipe the other series."""
+    from transform.year_event_calendar.build import _drop_redundant_stats_only
+
+    rows = [
+        {
+            "event_id": 1,
+            "name": "Challenge",
+            "start_date": date(2026, 3, 1),
+            "year": 2026,
+            "status": "confirmed",
+            "stats_only": True,
+            "city": "Austin",
+            "has_results": True,
+        },
+        {
+            "event_id": 2,
+            "name": "Challenge",
+            "start_date": date(2026, 6, 12),
+            "end_date": date(2026, 6, 15),
+            "year": 2026,
+            "status": "confirmed",
+            "city": "Berlin",
+            "source": "edition_calendar_dates",
+        },
+    ]
+    out = _drop_redundant_stats_only(rows)
+    assert len(out) == 2
+    assert any(r.get("stats_only") and r["event_id"] == 1 for r in out)
 
 
 def test_dedupe_prefers_day_dates_over_stats_only():
