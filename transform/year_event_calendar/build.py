@@ -1058,6 +1058,9 @@ def _prefer_row(existing: dict, new: dict) -> dict:
             winner[key] = loser[key]
     if winner.get("event_id") is None and loser.get("event_id") is not None:
         winner["event_id"] = loser["event_id"]
+    if winner.get("event_id") is not None:
+        winner.pop("provisional_unlinked", None)
+        winner.pop("provisional_unlinked_trial", None)
     if winner.get("stats_only") and not loser.get("stats_only"):
         winner["stats_only"] = False
         winner["source"] = loser.get("source") or winner.get("source")
@@ -1218,27 +1221,54 @@ def _drop_redundant_stats_only(rows: list[dict]) -> list[dict]:
 
     ``_dedupe_rows`` only merges same weekend; results often use the 1st of the
     month while the calendar has the real weekend later in the month.
+
+    Also drop stats_only ghosts when a day-precision row shares year + collision
+    name key and the same city or weekend (provisional unlinked with null event_id).
     """
-    day_keys: set[tuple[int, int]] = set()
+    day_id_keys: set[tuple[int, int]] = set()
+    day_name_city_keys: set[tuple[int, str, str]] = set()
+    day_name_weekend_keys: set[tuple[int, str, str]] = set()
     for row in rows:
         if row.get("stats_only"):
             continue
-        eid = row.get("event_id")
         year = _row_year(row)
-        if eid is None or year is None:
+        if year is None:
             continue
-        day_keys.add((int(eid), int(year)))
+        eid = row.get("event_id")
+        if eid is not None:
+            day_id_keys.add((int(eid), int(year)))
+        nk = _collision_name_key(row.get("name"))
+        if not nk:
+            continue
+        city = str(row.get("city") or "").strip().lower()
+        if city:
+            day_name_city_keys.add((int(year), nk, city))
+        start = row.get("start_date")
+        if isinstance(start, date):
+            day_name_weekend_keys.add((int(year), nk, weekend_key(start)))
     out: list[dict] = []
     for row in rows:
         if row.get("stats_only"):
-            eid = row.get("event_id")
             year = _row_year(row)
+            eid = row.get("event_id")
             if (
                 eid is not None
                 and year is not None
-                and (int(eid), int(year)) in day_keys
+                and (int(eid), int(year)) in day_id_keys
             ):
                 continue
+            nk = _collision_name_key(row.get("name"))
+            if year is not None and nk:
+                city = str(row.get("city") or "").strip().lower()
+                if city and (int(year), nk, city) in day_name_city_keys:
+                    continue
+                start = row.get("start_date")
+                if isinstance(start, date) and (
+                    int(year),
+                    nk,
+                    weekend_key(start),
+                ) in day_name_weekend_keys:
+                    continue
         out.append(row)
     return out
 
@@ -1250,6 +1280,16 @@ def _alias_event_name(name: str | None) -> str | None:
     return _NAME_ALIAS_LOOKUP.get(cleaned.lower(), cleaned)
 
 
+def _split_camel_name(name: str | None) -> str:
+    """Insert spaces into CamelCase / glued titles (RiverSwingNights → River Swing Nights)."""
+    text = str(name or "").strip()
+    if not text:
+        return ""
+    text = re.sub(r"([a-z0-9])([A-Z])", r"\1 \2", text)
+    text = re.sub(r"([A-Z]+)([A-Z][a-z])", r"\1 \2", text)
+    return text
+
+
 def _fingerprint_event_name(name: str | None) -> str:
     """Loose token fingerprint for cross-source near-duplicate matching.
 
@@ -1257,7 +1297,7 @@ def _fingerprint_event_name(name: str | None) -> str:
     strip only light function words so weekend dedupe still has a key instead of
     passthrough duplicates.
     """
-    text = _alias_event_name(name) or ""
+    text = _alias_event_name(_split_camel_name(name) or name) or ""
     raw_tokens = [
         tok
         for tok in "".join(ch if ch.isalnum() else " " for ch in text.lower()).split()
@@ -1269,6 +1309,18 @@ def _fingerprint_event_name(name: str | None) -> str:
     light = frozenset({"the", "a", "an", "and", "of", "for"})
     kept = [tok for tok in raw_tokens if tok not in light]
     return " ".join(kept) if kept else " ".join(raw_tokens)
+
+
+def _collision_name_key(name: str | None) -> str:
+    """Compact name key so spaced and glued titles collide (river nights ↔ riverswingnights)."""
+    spaced = _fingerprint_event_name(name)
+    compact = spaced.replace(" ", "")
+    if compact:
+        return compact
+    raw = "".join(ch for ch in str(name or "").lower() if ch.isalnum())
+    for sw in sorted(_NAME_STOPWORDS, key=len, reverse=True):
+        raw = raw.replace(sw, "")
+    return raw
 
 
 def _catalog_quality(eid: int | None, cat_by_id: dict[int, dict]) -> tuple[int, int]:
@@ -1299,21 +1351,43 @@ def _canonicalize_calendar_rows(rows: list[dict], catalog: pd.DataFrame) -> None
             if cname:
                 cat_by_name[cname.lower()] = rec
 
+    # Collision keys that map to exactly one catalog event (skip short/ambiguous
+    # keys like "german" / "chicago" that cover many series).
+    cat_by_collision: dict[str, dict | None] = {}
+    for rec in cat_by_name.values():
+        ck = _collision_name_key(rec.get("canonical_name"))
+        if not ck:
+            continue
+        if ck in cat_by_collision:
+            cat_by_collision[ck] = None
+        else:
+            cat_by_collision[ck] = rec
+
     for row in rows:
         eid = row.get("event_id")
         if eid is not None:
             row["event_id"] = _resolve_merge_event_id(int(eid))
+        # Prefer spaced catalog form when the scrape glued CamelCase titles.
+        spaced = _alias_event_name(_split_camel_name(row.get("name")) or row.get("name"))
         aliased = _alias_event_name(row.get("name"))
-        if aliased:
-            row["name"] = aliased
-            cat = cat_by_name.get(aliased.lower())
-            if cat is not None:
-                cat_eid = int(cat["event_id"])
-                cur = row.get("event_id")
-                if cur is None or _catalog_quality(cat_eid, cat_by_id) >= _catalog_quality(
-                    int(cur) if cur is not None else None, cat_by_id
-                ):
-                    row["event_id"] = cat_eid
+        display = spaced or aliased
+        if display:
+            row["name"] = display
+        cat = None
+        for candidate in (display, aliased, spaced):
+            if candidate:
+                cat = cat_by_name.get(candidate.lower())
+                if cat is not None:
+                    break
+        if cat is None:
+            cat = cat_by_collision.get(_collision_name_key(row.get("name")))
+        if cat is not None:
+            cat_eid = int(cat["event_id"])
+            cur = row.get("event_id")
+            if cur is None or _catalog_quality(cat_eid, cat_by_id) >= _catalog_quality(
+                int(cur) if cur is not None else None, cat_by_id
+            ):
+                row["event_id"] = cat_eid
 
 
 def _prefer_calendar_row(
@@ -1394,10 +1468,11 @@ def _dedupe_weekend_name_collisions(
         start = row.get("start_date")
         if not isinstance(start, date):
             continue
-        fp = _fingerprint_event_name(row.get("name"))
+        fp = _collision_name_key(row.get("name"))
         if not fp:
             passthrough.append(row)
             continue
+        # Compact key: "River Swing Nights" and "RiverSwingNights" share a weekend.
         key = (start.year, weekend_key(start), fp)
         if key in by_key:
             by_key[key] = _prefer_calendar_row(by_key[key], row, cat_by_id=cat_by_id)
