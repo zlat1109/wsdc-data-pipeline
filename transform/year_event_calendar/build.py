@@ -397,6 +397,10 @@ def _city_compare_key(value: Any) -> str | None:
     # \\bst\\.?\\b fails on "st. petersburg".
     text = re.sub(r"\bst\.?(?=\s|$)", "saint", text)
     text = re.sub(r"\bmt\.?(?=\s|$)", "mount", text)
+    # German umlaut ASCII transliteration after accent fold:
+    # Düsseldorf → dusseldorf, Duesseldorf → duesseldorf → dusseldorf.
+    # Same for oe/ae (Köln/Koeln, Zürich uses ue path via ü→u already).
+    text = text.replace("ue", "u").replace("oe", "o").replace("ae", "a")
     text = re.sub(r"\s+", " ", text).strip()
     return text or None
 
