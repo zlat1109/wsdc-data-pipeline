@@ -662,6 +662,38 @@ def test_enrich_geo_city_fallback_matches_accented_labels():
     assert rows[0]["lon"] == 18.6466384
 
 
+def test_enrich_geo_city_fallback_matches_german_umlaut_ascii():
+    """WSDC list often writes Duesseldorf while location_info has Düsseldorf."""
+    locations = pd.DataFrame(
+        [
+            {
+                "location_id": 127,
+                "event_city": "Düsseldorf",
+                "event_country": "Germany",
+                "latitude": 51.2230411,
+                "longitude": 6.7824545,
+                "coordinates_valid": True,
+            }
+        ]
+    )
+    catalog = pd.DataFrame(columns=["event_id", "canonical_name", "url"])
+    rows = [
+        {
+            "event_id": 286,
+            "name": "WCS Festival",
+            "city": "Duesseldorf",
+            "country": "Germany",
+            "location_id": None,
+            "url": None,
+            "source": "scheduled_events",
+        }
+    ]
+    _enrich_geo(rows, locations, catalog, location_id_by_event={286: 127})
+    assert rows[0]["lat"] == 51.2230411
+    assert rows[0]["lon"] == 6.7824545
+    assert rows[0]["city"] == "Düsseldorf"
+
+
 def test_enrich_geo_name_override_forces_wels_without_event_id():
     locations = pd.DataFrame(
         [
