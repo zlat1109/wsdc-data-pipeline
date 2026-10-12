@@ -694,6 +694,142 @@ def test_enrich_geo_city_fallback_matches_german_umlaut_ascii():
     assert rows[0]["city"] == "Düsseldorf"
 
 
+def test_enrich_geo_city_aliases_and_metro_prefix():
+    """Endonyms, scrap typos, suburbs, and multi-word metros resolve to known coords."""
+    locations = pd.DataFrame(
+        [
+            {
+                "location_id": 132,
+                "event_city": "Milan",
+                "event_country": "Italy",
+                "latitude": 45.468503,
+                "longitude": 9.182403,
+                "coordinates_valid": True,
+            },
+            {
+                "location_id": 402,
+                "event_city": "Milano",
+                "event_country": "Italy",
+                "latitude": None,
+                "longitude": None,
+                "coordinates_valid": False,
+            },
+            {
+                "location_id": 399,
+                "event_city": "Cologne",
+                "event_country": "Germany",
+                "latitude": 50.937531,
+                "longitude": 6.960279,
+                "coordinates_valid": True,
+            },
+            {
+                "location_id": 7,
+                "event_city": "New York",
+                "event_country": "United States",
+                "event_state": "New York",
+                "latitude": 40.712775,
+                "longitude": -74.005973,
+                "coordinates_valid": True,
+            },
+            {
+                "location_id": 110,
+                "event_city": "Budapest",
+                "event_country": "Hungary",
+                "latitude": 47.497912,
+                "longitude": 19.040235,
+                "coordinates_valid": True,
+            },
+            {
+                "location_id": 117,
+                "event_city": "Sydney",
+                "event_country": "Australia",
+                "latitude": -33.872741,
+                "longitude": 151.205721,
+                "coordinates_valid": True,
+            },
+        ]
+    )
+    catalog = pd.DataFrame(columns=["event_id", "canonical_name", "url"])
+    cases = [
+        {
+            "event_id": 405,
+            "name": "Milan Swing Vibes",
+            "city": "Milano",
+            "country": "Italy",
+            "location_id": 402,
+            "source": "scheduled_events",
+            "expect_lat": 45.468503,
+            "expect_lon": 9.182403,
+        },
+        {
+            "event_id": None,
+            "name": "Cologne Calling WCS",
+            "city": "Köln",
+            "country": "Germany",
+            "location_id": 399,
+            "source": "scheduled_events",
+            "expect_lat": 50.937531,
+            "expect_lon": 6.960279,
+            "expect_city": "Cologne",
+        },
+        {
+            "event_id": 378,
+            "name": "New York Flow Festival",
+            "city": "New York City",
+            "country": "United States",
+            "location_id": None,
+            "source": "scheduled_events",
+            "expect_lat": 40.712775,
+            "expect_lon": -74.005973,
+            "expect_city": "New York",
+        },
+        {
+            "event_id": 206,
+            "name": "Hungarian Open",
+            "city": "Budaperst",
+            "country": "Hungary",
+            "location_id": None,
+            "source": "scheduled_events",
+            "expect_lat": 47.497912,
+            "expect_lon": 19.040235,
+            "expect_city": "Budapest",
+        },
+        {
+            "event_id": 167,
+            "name": "Best of the Best WCS",
+            "city": "Ashfield",
+            "country": "Australia",
+            "location_id": None,
+            "source": "scheduled_events",
+            "expect_lat": -33.872741,
+            "expect_lon": 151.205721,
+            "expect_city": "Sydney",
+        },
+    ]
+    for case in cases:
+        row = {
+            "event_id": case["event_id"],
+            "name": case["name"],
+            "city": case["city"],
+            "country": case["country"],
+            "location_id": case["location_id"],
+            "url": None,
+            "source": case["source"],
+        }
+        lids = {}
+        if case["event_id"] == 378:
+            lids = {378: 7}
+        elif case["event_id"] == 206:
+            lids = {206: 110}
+        elif case["event_id"] == 167:
+            lids = {167: 117}
+        _enrich_geo([row], locations, catalog, location_id_by_event=lids)
+        assert row["lat"] == case["expect_lat"], case["name"]
+        assert row["lon"] == case["expect_lon"], case["name"]
+        if "expect_city" in case:
+            assert row["city"] == case["expect_city"], case["name"]
+
+
 def test_enrich_geo_name_override_forces_wels_without_event_id():
     locations = pd.DataFrame(
         [
