@@ -694,8 +694,20 @@ def test_enrich_geo_city_fallback_matches_german_umlaut_ascii():
     assert rows[0]["city"] == "Düsseldorf"
 
 
-def test_enrich_geo_city_aliases_and_metro_prefix():
-    """Endonyms, scrap typos, suburbs, and multi-word metros resolve to known coords."""
+def test_city_from_location_raw_uses_location_raw_aliases():
+    """Schedule city is taken after LOCATION_RAW_ALIASES — not a calendar-only map."""
+    from transform.year_event_calendar.build import _city_from_location_raw
+
+    assert _city_from_location_raw("Milano, Italy") == "Milan"
+    assert _city_from_location_raw("Köln, NRW, Germany") == "Cologne"
+    assert _city_from_location_raw("Budaperst, Budapest, Hungary") == "Budapest"
+    assert _city_from_location_raw("Ashfield, NSW, Australia") == "Sydney"
+    assert _city_from_location_raw("Duesseldorf, Germany") == "Düsseldorf"
+    assert _city_from_location_raw("New York City, NY, United States") == "New York"
+
+
+def test_enrich_geo_remaps_invalid_milano_lid_and_metro_prefix():
+    """Merge-map lids + metro soft-match (not endonym compare aliases)."""
     locations = pd.DataFrame(
         [
             {
@@ -715,14 +727,6 @@ def test_enrich_geo_city_aliases_and_metro_prefix():
                 "coordinates_valid": False,
             },
             {
-                "location_id": 399,
-                "event_city": "Cologne",
-                "event_country": "Germany",
-                "latitude": 50.937531,
-                "longitude": 6.960279,
-                "coordinates_valid": True,
-            },
-            {
                 "location_id": 7,
                 "event_city": "New York",
                 "event_country": "United States",
@@ -732,11 +736,11 @@ def test_enrich_geo_city_aliases_and_metro_prefix():
                 "coordinates_valid": True,
             },
             {
-                "location_id": 110,
-                "event_city": "Budapest",
-                "event_country": "Hungary",
-                "latitude": 47.497912,
-                "longitude": 19.040235,
+                "location_id": 399,
+                "event_city": "Cologne",
+                "event_country": "Germany",
+                "latitude": 50.937531,
+                "longitude": 6.960279,
                 "coordinates_valid": True,
             },
             {
@@ -747,87 +751,83 @@ def test_enrich_geo_city_aliases_and_metro_prefix():
                 "longitude": 151.205721,
                 "coordinates_valid": True,
             },
+            {
+                "location_id": 110,
+                "event_city": "Budapest",
+                "event_country": "Hungary",
+                "latitude": 47.497912,
+                "longitude": 19.040235,
+                "coordinates_valid": True,
+            },
         ]
     )
     catalog = pd.DataFrame(columns=["event_id", "canonical_name", "url"])
-    cases = [
-        {
-            "event_id": 405,
-            "name": "Milan Swing Vibes",
-            "city": "Milano",
-            "country": "Italy",
-            "location_id": 402,
-            "source": "scheduled_events",
-            "expect_lat": 45.468503,
-            "expect_lon": 9.182403,
-        },
-        {
-            "event_id": None,
-            "name": "Cologne Calling WCS",
-            "city": "Köln",
-            "country": "Germany",
-            "location_id": 399,
-            "source": "scheduled_events",
-            "expect_lat": 50.937531,
-            "expect_lon": 6.960279,
-            "expect_city": "Cologne",
-        },
-        {
-            "event_id": 378,
-            "name": "New York Flow Festival",
-            "city": "New York City",
-            "country": "United States",
-            "location_id": None,
-            "source": "scheduled_events",
-            "expect_lat": 40.712775,
-            "expect_lon": -74.005973,
-            "expect_city": "New York",
-        },
-        {
-            "event_id": 206,
-            "name": "Hungarian Open",
-            "city": "Budaperst",
-            "country": "Hungary",
-            "location_id": None,
-            "source": "scheduled_events",
-            "expect_lat": 47.497912,
-            "expect_lon": 19.040235,
-            "expect_city": "Budapest",
-        },
-        {
-            "event_id": 167,
-            "name": "Best of the Best WCS",
-            "city": "Ashfield",
-            "country": "Australia",
-            "location_id": None,
-            "source": "scheduled_events",
-            "expect_lat": -33.872741,
-            "expect_lon": 151.205721,
-            "expect_city": "Sydney",
-        },
-    ]
-    for case in cases:
-        row = {
-            "event_id": case["event_id"],
-            "name": case["name"],
-            "city": case["city"],
-            "country": case["country"],
-            "location_id": case["location_id"],
-            "url": None,
-            "source": case["source"],
-        }
-        lids = {}
-        if case["event_id"] == 378:
-            lids = {378: 7}
-        elif case["event_id"] == 206:
-            lids = {206: 110}
-        elif case["event_id"] == 167:
-            lids = {167: 117}
-        _enrich_geo([row], locations, catalog, location_id_by_event=lids)
-        assert row["lat"] == case["expect_lat"], case["name"]
-        assert row["lon"] == case["expect_lon"], case["name"]
-        if "expect_city" in case:
-            assert row["city"] == case["expect_city"], case["name"]
+
+    milano = {
+        "event_id": 405,
+        "name": "Milan Swing Vibes",
+        "city": "Milan",  # already aliased at ingest
+        "country": "Italy",
+        "location_id": 402,  # remapped to 132 in enrich
+        "url": None,
+        "source": "scheduled_events",
+    }
+    _enrich_geo([milano], locations, catalog, location_id_by_event={})
+    assert milano["location_id"] == 132
+    assert milano["city"] == "Milan"
+    assert milano["lat"] == 45.468503
+
+    cologne = {
+        "event_id": None,
+        "name": "Cologne Calling WCS",
+        "city": "Cologne",  # aliased from Köln at ingest
+        "country": "Germany",
+        "location_id": 399,
+        "url": None,
+        "source": "scheduled_events",
+    }
+    _enrich_geo([cologne], locations, catalog, location_id_by_event={})
+    assert cologne["lat"] == 50.937531
+    assert cologne["city"] == "Cologne"
+
+    nyc = {
+        "event_id": 378,
+        "name": "New York Flow Festival",
+        "city": "New York",  # aliased from New York City at ingest
+        "country": "United States",
+        "location_id": None,
+        "url": None,
+        "source": "scheduled_events",
+    }
+    _enrich_geo([nyc], locations, catalog, location_id_by_event={378: 7})
+    assert nyc["lat"] == 40.712775
+    assert nyc["city"] == "New York"
+
+    botb = {
+        "event_id": 167,
+        "name": "Best of the Best WCS",
+        "city": "Sydney",  # aliased from Ashfield at ingest
+        "country": "Australia",
+        "location_id": None,
+        "url": None,
+        "source": "scheduled_events",
+    }
+    _enrich_geo([botb], locations, catalog, location_id_by_event={167: 117})
+    assert botb["lat"] == -33.872741
+    assert botb["city"] == "Sydney"
+
+    ho = {
+        "event_id": 206,
+        "name": "Hungarian Open",
+        "city": "Budapest",
+        "country": "Hungary",
+        "location_id": None,
+        "url": None,
+        "source": "scheduled_events",
+    }
+    _enrich_geo([ho], locations, catalog, location_id_by_event={206: 110})
+    assert ho["lat"] == 47.497912
+    assert ho["city"] == "Budapest"
 
 
 def test_enrich_geo_name_override_forces_wels_without_event_id():

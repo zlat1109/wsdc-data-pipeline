@@ -25,7 +25,9 @@ from transform.knowledge.events import (
     EVENT_NAME_YEAR_LOCATION_OVERRIDES,
 )
 from transform.geography.normalize import parse_us_state_from_location_text
+from transform.geography.resolve import _canonical_location_raw
 from transform.knowledge.geo_flags import continent_for_country
+from transform.knowledge.locations import LOCATION_ID_MERGE_MAP
 from transform.year_event_calendar.expected import (
     CONFIRMED_PRIOR_LOOKBACK_YEARS,
     EXPECTED_STALE_GRACE_DAYS,
@@ -350,7 +352,9 @@ def _location_id_by_event(data_dir: Path) -> dict[int, int]:
         df = df.sort_values("_start", na_position="first")
     out: dict[int, int] = {}
     for rec in df.to_dict(orient="records"):
-        out[int(rec["event_id"])] = int(rec["location_id"])
+        lid = _remap_location_id(int(rec["location_id"]))
+        if lid is not None:
+            out[int(rec["event_id"])] = lid
     return out
 
 
@@ -387,15 +391,6 @@ def _place_attrs_by_city_country(
 _LIVE_LIST_SOURCES = frozenset({"scheduled_events", "events_list_current"})
 
 
-# Endonyms / scrap typos / metro suburbs → location_info city keys (post-_norm_place).
-_CITY_COMPARE_ALIASES: dict[str, str] = {
-    "milano": "milan",
-    "koln": "cologne",  # Köln → koln after accent fold
-    "budaperst": "budapest",  # WSDC dump typo
-    "ashfield": "sydney",  # Best of the Best venue suburb; catalog typical Sydney
-}
-
-
 def _city_compare_key(value: Any) -> str | None:
     """Normalize city labels for soft equality (accents + common abbreviations)."""
     text = _norm_place(value)
@@ -411,9 +406,29 @@ def _city_compare_key(value: Any) -> str | None:
     # Same for oe/ae (Köln/Koeln, Zürich uses ue path via ü→u already).
     text = text.replace("ue", "u").replace("oe", "o").replace("ae", "a")
     text = re.sub(r"\s+", " ", text).strip()
-    if not text:
+    return text or None
+
+
+def _remap_location_id(loc_i: int | None) -> int | None:
+    """Collapse duplicate / invalid lids via LOCATION_ID_MERGE_MAP."""
+    if loc_i is None:
         return None
-    return _CITY_COMPARE_ALIASES.get(text, text)
+    mapped = LOCATION_ID_MERGE_MAP.get(str(int(loc_i)))
+    if mapped is None:
+        return int(loc_i)
+    try:
+        return int(mapped)
+    except (TypeError, ValueError):
+        return int(loc_i)
+
+
+def _parse_location_id(value: Any) -> int | None:
+    try:
+        if value is None or (isinstance(value, float) and pd.isna(value)):
+            return None
+        return _remap_location_id(int(value))
+    except (TypeError, ValueError):
+        return None
 
 
 def _cities_compatible(schedule_city: Any, known_city: Any) -> bool:
@@ -650,11 +665,7 @@ def _rows_from_editions(data_dir: Path) -> list[dict]:
             eid_i = int(eid) if eid is not None and not pd.isna(eid) else None
         except (TypeError, ValueError):
             eid_i = None
-        loc_id = rec.get("location_id")
-        try:
-            loc_i = int(loc_id) if loc_id is not None and not pd.isna(loc_id) else None
-        except (TypeError, ValueError):
-            loc_i = None
+        loc_i = _parse_location_id(rec.get("location_id"))
         name = _clean_name(rec.get("event_name"))
         if year_i is None:
             year_i = start.year
@@ -681,8 +692,11 @@ def _rows_from_editions(data_dir: Path) -> list[dict]:
 
 
 def _city_from_location_raw(raw: Any) -> str | None:
-    """First comma segment of schedule location_raw (e.g. Dallas, TX, United States)."""
-    text = _clean_name(raw)
+    """First comma segment of schedule location_raw after LOCATION_RAW_ALIASES."""
+    cleaned = _clean_name(raw)
+    if not cleaned:
+        return None
+    text = _canonical_location_raw(cleaned)
     if not text:
         return None
     return text.split(",")[0].strip() or None
@@ -690,7 +704,10 @@ def _city_from_location_raw(raw: Any) -> str | None:
 
 def _state_from_location_raw(raw: Any) -> str | None:
     """US state from schedule location_raw when country is United States."""
-    text = _clean_name(raw)
+    cleaned = _clean_name(raw)
+    if not cleaned:
+        return None
+    text = _canonical_location_raw(cleaned)
     if not text:
         return None
     parsed = parse_us_state_from_location_text(text)
@@ -764,11 +781,7 @@ def _rows_from_scheduled(data_dir: Path) -> list[dict]:
             year_i = int(year_raw) if year_raw is not None and not pd.isna(year_raw) else start.year
         except (TypeError, ValueError):
             year_i = start.year
-        loc_raw = rec.get("location_id")
-        try:
-            loc_i = int(loc_raw) if loc_raw is not None and not pd.isna(loc_raw) else None
-        except (TypeError, ValueError):
-            loc_i = None
+        loc_i = _parse_location_id(rec.get("location_id"))
         rows.append(
             {
                 "event_id": eid_i,
@@ -830,11 +843,7 @@ def _rows_from_events_list_current(data_dir: Path) -> list[dict]:
             year_i = int(year_raw) if year_raw is not None and not pd.isna(year_raw) else start.year
         except (TypeError, ValueError):
             year_i = start.year
-        loc_raw = rec.get("location_id")
-        try:
-            loc_i = int(loc_raw) if loc_raw is not None and not pd.isna(loc_raw) else None
-        except (TypeError, ValueError):
-            loc_i = None
+        loc_i = _parse_location_id(rec.get("location_id"))
         rows.append(
             {
                 "event_id": eid_i,
@@ -870,11 +879,7 @@ def _list_geo_by_fingerprint(data_dir: Path) -> dict[str, dict]:
             return
         status_flags = rec.get("status_event") or rec.get("registry_trial_status")
         name = _clean_name(rec.get("event_name")) or _clean_name(rec.get("canonical_name"))
-        loc_raw = rec.get("location_id")
-        try:
-            loc_i = int(loc_raw) if loc_raw is not None and not pd.isna(loc_raw) else None
-        except (TypeError, ValueError):
-            loc_i = None
+        loc_i = _parse_location_id(rec.get("location_id"))
         payload = {
             "city": _city_from_location_raw(rec.get("location_raw")),
             "country": _clean_name(rec.get("country")),
@@ -1586,6 +1591,11 @@ def _enrich_geo(
             year_override_lids.append((name, y0, y1, lid))
 
     for row in rows:
+        if row.get("location_id") is not None:
+            try:
+                row["location_id"] = _remap_location_id(int(row["location_id"]))
+            except (TypeError, ValueError):
+                row["location_id"] = None
         eid = row.get("event_id")
         if eid is not None and eid in cat_by_id:
             cat = cat_by_id[eid]
