@@ -48,9 +48,24 @@ def _norm(value: object) -> str:
 
 
 def _canonical_location_raw(raw: str) -> str:
-    """Map known WSDC location typos before lookup key generation."""
+    """Map known WSDC location typos before lookup key generation.
+
+    Lookup is case-insensitive so scrape casing drift (``milano, italy`` vs
+    ``Milano, Italy``) still hits ``LOCATION_RAW_ALIASES``.
+    """
     normalized = normalize_location_whitespace(_norm(raw))
-    return LOCATION_RAW_ALIASES.get(normalized, normalized)
+    if not normalized:
+        return normalized
+    aliases_cf = {
+        normalize_location_whitespace(key).casefold(): value
+        for key, value in LOCATION_RAW_ALIASES.items()
+    }
+    return aliases_cf.get(normalized.casefold(), normalized)
+
+
+def canonical_location_raw(raw: str) -> str:
+    """Public wrapper for schedule/results location string canonicalization."""
+    return _canonical_location_raw(raw)
 
 
 def location_lookup_key_from_text(raw: str) -> str:
