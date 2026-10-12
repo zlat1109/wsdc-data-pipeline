@@ -1,29 +1,62 @@
 {
-  "generated_at": "2026-10-08T19:06:12Z",
-  "weekend_start": "2026-10-05",
-  "weekend_end": "2026-10-18",
+  "generated_at": "2026-10-12T09:23:34Z",
+  "weekend_start": "2026-10-12",
+  "weekend_end": "2026-10-25",
   "events": [
     {
-      "name": "Boogie By The Bay",
-      "location": "San Francisco, CA, USA",
-      "dates": "Oct 8 - 12, 2026",
-      "url": "https://boogiebythebay.com/",
-      "start_date": "2026-10-08",
-      "end_date": "2026-10-12",
+      "name": "The New Zealand West Coast Swing Open",
+      "location": "Auckland, New Zealand",
+      "dates": "Oct 15 - 18, 2026",
+      "url": "https://www.streetswing.co.nz/the-new-zealand-open",
+      "start_date": "2026-10-15",
+      "end_date": "2026-10-18",
+      "livestream": null,
+      "continent": "Australia",
+      "flag": "🇳🇿"
+    },
+    {
+      "name": "WCS Festival",
+      "location": "Duesseldorf, NRW, Germany",
+      "dates": "Oct 15 - 18, 2026",
+      "url": "http://www.wcsfestival.com/",
+      "start_date": "2026-10-15",
+      "end_date": "2026-10-18",
+      "livestream": null,
+      "continent": "Europe",
+      "flag": "🇩🇪"
+    },
+    {
+      "name": "Milan Modern Swing",
+      "location": "Milan, Milan, Italy",
+      "dates": "Oct 15 - 18, 2026",
+      "url": "https://www.westcoastswingmilan.com/",
+      "start_date": "2026-10-15",
+      "end_date": "2026-10-18",
+      "livestream": null,
+      "continent": "Europe",
+      "flag": "🇮🇹"
+    },
+    {
+      "name": "Paradise dance Festival",
+      "location": "Irvine, CA, USA",
+      "dates": "Oct 15 - 18, 2026",
+      "url": "https://paradisecountrydancefestival.com/",
+      "start_date": "2026-10-15",
+      "end_date": "2026-10-18",
       "livestream": null,
       "continent": "America",
       "flag": "🇺🇸"
     },
     {
-      "name": "Montreal Westie Fest",
-      "location": "Montreal, Quebec, Canada",
-      "dates": "Oct 9 - 11, 2026",
-      "url": "http://montrealwestiefest.com/",
-      "start_date": "2026-10-09",
-      "end_date": "2026-10-11",
+      "name": "Swustlicious",
+      "location": "Philadelphia, PA, United States",
+      "dates": "Oct 16 - 18, 2026",
+      "url": "http://www.swustlicious.com/",
+      "start_date": "2026-10-16",
+      "end_date": "2026-10-18",
       "livestream": null,
       "continent": "America",
-      "flag": "🇨🇦"
+      "flag": "🇺🇸"
     }
   ]
 }
