@@ -65,6 +65,8 @@ LOCATION_ID_MERGE_MAP: dict[str, str] = {
     "295": "21",
     # Duesseldorf spelling → Düsseldorf
     "198": "127",
+    # Milano (no coords) → Milan
+    "402": "132",
     # Edmonton duplicate
     "380": "205",
     # Incheon / Jeju country alias (South Korea → Republic of Korea canonical)

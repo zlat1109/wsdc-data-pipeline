@@ -387,6 +387,15 @@ def _place_attrs_by_city_country(
 _LIVE_LIST_SOURCES = frozenset({"scheduled_events", "events_list_current"})
 
 
+# Endonyms / scrap typos / metro suburbs → location_info city keys (post-_norm_place).
+_CITY_COMPARE_ALIASES: dict[str, str] = {
+    "milano": "milan",
+    "koln": "cologne",  # Köln → koln after accent fold
+    "budaperst": "budapest",  # WSDC dump typo
+    "ashfield": "sydney",  # Best of the Best venue suburb; catalog typical Sydney
+}
+
+
 def _city_compare_key(value: Any) -> str | None:
     """Normalize city labels for soft equality (accents + common abbreviations)."""
     text = _norm_place(value)
@@ -402,7 +411,9 @@ def _city_compare_key(value: Any) -> str | None:
     # Same for oe/ae (Köln/Koeln, Zürich uses ue path via ü→u already).
     text = text.replace("ue", "u").replace("oe", "o").replace("ae", "a")
     text = re.sub(r"\s+", " ", text).strip()
-    return text or None
+    if not text:
+        return None
+    return _CITY_COMPARE_ALIASES.get(text, text)
 
 
 def _cities_compatible(schedule_city: Any, known_city: Any) -> bool:
@@ -420,9 +431,11 @@ def _cities_compatible(schedule_city: Any, known_city: Any) -> bool:
     ta, tb = a.split(), b.split()
     if not ta or not tb:
         return False
-    # Contiguous token prefix: "washington" ↔ "washington dc", "tampa" ↔ "tampa bay".
+    # Contiguous token prefix: "washington" ↔ "washington dc", "tampa" ↔ "tampa bay",
+    # "new york" ↔ "new york city". Gate on the full shorter phrase — not the first
+    # token alone — so short words like "new" do not block multi-word metros.
     shorter, longer = (ta, tb) if len(ta) <= len(tb) else (tb, ta)
-    if longer[: len(shorter)] == shorter and len(shorter[0]) >= 4:
+    if longer[: len(shorter)] == shorter and len(" ".join(shorter)) >= 4:
         return True
     # First significant token match only (avoids York⊂New York via bare substring).
     return bool(ta[0] == tb[0] and len(ta[0]) >= 4 and (len(ta) == 1 or len(tb) == 1))
