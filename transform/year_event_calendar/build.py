@@ -25,7 +25,7 @@ from transform.knowledge.events import (
     EVENT_NAME_YEAR_LOCATION_OVERRIDES,
 )
 from transform.geography.normalize import parse_us_state_from_location_text
-from transform.geography.resolve import _canonical_location_raw
+from transform.geography.resolve import canonical_location_raw
 from transform.knowledge.geo_flags import continent_for_country
 from transform.knowledge.locations import LOCATION_ID_MERGE_MAP
 from transform.year_event_calendar.expected import (
@@ -678,7 +678,9 @@ def _rows_from_editions(data_dir: Path) -> list[dict]:
                 "status": status,
                 "kind": _kind_from_status_event(rec.get("registry_status"), name or ""),
                 "url": _clean_name(rec.get("url")),
-                "city": _clean_name(rec.get("place_city")),
+                "city": _city_from_place_fields(
+                    rec.get("place_city"), rec.get("place_country")
+                ),
                 "country": _clean_name(rec.get("place_country")),
                 "state": _clean_name(rec.get("place_state")),
                 "location_id": loc_i,
@@ -696,10 +698,20 @@ def _city_from_location_raw(raw: Any) -> str | None:
     cleaned = _clean_name(raw)
     if not cleaned:
         return None
-    text = _canonical_location_raw(cleaned)
+    text = canonical_location_raw(cleaned)
     if not text:
         return None
     return text.split(",")[0].strip() or None
+
+
+def _city_from_place_fields(city: Any, country: Any = None) -> str | None:
+    """Canonical city from edition place_city[/country] via LOCATION_RAW_ALIASES."""
+    city_c = _clean_name(city)
+    if not city_c:
+        return None
+    country_c = _clean_name(country)
+    raw = f"{city_c}, {country_c}" if country_c else city_c
+    return _city_from_location_raw(raw) or city_c
 
 
 def _state_from_location_raw(raw: Any) -> str | None:
@@ -707,7 +719,7 @@ def _state_from_location_raw(raw: Any) -> str | None:
     cleaned = _clean_name(raw)
     if not cleaned:
         return None
-    text = _canonical_location_raw(cleaned)
+    text = canonical_location_raw(cleaned)
     if not text:
         return None
     parsed = parse_us_state_from_location_text(text)

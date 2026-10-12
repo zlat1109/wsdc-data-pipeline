@@ -696,14 +696,25 @@ def test_enrich_geo_city_fallback_matches_german_umlaut_ascii():
 
 def test_city_from_location_raw_uses_location_raw_aliases():
     """Schedule city is taken after LOCATION_RAW_ALIASES — not a calendar-only map."""
-    from transform.year_event_calendar.build import _city_from_location_raw
+    from transform.year_event_calendar.build import (
+        _city_from_location_raw,
+        _city_from_place_fields,
+    )
 
     assert _city_from_location_raw("Milano, Italy") == "Milan"
+    assert _city_from_location_raw("milano, italy") == "Milan"
+    assert _city_from_location_raw("MILANO, ITALY") == "Milan"
     assert _city_from_location_raw("Köln, NRW, Germany") == "Cologne"
+    assert _city_from_location_raw("Koln, NRW, Germany") == "Cologne"
+    assert _city_from_location_raw("Koeln, Germany") == "Cologne"
     assert _city_from_location_raw("Budaperst, Budapest, Hungary") == "Budapest"
     assert _city_from_location_raw("Ashfield, NSW, Australia") == "Sydney"
     assert _city_from_location_raw("Duesseldorf, Germany") == "Düsseldorf"
     assert _city_from_location_raw("New York City, NY, United States") == "New York"
+    # Edition place_city[/country] uses the same alias path.
+    assert _city_from_place_fields("Milano", "Italy") == "Milan"
+    assert _city_from_place_fields("Koln", "Germany") == "Cologne"
+    assert _city_from_place_fields("Ashfield", "Australia") == "Sydney"
 
 
 def test_enrich_geo_remaps_invalid_milano_lid_and_metro_prefix():
