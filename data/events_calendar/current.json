@@ -1,9 +1,9 @@
 {
-  "scraped_at": "2026-10-06T16:01:34.924246+00:00",
+  "scraped_at": "2026-10-13T15:24:42.356255+00:00",
   "source": "https://worldsdc.com/events/calendar/",
   "min_start": "2025-01-01",
-  "raw_count": 659,
-  "event_count": 493,
+  "raw_count": 662,
+  "event_count": 496,
   "events": [
     {
       "event_name": "Floorplay Swing Vacation",
@@ -3874,8 +3874,8 @@
     {
       "event_name": "The Open World Swing Dance Championships",
       "calendar_title": "The Open World Swing Dance Championships",
-      "catalog_name": "World Swing Dance Championships",
-      "name_key": "worldswingdancechampionships",
+      "catalog_name": "US Open Swing Dance Championships",
+      "name_key": "usopenswingdancechampionships",
       "start_date": "2025-11-26",
       "end_date": "2025-11-30",
       "url": "http://www.theopenswing.com",
@@ -7332,9 +7332,9 @@
       "raw_end": "2026-10-05"
     },
     {
-      "event_name": "RiverSwingNights",
-      "calendar_title": "RiverSwingNights",
-      "catalog_name": "RiverSwingNights",
+      "event_name": "River Swing Nights",
+      "calendar_title": "River Swing Nights",
+      "catalog_name": "River Swing Nights",
       "name_key": "riverswingnights",
       "start_date": "2026-10-01",
       "end_date": "2026-10-05",
@@ -10795,6 +10795,73 @@
       "source_fingerprint": "8d6c3f94b5ad67d8ff4fa3a8",
       "raw_start": "2027-09-23",
       "raw_end": "2027-09-27"
+    },
+    {
+      "event_name": "Philly Swing Classic",
+      "calendar_title": "Philly Swing Classic",
+      "catalog_name": "Philly Swing Classic",
+      "name_key": "phillyswingclassic",
+      "start_date": "2027-09-24",
+      "end_date": "2027-09-26",
+      "url": "https://phillyswing.com/",
+      "url_key": "phillyswing.com",
+      "results_year": 2027,
+      "results_month": 9,
+      "edition_ym_candidates": [
+        "2027-09"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "938bc046e51052ee3cf94165",
+      "raw_start": "2027-09-24",
+      "raw_end": "2027-09-27"
+    },
+    {
+      "event_name": "Mooseland Swing",
+      "calendar_title": "Mooseland Swing 2027",
+      "catalog_name": "Mooseland Swing",
+      "name_key": "mooselandswing",
+      "start_date": "2027-09-30",
+      "end_date": "2027-10-04",
+      "url": "http://www.mooselandswing.com",
+      "url_key": "mooselandswing.com",
+      "results_year": 2027,
+      "results_month": 10,
+      "edition_ym_candidates": [
+        "2027-10",
+        "2027-09"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "9b3abd6b833079fe2a127165",
+      "raw_start": "2027-09-30",
+      "raw_end": "2027-10-05"
+    },
+    {
+      "event_name": "Norwegian Open WCS",
+      "calendar_title": "Norwegian Open WCS",
+      "catalog_name": "Norwegian Open WCS",
+      "name_key": "norwegianopenwcs",
+      "start_date": "2027-10-06",
+      "end_date": "2027-10-09",
+      "url": "https://norwegianopen.no/",
+      "url_key": "norwegianopen.no",
+      "results_year": 2027,
+      "results_month": 10,
+      "edition_ym_candidates": [
+        "2027-10"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "cb76c37057043ec4d28222bd",
+      "raw_start": "2027-10-06",
+      "raw_end": "2027-10-10"
     },
     {
       "event_name": "Atlanta Swing Classic",
