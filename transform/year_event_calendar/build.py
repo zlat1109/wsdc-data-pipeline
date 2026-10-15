@@ -25,7 +25,9 @@ from transform.knowledge.events import (
     EVENT_NAME_YEAR_LOCATION_OVERRIDES,
 )
 from transform.geography.normalize import parse_us_state_from_location_text
+from transform.geography.resolve import canonical_location_raw
 from transform.knowledge.geo_flags import continent_for_country
+from transform.knowledge.locations import LOCATION_ID_MERGE_MAP
 from transform.year_event_calendar.expected import (
     CONFIRMED_PRIOR_LOOKBACK_YEARS,
     EXPECTED_STALE_GRACE_DAYS,
@@ -350,7 +352,9 @@ def _location_id_by_event(data_dir: Path) -> dict[int, int]:
         df = df.sort_values("_start", na_position="first")
     out: dict[int, int] = {}
     for rec in df.to_dict(orient="records"):
-        out[int(rec["event_id"])] = int(rec["location_id"])
+        lid = _remap_location_id(int(rec["location_id"]))
+        if lid is not None:
+            out[int(rec["event_id"])] = lid
     return out
 
 
@@ -397,8 +401,34 @@ def _city_compare_key(value: Any) -> str | None:
     # \\bst\\.?\\b fails on "st. petersburg".
     text = re.sub(r"\bst\.?(?=\s|$)", "saint", text)
     text = re.sub(r"\bmt\.?(?=\s|$)", "mount", text)
+    # German umlaut ASCII transliteration after accent fold:
+    # Düsseldorf → dusseldorf, Duesseldorf → duesseldorf → dusseldorf.
+    # Same for oe/ae (Köln/Koeln, Zürich uses ue path via ü→u already).
+    text = text.replace("ue", "u").replace("oe", "o").replace("ae", "a")
     text = re.sub(r"\s+", " ", text).strip()
     return text or None
+
+
+def _remap_location_id(loc_i: int | None) -> int | None:
+    """Collapse duplicate / invalid lids via LOCATION_ID_MERGE_MAP."""
+    if loc_i is None:
+        return None
+    mapped = LOCATION_ID_MERGE_MAP.get(str(int(loc_i)))
+    if mapped is None:
+        return int(loc_i)
+    try:
+        return int(mapped)
+    except (TypeError, ValueError):
+        return int(loc_i)
+
+
+def _parse_location_id(value: Any) -> int | None:
+    try:
+        if value is None or (isinstance(value, float) and pd.isna(value)):
+            return None
+        return _remap_location_id(int(value))
+    except (TypeError, ValueError):
+        return None
 
 
 def _cities_compatible(schedule_city: Any, known_city: Any) -> bool:
@@ -416,9 +446,11 @@ def _cities_compatible(schedule_city: Any, known_city: Any) -> bool:
     ta, tb = a.split(), b.split()
     if not ta or not tb:
         return False
-    # Contiguous token prefix: "washington" ↔ "washington dc", "tampa" ↔ "tampa bay".
+    # Contiguous token prefix: "washington" ↔ "washington dc", "tampa" ↔ "tampa bay",
+    # "new york" ↔ "new york city". Gate on the full shorter phrase — not the first
+    # token alone — so short words like "new" do not block multi-word metros.
     shorter, longer = (ta, tb) if len(ta) <= len(tb) else (tb, ta)
-    if longer[: len(shorter)] == shorter and len(shorter[0]) >= 4:
+    if longer[: len(shorter)] == shorter and len(" ".join(shorter)) >= 4:
         return True
     # First significant token match only (avoids York⊂New York via bare substring).
     return bool(ta[0] == tb[0] and len(ta[0]) >= 4 and (len(ta) == 1 or len(tb) == 1))
@@ -633,11 +665,7 @@ def _rows_from_editions(data_dir: Path) -> list[dict]:
             eid_i = int(eid) if eid is not None and not pd.isna(eid) else None
         except (TypeError, ValueError):
             eid_i = None
-        loc_id = rec.get("location_id")
-        try:
-            loc_i = int(loc_id) if loc_id is not None and not pd.isna(loc_id) else None
-        except (TypeError, ValueError):
-            loc_i = None
+        loc_i = _parse_location_id(rec.get("location_id"))
         name = _clean_name(rec.get("event_name"))
         if year_i is None:
             year_i = start.year
@@ -650,7 +678,9 @@ def _rows_from_editions(data_dir: Path) -> list[dict]:
                 "status": status,
                 "kind": _kind_from_status_event(rec.get("registry_status"), name or ""),
                 "url": _clean_name(rec.get("url")),
-                "city": _clean_name(rec.get("place_city")),
+                "city": _city_from_place_fields(
+                    rec.get("place_city"), rec.get("place_country")
+                ),
                 "country": _clean_name(rec.get("place_country")),
                 "state": _clean_name(rec.get("place_state")),
                 "location_id": loc_i,
@@ -664,16 +694,32 @@ def _rows_from_editions(data_dir: Path) -> list[dict]:
 
 
 def _city_from_location_raw(raw: Any) -> str | None:
-    """First comma segment of schedule location_raw (e.g. Dallas, TX, United States)."""
-    text = _clean_name(raw)
+    """First comma segment of schedule location_raw after LOCATION_RAW_ALIASES."""
+    cleaned = _clean_name(raw)
+    if not cleaned:
+        return None
+    text = canonical_location_raw(cleaned)
     if not text:
         return None
     return text.split(",")[0].strip() or None
 
 
+def _city_from_place_fields(city: Any, country: Any = None) -> str | None:
+    """Canonical city from edition place_city[/country] via LOCATION_RAW_ALIASES."""
+    city_c = _clean_name(city)
+    if not city_c:
+        return None
+    country_c = _clean_name(country)
+    raw = f"{city_c}, {country_c}" if country_c else city_c
+    return _city_from_location_raw(raw) or city_c
+
+
 def _state_from_location_raw(raw: Any) -> str | None:
     """US state from schedule location_raw when country is United States."""
-    text = _clean_name(raw)
+    cleaned = _clean_name(raw)
+    if not cleaned:
+        return None
+    text = canonical_location_raw(cleaned)
     if not text:
         return None
     parsed = parse_us_state_from_location_text(text)
@@ -747,11 +793,7 @@ def _rows_from_scheduled(data_dir: Path) -> list[dict]:
             year_i = int(year_raw) if year_raw is not None and not pd.isna(year_raw) else start.year
         except (TypeError, ValueError):
             year_i = start.year
-        loc_raw = rec.get("location_id")
-        try:
-            loc_i = int(loc_raw) if loc_raw is not None and not pd.isna(loc_raw) else None
-        except (TypeError, ValueError):
-            loc_i = None
+        loc_i = _parse_location_id(rec.get("location_id"))
         rows.append(
             {
                 "event_id": eid_i,
@@ -813,11 +855,7 @@ def _rows_from_events_list_current(data_dir: Path) -> list[dict]:
             year_i = int(year_raw) if year_raw is not None and not pd.isna(year_raw) else start.year
         except (TypeError, ValueError):
             year_i = start.year
-        loc_raw = rec.get("location_id")
-        try:
-            loc_i = int(loc_raw) if loc_raw is not None and not pd.isna(loc_raw) else None
-        except (TypeError, ValueError):
-            loc_i = None
+        loc_i = _parse_location_id(rec.get("location_id"))
         rows.append(
             {
                 "event_id": eid_i,
@@ -853,11 +891,7 @@ def _list_geo_by_fingerprint(data_dir: Path) -> dict[str, dict]:
             return
         status_flags = rec.get("status_event") or rec.get("registry_trial_status")
         name = _clean_name(rec.get("event_name")) or _clean_name(rec.get("canonical_name"))
-        loc_raw = rec.get("location_id")
-        try:
-            loc_i = int(loc_raw) if loc_raw is not None and not pd.isna(loc_raw) else None
-        except (TypeError, ValueError):
-            loc_i = None
+        loc_i = _parse_location_id(rec.get("location_id"))
         payload = {
             "city": _city_from_location_raw(rec.get("location_raw")),
             "country": _clean_name(rec.get("country")),
@@ -1058,6 +1092,9 @@ def _prefer_row(existing: dict, new: dict) -> dict:
             winner[key] = loser[key]
     if winner.get("event_id") is None and loser.get("event_id") is not None:
         winner["event_id"] = loser["event_id"]
+    if winner.get("event_id") is not None:
+        winner.pop("provisional_unlinked", None)
+        winner.pop("provisional_unlinked_trial", None)
     if winner.get("stats_only") and not loser.get("stats_only"):
         winner["stats_only"] = False
         winner["source"] = loser.get("source") or winner.get("source")
@@ -1218,27 +1255,54 @@ def _drop_redundant_stats_only(rows: list[dict]) -> list[dict]:
 
     ``_dedupe_rows`` only merges same weekend; results often use the 1st of the
     month while the calendar has the real weekend later in the month.
+
+    Also drop stats_only ghosts when a day-precision row shares year + collision
+    name key and the same city or weekend (provisional unlinked with null event_id).
     """
-    day_keys: set[tuple[int, int]] = set()
+    day_id_keys: set[tuple[int, int]] = set()
+    day_name_city_keys: set[tuple[int, str, str]] = set()
+    day_name_weekend_keys: set[tuple[int, str, str]] = set()
     for row in rows:
         if row.get("stats_only"):
             continue
-        eid = row.get("event_id")
         year = _row_year(row)
-        if eid is None or year is None:
+        if year is None:
             continue
-        day_keys.add((int(eid), int(year)))
+        eid = row.get("event_id")
+        if eid is not None:
+            day_id_keys.add((int(eid), int(year)))
+        nk = _collision_name_key(row.get("name"))
+        if not nk:
+            continue
+        city = str(row.get("city") or "").strip().lower()
+        if city:
+            day_name_city_keys.add((int(year), nk, city))
+        start = row.get("start_date")
+        if isinstance(start, date):
+            day_name_weekend_keys.add((int(year), nk, weekend_key(start)))
     out: list[dict] = []
     for row in rows:
         if row.get("stats_only"):
-            eid = row.get("event_id")
             year = _row_year(row)
+            eid = row.get("event_id")
             if (
                 eid is not None
                 and year is not None
-                and (int(eid), int(year)) in day_keys
+                and (int(eid), int(year)) in day_id_keys
             ):
                 continue
+            nk = _collision_name_key(row.get("name"))
+            if year is not None and nk:
+                city = str(row.get("city") or "").strip().lower()
+                if city and (int(year), nk, city) in day_name_city_keys:
+                    continue
+                start = row.get("start_date")
+                if isinstance(start, date) and (
+                    int(year),
+                    nk,
+                    weekend_key(start),
+                ) in day_name_weekend_keys:
+                    continue
         out.append(row)
     return out
 
@@ -1250,6 +1314,16 @@ def _alias_event_name(name: str | None) -> str | None:
     return _NAME_ALIAS_LOOKUP.get(cleaned.lower(), cleaned)
 
 
+def _split_camel_name(name: str | None) -> str:
+    """Insert spaces into CamelCase / glued titles (RiverSwingNights → River Swing Nights)."""
+    text = str(name or "").strip()
+    if not text:
+        return ""
+    text = re.sub(r"([a-z0-9])([A-Z])", r"\1 \2", text)
+    text = re.sub(r"([A-Z]+)([A-Z][a-z])", r"\1 \2", text)
+    return text
+
+
 def _fingerprint_event_name(name: str | None) -> str:
     """Loose token fingerprint for cross-source near-duplicate matching.
 
@@ -1257,7 +1331,7 @@ def _fingerprint_event_name(name: str | None) -> str:
     strip only light function words so weekend dedupe still has a key instead of
     passthrough duplicates.
     """
-    text = _alias_event_name(name) or ""
+    text = _alias_event_name(_split_camel_name(name) or name) or ""
     raw_tokens = [
         tok
         for tok in "".join(ch if ch.isalnum() else " " for ch in text.lower()).split()
@@ -1269,6 +1343,18 @@ def _fingerprint_event_name(name: str | None) -> str:
     light = frozenset({"the", "a", "an", "and", "of", "for"})
     kept = [tok for tok in raw_tokens if tok not in light]
     return " ".join(kept) if kept else " ".join(raw_tokens)
+
+
+def _collision_name_key(name: str | None) -> str:
+    """Compact name key so spaced and glued titles collide (river nights ↔ riverswingnights)."""
+    spaced = _fingerprint_event_name(name)
+    compact = spaced.replace(" ", "")
+    if compact:
+        return compact
+    raw = "".join(ch for ch in str(name or "").lower() if ch.isalnum())
+    for sw in sorted(_NAME_STOPWORDS, key=len, reverse=True):
+        raw = raw.replace(sw, "")
+    return raw
 
 
 def _catalog_quality(eid: int | None, cat_by_id: dict[int, dict]) -> tuple[int, int]:
@@ -1299,21 +1385,43 @@ def _canonicalize_calendar_rows(rows: list[dict], catalog: pd.DataFrame) -> None
             if cname:
                 cat_by_name[cname.lower()] = rec
 
+    # Collision keys that map to exactly one catalog event (skip short/ambiguous
+    # keys like "german" / "chicago" that cover many series).
+    cat_by_collision: dict[str, dict | None] = {}
+    for rec in cat_by_name.values():
+        ck = _collision_name_key(rec.get("canonical_name"))
+        if not ck:
+            continue
+        if ck in cat_by_collision:
+            cat_by_collision[ck] = None
+        else:
+            cat_by_collision[ck] = rec
+
     for row in rows:
         eid = row.get("event_id")
         if eid is not None:
             row["event_id"] = _resolve_merge_event_id(int(eid))
+        # Prefer spaced catalog form when the scrape glued CamelCase titles.
+        spaced = _alias_event_name(_split_camel_name(row.get("name")) or row.get("name"))
         aliased = _alias_event_name(row.get("name"))
-        if aliased:
-            row["name"] = aliased
-            cat = cat_by_name.get(aliased.lower())
-            if cat is not None:
-                cat_eid = int(cat["event_id"])
-                cur = row.get("event_id")
-                if cur is None or _catalog_quality(cat_eid, cat_by_id) >= _catalog_quality(
-                    int(cur) if cur is not None else None, cat_by_id
-                ):
-                    row["event_id"] = cat_eid
+        display = spaced or aliased
+        if display:
+            row["name"] = display
+        cat = None
+        for candidate in (display, aliased, spaced):
+            if candidate:
+                cat = cat_by_name.get(candidate.lower())
+                if cat is not None:
+                    break
+        if cat is None:
+            cat = cat_by_collision.get(_collision_name_key(row.get("name")))
+        if cat is not None:
+            cat_eid = int(cat["event_id"])
+            cur = row.get("event_id")
+            if cur is None or _catalog_quality(cat_eid, cat_by_id) >= _catalog_quality(
+                int(cur) if cur is not None else None, cat_by_id
+            ):
+                row["event_id"] = cat_eid
 
 
 def _prefer_calendar_row(
@@ -1394,10 +1502,11 @@ def _dedupe_weekend_name_collisions(
         start = row.get("start_date")
         if not isinstance(start, date):
             continue
-        fp = _fingerprint_event_name(row.get("name"))
+        fp = _collision_name_key(row.get("name"))
         if not fp:
             passthrough.append(row)
             continue
+        # Compact key: "River Swing Nights" and "RiverSwingNights" share a weekend.
         key = (start.year, weekend_key(start), fp)
         if key in by_key:
             by_key[key] = _prefer_calendar_row(by_key[key], row, cat_by_id=cat_by_id)
@@ -1494,6 +1603,11 @@ def _enrich_geo(
             year_override_lids.append((name, y0, y1, lid))
 
     for row in rows:
+        if row.get("location_id") is not None:
+            try:
+                row["location_id"] = _remap_location_id(int(row["location_id"]))
+            except (TypeError, ValueError):
+                row["location_id"] = None
         eid = row.get("event_id")
         if eid is not None and eid in cat_by_id:
             cat = cat_by_id[eid]

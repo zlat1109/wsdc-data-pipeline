@@ -1,104 +1,14 @@
 {
   "summary": {
-    "scheduled_active": 162,
+    "scheduled_active": 159,
     "confirmed": 151,
     "suggested": 0,
     "review": 0,
-    "new_unmapped": 11,
-    "location_drifts": 16,
-    "name_variants": 42
+    "new_unmapped": 8,
+    "location_drifts": 15,
+    "name_variants": 43
   },
   "confirmed": [
-    {
-      "source_fingerprint": "59e7e956ef53f4dc4eeca27a",
-      "list_name": "Atlanta Swing Classic",
-      "start_date": "2026-10-01",
-      "location_raw": "Atlanta, GA, United States",
-      "list_url": "https://www.atlantaswingclassic.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 211,
-      "canonical_name": "Atlanta Swing Classic",
-      "catalog_url": "https://www.atlantaswingclassic.com",
-      "typical_location": "Atlanta, GA, United States",
-      "location_score": 1.0,
-      "location_flag": "ok",
-      "notes": []
-    },
-    {
-      "source_fingerprint": "cfb58853d68c552a8f01e344",
-      "list_name": "Norwegian Open WCS",
-      "start_date": "2026-10-01",
-      "location_raw": "Hamar, Norway",
-      "list_url": "https://norwegianopen.no/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 388,
-      "canonical_name": "Norwegian Open WCS",
-      "catalog_url": "https://norwegianopen.no/",
-      "typical_location": "Hamar, Norway",
-      "location_score": 1.0,
-      "location_flag": "ok",
-      "notes": []
-    },
-    {
-      "source_fingerprint": "fba93e3875ae13599366b4aa",
-      "list_name": "Boogie By The Bay",
-      "start_date": "2026-10-08",
-      "location_raw": "San Francisco, CA, United States",
-      "list_url": "https://boogiebythebay.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 8,
-      "canonical_name": "Boogie By The Bay",
-      "catalog_url": "https://boogiebythebay.com",
-      "typical_location": "San Francisco, CA",
-      "location_score": 0.92,
-      "location_flag": "ok",
-      "notes": []
-    },
-    {
-      "source_fingerprint": "f50a6312b7f4823c07af0617",
-      "list_name": "Montreal Westie Fest",
-      "start_date": "2026-10-09",
-      "location_raw": "Montreal, Quebec, Canada",
-      "list_url": "http://montrealwestiefest.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 178,
-      "canonical_name": "Montreal Westie Fest",
-      "catalog_url": "http://www.montrealwestiefest.com",
-      "typical_location": "Montreal, Canada",
-      "location_score": 0.92,
-      "location_flag": "ok",
-      "notes": []
-    },
-    {
-      "source_fingerprint": "3cc38a85b16b4016c389a952",
-      "list_name": "WCS Festival",
-      "start_date": "2026-10-15",
-      "location_raw": "Düsseldorf, Germany",
-      "list_url": "http://www.wcsfestival.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 286,
-      "canonical_name": "WCS Festival",
-      "catalog_url": "http://www.wcsfestival.com/",
-      "typical_location": "Düsseldorf, Germany",
-      "location_score": 1.0,
-      "location_flag": "ok",
-      "notes": []
-    },
     {
       "source_fingerprint": "115e48131a7d9cc962d95d0d",
       "list_name": "The New Zealand West Coast Swing Open",
@@ -118,6 +28,24 @@
       "notes": [
         "Name differs: list='The New Zealand West Coast Swing Open' catalog='New Zealand Open Swing Dance Championships'"
       ]
+    },
+    {
+      "source_fingerprint": "3cc38a85b16b4016c389a952",
+      "list_name": "WCS Festival",
+      "start_date": "2026-10-15",
+      "location_raw": "Düsseldorf, Germany",
+      "list_url": "http://www.wcsfestival.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 286,
+      "canonical_name": "WCS Festival",
+      "catalog_url": "http://www.wcsfestival.com/",
+      "typical_location": "Düsseldorf, Germany",
+      "location_score": 1.0,
+      "location_flag": "ok",
+      "notes": []
     },
     {
       "source_fingerprint": "c14fabb534dd47417aa878eb",
@@ -156,24 +84,6 @@
       "notes": [
         "Name differs: list='Paradise dance Festival' catalog='Paradise Dance Festival'"
       ]
-    },
-    {
-      "source_fingerprint": "1b6e9eab386ddd5f245628a4",
-      "list_name": "WCS Festival",
-      "start_date": "2026-10-16",
-      "location_raw": "Duesseldorf, NRW, Germany",
-      "list_url": "http://www.wcsfestival.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 286,
-      "canonical_name": "WCS Festival",
-      "catalog_url": "http://www.wcsfestival.com/",
-      "typical_location": "Düsseldorf, Germany",
-      "location_score": 0.8181818181818182,
-      "location_flag": "ok",
-      "notes": []
     },
     {
       "source_fingerprint": "5fd0811df39b6befac05a033",
@@ -250,24 +160,6 @@
       "notes": [
         "List URL 'https://www.augsburgwestiestation.com/' differs from catalog URL 'https://www.augsburgwestiestation.com/home' — using event name"
       ]
-    },
-    {
-      "source_fingerprint": "0a34dbf37538b2155c2a5fc2",
-      "list_name": "Swingside Invitational",
-      "start_date": "2026-10-22",
-      "location_raw": "Liège, Belgium",
-      "list_url": "http://www.swingside-invitational.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 346,
-      "canonical_name": "Swingside Invitational",
-      "catalog_url": "http://www.swingside-invitational.com",
-      "typical_location": "Liège, Belgium",
-      "location_score": 1.0,
-      "location_flag": "ok",
-      "notes": []
     },
     {
       "source_fingerprint": "c19a0c0b39051a0a674cd4df",
@@ -626,14 +518,15 @@
       "match_status": "confirmed",
       "match_method": "explicit",
       "confidence": 1.0,
-      "canonical_event_id": 68,
+      "canonical_event_id": 475,
       "canonical_name": "US Open Swing Dance Championships",
-      "catalog_url": "http://www.theopenswing.com",
-      "typical_location": "Los Angeles, CA",
-      "location_score": 0.92,
-      "location_flag": "ok",
+      "catalog_url": "",
+      "typical_location": null,
+      "location_score": 0.0,
+      "location_flag": "unknown",
       "notes": [
-        "Name differs: list='The Open Swing Dance  Championships' catalog='US Open Swing Dance Championships'"
+        "Name differs: list='The Open Swing Dance  Championships' catalog='US Open Swing Dance Championships'",
+        "No historical location in catalog for comparison"
       ]
     },
     {
@@ -1763,8 +1656,8 @@
       "source_fingerprint": "177ab9b6fc92e510ecae6a30",
       "list_name": "Detonation Dance",
       "start_date": "2027-04-22",
-      "location_raw": "Manchester, Manchester, United Kingdom",
-      "list_url": "http://www.detonationdance.com/",
+      "location_raw": "Manchester, United Kingdom",
+      "list_url": "https://www.detonationdance.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
       "match_method": "exact_name",
@@ -1773,7 +1666,7 @@
       "canonical_name": "Detonation Dance",
       "catalog_url": "http://www.DetonationDance.com",
       "typical_location": "Manchester, United Kingdom",
-      "location_score": 0.92,
+      "location_score": 1.0,
       "location_flag": "ok",
       "notes": []
     },
@@ -2086,7 +1979,7 @@
       "source_fingerprint": "5dc55d4fa9b02faf5f8f6e0d",
       "list_name": "Hungarian Open",
       "start_date": "2027-05-28",
-      "location_raw": "Budaperst, Budapest, Hungary",
+      "location_raw": "Budapest, Hungary",
       "list_url": "https://wcs-ho.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
@@ -2096,7 +1989,7 @@
       "canonical_name": "Hungarian Open",
       "catalog_url": "http://wcs-ho.com/",
       "typical_location": "Budapest, Hungary",
-      "location_score": 0.92,
+      "location_score": 1.0,
       "location_flag": "ok",
       "notes": []
     },
@@ -2199,6 +2092,24 @@
       "notes": []
     },
     {
+      "source_fingerprint": "be73223d60cb5c30e25d0098",
+      "list_name": "Milan Swing Vibes",
+      "start_date": "2027-06-17",
+      "location_raw": "Milan, Italy",
+      "list_url": "https://www.westcoastswingmilan.com/milanswingvibes/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 405,
+      "canonical_name": "Milan Swing Vibes",
+      "catalog_url": "",
+      "typical_location": "Milan, Italy",
+      "location_score": 1.0,
+      "location_flag": "ok",
+      "notes": []
+    },
+    {
       "source_fingerprint": "a6b17d5e6d7a7a85e19b7b47",
       "list_name": "SWINGAPALOOZA",
       "start_date": "2027-06-17",
@@ -2219,6 +2130,26 @@
       ]
     },
     {
+      "source_fingerprint": "be8617928e5489e9cebf2890",
+      "list_name": "BaroqueSwing",
+      "start_date": "2027-06-17",
+      "location_raw": "Ludwigsburg, Baden-Württemberg, Germany",
+      "list_url": "https://baroqueswing.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 374,
+      "canonical_name": "Barock Swing Ludwigsburg",
+      "catalog_url": "https://baroqueswing.com/",
+      "typical_location": "Ludwigsburg, Germany",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": [
+        "Name differs: list='BaroqueSwing' catalog='Barock Swing Ludwigsburg'"
+      ]
+    },
+    {
       "source_fingerprint": "e40360124b6b4c268e2ca3f2",
       "list_name": "NeverlandSwing Dutch Swing Championships 2027",
       "start_date": "2027-06-24",
@@ -2236,26 +2167,6 @@
       "location_flag": "ok",
       "notes": [
         "Name differs: list='NeverlandSwing Dutch Swing Championships 2027' catalog='Neverland Swing'"
-      ]
-    },
-    {
-      "source_fingerprint": "6e70e89c639d4ec09dcff0ee",
-      "list_name": "BaroqueSwing",
-      "start_date": "2027-06-24",
-      "location_raw": "Ludwigsburg, Baden-Württemberg, Germany",
-      "list_url": "https://baroqueswing.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "explicit",
-      "confidence": 1.0,
-      "canonical_event_id": 374,
-      "canonical_name": "Barock Swing Ludwigsburg",
-      "catalog_url": "https://baroqueswing.com/",
-      "typical_location": "Ludwigsburg, Germany",
-      "location_score": 0.92,
-      "location_flag": "ok",
-      "notes": [
-        "Name differs: list='BaroqueSwing' catalog='Barock Swing Ludwigsburg'"
       ]
     },
     {
@@ -2674,10 +2585,28 @@
       ]
     },
     {
+      "source_fingerprint": "2d0e4fdfbbc93909a6c72a0e",
+      "list_name": "Trilogy Swing",
+      "start_date": "2027-09-09",
+      "location_raw": "Raleigh, North Carolina, United States",
+      "list_url": "https://trilogywcs.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 231,
+      "canonical_name": "Trilogy Swing",
+      "catalog_url": "http://www.trilogywcs.com",
+      "typical_location": "Raleigh, NC",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": []
+    },
+    {
       "source_fingerprint": "515b5fc82ee6d05b73394c2b",
       "list_name": "Best of the Best WCS",
       "start_date": "2027-09-16",
-      "location_raw": "Ashfield, NSW, Australia",
+      "location_raw": "Sydney, Australia",
       "list_url": "https://www.bestofthebestwcs.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
@@ -2687,11 +2616,9 @@
       "canonical_name": "Best of the Best WCS",
       "catalog_url": "https://www.bestofthebestwcs.com/",
       "typical_location": "Sydney, Australia",
-      "location_score": 0.6341463414634146,
-      "location_flag": "site_differs_from_history",
-      "notes": [
-        "Site location 'Ashfield, NSW, Australia' differs from catalog typical 'Sydney, Australia' (venue may have moved)"
-      ]
+      "location_score": 1.0,
+      "location_flag": "ok",
+      "notes": []
     },
     {
       "source_fingerprint": "c6c3dcee4d7b6343a6d6d722",
@@ -2725,6 +2652,80 @@
       "canonical_name": "Finnfest",
       "catalog_url": "http://www.finnfest.fi",
       "typical_location": "Helsinki, Finland",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": []
+    },
+    {
+      "source_fingerprint": "8d6c3f94b5ad67d8ff4fa3a8",
+      "list_name": "Midland Swing Open",
+      "start_date": "2027-09-23",
+      "location_raw": "London, United Kingdom",
+      "list_url": "https://www.midlandswingopen.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 165,
+      "canonical_name": "Midland Swing Open",
+      "catalog_url": "http://www.MidlandSwingOpen.com",
+      "typical_location": "London, United Kingdom",
+      "location_score": 1.0,
+      "location_flag": "ok",
+      "notes": []
+    },
+    {
+      "source_fingerprint": "938bc046e51052ee3cf94165",
+      "list_name": "Philly Swing Classic",
+      "start_date": "2027-09-24",
+      "location_raw": "WILMINGTON, DEL United States",
+      "list_url": "https://phillyswing.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 234,
+      "canonical_name": "Philly Swing Classic",
+      "catalog_url": "http://www.phillyswing.com",
+      "typical_location": "Wilmington, DE",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": []
+    },
+    {
+      "source_fingerprint": "9b3abd6b833079fe2a127165",
+      "list_name": "Mooseland Swing 2027",
+      "start_date": "2027-09-30",
+      "location_raw": "Östersund, Jämtland, Sweden",
+      "list_url": "http://www.mooselandswing.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "url",
+      "confidence": 0.8571428571428571,
+      "canonical_event_id": 361,
+      "canonical_name": "Mooseland Swing",
+      "catalog_url": "https://mooselandswing.com/",
+      "typical_location": "Östersund, Sweden",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": [
+        "Name differs: list='Mooseland Swing 2027' catalog='Mooseland Swing'"
+      ]
+    },
+    {
+      "source_fingerprint": "cb76c37057043ec4d28222bd",
+      "list_name": "Norwegian Open WCS",
+      "start_date": "2027-10-06",
+      "location_raw": "Hamar, Hamar, Norway",
+      "list_url": "https://norwegianopen.no/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 388,
+      "canonical_name": "Norwegian Open WCS",
+      "catalog_url": "https://norwegianopen.no/",
+      "typical_location": "Hamar, Norway",
       "location_score": 0.92,
       "location_flag": "ok",
       "notes": []
@@ -2880,69 +2881,6 @@
   "manual_review_required": [],
   "new_events": [
     {
-      "source_fingerprint": "da88db1ce065fee87033e912",
-      "list_name": "RiverSwingNights",
-      "start_date": "2026-10-01",
-      "location_raw": "Dresden, Germany",
-      "list_url": "http://www.riverswingnights.com/",
-      "status_event": "Trial Event",
-      "match_status": "new",
-      "match_method": "none",
-      "confidence": 0.0,
-      "canonical_event_id": null,
-      "canonical_name": null,
-      "catalog_url": null,
-      "typical_location": null,
-      "location_score": 0.0,
-      "location_flag": "",
-      "notes": [
-        "No catalog match — likely new or renamed brand",
-        "Trial event on schedule"
-      ]
-    },
-    {
-      "source_fingerprint": "8d1dae25426572b4b2669238",
-      "list_name": "Westie Harbor",
-      "start_date": "2026-10-01",
-      "location_raw": "Gothenburg, Sweden",
-      "list_url": "http://www.westieharbor.com/",
-      "status_event": "Trial Event",
-      "match_status": "new",
-      "match_method": "none",
-      "confidence": 0.0,
-      "canonical_event_id": null,
-      "canonical_name": null,
-      "catalog_url": null,
-      "typical_location": null,
-      "location_score": 0.0,
-      "location_flag": "",
-      "notes": [
-        "No catalog match — likely new or renamed brand",
-        "Trial event on schedule"
-      ]
-    },
-    {
-      "source_fingerprint": "732cfbaf65ca9c78c71e796b",
-      "list_name": "Autumn Beat",
-      "start_date": "2026-10-02",
-      "location_raw": "Riga, Latvia",
-      "list_url": "https://autumnbeat.lv/",
-      "status_event": "Trial Event",
-      "match_status": "new",
-      "match_method": "none",
-      "confidence": 0.0,
-      "canonical_event_id": null,
-      "canonical_name": null,
-      "catalog_url": null,
-      "typical_location": null,
-      "location_score": 0.0,
-      "location_flag": "",
-      "notes": [
-        "No catalog match — likely new or renamed brand",
-        "Trial event on schedule"
-      ]
-    },
-    {
       "source_fingerprint": "6d1bab0e81ea38724df4d1e7",
       "list_name": "Swiss Open WCS",
       "start_date": "2026-12-18",
@@ -2967,7 +2905,7 @@
       "source_fingerprint": "adf527827352752eb5e8d2d7",
       "list_name": "Cologne Calling WCS",
       "start_date": "2027-01-14",
-      "location_raw": "Köln, NRW, Germany",
+      "location_raw": "Cologne, Germany",
       "list_url": "https://colognecallingwcs.com/",
       "status_event": "Trial Event",
       "match_status": "new",
@@ -3396,26 +3334,6 @@
       ]
     },
     {
-      "source_fingerprint": "515b5fc82ee6d05b73394c2b",
-      "list_name": "Best of the Best WCS",
-      "start_date": "2027-09-16",
-      "location_raw": "Ashfield, NSW, Australia",
-      "list_url": "https://www.bestofthebestwcs.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 167,
-      "canonical_name": "Best of the Best WCS",
-      "catalog_url": "https://www.bestofthebestwcs.com/",
-      "typical_location": "Sydney, Australia",
-      "location_score": 0.6341463414634146,
-      "location_flag": "site_differs_from_history",
-      "notes": [
-        "Site location 'Ashfield, NSW, Australia' differs from catalog typical 'Sydney, Australia' (venue may have moved)"
-      ]
-    },
-    {
       "source_fingerprint": "2d2d797fa9694535f75d75e2",
       "list_name": "Spring Time Swing",
       "start_date": "2028-05-04",
@@ -3588,14 +3506,15 @@
       "match_status": "confirmed",
       "match_method": "explicit",
       "confidence": 1.0,
-      "canonical_event_id": 68,
+      "canonical_event_id": 475,
       "canonical_name": "US Open Swing Dance Championships",
-      "catalog_url": "http://www.theopenswing.com",
-      "typical_location": "Los Angeles, CA",
-      "location_score": 0.92,
-      "location_flag": "ok",
+      "catalog_url": "",
+      "typical_location": null,
+      "location_score": 0.0,
+      "location_flag": "unknown",
       "notes": [
-        "Name differs: list='The Open Swing Dance  Championships' catalog='US Open Swing Dance Championships'"
+        "Name differs: list='The Open Swing Dance  Championships' catalog='US Open Swing Dance Championships'",
+        "No historical location in catalog for comparison"
       ]
     },
     {
@@ -4163,6 +4082,26 @@
       ]
     },
     {
+      "source_fingerprint": "be8617928e5489e9cebf2890",
+      "list_name": "BaroqueSwing",
+      "start_date": "2027-06-17",
+      "location_raw": "Ludwigsburg, Baden-Württemberg, Germany",
+      "list_url": "https://baroqueswing.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 374,
+      "canonical_name": "Barock Swing Ludwigsburg",
+      "catalog_url": "https://baroqueswing.com/",
+      "typical_location": "Ludwigsburg, Germany",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": [
+        "Name differs: list='BaroqueSwing' catalog='Barock Swing Ludwigsburg'"
+      ]
+    },
+    {
       "source_fingerprint": "e40360124b6b4c268e2ca3f2",
       "list_name": "NeverlandSwing Dutch Swing Championships 2027",
       "start_date": "2027-06-24",
@@ -4180,26 +4119,6 @@
       "location_flag": "ok",
       "notes": [
         "Name differs: list='NeverlandSwing Dutch Swing Championships 2027' catalog='Neverland Swing'"
-      ]
-    },
-    {
-      "source_fingerprint": "6e70e89c639d4ec09dcff0ee",
-      "list_name": "BaroqueSwing",
-      "start_date": "2027-06-24",
-      "location_raw": "Ludwigsburg, Baden-Württemberg, Germany",
-      "list_url": "https://baroqueswing.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "explicit",
-      "confidence": 1.0,
-      "canonical_event_id": 374,
-      "canonical_name": "Barock Swing Ludwigsburg",
-      "catalog_url": "https://baroqueswing.com/",
-      "typical_location": "Ludwigsburg, Germany",
-      "location_score": 0.92,
-      "location_flag": "ok",
-      "notes": [
-        "Name differs: list='BaroqueSwing' catalog='Barock Swing Ludwigsburg'"
       ]
     },
     {
@@ -4281,8 +4200,28 @@
       "notes": [
         "Name differs: list='Bavarian Open WCS Championships' catalog='Bavarian Open'"
       ]
+    },
+    {
+      "source_fingerprint": "9b3abd6b833079fe2a127165",
+      "list_name": "Mooseland Swing 2027",
+      "start_date": "2027-09-30",
+      "location_raw": "Östersund, Jämtland, Sweden",
+      "list_url": "http://www.mooselandswing.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "url",
+      "confidence": 0.8571428571428571,
+      "canonical_event_id": 361,
+      "canonical_name": "Mooseland Swing",
+      "catalog_url": "https://mooselandswing.com/",
+      "typical_location": "Östersund, Sweden",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": [
+        "Name differs: list='Mooseland Swing 2027' catalog='Mooseland Swing'"
+      ]
     }
   ],
-  "generated_at": "2026-09-29T14:27:31.590636+00:00",
-  "catalog_events": 425
+  "generated_at": "2026-10-13T15:24:20.951499+00:00",
+  "catalog_events": 428
 }

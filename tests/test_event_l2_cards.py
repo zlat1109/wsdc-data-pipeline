@@ -434,6 +434,57 @@ def test_tier_table_includes_newcomer_when_both_roles_present():
     assert table["Novice"] == {"Leader": 2, "Follower": 2}
 
 
+def test_tier_table_keeps_division_when_one_role_is_ambiguous():
+    """Sparse points (e.g. one leader took 1st+2nd) → ambiguous, still a nomination."""
+    tiers = pd.DataFrame(
+        [
+            {
+                "event_id": 392,
+                "event_year": 2026,
+                "event_month": 10,
+                "division": "All-Star",
+                "role": "Leader",
+                "tier": 1,
+                "status": "ambiguous",
+                "dance": "West Coast Swing",
+            },
+            {
+                "event_id": 392,
+                "event_year": 2026,
+                "event_month": 10,
+                "division": "All-Star",
+                "role": "Follower",
+                "tier": 1,
+                "status": "matched",
+                "dance": "West Coast Swing",
+            },
+            {
+                "event_id": 392,
+                "event_year": 2026,
+                "event_month": 10,
+                "division": "Advanced",
+                "role": "Leader",
+                "tier": 3,
+                "status": "matched",
+                "dance": "West Coast Swing",
+            },
+            {
+                "event_id": 392,
+                "event_year": 2026,
+                "event_month": 10,
+                "division": "Advanced",
+                "role": "Follower",
+                "tier": 3,
+                "status": "matched",
+                "dance": "West Coast Swing",
+            },
+        ]
+    )
+    table = _tier_table_for_edition(tiers, 392, 2026, 10)
+    assert table["All-Star"] == {"Leader": 1, "Follower": 1}
+    assert table["Advanced"] == {"Leader": 3, "Follower": 3}
+
+
 def test_build_event_l2_cards_picks_last_with_results(tmp_path: Path):
     data_dir = tmp_path
     pd.DataFrame(

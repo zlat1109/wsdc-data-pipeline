@@ -662,6 +662,185 @@ def test_enrich_geo_city_fallback_matches_accented_labels():
     assert rows[0]["lon"] == 18.6466384
 
 
+def test_enrich_geo_city_fallback_matches_german_umlaut_ascii():
+    """WSDC list often writes Duesseldorf while location_info has Düsseldorf."""
+    locations = pd.DataFrame(
+        [
+            {
+                "location_id": 127,
+                "event_city": "Düsseldorf",
+                "event_country": "Germany",
+                "latitude": 51.2230411,
+                "longitude": 6.7824545,
+                "coordinates_valid": True,
+            }
+        ]
+    )
+    catalog = pd.DataFrame(columns=["event_id", "canonical_name", "url"])
+    rows = [
+        {
+            "event_id": 286,
+            "name": "WCS Festival",
+            "city": "Duesseldorf",
+            "country": "Germany",
+            "location_id": None,
+            "url": None,
+            "source": "scheduled_events",
+        }
+    ]
+    _enrich_geo(rows, locations, catalog, location_id_by_event={286: 127})
+    assert rows[0]["lat"] == 51.2230411
+    assert rows[0]["lon"] == 6.7824545
+    assert rows[0]["city"] == "Düsseldorf"
+
+
+def test_city_from_location_raw_uses_location_raw_aliases():
+    """Schedule city is taken after LOCATION_RAW_ALIASES — not a calendar-only map."""
+    from transform.year_event_calendar.build import (
+        _city_from_location_raw,
+        _city_from_place_fields,
+    )
+
+    assert _city_from_location_raw("Milano, Italy") == "Milan"
+    assert _city_from_location_raw("milano, italy") == "Milan"
+    assert _city_from_location_raw("MILANO, ITALY") == "Milan"
+    assert _city_from_location_raw("Köln, NRW, Germany") == "Cologne"
+    assert _city_from_location_raw("Koln, NRW, Germany") == "Cologne"
+    assert _city_from_location_raw("Koeln, Germany") == "Cologne"
+    assert _city_from_location_raw("Budaperst, Budapest, Hungary") == "Budapest"
+    assert _city_from_location_raw("Ashfield, NSW, Australia") == "Sydney"
+    assert _city_from_location_raw("Duesseldorf, Germany") == "Düsseldorf"
+    assert _city_from_location_raw("New York City, NY, United States") == "New York"
+    # Edition place_city[/country] uses the same alias path.
+    assert _city_from_place_fields("Milano", "Italy") == "Milan"
+    assert _city_from_place_fields("Koln", "Germany") == "Cologne"
+    assert _city_from_place_fields("Ashfield", "Australia") == "Sydney"
+
+
+def test_enrich_geo_remaps_invalid_milano_lid_and_metro_prefix():
+    """Merge-map lids + metro soft-match (not endonym compare aliases)."""
+    locations = pd.DataFrame(
+        [
+            {
+                "location_id": 132,
+                "event_city": "Milan",
+                "event_country": "Italy",
+                "latitude": 45.468503,
+                "longitude": 9.182403,
+                "coordinates_valid": True,
+            },
+            {
+                "location_id": 402,
+                "event_city": "Milano",
+                "event_country": "Italy",
+                "latitude": None,
+                "longitude": None,
+                "coordinates_valid": False,
+            },
+            {
+                "location_id": 7,
+                "event_city": "New York",
+                "event_country": "United States",
+                "event_state": "New York",
+                "latitude": 40.712775,
+                "longitude": -74.005973,
+                "coordinates_valid": True,
+            },
+            {
+                "location_id": 399,
+                "event_city": "Cologne",
+                "event_country": "Germany",
+                "latitude": 50.937531,
+                "longitude": 6.960279,
+                "coordinates_valid": True,
+            },
+            {
+                "location_id": 117,
+                "event_city": "Sydney",
+                "event_country": "Australia",
+                "latitude": -33.872741,
+                "longitude": 151.205721,
+                "coordinates_valid": True,
+            },
+            {
+                "location_id": 110,
+                "event_city": "Budapest",
+                "event_country": "Hungary",
+                "latitude": 47.497912,
+                "longitude": 19.040235,
+                "coordinates_valid": True,
+            },
+        ]
+    )
+    catalog = pd.DataFrame(columns=["event_id", "canonical_name", "url"])
+
+    milano = {
+        "event_id": 405,
+        "name": "Milan Swing Vibes",
+        "city": "Milan",  # already aliased at ingest
+        "country": "Italy",
+        "location_id": 402,  # remapped to 132 in enrich
+        "url": None,
+        "source": "scheduled_events",
+    }
+    _enrich_geo([milano], locations, catalog, location_id_by_event={})
+    assert milano["location_id"] == 132
+    assert milano["city"] == "Milan"
+    assert milano["lat"] == 45.468503
+
+    cologne = {
+        "event_id": None,
+        "name": "Cologne Calling WCS",
+        "city": "Cologne",  # aliased from Köln at ingest
+        "country": "Germany",
+        "location_id": 399,
+        "url": None,
+        "source": "scheduled_events",
+    }
+    _enrich_geo([cologne], locations, catalog, location_id_by_event={})
+    assert cologne["lat"] == 50.937531
+    assert cologne["city"] == "Cologne"
+
+    nyc = {
+        "event_id": 378,
+        "name": "New York Flow Festival",
+        "city": "New York",  # aliased from New York City at ingest
+        "country": "United States",
+        "location_id": None,
+        "url": None,
+        "source": "scheduled_events",
+    }
+    _enrich_geo([nyc], locations, catalog, location_id_by_event={378: 7})
+    assert nyc["lat"] == 40.712775
+    assert nyc["city"] == "New York"
+
+    botb = {
+        "event_id": 167,
+        "name": "Best of the Best WCS",
+        "city": "Sydney",  # aliased from Ashfield at ingest
+        "country": "Australia",
+        "location_id": None,
+        "url": None,
+        "source": "scheduled_events",
+    }
+    _enrich_geo([botb], locations, catalog, location_id_by_event={167: 117})
+    assert botb["lat"] == -33.872741
+    assert botb["city"] == "Sydney"
+
+    ho = {
+        "event_id": 206,
+        "name": "Hungarian Open",
+        "city": "Budapest",
+        "country": "Hungary",
+        "location_id": None,
+        "url": None,
+        "source": "scheduled_events",
+    }
+    _enrich_geo([ho], locations, catalog, location_id_by_event={206: 110})
+    assert ho["lat"] == 47.497912
+    assert ho["city"] == "Budapest"
+
+
 def test_enrich_geo_name_override_forces_wels_without_event_id():
     locations = pd.DataFrame(
         [
@@ -1054,6 +1233,7 @@ def test_correct_cross_year_results_years_nye():
 
 def test_fingerprint_and_weekend_dedupe_collapses_title_variants():
     from transform.year_event_calendar.build import (
+        _collision_name_key,
         _dedupe_weekend_name_collisions,
         _fingerprint_event_name,
         _resolve_merge_event_id,
@@ -1063,6 +1243,10 @@ def test_fingerprint_and_weekend_dedupe_collapses_title_variants():
         "Boston Tea Party"
     )
     assert _fingerprint_event_name("Paris Swing Classic") == "paris westie"
+    assert _collision_name_key("River Swing Nights") == _collision_name_key(
+        "RiverSwingNights"
+    )
+    assert _fingerprint_event_name("RiverSwingNights") == "river nights"
     assert _resolve_merge_event_id(307) == 272
     assert _resolve_merge_event_id(543) == 272
     assert _resolve_merge_event_id(566) == 9
@@ -1701,6 +1885,85 @@ def test_drop_redundant_stats_only_when_day_precision_exists():
     assert len(out) == 2
     assert {r["event_id"] for r in out} == {221, 99}
     assert not any(r.get("stats_only") and r["event_id"] == 221 for r in out)
+
+
+def test_weekend_dedupe_collapses_glued_title_and_stats_only_ghost():
+    """RiverSwingNights (calendar) + River Swing Nights stats_only → one confirmed row."""
+    from transform.year_event_calendar.build import (
+        _dedupe_rows,
+        _dedupe_weekend_name_collisions,
+        _drop_redundant_stats_only,
+    )
+
+    rows = [
+        {
+            "event_id": 395,
+            "name": "River Swing Nights",
+            "start_date": date(2026, 10, 1),
+            "end_date": date(2026, 10, 1),
+            "year": 2026,
+            "status": "confirmed",
+            "source": "event_editions_month_only",
+            "stats_only": True,
+            "has_results": True,
+            "city": "Dresden",
+            "country": "Germany",
+        },
+        {
+            "event_id": None,
+            "name": "RiverSwingNights",
+            "start_date": date(2026, 10, 1),
+            "end_date": date(2026, 10, 5),
+            "year": 2026,
+            "status": "confirmed",
+            "source": "events_calendar_retention",
+            "provisional_unlinked": True,
+            "city": "Dresden",
+            "country": "Germany",
+            "url": "http://www.riverswingnights.com/",
+        },
+    ]
+    merged = _dedupe_weekend_name_collisions(_dedupe_rows(rows))
+    merged = _drop_redundant_stats_only(merged)
+    assert len(merged) == 1
+    row = merged[0]
+    assert row.get("stats_only") is not True
+    assert row.get("provisional_unlinked") is not True
+    assert row.get("event_id") == 395
+    assert row.get("has_results") is True
+    assert row.get("end_date") == date(2026, 10, 5)
+    assert row.get("url") == "http://www.riverswingnights.com/"
+
+
+def test_drop_redundant_stats_only_does_not_cross_cities():
+    """Same collision name in different cities must not wipe the other series."""
+    from transform.year_event_calendar.build import _drop_redundant_stats_only
+
+    rows = [
+        {
+            "event_id": 1,
+            "name": "Challenge",
+            "start_date": date(2026, 3, 1),
+            "year": 2026,
+            "status": "confirmed",
+            "stats_only": True,
+            "city": "Austin",
+            "has_results": True,
+        },
+        {
+            "event_id": 2,
+            "name": "Challenge",
+            "start_date": date(2026, 6, 12),
+            "end_date": date(2026, 6, 15),
+            "year": 2026,
+            "status": "confirmed",
+            "city": "Berlin",
+            "source": "edition_calendar_dates",
+        },
+    ]
+    out = _drop_redundant_stats_only(rows)
+    assert len(out) == 2
+    assert any(r.get("stats_only") and r["event_id"] == 1 for r in out)
 
 
 def test_dedupe_prefers_day_dates_over_stats_only():

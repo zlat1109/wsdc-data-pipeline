@@ -24,6 +24,33 @@ LOCATION_RAW_ALIASES: dict[str, str] = {
     # WSDC dump typo for Budapest (Hungarian Open results)
     "Budaperst, Hungary": "Budapest, Hungary",
     "Budaperst": "Budapest, Hungary",
+    # Live list sometimes glues typo + city: "Budaperst, Budapest, Hungary"
+    "Budaperst, Budapest, Hungary": "Budapest, Hungary",
+    # Italian endonym on WSDC list (Milan Swing Vibes)
+    "Milano, Italy": "Milan, Italy",
+    "Milano": "Milan, Italy",
+    # German endonym on WSDC list (Cologne Calling) — umlaut + ASCII scrapes
+    "Köln, Germany": "Cologne, Germany",
+    "Köln, NRW, Germany": "Cologne, Germany",
+    "Köln": "Cologne, Germany",
+    "Koln, Germany": "Cologne, Germany",
+    "Koln, NRW, Germany": "Cologne, Germany",
+    "Koln": "Cologne, Germany",
+    "Koeln, Germany": "Cologne, Germany",
+    "Koeln, NRW, Germany": "Cologne, Germany",
+    "Koeln": "Cologne, Germany",
+    # ASCII umlaut spelling (WCS Festival / D-Town list variants)
+    "Duesseldorf, Germany": "Düsseldorf, Germany",
+    "Duesseldorf, NRW, Germany": "Düsseldorf, Germany",
+    "Duesseldorf": "Düsseldorf, Germany",
+    # Sydney suburb venue on Best of the Best list (catalog typical is Sydney)
+    "Ashfield, NSW, Australia": "Sydney, Australia",
+    "Ashfield, Australia": "Sydney, Australia",
+    "Ashfield": "Sydney, Australia",
+    # Metro label vs location_info city (New York Flow Festival)
+    "New York City, NY, United States": "New York, NY, United States",
+    "New York City, United States": "New York, NY, United States",
+    "New York City": "New York, NY, United States",
     # Venue name used by WSDC for Düsseldorf (D-Town Swing / WCS Festival)
     "Boston Club, Germany": "Düsseldorf, Germany",
     "Boston Club, NRW, Germany": "Düsseldorf, Germany",
@@ -65,6 +92,8 @@ LOCATION_ID_MERGE_MAP: dict[str, str] = {
     "295": "21",
     # Duesseldorf spelling → Düsseldorf
     "198": "127",
+    # Milano (no coords) → Milan
+    "402": "132",
     # Edmonton duplicate
     "380": "205",
     # Incheon / Jeju country alias (South Korea → Republic of Korea canonical)

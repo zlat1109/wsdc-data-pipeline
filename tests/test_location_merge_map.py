@@ -62,6 +62,11 @@ def test_budaperst_typo_merges_to_budapest():
     assert LOCATION_ID_MERGE_MAP["400"] == "110"
 
 
+def test_milano_without_coords_merges_to_milan():
+    """Invalid Milano lid → Milan (132) with coordinates."""
+    assert LOCATION_ID_MERGE_MAP["402"] == "132"
+
+
 def test_location_353_is_silver_spring_not_washington_md():
     """WSDC 'Washington, MD' for Dance Jam / Westie Weekend → Silver Spring."""
     assert "353" not in LOCATION_ID_MERGE_MAP

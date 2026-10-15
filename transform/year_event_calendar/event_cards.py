@@ -43,6 +43,11 @@ COMPETITION_SKILL_LEVELS = frozenset(
 )
 MIN_SKILL_DIVISIONS_FOR_EXACT = 2
 
+# Tier statuses that mean the division/role ran and we have a usable Chart match.
+# ``ambiguous`` = sparse points vector (e.g. one dancer scored 1st+2nd so 2nd is
+# blank) but points were awarded — the nomination still happened.
+TIER_STATUS_USABLE = frozenset({"matched", "legacy_chart", "ambiguous"})
+
 # Current Chart 5 competitor ranges per role. Tier 6 is open-ended (130+);
 # soft upper 140 is used only for midpoint estimates when rule_max is absent.
 TIER_COMPETITOR_RANGES: dict[int, tuple[int, int]] = {
@@ -420,8 +425,9 @@ def _estimate_dancers_from_tiers(
 ) -> dict[str, int] | None:
     """Approximate competitive dancers from per-role tier competitor ranges.
 
-    For each Newcomer + skill division × role with a matched tier, add that role's
-    Chart 5 competitor min/max. Midpoint of the summed range is the point estimate.
+    For each Newcomer + skill division × role with a usable tier status
+    (matched / legacy_chart / ambiguous), add that role's Chart 5 competitor
+    min/max. Midpoint of the summed range is the point estimate.
     Switch dancers (lead+follow) cannot be de-duplicated from tiers alone.
     """
     if tiers.empty:
@@ -445,7 +451,7 @@ def _estimate_dancers_from_tiers(
         if role is None:
             continue
         status = str(rec.get("status") or "")
-        if status not in {"matched", "legacy_chart"}:
+        if status not in TIER_STATUS_USABLE:
             continue
         tier = rec.get("tier")
         if pd.isna(tier):
@@ -511,7 +517,7 @@ def _tier_table_for_edition(
         tier_i = int(tier)
         if tier_i < 1:
             continue
-        if status not in {"matched", "legacy_chart"}:
+        if status not in TIER_STATUS_USABLE:
             continue
         by_div.setdefault(canon, {})[role] = tier_i
 

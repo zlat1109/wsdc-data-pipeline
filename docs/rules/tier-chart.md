@@ -73,3 +73,5 @@ After each points load, `db/build_edition_tiers.py` writes `core.edition_divisio
 5. For `smaller_role` eras, re-align both roles to one shared Tier from the fuller vector
 6. Tighten competitor range: `est_min = max(rule_min, scored_dancers)`
 7. Pre-2007 flat scale: exact `10/6/4/3/2` → `no_tier_system`; any other distance → `unmatched`
+
+Downstream L2 cards / Event Tiers treat `ambiguous` like `matched` for “did this nomination run?”: points were awarded (e.g. one dancer placed 1st and 2nd leaves a blank 2nd slot on a tiny Tier 1 field). Do not drop the division from the tier table solely because one role is `ambiguous`.

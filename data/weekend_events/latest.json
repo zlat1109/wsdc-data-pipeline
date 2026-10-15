@@ -1,51 +1,62 @@
 {
-  "generated_at": "2026-10-01T18:39:03Z",
-  "weekend_start": "2026-09-28",
-  "weekend_end": "2026-10-11",
+  "generated_at": "2026-10-12T09:23:34Z",
+  "weekend_start": "2026-10-12",
+  "weekend_end": "2026-10-25",
   "events": [
     {
-      "name": "Atlanta Swing Classic",
-      "location": "Atlanta, GA, USA",
-      "dates": "Oct 1 - 4, 2026",
-      "url": "https://www.atlantaswingclassic.com/",
-      "start_date": "2026-10-01",
-      "end_date": "2026-10-04",
-      "livestream": "https://www.twitch.tv/asc_atlanta_swing_classic/",
-      "continent": "America",
-      "flag": "🇺🇸"
+      "name": "The New Zealand West Coast Swing Open",
+      "location": "Auckland, New Zealand",
+      "dates": "Oct 15 - 18, 2026",
+      "url": "https://www.streetswing.co.nz/the-new-zealand-open",
+      "start_date": "2026-10-15",
+      "end_date": "2026-10-18",
+      "livestream": null,
+      "continent": "Australia",
+      "flag": "🇳🇿"
     },
     {
-      "name": "RiverSwingNights",
-      "location": "Dresden, Germany",
-      "dates": "Oct 1 - 5, 2026",
-      "url": "http://www.riverswingnights.com/",
-      "start_date": "2026-10-01",
-      "end_date": "2026-10-05",
+      "name": "WCS Festival",
+      "location": "Duesseldorf, NRW, Germany",
+      "dates": "Oct 15 - 18, 2026",
+      "url": "http://www.wcsfestival.com/",
+      "start_date": "2026-10-15",
+      "end_date": "2026-10-18",
       "livestream": null,
       "continent": "Europe",
       "flag": "🇩🇪"
     },
     {
-      "name": "Westie Harbor",
-      "location": "Gothenburg, n/a, Sweden",
-      "dates": "Oct 1 - 5, 2026",
-      "url": "http://www.westieharbor.com/",
-      "start_date": "2026-10-01",
-      "end_date": "2026-10-05",
+      "name": "Milan Modern Swing",
+      "location": "Milan, Milan, Italy",
+      "dates": "Oct 15 - 18, 2026",
+      "url": "https://www.westcoastswingmilan.com/",
+      "start_date": "2026-10-15",
+      "end_date": "2026-10-18",
       "livestream": null,
       "continent": "Europe",
-      "flag": "🇸🇪"
+      "flag": "🇮🇹"
     },
     {
-      "name": "Norwegian Open WCS",
-      "location": "Hamar,  Norway",
-      "dates": "Oct 1 - 4, 2026",
-      "url": "https://norwegianopen.no/",
-      "start_date": "2026-10-01",
-      "end_date": "2026-10-04",
+      "name": "Paradise dance Festival",
+      "location": "Irvine, CA, USA",
+      "dates": "Oct 15 - 18, 2026",
+      "url": "https://paradisecountrydancefestival.com/",
+      "start_date": "2026-10-15",
+      "end_date": "2026-10-18",
       "livestream": null,
-      "continent": "Europe",
-      "flag": "🇳🇴"
+      "continent": "America",
+      "flag": "🇺🇸"
+    },
+    {
+      "name": "Swustlicious",
+      "location": "Philadelphia, PA, United States",
+      "dates": "Oct 16 - 18, 2026",
+      "url": "http://www.swustlicious.com/",
+      "start_date": "2026-10-16",
+      "end_date": "2026-10-18",
+      "livestream": null,
+      "continent": "America",
+      "flag": "🇺🇸"
     }
   ]
 }
