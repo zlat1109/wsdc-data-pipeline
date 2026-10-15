@@ -5,6 +5,7 @@ Runbooks for pipeline execution, CI, data sync, repairs, and monitoring.
 | Doc | When to use |
 |-----|-------------|
 | [pipeline-runbook.md](pipeline-runbook.md) | Manual parse, load, export |
+| [mysql-dump-reload.md](mysql-dump-reload.md) | New WSDC MySQL dump → competitions + dates → site |
 | [data-sync.md](data-sync.md) | Multi-machine desync, merge datasets |
 | [github-actions.md](github-actions.md) | CI secrets, workflows, probe logic |
 | [repair-scripts.md](repair-scripts.md) | One-off DB fixes after audit |
