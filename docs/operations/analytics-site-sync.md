@@ -59,6 +59,10 @@ full-parse.yml / sync-events-list.yml / force-rebuild-calendar-site.yml
 (`force-rebuild-calendar-site.yml`). Sets `REQUIRE_DEPLOY_TOKEN=1` and
 `REQUIRE_YEAR_CALENDAR=1`.
 
+**Force rebuild after MySQL dump reload** (exact L2 dancers / dump dates): follow
+[mysql-dump-reload.md](mysql-dump-reload.md), then dispatch the same workflow so
+export + Pages pick up `competitions_best` and calendar JSON.
+
 Env flags for `sync_analytics_site.sh`:
 
 | Env | Default | Meaning |
