@@ -6,7 +6,7 @@ exact L/F competition headcounts and/or dump day-dates on the calendar.
 **Not covered by full-parse.** Cloud parse does **not** reload `core.competitions`.
 Without this runbook, L2 Dancers fall back to tier estimates (`~`).
 
-Quick commands only: [dumps/README.md](../../dumps/README.md).  
+Quick commands only: `dumps/README.md` (repo root; not part of MkDocs).  
 Site push details: [analytics-site-sync.md](analytics-site-sync.md).  
 Script internals: [load_competitions_from_dump.py](repair-scripts.md#load_competitions_from_dumppy),
 [sync_dump_edition_dates.py](repair-scripts.md#sync_dump_edition_datespy).
@@ -204,7 +204,7 @@ If the dump procedure itself changes (new flags, container name, gates), update
 in the same PR:
 
 1. This runbook
-2. [dumps/README.md](../../dumps/README.md) (short commands)
+2. `dumps/README.md` (short commands at repo root)
 3. [repair-scripts.md](repair-scripts.md) dump sections if CLI changes
 
 Editing `dumps/README.md` triggers the Tests workflow path filter — run or rely
