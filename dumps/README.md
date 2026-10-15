@@ -1,5 +1,30 @@
 # Local extracts for dump sync (gitignored)
 
+## Full MySQL dump → Docker `wsdc-clone`
+
+Navicat/RDS dump (e.g. `wsdc101526.sql`) lives here as `dumps/wsdc*.sql` (gitignored).
+
+```bash
+# 1) Place dump
+cp ~/Downloads/wsdcMMDDYY.sql dumps/
+
+# 2) Load into existing container (MySQL 8 rejects 0000-00-00 without this sql_mode)
+docker cp dumps/wsdcMMDDYY.sql wsdc-clone:/tmp/wsdc.sql
+docker exec wsdc-clone bash -c '
+  mysql -uroot -p"$MYSQL_ROOT_PASSWORD" --default-character-set=utf8mb4 wsdc \
+    --init-command="SET SESSION sql_mode=\"ALLOW_INVALID_DATES,NO_ENGINE_SUBSTITUTION\"" \
+    < /tmp/wsdc.sql
+'
+docker exec wsdc-clone rm -f /tmp/wsdc.sql
+
+# 3) Re-extract TSVs + upsert Supabase competitions (+ optional dates/calendar)
+python scripts/load_competitions_from_dump.py --apply
+python scripts/sync_dump_edition_dates.py --apply --export --build-year-calendar
+```
+
+Container defaults: name `wsdc-clone`, DB `wsdc`, password from container env
+`MYSQL_ROOT_PASSWORD`, host port `3306`.
+
 ## competitionevents dates
 
 Non-PII slice from WSDC MySQL clone `competitionevents`:
