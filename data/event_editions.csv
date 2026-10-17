@@ -1,6 +1,7 @@
 edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,end_date,date_source,calendar_status,event_occurred,location_id,place_city,place_state,place_country,location_raw,result_rows,unique_dancers,url,typical_location,registry_status
 4632,211,Atlanta Swing Classic,2026,10,2026-10-01,2026-10-01,2026-10-04,wsdc_calendar,scheduled,t,25,Atlanta,Georgia,United States,"Atlanta, GA, United States",145,141,https://www.atlantaswingclassic.com/,"Atlanta, GA, United States",Registry Event
 2775,8,Boogie By The Bay,2026,10,2026-10-01,2026-10-08,2026-10-12,wsdc_calendar,scheduled,t,2,San Francisco,California,United States,"San Francisco, CA, United States",145,138,https://boogiebythebay.com,"San Francisco, CA",
+5373,367,Go West SwingFest,2026,10,2026-10-01,2026-10-09,2026-10-11,wsdc_calendar,scheduled,t,253,Perth,,Australia,"Perth, Australia",0,0,,"Perth, Australia",
 4382,178,Montreal Westie Fest,2026,10,2026-10-01,2026-10-09,2026-10-11,wsdc_calendar,scheduled,t,86,Montreal,,Canada,"Montreal, Canada",112,100,http://www.montrealwestiefest.com,"Montreal, Canada",
 5361,388,Norwegian Open WCS,2026,10,2026-10-01,2026-10-01,2026-10-04,wsdc_calendar,scheduled,t,274,Hamar,,Norway,"Hamar, Norway",109,100,https://norwegianopen.no/,"Hamar, Norway",Registry Event
 5367,395,River Swing Nights,2026,10,2026-10-01,2026-10-01,2026-10-05,wsdc_calendar,scheduled,t,389,Dresden,,Germany,"Dresden, Germany",96,86,,"Dresden, Germany",
