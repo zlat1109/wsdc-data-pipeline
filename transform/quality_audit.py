@@ -679,6 +679,42 @@ def check_catalog_typical_vs_upcoming(
     )
 
 
+def _canonical_text(value: Any) -> str:
+    if value is None or (isinstance(value, float) and pd.isna(value)):
+        return ""
+    text = str(value).strip()
+    if not text or text.lower() in {"nan", "none", "<na>"}:
+        return ""
+    return text
+
+
+def _normalize_location_id_token(value: Any) -> str | None:
+    """Coerce CSV/pandas location_id cells to a stable digit string.
+
+    Parser CSVs often arrive as float64 (``1.0`` / ``NaN``). ``Series.astype(str)
+    .str.strip()`` can leave float ``nan`` in the iterable, which then crashes
+    ``str.isdigit()`` during sort — that aborted full-parse preprocess.
+    """
+    if value is None or (isinstance(value, float) and pd.isna(value)):
+        return None
+    try:
+        if pd.isna(value):
+            return None
+    except (TypeError, ValueError):
+        pass
+    text = str(value).strip()
+    if not text or text.lower() in {"nan", "none", "<na>"}:
+        return None
+    # "253.0" from float CSV → "253"
+    if text.endswith(".0") and text[:-2].lstrip("-").isdigit():
+        text = text[:-2]
+    return text
+
+
+def _location_id_sort_key(value: str) -> int:
+    return int(value) if value.isdigit() else 0
+
+
 def check_event_name_location_id_collision(
     results: pd.DataFrame,
     location_info: pd.DataFrame | None,
@@ -695,28 +731,29 @@ def check_event_name_location_id_collision(
     if "event_name" not in results.columns or "location_id" not in results.columns:
         return None
 
-    loc_col = results["location_id"].astype(str).str.strip()
-    name_col = results["event_name"].astype(str).str.strip()
+    name_col = results["event_name"].map(_canonical_text)
 
     # Build country lookup to enrich examples
     loc_country: dict[str, str] = {}
     if location_info is not None and not location_info.empty:
         for _, row in location_info.iterrows():
-            lid = str(row.get("location_id", "")).strip()
-            country = str(row.get("event_country", "")).strip()
+            lid = _normalize_location_id_token(row.get("location_id"))
+            country = _canonical_text(row.get("event_country"))
             if lid and country:
                 loc_country[lid] = country
 
     examples = []
-    for name, grp in results.groupby(name_col):
+    for name, grp in results.groupby(name_col, dropna=False):
+        if not name:
+            continue
         ids = {
-            v
-            for v in grp["location_id"].astype(str).str.strip()
-            if v and v not in {"", "nan"}
+            lid
+            for lid in (_normalize_location_id_token(v) for v in grp["location_id"])
+            if lid is not None
         }
         if len(ids) <= 1:
             continue
-        id_list = sorted(ids, key=lambda x: int(x) if x.isdigit() else 0)
+        id_list = sorted(ids, key=_location_id_sort_key)
         countries = [loc_country.get(i, "?") for i in id_list]
         examples.append(
             {
