@@ -91578,6 +91578,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 15441,David Phan,Leader,Advanced,Advanced,Follower,Intermediate,Intermediate,2025-05-16,17.0,Intermediate,
 15441,David Phan,Leader,Advanced,Advanced,Follower,Intermediate,Intermediate,2025-05-17,17.0,Intermediate,Intermediate
 15441,David Phan,Leader,Advanced,Advanced,Follower,Intermediate,Intermediate,2026-06-28,17,Intermediate,Intermediate
+15441,David Phan,Leader,Advanced,Advanced,Follower,Intermediate,Intermediate,2026-10-17,18,Intermediate,Intermediate
 15442,Alana Johnston,Follower,Novice,Intermediate,Leader,Newcomer,Novice,2025-04-30,,,
 15442,Alana Johnston,Follower,Novice,Intermediate,Leader,,,2025-05-08,,,
 15442,Alana Johnston,Follower,Novice,Intermediate,Leader,Newcomer,Newcomer,2025-05-16,,,
@@ -91840,6 +91841,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 15483,Bianca Davis,Follower,Intermediate,Advanced,Leader,,,2025-11-10,3.0,Intermediate,
 15483,Bianca Davis,Follower,Advanced,Advanced,Leader,Intermediate,Intermediate,2026-03-11,3.0,Intermediate,Intermediate
 15483,Bianca Davis,Follower,Advanced,Advanced,Leader,Intermediate,Intermediate,2026-06-28,3,Intermediate,Intermediate
+15483,Bianca Davis,Follower,Advanced,Advanced,Leader,Intermediate,Intermediate,2026-10-17,5,Intermediate,Intermediate
 15484,Sybil Merriman,Follower,Novice,Intermediate,Leader,Newcomer,Novice,2025-04-30,,,
 15484,Sybil Merriman,Follower,Novice,Intermediate,Leader,,,2025-05-08,,,
 15484,Sybil Merriman,Follower,Novice,Intermediate,Leader,Newcomer,Newcomer,2025-05-16,,,
@@ -104922,6 +104924,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 17924,Claire Pratley,Follower,Novice,Intermediate,Leader,,,2025-05-16,1.0,Novice,
 17924,Claire Aung,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2025-10-16,2.0,Novice,Novice
 17924,Claire Aung,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-06-28,2,Novice,Novice
+17924,Claire Aung,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-10-17,10,Novice,Novice
 17925,Sharon Bradshaw,Follower,Novice,Intermediate,Leader,Newcomer,Novice,2025-04-30,,,
 17925,Sharon Bradshaw,Follower,Novice,Intermediate,Leader,Newcomer,Newcomer,2025-05-08,,,
 17925,Sharon Bradshaw,Follower,Novice,Intermediate,Leader,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -110181,6 +110184,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 18941,Charlotte Marbus,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2025-10-16,,,Novice
 18941,Charlotte Marbus,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-06-23,N/A,N/A,Novice
 18941,Charlotte Marbus,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-06-28,,,Novice
+18941,Charlotte Marbus,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-10-17,2,Novice,Novice
 18942,Domenic Sergi,Leader,Novice,Novice,Follower,Newcomer,Novice,2025-04-30,,,
 18942,Domenic Sergi,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-08,,,
 18942,Domenic Sergi,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -129742,6 +129746,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 22542,Melika Shams,Follower,Novice,Intermediate,Leader,,,2025-10-16,2.0,Newcomer,
 22542,Melika Shams,Follower,Novice,Intermediate,Leader,n/a,n/a,2026-06-23,2,Newcomer,n/a
 22542,Melika Shams,Follower,Novice,Intermediate,Leader,nan,nan,2026-06-28,2,Newcomer,
+22542,Melika Shams,Follower,Intermediate,Intermediate,Leader,Novice,Novice,2026-10-17,1,Novice,Novice
 22543,Sophie Delavoipiere,Follower,Novice,Novice,Leader,Newcomer,Novice,2025-04-30,,,
 22543,Sophie Delavoipiere,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-08,,,
 22543,Sophie Delavoipiere,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -141120,6 +141125,7 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 24580,Belle Picchio,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-17,,,Newcomer
 24580,Belle Picchio,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-23,N/A,N/A,Newcomer
 24580,Belle Picchio,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-06-28,,,Newcomer
+24580,Belle Picchio,Follower,Novice,Novice,Leader,nan,nan,2026-10-17,1,Newcomer,
 24581,Mirela Lonascu,Follower,Novice,Novice,Leader,Newcomer,Novice,2024-11-16,,,
 24581,Mirela Lonascu,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-08,,,
 24581,Mirela Lonascu,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2025-05-17,,,Newcomer
@@ -156843,3 +156849,16 @@ dancer_id,dancer_name,dominate_role,dominate_required,dominate_allowed,non_domin
 29329,Warren Zhang,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-10-13,,,Newcomer
 29330,Cambree Hardy,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-10-13,,,Newcomer
 29331,Darryl Smaw,Follower,Newcomer,Novice,Leader,nan,nan,2026-10-13,,,
+29332,Meenah Eskander,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-10-17,,,Newcomer
+29333,Sue Kramer,Follower,Novice,Novice,Leader,nan,nan,2026-10-17,2,Newcomer,
+29334,Domenico Malavisi,Leader,Novice,Novice,Follower,nan,nan,2026-10-17,6,Newcomer,
+29335,Nikita Niven,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-10-17,,,Newcomer
+29336,Bianca Ameri,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-10-17,,,Newcomer
+29337,Emmanuelle Aliotti,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-10-17,,,Newcomer
+29338,Keerthanarangan Muthurangan,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-10-17,,,Newcomer
+29339,James Knight,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-10-17,,,Newcomer
+29340,Lanhowe Chen,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-10-17,,,Newcomer
+29341,Edwin Parsons,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-10-17,,,Newcomer
+29342,Alvaro Arones Salas,Leader,Novice,Novice,Follower,Newcomer,Newcomer,2026-10-17,,,Newcomer
+29343,Jessica Ellery,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-10-17,,,Newcomer
+29344,Teniele Gabriel,Follower,Novice,Novice,Leader,Newcomer,Newcomer,2026-10-17,,,Newcomer
