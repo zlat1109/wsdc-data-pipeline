@@ -1,9 +1,9 @@
 {
-  "scraped_at": "2026-10-13T15:24:42.356255+00:00",
+  "scraped_at": "2026-10-20T13:09:01.116168+00:00",
   "source": "https://worldsdc.com/events/calendar/",
   "min_start": "2025-01-01",
-  "raw_count": 662,
-  "event_count": 496,
+  "raw_count": 665,
+  "event_count": 499,
   "events": [
     {
       "event_name": "Floorplay Swing Vacation",
@@ -7420,6 +7420,28 @@
       "raw_end": "2026-10-13"
     },
     {
+      "event_name": "Go West SwingFest",
+      "calendar_title": "Go West SwingFest",
+      "catalog_name": "Go West SwingFest",
+      "name_key": "gowestswingfest",
+      "start_date": "2026-10-09",
+      "end_date": "2026-10-11",
+      "url": "https://www.gowestswingfest.au",
+      "url_key": "gowestswingfest.au",
+      "results_year": 2026,
+      "results_month": 10,
+      "edition_ym_candidates": [
+        "2026-10"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "a07380c86763d2da1731ed31",
+      "raw_start": "2026-10-09",
+      "raw_end": "2026-10-12"
+    },
+    {
       "event_name": "Montreal Westie Fest",
       "calendar_title": "Montreal Westie Fest",
       "catalog_name": "Montreal Westie Fest",
@@ -10819,6 +10841,29 @@
       "raw_end": "2027-09-27"
     },
     {
+      "event_name": "Boogie By The Bay",
+      "calendar_title": "Boogie By The Bay",
+      "catalog_name": "Boogie By The Bay",
+      "name_key": "boogiebythebay",
+      "start_date": "2027-09-30",
+      "end_date": "2027-10-03",
+      "url": "https://boogiebythebay.com",
+      "url_key": "boogiebythebay.com",
+      "results_year": 2027,
+      "results_month": 10,
+      "edition_ym_candidates": [
+        "2027-10",
+        "2027-09"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "312b7e992b85708641a8e1f6",
+      "raw_start": "2027-09-30",
+      "raw_end": "2027-10-04"
+    },
+    {
       "event_name": "Mooseland Swing",
       "calendar_title": "Mooseland Swing 2027",
       "catalog_name": "Mooseland Swing",
@@ -10842,28 +10887,6 @@
       "raw_end": "2027-10-05"
     },
     {
-      "event_name": "Norwegian Open WCS",
-      "calendar_title": "Norwegian Open WCS",
-      "catalog_name": "Norwegian Open WCS",
-      "name_key": "norwegianopenwcs",
-      "start_date": "2027-10-06",
-      "end_date": "2027-10-09",
-      "url": "https://norwegianopen.no/",
-      "url_key": "norwegianopen.no",
-      "results_year": 2027,
-      "results_month": 10,
-      "edition_ym_candidates": [
-        "2027-10"
-      ],
-      "date_precision": "day",
-      "date_source": "wsdc_calendar",
-      "flags": [],
-      "status_tags": [],
-      "source_fingerprint": "cb76c37057043ec4d28222bd",
-      "raw_start": "2027-10-06",
-      "raw_end": "2027-10-10"
-    },
-    {
       "event_name": "Atlanta Swing Classic",
       "calendar_title": "Atlanta Swing Classic",
       "catalog_name": "Atlanta Swing Classic",
@@ -10882,6 +10905,50 @@
       "flags": [],
       "status_tags": [],
       "source_fingerprint": "2ce85c3ac33355f90225e4be",
+      "raw_start": "2027-10-07",
+      "raw_end": "2027-10-11"
+    },
+    {
+      "event_name": "Montreal Westie Fest",
+      "calendar_title": "Montreal Westie Fest",
+      "catalog_name": "Montreal Westie Fest",
+      "name_key": "montrealwestiefest",
+      "start_date": "2027-10-07",
+      "end_date": "2027-10-11",
+      "url": "https://montrealwestiefest.ca",
+      "url_key": "montrealwestiefest.ca",
+      "results_year": 2027,
+      "results_month": 10,
+      "edition_ym_candidates": [
+        "2027-10"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "b65bcecaaff56bd2cc983a90",
+      "raw_start": "2027-10-07",
+      "raw_end": "2027-10-12"
+    },
+    {
+      "event_name": "Norwegian Open WCS",
+      "calendar_title": "Norwegian Open WCS",
+      "catalog_name": "Norwegian Open WCS",
+      "name_key": "norwegianopenwcs",
+      "start_date": "2027-10-07",
+      "end_date": "2027-10-10",
+      "url": "https://norwegianopen.no/",
+      "url_key": "norwegianopen.no",
+      "results_year": 2027,
+      "results_month": 10,
+      "edition_ym_candidates": [
+        "2027-10"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "9f9535668427604d5c55e743",
       "raw_start": "2027-10-07",
       "raw_end": "2027-10-11"
     },
