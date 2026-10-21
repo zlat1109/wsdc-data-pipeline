@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-10-17T20:00:14.561551+00:00",
+  "generated_at": "2026-10-21T21:44:08.917809+00:00",
   "source": "github-actions",
   "run_id": null,
   "summary": {
     "before_findings_count": 9,
     "applied_rules_count": 260,
-    "applied_rows_touched": 197312,
-    "manual_review_count": 6,
-    "manual_review_new_count": 1
+    "applied_rows_touched": 197666,
+    "manual_review_count": 7,
+    "manual_review_new_count": 3
   },
   "before_processing": {
     "description": "Issues detected in raw CSV before any normalization",
@@ -74,7 +74,7 @@
         "code": "EVENT_NAME_SIMILAR_UNMAPPED",
         "severity": "medium",
         "message": "Event names similar to known canonical names but not in EVENT_NAME_NORMALIZATION",
-        "count": 17,
+        "count": 18,
         "examples": [
           {
             "event_name": "Austin Swing Dance Championships",
@@ -137,6 +137,11 @@
             "score": 0.93
           },
           {
+            "event_name": "Paradise dance Festival",
+            "similar_to": "Paradise Dance Festival",
+            "score": 1.0
+          },
+          {
             "event_name": "Russian Open WCS Championship",
             "similar_to": "Russian Open WCS Championships",
             "score": 0.983
@@ -174,26 +179,6 @@
         "count": 36,
         "examples": [
           {
-            "base_key": "monterey swingfest",
-            "variants": [
-              "Monterey SwingFest",
-              "Monterey Swingfest"
-            ],
-            "geo_keys": [
-              "monterey|ca|usa"
-            ]
-          },
-          {
-            "base_key": "paradise dance festival",
-            "variants": [
-              "Paradise Dance Festival",
-              "Paradise dance festival"
-            ],
-            "geo_keys": [
-              "irvine|ca|usa"
-            ]
-          },
-          {
             "base_key": "swing fling",
             "variants": [
               "Swing Fling",
@@ -204,6 +189,16 @@
             ]
           },
           {
+            "base_key": "monterey swingfest",
+            "variants": [
+              "Monterey SwingFest",
+              "Monterey Swingfest"
+            ],
+            "geo_keys": [
+              "monterey|ca|usa"
+            ]
+          },
+          {
             "base_key": "boogie by the bay",
             "variants": [
               "Boogie By The Bay",
@@ -211,6 +206,17 @@
             ],
             "geo_keys": [
               "san_francisco|california|usa"
+            ]
+          },
+          {
+            "base_key": "paradise dance festival",
+            "variants": [
+              "Paradise Dance Festival",
+              "Paradise dance Festival",
+              "Paradise dance festival"
+            ],
+            "geo_keys": [
+              "irvine|ca|usa"
             ]
           },
           {
@@ -325,20 +331,6 @@
         "count": 38,
         "examples": [
           {
-            "base_key": "monterey swingfest",
-            "variants": [
-              "Monterey SwingFest",
-              "Monterey Swingfest"
-            ]
-          },
-          {
-            "base_key": "paradise dance festival",
-            "variants": [
-              "Paradise Dance Festival",
-              "Paradise dance festival"
-            ]
-          },
-          {
             "base_key": "swing fling",
             "variants": [
               "Swing Fling",
@@ -346,10 +338,25 @@
             ]
           },
           {
+            "base_key": "monterey swingfest",
+            "variants": [
+              "Monterey SwingFest",
+              "Monterey Swingfest"
+            ]
+          },
+          {
             "base_key": "boogie by the bay",
             "variants": [
               "Boogie By The Bay",
               "Boogie by the Bay"
+            ]
+          },
+          {
+            "base_key": "paradise dance festival",
+            "variants": [
+              "Paradise Dance Festival",
+              "Paradise dance Festival",
+              "Paradise dance festival"
             ]
           },
           {
@@ -419,7 +426,7 @@
         "code": "EVENT_NAME_UNRESOLVED_TO_CATALOG",
         "severity": "high",
         "message": "Result event names still absent from events_wsdc after normalization (will orphan in load)",
-        "count": 76,
+        "count": 77,
         "examples": [
           {
             "event_name": "Asia WCS Open - 10th Anniversary"
@@ -506,7 +513,7 @@
         "code": "EVENT_NAME_NOT_IN_CATALOG",
         "severity": "low",
         "message": "Result event_name values absent from events_wsdc.csv (may be OK if resolved by name in load)",
-        "count": 182,
+        "count": 183,
         "examples": [
           {
             "event_name": "5280 Swing Dance Championships"
@@ -599,16 +606,16 @@
         "examples": [
           {
             "detail": [
-              "321",
               "307",
-              "409",
-              "39",
+              "198",
+              "325",
               "37",
               "279",
-              "66",
-              "202",
               "99",
-              "198"
+              "66",
+              "39",
+              "409",
+              "321"
             ]
           }
         ],
@@ -1536,7 +1543,7 @@
         "column": "event_name",
         "from_value": "The New Zealand West Coast Swing Open",
         "to_value": "New Zealand Open Swing Dance Championships",
-        "rows_affected": 60,
+        "rows_affected": 129,
         "source": "known_map"
       },
       {
@@ -2191,18 +2198,9 @@
         "rule_id": "DIVISION_NORMALIZATION",
         "table": "dancers_results_info",
         "column": "event_competition",
-        "from_value": "Masters",
-        "to_value": "Master",
-        "rows_affected": 16970,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "DIVISION_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_competition",
         "from_value": "Champions",
         "to_value": "Champion",
-        "rows_affected": 5199,
+        "rows_affected": 5204,
         "source": "known_map"
       },
       {
@@ -2211,7 +2209,16 @@
         "column": "event_competition",
         "from_value": "All-Stars",
         "to_value": "All-Star",
-        "rows_affected": 16391,
+        "rows_affected": 16427,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "DIVISION_NORMALIZATION",
+        "table": "dancers_results_info",
+        "column": "event_competition",
+        "from_value": "Masters",
+        "to_value": "Master",
+        "rows_affected": 17020,
         "source": "known_map"
       },
       {
@@ -2751,7 +2758,7 @@
         "column": "dominate_required",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 1451,
+        "rows_affected": 1450,
         "source": "known_map"
       },
       {
@@ -2760,7 +2767,16 @@
         "column": "dominate_required",
         "from_value": "ADV",
         "to_value": "Advanced",
-        "rows_affected": 2759,
+        "rows_affected": 2768,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_required",
+        "from_value": "INT",
+        "to_value": "Intermediate",
+        "rows_affected": 4573,
         "source": "known_map"
       },
       {
@@ -2776,18 +2792,9 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_required",
-        "from_value": "INT",
-        "to_value": "Intermediate",
-        "rows_affected": 4572,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_required",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 17996,
+        "rows_affected": 18042,
         "source": "known_map"
       },
       {
@@ -2796,7 +2803,7 @@
         "column": "dominate_required",
         "from_value": "ALS",
         "to_value": "All-Star",
-        "rows_affected": 1123,
+        "rows_affected": 1125,
         "source": "known_map"
       },
       {
@@ -2805,7 +2812,7 @@
         "column": "dominate_allowed",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 17422,
+        "rows_affected": 17453,
         "source": "known_map"
       },
       {
@@ -2814,7 +2821,16 @@
         "column": "dominate_allowed",
         "from_value": "ADV",
         "to_value": "Advanced",
-        "rows_affected": 3201,
+        "rows_affected": 3203,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_allowed",
+        "from_value": "INT",
+        "to_value": "Intermediate",
+        "rows_affected": 6061,
         "source": "known_map"
       },
       {
@@ -2830,18 +2846,9 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_allowed",
-        "from_value": "INT",
-        "to_value": "Intermediate",
-        "rows_affected": 6041,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_allowed",
         "from_value": "ALS",
         "to_value": "All-Star",
-        "rows_affected": 1034,
+        "rows_affected": 1038,
         "source": "known_map"
       },
       {
@@ -2859,7 +2866,7 @@
         "column": "non_dominate_required",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 15219,
+        "rows_affected": 15251,
         "source": "known_map"
       },
       {
@@ -2868,7 +2875,7 @@
         "column": "non_dominate_required",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 254,
+        "rows_affected": 259,
         "source": "known_map"
       },
       {
@@ -2895,7 +2902,7 @@
         "column": "non_dominate_allowed",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 7013,
+        "rows_affected": 7017,
         "source": "known_map"
       },
       {
@@ -2913,7 +2920,7 @@
         "column": "non_dominate_allowed",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 15219,
+        "rows_affected": 15251,
         "source": "known_map"
       },
       {
@@ -2922,7 +2929,7 @@
         "column": "non_dominate_allowed",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 1125,
+        "rows_affected": 1132,
         "source": "known_map"
       },
       {
@@ -2971,7 +2978,7 @@
         "code": "EVENT_NAME_SIMILAR_UNMAPPED",
         "severity": "medium",
         "message": "Event names similar to known canonical names but not in EVENT_NAME_NORMALIZATION",
-        "count": 17,
+        "count": 18,
         "examples": [
           {
             "event_name": "Austin Swing Dance Championships",
@@ -3034,6 +3041,11 @@
             "score": 0.93
           },
           {
+            "event_name": "Paradise dance Festival",
+            "similar_to": "Paradise Dance Festival",
+            "score": 1.0
+          },
+          {
             "event_name": "Russian Open WCS Championship",
             "similar_to": "Russian Open WCS Championships",
             "score": 0.983
@@ -3069,8 +3081,18 @@
         "code": "EVENT_NAME_VARIANTS_SAME_GEO",
         "severity": "high",
         "message": "Same event name variants share one geography (merge candidate)",
-        "count": 1,
+        "count": 2,
         "examples": [
+          {
+            "base_key": "paradise dance festival",
+            "variants": [
+              "Paradise Dance Festival",
+              "Paradise dance Festival"
+            ],
+            "geo_keys": [
+              "irvine|california|united_states"
+            ]
+          },
           {
             "base_key": "dutch open west coast swing",
             "variants": [
@@ -3083,8 +3105,8 @@
           }
         ],
         "suggested_fix": "Unify via MERGE_EVENT_ID_MAP / EVENT_NAME_NORMALIZATION",
-        "fingerprint": "8cd16e60fb207035",
-        "is_new": false,
+        "fingerprint": "537648405a0cc134",
+        "is_new": true,
         "requires_manual_review": true
       },
       {
@@ -3092,8 +3114,15 @@
         "code": "EVENT_NAME_VARIANTS",
         "severity": "high",
         "message": "Same event appears under multiple name spellings (possible duplicate event identity)",
-        "count": 1,
+        "count": 2,
         "examples": [
+          {
+            "base_key": "paradise dance festival",
+            "variants": [
+              "Paradise Dance Festival",
+              "Paradise dance Festival"
+            ]
+          },
           {
             "base_key": "dutch open west coast swing",
             "variants": [
@@ -3103,8 +3132,8 @@
           }
         ],
         "suggested_fix": "Unify via EVENT_NAME_NORMALIZATION or core.event_aliases",
-        "fingerprint": "d6097c65b17270d3",
-        "is_new": false,
+        "fingerprint": "b4155513d91e0d0c",
+        "is_new": true,
         "requires_manual_review": true
       },
       {
@@ -3112,7 +3141,7 @@
         "code": "EVENT_NAME_UNRESOLVED_TO_CATALOG",
         "severity": "high",
         "message": "Result event names still absent from events_wsdc after normalization (will orphan in load)",
-        "count": 66,
+        "count": 67,
         "examples": [
           {
             "event_name": "Asia WCS Open - 10th Anniversary"
@@ -3200,7 +3229,7 @@
         "code": "EVENT_NAME_NOT_IN_CATALOG",
         "severity": "low",
         "message": "Result event_name values absent from events_wsdc.csv (may be OK if resolved by name in load)",
-        "count": 66,
+        "count": 67,
         "examples": [
           {
             "event_name": "Asia WCS Open - 10th Anniversary"
@@ -3266,6 +3295,22 @@
         "suggested_fix": "Verify events_wsdc export or add event instance after parse",
         "fingerprint": "6b2b58d82b35e32b",
         "is_new": false,
+        "requires_manual_review": true
+      },
+      {
+        "category": "event_naming",
+        "code": "EVENT_NAME_NEW_SINCE_LAST_RUN",
+        "severity": "info",
+        "message": "New event names appeared since last quality report (review naming)",
+        "count": 1,
+        "examples": [
+          {
+            "event_name": "Paradise dance Festival"
+          }
+        ],
+        "suggested_fix": "Check if variant of existing event; add normalization rule if needed",
+        "fingerprint": "92b5045d852eb81b",
+        "is_new": true,
         "requires_manual_review": true
       },
       {
@@ -3338,7 +3383,7 @@
         ],
         "suggested_fix": "Add to EVENT_NAME_LOCATION_OVERRIDES in transform/knowledge/events.py and run force_result_locations_from_event_name_overrides",
         "fingerprint": "310282870333b939",
-        "is_new": true,
+        "is_new": false,
         "requires_manual_review": true
       }
     ]
@@ -3582,6 +3627,7 @@
     "Paradise Country Dance Festival",
     "Paradise Country and Swing Dance Festival",
     "Paradise Dance Festival",
+    "Paradise dance Festival",
     "Paris Westie Fest",
     "Philly Swing Classic",
     "Phoenix Dance Festival",
