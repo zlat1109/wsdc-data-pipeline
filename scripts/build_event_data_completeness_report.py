@@ -482,19 +482,24 @@ def cr_software_keys(sources_blob) -> list[str]:
     ]
 
 
+# Other-year Results Form may fill a gap only for nearby editions.
+SERIES_FORM_YEAR_SLACK = 2
+
+
 def resolve_software(
     *,
     cr_known: list[str],
     form_sw: str = "",
     series_sw: str = "",
     series_yr: int | None = None,
+    edition_year: int | None = None,
 ) -> tuple[str, str, str]:
     """Decide display name / confidence / note for Scoring software.
 
     Priority:
     1. Scraped Competition Results ``source`` (platform prelims came from).
     2. Else Results Form for this edition.
-    3. Else another year's Results Form for the same event series.
+    3. Else another year's Results Form for the same event (±2 years).
     Form never overrides a CR scrape (even when Form and CR disagree).
     """
     form_sw = (form_sw or "").strip().lower()
@@ -511,7 +516,12 @@ def resolve_software(
     if form_sw:
         return DISPLAY.get(form_sw, form_sw), "confirmed", "Results Form"
 
-    if series_sw and series_yr is not None:
+    if (
+        series_sw
+        and series_yr is not None
+        and edition_year is not None
+        and abs(int(edition_year) - int(series_yr)) <= SERIES_FORM_YEAR_SLACK
+    ):
         return (
             DISPLAY.get(series_sw, series_sw),
             "likely",
@@ -840,6 +850,7 @@ FROM r WHERE starts_with(event_edition_id, 'wsdc:') GROUP BY 1
             form_sw=form_sw,
             series_sw=series_sw,
             series_yr=series_yr,
+            edition_year=int(r.event_year),
         )
         soft_name.append(name)
         soft_conf.append(conf)
