@@ -104,26 +104,9 @@ def test_software_form_when_not_scraped():
     assert conf == "confirmed" and name == "EEPro" and note == "Results Form"
 
 
-def test_software_other_year_form_when_not_scraped_nearby():
-    name, conf, note = resolve_software(
-        cr_known=[],
-        series_sw="scoringdance",
-        series_yr=2025,
-        edition_year=2024,
-    )
-    assert conf == "likely"
-    assert name == "scoring.dance"
-    assert "2025" in note
-
-
-def test_software_other_year_form_not_applied_to_distant_editions():
-    name, conf, _ = resolve_software(
-        cr_known=[],
-        series_sw="scoringdance",
-        series_yr=2025,
-        edition_year=2010,
-    )
-    assert conf == "needs_verification" and name == ""
+def test_software_neither_scrape_nor_form_needs_verification():
+    name, conf, note = resolve_software(cr_known=[], form_sw="")
+    assert conf == "needs_verification" and name == "" and note == ""
 
 
 def test_form_match_uses_year_month_and_name():
