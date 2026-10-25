@@ -836,15 +836,15 @@ FROM r WHERE starts_with(event_edition_id, 'wsdc:') GROUP BY 1
             public_results=("edition_id", "count"),
             in_cr=("event_edition_id", lambda s: int(s.notna().sum())),
             with_prelims=("status", lambda s: int((s == "has_prelims").sum())),
-            # Judges: any coverage (full or partial). Partners: full only
-            # (definitive pairs require prelims; yellow/points-only excluded).
+            # Judges: any coverage (full or partial).
             with_judges=(
                 "chk_judges",
                 lambda s: int(s.isin(["full", "partial"]).sum()),
             ),
-            with_partners=(
-                "chk_partners",
-                lambda s: int((s == "full").sum()),
+            # Other divs: age / fun / strictly present in Competition Results.
+            with_other_divs=(
+                "side_divisions",
+                lambda s: int(s.fillna("").astype(str).str.strip().ne("").sum()),
             ),
             finals_only=("status", lambda s: int((s == "wsdc_finals_only").sum())),
             scrape_no_prelim=("status", lambda s: int((s == "scrape_no_prelim").sum())),
@@ -856,7 +856,7 @@ FROM r WHERE starts_with(event_edition_id, 'wsdc:') GROUP BY 1
     n_pub = summary["public_results"].replace(0, pd.NA)
     summary["pct_prelims"] = (100.0 * summary["with_prelims"] / n_pub).round(1)
     summary["pct_judges"] = (100.0 * summary["with_judges"] / n_pub).round(1)
-    summary["pct_partners"] = (100.0 * summary["with_partners"] / n_pub).round(1)
+    summary["pct_other_divs"] = (100.0 * summary["with_other_divs"] / n_pub).round(1)
 
     out_dir = args.out_dir
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -985,8 +985,8 @@ FROM r WHERE starts_with(event_edition_id, 'wsdc:') GROUP BY 1
             f'<td class="num">{r.pct_prelims}%</td>'
             f'<td class="num ok">{int(r.with_judges)}</td>'
             f'<td class="num">{r.pct_judges}%</td>'
-            f'<td class="num ok">{int(r.with_partners)}</td>'
-            f'<td class="num">{r.pct_partners}%</td>'
+            f'<td class="num ok">{int(r.with_other_divs)}</td>'
+            f'<td class="num">{r.pct_other_divs}%</td>'
             f'<td class="num">{int(r.form_software)}</td></tr>'
         )
 
@@ -1107,7 +1107,7 @@ td.ok {{ color:var(--ok); font-weight:600; }}
           <th class="num">%</th>
           <th class="num">With judges</th>
           <th class="num">%</th>
-          <th class="num">With partners</th>
+          <th class="num">With other divs</th>
           <th class="num">%</th>
           <th class="num">Software confirmed</th>
         </tr>
