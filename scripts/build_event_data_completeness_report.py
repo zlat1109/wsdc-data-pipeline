@@ -862,11 +862,6 @@ FROM r WHERE starts_with(event_edition_id, 'wsdc:') GROUP BY 1
         note = clean(r.soft_note)
         if conf == "needs_verification" or not name:
             return '<span class="soft needs">No data — needs verification</span>'
-        if conf == "conflict":
-            return (
-                f'<span class="soft needs" title="{H.escape(note)}">'
-                f"Needs verification: {H.escape(name)}</span>"
-            )
         return (
             f'<span class="soft confirmed" title="{H.escape(note)}">'
             f"Confirmed: {H.escape(name)}</span>"
@@ -1032,9 +1027,7 @@ td.c, th.c {{ text-align:center; }}
 .tip-click[hidden] {{ display:none !important; }}
 .soft {{ display:inline-block; font-size:.72rem; font-weight:600; padding:.1rem .35rem; border-radius:3px; }}
 .soft.confirmed {{ background:var(--ok-bg); color:var(--ok); }}
-.soft.likely {{ background:var(--partial-bg); color:var(--partial); }}
 .soft.needs {{ background:#eceae4; color:var(--none); }}
-.soft-note {{ font-size:.7rem; color:var(--muted); font-weight:500; }}
 .badge.dc {{ display:inline-block; font-size:.65rem; padding:.05rem .3rem; border-radius:3px;
   background:#e8eef6; color:#2a4a6a; font-weight:600; margin-left:.25rem; }}
 section.year {{ margin:2rem 0; padding-top:.5rem; border-top:2px solid var(--line); }}
