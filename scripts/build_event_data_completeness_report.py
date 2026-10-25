@@ -20,7 +20,6 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 
-import duckdb
 import pandas as pd
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -515,6 +514,8 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 
 
 def main(argv: list[str] | None = None) -> int:
+    import duckdb  # local-only CR parquet reader; not a CI test dep
+
     args = parse_args(argv)
     cr_path = args.cr_path
     if not cr_path.exists():
