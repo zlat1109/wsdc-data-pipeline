@@ -473,6 +473,50 @@ def flags_for(row) -> dict[str, str]:
     }
 
 
+def cr_software_keys(sources_blob) -> list[str]:
+    """Known scoring platforms listed in Competition Results ``source``."""
+    return [
+        p.strip().lower()
+        for p in clean(sources_blob).split(",")
+        if p.strip().lower() in KNOWN
+    ]
+
+
+def resolve_software(
+    *,
+    cr_known: list[str],
+    form_sw: str = "",
+) -> tuple[str, str, str]:
+    """Decide display name / confidence / note for Scoring software.
+
+    Competition Results ``source`` is the scrape provenance and is identical to
+    the scoring platform used for that edition — treat it as confirmed.
+    Results Form is a secondary signal (fills editions without a CR scrape, or
+    flags Form↔CR disagreements).
+    """
+    form_sw = (form_sw or "").strip().lower()
+    if form_sw and form_sw not in KNOWN:
+        form_sw = ""
+
+    if cr_known:
+        cr_disp = " / ".join(DISPLAY.get(p, p) for p in cr_known)
+        if form_sw and form_sw not in cr_known:
+            return (
+                f"Form: {DISPLAY.get(form_sw, form_sw)} · CR: {cr_disp}",
+                "conflict",
+                "Results Form and Competition Results disagree",
+            )
+        note = "Competition Results source"
+        if form_sw:
+            note = "Competition Results source (+ Results Form)"
+        return cr_disp, "confirmed", note
+
+    if form_sw:
+        return DISPLAY.get(form_sw, form_sw), "confirmed", "Results Form"
+
+    return "", "needs_verification", ""
+
+
 def load_competitions(path: Path):
     rows = []
     with path.open(encoding="utf-8") as fh:
@@ -763,54 +807,20 @@ FROM r WHERE starts_with(event_edition_id, 'wsdc:') GROUP BY 1
     forms_ok = forms_ok[forms_ok["sw"].isin(KNOWN)]
     form_by_ed = forms_ok.groupby("edition_id").first()
 
-    forms_ok["our_event_id"] = forms_ok["edition_id"].map(
-        ed.set_index("edition_id")["event_id"]
-    )
-    series_best = (
-        forms_ok.sort_values(["our_event_id", "yr"], ascending=[True, False])
-        .groupby("our_event_id")
-        .first()
-    )
-
-    # Software is shown only when we actually know it:
-    #   confirmed — Results Form of this edition (and CR does not contradict it)
-    #   likely    — a neighbouring year's form agrees with this edition's CR source
-    #   conflict  — this edition's form and CR disagree (both shown)
-    # Anything else (CR alone, other-year form alone) → needs verification.
+    # Software: Competition Results ``source`` == scoring platform for the scrape.
+    # Results Form fills gaps / flags disagreements.
     soft_name, soft_conf, soft_note = [], [], []
     for _, r in comp.iterrows():
         eid = int(r.edition_id)
-        ev = int(r.event_id)
-        cr_known = [
-            p.strip().lower()
-            for p in clean(r.get("sources")).split(",")
-            if p.strip().lower() in KNOWN
-        ]
-        name, conf, note = "", "needs_verification", ""
-
         form_sw = ""
         if eid in form_by_ed.index:
             sw = clean(form_by_ed.loc[eid].get("sw"))
             if sw in KNOWN:
                 form_sw = sw
-        if form_sw:
-            if cr_known and form_sw not in cr_known:
-                cr_disp = " / ".join(DISPLAY.get(p, p) for p in cr_known)
-                name = f"Form: {DISPLAY.get(form_sw, form_sw)} · CR: {cr_disp}"
-                conf = "conflict"
-                note = "Results Form and Competition Results disagree"
-            else:
-                name = DISPLAY.get(form_sw, form_sw)
-                conf = "confirmed"
-                note = "Results Form"
-        elif ev in series_best.index and cr_known:
-            fr = series_best.loc[ev]
-            sw = clean(fr.get("sw"))
-            if sw in KNOWN and sw in cr_known:
-                name = DISPLAY.get(sw, sw)
-                conf = "likely"
-                note = f"{int(fr.get('yr'))} Results Form + Competition Results"
-
+        name, conf, note = resolve_software(
+            cr_known=cr_software_keys(r.get("sources")),
+            form_sw=form_sw,
+        )
         soft_name.append(name)
         soft_conf.append(conf)
         soft_note.append(note)
@@ -1074,10 +1084,10 @@ td.ok {{ color:var(--ok); font-weight:600; }}
   Other divs (Masters, Sophisticated, Strictly, Switch, All American, …):
   click <em>yes</em> for the list from Competition Results.
   Generated {stamp}.</p>
-  <p><strong>Software</strong> is shown only when known:
-  <span class="soft confirmed">Confirmed</span> = Results Form of this edition;
-  <span class="soft likely">Likely</span> = another year's Results Form matches this edition's Competition Results source;
-  <span class="soft needs">Needs verification</span> = no reliable data, or Results Form and Competition Results disagree.</p>
+  <p><strong>Software</strong> comes from Competition Results <code>source</code>
+  (the platform the prelims were scraped from — identical to the scoring software used):
+  <span class="soft confirmed">Confirmed</span> = CR source, and/or this edition's Results Form;
+  <span class="soft needs">Needs verification</span> = no CR source and no form for this edition, or Form vs CR disagree.</p>
   <div class="legend">
     <span class="chk full">✓</span> Full
     <span class="chk partial">✓</span> Partial
