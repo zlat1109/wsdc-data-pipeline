@@ -802,7 +802,6 @@ FROM r WHERE starts_with(event_edition_id, 'wsdc:') GROUP BY 1
     forms_m = match_forms(forms, ed, extra_names)
     forms_ok = forms_m[forms_m["m_ok"]].copy()
     forms_ok["edition_id"] = forms_ok["m_edition_id"].astype(int)
-    forms_ok["yr"] = forms_ok["form_year_folder"].astype(int)
     forms_ok["sw"] = forms_ok["scoring_software"].map(clean)
     forms_ok = forms_ok[forms_ok["sw"].isin(KNOWN)]
     form_by_ed = forms_ok.groupby("edition_id").first()
@@ -877,9 +876,10 @@ FROM r WHERE starts_with(event_edition_id, 'wsdc:') GROUP BY 1
                 f'<span class="soft needs" title="{H.escape(note)}">'
                 f"Needs verification: {H.escape(name)}</span>"
             )
-        label = {"confirmed": "Confirmed", "likely": "Likely"}[conf]
+        # Only "confirmed" remains after CR-source mapping; keep label map explicit.
+        label = "Confirmed" if conf == "confirmed" else conf.title()
         return (
-            f'<span class="soft {conf}" title="{H.escape(note)}">'
+            f'<span class="soft confirmed" title="{H.escape(note)}">'
             f"{label}: {H.escape(name)}</span>"
         )
 
