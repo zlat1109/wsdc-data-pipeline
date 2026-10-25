@@ -489,10 +489,11 @@ def resolve_software(
 ) -> tuple[str, str, str]:
     """Decide display name / confidence / note for Scoring software.
 
-    Competition Results ``source`` is the scrape provenance and is identical to
-    the scoring platform used for that edition — treat it as confirmed.
-    Results Form is a secondary signal (fills editions without a CR scrape, or
-    flags Form↔CR disagreements).
+    Priority:
+    1. Scraped Competition Results ``source`` (platform prelims came from).
+    2. Else Results Form for this edition.
+    3. Else empty → UI shows ``No data — needs verification``.
+    Form never overrides a CR scrape.
     """
     form_sw = (form_sw or "").strip().lower()
     if form_sw and form_sw not in KNOWN:
@@ -500,16 +501,7 @@ def resolve_software(
 
     if cr_known:
         cr_disp = " / ".join(DISPLAY.get(p, p) for p in cr_known)
-        if form_sw and form_sw not in cr_known:
-            return (
-                f"Form: {DISPLAY.get(form_sw, form_sw)} · CR: {cr_disp}",
-                "conflict",
-                "Results Form and Competition Results disagree",
-            )
-        note = "Competition Results source"
-        if form_sw:
-            note = "Competition Results source (+ Results Form)"
-        return cr_disp, "confirmed", note
+        return cr_disp, "confirmed", "Competition Results source"
 
     if form_sw:
         return DISPLAY.get(form_sw, form_sw), "confirmed", "Results Form"
@@ -806,8 +798,7 @@ FROM r WHERE starts_with(event_edition_id, 'wsdc:') GROUP BY 1
     forms_ok = forms_ok[forms_ok["sw"].isin(KNOWN)]
     form_by_ed = forms_ok.groupby("edition_id").first()
 
-    # Software: Competition Results ``source`` == scoring platform for the scrape.
-    # Results Form fills gaps / flags disagreements.
+    # Software priority: CR scrape → this edition's Form → needs verification.
     soft_name, soft_conf, soft_note = [], [], []
     for _, r in comp.iterrows():
         eid = int(r.edition_id)
@@ -871,16 +862,9 @@ FROM r WHERE starts_with(event_edition_id, 'wsdc:') GROUP BY 1
         note = clean(r.soft_note)
         if conf == "needs_verification" or not name:
             return '<span class="soft needs">No data — needs verification</span>'
-        if conf == "conflict":
-            return (
-                f'<span class="soft needs" title="{H.escape(note)}">'
-                f"Needs verification: {H.escape(name)}</span>"
-            )
-        # Only "confirmed" remains after CR-source mapping; keep label map explicit.
-        label = "Confirmed" if conf == "confirmed" else conf.title()
         return (
             f'<span class="soft confirmed" title="{H.escape(note)}">'
-            f"{label}: {H.escape(name)}</span>"
+            f"Confirmed: {H.escape(name)}</span>"
         )
 
     def side_html(r) -> str:
@@ -1043,9 +1027,7 @@ td.c, th.c {{ text-align:center; }}
 .tip-click[hidden] {{ display:none !important; }}
 .soft {{ display:inline-block; font-size:.72rem; font-weight:600; padding:.1rem .35rem; border-radius:3px; }}
 .soft.confirmed {{ background:var(--ok-bg); color:var(--ok); }}
-.soft.likely {{ background:var(--partial-bg); color:var(--partial); }}
 .soft.needs {{ background:#eceae4; color:var(--none); }}
-.soft-note {{ font-size:.7rem; color:var(--muted); font-weight:500; }}
 .badge.dc {{ display:inline-block; font-size:.65rem; padding:.05rem .3rem; border-radius:3px;
   background:#e8eef6; color:#2a4a6a; font-weight:600; margin-left:.25rem; }}
 section.year {{ margin:2rem 0; padding-top:.5rem; border-top:2px solid var(--line); }}
@@ -1084,10 +1066,10 @@ td.ok {{ color:var(--ok); font-weight:600; }}
   Other divs (Masters, Sophisticated, Strictly, Switch, All American, …):
   click <em>yes</em> for the list from Competition Results.
   Generated {stamp}.</p>
-  <p><strong>Software</strong> comes from Competition Results <code>source</code>
-  (the platform the prelims were scraped from — identical to the scoring software used):
-  <span class="soft confirmed">Confirmed</span> = CR source, and/or this edition's Results Form;
-  <span class="soft needs">Needs verification</span> = no CR source and no form for this edition, or Form vs CR disagree.</p>
+  <p><strong>Software</strong> priority:
+  <span class="soft confirmed">Confirmed</span> = Competition Results scrape source
+  (platform prelims came from); if not scraped — this edition's Results Form;
+  otherwise <span class="soft needs">No data — needs verification</span>.</p>
   <div class="legend">
     <span class="chk full">✓</span> Full
     <span class="chk partial">✓</span> Partial

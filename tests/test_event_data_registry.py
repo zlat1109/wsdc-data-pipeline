@@ -92,22 +92,21 @@ def test_form_month_parsing():
     assert form_start_month("") is None
 
 
-def test_software_confirmed_from_competition_results_source():
-    name, conf, note = resolve_software(cr_known=["scoringdance"])
+def test_software_scraped_source_wins_over_disagreeing_form():
+    name, conf, note = resolve_software(cr_known=["eepro"], form_sw="net2order")
     assert conf == "confirmed"
-    assert name == "scoring.dance"
+    assert name == "EEPro"
     assert "Competition Results" in note
 
 
-def test_software_conflict_when_form_disagrees_with_cr():
-    name, conf, note = resolve_software(cr_known=["eepro"], form_sw="net2order")
-    assert conf == "conflict"
-    assert "Form:" in name and "CR:" in name
-
-
-def test_software_form_only_when_no_cr_source():
+def test_software_form_when_not_scraped():
     name, conf, note = resolve_software(cr_known=[], form_sw="eepro")
     assert conf == "confirmed" and name == "EEPro" and note == "Results Form"
+
+
+def test_software_neither_scrape_nor_form_needs_verification():
+    name, conf, note = resolve_software(cr_known=[], form_sw="")
+    assert conf == "needs_verification" and name == "" and note == ""
 
 
 def test_form_match_uses_year_month_and_name():
