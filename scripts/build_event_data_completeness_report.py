@@ -486,33 +486,37 @@ def resolve_software(
     *,
     cr_known: list[str],
     form_sw: str = "",
+    series_sw: str = "",
+    series_yr: int | None = None,
 ) -> tuple[str, str, str]:
     """Decide display name / confidence / note for Scoring software.
 
-    Competition Results ``source`` is the scrape provenance and is identical to
-    the scoring platform used for that edition — treat it as confirmed.
-    Results Form is a secondary signal (fills editions without a CR scrape, or
-    flags Form↔CR disagreements).
+    Priority:
+    1. Scraped Competition Results ``source`` (platform prelims came from).
+    2. Else Results Form for this edition.
+    3. Else another year's Results Form for the same event series.
+    Form never overrides a CR scrape (even when Form and CR disagree).
     """
     form_sw = (form_sw or "").strip().lower()
     if form_sw and form_sw not in KNOWN:
         form_sw = ""
+    series_sw = (series_sw or "").strip().lower()
+    if series_sw and series_sw not in KNOWN:
+        series_sw = ""
 
     if cr_known:
         cr_disp = " / ".join(DISPLAY.get(p, p) for p in cr_known)
-        if form_sw and form_sw not in cr_known:
-            return (
-                f"Form: {DISPLAY.get(form_sw, form_sw)} · CR: {cr_disp}",
-                "conflict",
-                "Results Form and Competition Results disagree",
-            )
-        note = "Competition Results source"
-        if form_sw:
-            note = "Competition Results source (+ Results Form)"
-        return cr_disp, "confirmed", note
+        return cr_disp, "confirmed", "Competition Results source"
 
     if form_sw:
         return DISPLAY.get(form_sw, form_sw), "confirmed", "Results Form"
+
+    if series_sw and series_yr is not None:
+        return (
+            DISPLAY.get(series_sw, series_sw),
+            "likely",
+            f"{int(series_yr)} Results Form",
+        )
 
     return "", "needs_verification", ""
 
@@ -802,23 +806,40 @@ FROM r WHERE starts_with(event_edition_id, 'wsdc:') GROUP BY 1
     forms_m = match_forms(forms, ed, extra_names)
     forms_ok = forms_m[forms_m["m_ok"]].copy()
     forms_ok["edition_id"] = forms_ok["m_edition_id"].astype(int)
+    forms_ok["yr"] = forms_ok["form_year_folder"].astype(int)
     forms_ok["sw"] = forms_ok["scoring_software"].map(clean)
     forms_ok = forms_ok[forms_ok["sw"].isin(KNOWN)]
     form_by_ed = forms_ok.groupby("edition_id").first()
+    forms_ok["our_event_id"] = forms_ok["edition_id"].map(
+        ed.set_index("edition_id")["event_id"]
+    )
+    series_best = (
+        forms_ok.sort_values(["our_event_id", "yr"], ascending=[True, False])
+        .groupby("our_event_id")
+        .first()
+    )
 
-    # Software: Competition Results ``source`` == scoring platform for the scrape.
-    # Results Form fills gaps / flags disagreements.
+    # Software priority: CR scrape → this edition's Form → other-year Form.
     soft_name, soft_conf, soft_note = [], [], []
     for _, r in comp.iterrows():
         eid = int(r.edition_id)
+        ev = int(r.event_id)
         form_sw = ""
         if eid in form_by_ed.index:
             sw = clean(form_by_ed.loc[eid].get("sw"))
             if sw in KNOWN:
                 form_sw = sw
+        series_sw, series_yr = "", None
+        if ev in series_best.index:
+            fr = series_best.loc[ev]
+            sw = clean(fr.get("sw"))
+            if sw in KNOWN:
+                series_sw, series_yr = sw, int(fr.get("yr"))
         name, conf, note = resolve_software(
             cr_known=cr_software_keys(r.get("sources")),
             form_sw=form_sw,
+            series_sw=series_sw,
+            series_yr=series_yr,
         )
         soft_name.append(name)
         soft_conf.append(conf)
@@ -876,10 +897,12 @@ FROM r WHERE starts_with(event_edition_id, 'wsdc:') GROUP BY 1
                 f'<span class="soft needs" title="{H.escape(note)}">'
                 f"Needs verification: {H.escape(name)}</span>"
             )
-        # Only "confirmed" remains after CR-source mapping; keep label map explicit.
-        label = "Confirmed" if conf == "confirmed" else conf.title()
+        label = {"confirmed": "Confirmed", "likely": "Likely"}.get(
+            conf, conf.title()
+        )
+        css = conf if conf in {"confirmed", "likely"} else "needs"
         return (
-            f'<span class="soft confirmed" title="{H.escape(note)}">'
+            f'<span class="soft {css}" title="{H.escape(note)}">'
             f"{label}: {H.escape(name)}</span>"
         )
 
@@ -1084,10 +1107,12 @@ td.ok {{ color:var(--ok); font-weight:600; }}
   Other divs (Masters, Sophisticated, Strictly, Switch, All American, …):
   click <em>yes</em> for the list from Competition Results.
   Generated {stamp}.</p>
-  <p><strong>Software</strong> comes from Competition Results <code>source</code>
-  (the platform the prelims were scraped from — identical to the scoring software used):
-  <span class="soft confirmed">Confirmed</span> = CR source, and/or this edition's Results Form;
-  <span class="soft needs">Needs verification</span> = no CR source and no form for this edition, or Form vs CR disagree.</p>
+  <p><strong>Software</strong> priority:
+  <span class="soft confirmed">Confirmed</span> = Competition Results scrape source
+  (platform prelims came from); if not scraped —
+  this edition's Results Form;
+  <span class="soft likely">Likely</span> = another year's Results Form for the same event;
+  <span class="soft needs">Needs verification</span> = neither scrape nor form.</p>
   <div class="legend">
     <span class="chk full">✓</span> Full
     <span class="chk partial">✓</span> Partial
