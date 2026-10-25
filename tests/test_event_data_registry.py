@@ -8,6 +8,7 @@ from scripts.build_event_data_completeness_report import (
     flags_for,
     format_side_labels,
     normalize_side_label,
+    resolve_software,
 )
 from transform.results_form_match import form_start_month, match_forms
 
@@ -89,6 +90,24 @@ def test_form_month_parsing():
     assert form_start_month("12/04 au 14/04/24") == 4
     assert form_start_month("2024-06-09 00:00:00") == 6
     assert form_start_month("") is None
+
+
+def test_software_confirmed_from_competition_results_source():
+    name, conf, note = resolve_software(cr_known=["scoringdance"])
+    assert conf == "confirmed"
+    assert name == "scoring.dance"
+    assert "Competition Results" in note
+
+
+def test_software_conflict_when_form_disagrees_with_cr():
+    name, conf, note = resolve_software(cr_known=["eepro"], form_sw="net2order")
+    assert conf == "conflict"
+    assert "Form:" in name and "CR:" in name
+
+
+def test_software_form_only_when_no_cr_source():
+    name, conf, note = resolve_software(cr_known=[], form_sw="eepro")
+    assert conf == "confirmed" and name == "EEPro" and note == "Results Form"
 
 
 def test_form_match_uses_year_month_and_name():
