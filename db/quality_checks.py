@@ -748,6 +748,77 @@ EXTENDED_CHECKS: tuple[QualityCheck, ...] = (
         description="tier_points must include placement=0 (additional finalist) rows.",
         fix_hint="scripts/load_tier_rules.py + transform/knowledge/tier_rules.py",
     ),
+    # Competition Results enrichment — parallel tables; must not invent FKs.
+    QualityCheck(
+        name="cr_orphan_dancer_fk",
+        sql="""
+        SELECT count(*) FROM core.cr_round_results rr
+        WHERE rr.dancer_id IS NOT NULL
+          AND NOT EXISTS (
+              SELECT 1 FROM core.dancers d WHERE d.dancer_id = rr.dancer_id
+          )
+        """,
+        max_value=0,
+        severity="error",
+        category="competition_results",
+        description="CR dancer_id must reference core.dancers (or be NULL).",
+        fix_hint="scripts/load_competition_results.py — resolve_dancer_id",
+    ),
+    QualityCheck(
+        name="cr_orphan_edition_fk",
+        sql="""
+        SELECT count(*) FROM core.cr_editions e
+        WHERE e.edition_id IS NOT NULL
+          AND NOT EXISTS (
+              SELECT 1 FROM core.event_editions ed WHERE ed.edition_id = e.edition_id
+          )
+        """,
+        max_value=0,
+        severity="error",
+        category="competition_results",
+        description="CR edition_id must reference core.event_editions (or be NULL).",
+        fix_hint="transform/competition_results/editions.py",
+    ),
+    QualityCheck(
+        name="cr_dancer_id_ne_identity",
+        sql="""
+        SELECT count(*) FROM core.cr_round_results rr
+        WHERE rr.dancer_id IS NOT NULL
+          AND rr.cr_identity ~ '^[0-9]+$'
+          AND rr.dancer_id <> rr.cr_identity::int
+        """,
+        max_value=0,
+        severity="error",
+        category="competition_results",
+        description="When set, dancer_id must equal numeric cr_identity.",
+        fix_hint="transform/competition_results/rounds.py resolve_dancer_id",
+    ),
+    QualityCheck(
+        name="cr_edition_event_id_mismatch",
+        sql="""
+        SELECT count(*) FROM core.cr_editions e
+        JOIN core.event_editions ed ON ed.edition_id = e.edition_id
+        WHERE e.canonical_event_id IS NOT NULL
+          AND e.canonical_event_id <> ed.event_id
+        """,
+        max_value=0,
+        severity="error",
+        category="competition_results",
+        description="Matched CR edition must point at the same event_id as core.",
+        fix_hint="MERGE_EVENT_ID_MAP / editions matcher",
+    ),
+    QualityCheck(
+        name="cr_redacted_with_name",
+        sql="""
+        SELECT count(*) FROM core.cr_round_results
+        WHERE cr_identity = 'redacted' AND competitor_name IS NOT NULL
+        """,
+        max_value=0,
+        severity="error",
+        category="competition_results",
+        description="Redacted CR competitors must not store a display name.",
+        fix_hint="competitor_display_name()",
+    ),
 )
 
 ALL_CHECKS: tuple[QualityCheck, ...] = CORE_CHECKS + EXTENDED_CHECKS

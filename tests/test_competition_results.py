@@ -2,9 +2,15 @@
 
 from __future__ import annotations
 
+from pathlib import Path
+
 import pandas as pd
 
-from transform.competition_results.build import build_cr_tables
+from transform.competition_results.build import CrTables, build_cr_tables
+from transform.competition_results.conflicts import (
+    assert_no_core_mutation_targets,
+    check_built_tables_against_core,
+)
 from transform.competition_results.divisions import (
     resolve_category,
     resolve_label,
@@ -231,3 +237,68 @@ def test_build_tables_pairs_final_couples_and_dedupes_marks():
     assert not any(
         "Advanced" in d["raw_division"] for d in tables.divisions
     )
+    # no conflicts with core identity map
+    conflict = check_built_tables_against_core(
+        tables,
+        known_dancer_ids={421, 16892},
+        edition_event_ids={999: 77},
+    )
+    assert conflict.ok, conflict.issues
+
+
+def test_conflict_detects_orphan_dancer_and_event_mismatch():
+    tables = CrTables(
+        editions=[
+            {
+                "cr_edition_id": "wsdc:1:January 2024",
+                "edition_id": 10,
+                "match_status": "matched",
+                "canonical_event_id": 99,  # core says 1
+            }
+        ],
+        round_results=[
+            {
+                "dancer_id": 99999,
+                "partner_dancer_id": None,
+                "cr_identity": "99999",
+                "competitor_name": "Ghost",
+            },
+            {
+                "dancer_id": 5,
+                "partner_dancer_id": None,
+                "cr_identity": "7",  # mismatch
+                "competitor_name": "X",
+            },
+            {
+                "dancer_id": None,
+                "partner_dancer_id": None,
+                "cr_identity": "redacted",
+                "competitor_name": "ShouldNot",
+            },
+        ],
+        divisions=[{"level": "NotALevel"}],
+    )
+    report = check_built_tables_against_core(
+        tables,
+        known_dancer_ids={5},
+        edition_event_ids={10: 1},
+    )
+    assert not report.ok
+    assert report.counts["orphan_dancer_fk"] == 1
+    assert report.counts["dancer_id_ne_identity"] == 1
+    assert report.counts["redacted_with_name"] == 1
+    assert report.counts["edition_event_id_mismatch"] == 1
+    assert report.counts["unknown_level"] == 1
+
+
+def test_loader_never_targets_core_scored_tables():
+    forbidden = assert_no_core_mutation_targets()
+    assert "core.results" in forbidden
+    assert "core.dancers" in forbidden
+    assert "core.event_editions" in forbidden
+    src = Path(__file__).resolve().parents[1] / "scripts" / "load_competition_results.py"
+    text = src.read_text(encoding="utf-8")
+    for table in forbidden:
+        # COPY / TRUNCATE must not mention scored core tables.
+        assert f"TRUNCATE {table}" not in text
+        assert f"COPY {table}" not in text

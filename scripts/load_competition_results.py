@@ -113,6 +113,11 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     p.add_argument("--dry-run", action="store_true")
     p.add_argument("--apply", action="store_true")
     p.add_argument(
+        "--check-conflicts",
+        action="store_true",
+        help="run live FK/identity conflict probes against core.cr_* (no load)",
+    )
+    p.add_argument(
         "--migrate",
         action="store_true",
         help="run db/apply.py before --apply",
@@ -138,11 +143,13 @@ def load_parquet_filtered(path: Path):
     import duckdb
 
     con = duckdb.connect()
+    # Parameterized path — avoid embedding user paths in SQL text.
+    con.execute("CREATE OR REPLACE TEMP VIEW _cr_src AS SELECT * FROM read_parquet(?)", [str(path)])
     # Only enrichment rows (WSDC + scrape-originated).
     return con.execute(
-        f"""
+        """
         SELECT *
-        FROM read_parquet('{path}')
+        FROM _cr_src
         WHERE starts_with(event_edition_id, 'wsdc:')
           AND result_from_other_source
         """
@@ -305,8 +312,17 @@ def acceptance_checks(tables) -> dict[str, Any]:
 
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
+    if args.check_conflicts and not args.dry_run and not args.apply:
+        from connection import connect  # type: ignore
+        from transform.competition_results.conflicts import run_live_conflict_checks
+
+        with connect() as conn:
+            report = run_live_conflict_checks(conn)
+        print(json.dumps({"ok": report.ok, "counts": report.counts, "issues": report.issues}, indent=2))
+        return 0 if report.ok else 1
+
     if not args.dry_run and not args.apply:
-        print("Specify --dry-run or --apply.", file=sys.stderr)
+        print("Specify --dry-run, --apply, or --check-conflicts.", file=sys.stderr)
         return 2
     if not args.cr_path:
         print("Missing --cr-path / CR_RESULTS_PATH.", file=sys.stderr)
@@ -348,6 +364,27 @@ def main(argv: list[str] | None = None) -> int:
             f"incomplete_couples={tables.stats.get('final_couples_incomplete')}"
         )
 
+        from transform.competition_results.conflicts import (
+            assert_no_core_mutation_targets,
+            check_built_tables_against_core,
+            run_live_conflict_checks,
+        )
+
+        edition_event_ids = {
+            int(e["edition_id"]): int(e["event_id"]) for e in editions
+        }
+        offline = check_built_tables_against_core(
+            tables,
+            known_dancer_ids=known,
+            edition_event_ids=edition_event_ids,
+        )
+        print("Offline conflict checks:", "OK" if offline.ok else offline.issues)
+        if not offline.ok:
+            checks["ok"] = False
+            checks["offline_conflicts"] = offline.counts
+        # Document tables we never touch.
+        checks["never_write"] = list(assert_no_core_mutation_targets())
+
         unmatched_sample = [
             {
                 "cr_edition_id": e["cr_edition_id"],
@@ -387,6 +424,15 @@ def main(argv: list[str] | None = None) -> int:
             conn.commit()
             payload["load_id"] = load_id
             print(f"Applied load_id={load_id}")
+            live = run_live_conflict_checks(conn)
+            payload["live_conflicts"] = {
+                "ok": live.ok,
+                "counts": live.counts,
+                "issues": live.issues,
+            }
+            print("Live conflict checks:", "OK" if live.ok else live.issues)
+            if not live.ok:
+                return 1
         else:
             print("DRY-RUN — no writes.")
 
