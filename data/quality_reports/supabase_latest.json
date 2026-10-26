@@ -224,7 +224,7 @@
       "name": "duplicate_edition_start_dates",
       "category": "event_naming",
       "severity": "warn",
-      "value": 1,
+      "value": 0,
       "max_value": 5,
       "ok": true,
       "description": "Same event_id+start_date on multiple edition keys (NYE wrap is rare/ok; larger counts need review).",
@@ -419,14 +419,64 @@
       "ok": true,
       "description": "tier_points must include placement=0 (additional finalist) rows.",
       "fix_hint": "scripts/load_tier_rules.py + transform/knowledge/tier_rules.py"
+    },
+    {
+      "name": "cr_orphan_dancer_fk",
+      "category": "competition_results",
+      "severity": "error",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "CR dancer_id must reference core.dancers (or be NULL).",
+      "fix_hint": "scripts/load_competition_results.py \u2014 resolve_dancer_id"
+    },
+    {
+      "name": "cr_orphan_edition_fk",
+      "category": "competition_results",
+      "severity": "error",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "CR edition_id must reference core.event_editions (or be NULL).",
+      "fix_hint": "transform/competition_results/editions.py"
+    },
+    {
+      "name": "cr_dancer_id_ne_identity",
+      "category": "competition_results",
+      "severity": "error",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "When set, dancer_id must equal numeric cr_identity.",
+      "fix_hint": "transform/competition_results/rounds.py resolve_dancer_id"
+    },
+    {
+      "name": "cr_edition_event_id_mismatch",
+      "category": "competition_results",
+      "severity": "error",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "Matched CR edition must point at the same event_id as core.",
+      "fix_hint": "MERGE_EVENT_ID_MAP / editions matcher"
+    },
+    {
+      "name": "cr_redacted_with_name",
+      "category": "competition_results",
+      "severity": "error",
+      "value": 0,
+      "max_value": 0,
+      "ok": true,
+      "description": "Redacted CR competitors must not store a display name.",
+      "fix_hint": "competitor_display_name()"
     }
   ],
   "summary": {
-    "total": 42,
-    "passed": 42,
+    "total": 47,
+    "passed": 47,
     "errors": 0,
     "warnings": 0
   },
-  "generated_at": "2026-10-21T21:53:30.444162+00:00",
+  "generated_at": "2026-10-26T15:50:15.671570+00:00",
   "scope": "full"
 }
