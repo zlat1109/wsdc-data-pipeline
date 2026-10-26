@@ -125,6 +125,11 @@ Check definitions live in `db/quality_checks.py` (single source of truth for mon
 | `tier_range_conflicts` | scored_dancers exceeding rule_max_competitors is rare (data or chart mismatch). |
 | `tier_missing_rules_version` | Groups from 2002+ must resolve to a rules_version. |
 | `tier_rules_missing_finalist_points` | tier_points must include placement=0 (additional finalist) rows. |
+| `cr_orphan_dancer_fk` | CR dancer_id must reference core.dancers (or be NULL). |
+| `cr_orphan_edition_fk` | CR edition_id must reference core.event_editions (or be NULL). |
+| `cr_dancer_id_ne_identity` | When set, dancer_id must equal numeric cr_identity. |
+| `cr_edition_event_id_mismatch` | Matched CR edition must point at the same event_id as core. |
+| `cr_redacted_with_name` | Redacted CR competitors must not store a display name. |
 <!-- /docs-sync:extended-quality-checks -->
 
 ## Event split audit

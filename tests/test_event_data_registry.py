@@ -6,9 +6,11 @@ import pandas as pd
 
 from scripts.build_event_data_completeness_report import (
     flags_for,
+    resolve_software,
+)
+from transform.competition_results.side_labels import (
     format_side_labels,
     normalize_side_label,
-    resolve_software,
 )
 from transform.results_form_match import form_start_month, match_forms
 

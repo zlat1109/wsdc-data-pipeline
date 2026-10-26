@@ -20,6 +20,14 @@ Deduped matched competitions: one row per (edition_id, level).
 Completed WSDC editions (results-backed, past). event_seq=1 is oldest; 
 
 
+## export.cr_editions
+
+## export.cr_finals_vs_scored
+
+## export.cr_judge_marks
+
+## export.cr_round_results
+
 ## export.dancer_role_info
 
 ## export.dancers_points_info
