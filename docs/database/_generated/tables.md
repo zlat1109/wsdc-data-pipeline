@@ -22,6 +22,115 @@ Exact per-edition division headcounts from WSDC dump competitions (WCS).
 | dump_updated_at | text/PK/FK | — |
 | loaded_at | text/PK/FK | — |
 
+## core.cr_divisions
+
+Per-edition divisions from Competition Results (skill + age/fun/strictly).
+
+| Column | Migration parse | Live type |
+|--------|-----------------|-----------|
+| cr_division_id | text/PK/FK | — |
+| cr_edition_id | text/PK/FK | — |
+| ON | text/PK/FK | — |
+| raw_division | text/PK/FK | — |
+| level | text/PK/FK | — |
+| category | text/PK/FK | — |
+| label | text/PK/FK | — |
+| competition_bucket | text/PK/FK | — |
+
+## core.cr_editions
+
+Competition Results editions linked to core.event_editions when matched.
+
+| Column | Migration parse | Live type |
+|--------|-----------------|-----------|
+| cr_edition_id | text/PK/FK | — |
+| wsdc_event_id | text/PK/FK | — |
+| cr_name | text/PK/FK | — |
+| cr_date | text/PK/FK | — |
+| edition_id | text/PK/FK | — |
+| match_status | text/PK/FK | — |
+| scoring_source | text/PK/FK | — |
+| filing_year | text/PK/FK | — |
+| filing_month | text/PK/FK | — |
+| canonical_event_id | text/PK/FK | — |
+| load_id | text/PK/FK | — |
+
+## core.cr_final_couples
+
+Finals: one row per dancing couple (judge ranks the pair).
+
+| Column | Migration parse | Live type |
+|--------|-----------------|-----------|
+| couple_id | text/PK/FK | — |
+| cr_round_id | text/PK/FK | — |
+| ON | text/PK/FK | — |
+| leader_result_id | text/PK/FK | — |
+| REFERENCES | text/PK/FK | — |
+| follower_result_id | text/PK/FK | — |
+| REFERENCES | text/PK/FK | — |
+| place | text/PK/FK | — |
+
+## core.cr_judge_marks
+
+Long-form marks: per competitor in prelim/semi/quarter; per couple in finals.
+
+| Column | Migration parse | Live type |
+|--------|-----------------|-----------|
+| judge_mark_id | text/PK/FK | — |
+| cr_round_result_id | text/PK/FK | — |
+| ON | text/PK/FK | — |
+| couple_id | text/PK/FK | — |
+| ON | text/PK/FK | — |
+| judge_name | text/PK/FK | — |
+| mark | text/PK/FK | — |
+| (cr_round_result_id | text/PK/FK | — |
+| OR | text/PK/FK | — |
+| ) | text/PK/FK | — |
+
+## core.cr_loads
+
+One row per Competition Results load into core.cr_*.
+
+| Column | Migration parse | Live type |
+|--------|-----------------|-----------|
+| load_id | text/PK/FK | — |
+| loaded_at | text/PK/FK | — |
+| source_file | text/PK/FK | — |
+| file_sha256 | text/PK/FK | — |
+| row_counts | text/PK/FK | — |
+| match_stats | text/PK/FK | — |
+
+## core.cr_round_results
+
+One competitor per round. dancer_id set only for known WSDC ids; 
+
+| Column | Migration parse | Live type |
+|--------|-----------------|-----------|
+| cr_round_result_id | text/PK/FK | — |
+| cr_round_id | text/PK/FK | — |
+| ON | text/PK/FK | — |
+| role | text/PK/FK | — |
+| cr_identity | text/PK/FK | — |
+| dancer_id | text/PK/FK | — |
+| competitor_name | text/PK/FK | — |
+| place | text/PK/FK | — |
+| callback | text/PK/FK | — |
+| partner_cr_identity | text/PK/FK | — |
+| partner_dancer_id | text/PK/FK | — |
+
+## core.cr_rounds
+
+Rounds within a CR division (prelim / quarter / semi / final).
+
+| Column | Migration parse | Live type |
+|--------|-----------------|-----------|
+| cr_round_id | text/PK/FK | — |
+| cr_division_id | text/PK/FK | — |
+| ON | text/PK/FK | — |
+| round | text/PK/FK | — |
+| source_url | text/PK/FK | — |
+| total_competitors | text/PK/FK | — |
+
 ## core.dancer_aliases
 | Column | Migration parse | Live type |
 |--------|-----------------|-----------|

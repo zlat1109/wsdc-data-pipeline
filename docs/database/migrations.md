@@ -57,6 +57,7 @@ CI and `scripts/run_pipeline.py` call `db/apply.py` before load.
 | `036_event_instances_rebuild_from_editions.sql` | Rebuild policy for deprecated core.event_instances: promote_core truncates the table; rebuild_event_catalog repopulates it from core.event_editions (location_id + location_raw + dates). Direct consumers should use event_editions; export.events_wsdc already does. |
 | `037_competitions.sql` | WSDC dump competitions (exact role counts) + level_id on core.levels |
 | `038_competitions_best_view.sql` | competitions consistency checks + best-row export view |
+| `039_competition_results.sql` | Competition Results enrichment (scrape layer absent from WSDC public results). Parallel to core.results: prelims/semis/quarters, unscored finalists, partners, judge marks, other divisions. Nullable FKs — never invent dancers/events. |
 <!-- /docs-sync:migration-index -->
 
 ## Adding a migration
