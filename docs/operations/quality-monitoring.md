@@ -132,6 +132,10 @@ Check definitions live in `db/quality_checks.py` (single source of truth for mon
 | `cr_redacted_with_name` | Redacted CR competitors must not store a display name. |
 <!-- /docs-sync:extended-quality-checks -->
 
+Competition Results load + conflict probes:
+[competition-results.md](competition-results.md)
+(`python scripts/load_competition_results.py --check-conflicts`).
+
 ## Event split audit
 
 ```bash

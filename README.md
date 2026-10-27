@@ -16,7 +16,8 @@ points.worldsdc.com
    staging          сырые данные прогона (Supabase)
         ▼
    core             нормализованные сущности: dancers, events,
-        │           event_instances, locations, results, dancer_points
+        │           event_editions, locations, results, dancer_points
+        │           (+ optional: competitions dump, cr_* Competition Results)
         ▼
    history          SCD2: очки, дивизионы, имена + журнал прогонов
         ▼
@@ -24,6 +25,9 @@ points.worldsdc.com
         ▼
    data/            CSV в git — источник для Tableau Public и других проектов
 ```
+
+Доп. обогащение (локально, не в weekly parse): Competition Results → `core.cr_*`
+и Event Data Registry на analytics site — см. [docs/operations/competition-results.md](docs/operations/competition-results.md).
 
 ## Структура репозитория
 

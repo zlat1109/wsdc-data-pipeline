@@ -143,8 +143,12 @@ def load_parquet_filtered(path: Path):
     import duckdb
 
     con = duckdb.connect()
+    # TEMP TABLE (not VIEW): DuckDB rejects prepared params in CREATE VIEW.
     # Parameterized path — avoid embedding user paths in SQL text.
-    con.execute("CREATE OR REPLACE TEMP VIEW _cr_src AS SELECT * FROM read_parquet(?)", [str(path)])
+    con.execute(
+        "CREATE OR REPLACE TEMP TABLE _cr_src AS SELECT * FROM read_parquet(?)",
+        [str(path)],
+    )
     # Only enrichment rows (WSDC + scrape-originated).
     return con.execute(
         """

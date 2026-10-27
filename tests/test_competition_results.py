@@ -107,6 +107,73 @@ def test_resolve_level_and_category():
     )
 
 
+def test_pro_am_slash_and_spaced_variants():
+    """CR often writes Pro/Am; must not fall through to skill via leveled bucket."""
+    for raw in (
+        "Pro/Am Intermediate",
+        "Pro / Am Intermediate",
+        "Pro-Am Novice",
+        "Pro Am Advanced",
+        "ProAm Champions",
+        "All-Stars Pro/Am",
+    ):
+        assert (
+            resolve_category(
+                competition_bucket="wsdc_pointed_leveled",
+                wsdc_division="Intermediate",
+                raw_division=raw,
+            )
+            == "pro-am"
+        ), raw
+        assert resolve_label(
+            competition_bucket="wsdc_pointed_leveled",
+            wsdc_division="Intermediate",
+            raw_division=raw,
+        ) in {"Pro-Am", "Pro-Am Strictly"}, raw
+
+    assert (
+        resolve_category(
+            competition_bucket="wsdc_pointed_other",
+            wsdc_division=None,
+            raw_division="Pro / Am Strictly",
+        )
+        == "pro-am"
+    )
+    assert (
+        resolve_label(
+            competition_bucket="wsdc_pointed_other",
+            wsdc_division=None,
+            raw_division="Pro / Am Strictly",
+        )
+        == "Pro-Am Strictly"
+    )
+    assert (
+        resolve_category(
+            competition_bucket="wsdc_event_other",
+            wsdc_division=None,
+            raw_division="Pro Lead/Am Follow J&J Novice Prelims",
+        )
+        == "pro-am"
+    )
+    assert (
+        resolve_label(
+            competition_bucket="wsdc_event_other",
+            wsdc_division=None,
+            raw_division="Pro Lead/Am Follow J&J Novice Prelims",
+        )
+        == "Pro-Am"
+    )
+    for raw in ("pro(l)am(f)", "pro(f)am(l)"):
+        assert (
+            resolve_category(
+                competition_bucket="wsdc_event_other",
+                wsdc_division=None,
+                raw_division=raw,
+            )
+            == "pro-am"
+        ), raw
+
+
 def test_dancer_id_and_redacted_name():
     known = {421, 16892}
     assert resolve_dancer_id("421", known) == 421

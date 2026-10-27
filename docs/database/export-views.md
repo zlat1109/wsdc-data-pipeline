@@ -42,6 +42,11 @@ Not wired in `export.py` (document manually when added):
 | `export.completed_event_editions` | — | Live VIEW (034); completed editions for analytics / site |
 | `export.scheduled_event_editions` | — | Not in default export |
 | `export.scheduled_events_legacy` | — | Deprecated; query manually if needed |
+| `export.competitions` | — | Full dump competitions (prefer `competitions_best` CSV) |
+| `export.cr_editions` | — | Competition Results editions (Supabase only) |
+| `export.cr_round_results` | — | CR competitor rows (Supabase only) |
+| `export.cr_judge_marks` | — | CR judge marks long-form (Supabase only) |
+| `export.cr_finals_vs_scored` | — | CR finals vs `core.results` (`unscored_finalist`) |
 
 ## export.dancers_points_info
 

@@ -32,8 +32,14 @@ erDiagram
   locations ||--o{ edition_location_baseline : baseline_place
   events ||--o{ edition_calendar_dates : planned
   event_editions ||--o{ edition_division_tiers : inferred_tier
+  event_editions ||--o{ competitions : dump_headcounts
+  event_editions ||--o{ cr_editions : cr_match
+  cr_editions ||--o{ cr_divisions : has
+  cr_divisions ||--o{ cr_rounds : has
+  cr_rounds ||--o{ cr_round_results : has
   dancers ||--o{ dancer_points : earns
   dancers ||--|| dancer_roles : role_summary
+  dancers ||--o{ cr_round_results : optional_fk
   events ||--o{ event_aliases : known_as
   events ||--o{ event_instances : registry_rows
   parse_runs ||--o{ dancer_points_history : records
@@ -42,6 +48,9 @@ erDiagram
   dancers ||--o{ dancer_names_history : identity_versions
   dancers ||--o{ dancer_aliases : known_as
 ```
+
+Competition Results (`core.cr_*`) and dump `core.competitions` are **parallel**
+enrichment — see [operations/competition-results.md](../operations/competition-results.md).
 
 ### Schedule domain (independent from points load)
 

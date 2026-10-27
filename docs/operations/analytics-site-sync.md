@@ -26,6 +26,18 @@ Live:
 
 See also [point-summary.md](point-summary.md), [champion-news.md](champion-news.md), and [year-event-calendar.md](year-event-calendar.md).
 
+## Event Data Registry (manual, unlisted)
+
+Internal registry of WSDC public results vs Competition Results coverage
+(prelims / judges / partners / other divs / scoring software):
+
+- URL: https://wsdc-analytics.github.io/internal/event-data-registry.html
+- `noindex` + `robots.txt` `Disallow: /internal/` (not in nav / sitemap)
+- Built locally by `scripts/build_event_data_completeness_report.py --site-repo …`
+  from Competition Results parquet + dump TSVs + Results Forms (inputs not published)
+- Not part of `full-parse.yml` / `sync_analytics_site.sh` yet — refresh manually
+  after a CR reload (see [competition-results.md](competition-results.md))
+
 ## Secret (this repo)
 
 | Secret | Purpose |
