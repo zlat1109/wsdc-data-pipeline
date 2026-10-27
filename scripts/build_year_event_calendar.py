@@ -29,9 +29,14 @@ from transform.year_event_calendar.event_cards import (  # noqa: E402
     build_event_l2_cards,
     write_event_l2_cards,
 )
+from transform.year_event_calendar.event_growth import (  # noqa: E402
+    build_event_growth,
+    write_event_growth,
+)
 
 SITE_REL = Path("static/data/events_year_calendar.json")
 CARDS_REL = Path("static/data/event_l2_cards.json")
+GROWTH_REL = Path("static/data/event_growth.json")
 
 
 def _parse_date(value: str) -> date:
@@ -44,6 +49,7 @@ def main() -> int:
     parser.add_argument("--site-repo", type=Path, default=None)
     parser.add_argument("--output", type=Path, default=None)
     parser.add_argument("--cards-output", type=Path, default=None)
+    parser.add_argument("--growth-output", type=Path, default=None)
     parser.add_argument("--as-of", type=_parse_date, default=None)
     parser.add_argument("--year-radius", type=int, default=2)
     parser.add_argument(
@@ -91,13 +97,26 @@ def main() -> int:
         cards_out = PROJECT_ROOT / "data" / "quality_reports" / "event_l2_cards.json"
     write_event_l2_cards(cards, cards_out)
 
+    growth = build_event_growth(
+        args.data_dir, as_of=args.as_of or date.fromisoformat(payload["as_of"])
+    )
+    if args.growth_output:
+        growth_out = args.growth_output
+    elif args.site_repo:
+        growth_out = Path(args.site_repo) / GROWTH_REL
+    else:
+        growth_out = PROJECT_ROOT / "data" / "quality_reports" / "event_growth.json"
+    write_event_growth(growth, growth_out)
+
     summary = {
         "output": str(out),
         "cards_output": str(cards_out),
+        "growth_output": str(growth_out),
         "as_of": payload["as_of"],
         "years": payload["years"],
         "event_count": len(payload["events"]),
         "card_count": len(cards.get("cards") or {}),
+        "growth_edition_count": growth.get("n_editions"),
         "counts_by_year": payload["counts_by_year"],
         "status_counts": {},
     }
