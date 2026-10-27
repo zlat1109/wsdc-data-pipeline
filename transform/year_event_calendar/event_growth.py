@@ -66,17 +66,23 @@ def classify_growth(
     if previous is None or current is None:
         return STATUS_NEW, None, None, GAP_NONE
 
-    if year_gap is None:
+    if year_gap is None or year_gap < 0:
         return STATUS_NEW, None, None, GAP_NONE
 
     if year_gap >= 3:
         return STATUS_RESTARTED, None, None, GAP_RESTART
 
+    # year_gap 0 = same calendar year (multi-edition series); 1 = strict YoY;
+    # 2 = exactly one calendar year skipped.
     gap_flag = GAP_ONE_YEAR if year_gap == 2 else GAP_NONE
     delta = int(current) - int(previous)
     if previous == 0:
+        # No % when baseline is zero; still require abs threshold for grow/decline.
         pct = None
-        status = STATUS_GROWING if delta > 0 else (STATUS_DECLINING if delta < 0 else STATUS_STABLE)
+        if abs(delta) >= abs_threshold:
+            status = STATUS_GROWING if delta > 0 else STATUS_DECLINING
+        else:
+            status = STATUS_STABLE
         return status, delta, pct, gap_flag
 
     pct = delta / float(previous)
@@ -128,9 +134,11 @@ def competitors_for_edition(
     except (TypeError, ValueError):
         ud = None
     if ud and ud > 0:
+        # Scored uniques are not dump headcounts — mark approximate so Exact
+        # filter (source=exact) never treats them as authoritative.
         return {
             "competitors": ud,
-            "approx": 0,
+            "approx": 1,
             "source": "unique_scored",
             "dancers_min": ud,
             "dancers_max": ud,

@@ -80,6 +80,29 @@ def test_classify_growing_meets_both_thresholds():
     assert abs(pct - 0.2) < 1e-9
 
 
+def test_classify_same_year_editions_compare():
+    status, delta, pct, gap = classify_growth(150, 100, year_gap=0)
+    assert status == STATUS_GROWING
+    assert delta == 50
+    assert gap is None
+    assert pct is not None
+
+
+def test_classify_negative_gap_is_new():
+    status, delta, pct, gap = classify_growth(120, 100, year_gap=-1)
+    assert status == STATUS_NEW
+    assert delta is None and pct is None and gap is None
+
+
+def test_classify_zero_baseline_uses_abs_threshold():
+    status, delta, pct, _ = classify_growth(50, 0, year_gap=1)
+    assert status == STATUS_GROWING
+    assert delta == 50
+    assert pct is None
+    status2, _, _, _ = classify_growth(5, 0, year_gap=1)
+    assert status2 == STATUS_STABLE
+
+
 def test_competitors_exact_preferred_over_estimate():
     comps = pd.DataFrame(
         [
@@ -311,7 +334,7 @@ def test_build_event_growth_gap_rules(tmp_path: Path):
     assert e10["gap_flag"] == "after_1yr_break"
     assert e10["delta"] == 30
     assert e10["prev"]["year"] == 2023
-    assert e10["approx"] == 0
+    assert e10["approx"] == 1
     assert e10["source"] == "unique_scored"
 
     e11 = by_id[(11, 2025)]
