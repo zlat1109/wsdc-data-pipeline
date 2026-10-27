@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-10-21T21:44:08.917809+00:00",
+  "generated_at": "2026-10-26T15:42:42.836254+00:00",
   "source": "github-actions",
   "run_id": null,
   "summary": {
     "before_findings_count": 9,
-    "applied_rules_count": 260,
-    "applied_rows_touched": 197666,
-    "manual_review_count": 7,
-    "manual_review_new_count": 3
+    "applied_rules_count": 259,
+    "applied_rows_touched": 196198,
+    "manual_review_count": 6,
+    "manual_review_new_count": 0
   },
   "before_processing": {
     "description": "Issues detected in raw CSV before any normalization",
@@ -179,16 +179,6 @@
         "count": 36,
         "examples": [
           {
-            "base_key": "swing fling",
-            "variants": [
-              "Swing Fling",
-              "Swing Fling 2024"
-            ],
-            "geo_keys": [
-              "washington_dc|dc|usa"
-            ]
-          },
-          {
             "base_key": "monterey swingfest",
             "variants": [
               "Monterey SwingFest",
@@ -206,6 +196,16 @@
             ],
             "geo_keys": [
               "san_francisco|california|usa"
+            ]
+          },
+          {
+            "base_key": "swing fling",
+            "variants": [
+              "Swing Fling",
+              "Swing Fling 2024"
+            ],
+            "geo_keys": [
+              "washington_dc|dc|usa"
             ]
           },
           {
@@ -331,13 +331,6 @@
         "count": 38,
         "examples": [
           {
-            "base_key": "swing fling",
-            "variants": [
-              "Swing Fling",
-              "Swing Fling 2024"
-            ]
-          },
-          {
             "base_key": "monterey swingfest",
             "variants": [
               "Monterey SwingFest",
@@ -349,6 +342,13 @@
             "variants": [
               "Boogie By The Bay",
               "Boogie by the Bay"
+            ]
+          },
+          {
+            "base_key": "swing fling",
+            "variants": [
+              "Swing Fling",
+              "Swing Fling 2024"
             ]
           },
           {
@@ -606,16 +606,16 @@
         "examples": [
           {
             "detail": [
-              "307",
-              "198",
-              "325",
               "37",
-              "279",
-              "99",
-              "66",
               "39",
+              "325",
+              "66",
               "409",
-              "321"
+              "198",
+              "279",
+              "321",
+              "99",
+              "202"
             ]
           }
         ],
@@ -2198,9 +2198,18 @@
         "rule_id": "DIVISION_NORMALIZATION",
         "table": "dancers_results_info",
         "column": "event_competition",
+        "from_value": "Masters",
+        "to_value": "Master",
+        "rows_affected": 17037,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "DIVISION_NORMALIZATION",
+        "table": "dancers_results_info",
+        "column": "event_competition",
         "from_value": "Champions",
         "to_value": "Champion",
-        "rows_affected": 5204,
+        "rows_affected": 5214,
         "source": "known_map"
       },
       {
@@ -2209,16 +2218,7 @@
         "column": "event_competition",
         "from_value": "All-Stars",
         "to_value": "All-Star",
-        "rows_affected": 16427,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "DIVISION_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_competition",
-        "from_value": "Masters",
-        "to_value": "Master",
-        "rows_affected": 17020,
+        "rows_affected": 16457,
         "source": "known_map"
       },
       {
@@ -2309,15 +2309,6 @@
         "from_value": "Atlanta, GA USA",
         "to_value": "Atlanta, GA, United States",
         "rows_affected": 1895,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "EVENT_LOCATION_EXACT",
-        "table": "dancers_results_info",
-        "column": "event_location",
-        "from_value": "St. Louis, Mo, USA",
-        "to_value": "St. Louis, MO, USA",
-        "rows_affected": 1610,
         "source": "known_map"
       },
       {
@@ -2767,7 +2758,7 @@
         "column": "dominate_required",
         "from_value": "ADV",
         "to_value": "Advanced",
-        "rows_affected": 2768,
+        "rows_affected": 2773,
         "source": "known_map"
       },
       {
@@ -2794,7 +2785,7 @@
         "column": "dominate_required",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 18042,
+        "rows_affected": 18062,
         "source": "known_map"
       },
       {
@@ -2812,7 +2803,7 @@
         "column": "dominate_allowed",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 17453,
+        "rows_affected": 17469,
         "source": "known_map"
       },
       {
@@ -2821,7 +2812,7 @@
         "column": "dominate_allowed",
         "from_value": "ADV",
         "to_value": "Advanced",
-        "rows_affected": 3203,
+        "rows_affected": 3205,
         "source": "known_map"
       },
       {
@@ -2830,7 +2821,7 @@
         "column": "dominate_allowed",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 6061,
+        "rows_affected": 6064,
         "source": "known_map"
       },
       {
@@ -2848,7 +2839,7 @@
         "column": "dominate_allowed",
         "from_value": "ALS",
         "to_value": "All-Star",
-        "rows_affected": 1038,
+        "rows_affected": 1042,
         "source": "known_map"
       },
       {
@@ -2866,7 +2857,7 @@
         "column": "non_dominate_required",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 15251,
+        "rows_affected": 15264,
         "source": "known_map"
       },
       {
@@ -2875,7 +2866,7 @@
         "column": "non_dominate_required",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 259,
+        "rows_affected": 263,
         "source": "known_map"
       },
       {
@@ -2902,7 +2893,7 @@
         "column": "non_dominate_allowed",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 7017,
+        "rows_affected": 7018,
         "source": "known_map"
       },
       {
@@ -2920,7 +2911,7 @@
         "column": "non_dominate_allowed",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 15251,
+        "rows_affected": 15264,
         "source": "known_map"
       },
       {
@@ -2929,7 +2920,7 @@
         "column": "non_dominate_allowed",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 1132,
+        "rows_affected": 1136,
         "source": "known_map"
       },
       {
@@ -3106,7 +3097,7 @@
         ],
         "suggested_fix": "Unify via MERGE_EVENT_ID_MAP / EVENT_NAME_NORMALIZATION",
         "fingerprint": "537648405a0cc134",
-        "is_new": true,
+        "is_new": false,
         "requires_manual_review": true
       },
       {
@@ -3133,7 +3124,7 @@
         ],
         "suggested_fix": "Unify via EVENT_NAME_NORMALIZATION or core.event_aliases",
         "fingerprint": "b4155513d91e0d0c",
-        "is_new": true,
+        "is_new": false,
         "requires_manual_review": true
       },
       {
@@ -3295,22 +3286,6 @@
         "suggested_fix": "Verify events_wsdc export or add event instance after parse",
         "fingerprint": "6b2b58d82b35e32b",
         "is_new": false,
-        "requires_manual_review": true
-      },
-      {
-        "category": "event_naming",
-        "code": "EVENT_NAME_NEW_SINCE_LAST_RUN",
-        "severity": "info",
-        "message": "New event names appeared since last quality report (review naming)",
-        "count": 1,
-        "examples": [
-          {
-            "event_name": "Paradise dance Festival"
-          }
-        ],
-        "suggested_fix": "Check if variant of existing event; add normalization rule if needed",
-        "fingerprint": "92b5045d852eb81b",
-        "is_new": true,
         "requires_manual_review": true
       },
       {
