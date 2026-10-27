@@ -58,6 +58,7 @@ CI and `scripts/run_pipeline.py` call `db/apply.py` before load.
 | `037_competitions.sql` | WSDC dump competitions (exact role counts) + level_id on core.levels |
 | `038_competitions_best_view.sql` | competitions consistency checks + best-row export view |
 | `039_competition_results.sql` | Competition Results enrichment (scrape layer absent from WSDC public results). Parallel to core.results: prelims/semis/quarters, unscored finalists, partners, judge marks, other divisions. Nullable FKs — never invent dancers/events. |
+| `040_cr_detach_promote_cascade_fks.sql` | Competition Results must survive weekly promote_core TRUNCATE … CASCADE. |
 <!-- /docs-sync:migration-index -->
 
 ## Adding a migration
