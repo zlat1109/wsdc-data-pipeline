@@ -62,6 +62,21 @@ def test_clean_list_location():
     assert clean_list_location("Wels, Austria, Austria") == "Wels, Austria"
     assert clean_list_location("Singapore, Singapore, Singapore") == "Singapore"
     assert clean_list_location("Stockholm, Sweden, Sweden") == "Stockholm, Sweden"
+    # IT province MI must not become Michigan / United States
+    assert clean_list_location("Milano, MI, Italy") == "Milan, Italy"
+    assert clean_list_location("Milano, MI, United States") == "Milan, Italy"
+    assert clean_list_location("Detroit, MI, United States") == "Detroit, MI, United States"
+
+
+def test_url_comma_typo_same_fingerprint():
+    """WSDC once published swingfling,.com — must not churn fingerprints."""
+    a = source_fingerprint(
+        "Swing Fling", "2027-08-12", "http://www.swingfling,.com/"
+    )
+    b = source_fingerprint(
+        "Swing Fling", "2027-08-12", "https://www.swingfling.com/"
+    )
+    assert a == b
 
 
 def test_site_location_not_overridden_by_event_name():

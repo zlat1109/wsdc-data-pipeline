@@ -5,7 +5,10 @@ from __future__ import annotations
 import re
 from typing import Any
 
-from transform.competition_results.side_labels import normalize_side_label
+from transform.competition_results.side_labels import (
+    is_pro_am_text,
+    normalize_side_label,
+)
 
 # CR / WSDC public names → core.levels.level
 WSDC_DIVISION_TO_LEVEL: dict[str, str] = {
@@ -53,7 +56,7 @@ def resolve_category(
     label = normalize_side_label(raw)
     cl = raw.lower()
 
-    if label in {"Pro-Am", "Pro-Am Strictly"} or "pro-am" in cl or "pro am" in cl:
+    if label in {"Pro-Am", "Pro-Am Strictly"} or is_pro_am_text(cl):
         return "pro-am"
     if label and label.startswith("Strictly"):
         return "strictly"
@@ -92,13 +95,17 @@ def resolve_label(
     raw_division: Any,
 ) -> str:
     """Display label: skill uses wsdc_division; else normalized side label / raw."""
+    raw = str(raw_division or "")
+    lab = normalize_side_label(raw)
+    # Prefer Pro-Am over skill / age / fun side labels when raw mentions Pro-Am.
+    if lab in {"Pro-Am", "Pro-Am Strictly"} or is_pro_am_text(raw):
+        return "Pro-Am Strictly" if "strictly" in raw.lower() else "Pro-Am"
     wd = str(wsdc_division or "").strip()
     if competition_bucket == "wsdc_pointed_leveled" and wd:
         return wd
     if wd in {"Masters", "Sophisticated", "Master"}:
         return "Masters" if "Master" in wd else wd
-    lab = normalize_side_label(str(raw_division or ""))
     if lab:
         return lab
-    raw = str(raw_division or "").strip()
-    return raw or wd or "Unknown"
+    stripped = raw.strip()
+    return stripped or wd or "Unknown"

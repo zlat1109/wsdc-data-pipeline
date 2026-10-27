@@ -48,12 +48,29 @@ _SIDE_SKIP = {
     "jack & jill wsdc",
 }
 
+# Pro-Am / Pro Am / Pro/Am / ProAm / Pro Lead/Am Follow / pro(l)am(f)
+# Note: no trailing \\b on pro(l)am(f) — ')' is non-word so \\b would fail.
+_PRO_AM_RE = re.compile(
+    r"(?i)(?:"
+    r"\bpro\s*[-/]?\s*am\b"
+    r"|\bproam\b"
+    r"|\bpro\s+lead\s*/\s*am\s+follow\b"
+    r"|\bam\s+follow\s*/\s*pro\s+lead\b"
+    r"|\bpro\([lf]\)am\([lf]\)"
+    r")"
+)
+
 
 def _clean(v) -> str:
     if v is None:
         return ""
     s = str(v).strip()
     return "" if s.lower() in {"", "nan", "none", "null"} else s
+
+
+def is_pro_am_text(text: str) -> bool:
+    """True when raw division text mentions Pro-Am in common CR spellings."""
+    return bool(_PRO_AM_RE.search(str(text or "")))
 
 
 def normalize_side_label(raw: str) -> str:
@@ -88,7 +105,7 @@ def normalize_side_label(raw: str) -> str:
         return "Sophisticated"
     if re.search(r"\bmasters?\b", cl) and "strictly" not in cl and "pro" not in cl:
         return "Masters"
-    if "pro am" in cl or "pro-am" in cl or "proam" in cl:
+    if is_pro_am_text(cl):
         return "Pro-Am Strictly" if "strictly" in cl else "Pro-Am"
     if "strictly" in cl:
         for token, label in (

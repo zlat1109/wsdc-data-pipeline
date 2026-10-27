@@ -192,6 +192,17 @@ Commit refreshed `data/event_editions.csv` + `data/edition_calendar_dates.csv` (
 
 Report: `data/quality_reports/dump_edition_dates_report.json` (+ `.csv`).
 
+## load_competition_results.py
+
+Load Competition Results parquet into `core.cr_*` (scrape layer parallel to
+`core.results`). Full runbook: [competition-results.md](competition-results.md).
+
+```bash
+python scripts/load_competition_results.py --cr-path "$CR_RESULTS_PATH" --dry-run
+python scripts/load_competition_results.py --cr-path "$CR_RESULTS_PATH" --apply --migrate
+python scripts/load_competition_results.py --check-conflicts
+```
+
 ## load_competitions_from_dump.py
 
 One-shot load of exact WCS headcounts from dump `competitions` into

@@ -14,6 +14,11 @@ EVENTS_LIST_LOCATION_EXACT: dict[str, str] = {
     "LYON, Rhones, France": "Lyon, Rhone, France",
     "Bonn, Nordrhein-Westphalen, Germany": "Bonn, Germany",
     "Milan,, Italy": "Milan, Italy",
+    # IT province MI (Milano) must not become Michigan / United States
+    "Milano, MI, Italy": "Milan, Italy",
+    "Milano, MI, United States": "Milan, Italy",
+    "Milan, MI, Italy": "Milan, Italy",
+    "Milan, MI, United States": "Milan, Italy",
     "Berlin,  Germany": "Berlin, Germany",
     "Hamburg,  Germany": "Hamburg, Germany",
     "London,  UK": "London, UK",
@@ -112,7 +117,12 @@ def _collapse_commas(loc: str) -> str:
 
 
 def _normalize_us_location_parts(parts: list[str]) -> list[str]:
-    """Ensure US rows use City, ST, United States when a state code is present."""
+    """Ensure US rows use City, ST, United States when a state code is present.
+
+    Do **not** rewrite when the trailing token is an explicit non-US country
+    (WSDC often publishes Italian province codes like ``Milano, MI, Italy`` —
+    ``MI`` collides with Michigan).
+    """
     if len(parts) < 2:
         return parts
 
@@ -129,14 +139,14 @@ def _normalize_us_location_parts(parts: list[str]) -> list[str]:
 
     last = parts[-1].strip().lower()
     if last in us_country:
-        normalized = [city, state_up, "United States"]
-        return normalized
-
-    # WSDC typo: "Albany, NY, Albany" — city repeated instead of country
-    if parts[-1].strip().lower() == city.lower():
         return [city, state_up, "United States"]
 
-    return [city, state_up, "United States"]
+    # WSDC typo: "Albany, NY, Albany" — city repeated instead of country
+    if last == city.lower():
+        return [city, state_up, "United States"]
+
+    # Explicit other country (Italy, Germany, …) — leave alone
+    return parts
 
 
 def clean_list_location(location_raw: str) -> str:
