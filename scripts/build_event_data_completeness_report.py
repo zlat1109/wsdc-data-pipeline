@@ -404,6 +404,22 @@ def main(argv: list[str] | None = None) -> int:
     print("CR aggregates…")
     con = duckdb.connect()
     con.execute(f"CREATE VIEW r AS SELECT * FROM read_parquet('{cr_path}')")
+    cr_cols = {
+        str(r[0])
+        for r in con.execute("DESCRIBE SELECT * FROM r").fetchall()
+    }
+    # Oct 2026+ uses couple_key; older exports used partner_identity.
+    if "couple_key" in cr_cols:
+        partner_pred = (
+            "couple_key IS NOT NULL AND CAST(couple_key AS VARCHAR) <> ''"
+        )
+    elif "partner_identity" in cr_cols:
+        partner_pred = (
+            "partner_identity IS NOT NULL AND partner_identity <> '' "
+            "AND partner_identity <> 'redacted'"
+        )
+    else:
+        partner_pred = "FALSE"
 
     cr_ed = con.sql(
         """
@@ -439,7 +455,7 @@ FROM base b LEFT JOIN month_map mm USING (mon_name)
     ]
 
     metrics = con.sql(
-        """
+        f"""
 WITH skill AS (
   SELECT *
   FROM r
@@ -470,7 +486,7 @@ partner_divs AS (
   SELECT event_edition_id, wsdc_division AS div
   FROM skill
   WHERE round = 'final'
-    AND partner_identity IS NOT NULL AND partner_identity <> '' AND partner_identity <> 'redacted'
+    AND ({partner_pred})
   GROUP BY 1,2
 ),
 first_round AS (

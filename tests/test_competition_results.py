@@ -26,6 +26,7 @@ from transform.competition_results.rounds import (
     competitor_display_name,
     parse_judge_marks,
     resolve_dancer_id,
+    resolve_place,
 )
 
 
@@ -191,6 +192,13 @@ def test_parse_judge_marks():
     assert parse_judge_marks("{}") == []
 
 
+def test_resolve_place_prefers_scoresheet_then_wsdc():
+    assert resolve_place({"scoresheet_place": "1", "wsdc_place": "F"}) == "1"
+    assert resolve_place({"wsdc_place": "F"}) == "F"
+    assert resolve_place({"place": "3"}) == "3"
+    assert resolve_place({}) == ""
+
+
 def test_build_tables_pairs_final_couples_and_dedupes_marks():
     rows = [
         # prelim — competitor marks
@@ -204,12 +212,13 @@ def test_build_tables_pairs_final_couples_and_dedupes_marks():
             round="prelim",
             role="leader",
             total_competitors=10,
-            place="1",
+            scoresheet_place="1",
+            wsdc_place=None,
             callback="Y",
             identity="421",
             competitor_name="Rob",
-            partner_identity=None,
-            partner_name=None,
+            couple_key=None,
+            proam_side=None,
             judge_marks='{"J1": "Y"}',
             source="eepro",
             source_url="http://example/prelim",
@@ -217,7 +226,149 @@ def test_build_tables_pairs_final_couples_and_dedupes_marks():
             result_from_other_source=True,
             competition_bucket="wsdc_pointed_leveled",
         ),
-        # final couple — identical marks on both roles
+        # final couple — Oct 2026 couple_key (no partner_identity)
+        dict(
+            event_edition_id="wsdc:77:August 2024",
+            wsdc_event_id=77,
+            event_edition_date="2024-08-01",
+            event_edition_name="ADC",
+            raw_division="Jack & Jill Novice Finals",
+            wsdc_division="Novice",
+            round="final",
+            role="leader",
+            total_competitors=5,
+            scoresheet_place="1",
+            wsdc_place="1",
+            callback=None,
+            identity="421",
+            competitor_name="Rob",
+            couple_key="ck-novice-1",
+            proam_side=None,
+            judge_marks='{"J1": "1", "J2": "2"}',
+            source="eepro",
+            source_url="http://example/final",
+            result_from_wsdc=True,
+            result_from_other_source=True,
+            competition_bucket="wsdc_pointed_leveled",
+        ),
+        dict(
+            event_edition_id="wsdc:77:August 2024",
+            wsdc_event_id=77,
+            event_edition_date="2024-08-01",
+            event_edition_name="ADC",
+            raw_division="Jack & Jill Novice Finals",
+            wsdc_division="Novice",
+            round="final",
+            role="follower",
+            total_competitors=5,
+            scoresheet_place="1",
+            wsdc_place="1",
+            callback=None,
+            identity="16892",
+            competitor_name="Felipa",
+            couple_key="ck-novice-1",
+            proam_side=None,
+            judge_marks='{"J1": "1", "J2": "2"}',
+            source="eepro",
+            source_url="http://example/final",
+            result_from_wsdc=True,
+            result_from_other_source=True,
+            competition_bucket="wsdc_pointed_leveled",
+        ),
+        # pure WSDC copy — must be dropped by filter
+        dict(
+            event_edition_id="wsdc:77:August 2024",
+            wsdc_event_id=77,
+            event_edition_date="2024-08-01",
+            event_edition_name="ADC",
+            raw_division="Jack & Jill Advanced Finals",
+            wsdc_division="Advanced",
+            round="final",
+            role="leader",
+            total_competitors=5,
+            scoresheet_place=None,
+            wsdc_place="1",
+            callback=None,
+            identity="1",
+            competitor_name="X",
+            couple_key=None,
+            proam_side=None,
+            judge_marks=None,
+            source=None,
+            source_url=None,
+            result_from_wsdc=True,
+            result_from_other_source=False,
+            competition_bucket="wsdc_pointed_leveled",
+        ),
+    ]
+    df = pd.DataFrame(rows)
+    editions = [EditionKey(999, 77, 2024, 8)]
+    tables = build_cr_tables(
+        df, editions=editions, known_dancer_ids={421, 16892}
+    )
+    assert tables.counts()["cr_editions"] == 1
+    assert tables.editions[0]["match_status"] == "matched"
+    assert tables.counts()["cr_final_couples"] == 1
+    # prelim marks (1) + final couple marks (2) — not 4
+    assert tables.counts()["cr_judge_marks"] == 3
+    assert all(m["couple_id"] is not None for m in tables.judge_marks if m["cr_round_result_id"] is None)
+    # partners backfilled from couple_key
+    finals = [r for r in tables.round_results if r["cr_round_id"].endswith("#final")]
+    by_id = {r["cr_identity"]: r for r in finals}
+    assert by_id["421"]["partner_cr_identity"] == "16892"
+    assert by_id["16892"]["partner_cr_identity"] == "421"
+    assert by_id["421"]["partner_dancer_id"] == 16892
+    # pure WSDC advanced final not loaded
+    assert not any(
+        "Advanced" in d["raw_division"] for d in tables.divisions
+    )
+    # no conflicts with core identity map
+    conflict = check_built_tables_against_core(
+        tables,
+        known_dancer_ids={421, 16892},
+        edition_event_ids={999: 77},
+    )
+    assert conflict.ok, conflict.issues
+
+
+def test_unpaired_couple_key_final_counts_incomplete():
+    rows = [
+        dict(
+            event_edition_id="wsdc:77:August 2024",
+            wsdc_event_id=77,
+            event_edition_date="2024-08-01",
+            event_edition_name="ADC",
+            raw_division="Jack & Jill Novice Finals",
+            wsdc_division="Novice",
+            round="final",
+            role="leader",
+            total_competitors=5,
+            scoresheet_place="2",
+            wsdc_place="2",
+            callback=None,
+            identity="421",
+            competitor_name="Rob",
+            couple_key="ck-orphan",
+            proam_side=None,
+            judge_marks='{"J1": "2"}',
+            source="eepro",
+            source_url="http://example/final",
+            result_from_wsdc=True,
+            result_from_other_source=True,
+            competition_bucket="wsdc_pointed_leveled",
+        ),
+    ]
+    tables = build_cr_tables(
+        pd.DataFrame(rows),
+        editions=[EditionKey(999, 77, 2024, 8)],
+        known_dancer_ids={421},
+    )
+    assert tables.counts()["cr_final_couples"] == 0
+    assert tables.stats["final_couples_incomplete"] == 1
+
+
+def test_legacy_partner_identity_still_pairs_finals():
+    rows = [
         dict(
             event_edition_id="wsdc:77:August 2024",
             wsdc_event_id=77,
@@ -234,7 +385,7 @@ def test_build_tables_pairs_final_couples_and_dedupes_marks():
             competitor_name="Rob",
             partner_identity="16892",
             partner_name="Felipa",
-            judge_marks='{"J1": "1", "J2": "2"}',
+            judge_marks='{"J1": "1"}',
             source="eepro",
             source_url="http://example/final",
             result_from_wsdc=True,
@@ -257,60 +408,21 @@ def test_build_tables_pairs_final_couples_and_dedupes_marks():
             competitor_name="Felipa",
             partner_identity="421",
             partner_name="Rob",
-            judge_marks='{"J1": "1", "J2": "2"}',
+            judge_marks='{"J1": "1"}',
             source="eepro",
             source_url="http://example/final",
             result_from_wsdc=True,
             result_from_other_source=True,
             competition_bucket="wsdc_pointed_leveled",
         ),
-        # pure WSDC copy — must be dropped by filter
-        dict(
-            event_edition_id="wsdc:77:August 2024",
-            wsdc_event_id=77,
-            event_edition_date="2024-08-01",
-            event_edition_name="ADC",
-            raw_division="Jack & Jill Advanced Finals",
-            wsdc_division="Advanced",
-            round="final",
-            role="leader",
-            total_competitors=5,
-            place="1",
-            callback=None,
-            identity="1",
-            competitor_name="X",
-            partner_identity=None,
-            partner_name=None,
-            judge_marks=None,
-            source=None,
-            source_url=None,
-            result_from_wsdc=True,
-            result_from_other_source=False,
-            competition_bucket="wsdc_pointed_leveled",
-        ),
     ]
-    df = pd.DataFrame(rows)
-    editions = [EditionKey(999, 77, 2024, 8)]
     tables = build_cr_tables(
-        df, editions=editions, known_dancer_ids={421, 16892}
-    )
-    assert tables.counts()["cr_editions"] == 1
-    assert tables.editions[0]["match_status"] == "matched"
-    assert tables.counts()["cr_final_couples"] == 1
-    # prelim marks (1) + final couple marks (2) — not 4
-    assert tables.counts()["cr_judge_marks"] == 3
-    assert all(m["couple_id"] is not None for m in tables.judge_marks if m["cr_round_result_id"] is None)
-    # pure WSDC advanced final not loaded
-    assert not any(
-        "Advanced" in d["raw_division"] for d in tables.divisions
-    )
-    # no conflicts with core identity map
-    conflict = check_built_tables_against_core(
-        tables,
+        pd.DataFrame(rows),
+        editions=[EditionKey(999, 77, 2024, 8)],
         known_dancer_ids={421, 16892},
-        edition_event_ids={999: 77},
     )
-    assert conflict.ok, conflict.issues
+    assert tables.counts()["cr_final_couples"] == 1
+    assert tables.stats["final_couples_incomplete"] == 0
 
 
 def test_conflict_detects_orphan_dancer_and_event_mismatch():

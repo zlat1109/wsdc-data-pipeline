@@ -11,6 +11,9 @@ Does **not** replace or mutate `core.results`, `core.dancers`, or `core.event_ed
 | Competition Results `results.parquet` | Path via `--cr-path` or `CR_RESULTS_PATH` |
 | `core.event_editions` / `core.dancers` | Read for matching; never written by this loader |
 
+Oct 2026+ exports: place is `scoresheet_place` / `wsdc_place` (loader coalesces);
+partners use `couple_key` (not `partner_identity`). Legacy columns still accepted.
+
 Sources stay on disk. Only the load script writes to Supabase.
 
 ## What is loaded
