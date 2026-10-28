@@ -322,13 +322,17 @@ def build_cr_tables(
     seen_source_couples: set[tuple[str, str]] = set()
 
     # Prefer Oct-2026 couple_key grouping for finals.
+    unpaired_source_finals = 0
     for (rid, src_ck), members in source_couple_members.items():
         finals = [m for m in members if m["round"] == "final"]
-        if len(finals) < 2:
+        if not finals:
             continue
         lead = next((m for m in finals if m["role"] == "Leader"), None)
         follow = next((m for m in finals if m["role"] == "Follower"), None)
         if lead is None or follow is None:
+            # One-sided couple_key groups are skipped by the legacy path
+            # (source_couple_key set) — still count them as incomplete.
+            unpaired_source_finals += 1
             continue
         seen_source_couples.add((rid, src_ck))
         ck = couple_key_from_source_group(
@@ -402,7 +406,8 @@ def build_cr_tables(
         "final_couples_incomplete": sum(
             1 for k in leaders if k not in followers
         )
-        + sum(1 for k in followers if k not in leaders),
+        + sum(1 for k in followers if k not in leaders)
+        + unpaired_source_finals,
         "source_couple_groups": len(source_couple_members),
         "source_couple_finals_paired": len(seen_source_couples),
         **out.counts(),

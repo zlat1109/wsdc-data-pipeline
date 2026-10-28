@@ -331,6 +331,100 @@ def test_build_tables_pairs_final_couples_and_dedupes_marks():
     assert conflict.ok, conflict.issues
 
 
+def test_unpaired_couple_key_final_counts_incomplete():
+    rows = [
+        dict(
+            event_edition_id="wsdc:77:August 2024",
+            wsdc_event_id=77,
+            event_edition_date="2024-08-01",
+            event_edition_name="ADC",
+            raw_division="Jack & Jill Novice Finals",
+            wsdc_division="Novice",
+            round="final",
+            role="leader",
+            total_competitors=5,
+            scoresheet_place="2",
+            wsdc_place="2",
+            callback=None,
+            identity="421",
+            competitor_name="Rob",
+            couple_key="ck-orphan",
+            proam_side=None,
+            judge_marks='{"J1": "2"}',
+            source="eepro",
+            source_url="http://example/final",
+            result_from_wsdc=True,
+            result_from_other_source=True,
+            competition_bucket="wsdc_pointed_leveled",
+        ),
+    ]
+    tables = build_cr_tables(
+        pd.DataFrame(rows),
+        editions=[EditionKey(999, 77, 2024, 8)],
+        known_dancer_ids={421},
+    )
+    assert tables.counts()["cr_final_couples"] == 0
+    assert tables.stats["final_couples_incomplete"] == 1
+
+
+def test_legacy_partner_identity_still_pairs_finals():
+    rows = [
+        dict(
+            event_edition_id="wsdc:77:August 2024",
+            wsdc_event_id=77,
+            event_edition_date="2024-08-01",
+            event_edition_name="ADC",
+            raw_division="Jack & Jill Novice Finals",
+            wsdc_division="Novice",
+            round="final",
+            role="leader",
+            total_competitors=5,
+            place="1",
+            callback=None,
+            identity="421",
+            competitor_name="Rob",
+            partner_identity="16892",
+            partner_name="Felipa",
+            judge_marks='{"J1": "1"}',
+            source="eepro",
+            source_url="http://example/final",
+            result_from_wsdc=True,
+            result_from_other_source=True,
+            competition_bucket="wsdc_pointed_leveled",
+        ),
+        dict(
+            event_edition_id="wsdc:77:August 2024",
+            wsdc_event_id=77,
+            event_edition_date="2024-08-01",
+            event_edition_name="ADC",
+            raw_division="Jack & Jill Novice Finals",
+            wsdc_division="Novice",
+            round="final",
+            role="follower",
+            total_competitors=5,
+            place="1",
+            callback=None,
+            identity="16892",
+            competitor_name="Felipa",
+            partner_identity="421",
+            partner_name="Rob",
+            judge_marks='{"J1": "1"}',
+            source="eepro",
+            source_url="http://example/final",
+            result_from_wsdc=True,
+            result_from_other_source=True,
+            competition_bucket="wsdc_pointed_leveled",
+        ),
+    ]
+    tables = build_cr_tables(
+        pd.DataFrame(rows),
+        editions=[EditionKey(999, 77, 2024, 8)],
+        known_dancer_ids={421, 16892},
+    )
+    assert tables.counts()["cr_final_couples"] == 1
+    assert tables.stats["final_couples_incomplete"] == 0
+
+
 def test_conflict_detects_orphan_dancer_and_event_mismatch():
     tables = CrTables(
         editions=[
