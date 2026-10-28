@@ -69,6 +69,32 @@ def competitor_display_name(identity: Any, name: Any) -> str | None:
     return n
 
 
+def resolve_place(row: Mapping[str, Any]) -> str:
+    """Prefer scoresheet place, then WSDC place (Oct 2026 CR schema).
+
+    Older exports used a single ``place`` column — still accepted.
+    """
+    for key in ("scoresheet_place", "wsdc_place", "place"):
+        if key not in row:
+            continue
+        raw = row.get(key)
+        if raw is None:
+            continue
+        s = str(raw).strip()
+        if s and s.lower() not in {"nan", "none", "null"}:
+            return s
+    return ""
+
+
+def source_couple_key(row: Mapping[str, Any]) -> str:
+    """CR ``couple_key`` (Oct 2026+) shared by the two rows of one couple."""
+    raw = row.get("couple_key")
+    if raw is None:
+        return ""
+    s = str(raw).strip()
+    return "" if s.lower() in {"", "nan", "none", "null"} else s
+
+
 @dataclass(frozen=True)
 class CoupleKey:
     cr_round_id: str
@@ -83,7 +109,11 @@ def couple_key_from_row(
     identity: str,
     partner_identity: str,
 ) -> CoupleKey | None:
-    """Build a directed-independent couple key when both identities exist."""
+    """Build a directed-independent couple key when both identities exist.
+
+    Legacy path for pre-Oct-2026 CR rows that still carry ``partner_identity``.
+    Prefer grouping by CR ``couple_key`` when present.
+    """
     ident = (identity or "").strip()
     partner = (partner_identity or "").strip()
     if not ident or not partner:
@@ -96,6 +126,15 @@ def couple_key_from_row(
     if role == "Follower":
         return CoupleKey(cr_round_id, partner, ident)
     return None
+
+
+def couple_key_from_source_group(
+    *,
+    cr_round_id: str,
+    leader_identity: str,
+    follower_identity: str,
+) -> CoupleKey:
+    return CoupleKey(cr_round_id, leader_identity, follower_identity)
 
 
 def division_id(cr_edition_id: str, raw_division: str) -> str:
@@ -114,6 +153,10 @@ def iter_unique_marks(
     for row in rows:
         role = normalize_role(row.get("role"))
         if role is None:
+            continue
+        src_ck = source_couple_key(row)
+        if src_ck:
+            # Need both roles before emitting — skip until caller groups.
             continue
         ck = couple_key_from_row(
             cr_round_id=str(row["cr_round_id"]),

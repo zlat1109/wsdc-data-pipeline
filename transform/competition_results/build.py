@@ -20,11 +20,14 @@ from transform.competition_results.editions import (
 from transform.competition_results.rounds import (
     competitor_display_name,
     couple_key_from_row,
+    couple_key_from_source_group,
     division_id,
     normalize_role,
     parse_judge_marks,
     resolve_dancer_id,
+    resolve_place,
     round_id,
+    source_couple_key,
 )
 
 
@@ -207,6 +210,10 @@ def build_cr_tables(
     # --- round results ---
     result_id_by_key: dict[tuple[str, str, str, str], int] = {}
     next_result_id = 1
+    # result_pk → mutable row dict (for partner backfill via couple_key)
+    result_rows_by_pk: dict[int, dict[str, Any]] = {}
+    # (cr_round_id, source_couple_key) → members for partner + finals pairing
+    source_couple_members: dict[tuple[str, str], list[dict[str, Any]]] = {}
     final_rows_for_couples: list[dict[str, Any]] = []
 
     for _, r in df.iterrows():
@@ -219,18 +226,22 @@ def build_cr_tables(
         if role is None:
             continue
         identity = _clean(r["identity"]) or "unknown"
-        partner = _clean(r["partner_identity"])
-        place = _clean(r["place"])
+        src_ck = source_couple_key(r)
+        # Legacy partner columns (pre-Oct-2026); empty on new exports.
+        partner = _clean(r["partner_identity"]) if "partner_identity" in r.index else ""
+        place = resolve_place(r)
         rid = round_id(division_id(eid, raw), rnd)
         # Deduplicate identical competitor rows (leader/follower mirrored marks etc.)
-        dedupe_key = (rid, role, identity, partner or "", place)
+        dedupe_key = (rid, role, identity, src_ck or partner or "", place)
         if dedupe_key in result_id_by_key:
             continue
         result_pk = next_result_id
         next_result_id += 1
         result_id_by_key[dedupe_key] = result_pk
         dancer_id = resolve_dancer_id(identity, known_dancer_ids)
-        partner_dancer_id = resolve_dancer_id(partner, known_dancer_ids) if partner else None
+        partner_dancer_id = (
+            resolve_dancer_id(partner, known_dancer_ids) if partner else None
+        )
         row = {
             "cr_round_result_id": result_pk,
             "cr_round_id": rid,
@@ -246,6 +257,19 @@ def build_cr_tables(
             "partner_dancer_id": partner_dancer_id,
         }
         out.round_results.append(row)
+        result_rows_by_pk[result_pk] = row
+
+        if src_ck:
+            source_couple_members.setdefault((rid, src_ck), []).append(
+                {
+                    "result_pk": result_pk,
+                    "role": role,
+                    "identity": identity,
+                    "place": place or None,
+                    "judge_marks": r["judge_marks"],
+                    "round": rnd,
+                }
+            )
 
         if rnd == "final":
             final_rows_for_couples.append(
@@ -253,6 +277,7 @@ def build_cr_tables(
                     **row,
                     "identity": identity,
                     "partner_identity": partner,
+                    "source_couple_key": src_ck,
                     "judge_marks": r["judge_marks"],
                 }
             )
@@ -268,16 +293,63 @@ def build_cr_tables(
                     }
                 )
 
+    # Backfill partner_* from CR couple_key groups (any round).
+    for members in source_couple_members.values():
+        if len(members) < 2:
+            continue
+        by_ident = {m["identity"]: m for m in members}
+        for m in members:
+            others = [i for i in by_ident if i != m["identity"]]
+            if len(others) != 1:
+                continue
+            partner_ident = others[0]
+            dest = result_rows_by_pk.get(m["result_pk"])
+            if dest is None:
+                continue
+            if not dest.get("partner_cr_identity"):
+                dest["partner_cr_identity"] = partner_ident
+                dest["partner_dancer_id"] = resolve_dancer_id(
+                    partner_ident, known_dancer_ids
+                )
+
     # --- final couples + deduped marks ---
     couple_id = 1
-    couple_ids: dict[tuple[str, str, str], int] = {}
     # Map (round, leader_ident, follower_ident) → leader/follower result ids
     leaders: dict[tuple[str, str, str], int] = {}
     followers: dict[tuple[str, str, str], int] = {}
     places: dict[tuple[str, str, str], str | None] = {}
     marks_by_couple: dict[tuple[str, str, str], list[tuple[str, str]]] = {}
+    seen_source_couples: set[tuple[str, str]] = set()
 
+    # Prefer Oct-2026 couple_key grouping for finals.
+    for (rid, src_ck), members in source_couple_members.items():
+        finals = [m for m in members if m["round"] == "final"]
+        if len(finals) < 2:
+            continue
+        lead = next((m for m in finals if m["role"] == "Leader"), None)
+        follow = next((m for m in finals if m["role"] == "Follower"), None)
+        if lead is None or follow is None:
+            continue
+        seen_source_couples.add((rid, src_ck))
+        ck = couple_key_from_source_group(
+            cr_round_id=rid,
+            leader_identity=lead["identity"],
+            follower_identity=follow["identity"],
+        )
+        key = (ck.cr_round_id, ck.leader_identity, ck.follower_identity)
+        leaders[key] = lead["result_pk"]
+        followers[key] = follow["result_pk"]
+        places.setdefault(key, lead.get("place") or follow.get("place"))
+        marks = parse_judge_marks(lead.get("judge_marks")) or parse_judge_marks(
+            follow.get("judge_marks")
+        )
+        if marks:
+            marks_by_couple[key] = marks
+
+    # Legacy partner_identity path for finals without couple_key.
     for row in final_rows_for_couples:
+        if row.get("source_couple_key"):
+            continue
         role = row["role"]
         ck = couple_key_from_row(
             cr_round_id=row["cr_round_id"],
@@ -304,7 +376,6 @@ def build_cr_tables(
             continue
         cid = couple_id
         couple_id += 1
-        couple_ids[key] = cid
         out.final_couples.append(
             {
                 "couple_id": cid,
@@ -332,6 +403,8 @@ def build_cr_tables(
             1 for k in leaders if k not in followers
         )
         + sum(1 for k in followers if k not in leaders),
+        "source_couple_groups": len(source_couple_members),
+        "source_couple_finals_paired": len(seen_source_couples),
         **out.counts(),
     }
     return out
