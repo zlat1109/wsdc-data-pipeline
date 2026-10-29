@@ -1,62 +1,40 @@
 {
-  "generated_at": "2026-10-22T17:46:56Z",
-  "weekend_start": "2026-10-19",
-  "weekend_end": "2026-11-01",
+  "generated_at": "2026-10-29T18:45:27Z",
+  "weekend_start": "2026-10-26",
+  "weekend_end": "2026-11-08",
   "events": [
     {
-      "name": "Swing City Chicago",
-      "location": "CHICAGO, IL, United States",
-      "dates": "Oct 22 - 25, 2026",
-      "url": "https://swingcitychicago.com/",
-      "start_date": "2026-10-22",
-      "end_date": "2026-10-25",
-      "livestream": null,
-      "continent": "America",
-      "flag": "🇺🇸"
-    },
-    {
-      "name": "Halloween SwingThing",
-      "location": "Costa Mesa, Ca, USA",
-      "dates": "Oct 22 - 25, 2026",
-      "url": "http://hstswing.com/",
-      "start_date": "2026-10-22",
-      "end_date": "2026-10-25",
-      "livestream": null,
-      "continent": "America",
-      "flag": "🇺🇸"
-    },
-    {
-      "name": "Augsburg Westie Station",
-      "location": "Augsburg, Bavaria, Germany",
-      "dates": "Oct 22 - 25, 2026",
-      "url": "https://www.augsburgwestiestation.com/",
-      "start_date": "2026-10-22",
-      "end_date": "2026-10-25",
-      "livestream": null,
+      "name": "Scandinavian Open WCS \"SNOW\"",
+      "location": "Stockholm, Sweden, Sverige",
+      "dates": "Oct 28 - Nov 2, 2026",
+      "url": "http://www.snowcs.se/",
+      "start_date": "2026-10-28",
+      "end_date": "2026-11-02",
+      "livestream": "https://www.youtube.com/live/NrIwkWjhqY8",
       "continent": "Europe",
-      "flag": "🇩🇪"
+      "flag": "🇸🇪"
     },
     {
-      "name": "SASS- Spooky Albany Swing Spectacular",
-      "location": "Albany, NY, Albany",
-      "dates": "Oct 22 - 25, 2026",
-      "url": "http://www.spookyalbanyswing.com/",
-      "start_date": "2026-10-22",
-      "end_date": "2026-10-25",
-      "livestream": null,
-      "continent": "America",
-      "flag": "🇺🇸"
-    },
-    {
-      "name": "Swingside Invitational",
-      "location": "Liège, Liège, Belgique",
-      "dates": "Oct 23 - 25, 2026",
-      "url": "https://www.swingside-invitational.com/",
-      "start_date": "2026-10-23",
-      "end_date": "2026-10-25",
-      "livestream": null,
+      "name": "Warsaw Halloween Swing",
+      "location": "Warsaw, Poland",
+      "dates": "Oct 29 - Nov 2, 2026",
+      "url": "http://www.warsawhalloweenswing.com/",
+      "start_date": "2026-10-29",
+      "end_date": "2026-11-02",
+      "livestream": "https://twitch.tv/5678wcs2",
       "continent": "Europe",
-      "flag": "🇧🇪"
+      "flag": "🇵🇱"
+    },
+    {
+      "name": "Spooky Westie Weekend",
+      "location": "Singapore, Singapore, Singapore",
+      "dates": "Oct 29 - Nov 1, 2026",
+      "url": "https://spookywestieweekend.com/",
+      "start_date": "2026-10-29",
+      "end_date": "2026-11-01",
+      "livestream": null,
+      "continent": "Asia",
+      "flag": "🇸🇬"
     }
   ]
 }
