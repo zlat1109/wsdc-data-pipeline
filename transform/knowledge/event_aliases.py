@@ -173,8 +173,10 @@ MERGE_EVENT_ID_MAP: dict[int, int] = {
     198: 154,  # UK WCS — London
     202: 218,  # Asia WCS Open — Singapore
     39: 334,   # Countdown Swing Boston — Greater Boston metro (Mansfield venue)
-    307: 272,  # Paris Westie Fest — Paris
-    543: 272,  # Paris Swing Classic ghost / inactive → Paris Westie Fest
+    # Paris: Connexion Swing "Westie Fest" (272) + PSC registry (307/543) collapsed
+    # onto one results id. Display name follows EVENT_NAME_YEAR_SPLITS (PSC from 2023).
+    307: 272,  # Paris Swing Classic registry → points id 272
+    543: 272,  # Paris Swing Classic ghost / inactive → 272
     325: 330,  # Simply Adelaide — Adelaide
     321: 331,  # Swing Fiction — Brno
     279: 283,  # Kazan EL Fest — Kazan
@@ -219,6 +221,7 @@ EVENT_NAME_YEAR_SPLITS: list[dict[str, object]] = [
         # Results live on 264 for all years; 493 is a catalog/schedule ghost (merged).
         "early_event_id": 264,
         "late_event_id": 264,
+        "reset_edition_ordinal": True,
     },
     {
         "sources": (
@@ -233,6 +236,7 @@ EVENT_NAME_YEAR_SPLITS: list[dict[str, object]] = [
         # WSDC reused registry id 221 (Show Me history → Gateway from 2026).
         "early_event_id": 221,
         "late_event_id": 221,
+        "reset_edition_ordinal": True,
     },
     {
         "sources": (
@@ -247,8 +251,10 @@ EVENT_NAME_YEAR_SPLITS: list[dict[str, object]] = [
         "late_name": "Calgary Town Open",
         "late_year_min": 2026,
         # Same Calgary series (ctodance.ca); registry id 324 kept across rebrand.
+        # Keep continuous #edition (BTO → Calgary Town Open) — no reset.
         "early_event_id": 324,
         "late_event_id": 324,
+        "reset_edition_ordinal": False,
     },
     {
         "sources": (
@@ -262,8 +268,10 @@ EVENT_NAME_YEAR_SPLITS: list[dict[str, object]] = [
         "late_name": "Global Grand Prix -- West Coast Swing Championships",
         "late_year_min": 2026,
         # Toulouse 2023–2025 → Paris 2026+ (MERGE 409→342). Soul Flow stays on 990001.
+        # Same championship series — keep continuous #edition (no reset).
         "early_event_id": 342,
         "late_event_id": 342,
+        "reset_edition_ordinal": False,
     },
     {
         # Dump competitionevents calendar_title: "US Open…" through 2023,
@@ -286,6 +294,26 @@ EVENT_NAME_YEAR_SPLITS: list[dict[str, object]] = [
         "late_year_min": 2024,
         "early_event_id": 68,
         "late_event_id": 68,
+        "reset_edition_ordinal": True,
+    },
+    {
+        # Two overlapping Paris registry brands (Connexion Swing Westie Fest 272 vs
+        # Paris Swing Classic 307) were merged onto points id 272. Points API still
+        # says "Paris Westie Fest"; competitionevents + schedule use PSC from 2023
+        # (Novotel / H4 Pleyel). Display follows the public brand cutover.
+        "sources": (
+            "Paris Westie Fest",
+            "Paris Swing Classic",
+        ),
+        "early_name": "Paris Westie Fest",
+        "early_year_max": 2022,
+        "late_name": "Paris Swing Classic",
+        "late_year_min": 2023,
+        "early_event_id": 272,
+        "late_event_id": 272,
+        # Analytics edition ordinals restart for the late brand
+        # (enrich_event_growth_edition_numbers loads this flag).
+        "reset_edition_ordinal": True,
     },
 ]
 
