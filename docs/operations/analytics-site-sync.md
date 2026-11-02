@@ -14,6 +14,7 @@ After each successful `full-parse.yml` export, the pipeline rebuilds JSON for
 | Year Event Calendar | `static/data/events_year_calendar.json` | pipeline `scripts/build_year_event_calendar.py` |
 | Time in Division dashboard | `static/data/time_in_division_spells.json` | analytics `scripts/update_time_in_division_spells.py` |
 | Event tiers by year | `static/data/event_tiers_by_year.json` | analytics `scripts/build_event_tiers_by_year.py` |
+| Event Growth Monitor | `static/data/event_growth.json` | pipeline `build_year_event_calendar.py` + site `enrich_event_growth_edition_numbers.py` |
 
 Live:
 - https://wsdc-analytics.github.io/index.html?lang=en
@@ -23,6 +24,7 @@ Live:
 - https://wsdc-analytics.github.io/events-calendar.html
 - https://wsdc-analytics.github.io/time_in_division_dashboard_en.html
 - https://wsdc-analytics.github.io/event_tiers_by_year_dashboard_en.html
+- https://wsdc-analytics.github.io/event_growth_dashboard_en.html
 
 See also [point-summary.md](point-summary.md), [champion-news.md](champion-news.md), and [year-event-calendar.md](year-event-calendar.md).
 
@@ -61,7 +63,8 @@ full-parse.yml / sync-events-list.yml / force-rebuild-calendar-site.yml
          (REQUIRE_YEAR_CALENDAR=1 → hard fail; no silent stale calendar)
        build time_in_division_spells.json (hard fail if builder errors)
        build event_tiers_by_year.json (after L2 cards; hard fail if builder errors)
-       stamp calendar / dashboard / Time in Division / Event tiers ?v= cache buster
+       event_growth.json (from calendar build) + enrich edition numbers (hard fail)
+       stamp calendar / dashboard / Time in Division / Event tiers / Growth ?v= cache buster
        validate_site_data.py
        commit + push → GitHub Pages
   → Telegram #WSDC_Pipeline_Complete (+ location mismatch cards when findings exist)
