@@ -2707,6 +2707,39 @@ def test_rows_from_unmatched_calendar_retention_keeps_manneken_style(tmp_path):
     assert gone == []
 
 
+def test_unmatched_calendar_retention_survives_missing_geo_fingerprint(tmp_path):
+    """Regression: fingerprint not in list/changelog must not AttributeError on geo.get."""
+    from transform.year_event_calendar.build import _rows_from_unmatched_calendar_retention
+
+    cal_dir = tmp_path / "events_calendar"
+    cal_dir.mkdir()
+    pd.DataFrame(
+        [
+            {
+                "event_name": "Orphan Swing",
+                "calendar_title": "Orphan Swing",
+                "start_date": "2026-09-01",
+                "end_date": "2026-09-03",
+                "url": "https://orphan.example",
+                "results_year": 2026,
+                "source_fingerprint": "fp-no-geo",
+                "matched_event_id": None,
+                "match_status": "unmatched",
+            }
+        ]
+    ).to_csv(cal_dir / "edition_date_matches.csv", index=False)
+    # Empty geo sources — fingerprint absent from map → get returns None.
+    (tmp_path / "events_list").mkdir(parents=True)
+    (tmp_path / "events_list" / "current.json").write_text('{"events":[]}', encoding="utf-8")
+
+    rows = _rows_from_unmatched_calendar_retention(tmp_path, as_of=date(2026, 9, 5))
+    assert len(rows) == 1
+    assert rows[0]["name"] == "Orphan Swing"
+    assert rows[0]["city"] is None
+    assert rows[0]["country"] is None
+    assert rows[0]["provisional_unlinked"] is True
+
+
 def test_build_year_event_calendar_retains_unmatched_after_list_drop(tmp_path):
     """Smoke: Manneken-style unmatched row survives rebuild within the 7-day grace."""
     import json
