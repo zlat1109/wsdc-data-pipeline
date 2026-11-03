@@ -1,9 +1,9 @@
 {
-  "scraped_at": "2026-10-20T13:09:01.116168+00:00",
+  "scraped_at": "2026-11-03T16:49:23.606609+00:00",
   "source": "https://worldsdc.com/events/calendar/",
   "min_start": "2025-01-01",
-  "raw_count": 665,
-  "event_count": 499,
+  "raw_count": 663,
+  "event_count": 502,
   "events": [
     {
       "event_name": "Floorplay Swing Vacation",
@@ -926,28 +926,6 @@
       "flags": [],
       "status_tags": [],
       "source_fingerprint": "743786969ac3cfd022565f0a",
-      "raw_start": "2025-03-27",
-      "raw_end": "2025-03-31"
-    },
-    {
-      "event_name": "The Boston Tea Party",
-      "calendar_title": "The Boston Tea Party",
-      "catalog_name": "Boston Tea Party",
-      "name_key": "bostonteaparty",
-      "start_date": "2025-03-27",
-      "end_date": "2025-03-30",
-      "url": "http://teapartyswings.com",
-      "url_key": "teapartyswings.com",
-      "results_year": 2025,
-      "results_month": 3,
-      "edition_ym_candidates": [
-        "2025-03"
-      ],
-      "date_precision": "day",
-      "date_source": "wsdc_calendar",
-      "flags": [],
-      "status_tags": [],
-      "source_fingerprint": "0cde0b4d71796c3a059e2463",
       "raw_start": "2025-03-27",
       "raw_end": "2025-03-31"
     },
@@ -2672,28 +2650,6 @@
       "raw_end": "2025-08-25"
     },
     {
-      "event_name": "Summer Hummer",
-      "calendar_title": "Summer Hummer",
-      "catalog_name": "Summer Hummer",
-      "name_key": "summerhummer",
-      "start_date": "2025-08-21",
-      "end_date": "2025-08-24",
-      "url": "",
-      "url_key": "",
-      "results_year": 2025,
-      "results_month": 8,
-      "edition_ym_candidates": [
-        "2025-08"
-      ],
-      "date_precision": "day",
-      "date_source": "wsdc_calendar",
-      "flags": [],
-      "status_tags": [],
-      "source_fingerprint": "b85b8949918942118481c39f",
-      "raw_start": "2025-08-21",
-      "raw_end": "2025-08-25"
-    },
-    {
       "event_name": "Swing Dance Mania",
       "calendar_title": "Swing Dance Mania",
       "catalog_name": "Swing Dance Mania",
@@ -3467,28 +3423,6 @@
       "raw_end": "2025-10-27"
     },
     {
-      "event_name": "Swingside Invitational",
-      "calendar_title": "Swingside Invitational",
-      "catalog_name": "Swingside Invitational",
-      "name_key": "swingsideinvitational",
-      "start_date": "2025-10-24",
-      "end_date": "2025-10-27",
-      "url": "http://www.ssiwcs.com",
-      "url_key": "ssiwcs.com",
-      "results_year": 2025,
-      "results_month": 10,
-      "edition_ym_candidates": [
-        "2025-10"
-      ],
-      "date_precision": "day",
-      "date_source": "wsdc_calendar",
-      "flags": [],
-      "status_tags": [],
-      "source_fingerprint": "959a24cef4890f0023701da9",
-      "raw_start": "2025-10-24",
-      "raw_end": "2025-10-28"
-    },
-    {
       "event_name": "WCS Festival",
       "calendar_title": "WCS Festival",
       "catalog_name": "WCS Festival",
@@ -3899,7 +3833,7 @@
       "catalog_name": "CASH Bash",
       "name_key": "cashbash",
       "start_date": "2025-11-27",
-      "end_date": "2025-11-27",
+      "end_date": "2025-11-30",
       "url": "https://cashdanceclub.org/cash-bash/",
       "url_key": "cashdanceclub.org/cash-bash",
       "results_year": 2025,
@@ -3913,7 +3847,7 @@
       "status_tags": [],
       "source_fingerprint": "619bb7b398c8a1a45b99df1a",
       "raw_start": "2025-11-27",
-      "raw_end": "-0001-12-01"
+      "raw_end": "2025-12-01"
     },
     {
       "event_name": "The After Party \"TAP\"",
@@ -4828,28 +4762,6 @@
       "raw_end": "2026-03-09"
     },
     {
-      "event_name": "Westie Spring Thing",
-      "calendar_title": "Westie Spring Thing",
-      "catalog_name": "Westie Spring Thing",
-      "name_key": "westiespringthing",
-      "start_date": "2026-03-11",
-      "end_date": "2026-03-11",
-      "url": "https://westiespringthing.com",
-      "url_key": "westiespringthing.com",
-      "results_year": 2026,
-      "results_month": 3,
-      "edition_ym_candidates": [
-        "2026-03"
-      ],
-      "date_precision": "day",
-      "date_source": "wsdc_calendar",
-      "flags": [],
-      "status_tags": [],
-      "source_fingerprint": "65b2b4d602f4f6c7fbbf8912",
-      "raw_start": "2026-03-11",
-      "raw_end": "-0001-12-01"
-    },
-    {
       "event_name": "All Star SwingJam",
       "calendar_title": "All Star SwingJam",
       "catalog_name": "All Star SwingJam",
@@ -4965,7 +4877,7 @@
       "catalog_name": "The Chicago Classic",
       "name_key": "thechicagoclassic",
       "start_date": "2026-03-19",
-      "end_date": "",
+      "end_date": "2026-03-22",
       "url": "https://thechicagoclassic.com/",
       "url_key": "thechicagoclassic.com",
       "results_year": 2026,
@@ -4973,15 +4885,13 @@
       "edition_ym_candidates": [
         "2026-03"
       ],
-      "date_precision": "day_start_only",
+      "date_precision": "day",
       "date_source": "wsdc_calendar",
-      "flags": [
-        "invalid_end"
-      ],
+      "flags": [],
       "status_tags": [],
       "source_fingerprint": "f26ea82b3b8adacacfe47b9c",
       "raw_start": "2026-03-19",
-      "raw_end": "2025-03-26"
+      "raw_end": "2026-03-23"
     },
     {
       "event_name": "5280 Westival",
@@ -7780,7 +7690,7 @@
       "catalog_name": "Sea to Sky Seattle",
       "name_key": "seatoskyseattle",
       "start_date": "2026-11-05",
-      "end_date": "",
+      "end_date": "2026-11-09",
       "url": "http://Seatoskywcs.com",
       "url_key": "seatoskywcs.com",
       "results_year": 2026,
@@ -7788,15 +7698,13 @@
       "edition_ym_candidates": [
         "2026-11"
       ],
-      "date_precision": "day_start_only",
+      "date_precision": "day",
       "date_source": "wsdc_calendar",
-      "flags": [
-        "invalid_end"
-      ],
+      "flags": [],
       "status_tags": [],
       "source_fingerprint": "267c5c38307061d765d6841c",
       "raw_start": "2026-11-05",
-      "raw_end": "2026-03-10"
+      "raw_end": "2026-11-10"
     },
     {
       "event_name": "Simply Adelaide West Coast Swing",
@@ -8318,7 +8226,7 @@
       "catalog_name": "SwingVester",
       "name_key": "swingvester",
       "start_date": "2026-12-30",
-      "end_date": "",
+      "end_date": "2027-01-04",
       "url": "https://www.swingvester.com/",
       "url_key": "swingvester.com",
       "results_year": 2027,
@@ -8327,15 +8235,13 @@
         "2027-01",
         "2026-12"
       ],
-      "date_precision": "day_start_only",
+      "date_precision": "day",
       "date_source": "wsdc_calendar",
-      "flags": [
-        "invalid_end"
-      ],
+      "flags": [],
       "status_tags": [],
       "source_fingerprint": "d8a575f459c377efad9e5a4b",
       "raw_start": "2026-12-30",
-      "raw_end": "2026-01-05"
+      "raw_end": "2027-01-05"
     },
     {
       "event_name": "Countdown Swing Boston",
@@ -8984,7 +8890,7 @@
       "catalog_name": "New York Flow Festival",
       "name_key": "newyorkflowfestival",
       "start_date": "2027-02-26",
-      "end_date": "",
+      "end_date": "2027-02-28",
       "url": "https://www.flowfest.nyc",
       "url_key": "flowfest.nyc",
       "results_year": 2027,
@@ -8992,15 +8898,13 @@
       "edition_ym_candidates": [
         "2027-02"
       ],
-      "date_precision": "day_start_only",
+      "date_precision": "day",
       "date_source": "wsdc_calendar",
-      "flags": [
-        "invalid_end"
-      ],
+      "flags": [],
       "status_tags": [],
       "source_fingerprint": "46bf56ad183180f8570e88f4",
       "raw_start": "2027-02-26",
-      "raw_end": "2026-03-01"
+      "raw_end": "2027-03-01"
     },
     {
       "event_name": "MADjam (Mid Atlantic Dance Jam)",
@@ -10196,54 +10100,6 @@
       "raw_end": "2027-06-29"
     },
     {
-      "event_name": "Americano Dance Camp",
-      "calendar_title": "Americano Dance Camp",
-      "catalog_name": "Americano Dance Camp",
-      "name_key": "americanodancecamp",
-      "start_date": "2027-07-01",
-      "end_date": "",
-      "url": "https://t.me/americamodancecamp / https://vk.ru/americano2026",
-      "url_key": "t.me/americamodancecamp / https://vk.ru/americano2026",
-      "results_year": 2027,
-      "results_month": 7,
-      "edition_ym_candidates": [
-        "2027-07"
-      ],
-      "date_precision": "day_start_only",
-      "date_source": "wsdc_calendar",
-      "flags": [
-        "invalid_end"
-      ],
-      "status_tags": [],
-      "source_fingerprint": "db5a7c60e225a9ed069e3465",
-      "raw_start": "2027-07-01",
-      "raw_end": "2026-07-06"
-    },
-    {
-      "event_name": "SaunaSwing",
-      "calendar_title": "SaunaSwing",
-      "catalog_name": "SaunaSwing",
-      "name_key": "saunaswing",
-      "start_date": "2027-07-01",
-      "end_date": "",
-      "url": "http://www.ekarolas.com/saunaswing",
-      "url_key": "ekarolas.com/saunaswing",
-      "results_year": 2027,
-      "results_month": 7,
-      "edition_ym_candidates": [
-        "2027-07"
-      ],
-      "date_precision": "day_start_only",
-      "date_source": "wsdc_calendar",
-      "flags": [
-        "invalid_end"
-      ],
-      "status_tags": [],
-      "source_fingerprint": "575b5b32c1dcc74214992092",
-      "raw_start": "2027-07-01",
-      "raw_end": "2026-07-06"
-    },
-    {
       "event_name": "Swing Valley",
       "calendar_title": "Swing Valley",
       "catalog_name": "Swing Valley",
@@ -10330,6 +10186,50 @@
       "source_fingerprint": "50944902a4ccc6154f80a5a1",
       "raw_start": "2027-07-15",
       "raw_end": "2027-07-19"
+    },
+    {
+      "event_name": "Toronto Open",
+      "calendar_title": "Toronto Open",
+      "catalog_name": "Toronto Open Swing & Hustle Championships",
+      "name_key": "torontoopenswinghustlechampionships",
+      "start_date": "2027-07-15",
+      "end_date": "2027-07-18",
+      "url": "https://torontoopenswing.com",
+      "url_key": "torontoopenswing.com",
+      "results_year": 2027,
+      "results_month": 7,
+      "edition_ym_candidates": [
+        "2027-07"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "12e514de4ed2b490b10b070d",
+      "raw_start": "2027-07-15",
+      "raw_end": "2027-07-19"
+    },
+    {
+      "event_name": "SwingLab Berlin",
+      "calendar_title": "SwingLab Berlin",
+      "catalog_name": "SwingLab Berlin",
+      "name_key": "swinglabberlin",
+      "start_date": "2027-07-16",
+      "end_date": "2027-07-19",
+      "url": "https://www.swinglab-berlin.com/",
+      "url_key": "swinglab-berlin.com",
+      "results_year": 2027,
+      "results_month": 7,
+      "edition_ym_candidates": [
+        "2027-07"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "2a72a1f7676376333e5754ab",
+      "raw_start": "2027-07-16",
+      "raw_end": "2027-07-20"
     },
     {
       "event_name": "Florida Dance Magic",
@@ -10538,9 +10438,9 @@
       "catalog_name": "Swing Fling",
       "name_key": "swingfling",
       "start_date": "2027-08-12",
-      "end_date": "2027-08-15",
-      "url": "http://www.swingfling,.com",
-      "url_key": "swingfling,.com",
+      "end_date": "2027-08-16",
+      "url": "https://www.swingfling.com",
+      "url_key": "swingfling.com",
       "results_year": 2027,
       "results_month": 8,
       "edition_ym_candidates": [
@@ -10550,9 +10450,9 @@
       "date_source": "wsdc_calendar",
       "flags": [],
       "status_tags": [],
-      "source_fingerprint": "f2c7f9a7e1734e022d13ae90",
+      "source_fingerprint": "3098f395ed2140c5dcf9e784",
       "raw_start": "2027-08-12",
-      "raw_end": "2027-08-16"
+      "raw_end": "2027-08-17"
     },
     {
       "event_name": "UpTown Swing",
@@ -10643,6 +10543,28 @@
       "raw_end": "2027-08-23"
     },
     {
+      "event_name": "Swing Creation Hamburg",
+      "calendar_title": "Swing Creation Hamburg",
+      "catalog_name": "Swing Creation Hamburg",
+      "name_key": "swingcreationhamburg",
+      "start_date": "2027-08-26",
+      "end_date": "2027-08-29",
+      "url": "https://www.hamburgswing.dance",
+      "url_key": "hamburgswing.dance",
+      "results_year": 2027,
+      "results_month": 8,
+      "edition_ym_candidates": [
+        "2027-08"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "0a57f87322403209ba59adde",
+      "raw_start": "2027-08-26",
+      "raw_end": "2027-08-30"
+    },
+    {
       "event_name": "SwingTime",
       "calendar_title": "SwingTime",
       "catalog_name": "SwingTime Denver",
@@ -10683,6 +10605,28 @@
       "flags": [],
       "status_tags": [],
       "source_fingerprint": "40003e88c037e75bd7c2dc0c",
+      "raw_start": "2027-09-02",
+      "raw_end": "2027-09-07"
+    },
+    {
+      "event_name": "Meet Me In St Louis",
+      "calendar_title": "Meet Me In St Louis",
+      "catalog_name": "Meet Me In St Louis",
+      "name_key": "meetmeinstlouis",
+      "start_date": "2027-09-02",
+      "end_date": "2027-09-06",
+      "url": "http://www.mmisl.com",
+      "url_key": "mmisl.com",
+      "results_year": 2027,
+      "results_month": 9,
+      "edition_ym_candidates": [
+        "2027-09"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "756e2b2b70aab14a7e4c9802",
       "raw_start": "2027-09-02",
       "raw_end": "2027-09-07"
     },
@@ -10953,6 +10897,50 @@
       "raw_end": "2027-10-11"
     },
     {
+      "event_name": "Milan Modern Swing",
+      "calendar_title": "Milan Modern Swing",
+      "catalog_name": "Milan Modern Swing",
+      "name_key": "milanmodernswing",
+      "start_date": "2027-10-14",
+      "end_date": "2027-10-17",
+      "url": "https://https://www.westcoastswingmilan.com/milanmodernswing/",
+      "url_key": "https://www.westcoastswingmilan.com/milanmodernswing",
+      "results_year": 2027,
+      "results_month": 10,
+      "edition_ym_candidates": [
+        "2027-10"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "5f02c2727030209cc5016849",
+      "raw_start": "2027-10-14",
+      "raw_end": "2027-10-18"
+    },
+    {
+      "event_name": "Swustlicious",
+      "calendar_title": "Swustlicious",
+      "catalog_name": "Swustlicious",
+      "name_key": "swustlicious",
+      "start_date": "2027-10-15",
+      "end_date": "2027-10-17",
+      "url": "https://www.swustlicious.com/hotel",
+      "url_key": "swustlicious.com/hotel",
+      "results_year": 2027,
+      "results_month": 10,
+      "edition_ym_candidates": [
+        "2027-10"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "18e5d3fd382c7e920bbd666b",
+      "raw_start": "2027-10-15",
+      "raw_end": "2027-10-18"
+    },
+    {
       "event_name": "WCS Festival",
       "calendar_title": "WCS Festival",
       "catalog_name": "WCS Festival",
@@ -10973,6 +10961,72 @@
       "source_fingerprint": "aeff0eaade1babe15052fa48",
       "raw_start": "2027-10-15",
       "raw_end": "2027-10-18"
+    },
+    {
+      "event_name": "Augsburg Westie Station",
+      "calendar_title": "Augsburg Westie Station",
+      "catalog_name": "Augsburg Westie Station",
+      "name_key": "augsburgwestiestation",
+      "start_date": "2027-10-21",
+      "end_date": "2027-10-24",
+      "url": "https://www.augsburgwestiestation.com/home",
+      "url_key": "augsburgwestiestation.com/home",
+      "results_year": 2027,
+      "results_month": 10,
+      "edition_ym_candidates": [
+        "2027-10"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "bdad13938a5a8342b2ddab93",
+      "raw_start": "2027-10-21",
+      "raw_end": "2027-10-25"
+    },
+    {
+      "event_name": "Halloween SwingThing",
+      "calendar_title": "Halloween SwingThing",
+      "catalog_name": "Halloween SwingThing",
+      "name_key": "halloweenswingthing",
+      "start_date": "2027-10-21",
+      "end_date": "2027-10-24",
+      "url": "https://www.hstswing.com/",
+      "url_key": "hstswing.com",
+      "results_year": 2027,
+      "results_month": 10,
+      "edition_ym_candidates": [
+        "2027-10"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "a75dc2d4e406c9b789d33116",
+      "raw_start": "2027-10-21",
+      "raw_end": "2027-10-25"
+    },
+    {
+      "event_name": "Spooky Albany Swing Spectacular",
+      "calendar_title": "Spooky Albany Swing Spectacular",
+      "catalog_name": "Spooky Albany Swing Spectacular",
+      "name_key": "spookyalbanyswingspectacular",
+      "start_date": "2027-10-21",
+      "end_date": "2027-10-24",
+      "url": "https://spookyalbanyswing.com",
+      "url_key": "spookyalbanyswing.com",
+      "results_year": 2027,
+      "results_month": 10,
+      "edition_ym_candidates": [
+        "2027-10"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "a550dd600aeae40ca9a328b4",
+      "raw_start": "2027-10-21",
+      "raw_end": "2027-10-25"
     },
     {
       "event_name": "Swingside Invitational",
