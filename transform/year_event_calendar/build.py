@@ -1011,7 +1011,8 @@ def _rows_from_unmatched_calendar_retention(
         if not name:
             continue
         fp = str(rec.get("source_fingerprint") or "").strip() or None
-        geo = geo_by_fp.get(fp or "") if fp else {}
+        # Fingerprint may be absent from the live list / changelog — never None.
+        geo = (geo_by_fp.get(fp) or {}) if fp else {}
         year_raw = rec.get("results_year")
         try:
             year_i = int(year_raw) if year_raw is not None and not pd.isna(year_raw) else start.year
