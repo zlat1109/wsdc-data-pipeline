@@ -165,17 +165,22 @@ def test_guard_detects_baltic_swing_phoenix_collision():
 
 
 def test_scheduled_country_conflict_catches_no_hint_events():
-    """Sea Dance / Med in Swing pattern: no country token in name, calendar disagrees."""
+    """Med in Swing pattern: no country token in name, calendar disagrees.
+
+    Sea Dance Fest is a documented series move (Anapa→Moscow) and is skipped via
+    KNOWN_SERIES_MOVES — same as Westie's Angels / GGP / Countdown.
+    """
     location_info = pd.DataFrame(
         [
             {"location_id": "127", "event_city": "Düsseldorf", "event_country": "Germany"},
             {"location_id": "3", "event_city": "Phoenix", "event_country": "United States"},
             {"location_id": "113", "event_city": "Moscow", "event_country": "Russia"},
+            {"location_id": "403", "event_city": "Anapa", "event_country": "Russia"},
         ]
     )
     results = pd.DataFrame(
         [
-            {"event_name": "Sea Dance Fest", "location_id": "127"},
+            {"event_name": "Sea Dance Fest", "location_id": "403"},
             {"event_name": "Med in Swing", "location_id": "3"},
             {"event_name": "Swing & Snow", "location_id": "113"},
         ]
@@ -202,7 +207,7 @@ def test_scheduled_country_conflict_catches_no_hint_events():
 
     conflicts = find_scheduled_country_conflicts(results, location_info, scheduled)
     names = {c.event_name for c in conflicts}
-    assert names == {"Sea Dance Fest", "Med in Swing"}
+    assert names == {"Med in Swing"}
 
     finding = check_scheduled_vs_results_country(results, location_info, scheduled)
     assert finding is not None
@@ -517,6 +522,8 @@ def test_event_id_canonical_ignores_series_moves():
     assert "Westie's Angels" in KNOWN_SERIES_MOVES
     assert "Global Grand Prix - West Coast Swing Reunion" in KNOWN_SERIES_MOVES
     assert "Countdown Swing Boston" in KNOWN_SERIES_MOVES
+    assert "Sea Dance Fest" in KNOWN_SERIES_MOVES
+    assert "Calgary Town Open" in KNOWN_SERIES_MOVES
     mismatches = find_event_id_canonical_location_mismatches(
         results,
         location_info,

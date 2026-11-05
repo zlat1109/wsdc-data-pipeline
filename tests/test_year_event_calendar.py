@@ -1055,6 +1055,61 @@ def test_enrich_geo_year_override_ggp_2026_paris_not_toulouse():
     assert rows[1]["city"] == "Toulouse"
 
 
+def test_enrich_geo_year_override_sea_dance_2025_moscow_not_anapa():
+    """event 338: Anapa/Black Sea 2023–2024; Moscow region from 2025."""
+    locations = pd.DataFrame(
+        [
+            {
+                "location_id": 403,
+                "event_city": "Anapa",
+                "event_country": "Russia",
+                "event_location": "Anapa, Russia",
+                "event_location_standardized": "Anapa, Russia",
+                "latitude": 44.8947,
+                "longitude": 37.3169,
+                "coordinates_valid": True,
+            },
+            {
+                "location_id": 113,
+                "event_city": "Moscow",
+                "event_country": "Russia",
+                "event_location": "Moscow, Russia",
+                "event_location_standardized": "Moscow, Russia",
+                "latitude": 55.7558,
+                "longitude": 37.6173,
+                "coordinates_valid": True,
+            },
+        ]
+    )
+    catalog = pd.DataFrame(columns=["event_id", "canonical_name", "url"])
+    moscow_2025 = {
+        "event_id": 338,
+        "name": "Sea Dance Fest",
+        "city": "Moscow",
+        "country": "Russia",
+        "location_id": None,
+        "year": 2025,
+        "start_date": date(2025, 9, 5),
+        "url": "https://vk.com/seadancefest",
+    }
+    anapa_2024 = {
+        "event_id": 338,
+        "name": "Sea Dance Fest",
+        "city": "Anapa",
+        "country": "Russia",
+        "location_id": None,
+        "year": 2024,
+        "start_date": date(2024, 9, 1),
+        "url": "https://vk.com/seadancefest",
+    }
+    rows = [moscow_2025, anapa_2024]
+    _enrich_geo(rows, locations, catalog, location_id_by_event={338: 403})
+    assert rows[0]["location_id"] == 113
+    assert rows[0]["city"] == "Moscow"
+    assert rows[1]["location_id"] == 403
+    assert rows[1]["city"] == "Anapa"
+
+
 def test_enrich_geo_year_override_cto_2026_calgary_not_ottawa():
     """event 324: Ottawa (BTO) through 2025; Calgary Town Open from 2026."""
     locations = pd.DataFrame(
