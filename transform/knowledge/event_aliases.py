@@ -119,6 +119,9 @@ EVENT_NAME_VARIANT_TO_CATALOG: dict[str, str] = {
     'By-Town Open (BTO)': 'Calgary Town Open',
     'By-Town Open': 'Calgary Town Open',
     'CTO Open': 'Calgary Town Open',
+    # 2023 trial title on registry id 338 (same series as Sea Dance Fest).
+    'SEA Q-FEST': 'Sea Dance Fest',
+    'SEA Q-FEST (Trial Event)': 'Sea Dance Fest',
     'Monterey Swingfest': 'Monterey SwingFest',
     'Monterey Swing Fest 2024': 'Monterey SwingFest',
     'Swing Fling 2024': 'Swing Fling',

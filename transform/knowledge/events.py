@@ -114,8 +114,12 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     'Swing of Music': 'Wels, Austria',
     # Shared Jeju (213) wrongly applied to The Aloha Open (Wailea / Hawaii).
     'The Aloha Open': 'Wailea, HI, United States',
-    # Shared Düsseldorf (127) wrongly applied to Sea Dance Fest (Moscow).
-    'Sea Dance Fest': 'Moscow, Russia',
+    # event_id 338: dump shows Anapa/Vityazevo (Black Sea) 2023–2024, then
+    # Moscow oblast 2025+. Do not flatten to Moscow — year override owns the move
+    # (same pattern as GGP→Paris / BTO→Calgary). Was also stuck on Düsseldorf (127).
+    'Sea Dance Fest': 'Anapa, Russia',
+    'SEA Q-FEST': 'Anapa, Russia',
+    'SEA Q-FEST (Trial Event)': 'Anapa, Russia',
     # Shared Phoenix (3 / Desert City etc.) wrongly applied to Med in Swing (Côte d'Azur).
     'Med in Swing': 'La Londe-les-Maures, France',
     # Shared Washington DC (13) wrongly applied to Westie's Angels (Lyon).
@@ -222,6 +226,10 @@ EVENT_NAME_YEAR_LOCATION_OVERRIDES: dict[tuple[str, int, int], str] = {
     ("By-Town Open", 2026, 2099): "Calgary, Canada",
     ("CTO Open", 2026, 2099): "Calgary, Canada",
     ("Calgary Town Open", 2026, 2099): "Calgary, Canada",
+    # event_id 338: Anapa/Vityazevo Black Sea 2023–2024; Moscow region from 2025.
+    ("Sea Dance Fest", 2025, 2099): "Moscow, Russia",
+    ("SEA Q-FEST", 2025, 2099): "Moscow, Russia",
+    ("SEA Q-FEST (Trial Event)", 2025, 2099): "Moscow, Russia",
 }
 
 EVENT_LOCATION_EXACT_CORRECTIONS = {
@@ -390,15 +398,16 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
         },
     },
     338: {
+        # Historical Black Sea home (Anapa); Moscow from 2025 via year override.
         'name': 'Sea Dance Fest',
         'url': 'https://vk.com/seadancefest',
-        'typical_location': 'Moscow, Russia',
+        'typical_location': 'Anapa, Russia',
         'location': {
-            'event_city': 'Moscow',
+            'event_city': 'Anapa',
             'event_state': '',
             'event_country': 'Russia',
-            'event_location': 'Moscow, Russia',
-            'event_location_standardized': 'Moscow, Russia',
+            'event_location': 'Anapa, Russia',
+            'event_location_standardized': 'Anapa, Russia',
         },
     },
     270: {
