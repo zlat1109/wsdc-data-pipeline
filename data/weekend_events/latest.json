@@ -1,62 +1,62 @@
 {
-  "generated_at": "2026-10-12T09:23:34Z",
-  "weekend_start": "2026-10-12",
-  "weekend_end": "2026-10-25",
+  "generated_at": "2026-11-03T16:48:03Z",
+  "weekend_start": "2026-11-02",
+  "weekend_end": "2026-11-15",
   "events": [
     {
-      "name": "The New Zealand West Coast Swing Open",
-      "location": "Auckland, New Zealand",
-      "dates": "Oct 15 - 18, 2026",
-      "url": "https://www.streetswing.co.nz/the-new-zealand-open",
-      "start_date": "2026-10-15",
-      "end_date": "2026-10-18",
+      "name": "Simply Adelaide West Coast Swing",
+      "location": "Adelaide, SA, Australia",
+      "dates": "Nov 5 - 8, 2026",
+      "url": "http://www.simplyadelaidewcs.com.au/",
+      "start_date": "2026-11-05",
+      "end_date": "2026-11-08",
       "livestream": null,
       "continent": "Australia",
-      "flag": "🇳🇿"
+      "flag": "🇦🇺"
     },
     {
-      "name": "WCS Festival",
-      "location": "Duesseldorf, NRW, Germany",
-      "dates": "Oct 15 - 18, 2026",
-      "url": "http://www.wcsfestival.com/",
-      "start_date": "2026-10-15",
-      "end_date": "2026-10-18",
-      "livestream": null,
-      "continent": "Europe",
-      "flag": "🇩🇪"
-    },
-    {
-      "name": "Milan Modern Swing",
-      "location": "Milan, Milan, Italy",
-      "dates": "Oct 15 - 18, 2026",
-      "url": "https://www.westcoastswingmilan.com/",
-      "start_date": "2026-10-15",
-      "end_date": "2026-10-18",
-      "livestream": null,
-      "continent": "Europe",
-      "flag": "🇮🇹"
-    },
-    {
-      "name": "Paradise dance Festival",
-      "location": "Irvine, CA, USA",
-      "dates": "Oct 15 - 18, 2026",
-      "url": "https://paradisecountrydancefestival.com/",
-      "start_date": "2026-10-15",
-      "end_date": "2026-10-18",
+      "name": "Tampa Bay Classic",
+      "location": "Tampa Bay, FL, USA",
+      "dates": "Nov 5 - 8, 2026",
+      "url": "http://www.tbcwcs.com/",
+      "start_date": "2026-11-05",
+      "end_date": "2026-11-08",
       "livestream": null,
       "continent": "America",
       "flag": "🇺🇸"
     },
     {
-      "name": "Swustlicious",
-      "location": "Philadelphia, PA, United States",
-      "dates": "Oct 16 - 18, 2026",
-      "url": "http://www.swustlicious.com/",
-      "start_date": "2026-10-16",
-      "end_date": "2026-10-18",
+      "name": "Mountain Magic Dance Convention",
+      "location": "South Lake Tahoe (near Reno), NV, USA",
+      "dates": "Nov 5 - 8, 2026",
+      "url": "http://mountainmagic.dance/",
+      "start_date": "2026-11-05",
+      "end_date": "2026-11-08",
       "livestream": null,
       "continent": "America",
       "flag": "🇺🇸"
+    },
+    {
+      "name": "Sea to Sky Seattle",
+      "location": "Seattle, WA, USA",
+      "dates": "Nov 5 - 9, 2026",
+      "url": "http://seatoskywcs.com/",
+      "start_date": "2026-11-05",
+      "end_date": "2026-11-09",
+      "livestream": null,
+      "continent": "America",
+      "flag": "🇺🇸"
+    },
+    {
+      "name": "Moscow Westie Fest Gala Edition",
+      "location": "Moscow,  Russia",
+      "dates": "Nov 6 - 8, 2026",
+      "url": "http://westiefest.org/",
+      "start_date": "2026-11-06",
+      "end_date": "2026-11-08",
+      "livestream": null,
+      "continent": "Europe",
+      "flag": "🇷🇺"
     }
   ]
 }

@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-10-29T18:45:27Z",
+  "weekend_start": "2026-10-26",
+  "weekend_end": "2026-11-08",
+  "events": [
+    {
+      "name": "Scandinavian Open WCS \"SNOW\"",
+      "location": "Stockholm, Sweden, Sverige",
+      "dates": "Oct 28 - Nov 2, 2026",
+      "url": "http://www.snowcs.se/",
+      "start_date": "2026-10-28",
+      "end_date": "2026-11-02",
+      "livestream": "https://www.youtube.com/live/NrIwkWjhqY8",
+      "continent": "Europe",
+      "flag": "🇸🇪"
+    },
+    {
+      "name": "Warsaw Halloween Swing",
+      "location": "Warsaw, Poland",
+      "dates": "Oct 29 - Nov 2, 2026",
+      "url": "http://www.warsawhalloweenswing.com/",
+      "start_date": "2026-10-29",
+      "end_date": "2026-11-02",
+      "livestream": "https://twitch.tv/5678wcs2",
+      "continent": "Europe",
+      "flag": "🇵🇱"
+    },
+    {
+      "name": "Spooky Westie Weekend",
+      "location": "Singapore, Singapore, Singapore",
+      "dates": "Oct 29 - Nov 1, 2026",
+      "url": "https://spookywestieweekend.com/",
+      "start_date": "2026-10-29",
+      "end_date": "2026-11-01",
+      "livestream": null,
+      "continent": "Asia",
+      "flag": "🇸🇬"
+    }
+  ]
+}

@@ -15,6 +15,20 @@ SELECT dancer_id, dancer_name FROM core.dancers;
 -- the steps below, TRUNCATE CASCADE empties competitions before catalog
 -- rematch (run 36579927035). Stash durable edition keys, drop the FK, and
 -- detach so headcounts survive; rebuild_event_catalog rematches + restores FK.
+--
+-- core.cr_* must NOT FK dancers / event_editions (migration 040). CASCADE
+-- would wipe the scrape enrichment while leaving core.cr_loads intact.
+-- Detach edition matches before editions rebuild (identity restarts).
+DO $$
+BEGIN
+    IF to_regclass('core.cr_editions') IS NOT NULL THEN
+        UPDATE core.cr_editions
+        SET edition_id = NULL,
+            match_status = 'unmatched'
+        WHERE edition_id IS NOT NULL;
+    END IF;
+END $$;
+
 DROP TABLE IF EXISTS _competition_edition_keys;
 CREATE TEMP TABLE _competition_edition_keys AS
 SELECT c.competition_id, ed.event_id, ed.event_year, ed.event_month

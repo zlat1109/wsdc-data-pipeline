@@ -1,6 +1,11 @@
 # Entity-relationship diagrams
 
-Current Supabase warehouse as of migrations **001–034**. Source of truth: `db/migrations/*.sql`.
+Current Supabase warehouse as of migrations **001–039**. Source of truth: `db/migrations/*.sql`.
+
+Optional enrichments not drawn in the main map below: `core.competitions` (dump headcounts)
+and `core.cr_*` (Competition Results scrape layer) — see
+[operations/competition-results.md](../operations/competition-results.md) and
+[operations/mysql-dump-reload.md](../operations/mysql-dump-reload.md).
 
 !!! tip "Interactive ERD (pan / zoom)"
     Two explorers:
@@ -291,6 +296,9 @@ flowchart TB
 | `events_list_current` | Geo for map pin | `locations` ON `location_id` *(soft)* |
 | `event_name` string | Stable `event_id` | `event_aliases` / `events.name` |
 | `dancer_id` | Current points ladder | `dancer_points` ON `dancer_id` (+ role/dance/level) |
+| `event_editions` | Exact dump headcounts (L/F) | `competitions` / `export.competitions_best` ON `edition_id` |
+| CR finals | Scored vs unscored | `export.cr_finals_vs_scored` |
+| CR competitor / marks | Prelim–final scrape | `export.cr_round_results` / `export.cr_judge_marks` |
 | Any SCD2 question | Version at date | `*_history` WHERE `valid_from ≤ d` AND (`valid_to` IS NULL OR `valid_to > d`) |
 
 ### SQL sketch (results → enriched edition)

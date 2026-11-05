@@ -152,6 +152,67 @@ def _update_editions(path: Path, location_df: pd.DataFrame, dry_run: bool) -> in
     return changed
 
 
+def _update_baseline(path: Path, location_df: pd.DataFrame, dry_run: bool) -> int:
+    """Keep edition_location_baseline in sync with name/year location overrides.
+
+    Export pulls baseline from DB; without this rematch, BASELINE_VS_LOCATION_OVERRIDE
+    reappears after each export for series moves (GGP, BTO→Calgary Town Open, …).
+    """
+    if not path.exists():
+        return 0
+    rows = list(csv.DictReader(path.open(encoding="utf-8-sig", newline="")))
+    if not rows:
+        return 0
+    fields = list(rows[0].keys())
+    lookup = build_location_lookup(location_df)
+    loc = {
+        str(r["location_id"]): r
+        for r in location_df.to_dict(orient="records")
+        if str(r.get("location_id") or "")
+    }
+    override_names = set(EVENT_NAME_LOCATION_OVERRIDES) | {
+        name for name, _y0, _y1 in EVENT_NAME_YEAR_LOCATION_OVERRIDES
+    }
+    changed = 0
+    for row in rows:
+        name = (row.get("event_name") or "").strip()
+        if name not in override_names:
+            continue
+        year = _parse_year(row, "event_year", "year")
+        target = _target_for_name_year(name, year)
+        if not target:
+            continue
+        new_lid = _resolve_text_to_lid(lookup, target)
+        if not new_lid or row.get("location_id") == new_lid:
+            continue
+        changed += 1
+        if dry_run:
+            continue
+        L = loc.get(new_lid, {})
+        row["location_id"] = new_lid
+        row["source"] = "manual"
+        if "event_city" in row:
+            row["event_city"] = L.get("event_city") or row.get("event_city") or ""
+        if "event_state" in row:
+            row["event_state"] = L.get("event_state") or ""
+        if "event_country" in row:
+            row["event_country"] = L.get("event_country") or row.get("event_country") or ""
+        if "event_location" in row:
+            row["event_location"] = L.get("event_location") or target
+        if "event_location_standardized" in row:
+            row["event_location_standardized"] = (
+                L.get("event_location_standardized")
+                or L.get("event_location")
+                or target
+            )
+    if not dry_run and changed:
+        with path.open("w", encoding="utf-8", newline="") as f:
+            w = csv.DictWriter(f, fieldnames=fields)
+            w.writeheader()
+            w.writerows(rows)
+    return changed
+
+
 def _update_events_wsdc(path: Path, dry_run: bool) -> int:
     if not path.exists():
         return 0
@@ -321,9 +382,13 @@ def apply_overrides(data_dir: Path, *, dry_run: bool = False) -> int:
         print(f"  {name}: {n} rows, mode lid={cur[:1]} → flat {lid}")
 
     editions_n = _update_editions(data_dir / "event_editions.csv", location_df, dry_run=True)
+    baseline_n = _update_baseline(
+        data_dir / "edition_location_baseline.csv", location_df, dry_run=True
+    )
     wsdc_n = _update_events_wsdc(data_dir / "events_wsdc.csv", dry_run=True)
     catalog_n = _update_catalog(data_dir / "event_catalog.csv", dry_run=True)
     print(f"event_editions rows to update: {editions_n}")
+    print(f"edition_location_baseline rows to update: {baseline_n}")
     print(f"events_wsdc rows to update: {wsdc_n}")
     print(f"event_catalog rows to update: {catalog_n}")
 
@@ -333,6 +398,7 @@ def apply_overrides(data_dir: Path, *, dry_run: bool = False) -> int:
 
     out.to_csv(data_dir / "dancers_results_info.csv", index=False)
     _update_editions(data_dir / "event_editions.csv", location_df, dry_run=False)
+    _update_baseline(data_dir / "edition_location_baseline.csv", location_df, dry_run=False)
     _update_events_wsdc(data_dir / "events_wsdc.csv", dry_run=False)
     _update_catalog(data_dir / "event_catalog.csv", dry_run=False)
     print(f"✅ applied: results forced={forced} (before sample size {len(before)})")

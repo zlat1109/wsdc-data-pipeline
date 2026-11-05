@@ -1055,6 +1055,62 @@ def test_enrich_geo_year_override_ggp_2026_paris_not_toulouse():
     assert rows[1]["city"] == "Toulouse"
 
 
+def test_enrich_geo_year_override_cto_2026_calgary_not_ottawa():
+    """event 324: Ottawa (BTO) through 2025; Calgary Town Open from 2026."""
+    locations = pd.DataFrame(
+        [
+            {
+                "location_id": 179,
+                "event_city": "Ottawa",
+                "event_country": "Canada",
+                "event_location": "Ottawa, Canada",
+                "event_location_standardized": "Ottawa, Canada",
+                "latitude": 45.4200572,
+                "longitude": -75.7003397,
+                "coordinates_valid": True,
+            },
+            {
+                "location_id": 148,
+                "event_city": "Calgary",
+                "event_country": "Canada",
+                "event_location": "Calgary, Canada",
+                "event_location_standardized": "Calgary, Canada",
+                "latitude": 51.0447331,
+                "longitude": -114.0718831,
+                "coordinates_valid": True,
+            },
+        ]
+    )
+    catalog = pd.DataFrame(columns=["event_id", "canonical_name", "url"])
+    calgary_2026 = {
+        "event_id": 324,
+        "name": "Calgary Town Open",
+        "city": "Calgary",
+        "country": "Canada",
+        "location_id": None,
+        "year": 2026,
+        "start_date": date(2026, 9, 24),
+        "url": "https://ctodance.ca/",
+    }
+    ottawa_2025 = {
+        "event_id": 324,
+        "name": "BTO Open",
+        "city": "Ottawa",
+        "country": "Canada",
+        "location_id": None,
+        "year": 2025,
+        "start_date": date(2025, 3, 27),
+        "url": "https://ctodance.ca/",
+    }
+    # Wrong inherited lid (Calgary) must not stick on 2025 after year override.
+    rows = [calgary_2026, ottawa_2025]
+    _enrich_geo(rows, locations, catalog, location_id_by_event={324: 148})
+    assert rows[0]["location_id"] == 148
+    assert rows[0]["city"] == "Calgary"
+    assert rows[1]["location_id"] == 179
+    assert rows[1]["city"] == "Ottawa"
+
+
 def test_enrich_geo_city_country_fallback():
     locations = pd.DataFrame(
         [
@@ -2705,6 +2761,39 @@ def test_rows_from_unmatched_calendar_retention_keeps_manneken_style(tmp_path):
 
     gone = _rows_from_unmatched_calendar_retention(tmp_path, as_of=date(2026, 8, 31))
     assert gone == []
+
+
+def test_unmatched_calendar_retention_survives_missing_geo_fingerprint(tmp_path):
+    """Regression: fingerprint not in list/changelog must not AttributeError on geo.get."""
+    from transform.year_event_calendar.build import _rows_from_unmatched_calendar_retention
+
+    cal_dir = tmp_path / "events_calendar"
+    cal_dir.mkdir()
+    pd.DataFrame(
+        [
+            {
+                "event_name": "Orphan Swing",
+                "calendar_title": "Orphan Swing",
+                "start_date": "2026-09-01",
+                "end_date": "2026-09-03",
+                "url": "https://orphan.example",
+                "results_year": 2026,
+                "source_fingerprint": "fp-no-geo",
+                "matched_event_id": None,
+                "match_status": "unmatched",
+            }
+        ]
+    ).to_csv(cal_dir / "edition_date_matches.csv", index=False)
+    # Empty geo sources — fingerprint absent from map → get returns None.
+    (tmp_path / "events_list").mkdir(parents=True)
+    (tmp_path / "events_list" / "current.json").write_text('{"events":[]}', encoding="utf-8")
+
+    rows = _rows_from_unmatched_calendar_retention(tmp_path, as_of=date(2026, 9, 5))
+    assert len(rows) == 1
+    assert rows[0]["name"] == "Orphan Swing"
+    assert rows[0]["city"] is None
+    assert rows[0]["country"] is None
+    assert rows[0]["provisional_unlinked"] is True
 
 
 def test_build_year_event_calendar_retains_unmatched_after_list_drop(tmp_path):

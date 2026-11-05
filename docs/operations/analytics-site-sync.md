@@ -14,6 +14,7 @@ After each successful `full-parse.yml` export, the pipeline rebuilds JSON for
 | Year Event Calendar | `static/data/events_year_calendar.json` | pipeline `scripts/build_year_event_calendar.py` |
 | Time in Division dashboard | `static/data/time_in_division_spells.json` | analytics `scripts/update_time_in_division_spells.py` |
 | Event tiers by year | `static/data/event_tiers_by_year.json` | analytics `scripts/build_event_tiers_by_year.py` |
+| Event Growth Monitor | `static/data/event_growth.json` | pipeline `build_year_event_calendar.py` + site edition enrich + venue enrich (`--sql` or carry-forward) |
 
 Live:
 - https://wsdc-analytics.github.io/index.html?lang=en
@@ -23,8 +24,21 @@ Live:
 - https://wsdc-analytics.github.io/events-calendar.html
 - https://wsdc-analytics.github.io/time_in_division_dashboard_en.html
 - https://wsdc-analytics.github.io/event_tiers_by_year_dashboard_en.html
+- https://wsdc-analytics.github.io/event_growth_dashboard_en.html
 
 See also [point-summary.md](point-summary.md), [champion-news.md](champion-news.md), and [year-event-calendar.md](year-event-calendar.md).
+
+## Event Data Registry (manual, unlisted)
+
+Internal registry of WSDC public results vs Competition Results coverage
+(prelims / judges / partners / other divs / scoring software):
+
+- URL: https://wsdc-analytics.github.io/internal/event-data-registry.html
+- `noindex` + `robots.txt` `Disallow: /internal/` (not in nav / sitemap)
+- Built locally by `scripts/build_event_data_completeness_report.py --site-repo …`
+  from Competition Results parquet + dump TSVs + Results Forms (inputs not published)
+- Not part of `full-parse.yml` / `sync_analytics_site.sh` yet — refresh manually
+  after a CR reload (see [competition-results.md](competition-results.md))
 
 ## Secret (this repo)
 
@@ -49,7 +63,8 @@ full-parse.yml / sync-events-list.yml / force-rebuild-calendar-site.yml
          (REQUIRE_YEAR_CALENDAR=1 → hard fail; no silent stale calendar)
        build time_in_division_spells.json (hard fail if builder errors)
        build event_tiers_by_year.json (after L2 cards; hard fail if builder errors)
-       stamp calendar / dashboard / Time in Division / Event tiers ?v= cache buster
+       event_growth.json (calendar OK only) + edition enrich + venue enrich/SQL-or-carry-forward (hard fail)
+       stamp calendar / dashboard / Time in Division / Event tiers / Growth ?v= cache buster
        validate_site_data.py
        commit + push → GitHub Pages
   → Telegram #WSDC_Pipeline_Complete (+ location mismatch cards when findings exist)
@@ -59,12 +74,17 @@ full-parse.yml / sync-events-list.yml / force-rebuild-calendar-site.yml
 (`force-rebuild-calendar-site.yml`). Sets `REQUIRE_DEPLOY_TOKEN=1` and
 `REQUIRE_YEAR_CALENDAR=1`.
 
+**Force rebuild after MySQL dump reload** (exact L2 dancers / dump dates): follow
+[mysql-dump-reload.md](mysql-dump-reload.md), then dispatch the same workflow so
+export + Pages pick up `competitions_best` and calendar JSON.
+
 Env flags for `sync_analytics_site.sh`:
 
 | Env | Default | Meaning |
 |-----|---------|---------|
 | `REQUIRE_DEPLOY_TOKEN` | `0` | `1` → missing PAT fails the job (full-parse / force-rebuild) |
 | `REQUIRE_YEAR_CALENDAR` | `1` | `1` → calendar build failure exits non-zero |
+| `WSDC_MYSQL_DUMP` | _(optional)_ | Path to `wsdc*.sql` for Growth venue enrich; else newest `dumps/wsdc*.sql`, else carry-forward |
 
 ## Local paths
 
@@ -100,6 +120,16 @@ python3 "$SITE/scripts/build_event_tiers_by_year.py" \
   --source-dir "$PIPE" \
   --site-repo "$SITE" \
   --output "$SITE/static/data/event_tiers_by_year.json"
+
+# Event Growth (calendar builder writes event_growth.json when --site-repo is set)
+python3 ~/.cursor/projects/python/wsdc-data-pipeline/scripts/build_year_event_calendar.py \
+  --data-dir "$PIPE" --site-repo "$SITE"
+python3 "$SITE/scripts/enrich_event_growth_edition_numbers.py" \
+  --growth "$SITE/static/data/event_growth.json" \
+  --editions "$PIPE/event_editions.csv"
+# Venue pins: prefer dump; else carry from a prior copy
+# python3 "$SITE/scripts/enrich_event_growth_venues.py" --sql dumps/wsdcMMDDYY.sql --growth "$SITE/static/data/event_growth.json"
+# python3 "$SITE/scripts/enrich_event_growth_venues.py" --growth "$SITE/static/data/event_growth.json" --prior-growth /tmp/prior_event_growth.json
 
 cd "$SITE" && python3 scripts/validate_site_data.py
 # then commit static/data/*.json and push main → Pages

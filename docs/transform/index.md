@@ -45,6 +45,9 @@ Always run before load when CSVs come from cloud parse.
 | `knowledge/` | Event aliases, location corrections |
 | `event_knowledge.py` | Known event metadata (URL, typical location) |
 | `events_list_*.py` | Schedule scrape normalization and mapping |
+| `competitions_from_dump.py` | Map dump competitions → `core.event_editions` |
+| `competition_results/` | Competition Results parquet → `core.cr_*` (filters, match, couples, marks, conflicts) |
+| `results_form_match.py` | Results Form CSV → edition match (Event Data Registry software) |
 
 ## Quality report structure
 

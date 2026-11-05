@@ -1,8 +1,11 @@
 """Tests for data quality audit checks."""
 
+import math
+
 import pandas as pd
 
 from transform.quality_audit import (
+    check_event_name_location_id_collision,
     check_event_name_variants,
     check_event_name_year_suffix,
     check_location_format,
@@ -67,3 +70,23 @@ def test_singapore_city_state_not_flagged_as_city_equals_country():
     findings = check_location_format(df)
     codes = {f.code for f in findings}
     assert "LOCATION_CITY_EQUALS_COUNTRY" not in codes
+
+
+def test_event_name_location_id_collision_handles_float_nan_ids():
+    """Parser CSVs infer float location_id; NaN must not crash preprocess audit."""
+    results = pd.DataFrame(
+        {
+            "event_name": ["Go West SwingFest", "Go West SwingFest", "Go West SwingFest"],
+            "location_id": [253.0, 240.0, math.nan],
+        }
+    )
+    location_info = pd.DataFrame(
+        {
+            "location_id": [253.0, 240.0],
+            "event_country": ["Australia", "Australia"],
+        }
+    )
+    finding = check_event_name_location_id_collision(results, location_info)
+    assert finding is not None
+    assert finding.code == "EVENT_NAME_LOCATION_ID_COLLISION"
+    assert finding.examples[0]["location_ids"] == ["240", "253"]

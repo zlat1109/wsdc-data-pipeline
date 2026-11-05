@@ -113,7 +113,9 @@ Seeded from preprocess maps and merge scripts.
 | event_year | int | YES | Year |
 | event_month | int | YES | Month |
 
-Powers `export.events_wsdc` view.
+**Deprecated** for analytics (migration 035/036): prefer `core.event_editions`.
+`export.events_wsdc` is rebuilt from editions; `event_instances` is repopulated
+from editions after each catalog rebuild for legacy consumers only.
 
 ## core.results
 
@@ -381,8 +383,41 @@ points `TRUNCATE … CASCADE` cannot wipe this snapshot.
 
 Powers `export.scheduled_events`.
 
+## core.competitions
+
+**Grain:** one WSDC dump `competitions` row (exact Leader/Follower/finals headcounts for WCS).
+
+**Primary key:** `competition_id`
+
+Loaded by `scripts/load_competitions_from_dump.py` (not the weekly points load).
+`edition_id` is nullable with `match_status` `matched` / `unmatched`. Prefer
+`export.competitions_best` for analytics (one row per edition + level).
+
+See [../operations/mysql-dump-reload.md](../operations/mysql-dump-reload.md).
+
+## Competition Results enrichment (`core.cr_*`)
+
+Parallel scrape layer from Competition Results parquet (migration 039). **Does not
+duplicate** WSDC public scored placements in `core.results` — only prelims /
+semis / quarters, unscored finalists, partners, judge marks, and other divisions.
+
+| Table | Grain |
+|-------|--------|
+| `core.cr_loads` | One load audit (`source_file`, sha, counts) |
+| `core.cr_editions` | CR edition id ↔ nullable FK `edition_id` + `match_status` |
+| `core.cr_divisions` | `raw_division` + `level` / `category` / `label` |
+| `core.cr_rounds` | prelim / quarter / semi / final |
+| `core.cr_round_results` | Competitor per round; `dancer_id` only when known WSDC id |
+| `core.cr_final_couples` | Finals couple (judge ranks the pair) |
+| `core.cr_judge_marks` | Long-form marks (competitor or couple) |
+
+Load: `scripts/load_competition_results.py` (local `--cr-path`, dry-run default).
+Full runbook: [../operations/competition-results.md](../operations/competition-results.md).
+Generated columns: [_generated/tables.md](_generated/tables.md).
+
 ## Related
 
 - [history.md](history.md) — change log
 - [export-views.md](export-views.md) — Tableau views
 - [../architecture/identity-model.md](../architecture/identity-model.md)
+- [../operations/competition-results.md](../operations/competition-results.md)

@@ -1,260 +1,14 @@
 {
   "summary": {
-    "scheduled_active": 159,
-    "confirmed": 151,
+    "scheduled_active": 158,
+    "confirmed": 150,
     "suggested": 0,
     "review": 0,
     "new_unmapped": 8,
     "location_drifts": 15,
-    "name_variants": 43
+    "name_variants": 42
   },
   "confirmed": [
-    {
-      "source_fingerprint": "115e48131a7d9cc962d95d0d",
-      "list_name": "The New Zealand West Coast Swing Open",
-      "start_date": "2026-10-15",
-      "location_raw": "Auckland, New Zealand",
-      "list_url": "https://www.streetswing.co.nz/the-new-zealand-open",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "explicit",
-      "confidence": 1.0,
-      "canonical_event_id": 179,
-      "canonical_name": "New Zealand Open Swing Dance Championships",
-      "catalog_url": "https://www.streetswing.co.nz/the-new-zealand-open",
-      "typical_location": "Auckland, New Zealand",
-      "location_score": 1.0,
-      "location_flag": "ok",
-      "notes": [
-        "Name differs: list='The New Zealand West Coast Swing Open' catalog='New Zealand Open Swing Dance Championships'"
-      ]
-    },
-    {
-      "source_fingerprint": "3cc38a85b16b4016c389a952",
-      "list_name": "WCS Festival",
-      "start_date": "2026-10-15",
-      "location_raw": "Düsseldorf, Germany",
-      "list_url": "http://www.wcsfestival.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 286,
-      "canonical_name": "WCS Festival",
-      "catalog_url": "http://www.wcsfestival.com/",
-      "typical_location": "Düsseldorf, Germany",
-      "location_score": 1.0,
-      "location_flag": "ok",
-      "notes": []
-    },
-    {
-      "source_fingerprint": "c14fabb534dd47417aa878eb",
-      "list_name": "Milan Modern Swing",
-      "start_date": "2026-10-15",
-      "location_raw": "Milan, Milan, Italy",
-      "list_url": "https://www.westcoastswingmilan.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 322,
-      "canonical_name": "Milan Modern Swing",
-      "catalog_url": "https://www.westcoastswingmilan.com/",
-      "typical_location": "Milan, Italy",
-      "location_score": 0.92,
-      "location_flag": "ok",
-      "notes": []
-    },
-    {
-      "source_fingerprint": "109862c6a04aadfe8cebcdba",
-      "list_name": "Paradise dance Festival",
-      "start_date": "2026-10-15",
-      "location_raw": "Irvine, CA, United States",
-      "list_url": "https://paradisecountrydancefestival.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "url",
-      "confidence": 1.0,
-      "canonical_event_id": 43,
-      "canonical_name": "Paradise Dance Festival",
-      "catalog_url": "http://www.ParadiseCountryDanceFestival.com",
-      "typical_location": "Irvine, CA",
-      "location_score": 0.92,
-      "location_flag": "ok",
-      "notes": [
-        "Name differs: list='Paradise dance Festival' catalog='Paradise Dance Festival'"
-      ]
-    },
-    {
-      "source_fingerprint": "5fd0811df39b6befac05a033",
-      "list_name": "Swustlicious",
-      "start_date": "2026-10-16",
-      "location_raw": "Philadelphia, PA, United States",
-      "list_url": "http://www.swustlicious.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 267,
-      "canonical_name": "Swustlicious",
-      "catalog_url": "http://www.sparklage.com",
-      "typical_location": "Philadelphia, PA",
-      "location_score": 0.92,
-      "location_flag": "ok",
-      "notes": [
-        "List URL 'http://www.swustlicious.com/' differs from catalog URL 'http://www.sparklage.com' — using event name"
-      ]
-    },
-    {
-      "source_fingerprint": "4e3a3aefb59eb188b5826016",
-      "list_name": "Swing City Chicago",
-      "start_date": "2026-10-22",
-      "location_raw": "CHICAGO, IL, United States",
-      "list_url": "https://swingcitychicago.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 125,
-      "canonical_name": "Swing City Chicago",
-      "catalog_url": "https://swingcitychicago.com",
-      "typical_location": "Chicago, IL",
-      "location_score": 0.92,
-      "location_flag": "ok",
-      "notes": []
-    },
-    {
-      "source_fingerprint": "0dae37e4b2e9e5c60a3ffd87",
-      "list_name": "Halloween SwingThing",
-      "start_date": "2026-10-22",
-      "location_raw": "Costa Mesa, CA, United States",
-      "list_url": "http://hstswing.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 65,
-      "canonical_name": "Halloween SwingThing",
-      "catalog_url": "http://Hstswing.com",
-      "typical_location": "Costa Mesa, CA",
-      "location_score": 0.92,
-      "location_flag": "ok",
-      "notes": []
-    },
-    {
-      "source_fingerprint": "b677c51d58a48bb0dafb12c6",
-      "list_name": "Augsburg Westie Station",
-      "start_date": "2026-10-22",
-      "location_raw": "Augsburg, Bavaria, Germany",
-      "list_url": "https://www.augsburgwestiestation.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 350,
-      "canonical_name": "Augsburg Westie Station",
-      "catalog_url": "https://www.augsburgwestiestation.com/home",
-      "typical_location": "Augsburg, Germany",
-      "location_score": 0.92,
-      "location_flag": "ok",
-      "notes": [
-        "List URL 'https://www.augsburgwestiestation.com/' differs from catalog URL 'https://www.augsburgwestiestation.com/home' — using event name"
-      ]
-    },
-    {
-      "source_fingerprint": "c19a0c0b39051a0a674cd4df",
-      "list_name": "SASS- Spooky Albany Swing Spectacular",
-      "start_date": "2026-10-22",
-      "location_raw": "Albany, NY, United States",
-      "list_url": "http://www.spookyalbanyswing.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "url",
-      "confidence": 0.9863013698630136,
-      "canonical_event_id": 380,
-      "canonical_name": "SASS Spooky Albany Swing Spectacular",
-      "catalog_url": "http://www.spookyalbanyswing.com/",
-      "typical_location": "Albany, NY",
-      "location_score": 0.92,
-      "location_flag": "ok",
-      "notes": [
-        "Name differs: list='SASS- Spooky Albany Swing Spectacular' catalog='SASS Spooky Albany Swing Spectacular'"
-      ]
-    },
-    {
-      "source_fingerprint": "9ee0dd84cb9512c11ab44bf5",
-      "list_name": "Swingside Invitational",
-      "start_date": "2026-10-23",
-      "location_raw": "Liège, Liège, Belgique",
-      "list_url": "https://www.swingside-invitational.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 346,
-      "canonical_name": "Swingside Invitational",
-      "catalog_url": "http://www.swingside-invitational.com",
-      "typical_location": "Liège, Belgium",
-      "location_score": 0.92,
-      "location_flag": "ok",
-      "notes": []
-    },
-    {
-      "source_fingerprint": "b3f14e09dd2097b15eeb2515",
-      "list_name": "Scandinavian Open WCS \"SNOW\"",
-      "start_date": "2026-10-28",
-      "location_raw": "Stockholm, Sweden",
-      "list_url": "http://www.snowcs.se/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "explicit",
-      "confidence": 1.0,
-      "canonical_event_id": 229,
-      "canonical_name": "Scandinavian Open",
-      "catalog_url": "http://www.snowcs.se/",
-      "typical_location": "Stockholm, Sweden",
-      "location_score": 1.0,
-      "location_flag": "ok",
-      "notes": [
-        "Name differs: list='Scandinavian Open WCS \"SNOW\"' catalog='Scandinavian Open'"
-      ]
-    },
-    {
-      "source_fingerprint": "359c690048b2bb2978c21856",
-      "list_name": "Warsaw Halloween Swing",
-      "start_date": "2026-10-29",
-      "location_raw": "Warsaw, Poland",
-      "list_url": "http://www.warsawhalloweenswing.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 236,
-      "canonical_name": "Warsaw Halloween Swing",
-      "catalog_url": "http://www.warsawhalloweenswing.com",
-      "typical_location": "Warsaw, Poland",
-      "location_score": 1.0,
-      "location_flag": "ok",
-      "notes": []
-    },
-    {
-      "source_fingerprint": "2d52dfcc0e676c47d89ab1d3",
-      "list_name": "Spooky Westie Weekend",
-      "start_date": "2026-10-29",
-      "location_raw": "Singapore",
-      "list_url": "https://spookywestieweekend.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 340,
-      "canonical_name": "Spooky Westie Weekend",
-      "catalog_url": "https://spookywestieweekend.com/",
-      "typical_location": "Singapore, Singapore",
-      "location_score": 0.92,
-      "location_flag": "ok",
-      "notes": []
-    },
     {
       "source_fingerprint": "64b9c744f6990fa57a068af9",
       "list_name": "Simply Adelaide West Coast Swing",
@@ -323,7 +77,7 @@
       "match_status": "confirmed",
       "match_method": "exact_name",
       "confidence": 1.0,
-      "canonical_event_id": 457,
+      "canonical_event_id": 459,
       "canonical_name": "Sea to Sky Seattle",
       "catalog_url": "",
       "typical_location": null,
@@ -518,15 +272,14 @@
       "match_status": "confirmed",
       "match_method": "explicit",
       "confidence": 1.0,
-      "canonical_event_id": 475,
+      "canonical_event_id": 68,
       "canonical_name": "US Open Swing Dance Championships",
-      "catalog_url": "",
-      "typical_location": null,
-      "location_score": 0.0,
-      "location_flag": "unknown",
+      "catalog_url": "http://www.theopenswing.com",
+      "typical_location": "Los Angeles, CA",
+      "location_score": 0.92,
+      "location_flag": "ok",
       "notes": [
-        "Name differs: list='The Open Swing Dance  Championships' catalog='US Open Swing Dance Championships'",
-        "No historical location in catalog for comparison"
+        "Name differs: list='The Open Swing Dance  Championships' catalog='US Open Swing Dance Championships'"
       ]
     },
     {
@@ -1303,6 +1056,26 @@
       "location_score": 0.92,
       "location_flag": "ok",
       "notes": []
+    },
+    {
+      "source_fingerprint": "5cb418e1cefe86f59aa9c02c",
+      "list_name": "H-Town Throw Down",
+      "start_date": "2027-03-11",
+      "location_raw": "Houston, TX, United States",
+      "list_url": "https://www.htownthrowdownwcs.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 153,
+      "canonical_name": "Novice Invitational",
+      "catalog_url": "http://www.htownthrowdownwcs.com",
+      "typical_location": "Houston, TX",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": [
+        "Name differs: list='H-Town Throw Down' catalog='Novice Invitational'"
+      ]
     },
     {
       "source_fingerprint": "d2605cdb9c5528d401dfc5f0",
@@ -2226,6 +1999,27 @@
       "notes": []
     },
     {
+      "source_fingerprint": "12e514de4ed2b490b10b070d",
+      "list_name": "Toronto Open",
+      "start_date": "2027-07-15",
+      "location_raw": "Toronto, Ontario, Canada",
+      "list_url": "https://torontoopenswing.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 147,
+      "canonical_name": "Toronto Open Swing & Hustle Championships",
+      "catalog_url": "http://www.TOSHC.com",
+      "typical_location": "Toronto, Canada",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": [
+        "List URL 'https://torontoopenswing.com/' differs from catalog URL 'http://www.TOSHC.com' — using event name",
+        "Name differs: list='Toronto Open' catalog='Toronto Open Swing & Hustle Championships'"
+      ]
+    },
+    {
       "source_fingerprint": "f96eb07ff9da4d802b4a4c70",
       "list_name": "Midwest Westie Fest",
       "start_date": "2027-07-15",
@@ -2262,6 +2056,24 @@
       "notes": [
         "List URL 'https://revitalisewcs.melbourne/' differs from catalog URL 'https://withjoy.com/revitalisewcs-melbourne2025/welcome' — using event name"
       ]
+    },
+    {
+      "source_fingerprint": "2a72a1f7676376333e5754ab",
+      "list_name": "SwingLab Berlin",
+      "start_date": "2027-07-16",
+      "location_raw": "Berlin, Germany",
+      "list_url": "https://www.swinglab-berlin.com/",
+      "status_event": "Trial Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 389,
+      "canonical_name": "SwingLab Berlin",
+      "catalog_url": "http://www.swinglab-berlin.com",
+      "typical_location": "Berlin, Germany",
+      "location_score": 1.0,
+      "location_flag": "ok",
+      "notes": []
     },
     {
       "source_fingerprint": "3898eb5b6894d9b354ba6164",
@@ -2450,11 +2262,11 @@
       "notes": []
     },
     {
-      "source_fingerprint": "f2c7f9a7e1734e022d13ae90",
+      "source_fingerprint": "3098f395ed2140c5dcf9e784",
       "list_name": "Swing Fling",
       "start_date": "2027-08-12",
-      "location_raw": "Washington DC, DC, United States",
-      "list_url": "http://www.swingfling,.com/",
+      "location_raw": "Washington DC, VA, United States",
+      "list_url": "https://www.swingfling.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
       "match_method": "exact_name",
@@ -2463,11 +2275,10 @@
       "canonical_name": "Swing Fling",
       "catalog_url": "http://www.swingfling.com",
       "typical_location": "Herndon, VA",
-      "location_score": 0.32558139534883723,
+      "location_score": 0.37209302325581395,
       "location_flag": "site_differs_from_history",
       "notes": [
-        "List URL 'http://www.swingfling,.com/' differs from catalog URL 'http://www.swingfling.com' — using event name",
-        "Site location 'Washington DC, DC, United States' differs from catalog typical 'Herndon, VA' (venue may have moved)"
+        "Site location 'Washington DC, VA, United States' differs from catalog typical 'Herndon, VA' (venue may have moved)"
       ]
     },
     {
@@ -2527,6 +2338,24 @@
       "notes": []
     },
     {
+      "source_fingerprint": "0a57f87322403209ba59adde",
+      "list_name": "Swing Creation Hamburg",
+      "start_date": "2027-08-26",
+      "location_raw": "Hamburg, Germany",
+      "list_url": "https://www.hamburgswing.dance/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 401,
+      "canonical_name": "Swing Creation Hamburg",
+      "catalog_url": "",
+      "typical_location": "Hamburg, Germany",
+      "location_score": 1.0,
+      "location_flag": "ok",
+      "notes": []
+    },
+    {
       "source_fingerprint": "8e2efb89d90aba295c5a5622",
       "list_name": "SwingTime",
       "start_date": "2027-08-26",
@@ -2545,6 +2374,24 @@
       "notes": [
         "Name differs: list='SwingTime' catalog='SwingTime Denver'"
       ]
+    },
+    {
+      "source_fingerprint": "756e2b2b70aab14a7e4c9802",
+      "list_name": "Meet Me In St Louis",
+      "start_date": "2027-09-02",
+      "location_raw": "St. Louis, MO, United States",
+      "list_url": "http://www.mmisl.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 131,
+      "canonical_name": "Meet Me In St Louis",
+      "catalog_url": "http://Www.mmisl.com",
+      "typical_location": "St. Louis, MO",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": []
     },
     {
       "source_fingerprint": "40003e88c037e75bd7c2dc0c",
@@ -2693,6 +2540,24 @@
       "notes": []
     },
     {
+      "source_fingerprint": "312b7e992b85708641a8e1f6",
+      "list_name": "Boogie By The Bay",
+      "start_date": "2027-09-30",
+      "location_raw": "San Francisco, California, United States",
+      "list_url": "https://boogiebythebay.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 8,
+      "canonical_name": "Boogie By The Bay",
+      "catalog_url": "https://boogiebythebay.com",
+      "typical_location": "San Francisco, CA",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": []
+    },
+    {
       "source_fingerprint": "9b3abd6b833079fe2a127165",
       "list_name": "Mooseland Swing 2027",
       "start_date": "2027-09-30",
@@ -2713,22 +2578,24 @@
       ]
     },
     {
-      "source_fingerprint": "cb76c37057043ec4d28222bd",
-      "list_name": "Norwegian Open WCS",
-      "start_date": "2027-10-06",
-      "location_raw": "Hamar, Hamar, Norway",
-      "list_url": "https://norwegianopen.no/",
+      "source_fingerprint": "b65bcecaaff56bd2cc983a90",
+      "list_name": "Montreal Westie Fest",
+      "start_date": "2027-10-07",
+      "location_raw": "Montreal, QC, Canada",
+      "list_url": "https://montrealwestiefest.ca/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
       "match_method": "exact_name",
       "confidence": 1.0,
-      "canonical_event_id": 388,
-      "canonical_name": "Norwegian Open WCS",
-      "catalog_url": "https://norwegianopen.no/",
-      "typical_location": "Hamar, Norway",
+      "canonical_event_id": 178,
+      "canonical_name": "Montreal Westie Fest",
+      "catalog_url": "http://www.montrealwestiefest.com",
+      "typical_location": "Montreal, Canada",
       "location_score": 0.92,
       "location_flag": "ok",
-      "notes": []
+      "notes": [
+        "List URL 'https://montrealwestiefest.ca/' differs from catalog URL 'http://www.montrealwestiefest.com' — using event name"
+      ]
     },
     {
       "source_fingerprint": "2ce85c3ac33355f90225e4be",
@@ -2749,6 +2616,64 @@
       "notes": []
     },
     {
+      "source_fingerprint": "9f9535668427604d5c55e743",
+      "list_name": "Norwegian Open WCS",
+      "start_date": "2027-10-07",
+      "location_raw": "Hamar, Norway",
+      "list_url": "https://norwegianopen.no/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 388,
+      "canonical_name": "Norwegian Open WCS",
+      "catalog_url": "https://norwegianopen.no/",
+      "typical_location": "Hamar, Norway",
+      "location_score": 1.0,
+      "location_flag": "ok",
+      "notes": []
+    },
+    {
+      "source_fingerprint": "73bab04cef6ea7de074015f9",
+      "list_name": "Milan Modern Swing",
+      "start_date": "2027-10-14",
+      "location_raw": "Milan, Italy",
+      "list_url": "https://https//www.westcoastswingmilan.com/milanmodernswing/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 322,
+      "canonical_name": "Milan Modern Swing",
+      "catalog_url": "https://www.westcoastswingmilan.com/",
+      "typical_location": "Milan, Italy",
+      "location_score": 1.0,
+      "location_flag": "ok",
+      "notes": [
+        "List URL 'https://https//www.westcoastswingmilan.com/milanmodernswing/' differs from catalog URL 'https://www.westcoastswingmilan.com/' — using event name"
+      ]
+    },
+    {
+      "source_fingerprint": "18e5d3fd382c7e920bbd666b",
+      "list_name": "Swustlicious",
+      "start_date": "2027-10-15",
+      "location_raw": "Philadelphia, PA, United States",
+      "list_url": "https://www.swustlicious.com/hotel",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 267,
+      "canonical_name": "Swustlicious",
+      "catalog_url": "http://www.sparklage.com",
+      "typical_location": "Philadelphia, PA",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": [
+        "List URL 'https://www.swustlicious.com/hotel' differs from catalog URL 'http://www.sparklage.com' — using event name"
+      ]
+    },
+    {
       "source_fingerprint": "aeff0eaade1babe15052fa48",
       "list_name": "WCS Festival",
       "start_date": "2027-10-15",
@@ -2765,6 +2690,62 @@
       "location_score": 1.0,
       "location_flag": "ok",
       "notes": []
+    },
+    {
+      "source_fingerprint": "bdad13938a5a8342b2ddab93",
+      "list_name": "Augsburg Westie Station",
+      "start_date": "2027-10-21",
+      "location_raw": "Augsburg, Bavaria, Germany",
+      "list_url": "https://www.augsburgwestiestation.com/home",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 350,
+      "canonical_name": "Augsburg Westie Station",
+      "catalog_url": "https://www.augsburgwestiestation.com/home",
+      "typical_location": "Augsburg, Germany",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": []
+    },
+    {
+      "source_fingerprint": "a75dc2d4e406c9b789d33116",
+      "list_name": "Halloween SwingThing",
+      "start_date": "2027-10-21",
+      "location_raw": "Costa Mesa, CA, United States",
+      "list_url": "https://www.hstswing.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 65,
+      "canonical_name": "Halloween SwingThing",
+      "catalog_url": "http://Hstswing.com",
+      "typical_location": "Costa Mesa, CA",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": []
+    },
+    {
+      "source_fingerprint": "a550dd600aeae40ca9a328b4",
+      "list_name": "Spooky Albany Swing Spectacular",
+      "start_date": "2027-10-21",
+      "location_raw": "Albany, NY, United States",
+      "list_url": "https://spookyalbanyswing.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "url",
+      "confidence": 0.9253731343283582,
+      "canonical_event_id": 380,
+      "canonical_name": "SASS Spooky Albany Swing Spectacular",
+      "catalog_url": "http://www.spookyalbanyswing.com/",
+      "typical_location": "Albany, NY",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": [
+        "Name differs: list='Spooky Albany Swing Spectacular' catalog='SASS Spooky Albany Swing Spectacular'"
+      ]
     },
     {
       "source_fingerprint": "5fe9a6614c422ab66dd34ae8",
@@ -3293,11 +3274,11 @@
       ]
     },
     {
-      "source_fingerprint": "f2c7f9a7e1734e022d13ae90",
+      "source_fingerprint": "3098f395ed2140c5dcf9e784",
       "list_name": "Swing Fling",
       "start_date": "2027-08-12",
-      "location_raw": "Washington DC, DC, United States",
-      "list_url": "http://www.swingfling,.com/",
+      "location_raw": "Washington DC, VA, United States",
+      "list_url": "https://www.swingfling.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
       "match_method": "exact_name",
@@ -3306,11 +3287,10 @@
       "canonical_name": "Swing Fling",
       "catalog_url": "http://www.swingfling.com",
       "typical_location": "Herndon, VA",
-      "location_score": 0.32558139534883723,
+      "location_score": 0.37209302325581395,
       "location_flag": "site_differs_from_history",
       "notes": [
-        "List URL 'http://www.swingfling,.com/' differs from catalog URL 'http://www.swingfling.com' — using event name",
-        "Site location 'Washington DC, DC, United States' differs from catalog typical 'Herndon, VA' (venue may have moved)"
+        "Site location 'Washington DC, VA, United States' differs from catalog typical 'Herndon, VA' (venue may have moved)"
       ]
     },
     {
@@ -3355,86 +3335,6 @@
     }
   ],
   "name_variants": [
-    {
-      "source_fingerprint": "115e48131a7d9cc962d95d0d",
-      "list_name": "The New Zealand West Coast Swing Open",
-      "start_date": "2026-10-15",
-      "location_raw": "Auckland, New Zealand",
-      "list_url": "https://www.streetswing.co.nz/the-new-zealand-open",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "explicit",
-      "confidence": 1.0,
-      "canonical_event_id": 179,
-      "canonical_name": "New Zealand Open Swing Dance Championships",
-      "catalog_url": "https://www.streetswing.co.nz/the-new-zealand-open",
-      "typical_location": "Auckland, New Zealand",
-      "location_score": 1.0,
-      "location_flag": "ok",
-      "notes": [
-        "Name differs: list='The New Zealand West Coast Swing Open' catalog='New Zealand Open Swing Dance Championships'"
-      ]
-    },
-    {
-      "source_fingerprint": "109862c6a04aadfe8cebcdba",
-      "list_name": "Paradise dance Festival",
-      "start_date": "2026-10-15",
-      "location_raw": "Irvine, CA, United States",
-      "list_url": "https://paradisecountrydancefestival.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "url",
-      "confidence": 1.0,
-      "canonical_event_id": 43,
-      "canonical_name": "Paradise Dance Festival",
-      "catalog_url": "http://www.ParadiseCountryDanceFestival.com",
-      "typical_location": "Irvine, CA",
-      "location_score": 0.92,
-      "location_flag": "ok",
-      "notes": [
-        "Name differs: list='Paradise dance Festival' catalog='Paradise Dance Festival'"
-      ]
-    },
-    {
-      "source_fingerprint": "c19a0c0b39051a0a674cd4df",
-      "list_name": "SASS- Spooky Albany Swing Spectacular",
-      "start_date": "2026-10-22",
-      "location_raw": "Albany, NY, United States",
-      "list_url": "http://www.spookyalbanyswing.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "url",
-      "confidence": 0.9863013698630136,
-      "canonical_event_id": 380,
-      "canonical_name": "SASS Spooky Albany Swing Spectacular",
-      "catalog_url": "http://www.spookyalbanyswing.com/",
-      "typical_location": "Albany, NY",
-      "location_score": 0.92,
-      "location_flag": "ok",
-      "notes": [
-        "Name differs: list='SASS- Spooky Albany Swing Spectacular' catalog='SASS Spooky Albany Swing Spectacular'"
-      ]
-    },
-    {
-      "source_fingerprint": "b3f14e09dd2097b15eeb2515",
-      "list_name": "Scandinavian Open WCS \"SNOW\"",
-      "start_date": "2026-10-28",
-      "location_raw": "Stockholm, Sweden",
-      "list_url": "http://www.snowcs.se/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "explicit",
-      "confidence": 1.0,
-      "canonical_event_id": 229,
-      "canonical_name": "Scandinavian Open",
-      "catalog_url": "http://www.snowcs.se/",
-      "typical_location": "Stockholm, Sweden",
-      "location_score": 1.0,
-      "location_flag": "ok",
-      "notes": [
-        "Name differs: list='Scandinavian Open WCS \"SNOW\"' catalog='Scandinavian Open'"
-      ]
-    },
     {
       "source_fingerprint": "2a18c1f364a291f4f9928bac",
       "list_name": "Moscow Westie Fest Gala Edition",
@@ -3506,15 +3406,14 @@
       "match_status": "confirmed",
       "match_method": "explicit",
       "confidence": 1.0,
-      "canonical_event_id": 475,
+      "canonical_event_id": 68,
       "canonical_name": "US Open Swing Dance Championships",
-      "catalog_url": "",
-      "typical_location": null,
-      "location_score": 0.0,
-      "location_flag": "unknown",
+      "catalog_url": "http://www.theopenswing.com",
+      "typical_location": "Los Angeles, CA",
+      "location_score": 0.92,
+      "location_flag": "ok",
       "notes": [
-        "Name differs: list='The Open Swing Dance  Championships' catalog='US Open Swing Dance Championships'",
-        "No historical location in catalog for comparison"
+        "Name differs: list='The Open Swing Dance  Championships' catalog='US Open Swing Dance Championships'"
       ]
     },
     {
@@ -3738,6 +3637,26 @@
       "location_flag": "ok",
       "notes": [
         "Name differs: list='H-Town Throw Down 2027' catalog='Novice Invitational'"
+      ]
+    },
+    {
+      "source_fingerprint": "5cb418e1cefe86f59aa9c02c",
+      "list_name": "H-Town Throw Down",
+      "start_date": "2027-03-11",
+      "location_raw": "Houston, TX, United States",
+      "list_url": "https://www.htownthrowdownwcs.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 153,
+      "canonical_name": "Novice Invitational",
+      "catalog_url": "http://www.htownthrowdownwcs.com",
+      "typical_location": "Houston, TX",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": [
+        "Name differs: list='H-Town Throw Down' catalog='Novice Invitational'"
       ]
     },
     {
@@ -4142,6 +4061,27 @@
       ]
     },
     {
+      "source_fingerprint": "12e514de4ed2b490b10b070d",
+      "list_name": "Toronto Open",
+      "start_date": "2027-07-15",
+      "location_raw": "Toronto, Ontario, Canada",
+      "list_url": "https://torontoopenswing.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 147,
+      "canonical_name": "Toronto Open Swing & Hustle Championships",
+      "catalog_url": "http://www.TOSHC.com",
+      "typical_location": "Toronto, Canada",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": [
+        "List URL 'https://torontoopenswing.com/' differs from catalog URL 'http://www.TOSHC.com' — using event name",
+        "Name differs: list='Toronto Open' catalog='Toronto Open Swing & Hustle Championships'"
+      ]
+    },
+    {
       "source_fingerprint": "3898eb5b6894d9b354ba6164",
       "list_name": "St. Petersburg WCS Nights",
       "start_date": "2027-07-22",
@@ -4220,8 +4160,28 @@
       "notes": [
         "Name differs: list='Mooseland Swing 2027' catalog='Mooseland Swing'"
       ]
+    },
+    {
+      "source_fingerprint": "a550dd600aeae40ca9a328b4",
+      "list_name": "Spooky Albany Swing Spectacular",
+      "start_date": "2027-10-21",
+      "location_raw": "Albany, NY, United States",
+      "list_url": "https://spookyalbanyswing.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "url",
+      "confidence": 0.9253731343283582,
+      "canonical_event_id": 380,
+      "canonical_name": "SASS Spooky Albany Swing Spectacular",
+      "catalog_url": "http://www.spookyalbanyswing.com/",
+      "typical_location": "Albany, NY",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": [
+        "Name differs: list='Spooky Albany Swing Spectacular' catalog='SASS Spooky Albany Swing Spectacular'"
+      ]
     }
   ],
-  "generated_at": "2026-10-13T15:24:20.951499+00:00",
-  "catalog_events": 428
+  "generated_at": "2026-11-03T16:48:55.871506+00:00",
+  "catalog_events": 429
 }

@@ -1,5 +1,8 @@
 # Local extracts for dump sync (gitignored)
 
+**Full runbook (checklist → site):**
+[docs/operations/mysql-dump-reload.md](../docs/operations/mysql-dump-reload.md)
+
 ## Full MySQL dump → Docker `wsdc-clone`
 
 Navicat/RDS dump (e.g. `wsdc101526.sql`) lives here as `dumps/wsdc*.sql` (gitignored).
@@ -20,6 +23,8 @@ docker exec wsdc-clone rm -f /tmp/wsdc.sql
 # 3) Re-extract TSVs + upsert Supabase competitions (+ optional dates/calendar)
 python scripts/load_competitions_from_dump.py --apply
 python scripts/sync_dump_edition_dates.py --apply --export --build-year-calendar
+
+# 4) Ship site: Actions → Force rebuild calendar/site
 ```
 
 Container defaults: name `wsdc-clone`, DB `wsdc`, password from container env

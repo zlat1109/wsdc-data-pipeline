@@ -14,8 +14,9 @@
 #   REQUIRE_DEPLOY_TOKEN  if 1, missing WSDC_ANALYTICS_DEPLOY_TOKEN fails the job (full-parse / force-rebuild)
 #   REQUIRE_YEAR_CALENDAR if 1 (default), year-calendar build failure exits non-zero
 #
-# Also rebuilds Time in Division spells JSON (time_in_division_spells.json)
-# and Event tiers by year (event_tiers_by_year.json).
+# Also rebuilds Time in Division spells JSON (time_in_division_spells.json),
+# Event tiers by year (event_tiers_by_year.json), and Event Growth Monitor
+# (event_growth.json via build_year_event_calendar.py + edition enrich).
 
 set -euo pipefail
 
@@ -106,18 +107,26 @@ fi
 
 YEAR_CAL_REPORT="${YEAR_CAL_REPORT:-${PIPELINE_DATA_ABS}/quality_reports/year_event_calendar_last.json}"
 echo "Building events_year_calendar.json"
+CALENDAR_OK=0
+# Snapshot pre-rebuild growth (HEAD of the fresh clone) so venue pins/hotels
+# can be carried forward when no mysqldump is available in CI.
+PRIOR_GROWTH="${WORKDIR}/.prior_event_growth.json"
+if [[ -f "${WORKDIR}/static/data/event_growth.json" ]]; then
+  cp "${WORKDIR}/static/data/event_growth.json" "${PRIOR_GROWTH}"
+fi
 if python3 "${PIPELINE_ROOT}/scripts/build_year_event_calendar.py" \
   --data-dir "${PIPELINE_DATA_ABS}" \
   --site-repo "${WORKDIR}" \
   --report "${YEAR_CAL_REPORT}"
 then
   echo "Year Event Calendar build OK"
+  CALENDAR_OK=1
 else
   if [[ "${REQUIRE_YEAR_CALENDAR}" == "1" ]]; then
     echo "::error::Year Event Calendar build failed — refusing to leave stale calendar on a successful sync"
     exit 1
   fi
-  echo "::warning::Year Event Calendar build failed — continuing without updating events_year_calendar.json"
+  echo "::warning::Year Event Calendar build failed — continuing without updating events_year_calendar.json / event_growth.json"
 fi
 
 echo "Building time_in_division_spells.json"
@@ -132,6 +141,41 @@ python3 "${WORKDIR}/scripts/build_event_tiers_by_year.py" \
   --site-repo "${WORKDIR}" \
   --output "${WORKDIR}/static/data/event_tiers_by_year.json"
 
+# event_growth.json is written by build_year_event_calendar.py when --site-repo
+# is set. Only enrich / require it when the calendar step succeeded — otherwise
+# we would re-stamp a stale cloned file and push it as fresh.
+GROWTH_JSON="${WORKDIR}/static/data/event_growth.json"
+if [[ "${CALENDAR_OK}" == "1" ]]; then
+  if [[ ! -f "${GROWTH_JSON}" ]]; then
+    echo "::error::event_growth.json missing after calendar build"
+    exit 1
+  fi
+  echo "Enriching event_growth.json edition numbers"
+  python3 "${WORKDIR}/scripts/enrich_event_growth_edition_numbers.py" \
+    --growth "${GROWTH_JSON}" \
+    --editions "${PIPELINE_DATA_ABS}/event_editions.csv" \
+    --aliases "${PIPELINE_ROOT}/transform/knowledge/event_aliases.py"
+
+  # Venue pins: prefer live mysqldump; else carry forward from pre-rebuild JSON.
+  WSDC_MYSQL_DUMP="${WSDC_MYSQL_DUMP:-}"
+  if [[ -z "${WSDC_MYSQL_DUMP}" ]]; then
+    WSDC_MYSQL_DUMP="$(ls -t "${PIPELINE_ROOT}/dumps"/wsdc*.sql 2>/dev/null | head -1 || true)"
+  fi
+  if [[ -n "${WSDC_MYSQL_DUMP}" && -f "${WSDC_MYSQL_DUMP}" ]]; then
+    echo "Enriching event_growth.json venues from ${WSDC_MYSQL_DUMP}"
+    python3 "${WORKDIR}/scripts/enrich_event_growth_venues.py" \
+      --sql "${WSDC_MYSQL_DUMP}" \
+      --growth "${GROWTH_JSON}"
+  elif [[ -f "${PRIOR_GROWTH}" ]]; then
+    echo "No mysqldump — carrying venue fields from prior event_growth.json"
+    python3 "${WORKDIR}/scripts/enrich_event_growth_venues.py" \
+      --growth "${GROWTH_JSON}" \
+      --prior-growth "${PRIOR_GROWTH}"
+  else
+    echo "::warning::No mysqldump and no prior growth — venue pins stay at city centroids"
+  fi
+fi
+
 python3 "${WORKDIR}/scripts/validate_site_data.py" || {
   echo "::error::Site data validation failed after rebuild"
   exit 1
@@ -145,6 +189,7 @@ BUBBLE_HTML="${WORKDIR}/interactive_secondary_country_bubble.html"
 CALENDAR_HTML="${WORKDIR}/events-calendar.html"
 TID_HTML="${WORKDIR}/time_in_division_dashboard_en.html"
 ETY_HTML="${WORKDIR}/event_tiers_by_year_dashboard_en.html"
+EG_HTML="${WORKDIR}/event_growth_dashboard_en.html"
 if [[ -f "${DASHBOARD_HTML}" ]]; then
   sed -i \
     -e "s|(as of [0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\})|(as of ${AS_OF})|g" \
@@ -179,7 +224,13 @@ if [[ -f "${ETY_HTML}" ]]; then
     -e "s|event_tiers_by_year.json?v=[0-9]\{8\}-[a-z0-9-]*|event_tiers_by_year.json?v=${CACHE_V}|g" \
     "${ETY_HTML}"
 fi
-echo "Stamped secondary dashboard + calendar + time-in-division + event-tiers as_of=${AS_OF} cache_v=${CACHE_V}"
+if [[ "${CALENDAR_OK}" == "1" && -f "${EG_HTML}" ]]; then
+  # Growth uses var DATA_VER for event_growth.json + event_tiers_by_year.json.
+  sed -i \
+    -e "s|var DATA_VER = \"[^\"]*\"|var DATA_VER = \"${CACHE_V}\"|g" \
+    "${EG_HTML}"
+fi
+echo "Stamped secondary dashboard + calendar + time-in-division + event-tiers + growth as_of=${AS_OF} cache_v=${CACHE_V} calendar_ok=${CALENDAR_OK}"
 
 cd "${WORKDIR}"
 git config user.name "github-actions[bot]"
@@ -227,6 +278,12 @@ fi
 if [[ -f event_tiers_by_year_dashboard_en.html ]]; then
   git add event_tiers_by_year_dashboard_en.html
 fi
+if [[ "${CALENDAR_OK}" == "1" && -f static/data/event_growth.json ]]; then
+  git add static/data/event_growth.json
+fi
+if [[ "${CALENDAR_OK}" == "1" && -f event_growth_dashboard_en.html ]]; then
+  git add event_growth_dashboard_en.html
+fi
 
 if git diff --staged --quiet; then
   echo "No analytics site changes to push"
@@ -234,7 +291,7 @@ if git diff --staged --quiet; then
 fi
 
 git commit -m "$(cat <<EOF
-chore(data): refresh homepage KPIs, secondary-role, Point Summary, Champion News, Calendar, Time in Division, Event tiers
+chore(data): refresh homepage KPIs, secondary-role, Point Summary, Champion News, Calendar, Time in Division, Event tiers, Event Growth
 
 Automated push from wsdc-data-pipeline after full-parse / export.
 EOF

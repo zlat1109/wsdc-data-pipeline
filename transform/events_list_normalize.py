@@ -71,6 +71,8 @@ def normalize_url(url: str) -> str:
         return ""
     parsed = urlparse(url.strip().lower())
     netloc = parsed.netloc
+    # WSDC typos like ``swingfling,.com`` break fingerprints (spurious add+remove).
+    netloc = netloc.replace(",", "")
     if netloc.startswith("www."):
         netloc = netloc[4:]
     path = parsed.path.rstrip("/")

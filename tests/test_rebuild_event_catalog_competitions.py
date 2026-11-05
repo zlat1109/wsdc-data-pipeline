@@ -10,9 +10,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "db"))
 
 from build_event_catalog import (
     _competitions_table_exists,
+    _cr_editions_table_exists,
     _detach_competitions_from_editions,
+    _detach_cr_editions_from_editions,
     _ensure_competitions_edition_fk,
     _rematch_competitions_to_editions,
+    _rematch_cr_editions_to_editions,
     _stash_competition_edition_keys,
 )
 
@@ -85,3 +88,31 @@ def test_ensure_fk_adds_when_missing():
     add_sql = cur.execute.call_args_list[-1].args[0]
     assert "ADD CONSTRAINT competitions_edition_id_fkey" in add_sql
     assert "REFERENCES core.event_editions(edition_id)" in add_sql
+
+
+def test_cr_editions_table_exists():
+    cur = MagicMock()
+    cur.fetchone.return_value = (True,)
+    assert _cr_editions_table_exists(cur) is True
+    assert "cr_editions" in cur.execute.call_args[0][0]
+
+
+def test_detach_cr_editions_nulls_soft_fk():
+    cur = MagicMock()
+    cur.rowcount = 661
+    assert _detach_cr_editions_from_editions(cur) == 661
+    sql = cur.execute.call_args[0][0]
+    assert "core.cr_editions" in sql
+    assert "edition_id = NULL" in sql
+    assert "match_status = 'unmatched'" in sql
+
+
+def test_rematch_cr_editions_by_canonical_filing_key():
+    cur = MagicMock()
+    cur.fetchone.side_effect = [(661,)]
+    cur.rowcount = 661
+    assert _rematch_cr_editions_to_editions(cur) == (661, 661)
+    update_sql = cur.execute.call_args_list[-1].args[0]
+    assert "COALESCE(cr.canonical_event_id, cr.wsdc_event_id) = ed.event_id" in update_sql
+    assert "filing_year = ed.event_year" in update_sql
+    assert "filing_month = ed.event_month" in update_sql

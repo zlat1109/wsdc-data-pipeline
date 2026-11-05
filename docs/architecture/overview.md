@@ -86,7 +86,18 @@ Staging tables are truncated and reloaded each run. History is recorded **before
 
 `export.py` copies `export.*` views to `data/*.csv` via Postgres `COPY`. Default export: **16** DB views + **3** derived analytics CSVs → **19** files (see [export map](../database/export-views.md)).
 
-### 5. CI automation
+### 5. Optional enrichments (not in weekly points load)
+
+| Source | Loader | Tables |
+|--------|--------|--------|
+| WSDC MySQL dump `competitions` | `load_competitions_from_dump.py` | `core.competitions` |
+| Competition Results parquet | `load_competition_results.py` | `core.cr_*` (prelims, partners, marks, …) |
+
+Both use nullable FKs + `match_status` and never invent dancers/events. Runbooks:
+[operations/mysql-dump-reload.md](../operations/mysql-dump-reload.md),
+[operations/competition-results.md](../operations/competition-results.md).
+
+### 6. CI automation
 
 | Workflow | Role |
 |----------|------|

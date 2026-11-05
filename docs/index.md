@@ -54,6 +54,8 @@ English reference for the World Swing Dance Championships data pipeline: parser 
 
 - [Operations index](operations/index.md)
 - [Pipeline runbook](operations/pipeline-runbook.md)
+- [MySQL dump reload](operations/mysql-dump-reload.md)
+- [Competition Results](operations/competition-results.md)
 - [Data sync](operations/data-sync.md)
 - [GitHub Actions](operations/github-actions.md)
 - [Repair scripts](operations/repair-scripts.md)

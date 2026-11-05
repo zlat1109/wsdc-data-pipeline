@@ -35,3 +35,11 @@ data/reference/rules_pdfs/
 # Local WSDC MySQL clone dumps (PII)
 dumps/*
 !dumps/README.md
+
+# Local-only audit outputs; the Event Data Registry HTML is published via the site repo
+data/quality_reports/event_data_completeness_*.csv
+data/quality_reports/event_data_registry.html
+data/quality_reports/cr_prelim_*
+data/quality_reports/dump_edition_dates_report.csv
+data/quality_reports/wsdc_results_form_scoring*.csv
+data/quality_reports/points_progression_gaps*

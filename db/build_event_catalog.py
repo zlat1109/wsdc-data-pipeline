@@ -315,11 +315,65 @@ def _rematch_competitions_to_editions(cur: Any) -> tuple[int, int]:
     return int(cur.rowcount), keyed
 
 
+def _cr_editions_table_exists(cur: Any) -> bool:
+    cur.execute("SELECT to_regclass('core.cr_editions') IS NOT NULL")
+    return bool(cur.fetchone()[0])
+
+
+def _detach_cr_editions_from_editions(cur: Any) -> int:
+    """Clear soft edition_id before event_editions rebuild (identity restarts)."""
+    cur.execute(
+        """
+        UPDATE core.cr_editions
+        SET edition_id = NULL,
+            match_status = 'unmatched'
+        WHERE edition_id IS NOT NULL
+        """
+    )
+    return int(cur.rowcount)
+
+
+def _rematch_cr_editions_to_editions(cur: Any) -> tuple[int, int]:
+    """Re-link Competition Results editions by durable CR keys.
+
+    Match on ``COALESCE(canonical_event_id, wsdc_event_id)`` + filing
+    year/month so soft FKs survive ``event_editions`` identity restarts.
+    Returns ``(rematched_rows, candidates)``.
+    """
+    cur.execute(
+        """
+        SELECT COUNT(*) FROM core.cr_editions
+        WHERE COALESCE(canonical_event_id, wsdc_event_id) IS NOT NULL
+          AND filing_year IS NOT NULL
+          AND filing_month IS NOT NULL
+        """
+    )
+    candidates = int(cur.fetchone()[0])
+    if candidates == 0:
+        return 0, 0
+    cur.execute(
+        """
+        UPDATE core.cr_editions cr
+        SET edition_id = ed.edition_id,
+            match_status = 'matched'
+        FROM core.event_editions ed
+        WHERE COALESCE(cr.canonical_event_id, cr.wsdc_event_id) = ed.event_id
+          AND cr.filing_year = ed.event_year
+          AND cr.filing_month = ed.event_month
+        """
+    )
+    return int(cur.rowcount), candidates
+
+
 def rebuild_event_catalog(conn: Any) -> tuple[int, int]:
     """Truncate and rebuild catalog + editions. Returns (catalog_count, edition_count).
 
     ``core.competitions`` FKs ``event_editions``; detach + rematch by durable
     (event_id, year, month) so weekly loads do not wipe dump headcounts.
+
+    ``core.cr_editions`` holds a soft edition_id (migration 040); the same
+    rebuild must rematch it or ``cr_orphan_edition_fk`` blocks export
+    (weekly sync 2026-10-27).
     """
     from transform.knowledge import KNOWN_EVENT_METADATA
 
@@ -327,6 +381,7 @@ def rebuild_event_catalog(conn: Any) -> tuple[int, int]:
 
     with conn.cursor() as cur:
         competitions_present = _competitions_table_exists(cur)
+        cr_present = _cr_editions_table_exists(cur)
         stashed = 0
         if competitions_present:
             stashed = _stash_competition_edition_keys(cur)
@@ -334,6 +389,12 @@ def rebuild_event_catalog(conn: Any) -> tuple[int, int]:
             print(
                 f"Competitions: stashed {stashed:,} edition keys, "
                 f"detached {detached:,} rows for catalog rebuild"
+            )
+        if cr_present:
+            cr_detached = _detach_cr_editions_from_editions(cur)
+            print(
+                f"CR editions: detached {cr_detached:,} soft edition_id "
+                f"refs for catalog rebuild"
             )
 
         # TRUNCATE is blocked while any table FKs event_editions (even with 0
@@ -412,6 +473,20 @@ def rebuild_event_catalog(conn: Any) -> tuple[int, int]:
                     "unavailable until load_competitions_from_dump.py --apply"
                 )
             _ensure_competitions_edition_fk(cur)
+
+        if cr_present:
+            cr_rematched, cr_keyed = _rematch_cr_editions_to_editions(cur)
+            print(
+                f"CR editions: rematched {cr_rematched:,}/{cr_keyed:,} "
+                f"after edition rebuild"
+            )
+            if cr_keyed > 0 and cr_rematched < cr_keyed:
+                print(
+                    f"WARNING: CR edition rematch incomplete "
+                    f"({cr_rematched}/{cr_keyed}); re-run "
+                    f"load_competition_results.py --apply or expect "
+                    f"cr_orphan_edition_fk / unmatched rows."
+                )
 
         # Keep deprecated event_instances aligned with editions for any leftover readers.
         cur.execute("TRUNCATE core.event_instances")
