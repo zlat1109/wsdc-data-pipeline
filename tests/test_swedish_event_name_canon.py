@@ -258,8 +258,14 @@ def test_year_split_ggp_reunion_to_championships_keeps_342():
 
 def test_calgary_town_open_metadata():
     assert KNOWN_EVENT_METADATA[324]["name"] == "Calgary Town Open"
-    assert KNOWN_EVENT_METADATA[324]["typical_location"] == "Calgary, Canada"
-    assert EVENT_NAME_LOCATION_OVERRIDES["Calgary Town Open"] == "Calgary, Canada"
+    # Historical home Ottawa (dump); Calgary only via year override 2026+.
+    assert KNOWN_EVENT_METADATA[324]["typical_location"] == "Ottawa, Canada"
+    assert EVENT_NAME_LOCATION_OVERRIDES["Calgary Town Open"] == "Ottawa, Canada"
+    assert EVENT_NAME_LOCATION_OVERRIDES["BTO Open"] == "Ottawa, Canada"
+    assert (
+        EVENT_NAME_YEAR_LOCATION_OVERRIDES[("Calgary Town Open", 2026, 2099)]
+        == "Calgary, Canada"
+    )
     # Flat map must not collapse either direction (year split owns the series).
     assert "BTO Open" not in EVENT_NAME_NORMALIZATION
     assert EVENT_NAME_NORMALIZATION.get("Calgary Town Open") != "BTO Open"

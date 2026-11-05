@@ -99,9 +99,14 @@ EVENT_NAME_LOCATION_OVERRIDES = {
     # Dance Jam Productions Westie Weekend @ Hollywood Ballroom (Silver Spring / DC metro).
     # WSDC events_wsdc wrongly reused Jeju (213 / Korea Westival).
     'Dance Jam Jack & Jill Weekend': 'Silver Spring, MD, United States',
-    # Catalog/scheduled say Calgary; results pointed at Perth (253 / WesterOz).
-    'BTO Open': 'Calgary, Canada',
-    'Calgary Town Open': 'Calgary, Canada',
+    # event_id 324: dump competitionevents show Ottawa/Kanata 2020–2025
+    # (BTO / By-Town); Calgary only from the 2026 rebrand. Do not flatten to
+    # Calgary — year override owns the move (same pattern as GGP→Paris).
+    'BTO Open': 'Ottawa, Canada',
+    'By-Town Open (BTO)': 'Ottawa, Canada',
+    'By-Town Open': 'Ottawa, Canada',
+    'CTO Open': 'Ottawa, Canada',
+    'Calgary Town Open': 'Ottawa, Canada',
     # Shared St. Petersburg (222 / Swing & Snow) wrongly applied; schedule is Calgary AB.
     'Calgary Dance Stampede': 'Calgary, Canada',
     # Shared Perth (253 / WesterOz) wrongly applied; schedule is Wels AT (event 336).
@@ -210,6 +215,13 @@ EVENT_NAME_YEAR_LOCATION_OVERRIDES: dict[tuple[str, int, int], str] = {
     ("Global Grand Prix", 2026, 2099): "Paris, France",
     # Countdown: Envision Hotel Mansfield-Foxboro from 2025 editions onward.
     ("Countdown Swing Boston", 2025, 2099): "Mansfield (Boston), MA, United States",
+    # event_id 324: Ottawa/Kanata (BTO) through 2025; Calgary Town Open 2026+.
+    # Dump competitionevents.location / city: Ottawa… until 2025-03, Calgary 2026-09.
+    ("BTO Open", 2026, 2099): "Calgary, Canada",
+    ("By-Town Open (BTO)", 2026, 2099): "Calgary, Canada",
+    ("By-Town Open", 2026, 2099): "Calgary, Canada",
+    ("CTO Open", 2026, 2099): "Calgary, Canada",
+    ("Calgary Town Open", 2026, 2099): "Calgary, Canada",
 }
 
 EVENT_LOCATION_EXACT_CORRECTIONS = {
@@ -841,16 +853,17 @@ KNOWN_EVENT_METADATA: dict[int, dict[str, Any]] = {
     },
     324: {
         # Current series title (2026+). Years ≤2025 stay BTO Open via
-        # EVENT_NAME_YEAR_SPLITS.
+        # EVENT_NAME_YEAR_SPLITS. Historical home is Ottawa (dump); Calgary
+        # from 2026 via EVENT_NAME_YEAR_LOCATION_OVERRIDES — do not flatten.
         'name': 'Calgary Town Open',
         'url': 'https://ctodance.ca/',
-        'typical_location': 'Calgary, Canada',
+        'typical_location': 'Ottawa, Canada',
         'location': {
-            'event_city': 'Calgary',
+            'event_city': 'Ottawa',
             'event_state': '',
             'event_country': 'Canada',
-            'event_location': 'Calgary, Canada',
-            'event_location_standardized': 'Calgary, Canada',
+            'event_location': 'Ottawa, Canada',
+            'event_location_standardized': 'Ottawa, Canada',
         },
     },
     116: {

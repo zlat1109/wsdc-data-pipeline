@@ -250,8 +250,8 @@ EVENT_NAME_YEAR_SPLITS: list[dict[str, object]] = [
         "early_year_max": 2025,
         "late_name": "Calgary Town Open",
         "late_year_min": 2026,
-        # Same Calgary series (ctodance.ca); registry id 324 kept across rebrand.
-        # Keep continuous #edition (BTO → Calgary Town Open) — no reset.
+        # Same series id 324 across rebrand + city move: Ottawa BTO ≤2025 →
+        # Calgary Town Open 2026+ (ctodance.ca). Keep continuous #edition — no reset.
         "early_event_id": 324,
         "late_event_id": 324,
         "reset_edition_ordinal": False,

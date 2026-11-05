@@ -1055,6 +1055,62 @@ def test_enrich_geo_year_override_ggp_2026_paris_not_toulouse():
     assert rows[1]["city"] == "Toulouse"
 
 
+def test_enrich_geo_year_override_cto_2026_calgary_not_ottawa():
+    """event 324: Ottawa (BTO) through 2025; Calgary Town Open from 2026."""
+    locations = pd.DataFrame(
+        [
+            {
+                "location_id": 179,
+                "event_city": "Ottawa",
+                "event_country": "Canada",
+                "event_location": "Ottawa, Canada",
+                "event_location_standardized": "Ottawa, Canada",
+                "latitude": 45.4200572,
+                "longitude": -75.7003397,
+                "coordinates_valid": True,
+            },
+            {
+                "location_id": 148,
+                "event_city": "Calgary",
+                "event_country": "Canada",
+                "event_location": "Calgary, Canada",
+                "event_location_standardized": "Calgary, Canada",
+                "latitude": 51.0447331,
+                "longitude": -114.0718831,
+                "coordinates_valid": True,
+            },
+        ]
+    )
+    catalog = pd.DataFrame(columns=["event_id", "canonical_name", "url"])
+    calgary_2026 = {
+        "event_id": 324,
+        "name": "Calgary Town Open",
+        "city": "Calgary",
+        "country": "Canada",
+        "location_id": None,
+        "year": 2026,
+        "start_date": date(2026, 9, 24),
+        "url": "https://ctodance.ca/",
+    }
+    ottawa_2025 = {
+        "event_id": 324,
+        "name": "BTO Open",
+        "city": "Ottawa",
+        "country": "Canada",
+        "location_id": None,
+        "year": 2025,
+        "start_date": date(2025, 3, 27),
+        "url": "https://ctodance.ca/",
+    }
+    # Wrong inherited lid (Calgary) must not stick on 2025 after year override.
+    rows = [calgary_2026, ottawa_2025]
+    _enrich_geo(rows, locations, catalog, location_id_by_event={324: 148})
+    assert rows[0]["location_id"] == 148
+    assert rows[0]["city"] == "Calgary"
+    assert rows[1]["location_id"] == 179
+    assert rows[1]["city"] == "Ottawa"
+
+
 def test_enrich_geo_city_country_fallback():
     locations = pd.DataFrame(
         [

@@ -66,6 +66,12 @@ KNOWN_SERIES_MOVES: frozenset[str] = frozenset(
         "Global Grand Prix",
         # Pre-2025 Boston metro; 2025+ Mansfield venue.
         "Countdown Swing Boston",
+        # Ottawa/Kanata (BTO) through 2025; Calgary from 2026 rebrand.
+        "BTO Open",
+        "By-Town Open (BTO)",
+        "By-Town Open",
+        "CTO Open",
+        "Calgary Town Open",
     }
 )
 
