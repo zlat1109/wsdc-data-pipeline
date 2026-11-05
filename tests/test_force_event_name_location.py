@@ -245,6 +245,7 @@ def test_force_west_in_lyon_and_aloha_open():
 
 
 def test_force_sea_dance_fest_and_med_in_swing():
+    """Sea Dance: Anapa ≤2024, Moscow 2025+; Med in Swing stays La Londe."""
     location_info = pd.DataFrame(
         [
             {
@@ -253,6 +254,13 @@ def test_force_sea_dance_fest_and_med_in_swing():
                 "event_state": "",
                 "event_country": "Germany",
                 "event_location": "Düsseldorf, Germany",
+            },
+            {
+                "location_id": "403",
+                "event_city": "Anapa",
+                "event_state": "",
+                "event_country": "Russia",
+                "event_location": "Anapa, Russia",
             },
             {
                 "location_id": "113",
@@ -281,6 +289,13 @@ def test_force_sea_dance_fest_and_med_in_swing():
         [
             {
                 "event_name": "Sea Dance Fest",
+                "event_year": 2024,
+                "location_id": "127",
+                "event_location": "Düsseldorf, Germany",
+            },
+            {
+                "event_name": "Sea Dance Fest",
+                "event_year": 2025,
                 "location_id": "127",
                 "event_location": "Düsseldorf, Germany",
             },
@@ -297,8 +312,12 @@ def test_force_sea_dance_fest_and_med_in_swing():
         ]
     )
     out, changed = force_result_locations_from_event_name_overrides(results, location_info)
-    assert changed == 2
-    assert str(out.loc[out.event_name == "Sea Dance Fest", "location_id"].iloc[0]) == "113"
+    # Flat remaps both Sea Dance rows → Anapa, then year override remaps 2025 → Moscow,
+    # plus Med in Swing → La Londe (4 row updates counted).
+    assert changed == 4
+    sea = out[out.event_name == "Sea Dance Fest"].set_index("event_year")
+    assert str(sea.loc[2024, "location_id"]) == "403"
+    assert str(sea.loc[2025, "location_id"]) == "113"
     assert str(out.loc[out.event_name == "Med in Swing", "location_id"].iloc[0]) == "386"
     assert str(out.loc[out.event_name == "4TH of July Convention", "location_id"].iloc[0]) == "3"
 

@@ -72,6 +72,10 @@ KNOWN_SERIES_MOVES: frozenset[str] = frozenset(
         "By-Town Open",
         "CTO Open",
         "Calgary Town Open",
+        # Anapa/Vityazevo 2023–2024; Moscow region from 2025.
+        "Sea Dance Fest",
+        "SEA Q-FEST",
+        "SEA Q-FEST (Trial Event)",
     }
 )
 
