@@ -294,7 +294,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 5168,293,Westy Nantes,2025,4,2025-04-01,2025-04-04,2025-04-06,wsdc_calendar,scheduled,t,190,Nantes,,France,"Nantes, France",127,113,https://www.westynantes.com/,"Nantes, France",Registry Event
 4566,197,5280 Westival,2025,3,2025-03-01,2025-03-20,2025-03-24,wsdc_calendar,scheduled,t,29,Denver,Colorado,United States,"Denver, CO, United States",71,58,http://www.5280westival.com/,"Denver, CO",Registry Event
 2814,9,Boston Tea Party,2025,3,2025-03-01,2025-03-20,2025-03-24,wsdc_calendar,scheduled,t,8,Boston,Massachusetts,United States,"Boston, MA, United States",114,109,http://teapartyswings.com/,"Boston, MA",Registry Event
-5259,324,BTO Open,2025,3,2025-03-01,2025-03-27,2025-03-30,wsdc_calendar,scheduled,t,148,Calgary,,Canada,"Calgary, Canada",93,82,https://ctodance.ca/,"Calgary, Canada",
+5259,324,BTO Open,2025,3,2025-03-01,2025-03-27,2025-03-30,wsdc_calendar,scheduled,t,179,Ottawa,nan,Canada,"Ottawa, Canada",93,82,https://ctodance.ca/,"Ottawa, Canada",
 5074,275,Dutch Open West Coast Swing,2025,3,2025-03-01,2025-03-13,2025-03-16,wsdc_calendar,scheduled,t,227,Venray,,Netherlands,"Venray, Netherlands",80,65,http://www.dutchopenwcs.com/,"Venray, Netherlands",Registry Event
 5324,348,Euro Dance Festival,2025,3,2025-03-01,2025-03-04,2025-03-09,wsdc_calendar,scheduled,t,232,Rust,,Germany,"Rust, Germany",109,100,https://www.euro-dance-festival.com/,"Rust, Germany",Registry Event
 4097,143,High Desert Dance Classic,2025,3,2025-03-01,2025-03-07,2025-03-09,wsdc_calendar,scheduled,t,18,Lancaster,California,United States,"Lancaster, CA, United States",100,86,http://www.highdesertdanceclassic.com/,"Lancaster, CA",Registry Event
@@ -438,7 +438,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 4565,197,5280 Westival,2024,3,2024-03-01,2024-03-21,2024-03-25,wsdc_dump,scheduled,t,29,Denver,Colorado,United States,"Denver, CO, United States",71,57,http://www.5280westival.com/,"Denver, CO",Registry Event
 5244,318,All Star SwingJam,2024,3,2024-03-01,2024-03-14,2024-03-17,wsdc_dump,scheduled,t,2,San Francisco,California,United States,"San Francisco, CA, United States",79,76,http://www.allstarswingjam.com,"San Francisco, CA",
 2813,9,Boston Tea Party,2024,3,2024-03-01,2024-03-21,2024-03-25,wsdc_dump,scheduled,t,8,Boston,Massachusetts,United States,"Boston, MA, United States",120,119,http://teapartyswings.com/,"Boston, MA",Registry Event
-5258,324,BTO Open,2024,3,2024-03-01,2024-03-28,2024-03-31,wsdc_dump,scheduled,t,148,Calgary,,Canada,"Calgary, Canada",75,69,https://ctodance.ca/,"Calgary, Canada",
+5258,324,BTO Open,2024,3,2024-03-01,2024-03-28,2024-03-31,wsdc_dump,scheduled,t,179,Ottawa,nan,Canada,"Ottawa, Canada",75,69,https://ctodance.ca/,"Ottawa, Canada",
 4096,143,High Desert Dance Classic,2024,3,2024-03-01,2024-03-08,2024-03-10,wsdc_dump,scheduled,t,18,Lancaster,California,United States,"Lancaster, CA, United States",88,74,http://www.highdesertdanceclassic.com/,"Lancaster, CA",Registry Event
 5160,292,King Swing,2024,3,2024-03-01,2024-03-21,2024-03-25,wsdc_dump,scheduled,t,267,Kraków,,Poland,"Kraków, Poland",125,125,https://kingswing.pl/,"Kraków, Poland",Registry Event
 3710,92,MADjam,2024,3,2024-03-01,2024-02-29,2024-03-03,wsdc_dump,scheduled,t,13,Washington,District of Columbia,United States,"Washington, DC, United States",199,191,http://www.atlanticdancejam.com,"Washington, DC, United States",Registry Event
@@ -555,7 +555,7 @@ edition_id,event_id,event_name,event_year,event_month,edition_date,start_date,en
 5221,311,TLV SwingFest,2023,5,2023-05-01,2023-05-12,2023-05-14,wsdc_dump,scheduled,t,147,Tel Aviv,,Israel,"Tel Aviv, Israel",67,65,http://www.tlv-swingfest.com/,"Tel Aviv, Israel",
 3005,22,USA Grand Nationals,2023,5,2023-05-01,2023-05-25,2023-05-29,wsdc_dump,scheduled,t,25,Atlanta,Georgia,United States,"Atlanta, GA, United States",157,141,http://www.usagrandnationals.com/,"Atlanta, GA, United States",Registry Event
 4710,218,Asia West Coast Swing Open,2023,4,2023-04-01,2023-04-20,2023-04-23,wsdc_dump,scheduled,t,159,Singapore,,Singapore,"Singapore, Singapore",93,91,https://asiawcsopen.com/,"Singapore, Singapore",Registry Event
-5257,324,BTO Open,2023,4,2023-04-01,2023-03-30,2023-04-02,wsdc_dump,scheduled,t,148,Calgary,,Canada,"Calgary, Canada",62,56,https://ctodance.ca/,"Calgary, Canada",
+5257,324,BTO Open,2023,4,2023-04-01,2023-03-30,2023-04-02,wsdc_dump,scheduled,t,179,Ottawa,nan,Canada,"Ottawa, Canada",62,56,https://ctodance.ca/,"Ottawa, Canada",
 4490,187,City of Angels WCS,2023,4,2023-04-01,2023-03-30,2023-04-02,wsdc_dump,scheduled,t,54,Burbank,California,United States,"Burbank, CA, United States",135,131,https://cityofangelswcs.com/,"Burbank, CA",Registry Event
 4592,203,Detonation Dance,2023,4,2023-04-01,2023-04-20,2023-04-23,wsdc_dump,scheduled,t,166,Manchester,,United Kingdom,"Manchester, United Kingdom",86,70,https://www.detonationdance.com/,"Manchester, United Kingdom",Registry Event
 2938,18,Easter Swing,2023,4,2023-04-01,2023-04-06,2023-04-09,wsdc_dump,scheduled,t,30,Seattle,Washington,United States,"Seattle, WA, United States",160,154,https://easterswing.org/,"Seattle, WA, United States",Registry Event
