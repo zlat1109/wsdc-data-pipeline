@@ -1,0 +1,346 @@
+//// WSDC Supabase warehouse (core + history)
+//// Migrations 001–034. Soft refs noted in comments — no physical FK.
+//// Open at https://dbdiagram.io/d (import) or paste into the editor.
+
+TableGroup core_points [color: #3d5a80] {
+  dancers
+  dancer_aliases
+  dancer_roles
+  dancer_points
+  levels
+  locations
+  events
+  event_aliases
+  event_instances
+  results
+}
+
+TableGroup core_catalog [color: #4a6fa5] {
+  event_catalog
+  event_editions
+  edition_location_baseline
+  edition_calendar_dates
+  edition_division_tiers
+  rules_editions
+  tier_definitions
+  tier_points
+}
+
+TableGroup core_schedule [color: #6b8f71] {
+  scheduled_events
+  events_list_current
+  events_list_runs
+  events_list_changes
+}
+
+TableGroup history_scd2 [color: #8b6b4a] {
+  parse_runs
+  dancer_points_history
+  dancer_roles_history
+  dancer_names_history
+}
+
+Table dancers {
+  dancer_id int [pk]
+  dancer_name text
+}
+
+Table dancer_aliases {
+  alias text [pk]
+  dancer_id int [not null]
+  source text
+  notes text
+}
+
+Table dancer_roles {
+  dancer_id int [pk]
+  dominate_role text
+  dominate_required text
+  dominate_allowed text
+  non_dominate_role text
+  update_date date
+}
+
+Table levels {
+  level text [pk]
+  level_abbr text
+  sort_order int
+}
+
+Table dancer_points {
+  dancer_id int [not null]
+  role text [not null]
+  dance text [not null]
+  level text [not null]
+  total_points int
+  update_date date
+
+  indexes {
+    (dancer_id, role, dance, level) [pk]
+  }
+}
+
+Table locations {
+  location_id int [pk]
+  event_city text
+  event_state text
+  event_country text
+  latitude numeric
+  longitude numeric
+  event_location text
+  event_location_standardized text
+}
+
+Table events {
+  event_id int [pk, note: 'WSDC registry brand id']
+  name text [not null]
+  url text
+}
+
+Table event_aliases {
+  alias text [pk]
+  event_id int [not null]
+}
+
+Table event_instances {
+  event_instance_id int [pk]
+  event_id int
+  location_id int
+  location_raw text
+  event_year int
+  event_month int
+}
+
+Table results {
+  result_id bigint [pk, increment]
+  dancer_id int [not null]
+  event_id int
+  location_id int
+  dance text
+  division text
+  role text
+  event_year int
+  event_month int
+  event_date date
+  result_raw text
+  result_standardized text
+  points int
+  event_name_raw text
+
+  Note: 'Fact table. Edition grain = (event_id, event_year, event_month)'
+}
+
+Table event_catalog {
+  event_id int [pk]
+  canonical_name text [not null]
+  typical_location text
+  upcoming_location text
+  first_edition_year int
+  last_edition_year int
+  edition_count int
+  total_result_rows bigint
+}
+
+Table event_editions {
+  edition_id bigint [pk, increment]
+  event_id int [not null]
+  event_year int [not null]
+  event_month int [not null]
+  location_id int
+  result_rows int
+  calendar_status text
+  start_date date
+  end_date date
+
+  indexes {
+    (event_id, event_year, event_month) [unique]
+  }
+}
+
+Table edition_location_baseline {
+  event_id int [not null]
+  event_year int [not null]
+  event_month int [not null]
+  location_id int [not null]
+  event_name text
+  source text [not null, note: 'seed|seed_mv|auto|manual']
+
+  indexes {
+    (event_id, event_year, event_month) [pk]
+  }
+}
+
+Table edition_calendar_dates {
+  event_id int [not null, note: 'SOFT — no FK (survives TRUNCATE CASCADE)']
+  event_year int [not null]
+  event_month int [not null]
+  planned_start_date date
+  planned_end_date date
+  calendar_status text
+  date_source text
+
+  indexes {
+    (event_id, event_year, event_month) [pk]
+  }
+}
+
+Table edition_division_tiers {
+  event_id int [not null]
+  event_year int [not null]
+  event_month int [not null]
+  division text [not null]
+  role text [not null]
+  dance text [not null]
+  tier int
+  status text
+  rules_version text
+
+  indexes {
+    (event_id, event_year, event_month, division, role, dance) [pk]
+  }
+}
+
+Table rules_editions {
+  rules_version text [pk]
+  valid_from date
+  valid_to date
+  inherits_from text
+}
+
+Table tier_definitions {
+  rules_version text [not null]
+  tier int [not null]
+  min_competitors int
+  max_competitors int
+
+  indexes {
+    (rules_version, tier) [pk]
+  }
+}
+
+Table tier_points {
+  rules_version text [not null]
+  tier int [not null]
+  placement int [not null]
+  points int
+
+  indexes {
+    (rules_version, tier, placement) [pk]
+  }
+}
+
+Table events_list_runs {
+  run_id int [pk, increment]
+  started_at timestamptz
+  status text
+}
+
+Table events_list_changes {
+  change_id bigint [pk, increment]
+  run_id int [not null]
+  change_type text
+}
+
+Table scheduled_events {
+  source_fingerprint text [pk]
+  event_name text [not null]
+  start_date date
+  end_date date
+  location_raw text
+  country text
+  location_id int [note: 'SOFT — no FK to locations']
+  last_run_id int
+}
+
+Table events_list_current {
+  schedule_event_key text [pk]
+  source_fingerprint text
+  canonical_event_id int [note: 'SOFT — matched events.event_id']
+  event_name text
+  location_id int [note: 'SOFT — no FK to locations']
+  match_status text
+  last_run_id int
+}
+
+Table parse_runs {
+  run_id bigint [pk, increment]
+  started_at timestamptz
+  finished_at timestamptz
+  source text
+  status text
+}
+
+Table dancer_points_history {
+  dancer_id int [not null]
+  role text [not null]
+  dance text [not null]
+  level text [not null]
+  total_points int
+  valid_from date [not null]
+  valid_to date
+  run_id bigint
+
+  indexes {
+    (dancer_id, role, dance, level, valid_from) [pk]
+  }
+}
+
+Table dancer_roles_history {
+  dancer_id int [not null]
+  valid_from date [not null]
+  valid_to date
+  run_id bigint
+
+  indexes {
+    (dancer_id, valid_from) [pk]
+  }
+}
+
+Table dancer_names_history {
+  dancer_id int [not null]
+  dancer_name text [not null]
+  valid_from date [not null]
+  valid_to date
+  run_id bigint
+
+  indexes {
+    (dancer_id, valid_from) [pk]
+  }
+}
+
+//// Physical FKs
+Ref: dancer_aliases.dancer_id > dancers.dancer_id
+Ref: dancer_roles.dancer_id - dancers.dancer_id
+Ref: dancer_points.dancer_id > dancers.dancer_id
+Ref: dancer_points.level > levels.level
+Ref: event_aliases.event_id > events.event_id
+Ref: event_instances.event_id > events.event_id
+Ref: event_instances.location_id > locations.location_id
+Ref: results.dancer_id > dancers.dancer_id
+Ref: results.event_id > events.event_id
+Ref: results.location_id > locations.location_id
+Ref: event_catalog.event_id - events.event_id
+Ref: event_editions.event_id > events.event_id
+Ref: event_editions.location_id > locations.location_id
+Ref: edition_location_baseline.event_id > events.event_id
+Ref: edition_location_baseline.location_id > locations.location_id
+Ref: tier_definitions.rules_version > rules_editions.rules_version
+Ref: tier_points.rules_version > rules_editions.rules_version
+Ref: rules_editions.inherits_from > rules_editions.rules_version
+Ref: events_list_changes.run_id > events_list_runs.run_id
+Ref: scheduled_events.last_run_id > events_list_runs.run_id
+Ref: events_list_current.last_run_id > events_list_runs.run_id
+Ref: dancer_points_history.run_id > parse_runs.run_id
+Ref: dancer_roles_history.run_id > parse_runs.run_id
+Ref: dancer_names_history.run_id > parse_runs.run_id
+Ref: dancer_points_history.dancer_id > dancers.dancer_id
+Ref: dancer_roles_history.dancer_id > dancers.dancer_id
+Ref: dancer_names_history.dancer_id > dancers.dancer_id
+
+//// Soft / logical joins (documented only — dbdiagram still draws if Ref added;
+//// keep as notes so the physical FK set stays accurate)
+//// edition_calendar_dates.event_id ~> events.event_id
+//// events_list_current.canonical_event_id ~> events.event_id
+//// scheduled_events.location_id ~> locations.location_id
+//// events_list_current.location_id ~> locations.location_id
+//// results.(event_id,year,month) ~> event_editions.(event_id,year,month)
