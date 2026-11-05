@@ -312,7 +312,9 @@ def test_force_sea_dance_fest_and_med_in_swing():
         ]
     )
     out, changed = force_result_locations_from_event_name_overrides(results, location_info)
-    assert changed == 3
+    # Flat remaps both Sea Dance rows → Anapa, then year override remaps 2025 → Moscow,
+    # plus Med in Swing → La Londe (4 row updates counted).
+    assert changed == 4
     sea = out[out.event_name == "Sea Dance Fest"].set_index("event_year")
     assert str(sea.loc[2024, "location_id"]) == "403"
     assert str(sea.loc[2025, "location_id"]) == "113"
