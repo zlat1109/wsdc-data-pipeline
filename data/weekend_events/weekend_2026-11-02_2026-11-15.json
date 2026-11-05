@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-05T20:26:33Z",
+  "generated_at": "2026-11-05T20:42:25Z",
   "weekend_start": "2026-11-02",
   "weekend_end": "2026-11-15",
   "events": [
@@ -57,6 +57,17 @@
       "livestream": null,
       "continent": "Europe",
       "flag": "🇷🇺"
+    },
+    {
+      "name": "Westie Pink City",
+      "location": "TOULOUSE, Occitanie, France",
+      "dates": "Nov 6 - 8, 2026",
+      "url": "http://www.westiepinkcity.fr/",
+      "start_date": "2026-11-06",
+      "end_date": "2026-11-08",
+      "livestream": null,
+      "continent": "Europe",
+      "flag": "🇫🇷"
     }
   ]
 }
