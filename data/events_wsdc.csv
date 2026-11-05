@@ -120,7 +120,6 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 148,Dance Mardi Gras,"New Orleans, LA, United States",http://www.dancemardigras.com,July 2013,2013-07-01,2013,7,2013-07
 147,Toronto Open Swing & Hustle Championships,"Toronto, Canada",http://www.TOSHC.com,July 2013,2013-07-01,2013,7,2013-07
 59,Swing Fling,"Herndon, VA, United States",http://www.swingfling.com,August 2013,2013-08-01,2013,8,2013-08
-109,Colorado Country Classic,"Denver, CO, United States",https://coloradocountryclassic.net/,June 2007,2007-06-01,2007,6,2007-06
 164,Sea Sun and Swing,"La Grande Motte, France",https://www.seasunswing.fr/,August 2013,2013-08-01,2013,8,2013-08
 157,New England Dance Festival,"Newton (Boston), MA, United States",http://www.nedancefestival.com,August 2013,2013-08-01,2013,8,2013-08
 149,Florida Dance Magic,"Fort Lauderdale, FL, United States",https://floridadancemagic.com/,July 2013,2013-07-01,2013,7,2013-07
@@ -285,6 +284,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 135,Desert City Swing,"Phoenix, AZ, United States",http://www.desertcityswing.com,September 2011,2011-09-01,2011,9,2011-09
 15,Dallas D.A.N.C.E.,"Dallas, TX, United States",,September 2011,2011-09-01,2011,9,2011-09
 177,River City Swing,"Jacksonville, FL, United States",http://www.floridadanceevents.com,September 2011,2011-09-01,2011,9,2011-09
+33,National New Year,"Dallas, TX, United States",,December 1994,1994-12-01,1994,12,1994-12
 10,Bridgetown Swing Boogie,"Vancouver, WA, United States",,September 2011,2011-09-01,2011,9,2011-09
 95,Swing Niagara Dance Championships,"Buffalo, NY, United States",,September 2011,2011-09-01,2011,9,2011-09
 131,Meet Me In St Louis,"St. Louis, MO, United States",http://Www.mmisl.com,September 2011,2011-09-01,2011,9,2011-09
@@ -339,6 +339,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 167,Best of the Best WCS,"Sydney, Australia",https://www.bestofthebestwcs.com/,February 2014,2014-02-01,2014,2,2014-02
 215,Swing & Snow,"St. Petersburg, Russia",http://swingandsnow.ru,February 2014,2014-02-01,2014,2,2014-02
 67,Americas Classic,"Houston, TX, United States",,January 2014,2014-01-01,2014,1,2014-01
+33,National New Year,"Dallas, TX, United States",,December 1995,1995-12-01,1995,12,1995-12
 168,Scottish WCS Dance Championships,"Bathgate, United Kingdom",,February 2014,2014-02-01,2014,2,2014-02
 196,SwingCouver,"Portland, OR, United States",https://swingco.dance/,January 2014,2014-01-01,2014,1,2014-01
 12,Capital Swing Dance Convention,"Sacramento, CA, United States",http://www.capitalswingconvention.com,February 2014,2014-02-01,2014,2,2014-02
@@ -727,6 +728,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 195,Palm Springs New Years Swing Dance Classic,"Palm Springs, CA, United States",,January 2017,2017-01-01,2017,1,2017-01
 141,Spotlight New Year's Celebration,"Nashville, TN, United States",http://www.spotlightnewyears.com,January 2017,2017-01-01,2017,1,2017-01
 334,Countdown Swing Boston,"Boston, MA, United States",http://countdownswingboston.com/,January 2017,2017-01-01,2017,1,2017-01
+47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 2009,2009-08-01,2009,8,2009-08
 240,Westie Gala,"Stockholm, Sweden",http://www.westiegala.com/,January 2017,2017-01-01,2017,1,2017-01
 241,Moscow Xmas Dance Camp,"Moscow, Russia",,January 2017,2017-01-01,2017,1,2017-01
 184,BudaFest Open WCS Championships,"Budapest, Hungary",http://wcs-budafest.com/,January 2017,2017-01-01,2017,1,2017-01
@@ -894,6 +896,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 185,Sweetheart Swing Classic,"Tampa, FL, United States",,February 2018,2018-02-01,2018,2,2018-02
 92,MADjam,"Washington, DC, United States",http://www.atlanticdancejam.com,March 2018,2018-03-01,2018,3,2018-03
 220,D-Town Swing,"Düsseldorf, Germany",http://www.d-townswing.com/,June 2018,2018-06-01,2018,6,2018-06
+47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 2010,2010-08-01,2010,8,2010-08
 188,NSW West Coast Swing Dance Championships,"Sydney, Australia",,June 2018,2018-06-01,2018,6,2018-06
 207,Dance N Play,"Bend, OR, United States",https://dancenplay.com/,June 2018,2018-06-01,2018,6,2018-06
 254,Finnfest,"Helsinki, Finland",http://www.finnfest.fi,June 2018,2018-06-01,2018,6,2018-06
@@ -1009,7 +1012,6 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 157,New England Dance Festival,"Newton (Boston), MA, United States",http://www.nedancefestival.com,August 2018,2018-08-01,2018,8,2018-08
 148,Dance Mardi Gras,"New Orleans, LA, United States",http://www.dancemardigras.com,July 2018,2018-07-01,2018,7,2018-07
 149,Florida Dance Magic,"Fort Lauderdale, FL, United States",https://floridadancemagic.com/,July 2018,2018-07-01,2018,7,2018-07
-109,Colorado Country Classic,"Denver, CO, United States",https://coloradocountryclassic.net/,June 2008,2008-06-01,2008,6,2008-06
 226,Ft. Lauderdale Swing & Shag Beach Bash,"Fort Lauderdale, FL, United States",,July 2018,2018-07-01,2018,7,2018-07
 77,Arizona Dance Classic,"Phoenix, AZ, United States",,August 2018,2018-08-01,2018,8,2018-08
 184,BudaFest Open WCS Championships,"Budapest, Hungary",http://wcs-budafest.com/,January 2024,2024-01-01,2024,1,2024-01
@@ -1675,6 +1677,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 342,Global Grand Prix - West Coast Swing Reunion,"Toulouse, France",https://www.globalgrandprixwcs.com/,December 2025,2025-12-01,2025,12,2025-12
 240,Westie Gala,"Stockholm, Sweden",http://www.westiegala.com/,January 2026,2026-01-01,2026,1,2026-01
 42,Floorplay Swing Vacation,"Orlando, FL, United States",http://www.floorplayswingvacation.com,January 2026,2026-01-01,2026,1,2026-01
+108,Vancouver Vibrations,"Vancouver, Canada",,May 2005,2005-05-01,2005,5,2005-05
 334,Countdown Swing Boston,"Mansfield (Boston), MA, United States",http://countdownswingboston.com/,January 2026,2026-01-01,2026,1,2026-01
 141,Spotlight New Year's Celebration,"Nashville, TN, United States",http://www.spotlightnewyears.com,January 2026,2026-01-01,2026,1,2026-01
 196,SwingCouver,"Portland, OR, United States",https://swingco.dance/,January 2026,2026-01-01,2026,1,2026-01
@@ -1729,11 +1732,11 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 259,Swingover,"Orlando, FL, United States",http://www.swingoverevent.com,April 2026,2026-04-01,2026,4,2026-04
 253,Nordic WCS Championships,"Stockholm, Sweden",http://www.nordicwcschamps.com,May 2026,2026-05-01,2026,5,2026-05
 354,Spring Time Swing,"Freiburg, Germany",https://springtimeswing.com/,May 2026,2026-05-01,2026,5,2026-05
+108,Vancouver Vibrations,"Vancouver, Canada",,May 2006,2006-05-01,2006,5,2006-05
 144,Swingin' Into Spring,"Hartford, CT, United States",http://www.sis.djkenm.com,May 2026,2026-05-01,2026,5,2026-05
 347,BeeMAD,"Madrid, Spain",https://beemadwcs.com,May 2026,2026-05-01,2026,5,2026-05
 379,Med in Swing,"La Londe-les-Maures, France",http://www.medinswing.rocks,May 2026,2026-05-01,2026,5,2026-05
 336,SOM - Swing of Music,"Wels, Austria",https://www.swingofmusic.com/,May 2026,2026-05-01,2026,5,2026-05
-109,Colorado Country Classic,"Denver, CO, United States",https://coloradocountryclassic.net/,June 2009,2009-06-01,2009,6,2009-06
 372,Dance Jam Jack & Jill Weekend,"Silver Spring, MD, United States",https://dancejamproductions.com/westieweekend/,May 2026,2026-05-01,2026,5,2026-05
 205,SOswing,"Ashland, OR, United States",http://soswingdance.com,May 2026,2026-05-01,2026,5,2026-05
 105,Canadian Swing Championships,"Montreal, Canada",http://www.canadianswingchampionships.com,May 2026,2026-05-01,2026,5,2026-05
@@ -1821,6 +1824,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 380,SASS Spooky Albany Swing Spectacular,"Albany, NY, United States",http://www.spookyalbanyswing.com/,October 2026,2026-10-01,2026,10,2026-10
 125,Swing City Chicago,"Chicago, IL, United States",https://swingcitychicago.com,October 2026,2026-10-01,2026,10,2026-10
 346,Swingside Invitational,"Liège, Belgium",http://www.swingside-invitational.com,October 2026,2026-10-01,2026,10,2026-10
+229,Scandinavian Open,"Stockholm, Sweden",http://www.snowcs.se/,November 2026,2026-11-01,2026,11,2026-11
 340,Spooky Westie Weekend,"Singapore, Singapore",https://spookywestieweekend.com/,November 2026,2026-11-01,2026,11,2026-11
 236,Warsaw Halloween Swing,"Warsaw, Poland",http://www.warsawhalloweenswing.com,November 2026,2026-11-01,2026,11,2026-11
 233,Bavarian Open,"Munich, Germany",https://bavarianopen.com/,September 2025,2025-09-01,2025,9,2025-09
@@ -1842,7 +1846,6 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 379,Med in Swing,"La Londe-les-Maures, France",http://www.medinswing.rocks,May 2025,2025-05-01,2025,5,2025-05
 336,SOM - Swing of Music,"Wels, Austria",https://www.swingofmusic.com/,May 2025,2025-05-01,2025,5,2025-05
 174,Swingsation,"Gold Coast, Australia",https://rawconnection.com.au/swingsation/,May 2025,2025-05-01,2025,5,2025-05
-109,Colorado Country Classic,"Denver, CO, United States",https://coloradocountryclassic.net/,June 2010,2010-06-01,2010,6,2010-06
 221,Show Me Showdown,"St. Louis, MO, United States",,May 2025,2025-05-01,2025,5,2025-05
 205,SOswing,"Ashland, OR, United States",http://soswingdance.com,May 2025,2025-05-01,2025,5,2025-05
 105,Canadian Swing Championships,"Montreal, Canada",http://www.canadianswingchampionships.com,May 2025,2025-05-01,2025,5,2025-05
@@ -1856,6 +1859,12 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 269,Autumn Swing Challenge,"Budapest, Hungary",http://www.asc-budapest.com,November 2025,2025-11-01,2025,11,2025-11
 194,Moscow Westie Fest,"Moscow, Russia",https://westiefest.org/en/,November 2025,2025-11-01,2025,11,2025-11
 270,Westie's Angels,"Lyon, France",http://www.frenchywesty.com,November 2025,2025-11-01,2025,11,2025-11
+109,Colorado Country Classic,"Denver, CO, United States",https://coloradocountryclassic.net/,June 2005,2005-06-01,2005,6,2005-06
+109,Colorado Country Classic,"Denver, CO, United States",https://coloradocountryclassic.net/,June 2006,2006-06-01,2006,6,2006-06
+109,Colorado Country Classic,"Denver, CO, United States",https://coloradocountryclassic.net/,June 2007,2007-06-01,2007,6,2007-06
+109,Colorado Country Classic,"Denver, CO, United States",https://coloradocountryclassic.net/,June 2008,2008-06-01,2008,6,2008-06
+109,Colorado Country Classic,"Denver, CO, United States",https://coloradocountryclassic.net/,June 2009,2009-06-01,2009,6,2009-06
+109,Colorado Country Classic,"Denver, CO, United States",https://coloradocountryclassic.net/,June 2010,2010-06-01,2010,6,2010-06
 181,DC Swing eXperience (DCSX),"Herndon, VA, United States",http://www.dcswingexperience.com,November 2025,2025-11-01,2025,11,2025-11
 288,Midnight Madness,"Dallas, TX, United States",http://www.MidnightMadnessWCS.com,November 2025,2025-11-01,2025,11,2025-11
 365,Flowstate | West Coast Swing & Zouk Festival,"London, United Kingdom",https://eastonswing.com/west-coast-swing-events/world-swing-dance-council/flowstate-west-coast-swing-zouk-festival-eastonswing/,November 2025,2025-11-01,2025,11,2025-11
@@ -2124,8 +2133,6 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 32,National Jitterbug Championships,"Long Beach, CA, United States",,July 2003,2003-07-01,2003,7,2003-07
 32,National Jitterbug Championships,"Long Beach, CA, United States",,July 2004,2004-07-01,2004,7,2004-07
 32,National Jitterbug Championships,"Long Beach, CA, United States",,July 2007,2007-07-01,2007,7,2007-07
-33,National New Year,"Dallas, TX, United States",,December 1994,1994-12-01,1994,12,1994-12
-33,National New Year,"Dallas, TX, United States",,December 1995,1995-12-01,1995,12,1995-12
 34,New England Swing Dance Championships,"Boston, MA, United States",,September 1998,1998-09-01,1998,9,1998-09
 34,New England Swing Dance Championships,"Boston, MA, United States",,September 2001,2001-09-01,2001,9,2001-09
 35,New England Swing Jam 1,"Boston, MA, United States",,November 1995,1995-11-01,1995,11,1995-11
@@ -2186,8 +2193,6 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 2006,2006-08-01,2006,8,2006-08
 47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 2007,2007-08-01,2007,8,2007-08
 47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 2008,2008-08-01,2008,8,2008-08
-47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 2009,2009-08-01,2009,8,2009-08
-47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 2010,2010-08-01,2010,8,2010-08
 48,South Bay Dance Fling,"San Jose, CA, United States",http://www.SBDF.dance,August 1997,1997-08-01,1997,8,1997-08
 48,South Bay Dance Fling,"San Jose, CA, United States",http://www.SBDF.dance,August 1998,1998-08-01,1998,8,1998-08
 48,South Bay Dance Fling,"San Jose, CA, United States",http://www.SBDF.dance,August 2001,2001-08-01,2001,8,2001-08
@@ -2536,10 +2541,6 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 107,Motown Dance Championships,"Detroit, MI, United States",,April 2005,2005-04-01,2005,4,2005-04
 107,Motown Dance Championships,"Detroit, MI, United States",,April 2006,2006-04-01,2006,4,2006-04
 107,Motown Dance Championships,"Detroit, MI, United States",,April 2007,2007-04-01,2007,4,2007-04
-108,Vancouver Vibrations,"Vancouver, Canada",,May 2005,2005-05-01,2005,5,2005-05
-108,Vancouver Vibrations,"Vancouver, Canada",,May 2006,2006-05-01,2006,5,2006-05
-109,Colorado Country Classic,"Denver, CO, United States",https://coloradocountryclassic.net/,June 2005,2005-06-01,2005,6,2005-06
-109,Colorado Country Classic,"Denver, CO, United States",https://coloradocountryclassic.net/,June 2006,2006-06-01,2006,6,2006-06
 110,Brandin' Iron Dance Festival,"San Bernardino, CA, United States",,July 2005,2005-07-01,2005,7,2005-07
 110,Brandin' Iron Dance Festival,"San Bernardino, CA, United States",,July 2006,2006-07-01,2006,7,2006-07
 110,Brandin' Iron Dance Festival,"San Bernardino, CA, United States",,July 2007,2007-07-01,2007,7,2007-07
