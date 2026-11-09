@@ -32,6 +32,7 @@ from transform.knowledge import (
     force_events_wsdc_locations_from_event_name_overrides,
     force_result_locations_from_event_name_overrides,
 )
+from transform.knowledge.corrections import drop_suppressed_results
 from transform.knowledge.merge_map import apply_merge_event_id_map
 from transform.normalize import normalize_division, normalize_level
 from transform.preprocess_tracker import PreprocessTracker
@@ -433,6 +434,19 @@ def preprocess_with_log(data: dict[str, pd.DataFrame]) -> tuple[dict[str, pd.Dat
         result["location_info"] = _apply_geography_tracked(deduped_locations, tracker)
 
     if "dancers_results_info" in result:
+        suppressed, n_suppressed = drop_suppressed_results(result["dancers_results_info"])
+        if n_suppressed:
+            tracker.record(
+                "SUPPRESS_RESULTS",
+                "dancers_results_info",
+                "*",
+                "incomplete upstream edition (knowledge suppress_results)",
+                "drop until WSDC republishes",
+                n_suppressed,
+                "knowledge_correction",
+            )
+        result["dancers_results_info"] = suppressed
+
         deduped, dropped = dedupe_result_rows(result["dancers_results_info"])
         if dropped:
             tracker.record(
