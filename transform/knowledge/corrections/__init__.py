@@ -87,6 +87,84 @@ def result_role_rule(correction_id: str) -> dict[str, Any] | None:
     return None
 
 
+def suppress_results_rules() -> list[dict[str, Any]]:
+    """Active ``suppress_results`` corrections (drop incomplete editions)."""
+    out: list[dict[str, Any]] = []
+    for row in active_corrections(kind="suppress_results"):
+        applies = row.get("applies") or {}
+        if not isinstance(applies, dict):
+            raise ValueError(f"{row.get('id')}: applies must be a mapping")
+        year = applies.get("event_year")
+        if year is None:
+            raise ValueError(f"{row.get('id')}: applies.event_year is required")
+        month = applies.get("event_month")
+        out.append(
+            {
+                "id": row.get("id"),
+                "event_id": applies.get("event_id"),
+                "event_year": int(year),
+                "event_month": int(month) if month is not None else None,
+                "event_name_substrings": tuple(
+                    str(s).lower() for s in (applies.get("event_name_substrings") or ())
+                ),
+                "_path": row.get("_path"),
+            }
+        )
+    return out
+
+
+def suppress_results_mask(df: "pd.DataFrame") -> "pd.Series":
+    """Boolean mask of result rows matching any active suppress_results rule."""
+    import pandas as pd
+
+    if df is None or df.empty:
+        return pd.Series(dtype=bool)
+    mask = pd.Series(False, index=df.index)
+    years = pd.to_numeric(df.get("event_year"), errors="coerce")
+    months = (
+        pd.to_numeric(df.get("event_month"), errors="coerce")
+        if "event_month" in df.columns
+        else pd.Series(pd.NA, index=df.index)
+    )
+    names = (
+        df["event_name"].astype(str).str.lower()
+        if "event_name" in df.columns
+        else pd.Series("", index=df.index)
+    )
+    name_ids = None
+    for col in ("event_name_id", "event_id"):
+        if col in df.columns:
+            name_ids = pd.to_numeric(df[col], errors="coerce")
+            break
+
+    for rule in suppress_results_rules():
+        hit = years == rule["event_year"]
+        if rule["event_month"] is not None:
+            hit &= months == rule["event_month"]
+        name_hit = pd.Series(False, index=df.index)
+        for sub in rule["event_name_substrings"]:
+            name_hit |= names.str.contains(sub, regex=False, na=False)
+        if rule["event_id"] is not None and name_ids is not None:
+            name_hit |= name_ids == int(rule["event_id"])
+        if rule["event_name_substrings"] or rule["event_id"] is not None:
+            hit &= name_hit
+        mask |= hit
+    return mask
+
+
+def drop_suppressed_results(df: "pd.DataFrame") -> tuple["pd.DataFrame", int]:
+    """Drop rows matched by ``suppress_results``; return (df, dropped_count)."""
+    import pandas as pd
+
+    if df is None or df.empty:
+        return df, 0
+    mask = suppress_results_mask(df)
+    n = int(mask.sum())
+    if not n:
+        return df, 0
+    return df.loc[~mask].copy(), n
+
+
 def edition_date_repairs() -> dict[tuple[int, int, int], tuple[date, date]]:
     """Map (event_id, year, month) → (start, end) from active edition_date YAMLs."""
     out: dict[tuple[int, int, int], tuple[date, date]] = {}
