@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-11-05T08:02:14.065408+00:00",
+  "generated_at": "2026-11-09T09:40:49.372758+00:00",
   "source": "github-actions",
   "run_id": null,
   "summary": {
     "before_findings_count": 9,
     "applied_rules_count": 261,
-    "applied_rows_touched": 196785,
-    "manual_review_count": 6,
-    "manual_review_new_count": 0
+    "applied_rows_touched": 197280,
+    "manual_review_count": 7,
+    "manual_review_new_count": 2
   },
   "before_processing": {
     "description": "Issues detected in raw CSV before any normalization",
@@ -189,14 +189,13 @@
             ]
           },
           {
-            "base_key": "paradise dance festival",
+            "base_key": "boogie by the bay",
             "variants": [
-              "Paradise Dance Festival",
-              "Paradise dance Festival",
-              "Paradise dance festival"
+              "Boogie By The Bay",
+              "Boogie by the Bay"
             ],
             "geo_keys": [
-              "irvine|ca|usa"
+              "san_francisco|california|usa"
             ]
           },
           {
@@ -210,13 +209,14 @@
             ]
           },
           {
-            "base_key": "boogie by the bay",
+            "base_key": "paradise dance festival",
             "variants": [
-              "Boogie By The Bay",
-              "Boogie by the Bay"
+              "Paradise Dance Festival",
+              "Paradise dance Festival",
+              "Paradise dance festival"
             ],
             "geo_keys": [
-              "san_francisco|california|usa"
+              "irvine|ca|usa"
             ]
           },
           {
@@ -338,11 +338,10 @@
             ]
           },
           {
-            "base_key": "paradise dance festival",
+            "base_key": "boogie by the bay",
             "variants": [
-              "Paradise Dance Festival",
-              "Paradise dance Festival",
-              "Paradise dance festival"
+              "Boogie By The Bay",
+              "Boogie by the Bay"
             ]
           },
           {
@@ -353,10 +352,11 @@
             ]
           },
           {
-            "base_key": "boogie by the bay",
+            "base_key": "paradise dance festival",
             "variants": [
-              "Boogie By The Bay",
-              "Boogie by the Bay"
+              "Paradise Dance Festival",
+              "Paradise dance Festival",
+              "Paradise dance festival"
             ]
           },
           {
@@ -607,15 +607,15 @@
           {
             "detail": [
               "37",
-              "409",
+              "321",
+              "39",
+              "193",
               "66",
               "307",
               "99",
-              "279",
-              "202",
+              "409",
               "325",
-              "193",
-              "198"
+              "202"
             ]
           }
         ],
@@ -1030,7 +1030,7 @@
         "column": "location",
         "from_value": "wrong shared location string (event_name match)",
         "to_value": "from EVENT_NAME_LOCATION_OVERRIDES",
-        "rows_affected": 4,
+        "rows_affected": 10,
         "source": "known_map"
       },
       {
@@ -1498,7 +1498,7 @@
         "column": "event_name",
         "from_value": "Moscow Westie Fest Gala Edition",
         "to_value": "Moscow Westie Fest",
-        "rows_affected": 99,
+        "rows_affected": 196,
         "source": "known_map"
       },
       {
@@ -2216,6 +2216,15 @@
         "rule_id": "DIVISION_NORMALIZATION",
         "table": "dancers_results_info",
         "column": "event_competition",
+        "from_value": "Masters",
+        "to_value": "Master",
+        "rows_affected": 17068,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "DIVISION_NORMALIZATION",
+        "table": "dancers_results_info",
+        "column": "event_competition",
         "from_value": "Champions",
         "to_value": "Champion",
         "rows_affected": 5220,
@@ -2225,18 +2234,9 @@
         "rule_id": "DIVISION_NORMALIZATION",
         "table": "dancers_results_info",
         "column": "event_competition",
-        "from_value": "Masters",
-        "to_value": "Master",
-        "rows_affected": 17053,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "DIVISION_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_competition",
         "from_value": "All-Stars",
         "to_value": "All-Star",
-        "rows_affected": 16526,
+        "rows_affected": 16544,
         "source": "known_map"
       },
       {
@@ -2335,7 +2335,7 @@
         "column": "event_location",
         "from_value": "Moscow,  Russia",
         "to_value": "Moscow, Russia",
-        "rows_affected": 965,
+        "rows_affected": 1062,
         "source": "known_map"
       },
       {
@@ -2470,7 +2470,7 @@
         "column": "event_location + location_id",
         "from_value": "wrong shared location_id (event_name match)",
         "to_value": "from EVENT_NAME_LOCATION_OVERRIDES",
-        "rows_affected": 458,
+        "rows_affected": 673,
         "source": "known_map"
       },
       {
@@ -2758,16 +2758,16 @@
         "column": "*",
         "from_value": "duplicate row",
         "to_value": "keep first",
-        "rows_affected": 97,
+        "rows_affected": 98,
         "source": "dedupe"
       },
       {
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_required",
-        "from_value": "NEW",
-        "to_value": "Newcomer",
-        "rows_affected": 1449,
+        "from_value": "INT",
+        "to_value": "Intermediate",
+        "rows_affected": 4594,
         "source": "known_map"
       },
       {
@@ -2783,6 +2783,15 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_required",
+        "from_value": "NEW",
+        "to_value": "Newcomer",
+        "rows_affected": 1454,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_required",
         "from_value": "CHMP",
         "to_value": "Champion",
         "rows_affected": 192,
@@ -2792,18 +2801,9 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_required",
-        "from_value": "INT",
-        "to_value": "Intermediate",
-        "rows_affected": 4583,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_required",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 18139,
+        "rows_affected": 18134,
         "source": "known_map"
       },
       {
@@ -2819,9 +2819,9 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_allowed",
-        "from_value": "NOV",
-        "to_value": "Novice",
-        "rows_affected": 17524,
+        "from_value": "INT",
+        "to_value": "Intermediate",
+        "rows_affected": 6083,
         "source": "known_map"
       },
       {
@@ -2830,7 +2830,16 @@
         "column": "dominate_allowed",
         "from_value": "ADV",
         "to_value": "Advanced",
-        "rows_affected": 3218,
+        "rows_affected": 3221,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_allowed",
+        "from_value": "NOV",
+        "to_value": "Novice",
+        "rows_affected": 17531,
         "source": "known_map"
       },
       {
@@ -2840,15 +2849,6 @@
         "from_value": "CHMP",
         "to_value": "Champion",
         "rows_affected": 395,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_allowed",
-        "from_value": "INT",
-        "to_value": "Intermediate",
-        "rows_affected": 6082,
         "source": "known_map"
       },
       {
@@ -2866,7 +2866,7 @@
         "column": "non_dominate_required",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 4532,
+        "rows_affected": 4543,
         "source": "known_map"
       },
       {
@@ -2875,7 +2875,7 @@
         "column": "non_dominate_required",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 15314,
+        "rows_affected": 15315,
         "source": "known_map"
       },
       {
@@ -2911,7 +2911,7 @@
         "column": "non_dominate_allowed",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 7029,
+        "rows_affected": 7040,
         "source": "known_map"
       },
       {
@@ -2929,7 +2929,7 @@
         "column": "non_dominate_allowed",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 15314,
+        "rows_affected": 15315,
         "source": "known_map"
       },
       {
@@ -3310,8 +3310,8 @@
         "category": "location",
         "code": "EVENT_NAME_LOCATION_ID_COLLISION",
         "severity": "high",
-        "message": "5 event name(s) map to multiple location_ids (shared or misassigned id — likely wrong country in some rows)",
-        "count": 5,
+        "message": "7 event name(s) map to multiple location_ids (shared or misassigned id — likely wrong country in some rows)",
+        "count": 7,
         "examples": [
           {
             "event_name": "Worlds UCWDC",
@@ -3350,6 +3350,30 @@
             "row_count": 200
           },
           {
+            "event_name": "Sea Dance Fest",
+            "location_ids": [
+              "113",
+              "403"
+            ],
+            "countries": [
+              "Russia",
+              "Russia"
+            ],
+            "row_count": 193
+          },
+          {
+            "event_name": "Calgary Town Open",
+            "location_ids": [
+              "148",
+              "179"
+            ],
+            "countries": [
+              "Canada",
+              "Canada"
+            ],
+            "row_count": 157
+          },
+          {
             "event_name": "Go West SwingFest",
             "location_ids": [
               "240",
@@ -3375,8 +3399,174 @@
           }
         ],
         "suggested_fix": "Add to EVENT_NAME_LOCATION_OVERRIDES in transform/knowledge/events.py and run force_result_locations_from_event_name_overrides",
-        "fingerprint": "310282870333b939",
-        "is_new": false,
+        "fingerprint": "2c151b5cf7cee761",
+        "is_new": true,
+        "requires_manual_review": true
+      },
+      {
+        "category": "location",
+        "code": "EDITION_LOCATION_BASELINE_DRIFT",
+        "severity": "high",
+        "message": "Results location_id for a known edition key differs from edition_location_baseline.csv (cross-load drift)",
+        "count": 17,
+        "examples": [
+          {
+            "event_id": "334",
+            "event_year": "2019",
+            "event_month": "1",
+            "event_name": "New Year's Dance Extravaganza",
+            "baseline_location_id": "8",
+            "current_location_id": "71",
+            "result_rows": 63
+          },
+          {
+            "event_id": "334",
+            "event_year": "2018",
+            "event_month": "1",
+            "event_name": "New Year's Dance Extravaganza",
+            "baseline_location_id": "8",
+            "current_location_id": "71",
+            "result_rows": 90
+          },
+          {
+            "event_id": "334",
+            "event_year": "2017",
+            "event_month": "1",
+            "event_name": "New Year's Dance Extravaganza",
+            "baseline_location_id": "8",
+            "current_location_id": "71",
+            "result_rows": 76
+          },
+          {
+            "event_id": "334",
+            "event_year": "2016",
+            "event_month": "1",
+            "event_name": "New Year's Dance Extravaganza",
+            "baseline_location_id": "8",
+            "current_location_id": "71",
+            "result_rows": 79
+          },
+          {
+            "event_id": "334",
+            "event_year": "2015",
+            "event_month": "1",
+            "event_name": "New Year's Dance Extravaganza",
+            "baseline_location_id": "8",
+            "current_location_id": "71",
+            "result_rows": 75
+          },
+          {
+            "event_id": "334",
+            "event_year": "2013",
+            "event_month": "12",
+            "event_name": "New Year's Dance Extravaganza",
+            "baseline_location_id": "8",
+            "current_location_id": "71",
+            "result_rows": 58
+          },
+          {
+            "event_id": "334",
+            "event_year": "2013",
+            "event_month": "1",
+            "event_name": "New Year's Dance Extravaganza",
+            "baseline_location_id": "8",
+            "current_location_id": "71",
+            "result_rows": 69
+          },
+          {
+            "event_id": "334",
+            "event_year": "2012",
+            "event_month": "1",
+            "event_name": "New Year's Dance Extravaganza",
+            "baseline_location_id": "8",
+            "current_location_id": "71",
+            "result_rows": 69
+          },
+          {
+            "event_id": "334",
+            "event_year": "2006",
+            "event_month": "1",
+            "event_name": "New Year's Dance Extravaganza",
+            "baseline_location_id": "8",
+            "current_location_id": "71",
+            "result_rows": 65
+          },
+          {
+            "event_id": "334",
+            "event_year": "2005",
+            "event_month": "1",
+            "event_name": "New Year's Dance Extravaganza",
+            "baseline_location_id": "8",
+            "current_location_id": "71",
+            "result_rows": 80
+          },
+          {
+            "event_id": "334",
+            "event_year": "2004",
+            "event_month": "1",
+            "event_name": "New Year's Dance Extravaganza",
+            "baseline_location_id": "8",
+            "current_location_id": "71",
+            "result_rows": 72
+          },
+          {
+            "event_id": "334",
+            "event_year": "2003",
+            "event_month": "1",
+            "event_name": "New Year's Dance Extravaganza",
+            "baseline_location_id": "8",
+            "current_location_id": "71",
+            "result_rows": 77
+          },
+          {
+            "event_id": "334",
+            "event_year": "2002",
+            "event_month": "1",
+            "event_name": "New Year's Dance Extravaganza",
+            "baseline_location_id": "8",
+            "current_location_id": "71",
+            "result_rows": 90
+          },
+          {
+            "event_id": "334",
+            "event_year": "2001",
+            "event_month": "1",
+            "event_name": "New Year's Dance Extravaganza",
+            "baseline_location_id": "8",
+            "current_location_id": "71",
+            "result_rows": 158
+          },
+          {
+            "event_id": "334",
+            "event_year": "2000",
+            "event_month": "1",
+            "event_name": "New Year's Dance Extravaganza",
+            "baseline_location_id": "8",
+            "current_location_id": "71",
+            "result_rows": 101
+          },
+          {
+            "event_id": "334",
+            "event_year": "1999",
+            "event_month": "1",
+            "event_name": "New Year's Dance Extravaganza",
+            "baseline_location_id": "8",
+            "current_location_id": "71",
+            "result_rows": 40
+          },
+          {
+            "event_id": "334",
+            "event_year": "1995",
+            "event_month": "1",
+            "event_name": "New Year's Dance Extravaganza",
+            "baseline_location_id": "8",
+            "current_location_id": "71",
+            "result_rows": 1
+          }
+        ],
+        "suggested_fix": "Investigate shared wrong location_id; fix overrides/repair_locations. If venue change is legitimate, UPDATE core.edition_location_baseline in Supabase.",
+        "fingerprint": "686360d793f6f161",
+        "is_new": true,
         "requires_manual_review": true
       }
     ]
