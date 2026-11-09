@@ -7,7 +7,7 @@ can apply without a one-off DB script.
 
 ```yaml
 id: bavarian-allstar-roles-2026
-kind: result_role   # result_role | edition_date | suppress_results | location | event_identity
+kind: result_role   # result_role | edition_date | location | event_identity
 status: active      # active | expired | superseded
 created: 2026-09-20
 expires: null       # ISO date or null (= until upstream fixed)
@@ -32,8 +32,5 @@ imperative logic. Runtime sources of truth for **new** durable fixes:
 
 - `kind: result_role` → loaded by `result_role_rule()` / preprocess Bavarian path
 - `kind: edition_date` → `edition_date_repair_fills()` merged in `sync_dump_edition_dates.py`
-- `kind: suppress_results` → `drop_suppressed_results()` in preprocess; purge via
-  `scripts/purge_suppressed_results.py` (keeps incomplete WSDC editions out until
-  republished — e.g. Tampa Bay Classic 2026 places with points=0)
 
 Author corrections here first; keep Python maps only as fallbacks or glue.

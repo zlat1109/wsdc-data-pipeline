@@ -4,13 +4,11 @@ from datetime import date
 
 from transform.knowledge.corrections import (
     active_corrections,
-    drop_suppressed_results,
     edition_date_repair_fills,
     edition_date_repairs,
     load_corrections,
     result_role_rule,
     stale_corrections,
-    suppress_results_rules,
 )
 
 
@@ -69,39 +67,3 @@ def test_retired_bavarian_yaml_disables_role_flip(monkeypatch):
 
 def test_stale_corrections_empty_when_expires_null():
     assert stale_corrections(today=date(2099, 1, 1)) == []
-
-
-def test_suppress_results_tampa_bay_classic_2026():
-    import pandas as pd
-
-    rules = suppress_results_rules()
-    assert any(r["id"] == "tampa-bay-classic-2026-incomplete-points" for r in rules)
-
-    df = pd.DataFrame(
-        [
-            {
-                "event_name": "Tampa Bay Classic",
-                "event_year": "2026",
-                "event_month": "11",
-                "event_points": "0",
-            },
-            {
-                "event_name": "Tampa Bay Classic",
-                "event_year": "2025",
-                "event_month": "11",
-                "event_points": "10",
-            },
-            {
-                "event_name": "Scandinavian Open",
-                "event_year": "2026",
-                "event_month": "11",
-                "event_points": "5",
-            },
-        ]
-    )
-    kept, n = drop_suppressed_results(df)
-    assert n == 1
-    assert len(kept) == 2
-    assert "Tampa Bay Classic" not in set(
-        kept.loc[kept["event_year"].astype(str) == "2026", "event_name"]
-    )
