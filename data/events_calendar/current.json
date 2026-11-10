@@ -1,9 +1,9 @@
 {
-  "scraped_at": "2026-11-03T16:49:23.606609+00:00",
+  "scraped_at": "2026-11-10T15:56:54.136854+00:00",
   "source": "https://worldsdc.com/events/calendar/",
   "min_start": "2025-01-01",
-  "raw_count": 663,
-  "event_count": 502,
+  "raw_count": 664,
+  "event_count": 503,
   "events": [
     {
       "event_name": "Floorplay Swing Vacation",
@@ -3716,8 +3716,8 @@
     {
       "event_name": "Sea to Sky Seattle",
       "calendar_title": "Sea to Sky Seattle (Hiatus)",
-      "catalog_name": "Sea to Sky Seattle",
-      "name_key": "seatoskyseattle",
+      "catalog_name": "Sea to Sky",
+      "name_key": "seatosky",
       "start_date": "2025-11-13",
       "end_date": "2025-11-17",
       "url": "http://Seatoskywcs.com",
@@ -7687,8 +7687,8 @@
     {
       "event_name": "Sea to Sky Seattle",
       "calendar_title": "Sea to Sky Seattle",
-      "catalog_name": "Sea to Sky Seattle",
-      "name_key": "seatoskyseattle",
+      "catalog_name": "Sea to Sky",
+      "name_key": "seatosky",
       "start_date": "2026-11-05",
       "end_date": "2026-11-09",
       "url": "http://Seatoskywcs.com",
@@ -7928,7 +7928,7 @@
     },
     {
       "event_name": "Rocket City Swing",
-      "calendar_title": "Rocket City Swing",
+      "calendar_title": "Rocket City Swing (On Hiatus)",
       "catalog_name": "Westies on the Water",
       "name_key": "westiesonthewater",
       "start_date": "2026-11-19",
@@ -7942,8 +7942,12 @@
       ],
       "date_precision": "day",
       "date_source": "wsdc_calendar",
-      "flags": [],
-      "status_tags": [],
+      "flags": [
+        "hiatus"
+      ],
+      "status_tags": [
+        "on hiatus"
+      ],
       "source_fingerprint": "6e93d1b373c17f8d46b48af3",
       "raw_start": "2026-11-19",
       "raw_end": "2026-11-23"
@@ -11049,6 +11053,28 @@
       "source_fingerprint": "5fe9a6614c422ab66dd34ae8",
       "raw_start": "2027-10-22",
       "raw_end": "2027-10-25"
+    },
+    {
+      "event_name": "Spooky Westie Weekend",
+      "calendar_title": "Spooky Westie Weekend",
+      "catalog_name": "Spooky Westie Weekend",
+      "name_key": "spookywestieweekend",
+      "start_date": "2027-10-28",
+      "end_date": "2027-10-31",
+      "url": "https://spookywestieweekend.com/",
+      "url_key": "spookywestieweekend.com",
+      "results_year": 2027,
+      "results_month": 10,
+      "edition_ym_candidates": [
+        "2027-10"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "c48d879d316d7d895c84c3c0",
+      "raw_start": "2027-10-28",
+      "raw_end": "2027-11-01"
     },
     {
       "event_name": "Euro Dance Festival",

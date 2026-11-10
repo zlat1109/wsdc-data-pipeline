@@ -2809,7 +2809,7 @@ update_date,division,role,type_options,count_dancer
 2026-11-10,Novice,Follower,required,39
 2026-11-10,Novice,Leader,allowed,28
 2026-11-10,Novice,Leader,required,32
-2026-11-10,nan,Follower,allowed,6
-2026-11-10,nan,Follower,required,8
-2026-11-10,nan,Leader,allowed,20
-2026-11-10,nan,Leader,required,23
+2026-11-10,,Follower,allowed,6
+2026-11-10,,Follower,required,8
+2026-11-10,,Leader,allowed,20
+2026-11-10,,Leader,required,23

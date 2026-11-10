@@ -1,130 +1,14 @@
 {
   "summary": {
-    "scheduled_active": 158,
-    "confirmed": 150,
+    "scheduled_active": 152,
+    "confirmed": 144,
     "suggested": 0,
     "review": 0,
     "new_unmapped": 8,
-    "location_drifts": 15,
-    "name_variants": 42
+    "location_drifts": 14,
+    "name_variants": 40
   },
   "confirmed": [
-    {
-      "source_fingerprint": "64b9c744f6990fa57a068af9",
-      "list_name": "Simply Adelaide West Coast Swing",
-      "start_date": "2026-11-05",
-      "location_raw": "Adelaide, SA, Australia",
-      "list_url": "http://www.simplyadelaidewcs.com.au/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 330,
-      "canonical_name": "Simply Adelaide West Coast Swing",
-      "catalog_url": "http://www.simplyadelaidewcs.com.au",
-      "typical_location": "Adelaide, Australia",
-      "location_score": 0.92,
-      "location_flag": "ok",
-      "notes": []
-    },
-    {
-      "source_fingerprint": "37aebccd498ff0cc883b0d0a",
-      "list_name": "Tampa Bay Classic",
-      "start_date": "2026-11-05",
-      "location_raw": "Tampa Bay, FL, United States",
-      "list_url": "http://www.tbcwcs.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 137,
-      "canonical_name": "Tampa Bay Classic",
-      "catalog_url": "http//http://www.tampabayclassic.com",
-      "typical_location": "Tampa, FL",
-      "location_score": 0.4864864864864865,
-      "location_flag": "site_differs_from_history",
-      "notes": [
-        "Site location 'Tampa Bay, FL, United States' differs from catalog typical 'Tampa, FL' (venue may have moved)"
-      ]
-    },
-    {
-      "source_fingerprint": "5df815d9ce1315224c001f44",
-      "list_name": "Mountain Magic Dance Convention",
-      "start_date": "2026-11-05",
-      "location_raw": "South Lake Tahoe (near Reno), NV, United States",
-      "list_url": "http://mountainmagic.dance/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 444,
-      "canonical_name": "Mountain Magic Dance Convention",
-      "catalog_url": "",
-      "typical_location": null,
-      "location_score": 0.0,
-      "location_flag": "unknown",
-      "notes": [
-        "No historical location in catalog for comparison"
-      ]
-    },
-    {
-      "source_fingerprint": "267c5c38307061d765d6841c",
-      "list_name": "Sea to Sky Seattle",
-      "start_date": "2026-11-05",
-      "location_raw": "Seattle, WA, United States",
-      "list_url": "http://seatoskywcs.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 459,
-      "canonical_name": "Sea to Sky Seattle",
-      "catalog_url": "",
-      "typical_location": null,
-      "location_score": 0.0,
-      "location_flag": "unknown",
-      "notes": [
-        "No historical location in catalog for comparison"
-      ]
-    },
-    {
-      "source_fingerprint": "2a18c1f364a291f4f9928bac",
-      "list_name": "Moscow Westie Fest Gala Edition",
-      "start_date": "2026-11-06",
-      "location_raw": "Moscow, Russia",
-      "list_url": "http://westiefest.org/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "explicit",
-      "confidence": 1.0,
-      "canonical_event_id": 194,
-      "canonical_name": "Moscow Westie Fest",
-      "catalog_url": "https://westiefest.org/en/",
-      "typical_location": "Moscow, Russia",
-      "location_score": 1.0,
-      "location_flag": "ok",
-      "notes": [
-        "Name differs: list='Moscow Westie Fest Gala Edition' catalog='Moscow Westie Fest'"
-      ]
-    },
-    {
-      "source_fingerprint": "aa5efa615829cdccc05f424d",
-      "list_name": "Westie Pink City",
-      "start_date": "2026-11-06",
-      "location_raw": "TOULOUSE, Occitanie, France",
-      "list_url": "http://www.westiepinkcity.fr/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 312,
-      "canonical_name": "Westie Pink City",
-      "catalog_url": "http://www.westiepinkcity.fr/",
-      "typical_location": "Toulouse, France",
-      "location_score": 0.92,
-      "location_flag": "ok",
-      "notes": []
-    },
     {
       "source_fingerprint": "6c7a6245c6d0bdba6e3ca39d",
       "list_name": "Midnight Madness WCS 2026",
@@ -220,26 +104,6 @@
       "location_flag": "ok",
       "notes": [
         "List URL 'http://www.flowstatefest.com/' differs from catalog URL 'https://eastonswing.com/west-coast-swing-events/world-swing-dance-council/flowstate-west-coast-swing-zouk-festival-eastonswing/' — using event name"
-      ]
-    },
-    {
-      "source_fingerprint": "6e93d1b373c17f8d46b48af3",
-      "list_name": "Rocket City Swing",
-      "start_date": "2026-11-19",
-      "location_raw": "Huntsville, Alabama, United States",
-      "list_url": "http://rocketcityswing.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "explicit",
-      "confidence": 1.0,
-      "canonical_event_id": 323,
-      "canonical_name": "Westies on the Water",
-      "catalog_url": "http://rocketcityswing.com/",
-      "typical_location": "Huntsville, AL",
-      "location_score": 0.92,
-      "location_flag": "ok",
-      "notes": [
-        "Name differs: list='Rocket City Swing' catalog='Westies on the Water'"
       ]
     },
     {
@@ -2766,6 +2630,24 @@
       "notes": []
     },
     {
+      "source_fingerprint": "c48d879d316d7d895c84c3c0",
+      "list_name": "Spooky Westie Weekend",
+      "start_date": "2027-10-28",
+      "location_raw": "Singapore",
+      "list_url": "https://spookywestieweekend.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 340,
+      "canonical_name": "Spooky Westie Weekend",
+      "catalog_url": "https://spookywestieweekend.com/",
+      "typical_location": "Singapore, Singapore",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": []
+    },
+    {
       "source_fingerprint": "0e485aa8568c6408b8ff891a",
       "list_name": "Euro Dance Festival",
       "start_date": "2028-02-29",
@@ -3031,26 +2913,6 @@
     }
   ],
   "location_drifts": [
-    {
-      "source_fingerprint": "37aebccd498ff0cc883b0d0a",
-      "list_name": "Tampa Bay Classic",
-      "start_date": "2026-11-05",
-      "location_raw": "Tampa Bay, FL, United States",
-      "list_url": "http://www.tbcwcs.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 137,
-      "canonical_name": "Tampa Bay Classic",
-      "catalog_url": "http//http://www.tampabayclassic.com",
-      "typical_location": "Tampa, FL",
-      "location_score": 0.4864864864864865,
-      "location_flag": "site_differs_from_history",
-      "notes": [
-        "Site location 'Tampa Bay, FL, United States' differs from catalog typical 'Tampa, FL' (venue may have moved)"
-      ]
-    },
     {
       "source_fingerprint": "6c7a6245c6d0bdba6e3ca39d",
       "list_name": "Midnight Madness WCS 2026",
@@ -3336,26 +3198,6 @@
   ],
   "name_variants": [
     {
-      "source_fingerprint": "2a18c1f364a291f4f9928bac",
-      "list_name": "Moscow Westie Fest Gala Edition",
-      "start_date": "2026-11-06",
-      "location_raw": "Moscow, Russia",
-      "list_url": "http://westiefest.org/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "explicit",
-      "confidence": 1.0,
-      "canonical_event_id": 194,
-      "canonical_name": "Moscow Westie Fest",
-      "catalog_url": "https://westiefest.org/en/",
-      "typical_location": "Moscow, Russia",
-      "location_score": 1.0,
-      "location_flag": "ok",
-      "notes": [
-        "Name differs: list='Moscow Westie Fest Gala Edition' catalog='Moscow Westie Fest'"
-      ]
-    },
-    {
       "source_fingerprint": "6c7a6245c6d0bdba6e3ca39d",
       "list_name": "Midnight Madness WCS 2026",
       "start_date": "2026-11-12",
@@ -3374,26 +3216,6 @@
       "notes": [
         "Name differs: list='Midnight Madness WCS 2026' catalog='Midnight Madness'",
         "Site location 'Dallas Ft. Worth, Texas, United States' differs from catalog typical 'Dallas, TX' (venue may have moved)"
-      ]
-    },
-    {
-      "source_fingerprint": "6e93d1b373c17f8d46b48af3",
-      "list_name": "Rocket City Swing",
-      "start_date": "2026-11-19",
-      "location_raw": "Huntsville, Alabama, United States",
-      "list_url": "http://rocketcityswing.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "explicit",
-      "confidence": 1.0,
-      "canonical_event_id": 323,
-      "canonical_name": "Westies on the Water",
-      "catalog_url": "http://rocketcityswing.com/",
-      "typical_location": "Huntsville, AL",
-      "location_score": 0.92,
-      "location_flag": "ok",
-      "notes": [
-        "Name differs: list='Rocket City Swing' catalog='Westies on the Water'"
       ]
     },
     {
@@ -4182,6 +4004,6 @@
       ]
     }
   ],
-  "generated_at": "2026-11-03T16:48:55.871506+00:00",
-  "catalog_events": 429
+  "generated_at": "2026-11-10T15:56:31.143936+00:00",
+  "catalog_events": 430
 }
