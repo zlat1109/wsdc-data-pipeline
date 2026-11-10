@@ -1,7 +1,7 @@
 # Event locations — collaborator guide
 
 Cleaned WSDC event locations (geo behind Event Growth / Trends Monitor).  
-CSV = source of truth; `event_growth.json` = dashboard extract. Pipeline feeds the analytics site; repos stay separate.
+CSV = source of truth; `event_growth.json` = dashboard extract. Pipeline feeds the analytics site.
 
 ## Live
 
