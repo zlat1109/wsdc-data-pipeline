@@ -126,6 +126,9 @@ EVENT_NAME_VARIANT_TO_CATALOG: dict[str, str] = {
     'Monterey Swing Fest 2024': 'Monterey SwingFest',
     'Swing Fling 2024': 'Swing Fling',
     'Easter Swing 2026': 'Easter Swing',
+    # Weekend/calendar title includes city; WSDC results use short catalog name.
+    'Sea to Sky Seattle': 'Sea to Sky',
+    'Sea to Sky Seattle WCS': 'Sea to Sky',
     'Austin Rocks 2024': 'Austin Rocks',
     'Midwest Westie Fest 2025': 'Midwest Westie Fest',
     'Milan Modern Swing 2025': 'Milan Modern Swing',
