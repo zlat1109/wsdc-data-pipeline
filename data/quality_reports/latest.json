@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-10T06:43:01.573631+00:00",
+  "generated_at": "2026-11-11T06:19:35.890330+00:00",
   "source": "github-actions",
   "run_id": null,
   "summary": {
     "before_findings_count": 9,
-    "applied_rules_count": 261,
-    "applied_rows_touched": 197418,
+    "applied_rules_count": 263,
+    "applied_rows_touched": 197878,
     "manual_review_count": 7,
     "manual_review_new_count": 0
   },
@@ -103,8 +103,8 @@
           },
           {
             "event_name": "German Open WCS Championships",
-            "similar_to": "Korean Open WCS Championships",
-            "score": 0.897
+            "similar_to": "Russian Open WCS Championships",
+            "score": 0.881
           },
           {
             "event_name": "Global Grand Prix - West Coast Swing",
@@ -179,16 +179,6 @@
         "count": 36,
         "examples": [
           {
-            "base_key": "monterey swingfest",
-            "variants": [
-              "Monterey SwingFest",
-              "Monterey Swingfest"
-            ],
-            "geo_keys": [
-              "monterey|ca|usa"
-            ]
-          },
-          {
             "base_key": "swing fling",
             "variants": [
               "Swing Fling",
@@ -207,6 +197,16 @@
             ],
             "geo_keys": [
               "irvine|ca|usa"
+            ]
+          },
+          {
+            "base_key": "monterey swingfest",
+            "variants": [
+              "Monterey SwingFest",
+              "Monterey Swingfest"
+            ],
+            "geo_keys": [
+              "monterey|ca|usa"
             ]
           },
           {
@@ -331,13 +331,6 @@
         "count": 38,
         "examples": [
           {
-            "base_key": "monterey swingfest",
-            "variants": [
-              "Monterey SwingFest",
-              "Monterey Swingfest"
-            ]
-          },
-          {
             "base_key": "swing fling",
             "variants": [
               "Swing Fling",
@@ -350,6 +343,13 @@
               "Paradise Dance Festival",
               "Paradise dance Festival",
               "Paradise dance festival"
+            ]
+          },
+          {
+            "base_key": "monterey swingfest",
+            "variants": [
+              "Monterey SwingFest",
+              "Monterey Swingfest"
             ]
           },
           {
@@ -426,7 +426,7 @@
         "code": "EVENT_NAME_UNRESOLVED_TO_CATALOG",
         "severity": "high",
         "message": "Result event names still absent from events_wsdc after normalization (will orphan in load)",
-        "count": 78,
+        "count": 76,
         "examples": [
           {
             "event_name": "Asia WCS Open - 10th Anniversary"
@@ -606,16 +606,16 @@
         "examples": [
           {
             "detail": [
-              "37",
+              "279",
               "193",
               "307",
-              "202",
-              "325",
+              "37",
+              "198",
               "99",
-              "39",
-              "279",
+              "325",
               "409",
-              "321"
+              "202",
+              "66"
             ]
           }
         ],
@@ -1328,6 +1328,24 @@
         "from_value": "Easter Swing 2026",
         "to_value": "Easter Swing",
         "rows_affected": 143,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "EVENT_NAME_NORMALIZATION",
+        "table": "dancers_results_info",
+        "column": "event_name",
+        "from_value": "Sea to Sky Seattle",
+        "to_value": "Sea to Sky",
+        "rows_affected": 219,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "EVENT_NAME_NORMALIZATION",
+        "table": "dancers_results_info",
+        "column": "event_name",
+        "from_value": "Sea to Sky Seattle WCS",
+        "to_value": "Sea to Sky",
+        "rows_affected": 101,
         "source": "known_map"
       },
       {
@@ -2173,7 +2191,7 @@
         "column": "event_name_id",
         "from_value": "307",
         "to_value": "272",
-        "rows_affected": 657,
+        "rows_affected": 731,
         "source": "known_map"
       },
       {
@@ -2225,18 +2243,18 @@
         "rule_id": "DIVISION_NORMALIZATION",
         "table": "dancers_results_info",
         "column": "event_competition",
-        "from_value": "All-Stars",
-        "to_value": "All-Star",
-        "rows_affected": 16560,
+        "from_value": "Masters",
+        "to_value": "Master",
+        "rows_affected": 17096,
         "source": "known_map"
       },
       {
         "rule_id": "DIVISION_NORMALIZATION",
         "table": "dancers_results_info",
         "column": "event_competition",
-        "from_value": "Masters",
-        "to_value": "Master",
-        "rows_affected": 17088,
+        "from_value": "All-Stars",
+        "to_value": "All-Star",
+        "rows_affected": 16570,
         "source": "known_map"
       },
       {
@@ -2758,7 +2776,7 @@
         "column": "*",
         "from_value": "duplicate row",
         "to_value": "keep first",
-        "rows_affected": 98,
+        "rows_affected": 103,
         "source": "dedupe"
       },
       {
@@ -2794,7 +2812,7 @@
         "column": "dominate_required",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 4599,
+        "rows_affected": 4600,
         "source": "known_map"
       },
       {
@@ -2803,7 +2821,7 @@
         "column": "dominate_required",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 18156,
+        "rows_affected": 18165,
         "source": "known_map"
       },
       {
@@ -2812,7 +2830,7 @@
         "column": "dominate_required",
         "from_value": "ALS",
         "to_value": "All-Star",
-        "rows_affected": 1128,
+        "rows_affected": 1129,
         "source": "known_map"
       },
       {
@@ -2821,7 +2839,7 @@
         "column": "dominate_allowed",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 17540,
+        "rows_affected": 17548,
         "source": "known_map"
       },
       {
@@ -2830,7 +2848,7 @@
         "column": "dominate_allowed",
         "from_value": "ADV",
         "to_value": "Advanced",
-        "rows_affected": 3226,
+        "rows_affected": 3227,
         "source": "known_map"
       },
       {
@@ -2848,7 +2866,7 @@
         "column": "dominate_allowed",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 6095,
+        "rows_affected": 6097,
         "source": "known_map"
       },
       {
@@ -2866,7 +2884,7 @@
         "column": "non_dominate_required",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 4548,
+        "rows_affected": 4549,
         "source": "known_map"
       },
       {
@@ -2875,7 +2893,7 @@
         "column": "non_dominate_required",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 15331,
+        "rows_affected": 15340,
         "source": "known_map"
       },
       {
@@ -2884,7 +2902,7 @@
         "column": "non_dominate_required",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 265,
+        "rows_affected": 264,
         "source": "known_map"
       },
       {
@@ -2893,7 +2911,7 @@
         "column": "non_dominate_required",
         "from_value": "ADV",
         "to_value": "Advanced",
-        "rows_affected": 235,
+        "rows_affected": 236,
         "source": "known_map"
       },
       {
@@ -2911,7 +2929,7 @@
         "column": "non_dominate_allowed",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 7046,
+        "rows_affected": 7048,
         "source": "known_map"
       },
       {
@@ -2920,7 +2938,7 @@
         "column": "non_dominate_allowed",
         "from_value": "ADV",
         "to_value": "Advanced",
-        "rows_affected": 415,
+        "rows_affected": 416,
         "source": "known_map"
       },
       {
@@ -2929,7 +2947,7 @@
         "column": "non_dominate_allowed",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 15331,
+        "rows_affected": 15340,
         "source": "known_map"
       },
       {
@@ -2938,7 +2956,7 @@
         "column": "non_dominate_allowed",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 1142,
+        "rows_affected": 1141,
         "source": "known_map"
       },
       {
@@ -3016,8 +3034,8 @@
           },
           {
             "event_name": "German Open WCS Championships",
-            "similar_to": "Korean Open WCS Championships",
-            "score": 0.897
+            "similar_to": "Russian Open WCS Championships",
+            "score": 0.881
           },
           {
             "event_name": "Global Grand Prix - West Coast Swing",
@@ -3150,7 +3168,7 @@
         "code": "EVENT_NAME_UNRESOLVED_TO_CATALOG",
         "severity": "high",
         "message": "Result event names still absent from events_wsdc after normalization (will orphan in load)",
-        "count": 68,
+        "count": 66,
         "examples": [
           {
             "event_name": "Asia WCS Open - 10th Anniversary"
@@ -3238,7 +3256,7 @@
         "code": "EVENT_NAME_NOT_IN_CATALOG",
         "severity": "low",
         "message": "Result event_name values absent from events_wsdc.csv (may be OK if resolved by name in load)",
-        "count": 68,
+        "count": 66,
         "examples": [
           {
             "event_name": "Asia WCS Open - 10th Anniversary"
@@ -3852,8 +3870,6 @@
     "Sea Sun and Swing",
     "Sea To Sky - Seattle",
     "Sea to Sky",
-    "Sea to Sky Seattle",
-    "Sea to Sky Seattle WCS",
     "Shakedown Swing",
     "Shooba Dooba Swing",
     "Show Me Showdown",

@@ -43,6 +43,13 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2160,236,Warsaw Halloween Swing,2026,11,Newcomer,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 2160,236,Warsaw Halloween Swing,2026,11,Novice,West Coast Swing,5,4,matched,matched,matched,15,12,120,208,t,f
 2160,236,Warsaw Halloween Swing,2026,11,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2531,312,Westie Pink City,2026,11,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2531,312,Westie Pink City,2026,11,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2531,312,Westie Pink City,2026,11,Intermediate,West Coast Swing,1,3,matched,matched,matched,3,10,25,49,t,f
+2531,312,Westie Pink City,2026,11,Master,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2531,312,Westie Pink City,2026,11,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2531,312,Westie Pink City,2026,11,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
+2531,312,Westie Pink City,2026,11,Sophisticated,West Coast Swing,,3,no_points,matched,no_points,0,10,25,,t,f
 1953,211,Atlanta Swing Classic,2026,10,Advanced,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
 1953,211,Atlanta Swing Classic,2026,10,All-Star,West Coast Swing,3,4,matched,matched,matched,10,11,60,118,t,f
 1953,211,Atlanta Swing Classic,2026,10,Champion,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
@@ -151,13 +158,13 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2696,392,Westie Harbor,2026,10,Newcomer,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
 2696,392,Westie Harbor,2026,10,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
 2696,392,Westie Harbor,2026,10,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2494,300,Austin Rocks,2026,9,Advanced,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
-2494,300,Austin Rocks,2026,9,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2494,300,Austin Rocks,2026,9,Champion,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2494,300,Austin Rocks,2026,9,Intermediate,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
-2494,300,Austin Rocks,2026,9,Master,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2494,300,Austin Rocks,2026,9,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2494,300,Austin Rocks,2026,9,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
+2493,300,Austin Rocks,2026,9,Advanced,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
+2493,300,Austin Rocks,2026,9,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2493,300,Austin Rocks,2026,9,Champion,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2493,300,Austin Rocks,2026,9,Intermediate,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
+2493,300,Austin Rocks,2026,9,Master,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2493,300,Austin Rocks,2026,9,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2493,300,Austin Rocks,2026,9,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
 2135,233,Bavarian Open,2026,9,Advanced,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
 2135,233,Bavarian Open,2026,9,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 2135,233,Bavarian Open,2026,9,Champion,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
@@ -355,10 +362,10 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1581,164,Sea Sun and Swing,2026,8,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
 1581,164,Sea Sun and Swing,2026,8,Novice,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
 1581,164,Sea Sun and Swing,2026,8,Sophisticated,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-2487,298,Shakedown Swing,2026,8,Advanced,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
-2487,298,Shakedown Swing,2026,8,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2487,298,Shakedown Swing,2026,8,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2487,298,Shakedown Swing,2026,8,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2486,298,Shakedown Swing,2026,8,Advanced,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
+2486,298,Shakedown Swing,2026,8,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2486,298,Shakedown Swing,2026,8,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2486,298,Shakedown Swing,2026,8,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 606,53,Summer Hummer,2026,8,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 606,53,Summer Hummer,2026,8,All-Star,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 606,53,Summer Hummer,2026,8,Champion,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
@@ -755,13 +762,13 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2697,393,Swing in Bloom,2026,4,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 2697,393,Swing in Bloom,2026,4,Novice,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
 2697,393,Swing in Bloom,2026,4,Sophisticated,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-2510,304,Swing In Capital,2026,4,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2510,304,Swing In Capital,2026,4,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2510,304,Swing In Capital,2026,4,Intermediate,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
-2510,304,Swing In Capital,2026,4,Master,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-2510,304,Swing In Capital,2026,4,Newcomer,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2510,304,Swing In Capital,2026,4,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
-2510,304,Swing In Capital,2026,4,Sophisticated,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
+2509,304,Swing In Capital,2026,4,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2509,304,Swing In Capital,2026,4,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2509,304,Swing In Capital,2026,4,Intermediate,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
+2509,304,Swing In Capital,2026,4,Master,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+2509,304,Swing In Capital,2026,4,Newcomer,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2509,304,Swing In Capital,2026,4,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
+2509,304,Swing In Capital,2026,4,Sophisticated,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
 2663,370,SwingIN Festival,2026,4,Advanced,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 2663,370,SwingIN Festival,2026,4,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 2663,370,SwingIN Festival,2026,4,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
@@ -783,13 +790,13 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1296,132,Tulsa Spring Swing,2026,4,Master,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 1296,132,Tulsa Spring Swing,2026,4,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
 1296,132,Tulsa Spring Swing,2026,4,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
-2472,293,Westy Nantes,2026,4,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2472,293,Westy Nantes,2026,4,All-Star,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
-2472,293,Westy Nantes,2026,4,Intermediate,West Coast Swing,4,3,matched,matched,matched,12,10,60,118,t,f
-2472,293,Westy Nantes,2026,4,Master,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2472,293,Westy Nantes,2026,4,Newcomer,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
-2472,293,Westy Nantes,2026,4,Novice,West Coast Swing,4,5,matched,matched,matched,12,15,120,208,t,f
-2472,293,Westy Nantes,2026,4,Sophisticated,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2471,293,Westy Nantes,2026,4,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2471,293,Westy Nantes,2026,4,All-Star,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
+2471,293,Westy Nantes,2026,4,Intermediate,West Coast Swing,4,3,matched,matched,matched,12,10,60,118,t,f
+2471,293,Westy Nantes,2026,4,Master,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2471,293,Westy Nantes,2026,4,Newcomer,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
+2471,293,Westy Nantes,2026,4,Novice,West Coast Swing,4,5,matched,matched,matched,12,15,120,208,t,f
+2471,293,Westy Nantes,2026,4,Sophisticated,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 1870,197,5280 Westival,2026,3,Advanced,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
 1870,197,5280 Westival,2026,3,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 1870,197,5280 Westival,2026,3,Master,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
@@ -818,11 +825,11 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1400,143,High Desert Dance Classic,2026,3,Juniors,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 1400,143,High Desert Dance Classic,2026,3,Master,West Coast Swing,2,3,matched,matched,matched,5,9,31,58,t,f
 1400,143,High Desert Dance Classic,2026,3,Novice,West Coast Swing,3,4,matched,matched,matched,10,11,60,118,t,f
-2465,292,King Swing,2026,3,Advanced,West Coast Swing,4,3,matched,matched,matched,12,10,60,118,t,f
-2465,292,King Swing,2026,3,All-Star,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-2465,292,King Swing,2026,3,Intermediate,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
-2465,292,King Swing,2026,3,Newcomer,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
-2465,292,King Swing,2026,3,Novice,West Coast Swing,5,6,matched,matched,matched,15,15,210,,t,f
+2464,292,King Swing,2026,3,Advanced,West Coast Swing,4,3,matched,matched,matched,12,10,60,118,t,f
+2464,292,King Swing,2026,3,All-Star,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+2464,292,King Swing,2026,3,Intermediate,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
+2464,292,King Swing,2026,3,Newcomer,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
+2464,292,King Swing,2026,3,Novice,West Coast Swing,5,6,matched,matched,matched,15,15,210,,t,f
 1012,92,MADjam,2026,3,Advanced,West Coast Swing,4,5,matched,matched,matched,12,13,120,208,t,f
 1012,92,MADjam,2026,3,All-Star,West Coast Swing,4,4,matched,matched,matched,11,11,80,158,t,f
 1012,92,MADjam,2026,3,Champion,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
@@ -944,37 +951,37 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2652,363,Trinity Swing,2026,2,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 2652,363,Trinity Swing,2026,2,Novice,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
 2652,363,Trinity Swing,2026,2,Sophisticated,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2522,310,Valentine Swing,2026,2,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2522,310,Valentine Swing,2026,2,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2522,310,Valentine Swing,2026,2,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-2522,310,Valentine Swing,2026,2,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-2522,310,Valentine Swing,2026,2,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
-2522,310,Valentine Swing,2026,2,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2521,310,Valentine Swing,2026,2,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2521,310,Valentine Swing,2026,2,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2521,310,Valentine Swing,2026,2,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+2521,310,Valentine Swing,2026,2,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+2521,310,Valentine Swing,2026,2,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
+2521,310,Valentine Swing,2026,2,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 2691,387,Waterloo Ontario Open West Coast Swing Championships,2026,2,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 2691,387,Waterloo Ontario Open West Coast Swing Championships,2026,2,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 2691,387,Waterloo Ontario Open West Coast Swing Championships,2026,2,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 2691,387,Waterloo Ontario Open West Coast Swing Championships,2026,2,Newcomer,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 2691,387,Waterloo Ontario Open West Coast Swing Championships,2026,2,Novice,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
 2691,387,Waterloo Ontario Open West Coast Swing Championships,2026,2,Sophisticated,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-2481,297,Winter Coast Swing,2026,2,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2481,297,Winter Coast Swing,2026,2,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2481,297,Winter Coast Swing,2026,2,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2481,297,Winter Coast Swing,2026,2,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-2481,297,Winter Coast Swing,2026,2,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
-2481,297,Winter Coast Swing,2026,2,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2480,297,Winter Coast Swing,2026,2,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2480,297,Winter Coast Swing,2026,2,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2480,297,Winter Coast Swing,2026,2,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2480,297,Winter Coast Swing,2026,2,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+2480,297,Winter Coast Swing,2026,2,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
+2480,297,Winter Coast Swing,2026,2,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1882,200,Austin Swing Dance Championships,2026,1,Advanced,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
 1882,200,Austin Swing Dance Championships,2026,1,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1882,200,Austin Swing Dance Championships,2026,1,Intermediate,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
 1882,200,Austin Swing Dance Championships,2026,1,Master,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
 1882,200,Austin Swing Dance Championships,2026,1,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 1882,200,Austin Swing Dance Championships,2026,1,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
-2516,309,Avignon City Swing,2026,1,Advanced,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-2516,309,Avignon City Swing,2026,1,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2516,309,Avignon City Swing,2026,1,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2516,309,Avignon City Swing,2026,1,Master,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2516,309,Avignon City Swing,2026,1,Newcomer,West Coast Swing,3,2,matched,matched,matched,10,5,31,58,t,f
-2516,309,Avignon City Swing,2026,1,Novice,West Coast Swing,4,5,matched,matched,matched,12,15,120,208,t,f
-2516,309,Avignon City Swing,2026,1,Sophisticated,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+2515,309,Avignon City Swing,2026,1,Advanced,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+2515,309,Avignon City Swing,2026,1,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2515,309,Avignon City Swing,2026,1,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2515,309,Avignon City Swing,2026,1,Master,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2515,309,Avignon City Swing,2026,1,Newcomer,West Coast Swing,3,2,matched,matched,matched,10,5,31,58,t,f
+2515,309,Avignon City Swing,2026,1,Novice,West Coast Swing,4,5,matched,matched,matched,12,15,120,208,t,f
+2515,309,Avignon City Swing,2026,1,Sophisticated,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 1762,184,BudaFest Open WCS Championships,2026,1,Advanced,West Coast Swing,5,5,matched,matched,matched,15,15,160,258,t,f
 1762,184,BudaFest Open WCS Championships,2026,1,All-Star,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
 1762,184,BudaFest Open WCS Championships,2026,1,Champion,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
@@ -1033,13 +1040,13 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1371,141,Spotlight New Year's Celebration,2026,1,Master,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 1371,141,Spotlight New Year's Celebration,2026,1,Newcomer,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1371,141,Spotlight New Year's Celebration,2026,1,Novice,West Coast Swing,5,5,matched,matched,matched,15,15,160,258,t,f
-2500,301,Swing Resolution,2026,1,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2500,301,Swing Resolution,2026,1,All-Star,West Coast Swing,1,1,matched,ambiguous,ambiguous,3,2,10,20,t,f
-2500,301,Swing Resolution,2026,1,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2500,301,Swing Resolution,2026,1,Master,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-2500,301,Swing Resolution,2026,1,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2500,301,Swing Resolution,2026,1,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
-2500,301,Swing Resolution,2026,1,Sophisticated,West Coast Swing,3,4,matched,matched,matched,10,10,60,118,t,f
+2499,301,Swing Resolution,2026,1,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2499,301,Swing Resolution,2026,1,All-Star,West Coast Swing,1,1,matched,ambiguous,ambiguous,3,2,10,20,t,f
+2499,301,Swing Resolution,2026,1,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2499,301,Swing Resolution,2026,1,Master,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+2499,301,Swing Resolution,2026,1,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2499,301,Swing Resolution,2026,1,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
+2499,301,Swing Resolution,2026,1,Sophisticated,West Coast Swing,3,4,matched,matched,matched,10,10,60,118,t,f
 1857,196,SwingCouver,2026,1,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1857,196,SwingCouver,2026,1,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 1857,196,SwingCouver,2026,1,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
@@ -1047,14 +1054,14 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1857,196,SwingCouver,2026,1,Newcomer,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1857,196,SwingCouver,2026,1,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
 1857,196,SwingCouver,2026,1,Sophisticated,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-2446,289,SwingVester,2026,1,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2446,289,SwingVester,2026,1,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2446,289,SwingVester,2026,1,Champion,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2446,289,SwingVester,2026,1,Intermediate,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
-2446,289,SwingVester,2026,1,Master,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2446,289,SwingVester,2026,1,Newcomer,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
-2446,289,SwingVester,2026,1,Novice,West Coast Swing,6,6,matched,matched,matched,15,15,260,,t,f
-2446,289,SwingVester,2026,1,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2445,289,SwingVester,2026,1,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2445,289,SwingVester,2026,1,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2445,289,SwingVester,2026,1,Champion,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2445,289,SwingVester,2026,1,Intermediate,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
+2445,289,SwingVester,2026,1,Master,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2445,289,SwingVester,2026,1,Newcomer,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
+2445,289,SwingVester,2026,1,Novice,West Coast Swing,6,6,matched,matched,matched,15,15,260,,t,f
+2445,289,SwingVester,2026,1,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 862,75,UCWDC Country Dance World Championship,2026,1,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 862,75,UCWDC Country Dance World Championship,2026,1,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 862,75,UCWDC Country Dance World Championship,2026,1,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
@@ -1086,13 +1093,13 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2675,377,Santa Swing,2025,12,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 2675,377,Santa Swing,2025,12,Newcomer,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
 2675,377,Santa Swing,2025,12,Novice,West Coast Swing,4,5,matched,matched,matched,12,15,120,208,t,f
-2455,290,Shooba Dooba Swing,2025,12,Advanced,West Coast Swing,2,3,matched,matched,matched,5,9,31,58,t,f
-2455,290,Shooba Dooba Swing,2025,12,All-Star,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2455,290,Shooba Dooba Swing,2025,12,Intermediate,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
-2455,290,Shooba Dooba Swing,2025,12,Master,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2455,290,Shooba Dooba Swing,2025,12,Newcomer,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2455,290,Shooba Dooba Swing,2025,12,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
-2455,290,Shooba Dooba Swing,2025,12,Sophisticated,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
+2454,290,Shooba Dooba Swing,2025,12,Advanced,West Coast Swing,2,3,matched,matched,matched,5,9,31,58,t,f
+2454,290,Shooba Dooba Swing,2025,12,All-Star,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2454,290,Shooba Dooba Swing,2025,12,Intermediate,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
+2454,290,Shooba Dooba Swing,2025,12,Master,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2454,290,Shooba Dooba Swing,2025,12,Newcomer,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2454,290,Shooba Dooba Swing,2025,12,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
+2454,290,Shooba Dooba Swing,2025,12,Sophisticated,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
 1965,212,The After Party (TAP),2025,12,Advanced,West Coast Swing,5,5,matched,matched,matched,15,15,160,258,t,f
 1965,212,The After Party (TAP),2025,12,All-Star,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
 1965,212,The After Party (TAP),2025,12,Intermediate,West Coast Swing,4,5,matched,matched,matched,12,15,120,208,t,f
@@ -1191,13 +1198,13 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2159,236,Warsaw Halloween Swing,2025,11,Newcomer,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 2159,236,Warsaw Halloween Swing,2025,11,Novice,West Coast Swing,5,5,matched,matched,matched,15,15,160,258,t,f
 2159,236,Warsaw Halloween Swing,2025,11,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2531,312,Westie Pink City,2025,11,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2531,312,Westie Pink City,2025,11,All-Star,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
-2531,312,Westie Pink City,2025,11,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2531,312,Westie Pink City,2025,11,Master,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2531,312,Westie Pink City,2025,11,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2531,312,Westie Pink City,2025,11,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
-2531,312,Westie Pink City,2025,11,Sophisticated,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+2530,312,Westie Pink City,2025,11,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2530,312,Westie Pink City,2025,11,All-Star,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
+2530,312,Westie Pink City,2025,11,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2530,312,Westie Pink City,2025,11,Master,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2530,312,Westie Pink City,2025,11,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2530,312,Westie Pink City,2025,11,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
+2530,312,Westie Pink City,2025,11,Sophisticated,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 2345,270,Westie's Angels,2025,11,Advanced,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 2345,270,Westie's Angels,2025,11,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 2345,270,Westie's Angels,2025,11,Intermediate,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
@@ -1310,13 +1317,13 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2428,286,WCS Festival,2025,10,Newcomer,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
 2428,286,WCS Festival,2025,10,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
 2428,286,WCS Festival,2025,10,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2493,300,Austin Rocks,2025,9,Advanced,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
-2493,300,Austin Rocks,2025,9,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2493,300,Austin Rocks,2025,9,Champion,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2493,300,Austin Rocks,2025,9,Intermediate,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
-2493,300,Austin Rocks,2025,9,Master,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2493,300,Austin Rocks,2025,9,Newcomer,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2493,300,Austin Rocks,2025,9,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
+2492,300,Austin Rocks,2025,9,Advanced,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
+2492,300,Austin Rocks,2025,9,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2492,300,Austin Rocks,2025,9,Champion,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2492,300,Austin Rocks,2025,9,Intermediate,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
+2492,300,Austin Rocks,2025,9,Master,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2492,300,Austin Rocks,2025,9,Newcomer,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2492,300,Austin Rocks,2025,9,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
 2134,233,Bavarian Open,2025,9,Advanced,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
 2134,233,Bavarian Open,2025,9,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 2134,233,Bavarian Open,2025,9,Champion,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
@@ -1468,9 +1475,9 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1688,177,River City Swing,2025,8,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
 1688,177,River City Swing,2025,8,Novice,West Coast Swing,3,4,matched,matched,matched,10,11,60,118,t,f
 1688,177,River City Swing,2025,8,Sophisticated,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2486,298,Shakedown Swing,2025,8,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2486,298,Shakedown Swing,2025,8,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2486,298,Shakedown Swing,2025,8,Novice,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
+2485,298,Shakedown Swing,2025,8,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2485,298,Shakedown Swing,2025,8,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2485,298,Shakedown Swing,2025,8,Novice,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
 605,53,Summer Hummer,2025,8,Advanced,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 605,53,Summer Hummer,2025,8,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 605,53,Summer Hummer,2025,8,Champion,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
@@ -1879,14 +1886,14 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1295,132,Tulsa Spring Swing,2025,4,Master,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 1295,132,Tulsa Spring Swing,2025,4,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,9,31,58,t,f
 1295,132,Tulsa Spring Swing,2025,4,Novice,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
-2471,293,Westy Nantes,2025,4,Advanced,West Coast Swing,3,2,matched,matched,matched,10,5,31,58,t,f
-2471,293,Westy Nantes,2025,4,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2471,293,Westy Nantes,2025,4,Intermediate,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
-2471,293,Westy Nantes,2025,4,Juniors,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2471,293,Westy Nantes,2025,4,Master,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2471,293,Westy Nantes,2025,4,Newcomer,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2471,293,Westy Nantes,2025,4,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
-2471,293,Westy Nantes,2025,4,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2470,293,Westy Nantes,2025,4,Advanced,West Coast Swing,3,2,matched,matched,matched,10,5,31,58,t,f
+2470,293,Westy Nantes,2025,4,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2470,293,Westy Nantes,2025,4,Intermediate,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
+2470,293,Westy Nantes,2025,4,Juniors,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2470,293,Westy Nantes,2025,4,Master,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2470,293,Westy Nantes,2025,4,Newcomer,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2470,293,Westy Nantes,2025,4,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
+2470,293,Westy Nantes,2025,4,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1869,197,5280 Westival,2025,3,Advanced,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
 1869,197,5280 Westival,2025,3,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 1869,197,5280 Westival,2025,3,Master,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
@@ -1924,11 +1931,11 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1399,143,High Desert Dance Classic,2025,3,Master,West Coast Swing,2,3,matched,matched,matched,5,8,31,58,t,f
 1399,143,High Desert Dance Classic,2025,3,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
 1399,143,High Desert Dance Classic,2025,3,Sophisticated,West Coast Swing,2,3,matched,matched,matched,5,8,31,58,t,f
-2464,292,King Swing,2025,3,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2464,292,King Swing,2025,3,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2464,292,King Swing,2025,3,Intermediate,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
-2464,292,King Swing,2025,3,Newcomer,West Coast Swing,4,5,matched,matched,matched,12,15,120,208,t,f
-2464,292,King Swing,2025,3,Novice,West Coast Swing,5,6,matched,matched,matched,15,15,210,,t,f
+2463,292,King Swing,2025,3,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2463,292,King Swing,2025,3,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2463,292,King Swing,2025,3,Intermediate,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
+2463,292,King Swing,2025,3,Newcomer,West Coast Swing,4,5,matched,matched,matched,12,15,120,208,t,f
+2463,292,King Swing,2025,3,Novice,West Coast Swing,5,6,matched,matched,matched,15,15,210,,t,f
 1490,153,Novice Invitational,2025,3,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1490,153,Novice Invitational,2025,3,All-Star,West Coast Swing,3,2,matched,matched,matched,9,5,31,58,t,f
 1490,153,Novice Invitational,2025,3,Intermediate,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
@@ -2023,35 +2030,35 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2651,363,Trinity Swing,2025,2,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 2651,363,Trinity Swing,2025,2,Novice,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 2651,363,Trinity Swing,2025,2,Sophisticated,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2521,310,Valentine Swing,2025,2,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2521,310,Valentine Swing,2025,2,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2521,310,Valentine Swing,2025,2,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2521,310,Valentine Swing,2025,2,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2521,310,Valentine Swing,2025,2,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
-2504,302,WesterOz Swing,2025,2,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2504,302,WesterOz Swing,2025,2,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2504,302,WesterOz Swing,2025,2,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2504,302,WesterOz Swing,2025,2,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2480,297,Winter Coast Swing,2025,2,Advanced,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2480,297,Winter Coast Swing,2025,2,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2480,297,Winter Coast Swing,2025,2,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-2480,297,Winter Coast Swing,2025,2,Newcomer,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2480,297,Winter Coast Swing,2025,2,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
-2480,297,Winter Coast Swing,2025,2,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2520,310,Valentine Swing,2025,2,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2520,310,Valentine Swing,2025,2,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2520,310,Valentine Swing,2025,2,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2520,310,Valentine Swing,2025,2,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2520,310,Valentine Swing,2025,2,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
+2503,302,WesterOz Swing,2025,2,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2503,302,WesterOz Swing,2025,2,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2503,302,WesterOz Swing,2025,2,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2503,302,WesterOz Swing,2025,2,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2479,297,Winter Coast Swing,2025,2,Advanced,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2479,297,Winter Coast Swing,2025,2,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2479,297,Winter Coast Swing,2025,2,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+2479,297,Winter Coast Swing,2025,2,Newcomer,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2479,297,Winter Coast Swing,2025,2,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
+2479,297,Winter Coast Swing,2025,2,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1881,200,Austin Swing Dance Championships,2025,1,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1881,200,Austin Swing Dance Championships,2025,1,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1881,200,Austin Swing Dance Championships,2025,1,Intermediate,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
 1881,200,Austin Swing Dance Championships,2025,1,Master,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
 1881,200,Austin Swing Dance Championships,2025,1,Newcomer,West Coast Swing,1,3,matched,matched,matched,3,7,25,49,t,f
 1881,200,Austin Swing Dance Championships,2025,1,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
-2515,309,Avignon City Swing,2025,1,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2515,309,Avignon City Swing,2025,1,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2515,309,Avignon City Swing,2025,1,Intermediate,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
-2515,309,Avignon City Swing,2025,1,Juniors,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2515,309,Avignon City Swing,2025,1,Master,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2515,309,Avignon City Swing,2025,1,Newcomer,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2515,309,Avignon City Swing,2025,1,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
-2515,309,Avignon City Swing,2025,1,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2514,309,Avignon City Swing,2025,1,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2514,309,Avignon City Swing,2025,1,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2514,309,Avignon City Swing,2025,1,Intermediate,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
+2514,309,Avignon City Swing,2025,1,Juniors,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2514,309,Avignon City Swing,2025,1,Master,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2514,309,Avignon City Swing,2025,1,Newcomer,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2514,309,Avignon City Swing,2025,1,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
+2514,309,Avignon City Swing,2025,1,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1761,184,BudaFest Open WCS Championships,2025,1,Advanced,West Coast Swing,4,5,matched,matched,matched,12,15,120,208,t,f
 1761,184,BudaFest Open WCS Championships,2025,1,All-Star,West Coast Swing,4,3,matched,matched,matched,12,10,60,118,t,f
 1761,184,BudaFest Open WCS Championships,2025,1,Champion,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
@@ -2101,13 +2108,13 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1370,141,Spotlight New Year's Celebration,2025,1,Master,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 1370,141,Spotlight New Year's Celebration,2025,1,Newcomer,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1370,141,Spotlight New Year's Celebration,2025,1,Novice,West Coast Swing,5,5,matched,matched,matched,15,15,160,258,t,f
-2499,301,Swing Resolution,2025,1,Advanced,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2499,301,Swing Resolution,2025,1,All-Star,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2499,301,Swing Resolution,2025,1,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-2499,301,Swing Resolution,2025,1,Master,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2499,301,Swing Resolution,2025,1,Newcomer,West Coast Swing,1,3,matched,matched,matched,3,10,25,49,t,f
-2499,301,Swing Resolution,2025,1,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
-2499,301,Swing Resolution,2025,1,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2498,301,Swing Resolution,2025,1,Advanced,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2498,301,Swing Resolution,2025,1,All-Star,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2498,301,Swing Resolution,2025,1,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+2498,301,Swing Resolution,2025,1,Master,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2498,301,Swing Resolution,2025,1,Newcomer,West Coast Swing,1,3,matched,matched,matched,3,10,25,49,t,f
+2498,301,Swing Resolution,2025,1,Novice,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
+2498,301,Swing Resolution,2025,1,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1856,196,SwingCouver,2025,1,Advanced,West Coast Swing,3,4,matched,matched,matched,10,12,60,118,t,f
 1856,196,SwingCouver,2025,1,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1856,196,SwingCouver,2025,1,Intermediate,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
@@ -2115,14 +2122,14 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1856,196,SwingCouver,2025,1,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 1856,196,SwingCouver,2025,1,Novice,West Coast Swing,4,5,matched,matched,matched,12,15,120,208,t,f
 1856,196,SwingCouver,2025,1,Sophisticated,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-2445,289,SwingVester,2025,1,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2445,289,SwingVester,2025,1,All-Star,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2445,289,SwingVester,2025,1,Champion,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2445,289,SwingVester,2025,1,Intermediate,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-2445,289,SwingVester,2025,1,Master,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2445,289,SwingVester,2025,1,Newcomer,West Coast Swing,3,4,matched,matched,matched,10,15,60,118,t,f
-2445,289,SwingVester,2025,1,Novice,West Coast Swing,5,5,matched,matched,matched,15,15,160,258,t,f
-2445,289,SwingVester,2025,1,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2444,289,SwingVester,2025,1,Advanced,West Coast Swing,3,3,matched,matched,matched,19,18,40,78,t,f
+2444,289,SwingVester,2025,1,All-Star,West Coast Swing,2,2,matched,matched,matched,8,8,22,38,t,f
+2444,289,SwingVester,2025,1,Champion,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2444,289,SwingVester,2025,1,Intermediate,West Coast Swing,4,4,matched,matched,matched,27,29,80,158,t,f
+2444,289,SwingVester,2025,1,Master,West Coast Swing,2,2,matched,matched,matched,7,8,22,38,t,f
+2444,289,SwingVester,2025,1,Newcomer,West Coast Swing,3,4,matched,matched,matched,20,25,60,118,t,f
+2444,289,SwingVester,2025,1,Novice,West Coast Swing,5,5,matched,matched,matched,30,30,160,258,t,f
+2444,289,SwingVester,2025,1,Sophisticated,West Coast Swing,3,3,matched,matched,matched,19,18,40,78,t,f
 2681,381,The Australian Classic West Coast Swing Dance Championships (Trial Event),2025,1,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 2681,381,The Australian Classic West Coast Swing Dance Championships (Trial Event),2025,1,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 2681,381,The Australian Classic West Coast Swing Dance Championships (Trial Event),2025,1,Master,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
@@ -2157,13 +2164,13 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2613,342,Global Grand Prix - West Coast Swing Reunion,2024,12,Newcomer,West Coast Swing,1,3,matched,matched,matched,3,9,25,49,t,f
 2613,342,Global Grand Prix - West Coast Swing Reunion,2024,12,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 2613,342,Global Grand Prix - West Coast Swing Reunion,2024,12,Sophisticated,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-2454,290,Shooba Dooba Swing,2024,12,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2454,290,Shooba Dooba Swing,2024,12,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2454,290,Shooba Dooba Swing,2024,12,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2454,290,Shooba Dooba Swing,2024,12,Master,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2454,290,Shooba Dooba Swing,2024,12,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,8,31,58,t,f
-2454,290,Shooba Dooba Swing,2024,12,Novice,West Coast Swing,4,4,matched,matched,matched,14,14,80,158,t,f
-2454,290,Shooba Dooba Swing,2024,12,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2453,290,Shooba Dooba Swing,2024,12,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2453,290,Shooba Dooba Swing,2024,12,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2453,290,Shooba Dooba Swing,2024,12,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2453,290,Shooba Dooba Swing,2024,12,Master,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2453,290,Shooba Dooba Swing,2024,12,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,8,31,58,t,f
+2453,290,Shooba Dooba Swing,2024,12,Novice,West Coast Swing,4,4,matched,matched,matched,14,14,80,158,t,f
+2453,290,Shooba Dooba Swing,2024,12,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1964,212,The After Party (TAP),2024,12,Advanced,West Coast Swing,4,5,matched,matched,matched,15,15,120,208,t,f
 1964,212,The After Party (TAP),2024,12,All-Star,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 1964,212,The After Party (TAP),2024,12,Intermediate,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
@@ -2234,13 +2241,13 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2609,340,Spooky Westie Weekend,2024,11,Advanced,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
 2609,340,Spooky Westie Weekend,2024,11,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 2609,340,Spooky Westie Weekend,2024,11,Novice,West Coast Swing,3,4,matched,matched,matched,10,15,60,118,t,f
-2530,312,Westie Pink City,2024,11,Advanced,West Coast Swing,3,2,matched,matched,matched,10,5,31,58,t,f
-2530,312,Westie Pink City,2024,11,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2530,312,Westie Pink City,2024,11,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2530,312,Westie Pink City,2024,11,Master,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2530,312,Westie Pink City,2024,11,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2530,312,Westie Pink City,2024,11,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-2530,312,Westie Pink City,2024,11,Sophisticated,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+2529,312,Westie Pink City,2024,11,Advanced,West Coast Swing,3,2,matched,matched,matched,10,5,31,58,t,f
+2529,312,Westie Pink City,2024,11,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2529,312,Westie Pink City,2024,11,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2529,312,Westie Pink City,2024,11,Master,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2529,312,Westie Pink City,2024,11,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2529,312,Westie Pink City,2024,11,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+2529,312,Westie Pink City,2024,11,Sophisticated,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 2344,270,Westie's Angels,2024,11,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 2344,270,Westie's Angels,2024,11,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 2344,270,Westie's Angels,2024,11,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
@@ -2334,12 +2341,12 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2427,286,WCS Festival,2024,10,Newcomer,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 2427,286,WCS Festival,2024,10,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 2427,286,WCS Festival,2024,10,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2492,300,Austin Rocks,2024,9,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2492,300,Austin Rocks,2024,9,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2492,300,Austin Rocks,2024,9,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2492,300,Austin Rocks,2024,9,Master,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2492,300,Austin Rocks,2024,9,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-2492,300,Austin Rocks,2024,9,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+2491,300,Austin Rocks,2024,9,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2491,300,Austin Rocks,2024,9,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2491,300,Austin Rocks,2024,9,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2491,300,Austin Rocks,2024,9,Master,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2491,300,Austin Rocks,2024,9,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+2491,300,Austin Rocks,2024,9,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 2133,233,Bavarian Open,2024,9,Advanced,West Coast Swing,4,3,matched,matched,matched,15,10,60,118,t,f
 2133,233,Bavarian Open,2024,9,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 2133,233,Bavarian Open,2024,9,Champion,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
@@ -2464,9 +2471,9 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1580,164,Sea Sun and Swing,2024,8,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 1580,164,Sea Sun and Swing,2024,8,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 1580,164,Sea Sun and Swing,2024,8,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2485,298,Shakedown Swing,2024,8,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2485,298,Shakedown Swing,2024,8,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2485,298,Shakedown Swing,2024,8,Novice,West Coast Swing,3,4,matched,matched,matched,10,10,60,118,t,f
+2484,298,Shakedown Swing,2024,8,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2484,298,Shakedown Swing,2024,8,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2484,298,Shakedown Swing,2024,8,Novice,West Coast Swing,3,4,matched,matched,matched,10,10,60,118,t,f
 604,53,Summer Hummer,2024,8,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 604,53,Summer Hummer,2024,8,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 604,53,Summer Hummer,2024,8,Champion,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
@@ -2543,12 +2550,12 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2286,261,Neverland Swing,2024,7,Newcomer,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 2286,261,Neverland Swing,2024,7,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 2286,261,Neverland Swing,2024,7,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2508,303,Odyssey West Coast Swing,2024,7,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2508,303,Odyssey West Coast Swing,2024,7,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2508,303,Odyssey West Coast Swing,2024,7,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2508,303,Odyssey West Coast Swing,2024,7,Newcomer,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2508,303,Odyssey West Coast Swing,2024,7,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2508,303,Odyssey West Coast Swing,2024,7,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,9,40,78,t,f
+2507,303,Odyssey West Coast Swing,2024,7,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2507,303,Odyssey West Coast Swing,2024,7,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2507,303,Odyssey West Coast Swing,2024,7,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2507,303,Odyssey West Coast Swing,2024,7,Newcomer,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2507,303,Odyssey West Coast Swing,2024,7,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2507,303,Odyssey West Coast Swing,2024,7,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,9,40,78,t,f
 2296,263,Riga Summer Swing,2024,7,Advanced,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
 2296,263,Riga Summer Swing,2024,7,All-Star,West Coast Swing,1,1,ambiguous,matched,ambiguous,2,3,10,20,t,f
 2296,263,Riga Summer Swing,2024,7,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
@@ -2759,14 +2766,14 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2276,259,Swingover,2024,4,Master,West Coast Swing,2,3,matched,matched,matched,5,9,31,58,t,f
 2276,259,Swingover,2024,4,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 2276,259,Swingover,2024,4,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-2470,293,Westy Nantes,2024,4,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2470,293,Westy Nantes,2024,4,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2470,293,Westy Nantes,2024,4,Intermediate,West Coast Swing,4,3,matched,matched,matched,15,10,60,118,t,f
-2470,293,Westy Nantes,2024,4,Juniors,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2470,293,Westy Nantes,2024,4,Master,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2470,293,Westy Nantes,2024,4,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-2470,293,Westy Nantes,2024,4,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-2470,293,Westy Nantes,2024,4,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2469,293,Westy Nantes,2024,4,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2469,293,Westy Nantes,2024,4,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2469,293,Westy Nantes,2024,4,Intermediate,West Coast Swing,4,3,matched,matched,matched,15,10,60,118,t,f
+2469,293,Westy Nantes,2024,4,Juniors,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2469,293,Westy Nantes,2024,4,Master,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2469,293,Westy Nantes,2024,4,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+2469,293,Westy Nantes,2024,4,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+2469,293,Westy Nantes,2024,4,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1868,197,5280 Westival,2024,3,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 1868,197,5280 Westival,2024,3,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 1868,197,5280 Westival,2024,3,Master,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
@@ -2797,11 +2804,11 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1398,143,High Desert Dance Classic,2024,3,Master,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 1398,143,High Desert Dance Classic,2024,3,Novice,West Coast Swing,3,4,matched,matched,matched,10,10,60,118,t,f
 1398,143,High Desert Dance Classic,2024,3,Sophisticated,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-2463,292,King Swing,2024,3,Advanced,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-2463,292,King Swing,2024,3,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2463,292,King Swing,2024,3,Intermediate,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-2463,292,King Swing,2024,3,Newcomer,West Coast Swing,3,4,matched,matched,matched,10,15,60,118,t,f
-2463,292,King Swing,2024,3,Novice,West Coast Swing,5,5,matched,matched,matched,15,15,160,258,t,f
+2462,292,King Swing,2024,3,Advanced,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+2462,292,King Swing,2024,3,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2462,292,King Swing,2024,3,Intermediate,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+2462,292,King Swing,2024,3,Newcomer,West Coast Swing,3,4,matched,matched,matched,10,15,60,118,t,f
+2462,292,King Swing,2024,3,Novice,West Coast Swing,5,5,matched,matched,matched,15,15,160,258,t,f
 1011,92,MADjam,2024,3,Advanced,West Coast Swing,4,5,matched,matched,matched,15,15,120,208,t,f
 1011,92,MADjam,2024,3,All-Star,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 1011,92,MADjam,2024,3,Champion,West Coast Swing,3,2,matched,matched,matched,10,5,31,58,t,f
@@ -2889,29 +2896,29 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2267,258,Swingtzerland,2024,2,All-Star,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
 2267,258,Swingtzerland,2024,2,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 2267,258,Swingtzerland,2024,2,Novice,West Coast Swing,4,3,matched,matched,matched,15,10,60,118,t,f
-2520,310,Valentine Swing,2024,2,Advanced,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-2520,310,Valentine Swing,2024,2,All-Star,West Coast Swing,1,1,matched,ambiguous,ambiguous,3,2,10,20,t,f
-2520,310,Valentine Swing,2024,2,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2520,310,Valentine Swing,2024,2,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2520,310,Valentine Swing,2024,2,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-2479,297,Winter Coast Swing,2024,2,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2479,297,Winter Coast Swing,2024,2,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2479,297,Winter Coast Swing,2024,2,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2479,297,Winter Coast Swing,2024,2,Newcomer,West Coast Swing,3,2,matched,matched,matched,10,5,31,58,t,f
-2479,297,Winter Coast Swing,2024,2,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2519,310,Valentine Swing,2024,2,Advanced,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+2519,310,Valentine Swing,2024,2,All-Star,West Coast Swing,1,1,matched,ambiguous,ambiguous,3,2,10,20,t,f
+2519,310,Valentine Swing,2024,2,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2519,310,Valentine Swing,2024,2,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2519,310,Valentine Swing,2024,2,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+2478,297,Winter Coast Swing,2024,2,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2478,297,Winter Coast Swing,2024,2,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2478,297,Winter Coast Swing,2024,2,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2478,297,Winter Coast Swing,2024,2,Newcomer,West Coast Swing,3,2,matched,matched,matched,10,5,31,58,t,f
+2478,297,Winter Coast Swing,2024,2,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1880,200,Austin Swing Dance Championships,2024,1,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1880,200,Austin Swing Dance Championships,2024,1,All-Star,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 1880,200,Austin Swing Dance Championships,2024,1,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1880,200,Austin Swing Dance Championships,2024,1,Master,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 1880,200,Austin Swing Dance Championships,2024,1,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,9,31,58,t,f
 1880,200,Austin Swing Dance Championships,2024,1,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-2514,309,Avignon City Swing,2024,1,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2514,309,Avignon City Swing,2024,1,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2514,309,Avignon City Swing,2024,1,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-2514,309,Avignon City Swing,2024,1,Master,West Coast Swing,1,1,ambiguous,matched,ambiguous,2,3,10,20,t,f
-2514,309,Avignon City Swing,2024,1,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2514,309,Avignon City Swing,2024,1,Novice,West Coast Swing,3,4,matched,matched,matched,10,15,60,118,t,f
-2514,309,Avignon City Swing,2024,1,Sophisticated,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+2513,309,Avignon City Swing,2024,1,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2513,309,Avignon City Swing,2024,1,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2513,309,Avignon City Swing,2024,1,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+2513,309,Avignon City Swing,2024,1,Master,West Coast Swing,1,1,ambiguous,matched,ambiguous,2,3,10,20,t,f
+2513,309,Avignon City Swing,2024,1,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2513,309,Avignon City Swing,2024,1,Novice,West Coast Swing,3,4,matched,matched,matched,10,15,60,118,t,f
+2513,309,Avignon City Swing,2024,1,Sophisticated,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 1760,184,BudaFest Open WCS Championships,2024,1,Advanced,West Coast Swing,5,5,matched,matched,matched,15,15,160,258,t,f
 1760,184,BudaFest Open WCS Championships,2024,1,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1760,184,BudaFest Open WCS Championships,2024,1,Champion,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
@@ -2959,14 +2966,14 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1369,141,Spotlight New Year's Celebration,2024,1,Master,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 1369,141,Spotlight New Year's Celebration,2024,1,Newcomer,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1369,141,Spotlight New Year's Celebration,2024,1,Novice,West Coast Swing,4,5,matched,matched,matched,14,14,120,208,t,f
-2498,301,Swing Resolution,2024,1,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2498,301,Swing Resolution,2024,1,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2498,301,Swing Resolution,2024,1,Champion,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2498,301,Swing Resolution,2024,1,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2498,301,Swing Resolution,2024,1,Master,West Coast Swing,2,3,matched,matched,matched,5,8,31,58,t,f
-2498,301,Swing Resolution,2024,1,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-2498,301,Swing Resolution,2024,1,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-2498,301,Swing Resolution,2024,1,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2497,301,Swing Resolution,2024,1,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2497,301,Swing Resolution,2024,1,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2497,301,Swing Resolution,2024,1,Champion,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2497,301,Swing Resolution,2024,1,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2497,301,Swing Resolution,2024,1,Master,West Coast Swing,2,3,matched,matched,matched,5,8,31,58,t,f
+2497,301,Swing Resolution,2024,1,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+2497,301,Swing Resolution,2024,1,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+2497,301,Swing Resolution,2024,1,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1855,196,SwingCouver,2024,1,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1855,196,SwingCouver,2024,1,All-Star,West Coast Swing,2,3,matched,matched,matched,5,8,31,58,t,f
 1855,196,SwingCouver,2024,1,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
@@ -2974,13 +2981,6 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1855,196,SwingCouver,2024,1,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 1855,196,SwingCouver,2024,1,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 1855,196,SwingCouver,2024,1,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2444,289,SwingVester,2024,1,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2444,289,SwingVester,2024,1,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2444,289,SwingVester,2024,1,Intermediate,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-2444,289,SwingVester,2024,1,Master,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2444,289,SwingVester,2024,1,Newcomer,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2444,289,SwingVester,2024,1,Novice,West Coast Swing,4,5,matched,matched,matched,15,15,120,208,t,f
-2444,289,SwingVester,2024,1,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 860,75,UCWDC Country Dance World Championship,2024,1,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 860,75,UCWDC Country Dance World Championship,2024,1,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 860,75,UCWDC Country Dance World Championship,2024,1,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
@@ -3007,11 +3007,11 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2612,342,Global Grand Prix - West Coast Swing Reunion,2023,12,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 2612,342,Global Grand Prix - West Coast Swing Reunion,2023,12,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 2612,342,Global Grand Prix - West Coast Swing Reunion,2023,12,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2453,290,Shooba Dooba Swing,2023,12,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2453,290,Shooba Dooba Swing,2023,12,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2453,290,Shooba Dooba Swing,2023,12,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-2453,290,Shooba Dooba Swing,2023,12,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2453,290,Shooba Dooba Swing,2023,12,Sophisticated,West Coast Swing,3,3,matched,matched,matched,8,8,40,78,t,f
+2452,290,Shooba Dooba Swing,2023,12,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2452,290,Shooba Dooba Swing,2023,12,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2452,290,Shooba Dooba Swing,2023,12,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+2452,290,Shooba Dooba Swing,2023,12,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2452,290,Shooba Dooba Swing,2023,12,Sophisticated,West Coast Swing,3,3,matched,matched,matched,8,8,40,78,t,f
 1963,212,The After Party (TAP),2023,12,Advanced,West Coast Swing,4,5,matched,matched,matched,15,15,120,208,t,f
 1963,212,The After Party (TAP),2023,12,All-Star,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 1963,212,The After Party (TAP),2023,12,Intermediate,West Coast Swing,5,5,matched,matched,matched,15,15,160,258,t,f
@@ -3085,13 +3085,13 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 808,68,US Open Swing Dance Championships,2023,11,Intermediate,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 808,68,US Open Swing Dance Championships,2023,11,Master,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 808,68,US Open Swing Dance Championships,2023,11,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2529,312,Westie Pink City,2023,11,Advanced,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-2529,312,Westie Pink City,2023,11,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2529,312,Westie Pink City,2023,11,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2529,312,Westie Pink City,2023,11,Master,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2529,312,Westie Pink City,2023,11,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2529,312,Westie Pink City,2023,11,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-2529,312,Westie Pink City,2023,11,Sophisticated,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+2528,312,Westie Pink City,2023,11,Advanced,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+2528,312,Westie Pink City,2023,11,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2528,312,Westie Pink City,2023,11,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2528,312,Westie Pink City,2023,11,Master,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2528,312,Westie Pink City,2023,11,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2528,312,Westie Pink City,2023,11,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+2528,312,Westie Pink City,2023,11,Sophisticated,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 2343,270,Westie's Angels,2023,11,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 2343,270,Westie's Angels,2023,11,All-Star,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
 2343,270,Westie's Angels,2023,11,Intermediate,West Coast Swing,3,4,matched,matched,matched,10,15,60,118,t,f
@@ -3293,9 +3293,9 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1579,164,Sea Sun and Swing,2023,8,Newcomer,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 1579,164,Sea Sun and Swing,2023,8,Novice,West Coast Swing,3,4,matched,matched,matched,10,15,60,118,t,f
 1579,164,Sea Sun and Swing,2023,8,Sophisticated,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-2484,298,Shakedown Swing,2023,8,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2484,298,Shakedown Swing,2023,8,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2484,298,Shakedown Swing,2023,8,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2483,298,Shakedown Swing,2023,8,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2483,298,Shakedown Swing,2023,8,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2483,298,Shakedown Swing,2023,8,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 653,59,Swing Fling,2023,8,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 653,59,Swing Fling,2023,8,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 653,59,Swing Fling,2023,8,Intermediate,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
@@ -3363,11 +3363,11 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2285,261,Neverland Swing,2023,7,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 2285,261,Neverland Swing,2023,7,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 2285,261,Neverland Swing,2023,7,Sophisticated,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2507,303,Odyssey West Coast Swing,2023,7,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2507,303,Odyssey West Coast Swing,2023,7,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2507,303,Odyssey West Coast Swing,2023,7,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2507,303,Odyssey West Coast Swing,2023,7,Novice,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-2507,303,Odyssey West Coast Swing,2023,7,Sophisticated,West Coast Swing,2,3,matched,matched,matched,5,8,31,58,t,f
+2506,303,Odyssey West Coast Swing,2023,7,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2506,303,Odyssey West Coast Swing,2023,7,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2506,303,Odyssey West Coast Swing,2023,7,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2506,303,Odyssey West Coast Swing,2023,7,Novice,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+2506,303,Odyssey West Coast Swing,2023,7,Sophisticated,West Coast Swing,2,3,matched,matched,matched,5,8,31,58,t,f
 2255,256,Rock the Barn,2023,7,Advanced,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
 2255,256,Rock the Barn,2023,7,Intermediate,West Coast Swing,3,2,matched,matched,matched,10,5,31,58,t,f
 2255,256,Rock the Barn,2023,7,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
@@ -3468,12 +3468,12 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1216,121,The Texas Classic,2023,5,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1216,121,The Texas Classic,2023,5,Novice,West Coast Swing,3,4,matched,matched,matched,10,15,60,118,t,f
 1216,121,The Texas Classic,2023,5,Sophisticated,West Coast Swing,1,1,matched,ambiguous,ambiguous,3,2,10,20,t,f
-2524,311,TLV SwingFest,2023,5,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2524,311,TLV SwingFest,2023,5,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2524,311,TLV SwingFest,2023,5,Intermediate,West Coast Swing,3,2,matched,matched,matched,12,5,31,58,t,f
-2524,311,TLV SwingFest,2023,5,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2524,311,TLV SwingFest,2023,5,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2524,311,TLV SwingFest,2023,5,Sophisticated,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2523,311,TLV SwingFest,2023,5,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2523,311,TLV SwingFest,2023,5,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2523,311,TLV SwingFest,2023,5,Intermediate,West Coast Swing,3,2,matched,matched,matched,12,5,31,58,t,f
+2523,311,TLV SwingFest,2023,5,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2523,311,TLV SwingFest,2023,5,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2523,311,TLV SwingFest,2023,5,Sophisticated,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 305,22,USA Grand Nationals,2023,5,Advanced,West Coast Swing,4,3,matched,matched,matched,15,10,60,118,t,f
 305,22,USA Grand Nationals,2023,5,All-Star,West Coast Swing,3,3,matched,matched,matched,10,12,40,78,t,f
 305,22,USA Grand Nationals,2023,5,Intermediate,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
@@ -3522,13 +3522,13 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2275,259,Swingover,2023,4,Master,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 2275,259,Swingover,2023,4,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 2275,259,Swingover,2023,4,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-2469,293,Westy Nantes,2023,4,Advanced,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
-2469,293,Westy Nantes,2023,4,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2469,293,Westy Nantes,2023,4,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2469,293,Westy Nantes,2023,4,Juniors,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2469,293,Westy Nantes,2023,4,Newcomer,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2469,293,Westy Nantes,2023,4,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-2469,293,Westy Nantes,2023,4,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2468,293,Westy Nantes,2023,4,Advanced,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
+2468,293,Westy Nantes,2023,4,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2468,293,Westy Nantes,2023,4,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2468,293,Westy Nantes,2023,4,Juniors,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2468,293,Westy Nantes,2023,4,Newcomer,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2468,293,Westy Nantes,2023,4,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+2468,293,Westy Nantes,2023,4,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1867,197,5280 Westival,2023,3,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 1867,197,5280 Westival,2023,3,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 1867,197,5280 Westival,2023,3,Intermediate,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
@@ -3546,11 +3546,11 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2375,275,Dutch Open West Coast Swing,2023,3,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 2375,275,Dutch Open West Coast Swing,2023,3,Novice,West Coast Swing,3,4,matched,matched,matched,10,15,60,118,t,f
 2375,275,Dutch Open West Coast Swing,2023,3,Sophisticated,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2462,292,King Swing,2023,3,Advanced,West Coast Swing,3,4,matched,matched,matched,10,15,60,118,t,f
-2462,292,King Swing,2023,3,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2462,292,King Swing,2023,3,Intermediate,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-2462,292,King Swing,2023,3,Newcomer,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2462,292,King Swing,2023,3,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+2461,292,King Swing,2023,3,Advanced,West Coast Swing,3,4,matched,matched,matched,10,15,60,118,t,f
+2461,292,King Swing,2023,3,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2461,292,King Swing,2023,3,Intermediate,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+2461,292,King Swing,2023,3,Newcomer,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2461,292,King Swing,2023,3,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 1010,92,MADjam,2023,3,Advanced,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 1010,92,MADjam,2023,3,All-Star,West Coast Swing,3,4,matched,matched,matched,10,15,60,118,t,f
 1010,92,MADjam,2023,3,Champion,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
@@ -3617,24 +3617,24 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1990,215,Swing & Snow,2023,2,Newcomer,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 1990,215,Swing & Snow,2023,2,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 1990,215,Swing & Snow,2023,2,Sophisticated,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2519,310,Valentine Swing,2023,2,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2519,310,Valentine Swing,2023,2,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2519,310,Valentine Swing,2023,2,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-2519,310,Valentine Swing,2023,2,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2519,310,Valentine Swing,2023,2,Novice,West Coast Swing,3,4,matched,matched,matched,10,15,60,118,t,f
-2503,302,WesterOz Swing,2023,2,Intermediate,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2503,302,WesterOz Swing,2023,2,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2478,297,Winter Coast Swing,2023,2,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2478,297,Winter Coast Swing,2023,2,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2478,297,Winter Coast Swing,2023,2,Newcomer,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2478,297,Winter Coast Swing,2023,2,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2513,309,Avignon City Swing,2023,1,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2513,309,Avignon City Swing,2023,1,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2513,309,Avignon City Swing,2023,1,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
-2513,309,Avignon City Swing,2023,1,Master,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2513,309,Avignon City Swing,2023,1,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2513,309,Avignon City Swing,2023,1,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2513,309,Avignon City Swing,2023,1,Sophisticated,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+2518,310,Valentine Swing,2023,2,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2518,310,Valentine Swing,2023,2,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2518,310,Valentine Swing,2023,2,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+2518,310,Valentine Swing,2023,2,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2518,310,Valentine Swing,2023,2,Novice,West Coast Swing,3,4,matched,matched,matched,10,15,60,118,t,f
+2502,302,WesterOz Swing,2023,2,Intermediate,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2502,302,WesterOz Swing,2023,2,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2477,297,Winter Coast Swing,2023,2,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2477,297,Winter Coast Swing,2023,2,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2477,297,Winter Coast Swing,2023,2,Newcomer,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2477,297,Winter Coast Swing,2023,2,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2512,309,Avignon City Swing,2023,1,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2512,309,Avignon City Swing,2023,1,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2512,309,Avignon City Swing,2023,1,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+2512,309,Avignon City Swing,2023,1,Master,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2512,309,Avignon City Swing,2023,1,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2512,309,Avignon City Swing,2023,1,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2512,309,Avignon City Swing,2023,1,Sophisticated,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 1759,184,BudaFest Open WCS Championships,2023,1,Advanced,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 1759,184,BudaFest Open WCS Championships,2023,1,All-Star,West Coast Swing,4,4,matched,matched,matched,13,13,80,158,t,f
 1759,184,BudaFest Open WCS Championships,2023,1,Intermediate,West Coast Swing,5,5,matched,matched,matched,15,15,160,258,t,f
@@ -3671,12 +3671,12 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 708,62,Monterey SwingFest,2023,1,Intermediate,West Coast Swing,3,4,matched,matched,matched,10,15,60,118,t,f
 708,62,Monterey SwingFest,2023,1,Master,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 708,62,Monterey SwingFest,2023,1,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-2497,301,Swing Resolution,2023,1,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2497,301,Swing Resolution,2023,1,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,9,31,58,t,f
-2497,301,Swing Resolution,2023,1,Master,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2497,301,Swing Resolution,2023,1,Newcomer,West Coast Swing,1,2,ambiguous,matched,ambiguous,2,5,16,29,t,f
-2497,301,Swing Resolution,2023,1,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2497,301,Swing Resolution,2023,1,Sophisticated,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
+2496,301,Swing Resolution,2023,1,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2496,301,Swing Resolution,2023,1,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,9,31,58,t,f
+2496,301,Swing Resolution,2023,1,Master,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2496,301,Swing Resolution,2023,1,Newcomer,West Coast Swing,1,2,ambiguous,matched,ambiguous,2,5,16,29,t,f
+2496,301,Swing Resolution,2023,1,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2496,301,Swing Resolution,2023,1,Sophisticated,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 1854,196,SwingCouver,2023,1,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1854,196,SwingCouver,2023,1,All-Star,West Coast Swing,3,2,matched,matched,matched,10,5,31,58,t,f
 1854,196,SwingCouver,2023,1,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
@@ -3706,10 +3706,10 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2350,271,Berlin Swing Revolution,2022,12,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
 2350,271,Berlin Swing Revolution,2022,12,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
 2350,271,Berlin Swing Revolution,2022,12,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
-2452,290,Shooba Dooba Swing,2022,12,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2452,290,Shooba Dooba Swing,2022,12,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2452,290,Shooba Dooba Swing,2022,12,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
-2452,290,Shooba Dooba Swing,2022,12,Novice,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
+2451,290,Shooba Dooba Swing,2022,12,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2451,290,Shooba Dooba Swing,2022,12,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2451,290,Shooba Dooba Swing,2022,12,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
+2451,290,Shooba Dooba Swing,2022,12,Novice,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
 1973,213,Swingtimate,2022,12,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 1973,213,Swingtimate,2022,12,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 1973,213,Swingtimate,2022,12,Novice,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
@@ -3768,11 +3768,11 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 807,68,US Open Swing Dance Championships,2022,11,Intermediate,West Coast Swing,4,3,matched,matched,matched,15,12,60,118,t,f
 807,68,US Open Swing Dance Championships,2022,11,Master,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 807,68,US Open Swing Dance Championships,2022,11,Novice,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
-2528,312,Westie Pink City,2022,11,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2528,312,Westie Pink City,2022,11,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2528,312,Westie Pink City,2022,11,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
-2528,312,Westie Pink City,2022,11,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2528,312,Westie Pink City,2022,11,Novice,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
+2527,312,Westie Pink City,2022,11,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2527,312,Westie Pink City,2022,11,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2527,312,Westie Pink City,2022,11,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
+2527,312,Westie Pink City,2022,11,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2527,312,Westie Pink City,2022,11,Novice,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
 2342,270,Westie's Angels,2022,11,Advanced,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 2342,270,Westie's Angels,2022,11,All-Star,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
 2342,270,Westie's Angels,2022,11,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
@@ -4082,11 +4082,11 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2274,259,Swingover,2022,4,Master,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 2274,259,Swingover,2022,4,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
 2274,259,Swingover,2022,4,Novice,West Coast Swing,3,3,matched,matched,matched,11,11,40,78,t,f
-2468,293,Westy Nantes,2022,4,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2468,293,Westy Nantes,2022,4,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2468,293,Westy Nantes,2022,4,Intermediate,West Coast Swing,4,3,matched,matched,matched,15,12,60,118,t,f
-2468,293,Westy Nantes,2022,4,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2468,293,Westy Nantes,2022,4,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+2467,293,Westy Nantes,2022,4,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2467,293,Westy Nantes,2022,4,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2467,293,Westy Nantes,2022,4,Intermediate,West Coast Swing,4,3,matched,matched,matched,15,12,60,118,t,f
+2467,293,Westy Nantes,2022,4,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2467,293,Westy Nantes,2022,4,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 1866,197,5280 Westival,2022,3,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 1866,197,5280 Westival,2022,3,Intermediate,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
 1866,197,5280 Westival,2022,3,Novice,West Coast Swing,2,3,matched,matched,matched,5,9,31,58,t,f
@@ -4094,11 +4094,11 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2545,318,All Star SwingJam,2022,3,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 2545,318,All Star SwingJam,2022,3,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 2545,318,All Star SwingJam,2022,3,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
-2461,292,King Swing,2022,3,Advanced,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
-2461,292,King Swing,2022,3,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2461,292,King Swing,2022,3,Intermediate,West Coast Swing,4,3,matched,matched,matched,15,12,60,118,t,f
-2461,292,King Swing,2022,3,Newcomer,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
-2461,292,King Swing,2022,3,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+2460,292,King Swing,2022,3,Advanced,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
+2460,292,King Swing,2022,3,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2460,292,King Swing,2022,3,Intermediate,West Coast Swing,4,3,matched,matched,matched,15,12,60,118,t,f
+2460,292,King Swing,2022,3,Newcomer,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
+2460,292,King Swing,2022,3,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 1009,92,MADjam,2022,3,Advanced,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 1009,92,MADjam,2022,3,All-Star,West Coast Swing,3,3,matched,matched,matched,11,11,40,78,t,f
 1009,92,MADjam,2022,3,Champion,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
@@ -4176,10 +4176,10 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 858,75,UCWDC Country Dance World Championship,2022,1,Intermediate,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
 858,75,UCWDC Country Dance World Championship,2022,1,Master,West Coast Swing,1,1,ambiguous,matched,ambiguous,2,3,10,20,t,f
 858,75,UCWDC Country Dance World Championship,2022,1,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
-2451,290,Shooba Dooba Swing,2021,12,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2451,290,Shooba Dooba Swing,2021,12,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2451,290,Shooba Dooba Swing,2021,12,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
-2451,290,Shooba Dooba Swing,2021,12,Novice,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
+2450,290,Shooba Dooba Swing,2021,12,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2450,290,Shooba Dooba Swing,2021,12,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2450,290,Shooba Dooba Swing,2021,12,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
+2450,290,Shooba Dooba Swing,2021,12,Novice,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
 1961,212,The After Party (TAP),2021,12,Advanced,West Coast Swing,4,4,matched,matched,matched,14,14,80,158,t,f
 1961,212,The After Party (TAP),2021,12,All-Star,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 1961,212,The After Party (TAP),2021,12,Intermediate,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
@@ -4206,11 +4206,11 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2155,236,Warsaw Halloween Swing,2021,11,Intermediate,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 2155,236,Warsaw Halloween Swing,2021,11,Newcomer,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 2155,236,Warsaw Halloween Swing,2021,11,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-2527,312,Westie Pink City,2021,11,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2527,312,Westie Pink City,2021,11,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2527,312,Westie Pink City,2021,11,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
-2527,312,Westie Pink City,2021,11,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,4,16,29,t,f
-2527,312,Westie Pink City,2021,11,Novice,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
+2526,312,Westie Pink City,2021,11,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2526,312,Westie Pink City,2021,11,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2526,312,Westie Pink City,2021,11,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
+2526,312,Westie Pink City,2021,11,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,4,16,29,t,f
+2526,312,Westie Pink City,2021,11,Novice,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
 2341,270,Westie's Angels,2021,11,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 2341,270,Westie's Angels,2021,11,All-Star,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
 2341,270,Westie's Angels,2021,11,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
@@ -4296,10 +4296,10 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1988,215,Swing & Snow,2021,2,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 1988,215,Swing & Snow,2021,2,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 1988,215,Swing & Snow,2021,2,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
-2450,290,Shooba Dooba Swing,2020,12,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2450,290,Shooba Dooba Swing,2020,12,All-Star,West Coast Swing,1,1,ambiguous,matched,ambiguous,2,3,10,20,t,f
-2450,290,Shooba Dooba Swing,2020,12,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
-2450,290,Shooba Dooba Swing,2020,12,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
+2449,290,Shooba Dooba Swing,2020,12,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2449,290,Shooba Dooba Swing,2020,12,All-Star,West Coast Swing,1,1,ambiguous,matched,ambiguous,2,3,10,20,t,f
+2449,290,Shooba Dooba Swing,2020,12,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
+2449,290,Shooba Dooba Swing,2020,12,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 1972,213,Swingtimate,2020,12,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 1972,213,Swingtimate,2020,12,Intermediate,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 1972,213,Swingtimate,2020,12,Novice,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
@@ -4354,28 +4354,28 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2266,258,Swingtzerland,2020,2,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 2266,258,Swingtzerland,2020,2,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 2266,258,Swingtzerland,2020,2,Novice,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
-2518,310,Valentine Swing,2020,2,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2518,310,Valentine Swing,2020,2,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2518,310,Valentine Swing,2020,2,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2518,310,Valentine Swing,2020,2,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2518,310,Valentine Swing,2020,2,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
-2502,302,WesterOz Swing,2020,2,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2502,302,WesterOz Swing,2020,2,Intermediate,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2502,302,WesterOz Swing,2020,2,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
-2477,297,Winter Coast Swing,2020,2,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2477,297,Winter Coast Swing,2020,2,Intermediate,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
-2477,297,Winter Coast Swing,2020,2,Newcomer,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2477,297,Winter Coast Swing,2020,2,Novice,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
+2517,310,Valentine Swing,2020,2,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2517,310,Valentine Swing,2020,2,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2517,310,Valentine Swing,2020,2,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2517,310,Valentine Swing,2020,2,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2517,310,Valentine Swing,2020,2,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
+2501,302,WesterOz Swing,2020,2,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2501,302,WesterOz Swing,2020,2,Intermediate,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2501,302,WesterOz Swing,2020,2,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
+2476,297,Winter Coast Swing,2020,2,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2476,297,Winter Coast Swing,2020,2,Intermediate,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
+2476,297,Winter Coast Swing,2020,2,Newcomer,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2476,297,Winter Coast Swing,2020,2,Novice,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
 1879,200,Austin Swing Dance Championships,2020,1,Advanced,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 1879,200,Austin Swing Dance Championships,2020,1,All-Star,West Coast Swing,3,2,matched,matched,matched,9,5,31,58,t,f
 1879,200,Austin Swing Dance Championships,2020,1,Intermediate,West Coast Swing,3,4,matched,matched,matched,12,14,60,118,t,f
 1879,200,Austin Swing Dance Championships,2020,1,Master,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1879,200,Austin Swing Dance Championships,2020,1,Novice,West Coast Swing,4,4,matched,matched,matched,9,9,80,158,t,f
-2512,309,Avignon City Swing,2020,1,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2512,309,Avignon City Swing,2020,1,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2512,309,Avignon City Swing,2020,1,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
-2512,309,Avignon City Swing,2020,1,Newcomer,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2512,309,Avignon City Swing,2020,1,Novice,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
+2511,309,Avignon City Swing,2020,1,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2511,309,Avignon City Swing,2020,1,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2511,309,Avignon City Swing,2020,1,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
+2511,309,Avignon City Swing,2020,1,Newcomer,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2511,309,Avignon City Swing,2020,1,Novice,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
 1757,184,BudaFest Open WCS Championships,2020,1,Advanced,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
 1757,184,BudaFest Open WCS Championships,2020,1,All-Star,West Coast Swing,4,3,matched,matched,matched,12,12,60,118,t,f
 1757,184,BudaFest Open WCS Championships,2020,1,Intermediate,West Coast Swing,5,5,matched,matched,matched,15,15,160,258,t,f
@@ -4402,11 +4402,11 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 706,62,Monterey SwingFest,2020,1,Intermediate,West Coast Swing,3,4,matched,matched,matched,12,12,60,118,t,f
 706,62,Monterey SwingFest,2020,1,Master,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 706,62,Monterey SwingFest,2020,1,Novice,West Coast Swing,3,4,matched,matched,matched,12,13,60,118,t,f
-2458,291,Municorn Swing,2020,1,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2458,291,Municorn Swing,2020,1,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2458,291,Municorn Swing,2020,1,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2458,291,Municorn Swing,2020,1,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2458,291,Municorn Swing,2020,1,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
+2457,291,Municorn Swing,2020,1,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2457,291,Municorn Swing,2020,1,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2457,291,Municorn Swing,2020,1,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2457,291,Municorn Swing,2020,1,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2457,291,Municorn Swing,2020,1,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 1980,214,New Year's Swing Fling,2020,1,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1980,214,New Year's Swing Fling,2020,1,All-Star,West Coast Swing,3,2,matched,matched,matched,10,5,31,58,t,f
 1980,214,New Year's Swing Fling,2020,1,Intermediate,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
@@ -4425,11 +4425,11 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1368,141,Spotlight New Year's Celebration,2020,1,Master,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
 1368,141,Spotlight New Year's Celebration,2020,1,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
 1368,141,Spotlight New Year's Celebration,2020,1,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-2496,301,Swing Resolution,2020,1,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2496,301,Swing Resolution,2020,1,All-Star,West Coast Swing,1,1,ambiguous,matched,ambiguous,2,3,10,20,t,f
-2496,301,Swing Resolution,2020,1,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2496,301,Swing Resolution,2020,1,Master,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2496,301,Swing Resolution,2020,1,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
+2495,301,Swing Resolution,2020,1,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2495,301,Swing Resolution,2020,1,All-Star,West Coast Swing,1,1,ambiguous,matched,ambiguous,2,3,10,20,t,f
+2495,301,Swing Resolution,2020,1,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2495,301,Swing Resolution,2020,1,Master,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2495,301,Swing Resolution,2020,1,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 1853,196,SwingCouver,2020,1,Advanced,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 1853,196,SwingCouver,2020,1,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1853,196,SwingCouver,2020,1,Champion,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
@@ -4469,10 +4469,10 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 433,42,Floorplay Swing Vacation,2019,12,Master,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 433,42,Floorplay Swing Vacation,2019,12,Newcomer,West Coast Swing,1,1,matched,ambiguous,ambiguous,3,2,10,20,t,f
 433,42,Floorplay Swing Vacation,2019,12,Novice,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
-2449,290,Shooba Dooba Swing,2019,12,Advanced,West Coast Swing,2,3,matched,matched,matched,5,8,31,58,t,f
-2449,290,Shooba Dooba Swing,2019,12,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2449,290,Shooba Dooba Swing,2019,12,Intermediate,West Coast Swing,3,2,matched,matched,matched,11,5,31,58,t,f
-2449,290,Shooba Dooba Swing,2019,12,Novice,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
+2448,290,Shooba Dooba Swing,2019,12,Advanced,West Coast Swing,2,3,matched,matched,matched,5,8,31,58,t,f
+2448,290,Shooba Dooba Swing,2019,12,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2448,290,Shooba Dooba Swing,2019,12,Intermediate,West Coast Swing,3,2,matched,matched,matched,11,5,31,58,t,f
+2448,290,Shooba Dooba Swing,2019,12,Novice,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
 1971,213,Swingtimate,2019,12,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 1971,213,Swingtimate,2019,12,Intermediate,West Coast Swing,3,3,matched,matched,matched,9,9,40,78,t,f
 1971,213,Swingtimate,2019,12,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
@@ -4547,11 +4547,11 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2154,236,Warsaw Halloween Swing,2019,11,Intermediate,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
 2154,236,Warsaw Halloween Swing,2019,11,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 2154,236,Warsaw Halloween Swing,2019,11,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-2526,312,Westie Pink City,2019,11,Advanced,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
-2526,312,Westie Pink City,2019,11,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2526,312,Westie Pink City,2019,11,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
-2526,312,Westie Pink City,2019,11,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2526,312,Westie Pink City,2019,11,Novice,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
+2525,312,Westie Pink City,2019,11,Advanced,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
+2525,312,Westie Pink City,2019,11,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2525,312,Westie Pink City,2019,11,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
+2525,312,Westie Pink City,2019,11,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2525,312,Westie Pink City,2019,11,Novice,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
 2340,270,Westie's Angels,2019,11,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 2340,270,Westie's Angels,2019,11,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 2340,270,Westie's Angels,2019,11,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
@@ -4570,10 +4570,10 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 84,8,Boogie By The Bay,2019,10,Intermediate,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 84,8,Boogie By The Bay,2019,10,Master,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 84,8,Boogie By The Bay,2019,10,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-2474,294,European Swing Challenge,2019,10,Advanced,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2474,294,European Swing Challenge,2019,10,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2474,294,European Swing Challenge,2019,10,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,9,31,58,t,f
-2474,294,European Swing Challenge,2019,10,Novice,West Coast Swing,2,3,matched,matched,matched,5,8,31,58,t,f
+2473,294,European Swing Challenge,2019,10,Advanced,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2473,294,European Swing Challenge,2019,10,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2473,294,European Swing Challenge,2019,10,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,9,31,58,t,f
+2473,294,European Swing Challenge,2019,10,Novice,West Coast Swing,2,3,matched,matched,matched,5,8,31,58,t,f
 760,65,Halloween SwingThing,2019,10,Advanced,West Coast Swing,3,3,matched,matched,matched,8,8,40,78,t,f
 760,65,Halloween SwingThing,2019,10,All-Star,West Coast Swing,3,3,matched,matched,matched,9,9,40,78,t,f
 760,65,Halloween SwingThing,2019,10,Intermediate,West Coast Swing,3,3,matched,matched,matched,9,9,40,78,t,f
@@ -4614,11 +4614,11 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2424,286,WCS Festival,2019,10,Master,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 2424,286,WCS Festival,2019,10,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
 2424,286,WCS Festival,2019,10,Novice,West Coast Swing,3,4,matched,matched,matched,12,12,60,118,t,f
-2491,300,Austin Rocks,2019,9,Advanced,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
-2491,300,Austin Rocks,2019,9,All-Star,West Coast Swing,3,2,matched,matched,matched,11,5,31,58,t,f
-2491,300,Austin Rocks,2019,9,Intermediate,West Coast Swing,3,3,matched,matched,matched,11,11,40,78,t,f
-2491,300,Austin Rocks,2019,9,Master,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2491,300,Austin Rocks,2019,9,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+2490,300,Austin Rocks,2019,9,Advanced,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
+2490,300,Austin Rocks,2019,9,All-Star,West Coast Swing,3,2,matched,matched,matched,11,5,31,58,t,f
+2490,300,Austin Rocks,2019,9,Intermediate,West Coast Swing,3,3,matched,matched,matched,11,11,40,78,t,f
+2490,300,Austin Rocks,2019,9,Master,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2490,300,Austin Rocks,2019,9,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 2130,233,Bavarian Open,2019,9,Advanced,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
 2130,233,Bavarian Open,2019,9,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 2130,233,Bavarian Open,2019,9,Champion,West Coast Swing,1,1,matched,ambiguous,ambiguous,3,2,10,20,t,f
@@ -4727,10 +4727,10 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2295,263,Riga Summer Swing,2019,8,Intermediate,West Coast Swing,3,4,matched,matched,matched,12,14,60,118,t,f
 2295,263,Riga Summer Swing,2019,8,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,11,31,58,t,f
 2295,263,Riga Summer Swing,2019,8,Novice,West Coast Swing,4,5,matched,matched,matched,15,15,120,208,t,f
-2483,298,Shakedown Swing,2019,8,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2483,298,Shakedown Swing,2019,8,Intermediate,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
-2483,298,Shakedown Swing,2019,8,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2483,298,Shakedown Swing,2019,8,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2482,298,Shakedown Swing,2019,8,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2482,298,Shakedown Swing,2019,8,Intermediate,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
+2482,298,Shakedown Swing,2019,8,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2482,298,Shakedown Swing,2019,8,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 603,53,Summer Hummer,2019,8,Advanced,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 603,53,Summer Hummer,2019,8,All-Star,West Coast Swing,3,3,matched,matched,matched,9,9,40,78,t,f
 603,53,Summer Hummer,2019,8,Champion,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
@@ -4749,10 +4749,10 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2087,227,Swingtacular: The Galactic Open,2019,8,Intermediate,West Coast Swing,4,4,matched,matched,matched,12,12,80,158,t,f
 2087,227,Swingtacular: The Galactic Open,2019,8,Master,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
 2087,227,Swingtacular: The Galactic Open,2019,8,Novice,West Coast Swing,5,5,matched,matched,matched,12,12,160,258,t,f
-2489,299,Ukrainian Open,2019,8,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2489,299,Ukrainian Open,2019,8,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2489,299,Ukrainian Open,2019,8,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,8,31,58,t,f
-2489,299,Ukrainian Open,2019,8,Novice,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
+2488,299,Ukrainian Open,2019,8,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2488,299,Ukrainian Open,2019,8,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2488,299,Ukrainian Open,2019,8,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,8,31,58,t,f
+2488,299,Ukrainian Open,2019,8,Novice,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
 2300,264,UpTown Swing,2019,8,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 2300,264,UpTown Swing,2019,8,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 2300,264,UpTown Swing,2019,8,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
@@ -4789,9 +4789,9 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2283,261,Neverland Swing,2019,7,Intermediate,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
 2283,261,Neverland Swing,2019,7,Master,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 2283,261,Neverland Swing,2019,7,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
-2506,303,Odyssey West Coast Swing,2019,7,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2506,303,Odyssey West Coast Swing,2019,7,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2506,303,Odyssey West Coast Swing,2019,7,Novice,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2505,303,Odyssey West Coast Swing,2019,7,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2505,303,Odyssey West Coast Swing,2019,7,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2505,303,Odyssey West Coast Swing,2019,7,Novice,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 478,44,Portland Dance Festival,2019,7,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 478,44,Portland Dance Festival,2019,7,All-Star,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
 478,44,Portland Dance Festival,2019,7,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
@@ -4950,11 +4950,11 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1214,121,The Texas Classic,2019,5,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 1214,121,The Texas Classic,2019,5,Master,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 1214,121,The Texas Classic,2019,5,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
-2523,311,TLV SwingFest,2019,5,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2523,311,TLV SwingFest,2019,5,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2523,311,TLV SwingFest,2019,5,Intermediate,West Coast Swing,3,2,matched,matched,matched,12,5,31,58,t,f
-2523,311,TLV SwingFest,2019,5,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2523,311,TLV SwingFest,2019,5,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
+2522,311,TLV SwingFest,2019,5,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2522,311,TLV SwingFest,2019,5,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2522,311,TLV SwingFest,2019,5,Intermediate,West Coast Swing,3,2,matched,matched,matched,12,5,31,58,t,f
+2522,311,TLV SwingFest,2019,5,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2522,311,TLV SwingFest,2019,5,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 304,22,USA Grand Nationals,2019,5,Advanced,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 304,22,USA Grand Nationals,2019,5,All-Star,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 304,22,USA Grand Nationals,2019,5,Intermediate,West Coast Swing,4,4,matched,matched,matched,14,14,80,158,t,f
@@ -4983,9 +4983,9 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 236,18,Easter Swing,2019,4,Master,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 236,18,Easter Swing,2019,4,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
 236,18,Easter Swing,2019,4,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-2511,306,Go West SwingFest,2019,4,Intermediate,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2511,306,Go West SwingFest,2019,4,Newcomer,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2511,306,Go West SwingFest,2019,4,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2510,306,Go West SwingFest,2019,4,Intermediate,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2510,306,Go West SwingFest,2019,4,Newcomer,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2510,306,Go West SwingFest,2019,4,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 2225,253,Nordic WCS Championships,2019,4,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 2225,253,Nordic WCS Championships,2019,4,All-Star,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
 2225,253,Nordic WCS Championships,2019,4,Intermediate,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
@@ -5001,10 +5001,10 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1309,134,Swing Dance America,2019,4,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 1309,134,Swing Dance America,2019,4,Master,West Coast Swing,2,3,matched,matched,matched,5,11,31,58,t,f
 1309,134,Swing Dance America,2019,4,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
-2509,304,Swing In Capital,2019,4,Advanced,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2509,304,Swing In Capital,2019,4,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
-2509,304,Swing In Capital,2019,4,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2509,304,Swing In Capital,2019,4,Novice,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
+2508,304,Swing In Capital,2019,4,Advanced,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2508,304,Swing In Capital,2019,4,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
+2508,304,Swing In Capital,2019,4,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2508,304,Swing In Capital,2019,4,Novice,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
 1293,132,Tulsa Spring Swing,2019,4,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 1293,132,Tulsa Spring Swing,2019,4,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 1293,132,Tulsa Spring Swing,2019,4,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
@@ -5016,11 +5016,11 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1502,154,UK WCS Championships,2019,4,Champion,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 1502,154,UK WCS Championships,2019,4,Intermediate,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
 1502,154,UK WCS Championships,2019,4,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-2467,293,Westy Nantes,2019,4,Advanced,West Coast Swing,3,2,matched,matched,matched,12,5,31,58,t,f
-2467,293,Westy Nantes,2019,4,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2467,293,Westy Nantes,2019,4,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
-2467,293,Westy Nantes,2019,4,Newcomer,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
-2467,293,Westy Nantes,2019,4,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+2466,293,Westy Nantes,2019,4,Advanced,West Coast Swing,3,2,matched,matched,matched,12,5,31,58,t,f
+2466,293,Westy Nantes,2019,4,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2466,293,Westy Nantes,2019,4,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
+2466,293,Westy Nantes,2019,4,Newcomer,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
+2466,293,Westy Nantes,2019,4,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 1864,197,5280 Westival,2019,3,Advanced,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
 1864,197,5280 Westival,2019,3,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 1864,197,5280 Westival,2019,3,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,11,31,58,t,f
@@ -5047,11 +5047,11 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1397,143,High Desert Dance Classic,2019,3,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 1397,143,High Desert Dance Classic,2019,3,Master,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 1397,143,High Desert Dance Classic,2019,3,Novice,West Coast Swing,2,3,matched,matched,matched,5,11,31,58,t,f
-2460,292,King Swing,2019,3,Advanced,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
-2460,292,King Swing,2019,3,All-Star,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2460,292,King Swing,2019,3,Intermediate,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
-2460,292,King Swing,2019,3,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,11,31,58,t,f
-2460,292,King Swing,2019,3,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+2459,292,King Swing,2019,3,Advanced,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
+2459,292,King Swing,2019,3,All-Star,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2459,292,King Swing,2019,3,Intermediate,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
+2459,292,King Swing,2019,3,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,11,31,58,t,f
+2459,292,King Swing,2019,3,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 1007,92,MADjam,2019,3,Advanced,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 1007,92,MADjam,2019,3,All-Star,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 1007,92,MADjam,2019,3,Champion,West Coast Swing,3,3,matched,matched,matched,10,9,40,78,t,f
@@ -5137,17 +5137,17 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2265,258,Swingtzerland,2019,2,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 2265,258,Swingtzerland,2019,2,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 2265,258,Swingtzerland,2019,2,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-2517,310,Valentine Swing,2019,2,All-Star,West Coast Swing,1,1,matched,ambiguous,ambiguous,3,2,10,20,t,f
-2517,310,Valentine Swing,2019,2,Intermediate,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2517,310,Valentine Swing,2019,2,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2517,310,Valentine Swing,2019,2,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
-2501,302,WesterOz Swing,2019,2,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2501,302,WesterOz Swing,2019,2,Intermediate,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2501,302,WesterOz Swing,2019,2,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
-2476,297,Winter Coast Swing,2019,2,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2476,297,Winter Coast Swing,2019,2,Intermediate,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2476,297,Winter Coast Swing,2019,2,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2476,297,Winter Coast Swing,2019,2,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
+2516,310,Valentine Swing,2019,2,All-Star,West Coast Swing,1,1,matched,ambiguous,ambiguous,3,2,10,20,t,f
+2516,310,Valentine Swing,2019,2,Intermediate,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2516,310,Valentine Swing,2019,2,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2516,310,Valentine Swing,2019,2,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
+2500,302,WesterOz Swing,2019,2,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2500,302,WesterOz Swing,2019,2,Intermediate,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2500,302,WesterOz Swing,2019,2,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
+2475,297,Winter Coast Swing,2019,2,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2475,297,Winter Coast Swing,2019,2,Intermediate,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2475,297,Winter Coast Swing,2019,2,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2475,297,Winter Coast Swing,2019,2,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 1878,200,Austin Swing Dance Championships,2019,1,Advanced,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 1878,200,Austin Swing Dance Championships,2019,1,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 1878,200,Austin Swing Dance Championships,2019,1,Intermediate,West Coast Swing,3,3,matched,matched,matched,11,11,40,78,t,f
@@ -5185,10 +5185,10 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 705,62,Monterey SwingFest,2019,1,Intermediate,West Coast Swing,3,4,matched,matched,matched,12,14,60,118,t,f
 705,62,Monterey SwingFest,2019,1,Master,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 705,62,Monterey SwingFest,2019,1,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-2457,291,Municorn Swing,2019,1,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2457,291,Municorn Swing,2019,1,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2457,291,Municorn Swing,2019,1,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2457,291,Municorn Swing,2019,1,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
+2456,291,Municorn Swing,2019,1,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2456,291,Municorn Swing,2019,1,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2456,291,Municorn Swing,2019,1,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2456,291,Municorn Swing,2019,1,Novice,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1979,214,New Year's Swing Fling,2019,1,Advanced,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 1979,214,New Year's Swing Fling,2019,1,All-Star,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
 1979,214,New Year's Swing Fling,2019,1,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
@@ -5199,20 +5199,20 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1844,195,Palm Springs New Years Swing Dance Classic,2019,1,Intermediate,West Coast Swing,3,2,matched,matched,matched,9,5,31,58,t,f
 1844,195,Palm Springs New Years Swing Dance Classic,2019,1,Master,West Coast Swing,1,2,matched,matched,matched,3,3,16,29,t,f
 1844,195,Palm Springs New Years Swing Dance Classic,2019,1,Novice,West Coast Swing,3,4,matched,matched,matched,12,12,60,118,t,f
-2448,290,Shooba Dooba Swing,2019,1,Advanced,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
-2448,290,Shooba Dooba Swing,2019,1,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2448,290,Shooba Dooba Swing,2019,1,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
+2447,290,Shooba Dooba Swing,2019,1,Advanced,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
+2447,290,Shooba Dooba Swing,2019,1,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2447,290,Shooba Dooba Swing,2019,1,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 1367,141,Spotlight New Year's Celebration,2019,1,Advanced,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 1367,141,Spotlight New Year's Celebration,2019,1,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 1367,141,Spotlight New Year's Celebration,2019,1,Intermediate,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
 1367,141,Spotlight New Year's Celebration,2019,1,Master,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 1367,141,Spotlight New Year's Celebration,2019,1,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 1367,141,Spotlight New Year's Celebration,2019,1,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-2495,301,Swing Resolution,2019,1,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2495,301,Swing Resolution,2019,1,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2495,301,Swing Resolution,2019,1,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2495,301,Swing Resolution,2019,1,Master,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2495,301,Swing Resolution,2019,1,Novice,West Coast Swing,2,3,matched,matched,matched,5,8,31,58,t,f
+2494,301,Swing Resolution,2019,1,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2494,301,Swing Resolution,2019,1,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2494,301,Swing Resolution,2019,1,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2494,301,Swing Resolution,2019,1,Master,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2494,301,Swing Resolution,2019,1,Novice,West Coast Swing,2,3,matched,matched,matched,5,8,31,58,t,f
 1852,196,SwingCouver,2019,1,Advanced,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 1852,196,SwingCouver,2019,1,All-Star,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 1852,196,SwingCouver,2019,1,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
@@ -5320,10 +5320,10 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2153,236,Warsaw Halloween Swing,2018,11,Intermediate,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 2153,236,Warsaw Halloween Swing,2018,11,Newcomer,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 2153,236,Warsaw Halloween Swing,2018,11,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-2525,312,Westie Pink City,2018,11,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2525,312,Westie Pink City,2018,11,Intermediate,West Coast Swing,3,2,matched,matched,matched,12,5,31,58,t,f
-2525,312,Westie Pink City,2018,11,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
-2525,312,Westie Pink City,2018,11,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
+2524,312,Westie Pink City,2018,11,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2524,312,Westie Pink City,2018,11,Intermediate,West Coast Swing,3,2,matched,matched,matched,12,5,31,58,t,f
+2524,312,Westie Pink City,2018,11,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
+2524,312,Westie Pink City,2018,11,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 2339,270,Westie's Angels,2018,11,Advanced,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
 2339,270,Westie's Angels,2018,11,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
 2339,270,Westie's Angels,2018,11,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
@@ -5341,9 +5341,9 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 83,8,Boogie By The Bay,2018,10,Intermediate,West Coast Swing,4,4,matched,matched,matched,10,10,80,158,t,f
 83,8,Boogie By The Bay,2018,10,Master,West Coast Swing,3,3,matched,matched,matched,11,11,40,78,t,f
 83,8,Boogie By The Bay,2018,10,Novice,West Coast Swing,5,5,matched,matched,matched,10,10,160,258,t,f
-2473,294,European Swing Challenge,2018,10,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2473,294,European Swing Challenge,2018,10,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2473,294,European Swing Challenge,2018,10,Novice,West Coast Swing,3,3,matched,matched,matched,9,9,40,78,t,f
+2472,294,European Swing Challenge,2018,10,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2472,294,European Swing Challenge,2018,10,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2472,294,European Swing Challenge,2018,10,Novice,West Coast Swing,3,3,matched,matched,matched,9,9,40,78,t,f
 759,65,Halloween SwingThing,2018,10,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 759,65,Halloween SwingThing,2018,10,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 759,65,Halloween SwingThing,2018,10,Intermediate,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
@@ -5382,12 +5382,12 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2423,286,WCS Festival,2018,10,Master,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 2423,286,WCS Festival,2018,10,Newcomer,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 2423,286,WCS Festival,2018,10,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
-2490,300,Austin Rocks,2018,9,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2490,300,Austin Rocks,2018,9,All-Star,West Coast Swing,3,1,matched,matched,matched,10,3,25,49,t,f
-2490,300,Austin Rocks,2018,9,Intermediate,West Coast Swing,3,2,matched,matched,matched,11,5,31,58,t,f
-2490,300,Austin Rocks,2018,9,Master,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2490,300,Austin Rocks,2018,9,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2490,300,Austin Rocks,2018,9,Novice,West Coast Swing,3,4,matched,matched,matched,12,14,60,118,t,f
+2489,300,Austin Rocks,2018,9,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2489,300,Austin Rocks,2018,9,All-Star,West Coast Swing,3,1,matched,matched,matched,10,3,25,49,t,f
+2489,300,Austin Rocks,2018,9,Intermediate,West Coast Swing,3,2,matched,matched,matched,11,5,31,58,t,f
+2489,300,Austin Rocks,2018,9,Master,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2489,300,Austin Rocks,2018,9,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2489,300,Austin Rocks,2018,9,Novice,West Coast Swing,3,4,matched,matched,matched,12,14,60,118,t,f
 2129,233,Bavarian Open,2018,9,Advanced,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 2129,233,Bavarian Open,2018,9,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 2129,233,Bavarian Open,2018,9,Champion,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
@@ -5419,9 +5419,9 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1324,135,Desert City Swing,2018,9,Juniors,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
 1324,135,Desert City Swing,2018,9,Master,West Coast Swing,3,3,matched,matched,matched,8,8,40,78,t,f
 1324,135,Desert City Swing,2018,9,Novice,West Coast Swing,4,4,matched,matched,matched,10,10,80,158,t,f
-2475,296,Fall Fall in Swing,2018,9,Advanced,West Coast Swing,1,1,matched,ambiguous,ambiguous,3,2,10,20,t,f
-2475,296,Fall Fall in Swing,2018,9,Intermediate,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2475,296,Fall Fall in Swing,2018,9,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
+2474,296,Fall Fall in Swing,2018,9,Advanced,West Coast Swing,1,1,matched,ambiguous,ambiguous,3,2,10,20,t,f
+2474,296,Fall Fall in Swing,2018,9,Intermediate,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2474,296,Fall Fall in Swing,2018,9,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 1275,131,Meet Me In St Louis,2018,9,Advanced,West Coast Swing,2,3,matched,matched,matched,5,11,31,58,t,f
 1275,131,Meet Me In St Louis,2018,9,All-Star,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 1275,131,Meet Me In St Louis,2018,9,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
@@ -5469,11 +5469,11 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2112,231,Trilogy Swing,2018,9,Master,West Coast Swing,3,3,matched,matched,matched,11,10,40,78,t,f
 2112,231,Trilogy Swing,2018,9,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 2112,231,Trilogy Swing,2018,9,Novice,West Coast Swing,3,4,matched,matched,matched,11,11,60,118,t,f
-2488,299,Ukrainian Open,2018,9,Advanced,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
-2488,299,Ukrainian Open,2018,9,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2488,299,Ukrainian Open,2018,9,Intermediate,West Coast Swing,3,2,matched,matched,matched,10,5,31,58,t,f
-2488,299,Ukrainian Open,2018,9,Newcomer,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2488,299,Ukrainian Open,2018,9,Novice,West Coast Swing,3,3,matched,matched,matched,8,8,40,78,t,f
+2487,299,Ukrainian Open,2018,9,Advanced,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
+2487,299,Ukrainian Open,2018,9,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2487,299,Ukrainian Open,2018,9,Intermediate,West Coast Swing,3,2,matched,matched,matched,10,5,31,58,t,f
+2487,299,Ukrainian Open,2018,9,Newcomer,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2487,299,Ukrainian Open,2018,9,Novice,West Coast Swing,3,3,matched,matched,matched,8,8,40,78,t,f
 893,77,Arizona Dance Classic,2018,8,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 893,77,Arizona Dance Classic,2018,8,Juniors,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
 893,77,Arizona Dance Classic,2018,8,Master,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
@@ -5512,8 +5512,8 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2294,263,Riga Summer Swing,2018,8,Intermediate,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 2294,263,Riga Summer Swing,2018,8,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
 2294,263,Riga Summer Swing,2018,8,Novice,West Coast Swing,4,5,matched,matched,matched,15,15,120,208,t,f
-2482,298,Shakedown Swing,2018,8,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2482,298,Shakedown Swing,2018,8,Novice,West Coast Swing,3,3,matched,matched,matched,11,11,40,78,t,f
+2481,298,Shakedown Swing,2018,8,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2481,298,Shakedown Swing,2018,8,Novice,West Coast Swing,3,3,matched,matched,matched,11,11,40,78,t,f
 602,53,Summer Hummer,2018,8,Advanced,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 602,53,Summer Hummer,2018,8,All-Star,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 602,53,Summer Hummer,2018,8,Champion,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
@@ -5579,9 +5579,9 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2282,261,Neverland Swing,2018,7,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
 2282,261,Neverland Swing,2018,7,Newcomer,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 2282,261,Neverland Swing,2018,7,Novice,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
-2505,303,Odyssey West Coast Swing,2018,7,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2505,303,Odyssey West Coast Swing,2018,7,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2505,303,Odyssey West Coast Swing,2018,7,Novice,West Coast Swing,2,3,matched,matched,matched,5,8,31,58,t,f
+2504,303,Odyssey West Coast Swing,2018,7,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2504,303,Odyssey West Coast Swing,2018,7,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2504,303,Odyssey West Coast Swing,2018,7,Novice,West Coast Swing,2,3,matched,matched,matched,5,8,31,58,t,f
 477,44,Portland Dance Festival,2018,7,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 477,44,Portland Dance Festival,2018,7,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 477,44,Portland Dance Festival,2018,7,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
@@ -5782,10 +5782,10 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1501,154,UK WCS Championships,2018,4,Champion,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
 1501,154,UK WCS Championships,2018,4,Intermediate,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 1501,154,UK WCS Championships,2018,4,Novice,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
-2466,293,Westy Nantes,2018,4,Advanced,West Coast Swing,3,2,matched,matched,matched,12,5,31,58,t,f
-2466,293,Westy Nantes,2018,4,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
-2466,293,Westy Nantes,2018,4,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
-2466,293,Westy Nantes,2018,4,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
+2465,293,Westy Nantes,2018,4,Advanced,West Coast Swing,3,2,matched,matched,matched,12,5,31,58,t,f
+2465,293,Westy Nantes,2018,4,Intermediate,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
+2465,293,Westy Nantes,2018,4,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,12,31,58,t,f
+2465,293,Westy Nantes,2018,4,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 1863,197,5280 Westival,2018,3,Advanced,West Coast Swing,2,3,matched,matched,matched,5,10,31,58,t,f
 1863,197,5280 Westival,2018,3,All-Star,West Coast Swing,2,1,matched,matched,matched,5,3,16,29,t,f
 1863,197,5280 Westival,2018,3,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
@@ -5808,11 +5808,11 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 1396,143,High Desert Dance Classic,2018,3,Intermediate,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 1396,143,High Desert Dance Classic,2018,3,Master,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
 1396,143,High Desert Dance Classic,2018,3,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
-2459,292,King Swing,2018,3,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
-2459,292,King Swing,2018,3,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2459,292,King Swing,2018,3,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
-2459,292,King Swing,2018,3,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,11,31,58,t,f
-2459,292,King Swing,2018,3,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
+2458,292,King Swing,2018,3,Advanced,West Coast Swing,2,2,matched,matched,matched,5,5,22,38,t,f
+2458,292,King Swing,2018,3,All-Star,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2458,292,King Swing,2018,3,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
+2458,292,King Swing,2018,3,Newcomer,West Coast Swing,2,3,matched,matched,matched,5,11,31,58,t,f
+2458,292,King Swing,2018,3,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 1006,92,MADjam,2018,3,Advanced,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 1006,92,MADjam,2018,3,All-Star,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
 1006,92,MADjam,2018,3,Champion,West Coast Swing,3,2,matched,matched,matched,10,5,31,58,t,f
@@ -5921,10 +5921,10 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 704,62,Monterey SwingFest,2018,1,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 704,62,Monterey SwingFest,2018,1,Master,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 704,62,Monterey SwingFest,2018,1,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-2456,291,Municorn Swing,2018,1,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2456,291,Municorn Swing,2018,1,Intermediate,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2456,291,Municorn Swing,2018,1,Newcomer,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2456,291,Municorn Swing,2018,1,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
+2455,291,Municorn Swing,2018,1,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2455,291,Municorn Swing,2018,1,Intermediate,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2455,291,Municorn Swing,2018,1,Newcomer,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2455,291,Municorn Swing,2018,1,Novice,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 1843,195,Palm Springs New Years Swing Dance Classic,2018,1,Advanced,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 1843,195,Palm Springs New Years Swing Dance Classic,2018,1,All-Star,West Coast Swing,1,1,legacy_chart,legacy_chart,legacy_chart,5,5,10,30,t,f
 1843,195,Palm Springs New Years Swing Dance Classic,2018,1,Champion,West Coast Swing,1,1,legacy_chart,legacy_chart,legacy_chart,4,5,10,30,t,f
@@ -5937,9 +5937,9 @@ edition_id,event_id,event_name,event_year,event_month,division,dance,leader_tier
 2355,272,Paris Westie Fest,2018,1,Intermediate,West Coast Swing,3,3,matched,matched,matched,10,10,40,78,t,f
 2355,272,Paris Westie Fest,2018,1,Newcomer,West Coast Swing,1,2,matched,matched,matched,3,5,16,29,t,f
 2355,272,Paris Westie Fest,2018,1,Novice,West Coast Swing,4,4,matched,matched,matched,15,15,80,158,t,f
-2447,290,Shooba Dooba Swing,2018,1,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
-2447,290,Shooba Dooba Swing,2018,1,Intermediate,West Coast Swing,2,3,matched,matched,matched,4,11,31,58,t,f
-2447,290,Shooba Dooba Swing,2018,1,Novice,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
+2446,290,Shooba Dooba Swing,2018,1,Advanced,West Coast Swing,1,1,matched,matched,matched,3,3,10,20,t,f
+2446,290,Shooba Dooba Swing,2018,1,Intermediate,West Coast Swing,2,3,matched,matched,matched,4,11,31,58,t,f
+2446,290,Shooba Dooba Swing,2018,1,Novice,West Coast Swing,3,4,matched,matched,matched,12,15,60,118,t,f
 1851,196,SwingCouver,2018,1,Advanced,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 1851,196,SwingCouver,2018,1,All-Star,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
 1851,196,SwingCouver,2018,1,Intermediate,West Coast Swing,3,3,matched,matched,matched,12,12,40,78,t,f
