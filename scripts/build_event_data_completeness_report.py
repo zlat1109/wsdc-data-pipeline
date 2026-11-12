@@ -73,6 +73,7 @@ def refuse_plain_overwrite_of_lookup(site_path: Path) -> None:
     """Block wiping Lookup chrome with the plain completeness HTML shell."""
     raise SystemExit(
         f"Refusing to overwrite Lookup-style registry at {site_path}.\n"
+        "Local plain report / CSVs were still written under --out-dir.\n"
         "This script emits the plain IBM Plex report only.\n"
         "Refresh the site page by updating Lookup tbodies/stats while keeping\n"
         "search, theme, year pills (recent years) + Earlier decade menu intact.\n"
@@ -81,6 +82,18 @@ def refuse_plain_overwrite_of_lookup(site_path: Path) -> None:
         "See docs/operations/competition-results.md#event-data-registry-analytics-site.\n"
         "Emergency only: pass --force-plain-site (destroys Lookup UI)."
     )
+
+
+def site_write_plan(
+    site_repo: Path | None, *, force_plain_site: bool
+) -> tuple[Path | None, Path | None]:
+    """Return ``(site_path_to_write, blocked_lookup_path)`` for ``--site-repo``."""
+    if site_repo is None:
+        return None, None
+    site_path = site_registry_path(site_repo)
+    if is_lookup_registry_html(site_path) and not force_plain_site:
+        return None, site_path
+    return site_path, None
 
 SKILL_DUMP = {"Newcomer", "Novice", "Intermediate", "Advanced", "All-Star", "Champion"}
 SKILL_DUMP_IDS = {i for i, n in DUMP_DIVISION_ID_TO_LEVEL.items() if n in SKILL_DUMP}
@@ -435,6 +448,15 @@ def main(argv: list[str] | None = None) -> int:
     for p in (args.forms, args.competitions_tsv, args.competitionevents_tsv):
         if not p.exists():
             raise SystemExit(f"Missing input: {p}")
+
+    site_to_write, blocked_lookup = site_write_plan(
+        args.site_repo, force_plain_site=args.force_plain_site
+    )
+    if blocked_lookup is not None:
+        print(
+            f"NOTE: will write local report only; refusing Lookup overwrite at {blocked_lookup}",
+            flush=True,
+        )
 
     print("Loading editions…")
     ed = pd.read_csv(EDITIONS_CSV, dtype=str)
@@ -1067,15 +1089,14 @@ td.ok {{ color:var(--ok); font-weight:600; }}
 </html>
 """
     targets = [out_dir / "event_data_registry.html"]
-    if args.site_repo:
-        site_path = site_registry_path(args.site_repo)
-        if is_lookup_registry_html(site_path) and not args.force_plain_site:
-            refuse_plain_overwrite_of_lookup(site_path)
-        targets.append(site_path)
+    if site_to_write is not None:
+        targets.append(site_to_write)
     for html_path in targets:
         html_path.parent.mkdir(parents=True, exist_ok=True)
         html_path.write_text(doc, encoding="utf-8")
         print(f"Wrote {html_path} ({html_path.stat().st_size:,} bytes)")
+    if blocked_lookup is not None:
+        refuse_plain_overwrite_of_lookup(blocked_lookup)
     return 0
 
 

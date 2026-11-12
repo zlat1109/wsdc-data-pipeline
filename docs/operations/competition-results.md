@@ -111,12 +111,13 @@ Internal unlisted page: WSDC public results vs Competition Results coverage
 | **Published Lookup page** | site `internal/event-data-registry.html` | Lookup chrome: search, theme toggle, recent year pills + **Earlier** decade menu, chips |
 
 `scripts/build_event_data_completeness_report.py` emits the **plain** report only.
-If `--site-repo` points at an existing Lookup page, the script **refuses** to overwrite
-it (unless `--force-plain-site`, which destroys Lookup UI — emergency only).
+If `--site-repo` points at an existing Lookup page, the script still writes local
+CSV/HTML under `--out-dir`, then **exits non-zero** and skips the site file
+(unless `--force-plain-site`, which destroys Lookup UI — emergency only).
 
 ### Refresh published Lookup page
 
-1. Rebuild local CSVs + plain report (no `--site-repo`, or accept the refuse):
+1. Rebuild local CSVs + plain report (omit `--site-repo`):
 
 ```bash
 python scripts/build_event_data_completeness_report.py \
