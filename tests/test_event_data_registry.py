@@ -13,6 +13,7 @@ from scripts.build_event_data_completeness_report import (
     normalize_event_url,
     parse_args,
     refuse_plain_overwrite_of_lookup,
+    resolve_event_site_url,
     resolve_software,
     site_write_plan,
 )
@@ -183,7 +184,23 @@ def test_normalize_event_url_handles_bare_and_mangled_hosts():
         normalize_event_url("http//http://www.tampabayclassic.com")
         == "http://www.tampabayclassic.com"
     )
+    assert normalize_event_url("http://https//parisswingclassic.com") == (
+        "https://parisswingclassic.com"
+    )
+    assert normalize_event_url("http://wwww.soswingdance.com/") == (
+        "http://www.soswingdance.com/"
+    )
     assert normalize_event_url("javascript:alert(1)") == ""
+
+
+def test_resolve_event_site_url_overrides_and_blocks_parked_hosts():
+    assert resolve_event_site_url("http//http://www.tampabayclassic.com", 137) == (
+        "https://tbcwcs.com/"
+    )
+    assert resolve_event_site_url("http://www.floridadanceevents.com", 177) == ""
+    assert resolve_event_site_url("https://swingcitychicago.com", 125) == (
+        "https://swingcitychicago.com"
+    )
 
 
 def test_site_write_plan_blocks_lookup_unless_forced(tmp_path: Path):

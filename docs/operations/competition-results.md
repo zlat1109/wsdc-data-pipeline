@@ -126,7 +126,9 @@ python scripts/build_event_data_completeness_report.py \
 
 2. Update **only** Lookup data regions in the site HTML while keeping the shell:
    - `<tbody data-year="…">` rows (chips / Other·N / Needs check / DC /
-     official-site ↗ from edition `url` via `normalize_event_url`)
+     official-site ↗ via `resolve_event_site_url`: edition `url`, plus
+     `EVENT_SITE_URL_OVERRIDES` / parked-host suppress — dump URLs are often
+     stale; e.g. `tampabayclassic.com` and `floridadanceevents.com` parked)
    - year-summary stats (`st-events`, `st-prelims`, `st-judges`, `st-other`, `ev-count`)
    - Generated timestamp
 3. Keep year filter structure exactly:

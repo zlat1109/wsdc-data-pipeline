@@ -19,9 +19,11 @@ from __future__ import annotations
 import argparse
 import csv
 import os
+import re
 import html as H
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import urlparse
 
 import pandas as pd
 
@@ -96,11 +98,27 @@ def site_write_plan(
     return site_path, None
 
 
+# Manual corrections when dump/edition ``url`` is parked, mangled, or obsolete.
+# Keys are WSDC ``event_id``.
+EVENT_SITE_URL_OVERRIDES: dict[int, str] = {
+    137: "https://tbcwcs.com/",  # tampabayclassic.com is domain-for-sale (HugeDomains)
+}
+
+# Hosts that currently resolve to parking / lander pages (omit link unless overridden).
+PARKED_EVENT_SITE_HOSTS: frozenset[str] = frozenset(
+    {
+        "tampabayclassic.com",
+        "floridadanceevents.com",  # GoDaddy parking lander (was Florida Dance Events org)
+    }
+)
+
+
 def normalize_event_url(raw: object) -> str:
     """Return a safe http(s) URL for an event site, or '' if unusable.
 
     Dump / edition URLs are often bare hosts or occasionally mangled
-    (``http//http://…``). Used for Registry “official site” links.
+    (``http//http://…``, ``http://https//…``, ``wwww.``). Used for Registry
+    “official site” links.
     """
     if raw is None:
         return ""
@@ -117,7 +135,10 @@ def normalize_event_url(raw: object) -> str:
     lower = s.lower()
     if lower.startswith(("javascript:", "data:", "vbscript:", "file:")):
         return ""
-    # Collapse mangled "http//http://…" / "https//https://…"
+    # Collapse mangled scheme prefixes (order matters).
+    s = re.sub(r"(?i)^https?://https?://", "https://", s)
+    s = re.sub(r"(?i)^https?://https?/+", "https://", s)  # http://https//host
+    s = re.sub(r"(?i)^https?:/+https?://", "https://", s)
     while True:
         fixed = s
         for bad, good in (
@@ -138,7 +159,32 @@ def normalize_event_url(raw: object) -> str:
     lower = s.lower()
     if not (lower.startswith("http://") or lower.startswith("https://")):
         return ""
+    # Typo hosts: wwww.example.com → www.example.com
+    s = re.sub(r"(?i)^(https?://)wwww\.", r"\1www.", s)
     return s
+
+
+def _url_host(url: str) -> str:
+    host = (urlparse(url).hostname or "").lower()
+    if host.startswith("www."):
+        host = host[4:]
+    return host
+
+
+def resolve_event_site_url(raw: object, event_id: object = None) -> str:
+    """Official site URL for Registry links: override → normalize → drop parked hosts."""
+    try:
+        eid = int(event_id) if event_id is not None and not (isinstance(event_id, float) and pd.isna(event_id)) else None
+    except (TypeError, ValueError):
+        eid = None
+    if eid is not None and eid in EVENT_SITE_URL_OVERRIDES:
+        return EVENT_SITE_URL_OVERRIDES[eid]
+    href = normalize_event_url(raw)
+    if not href:
+        return ""
+    if _url_host(href) in PARKED_EVENT_SITE_HOSTS:
+        return ""
+    return href
 
 
 SKILL_DUMP = {"Newcomer", "Novice", "Intermediate", "Advanced", "All-Star", "Champion"}
@@ -851,7 +897,7 @@ FROM r WHERE starts_with(event_edition_id, 'wsdc:') GROUP BY 1
         )
 
     def site_link(r) -> str:
-        href = normalize_event_url(r.get("url"))
+        href = resolve_event_site_url(r.get("url"), r.get("event_id"))
         if not href:
             return ""
         return (
