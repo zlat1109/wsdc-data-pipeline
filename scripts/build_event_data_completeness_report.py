@@ -2,12 +2,16 @@
 """Build the WSDC Event Data Registry: WSDC public results vs Competition Results.
 
 Inputs stay local (Competition Results parquet, MySQL dump TSVs, Results Form
-scoring CSV); only the rendered HTML is published, to the analytics site at
-``internal/event-data-registry.html`` (unlisted, noindex).
+scoring CSV). The script always writes a plain local HTML report under
+``data/quality_reports/``.
+
+The analytics site page ``internal/event-data-registry.html`` uses a separate
+Lookup-style shell (search / theme / year pills + Earlier menu). Do **not**
+overwrite that page with this plain report. See
+``docs/operations/competition-results.md`` (Event Data Registry).
 
     python scripts/build_event_data_completeness_report.py \\
-        --cr-path ~/Downloads/"Competition Results"/results.parquet \\
-        --site-repo ~/.cursor/wsdc-analytics-repo
+        --cr-path ~/Downloads/"Competition Results"/results.parquet
 """
 
 from __future__ import annotations
@@ -48,6 +52,35 @@ COMP_TSV = PROJECT_ROOT / "dumps" / "competitions_wcs.tsv"
 CE_TSV = PROJECT_ROOT / "dumps" / "competitionevents_dates.tsv"
 EDITIONS_CSV = PROJECT_ROOT / "data" / "event_editions.csv"
 SITE_PAGE = Path("internal") / "event-data-registry.html"
+
+# Live site HTML is Lookup-style (not this script's plain IBM Plex report).
+LOOKUP_SITE_MARKERS = ("theme-toggle", "year-more", "search-box", "class=\"years\"")
+
+
+def is_lookup_registry_html(path: Path) -> bool:
+    """True when path looks like the published Lookup Event Data Registry."""
+    if not path.is_file():
+        return False
+    head = path.read_text(encoding="utf-8", errors="ignore")[:80_000]
+    return all(marker in head for marker in LOOKUP_SITE_MARKERS)
+
+
+def site_registry_path(site_repo: Path) -> Path:
+    return site_repo.expanduser() / SITE_PAGE
+
+
+def refuse_plain_overwrite_of_lookup(site_path: Path) -> None:
+    """Block wiping Lookup chrome with the plain completeness HTML shell."""
+    raise SystemExit(
+        f"Refusing to overwrite Lookup-style registry at {site_path}.\n"
+        "This script emits the plain IBM Plex report only.\n"
+        "Refresh the site page by updating Lookup tbodies/stats while keeping\n"
+        "search, theme, year pills (recent years) + Earlier decade menu intact.\n"
+        "Do not flatten all years into .years with a naive </div> replace "
+        "(that leaves orphan decade markup and breaks the Events layout).\n"
+        "See docs/operations/competition-results.md#event-data-registry-analytics-site.\n"
+        "Emergency only: pass --force-plain-site (destroys Lookup UI)."
+    )
 
 SKILL_DUMP = {"Newcomer", "Novice", "Intermediate", "Advanced", "All-Star", "Champion"}
 SKILL_DUMP_IDS = {i for i, n in DUMP_DIVISION_ID_TO_LEVEL.items() if n in SKILL_DUMP}
@@ -373,12 +406,22 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "--site-repo",
         type=Path,
-        help=f"analytics site checkout; also writes <site-repo>/{SITE_PAGE}",
+        help=(
+            f"analytics site checkout; writes <site-repo>/{SITE_PAGE} only when "
+            "that file is missing or is not Lookup-style (refuses Lookup overwrite)"
+        ),
+    )
+    parser.add_argument(
+        "--force-plain-site",
+        action="store_true",
+        help="allow overwriting Lookup-style site HTML with the plain report (destroys UI)",
     )
     args = parser.parse_args(argv)
     if not args.cr_path:
         parser.error("--cr-path or CR_RESULTS_PATH is required")
     args.cr_path = Path(args.cr_path).expanduser()
+    if args.force_plain_site and not args.site_repo:
+        parser.error("--force-plain-site requires --site-repo")
     return args
 
 
@@ -1025,7 +1068,10 @@ td.ok {{ color:var(--ok); font-weight:600; }}
 """
     targets = [out_dir / "event_data_registry.html"]
     if args.site_repo:
-        targets.append(args.site_repo.expanduser() / SITE_PAGE)
+        site_path = site_registry_path(args.site_repo)
+        if is_lookup_registry_html(site_path) and not args.force_plain_site:
+            refuse_plain_overwrite_of_lookup(site_path)
+        targets.append(site_path)
     for html_path in targets:
         html_path.parent.mkdir(parents=True, exist_ok=True)
         html_path.write_text(doc, encoding="utf-8")
