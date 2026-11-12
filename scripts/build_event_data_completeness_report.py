@@ -102,6 +102,7 @@ def site_write_plan(
 # Keys are WSDC ``event_id``.
 EVENT_SITE_URL_OVERRIDES: dict[int, str] = {
     137: "https://tbcwcs.com/",  # tampabayclassic.com is domain-for-sale (HugeDomains)
+    177: "https://jaxwestiefest.com/",  # floridadanceevents.com is GoDaddy parking
 }
 
 # Hosts that currently resolve to parking / lander pages (omit link unless overridden).
