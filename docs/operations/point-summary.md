@@ -14,6 +14,7 @@ bot only posts links to entities that already exist on the site.
 | Create rule | `start_date >= POINT_SUMMARY_CUTOFF` and at least one division with places 1–3 |
 | Update window | 30 days after `end_date`; slug + `post_date` never change |
 | `telegraph_url` | Optional; bot may patch it later without rewriting the body |
+| Rebrands | Keep first-published slug stem via `_EVENT_SUMMARY_SLUG_STEM_ALIASES` + identity aliases in `transform/points_summary/` (e.g. Jax Westie Fest → `river-city-swing`). Display name may update; do not create a second card for the same weekend. |
 
 Cutoff default: **2026-07-28** (`POINT_SUMMARY_CUTOFF`). Historical blocks in
 `points_summaries.json` are not **created** before cutoff. Existing blocks

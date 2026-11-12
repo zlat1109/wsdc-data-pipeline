@@ -25,6 +25,14 @@ _EVENT_NAME_CANON = build_event_name_normalization()
 # Keep first-published Point Summary slug stems when the display title rebrands.
 _EVENT_SUMMARY_SLUG_STEM_ALIASES = {
     "swingtime-denver": "swingtime-in-the-rockies",
+    # Id 177: River City Swing → Jax Westie Fest from 2024 (same September edition).
+    "jax-westie-fest": "river-city-swing",
+}
+
+# Identity keys for merge retarget when flat aliases no longer collapse the pair
+# (year-split owns display names). Map late title → first-published title.
+_EVENT_SUMMARY_IDENTITY_NAME_ALIASES = {
+    "jax westie fest": "river city swing",
 }
 
 PLACE_EMOJI = {"1": "🥇", "2": "🥈", "3": "🥉"}
@@ -99,6 +107,13 @@ def canonicalize_event_display_name(name: str) -> str:
     if not raw:
         return raw
     return _EVENT_NAME_CANON.get(raw, raw)
+
+
+def point_summary_identity_name(name: str) -> str:
+    """Stable edition identity name for Point Summary merge (survives rebrands)."""
+    display = canonicalize_event_display_name(name)
+    key = " ".join(display.lower().split())
+    return _EVENT_SUMMARY_IDENTITY_NAME_ALIASES.get(key, key)
 
 
 def make_event_slug(event_name: str, start_date: str) -> str:
