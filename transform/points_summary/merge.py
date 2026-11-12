@@ -8,7 +8,7 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
-from transform.points_summary.report import canonicalize_event_display_name
+from transform.points_summary.report import point_summary_identity_name
 
 
 def post_date_today(today: date | None = None) -> str:
@@ -36,8 +36,7 @@ def _parse_iso(value: str | None) -> date | None:
 def _identity_key(event: dict) -> tuple[str, str] | None:
     """Edition identity that survives display-name / slug stem rebrands."""
     start = (event.get("start_date") or "").strip()[:10]
-    name = canonicalize_event_display_name(event.get("name") or "")
-    name_key = " ".join(name.lower().split())
+    name_key = point_summary_identity_name(event.get("name") or "")
     if not start or not name_key:
         return None
     return start, name_key
