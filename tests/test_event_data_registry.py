@@ -2,10 +2,16 @@
 
 from __future__ import annotations
 
+from pathlib import Path
+
 import pandas as pd
+import pytest
 
 from scripts.build_event_data_completeness_report import (
     flags_for,
+    is_lookup_registry_html,
+    parse_args,
+    refuse_plain_overwrite_of_lookup,
     resolve_software,
 )
 from transform.competition_results.side_labels import (
@@ -134,3 +140,33 @@ def test_form_match_uses_year_month_and_name():
     assert out.loc[0, "m_ok"] and out.loc[0, "m_edition_id"] == 1
     assert out.loc[1, "m_ok"] and out.loc[1, "m_edition_id"] == 5
     assert not out.loc[2, "m_ok"]
+
+
+def test_is_lookup_registry_html_requires_lookup_markers(tmp_path: Path):
+    plain = tmp_path / "plain.html"
+    plain.write_text("<html><title>plain IBM Plex registry</title></html>", encoding="utf-8")
+    assert not is_lookup_registry_html(plain)
+
+    lookup = tmp_path / "lookup.html"
+    lookup.write_text(
+        '<html><div class="search-box"></div>'
+        '<button class="theme-toggle"></button>'
+        '<div class="years"></div>'
+        '<button class="year year-more">Earlier</button></html>',
+        encoding="utf-8",
+    )
+    assert is_lookup_registry_html(lookup)
+    assert not is_lookup_registry_html(tmp_path / "missing.html")
+
+
+def test_refuse_plain_overwrite_mentions_year_menu_regression():
+    with pytest.raises(SystemExit, match="year pills") as exc:
+        refuse_plain_overwrite_of_lookup(Path("/tmp/internal/event-data-registry.html"))
+    msg = str(exc.value)
+    assert "naive" in msg or "</div>" in msg
+    assert "--force-plain-site" in msg
+
+
+def test_force_plain_site_requires_site_repo():
+    with pytest.raises(SystemExit):
+        parse_args(["--cr-path", "/tmp/results.parquet", "--force-plain-site"])

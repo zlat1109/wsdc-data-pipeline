@@ -35,10 +35,13 @@ Internal registry of WSDC public results vs Competition Results coverage
 
 - URL: https://wsdc-analytics.github.io/internal/event-data-registry.html
 - `noindex` + `robots.txt` `Disallow: /internal/` (not in nav / sitemap)
-- Built locally by `scripts/build_event_data_completeness_report.py --site-repo …`
-  from Competition Results parquet + dump TSVs + Results Forms (inputs not published)
-- Not part of `full-parse.yml` / `sync_analytics_site.sh` yet — refresh manually
-  after a CR reload (see [competition-results.md](competition-results.md))
+- **Published page is Lookup-style** (search / theme / year pills + Earlier menu).
+  The completeness script writes a **plain** local report only and refuses to
+  overwrite Lookup site HTML via `--site-repo` (see guard + refresh checklist in
+  [competition-results.md](competition-results.md#event-data-registry-analytics-site)).
+- Not part of `full-parse.yml` / `sync_analytics_site.sh` yet — refresh Lookup
+  data regions manually after a CR reload; never flatten the year menu with a
+  naive `</div>` replace.
 
 ## Secret (this repo)
 
