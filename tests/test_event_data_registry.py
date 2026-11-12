@@ -13,6 +13,7 @@ from scripts.build_event_data_completeness_report import (
     parse_args,
     refuse_plain_overwrite_of_lookup,
     resolve_software,
+    site_write_plan,
 )
 from transform.competition_results.side_labels import (
     format_side_labels,
@@ -170,3 +171,25 @@ def test_refuse_plain_overwrite_mentions_year_menu_regression():
 def test_force_plain_site_requires_site_repo():
     with pytest.raises(SystemExit):
         parse_args(["--cr-path", "/tmp/results.parquet", "--force-plain-site"])
+
+
+def test_site_write_plan_blocks_lookup_unless_forced(tmp_path: Path):
+    lookup = tmp_path / "internal" / "event-data-registry.html"
+    lookup.parent.mkdir(parents=True)
+    lookup.write_text(
+        '<html><div class="search-box"></div>'
+        '<button class="theme-toggle"></button>'
+        '<div class="years"></div>'
+        '<button class="year year-more">Earlier</button></html>',
+        encoding="utf-8",
+    )
+    write, blocked = site_write_plan(tmp_path, force_plain_site=False)
+    assert write is None and blocked == lookup
+
+    write, blocked = site_write_plan(tmp_path, force_plain_site=True)
+    assert write == lookup and blocked is None
+
+    plain_repo = tmp_path / "plain-site"
+    missing = plain_repo / "internal" / "event-data-registry.html"
+    write, blocked = site_write_plan(plain_repo, force_plain_site=False)
+    assert write == missing and blocked is None
