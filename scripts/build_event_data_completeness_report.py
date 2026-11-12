@@ -2,12 +2,16 @@
 """Build the WSDC Event Data Registry: WSDC public results vs Competition Results.
 
 Inputs stay local (Competition Results parquet, MySQL dump TSVs, Results Form
-scoring CSV); only the rendered HTML is published, to the analytics site at
-``internal/event-data-registry.html`` (unlisted, noindex).
+scoring CSV). The script always writes a plain local HTML report under
+``data/quality_reports/``.
+
+The analytics site page ``internal/event-data-registry.html`` uses a separate
+Lookup-style shell (search / theme / year pills + Earlier menu). Do **not**
+overwrite that page with this plain report. See
+``docs/operations/competition-results.md`` (Event Data Registry).
 
     python scripts/build_event_data_completeness_report.py \\
-        --cr-path ~/Downloads/"Competition Results"/results.parquet \\
-        --site-repo ~/.cursor/wsdc-analytics-repo
+        --cr-path ~/Downloads/"Competition Results"/results.parquet
 """
 
 from __future__ import annotations
@@ -15,9 +19,11 @@ from __future__ import annotations
 import argparse
 import csv
 import os
+import re
 import html as H
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import urlparse
 
 import pandas as pd
 
@@ -48,6 +54,139 @@ COMP_TSV = PROJECT_ROOT / "dumps" / "competitions_wcs.tsv"
 CE_TSV = PROJECT_ROOT / "dumps" / "competitionevents_dates.tsv"
 EDITIONS_CSV = PROJECT_ROOT / "data" / "event_editions.csv"
 SITE_PAGE = Path("internal") / "event-data-registry.html"
+
+# Live site HTML is Lookup-style (not this script's plain IBM Plex report).
+LOOKUP_SITE_MARKERS = ("theme-toggle", "year-more", "search-box", "class=\"years\"")
+
+
+def is_lookup_registry_html(path: Path) -> bool:
+    """True when path looks like the published Lookup Event Data Registry."""
+    if not path.is_file():
+        return False
+    head = path.read_text(encoding="utf-8", errors="ignore")[:80_000]
+    return all(marker in head for marker in LOOKUP_SITE_MARKERS)
+
+
+def site_registry_path(site_repo: Path) -> Path:
+    return site_repo.expanduser() / SITE_PAGE
+
+
+def refuse_plain_overwrite_of_lookup(site_path: Path) -> None:
+    """Block wiping Lookup chrome with the plain completeness HTML shell."""
+    raise SystemExit(
+        f"Refusing to overwrite Lookup-style registry at {site_path}.\n"
+        "Local plain report / CSVs were still written under --out-dir.\n"
+        "This script emits the plain IBM Plex report only.\n"
+        "Refresh the site page by updating Lookup tbodies/stats while keeping\n"
+        "search, theme, year pills (recent years) + Earlier decade menu intact.\n"
+        "Do not flatten all years into .years with a naive </div> replace "
+        "(that leaves orphan decade markup and breaks the Events layout).\n"
+        "See docs/operations/competition-results.md#event-data-registry-analytics-site.\n"
+        "Emergency only: pass --force-plain-site (destroys Lookup UI)."
+    )
+
+
+def site_write_plan(
+    site_repo: Path | None, *, force_plain_site: bool
+) -> tuple[Path | None, Path | None]:
+    """Return ``(site_path_to_write, blocked_lookup_path)`` for ``--site-repo``."""
+    if site_repo is None:
+        return None, None
+    site_path = site_registry_path(site_repo)
+    if is_lookup_registry_html(site_path) and not force_plain_site:
+        return None, site_path
+    return site_path, None
+
+
+# Manual corrections when dump/edition ``url`` is parked, mangled, or obsolete.
+# Keys are WSDC ``event_id``.
+EVENT_SITE_URL_OVERRIDES: dict[int, str] = {
+    137: "https://tbcwcs.com/",  # tampabayclassic.com is domain-for-sale (HugeDomains)
+    177: "https://jaxwestiefest.com/",  # floridadanceevents.com is GoDaddy parking
+}
+
+# Hosts that currently resolve to parking / lander pages (omit link unless overridden).
+PARKED_EVENT_SITE_HOSTS: frozenset[str] = frozenset(
+    {
+        "tampabayclassic.com",
+        "floridadanceevents.com",  # GoDaddy parking lander (was Florida Dance Events org)
+    }
+)
+
+
+def normalize_event_url(raw: object) -> str:
+    """Return a safe http(s) URL for an event site, or '' if unusable.
+
+    Dump / edition URLs are often bare hosts or occasionally mangled
+    (``http//http://…``, ``http://https//…``, ``wwww.``). Used for Registry
+    “official site” links.
+    """
+    if raw is None:
+        return ""
+    try:
+        if pd.isna(raw):
+            return ""
+    except (TypeError, ValueError):
+        pass
+    s = str(raw).strip()
+    if not s or s.lower() in {"nan", "none", "null", "-"}:
+        return ""
+    if any(ch.isspace() for ch in s):
+        return ""
+    lower = s.lower()
+    if lower.startswith(("javascript:", "data:", "vbscript:", "file:")):
+        return ""
+    # Collapse mangled scheme prefixes (order matters).
+    s = re.sub(r"(?i)^https?://https?://", "https://", s)
+    s = re.sub(r"(?i)^https?://https?/+", "https://", s)  # http://https//host
+    s = re.sub(r"(?i)^https?:/+https?://", "https://", s)
+    while True:
+        fixed = s
+        for bad, good in (
+            ("http//http://", "http://"),
+            ("https//https://", "https://"),
+            ("http//https://", "https://"),
+            ("https//http://", "http://"),
+            ("http//", "http://"),
+            ("https//", "https://"),
+        ):
+            if fixed.lower().startswith(bad):
+                fixed = good + fixed[len(bad) :]
+        if fixed == s:
+            break
+        s = fixed
+    if "://" not in s:
+        s = "https://" + s.lstrip("/")
+    lower = s.lower()
+    if not (lower.startswith("http://") or lower.startswith("https://")):
+        return ""
+    # Typo hosts: wwww.example.com → www.example.com
+    s = re.sub(r"(?i)^(https?://)wwww\.", r"\1www.", s)
+    return s
+
+
+def _url_host(url: str) -> str:
+    host = (urlparse(url).hostname or "").lower()
+    if host.startswith("www."):
+        host = host[4:]
+    return host
+
+
+def resolve_event_site_url(raw: object, event_id: object = None) -> str:
+    """Official site URL for Registry links: override → normalize → drop parked hosts."""
+    try:
+        eid = int(event_id) if event_id is not None and not (isinstance(event_id, float) and pd.isna(event_id)) else None
+    except (TypeError, ValueError):
+        eid = None
+    if eid is not None and eid in EVENT_SITE_URL_OVERRIDES:
+        return EVENT_SITE_URL_OVERRIDES[eid]
+    href = normalize_event_url(raw)
+    if not href:
+        return ""
+    if _url_host(href) in PARKED_EVENT_SITE_HOSTS:
+        return ""
+    return href
+
 
 SKILL_DUMP = {"Newcomer", "Novice", "Intermediate", "Advanced", "All-Star", "Champion"}
 SKILL_DUMP_IDS = {i for i, n in DUMP_DIVISION_ID_TO_LEVEL.items() if n in SKILL_DUMP}
@@ -373,12 +512,22 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "--site-repo",
         type=Path,
-        help=f"analytics site checkout; also writes <site-repo>/{SITE_PAGE}",
+        help=(
+            f"analytics site checkout; writes <site-repo>/{SITE_PAGE} only when "
+            "that file is missing or is not Lookup-style (refuses Lookup overwrite)"
+        ),
+    )
+    parser.add_argument(
+        "--force-plain-site",
+        action="store_true",
+        help="allow overwriting Lookup-style site HTML with the plain report (destroys UI)",
     )
     args = parser.parse_args(argv)
     if not args.cr_path:
         parser.error("--cr-path or CR_RESULTS_PATH is required")
     args.cr_path = Path(args.cr_path).expanduser()
+    if args.force_plain_site and not args.site_repo:
+        parser.error("--force-plain-site requires --site-repo")
     return args
 
 
@@ -392,6 +541,15 @@ def main(argv: list[str] | None = None) -> int:
     for p in (args.forms, args.competitions_tsv, args.competitionevents_tsv):
         if not p.exists():
             raise SystemExit(f"Missing input: {p}")
+
+    site_to_write, blocked_lookup = site_write_plan(
+        args.site_repo, force_plain_site=args.force_plain_site
+    )
+    if blocked_lookup is not None:
+        print(
+            f"NOTE: will write local report only; refusing Lookup overwrite at {blocked_lookup}",
+            flush=True,
+        )
 
     print("Loading editions…")
     ed = pd.read_csv(EDITIONS_CSV, dtype=str)
@@ -739,6 +897,15 @@ FROM r WHERE starts_with(event_edition_id, 'wsdc:') GROUP BY 1
             'competitor names">DC redact</span>'
         )
 
+    def site_link(r) -> str:
+        href = resolve_event_site_url(r.get("url"), r.get("event_id"))
+        if not href:
+            return ""
+        return (
+            f' <a class="ev-site" href="{H.escape(href)}" target="_blank" '
+            f'rel="noopener noreferrer" title="Official event site">↗</a>'
+        )
+
     def event_rows(sub) -> str:
         parts = []
         for _, r in sub.iterrows():
@@ -747,7 +914,7 @@ FROM r WHERE starts_with(event_edition_id, 'wsdc:') GROUP BY 1
                 "<tr>"
                 f"<td>{mon}</td>"
                 f'<td class="num">{int(r.event_id)}</td>'
-                f"<td>{esc(r.event_name)}{dc_badge(r)}</td>"
+                f"<td>{esc(r.event_name)}{site_link(r)}{dc_badge(r)}</td>"
                 f"<td>{esc(r.start_date)}</td>"
                 f'<td class="num">{fmt_num(r.scored_finalists)}</td>'
                 f'<td class="c">{check_html(r.chk_prelims, clean(r.tip_prelims))}</td>'
@@ -879,6 +1046,8 @@ td.c, th.c {{ text-align:center; }}
 .soft.needs {{ background:#eceae4; color:var(--none); }}
 .badge.dc {{ display:inline-block; font-size:.65rem; padding:.05rem .3rem; border-radius:3px;
   background:#e8eef6; color:#2a4a6a; font-weight:600; margin-left:.25rem; }}
+a.ev-site {{ margin-left:.25rem; color:var(--link); text-decoration:none; font-weight:600; }}
+a.ev-site:hover {{ text-decoration:underline; }}
 section.year {{ margin:2rem 0; padding-top:.5rem; border-top:2px solid var(--line); }}
 section.year h2 {{ margin:0 0 .75rem; font-size:1.2rem; }}
 section.year h2 .meta {{ color:var(--muted); font-weight:500; font-size:.95rem; margin-left:.4rem; }}
@@ -1024,12 +1193,14 @@ td.ok {{ color:var(--ok); font-weight:600; }}
 </html>
 """
     targets = [out_dir / "event_data_registry.html"]
-    if args.site_repo:
-        targets.append(args.site_repo.expanduser() / SITE_PAGE)
+    if site_to_write is not None:
+        targets.append(site_to_write)
     for html_path in targets:
         html_path.parent.mkdir(parents=True, exist_ok=True)
         html_path.write_text(doc, encoding="utf-8")
         print(f"Wrote {html_path} ({html_path.stat().st_size:,} bytes)")
+    if blocked_lookup is not None:
+        refuse_plain_overwrite_of_lookup(blocked_lookup)
     return 0
 
 

@@ -85,12 +85,19 @@ def main() -> None:
                 # core bucket disappears, emit a same-day 0 tombstone so exports do
                 # not keep showing the previous non-zero total.
                 if core_points is None:
+                    # Same-day close can already occupy PK (valid_from=today);
+                    # upsert tombstone instead of failing UniqueViolation.
                     cur.execute(
                         """
                         INSERT INTO history.dancer_points_history (
                             dancer_id, role, dance, level, total_points,
                             valid_from, valid_to, run_id
                         ) VALUES (%s, %s, %s, %s, 0, %s, %s, %s)
+                        ON CONFLICT (dancer_id, role, dance, level, valid_from)
+                        DO UPDATE SET
+                            total_points = EXCLUDED.total_points,
+                            valid_to = EXCLUDED.valid_to,
+                            run_id = EXCLUDED.run_id
                         """,
                         (
                             dancer_id,
@@ -110,6 +117,11 @@ def main() -> None:
                     INSERT INTO history.dancer_points_history (
                         dancer_id, role, dance, level, total_points, valid_from, valid_to, run_id
                     ) VALUES (%s, %s, %s, %s, %s, %s, NULL, %s)
+                    ON CONFLICT (dancer_id, role, dance, level, valid_from)
+                    DO UPDATE SET
+                        total_points = EXCLUDED.total_points,
+                        valid_to = NULL,
+                        run_id = EXCLUDED.run_id
                     """,
                     (dancer_id, role, dance, level, total_points, valid_from, run_id),
                 )

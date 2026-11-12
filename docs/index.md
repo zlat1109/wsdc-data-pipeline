@@ -10,6 +10,7 @@ English reference for the World Swing Dance Championships data pipeline: parser 
 
 | I am… | Start here |
 |-------|------------|
+| **Collaborator (event locations)** | [Event locations guide](committee/event-locations-guide.md) |
 | **Tableau analyst** | [Tableau overview](tableau/index.md) → [CSV contract](tableau/csv-contract.md) → [Joins](tableau/joins.md) |
 | **Developer / maintainer** | [Pipeline overview](architecture/overview.md) → [Database](database/index.md) → [Transform](transform/index.md) |
 | **Ops / on-call** | [Operations](operations/index.md) |

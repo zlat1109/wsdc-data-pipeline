@@ -95,15 +95,59 @@ Also registered in [quality-monitoring.md](quality-monitoring.md) (`category=com
 
 ## Event Data Registry (analytics site)
 
-Internal unlisted page built locally from the same parquet + dump TSVs + Results Forms:
+Internal unlisted page: WSDC public results vs Competition Results coverage
+(prelims / judges / partners / other divs / scoring software).
+
+- Live: https://wsdc-analytics.github.io/internal/event-data-registry.html
+- Path: `wsdc-analytics.github.io/internal/event-data-registry.html`
+- `noindex` + `robots.txt` `Disallow: /internal/` (not in nav / sitemap)
+- Manual refresh until CR lives fully in the site pipeline — see [analytics-site-sync.md](analytics-site-sync.md)
+
+### Two HTML surfaces (do not conflate)
+
+| Surface | Path | UI |
+|---|---|---|
+| **Local plain report** | pipeline `data/quality_reports/event_data_registry.html` | IBM Plex year sections; built by this script |
+| **Published Lookup page** | site `internal/event-data-registry.html` | Lookup chrome: search, theme toggle, recent year pills + **Earlier** decade menu, chips |
+
+`scripts/build_event_data_completeness_report.py` emits the **plain** report only.
+If `--site-repo` points at an existing Lookup page, the script still writes local
+CSV/HTML under `--out-dir`, then **exits non-zero** and skips the site file
+(unless `--force-plain-site`, which destroys Lookup UI — emergency only).
+
+### Refresh published Lookup page
+
+1. Rebuild local CSVs + plain report (omit `--site-repo`):
 
 ```bash
 python scripts/build_event_data_completeness_report.py \
-  --cr-path ~/Downloads/"Competition Results"/results.parquet \
-  --site-repo ~/.cursor/wsdc-analytics-repo
+  --cr-path ~/Downloads/"Competition Results"/results.parquet
 ```
 
-Publishes `internal/event-data-registry.html` (`noindex`, `robots.txt` Disallow `/internal/`). Manual refresh until CR lives fully in the site pipeline. See [analytics-site-sync.md](analytics-site-sync.md).
+2. Update **only** Lookup data regions in the site HTML while keeping the shell:
+   - `<tbody data-year="…">` rows (chips / Other·N / Needs check / DC /
+     official-site ↗ via `resolve_event_site_url`: edition `url`, plus
+     `EVENT_SITE_URL_OVERRIDES` / parked-host suppress — dump URLs are often
+     stale; e.g. `tampabayclassic.com` parked → `tbcwcs.com`; id `177`
+     (`floridadanceevents.com` parked) → `jaxwestiefest.com`. Display name
+     for `177` is year-split: River City Swing ≤2023 / Jax Westie Fest ≥2024)
+   - year-summary stats (`st-events`, `st-prelims`, `st-judges`, `st-other`, `ev-count`)
+   - Generated timestamp
+3. Keep year filter structure exactly:
+   - Visible pills: recent years only (currently 2026–2021)
+   - Older years: inside `#year-menu` under `.year-more-wrap` → decade groups
+4. **Never** replace `.years` inner HTML with a naive non-greedy `</div>` regex —
+   that stops at the first nested close, flattens all years into pills, and leaves
+   orphan `.decade` / `.decade-years` markup that breaks the Events layout
+   (regression: site PR #465 / fix #466).
+5. Do not commit scratch `internal/no_prelim_results_*.csv` files.
+6. Smoke before merge / Pages:
+   - [ ] `theme-toggle`, `search-box`, `year-more`, `#year-menu` present
+   - [ ] no `.decade` outside `#year-menu`
+   - [ ] default year tbody visible; event rows render
+   - [ ] `noindex` / Unlisted footer intact
+
+Longer-term: port Lookup template generation into the builder so site refresh is one command.
 
 ## Related
 

@@ -69,6 +69,8 @@ exclude_docs: |
 
 nav:
   - Home: index.md
+  - Collaborators:
+    - Event locations guide: committee/event-locations-guide.md
   - Tableau:
     - tableau/index.md
     - CSV contract: tableau/csv-contract.md

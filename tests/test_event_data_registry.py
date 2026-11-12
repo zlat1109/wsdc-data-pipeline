@@ -2,11 +2,20 @@
 
 from __future__ import annotations
 
+from pathlib import Path
+
 import pandas as pd
+import pytest
 
 from scripts.build_event_data_completeness_report import (
     flags_for,
+    is_lookup_registry_html,
+    normalize_event_url,
+    parse_args,
+    refuse_plain_overwrite_of_lookup,
+    resolve_event_site_url,
     resolve_software,
+    site_write_plan,
 )
 from transform.competition_results.side_labels import (
     format_side_labels,
@@ -134,3 +143,85 @@ def test_form_match_uses_year_month_and_name():
     assert out.loc[0, "m_ok"] and out.loc[0, "m_edition_id"] == 1
     assert out.loc[1, "m_ok"] and out.loc[1, "m_edition_id"] == 5
     assert not out.loc[2, "m_ok"]
+
+
+def test_is_lookup_registry_html_requires_lookup_markers(tmp_path: Path):
+    plain = tmp_path / "plain.html"
+    plain.write_text("<html><title>plain IBM Plex registry</title></html>", encoding="utf-8")
+    assert not is_lookup_registry_html(plain)
+
+    lookup = tmp_path / "lookup.html"
+    lookup.write_text(
+        '<html><div class="search-box"></div>'
+        '<button class="theme-toggle"></button>'
+        '<div class="years"></div>'
+        '<button class="year year-more">Earlier</button></html>',
+        encoding="utf-8",
+    )
+    assert is_lookup_registry_html(lookup)
+    assert not is_lookup_registry_html(tmp_path / "missing.html")
+
+
+def test_refuse_plain_overwrite_mentions_year_menu_regression():
+    with pytest.raises(SystemExit, match="year pills") as exc:
+        refuse_plain_overwrite_of_lookup(Path("/tmp/internal/event-data-registry.html"))
+    msg = str(exc.value)
+    assert "naive" in msg or "</div>" in msg
+    assert "--force-plain-site" in msg
+
+
+def test_force_plain_site_requires_site_repo():
+    with pytest.raises(SystemExit):
+        parse_args(["--cr-path", "/tmp/results.parquet", "--force-plain-site"])
+
+
+def test_normalize_event_url_handles_bare_and_mangled_hosts():
+    assert normalize_event_url("") == ""
+    assert normalize_event_url(None) == ""
+    assert normalize_event_url("www.example.com") == "https://www.example.com"
+    assert normalize_event_url("https://ok.example/path") == "https://ok.example/path"
+    assert (
+        normalize_event_url("http//http://www.tampabayclassic.com")
+        == "http://www.tampabayclassic.com"
+    )
+    assert normalize_event_url("http://https//parisswingclassic.com") == (
+        "https://parisswingclassic.com"
+    )
+    assert normalize_event_url("http://wwww.soswingdance.com/") == (
+        "http://www.soswingdance.com/"
+    )
+    assert normalize_event_url("javascript:alert(1)") == ""
+
+
+def test_resolve_event_site_url_overrides_and_blocks_parked_hosts():
+    assert resolve_event_site_url("http//http://www.tampabayclassic.com", 137) == (
+        "https://tbcwcs.com/"
+    )
+    assert resolve_event_site_url("http://www.floridadanceevents.com", 177) == (
+        "https://jaxwestiefest.com/"
+    )
+    assert resolve_event_site_url("https://swingcitychicago.com", 125) == (
+        "https://swingcitychicago.com"
+    )
+
+
+def test_site_write_plan_blocks_lookup_unless_forced(tmp_path: Path):
+    lookup = tmp_path / "internal" / "event-data-registry.html"
+    lookup.parent.mkdir(parents=True)
+    lookup.write_text(
+        '<html><div class="search-box"></div>'
+        '<button class="theme-toggle"></button>'
+        '<div class="years"></div>'
+        '<button class="year year-more">Earlier</button></html>',
+        encoding="utf-8",
+    )
+    write, blocked = site_write_plan(tmp_path, force_plain_site=False)
+    assert write is None and blocked == lookup
+
+    write, blocked = site_write_plan(tmp_path, force_plain_site=True)
+    assert write == lookup and blocked is None
+
+    plain_repo = tmp_path / "plain-site"
+    missing = plain_repo / "internal" / "event-data-registry.html"
+    write, blocked = site_write_plan(plain_repo, force_plain_site=False)
+    assert write == missing and blocked is None
