@@ -73,7 +73,8 @@ RESULT_TO_CATALOG_EVENT_NAME: dict[str, str] = {
     'The Open Swing Dance  Championships': 'US Open Swing Dance Championships',
     'Korean Open': 'Korean Open WCS Championships',
     'UK West Coast Swing Championships': 'UK WCS Championships',
-    'Jax Westie Fest': 'River City Swing',
+    # Do NOT map Jax Westie Fest → River City Swing (year split owns ≤2023).
+    # Do NOT map River City Swing → Jax Westie Fest (that collapses early years).
     'Rocket City Swing': 'Westies on the Water',
     'H-Town Throw Down': 'Novice Invitational',
     'SOM-Swing of Music': 'SOM - Swing of Music',
@@ -319,6 +320,25 @@ EVENT_NAME_YEAR_SPLITS: list[dict[str, object]] = [
         "late_event_id": 272,
         # Analytics edition ordinals restart for the late brand
         # (enrich_event_growth_edition_numbers loads this flag).
+        "reset_edition_ordinal": True,
+    },
+    {
+        # Dump events.name + competitionevents.calendar_title: River City Swing
+        # through 2023; Jax Westie Fest from 2024 (same WSDC id 177, Jacksonville).
+        # Site URL moved floridadanceevents.com → jaxwestiefest.com.
+        "sources": (
+            "River City Swing",
+            "Jax Westie Fest",
+            "JAX Westie Fest",
+        ),
+        "early_name": "River City Swing",
+        "early_year_max": 2023,
+        "late_name": "Jax Westie Fest",
+        "late_year_min": 2024,
+        "early_event_id": 177,
+        "late_event_id": 177,
+        # First Jax year starts a new #edition era so Event Trends shows Renamed
+        # with tip "River City Swing → Jax Westie Fest".
         "reset_edition_ordinal": True,
     },
 ]

@@ -197,7 +197,9 @@ def test_resolve_event_site_url_overrides_and_blocks_parked_hosts():
     assert resolve_event_site_url("http//http://www.tampabayclassic.com", 137) == (
         "https://tbcwcs.com/"
     )
-    assert resolve_event_site_url("http://www.floridadanceevents.com", 177) == ""
+    assert resolve_event_site_url("http://www.floridadanceevents.com", 177) == (
+        "https://jaxwestiefest.com/"
+    )
     assert resolve_event_site_url("https://swingcitychicago.com", 125) == (
         "https://swingcitychicago.com"
     )

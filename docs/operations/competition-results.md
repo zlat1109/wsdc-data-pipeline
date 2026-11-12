@@ -128,7 +128,9 @@ python scripts/build_event_data_completeness_report.py \
    - `<tbody data-year="…">` rows (chips / Other·N / Needs check / DC /
      official-site ↗ via `resolve_event_site_url`: edition `url`, plus
      `EVENT_SITE_URL_OVERRIDES` / parked-host suppress — dump URLs are often
-     stale; e.g. `tampabayclassic.com` and `floridadanceevents.com` parked)
+     stale; e.g. `tampabayclassic.com` parked → `tbcwcs.com`; id `177`
+     (`floridadanceevents.com` parked) → `jaxwestiefest.com`. Display name
+     for `177` is year-split: River City Swing ≤2023 / Jax Westie Fest ≥2024)
    - year-summary stats (`st-events`, `st-prelims`, `st-judges`, `st-other`, `ev-count`)
    - Generated timestamp
 3. Keep year filter structure exactly:
