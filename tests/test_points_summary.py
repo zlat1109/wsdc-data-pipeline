@@ -257,6 +257,78 @@ def test_merge_retargets_rebrand_slug_to_published_identity():
     assert events[0]["divisions"][0]["places"][0]["leader"].startswith("A")
 
 
+def test_merge_retargets_jax_westie_fest_to_river_city_swing_slug():
+    """Jax rebrand must update the Sep 2026 River City card, not fork a new one."""
+    from transform.points_summary.report import make_event_slug
+
+    assert (
+        make_event_slug("Jax Westie Fest", "2026-09-04")
+        == "2026-09-04-river-city-swing"
+    )
+
+    existing = {
+        "summaries": [
+            {
+                "post_date": "08-09-2026",
+                "events_count": 1,
+                "events": [
+                    {
+                        "slug": "2026-09-04-river-city-swing",
+                        "name": "River City Swing",
+                        "telegraph_url": "https://telegra.ph/River-City-Swing---Full-Info-09-10",
+                        "divisions": [{"division": "Advanced", "places": []}],
+                        "start_date": "2026-09-04",
+                        "end_date": "2026-09-07",
+                    }
+                ],
+            }
+        ]
+    }
+    # Candidate slug as if stem alias were missing — identity retarget must still win.
+    candidates = [
+        {
+            "slug": "2026-09-04-jax-westie-fest",
+            "name": "Jax Westie Fest",
+            "telegraph_url": None,
+            "divisions": [
+                {
+                    "division": "Advanced",
+                    "places": [
+                        {
+                            "place": "1",
+                            "place_label": "🥇 1 place",
+                            "leader": "A (+3) [1]",
+                            "follower": "B (+3) [1]",
+                        }
+                    ],
+                }
+            ],
+            "start_date": "2026-09-04",
+            "end_date": "2026-09-07",
+        }
+    ]
+    payload, report = merge_points_summaries(
+        existing,
+        candidates,
+        cutoff=date(2026, 7, 28),
+        update_window_days=120,
+        today=date(2026, 11, 12),
+    )
+    assert report["created_count"] == 0
+    assert report["updated_count"] == 1
+    assert report["retargeted"] == [
+        "2026-09-04-jax-westie-fest->2026-09-04-river-city-swing"
+    ]
+    events = [e for b in payload["summaries"] for e in b["events"]]
+    assert len(events) == 1
+    assert events[0]["slug"] == "2026-09-04-river-city-swing"
+    assert events[0]["name"] == "Jax Westie Fest"
+    assert events[0]["telegraph_url"] == (
+        "https://telegra.ph/River-City-Swing---Full-Info-09-10"
+    )
+    assert payload["summaries"][0]["post_date"] == "08-09-2026"
+
+
 def _find_edition_row(editions: list[dict], event_name: str) -> dict | None:
     import re
 
