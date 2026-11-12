@@ -95,6 +95,52 @@ def site_write_plan(
         return None, site_path
     return site_path, None
 
+
+def normalize_event_url(raw: object) -> str:
+    """Return a safe http(s) URL for an event site, or '' if unusable.
+
+    Dump / edition URLs are often bare hosts or occasionally mangled
+    (``http//http://…``). Used for Registry “official site” links.
+    """
+    if raw is None:
+        return ""
+    try:
+        if pd.isna(raw):
+            return ""
+    except (TypeError, ValueError):
+        pass
+    s = str(raw).strip()
+    if not s or s.lower() in {"nan", "none", "null", "-"}:
+        return ""
+    if any(ch.isspace() for ch in s):
+        return ""
+    lower = s.lower()
+    if lower.startswith(("javascript:", "data:", "vbscript:", "file:")):
+        return ""
+    # Collapse mangled "http//http://…" / "https//https://…"
+    while True:
+        fixed = s
+        for bad, good in (
+            ("http//http://", "http://"),
+            ("https//https://", "https://"),
+            ("http//https://", "https://"),
+            ("https//http://", "http://"),
+            ("http//", "http://"),
+            ("https//", "https://"),
+        ):
+            if fixed.lower().startswith(bad):
+                fixed = good + fixed[len(bad) :]
+        if fixed == s:
+            break
+        s = fixed
+    if "://" not in s:
+        s = "https://" + s.lstrip("/")
+    lower = s.lower()
+    if not (lower.startswith("http://") or lower.startswith("https://")):
+        return ""
+    return s
+
+
 SKILL_DUMP = {"Newcomer", "Novice", "Intermediate", "Advanced", "All-Star", "Champion"}
 SKILL_DUMP_IDS = {i for i, n in DUMP_DIVISION_ID_TO_LEVEL.items() if n in SKILL_DUMP}
 
@@ -804,6 +850,15 @@ FROM r WHERE starts_with(event_edition_id, 'wsdc:') GROUP BY 1
             'competitor names">DC redact</span>'
         )
 
+    def site_link(r) -> str:
+        href = normalize_event_url(r.get("url"))
+        if not href:
+            return ""
+        return (
+            f' <a class="ev-site" href="{H.escape(href)}" target="_blank" '
+            f'rel="noopener noreferrer" title="Official event site">↗</a>'
+        )
+
     def event_rows(sub) -> str:
         parts = []
         for _, r in sub.iterrows():
@@ -812,7 +867,7 @@ FROM r WHERE starts_with(event_edition_id, 'wsdc:') GROUP BY 1
                 "<tr>"
                 f"<td>{mon}</td>"
                 f'<td class="num">{int(r.event_id)}</td>'
-                f"<td>{esc(r.event_name)}{dc_badge(r)}</td>"
+                f"<td>{esc(r.event_name)}{site_link(r)}{dc_badge(r)}</td>"
                 f"<td>{esc(r.start_date)}</td>"
                 f'<td class="num">{fmt_num(r.scored_finalists)}</td>'
                 f'<td class="c">{check_html(r.chk_prelims, clean(r.tip_prelims))}</td>'
@@ -944,6 +999,8 @@ td.c, th.c {{ text-align:center; }}
 .soft.needs {{ background:#eceae4; color:var(--none); }}
 .badge.dc {{ display:inline-block; font-size:.65rem; padding:.05rem .3rem; border-radius:3px;
   background:#e8eef6; color:#2a4a6a; font-weight:600; margin-left:.25rem; }}
+a.ev-site {{ margin-left:.25rem; color:var(--link); text-decoration:none; font-weight:600; }}
+a.ev-site:hover {{ text-decoration:underline; }}
 section.year {{ margin:2rem 0; padding-top:.5rem; border-top:2px solid var(--line); }}
 section.year h2 {{ margin:0 0 .75rem; font-size:1.2rem; }}
 section.year h2 .meta {{ color:var(--muted); font-weight:500; font-size:.95rem; margin-left:.4rem; }}
