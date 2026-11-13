@@ -39,6 +39,7 @@ def test_build_event_aliases_includes_schedule_and_result_maps():
     assert mappings["Seattle's Easter Swing"] == "Easter Swing"
     assert mappings["Sea to Sky Seattle"] == "Sea to Sky"
     assert mappings["Sea to Sky Seattle WCS"] == "Sea to Sky"
+    assert mappings["Mountain Magic Dance Convention"] == "Mountain Magic"
 
 
 def test_export_event_aliases_json_shape(tmp_path: Path):

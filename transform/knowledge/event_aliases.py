@@ -130,6 +130,8 @@ EVENT_NAME_VARIANT_TO_CATALOG: dict[str, str] = {
     # Weekend/calendar title includes city; WSDC results use short catalog name.
     'Sea to Sky Seattle': 'Sea to Sky',
     'Sea to Sky Seattle WCS': 'Sea to Sky',
+    # Calendar/long title; WSDC results / catalog use short name (event_id 31).
+    'Mountain Magic Dance Convention': 'Mountain Magic',
     'Austin Rocks 2024': 'Austin Rocks',
     'Midwest Westie Fest 2025': 'Midwest Westie Fest',
     'Milan Modern Swing 2025': 'Milan Modern Swing',
