@@ -136,6 +136,12 @@ Competition Results load + conflict probes:
 [competition-results.md](competition-results.md)
 (`python scripts/load_competition_results.py --check-conflicts`).
 
+Event Editions enrichment (`category=event_editions`):
+[event-editions.md](event-editions.md)
+(`python scripts/load_event_editions.py --dry-run` / `--check-conflicts`).
+Gate blockers are unresolved keys in
+`data/reference/event_editions_decisions.yaml`.
+
 ## Event split audit
 
 ```bash

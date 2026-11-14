@@ -415,9 +415,30 @@ Load: `scripts/load_competition_results.py` (local `--cr-path`, dry-run default)
 Full runbook: [../operations/competition-results.md](../operations/competition-results.md).
 Generated columns: [_generated/tables.md](_generated/tables.md).
 
+## Event Editions enrichment (Todd)
+
+Parallel attributes from Todd `event_editions.parquet` (migrations 041–043).
+**Does not duplicate** occurred edition dates/cities in `core.event_editions`.
+Non-WSDC Todd rows are skipped. Soft natural keys (promote-safe).
+
+| Table | Grain |
+|-------|--------|
+| `core.ee_loads` | One load audit |
+| `core.edition_attributes` | Occurred edition attrs on `(event_id, year, month)` |
+| `core.edition_status_history` | cancelled / hiatus / no_results |
+| `core.metros` | Metro dim; `core.locations.metro_id` FK |
+| `core.venues` | Deduped venues (soft `location_id`) |
+| `core.officials` | Results Form people dim |
+| `core.edition_officials` | Edition × official bridge |
+
+Load: `scripts/load_event_editions.py`. Runbook:
+[../operations/event-editions.md](../operations/event-editions.md).
+Blocking gate: `data/reference/event_editions_decisions.yaml`.
+
 ## Related
 
 - [history.md](history.md) — change log
 - [export-views.md](export-views.md) — Tableau views
 - [../architecture/identity-model.md](../architecture/identity-model.md)
 - [../operations/competition-results.md](../operations/competition-results.md)
+- [../operations/event-editions.md](../operations/event-editions.md)

@@ -1,0 +1,54 @@
+version: 1
+updated: "2026-11-14"
+notes: >
+  Core is SoT for occurred editions. Class rules cover known Todd-only
+  populations (cancelled/hiatus/no_results; future scheduled) and value
+  mismatches (city/dates — logged, core wins). Individual cases cover
+  month_shift and investigated conflicts. MERGE_EVENT_ID_MAP covers all
+  13 Todd series merges (no conflicts). Natural-key collisions where one
+  side is exact are auto-resolved (prefer exact).
+
+class_rules:
+  - class: status_history_absent_from_core
+    action: load_status_history
+    winner: todd
+    reason: >
+      Cancelled / hiatus / no_results WSDC editions are not modeled in
+      core.event_editions (points pipeline). Load into core.edition_status_history.
+    decided: "2026-11-14"
+
+  - class: future_scheduled_skip
+    action: skip
+    winner: ours
+    reason: >
+      Future scheduled editions stay in core.scheduled_events (Events List).
+      Do not load Todd scheduled rows into edition attribute/status tables.
+    decided: "2026-11-14"
+
+  - class: value_mismatch_core_wins
+    action: acknowledge
+    winner: core
+    reason: >
+      Todd city/start_date may differ from core.event_editions. Core remains
+      SoT; diffs are logged in the recon report allowed list and never
+      overwrite core columns. New attrs still load.
+    decided: "2026-11-14"
+
+cases:
+  - key: wsdc:1:August 2017
+    class: month_shift
+    winner: core
+    reason: >
+      Todd filing August 2017 (4TH of July Convention, no_results) matches
+      core July 2017. Status history keeps Todd filing month; core natural
+      key unchanged.
+    decided: "2026-11-14"
+
+  - key: "collision:272:2018-01"
+    class: natural_key_collision_prefer_exact
+    winner: core
+    reason: >
+      wsdc:307:January 2018 (merge_map 307→272) and wsdc:272:January 2018
+      (exact) both map to (272, 2018, 1). Keep exact todd_edition_id
+      wsdc:272:January 2018; drop duplicate attrs row for 307.
+    decided: "2026-11-14"
