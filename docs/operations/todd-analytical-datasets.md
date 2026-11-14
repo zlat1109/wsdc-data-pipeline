@@ -68,7 +68,7 @@ If the gate blocks:
 1. Open `data/quality_reports/event_editions_recon.json` → `gate.issues`
 2. Investigate each key (core vs Todd)
 3. Add a **case** or **class_rule** to
-   [`data/reference/event_editions_decisions.yaml`](../../data/reference/event_editions_decisions.yaml)
+   `data/reference/event_editions_decisions.yaml` (repo root; not in MkDocs nav)
 4. Re-run dry-run until `gate.ok == true`
 
 ```bash

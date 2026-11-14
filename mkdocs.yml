@@ -106,6 +106,8 @@ nav:
     - Pipeline runbook: operations/pipeline-runbook.md
     - MySQL dump reload: operations/mysql-dump-reload.md
     - Competition Results: operations/competition-results.md
+    - Event Editions: operations/event-editions.md
+    - Todd Analytical Datasets: operations/todd-analytical-datasets.md
     - Data sync: operations/data-sync.md
     - GitHub Actions: operations/github-actions.md
     - Repair scripts: operations/repair-scripts.md
