@@ -18,6 +18,12 @@
 | `export.edition_division_entries` | `edition_division_entries.csv` | Yes |
 | `export.competitions_best` | `competitions_best.csv` | Yes |
 | `export.edition_location_baseline` | `edition_location_baseline.csv` | Yes |
+| `export.edition_attributes` | `edition_attributes.csv` | Yes |
+| `export.edition_status_history` | `edition_status_history.csv` | Yes |
+| `export.metros` | `metros.csv` | Yes |
+| `export.venues` | `venues.csv` | Yes |
+| `export.officials` | `officials.csv` | Yes |
+| `export.edition_officials` | `edition_officials.csv` | Yes |
 | `export.changed_dancer_points_info` | `changed_dancer_points_info.csv` | Yes |
 | `export.changed_dancer_role_info` | `changed_dancer_role_info.csv` | Yes |
 | `export.changed_dancer_name_info` | `changed_dancer_name_info.csv` | Yes |

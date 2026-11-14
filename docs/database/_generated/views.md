@@ -36,6 +36,8 @@ Completed WSDC editions (results-backed, past). event_seq=1 is oldest;
 
 ## export.dancers_results_with_name
 
+## export.edition_attributes
+
 ## export.edition_calendar_dates
 
 ## export.edition_division_entries
@@ -43,6 +45,10 @@ Completed WSDC editions (results-backed, past). event_seq=1 is oldest;
 ## export.edition_division_tiers
 
 ## export.edition_location_baseline
+
+## export.edition_officials
+
+## export.edition_status_history
 
 ## export.event_catalog
 
@@ -53,6 +59,10 @@ Completed WSDC editions (results-backed, past). event_seq=1 is oldest;
 ## export.geo_events
 
 ## export.location_info
+
+## export.metros
+
+## export.officials
 
 ## export.results_by_event
 
@@ -68,3 +78,5 @@ Deprecated Tableau source: all active editions. Prefer export.scheduled_events (
 
 
 ## export.tier_rules
+
+## export.venues
