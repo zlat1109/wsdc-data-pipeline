@@ -23,6 +23,12 @@ From `export.py` (auto-synced by `scripts/sync_docs.py`):
 | `export.edition_division_entries` | `edition_division_entries.csv` | Yes |
 | `export.competitions_best` | `competitions_best.csv` | Yes |
 | `export.edition_location_baseline` | `edition_location_baseline.csv` | Yes |
+| `export.edition_attributes` | `edition_attributes.csv` | Yes |
+| `export.edition_status_history` | `edition_status_history.csv` | Yes |
+| `export.metros` | `metros.csv` | Yes |
+| `export.venues` | `venues.csv` | Yes |
+| `export.officials` | `officials.csv` | Yes |
+| `export.edition_officials` | `edition_officials.csv` | Yes |
 | `export.changed_dancer_points_info` | `changed_dancer_points_info.csv` | Yes |
 | `export.changed_dancer_role_info` | `changed_dancer_role_info.csv` | Yes |
 | `export.changed_dancer_name_info` | `changed_dancer_name_info.csv` | Yes |
@@ -44,6 +50,12 @@ Not wired in `export.py` (document manually when added):
 | `export.scheduled_events_legacy` | — | Deprecated; query manually if needed |
 | `export.competitions` | — | Full dump competitions (prefer `competitions_best` CSV) |
 | `export.cr_editions` | — | Competition Results editions (Supabase only) |
+| `export.edition_attributes` | `edition_attributes.csv` | Todd Event Editions attrs |
+| `export.edition_status_history` | `edition_status_history.csv` | cancelled / hiatus / no_results |
+| `export.metros` | `metros.csv` | Metro dim |
+| `export.venues` | `venues.csv` | Deduped venues |
+| `export.officials` | `officials.csv` | Results Form people |
+| `export.edition_officials` | `edition_officials.csv` | Edition × official |
 | `export.cr_round_results` | — | CR competitor rows (Supabase only) |
 | `export.cr_judge_marks` | — | CR judge marks long-form (Supabase only) |
 | `export.cr_finals_vs_scored` | — | CR finals vs `core.results` (`unscored_finalist`) |

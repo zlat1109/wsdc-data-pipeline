@@ -170,6 +170,27 @@ Rounds within a CR division (prelim / quarter / semi / final).
 | dancer_id | text/PK/FK | — |
 | dancer_name | text/PK/FK | — |
 
+## core.edition_attributes
+
+Todd Event Editions attributes for occurred WSDC editions (1:1 natural key). 
+
+| Column | Migration parse | Live type |
+|--------|-----------------|-----------|
+| event_id | text/PK/FK | — |
+| event_year | text/PK/FK | — |
+| event_month | text/PK/FK | — |
+| todd_edition_id | text/PK/FK | — |
+| match_kind | text/PK/FK | — |
+| venue_id | text/PK/FK | — |
+| registry_status | text/PK/FK | — |
+| scoring_software | text/PK/FK | — |
+| coordinates_precision | text/PK/FK | — |
+| date_precision | text/PK/FK | — |
+| accommodation_hotel | text/PK/FK | — |
+| wsdc_event_name | text/PK/FK | — |
+| row_info | text/PK/FK | — |
+| load_id | text/PK/FK | — |
+
 ## core.edition_calendar_dates
 
 Planned edition dates from worldsdc.com/events/calendar/ (and list backfill). 
@@ -239,6 +260,57 @@ Golden edition→location_id map. Compared on each load; drifts → manual revie
 | source | text/PK/FK | — |
 | seeded_at | text/PK/FK | — |
 | updated_at | text/PK/FK | — |
+
+## core.edition_officials
+
+Officials attached to an edition (Results Form panel / chief / scoreperson).
+
+| Column | Migration parse | Live type |
+|--------|-----------------|-----------|
+| edition_official_id | text/PK/FK | — |
+| event_id | text/PK/FK | — |
+| event_year | text/PK/FK | — |
+| event_month | text/PK/FK | — |
+| official_id | text/PK/FK | — |
+| role | text/PK/FK | — |
+| rounds | text/PK/FK | — |
+| panel_order | text/PK/FK | — |
+
+## core.edition_status_history
+
+WSDC editions that did not take place (cancelled / hiatus / no_results). 
+
+| Column | Migration parse | Live type |
+|--------|-----------------|-----------|
+| event_id | text/PK/FK | — |
+| event_year | text/PK/FK | — |
+| event_month | text/PK/FK | — |
+| todd_edition_id | text/PK/FK | — |
+| edition_status | text/PK/FK | — |
+| cancelled_covid | text/PK/FK | — |
+| event_edition_name | text/PK/FK | — |
+| start_date | text/PK/FK | — |
+| end_date | text/PK/FK | — |
+| registry_status | text/PK/FK | — |
+| city | text/PK/FK | — |
+| region | text/PK/FK | — |
+| country | text/PK/FK | — |
+| load_id | text/PK/FK | — |
+
+## core.ee_loads
+
+One row per Event Editions parquet load into edition_attributes / status history.
+
+| Column | Migration parse | Live type |
+|--------|-----------------|-----------|
+| load_id | text/PK/FK | — |
+| loaded_at | text/PK/FK | — |
+| source_file | text/PK/FK | — |
+| file_sha256 | text/PK/FK | — |
+| built_at | text/PK/FK | — |
+| git_commit | text/PK/FK | — |
+| row_counts | text/PK/FK | — |
+| match_stats | text/PK/FK | — |
 
 ## core.event_aliases
 | Column | Migration parse | Live type |
@@ -359,6 +431,29 @@ Latest schedule snapshot: one row per logical event (nearest upcoming edition).
 | event_location_standardized | text/PK/FK | — |
 | coordinates_valid | text/PK/FK | — |
 
+## core.metros
+
+Metro areas from Todd Event Editions (cities within ~40 km grouped).
+
+| Column | Migration parse | Live type |
+|--------|-----------------|-----------|
+| metro_id | text/PK/FK | — |
+| name | text/PK/FK | — |
+| country | text/PK/FK | — |
+| latitude | text/PK/FK | — |
+| longitude | text/PK/FK | — |
+
+## core.officials
+
+Judges / chief judges / scorepersons (Results Form names, deduped).
+
+| Column | Migration parse | Live type |
+|--------|-----------------|-----------|
+| official_id | text/PK/FK | — |
+| canonical_name | text/PK/FK | — |
+| name_normalized | text/PK/FK | — |
+| dancer_id | text/PK/FK | — |
+
 ## core.results
 | Column | Migration parse | Live type |
 |--------|-----------------|-----------|
@@ -446,6 +541,22 @@ Chart 5 places 1-5 plus placement=0 for additional-finalist points.
 | points | text/PK/FK | — |
 | source | text/PK/FK | — |
 | REFERENCES | text/PK/FK | — |
+
+## core.venues
+
+Deduplicated venues from Todd Event Editions (normalized name + address).
+
+| Column | Migration parse | Live type |
+|--------|-----------------|-----------|
+| venue_id | text/PK/FK | — |
+| name | text/PK/FK | — |
+| name_normalized | text/PK/FK | — |
+| address | text/PK/FK | — |
+| venue_type | text/PK/FK | — |
+| venue_url | text/PK/FK | — |
+| latitude | text/PK/FK | — |
+| longitude | text/PK/FK | — |
+| location_id | text/PK/FK | — |
 
 ## history.dancer_names_history
 | Column | Migration parse | Live type |

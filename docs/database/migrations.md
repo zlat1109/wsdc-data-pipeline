@@ -59,6 +59,9 @@ CI and `scripts/run_pipeline.py` call `db/apply.py` before load.
 | `038_competitions_best_view.sql` | competitions consistency checks + best-row export view |
 | `039_competition_results.sql` | Competition Results enrichment (scrape layer absent from WSDC public results). Parallel to core.results: prelims/semis/quarters, unscored finalists, partners, judge marks, other divisions. Nullable FKs — never invent dancers/events. |
 | `040_cr_detach_promote_cascade_fks.sql` | Competition Results must survive weekly promote_core TRUNCATE … CASCADE. |
+| `041_event_editions_layer.sql` | Event Editions enrichment from Todd Analytical Datasets (WSDC only). Parallel attributes + status history; core.event_editions remains SoT for occurred editions. Soft natural keys — no FK into promote_core truncates. |
+| `042_metros_venues.sql` | Metros + venues from Todd Event Editions; metro_id on core.locations. |
+| `043_officials.sql` | Officials dim + edition bridge; soft link from cr_judge_marks. |
 <!-- /docs-sync:migration-index -->
 
 ## Adding a migration

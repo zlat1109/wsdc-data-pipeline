@@ -7,6 +7,8 @@ Runbooks for pipeline execution, CI, data sync, repairs, and monitoring.
 | [pipeline-runbook.md](pipeline-runbook.md) | Manual parse, load, export |
 | [mysql-dump-reload.md](mysql-dump-reload.md) | New WSDC MySQL dump → competitions + dates → site |
 | [competition-results.md](competition-results.md) | Competition Results parquet → `core.cr_*` enrichment + registry page |
+| [event-editions.md](event-editions.md) | Todd Event Editions → attributes / status / metros / venues / officials |
+| [todd-analytical-datasets.md](todd-analytical-datasets.md) | New Todd zip: CR + EE load order, gate, Registry, promote rematch |
 | [data-sync.md](data-sync.md) | Multi-machine desync, merge datasets |
 | [github-actions.md](github-actions.md) | CI secrets, workflows, probe logic |
 | [repair-scripts.md](repair-scripts.md) | One-off DB fixes after audit |
@@ -35,6 +37,11 @@ python scripts/monitor_data_quality.py
 # Competition Results scrape layer (local parquet → core.cr_*)
 python scripts/load_competition_results.py --cr-path "$CR_RESULTS_PATH" --dry-run
 python scripts/load_competition_results.py --check-conflicts
+
+# Todd Event Editions enrichment
+python scripts/load_event_editions.py --ee-path "$EE_PATH" --dry-run
+python scripts/load_event_editions.py --ee-path "$EE_PATH" --apply --migrate \
+  --with-metros-venues --with-officials
 
 # In-place dedupe (duplicate results / bloated locations; no full parse)
 python scripts/dedupe_core_data.py --dry-run
