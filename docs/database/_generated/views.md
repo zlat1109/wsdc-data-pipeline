@@ -28,6 +28,11 @@ Completed WSDC editions (results-backed, past). event_seq=1 is oldest;
 
 ## export.cr_round_results
 
+## export.cr_skill_entrants
+
+Matched CR skill JJ: largest-round Leader/Follower counts per edition×level. 
+
+
 ## export.dancer_role_info
 
 ## export.dancers_points_info

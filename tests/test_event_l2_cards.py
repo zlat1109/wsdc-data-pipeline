@@ -293,6 +293,195 @@ def test_edition_metrics_prefers_exact_over_tier_estimate():
     assert metrics["dancers_min"] == 39
     assert metrics["dancers_max"] == 39
     assert metrics.get("dancers_unique", 0) == 0
+    assert metrics.get("dancers_source") == "exact"
+
+
+def test_edition_metrics_cr_between_dump_and_tier():
+    """CR largest-round fills when dump exact missing; still beats tier ~."""
+    cr = pd.DataFrame(
+        [
+            {
+                "event_id": 9,
+                "event_year": 2026,
+                "event_month": 11,
+                "level": "Novice",
+                "leader_count": 44,
+                "follower_count": 53,
+            },
+            {
+                "event_id": 9,
+                "event_year": 2026,
+                "event_month": 11,
+                "level": "Intermediate",
+                "leader_count": 26,
+                "follower_count": 45,
+            },
+        ]
+    )
+    tiers = pd.DataFrame(
+        [
+            {
+                "event_id": 9,
+                "event_year": 2026,
+                "event_month": 11,
+                "division": "Novice",
+                "role": "Leader",
+                "tier": 4,
+                "status": "matched",
+                "dance": "West Coast Swing",
+                "rule_min_competitors": 40,
+                "rule_max_competitors": 79,
+            },
+            {
+                "event_id": 9,
+                "event_year": 2026,
+                "event_month": 11,
+                "division": "Novice",
+                "role": "Follower",
+                "tier": 4,
+                "status": "matched",
+                "dance": "West Coast Swing",
+                "rule_min_competitors": 40,
+                "rule_max_competitors": 79,
+            },
+        ]
+    )
+    metrics = _edition_metrics(
+        pd.DataFrame(),
+        pd.Series(dtype="int64"),
+        "Moscow Westie Fest",
+        2026,
+        11,
+        None,
+        tiers=tiers,
+        competitions=pd.DataFrame(),
+        cr_entrants=cr,
+        event_id=9,
+    )
+    assert metrics["unique_dancers"] == 44 + 53 + 26 + 45
+    assert metrics["dancers_approx"] == 0
+    assert metrics.get("dancers_source") == "cr"
+
+
+def test_edition_metrics_incomplete_cr_falls_to_tier():
+    cr = pd.DataFrame(
+        [
+            {
+                "event_id": 4,
+                "event_year": 2026,
+                "event_month": 2,
+                "level": "Novice",
+                "leader_count": 20,
+                "follower_count": 22,
+            },
+            {
+                "event_id": 4,
+                "event_year": 2026,
+                "event_month": 2,
+                "level": "Advanced",
+                "leader_count": 10,
+                "follower_count": None,
+            },
+        ]
+    )
+    tiers = pd.DataFrame(
+        [
+            {
+                "event_id": 4,
+                "event_year": 2026,
+                "event_month": 2,
+                "division": "Novice",
+                "role": "Leader",
+                "tier": 2,
+                "status": "matched",
+                "dance": "West Coast Swing",
+                "rule_min_competitors": 11,
+                "rule_max_competitors": 19,
+            },
+            {
+                "event_id": 4,
+                "event_year": 2026,
+                "event_month": 2,
+                "division": "Novice",
+                "role": "Follower",
+                "tier": 2,
+                "status": "matched",
+                "dance": "West Coast Swing",
+                "rule_min_competitors": 11,
+                "rule_max_competitors": 19,
+            },
+        ]
+    )
+    metrics = _edition_metrics(
+        pd.DataFrame(),
+        pd.Series(dtype="int64"),
+        "Event",
+        2026,
+        2,
+        None,
+        competitions=pd.DataFrame(),
+        cr_entrants=cr,
+        tiers=tiers,
+        event_id=4,
+    )
+    assert metrics.get("dancers_source") == "estimated"
+    assert metrics["dancers_approx"] == 1
+
+
+def test_edition_metrics_dump_wins_over_cr():
+    dump = pd.DataFrame(
+        [
+            {
+                "event_id": 9,
+                "event_year": 2026,
+                "event_month": 11,
+                "level": "Novice",
+                "leader_count": 40,
+                "follower_count": 50,
+            },
+            {
+                "event_id": 9,
+                "event_year": 2026,
+                "event_month": 11,
+                "level": "Intermediate",
+                "leader_count": 20,
+                "follower_count": 30,
+            },
+        ]
+    )
+    cr = pd.DataFrame(
+        [
+            {
+                "event_id": 9,
+                "event_year": 2026,
+                "event_month": 11,
+                "level": "Novice",
+                "leader_count": 99,
+                "follower_count": 99,
+            },
+            {
+                "event_id": 9,
+                "event_year": 2026,
+                "event_month": 11,
+                "level": "Intermediate",
+                "leader_count": 99,
+                "follower_count": 99,
+            },
+        ]
+    )
+    metrics = _edition_metrics(
+        pd.DataFrame(),
+        pd.Series(dtype="int64"),
+        "Event",
+        2026,
+        11,
+        None,
+        competitions=dump,
+        cr_entrants=cr,
+        event_id=9,
+    )
+    assert metrics["unique_dancers"] == 140
+    assert metrics.get("dancers_source") == "exact"
 
 
 def test_edition_metrics_unique_fallback_sets_star_flag():

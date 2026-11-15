@@ -201,6 +201,64 @@ def test_competitors_falls_back_to_estimate():
     assert out["competitors"] == 30
 
 
+def test_competitors_cr_before_estimate():
+    cr = pd.DataFrame(
+        [
+            {
+                "event_id": 3,
+                "event_year": 2026,
+                "event_month": 1,
+                "level": "Novice",
+                "leader_count": 12,
+                "follower_count": 14,
+            },
+            {
+                "event_id": 3,
+                "event_year": 2026,
+                "event_month": 1,
+                "level": "Advanced",
+                "leader_count": 8,
+                "follower_count": 9,
+            },
+        ]
+    )
+    tiers = pd.DataFrame(
+        [
+            {
+                "event_id": 3,
+                "event_year": 2026,
+                "event_month": 1,
+                "division": "Novice",
+                "role": "Leader",
+                "tier": 2,
+                "status": "matched",
+                "dance": "West Coast Swing",
+                "rule_min_competitors": 11,
+                "rule_max_competitors": 19,
+            },
+            {
+                "event_id": 3,
+                "event_year": 2026,
+                "event_month": 1,
+                "division": "Novice",
+                "role": "Follower",
+                "tier": 2,
+                "status": "matched",
+                "dance": "West Coast Swing",
+                "rule_min_competitors": 11,
+                "rule_max_competitors": 19,
+            },
+        ]
+    )
+    out = competitors_for_edition(
+        pd.DataFrame(), tiers, 3, 2026, 1, cr_entrants=cr
+    )
+    assert out is not None
+    assert out["source"] == "cr"
+    assert out["approx"] == 0
+    assert out["competitors"] == 12 + 14 + 8 + 9
+
+
 def test_competitors_keeps_approx_when_either_side_estimated():
     """Integration: build payload flags approx on prev and current independently."""
     # Covered via classify + competitors unit tests; build uses same helpers.
