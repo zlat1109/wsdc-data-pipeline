@@ -12,6 +12,7 @@ import pandas as pd
 from transform.knowledge.geo_flags import continent_for_country
 from transform.year_event_calendar.event_cards import (
     _competitions_frame,
+    _cr_skill_entrants_frame,
     _editions_with_results,
     _estimate_dancers_from_tiers,
     _exact_entries_from_competitions,
@@ -100,10 +101,13 @@ def competitors_for_edition(
     year: int,
     month: int,
     unique_dancers_fallback: Any = None,
+    *,
+    cr_entrants: pd.DataFrame | None = None,
 ) -> dict[str, Any] | None:
-    """Exact dump Σ(L+F) → tier estimate → unique from editions fallback.
+    """Dump exact Σ(L+F) → CR largest-round → tier estimate → unique scored.
 
     Returns dict with competitors, approx (0|1), source, or None if no signal.
+    ``source=cr`` looks like exact in the UI (approx=0) but is not dump truth.
     """
     exact = _exact_entries_from_competitions(competitions, event_id, year, month)
     if exact is not None:
@@ -114,6 +118,17 @@ def competitors_for_edition(
             "dancers_min": int(exact["dancers_min"]),
             "dancers_max": int(exact["dancers_max"]),
         }
+
+    if cr_entrants is not None:
+        cr = _exact_entries_from_competitions(cr_entrants, event_id, year, month)
+        if cr is not None:
+            return {
+                "competitors": int(cr["unique_dancers"]),
+                "approx": 0,
+                "source": "cr",
+                "dancers_min": int(cr["dancers_min"]),
+                "dancers_max": int(cr["dancers_max"]),
+            }
 
     estimate = _estimate_dancers_from_tiers(tiers, event_id, year, month)
     if estimate is not None:
@@ -210,6 +225,7 @@ def build_event_growth(
     as_of = as_of or date.today()
     editions = _editions_with_results(data_dir)
     competitions = _competitions_frame(data_dir)
+    cr_entrants = _cr_skill_entrants_frame(data_dir)
     tiers = _tiers_frame(data_dir)
     coords = _location_coords(data_dir)
 
@@ -243,6 +259,7 @@ def build_event_growth(
             year,
             month,
             unique_dancers_fallback=rec.get("unique_dancers"),
+            cr_entrants=cr_entrants,
         )
         if m is None:
             continue

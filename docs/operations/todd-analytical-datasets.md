@@ -45,6 +45,10 @@ python scripts/load_competition_results.py \
 Acceptance: unmatched editions = 0, offline conflicts OK, report under
 `data/quality_reports/cr_load_report.json`.
 
+Then **export + rebuild L2/growth** so `cr_skill_entrants.csv` updates
+(waterfall: dump exact → CR → `~`). Details:
+[competition-results.md](competition-results.md) “After every CR `--apply`”.
+
 Then refresh Event Data Registry (Lookup page on analytics site) per the
 checklist in competition-results.md (plain local report first; patch Lookup
 tbodies only — never `--force-plain-site`).

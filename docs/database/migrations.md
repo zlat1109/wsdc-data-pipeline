@@ -62,6 +62,7 @@ CI and `scripts/run_pipeline.py` call `db/apply.py` before load.
 | `041_event_editions_layer.sql` | Event Editions enrichment from Todd Analytical Datasets (WSDC only). Parallel attributes + status history; core.event_editions remains SoT for occurred editions. Soft natural keys — no FK into promote_core truncates. |
 | `042_metros_venues.sql` | Metros + venues from Todd Event Editions; metro_id on core.locations. |
 | `043_officials.sql` | Officials dim + edition bridge; soft link from cr_judge_marks. |
+| `044_cr_skill_entrants.sql` | export.cr_skill_entrants — largest-round L/F from CR for calendar fallback |
 <!-- /docs-sync:migration-index -->
 
 ## Adding a migration

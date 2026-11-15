@@ -35,6 +35,7 @@ EVENT_CATALOG_EXPORTS: dict[str, str] = {
     "export.edition_division_tiers": "edition_division_tiers.csv",
     "export.edition_division_entries": "edition_division_entries.csv",
     "export.competitions_best": "competitions_best.csv",
+    "export.cr_skill_entrants": "cr_skill_entrants.csv",
     "export.edition_location_baseline": "edition_location_baseline.csv",
     "export.edition_attributes": "edition_attributes.csv",
     "export.edition_status_history": "edition_status_history.csv",

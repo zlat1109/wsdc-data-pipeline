@@ -67,6 +67,18 @@ python scripts/load_competition_results.py --check-conflicts
 
 `--apply` truncates all `core.cr_*` data tables and reloads in one transaction, then runs live conflict checks. It never `COPY`/`TRUNCATE`s `core.results` / `core.dancers` / `core.event_editions`.
 
+### After every CR `--apply` (required)
+
+CR largest-round headcounts feed L2 / Event Trends when dump `competitions_best` cannot form an exact Σ(L+F):
+
+```bash
+python export.py   # includes export.cr_skill_entrants → data/cr_skill_entrants.csv
+python scripts/build_year_event_calendar.py --data-dir data
+# or full site sync: scripts/sync_analytics_site.sh
+```
+
+Waterfall: **dump exact → CR → tier `~` → unique scored**. UI treats CR like exact (no `~`); JSON may carry `source` / `dancers_source` = `cr` for debugging only.
+
 ### Weekly promote hazard (fixed in migration 040)
 
 `db/sql/promote_core.sql` runs `TRUNCATE core.dancers, core.events, … RESTART IDENTITY CASCADE`. Any **DB FK** from `cr_*` into those tables caused Postgres to wipe `cr_editions` / `cr_round_results` / … while leaving `cr_loads` audit rows. Symptom: `cr_loads` > 0, all other `cr_*` = 0.
