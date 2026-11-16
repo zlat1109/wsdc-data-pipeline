@@ -305,6 +305,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 9,Boston Tea Party,"Boston, MA, United States",http://teapartyswings.com,March 2025,2025-03-01,2025,3,2025-03
 259,Swingover,"Orlando, FL, United States",http://www.swingoverevent.com,April 2025,2025-04-01,2025,4,2025-04
 312,Westie Pink City,"Toulouse, France",http://www.westiepinkcity.fr/,November 2026,2026-11-01,2026,11,2026-11
+288,Midnight Madness,"Dallas, TX, United States",http://www.MidnightMadnessWCS.com,November 2026,2026-11-01,2026,11,2026-11
 77,Arizona Dance Classic,"Phoenix, AZ, United States",,August 2015,2015-08-01,2015,8,2015-08
 163,DFW Pro Am Jam,"Dallas, TX, United States",,May 2013,2013-05-01,2013,5,2013-05
 206,Hungarian Open,"Budapest, Hungary",http://wcs-ho.com/,June 2013,2013-06-01,2013,6,2013-06
@@ -387,7 +388,6 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 191,Sunny Side Dance Camp,"Crimea, Ukraine",,September 2013,2013-09-01,2013,9,2013-09
 135,Desert City Swing,"Phoenix, AZ, United States",http://www.desertcityswing.com,September 2013,2013-09-01,2013,9,2013-09
 15,Dallas D.A.N.C.E.,"Dallas, TX, United States",,September 2013,2013-09-01,2013,9,2013-09
-47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 1995,1995-08-01,1995,8,1995-08
 177,River City Swing,"Jacksonville, FL, United States",http://www.floridadanceevents.com,September 2013,2013-09-01,2013,9,2013-09
 190,Vermont Swing Dance Championships,"Burlington, VT, United States",http://www.vermontwestcoastswing.net,September 2013,2013-09-01,2013,9,2013-09
 165,Midland Swing Open,"London, United Kingdom",http://www.MidlandSwingOpen.com,September 2013,2013-09-01,2013,9,2013-09
@@ -687,6 +687,9 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 67,Americas Classic,"Houston, TX, United States",,January 2010,2010-01-01,2010,1,2010-01
 334,Countdown Swing Boston,"Boston, MA, United States",http://countdownswingboston.com/,January 2013,2013-01-01,2013,1,2013-01
 9,Boston Tea Party,"Boston, MA, United States",http://teapartyswings.com,March 2014,2014-03-01,2014,3,2014-03
+376,Northeast Swing Classic,"Providence, RI, United States",http://www.northeastswingclassic.com/,November 2026,2026-11-01,2026,11,2026-11
+269,Autumn Swing Challenge,"Budapest, Hungary",http://www.asc-budapest.com,November 2026,2026-11-01,2026,11,2026-11
+365,Flowstate | West Coast Swing & Zouk Festival,"London, United Kingdom",https://eastonswing.com/west-coast-swing-events/world-swing-dance-council/flowstate-west-coast-swing-zouk-festival-eastonswing/,November 2026,2026-11-01,2026,11,2026-11
 170,Russian Open WCS Championships,"Moscow, Russia",,March 2014,2014-03-01,2014,3,2014-03
 216,The Brazilian Open,"Fortaleza, Brazil",,March 2014,2014-03-01,2014,3,2014-03
 187,City of Angels WCS,"Burbank, CA, United States",http://cityofangelswcs.com,April 2014,2014-04-01,2014,4,2014-04
@@ -720,7 +723,6 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 154,UK WCS Championships,"London, United Kingdom",http://www.ukwcschamps.com,April 2013,2013-04-01,2013,4,2013-04
 18,Easter Swing,"Seattle, WA, United States",https://easterswing.org/,March 2013,2013-03-01,2013,3,2013-03
 187,City of Angels WCS,"Burbank, CA, United States",http://cityofangelswcs.com,April 2013,2013-04-01,2013,4,2013-04
-47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 1996,1996-08-01,1996,8,1996-08
 199,San Francisco Dance Sensation,"Oakland, CA, United States",,April 2013,2013-04-01,2013,4,2013-04
 200,Austin Swing Dance Championships,"Austin, TX, United States",http://www.austinswing.com/,April 2013,2013-04-01,2013,4,2013-04
 343,Swing Crush,"San Antonio, TX, United States",https://swingcrush.com,February 2025,2025-02-01,2025,2,2025-02
@@ -991,6 +993,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 170,Russian Open WCS Championships,"Moscow, Russia",,April 2017,2017-04-01,2017,4,2017-04
 154,UK WCS Championships,"London, United Kingdom",http://www.ukwcschamps.com,April 2017,2017-04-01,2017,4,2017-04
 9,Boston Tea Party,"Boston, MA, United States",http://teapartyswings.com,March 2017,2017-03-01,2017,3,2017-03
+1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 2001,2001-07-01,2001,7,2001-07
 217,San Diego Dance Festival,"San Diego, CA, United States",,April 2017,2017-04-01,2017,4,2017-04
 18,Easter Swing,"Seattle, WA, United States",https://easterswing.org/,April 2017,2017-04-01,2017,4,2017-04
 132,Tulsa Spring Swing,"Tulsa, OK, United States",http://www.TulsaSpringSwing.com,April 2017,2017-04-01,2017,4,2017-04
@@ -1214,6 +1217,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 264,Swedish Swing Summer Camp,"Stockholm, Sweden",http://www.uptownswing.se/,August 2018,2018-08-01,2018,8,2018-08
 47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,July 2018,2018-07-01,2018,7,2018-07
 224,Midwest Westie Fest,"Overland Park, KS, United States",http://Www.midwestwestiefest.com,August 2018,2018-08-01,2018,8,2018-08
+1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 2002,2002-07-01,2002,7,2002-07
 137,Tampa Bay Classic,"Tampa, FL, United States",http//http://www.tampabayclassic.com,August 2018,2018-08-01,2018,8,2018-08
 303,Odyssey West Coast Swing,"Gold Coast, Australia",http://www.odysseywcs.dance,July 2018,2018-07-01,2018,7,2018-07
 157,New England Dance Festival,"Newton (Boston), MA, United States",http://www.nedancefestival.com,August 2018,2018-08-01,2018,8,2018-08
@@ -1863,11 +1867,9 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 270,Westie's Angels,"Lyon, France",http://www.frenchywesty.com,November 2025,2025-11-01,2025,11,2025-11
 181,DC Swing eXperience (DCSX),"Herndon, VA, United States",http://www.dcswingexperience.com,November 2025,2025-11-01,2025,11,2025-11
 288,Midnight Madness,"Dallas, TX, United States",http://www.MidnightMadnessWCS.com,November 2025,2025-11-01,2025,11,2025-11
+1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 2003,2003-07-01,2003,7,2003-07
 365,Flowstate | West Coast Swing & Zouk Festival,"London, United Kingdom",https://eastonswing.com/west-coast-swing-events/world-swing-dance-council/flowstate-west-coast-swing-zouk-festival-eastonswing/,November 2025,2025-11-01,2025,11,2025-11
 292,King Swing,"Kraków, Poland",https://kingswing.pl/,March 2026,2026-03-01,2026,3,2026-03
-47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 1997,1997-08-01,1997,8,1997-08
-47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 1998,1998-08-01,1998,8,1998-08
-47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 1999,1999-08-01,1999,8,1999-08
 404,Infinite Swing,"Munich, Germany",http://infinite-swing.com,July 2026,2026-07-01,2026,7,2026-07
 322,Milan Modern Swing,"Milan, Italy",https://www.westcoastswingmilan.com/,October 2026,2026-10-01,2026,10,2026-10
 231,Trilogy Swing,"Raleigh, NC, United States",http://www.trilogywcs.com,September 2026,2026-09-01,2026,9,2026-09
@@ -1882,9 +1884,6 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 1998,1998-07-01,1998,7,1998-07
 1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 1999,1999-07-01,1999,7,1999-07
 1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 2000,2000-07-01,2000,7,2000-07
-1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 2001,2001-07-01,2001,7,2001-07
-1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 2002,2002-07-01,2002,7,2002-07
-1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 2003,2003-07-01,2003,7,2003-07
 1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 2004,2004-07-01,2004,7,2004-07
 1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 2005,2005-07-01,2005,7,2005-07
 1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 2006,2006-07-01,2006,7,2006-07
@@ -2180,6 +2179,11 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 1992,1992-08-01,1992,8,1992-08
 47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 1993,1993-08-01,1993,8,1993-08
 47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 1994,1994-08-01,1994,8,1994-08
+47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 1995,1995-08-01,1995,8,1995-08
+47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 1996,1996-08-01,1996,8,1996-08
+47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 1997,1997-08-01,1997,8,1997-08
+47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 1998,1998-08-01,1998,8,1998-08
+47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 1999,1999-08-01,1999,8,1999-08
 47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 2000,2000-08-01,2000,8,2000-08
 47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 2001,2001-08-01,2001,8,2001-08
 47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,August 2002,2002-08-01,2002,8,2002-08

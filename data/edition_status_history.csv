@@ -1,0 +1,334 @@
+event_id,event_year,event_month,todd_edition_id,edition_status,cancelled_covid,event_edition_name,start_date,end_date,registry_status,city,region,country,load_id,event_name
+58,1992,1,wsdc:58:January 1992,no_results,f,Swing Expo,1992-01-01,,,Las Vegas,NV,United States,5,Swing Expo
+24,1993,8,wsdc:24:August 1993,no_results,f,J&J National Championships,1993-08-01,,,Las Vegas,NV,United States,5,J&J National Championships
+51,1997,9,wsdc:51:September 1997,no_results,f,Palm Springs Summer Dance Classic,1997-09-01,,,Palm Springs,CA,United States,5,Palm Springs Summer Dance Classic
+33,1998,12,wsdc:33:December 1998,no_results,f,National New Year,1998-12-01,,,Dallas,TX,United States,5,National New Year
+48,2000,8,wsdc:48:August 2000,no_results,f,South Bay CW Dance Festival,2000-08-01,,,San Jose,CA,United States,5,South Bay Dance Fling
+47,2002,8,wsdc:47:August 2002,no_results,f,Swingtime in the Rockies,2002-08-01,,,Aurora,CO,United States,5,SwingTime Denver
+105,2004,5,wsdc:105:May 2004,no_results,f,Canadian Swing Championships,2004-04-30,2004-05-02,registry,Trois-Rivieres,Quebec,Canada,5,Canadian Swing Championships
+206,2012,6,wsdc:206:June 2012,no_results,f,Hungarian Open,2012-05-31,2012-06-03,registry,Budapest,Pest,Hungary,5,Hungarian Open
+100,2012,9,wsdc:100:September 2012,no_results,f,New Mexico Dance Fiesta,2012-09-26,2012-09-28,,Albuquerque,NM,United States,5,New Mexico Dance Fiesta
+146,2013,7,wsdc:146:July 2013,no_results,f,Boston Dance Challenge,2013-07-05,2013-07-08,,Boston,MA,United States,5,Boston Dance Challenge
+156,2013,7,wsdc:156:July 2013,no_results,f,Big Apple Dance Festival,2013-07-10,2013-07-13,,Newark,NJ,United States,5,Big Apple Dance Festival
+242,2014,1,wsdc:242:January 2014,no_results,f,Derby City Swing,2014-01-22,2014-01-23,registry,Louisville,KY,United States,5,Derby City Swing
+174,2014,12,wsdc:174:December 2014,no_results,f,Swingsation,2014-12-12,2014-12-14,,Surfers Paradise,Queensland,Australia,5,Swingsation
+249,2015,8,wsdc:249:August 2015,no_results,f,,2015-08-01,2015-08-04,,Guam,,,5,
+250,2015,10,wsdc:250:October 2015,no_results,f,,2015-09-29,2015-10-02,,UAE Persian Gulf,,,5,
+286,2015,11,wsdc:286:November 2015,no_results,f,WCS Festival,2015-11-30,2015-11-30,registry,Düsseldorf,NRW,Germany,5,WCS Festival
+251,2015,12,wsdc:251:December 2015,no_results,f,,2015-12-15,2015-12-17,,Iceland,,,5,
+248,2015,12,wsdc:248:December 2015,no_results,f,,2015-12-24,2015-12-26,,Montana,,,5,
+282,2016,8,wsdc:282:August 2016,no_results,f,German Open WCS Championships,2016-08-11,2016-08-14,registry,Freiburg,Baden-Württemberg,Germany,5,German Open
+286,2016,10,wsdc:286:October 2016,no_results,f,WCS Festival,2016-10-20,2016-10-22,registry,Düsseldorf,NRW,Germany,5,WCS Festival
+1,2017,8,wsdc:1:August 2017,no_results,f,4TH of July Convention,2017-08-10,2017-08-13,,Washington DC,,,5,4TH of July Convention
+109,2018,6,wsdc:109:June 2018,hiatus,f,Colorado Country Classic,2018-06-15,2018-06-18,registry,Denver,CO,United States,5,Colorado Country Classic
+283,2018,8,wsdc:283:August 2018,hiatus,f,Kazan EL Fest,2018-08-02,2018-08-05,registry,Kazan,Tatarstan,Russia,5,Kazan EL Fest
+295,2018,8,wsdc:295:August 2018,no_results,f,Emerald City Swing,2018-08-09,2018-08-12,member_activity,Eugene,OR,United States,5,
+119,2018,8,wsdc:119:August 2018,no_results,f,Chicagoland Dance Festival,2018-08-16,2018-08-19,registry,Rosemont,IL,United States,5,Chicagoland Country and Swing Dance Festival
+305,2018,9,wsdc:305:September 2018,no_results,f,Moscow Open,2018-09-14,2018-09-16,member_activity,Moscow,,Russia,5,
+272,2018,10,wsdc:307:October 2018,no_results,f,Paris Swing Classic,2018-10-26,2018-10-28,member_activity,Paris,,France,5,Paris Westie Fest
+240,2019,1,wsdc:240:January 2019,hiatus,f,Sweden Westie Gala,2019-01-04,2019-01-06,registry,Upplands Väsby,,Sweden,5,Westie Gala
+309,2019,1,wsdc:309:January 2019,no_results,f,Avignon City Swing,2019-01-18,2019-01-20,trial,Avignon,,France,5,Avignon City Swing
+318,2019,3,wsdc:318:March 2019,no_results,f,All Star SwingJam,2019-03-14,2019-03-17,trial,Concord,CA,United States,5,All Star SwingJam
+319,2019,4,wsdc:319:April 2019,no_results,f,Twin Cities Rebels Swing Dance Club,2019-04-06,2019-04-07,member_activity,St. Louis Park,MN,United States,5,
+116,2019,4,wsdc:116:April 2019,no_results,f,Calgary Dance Stampede,2019-04-11,2019-04-14,trial,Calgary,Alberta,Canada,5,Calgary Dance Stampede
+315,2019,4,wsdc:315:April 2019,cancelled,t,Tahitian Open West Coast Swing,2019-04-11,2019-04-14,trial,Pape'ete,Tahiti,French Polynesia,5,
+308,2019,5,wsdc:308:May 2019,no_results,f,Mad Mad West,2019-05-03,2019-05-05,trial,Madrid,,Spain,5,
+331,2019,6,wsdc:321:June 2019,no_results,f,Swing Fiction,2019-06-28,2019-06-30,trial,Brno,-,Czech Republic,5,Swing Fiction
+262,2019,7,wsdc:262:July 2019,hiatus,f,Swing It Like It's Hot,2019-07-18,2019-07-22,registry,Tel Aviv,,Israel,5,Swing It Like It's Hot
+148,2019,7,wsdc:148:July 2019,hiatus,f,Dance Mardi Gras,2019-07-19,2019-07-21,registry,New Orleans,LA,United States,5,Dance Mardi Gras
+320,2019,7,wsdc:320:July 2019,no_results,f,Westcâmbio Brazil,2019-07-19,2019-07-21,trial,Belo Horizonte,Minas Gerais,Brazil,5,
+317,2019,7,wsdc:317:July 2019,no_results,f,Barcelona Westie Summer,2019-07-26,2019-07-28,trial,Santa Susanna,Barcelona,Spain,5,
+15,2019,9,wsdc:15:September 2019,hiatus,f,Dallas D.A.N.C.E.,2019-08-29,2019-09-01,registry,Dallas,TX,United States,5,Dallas D.A.N.C.E.
+48,2019,9,wsdc:48:September 2019,hiatus,f,"South Bay Dance Fling ""On Hiatus""",2019-08-29,2019-09-02,registry,San Jose,CA,United States,5,South Bay Dance Fling
+266,2019,9,wsdc:266:September 2019,hiatus,f,Rocky Mountain Five Dance (RM5),2019-09-13,2019-09-15,registry,Northglenn,CO,United States,5,Rocky Mountain 5 Dance
+323,2019,11,wsdc:323:November 2019,no_results,f,Westies on the Water,2019-11-08,2019-11-10,trial,Guntersville,AL,United States,5,Westies on the Water
+324,2020,2,wsdc:324:February 2020,no_results,f,By-town Ontario Open (BTO),2020-02-07,2020-02-09,trial,Ottawa,Ontario,Canada,5,Calgary Town Open
+296,2020,3,wsdc:296:March 2020,cancelled,t,"Fall, Fall in Swing",2020-03-06,2020-03-08,registry,Incheon,,South Korea,5,Fall Fall in Swing
+186,2020,3,wsdc:186:March 2020,cancelled,t,West in Lyon,2020-03-12,2020-03-15,registry,Dardilly,,France,5,West in Lyon
+314,2020,3,wsdc:314:March 2020,cancelled,t,Westie Spring Thing 2020,2020-03-13,2020-03-15,registry,Budapest,,Hungary,5,Westie Spring Thing
+318,2020,3,wsdc:318:March 2020,cancelled,t,All Star SwingJam,2020-03-13,2020-03-15,registry,Concord,CA,United States,5,All Star SwingJam
+13,2020,3,wsdc:13:March 2020,cancelled,t,Chicago Classic,2020-03-19,2020-03-22,registry,Oak Brook,IL,United States,5,Chicago Classic
+292,2020,3,wsdc:292:March 2020,cancelled,t,King Swing,2020-03-19,2020-03-23,registry,Krakow,malopolska,Poland,5,King Swing
+9,2020,3,wsdc:9:March 2020,cancelled,t,Boston Tea Party,2020-03-19,2020-03-22,registry,Newton,MA,United States,5,Boston Tea Party
+143,2020,3,wsdc:143:March 2020,cancelled,t,High Desert Dance Classic,2020-03-20,2020-03-22,registry,Lancaster,CA,United States,5,High Desert Dance Classic
+246,2020,3,wsdc:246:March 2020,cancelled,t,Swing Escape,2020-03-20,2020-03-22,registry,"Nelson Bay, NSW, Australia",NSW,Australia,5,Swing Escape
+197,2020,3,wsdc:197:March 2020,no_results,f,5280 Westival),2020-03-26,2020-03-30,registry,Aurora,CO,United States,5,5280 Westival
+275,2020,3,wsdc:275:March 2020,cancelled,t,Dutch Open West Coast Swing,2020-03-26,2020-03-29,registry,Venray,,Netherlands,5,Dutch Open West Coast Swing
+276,2020,3,wsdc:276:March 2020,hiatus,f,Anchor Festival 2020,2020-03-26,2020-03-29,registry,Hamburg,,Germany,5,Anchor Festival
+153,2020,3,wsdc:153:March 2020,cancelled,t,Novice Invitational,2020-03-27,2020-03-29,registry,Houston,TX,United States,5,Novice Invitational
+116,2020,4,wsdc:116:April 2020,cancelled,t,Calgary Dance Stampede,2020-04-02,2020-04-05,trial,Calgary,Alberta,Canada,5,Calgary Dance Stampede
+170,2020,4,wsdc:170:April 2020,cancelled,t,Russian Open WCS Championship 2020,2020-04-02,2020-04-05,registry,"Domodedovo,",,Russia,5,Russian Open WCS Championships
+259,2020,4,wsdc:259:April 2020,cancelled,t,Swing Over Orlando,2020-04-03,2020-04-05,registry,Orlando,FL,United States,5,Swingover
+293,2020,4,wsdc:293:April 2020,cancelled,t,Westy Nantes,2020-04-03,2020-04-05,registry,Nantes,44,France,5,Westy Nantes
+18,2020,4,wsdc:18:April 2020,cancelled,t,Easter Swing,2020-04-09,2020-04-12,registry,Bellevue,WA,United States,5,Easter Swing
+154,2020,4,wsdc:198:April 2020,cancelled,t,UK & European WCS Championships,2020-04-09,2020-04-13,registry,Nottingham,Berkshire,United Kingdom,5,UK WCS Championships
+217,2020,4,wsdc:217:April 2020,cancelled,t,San Diego Dance Festival,2020-04-09,2020-04-12,registry,San Diego,CA,United States,5,San Diego Dance Festival
+218,2020,4,wsdc:218:April 2020,cancelled,t,Asia West Coast Swing Open,2020-04-09,2020-04-12,registry,Singapore,-,Singapore,5,Asia West Coast Swing Open
+132,2020,4,wsdc:132:April 2020,cancelled,t,Tulsa Spring Swing,2020-04-10,2020-04-11,registry,Tulsa,OK,United States,5,Tulsa Spring Swing
+187,2020,4,wsdc:187:April 2020,cancelled,t,City of Angels,2020-04-16,2020-04-19,registry,LOS ANGELES,CA,United States,5,City of Angels WCS
+304,2020,4,wsdc:304:April 2020,cancelled,t,Swing In Capital,2020-04-16,2020-04-19,registry,Roma,,Italy,5,Swing In Capital
+306,2020,4,wsdc:306:April 2020,cancelled,t,Go West Swing Fest,2020-04-17,2020-04-19,registry,Fremantle,Western Australia,Australia,5,Go West SwingFest
+134,2020,4,wsdc:134:April 2020,cancelled,t,Swing Dance America,2020-04-23,2020-04-27,registry,"Lake Geneva, WI",WI,United States,5,Swing Dance America
+253,2020,4,wsdc:253:April 2020,cancelled,t,Nordic WCS Championships,2020-04-23,2020-04-26,registry,Upplands Väsby,Stockholm,Sweden,5,Nordic WCS Championships
+203,2020,4,wsdc:203:April 2020,cancelled,t,Detonation Dance,2020-04-24,2020-04-26,registry,Manchester,,United Kingdom,5,Detonation Dance
+144,2020,5,wsdc:144:May 2020,cancelled,t,Swingin' Into Spring,2020-04-30,2020-05-03,registry,Hartford,CT,United States,5,Swingin' Into Spring
+308,2020,5,wsdc:308:May 2020,cancelled,t,Mad Mad West,2020-04-30,2020-05-01,registry,Madrid,,Spain,5,
+219,2020,5,wsdc:219:May 2020,cancelled,t,KIWI Fest,2020-05-01,2020-05-03,registry,Kyiv,UA,Ukraine,5,KIWI Fest
+121,2020,5,wsdc:121:May 2020,cancelled,t,The Texas Classic,2020-05-08,2020-05-10,registry,Austin,TX,United States,5,The Texas Classic
+206,2020,5,wsdc:206:May 2020,cancelled,t,Hungarian Open,2020-05-08,2020-05-10,registry,Balatonalmádi,,Hungary,5,Hungarian Open
+311,2020,5,wsdc:311:May 2020,cancelled,t,TLV SwingFest,2020-05-08,2020-05-10,registry,Tel Aviv,,Israel,5,TLV SwingFest
+174,2020,5,wsdc:174:May 2020,cancelled,t,Swingsation,2020-05-14,2020-05-17,registry,Surfers Paradise,Queensland,Australia,5,Swingsation
+205,2020,5,wsdc:205:May 2020,cancelled,t,SOswing,2020-05-14,2020-05-17,registry,Ashland,OR,United States,5,SOswing
+277,2020,5,wsdc:277:May 2020,cancelled,t,Scottish Swing Classic,2020-05-14,2020-05-18,registry,Glasgow,UK,United Kingdom,5,Scotland Swing Classic
+105,2020,5,wsdc:105:May 2020,cancelled,t,Canadian Swing Championships,2020-05-15,2020-05-18,registry,Trois-Rivieres,Quebec,Canada,5,Canadian Swing Championships
+175,2020,5,wsdc:175:May 2020,cancelled,t,French Open WCS,2020-05-21,2020-05-24,registry,Roissy-en-France,95912,France,5,French Open West Coast Swing
+22,2020,5,wsdc:22:May 2020,cancelled,t,USA Grand National Dance Championship,2020-05-21,2020-05-25,registry,Atlanta,GA,United States,5,USA Grand Nationals
+221,2020,5,wsdc:221:May 2020,cancelled,t,Show Me Showdown,2020-05-22,2020-05-25,registry,St. Louis,MO,United States,5,Show Me Showdown
+29,2020,5,wsdc:29:May 2020,cancelled,t,Michigan Classic,2020-05-28,2020-05-31,registry,Ypsilanti,MI,United States,5,Michigan Swing Dance Champs
+117,2020,6,wsdc:117:June 2020,cancelled,t,Orange Blossom Dance Festival,2020-06-04,2020-06-07,registry,Orlando,FL,United States,5,Orange Blossom Dance Festival
+220,2020,6,wsdc:220:June 2020,cancelled,t,D-Townswing,2020-06-05,2020-06-07,registry,Dusseldorf,NRW,Germany,5,D-Town Swing
+207,2020,6,wsdc:207:June 2020,cancelled,t,Dance N Play,2020-06-11,2020-06-14,registry,Redmond,OR,United States,5,Dance N Play
+222,2020,6,wsdc:222:June 2020,cancelled,t,Baltic Swing,2020-06-11,2020-06-15,registry,Gdynia,Pomorskie,Poland,5,Baltic Swing
+25,2020,6,wsdc:25:June 2020,no_results,f,Jack & Jill O'Rama,2020-06-11,2020-06-14,registry,Garden Grove,CA,United States,5,J&J O'Rama
+261,2020,6,wsdc:261:June 2020,cancelled,t,Neverland Swing,2020-06-18,2020-06-22,registry,Maarssen,,Netherlands,5,Neverland Swing
+162,2020,6,wsdc:162:June 2020,cancelled,t,Swingapalooza,2020-06-19,2020-06-21,registry,Baton Rouge,LA,United States,5,Swingapalooza
+268,2020,6,wsdc:268:June 2020,cancelled,t,Korea Westival 2020,2020-06-19,2020-06-21,registry,SEODAEMUN-GU,SEOUL,South Korea,5,Korea Westival
+109,2020,6,wsdc:109:June 2020,cancelled,t,Colorado Country Classic,2020-06-25,2020-06-28,registry,Aurora,CO,United States,5,Colorado Country Classic
+254,2020,6,wsdc:254:June 2020,cancelled,t,Finnfest,2020-06-25,2020-06-29,registry,Helsinki,,Finland,5,Finnfest
+96,2020,6,wsdc:96:June 2020,cancelled,t,Liberty Swing Dance Championships,2020-06-25,2020-06-28,registry,New Brunswick,NJ,United States,5,Liberty Swing Dance Championships
+331,2020,6,wsdc:321:June 2020,cancelled,t,Swing Fiction,2020-06-26,2020-06-28,registry,Brno,,Czech Republic,5,Swing Fiction
+1,2020,7,wsdc:1:July 2020,cancelled,t,Phoenix 4th of July,2020-07-01,2020-07-05,registry,Phoenix,AZ,United States,5,4TH of July Convention
+225,2020,7,wsdc:225:July 2020,cancelled,t,Wild Wild Westie,2020-07-02,2020-07-05,registry,Dallas,TX,United States,5,Wild Wild Westie
+147,2020,7,wsdc:147:July 2020,cancelled,t,Toronto Open Swing & Hustle Championships,2020-07-09,2020-07-12,registry,Toronto,Ontario,Canada,5,Toronto Open Swing & Hustle Championships
+44,2020,7,wsdc:44:July 2020,cancelled,t,Portland Dance Festival,2020-07-09,2020-07-12,registry,Portland,OR,United States,5,Portland Dance Festival
+149,2020,7,wsdc:149:July 2020,cancelled,t,Florida Dance Magic,2020-07-16,2020-07-20,registry,Jupiter,FL,United States,5,Florida Dance Magic
+224,2020,7,wsdc:224:July 2020,cancelled,t,Midwest Westie Fest,2020-07-16,2020-07-19,registry,Overland Park,KS,United States,5,Midwest Westie Fest
+256,2020,7,wsdc:256:July 2020,cancelled,t,Rock the Barn,2020-07-16,2020-07-19,registry,Gräsmyr,,Sweden,5,Rock the Barn
+280,2020,7,wsdc:280:July 2020,cancelled,t,Saint Petersburg WCS Nights,2020-07-23,2020-07-26,registry,Saint Petersburg,,Russia,5,Saint Petersburg WCS Nights
+47,2020,7,wsdc:47:July 2020,cancelled,t,Swingtime in the Rockies,2020-07-23,2020-07-26,registry,Aurora,CO,United States,5,SwingTime Denver
+263,2020,8,wsdc:263:August 2020,cancelled,t,Riga Summer Swing,2020-07-30,2020-08-03,registry,Riga,,Latvia,5,Riga Summer Swing
+227,2020,8,wsdc:227:August 2020,cancelled,t,Swingtacular: The Galactic Open 2020,2020-08-06,2020-08-09,registry,Burlingame,CA,United States,5,Swingtacular: The Galactic Open
+282,2020,8,wsdc:282:August 2020,cancelled,t,The WCS German Open Championships,2020-08-06,2020-08-09,registry,Freiburg,Baden-Württemberg,Germany,5,German Open
+59,2020,8,wsdc:59:August 2020,cancelled,t,Swing Fling Cancelled due to Covid-19),2020-08-06,2020-08-09,registry,Washington,DC,United States,5,Swing Fling
+119,2020,8,wsdc:119:August 2020,cancelled,t,Chicagoland Country and Swing Dance Festival,2020-08-21,2020-08-23,registry,Rosemont,IL,United States,5,Chicagoland Country and Swing Dance Festival
+53,2020,8,wsdc:53:August 2020,cancelled,t,Summer Hummer,2020-08-27,2020-08-30,registry,Framingham,MA,United States,5,Summer Hummer
+298,2020,8,wsdc:298:August 2020,cancelled,t,Shakedown Swing,2020-08-28,2020-08-30,registry,Christchurch,Canterbury,New Zealand,5,Shakedown Swing
+177,2020,9,wsdc:177:September 2020,cancelled,t,River City Swing,2020-09-04,2020-09-07,registry,Ponte Vedra Beach,FL,United States,5,River City Swing
+231,2020,9,wsdc:231:September 2020,cancelled,t,Trilogy Swing,2020-09-10,2020-09-13,registry,Durham,NC,United States,5,Trilogy Swing
+233,2020,9,wsdc:233:September 2020,cancelled,t,Bavarian Open,2020-09-10,2020-09-13,registry,Munich,Bavaria,Germany,5,Bavarian Open
+131,2020,9,wsdc:131:September 2020,cancelled,t,Meet Me in St. Louis Swing Dance Championships,2020-09-17,2020-09-20,registry,St. Louis,MO,United States,5,Meet Me In St Louis
+167,2020,9,wsdc:167:September 2020,cancelled,t,Best of the Best,2020-09-17,2020-09-20,registry,Mascot,NSW,Australia,5,Best of the Best WCS
+234,2020,9,wsdc:234:September 2020,cancelled,t,PHILLY SWING CLASSIC,2020-09-18,2020-09-20,registry,Wilmington,DE,United States,5,Philly Swing Classic
+300,2020,9,wsdc:300:September 2020,cancelled,t,Austin Rocks 2020,2020-09-18,2020-09-20,registry,Austin,TX,United States,5,Austin Rocks
+10,2020,9,wsdc:10:September 2020,cancelled,t,BridgeTown Swing,2020-09-24,2020-09-27,registry,Vancouver,WA,United States,5,Bridgetown Swing Boogie
+165,2020,9,wsdc:165:September 2020,cancelled,t,Midland Swing Open,2020-09-24,2020-09-27,registry,Slough,Greater London,United Kingdom,5,Midland Swing Open
+211,2020,9,wsdc:211:September 2020,cancelled,t,Atlanta Swing Classic,2020-09-24,2020-09-27,registry,Atlanta,GA,United States,5,Atlanta Swing Classic
+232,2020,10,wsdc:232:October 2020,cancelled,t,Norway Westie Fest,2020-10-01,2020-10-04,registry,Trondheim,,Norway,5,Norway Westie Fest
+329,2020,10,wsdc:329:October 2020,no_results,f,Westcation,2020-10-01,2020-10-05,trial,Redang Islang,Terengganu,Malaysia,5,
+327,2020,10,wsdc:327:October 2020,no_results,f,Canyon Edge Dance Classic,2020-10-02,2020-10-04,trial,,,,5,
+8,2020,10,wsdc:8:October 2020,cancelled,t,Boogie By The Bay,2020-10-08,2020-10-12,registry,Burlingame,CA,United States,5,Boogie By The Bay
+294,2020,10,wsdc:294:October 2020,cancelled,t,European Swing Challenge,2020-10-15,2020-10-20,registry,Nottingham,Berkshire,United Kingdom,5,European Swing Challenge
+178,2020,10,wsdc:178:October 2020,cancelled,t,Montreal Westie Fest,2020-10-16,2020-10-18,registry,Dorval,QC,Canada,5,Montreal Westie Fest
+267,2020,10,wsdc:267:October 2020,cancelled,t,Swustlicious,2020-10-16,2020-10-18,registry,King of Prussia,PA,United States,5,Swustlicious
+286,2020,10,wsdc:286:October 2020,cancelled,t,WCS Festival,2020-10-16,2020-10-18,registry,Duesseldorf,NRW,Germany,5,WCS Festival
+322,2020,10,wsdc:322:October 2020,cancelled,t,Milan Modern Swing,2020-10-16,2020-10-19,registry,Sesto San Giovanni,Milano,Italy,5,Milan Modern Swing
+125,2020,11,wsdc:125:November 2020,cancelled,t,Swing City Chicago,2020-10-29,2020-11-01,registry,Lombard,IL,United States,5,Swing City Chicago
+236,2020,11,wsdc:236:November 2020,cancelled,t,Warsaw Halloween Swing,2020-10-29,2020-11-02,registry,Warsaw,,Poland,5,Warsaw Halloween Swing
+65,2020,11,wsdc:65:November 2020,cancelled,t,Halloween SwingThing,2020-10-29,2020-11-01,registry,Torrance,CA,United States,5,Halloween SwingThing
+197,2020,11,wsdc:197:November 2020,cancelled,t,5280 Westival,2020-11-05,2020-11-09,registry,Aurora,,United States,5,5280 Westival
+31,2020,11,wsdc:31:November 2020,cancelled,t,Mountain Magic Dance Convention 2020,2020-11-05,2020-11-08,registry,South Lake Tahoe,NV,United States,5,Mountain Magic
+79,2020,11,wsdc:79:November 2020,cancelled,t,Sea to Sky,2020-11-05,2020-11-09,registry,Seattle,WA,United States,5,Sea to Sky
+269,2020,11,wsdc:269:November 2020,cancelled,t,Autumn Swing Challenge 2020,2020-11-06,2020-11-08,registry,Budapest,,Hungary,5,Autumn Swing Challenge
+166,2020,11,wsdc:166:November 2020,cancelled,t,London SWINGvitational,2020-11-12,2020-11-16,registry,Bracknell,Berkshire,United Kingdom,5,London SwingVitational
+137,2020,11,wsdc:137:November 2020,cancelled,t,Tampa Bay Classic,2020-11-13,2020-11-15,registry,Saint Peterburg,FL,United States,5,Tampa Bay Classic
+323,2020,11,wsdc:323:November 2020,no_results,f,Westies on The Water 2020,2020-11-13,2020-11-15,registry,Guntersville,AL,United States,5,Westies on the Water
+181,2020,11,wsdc:181:November 2020,cancelled,t,DC Swing eXperience (DCSX),2020-11-19,2020-11-22,registry,Herndon,VA,United States,5,DC Swing eXperience (DCSX)
+112,2020,11,wsdc:112:November 2020,cancelled,t,"US OPEN SWING DANCE CHAMPIONSHIPS, INC",2020-11-26,2020-11-29,registry,Burbank,CA,United States,5,US National Dance Championships
+87,2020,11,wsdc:87:November 2020,cancelled,t,C.A.S.H. Bash,2020-11-26,2020-11-29,registry,Twinsburg,OH,United States,5,CASH Bash
+238,2020,12,wsdc:238:December 2020,cancelled,t,Winter White,2020-12-03,2020-12-06,registry,Asker,,Norway,5,Winter White
+265,2020,12,wsdc:265:December 2020,cancelled,t,Upstate Dance Challenge,2020-12-03,2020-12-06,registry,Saratoga Springs,NY,United States,5,Upstate Dance Challenge
+271,2020,12,wsdc:271:December 2020,cancelled,t,Berlin Swing Revolution,2020-12-10,2020-12-13,registry,Berlin,,Germany,5,Berlin Swing Revolution
+42,2021,1,wsdc:42:January 2021,cancelled,t,Floor Play Swing Vacation,2020-12-30,2021-01-03,registry,Orlando,FL,United States,5,Floorplay Swing Vacation
+214,2021,1,wsdc:214:January 2021,cancelled,t,New Year's Swing Fling 2020,2020-12-31,2021-01-04,registry,London,,United Kingdom,5,New Year's Swing Fling
+289,2021,1,wsdc:289:January 2021,cancelled,t,Swingvester,2020-12-31,2021-01-03,registry,Vienna,,Austria,5,SwingVester
+334,2021,1,wsdc:39:January 2021,no_results,f,Countdown Swing Boston,2020-12-31,2021-01-03,registry,Framingham,MA,United States,5,Countdown Swing Boston
+62,2021,1,wsdc:62:January 2021,cancelled,t,Monterey Swingfest,2021-01-13,2021-01-18,registry,Monterey,CA,United States,5,Monterey SwingFest
+301,2021,1,wsdc:301:January 2021,cancelled,t,Swing Resolution,2021-01-14,2021-01-18,registry,Edinburgh,Midlothian,United Kingdom,5,Swing Resolution
+183,2021,1,wsdc:183:January 2021,cancelled,t,Freedom Swing Dance Challenge,2021-01-15,2021-01-17,registry,WESTMONT,NJ,United States,5,Freedom Swing Dance Challenge
+200,2021,1,wsdc:200:January 2021,cancelled,t,Austin Swing Dance Championships,2021-01-15,2021-01-17,registry,Austin,TX,United States,5,Austin Swing Dance Championships
+242,2021,1,wsdc:242:January 2021,no_results,f,Derby City Swing,2021-01-21,2021-01-24,registry,Louisville,KY,United States,5,Derby City Swing
+291,2021,1,wsdc:291:January 2021,cancelled,t,Municorn Swing,2021-01-21,2021-01-24,registry,Munich,Bavaria,Germany,5,Municorn Swing
+196,2021,1,wsdc:196:January 2021,cancelled,t,SwingCouver,2021-01-22,2021-01-24,registry,Vancouver,,Canada,5,SwingCouver
+273,2021,2,wsdc:273:February 2021,cancelled,t,Charlotte Westie Fest,2021-02-04,2021-02-07,registry,Charlotte,NC,United States,5,Charlotte Westie Fest
+169,2021,2,wsdc:169:February 2021,cancelled,t,Dance Camp Chicago,2021-02-05,2021-02-07,registry,Oakbrook,IL,United States,5,Dance Camp Chicago
+12,2021,2,wsdc:12:February 2021,cancelled,t,Capital Swing Dance Convention,2021-02-11,2021-02-14,registry,Sacramento,CA,United States,5,Capital Swing Dance Convention
+258,2021,2,wsdc:258:February 2021,cancelled,t,Swingtzerland,2021-02-11,2021-02-14,registry,Zürich,,Switzerland,5,Swingtzerland
+310,2021,2,wsdc:310:February 2021,cancelled,t,Valentine Swing,2021-02-11,2021-02-14,registry,Gävle,Gävleborg,Sweden,5,Valentine Swing
+302,2021,2,wsdc:302:February 2021,cancelled,t,WesterOz Swing,2021-02-12,2021-02-14,registry,Fremantle,Western Australia,Australia,5,WesterOz Swing
+244,2021,2,wsdc:244:February 2021,cancelled,t,Rose City Swing,2021-02-17,2021-02-20,registry,Tigard,OR,United States,5,Rose City Swing
+297,2021,2,wsdc:297:February 2021,cancelled,t,Winter Coast Swing,2021-02-25,2021-02-28,registry,Siilinjärvi,Vuorela,Finland,5,Winter Coast Swing
+92,2021,3,wsdc:92:March 2021,cancelled,t,MId Atlantic Dance Jam (MADjam),2021-03-04,2021-03-07,registry,Baltimore,MD,United States,5,MADjam
+142,2021,3,wsdc:142:March 2021,cancelled,t,The Chicago Classic,2021-03-11,2021-03-14,registry,Lombard,IL,United States,5,The Chicago Classic
+143,2021,3,wsdc:143:March 2021,no_results,f,High Desert Dance Classic),2021-03-12,2021-03-14,registry,Lancaster,CA,United States,5,High Desert Dance Classic
+186,2021,3,wsdc:186:March 2021,cancelled,t,West in Lyon,2021-03-12,2021-03-14,registry,Lyon,,France,5,West in Lyon
+318,2021,3,wsdc:318:March 2021,cancelled,t,All Star Swingjam,2021-03-19,2021-03-21,registry,Concord California (Greater San Francisco Bay Area),CA,United States,5,All Star SwingJam
+9,2021,3,wsdc:9:March 2021,cancelled,t,Boston Tea Party,2021-03-19,2021-03-21,registry,Newton,MA,United States,5,Boston Tea Party
+187,2021,3,wsdc:187:March 2021,cancelled,t,City of Angels Swing,2021-03-25,2021-03-28,registry,Los Angeles,CA,United States,5,City of Angels WCS
+275,2021,3,wsdc:275:March 2021,cancelled,t,Dutch Open West Coast Swing,2021-03-25,2021-03-28,registry,Venray,,Netherlands,5,Dutch Open West Coast Swing
+153,2021,3,wsdc:153:March 2021,cancelled,t,Novice Invitational,2021-03-26,2021-03-28,registry,Houston,TX,United States,5,Novice Invitational
+132,2021,4,wsdc:132:April 2021,cancelled,t,Tulsa Spring Swing,2021-04-01,2021-04-04,registry,Tulsa,OK,United States,5,Tulsa Spring Swing
+18,2021,4,wsdc:18:April 2021,cancelled,t,Easter Swing,2021-04-01,2021-04-04,registry,Bellevue,WA,United States,5,Easter Swing
+217,2021,4,wsdc:217:April 2021,cancelled,t,San Diego Dance Festival,2021-04-01,2021-04-04,registry,San Diego,CA,United States,5,San Diego Dance Festival
+324,2021,4,wsdc:324:April 2021,cancelled,t,BTO Open,2021-04-02,2021-04-04,registry,Kanata,Ontario,Canada,5,Calgary Town Open
+154,2021,4,wsdc:198:April 2021,cancelled,t,UK & European WCS Championships,2021-04-08,2021-04-12,registry,Nottingham,Berkshire,United Kingdom,5,UK WCS Championships
+293,2021,4,wsdc:293:April 2021,cancelled,t,Westy Nantes,2021-04-09,2021-04-11,registry,Nantes,Loire Atlantique,France,5,Westy Nantes
+259,2021,4,wsdc:259:April 2021,cancelled,t,Swing Over Orlando,2021-04-16,2021-04-18,registry,Orlando,FL,United States,5,Swingover
+134,2021,4,wsdc:134:April 2021,cancelled,t,Swing Dance America,2021-04-22,2021-04-26,registry,Lake Geneva,WI,United States,5,Swing Dance America
+316,2021,4,wsdc:316:April 2021,cancelled,t,Calgary Dance Stampede,2021-04-22,2021-04-25,trial,Calgary,Alberta,Canada,5,
+219,2021,5,wsdc:219:May 2021,cancelled,t,KIWI Fest,2021-04-30,2021-05-02,registry,Kyiv,UA,Ukraine,5,KIWI Fest
+308,2021,5,wsdc:308:May 2021,cancelled,t,Mad Mad West,2021-04-30,2021-05-02,registry,Madrid,,Spain,5,
+121,2021,5,wsdc:121:May 2021,no_results,f,The Texas Classic,2021-05-14,2021-05-16,non_registry,Austin,TX,United States,5,The Texas Classic
+205,2021,5,wsdc:205:May 2021,cancelled,t,SOswing,2021-05-14,2021-05-16,registry,Ashland,OR,United States,5,SOswing
+22,2021,5,wsdc:22:May 2021,cancelled,t,USA Grand National Dance Championship,2021-05-27,2021-05-31,registry,Atlanta,GA,United States,5,USA Grand Nationals
+29,2021,5,wsdc:29:May 2021,cancelled,t,Michigan Swing Dance Champs,2021-05-27,2021-05-30,registry,Ypsilanti,MI,United States,5,Michigan Swing Dance Champs
+222,2021,6,wsdc:222:June 2021,cancelled,t,Baltic Swing,2021-06-10,2021-06-13,registry,Gdynia,,Poland,5,Baltic Swing
+25,2021,6,wsdc:25:June 2021,cancelled,t,Jack & Jill O'Rama,2021-06-10,2021-06-13,registry,Garden Grove,CA,United States,5,J&J O'Rama
+220,2021,6,wsdc:220:June 2021,cancelled,t,D-Townswing,2021-06-17,2021-06-20,registry,Düsseldorf,NRW,Germany,5,D-Town Swing
+162,2021,6,wsdc:162:June 2021,cancelled,t,Swingapalooza,2021-06-18,2021-06-20,registry,Baton Rouge,LA,United States,5,Swingapalooza
+268,2021,6,wsdc:268:June 2021,cancelled,t,Korea Westival,2021-06-24,2021-06-27,registry,"Seodaemun-gu,",Seoul,South Korea,5,Korea Westival
+96,2021,6,wsdc:96:June 2021,cancelled,t,Liberty Swing Dance Championships,2021-06-24,2021-06-27,registry,New Brunswick,NJ,United States,5,Liberty Swing Dance Championships
+254,2021,6,wsdc:254:June 2021,cancelled,t,Finnfest,2021-06-25,2021-06-27,registry,Helsinki,,Finland,5,Finnfest
+1,2021,7,wsdc:1:July 2021,cancelled,t,Phoenix 4th of July,2021-07-01,2021-07-04,registry,Scottsdale,AZ,United States,5,4TH of July Convention
+147,2021,7,wsdc:147:July 2021,cancelled,t,Toronto Open Swing & Hustle Championships,2021-07-08,2021-07-11,registry,Toronto,Ontario,Canada,5,Toronto Open Swing & Hustle Championships
+149,2021,7,wsdc:149:July 2021,cancelled,t,Florida Dance Magic,2021-07-15,2021-07-19,registry,Jupiter,FL,United States,5,Florida Dance Magic
+224,2021,7,wsdc:224:July 2021,cancelled,t,Midwest Westie Fest,2021-07-15,2021-07-18,registry,Overland Park,KS,United States,5,Midwest Westie Fest
+256,2021,7,wsdc:256:July 2021,cancelled,t,Rock The Barn,2021-07-15,2021-07-18,registry,Gräsmyr,,Sweden,5,Rock the Barn
+47,2021,7,wsdc:47:July 2021,cancelled,t,SwingTime,2021-07-22,2021-07-25,registry,Aurora,CO,United States,5,SwingTime Denver
+164,2021,8,wsdc:164:August 2021,cancelled,t,Sea Sun and Swing,2021-07-29,2021-08-02,registry,La Grande Motte,,France,5,Sea Sun and Swing
+263,2021,8,wsdc:263:August 2021,cancelled,t,Riga Summer Swing,2021-07-29,2021-08-02,registry,Riga,,Latvia,5,Riga Summer Swing
+227,2021,8,wsdc:227:August 2021,cancelled,t,Swingtacular: The Galactic Open 2021,2021-08-05,2021-08-08,registry,Burlingame,CA,United States,5,Swingtacular: The Galactic Open
+157,2021,8,wsdc:157:August 2021,cancelled,t,New England Dance Festival,2021-08-06,2021-08-08,registry,Newton,MA,United States,5,New England Dance Festival
+283,2021,8,wsdc:283:August 2021,cancelled,t,Kazan EL Fest,2021-08-06,2021-08-08,registry,Kazan,Tatarstan,Russia,5,Kazan EL Fest
+59,2021,8,wsdc:59:August 2021,cancelled,t,Swing Fling,2021-08-12,2021-08-15,registry,Herndon,VA,United States,5,Swing Fling
+334,2021,8,wsdc:39:August 2021,no_results,f,Countdown Swing Boston,2021-08-26,2021-08-29,registry,Framingham,MA,United States,5,Countdown Swing Boston
+53,2021,8,wsdc:53:August 2021,cancelled,t,Summer Hummer,2021-08-26,2021-08-29,registry,Framingham,MA,United States,5,Summer Hummer
+48,2021,9,wsdc:48:September 2021,no_results,f,South Bay Dance Fling,2021-09-02,2021-09-06,registry,San Jose,CA,United States,5,South Bay Dance Fling
+177,2021,9,wsdc:177:September 2021,cancelled,t,River City Swing,2021-09-03,2021-09-06,registry,Ponte Vedra Beach,FL,United States,5,River City Swing
+231,2021,9,wsdc:231:September 2021,cancelled,t,Trilogy Swing,2021-09-09,2021-09-12,registry,Durham,NC,United States,5,Trilogy Swing
+233,2021,9,wsdc:233:September 2021,cancelled,t,Bavarian Open,2021-09-09,2021-09-12,registry,Munich,Bavaria,Germany,5,Bavarian Open
+131,2021,9,wsdc:131:September 2021,cancelled,t,Meet Me In St. Louis Swing Dance Championships,2021-09-16,2021-09-19,registry,St Louis,MO,United States,5,Meet Me In St Louis
+167,2021,9,wsdc:167:September 2021,cancelled,t,Best of the Best,2021-09-16,2021-09-19,registry,Bankstown,NSW,Australia,5,Best of the Best WCS
+300,2021,9,wsdc:300:September 2021,cancelled,t,Austin Rocks 2021,2021-09-17,2021-09-19,registry,Austin,TX,United States,5,Austin Rocks
+10,2021,9,wsdc:10:September 2021,cancelled,t,BridgeTown Swing,2021-09-23,2021-09-26,registry,Vancouver,WA,United States,5,Bridgetown Swing Boogie
+8,2021,10,wsdc:8:October 2021,cancelled,t,Boogie by the Bay,2021-10-07,2021-10-10,registry,Burlingame,CA,United States,5,Boogie By The Bay
+179,2021,10,wsdc:179:October 2021,no_results,f,New Zealand Open,2021-10-08,2021-10-10,registry,Kohimarama,Auckland,New Zealand,5,New Zealand Open Swing Dance Championships
+267,2021,10,wsdc:267:October 2021,cancelled,t,Swustlicious,2021-10-15,2021-10-17,registry,King of Prussia,PA,United States,5,Swustlicious
+286,2021,10,wsdc:286:October 2021,cancelled,t,WCS Festival,2021-10-15,2021-10-17,registry,Duesseldorf,NRW,Germany,5,WCS Festival
+294,2021,10,wsdc:294:October 2021,cancelled,t,European Swing Challenge,2021-10-15,2021-10-18,registry,Nottingham,Berkshire,United Kingdom,5,European Swing Challenge
+322,2021,10,wsdc:322:October 2021,cancelled,t,Milan Modern Swing,2021-10-15,2021-10-17,registry,Sesto San Giovanni,Milano,Italy,5,Milan Modern Swing
+43,2021,10,wsdc:43:October 2021,cancelled,t,Paradise Country Dance Festival,2021-10-21,2021-10-24,registry,Irvine,CA,United States,5,Paradise Dance Festival
+125,2021,10,wsdc:125:October 2021,cancelled,t,Swing City Chicago,2021-10-28,2021-10-31,registry,Lombard,IL,United States,5,Swing City Chicago
+232,2021,11,wsdc:232:November 2021,cancelled,t,Norway Westie Fest,2021-10-28,2021-11-01,registry,Trondheim,,Norway,5,Norway Westie Fest
+65,2021,10,wsdc:65:October 2021,cancelled,t,Halloween Swingthing,2021-10-28,2021-10-31,registry,Torrance,CA,United States,5,Halloween SwingThing
+31,2021,11,wsdc:31:November 2021,cancelled,t,Mountain Magic,2021-11-04,2021-11-07,registry,Stateline,NV,United States,5,Mountain Magic
+229,2021,11,wsdc:229:November 2021,cancelled,t,Scandinavian Open WCS,2021-11-05,2021-11-07,registry,Johanneshov,Stockholm,Sweden,5,Scandinavian Open
+181,2021,11,wsdc:181:November 2021,cancelled,t,DC Swing eXperience (DCSX),2021-11-18,2021-11-21,registry,Herndon,VA,United States,5,DC Swing eXperience (DCSX)
+112,2021,11,wsdc:112:November 2021,cancelled,t,US Open Swing Dance Championships,2021-11-25,2021-11-28,registry,Burbank,CA,United States,5,US National Dance Championships
+87,2021,11,wsdc:87:November 2021,cancelled,t,C.A.S.H. Bash,2021-11-25,2021-11-28,registry,Twinsburg,OH,United States,5,CASH Bash
+265,2021,12,wsdc:265:December 2021,cancelled,t,Upstate Dance Challenge,2021-12-02,2021-12-05,registry,Saratoga Springs,NY,United States,5,Upstate Dance Challenge
+238,2021,12,wsdc:238:December 2021,cancelled,t,Winter White WCS,2021-12-09,2021-12-12,registry,Asker,,Norway,5,Winter White
+141,2022,1,wsdc:141:January 2022,cancelled,t,Spotlight New Year's Celebration,2021-12-30,2022-01-02,registry,Ypsilanti,MI,United States,5,Spotlight New Year's Celebration
+309,2022,1,wsdc:309:January 2022,cancelled,t,Avignon City Swing,2022-01-13,2022-01-15,registry,Avignon,Paca,France,5,Avignon City Swing
+196,2022,1,wsdc:196:January 2022,cancelled,t,SwingCouver,2022-01-14,2022-01-16,registry,Vancouver,,Canada,5,SwingCouver
+200,2022,1,wsdc:200:January 2022,cancelled,t,Austin Swing Dance Championships,2022-01-14,2022-01-16,registry,Austin,TX,United States,5,Austin Swing Dance Championships
+301,2022,1,wsdc:301:January 2022,cancelled,t,Swing Resolution,2022-01-14,2022-01-17,registry,Edinburgh,Ingliston,United Kingdom,5,Swing Resolution
+291,2022,1,wsdc:291:January 2022,cancelled,t,Municorn Swing,2022-01-20,2022-01-23,registry,Munich,Bavaria,Germany,5,Municorn Swing
+242,2022,1,wsdc:242:January 2022,cancelled,t,Derby City Swing,2022-01-27,2022-01-30,registry,Louisville,KY,United States,5,Derby City Swing
+272,2022,2,wsdc:307:February 2022,cancelled,t,Paris Swing Classic,2022-02-04,2022-02-06,registry,Paris,,France,5,Paris Westie Fest
+258,2022,2,wsdc:258:February 2022,cancelled,t,Swingtzerland,2022-02-10,2022-02-13,registry,Zürich,,Switzerland,5,Swingtzerland
+302,2022,2,wsdc:302:February 2022,cancelled,t,WesterOz Swing,2022-02-11,2022-02-13,registry,Perth,Western Australia,Australia,5,WesterOz Swing
+12,2022,2,wsdc:12:February 2022,cancelled,t,Capital Swing Dance Convention,2022-02-17,2022-02-20,registry,Sacramento,CA,United States,5,Capital Swing Dance Convention
+297,2022,2,wsdc:297:February 2022,cancelled,t,Winter Coast Swing,2022-02-24,2022-02-27,registry,Siilinjärvi,Vuorela,Finland,5,Winter Coast Swing
+275,2022,3,wsdc:275:March 2022,cancelled,t,Dutch Open West Coast Swing,2022-03-17,2022-03-20,registry,Venray,Limburg,Netherlands,5,Dutch Open West Coast Swing
+324,2022,4,wsdc:324:April 2022,cancelled,t,BTO Open,2022-03-31,2022-04-03,registry,Kanata,Ontario,Canada,5,Calgary Town Open
+116,2022,4,wsdc:116:April 2022,no_results,f,Calgary Dance Stampede,2022-04-07,2022-04-10,trial,Calgary,Alberta,Canada,5,Calgary Dance Stampede
+154,2022,4,wsdc:198:April 2022,cancelled,t,UK & European Championships,2022-04-07,2022-04-11,registry,Old Windsor,Berkshire,United Kingdom,5,UK WCS Championships
+218,2022,4,wsdc:218:April 2022,cancelled,t,Asia West Coast Swing Open,2022-04-14,2022-04-17,registry,Singapore,-,Singapore,5,Asia West Coast Swing Open
+306,2022,4,wsdc:306:April 2022,cancelled,t,Go West Swing Fest,2022-04-14,2022-04-17,registry,Fremantle,Western Australia,Australia,5,Go West SwingFest
+132,2022,4,wsdc:132:April 2022,cancelled,t,Tulsa Spring Swing,2022-04-15,2022-04-17,registry,Broken Arrow,OK,United States,5,Tulsa Spring Swing
+217,2022,4,wsdc:217:April 2022,cancelled,t,San Diego Dance Festival,2022-04-15,2022-04-17,registry,San Diego,CA,United States,5,San Diego Dance Festival
+219,2022,5,wsdc:219:May 2022,cancelled,f,KIWI Fest,2022-04-29,2022-05-01,registry,Kyiv,,Ukraine,5,KIWI Fest
+105,2022,5,wsdc:105:May 2022,no_results,f,Canadian Swing Championships,2022-05-20,2022-05-23,registry,Trois-Rivieres,Quebec,Canada,5,Canadian Swing Championships
+22,2022,5,wsdc:22:May 2022,cancelled,t,USA Grand National Dance Championship,2022-05-26,2022-05-30,registry,Atlanta,GA,United States,5,USA Grand Nationals
+207,2022,6,wsdc:207:June 2022,cancelled,t,Dance N Play,2022-06-09,2022-06-12,registry,Redmond,OR,United States,5,Dance N Play
+331,2022,6,wsdc:331:June 2022,cancelled,t,Swing Fiction,2022-06-24,2022-06-26,registry,Brno,,Czech Republic,5,Swing Fiction
+53,2022,8,wsdc:53:August 2022,cancelled,t,Summer Hummer,2022-08-25,2022-08-28,registry,Framingham,MA,United States,5,Summer Hummer
+300,2022,9,wsdc:300:September 2022,cancelled,t,Austin Rocks 2022,2022-09-16,2022-09-18,registry,Austin,TX,United States,5,Austin Rocks
+232,2022,10,wsdc:232:October 2022,cancelled,t,Norway Westie Fest,2022-09-29,2022-10-02,registry,Trondheim,,Norway,5,Norway Westie Fest
+265,2022,12,wsdc:265:December 2022,no_results,f,Upstate Dance Challenge,2022-12-02,2022-12-04,non_registry,Albany Saratoga region,NY,United States,5,Upstate Dance Challenge
+200,2023,1,wsdc:200:January 2023,hiatus,f,Austin Swing Dance Championships,2023-01-12,2023-01-15,registry,Austin,TX,United States,5,Austin Swing Dance Championships
+291,2023,1,wsdc:291:January 2023,cancelled,t,Municorn Swing,2023-01-26,2023-01-29,registry,Munich,Bavaria,Germany,5,Municorn Swing
+258,2023,2,wsdc:258:February 2023,cancelled,t,Swingtzerland,2023-02-09,2023-02-12,registry,Zürich,,Switzerland,5,Swingtzerland
+246,2023,3,wsdc:246:March 2023,no_results,f,Swing Escape,2023-03-09,2023-03-12,registry,"Nelson Bay, NSW, Australia",NSW,Australia,5,Swing Escape
+143,2023,3,wsdc:143:March 2023,hiatus,f,High Desert Dance Classic,2023-03-10,2023-03-12,registry,Lancaster,CA,United States,5,High Desert Dance Classic
+333,2023,3,wsdc:333:March 2023,no_results,f,Swingvasion,2023-03-10,2023-03-12,trial,Wellington,,New Zealand,5,Swingvasion
+276,2023,3,wsdc:276:March 2023,cancelled,t,Anchor Festival,2023-03-23,2023-03-26,registry,Hamburg,,Germany,5,Anchor Festival
+9,2023,3,wsdc:9:March 2023,cancelled,t,Boston Tea Party,2023-03-23,2023-03-26,registry,Newton,MA,United States,5,Boston Tea Party
+217,2023,4,wsdc:217:April 2023,hiatus,f,San Diego Dance Festival,2023-04-06,2023-04-09,registry,Irvive,CA,United States,5,San Diego Dance Festival
+132,2023,4,wsdc:132:April 2023,hiatus,f,Tulsa Spring Swing,2023-04-07,2023-04-09,registry,Tulsa,OK,United States,5,Tulsa Spring Swing
+154,2023,4,wsdc:198:April 2023,cancelled,f,UK & European Championships,2023-04-13,2023-04-16,registry,Old Windsor,Berkshire,United Kingdom,5,UK WCS Championships
+116,2023,4,wsdc:116:April 2023,no_results,f,Calgary Dance Stampede,2023-04-20,2023-04-23,trial,Calgary,AB,Canada,5,Calgary Dance Stampede
+304,2023,4,wsdc:304:April 2023,cancelled,f,Swing In Capital,2023-04-20,2023-04-23,registry,Roma,,Italy,5,Swing In Capital
+144,2023,4,wsdc:144:April 2023,hiatus,f,Swingin' Into Spring,2023-04-27,2023-04-30,registry,Hartford,CT,United States,5,Swingin' Into Spring
+306,2023,5,wsdc:306:May 2023,hiatus,f,Go West Swing Fest,2023-04-27,2023-05-01,registry,Fremantle,Western Australia,Australia,5,Go West SwingFest
+219,2023,5,wsdc:219:May 2023,cancelled,f,KIWI Fest,2023-05-04,2023-05-07,registry,Kyiv,,Ukraine,5,KIWI Fest
+277,2023,5,wsdc:277:May 2023,no_results,f,Scottish Swing Classic,2023-05-11,2023-05-14,registry,Glasgow,UK,United Kingdom,5,Scotland Swing Classic
+221,2023,5,wsdc:221:May 2023,no_results,f,Show Me Showdown,2023-05-25,2023-05-28,registry,St. Louis,MO,United States,5,Show Me Showdown
+76,2023,6,wsdc:76:June 2023,hiatus,f,Michigan Dance Classic,2023-06-01,2023-06-04,registry,Detroit,MI,United States,5,Michigan Dance Classic
+207,2023,6,wsdc:207:June 2023,hiatus,f,Dance N Play,2023-06-08,2023-06-11,registry,Redmond,OR,United States,5,Dance N Play
+149,2023,7,wsdc:149:July 2023,hiatus,f,Florida Dance Magic,2023-07-13,2023-07-17,registry,West Palm Beach,FL,United States,5,Florida Dance Magic
+263,2023,8,wsdc:263:August 2023,cancelled,f,Riga Summer Swing,2023-08-10,2023-08-13,registry,Riga,,Latvia,5,Riga Summer Swing
+339,2023,8,wsdc:339:August 2023,no_results,f,Bristol Swing Fiesta,2023-08-11,2023-08-13,trial,Bristol,,United Kingdom,5,Bristol Swing Fiesta
+53,2023,8,wsdc:53:August 2023,hiatus,f,Summer Hummer,2023-08-24,2023-08-27,registry,Framingham,MA,United States,5,Summer Hummer
+338,2023,9,wsdc:338:September 2023,no_results,f,SEA Q-FEST,2023-09-03,2023-09-10,trial,p.Vityazevo,,Russia,5,Sea Dance Fest
+232,2023,9,wsdc:232:September 2023,hiatus,f,Norway Westie Fest,2023-09-14,2023-09-17,registry,Trondheim,,Norway,5,Norway Westie Fest
+300,2023,9,wsdc:300:September 2023,hiatus,f,Austin Rocks 2023,2023-09-14,2023-09-17,registry,Austin,TX,United States,5,Austin Rocks
+234,2023,9,wsdc:234:September 2023,hiatus,f,Philly Swing Classic,2023-09-15,2023-09-17,registry,Wilmington,DE,United States,5,Philly Swing Classic
+294,2023,10,wsdc:294:October 2023,hiatus,f,European Swing Challenge,2023-10-19,2023-10-22,registry,Nottingham,Berkshire,United Kingdom,5,European Swing Challenge
+346,2023,10,wsdc:346:October 2023,no_results,f,Swingside Invitational,2023-10-27,2023-10-29,trial,Liège,,Belgium,5,Swingside Invitational
+166,2023,11,wsdc:166:November 2023,hiatus,f,London SWINGvitational,2023-11-16,2023-11-19,registry,Bracknell,Berkshire,United Kingdom,5,London SwingVitational
+213,2023,12,wsdc:213:December 2023,hiatus,f,Swingtimate,2023-12-07,2023-12-10,registry,Southport,QLD,Australia,5,Swingtimate
+214,2023,12,wsdc:214:December 2023,hiatus,f,New Year's Swing Fling,2023-12-28,2023-12-31,registry,London,,United Kingdom,5,New Year's Swing Fling
+291,2024,1,wsdc:291:January 2024,hiatus,f,Municorn Swing,2024-01-25,2024-01-28,registry,Munich,Bavaria,Germany,5,Municorn Swing
+302,2024,2,wsdc:302:February 2024,hiatus,f,WesterOz Swing,2024-02-09,2024-02-12,registry,Perth,Western Australia,Australia,5,WesterOz Swing
+344,2024,2,wsdc:344:February 2024,no_results,f,Arousa Westie Fest,2024-02-23,2024-02-25,trial,Sanxenxo,Pontevedra,Spain,5,Arousa Westie Fest
+276,2024,3,wsdc:276:March 2024,cancelled,t,Anchor Festival,2024-03-14,2024-03-17,registry,Hamburg,,Germany,5,Anchor Festival
+154,2024,4,wsdc:154:April 2024,cancelled,t,UK WCS Champs,2024-04-11,2024-04-15,registry,Nottingham,Nottinghamshire,United Kingdom,5,UK WCS Championships
+353,2024,4,wsdc:353:April 2024,no_results,f,Bama Jamma,2024-04-12,2024-04-14,trial,Birmingham,AL,United States,5,
+299,2024,4,wsdc:299:April 2024,cancelled,f,Ukrainian Open,2024-04-18,2024-04-21,registry,Kyiv,Kyivska,Ukraine,5,Ukrainian Open
+304,2024,4,wsdc:304:April 2024,hiatus,f,Swing in Capital,2024-04-18,2024-04-21,registry,Rome,,Italy,5,Swing In Capital
+219,2024,5,wsdc:219:May 2024,cancelled,f,KIWI Fest,2024-05-03,2024-05-05,registry,Kyiv,,Ukraine,5,KIWI Fest
+347,2024,5,wsdc:347:May 2024,no_results,f,BeeMAD,2024-05-03,2024-05-05,trial,Madrid,,Spain,5,BeeMAD
+311,2024,5,wsdc:311:May 2024,cancelled,f,TLV SwingFest,2024-05-16,2024-05-20,registry,Tel Aviv,,Israel,5,TLV SwingFest
+255,2024,6,wsdc:255:June 2024,hiatus,f,Indy Dance Explosion,2024-06-27,2024-06-30,registry,Indianapolis,IN,United States,5,Indy Dance Explosion
+362,2024,7,wsdc:362:July 2024,no_results,f,MY Swing,2024-07-05,2024-07-07,trial,Petaling Jaya,Selangor,Malaysia,5,MY Swing
+232,2024,9,wsdc:232:September 2024,no_results,f,Norway Westie Fest,2024-09-12,2024-09-15,non_registry,Trondheim,,Norway,5,Norway Westie Fest
+357,2024,9,wsdc:357:September 2024,no_results,f,WCS Party,2024-09-27,2024-09-30,trial,Vienna,,Austria,5,WCS Party
+194,2024,11,wsdc:194:November 2024,hiatus,f,Moscow Westie Fest,2024-11-01,2024-11-04,registry,Moscow,,Russia,5,Moscow Westie Fest
+137,2024,11,wsdc:137:November 2024,hiatus,f,Tampa Bay Classic,2024-11-08,2024-11-10,registry,Tampa,FL,United States,5,Tampa Bay Classic
+213,2024,12,wsdc:213:December 2024,no_results,f,Swingtimate,2024-12-05,2024-12-08,registry,Southport,QLD,Australia,5,Swingtimate
+214,2024,12,wsdc:214:December 2024,no_results,f,New Year's Swing Fling,2024-12-26,2024-12-29,registry,London,,United Kingdom,5,New Year's Swing Fling
+92,2025,3,wsdc:92:March 2025,hiatus,f,Madjam Mid-Atlantic Dance Jam,2025-02-27,2025-03-03,registry,Washinton DC,,United States,5,MADjam
+318,2025,3,wsdc:318:March 2025,hiatus,f,All Star SwingJam,2025-03-13,2025-03-16,registry,San Rafael,CA,United States,5,All Star SwingJam
+217,2025,3,wsdc:217:March 2025,no_results,f,San Diego Dance Festival,2025-03-28,2025-03-30,registry,Irvive,CA,United States,5,San Diego Dance Festival
+134,2025,5,wsdc:134:May 2025,cancelled,f,Swing Dance America 2025,2025-05-01,2025-05-05,registry,Lake Geneva,WI,United States,5,Swing Dance America
+303,2025,7,wsdc:303:July 2025,no_results,f,Odyssey West Coast Swing,2025-07-25,2025-07-27,registry,Nerang,Qld,Australia,5,Odyssey West Coast Swing
+164,2025,8,wsdc:164:August 2025,hiatus,f,Sea Sun & Swing Camp,2025-07-31,2025-08-03,registry,La Grande Mott,,France,5,Sea Sun and Swing
+79,2025,11,wsdc:79:November 2025,hiatus,f,Sea to Sky Seattle,2025-11-13,2025-11-17,registry,Seattle,WA,United States,5,Sea to Sky
+381,2026,1,wsdc:381:January 2026,no_results,f,The Australian Classic WCSDC,2026-01-16,2026-01-18,,Gosford,NSW,Australia,5,The Australian Classic West Coast Swing Dance Championships (Trial Event)
+302,2026,2,wsdc:302:February 2026,no_results,f,WesterOz Swing,2026-02-06,2026-02-08,registry,Perth,,Australia,5,WesterOz Swing
+207,2026,6,wsdc:207:June 2026,hiatus,f,Dance N Play,2026-06-18,2026-06-21,registry,Redmond,OR,United States,5,Dance N Play
+147,2026,7,wsdc:147:July 2026,hiatus,f,Toronto Open,2026-07-09,2026-07-12,registry,Etobicoke,,Canada,5,Toronto Open Swing & Hustle Championships
+390,2026,10,wsdc:390:October 2026,no_results,f,Autumn Beat,2026-10-02,2026-10-05,trial,Riga,,Latvia,5,
+323,2026,11,wsdc:323:November 2026,hiatus,f,Rocket City Swing,2026-11-19,2026-11-22,registry,Huntsville,AL,United States,5,Westies on the Water
+342,2026,12,wsdc:342:December 2026,hiatus,f,Soul Flow - West Coast Swing Festival,2026-12-11,2026-12-13,registry,Toulouse-Blagnac,Occitanie,France,5,Global Grand Prix - West Coast Swing Reunion
