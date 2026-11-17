@@ -1,111 +1,14 @@
 {
   "summary": {
-    "scheduled_active": 152,
-    "confirmed": 144,
+    "scheduled_active": 163,
+    "confirmed": 154,
     "suggested": 0,
     "review": 0,
-    "new_unmapped": 8,
-    "location_drifts": 14,
-    "name_variants": 40
+    "new_unmapped": 9,
+    "location_drifts": 17,
+    "name_variants": 45
   },
   "confirmed": [
-    {
-      "source_fingerprint": "6c7a6245c6d0bdba6e3ca39d",
-      "list_name": "Midnight Madness WCS 2026",
-      "start_date": "2026-11-12",
-      "location_raw": "Dallas Ft. Worth, Texas, United States",
-      "list_url": "http://www.midnightmadnesswcs.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "url",
-      "confidence": 0.99,
-      "canonical_event_id": 288,
-      "canonical_name": "Midnight Madness",
-      "catalog_url": "http://www.MidnightMadnessWCS.com",
-      "typical_location": "Dallas, TX",
-      "location_score": 0.4166666666666667,
-      "location_flag": "site_differs_from_history",
-      "notes": [
-        "Name differs: list='Midnight Madness WCS 2026' catalog='Midnight Madness'",
-        "Site location 'Dallas Ft. Worth, Texas, United States' differs from catalog typical 'Dallas, TX' (venue may have moved)"
-      ]
-    },
-    {
-      "source_fingerprint": "2cc789834be3ba9d6f496f75",
-      "list_name": "Westie's Angels",
-      "start_date": "2026-11-12",
-      "location_raw": "LYON, rhones, FRANCE",
-      "list_url": "http://www.frenchywesty.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 270,
-      "canonical_name": "Westie's Angels",
-      "catalog_url": "http://www.frenchywesty.com",
-      "typical_location": "Lyon, France",
-      "location_score": 0.92,
-      "location_flag": "ok",
-      "notes": []
-    },
-    {
-      "source_fingerprint": "6d27462b10b73cc31af716da",
-      "list_name": "Northeast Swing Classic",
-      "start_date": "2026-11-12",
-      "location_raw": "Providence RI, RI, United States",
-      "list_url": "http://www.northeastswingclassic.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 376,
-      "canonical_name": "Northeast Swing Classic",
-      "catalog_url": "http://www.northeastswingclassic.com/",
-      "typical_location": "Providence, RI",
-      "location_score": 0.6086956521739131,
-      "location_flag": "site_differs_from_history",
-      "notes": [
-        "Site location 'Providence RI, RI, United States' differs from catalog typical 'Providence, RI' (venue may have moved)"
-      ]
-    },
-    {
-      "source_fingerprint": "9f3381c9ca7f0829dbd6b7a5",
-      "list_name": "Autumn Swing Challenge",
-      "start_date": "2026-11-13",
-      "location_raw": "Budapest, Hungary",
-      "list_url": "http://www.asc-budapest.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 269,
-      "canonical_name": "Autumn Swing Challenge",
-      "catalog_url": "http://www.asc-budapest.com",
-      "typical_location": "Budapest, Hungary",
-      "location_score": 1.0,
-      "location_flag": "ok",
-      "notes": []
-    },
-    {
-      "source_fingerprint": "46ccc909e1caf0069aee734a",
-      "list_name": "Flowstate | West Coast Swing & Zouk Festival",
-      "start_date": "2026-11-13",
-      "location_raw": "London, United Kingdom",
-      "list_url": "http://www.flowstatefest.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 365,
-      "canonical_name": "Flowstate | West Coast Swing & Zouk Festival",
-      "catalog_url": "https://eastonswing.com/west-coast-swing-events/world-swing-dance-council/flowstate-west-coast-swing-zouk-festival-eastonswing/",
-      "typical_location": "London, United Kingdom",
-      "location_score": 1.0,
-      "location_flag": "ok",
-      "notes": [
-        "List URL 'http://www.flowstatefest.com/' differs from catalog URL 'https://eastonswing.com/west-coast-swing-events/world-swing-dance-council/flowstate-west-coast-swing-zouk-festival-eastonswing/' — using event name"
-      ]
-    },
     {
       "source_fingerprint": "d77c34c437ac161c6918fbf4",
       "list_name": "DC Swing eXperience (DCSX)",
@@ -1544,15 +1447,13 @@
       "match_status": "confirmed",
       "match_method": "exact_name",
       "confidence": 1.0,
-      "canonical_event_id": 430,
+      "canonical_event_id": 221,
       "canonical_name": "Gateway Swing Classic",
       "catalog_url": "",
-      "typical_location": null,
-      "location_score": 0.0,
-      "location_flag": "unknown",
-      "notes": [
-        "No historical location in catalog for comparison"
-      ]
+      "typical_location": "St. Louis, MO",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": []
     },
     {
       "source_fingerprint": "6a2fa76491a42cb1136df4e9",
@@ -1593,6 +1494,24 @@
       "notes": []
     },
     {
+      "source_fingerprint": "73a4660ca82ffb4f651a1b41",
+      "list_name": "Canadian Swing Championships",
+      "start_date": "2027-05-21",
+      "location_raw": "Montreal, Quebec, Canada",
+      "list_url": "https://www.canadianswingchampionships.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 105,
+      "canonical_name": "Canadian Swing Championships",
+      "catalog_url": "http://www.canadianswingchampionships.com",
+      "typical_location": "Montreal, Canada",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": []
+    },
+    {
       "source_fingerprint": "5bf826dc40b0b2ef68b8a310",
       "list_name": "USA Grand National Dance Championships",
       "start_date": "2027-05-27",
@@ -1616,7 +1535,7 @@
       "source_fingerprint": "5dc55d4fa9b02faf5f8f6e0d",
       "list_name": "Hungarian Open",
       "start_date": "2027-05-28",
-      "location_raw": "Budapest, Hungary",
+      "location_raw": "Budaperst, Hungary",
       "list_url": "https://wcs-ho.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
@@ -1626,7 +1545,7 @@
       "canonical_name": "Hungarian Open",
       "catalog_url": "http://wcs-ho.com/",
       "typical_location": "Budapest, Hungary",
-      "location_score": 1.0,
+      "location_score": 0.9714285714285714,
       "location_flag": "ok",
       "notes": []
     },
@@ -1727,6 +1646,27 @@
       "location_score": 0.92,
       "location_flag": "ok",
       "notes": []
+    },
+    {
+      "source_fingerprint": "c915a8168f5241bda39a3693",
+      "list_name": "Jack & Jill O'Rama",
+      "start_date": "2027-06-10",
+      "location_raw": "Anaheim/Garden Grove, CA, United States",
+      "list_url": "https://jackandjillorama.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 25,
+      "canonical_name": "J&J O'Rama",
+      "catalog_url": "https://jackandjillorama.com/",
+      "typical_location": "Anaheim, CA",
+      "location_score": 0.44,
+      "location_flag": "site_differs_from_history",
+      "notes": [
+        "Name differs: list=\"Jack & Jill O'Rama\" catalog=\"J&J O'Rama\"",
+        "Site location 'Anaheim/Garden Grove, CA, United States' differs from catalog typical 'Anaheim, CA' (venue may have moved)"
+      ]
     },
     {
       "source_fingerprint": "be73223d60cb5c30e25d0098",
@@ -1845,6 +1785,44 @@
       ]
     },
     {
+      "source_fingerprint": "d068c98c757062451f65eaea",
+      "list_name": "Wild Wild Westie",
+      "start_date": "2027-07-01",
+      "location_raw": "Dallas, Texas, United States",
+      "list_url": "https://www.wildwildwestie.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 225,
+      "canonical_name": "Wild Wild Westie",
+      "catalog_url": "http://www.WildWildWestie.com",
+      "typical_location": "Dallas, TX",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": []
+    },
+    {
+      "source_fingerprint": "318f2e483134fdb6c3d1ebe5",
+      "list_name": "Phoenix 4th of July",
+      "start_date": "2027-07-01",
+      "location_raw": "Phoenix, AZ, United States",
+      "list_url": "https://phoenix4thofjuly.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 1,
+      "canonical_name": "4TH of July Convention",
+      "catalog_url": "http://phoenix4thofjuly.com",
+      "typical_location": "Phoenix, AZ",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": [
+        "Name differs: list='Phoenix 4th of July' catalog='4TH of July Convention'"
+      ]
+    },
+    {
       "source_fingerprint": "f8eacdcd9ba7b9ecdb78b844",
       "list_name": "Carolina Summer Swing",
       "start_date": "2027-07-08",
@@ -1861,6 +1839,26 @@
       "location_score": 0.92,
       "location_flag": "ok",
       "notes": []
+    },
+    {
+      "source_fingerprint": "2202be180e6fb6918307fc56",
+      "list_name": "MY Swing 2027",
+      "start_date": "2027-07-08",
+      "location_raw": "Kuala Lumpur, Malaysia",
+      "list_url": "https://myswingopen.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "url",
+      "confidence": 0.99,
+      "canonical_event_id": 362,
+      "canonical_name": "MY Swing",
+      "catalog_url": "https://www.myswingopen.com/",
+      "typical_location": "Kuala Lumpur, Malaysia",
+      "location_score": 1.0,
+      "location_flag": "ok",
+      "notes": [
+        "Name differs: list='MY Swing 2027' catalog='MY Swing'"
+      ]
     },
     {
       "source_fingerprint": "12e514de4ed2b490b10b070d",
@@ -1940,6 +1938,26 @@
       "notes": []
     },
     {
+      "source_fingerprint": "e37453cc02f52d5650126554",
+      "list_name": "Rock The Barn",
+      "start_date": "2027-07-22",
+      "location_raw": "Umeå, Västerbottens Län, Sweden",
+      "list_url": "https://rockthebarn.se/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 256,
+      "canonical_name": "Rock the Barn",
+      "catalog_url": "https://rockthebarn.se/",
+      "typical_location": "Umeå, Sweden",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": [
+        "Name differs: list='Rock The Barn' catalog='Rock the Barn'"
+      ]
+    },
+    {
       "source_fingerprint": "3898eb5b6894d9b354ba6164",
       "list_name": "St. Petersburg WCS Nights",
       "start_date": "2027-07-22",
@@ -1976,6 +1994,27 @@
       "location_score": 0.92,
       "location_flag": "ok",
       "notes": []
+    },
+    {
+      "source_fingerprint": "9f2f2f3bc80d3bc19690e55d",
+      "list_name": "Sea Sun & Swing",
+      "start_date": "2027-07-23",
+      "location_raw": "Montpellier, Occitanie, France",
+      "list_url": "https://seasunswing.fr/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "url",
+      "confidence": 0.875,
+      "canonical_event_id": 164,
+      "canonical_name": "Sea Sun and Swing",
+      "catalog_url": "https://www.seasunswing.fr/",
+      "typical_location": "La Grande Motte, France",
+      "location_score": 0.49056603773584906,
+      "location_flag": "site_differs_from_history",
+      "notes": [
+        "Name differs: list='Sea Sun & Swing' catalog='Sea Sun and Swing'",
+        "Site location 'Montpellier, Occitanie, France' differs from catalog typical 'La Grande Motte, France' (venue may have moved)"
+      ]
     },
     {
       "source_fingerprint": "e0e29164988662ec78f7e3ee",
@@ -2129,7 +2168,7 @@
       "source_fingerprint": "3098f395ed2140c5dcf9e784",
       "list_name": "Swing Fling",
       "start_date": "2027-08-12",
-      "location_raw": "Washington DC, VA, United States",
+      "location_raw": "Washington DC, United States",
       "list_url": "https://www.swingfling.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
@@ -2139,10 +2178,10 @@
       "canonical_name": "Swing Fling",
       "catalog_url": "http://www.swingfling.com",
       "typical_location": "Herndon, VA",
-      "location_score": 0.37209302325581395,
+      "location_score": 0.358974358974359,
       "location_flag": "site_differs_from_history",
       "notes": [
-        "Site location 'Washington DC, VA, United States' differs from catalog typical 'Herndon, VA' (venue may have moved)"
+        "Site location 'Washington DC, United States' differs from catalog typical 'Herndon, VA' (venue may have moved)"
       ]
     },
     {
@@ -2180,6 +2219,24 @@
       "catalog_url": "http://thebendconnection.com",
       "typical_location": "Bend, OR",
       "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": []
+    },
+    {
+      "source_fingerprint": "323d744df5cd01d52f475f8b",
+      "list_name": "Manneken Swing",
+      "start_date": "2027-08-19",
+      "location_raw": "Brussels, Belgium",
+      "list_url": "https://www.mannekenswing.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 400,
+      "canonical_name": "Manneken Swing",
+      "catalog_url": "",
+      "typical_location": "Bruxelles, Belgium",
+      "location_score": 0.8571428571428571,
       "location_flag": "ok",
       "notes": []
     },
@@ -2648,6 +2705,103 @@
       "notes": []
     },
     {
+      "source_fingerprint": "149cb13afcee5e87f68c8299",
+      "list_name": "Tampa Bay Classic",
+      "start_date": "2027-11-05",
+      "location_raw": "Tampa Bay, FL, United States",
+      "list_url": "https://tbcwcs.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 137,
+      "canonical_name": "Tampa Bay Classic",
+      "catalog_url": "http//http://www.tampabayclassic.com",
+      "typical_location": "Tampa, FL",
+      "location_score": 0.4864864864864865,
+      "location_flag": "site_differs_from_history",
+      "notes": [
+        "Site location 'Tampa Bay, FL, United States' differs from catalog typical 'Tampa, FL' (venue may have moved)"
+      ]
+    },
+    {
+      "source_fingerprint": "29cb77ed8fb41fd308899234",
+      "list_name": "Westie's Angels",
+      "start_date": "2027-11-10",
+      "location_raw": "LYON, rhones, France",
+      "list_url": "https://www.frenchywesty.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 270,
+      "canonical_name": "Westie's Angels",
+      "catalog_url": "http://www.frenchywesty.com",
+      "typical_location": "Lyon, France",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": []
+    },
+    {
+      "source_fingerprint": "b3fdf80961b0ad818df9a31b",
+      "list_name": "Westie Pink City",
+      "start_date": "2027-11-11",
+      "location_raw": "Toulouse, Haute Garonne, France",
+      "list_url": "https://westiepinkcity.fr/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 312,
+      "canonical_name": "Westie Pink City",
+      "catalog_url": "http://www.westiepinkcity.fr/",
+      "typical_location": "Toulouse, France",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": []
+    },
+    {
+      "source_fingerprint": "596f213572c795fed75037e8",
+      "list_name": "Northeast Swing Classic",
+      "start_date": "2027-11-11",
+      "location_raw": "Providence RI, United States",
+      "list_url": "https://www.northeastswingclassic.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 376,
+      "canonical_name": "Northeast Swing Classic",
+      "catalog_url": "http://www.northeastswingclassic.com/",
+      "typical_location": "Providence, RI",
+      "location_score": 0.6190476190476191,
+      "location_flag": "site_differs_from_history",
+      "notes": [
+        "Site location 'Providence RI, United States' differs from catalog typical 'Providence, RI' (venue may have moved)"
+      ]
+    },
+    {
+      "source_fingerprint": "ffcbed0b1f6f3f056b0ee935",
+      "list_name": "DCSX (DC Swing eXperience)",
+      "start_date": "2027-11-18",
+      "location_raw": "Washington, DC, United States",
+      "list_url": "https://www.dcswingexperience.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "url",
+      "confidence": 0.99,
+      "canonical_event_id": 181,
+      "canonical_name": "DC Swing eXperience (DCSX)",
+      "catalog_url": "http://www.dcswingexperience.com",
+      "typical_location": "Herndon, VA",
+      "location_score": 0.35,
+      "location_flag": "site_differs_from_history",
+      "notes": [
+        "Name differs: list='DCSX (DC Swing eXperience)' catalog='DC Swing eXperience (DCSX)'",
+        "Site location 'Washington, DC, United States' differs from catalog typical 'Herndon, VA' (venue may have moved)"
+      ]
+    },
+    {
       "source_fingerprint": "0e485aa8568c6408b8ff891a",
       "list_name": "Euro Dance Festival",
       "start_date": "2028-02-29",
@@ -2686,6 +2840,24 @@
       ]
     },
     {
+      "source_fingerprint": "ae104811b4d36da837b36068",
+      "list_name": "Liberty Swing Dance Championships",
+      "start_date": "2028-06-22",
+      "location_raw": "New Brunswick, New Jersey, United States",
+      "list_url": "http://www.libertyswing.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 96,
+      "canonical_name": "Liberty Swing Dance Championships",
+      "catalog_url": "http://www.libertyswing.com",
+      "typical_location": "New Brunswick, NJ",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": []
+    },
+    {
       "source_fingerprint": "39821f515c1dde6fd7bbe6f9",
       "list_name": "Atlanta Swing Classic",
       "start_date": "2028-09-28",
@@ -2717,6 +2889,24 @@
       "canonical_name": "Euro Dance Festival",
       "catalog_url": "https://www.euro-dance-festival.com/",
       "typical_location": "Rust, Germany",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": []
+    },
+    {
+      "source_fingerprint": "8ec44961e91de084ce01e1ad",
+      "list_name": "Liberty Swing Dance Championships",
+      "start_date": "2029-06-28",
+      "location_raw": "New Brunswick, New Jersey, United States",
+      "list_url": "http://www.libertyswing.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 96,
+      "canonical_name": "Liberty Swing Dance Championships",
+      "catalog_url": "http://www.libertyswing.com",
+      "typical_location": "New Brunswick, NJ",
       "location_score": 0.92,
       "location_flag": "ok",
       "notes": []
@@ -2849,6 +3039,27 @@
       ]
     },
     {
+      "source_fingerprint": "9a2c396b54a2e8a54ac9f967",
+      "list_name": "Three Rivers",
+      "start_date": "2027-04-01",
+      "location_raw": "Pittsburgh, PA, United States",
+      "list_url": "https://threeriversswing.com/",
+      "status_event": "Trial Event",
+      "match_status": "new",
+      "match_method": "none",
+      "confidence": 0.0,
+      "canonical_event_id": null,
+      "canonical_name": null,
+      "catalog_url": null,
+      "typical_location": null,
+      "location_score": 0.0,
+      "location_flag": "",
+      "notes": [
+        "No catalog match — likely new or renamed brand",
+        "Trial event on schedule"
+      ]
+    },
+    {
       "source_fingerprint": "f0946489d01ea007f2e64d27",
       "list_name": "Franconian Swing Project",
       "start_date": "2027-04-08",
@@ -2913,47 +3124,6 @@
     }
   ],
   "location_drifts": [
-    {
-      "source_fingerprint": "6c7a6245c6d0bdba6e3ca39d",
-      "list_name": "Midnight Madness WCS 2026",
-      "start_date": "2026-11-12",
-      "location_raw": "Dallas Ft. Worth, Texas, United States",
-      "list_url": "http://www.midnightmadnesswcs.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "url",
-      "confidence": 0.99,
-      "canonical_event_id": 288,
-      "canonical_name": "Midnight Madness",
-      "catalog_url": "http://www.MidnightMadnessWCS.com",
-      "typical_location": "Dallas, TX",
-      "location_score": 0.4166666666666667,
-      "location_flag": "site_differs_from_history",
-      "notes": [
-        "Name differs: list='Midnight Madness WCS 2026' catalog='Midnight Madness'",
-        "Site location 'Dallas Ft. Worth, Texas, United States' differs from catalog typical 'Dallas, TX' (venue may have moved)"
-      ]
-    },
-    {
-      "source_fingerprint": "6d27462b10b73cc31af716da",
-      "list_name": "Northeast Swing Classic",
-      "start_date": "2026-11-12",
-      "location_raw": "Providence RI, RI, United States",
-      "list_url": "http://www.northeastswingclassic.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 376,
-      "canonical_name": "Northeast Swing Classic",
-      "catalog_url": "http://www.northeastswingclassic.com/",
-      "typical_location": "Providence, RI",
-      "location_score": 0.6086956521739131,
-      "location_flag": "site_differs_from_history",
-      "notes": [
-        "Site location 'Providence RI, RI, United States' differs from catalog typical 'Providence, RI' (venue may have moved)"
-      ]
-    },
     {
       "source_fingerprint": "d77c34c437ac161c6918fbf4",
       "list_name": "DC Swing eXperience (DCSX)",
@@ -3116,6 +3286,48 @@
       ]
     },
     {
+      "source_fingerprint": "c915a8168f5241bda39a3693",
+      "list_name": "Jack & Jill O'Rama",
+      "start_date": "2027-06-10",
+      "location_raw": "Anaheim/Garden Grove, CA, United States",
+      "list_url": "https://jackandjillorama.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 25,
+      "canonical_name": "J&J O'Rama",
+      "catalog_url": "https://jackandjillorama.com/",
+      "typical_location": "Anaheim, CA",
+      "location_score": 0.44,
+      "location_flag": "site_differs_from_history",
+      "notes": [
+        "Name differs: list=\"Jack & Jill O'Rama\" catalog=\"J&J O'Rama\"",
+        "Site location 'Anaheim/Garden Grove, CA, United States' differs from catalog typical 'Anaheim, CA' (venue may have moved)"
+      ]
+    },
+    {
+      "source_fingerprint": "9f2f2f3bc80d3bc19690e55d",
+      "list_name": "Sea Sun & Swing",
+      "start_date": "2027-07-23",
+      "location_raw": "Montpellier, Occitanie, France",
+      "list_url": "https://seasunswing.fr/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "url",
+      "confidence": 0.875,
+      "canonical_event_id": 164,
+      "canonical_name": "Sea Sun and Swing",
+      "catalog_url": "https://www.seasunswing.fr/",
+      "typical_location": "La Grande Motte, France",
+      "location_score": 0.49056603773584906,
+      "location_flag": "site_differs_from_history",
+      "notes": [
+        "Name differs: list='Sea Sun & Swing' catalog='Sea Sun and Swing'",
+        "Site location 'Montpellier, Occitanie, France' differs from catalog typical 'La Grande Motte, France' (venue may have moved)"
+      ]
+    },
+    {
       "source_fingerprint": "03a1b915c07fb05051f0a710",
       "list_name": "New England Dance Festival",
       "start_date": "2027-08-05",
@@ -3139,7 +3351,7 @@
       "source_fingerprint": "3098f395ed2140c5dcf9e784",
       "list_name": "Swing Fling",
       "start_date": "2027-08-12",
-      "location_raw": "Washington DC, VA, United States",
+      "location_raw": "Washington DC, United States",
       "list_url": "https://www.swingfling.com/",
       "status_event": "Registry Event",
       "match_status": "confirmed",
@@ -3149,10 +3361,10 @@
       "canonical_name": "Swing Fling",
       "catalog_url": "http://www.swingfling.com",
       "typical_location": "Herndon, VA",
-      "location_score": 0.37209302325581395,
+      "location_score": 0.358974358974359,
       "location_flag": "site_differs_from_history",
       "notes": [
-        "Site location 'Washington DC, VA, United States' differs from catalog typical 'Herndon, VA' (venue may have moved)"
+        "Site location 'Washington DC, United States' differs from catalog typical 'Herndon, VA' (venue may have moved)"
       ]
     },
     {
@@ -3173,6 +3385,67 @@
       "location_flag": "site_differs_from_history",
       "notes": [
         "Site location 'Boston, MA, United States' differs from catalog typical 'Woburn (Boston), MA' (venue may have moved)"
+      ]
+    },
+    {
+      "source_fingerprint": "149cb13afcee5e87f68c8299",
+      "list_name": "Tampa Bay Classic",
+      "start_date": "2027-11-05",
+      "location_raw": "Tampa Bay, FL, United States",
+      "list_url": "https://tbcwcs.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 137,
+      "canonical_name": "Tampa Bay Classic",
+      "catalog_url": "http//http://www.tampabayclassic.com",
+      "typical_location": "Tampa, FL",
+      "location_score": 0.4864864864864865,
+      "location_flag": "site_differs_from_history",
+      "notes": [
+        "Site location 'Tampa Bay, FL, United States' differs from catalog typical 'Tampa, FL' (venue may have moved)"
+      ]
+    },
+    {
+      "source_fingerprint": "596f213572c795fed75037e8",
+      "list_name": "Northeast Swing Classic",
+      "start_date": "2027-11-11",
+      "location_raw": "Providence RI, United States",
+      "list_url": "https://www.northeastswingclassic.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 376,
+      "canonical_name": "Northeast Swing Classic",
+      "catalog_url": "http://www.northeastswingclassic.com/",
+      "typical_location": "Providence, RI",
+      "location_score": 0.6190476190476191,
+      "location_flag": "site_differs_from_history",
+      "notes": [
+        "Site location 'Providence RI, United States' differs from catalog typical 'Providence, RI' (venue may have moved)"
+      ]
+    },
+    {
+      "source_fingerprint": "ffcbed0b1f6f3f056b0ee935",
+      "list_name": "DCSX (DC Swing eXperience)",
+      "start_date": "2027-11-18",
+      "location_raw": "Washington, DC, United States",
+      "list_url": "https://www.dcswingexperience.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "url",
+      "confidence": 0.99,
+      "canonical_event_id": 181,
+      "canonical_name": "DC Swing eXperience (DCSX)",
+      "catalog_url": "http://www.dcswingexperience.com",
+      "typical_location": "Herndon, VA",
+      "location_score": 0.35,
+      "location_flag": "site_differs_from_history",
+      "notes": [
+        "Name differs: list='DCSX (DC Swing eXperience)' catalog='DC Swing eXperience (DCSX)'",
+        "Site location 'Washington, DC, United States' differs from catalog typical 'Herndon, VA' (venue may have moved)"
       ]
     },
     {
@@ -3197,27 +3470,6 @@
     }
   ],
   "name_variants": [
-    {
-      "source_fingerprint": "6c7a6245c6d0bdba6e3ca39d",
-      "list_name": "Midnight Madness WCS 2026",
-      "start_date": "2026-11-12",
-      "location_raw": "Dallas Ft. Worth, Texas, United States",
-      "list_url": "http://www.midnightmadnesswcs.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "url",
-      "confidence": 0.99,
-      "canonical_event_id": 288,
-      "canonical_name": "Midnight Madness",
-      "catalog_url": "http://www.MidnightMadnessWCS.com",
-      "typical_location": "Dallas, TX",
-      "location_score": 0.4166666666666667,
-      "location_flag": "site_differs_from_history",
-      "notes": [
-        "Name differs: list='Midnight Madness WCS 2026' catalog='Midnight Madness'",
-        "Site location 'Dallas Ft. Worth, Texas, United States' differs from catalog typical 'Dallas, TX' (venue may have moved)"
-      ]
-    },
     {
       "source_fingerprint": "7e1806f78d93719855097003",
       "list_name": "The Open Swing Dance  Championships",
@@ -3803,6 +4055,27 @@
       ]
     },
     {
+      "source_fingerprint": "c915a8168f5241bda39a3693",
+      "list_name": "Jack & Jill O'Rama",
+      "start_date": "2027-06-10",
+      "location_raw": "Anaheim/Garden Grove, CA, United States",
+      "list_url": "https://jackandjillorama.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 25,
+      "canonical_name": "J&J O'Rama",
+      "catalog_url": "https://jackandjillorama.com/",
+      "typical_location": "Anaheim, CA",
+      "location_score": 0.44,
+      "location_flag": "site_differs_from_history",
+      "notes": [
+        "Name differs: list=\"Jack & Jill O'Rama\" catalog=\"J&J O'Rama\"",
+        "Site location 'Anaheim/Garden Grove, CA, United States' differs from catalog typical 'Anaheim, CA' (venue may have moved)"
+      ]
+    },
+    {
       "source_fingerprint": "a6b17d5e6d7a7a85e19b7b47",
       "list_name": "SWINGAPALOOZA",
       "start_date": "2027-06-17",
@@ -3883,6 +4156,46 @@
       ]
     },
     {
+      "source_fingerprint": "318f2e483134fdb6c3d1ebe5",
+      "list_name": "Phoenix 4th of July",
+      "start_date": "2027-07-01",
+      "location_raw": "Phoenix, AZ, United States",
+      "list_url": "https://phoenix4thofjuly.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 1,
+      "canonical_name": "4TH of July Convention",
+      "catalog_url": "http://phoenix4thofjuly.com",
+      "typical_location": "Phoenix, AZ",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": [
+        "Name differs: list='Phoenix 4th of July' catalog='4TH of July Convention'"
+      ]
+    },
+    {
+      "source_fingerprint": "2202be180e6fb6918307fc56",
+      "list_name": "MY Swing 2027",
+      "start_date": "2027-07-08",
+      "location_raw": "Kuala Lumpur, Malaysia",
+      "list_url": "https://myswingopen.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "url",
+      "confidence": 0.99,
+      "canonical_event_id": 362,
+      "canonical_name": "MY Swing",
+      "catalog_url": "https://www.myswingopen.com/",
+      "typical_location": "Kuala Lumpur, Malaysia",
+      "location_score": 1.0,
+      "location_flag": "ok",
+      "notes": [
+        "Name differs: list='MY Swing 2027' catalog='MY Swing'"
+      ]
+    },
+    {
       "source_fingerprint": "12e514de4ed2b490b10b070d",
       "list_name": "Toronto Open",
       "start_date": "2027-07-15",
@@ -3904,6 +4217,26 @@
       ]
     },
     {
+      "source_fingerprint": "e37453cc02f52d5650126554",
+      "list_name": "Rock The Barn",
+      "start_date": "2027-07-22",
+      "location_raw": "Umeå, Västerbottens Län, Sweden",
+      "list_url": "https://rockthebarn.se/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "explicit",
+      "confidence": 1.0,
+      "canonical_event_id": 256,
+      "canonical_name": "Rock the Barn",
+      "catalog_url": "https://rockthebarn.se/",
+      "typical_location": "Umeå, Sweden",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": [
+        "Name differs: list='Rock The Barn' catalog='Rock the Barn'"
+      ]
+    },
+    {
       "source_fingerprint": "3898eb5b6894d9b354ba6164",
       "list_name": "St. Petersburg WCS Nights",
       "start_date": "2027-07-22",
@@ -3921,6 +4254,27 @@
       "location_flag": "ok",
       "notes": [
         "Name differs: list='St. Petersburg WCS Nights' catalog='Saint Petersburg WCS Nights'"
+      ]
+    },
+    {
+      "source_fingerprint": "9f2f2f3bc80d3bc19690e55d",
+      "list_name": "Sea Sun & Swing",
+      "start_date": "2027-07-23",
+      "location_raw": "Montpellier, Occitanie, France",
+      "list_url": "https://seasunswing.fr/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "url",
+      "confidence": 0.875,
+      "canonical_event_id": 164,
+      "canonical_name": "Sea Sun and Swing",
+      "catalog_url": "https://www.seasunswing.fr/",
+      "typical_location": "La Grande Motte, France",
+      "location_score": 0.49056603773584906,
+      "location_flag": "site_differs_from_history",
+      "notes": [
+        "Name differs: list='Sea Sun & Swing' catalog='Sea Sun and Swing'",
+        "Site location 'Montpellier, Occitanie, France' differs from catalog typical 'La Grande Motte, France' (venue may have moved)"
       ]
     },
     {
@@ -4002,8 +4356,29 @@
       "notes": [
         "Name differs: list='Spooky Albany Swing Spectacular' catalog='SASS Spooky Albany Swing Spectacular'"
       ]
+    },
+    {
+      "source_fingerprint": "ffcbed0b1f6f3f056b0ee935",
+      "list_name": "DCSX (DC Swing eXperience)",
+      "start_date": "2027-11-18",
+      "location_raw": "Washington, DC, United States",
+      "list_url": "https://www.dcswingexperience.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "url",
+      "confidence": 0.99,
+      "canonical_event_id": 181,
+      "canonical_name": "DC Swing eXperience (DCSX)",
+      "catalog_url": "http://www.dcswingexperience.com",
+      "typical_location": "Herndon, VA",
+      "location_score": 0.35,
+      "location_flag": "site_differs_from_history",
+      "notes": [
+        "Name differs: list='DCSX (DC Swing eXperience)' catalog='DC Swing eXperience (DCSX)'",
+        "Site location 'Washington, DC, United States' differs from catalog typical 'Herndon, VA' (venue may have moved)"
+      ]
     }
   ],
-  "generated_at": "2026-11-10T15:56:31.143936+00:00",
-  "catalog_events": 430
+  "generated_at": "2026-11-17T17:13:21.917680+00:00",
+  "catalog_events": 427
 }

@@ -1,9 +1,9 @@
 {
-  "scraped_at": "2026-11-10T15:56:54.136854+00:00",
+  "scraped_at": "2026-11-17T17:13:50.597483+00:00",
   "source": "https://worldsdc.com/events/calendar/",
   "min_start": "2025-01-01",
-  "raw_count": 664,
-  "event_count": 503,
+  "raw_count": 679,
+  "event_count": 518,
   "events": [
     {
       "event_name": "Floorplay Swing Vacation",
@@ -2286,33 +2286,6 @@
       "raw_end": "2025-07-28"
     },
     {
-      "event_name": "Florida Dance Magic",
-      "calendar_title": "Florida Dance Magic (Unconfirmed)",
-      "catalog_name": "Florida Dance Magic",
-      "name_key": "floridadancemagic",
-      "start_date": "2025-07-25",
-      "end_date": "",
-      "url": "https://floridadancemagic.com/",
-      "url_key": "floridadancemagic.com",
-      "results_year": 2025,
-      "results_month": 7,
-      "edition_ym_candidates": [
-        "2025-07"
-      ],
-      "date_precision": "day_start_only",
-      "date_source": "wsdc_calendar",
-      "flags": [
-        "invalid_end",
-        "unconfirmed"
-      ],
-      "status_tags": [
-        "unconfirmed"
-      ],
-      "source_fingerprint": "4dc2b589199c8850723248aa",
-      "raw_start": "2025-07-25",
-      "raw_end": "2024-07-29"
-    },
-    {
       "event_name": "Arizona Dance Classic",
       "calendar_title": "Arizona Dance Classic",
       "catalog_name": "Arizona Dance Classic",
@@ -2741,8 +2714,8 @@
     {
       "event_name": "Jax Westie Fest",
       "calendar_title": "Jax Westie Fest",
-      "catalog_name": "River City Swing",
-      "name_key": "rivercityswing",
+      "catalog_name": "Jax Westie Fest",
+      "name_key": "jaxwestiefest",
       "start_date": "2025-08-28",
       "end_date": "2025-08-31",
       "url": "http://www.jaxwestiefest.com",
@@ -6826,8 +6799,8 @@
     {
       "event_name": "Jax Westie Fest",
       "calendar_title": "Jax Westie Fest",
-      "catalog_name": "River City Swing",
-      "name_key": "rivercityswing",
+      "catalog_name": "Jax Westie Fest",
+      "name_key": "jaxwestiefest",
       "start_date": "2026-09-04",
       "end_date": "2026-09-07",
       "url": "http://www.jaxwestiefest.com",
@@ -9263,6 +9236,28 @@
       "raw_end": "2027-04-05"
     },
     {
+      "event_name": "Three Rivers",
+      "calendar_title": "Three Rivers",
+      "catalog_name": "Three Rivers",
+      "name_key": "threerivers",
+      "start_date": "2027-04-01",
+      "end_date": "2027-04-04",
+      "url": "https://threeriversswing.com/",
+      "url_key": "threeriversswing.com",
+      "results_year": 2027,
+      "results_month": 4,
+      "edition_ym_candidates": [
+        "2027-04"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "9a2c396b54a2e8a54ac9f967",
+      "raw_start": "2027-04-01",
+      "raw_end": "2027-04-05"
+    },
+    {
       "event_name": "Franconian Swing Project",
       "calendar_title": "Franconian Swing Project",
       "catalog_name": "Franconian Swing Project",
@@ -9796,6 +9791,28 @@
       "raw_end": "2027-05-25"
     },
     {
+      "event_name": "Canadian Swing Championships",
+      "calendar_title": "Canadian Swing Championships",
+      "catalog_name": "Canadian Swing Championships",
+      "name_key": "canadianswingchampionships",
+      "start_date": "2027-05-21",
+      "end_date": "2027-05-24",
+      "url": "https://www.canadianswingchampionships.com",
+      "url_key": "canadianswingchampionships.com",
+      "results_year": 2027,
+      "results_month": 5,
+      "edition_ym_candidates": [
+        "2027-05"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "73a4660ca82ffb4f651a1b41",
+      "raw_start": "2027-05-21",
+      "raw_end": "2027-05-25"
+    },
+    {
       "event_name": "Nanaimo Dance Fusion",
       "calendar_title": "Nanaimo Dance Fusion",
       "catalog_name": "Nanaimo Dance Fusion",
@@ -9948,6 +9965,28 @@
       "source_fingerprint": "f3e67b27f73d8a0298f1ae4c",
       "raw_start": "2027-06-10",
       "raw_end": "2027-06-14"
+    },
+    {
+      "event_name": "Jack & Jill O'Rama",
+      "calendar_title": "Jack & Jill O'Rama",
+      "catalog_name": "Jack & Jill O'Rama",
+      "name_key": "jackjillorama",
+      "start_date": "2027-06-10",
+      "end_date": "2027-06-14",
+      "url": "https://jackandjillorama.com/",
+      "url_key": "jackandjillorama.com",
+      "results_year": 2027,
+      "results_month": 6,
+      "edition_ym_candidates": [
+        "2027-06"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "c915a8168f5241bda39a3693",
+      "raw_start": "2027-06-10",
+      "raw_end": "2027-06-15"
     },
     {
       "event_name": "Orange Blossom Dance Festival",
@@ -10104,6 +10143,28 @@
       "raw_end": "2027-06-29"
     },
     {
+      "event_name": "Phoenix 4th of July",
+      "calendar_title": "Phoenix 4th of July",
+      "catalog_name": "4TH of July Convention",
+      "name_key": "4thofjulyconvention",
+      "start_date": "2027-07-01",
+      "end_date": "2027-07-04",
+      "url": "https://phoenix4thofjuly.com/",
+      "url_key": "phoenix4thofjuly.com",
+      "results_year": 2027,
+      "results_month": 7,
+      "edition_ym_candidates": [
+        "2027-07"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "318f2e483134fdb6c3d1ebe5",
+      "raw_start": "2027-07-01",
+      "raw_end": "2027-07-05"
+    },
+    {
       "event_name": "Swing Valley",
       "calendar_title": "Swing Valley",
       "catalog_name": "Swing Valley",
@@ -10126,6 +10187,28 @@
       "raw_end": "2027-07-05"
     },
     {
+      "event_name": "Wild Wild Westie",
+      "calendar_title": "Wild Wild Westie",
+      "catalog_name": "Wild Wild Westie",
+      "name_key": "wildwildwestie",
+      "start_date": "2027-07-01",
+      "end_date": "2027-07-04",
+      "url": "https://www.WildWildWestie.com/",
+      "url_key": "wildwildwestie.com",
+      "results_year": 2027,
+      "results_month": 7,
+      "edition_ym_candidates": [
+        "2027-07"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "d068c98c757062451f65eaea",
+      "raw_start": "2027-07-01",
+      "raw_end": "2027-07-05"
+    },
+    {
       "event_name": "Carolina Summer Swing",
       "calendar_title": "Carolina Summer Swing",
       "catalog_name": "Carolina Summer Swing",
@@ -10144,6 +10227,28 @@
       "flags": [],
       "status_tags": [],
       "source_fingerprint": "f8eacdcd9ba7b9ecdb78b844",
+      "raw_start": "2027-07-08",
+      "raw_end": "2027-07-12"
+    },
+    {
+      "event_name": "MY Swing",
+      "calendar_title": "MY Swing 2027",
+      "catalog_name": "MY Swing",
+      "name_key": "myswing",
+      "start_date": "2027-07-08",
+      "end_date": "2027-07-11",
+      "url": "https://myswingopen.com/",
+      "url_key": "myswingopen.com",
+      "results_year": 2027,
+      "results_month": 7,
+      "edition_ym_candidates": [
+        "2027-07"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "2202be180e6fb6918307fc56",
       "raw_start": "2027-07-08",
       "raw_end": "2027-07-12"
     },
@@ -10258,6 +10363,28 @@
       "raw_end": "2027-07-26"
     },
     {
+      "event_name": "Rock The Barn",
+      "calendar_title": "Rock The Barn",
+      "catalog_name": "Rock the Barn",
+      "name_key": "rockthebarn",
+      "start_date": "2027-07-22",
+      "end_date": "2027-07-25",
+      "url": "https://rockthebarn.se",
+      "url_key": "rockthebarn.se",
+      "results_year": 2027,
+      "results_month": 7,
+      "edition_ym_candidates": [
+        "2027-07"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "e37453cc02f52d5650126554",
+      "raw_start": "2027-07-22",
+      "raw_end": "2027-07-26"
+    },
+    {
       "event_name": "St. Petersburg WCS Nights",
       "calendar_title": "St. Petersburg WCS Nights",
       "catalog_name": "Saint Petersburg WCS Nights",
@@ -10278,6 +10405,28 @@
       "source_fingerprint": "3898eb5b6894d9b354ba6164",
       "raw_start": "2027-07-22",
       "raw_end": "2027-07-26"
+    },
+    {
+      "event_name": "Sea Sun & Swing",
+      "calendar_title": "Sea Sun & Swing",
+      "catalog_name": "Sea Sun & Swing",
+      "name_key": "seasunswing",
+      "start_date": "2027-07-23",
+      "end_date": "2027-07-26",
+      "url": "https://seasunswing.fr/",
+      "url_key": "seasunswing.fr",
+      "results_year": 2027,
+      "results_month": 7,
+      "edition_ym_candidates": [
+        "2027-07"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "9f2f2f3bc80d3bc19690e55d",
+      "raw_start": "2027-07-23",
+      "raw_end": "2027-07-27"
     },
     {
       "event_name": "Infinite Swing",
@@ -10479,6 +10628,28 @@
       "source_fingerprint": "b7e1b18d11494470581dff01",
       "raw_start": "2027-08-12",
       "raw_end": "2027-08-16"
+    },
+    {
+      "event_name": "Manneken Swing",
+      "calendar_title": "Manneken Swing",
+      "catalog_name": "Manneken Swing",
+      "name_key": "mannekenswing",
+      "start_date": "2027-08-19",
+      "end_date": "2027-08-23",
+      "url": "https://www.mannekenswing.com",
+      "url_key": "mannekenswing.com",
+      "results_year": 2027,
+      "results_month": 8,
+      "edition_ym_candidates": [
+        "2027-08"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "323d744df5cd01d52f475f8b",
+      "raw_start": "2027-08-19",
+      "raw_end": "2027-08-24"
     },
     {
       "event_name": "Summer Hummer",
@@ -11077,6 +11248,116 @@
       "raw_end": "2027-11-01"
     },
     {
+      "event_name": "Tampa Bay Classic",
+      "calendar_title": "Tampa Bay Classic",
+      "catalog_name": "Tampa Bay Classic",
+      "name_key": "tampabayclassic",
+      "start_date": "2027-11-05",
+      "end_date": "2027-11-07",
+      "url": "https://tbcwcs.com/",
+      "url_key": "tbcwcs.com",
+      "results_year": 2027,
+      "results_month": 11,
+      "edition_ym_candidates": [
+        "2027-11"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "149cb13afcee5e87f68c8299",
+      "raw_start": "2027-11-05",
+      "raw_end": "2027-11-08"
+    },
+    {
+      "event_name": "Westie's Angels",
+      "calendar_title": "Westie's Angels",
+      "catalog_name": "Westie's Angels",
+      "name_key": "westiesangels",
+      "start_date": "2027-11-10",
+      "end_date": "2027-11-15",
+      "url": "https://www.frenchywesty.com/",
+      "url_key": "frenchywesty.com",
+      "results_year": 2027,
+      "results_month": 11,
+      "edition_ym_candidates": [
+        "2027-11"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "29cb77ed8fb41fd308899234",
+      "raw_start": "2027-11-10",
+      "raw_end": "2027-11-16"
+    },
+    {
+      "event_name": "Northeast Swing Classic",
+      "calendar_title": "Northeast Swing Classic",
+      "catalog_name": "Northeast Swing Classic",
+      "name_key": "northeastswingclassic",
+      "start_date": "2027-11-11",
+      "end_date": "2027-11-14",
+      "url": "https://www.northeastswingclassic.com/",
+      "url_key": "northeastswingclassic.com",
+      "results_year": 2027,
+      "results_month": 11,
+      "edition_ym_candidates": [
+        "2027-11"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "596f213572c795fed75037e8",
+      "raw_start": "2027-11-11",
+      "raw_end": "2027-11-15"
+    },
+    {
+      "event_name": "Westie Pink City",
+      "calendar_title": "Westie Pink City",
+      "catalog_name": "Westie Pink City",
+      "name_key": "westiepinkcity",
+      "start_date": "2027-11-11",
+      "end_date": "2027-11-14",
+      "url": "https://westiepinkcity.fr",
+      "url_key": "westiepinkcity.fr",
+      "results_year": 2027,
+      "results_month": 11,
+      "edition_ym_candidates": [
+        "2027-11"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "b3fdf80961b0ad818df9a31b",
+      "raw_start": "2027-11-11",
+      "raw_end": "2027-11-15"
+    },
+    {
+      "event_name": "DCSX (DC Swing eXperience)",
+      "calendar_title": "DCSX (DC Swing eXperience)",
+      "catalog_name": "DCSX",
+      "name_key": "dcsx",
+      "start_date": "2027-11-18",
+      "end_date": "2027-11-21",
+      "url": "https://www.dcswingexperience.com",
+      "url_key": "dcswingexperience.com",
+      "results_year": 2027,
+      "results_month": 11,
+      "edition_ym_candidates": [
+        "2027-11"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "ffcbed0b1f6f3f056b0ee935",
+      "raw_start": "2027-11-18",
+      "raw_end": "2027-11-22"
+    },
+    {
       "event_name": "Euro Dance Festival",
       "calendar_title": "Euro Dance Festival",
       "catalog_name": "Euro Dance Festival",
@@ -11122,6 +11403,28 @@
       "raw_end": "2028-05-08"
     },
     {
+      "event_name": "Liberty Swing Dance Championships",
+      "calendar_title": "Liberty Swing Dance Championships",
+      "catalog_name": "Liberty Swing Dance Championships",
+      "name_key": "libertyswingdancechampionships",
+      "start_date": "2028-06-22",
+      "end_date": "2028-06-26",
+      "url": "http://www.libertyswing.com",
+      "url_key": "libertyswing.com",
+      "results_year": 2028,
+      "results_month": 6,
+      "edition_ym_candidates": [
+        "2028-06"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "ae104811b4d36da837b36068",
+      "raw_start": "2028-06-22",
+      "raw_end": "2028-06-27"
+    },
+    {
       "event_name": "Atlanta Swing Classic",
       "calendar_title": "Atlanta Swing Classic",
       "catalog_name": "Atlanta Swing Classic",
@@ -11165,6 +11468,29 @@
       "source_fingerprint": "c5c1020337282bf31a238972",
       "raw_start": "2029-02-13",
       "raw_end": "2029-02-19"
+    },
+    {
+      "event_name": "Liberty Swing Dance Championships",
+      "calendar_title": "Liberty Swing Dance Championships",
+      "catalog_name": "Liberty Swing Dance Championships",
+      "name_key": "libertyswingdancechampionships",
+      "start_date": "2029-06-28",
+      "end_date": "2029-07-02",
+      "url": "http://www.libertyswing.com",
+      "url_key": "libertyswing.com",
+      "results_year": 2029,
+      "results_month": 7,
+      "edition_ym_candidates": [
+        "2029-07",
+        "2029-06"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "8ec44961e91de084ce01e1ad",
+      "raw_start": "2029-06-28",
+      "raw_end": "2029-07-03"
     },
     {
       "event_name": "Euro Dance Festival",
