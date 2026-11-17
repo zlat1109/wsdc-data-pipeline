@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-11-16T20:57:29.819885+00:00",
+  "generated_at": "2026-11-17T02:04:18.354840+00:00",
   "source": "github-actions",
   "run_id": null,
   "summary": {
     "before_findings_count": 10,
     "applied_rules_count": 265,
-    "applied_rows_touched": 198179,
-    "manual_review_count": 9,
-    "manual_review_new_count": 3
+    "applied_rows_touched": 198274,
+    "manual_review_count": 8,
+    "manual_review_new_count": 0
   },
   "before_processing": {
     "description": "Issues detected in raw CSV before any normalization",
@@ -103,8 +103,8 @@
           },
           {
             "event_name": "German Open WCS Championships",
-            "similar_to": "Korean Open WCS Championships",
-            "score": 0.897
+            "similar_to": "Russian Open WCS Championships",
+            "score": 0.881
           },
           {
             "event_name": "Global Grand Prix - West Coast Swing",
@@ -194,6 +194,16 @@
             ]
           },
           {
+            "base_key": "boogie by the bay",
+            "variants": [
+              "Boogie By The Bay",
+              "Boogie by the Bay"
+            ],
+            "geo_keys": [
+              "san_francisco|california|usa"
+            ]
+          },
+          {
             "base_key": "paradise dance festival",
             "variants": [
               "Paradise Dance Festival",
@@ -202,16 +212,6 @@
             ],
             "geo_keys": [
               "irvine|ca|usa"
-            ]
-          },
-          {
-            "base_key": "boogie by the bay",
-            "variants": [
-              "Boogie By The Bay",
-              "Boogie by the Bay"
-            ],
-            "geo_keys": [
-              "san_francisco|california|usa"
             ]
           },
           {
@@ -343,18 +343,18 @@
             ]
           },
           {
+            "base_key": "boogie by the bay",
+            "variants": [
+              "Boogie By The Bay",
+              "Boogie by the Bay"
+            ]
+          },
+          {
             "base_key": "paradise dance festival",
             "variants": [
               "Paradise Dance Festival",
               "Paradise dance Festival",
               "Paradise dance festival"
-            ]
-          },
-          {
-            "base_key": "boogie by the bay",
-            "variants": [
-              "Boogie By The Bay",
-              "Boogie by the Bay"
             ]
           },
           {
@@ -631,16 +631,16 @@
         "examples": [
           {
             "detail": [
-              "39",
-              "409",
-              "66",
-              "325",
               "279",
-              "307",
-              "202",
+              "66",
               "99",
+              "37",
               "193",
-              "37"
+              "202",
+              "39",
+              "307",
+              "409",
+              "325"
             ]
           }
         ],
@@ -2268,6 +2268,15 @@
         "rule_id": "DIVISION_NORMALIZATION",
         "table": "dancers_results_info",
         "column": "event_competition",
+        "from_value": "Masters",
+        "to_value": "Master",
+        "rows_affected": 17139,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "DIVISION_NORMALIZATION",
+        "table": "dancers_results_info",
+        "column": "event_competition",
         "from_value": "Champions",
         "to_value": "Champion",
         "rows_affected": 5242,
@@ -2279,16 +2288,7 @@
         "column": "event_competition",
         "from_value": "All-Stars",
         "to_value": "All-Star",
-        "rows_affected": 16627,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "DIVISION_NORMALIZATION",
-        "table": "dancers_results_info",
-        "column": "event_competition",
-        "from_value": "Masters",
-        "to_value": "Master",
-        "rows_affected": 17129,
+        "rows_affected": 16637,
         "source": "known_map"
       },
       {
@@ -2826,9 +2826,18 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_required",
-        "from_value": "ADV",
-        "to_value": "Advanced",
-        "rows_affected": 2783,
+        "from_value": "NEW",
+        "to_value": "Newcomer",
+        "rows_affected": 1450,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_required",
+        "from_value": "INT",
+        "to_value": "Intermediate",
+        "rows_affected": 4609,
         "source": "known_map"
       },
       {
@@ -2844,18 +2853,9 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_required",
-        "from_value": "NEW",
-        "to_value": "Newcomer",
-        "rows_affected": 1450,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_required",
-        "from_value": "INT",
-        "to_value": "Intermediate",
-        "rows_affected": 4607,
+        "from_value": "ADV",
+        "to_value": "Advanced",
+        "rows_affected": 2783,
         "source": "known_map"
       },
       {
@@ -2864,7 +2864,7 @@
         "column": "dominate_required",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 18200,
+        "rows_affected": 18218,
         "source": "known_map"
       },
       {
@@ -2880,9 +2880,18 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_allowed",
-        "from_value": "ADV",
-        "to_value": "Advanced",
-        "rows_affected": 3231,
+        "from_value": "NOV",
+        "to_value": "Novice",
+        "rows_affected": 17593,
+        "source": "known_map"
+      },
+      {
+        "rule_id": "LEVEL_NORMALIZATION",
+        "table": "dancer_role_info",
+        "column": "dominate_allowed",
+        "from_value": "INT",
+        "to_value": "Intermediate",
+        "rows_affected": 6110,
         "source": "known_map"
       },
       {
@@ -2898,18 +2907,9 @@
         "rule_id": "LEVEL_NORMALIZATION",
         "table": "dancer_role_info",
         "column": "dominate_allowed",
-        "from_value": "NOV",
-        "to_value": "Novice",
-        "rows_affected": 17578,
-        "source": "known_map"
-      },
-      {
-        "rule_id": "LEVEL_NORMALIZATION",
-        "table": "dancer_role_info",
-        "column": "dominate_allowed",
-        "from_value": "INT",
-        "to_value": "Intermediate",
-        "rows_affected": 6108,
+        "from_value": "ADV",
+        "to_value": "Advanced",
+        "rows_affected": 3233,
         "source": "known_map"
       },
       {
@@ -2918,7 +2918,7 @@
         "column": "dominate_allowed",
         "from_value": "ALS",
         "to_value": "All-Star",
-        "rows_affected": 1051,
+        "rows_affected": 1052,
         "source": "known_map"
       },
       {
@@ -2927,7 +2927,7 @@
         "column": "non_dominate_required",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 4555,
+        "rows_affected": 4557,
         "source": "known_map"
       },
       {
@@ -2936,7 +2936,7 @@
         "column": "non_dominate_required",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 15368,
+        "rows_affected": 15383,
         "source": "known_map"
       },
       {
@@ -2945,7 +2945,7 @@
         "column": "non_dominate_required",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 268,
+        "rows_affected": 269,
         "source": "known_map"
       },
       {
@@ -2972,7 +2972,7 @@
         "column": "non_dominate_allowed",
         "from_value": "NOV",
         "to_value": "Novice",
-        "rows_affected": 7056,
+        "rows_affected": 7057,
         "source": "known_map"
       },
       {
@@ -2990,7 +2990,7 @@
         "column": "non_dominate_allowed",
         "from_value": "NEW",
         "to_value": "Newcomer",
-        "rows_affected": 15368,
+        "rows_affected": 15383,
         "source": "known_map"
       },
       {
@@ -2999,7 +2999,7 @@
         "column": "non_dominate_allowed",
         "from_value": "INT",
         "to_value": "Intermediate",
-        "rows_affected": 1146,
+        "rows_affected": 1147,
         "source": "known_map"
       },
       {
@@ -3077,8 +3077,8 @@
           },
           {
             "event_name": "German Open WCS Championships",
-            "similar_to": "Korean Open WCS Championships",
-            "score": 0.897
+            "similar_to": "Russian Open WCS Championships",
+            "score": 0.881
           },
           {
             "event_name": "Global Grand Prix - West Coast Swing",
@@ -3368,22 +3368,6 @@
         "requires_manual_review": true
       },
       {
-        "category": "event_naming",
-        "code": "EVENT_NAME_NEW_SINCE_LAST_RUN",
-        "severity": "info",
-        "message": "New event names appeared since last quality report (review naming)",
-        "count": 1,
-        "examples": [
-          {
-            "event_name": "Jax Westie Fest"
-          }
-        ],
-        "suggested_fix": "Check if variant of existing event; add normalization rule if needed",
-        "fingerprint": "2ff6a60e30a2ba13",
-        "is_new": true,
-        "requires_manual_review": true
-      },
-      {
         "category": "location",
         "code": "EVENT_NAME_LOCATION_ID_COLLISION",
         "severity": "high",
@@ -3670,7 +3654,7 @@
         ],
         "suggested_fix": "Investigate shared wrong location_id; fix overrides/repair_locations. If venue change is legitimate, UPDATE core.edition_location_baseline in Supabase.",
         "fingerprint": "223fc3bb6f7680b0",
-        "is_new": true,
+        "is_new": false,
         "requires_manual_review": true
       },
       {
@@ -3691,7 +3675,7 @@
         ],
         "suggested_fix": "See transform/data_preprocessing.py validate_* functions",
         "fingerprint": "d8a18f92087dc0a0",
-        "is_new": true,
+        "is_new": false,
         "requires_manual_review": true
       }
     ]

@@ -688,6 +688,7 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 334,Countdown Swing Boston,"Boston, MA, United States",http://countdownswingboston.com/,January 2013,2013-01-01,2013,1,2013-01
 9,Boston Tea Party,"Boston, MA, United States",http://teapartyswings.com,March 2014,2014-03-01,2014,3,2014-03
 376,Northeast Swing Classic,"Providence, RI, United States",http://www.northeastswingclassic.com/,November 2026,2026-11-01,2026,11,2026-11
+270,Westie's Angels,"Lyon, France",http://www.frenchywesty.com,November 2026,2026-11-01,2026,11,2026-11
 269,Autumn Swing Challenge,"Budapest, Hungary",http://www.asc-budapest.com,November 2026,2026-11-01,2026,11,2026-11
 365,Flowstate | West Coast Swing & Zouk Festival,"London, United Kingdom",https://eastonswing.com/west-coast-swing-events/world-swing-dance-council/flowstate-west-coast-swing-zouk-festival-eastonswing/,November 2026,2026-11-01,2026,11,2026-11
 170,Russian Open WCS Championships,"Moscow, Russia",,March 2014,2014-03-01,2014,3,2014-03
@@ -992,8 +993,8 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 187,City of Angels WCS,"Burbank, CA, United States",http://cityofangelswcs.com,April 2017,2017-04-01,2017,4,2017-04
 170,Russian Open WCS Championships,"Moscow, Russia",,April 2017,2017-04-01,2017,4,2017-04
 154,UK WCS Championships,"London, United Kingdom",http://www.ukwcschamps.com,April 2017,2017-04-01,2017,4,2017-04
+1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 1995,1995-07-01,1995,7,1995-07
 9,Boston Tea Party,"Boston, MA, United States",http://teapartyswings.com,March 2017,2017-03-01,2017,3,2017-03
-1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 2001,2001-07-01,2001,7,2001-07
 217,San Diego Dance Festival,"San Diego, CA, United States",,April 2017,2017-04-01,2017,4,2017-04
 18,Easter Swing,"Seattle, WA, United States",https://easterswing.org/,April 2017,2017-04-01,2017,4,2017-04
 132,Tulsa Spring Swing,"Tulsa, OK, United States",http://www.TulsaSpringSwing.com,April 2017,2017-04-01,2017,4,2017-04
@@ -1216,8 +1217,8 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 147,Toronto Open Swing & Hustle Championships,"Toronto, Canada",http://www.TOSHC.com,July 2019,2019-07-01,2019,7,2019-07
 264,Swedish Swing Summer Camp,"Stockholm, Sweden",http://www.uptownswing.se/,August 2018,2018-08-01,2018,8,2018-08
 47,SwingTime Denver,"Denver, CO, United States",http://www.swingtimewcs.com/,July 2018,2018-07-01,2018,7,2018-07
+1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 1996,1996-07-01,1996,7,1996-07
 224,Midwest Westie Fest,"Overland Park, KS, United States",http://Www.midwestwestiefest.com,August 2018,2018-08-01,2018,8,2018-08
-1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 2002,2002-07-01,2002,7,2002-07
 137,Tampa Bay Classic,"Tampa, FL, United States",http//http://www.tampabayclassic.com,August 2018,2018-08-01,2018,8,2018-08
 303,Odyssey West Coast Swing,"Gold Coast, Australia",http://www.odysseywcs.dance,July 2018,2018-07-01,2018,7,2018-07
 157,New England Dance Festival,"Newton (Boston), MA, United States",http://www.nedancefestival.com,August 2018,2018-08-01,2018,8,2018-08
@@ -1866,8 +1867,10 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 194,Moscow Westie Fest,"Moscow, Russia",https://westiefest.org/en/,November 2025,2025-11-01,2025,11,2025-11
 270,Westie's Angels,"Lyon, France",http://www.frenchywesty.com,November 2025,2025-11-01,2025,11,2025-11
 181,DC Swing eXperience (DCSX),"Herndon, VA, United States",http://www.dcswingexperience.com,November 2025,2025-11-01,2025,11,2025-11
+1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 1997,1997-07-01,1997,7,1997-07
+1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 1998,1998-07-01,1998,7,1998-07
+1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 1999,1999-07-01,1999,7,1999-07
 288,Midnight Madness,"Dallas, TX, United States",http://www.MidnightMadnessWCS.com,November 2025,2025-11-01,2025,11,2025-11
-1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 2003,2003-07-01,2003,7,2003-07
 365,Flowstate | West Coast Swing & Zouk Festival,"London, United Kingdom",https://eastonswing.com/west-coast-swing-events/world-swing-dance-council/flowstate-west-coast-swing-zouk-festival-eastonswing/,November 2025,2025-11-01,2025,11,2025-11
 292,King Swing,"Kraków, Poland",https://kingswing.pl/,March 2026,2026-03-01,2026,3,2026-03
 404,Infinite Swing,"Munich, Germany",http://infinite-swing.com,July 2026,2026-07-01,2026,7,2026-07
@@ -1878,12 +1881,10 @@ id,name,location,url,date,parsed_date,event_year,event_month,event_year_month
 1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 1992,1992-07-01,1992,7,1992-07
 1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 1993,1993-07-01,1993,7,1993-07
 1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 1994,1994-07-01,1994,7,1994-07
-1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 1995,1995-07-01,1995,7,1995-07
-1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 1996,1996-07-01,1996,7,1996-07
-1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 1997,1997-07-01,1997,7,1997-07
-1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 1998,1998-07-01,1998,7,1998-07
-1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 1999,1999-07-01,1999,7,1999-07
 1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 2000,2000-07-01,2000,7,2000-07
+1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 2001,2001-07-01,2001,7,2001-07
+1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 2002,2002-07-01,2002,7,2002-07
+1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 2003,2003-07-01,2003,7,2003-07
 1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 2004,2004-07-01,2004,7,2004-07
 1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 2005,2005-07-01,2005,7,2005-07
 1,4TH of July Convention,"Phoenix, AZ, United States",http://phoenix4thofjuly.com,July 2006,2006-07-01,2006,7,2006-07

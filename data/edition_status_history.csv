@@ -83,7 +83,7 @@ event_id,event_year,event_month,todd_edition_id,edition_status,cancelled_covid,e
 105,2020,5,wsdc:105:May 2020,cancelled,t,Canadian Swing Championships,2020-05-15,2020-05-18,registry,Trois-Rivieres,Quebec,Canada,5,Canadian Swing Championships
 175,2020,5,wsdc:175:May 2020,cancelled,t,French Open WCS,2020-05-21,2020-05-24,registry,Roissy-en-France,95912,France,5,French Open West Coast Swing
 22,2020,5,wsdc:22:May 2020,cancelled,t,USA Grand National Dance Championship,2020-05-21,2020-05-25,registry,Atlanta,GA,United States,5,USA Grand Nationals
-221,2020,5,wsdc:221:May 2020,cancelled,t,Show Me Showdown,2020-05-22,2020-05-25,registry,St. Louis,MO,United States,5,Show Me Showdown
+221,2020,5,wsdc:221:May 2020,cancelled,t,Show Me Showdown,2020-05-22,2020-05-25,registry,St. Louis,MO,United States,5,Gateway Swing Classic
 29,2020,5,wsdc:29:May 2020,cancelled,t,Michigan Classic,2020-05-28,2020-05-31,registry,Ypsilanti,MI,United States,5,Michigan Swing Dance Champs
 117,2020,6,wsdc:117:June 2020,cancelled,t,Orange Blossom Dance Festival,2020-06-04,2020-06-07,registry,Orlando,FL,United States,5,Orange Blossom Dance Festival
 220,2020,6,wsdc:220:June 2020,cancelled,t,D-Townswing,2020-06-05,2020-06-07,registry,Dusseldorf,NRW,Germany,5,D-Town Swing
@@ -283,7 +283,7 @@ event_id,event_year,event_month,todd_edition_id,edition_status,cancelled_covid,e
 306,2023,5,wsdc:306:May 2023,hiatus,f,Go West Swing Fest,2023-04-27,2023-05-01,registry,Fremantle,Western Australia,Australia,5,Go West SwingFest
 219,2023,5,wsdc:219:May 2023,cancelled,f,KIWI Fest,2023-05-04,2023-05-07,registry,Kyiv,,Ukraine,5,KIWI Fest
 277,2023,5,wsdc:277:May 2023,no_results,f,Scottish Swing Classic,2023-05-11,2023-05-14,registry,Glasgow,UK,United Kingdom,5,Scotland Swing Classic
-221,2023,5,wsdc:221:May 2023,no_results,f,Show Me Showdown,2023-05-25,2023-05-28,registry,St. Louis,MO,United States,5,Show Me Showdown
+221,2023,5,wsdc:221:May 2023,no_results,f,Show Me Showdown,2023-05-25,2023-05-28,registry,St. Louis,MO,United States,5,Gateway Swing Classic
 76,2023,6,wsdc:76:June 2023,hiatus,f,Michigan Dance Classic,2023-06-01,2023-06-04,registry,Detroit,MI,United States,5,Michigan Dance Classic
 207,2023,6,wsdc:207:June 2023,hiatus,f,Dance N Play,2023-06-08,2023-06-11,registry,Redmond,OR,United States,5,Dance N Play
 149,2023,7,wsdc:149:July 2023,hiatus,f,Florida Dance Magic,2023-07-13,2023-07-17,registry,West Palm Beach,FL,United States,5,Florida Dance Magic
