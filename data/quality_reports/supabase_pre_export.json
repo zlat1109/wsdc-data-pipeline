@@ -164,7 +164,7 @@
       "name": "edition_month_stub_dates",
       "category": "event_naming",
       "severity": "warn",
-      "value": 1,
+      "value": 0,
       "max_value": 2000,
       "ok": true,
       "description": "Month-sentinel start/end (YYYY-MM-01..01) after dump backfill; regression guard \u2014 not every historical edition has day dates.",
@@ -477,6 +477,6 @@
     "errors": 0,
     "warnings": 0
   },
-  "generated_at": "2026-11-17T17:15:39.364388+00:00",
+  "generated_at": "2026-11-19T20:07:34.418984+00:00",
   "scope": "full"
 }
