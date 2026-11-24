@@ -942,6 +942,83 @@ def cmd_force_rebuild_complete() -> None:
     send_telegram(text)
 
 
+def format_growth_geo_warn_message(report: dict, context: dict) -> str:
+    warning_count = int(report.get("warning_count") or 0)
+    run_url = context.get("run_url", "")
+    lines = [
+        "#WSDC_Event_Trends_Geo_Warn",
+        "",
+        "⚠️ <b>Event Trends / geo warnings</b> (publish not blocked)",
+        "",
+        f"Warnings: <code>{_esc(warning_count)}</code>",
+    ]
+    workflow = context.get("workflow")
+    if workflow:
+        lines.append(f"Workflow: <code>{_esc(workflow)}</code>")
+    if run_url:
+        lines.append(f"Logs: <a href=\"{_esc(run_url)}\">GitHub Actions</a>")
+    lines.append("")
+    for item in (report.get("warnings") or [])[:6]:
+        code = item.get("code", "WARN")
+        msg = item.get("message", "")
+        count = item.get("count")
+        suffix = f" · n={count}" if count is not None else ""
+        lines.append(f"• <code>{_esc(code)}</code> — {_esc(msg)}{suffix}")
+        for ex in (item.get("examples") or [])[:2]:
+            if isinstance(ex, dict):
+                bits = []
+                for key in (
+                    "location_id",
+                    "city",
+                    "country",
+                    "name",
+                    "year",
+                    "event_id",
+                    "field",
+                ):
+                    if ex.get(key) is not None:
+                        bits.append(f"{key}={ex[key]}")
+                if bits:
+                    lines.append(f"  <i>{_esc(', '.join(bits))}</i>")
+            else:
+                lines.append(f"  <i>{_esc(ex)}</i>")
+    lines.extend(
+        [
+            "",
+            "City centroids come from <code>location_info</code>; "
+            "venue pins come from the WSDC dump. "
+            "Geocode missing cities or ignore if venue-only is enough.",
+        ]
+    )
+    return "\n".join(lines)
+
+
+def cmd_growth_geo_warn(report_path: Path) -> None:
+    """Notify about geo/JSON warnings; no-op when warning_count == 0."""
+    if not report_path.is_file():
+        print(f"growth-geo-warn: report missing ({report_path}) — skip", flush=True)
+        return
+    try:
+        report = json.loads(report_path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError) as exc:
+        print(f"growth-geo-warn: could not read report: {exc}", flush=True)
+        return
+    if not int(report.get("warning_count") or 0):
+        print("growth-geo-warn: no warnings — skip Telegram", flush=True)
+        return
+    context = {
+        "workflow": os.getenv("GITHUB_WORKFLOW", ""),
+        "run_url": os.getenv("GITHUB_SERVER_URL", "https://github.com")
+        + "/"
+        + os.getenv("GITHUB_REPOSITORY", "")
+        + "/actions/runs/"
+        + os.getenv("GITHUB_RUN_ID", ""),
+    }
+    # Never fail the job if Telegram is unset — this is advisory only.
+    os.environ["REQUIRE_TELEGRAM"] = "0"
+    send_telegram(format_growth_geo_warn_message(report, context))
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -963,6 +1040,19 @@ def main() -> None:
         "force-rebuild-complete",
         help="Notify after force-rebuild-calendar-site succeeds",
     )
+    growth_geo = sub.add_parser(
+        "growth-geo-warn",
+        help="Notify Event Trends geo/JSON warnings (advisory; skips if none)",
+    )
+    growth_geo.add_argument(
+        "report",
+        type=Path,
+        nargs="?",
+        default=PROJECT_ROOT
+        / "data"
+        / "quality_reports"
+        / "event_growth_geo_warnings.json",
+    )
 
     events_list = sub.add_parser("events-list", help="Notify after weekly events list sync")
     events_list.add_argument("report", type=Path, nargs="?", default=None)
@@ -982,6 +1072,8 @@ def main() -> None:
         cmd_quality_gate_failed()
     elif args.command == "force-rebuild-complete":
         cmd_force_rebuild_complete()
+    elif args.command == "growth-geo-warn":
+        cmd_growth_geo_warn(args.report)
     elif args.command == "events-list":
         cmd_events_list(args.report)
 
