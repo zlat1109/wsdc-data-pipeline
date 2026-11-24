@@ -408,3 +408,35 @@ def test_build_event_growth_gap_rules(tmp_path: Path):
     report = growth_distribution_report(payload, years=[2025])
     assert report["years"]["2025"]["n"] == 3
     assert report["years"]["2025"]["by_status"][STATUS_GROWING] == 1
+
+
+def test_location_coords_skips_nonfinite(tmp_path: Path):
+    from transform.year_event_calendar.event_growth import _location_coords
+
+    (tmp_path / "location_info.csv").write_text(
+        "location_id,latitude,longitude\n"
+        "1,50.8,4.3\n"
+        "406,,\n"
+        "2,nan,nan\n",
+        encoding="utf-8",
+    )
+    coords = _location_coords(tmp_path)
+    assert 1 in coords
+    assert 406 not in coords
+    assert 2 not in coords
+
+
+def test_write_event_growth_rejects_bare_nan(tmp_path: Path):
+    import json
+    from transform.year_event_calendar.event_growth import write_event_growth
+
+    out = tmp_path / "event_growth.json"
+    write_event_growth(
+        {"editions": [{"name": "X", "city_lat": float("nan"), "lat": 50.8}]},
+        out,
+    )
+    raw = out.read_text(encoding="utf-8")
+    assert "NaN" not in raw
+    payload = json.loads(raw)
+    assert payload["editions"][0]["city_lat"] is None
+    assert payload["editions"][0]["lat"] == 50.8

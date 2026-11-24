@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import math
 from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -182,6 +183,10 @@ def _location_coords(data_dir: Path) -> dict[int, dict[str, float]]:
             lat = float(rec["latitude"])
             lon = float(rec["longitude"])
         except (TypeError, ValueError, KeyError):
+            continue
+        # pandas NaN → float("nan"); abs(nan) > 90 is False, so must reject explicitly
+        # (otherwise json.dumps emits bare NaN and browsers fail JSON.parse).
+        if not math.isfinite(lat) or not math.isfinite(lon):
             continue
         if abs(lat) > 90 or abs(lon) > 180:
             continue
@@ -381,10 +386,30 @@ def _empty_payload(
     }
 
 
+def _json_safe(value: Any) -> Any:
+    """Replace non-finite floats with None so dumps(allow_nan=False) stays valid."""
+    if isinstance(value, float) and not math.isfinite(value):
+        return None
+    if isinstance(value, dict):
+        return {k: _json_safe(v) for k, v in value.items()}
+    if isinstance(value, list):
+        return [_json_safe(v) for v in value]
+    return value
+
+
 def write_event_growth(payload: dict, path: Path | str) -> None:
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
+    path.write_text(
+        json.dumps(
+            _json_safe(payload),
+            ensure_ascii=False,
+            separators=(",", ":"),
+            allow_nan=False,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
 
 
 def growth_distribution_report(payload: dict, years: list[int] | None = None) -> dict:
