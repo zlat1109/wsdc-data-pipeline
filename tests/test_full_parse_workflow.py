@@ -57,6 +57,10 @@ def test_data_commit_reports_pytest_check_before_push():
     check_at = script.index('gh api "repos/${REPO}/check-runs"')
     assert script.index("--ignore=tests/test_data_processors.py") < check_at
     assert check_at < script.index('git push origin "HEAD:main"')
+    # Guard against GH006 race: wait for check visibility, then retry push.
+    assert "commits/${SHA}/check-runs" in script
+    assert 'select(.name=="pytest"' in script
+    assert "push to main failed" in script
     tests_yml = (ROOT / ".github" / "workflows" / "tests.yml").read_text(encoding="utf-8")
     for flag in ("--ignore=tests/test_data_analytics.py", "--ignore=tests/test_data_processors.py"):
         assert flag in tests_yml
