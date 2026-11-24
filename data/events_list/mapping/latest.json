@@ -1,7 +1,7 @@
 {
   "summary": {
-    "scheduled_active": 163,
-    "confirmed": 154,
+    "scheduled_active": 162,
+    "confirmed": 153,
     "suggested": 0,
     "review": 0,
     "new_unmapped": 9,
@@ -9,26 +9,6 @@
     "name_variants": 45
   },
   "confirmed": [
-    {
-      "source_fingerprint": "d77c34c437ac161c6918fbf4",
-      "list_name": "DC Swing eXperience (DCSX)",
-      "start_date": "2026-11-19",
-      "location_raw": "Washington, DC., VA, United States",
-      "list_url": "http://www.dcswingexperience.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 181,
-      "canonical_name": "DC Swing eXperience (DCSX)",
-      "catalog_url": "http://www.dcswingexperience.com",
-      "typical_location": "Herndon, VA",
-      "location_score": 0.35555555555555557,
-      "location_flag": "site_differs_from_history",
-      "notes": [
-        "Site location 'Washington, DC., VA, United States' differs from catalog typical 'Herndon, VA' (venue may have moved)"
-      ]
-    },
     {
       "source_fingerprint": "7e1806f78d93719855097003",
       "list_name": "The Open Swing Dance  Championships",
@@ -825,26 +805,6 @@
       "notes": []
     },
     {
-      "source_fingerprint": "5cb418e1cefe86f59aa9c02c",
-      "list_name": "H-Town Throw Down",
-      "start_date": "2027-03-11",
-      "location_raw": "Houston, TX, United States",
-      "list_url": "https://www.htownthrowdownwcs.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "explicit",
-      "confidence": 1.0,
-      "canonical_event_id": 153,
-      "canonical_name": "Novice Invitational",
-      "catalog_url": "http://www.htownthrowdownwcs.com",
-      "typical_location": "Houston, TX",
-      "location_score": 0.92,
-      "location_flag": "ok",
-      "notes": [
-        "Name differs: list='H-Town Throw Down' catalog='Novice Invitational'"
-      ]
-    },
-    {
       "source_fingerprint": "d2605cdb9c5528d401dfc5f0",
       "list_name": "5280 Westival",
       "start_date": "2027-03-11",
@@ -1447,13 +1407,16 @@
       "match_status": "confirmed",
       "match_method": "exact_name",
       "confidence": 1.0,
-      "canonical_event_id": 221,
-      "canonical_name": "Gateway Swing Classic",
-      "catalog_url": "",
-      "typical_location": "St. Louis, MO",
-      "location_score": 0.92,
-      "location_flag": "ok",
-      "notes": []
+      "canonical_event_id": 342,
+      "canonical_name": "Global Grand Prix - West Coast Swing Reunion",
+      "catalog_url": "https://www.globalgrandprixwcs.com/",
+      "typical_location": "Toulouse, France",
+      "location_score": 0.4090909090909091,
+      "location_flag": "site_differs_from_history",
+      "notes": [
+        "Name differs: list='Gateway Swing Classic' catalog='Global Grand Prix - West Coast Swing Reunion'",
+        "Site location 'St. Louis, MO, United States' differs from catalog typical 'Toulouse, France' (venue may have moved)"
+      ]
     },
     {
       "source_fingerprint": "6a2fa76491a42cb1136df4e9",
@@ -2235,8 +2198,8 @@
       "canonical_event_id": 400,
       "canonical_name": "Manneken Swing",
       "catalog_url": "",
-      "typical_location": "Bruxelles, Belgium",
-      "location_score": 0.8571428571428571,
+      "typical_location": "Brussels, Belgium",
+      "location_score": 1.0,
       "location_flag": "ok",
       "notes": []
     },
@@ -2781,6 +2744,26 @@
       ]
     },
     {
+      "source_fingerprint": "d71d32b5500a0652cfed5c8d",
+      "list_name": "Flowstate | West Coast Swing & Zouk Festival",
+      "start_date": "2027-11-12",
+      "location_raw": "London, London, United Kingdom",
+      "list_url": "https://flowstatefest.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 365,
+      "canonical_name": "Flowstate | West Coast Swing & Zouk Festival",
+      "catalog_url": "https://eastonswing.com/west-coast-swing-events/world-swing-dance-council/flowstate-west-coast-swing-zouk-festival-eastonswing/",
+      "typical_location": "London, United Kingdom",
+      "location_score": 0.92,
+      "location_flag": "ok",
+      "notes": [
+        "List URL 'https://flowstatefest.com/' differs from catalog URL 'https://eastonswing.com/west-coast-swing-events/world-swing-dance-council/flowstate-west-coast-swing-zouk-festival-eastonswing/' — using event name"
+      ]
+    },
+    {
       "source_fingerprint": "ffcbed0b1f6f3f056b0ee935",
       "list_name": "DCSX (DC Swing eXperience)",
       "start_date": "2027-11-18",
@@ -3125,26 +3108,6 @@
   ],
   "location_drifts": [
     {
-      "source_fingerprint": "d77c34c437ac161c6918fbf4",
-      "list_name": "DC Swing eXperience (DCSX)",
-      "start_date": "2026-11-19",
-      "location_raw": "Washington, DC., VA, United States",
-      "list_url": "http://www.dcswingexperience.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "exact_name",
-      "confidence": 1.0,
-      "canonical_event_id": 181,
-      "canonical_name": "DC Swing eXperience (DCSX)",
-      "catalog_url": "http://www.dcswingexperience.com",
-      "typical_location": "Herndon, VA",
-      "location_score": 0.35555555555555557,
-      "location_flag": "site_differs_from_history",
-      "notes": [
-        "Site location 'Washington, DC., VA, United States' differs from catalog typical 'Herndon, VA' (venue may have moved)"
-      ]
-    },
-    {
       "source_fingerprint": "b67285afe74986042474995d",
       "list_name": "Countdown Swing Boston",
       "start_date": "2026-12-31",
@@ -3243,6 +3206,27 @@
       "location_flag": "site_differs_from_history",
       "notes": [
         "Site location 'Toulon, Var, France' differs from catalog typical 'La Londe-les-Maures, France' (venue may have moved)"
+      ]
+    },
+    {
+      "source_fingerprint": "207bdba1fc6a2efeb08174f8",
+      "list_name": "Gateway Swing Classic",
+      "start_date": "2027-05-20",
+      "location_raw": "St. Louis, MO, United States",
+      "list_url": "http://gatewayswing.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 342,
+      "canonical_name": "Global Grand Prix - West Coast Swing Reunion",
+      "catalog_url": "https://www.globalgrandprixwcs.com/",
+      "typical_location": "Toulouse, France",
+      "location_score": 0.4090909090909091,
+      "location_flag": "site_differs_from_history",
+      "notes": [
+        "Name differs: list='Gateway Swing Classic' catalog='Global Grand Prix - West Coast Swing Reunion'",
+        "Site location 'St. Louis, MO, United States' differs from catalog typical 'Toulouse, France' (venue may have moved)"
       ]
     },
     {
@@ -3714,26 +3698,6 @@
       ]
     },
     {
-      "source_fingerprint": "5cb418e1cefe86f59aa9c02c",
-      "list_name": "H-Town Throw Down",
-      "start_date": "2027-03-11",
-      "location_raw": "Houston, TX, United States",
-      "list_url": "https://www.htownthrowdownwcs.com/",
-      "status_event": "Registry Event",
-      "match_status": "confirmed",
-      "match_method": "explicit",
-      "confidence": 1.0,
-      "canonical_event_id": 153,
-      "canonical_name": "Novice Invitational",
-      "catalog_url": "http://www.htownthrowdownwcs.com",
-      "typical_location": "Houston, TX",
-      "location_score": 0.92,
-      "location_flag": "ok",
-      "notes": [
-        "Name differs: list='H-Town Throw Down' catalog='Novice Invitational'"
-      ]
-    },
-    {
       "source_fingerprint": "ac9861f3c21a0de7441dda4e",
       "list_name": "Dutch Open Wcs",
       "start_date": "2027-03-11",
@@ -3992,6 +3956,27 @@
       "location_flag": "ok",
       "notes": [
         "Name differs: list='SOM-Swing of Music' catalog='SOM - Swing of Music'"
+      ]
+    },
+    {
+      "source_fingerprint": "207bdba1fc6a2efeb08174f8",
+      "list_name": "Gateway Swing Classic",
+      "start_date": "2027-05-20",
+      "location_raw": "St. Louis, MO, United States",
+      "list_url": "http://gatewayswing.com/",
+      "status_event": "Registry Event",
+      "match_status": "confirmed",
+      "match_method": "exact_name",
+      "confidence": 1.0,
+      "canonical_event_id": 342,
+      "canonical_name": "Global Grand Prix - West Coast Swing Reunion",
+      "catalog_url": "https://www.globalgrandprixwcs.com/",
+      "typical_location": "Toulouse, France",
+      "location_score": 0.4090909090909091,
+      "location_flag": "site_differs_from_history",
+      "notes": [
+        "Name differs: list='Gateway Swing Classic' catalog='Global Grand Prix - West Coast Swing Reunion'",
+        "Site location 'St. Louis, MO, United States' differs from catalog typical 'Toulouse, France' (venue may have moved)"
       ]
     },
     {
@@ -4379,6 +4364,6 @@
       ]
     }
   ],
-  "generated_at": "2026-11-17T17:13:21.917680+00:00",
-  "catalog_events": 427
+  "generated_at": "2026-11-24T19:12:41.047238+00:00",
+  "catalog_events": 428
 }

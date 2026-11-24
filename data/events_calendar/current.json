@@ -1,9 +1,9 @@
 {
-  "scraped_at": "2026-11-17T17:13:50.597483+00:00",
+  "scraped_at": "2026-11-24T19:12:58.204352+00:00",
   "source": "https://worldsdc.com/events/calendar/",
   "min_start": "2025-01-01",
   "raw_count": 679,
-  "event_count": 518,
+  "event_count": 519,
   "events": [
     {
       "event_name": "Floorplay Swing Vacation",
@@ -11333,6 +11333,28 @@
       "status_tags": [],
       "source_fingerprint": "b3fdf80961b0ad818df9a31b",
       "raw_start": "2027-11-11",
+      "raw_end": "2027-11-15"
+    },
+    {
+      "event_name": "Flowstate | West Coast Swing & Zouk Festival",
+      "calendar_title": "Flowstate | West Coast Swing & Zouk Festival",
+      "catalog_name": "Flowstate | West Coast Swing & Zouk Festival",
+      "name_key": "flowstatewestcoastswingzoukfestival",
+      "start_date": "2027-11-12",
+      "end_date": "2027-11-14",
+      "url": "https://flowstatefest.com/",
+      "url_key": "flowstatefest.com",
+      "results_year": 2027,
+      "results_month": 11,
+      "edition_ym_candidates": [
+        "2027-11"
+      ],
+      "date_precision": "day",
+      "date_source": "wsdc_calendar",
+      "flags": [],
+      "status_tags": [],
+      "source_fingerprint": "d71d32b5500a0652cfed5c8d",
+      "raw_start": "2027-11-12",
       "raw_end": "2027-11-15"
     },
     {
