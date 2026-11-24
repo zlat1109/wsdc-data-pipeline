@@ -8,8 +8,8 @@
 # what the protection rule expects). Needs `contents: write` + `checks: write`.
 #
 # After creating the check, wait until GitHub lists it as completed/success on
-# the SHA, then push with retries — otherwise branch protection can race with
-# GH006 "Required status check pytest is expected".
+# the SHA, settle briefly, then push. Retries only GH006 / required-check races;
+# other push errors fail immediately.
 #
 # Usage: bash scripts/commit_data_to_main.sh "commit message" [path ...]
 # Prints committed=true|false to GITHUB_OUTPUT when set.
@@ -89,16 +89,29 @@ if [[ $PYTEST_RC -ne 0 ]]; then
   exit 1
 fi
 
+pytest_check_visible() {
+  local count
+  count="$(
+    gh api "repos/${REPO}/commits/${SHA}/check-runs" \
+      --jq '[.check_runs[] | select(.name=="pytest" and .status=="completed" and .conclusion=="success")] | length' \
+      2>/dev/null || true
+  )"
+  count="${count:-0}"
+  [[ "$count" =~ ^[0-9]+$ ]] || count=0
+  [[ "$count" -ge 1 ]]
+}
+
+is_branch_protection_race() {
+  # GH006 / required-check lag — only these are safe to retry.
+  local err="$1"
+  grep -Eqi 'GH006|Protected branch update failed|Required status check .+ is expected' <<<"$err"
+}
+
 # Wait until branch protection can see the synthetic pytest check.
 echo "Waiting for pytest check on ${SHA}…"
 CHECK_OK=0
 for _ in $(seq 1 30); do
-  STATUS="$(
-    gh api "repos/${REPO}/commits/${SHA}/check-runs" \
-      --jq '[.check_runs[] | select(.name=="pytest" and .status=="completed" and .conclusion=="success")] | length' \
-      2>/dev/null || echo 0
-  )"
-  if [[ "${STATUS}" -ge 1 ]]; then
+  if pytest_check_visible; then
     CHECK_OK=1
     break
   fi
@@ -109,18 +122,35 @@ if [[ "$CHECK_OK" -ne 1 ]]; then
   exit 1
 fi
 
-# Retry push: GH006 can still race right after the check appears.
+# Brief settle: API visibility can lead branch-protection evaluation by a beat.
+sleep 2
+
+# Retry only GH006/required-check races; fail fast on auth/non-ff/other errors.
 PUSH_OK=0
+PUSH_ERR_FILE="$(mktemp)"
 for attempt in 1 2 3 4 5; do
-  if git push origin "HEAD:main"; then
+  if git push origin "HEAD:main" 2>"$PUSH_ERR_FILE"; then
     PUSH_OK=1
     break
   fi
-  echo "::warning::push to main failed (attempt ${attempt}/5); waiting before retry…"
+  PUSH_ERR="$(cat "$PUSH_ERR_FILE")"
+  cat "$PUSH_ERR_FILE" >&2
+  if ! is_branch_protection_race "$PUSH_ERR"; then
+    echo "::error::push to main failed with a non-retryable error (not GH006/required-check race)."
+    rm -f "$PUSH_ERR_FILE"
+    exit 1
+  fi
+  echo "::warning::branch-protection race on push (attempt ${attempt}/5); waiting before retry…"
   sleep $((attempt * 3))
+  # Re-confirm check still present before the next attempt.
+  if ! pytest_check_visible; then
+    echo "::warning::pytest check not visible before retry; waiting…"
+    sleep 2
+  fi
 done
+rm -f "$PUSH_ERR_FILE"
 if [[ "$PUSH_OK" -ne 1 ]]; then
-  echo "::error::failed to push ${SHA} to main after retries."
+  echo "::error::failed to push ${SHA} to main after GH006 retries."
   exit 1
 fi
 
