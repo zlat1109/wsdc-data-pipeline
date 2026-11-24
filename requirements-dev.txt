@@ -1,2 +1,2 @@
 # Dev-only tools (not required for CI / production load)
-pypdf>=6.21.4
+pypdf>=7.1.1
