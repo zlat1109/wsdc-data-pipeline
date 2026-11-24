@@ -78,6 +78,12 @@ jobs:
           CHAMPION_NEWS_CUTOFF: "2026-07-25"
           CHAMPION_NEWS_REPORT: data/quality_reports/champion_news_last.json
           YEAR_CAL_REPORT: data/quality_reports/year_event_calendar_last.json
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GITHUB_WORKFLOW: ${{ github.workflow }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          GITHUB_SERVER_URL: ${{ github.server_url }}
         run: bash scripts/sync_analytics_site.sh
 
       - name: Notify Telegram (force-rebuild complete)

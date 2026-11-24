@@ -174,6 +174,16 @@ if [[ "${CALENDAR_OK}" == "1" ]]; then
   else
     echo "::warning::No mysqldump and no prior growth — venue pins stay at city centroids"
   fi
+
+  # Advisory only: never fails the job. Flags bare NaN / missing city centroids /
+  # location_info holes (Event Trends city layer vs dump venue pins).
+  echo "Scanning event_growth geo warnings (warn-only)"
+  python3 "${PIPELINE_ROOT}/scripts/warn_event_growth_geo.py" \
+    --growth "${GROWTH_JSON}" \
+    --location-info "${PIPELINE_DATA_ABS}/location_info.csv" \
+    --report "${PIPELINE_ROOT}/data/quality_reports/event_growth_geo_warnings.json" \
+    --telegram \
+    || echo "::warning::warn_event_growth_geo.py exited non-zero — continuing"
 fi
 
 python3 "${WORKDIR}/scripts/validate_site_data.py" || {
